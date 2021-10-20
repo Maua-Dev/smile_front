@@ -43,7 +43,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           files: coverage/lcov.info
-          flags: unittests # optional
+          # flags: unittests # optional
           directory: coverage/
           functionalities: html
           name: codecov-umbrella # optional
