@@ -2,7 +2,7 @@
 [![codecov](https://codecov.io/gh/Maua-Dev/smile_front/branch/develop/graph/badge.svg?token=DUL3UPD6I6)](https://codecov.io/gh/Maua-Dev/smile_front)
 [![WorkFlow CI Test](https://github.com/Maua-Dev/smile_front/actions/workflows/flutter_CI.yml/badge.svg)](https://github.com/Maua-Dev/smile_front/actions/workflows/flutter_CI.yml)
 [![WorkFlow CI Analyze](https://github.com/Maua-Dev/smile_front/actions/workflows/flutter_CI_analyze.yml/badge.svg)](https://github.com/Maua-Dev/smile_front/actions/workflows/flutter_CI_analyze.yml)
-# Site Smile - Front- end
+# Smile App
 
 A new Flutter project.
 
