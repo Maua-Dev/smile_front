@@ -15,7 +15,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Counter'),
+        title: const Text('Counter'),
       ),
       body: StreamBuilder(
         stream: store.counterStream,
@@ -25,7 +25,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         onPressed: () {
           store.increment();
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
