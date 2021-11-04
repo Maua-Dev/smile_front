@@ -1,0 +1,1 @@
+enum ActivitiesEnum { ATIVIDADE, PALESTRA }
