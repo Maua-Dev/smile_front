@@ -1,9 +1,6 @@
-import 'package:dartz/dartz.dart';
 import 'package:smile_front/app/modules/dashboard/domain/entities/activities.dart';
-import 'package:smile_front/app/modules/dashboard/domain/errors/errors.dart';
 import 'package:smile_front/app/modules/dashboard/domain/service/presentation/activities_enum.dart';
 
 abstract class ActivitiesRepository {
-  Future<Either<FailureGetActivities, Future<List<Activities>>>> getActivities(
-      ActivitiesEnum activitiesEnum);
+  Future<List<Activities>> getActivities(ActivitiesEnum activitiesEnum);
 }

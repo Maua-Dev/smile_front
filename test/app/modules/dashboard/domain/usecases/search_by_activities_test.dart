@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/dashboard/domain/entities/activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository.dart';
 import 'package:smile_front/app/modules/dashboard/domain/service/presentation/activities_enum.dart';
@@ -13,6 +14,8 @@ void main() {
   final usecase = SearchByActivitiesImpl(repository);
 
   test('Must return a list of Activities', () async {
+    when(repository.getActivities(any)).thenAnswer((_) async => <Activities>[]);
+
     final result = await usecase(ActivitiesEnum.ATIVIDADE);
     expect(result, isA<List<Activities>>());
   });
