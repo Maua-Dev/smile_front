@@ -72,8 +72,7 @@ class _HomePage1State extends State<Home1Page> {
                   const SizedBox(
                     height: 104,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 124),
+                  Center(
                     child: Stack(
                       children: [
                         Padding(
@@ -99,36 +98,38 @@ class _HomePage1State extends State<Home1Page> {
                   const SizedBox(
                     height: 104,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 102),
-                    child: Center(
-                      child: Container(
-                        height: 94,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(15)),
-                            color: AppColors.lightOrange),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 32),
-                              child: Text(
-                                'PARTICIPE DAS ATIVIDADES',
-                                style: AppTextStyles.body.copyWith(
-                                    color: AppColors.brandingOrange,
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.w300),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 54),
+                      child: Center(
+                        child: Container(
+                          height: 94,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(15)),
+                              color: AppColors.lightOrange),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 32),
+                                child: Text(
+                                  'PARTICIPE DAS ATIVIDADES',
+                                  style: AppTextStyles.body.copyWith(
+                                      color: AppColors.brandingOrange,
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.w300),
+                                ),
                               ),
-                            ),
-                            BrandingTextButtonWidget(
-                              title: 'CADASTRE-SE',
-                              fontSize: 35,
-                              backgroundColor: AppColors.brandingOrange,
-                              boxHeight: 72,
-                              boxWidth: 300,
-                            )
-                          ],
+                              BrandingTextButtonWidget(
+                                title: 'CADASTRE-SE',
+                                fontSize: 35,
+                                backgroundColor: AppColors.brandingOrange,
+                                boxHeight: 72,
+                                boxWidth: 300,
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
