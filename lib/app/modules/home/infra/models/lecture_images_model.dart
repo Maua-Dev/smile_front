@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:smile_front/app/modules/home/domain/entities/lecture_images.dart';
 
 class LectureImagesModel extends LectureImages {
+  // ignore: annotate_overrides, overridden_fields
   final String image;
 
   LectureImagesModel({required this.image}) : super(image: super.image);
