@@ -25,17 +25,22 @@ class HomePage2State extends ModularState<Home2Page, Home2Controller> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'PRINCIPAIS PALESTRANTES',
-                  style: AppTextStyles.body,
+                Padding(
+                  padding: const EdgeInsets.only(left: 24.0),
+                  child: Text(
+                    'PRINCIPAIS PALESTRANTES',
+                    style: AppTextStyles.body
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
                 ),
                 const SizedBox(
                   width: 10,
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.65,
-                  height: 10,
-                  color: AppColors.brandingBlue,
+                Expanded(
+                  child: Container(
+                    height: 5,
+                    color: AppColors.brandingBlue,
+                  ),
                 )
               ],
             ),
