@@ -30,7 +30,7 @@ class HomePage2State extends ModularState<Home2Page, Home2Controller> {
                   child: Text(
                     'PRINCIPAIS PALESTRANTES',
                     style: AppTextStyles.body
-                        .copyWith(fontWeight: FontWeight.bold),
+                        .copyWith(fontWeight: FontWeight.bold, fontSize: 40),
                   ),
                 ),
                 const SizedBox(
