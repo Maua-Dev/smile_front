@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/home4_controller.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
 
 class Home4Page extends StatefulWidget {
