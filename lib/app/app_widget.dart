@@ -12,7 +12,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       supportedLocales: const [Locale('pt')],
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home/home4',
+      initialRoute: '/home',
       title: 'Smile',
       theme: ThemeData(
           fontFamily: 'Roboto',
