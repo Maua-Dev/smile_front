@@ -37,6 +37,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/speaker1.png
+    - assets/images/
 
 scripts:
   mobx_build: flutter pub run build_runner build

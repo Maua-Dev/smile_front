@@ -6,18 +6,19 @@ class AppTextStyles {
   static final TextStyle titleH1 = GoogleFonts.roboto(
     color: AppColors.brandingBlue,
     fontSize: 60,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
   );
 
   static final TextStyle body = GoogleFonts.roboto(
     color: AppColors.brandingBlue,
     fontSize: 25,
+    fontWeight: FontWeight.w400,
   );
 
   static final TextStyle buttonBold = GoogleFonts.roboto(
     color: Colors.white,
     fontSize: 70,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w900,
   );
 
   static final TextStyle button = GoogleFonts.roboto(

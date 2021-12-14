@@ -12,22 +12,22 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       supportedLocales: const [Locale('pt')],
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/home/home4',
       title: 'Smile',
       theme: ThemeData(
-        fontFamily: 'Roboto',
-        colorScheme: const ColorScheme.light().copyWith(
-          primary: AppColors.brandingBlue,
-          secondary: AppColors.brandingOrange,
-        ),
-        textTheme: TextTheme(
-          bodyText1: AppTextStyles.titleH1,
-          bodyText2: AppTextStyles.body,
-        ),
-        appBarTheme: AppBarTheme(
-          color: AppColors.brandingBlue,
-        ),
-      ),
+          fontFamily: 'Roboto',
+          colorScheme: const ColorScheme.light().copyWith(
+            primary: AppColors.brandingBlue,
+            secondary: AppColors.brandingOrange,
+          ),
+          textTheme: TextTheme(
+            bodyText1: AppTextStyles.titleH1,
+            bodyText2: AppTextStyles.body,
+          ),
+          appBarTheme: AppBarTheme(
+            color: AppColors.brandingBlue,
+          ),
+          scaffoldBackgroundColor: Colors.white),
     ).modular();
   }
 }
