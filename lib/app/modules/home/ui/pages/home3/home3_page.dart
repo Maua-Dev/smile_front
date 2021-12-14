@@ -15,8 +15,7 @@ class Home3Page extends StatefulWidget {
 class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
+    return Container(
       color: AppColors.lightBlue,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 150.0),
@@ -146,6 +145,6 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
           ],
         ),
       ),
-    ));
+    );
   }
 }
