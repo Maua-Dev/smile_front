@@ -19,6 +19,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: PageView(
         controller: controller,
+        pageSnapping: false,
         scrollDirection: Axis.vertical,
         children: const [Home1Page(), Home3Page(), Home4Page()],
       ),
