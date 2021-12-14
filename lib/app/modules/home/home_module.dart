@@ -1,8 +1,4 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/domain/repositories/home2_repository_interface.dart';
-import 'package:smile_front/app/modules/home/infra/repository/home2_repository.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/home2_controller.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home2/home2_page.dart';
 import 'package:smile_front/app/modules/home/infra/repository/lecture_images_repository_impl.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/home4_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home1/home1_page.dart';
