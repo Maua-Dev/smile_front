@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home2/models/speaker_model.dart';
+import 'package:smile_front/app/modules/home/domain/entities/speaker_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/themes/app_images.dart';
 
 class MainSpeakersCard extends StatelessWidget {
   final List<SpeakerModel> speakers;
@@ -72,21 +71,29 @@ class MainSpeakersCard extends StatelessWidget {
                             ),
                           ),
                           Container(
+                            height: index == indexToShow ? 104 : 60,
+                            width: index == indexToShow ? 104 : 60,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
-                                    index == indexToShow ? 54 : 31),
+                                    index == indexToShow ? 52 : 30),
                                 border: Border.all(
                                   color: AppColors.brandingOrange,
-                                  width: 3,
+                                  width: 3.5,
                                 )),
                             child: GestureDetector(
                               onTap: () {
                                 toggleIndex(index);
                               },
                               child: SizedBox(
-                                  height: index == indexToShow ? 108 : 62,
-                                  width: index == indexToShow ? 108 : 62,
-                                  child: AppImages.speaker1),
+                                height: index == indexToShow ? 108 : 62,
+                                width: index == indexToShow ? 108 : 62,
+                                child: CircleAvatar(
+                                  backgroundColor: AppColors.brandingOrange,
+                                  radius: index == indexToShow ? 54 : 31,
+                                  backgroundImage: NetworkImage(
+                                      item.linkPhoto), // for Network image
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -104,10 +111,14 @@ class MainSpeakersCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(
-                flex: 2,
-                child: SizedBox(
-                    height: 404, width: 404, child: AppImages.speaker1),
+              SizedBox(
+                height: 404,
+                width: 404,
+                child: CircleAvatar(
+                  radius: 102.0,
+                  backgroundImage: NetworkImage(
+                      speakers[indexToShow].linkPhoto), // for Network image
+                ),
               ),
               const Expanded(
                   flex: 1,

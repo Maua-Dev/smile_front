@@ -10,8 +10,4 @@ class SpeakerModel {
     required this.date,
     required this.linkPhoto,
   });
-
-  factory SpeakerModel.newInstance() {
-    return SpeakerModel(name: '', description: '', date: '', linkPhoto: '');
-  }
 }

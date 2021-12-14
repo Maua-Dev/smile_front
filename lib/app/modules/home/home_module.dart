@@ -1,8 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home2/home2_controller.dart';
+import 'package:smile_front/app/modules/home/domain/repositories/home2_repository_interface.dart';
+import 'package:smile_front/app/modules/home/infra/repository/home2_repository.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/home2_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home2/home2_page.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home2/repositories/home2_repository.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home2/repositories/home2_repository_interface.dart';
 
 class HomeModule extends Module {
   @override
