@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home1/utils/text_utils.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home1/widgets/branding_textbutton_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/homeAppBar/home_app_bar_page.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
@@ -16,6 +17,9 @@ class _HomePage1State extends State<Home1Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const HomeAppBar(
+        toolbarHeight: 50,
+      ),
       body: Padding(
         padding: const EdgeInsets.only(left: 74),
         child: Row(
