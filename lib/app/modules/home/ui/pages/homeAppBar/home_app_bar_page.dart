@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/modules/home/ui/pages/home1/widgets/branding_textbutton_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/homeAppBar/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
@@ -10,11 +11,14 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
         backgroundColor: AppColors.brandingBlue,
-        title: const Text('smile'),
-        // Image.asset(
-        //   'assets/images/logo_smile.png',
-        //   fit: BoxFit.cover,
-        // ),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: Image.asset(
+            'assets/images/logo_smile.png',
+            fit: BoxFit.cover,
+            height: 40,
+          ),
+        ),
         actions: [
           const ActionTextButtonWidget(
             title: 'HOME',
@@ -25,13 +29,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           const ActionTextButtonWidget(
             title: 'ATIVIDADES',
           ),
-          ActionTextButtonWidget(
+          const ActionTextButtonWidget(
             title: 'CALENDÁRIO',
-            backgroundColor: AppColors.brandingBlue,
           ),
-          ActionTextButtonWidget(
-            title: 'LOGIN',
-            backgroundColor: AppColors.brandingOrange,
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: ActionTextButtonWidget(
+              title: 'LOGIN',
+              widthSize: 160,
+              backgroundColor: AppColors.brandingOrange,
+            ),
           )
         ]);
   }
