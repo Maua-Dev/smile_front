@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/home2_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home2/widgets/main_speakers_card.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-
-import 'home2_controller.dart';
 
 class Home2Page extends StatefulWidget {
   const Home2Page({Key? key}) : super(key: key);
