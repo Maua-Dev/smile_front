@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -12,7 +13,12 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       supportedLocales: const [Locale('pt')],
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home/home4',
+      initialRoute: '/home',
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       title: 'Smile',
       theme: ThemeData(
           fontFamily: 'Roboto',
