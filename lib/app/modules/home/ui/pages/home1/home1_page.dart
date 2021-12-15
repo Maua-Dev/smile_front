@@ -9,10 +9,10 @@ class Home1Page extends StatefulWidget {
   const Home1Page({Key? key}) : super(key: key);
 
   @override
-  _HomePage1State createState() => _HomePage1State();
+  _Home1PageState createState() => _Home1PageState();
 }
 
-class _HomePage1State extends State<Home1Page> {
+class _Home1PageState extends State<Home1Page> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -65,8 +65,8 @@ class _HomePage1State extends State<Home1Page> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 104,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height < 950 ? 54 : 104,
                 ),
                 Center(
                   child: Stack(
@@ -83,7 +83,8 @@ class _HomePage1State extends State<Home1Page> {
                       ),
                       BrandingTextButtonWidget(
                         title: '17 a 22 de Maio',
-                        fontSize: 70,
+                        fontSize:
+                            MediaQuery.of(context).size.height < 1500 ? 65 : 70,
                         boxHeight: 112,
                         boxWidth: 634,
                         backgroundColor: AppColors.brandingOrange,
@@ -91,47 +92,53 @@ class _HomePage1State extends State<Home1Page> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 104,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height < 950 ? 54 : 104,
                 ),
                 Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 54),
-                    child: Center(
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Container(
                         height: 94,
                         decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(15)),
                             color: AppColors.lightOrange),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 32),
-                              child: Text(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 32),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
                                 'PARTICIPE DAS ATIVIDADES',
                                 style: AppTextStyles.body.copyWith(
                                     color: AppColors.brandingOrange,
-                                    fontSize: 30,
+                                    fontSize: 25,
                                     fontWeight: FontWeight.w300),
                               ),
-                            ),
-                            BrandingTextButtonWidget(
-                              title: 'CADASTRE-SE',
-                              fontSize: 35,
-                              backgroundColor: AppColors.brandingOrange,
-                              boxHeight: 72,
-                              boxWidth: 300,
-                            )
-                          ],
+                              BrandingTextButtonWidget(
+                                title: 'CADASTRE-SE',
+                                fontSize:
+                                    MediaQuery.of(context).size.height < 1500
+                                        ? 30
+                                        : 35,
+                                backgroundColor: AppColors.brandingOrange,
+                                boxHeight: 72,
+                                boxWidth:
+                                    MediaQuery.of(context).size.width < 1700
+                                        ? 200
+                                        : 300,
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 82,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height < 950 ? 32 : 64,
                 ),
                 Row(
                   children: [
