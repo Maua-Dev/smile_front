@@ -49,6 +49,9 @@ class HomePage2State extends ModularState<Home2Page, Home2Controller> {
             height: 32,
           ),
           Observer(builder: (context) {
+            if (controller.speakers.isEmpty) {
+              return Container();
+            }
             return MainSpeakersCard(
               speakers: controller.speakers,
               indexToShow: controller.indexToShow,
