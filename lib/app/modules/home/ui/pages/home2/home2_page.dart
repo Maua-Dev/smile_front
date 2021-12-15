@@ -16,8 +16,9 @@ class Home2Page extends StatefulWidget {
 class HomePage2State extends ModularState<Home2Page, Home2Controller> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return Padding(
+      padding: const EdgeInsets.only(top: 64),
+      child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),

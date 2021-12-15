@@ -97,44 +97,48 @@ class _Home1PageState extends State<Home1Page> {
                 ),
                 Center(
                   child: Center(
-                    child: Container(
-                      height: 94,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(15)),
-                          color: AppColors.lightOrange),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 32),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'PARTICIPE DAS ATIVIDADES',
-                              style: AppTextStyles.body.copyWith(
-                                  color: AppColors.brandingOrange,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w300),
-                            ),
-                            BrandingTextButtonWidget(
-                              title: 'CADASTRE-SE',
-                              fontSize:
-                                  MediaQuery.of(context).size.height < 1500
-                                      ? 30
-                                      : 35,
-                              backgroundColor: AppColors.brandingOrange,
-                              boxHeight: 72,
-                              boxWidth: MediaQuery.of(context).size.width < 1700
-                                  ? 200
-                                  : 300,
-                            )
-                          ],
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Container(
+                        height: 94,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15)),
+                            color: AppColors.lightOrange),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 32),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'PARTICIPE DAS ATIVIDADES',
+                                style: AppTextStyles.body.copyWith(
+                                    color: AppColors.brandingOrange,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              BrandingTextButtonWidget(
+                                title: 'CADASTRE-SE',
+                                fontSize:
+                                    MediaQuery.of(context).size.height < 1500
+                                        ? 30
+                                        : 35,
+                                backgroundColor: AppColors.brandingOrange,
+                                boxHeight: 72,
+                                boxWidth:
+                                    MediaQuery.of(context).size.width < 1700
+                                        ? 200
+                                        : 300,
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 82,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height < 950 ? 32 : 64,
                 ),
                 Row(
                   children: [

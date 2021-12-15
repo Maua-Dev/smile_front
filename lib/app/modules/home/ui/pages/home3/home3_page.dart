@@ -37,14 +37,22 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 15, horizontal: 15),
                           child: Container(
-                            height: 400,
-                            width: 400,
+                            height: MediaQuery.of(context).size.height < 950
+                                ? 350
+                                : 400,
+                            width: MediaQuery.of(context).size.height < 950
+                                ? 350
+                                : 400,
                             color: AppColors.brandingBlue,
                           ),
                         ),
                         SizedBox(
-                          width: 400,
-                          height: 400,
+                          width: MediaQuery.of(context).size.height < 950
+                              ? 350
+                              : 400,
+                          height: MediaQuery.of(context).size.height < 950
+                              ? 350
+                              : 400,
                           child: Observer(builder: (context) {
                             return Image.network(
                                 controller.listRectors[0].image);
