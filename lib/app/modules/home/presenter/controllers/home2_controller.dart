@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/home/domain/entities/speaker_model.dart';
+import 'package:smile_front/app/modules/home/domain/entities/speaker.dart';
 import 'package:smile_front/app/modules/home/domain/repositories/home2_repository_interface.dart';
 
 part 'home2_controller.g.dart';
@@ -14,7 +14,7 @@ abstract class Home2ControllerBase with Store {
   }
 
   @observable
-  List<SpeakerModel> speakers = [];
+  List<Speaker> speakers = [];
 
   @observable
   int indexToShow = 0;

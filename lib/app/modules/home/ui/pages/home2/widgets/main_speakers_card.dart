@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:smile_front/app/modules/home/domain/entities/speaker_model.dart';
+import 'package:smile_front/app/modules/home/domain/entities/speaker.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 class MainSpeakersCard extends StatelessWidget {
-  final List<SpeakerModel> speakers;
+  final List<Speaker> speakers;
   final int indexToShow;
   final Function toggleIndex;
 
