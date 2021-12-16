@@ -13,7 +13,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       supportedLocales: const [Locale('pt')],
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/home/logged-home',
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
