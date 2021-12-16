@@ -12,11 +12,13 @@ class NavigationButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        ElevatedButton(
-          onPressed: onPressed,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        child: SizedBox(
+          height: 200,
+          width: 300,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -25,9 +27,6 @@ class NavigationButtonWidget extends StatelessWidget {
                 size: 64,
                 color: Colors.white,
               ),
-              const SizedBox(
-                height: 64,
-              ),
               Text(
                 title,
                 style: AppTextStyles.body
@@ -35,18 +34,18 @@ class NavigationButtonWidget extends StatelessWidget {
               )
             ],
           ),
-          style: ButtonStyle(
-              padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
-                  const EdgeInsets.symmetric(horizontal: 24, vertical: 24)),
-              elevation: MaterialStateProperty.all<double?>(10),
-              backgroundColor:
-                  MaterialStateProperty.all<Color?>(AppColors.brandingBlue),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ))),
         ),
-      ],
+        style: ButtonStyle(
+            padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
+                const EdgeInsets.symmetric(horizontal: 24, vertical: 24)),
+            elevation: MaterialStateProperty.all<double?>(10),
+            backgroundColor:
+                MaterialStateProperty.all<Color?>(AppColors.brandingBlue),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ))),
+      ),
     );
   }
 }
