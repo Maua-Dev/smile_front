@@ -23,27 +23,30 @@ class TimerNavigationButtonWidget extends StatelessWidget {
         child: SizedBox(
           height: 200,
           width: 616,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                timeNow.format(DateTime.now()),
-                style: AppTextStyles.buttonBold.copyWith(fontSize: 100),
-              ),
-              RichText(
-                text: TextSpan(children: [
-                  TextSpan(
-                      text: '$weekDay, ',
-                      style: AppTextStyles.button.copyWith(fontSize: 25)),
-                  TextSpan(
-                      text: '$day de $month ',
-                      style: AppTextStyles.buttonBold.copyWith(fontSize: 25)),
-                  TextSpan(
-                      text: 'de $year',
-                      style: AppTextStyles.button.copyWith(fontSize: 25)),
-                ]),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  timeNow.format(DateTime.now()),
+                  style: AppTextStyles.buttonBold.copyWith(fontSize: 100),
+                ),
+                RichText(
+                  text: TextSpan(children: [
+                    TextSpan(
+                        text: '$weekDay, ',
+                        style: AppTextStyles.button.copyWith(fontSize: 25)),
+                    TextSpan(
+                        text: '$day de $month ',
+                        style: AppTextStyles.buttonBold.copyWith(fontSize: 25)),
+                    TextSpan(
+                        text: 'de $year',
+                        style: AppTextStyles.button.copyWith(fontSize: 25)),
+                  ]),
+                ),
+              ],
+            ),
           ),
         ),
         style: ButtonStyle(
