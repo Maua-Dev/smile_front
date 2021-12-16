@@ -22,7 +22,7 @@ class TimerNavigationButtonWidget extends StatelessWidget {
         onPressed: onPressed,
         child: SizedBox(
           height: 200,
-          width: 616,
+          width: 664,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 16),
             child: Column(

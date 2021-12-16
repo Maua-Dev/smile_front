@@ -26,54 +26,74 @@ class MainNavigationButtonWidget extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         child: SizedBox(
-          height: 500,
+          height: 448,
           width: 500,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              RichText(
-                text: TextSpan(children: [
-                  TextSpan(
-                      text: 'Olá, ',
-                      style: AppTextStyles.button.copyWith(fontSize: 45)),
-                  TextSpan(
-                      text: '$userName!',
-                      style: AppTextStyles.buttonBold.copyWith(fontSize: 45)),
-                ]),
-              ),
-              Text(
-                'Sua próxima atividade é',
-                style: AppTextStyles.button,
-              ),
-              Text(activityName,
-                  style: AppTextStyles.buttonBold.copyWith(fontSize: 35)),
-              Row(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(
-                    Icons.calendar_today,
-                    size: 25,
-                    color: Colors.white,
+                  RichText(
+                    text: TextSpan(children: [
+                      TextSpan(
+                          text: 'Olá, ',
+                          style: AppTextStyles.button.copyWith(fontSize: 45)),
+                      TextSpan(
+                          text: '$userName!',
+                          style:
+                              AppTextStyles.buttonBold.copyWith(fontSize: 45)),
+                    ]),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(activityDate, style: AppTextStyles.button),
+                  Text(
+                    'Sua próxima atividade é',
+                    style: AppTextStyles.button,
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  const Icon(
-                    Icons.timer,
-                    size: 25,
-                    color: Colors.white,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(activityTime, style: AppTextStyles.button),
-                  ),
-                  Text('($activityRemainTime)', style: AppTextStyles.button),
-                ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: 32),
+                child: Column(
+                  children: [
+                    Text(activityName,
+                        style: AppTextStyles.buttonBold.copyWith(fontSize: 35)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.calendar_today,
+                            size: 25,
+                            color: Colors.white,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child:
+                                Text(activityDate, style: AppTextStyles.button),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.timer,
+                          size: 25,
+                          color: Colors.white,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child:
+                              Text(activityTime, style: AppTextStyles.button),
+                        ),
+                        Text('($activityRemainTime)',
+                            style: AppTextStyles.button),
+                      ],
+                    ),
+                  ],
+                ),
               ),
               Center(
                 child: Text('Clique aqui para mais informações',
