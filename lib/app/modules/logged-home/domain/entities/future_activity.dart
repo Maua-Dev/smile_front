@@ -9,4 +9,12 @@ class FutureActivity {
       required this.activityDate,
       required this.activityTime,
       this.activityRemainTime});
+
+  factory FutureActivity.newInstance() {
+    return FutureActivity(
+        activityDate: '',
+        activityName: '',
+        activityTime: '',
+        activityRemainTime: null);
+  }
 }
