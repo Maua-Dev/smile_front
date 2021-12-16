@@ -26,7 +26,7 @@ class NavigationButtonWidget extends StatelessWidget {
                 color: Colors.white,
               ),
               const SizedBox(
-                height: 50,
+                height: 64,
               ),
               Text(
                 title,
@@ -37,7 +37,7 @@ class NavigationButtonWidget extends StatelessWidget {
           ),
           style: ButtonStyle(
               padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
-                  const EdgeInsets.symmetric(horizontal: 32, vertical: 32)),
+                  const EdgeInsets.symmetric(horizontal: 24, vertical: 24)),
               elevation: MaterialStateProperty.all<double?>(10),
               backgroundColor:
                   MaterialStateProperty.all<Color?>(AppColors.brandingBlue),
