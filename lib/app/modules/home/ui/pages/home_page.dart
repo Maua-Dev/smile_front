@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home1/home1_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home2/home2_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home3/home3_page.dart';
@@ -69,6 +70,9 @@ class _HomePageState extends State<HomePage> {
                 title: 'LOGIN',
                 widthSize: 160,
                 backgroundColor: AppColors.brandingOrange,
+                onPressed: () {
+                  Modular.to.pushNamed('/home/logged-home');
+                },
               ),
             )
           ]),

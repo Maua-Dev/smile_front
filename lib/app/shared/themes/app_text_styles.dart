@@ -15,9 +15,15 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
   );
 
+  static final TextStyle thinButton = GoogleFonts.roboto(
+    color: Colors.white,
+    fontSize: 25,
+    fontWeight: FontWeight.w100,
+  );
+
   static final TextStyle buttonBold = GoogleFonts.roboto(
     color: Colors.white,
-    fontSize: 70,
+    fontSize: 25,
     fontWeight: FontWeight.w900,
   );
 
