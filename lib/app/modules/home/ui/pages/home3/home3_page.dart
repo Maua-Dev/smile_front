@@ -24,7 +24,7 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
       return Container(
         color: AppColors.lightBlue,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 150.0),
+          padding: const EdgeInsets.only(right: 150, left: 150, top: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
