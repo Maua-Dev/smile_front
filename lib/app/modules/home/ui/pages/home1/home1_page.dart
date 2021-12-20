@@ -24,7 +24,7 @@ class _Home1PageState extends State<Home1Page> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 48),
+                  padding: const EdgeInsets.only(top: 18),
                   child: Column(
                     children: [
                       RichText(
@@ -32,34 +32,34 @@ class _Home1PageState extends State<Home1Page> {
                         TextSpan(
                             text: 'Semana Mauá de ',
                             style:
-                                AppTextStyles.titleH1.copyWith(fontSize: 55)),
+                                AppTextStyles.titleH1.copyWith(fontSize: 46)),
                         TextSpan(
                             text: 'Inovação',
                             style: AppTextStyles.titleH1.copyWith(
-                                color: AppColors.brandingOrange, fontSize: 55)),
+                                color: AppColors.brandingOrange, fontSize: 46)),
                         TextSpan(
                             text: ', ',
                             style:
-                                AppTextStyles.titleH1.copyWith(fontSize: 55)),
+                                AppTextStyles.titleH1.copyWith(fontSize: 46)),
                         TextSpan(
                             text: 'Liderança ',
                             style: AppTextStyles.titleH1.copyWith(
-                                color: AppColors.brandingOrange, fontSize: 55)),
+                                color: AppColors.brandingOrange, fontSize: 46)),
                         TextSpan(
                             text: 'e ',
                             style:
-                                AppTextStyles.titleH1.copyWith(fontSize: 55)),
+                                AppTextStyles.titleH1.copyWith(fontSize: 46)),
                         TextSpan(
                             text: 'Empreendedorismo',
                             style: AppTextStyles.titleH1.copyWith(
-                                color: AppColors.brandingOrange, fontSize: 55)),
+                                color: AppColors.brandingOrange, fontSize: 46)),
                       ])),
                       const SizedBox(
-                        height: 32,
+                        height: 24,
                       ),
                       Text(
                         apresentationText,
-                        style: AppTextStyles.body,
+                        style: AppTextStyles.body.copyWith(fontSize: 18),
                         textAlign: TextAlign.justify,
                       ),
                     ],
@@ -76,63 +76,52 @@ class _Home1PageState extends State<Home1Page> {
                             vertical: 20, horizontal: 20),
                         child: BrandingTextButtonWidget(
                           fontSize: 70,
-                          boxHeight: 112,
-                          boxWidth: 634,
+                          boxHeight: 84,
+                          boxWidth: 540,
                           backgroundColor: AppColors.brandingBlue,
                         ),
                       ),
                       BrandingTextButtonWidget(
                         title: '17 a 22 de Maio',
                         fontSize:
-                            MediaQuery.of(context).size.height < 1500 ? 65 : 70,
-                        boxHeight: 112,
-                        boxWidth: 634,
+                            MediaQuery.of(context).size.height < 1500 ? 50 : 60,
+                        boxHeight: 84,
+                        boxWidth: 540,
                         backgroundColor: AppColors.brandingOrange,
                       )
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height < 950 ? 54 : 104,
+                const SizedBox(
+                  height: 54,
                 ),
                 Center(
-                  child: Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15)),
+                        color: AppColors.lightOrange),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Container(
-                        height: 94,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(15)),
-                            color: AppColors.lightOrange),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 32),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'PARTICIPE DAS ATIVIDADES',
-                                style: AppTextStyles.body.copyWith(
-                                    color: AppColors.brandingOrange,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              BrandingTextButtonWidget(
-                                title: 'CADASTRE-SE',
-                                fontSize:
-                                    MediaQuery.of(context).size.height < 1500
-                                        ? 30
-                                        : 35,
-                                backgroundColor: AppColors.brandingOrange,
-                                boxHeight: 72,
-                                boxWidth:
-                                    MediaQuery.of(context).size.width < 1700
-                                        ? 200
-                                        : 300,
-                              )
-                            ],
+                      padding: const EdgeInsets.only(
+                          top: 15, left: 20, right: 10, bottom: 15),
+                      child: Wrap(
+                        spacing: 40,
+                        alignment: WrapAlignment.center,
+                        children: [
+                          Text(
+                            'PARTICIPE DAS ATIVIDADES',
+                            style: AppTextStyles.body.copyWith(
+                              color: AppColors.brandingOrange,
+                              fontSize: 25,
+                              fontWeight: FontWeight.w300,
+                            ),
                           ),
-                        ),
+                          BrandingTextButtonWidget(
+                              title: 'CADASTRE-SE',
+                              fontSize: 25,
+                              backgroundColor: AppColors.brandingOrange,
+                              boxWidth: 250)
+                        ],
                       ),
                     ),
                   ),
