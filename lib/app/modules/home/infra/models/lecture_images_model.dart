@@ -6,7 +6,7 @@ class LectureImagesModel extends LectureImages {
   // ignore: annotate_overrides, overridden_fields
   final String image;
 
-  LectureImagesModel({required this.image}) : super(image: super.image);
+  LectureImagesModel({required this.image}) : super(image: image);
 
   Map<String, dynamic> toMap() {
     return {
