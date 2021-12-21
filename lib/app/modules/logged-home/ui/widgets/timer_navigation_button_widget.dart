@@ -5,13 +5,14 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class TimerNavigationButtonWidget extends StatelessWidget {
+  final String time;
   final Function()? onPressed;
-  const TimerNavigationButtonWidget({Key? key, this.onPressed})
+  const TimerNavigationButtonWidget(
+      {Key? key, required this.time, this.onPressed})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final timeNow = DateFormat('hh:mm');
     final weekDay = DateFormat('EEEE').format(DateTime.now()).capitalize();
     final day = DateTime.now().day.toString();
     final month = DateFormat('MMMM').format(DateTime.now());
@@ -29,7 +30,7 @@ class TimerNavigationButtonWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  timeNow.format(DateTime.now()),
+                  time,
                   style: AppTextStyles.buttonBold.copyWith(fontSize: 100),
                 ),
                 RichText(
