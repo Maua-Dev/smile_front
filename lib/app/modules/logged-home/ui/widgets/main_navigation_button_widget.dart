@@ -9,6 +9,7 @@ class MainNavigationButtonWidget extends StatelessWidget {
   final String activityTime;
   final String? activityRemainTime;
   final Function()? onPressed;
+  final double? cardWidth;
   const MainNavigationButtonWidget(
       {Key? key,
       this.onPressed,
@@ -16,7 +17,8 @@ class MainNavigationButtonWidget extends StatelessWidget {
       required this.activityName,
       required this.activityDate,
       required this.activityTime,
-      this.activityRemainTime})
+      this.activityRemainTime,
+      this.cardWidth})
       : super(key: key);
 
   @override
@@ -27,7 +29,7 @@ class MainNavigationButtonWidget extends StatelessWidget {
         onPressed: onPressed,
         child: SizedBox(
           height: 448,
-          width: 500,
+          width: cardWidth ?? 500,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,

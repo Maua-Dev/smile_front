@@ -4,7 +4,8 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class SponsorshipNavigationButton extends StatelessWidget {
   final Function()? onPressed;
-  const SponsorshipNavigationButton({Key? key, this.onPressed})
+  final double? cardWidth;
+  const SponsorshipNavigationButton({Key? key, this.onPressed, this.cardWidth})
       : super(key: key);
 
   @override
@@ -15,7 +16,7 @@ class SponsorshipNavigationButton extends StatelessWidget {
         onPressed: onPressed,
         child: SizedBox(
           height: 40,
-          width: 1592,
+          width: cardWidth ?? 1592,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

@@ -21,7 +21,9 @@ class _LoggedAdmHomePageState
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        const AppbarLogoWidget(),
+        const AppbarLogoWidget(
+          horizontalPadding: 164,
+        ),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Observer(builder: (_) {
             return MainNavigationButtonWidget(
@@ -30,6 +32,7 @@ class _LoggedAdmHomePageState
               activityDate: controller.activity.activityDate,
               activityTime: controller.activity.activityTime,
               activityRemainTime: controller.activity.activityRemainTime,
+              cardWidth: 664,
             );
           }),
           Column(
@@ -88,7 +91,9 @@ class _LoggedAdmHomePageState
             icon: Icons.ac_unit_outlined,
           ),
         ]),
-        const SponsorshipNavigationButton(),
+        const SponsorshipNavigationButton(
+          cardWidth: 1756,
+        ),
       ]),
     );
   }
