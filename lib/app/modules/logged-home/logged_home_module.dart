@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/logged-home/presenter/controllers/logged_home_controller.dart';
-import 'package:smile_front/app/modules/logged-home/ui/logged_home_page.dart';
+import 'package:smile_front/app/modules/logged-home/ui/logged_user_home_page.dart';
 
 import 'domain/repositories/future_activity_repository.dart';
 import 'domain/repositories/logged_user_repository.dart';
@@ -27,6 +27,6 @@ class LoggedHomeModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute,
-        child: (_, args) => const LoggedHomePage()),
+        child: (_, args) => const LoggedUserHomePage()),
   ];
 }

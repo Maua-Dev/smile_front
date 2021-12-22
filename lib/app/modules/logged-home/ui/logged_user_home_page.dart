@@ -9,15 +9,15 @@ import 'package:smile_front/app/modules/logged-home/ui/widgets/timer_navigation_
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-class LoggedHomePage extends StatefulWidget {
-  const LoggedHomePage({Key? key}) : super(key: key);
+class LoggedUserHomePage extends StatefulWidget {
+  const LoggedUserHomePage({Key? key}) : super(key: key);
 
   @override
   _LoggedHomePageState createState() => _LoggedHomePageState();
 }
 
 class _LoggedHomePageState
-    extends ModularState<LoggedHomePage, LoggedHomeController> {
+    extends ModularState<LoggedUserHomePage, LoggedHomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
