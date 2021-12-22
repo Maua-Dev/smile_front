@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -17,6 +19,26 @@ class LoggedUserHomePage extends StatefulWidget {
 
 class _LoggedHomePageState
     extends ModularState<LoggedUserHomePage, LoggedHomeController> {
+  late Timer _timer;
+
+  @override
+  void initState() {
+    _timer = Timer.periodic(
+      const Duration(seconds: 20),
+      (Timer t) => setState(() {
+        controller.getTime();
+      }),
+    );
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +75,9 @@ class _LoggedHomePageState
                       ),
                     ],
                   ),
-                  const TimerNavigationButtonWidget(),
+                  TimerNavigationButtonWidget(
+                    time: controller.formatTime,
+                  ),
                 ],
               ),
               Column(
