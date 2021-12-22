@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                 widthSize: 160,
                 backgroundColor: AppColors.brandingOrange,
                 onPressed: () {
-                  Modular.to.pushNamed('/home/logged-home');
+                  Modular.to.pushNamed('/home/logged/adm-home');
                 },
               ),
             )

@@ -7,8 +7,6 @@ import 'package:smile_front/app/modules/logged-home/ui/widgets/main_navigation_b
 import 'package:smile_front/app/modules/logged-home/ui/widgets/navigation_button_widget.dart';
 import 'package:smile_front/app/modules/logged-home/ui/widgets/sponsorship_navigation_button.dart';
 import 'package:smile_front/app/modules/logged-home/ui/widgets/timer_navigation_button_widget.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class LoggedUserHomePage extends StatefulWidget {
   const LoggedUserHomePage({Key? key}) : super(key: key);
