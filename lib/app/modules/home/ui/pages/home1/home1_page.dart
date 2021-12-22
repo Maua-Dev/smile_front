@@ -15,12 +15,13 @@ class Home1Page extends StatefulWidget {
 class _Home1PageState extends State<Home1Page> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.only(left: 74),
       child: Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.45,
+            width: size.width * 0.45,
             child: Column(
               children: [
                 Padding(
@@ -66,7 +67,7 @@ class _Home1PageState extends State<Home1Page> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height < 950 ? 54 : 104,
+                  height: size.height < 950 ? 54 : 104,
                 ),
                 Center(
                   child: Stack(
