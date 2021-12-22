@@ -76,17 +76,19 @@ class _LoggedAdmHomePageState
             ],
           ),
         ]),
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
-          TimerNavigationButtonWidget(),
-          NavigationButtonWidget(
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          TimerNavigationButtonWidget(
+            time: controller.formatTime,
+          ),
+          const NavigationButtonWidget(
             title: 'Atividades Inscritas',
             icon: Icons.ac_unit_outlined,
           ),
-          NavigationButtonWidget(
+          const NavigationButtonWidget(
             title: 'Todas as atividades',
             icon: Icons.ac_unit_outlined,
           ),
-          NavigationButtonWidget(
+          const NavigationButtonWidget(
             title: 'Todas as atividades',
             icon: Icons.ac_unit_outlined,
           ),
