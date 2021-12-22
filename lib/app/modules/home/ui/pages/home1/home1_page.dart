@@ -20,7 +20,7 @@ class _Home1PageState extends State<Home1Page> {
       child: Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.45,
+            width: MediaQuery.of(context).size.width * 0.5,
             child: Column(
               children: [
                 Padding(
@@ -32,27 +32,27 @@ class _Home1PageState extends State<Home1Page> {
                         TextSpan(
                             text: 'Semana Mauá de ',
                             style:
-                                AppTextStyles.titleH1.copyWith(fontSize: 46)),
+                                AppTextStyles.titleH1.copyWith(fontSize: 40)),
                         TextSpan(
                             text: 'Inovação',
                             style: AppTextStyles.titleH1.copyWith(
-                                color: AppColors.brandingOrange, fontSize: 46)),
+                                color: AppColors.brandingOrange, fontSize: 40)),
                         TextSpan(
                             text: ', ',
                             style:
-                                AppTextStyles.titleH1.copyWith(fontSize: 46)),
+                                AppTextStyles.titleH1.copyWith(fontSize: 40)),
                         TextSpan(
                             text: 'Liderança ',
                             style: AppTextStyles.titleH1.copyWith(
-                                color: AppColors.brandingOrange, fontSize: 46)),
+                                color: AppColors.brandingOrange, fontSize: 40)),
                         TextSpan(
                             text: 'e ',
                             style:
-                                AppTextStyles.titleH1.copyWith(fontSize: 46)),
+                                AppTextStyles.titleH1.copyWith(fontSize: 40)),
                         TextSpan(
                             text: 'Empreendedorismo',
                             style: AppTextStyles.titleH1.copyWith(
-                                color: AppColors.brandingOrange, fontSize: 46)),
+                                color: AppColors.brandingOrange, fontSize: 40)),
                       ])),
                       const SizedBox(
                         height: 24,
@@ -105,7 +105,7 @@ class _Home1PageState extends State<Home1Page> {
                       padding: const EdgeInsets.only(
                           top: 15, left: 20, right: 10, bottom: 15),
                       child: Wrap(
-                        spacing: 40,
+                        spacing: 20,
                         alignment: WrapAlignment.center,
                         children: [
                           Text(
@@ -120,7 +120,7 @@ class _Home1PageState extends State<Home1Page> {
                               title: 'CADASTRE-SE',
                               fontSize: 25,
                               backgroundColor: AppColors.brandingOrange,
-                              boxWidth: 250)
+                              boxWidth: 220)
                         ],
                       ),
                     ),
