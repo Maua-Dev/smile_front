@@ -4,22 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/logged-home/presenter/controllers/logged_home_controller.dart';
+import 'package:smile_front/app/modules/logged-home/ui/widgets/appbar_logo_widget.dart';
 import 'package:smile_front/app/modules/logged-home/ui/widgets/main_navigation_button_widget.dart';
 import 'package:smile_front/app/modules/logged-home/ui/widgets/navigation_button_widget.dart';
 import 'package:smile_front/app/modules/logged-home/ui/widgets/sponsorship_navigation_button.dart';
 import 'package:smile_front/app/modules/logged-home/ui/widgets/timer_navigation_button_widget.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-class LoggedHomePage extends StatefulWidget {
-  const LoggedHomePage({Key? key}) : super(key: key);
+class LoggedUserHomePage extends StatefulWidget {
+  const LoggedUserHomePage({Key? key}) : super(key: key);
 
   @override
   _LoggedHomePageState createState() => _LoggedHomePageState();
 }
 
 class _LoggedHomePageState
-    extends ModularState<LoggedHomePage, LoggedHomeController> {
+    extends ModularState<LoggedUserHomePage, LoggedHomeController> {
   late Timer _timer;
 
   @override
@@ -46,34 +45,7 @@ class _LoggedHomePageState
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 240),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16),
-                      child: Text(
-                        '<',
-                        style: AppTextStyles.buttonBold.copyWith(
-                            color: AppColors.brandingBlue, fontSize: 50),
-                      ),
-                    ),
-                    Text('>',
-                        style: AppTextStyles.buttonBold.copyWith(
-                            color: AppColors.lightBlue, fontSize: 50)),
-                  ],
-                ),
-                Image.asset(
-                  'assets/images/logo_smile.png',
-                  fit: BoxFit.cover,
-                  height: 40,
-                ),
-              ],
-            ),
-          ),
+          const AppbarLogoWidget(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
