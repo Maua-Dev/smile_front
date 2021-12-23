@@ -12,15 +12,29 @@ class Home1Page extends StatefulWidget {
   _Home1PageState createState() => _Home1PageState();
 }
 
+double fontSizeTitle(size) {
+  if (size >= 1800) {
+    return 55;
+  }
+  if (size < 1800 && size >= 1600) {
+    return 50;
+  }
+  if (size < 1600 && size > 1440) {
+    return 45;
+  }
+  return 44;
+}
+
 class _Home1PageState extends State<Home1Page> {
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.only(left: 74),
       child: Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.45,
+            width: size * 0.45,
             child: Column(
               children: [
                 Padding(
@@ -31,35 +45,39 @@ class _Home1PageState extends State<Home1Page> {
                           text: TextSpan(children: [
                         TextSpan(
                             text: 'Semana Mauá de ',
-                            style:
-                                AppTextStyles.titleH1.copyWith(fontSize: 55)),
+                            style: AppTextStyles.titleH1
+                                .copyWith(fontSize: fontSizeTitle(size))),
                         TextSpan(
                             text: 'Inovação',
                             style: AppTextStyles.titleH1.copyWith(
-                                color: AppColors.brandingOrange, fontSize: 55)),
+                                color: AppColors.brandingOrange,
+                                fontSize: fontSizeTitle(size))),
                         TextSpan(
                             text: ', ',
-                            style:
-                                AppTextStyles.titleH1.copyWith(fontSize: 55)),
+                            style: AppTextStyles.titleH1
+                                .copyWith(fontSize: fontSizeTitle(size))),
                         TextSpan(
                             text: 'Liderança ',
                             style: AppTextStyles.titleH1.copyWith(
-                                color: AppColors.brandingOrange, fontSize: 55)),
+                                color: AppColors.brandingOrange,
+                                fontSize: fontSizeTitle(size))),
                         TextSpan(
                             text: 'e ',
-                            style:
-                                AppTextStyles.titleH1.copyWith(fontSize: 55)),
+                            style: AppTextStyles.titleH1
+                                .copyWith(fontSize: fontSizeTitle(size))),
                         TextSpan(
                             text: 'Empreendedorismo',
                             style: AppTextStyles.titleH1.copyWith(
-                                color: AppColors.brandingOrange, fontSize: 55)),
+                                color: AppColors.brandingOrange,
+                                fontSize: fontSizeTitle(size))),
                       ])),
                       const SizedBox(
                         height: 32,
                       ),
                       Text(
                         apresentationText,
-                        style: AppTextStyles.body,
+                        style: AppTextStyles.body
+                            .copyWith(fontSize: size < 1600 ? 22 : 25),
                         textAlign: TextAlign.justify,
                       ),
                     ],
@@ -76,7 +94,7 @@ class _Home1PageState extends State<Home1Page> {
                             vertical: 20, horizontal: 20),
                         child: BrandingTextButtonWidget(
                           fontSize: 70,
-                          boxHeight: 112,
+                          boxHeight: size < 1480 ? 92 : 112,
                           boxWidth: 634,
                           backgroundColor: AppColors.brandingBlue,
                         ),
@@ -84,8 +102,8 @@ class _Home1PageState extends State<Home1Page> {
                       BrandingTextButtonWidget(
                         title: '17 a 22 de Maio',
                         fontSize:
-                            MediaQuery.of(context).size.height < 1500 ? 65 : 70,
-                        boxHeight: 112,
+                            MediaQuery.of(context).size.height < 1480 ? 62 : 70,
+                        boxHeight: size < 1480 ? 92 : 112,
                         boxWidth: 634,
                         backgroundColor: AppColors.brandingOrange,
                       )
@@ -100,7 +118,7 @@ class _Home1PageState extends State<Home1Page> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Container(
-                        height: 94,
+                        height: size < 1600 ? 86 : 92,
                         decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(15)),
@@ -114,21 +132,15 @@ class _Home1PageState extends State<Home1Page> {
                                 'PARTICIPE DAS ATIVIDADES',
                                 style: AppTextStyles.body.copyWith(
                                     color: AppColors.brandingOrange,
-                                    fontSize: 25,
+                                    fontSize: size < 1600 ? 22 : 25,
                                     fontWeight: FontWeight.w300),
                               ),
                               BrandingTextButtonWidget(
                                 title: 'CADASTRE-SE',
-                                fontSize:
-                                    MediaQuery.of(context).size.height < 1500
-                                        ? 30
-                                        : 35,
+                                fontSize: size < 1600 ? 32 : 35,
                                 backgroundColor: AppColors.brandingOrange,
-                                boxHeight: 72,
-                                boxWidth:
-                                    MediaQuery.of(context).size.width < 1700
-                                        ? 200
-                                        : 300,
+                                boxHeight: size < 1600 ? 66 : 72,
+                                boxWidth: size < 1600 ? 250 : 300,
                               )
                             ],
                           ),
