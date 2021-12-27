@@ -7,6 +7,8 @@ import 'package:smile_front/app/modules/home/ui/pages/home4/home4_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
+import '../../../../app_module.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -80,7 +82,8 @@ class _HomePageState extends State<HomePage> {
                 paddingVertical: 8,
                 widthSize: 160,
                 backgroundColor: AppColors.brandingOrange,
-                onPressed: () {
+                onPressed: () async {
+                  await Modular.isModuleReady<AppModule>();
                   Modular.to.pushNamed('/login');
                 },
               ),
