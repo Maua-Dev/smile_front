@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
+import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/input_box.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 
-class FirstTab extends StatelessWidget {
+class FirstTab extends StatefulWidget {
   const FirstTab({Key? key}) : super(key: key);
 
+  @override
+  State<FirstTab> createState() => _FirstTabState();
+}
+
+class _FirstTabState extends ModularState<FirstTab, LoginController> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -26,16 +32,19 @@ class FirstTab extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const InputBox(
+              InputBox(
                 icon: Icons.person,
-                placeholder: 'Usuário',
+                placeholder: 'Email',
+                setValue: controller.setUsername,
               ),
               const SizedBox(
                 height: 20,
               ),
-              const InputBox(
+              InputBox(
+                isPassword: true,
                 icon: Icons.lock,
                 placeholder: 'Senha',
+                setValue: controller.setPassword,
               ),
               const SizedBox(
                 height: 20,
@@ -53,7 +62,7 @@ class FirstTab extends StatelessWidget {
                       heightSize: 50,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () {
-                        Modular.to.pushNamed('/login');
+                        controller.login();
                       },
                     ),
                   )

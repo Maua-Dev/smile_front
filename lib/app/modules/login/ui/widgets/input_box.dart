@@ -7,6 +7,9 @@ class InputBox extends StatelessWidget {
   final double? widthSize;
   final double? heightSize;
   final bool? disable;
+  final bool? isPassword;
+  final String? Function(String value)? validation;
+  final Function(String value) setValue;
 
   const InputBox({
     Key? key,
@@ -15,6 +18,9 @@ class InputBox extends StatelessWidget {
     this.widthSize,
     this.heightSize,
     this.disable,
+    this.isPassword,
+    this.validation,
+    required this.setValue,
   }) : super(key: key);
 
   @override
@@ -65,6 +71,13 @@ class InputBox extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.only(left: 10.0),
                   child: TextFormField(
+                    validator: (value) {
+                      return validation!(value!);
+                    },
+                    onChanged: (value) {
+                      setValue(value);
+                    },
+                    obscureText: isPassword ?? false,
                     enabled: disable != null ? !disable! : true,
                     decoration: InputDecoration(
                       border: InputBorder.none,

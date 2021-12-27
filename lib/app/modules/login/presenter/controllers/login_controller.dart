@@ -1,0 +1,55 @@
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/auth/errors/errors.dart';
+
+import '../../../auth/auth_controller.dart';
+
+part 'login_controller.g.dart';
+
+class LoginController = _LoginController with _$LoginController;
+
+abstract class _LoginController with Store {
+  final AuthController authController;
+
+  _LoginController(this.authController);
+
+  // final IHome2Repository repository;
+
+  // LoginControllerBase(this.repository) {
+  //   getSpeakers();
+  // }
+
+  @observable
+  String username = '';
+
+  @observable
+  String password = '';
+
+  @observable
+  bool keepConected = false;
+
+  @observable
+  String errors = '';
+
+  @action
+  Future<void> setUsername(String value) async {
+    username = value;
+  }
+
+  @action
+  Future<void> setPassword(String value) async {
+    password = value;
+  }
+
+  @action
+  Future<void> login() async {
+    try {
+      await authController.loginWithEmail(username, password, keepConected);
+      if (authController.isLogged) {
+        Modular.to.navigate('/');
+      }
+    } on Failure catch (e) {
+      errors = e.message;
+    }
+  }
+}
