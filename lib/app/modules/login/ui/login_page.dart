@@ -21,13 +21,13 @@ class _LoginPageState extends ModularState<LoginPage, RegisterController> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/maua_campus_blur.png"),
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.cover,
             ),
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.23,
-                vertical: MediaQuery.of(context).size.height * 0.13),
+                horizontal: MediaQuery.of(context).size.width * 0.2,
+                vertical: MediaQuery.of(context).size.height * 0.1),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
@@ -36,9 +36,9 @@ class _LoginPageState extends ModularState<LoginPage, RegisterController> {
               alignment: Alignment.center,
               child: Padding(
                 padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.036,
-                  left: MediaQuery.of(context).size.width * 0.044,
-                  right: MediaQuery.of(context).size.width * 0.044,
+                  top: MediaQuery.of(context).size.height * 0.025,
+                  left: MediaQuery.of(context).size.width * 0.040,
+                  right: MediaQuery.of(context).size.width * 0.040,
                   bottom: MediaQuery.of(context).size.height * 0.01,
                 ),
                 child: Column(
@@ -49,13 +49,14 @@ class _LoginPageState extends ModularState<LoginPage, RegisterController> {
                       child: SizedBox(
                           child: Image.asset('assets/images/logo_smile.png')),
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.03,
+                    const SizedBox(
+                      // height: MediaQuery.of(context).size.height * 0.03,
+                      height: 10,
                     ),
                     Center(
                         // child: SizedBox(height: 450, child: LoginTabBar())),
                         child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.55,
+                            height: MediaQuery.of(context).size.height * 0.6,
                             child: const LoginTabBar())),
                   ],
                 ),
