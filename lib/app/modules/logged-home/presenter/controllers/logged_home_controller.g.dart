@@ -9,6 +9,21 @@ part of 'logged_home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoggedHomeController on _LoggedHomeControllerBase, Store {
+  final _$formatTimeAtom = Atom(name: '_LoggedHomeControllerBase.formatTime');
+
+  @override
+  String get formatTime {
+    _$formatTimeAtom.reportRead();
+    return super.formatTime;
+  }
+
+  @override
+  set formatTime(String value) {
+    _$formatTimeAtom.reportWrite(value, super.formatTime, () {
+      super.formatTime = value;
+    });
+  }
+
   final _$userAtom = Atom(name: '_LoggedHomeControllerBase.user');
 
   @override
@@ -39,6 +54,13 @@ mixin _$LoggedHomeController on _LoggedHomeControllerBase, Store {
     });
   }
 
+  final _$getTimeAsyncAction = AsyncAction('_LoggedHomeControllerBase.getTime');
+
+  @override
+  Future<dynamic> getTime() {
+    return _$getTimeAsyncAction.run(() => super.getTime());
+  }
+
   final _$getUserAsyncAction = AsyncAction('_LoggedHomeControllerBase.getUser');
 
   @override
@@ -57,6 +79,7 @@ mixin _$LoggedHomeController on _LoggedHomeControllerBase, Store {
   @override
   String toString() {
     return '''
+formatTime: ${formatTime},
 user: ${user},
 activity: ${activity}
     ''';
