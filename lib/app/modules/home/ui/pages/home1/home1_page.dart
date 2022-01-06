@@ -19,10 +19,73 @@ double fontSizeTitle(size) {
   if (size < 1800 && size >= 1600) {
     return 50;
   }
-  if (size < 1600 && size > 1440) {
+  if (size < 1600 && size >= 1440) {
     return 45;
   }
+  if (size < 1440 && size >= 1280) {
+    return 40;
+  }
+  if (size < 1280 && size >= 960) {
+    return 32;
+  }
+  return 40;
+}
+
+double weekBoxHeight(size) {
+  if (size < 1600 && size >= 1440) {
+    return 68;
+  }
+  if (size < 1440 && size >= 1280) {
+    return 68;
+  }
+  return 70;
+}
+
+double weekFontSize(size) {
+  if (size < 1600 && size >= 1440) {
+    return 62;
+  }
+  if (size < 1440 && size >= 1280) {
+    return 56;
+  }
+  if (size < 1280 && size >= 960) {
+    return 48;
+  }
   return 44;
+}
+
+double apresentationFontSize(size) {
+  if (size < 1600 && size >= 1280) {
+    return 18;
+  }
+  return 15;
+}
+
+double participateBoxHeight(size) {
+  if (size < 1600 && size >= 1280) {
+    return 60;
+  }
+  return 50;
+}
+
+double signUpBoxWidth(size) {
+  if (size < 1600 && size >= 1280) {
+    return 250;
+  }
+  if (size < 1280 && size >= 960) {
+    return 150;
+  }
+  return 300;
+}
+
+double participateBoxFontSize(size) {
+  if (size < 1600 && size >= 1440) {
+    return 22;
+  }
+  if (size < 1440 && size >= 1280) {
+    return 18;
+  }
+  return 14;
 }
 
 class _Home1PageState extends State<Home1Page> {
@@ -38,7 +101,7 @@ class _Home1PageState extends State<Home1Page> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 48),
+                  padding: const EdgeInsets.only(top: 38),
                   child: Column(
                     children: [
                       RichText(
@@ -77,7 +140,7 @@ class _Home1PageState extends State<Home1Page> {
                       Text(
                         apresentationText,
                         style: AppTextStyles.body
-                            .copyWith(fontSize: size < 1600 ? 22 : 25),
+                            .copyWith(fontSize: apresentationFontSize(size)),
                         textAlign: TextAlign.justify,
                       ),
                     ],
@@ -94,16 +157,15 @@ class _Home1PageState extends State<Home1Page> {
                             vertical: 20, horizontal: 20),
                         child: BrandingTextButtonWidget(
                           fontSize: 70,
-                          boxHeight: size < 1480 ? 92 : 112,
+                          boxHeight: weekBoxHeight(size),
                           boxWidth: 634,
                           backgroundColor: AppColors.brandingBlue,
                         ),
                       ),
                       BrandingTextButtonWidget(
                         title: '17 a 22 de Maio',
-                        fontSize:
-                            MediaQuery.of(context).size.height < 1480 ? 62 : 70,
-                        boxHeight: size < 1480 ? 92 : 112,
+                        fontSize: weekFontSize(size),
+                        boxHeight: weekBoxHeight(size),
                         boxWidth: 634,
                         backgroundColor: AppColors.brandingOrange,
                       )
@@ -118,7 +180,7 @@ class _Home1PageState extends State<Home1Page> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Container(
-                        height: size < 1600 ? 86 : 92,
+                        height: participateBoxHeight(size),
                         decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(15)),
@@ -132,15 +194,15 @@ class _Home1PageState extends State<Home1Page> {
                                 'PARTICIPE DAS ATIVIDADES',
                                 style: AppTextStyles.body.copyWith(
                                     color: AppColors.brandingOrange,
-                                    fontSize: size < 1600 ? 22 : 25,
+                                    fontSize: participateBoxFontSize(size),
                                     fontWeight: FontWeight.w300),
                               ),
                               BrandingTextButtonWidget(
                                 title: 'CADASTRE-SE',
-                                fontSize: size < 1600 ? 32 : 35,
+                                fontSize: participateBoxFontSize(size) + 5,
                                 backgroundColor: AppColors.brandingOrange,
-                                boxHeight: size < 1600 ? 66 : 72,
-                                boxWidth: size < 1600 ? 250 : 300,
+                                boxHeight: participateBoxHeight(size) - 15,
+                                boxWidth: signUpBoxWidth(size),
                               )
                             ],
                           ),
@@ -163,7 +225,7 @@ class _Home1PageState extends State<Home1Page> {
                       'DESLIZE PARA SABER MAIS',
                       style: AppTextStyles.body.copyWith(
                           color: AppColors.brandingOrange,
-                          fontSize: 25,
+                          fontSize: size < 1280 ? 22 : 25,
                           fontWeight: FontWeight.w300),
                     )
                   ],
