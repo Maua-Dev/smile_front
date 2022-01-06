@@ -42,7 +42,6 @@ class _LoginTabBarState extends State<LoginTabBar>
             ),
             child: TabBar(
               controller: _tabController,
-              // give the indicator a decoration (color and border radius)
               indicator: BoxDecoration(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(7),
@@ -54,7 +53,6 @@ class _LoginTabBarState extends State<LoginTabBar>
               labelColor: AppColors.brandingBlue,
               unselectedLabelColor: AppColors.brandingBlue,
               tabs: [
-                // first tab [you can add an icon using the icon property]
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Container(
@@ -68,8 +66,6 @@ class _LoginTabBarState extends State<LoginTabBar>
                     ),
                   ),
                 ),
-
-                // second tab [you can add an icon using the icon property]
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Container(
@@ -86,7 +82,7 @@ class _LoginTabBarState extends State<LoginTabBar>
               ],
             ),
           ),
-          // tab bar view here
+
           Expanded(
             child: TabBarView(
               controller: _tabController,
