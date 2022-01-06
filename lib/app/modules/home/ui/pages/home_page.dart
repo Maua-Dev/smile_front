@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                 backgroundColor: AppColors.brandingOrange,
                 onPressed: () async {
                   await Modular.isModuleReady<AppModule>();
-                  Modular.to.pushNamed('/login');
+                  Modular.to.navigate('/login');
                 },
               ),
             )

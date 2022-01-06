@@ -50,11 +50,9 @@ class _LoginPageState extends ModularState<LoginPage, RegisterController> {
                           child: Image.asset('assets/images/logo_smile.png')),
                     ),
                     const SizedBox(
-                      // height: MediaQuery.of(context).size.height * 0.03,
                       height: 10,
                     ),
                     Center(
-                        // child: SizedBox(height: 450, child: LoginTabBar())),
                         child: SizedBox(
                             height: MediaQuery.of(context).size.height * 0.6,
                             child: const LoginTabBar())),
