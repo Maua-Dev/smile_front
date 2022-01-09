@@ -6,7 +6,7 @@ import 'package:smile_front/app/modules/login/ui/login_page.dart';
 class LoginModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => RegisterController()),
+    Bind.lazySingleton((i) => RegisterController(i())),
     Bind.lazySingleton((i) => LoginController(i())),
   ];
 

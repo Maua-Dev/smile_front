@@ -13,12 +13,6 @@ abstract class _LoginController with Store {
 
   _LoginController(this.authController);
 
-  // final IHome2Repository repository;
-
-  // LoginControllerBase(this.repository) {
-  //   getSpeakers();
-  // }
-
   @observable
   String username = '';
 

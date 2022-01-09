@@ -1,15 +1,15 @@
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/register/domain/entities/register_informations.dart';
+import 'package:smile_front/app/modules/register/presenter/controllers/register_user_controller.dart';
 
 part 'register_controller.g.dart';
 
-class RegisterController = RegisterControllerBase with _$RegisterController;
+class RegisterController = _RegisterController with _$RegisterController;
 
-abstract class RegisterControllerBase with Store {
-  // final IHome2Repository repository;
+abstract class _RegisterController with Store {
+  final RegisterUserController registerUserController;
 
-  // RegisterControllerBase(this.repository) {
-  //   getSpeakers();
-  // }
+  _RegisterController(this.registerUserController);
 
   @observable
   String name = '';
@@ -129,6 +129,17 @@ abstract class RegisterControllerBase with Store {
     aceptEmailNotifications = value;
   }
 
+  @computed
+  RegisterInformations get registerInformations => RegisterInformations(
+        socialName: name,
+        email: email,
+        cpfRne: cpf,
+        isStudent: isMauaStudent,
+        accessLevel: 2,
+      );
+
   @action
-  Future<void> register() async {}
+  Future<void> register() async {
+    // registerUserController.registerUser(registerInformations);
+  }
 }

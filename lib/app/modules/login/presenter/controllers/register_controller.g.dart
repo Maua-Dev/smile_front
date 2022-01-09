@@ -8,8 +8,17 @@ part of 'register_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$RegisterController on RegisterControllerBase, Store {
-  final _$nameAtom = Atom(name: 'RegisterControllerBase.name');
+mixin _$RegisterController on _RegisterController, Store {
+  Computed<RegisterInformations>? _$registerInformationsComputed;
+
+  @override
+  RegisterInformations get registerInformations =>
+      (_$registerInformationsComputed ??= Computed<RegisterInformations>(
+              () => super.registerInformations,
+              name: '_RegisterController.registerInformations'))
+          .value;
+
+  final _$nameAtom = Atom(name: '_RegisterController.name');
 
   @override
   String get name {
@@ -24,7 +33,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  final _$cpfAtom = Atom(name: 'RegisterControllerBase.cpf');
+  final _$cpfAtom = Atom(name: '_RegisterController.cpf');
 
   @override
   String get cpf {
@@ -39,7 +48,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  final _$emailAtom = Atom(name: 'RegisterControllerBase.email');
+  final _$emailAtom = Atom(name: '_RegisterController.email');
 
   @override
   String get email {
@@ -54,8 +63,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  final _$isMauaStudentAtom =
-      Atom(name: 'RegisterControllerBase.isMauaStudent');
+  final _$isMauaStudentAtom = Atom(name: '_RegisterController.isMauaStudent');
 
   @override
   bool get isMauaStudent {
@@ -70,7 +78,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  final _$raAtom = Atom(name: 'RegisterControllerBase.ra');
+  final _$raAtom = Atom(name: '_RegisterController.ra');
 
   @override
   String get ra {
@@ -85,7 +93,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  final _$passwordAtom = Atom(name: 'RegisterControllerBase.password');
+  final _$passwordAtom = Atom(name: '_RegisterController.password');
 
   @override
   String get password {
@@ -100,8 +108,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  final _$verifyPasswordAtom =
-      Atom(name: 'RegisterControllerBase.verifyPassword');
+  final _$verifyPasswordAtom = Atom(name: '_RegisterController.verifyPassword');
 
   @override
   String get verifyPassword {
@@ -117,7 +124,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   final _$aceptEmailNotificationsAtom =
-      Atom(name: 'RegisterControllerBase.aceptEmailNotifications');
+      Atom(name: '_RegisterController.aceptEmailNotifications');
 
   @override
   bool get aceptEmailNotifications {
@@ -133,21 +140,21 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  final _$setNameAsyncAction = AsyncAction('RegisterControllerBase.setName');
+  final _$setNameAsyncAction = AsyncAction('_RegisterController.setName');
 
   @override
   Future<void> setName(String value) {
     return _$setNameAsyncAction.run(() => super.setName(value));
   }
 
-  final _$setCpfAsyncAction = AsyncAction('RegisterControllerBase.setCpf');
+  final _$setCpfAsyncAction = AsyncAction('_RegisterController.setCpf');
 
   @override
   Future<void> setCpf(String value) {
     return _$setCpfAsyncAction.run(() => super.setCpf(value));
   }
 
-  final _$setEmailAsyncAction = AsyncAction('RegisterControllerBase.setEmail');
+  final _$setEmailAsyncAction = AsyncAction('_RegisterController.setEmail');
 
   @override
   Future<void> setEmail(String value) {
@@ -155,7 +162,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   final _$setIsMauaStudentAsyncAction =
-      AsyncAction('RegisterControllerBase.setIsMauaStudent');
+      AsyncAction('_RegisterController.setIsMauaStudent');
 
   @override
   Future<void> setIsMauaStudent(bool value) {
@@ -163,7 +170,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
         .run(() => super.setIsMauaStudent(value));
   }
 
-  final _$setRaAsyncAction = AsyncAction('RegisterControllerBase.setRa');
+  final _$setRaAsyncAction = AsyncAction('_RegisterController.setRa');
 
   @override
   Future<void> setRa(String value) {
@@ -171,7 +178,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   final _$setPasswordAsyncAction =
-      AsyncAction('RegisterControllerBase.setPassword');
+      AsyncAction('_RegisterController.setPassword');
 
   @override
   Future<void> setPassword(String value) {
@@ -179,7 +186,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   final _$setVerifyPasswordAsyncAction =
-      AsyncAction('RegisterControllerBase.setVerifyPassword');
+      AsyncAction('_RegisterController.setVerifyPassword');
 
   @override
   Future<void> setVerifyPassword(String value) {
@@ -188,7 +195,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   final _$setAceptEmailNotificationAsyncAction =
-      AsyncAction('RegisterControllerBase.setAceptEmailNotification');
+      AsyncAction('_RegisterController.setAceptEmailNotification');
 
   @override
   Future<void> setAceptEmailNotification(bool value) {
@@ -196,68 +203,68 @@ mixin _$RegisterController on RegisterControllerBase, Store {
         .run(() => super.setAceptEmailNotification(value));
   }
 
-  final _$registerAsyncAction = AsyncAction('RegisterControllerBase.register');
+  final _$registerAsyncAction = AsyncAction('_RegisterController.register');
 
   @override
   Future<void> register() {
     return _$registerAsyncAction.run(() => super.register());
   }
 
-  final _$RegisterControllerBaseActionController =
-      ActionController(name: 'RegisterControllerBase');
+  final _$_RegisterControllerActionController =
+      ActionController(name: '_RegisterController');
 
   @override
   String? validateName(String value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.validateName');
+    final _$actionInfo = _$_RegisterControllerActionController.startAction(
+        name: '_RegisterController.validateName');
     try {
       return super.validateName(value);
     } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+      _$_RegisterControllerActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   String? validateCpf(String value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.validateCpf');
+    final _$actionInfo = _$_RegisterControllerActionController.startAction(
+        name: '_RegisterController.validateCpf');
     try {
       return super.validateCpf(value);
     } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+      _$_RegisterControllerActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   String? validateEmail(String value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.validateEmail');
+    final _$actionInfo = _$_RegisterControllerActionController.startAction(
+        name: '_RegisterController.validateEmail');
     try {
       return super.validateEmail(value);
     } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+      _$_RegisterControllerActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   String? validateRa(String value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.validateRa');
+    final _$actionInfo = _$_RegisterControllerActionController.startAction(
+        name: '_RegisterController.validateRa');
     try {
       return super.validateRa(value);
     } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+      _$_RegisterControllerActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   String? validateVerifyPassword(String value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.validateVerifyPassword');
+    final _$actionInfo = _$_RegisterControllerActionController.startAction(
+        name: '_RegisterController.validateVerifyPassword');
     try {
       return super.validateVerifyPassword(value);
     } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+      _$_RegisterControllerActionController.endAction(_$actionInfo);
     }
   }
 
@@ -271,7 +278,8 @@ isMauaStudent: ${isMauaStudent},
 ra: ${ra},
 password: ${password},
 verifyPassword: ${verifyPassword},
-aceptEmailNotifications: ${aceptEmailNotifications}
+aceptEmailNotifications: ${aceptEmailNotifications},
+registerInformations: ${registerInformations}
     ''';
   }
 }

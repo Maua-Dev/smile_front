@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/modules/login/presenter/controllers/register_controller.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/input_box.dart';
@@ -19,6 +20,7 @@ class SecondTab extends StatefulWidget {
 
 class _SecondTabState extends ModularState<SecondTab, RegisterController> {
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -164,9 +166,9 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                               heightSize: 50,
                               backgroundColor: AppColors.brandingOrange,
                               onPressed: () {
-                                // Modular.to.pushNamed('/login');
                                 if (_formKey.currentState!.validate()) {
                                   controller.register();
+                                  Modular.to.pushNamed('/login');
                                 }
                               },
                             ),
@@ -181,4 +183,8 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
       ],
     );
   }
+
+  // void changeIndex(int index) {
+  //   tabController!.animateTo(index);
+  // }
 }
