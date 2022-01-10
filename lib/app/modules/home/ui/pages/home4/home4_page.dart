@@ -22,13 +22,14 @@ class _Home4PageState extends ModularState<Home4Page, Home4Controller> {
           Expanded(
             child: Observer(builder: (_) {
               return Padding(
-                padding: const EdgeInsets.all(48),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 48, horizontal: 250),
                 child: GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    mainAxisSpacing: 16,
-                    childAspectRatio: 1.2,
-                  ),
+                      crossAxisCount: 4,
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 32),
                   itemCount: controller.listLectureImages.length,
                   itemBuilder: (context, index) => Container(
                       decoration: BoxDecoration(
