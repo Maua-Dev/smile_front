@@ -126,6 +126,7 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                             icon: Icons.lock,
                             placeholder: 'Senha',
                             setValue: controller.setPassword,
+                            isPassword: true,
                           ),
                           const SizedBox(
                             width: 20,
@@ -137,6 +138,7 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                             icon: Icons.lock,
                             placeholder: 'Confirmar Senha',
                             setValue: controller.setVerifyPassword,
+                            isPassword: true,
                           ),
                         ],
                       ),
@@ -183,8 +185,4 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
       ],
     );
   }
-
-  // void changeIndex(int index) {
-  //   tabController!.animateTo(index);
-  // }
 }
