@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import '../responsivity_adm_home.dart';
 
 class SponsorshipNavigationButton extends StatelessWidget {
   final Function()? onPressed;
@@ -10,12 +11,13 @@ class SponsorshipNavigationButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         onPressed: onPressed,
         child: SizedBox(
-          height: 40,
+          height: sponsorNavigationHeight(size),
           width: cardWidth ?? 1592,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
