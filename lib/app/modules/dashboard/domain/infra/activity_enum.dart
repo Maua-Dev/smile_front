@@ -2,8 +2,8 @@
 
 enum ActivityEnum {
   CURSOS,
-  PALESTRA,
-  PALESTRA_ALTO_IMPACTO,
+  PALESTRAS,
+  PALESTRAS_ALTO_IMPACTO,
   VISITAS_TECNICAS,
   COMPETICOES_ACADEMICAS,
   HACKATONS,
@@ -18,9 +18,9 @@ extension ActivityEnumExtension on ActivityEnum {
     switch (this) {
       case ActivityEnum.CURSOS:
         return 'Cursos';
-      case ActivityEnum.PALESTRA:
+      case ActivityEnum.PALESTRAS:
         return 'Palestras';
-      case ActivityEnum.PALESTRA_ALTO_IMPACTO:
+      case ActivityEnum.PALESTRAS_ALTO_IMPACTO:
         return 'Palestras de Alto Impacto';
       case ActivityEnum.VISITAS_TECNICAS:
         return 'Visitas Técnicas';

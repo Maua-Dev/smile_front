@@ -41,18 +41,23 @@ class _LoggedAdmHomePageState
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   NavigationButtonWidget(
                     title: 'Atividades Inscritas',
                     icon: Icons.ac_unit_outlined,
+                    onPressed: () {
+                      Modular.to.navigate('/home/logged/filter-dashboard');
+                    },
                   ),
                   NavigationButtonWidget(
                     title: 'Todas as atividades',
                     icon: Icons.ac_unit_outlined,
+                    onPressed: () {},
                   ),
                   NavigationButtonWidget(
                     title: 'Todas as atividades',
                     icon: Icons.ac_unit_outlined,
+                    onPressed: () {},
                   ),
                 ],
               ),

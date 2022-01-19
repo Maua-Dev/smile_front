@@ -28,7 +28,7 @@ final mockActivities = [
       time: '15:00',
       maxParticipants: 30,
       totalParticipants: 1,
-      activityType: ActivityEnum.PALESTRA),
+      activityType: ActivityEnum.PALESTRAS),
   Activity(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
@@ -46,6 +46,6 @@ final mockActivities = [
     time: '15:00',
     maxParticipants: 30,
     totalParticipants: 10,
-    activityType: ActivityEnum.PALESTRA,
+    activityType: ActivityEnum.PALESTRAS,
   ),
 ];
