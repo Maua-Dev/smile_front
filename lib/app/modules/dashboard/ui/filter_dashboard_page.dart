@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/filter_button_widget.dart';
 import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
 
@@ -17,11 +18,17 @@ class _FilterDashboardPageState extends State<FilterDashboardPage> {
         children: [
           const TextHeaderScratched(title: 'Atividades'),
           Expanded(
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 5, mainAxisSpacing: 16, crossAxisSpacing: 32),
-              itemBuilder: (context, index) => FilterButtonWidget(
-                index: index,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
+              child: GridView.builder(
+                itemCount: ActivityEnum.values.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 5,
+                    mainAxisSpacing: 24,
+                    crossAxisSpacing: 24),
+                itemBuilder: (context, index) => FilterButtonWidget(
+                  index: index,
+                ),
               ),
             ),
           ),
