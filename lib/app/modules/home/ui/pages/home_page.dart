@@ -85,7 +85,6 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () async {
                   await Modular.isModuleReady<AppModule>();
                   Modular.to.navigate('/login');
-
                 },
               ),
             )
