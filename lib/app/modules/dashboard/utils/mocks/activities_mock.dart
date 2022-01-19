@@ -10,7 +10,7 @@ final mockActivities = [
       time: '15:00',
       maxParticipants: 20,
       totalParticipants: 5,
-      activityType: ActivityEnum.ATIVIDADE),
+      activityType: ActivityEnum.CURSOS),
   Activity(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
@@ -19,7 +19,7 @@ final mockActivities = [
       time: '15:00',
       maxParticipants: 20,
       totalParticipants: 5,
-      activityType: ActivityEnum.ATIVIDADE),
+      activityType: ActivityEnum.ACADEMIA_DE_PROFESSORES),
   Activity(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
@@ -28,7 +28,7 @@ final mockActivities = [
       time: '15:00',
       maxParticipants: 30,
       totalParticipants: 1,
-      activityType: ActivityEnum.ATIVIDADE),
+      activityType: ActivityEnum.PALESTRA),
   Activity(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
@@ -37,7 +37,7 @@ final mockActivities = [
       time: '15:00',
       maxParticipants: 20,
       totalParticipants: 5,
-      activityType: ActivityEnum.PALESTRA),
+      activityType: ActivityEnum.CURSOS),
   Activity(
     name: 'Digitalização no contexto da Indústria 4.0',
     description:
