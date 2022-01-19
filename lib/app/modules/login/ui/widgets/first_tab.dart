@@ -20,7 +20,6 @@ class _FirstTabState extends ModularState<FirstTab, LoginController> {
       children: [
         Center(
           child: Container(
-              // height: MediaQuery.of(context).size.height * 0.52,
               constraints: BoxConstraints(
                 minHeight: MediaQuery.of(context).size.height * 0.52,
               ),

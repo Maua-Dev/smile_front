@@ -47,15 +47,13 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Observer(builder: (context) {
-                        return InputBox(
-                          validation: controller.validateName,
-                          heightSize: 50,
-                          icon: Icons.person,
-                          placeholder: 'Nome Completo',
-                          setValue: controller.setName,
-                        );
-                      }),
+                      InputBox(
+                        validation: controller.validateName,
+                        heightSize: 50,
+                        icon: Icons.person,
+                        placeholder: 'Nome Completo',
+                        setValue: controller.setName,
+                      ),
                       const SizedBox(
                         height: 10,
                       ),
