@@ -5,6 +5,9 @@ class ActionTextButtonWidget extends StatelessWidget {
   final String? title;
   final Color? backgroundColor;
   final double? widthSize;
+  final double? heightSize;
+  final double? paddingHorizontal;
+  final double? paddingVertical;
   final Function()? onPressed;
 
   const ActionTextButtonWidget({
@@ -13,14 +16,19 @@ class ActionTextButtonWidget extends StatelessWidget {
     this.onPressed,
     this.title,
     this.widthSize,
+    this.heightSize,
+    this.paddingHorizontal,
+    this.paddingVertical,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.symmetric(
+          horizontal: paddingHorizontal ?? 0, vertical: paddingVertical ?? 0),
       child: SizedBox(
         width: widthSize,
+        height: heightSize,
         child: TextButton(
           onPressed: onPressed,
           style: TextButton.styleFrom(
