@@ -7,6 +7,8 @@ import 'package:smile_front/app/modules/home/ui/pages/home4/home4_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
+import '../../../../app_module.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -34,6 +36,8 @@ class _HomePageState extends State<HomePage> {
           actions: [
             ActionTextButtonWidget(
               title: 'HOME',
+              paddingHorizontal: 16,
+              paddingVertical: 8,
               onPressed: () {
                 controller.animateToPage(0,
                     duration: const Duration(milliseconds: 1500),
@@ -42,6 +46,8 @@ class _HomePageState extends State<HomePage> {
             ),
             ActionTextButtonWidget(
               title: 'SOBRE',
+              paddingHorizontal: 16,
+              paddingVertical: 8,
               onPressed: () {
                 controller.animateToPage(1,
                     duration: const Duration(milliseconds: 1500),
@@ -50,6 +56,8 @@ class _HomePageState extends State<HomePage> {
             ),
             ActionTextButtonWidget(
               title: 'ATIVIDADES',
+              paddingHorizontal: 16,
+              paddingVertical: 8,
               onPressed: () {
                 controller.animateToPage(2,
                     duration: const Duration(milliseconds: 1500),
@@ -58,6 +66,8 @@ class _HomePageState extends State<HomePage> {
             ),
             ActionTextButtonWidget(
               title: 'CALENDÁRIO',
+              paddingHorizontal: 16,
+              paddingVertical: 8,
               onPressed: () {
                 controller.animateToPage(3,
                     duration: const Duration(milliseconds: 1500),
@@ -68,10 +78,13 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(right: 16),
               child: ActionTextButtonWidget(
                 title: 'LOGIN',
+                paddingHorizontal: 16,
+                paddingVertical: 8,
                 widthSize: 160,
                 backgroundColor: AppColors.brandingOrange,
-                onPressed: () {
-                  Modular.to.pushNamed('/home/logged/adm-home');
+                onPressed: () async {
+                  await Modular.isModuleReady<AppModule>();
+                  Modular.to.navigate('/login');
                 },
               ),
             )
