@@ -28,6 +28,13 @@ class MainSpeakersCard extends StatelessWidget {
     return 364;
   }
 
+  double cardWithTextWidth(size) {
+    if (size < 1280) {
+      return size * 0.7;
+    }
+    return size * 0.6;
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;
@@ -63,19 +70,25 @@ class MainSpeakersCard extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        item.date,
-                        style: TextStyle(
-                          fontSize: index == indexToShow ? 25 : 20,
+                      Visibility(
+                        child: Text(
+                          item.date,
+                          style: TextStyle(
+                            fontSize: index == indexToShow ? 25 : 20,
+                          ),
                         ),
+                        visible: size >= 1280 ? true : false,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Container(
-                          width: 20,
-                          height: 2,
-                          color: AppColors.brandingBlue,
+                      Visibility(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Container(
+                            width: 20,
+                            height: 2,
+                            color: AppColors.brandingBlue,
+                          ),
                         ),
+                        visible: size >= 1280 ? true : false,
                       ),
                       Container(
                         height: index == indexToShow ? 104 : 60,
@@ -111,7 +124,7 @@ class MainSpeakersCard extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.6,
+          width: cardWithTextWidth(size),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -131,6 +144,13 @@ class MainSpeakersCard extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: Column(children: [
+                  Visibility(
+                    child: Text(
+                        speakers.isNotEmpty ? speakers[indexToShow].date : '',
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 35)),
+                    visible: size < 1280 ? true : false,
+                  ),
                   Text(
                     speakers.isNotEmpty ? speakers[indexToShow].name : '',
                     style: const TextStyle(color: Colors.white, fontSize: 45),
