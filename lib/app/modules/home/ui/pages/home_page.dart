@@ -16,12 +16,23 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+double appBarFontSize(size) {
+  if (size >= 1280) {
+    return 25;
+  }
+  if (size < 1280 && size >= 960) {
+    return 20;
+  }
+  return 18;
+}
+
 class _HomePageState extends State<HomePage> {
   final controller = PageController(
     initialPage: 0,
   );
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
           backgroundColor: AppColors.brandingBlue,
@@ -43,50 +54,51 @@ class _HomePageState extends State<HomePage> {
                     duration: const Duration(milliseconds: 1500),
                     curve: Curves.easeInOut);
               },
+              fontSize: appBarFontSize(size),
             ),
             ActionTextButtonWidget(
-              title: 'SOBRE',
-              paddingHorizontal: 16,
-              paddingVertical: 8,
-              onPressed: () {
-                controller.animateToPage(1,
-                    duration: const Duration(milliseconds: 1500),
-                    curve: Curves.easeInOut);
-              },
-            ),
+                title: 'SOBRE',
+                paddingHorizontal: 16,
+                paddingVertical: 8,
+                onPressed: () {
+                  controller.animateToPage(1,
+                      duration: const Duration(milliseconds: 1500),
+                      curve: Curves.easeInOut);
+                },
+                fontSize: appBarFontSize(size)),
             ActionTextButtonWidget(
-              title: 'ATIVIDADES',
-              paddingHorizontal: 16,
-              paddingVertical: 8,
-              onPressed: () {
-                controller.animateToPage(2,
-                    duration: const Duration(milliseconds: 1500),
-                    curve: Curves.easeInOut);
-              },
-            ),
+                title: 'ATIVIDADES',
+                paddingHorizontal: 16,
+                paddingVertical: 8,
+                onPressed: () {
+                  controller.animateToPage(2,
+                      duration: const Duration(milliseconds: 1500),
+                      curve: Curves.easeInOut);
+                },
+                fontSize: appBarFontSize(size)),
             ActionTextButtonWidget(
-              title: 'CALENDÁRIO',
-              paddingHorizontal: 16,
-              paddingVertical: 8,
-              onPressed: () {
-                controller.animateToPage(3,
-                    duration: const Duration(milliseconds: 1500),
-                    curve: Curves.easeInOut);
-              },
-            ),
+                title: 'CALENDÁRIO',
+                paddingHorizontal: 16,
+                paddingVertical: 8,
+                onPressed: () {
+                  controller.animateToPage(3,
+                      duration: const Duration(milliseconds: 1500),
+                      curve: Curves.easeInOut);
+                },
+                fontSize: appBarFontSize(size)),
             Padding(
               padding: const EdgeInsets.only(right: 16),
               child: ActionTextButtonWidget(
-                title: 'LOGIN',
-                paddingHorizontal: 16,
-                paddingVertical: 8,
-                widthSize: 160,
-                backgroundColor: AppColors.brandingOrange,
-                onPressed: () async {
-                  await Modular.isModuleReady<AppModule>();
-                  Modular.to.navigate('/login');
-                },
-              ),
+                  title: 'LOGIN',
+                  paddingHorizontal: 16,
+                  paddingVertical: 8,
+                  widthSize: 160,
+                  backgroundColor: AppColors.brandingOrange,
+                  onPressed: () async {
+                    await Modular.isModuleReady<AppModule>();
+                    Modular.to.navigate('/login');
+                  },
+                  fontSize: appBarFontSize(size)),
             )
           ]),
       body: PageView(
