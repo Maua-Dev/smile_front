@@ -22,10 +22,13 @@ double imageSize(size) {
   if (size < 1440 && size >= 1280) {
     return 225;
   }
-  if (size < 1280 && size >= 840) {
-    return 190;
+  if (size < 1280 && size >= 1120) {
+    return 205;
   }
-  return 180;
+  if (size < 1120 && size >= 960) {
+    return 170;
+  }
+  return 160;
 }
 
 double titleFontSize(size) {
@@ -39,7 +42,7 @@ double titleFontSize(size) {
     return 36;
   }
   if (size < 1280 && size >= 960) {
-    return 32;
+    return 30;
   }
   return 30;
 }
@@ -73,7 +76,7 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
       return Container(
         color: AppColors.lightBlue,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 150.0),
+          padding: const EdgeInsets.symmetric(horizontal: 120.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
