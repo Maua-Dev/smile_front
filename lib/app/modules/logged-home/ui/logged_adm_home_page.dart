@@ -15,30 +15,10 @@ class LoggedAdmHomePage extends StatefulWidget {
   _LoggedAdmHomePageState createState() => _LoggedAdmHomePageState();
 }
 
-double nothing(size) {
-  if (size >= 1800) {
-    return 55;
-  }
-  if (size < 1800 && size >= 1600) {
-    return 50;
-  }
-  if (size < 1600 && size >= 1440) {
-    return 45;
-  }
-  if (size < 1440 && size >= 1280) {
-    return 40;
-  }
-  if (size < 1280 && size >= 960) {
-    return 32;
-  }
-  return 40;
-}
-
 class _LoggedAdmHomePageState
     extends ModularState<LoggedAdmHomePage, LoggedHomeController> {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         const AppbarLogoWidget(
@@ -98,6 +78,7 @@ class _LoggedAdmHomePageState
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           TimerNavigationButtonWidget(
             time: controller.formatTime,
+            userType: 'adm',
           ),
           const NavigationButtonWidget(
             title: 'Atividades Inscritas',
