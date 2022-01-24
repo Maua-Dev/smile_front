@@ -172,8 +172,16 @@ double secundaryNavigationIconSize(size) {
   return 64;
 }
 
-double timerNavigationWidth(size) {
-  return mainNavigationWidth(size);
+// Timer Navigation Button
+double timerNavigationWidth(size, userType) {
+  switch (userType) {
+    case 'adm':
+      return mainNavigationWidth(size);
+    case 'user':
+      return secundaryNavigationWidth(size) * 2 + 32 * 2;
+    default:
+      return mainNavigationWidth(size);
+  }
 }
 
 double timerNavigationHeight(size) {
@@ -199,7 +207,7 @@ double timerNavigationTimeSize(size) {
   return 100;
 }
 
-double timerNavigationTextSize(size) {
+double timerNavigationTextSize(size, userType) {
   if (size >= 1800) {
     return 30;
   }
@@ -212,8 +220,16 @@ double timerNavigationTextSize(size) {
   if (size < 1440 && size >= 1280) {
     return 24;
   }
-  if (size < 1280 && size >= 960) {
+  if (size < 1280 && size >= 1120) {
     return 20;
+  }
+  if (size < 1120 && size >= 960) {
+    switch (userType) {
+      case 'adm':
+        return 20;
+      case 'user':
+        return 18;
+    }
   }
   return 25;
 }
