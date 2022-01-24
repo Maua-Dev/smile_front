@@ -8,8 +8,9 @@ import '../responsivity_adm_home.dart';
 class TimerNavigationButtonWidget extends StatelessWidget {
   final String time;
   final Function()? onPressed;
+  final String? userType;
   const TimerNavigationButtonWidget(
-      {Key? key, required this.time, this.onPressed})
+      {Key? key, required this.time, this.onPressed, this.userType})
       : super(key: key);
 
   @override
@@ -25,7 +26,7 @@ class TimerNavigationButtonWidget extends StatelessWidget {
         onPressed: onPressed,
         child: SizedBox(
           height: timerNavigationHeight(size),
-          width: timerNavigationWidth(size),
+          width: timerNavigationWidth(size, userType),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Column(
@@ -40,16 +41,16 @@ class TimerNavigationButtonWidget extends StatelessWidget {
                   text: TextSpan(children: [
                     TextSpan(
                         text: '$weekDay, ',
-                        style: AppTextStyles.button
-                            .copyWith(fontSize: timerNavigationTextSize(size))),
+                        style: AppTextStyles.button.copyWith(
+                            fontSize: timerNavigationTextSize(size, userType))),
                     TextSpan(
                         text: '$day de $month ',
-                        style: AppTextStyles.buttonBold
-                            .copyWith(fontSize: timerNavigationTextSize(size))),
+                        style: AppTextStyles.buttonBold.copyWith(
+                            fontSize: timerNavigationTextSize(size, userType))),
                     TextSpan(
                         text: 'de $year',
-                        style: AppTextStyles.button
-                            .copyWith(fontSize: timerNavigationTextSize(size))),
+                        style: AppTextStyles.button.copyWith(
+                            fontSize: timerNavigationTextSize(size, userType))),
                   ]),
                 ),
               ],
