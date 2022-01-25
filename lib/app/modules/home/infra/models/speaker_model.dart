@@ -17,10 +17,10 @@ class SpeakerModel extends Speaker {
       required this.date,
       required this.linkPhoto})
       : super(
-          name: super.name,
-          description: super.description,
-          date: super.date,
-          linkPhoto: super.linkPhoto,
+          name: name,
+          description: description,
+          date: date,
+          linkPhoto: linkPhoto,
         );
 
   Map<String, dynamic> toMap() {

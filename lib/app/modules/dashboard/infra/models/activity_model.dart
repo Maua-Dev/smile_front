@@ -25,13 +25,13 @@ class ActivityModel extends Activity {
       required this.totalParticipants,
       required this.activityType})
       : super(
-            activityType: super.activityType,
-            date: super.date,
-            maxParticipants: super.maxParticipants,
-            name: super.name,
-            description: super.description,
-            time: super.time,
-            totalParticipants: super.totalParticipants);
+            activityType: activityType,
+            date: date,
+            maxParticipants: maxParticipants,
+            name: name,
+            description: description,
+            time: time,
+            totalParticipants: totalParticipants);
 
   Map<String, dynamic> toMap() {
     return {
