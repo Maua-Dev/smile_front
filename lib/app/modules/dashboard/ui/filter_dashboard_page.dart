@@ -17,7 +17,7 @@ class _FilterDashboardPageState extends State<FilterDashboardPage> {
     return Material(
       child: Row(
         children: [
-          const VerticalNavBar(),
+          VerticalNavBar(),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
