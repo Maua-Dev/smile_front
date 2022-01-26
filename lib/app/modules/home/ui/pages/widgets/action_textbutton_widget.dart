@@ -5,6 +5,10 @@ class ActionTextButtonWidget extends StatelessWidget {
   final String? title;
   final Color? backgroundColor;
   final double? widthSize;
+  final double? heightSize;
+  final double? paddingHorizontal;
+  final double? paddingVertical;
+  final double? fontSize;
   final Function()? onPressed;
 
   const ActionTextButtonWidget({
@@ -13,14 +17,20 @@ class ActionTextButtonWidget extends StatelessWidget {
     this.onPressed,
     this.title,
     this.widthSize,
+    this.heightSize,
+    this.paddingHorizontal,
+    this.paddingVertical,
+    this.fontSize,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.symmetric(
+          horizontal: paddingHorizontal ?? 0, vertical: paddingVertical ?? 0),
       child: SizedBox(
         width: widthSize,
+        height: heightSize,
         child: TextButton(
           onPressed: onPressed,
           style: TextButton.styleFrom(
@@ -32,7 +42,7 @@ class ActionTextButtonWidget extends StatelessWidget {
           child: Text(title ?? '',
               textAlign: TextAlign.center,
               style: AppTextStyles.body
-                  .copyWith(color: Colors.white, fontSize: 25)),
+                  .copyWith(color: Colors.white, fontSize: fontSize ?? 25)),
         ),
       ),
     );

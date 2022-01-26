@@ -12,9 +12,61 @@ class Home3Page extends StatefulWidget {
   _Home3PageState createState() => _Home3PageState();
 }
 
+double imageSize(size) {
+  if (size >= 1600) {
+    return 280;
+  }
+  if (size < 1600 && size >= 1440) {
+    return 250;
+  }
+  if (size < 1440 && size >= 1280) {
+    return 225;
+  }
+  if (size < 1280 && size >= 1120) {
+    return 205;
+  }
+  if (size < 1120 && size >= 960) {
+    return 170;
+  }
+  return 160;
+}
+
+double titleFontSize(size) {
+  if (size >= 1600) {
+    return 44;
+  }
+  if (size < 1600 && size >= 1440) {
+    return 40;
+  }
+  if (size < 1440 && size >= 1280) {
+    return 36;
+  }
+  if (size < 1280 && size >= 960) {
+    return 30;
+  }
+  return 30;
+}
+
+double textFontSize(size) {
+  if (size >= 1600) {
+    return 20;
+  }
+  if (size < 1600 && size >= 1440) {
+    return 18;
+  }
+  if (size < 1440 && size >= 1280) {
+    return 16;
+  }
+  if (size < 1280 && size >= 840) {
+    return 14;
+  }
+  return 12;
+}
+
 class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size.width;
     return Observer(builder: (context) {
       if (controller.listRectors.isEmpty) {
         return Container(
@@ -24,7 +76,7 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
       return Container(
         color: AppColors.lightBlue,
         child: Padding(
-          padding: const EdgeInsets.only(right: 150, left: 150, top: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 120.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,22 +95,14 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 15, horizontal: 15),
                             child: Container(
-                              height: MediaQuery.of(context).size.height < 950
-                                  ? 350
-                                  : 400,
-                              width: MediaQuery.of(context).size.height < 950
-                                  ? 350
-                                  : 400,
+                              height: imageSize(size),
+                              width: imageSize(size),
                               color: AppColors.brandingBlue,
                             ),
                           ),
                           SizedBox(
-                              width: MediaQuery.of(context).size.height < 950
-                                  ? 350
-                                  : 400,
-                              height: MediaQuery.of(context).size.height < 950
-                                  ? 350
-                                  : 400,
+                              width: imageSize(size),
+                              height: imageSize(size),
                               child: Image.network(
                                   controller.listRectors[0].image))
                         ],
@@ -72,23 +116,26 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
                         children: [
                           Text(
                             controller.listRectors[0].name,
-                            style: AppTextStyles.titleH1.copyWith(fontSize: 50),
+                            style: AppTextStyles.titleH1
+                                .copyWith(fontSize: titleFontSize(size)),
                           ),
                           Text(
                             controller.listRectors[0].role,
-                            style: AppTextStyles.body
-                                .copyWith(fontWeight: FontWeight.bold),
+                            style: AppTextStyles.body.copyWith(
+                                fontWeight: FontWeight.bold,
+                                fontSize: titleFontSize(size) - 10),
                           ),
                           const SizedBox(
                             height: 20,
                           ),
-                          Text(controller.listRectors[0].text),
+                          Text(controller.listRectors[0].text,
+                              style: TextStyle(fontSize: textFontSize(size))),
                         ],
                       ))
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
+                padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
                 child: Container(
                   color: AppColors.brandingOrange,
                   height: 8,
@@ -99,13 +146,14 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 3,
+                    flex: 2,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           controller.listRectors[1].name,
-                          style: AppTextStyles.titleH1.copyWith(fontSize: 50),
+                          style: AppTextStyles.titleH1
+                              .copyWith(fontSize: titleFontSize(size)),
                         ),
                         Text(
                           controller.listRectors[1].role,
@@ -115,28 +163,31 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Text(controller.listRectors[1].text)
+                        Text(controller.listRectors[1].text,
+                            style: TextStyle(fontSize: textFontSize(size)))
                       ],
                     ),
                   ),
                   Expanded(
                     flex: 1,
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 20),
+                      padding: const EdgeInsets.only(
+                        right: 20,
+                      ),
                       child: Stack(
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 15, horizontal: 15),
                             child: Container(
-                              height: 400,
-                              width: 400,
+                              height: imageSize(size),
+                              width: imageSize(size),
                               color: AppColors.brandingBlue,
                             ),
                           ),
                           SizedBox(
-                            width: 400,
-                            height: 400,
+                            width: imageSize(size),
+                            height: imageSize(size),
                             child:
                                 Image.network(controller.listRectors[1].image),
                           )

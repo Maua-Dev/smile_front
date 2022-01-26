@@ -18,10 +18,10 @@ class FutureActivityModel extends FutureActivity {
       required this.activityTime,
       this.activityRemainTime})
       : super(
-            activityDate: super.activityDate,
-            activityName: super.activityName,
-            activityTime: super.activityTime,
-            activityRemainTime: super.activityRemainTime);
+            activityDate: activityDate,
+            activityName: activityName,
+            activityTime: activityTime,
+            activityRemainTime: activityRemainTime);
 
   Map<String, dynamic> toMap() {
     return {

@@ -32,7 +32,6 @@ class _LoggedAdmHomePageState
               activityDate: controller.activity.activityDate,
               activityTime: controller.activity.activityTime,
               activityRemainTime: controller.activity.activityRemainTime,
-              cardWidth: 664,
             );
           }),
           Column(
@@ -79,6 +78,7 @@ class _LoggedAdmHomePageState
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           TimerNavigationButtonWidget(
             time: controller.formatTime,
+            userType: 'adm',
           ),
           const NavigationButtonWidget(
             title: 'Atividades Inscritas',

@@ -14,8 +14,30 @@ class MainSpeakersCard extends StatelessWidget {
     required this.toggleIndex,
   }) : super(key: key);
 
+  double cardTextFontSize(size) {
+    if (size < 1280 && size >= 960) {
+      return 50;
+    }
+    return 55;
+  }
+
+  double circleImageSize(size) {
+    if (size < 1280 && size >= 840) {
+      return 302;
+    }
+    return 364;
+  }
+
+  double cardWithTextWidth(size) {
+    if (size < 1280) {
+      return size * 0.7;
+    }
+    return size * 0.6;
+  }
+
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size.width;
     return Stack(
       alignment: Alignment.centerRight,
       children: [
@@ -48,19 +70,25 @@ class MainSpeakersCard extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        item.date,
-                        style: TextStyle(
-                          fontSize: index == indexToShow ? 25 : 20,
+                      Visibility(
+                        child: Text(
+                          item.date,
+                          style: TextStyle(
+                            fontSize: index == indexToShow ? 25 : 20,
+                          ),
                         ),
+                        visible: size >= 1280 ? true : false,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Container(
-                          width: 20,
-                          height: 2,
-                          color: AppColors.brandingBlue,
+                      Visibility(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Container(
+                            width: 20,
+                            height: 2,
+                            color: AppColors.brandingBlue,
+                          ),
                         ),
+                        visible: size >= 1280 ? true : false,
                       ),
                       Container(
                         height: index == indexToShow ? 104 : 60,
@@ -96,14 +124,14 @@ class MainSpeakersCard extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.6,
+          width: cardWithTextWidth(size),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                height: 404,
-                width: 404,
+                height: circleImageSize(size),
+                width: circleImageSize(size),
                 child: CircleAvatar(
                   radius: 102.0,
                   backgroundImage: NetworkImage(
@@ -116,9 +144,16 @@ class MainSpeakersCard extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: Column(children: [
+                  Visibility(
+                    child: Text(
+                        speakers.isNotEmpty ? speakers[indexToShow].date : '',
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 35)),
+                    visible: size < 1280 ? true : false,
+                  ),
                   Text(
                     speakers.isNotEmpty ? speakers[indexToShow].name : '',
-                    style: const TextStyle(color: Colors.white, fontSize: 50),
+                    style: const TextStyle(color: Colors.white, fontSize: 45),
                   ),
                   const SizedBox(
                     height: 16,
@@ -129,7 +164,7 @@ class MainSpeakersCard extends StatelessWidget {
                         : '',
                     style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 25,
+                        fontSize: 18,
                         fontWeight: FontWeight.w100),
                   )
                 ]),

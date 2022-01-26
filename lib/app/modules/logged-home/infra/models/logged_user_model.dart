@@ -6,7 +6,7 @@ class LoggedUserModel extends LoggedUser {
   // ignore: overridden_fields, annotate_overrides
   final String name;
 
-  LoggedUserModel({required this.name}) : super(name: super.name);
+  LoggedUserModel({required this.name}) : super(name: name);
 
   Map<String, dynamic> toMap() {
     return {
