@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar_controller.dart';
 
@@ -22,7 +23,7 @@ class VerticalNavBar extends StatelessWidget {
             TextButton(
               onPressed: () {
                 controller.toggleIndex(0);
-                // Modular.to.navigate('/');
+                Modular.to.navigate('/home/logged/adm-home');
               },
               child: Column(
                 children: [
