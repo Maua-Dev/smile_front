@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/dashboard_module.dart';
 import 'package:smile_front/app/modules/logged-home/presenter/controllers/logged_home_controller.dart';
 import 'package:smile_front/app/modules/logged-home/ui/logged_adm_home_page.dart';
 import 'package:smile_front/app/modules/logged-home/ui/logged_user_home_page.dart';
@@ -29,5 +30,6 @@ class LoggedHomeModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute('/user-home', child: (_, args) => const LoggedUserHomePage()),
     ChildRoute('/adm-home', child: (_, args) => const LoggedAdmHomePage()),
+    ModuleRoute('/filter-dashboard', module: DashboardModule())
   ];
 }
