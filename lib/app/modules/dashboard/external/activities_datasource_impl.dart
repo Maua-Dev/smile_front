@@ -8,8 +8,9 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   Future<List<Activity>> getActivities(ActivityEnum activityEnum) {
     List<Activity> listActivities = [];
     for (int i = 0; i < mockActivities.length; i++) {
-      mockActivities[i].activityType == activityEnum;
-      listActivities.add(mockActivities[i]);
+      if (mockActivities[i].activityType == activityEnum) {
+        listActivities.add(mockActivities[i]);
+      }
     }
     return Future.value(listActivities);
     // aplicação do DIO

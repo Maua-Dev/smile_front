@@ -48,4 +48,76 @@ final mockActivities = [
     totalParticipants: 10,
     activityType: ActivityEnum.PALESTRAS,
   ),
+  Activity(
+      name: 'Digitalização no contexto da Indústria 4.0',
+      description:
+          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
+      date: '25/05/2021',
+      time: '15:00',
+      maxParticipants: 20,
+      totalParticipants: 5,
+      activityType: ActivityEnum.CURSOS),
+  Activity(
+      name: 'Digitalização no contexto da Indústria 4.0',
+      description:
+          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
+      date: '25/05/2021',
+      time: '15:00',
+      maxParticipants: 20,
+      totalParticipants: 5,
+      activityType: ActivityEnum.CURSOS),
+  Activity(
+      name: 'Digitalização no contexto da Indústria 4.0',
+      description:
+          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
+      date: '25/05/2021',
+      time: '15:00',
+      maxParticipants: 20,
+      totalParticipants: 5,
+      activityType: ActivityEnum.CURSOS),
+  Activity(
+      name: 'Digitalização no contexto da Indústria 4.0',
+      description:
+          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
+      date: '25/05/2021',
+      time: '15:00',
+      maxParticipants: 20,
+      totalParticipants: 5,
+      activityType: ActivityEnum.CURSOS),
+  Activity(
+      name: 'Digitalização no contexto da Indústria 4.0',
+      description:
+          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
+      date: '25/05/2021',
+      time: '15:00',
+      maxParticipants: 20,
+      totalParticipants: 5,
+      activityType: ActivityEnum.CURSOS),
+  Activity(
+      name: 'Digitalização no contexto da Indústria 4.0',
+      description:
+          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
+      date: '25/05/2021',
+      time: '15:00',
+      maxParticipants: 20,
+      totalParticipants: 5,
+      activityType: ActivityEnum.CURSOS),
+  Activity(
+      name: 'Digitalização no contexto da Indústria 4.0',
+      description:
+          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
+      date: '25/05/2021',
+      time: '15:00',
+      maxParticipants: 20,
+      totalParticipants: 5,
+      activityType: ActivityEnum.CURSOS),
+  Activity(
+      name: 'Digitalização no contexto da Indústria 4.0',
+      description:
+          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
+      date: '25/05/2021',
+      time: '15:00',
+      maxParticipants: 20,
+      totalParticipants: 5,
+      activityType: ActivityEnum.CURSOS),
 ];
