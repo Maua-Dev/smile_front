@@ -15,7 +15,7 @@ class DashboardModule extends Module {
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<DashboardController>(
-      (i) => DashboardController(repository: i()),
+      (i) => DashboardController(repository: i(), activityType: i()),
     )
   ];
 
