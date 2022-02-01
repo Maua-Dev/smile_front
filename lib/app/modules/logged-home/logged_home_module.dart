@@ -20,7 +20,8 @@ class LoggedHomeModule extends Module {
         (i) => FutureActivityDatasourceImpl()),
     Bind.lazySingleton<FutureActivityRepository>(
         (i) => FutureActivityRepositoryImpl(datasource: i())),
-    Bind.lazySingleton<LoggedUserDatasource>((i) => LoggedUserDatasourceImpl()),
+    Bind.lazySingleton<LoggedUserDatasource>(
+        (i) => LoggedUserDatasourceImpl(i())),
     Bind.lazySingleton<LoggedUserRepository>(
         (i) => LoggedUserRepositoryImpl(datasource: i())),
     Bind.lazySingleton<LoggedHomeController>((i) => LoggedHomeController(
