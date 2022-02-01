@@ -25,4 +25,23 @@ abstract class _DashboardControllerBase with Store {
   Future getActivities() async {
     activitiesList = await repository.getActivities(activityType);
   }
+
+  @action
+  void searchActivityByName(String search) {
+    activitiesList = activitiesList
+        .where((element) =>
+            element.name.toLowerCase().contains(search.toLowerCase()))
+        .toList();
+  }
+
+  @action
+  void orderByDate() {
+    activitiesList.sort((a, b) => a.date.compareTo(b.date));
+  }
+
+  @action
+  void orderByParticipants() {
+    activitiesList
+        .sort((a, b) => a.totalParticipants.compareTo(b.totalParticipants));
+  }
 }

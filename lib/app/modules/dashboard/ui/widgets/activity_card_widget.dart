@@ -42,8 +42,7 @@ class ActivityCardWidget extends StatelessWidget {
                     height: 4,
                   ),
                   Text(description,
-                      style: AppTextStyles.button
-                          .copyWith(fontWeight: FontWeight.w100, fontSize: 16)),
+                      style: AppTextStyles.button.copyWith(fontSize: 16)),
                 ],
               ),
             ),
