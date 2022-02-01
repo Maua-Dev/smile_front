@@ -56,7 +56,7 @@ class _LoginTabBarState extends State<LoginTabBar>
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.2,
+                    width: MediaQuery.of(context).size.width * 0.5,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(7),
@@ -69,7 +69,7 @@ class _LoginTabBarState extends State<LoginTabBar>
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.2,
+                    width: MediaQuery.of(context).size.width * 0.5,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(7),
