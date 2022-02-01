@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
@@ -15,7 +16,8 @@ class DashboardModule extends Module {
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<DashboardController>(
-      (i) => DashboardController(repository: i()),
+      (i) => DashboardController(
+          repository: i(), activityType: i.args!.data as ActivityEnum),
     )
   ];
 

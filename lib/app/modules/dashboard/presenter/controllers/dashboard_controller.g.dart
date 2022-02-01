@@ -33,6 +33,42 @@ mixin _$DashboardController on _DashboardControllerBase, Store {
     return _$getActivitiesAsyncAction.run(() => super.getActivities());
   }
 
+  final _$_DashboardControllerBaseActionController =
+      ActionController(name: '_DashboardControllerBase');
+
+  @override
+  void searchActivityByName(String search) {
+    final _$actionInfo = _$_DashboardControllerBaseActionController.startAction(
+        name: '_DashboardControllerBase.searchActivityByName');
+    try {
+      return super.searchActivityByName(search);
+    } finally {
+      _$_DashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void orderByDate() {
+    final _$actionInfo = _$_DashboardControllerBaseActionController.startAction(
+        name: '_DashboardControllerBase.orderByDate');
+    try {
+      return super.orderByDate();
+    } finally {
+      _$_DashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void orderByParticipants() {
+    final _$actionInfo = _$_DashboardControllerBaseActionController.startAction(
+        name: '_DashboardControllerBase.orderByParticipants');
+    try {
+      return super.orderByParticipants();
+    } finally {
+      _$_DashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

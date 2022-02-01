@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/filter_button_widget.dart';
+import 'package:smile_front/app/shared/widgets/dashboard-appbar/dashboard_appbar_widget.dart';
 import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
 import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar.dart';
 
@@ -22,33 +24,7 @@ class _FilterDashboardPageState extends State<FilterDashboardPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 50.0, top: 30),
-                  child:
-                      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                    const Icon(
-                      Icons.notifications,
-                      size: 40,
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const Icon(
-                      Icons.settings,
-                      size: 40,
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(40),
-                          color: Colors.grey),
-                      height: 80,
-                      width: 80,
-                    ),
-                  ]),
-                ),
+                const DashboardAppbarWidget(),
                 const TextHeaderScratched(title: 'Atividades'),
                 Expanded(
                   child: Padding(
@@ -63,6 +39,10 @@ class _FilterDashboardPageState extends State<FilterDashboardPage> {
                               crossAxisSpacing: 24),
                       itemBuilder: (context, index) => FilterButtonWidget(
                         index: index,
+                        onTap: () {
+                          Modular.to.pushNamed('./activities-dashboard',
+                              arguments: ActivityEnum.values[index]);
+                        },
                       ),
                     ),
                   ),
