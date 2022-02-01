@@ -29,10 +29,10 @@ double sizedBoxHeightByHeight(height, double sumValue, double lastResult) {
 
 //104 >950
 double sizedBoxHeight(size, height) {
-  if (size >= 1800) {
-    return 55;
+  if (size < 1920 && size >= 1760) {
+    return sizedBoxHeightByHeight(height, 11, 18);
   }
-  if (size < 1800 && size >= 1600) {
+  if (size < 1760 && size >= 1600) {
     return sizedBoxHeightByHeight(height, 16, 18);
   }
   if (size < 1600 && size >= 1440) {
@@ -51,10 +51,10 @@ double sizedBoxHeight(size, height) {
 }
 
 double fontSizeTitle(size) {
-  if (size >= 1800) {
-    return 55;
+  if (size < 1920 && size >= 1760) {
+    return 52;
   }
-  if (size < 1800 && size >= 1600) {
+  if (size < 1760 && size >= 1600) {
     return 50;
   }
   if (size < 1600 && size >= 1440) {
@@ -63,13 +63,22 @@ double fontSizeTitle(size) {
   if (size < 1440 && size >= 1280) {
     return 40;
   }
-  if (size < 1280 && size >= 960) {
+  if (size < 1280 && size >= 1120) {
+    return 35;
+  }
+  if (size < 1120 && size >= 960) {
     return 32;
   }
   return 40;
 }
 
 double weekBoxHeight(size) {
+  if (size < 1920 && size >= 1760) {
+    return 64;
+  }
+  if (size < 1760 && size >= 1600) {
+    return 64;
+  }
   if (size < 1600 && size >= 1440) {
     return 68;
   }
@@ -93,8 +102,20 @@ double weekFontSize(size) {
 }
 
 double apresentationFontSize(size) {
+  if (size < 1920 && size >= 1760) {
+    return 24;
+  }
+  if (size < 1760 && size >= 1600) {
+    return 21;
+  }
   if (size < 1600 && size >= 1280) {
     return 18;
+  }
+  if (size < 1280 && size >= 1120) {
+    return 17;
+  }
+  if (size < 1120 && size >= 960) {
+    return 17;
   }
   return 15;
 }
@@ -117,6 +138,12 @@ double signUpBoxWidth(size) {
 }
 
 double participateBoxFontSize(size) {
+  if (size < 1920 && size >= 1760) {
+    return 26;
+  }
+  if (size < 1760 && size >= 1600) {
+    return 25;
+  }
   if (size < 1600 && size >= 1440) {
     return 22;
   }
@@ -131,6 +158,7 @@ class _Home1PageState extends State<Home1Page> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+
     return Padding(
       padding: const EdgeInsets.only(left: 74),
       child: Row(
