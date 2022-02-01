@@ -37,5 +37,6 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
               returnValue: Future<List<_i4.Activity>>.value(<_i4.Activity>[]))
           as _i3.Future<List<_i4.Activity>>);
   @override
+  // ignore: unnecessary_overrides
   String toString() => super.toString();
 }
