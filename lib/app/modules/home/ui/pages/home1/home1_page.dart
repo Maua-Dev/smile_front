@@ -12,6 +12,44 @@ class Home1Page extends StatefulWidget {
   _Home1PageState createState() => _Home1PageState();
 }
 
+double sizedBoxHeightByHeight(height, double sumValue, double lastResult) {
+  if (height >= 1080) return 24 + sumValue * 9.6;
+  if (height < 1080 && height >= 1035) return 24 + sumValue * 8.6;
+  if (height < 1035 && height >= 990) return 24 + sumValue * 7.6;
+  if (height < 990 && height >= 945) return 24 + sumValue * 6.8;
+  if (height < 945 && height >= 900) return 24 + sumValue * 5.8;
+  if (height < 900 && height >= 855) return 24 + sumValue * 5;
+  if (height < 855 && height >= 810) return 24 + sumValue * 4;
+  if (height < 810 && height >= 765) return 24 + sumValue * 3;
+  if (height < 765 && height >= 720) return 24 + sumValue * 2;
+  if (height < 720 && height >= 675) return 24 + sumValue * 1;
+  if (height < 675 && height >= 630) return 24 + sumValue * 0.25;
+  return lastResult;
+}
+
+//104 >950
+double sizedBoxHeight(size, height) {
+  if (size >= 1800) {
+    return 55;
+  }
+  if (size < 1800 && size >= 1600) {
+    return sizedBoxHeightByHeight(height, 16, 18);
+  }
+  if (size < 1600 && size >= 1440) {
+    return sizedBoxHeightByHeight(height, 16, 18);
+  }
+  if (size < 1440 && size >= 1280) {
+    return sizedBoxHeightByHeight(height, 16, 18);
+  }
+  if (size < 1280 && size >= 1120) {
+    return sizedBoxHeightByHeight(height, 18, 18);
+  }
+  if (size < 1120 && size >= 960) {
+    return sizedBoxHeightByHeight(height, 16, 18);
+  }
+  return 54;
+}
+
 double fontSizeTitle(size) {
   if (size >= 1800) {
     return 55;
@@ -92,6 +130,7 @@ class _Home1PageState extends State<Home1Page> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.only(left: 74),
       child: Row(
@@ -147,7 +186,7 @@ class _Home1PageState extends State<Home1Page> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height < 950 ? 54 : 104,
+                  height: sizedBoxHeight(size, height),
                 ),
                 Center(
                   child: Stack(
@@ -173,7 +212,7 @@ class _Home1PageState extends State<Home1Page> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height < 950 ? 54 : 104,
+                  height: sizedBoxHeight(size, height),
                 ),
                 Center(
                   child: Center(
@@ -212,7 +251,7 @@ class _Home1PageState extends State<Home1Page> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height < 950 ? 32 : 64,
+                  height: sizedBoxHeight(size, height) - 10,
                 ),
                 Row(
                   children: [
