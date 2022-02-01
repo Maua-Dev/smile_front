@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:smile_front/app/modules/logged-home/external/logged_user_datasource_impl.dart';
