@@ -30,8 +30,11 @@ abstract class _DashboardControllerBase with Store {
   void searchActivityByName(String search) {
     activitiesList = activitiesList
         .where((element) =>
-            element.name.toLowerCase().contains(search.toLowerCase()))
+            element.name.toLowerCase().startsWith(search.toLowerCase()))
         .toList();
+    if (search == '') {
+      getActivities();
+    }
   }
 
   @action

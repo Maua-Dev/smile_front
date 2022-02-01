@@ -3,25 +3,25 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 
 final mockActivities = [
   Activity(
-      name: 'Digitalização no contexto da Indústria 4.0',
+      name: 'ABCDigitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-      date: '25/05/2021',
+      date: '30/05/2021',
       time: '15:00',
       maxParticipants: 20,
       totalParticipants: 5,
       activityType: ActivityEnum.CURSOS),
   Activity(
-      name: 'Digitalização no contexto da Indústria 4.0',
+      name: 'ABDigitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-      date: '25/05/2021',
+      date: '22/05/2021',
       time: '15:00',
       maxParticipants: 20,
       totalParticipants: 5,
       activityType: ActivityEnum.ACADEMIA_DE_PROFESSORES),
   Activity(
-      name: 'Digitalização no contexto da Indústria 4.0',
+      name: '123Digitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
       date: '25/05/2021',
@@ -30,9 +30,9 @@ final mockActivities = [
       totalParticipants: 1,
       activityType: ActivityEnum.PALESTRAS),
   Activity(
-      name: 'Digitalização no contexto da Indústria 4.0',
+      name: '1234Digitalização no contexto da Indústria 4.0',
       description:
-          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
+          'sCompetitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
       date: '25/05/2021',
       time: '15:00',
       maxParticipants: 20,
@@ -52,10 +52,28 @@ final mockActivities = [
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-      date: '25/05/2021',
+      date: '16/05/2021',
       time: '15:00',
       maxParticipants: 20,
       totalParticipants: 5,
+      activityType: ActivityEnum.CURSOS),
+  Activity(
+      name: 'Digitalização no contexto da Indústria 4.0',
+      description:
+          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
+      date: '18/05/2021',
+      time: '15:00',
+      maxParticipants: 20,
+      totalParticipants: 2,
+      activityType: ActivityEnum.CURSOS),
+  Activity(
+      name: 'Digitalização no contexto da Indústria 4.0',
+      description:
+          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
+      date: '17/05/2021',
+      time: '15:00',
+      maxParticipants: 20,
+      totalParticipants: 3,
       activityType: ActivityEnum.CURSOS),
   Activity(
       name: 'Digitalização no contexto da Indústria 4.0',
@@ -73,25 +91,7 @@ final mockActivities = [
       date: '25/05/2021',
       time: '15:00',
       maxParticipants: 20,
-      totalParticipants: 5,
-      activityType: ActivityEnum.CURSOS),
-  Activity(
-      name: 'Digitalização no contexto da Indústria 4.0',
-      description:
-          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-      date: '25/05/2021',
-      time: '15:00',
-      maxParticipants: 20,
-      totalParticipants: 5,
-      activityType: ActivityEnum.CURSOS),
-  Activity(
-      name: 'Digitalização no contexto da Indústria 4.0',
-      description:
-          'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-      date: '25/05/2021',
-      time: '15:00',
-      maxParticipants: 20,
-      totalParticipants: 5,
+      totalParticipants: 1,
       activityType: ActivityEnum.CURSOS),
   Activity(
       name: 'Digitalização no contexto da Indústria 4.0',
