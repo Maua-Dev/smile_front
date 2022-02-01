@@ -32,7 +32,7 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                 constraints: BoxConstraints(
                   minHeight: MediaQuery.of(context).size.height * 0.52,
                 ),
-                width: MediaQuery.of(context).size.width * 0.52,
+                width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(color: Colors.white),

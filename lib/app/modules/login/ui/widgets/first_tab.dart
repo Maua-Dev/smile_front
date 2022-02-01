@@ -16,14 +16,16 @@ class FirstTab extends StatefulWidget {
 class _FirstTabState extends ModularState<FirstTab, LoginController> {
   @override
   Widget build(BuildContext context) {
+    var widthSize = MediaQuery.of(context).size.width;
+    var heightSize = MediaQuery.of(context).size.height;
     return ListView(
       children: [
         Center(
           child: Container(
               constraints: BoxConstraints(
-                minHeight: MediaQuery.of(context).size.height * 0.52,
+                minHeight: heightSize * 0.52,
               ),
-              width: MediaQuery.of(context).size.width * 0.52,
+              width: widthSize,
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.white),
@@ -59,7 +61,10 @@ class _FirstTabState extends ModularState<FirstTab, LoginController> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text('Esqueci minha senha'),
+                        const Text(
+                          'Esqueci minha senha',
+                          style: TextStyle(fontSize: 18),
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(right: 16),
                           child: ActionTextButtonWidget(
