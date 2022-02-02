@@ -43,7 +43,7 @@ double sizedBoxHeight(size, height) {
     return sizedBoxHeightByHeight(height, 24, 16, 18);
   }
   if (size < 1280 && size >= 1120) {
-    return sizedBoxHeightByHeight(height, 20, 17, 18);
+    return sizedBoxHeightByHeight(height, 20, 16.8, 18);
   }
   if (size < 1120 && size >= 960) {
     return sizedBoxHeightByHeight(height, 20, 14, 18);
@@ -95,7 +95,8 @@ double weekBoxHeight(size, height) {
     return 68;
   }
   if (size < 1280 && size >= 1120) {
-    if (height < 1080 && height >= 900) return 78;
+    if (height < 1080 && height >= 990) return 76;
+    if (height < 990 && height >= 900) return 74;
     return 70;
   }
   if (size < 1120 && size >= 960) {
@@ -129,8 +130,9 @@ double apresentationFontSize(size, height) {
     return 18;
   }
   if (size < 1280 && size >= 1120) {
-    if (height < 1080 && height >= 945) return 20;
-    if (height < 945 && height >= 855) return 19;
+    if (height < 1080 && height >= 945) return 21;
+    if (height < 945 && height >= 900) return 21;
+    if (height < 900 && height >= 855) return 19;
     if (height < 855 && height >= 810) return 19;
     if (height < 810 && height >= 720) return 18;
     return 17;
