@@ -12,45 +12,46 @@ class Home1Page extends StatefulWidget {
   _Home1PageState createState() => _Home1PageState();
 }
 
-double sizedBoxHeightByHeight(height, double sumValue, double lastResult) {
-  if (height >= 1080) return 24 + sumValue * 9.6;
-  if (height < 1080 && height >= 1035) return 24 + sumValue * 8.6;
-  if (height < 1035 && height >= 990) return 24 + sumValue * 7.6;
-  if (height < 990 && height >= 945) return 24 + sumValue * 6.8;
-  if (height < 945 && height >= 900) return 24 + sumValue * 5.8;
-  if (height < 900 && height >= 855) return 24 + sumValue * 5;
-  if (height < 855 && height >= 810) return 24 + sumValue * 4;
-  if (height < 810 && height >= 765) return 24 + sumValue * 3;
-  if (height < 765 && height >= 720) return 24 + sumValue * 2;
-  if (height < 720 && height >= 675) return 24 + sumValue * 1;
-  if (height < 675 && height >= 630) return 24 + sumValue * 0.25;
+double sizedBoxHeightByHeight(
+    height, double initialValue, double sumValue, double lastResult) {
+  if (height >= 1080) return 24 + sumValue * 6.5;
+  if (height < 1080 && height >= 1035) return initialValue + sumValue * 6;
+  if (height < 1035 && height >= 990) return initialValue + sumValue * 5.5;
+  if (height < 990 && height >= 945) return initialValue + sumValue * 4;
+  if (height < 945 && height >= 900) return initialValue + sumValue * 3.5;
+  if (height < 900 && height >= 855) return initialValue + sumValue * 3;
+  if (height < 855 && height >= 810) return initialValue + sumValue * 2.5;
+  if (height < 810 && height >= 765) return initialValue + sumValue * 2;
+  if (height < 765 && height >= 720) return initialValue + sumValue * 1.5;
+  if (height < 720 && height >= 675) return initialValue + sumValue * 1;
+  if (height < 675 && height >= 630) return initialValue + sumValue * 0.25;
   return lastResult;
 }
 
 //104 >950
 double sizedBoxHeight(size, height) {
   if (size < 1920 && size >= 1760) {
-    return sizedBoxHeightByHeight(height, 11, 18);
+    return sizedBoxHeightByHeight(height, 24, 11, 18);
   }
   if (size < 1760 && size >= 1600) {
-    return sizedBoxHeightByHeight(height, 16, 18);
+    return sizedBoxHeightByHeight(height, 24, 16, 18);
   }
   if (size < 1600 && size >= 1440) {
-    return sizedBoxHeightByHeight(height, 16, 18);
+    return sizedBoxHeightByHeight(height, 24, 16, 18);
   }
   if (size < 1440 && size >= 1280) {
-    return sizedBoxHeightByHeight(height, 16, 18);
+    return sizedBoxHeightByHeight(height, 24, 16, 18);
   }
   if (size < 1280 && size >= 1120) {
-    return sizedBoxHeightByHeight(height, 18, 18);
+    return sizedBoxHeightByHeight(height, 20, 17, 18);
   }
   if (size < 1120 && size >= 960) {
-    return sizedBoxHeightByHeight(height, 16, 18);
+    return sizedBoxHeightByHeight(height, 20, 14, 18);
   }
   return 54;
 }
 
-double fontSizeTitle(size) {
+double fontSizeTitle(size, height) {
   if (size < 1920 && size >= 1760) {
     return 52;
   }
@@ -64,15 +65,23 @@ double fontSizeTitle(size) {
     return 40;
   }
   if (size < 1280 && size >= 1120) {
+    if (height < 1080 && height >= 945) return 39;
+    if (height < 945 && height >= 855) return 38;
+    if (height < 855 && height >= 765) return 37;
+    if (height < 765 && height >= 720) return 36;
     return 35;
   }
   if (size < 1120 && size >= 960) {
-    return 32;
+    if (height < 1080 && height >= 1035) return 42;
+    if (height < 1035 && height >= 855) return 38;
+    if (height < 855 && height >= 720) return 36;
+    if (height < 720 && height >= 630) return 32;
+    return 30;
   }
   return 40;
 }
 
-double weekBoxHeight(size) {
+double weekBoxHeight(size, height) {
   if (size < 1920 && size >= 1760) {
     return 64;
   }
@@ -84,6 +93,14 @@ double weekBoxHeight(size) {
   }
   if (size < 1440 && size >= 1280) {
     return 68;
+  }
+  if (size < 1280 && size >= 1120) {
+    if (height < 1080 && height >= 900) return 78;
+    return 70;
+  }
+  if (size < 1120 && size >= 960) {
+    if (height < 1080 && height >= 900) return 78;
+    return 70;
   }
   return 70;
 }
@@ -101,7 +118,7 @@ double weekFontSize(size) {
   return 44;
 }
 
-double apresentationFontSize(size) {
+double apresentationFontSize(size, height) {
   if (size < 1920 && size >= 1760) {
     return 24;
   }
@@ -112,17 +129,32 @@ double apresentationFontSize(size) {
     return 18;
   }
   if (size < 1280 && size >= 1120) {
+    if (height < 1080 && height >= 945) return 20;
+    if (height < 945 && height >= 855) return 19;
+    if (height < 855 && height >= 810) return 19;
+    if (height < 810 && height >= 720) return 18;
     return 17;
   }
   if (size < 1120 && size >= 960) {
+    if (height < 1080 && height >= 990) return 22;
+    if (height < 990 && height >= 855) return 21;
+    if (height < 855 && height >= 765) return 19;
     return 17;
   }
   return 15;
 }
 
-double participateBoxHeight(size) {
+double participateBoxHeight(size, height) {
   if (size < 1600 && size >= 1280) {
     return 60;
+  }
+  if (size < 1280 && size >= 1120) {
+    if (height < 1080 && height >= 810) return 65;
+    return 50;
+  }
+  if (size < 1120 && size >= 960) {
+    if (height < 1080 && height >= 900) return 65;
+    return 50;
   }
   return 50;
 }
@@ -131,13 +163,16 @@ double signUpBoxWidth(size) {
   if (size < 1600 && size >= 1280) {
     return 250;
   }
-  if (size < 1280 && size >= 960) {
+  if (size < 1280 && size >= 1120) {
+    return 180;
+  }
+  if (size < 1120 && size >= 960) {
     return 150;
   }
   return 300;
 }
 
-double participateBoxFontSize(size) {
+double participateBoxFontSize(size, height) {
   if (size < 1920 && size >= 1760) {
     return 26;
   }
@@ -150,6 +185,9 @@ double participateBoxFontSize(size) {
   if (size < 1440 && size >= 1280) {
     return 18;
   }
+  if (size < 1280 && size >= 1120) {
+    return 16;
+  }
   return 14;
 }
 
@@ -158,13 +196,13 @@ class _Home1PageState extends State<Home1Page> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-
+    var realSize = size <= 1920 ? size : 1920;
     return Padding(
       padding: const EdgeInsets.only(left: 74),
       child: Row(
         children: [
           SizedBox(
-            width: size * 0.45,
+            width: realSize.toDouble() * 0.45,
             child: Column(
               children: [
                 Padding(
@@ -175,39 +213,39 @@ class _Home1PageState extends State<Home1Page> {
                           text: TextSpan(children: [
                         TextSpan(
                             text: 'Semana Mauá de ',
-                            style: AppTextStyles.titleH1
-                                .copyWith(fontSize: fontSizeTitle(size))),
+                            style: AppTextStyles.titleH1.copyWith(
+                                fontSize: fontSizeTitle(size, height))),
                         TextSpan(
                             text: 'Inovação',
                             style: AppTextStyles.titleH1.copyWith(
                                 color: AppColors.brandingOrange,
-                                fontSize: fontSizeTitle(size))),
+                                fontSize: fontSizeTitle(size, height))),
                         TextSpan(
                             text: ', ',
-                            style: AppTextStyles.titleH1
-                                .copyWith(fontSize: fontSizeTitle(size))),
+                            style: AppTextStyles.titleH1.copyWith(
+                                fontSize: fontSizeTitle(size, height))),
                         TextSpan(
                             text: 'Liderança ',
                             style: AppTextStyles.titleH1.copyWith(
                                 color: AppColors.brandingOrange,
-                                fontSize: fontSizeTitle(size))),
+                                fontSize: fontSizeTitle(size, height))),
                         TextSpan(
                             text: 'e ',
-                            style: AppTextStyles.titleH1
-                                .copyWith(fontSize: fontSizeTitle(size))),
+                            style: AppTextStyles.titleH1.copyWith(
+                                fontSize: fontSizeTitle(size, height))),
                         TextSpan(
                             text: 'Empreendedorismo',
                             style: AppTextStyles.titleH1.copyWith(
                                 color: AppColors.brandingOrange,
-                                fontSize: fontSizeTitle(size))),
+                                fontSize: fontSizeTitle(size, height))),
                       ])),
                       const SizedBox(
                         height: 32,
                       ),
                       Text(
                         apresentationText,
-                        style: AppTextStyles.body
-                            .copyWith(fontSize: apresentationFontSize(size)),
+                        style: AppTextStyles.body.copyWith(
+                            fontSize: apresentationFontSize(size, height)),
                         textAlign: TextAlign.justify,
                       ),
                     ],
@@ -224,7 +262,7 @@ class _Home1PageState extends State<Home1Page> {
                             vertical: 20, horizontal: 20),
                         child: BrandingTextButtonWidget(
                           fontSize: 70,
-                          boxHeight: weekBoxHeight(size),
+                          boxHeight: weekBoxHeight(size, height),
                           boxWidth: 634,
                           backgroundColor: AppColors.brandingBlue,
                         ),
@@ -232,7 +270,7 @@ class _Home1PageState extends State<Home1Page> {
                       BrandingTextButtonWidget(
                         title: '17 a 22 de Maio',
                         fontSize: weekFontSize(size),
-                        boxHeight: weekBoxHeight(size),
+                        boxHeight: weekBoxHeight(size, height),
                         boxWidth: 634,
                         backgroundColor: AppColors.brandingOrange,
                       )
@@ -247,7 +285,7 @@ class _Home1PageState extends State<Home1Page> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Container(
-                        height: participateBoxHeight(size),
+                        height: participateBoxHeight(size, height),
                         decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(15)),
@@ -261,14 +299,17 @@ class _Home1PageState extends State<Home1Page> {
                                 'PARTICIPE DAS ATIVIDADES',
                                 style: AppTextStyles.body.copyWith(
                                     color: AppColors.brandingOrange,
-                                    fontSize: participateBoxFontSize(size),
+                                    fontSize:
+                                        participateBoxFontSize(size, height),
                                     fontWeight: FontWeight.w300),
                               ),
                               BrandingTextButtonWidget(
                                 title: 'CADASTRE-SE',
-                                fontSize: participateBoxFontSize(size) + 5,
+                                fontSize:
+                                    participateBoxFontSize(size, height) + 5,
                                 backgroundColor: AppColors.brandingOrange,
-                                boxHeight: participateBoxHeight(size) - 15,
+                                boxHeight:
+                                    participateBoxHeight(size, height) - 15,
                                 boxWidth: signUpBoxWidth(size),
                               )
                             ],
