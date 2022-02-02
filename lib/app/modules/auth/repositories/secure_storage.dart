@@ -22,7 +22,17 @@ class SecureStorage implements ISecureStorage {
   }
 
   @override
-  Future<void> cleanToken() async {
+  Future<void> cleanSecureStorage() async {
     await storage.clear();
+  }
+
+  @override
+  Future<int?> getAccessLevel() async {
+    return await storage.get('accessLevel') as int?;
+  }
+
+  @override
+  Future<void> saveAccessLevel(int accessLevel) async {
+    await storage.put('accessLevel', accessLevel);
   }
 }
