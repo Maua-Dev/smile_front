@@ -37,10 +37,10 @@ double sizedBoxHeight(size, height) {
     return sizedBoxHeightByHeight(height, 24, 16, 18);
   }
   if (size < 1600 && size >= 1440) {
-    return sizedBoxHeightByHeight(height, 24, 16, 18);
+    return sizedBoxHeightByHeight(height, 20, 16, 18);
   }
   if (size < 1440 && size >= 1280) {
-    return sizedBoxHeightByHeight(height, 24, 16, 18);
+    return sizedBoxHeightByHeight(height, 20, 16, 18);
   }
   if (size < 1280 && size >= 1120) {
     return sizedBoxHeightByHeight(height, 20, 16.8, 18);
@@ -59,9 +59,15 @@ double fontSizeTitle(size, height) {
     return 50;
   }
   if (size < 1600 && size >= 1440) {
+    if (height < 1080 && height >= 990) return 48;
+    if (height < 990 && height >= 855) return 46;
     return 45;
   }
   if (size < 1440 && size >= 1280) {
+    if (height < 1080 && height >= 1025) return 48;
+    if (height < 1025 && height >= 945) return 45;
+    if (height < 945 && height >= 900) return 45;
+    if (height < 900 && height >= 810) return 40.5;
     return 40;
   }
   if (size < 1280 && size >= 1120) {
@@ -89,10 +95,11 @@ double weekBoxHeight(size, height) {
     return 64;
   }
   if (size < 1600 && size >= 1440) {
+    if (height < 1080 && height >= 945) return 78;
     return 68;
   }
   if (size < 1440 && size >= 1280) {
-    return 68;
+    return 72;
   }
   if (size < 1280 && size >= 1120) {
     if (height < 1080 && height >= 990) return 76;
@@ -126,7 +133,17 @@ double apresentationFontSize(size, height) {
   if (size < 1760 && size >= 1600) {
     return 21;
   }
-  if (size < 1600 && size >= 1280) {
+  if (size < 1600 && size >= 1440) {
+    if (height < 1080 && height >= 810) return 22;
+    if (height < 810 && height >= 720) return 22;
+    return 18;
+  }
+  if (size < 1440 && size >= 1280) {
+    if (height < 1080 && height >= 1035) return 23;
+    if (height < 1035 && height >= 810) return 22;
+    if (height < 810 && height >= 765) return 22;
+    if (height < 765 && height >= 720) return 22;
+    if (height < 720 && height >= 675) return 19;
     return 18;
   }
   if (size < 1280 && size >= 1120) {
