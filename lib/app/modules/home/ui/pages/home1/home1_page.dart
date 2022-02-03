@@ -34,7 +34,7 @@ double sizedBoxHeight(size, height) {
     return sizedBoxHeightByHeight(height, 24, 11, 18);
   }
   if (size < 1760 && size >= 1600) {
-    return sizedBoxHeightByHeight(height, 24, 16, 18);
+    return sizedBoxHeightByHeight(height, 20, 17, 18);
   }
   if (size < 1600 && size >= 1440) {
     return sizedBoxHeightByHeight(height, 20, 16, 18);
@@ -92,6 +92,7 @@ double weekBoxHeight(size, height) {
     return 64;
   }
   if (size < 1760 && size >= 1600) {
+    if (height < 1080 && height >= 900) return 76;
     return 64;
   }
   if (size < 1600 && size >= 1440) {
@@ -131,6 +132,8 @@ double apresentationFontSize(size, height) {
     return 24;
   }
   if (size < 1760 && size >= 1600) {
+    if (height < 1080 && height >= 810) return 26;
+    if (height < 810 && height >= 720) return 23;
     return 21;
   }
   if (size < 1600 && size >= 1440) {
@@ -164,6 +167,11 @@ double apresentationFontSize(size, height) {
 }
 
 double participateBoxHeight(size, height) {
+  if (size < 1920 && size >= 1600) {
+    if (height < 1080 && height >= 855) return 64;
+    if (height < 855 && height >= 720) return 58;
+    return 50;
+  }
   if (size < 1600 && size >= 1280) {
     return 60;
   }
