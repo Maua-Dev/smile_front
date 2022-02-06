@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/dashboard_module.dart';
 import 'package:smile_front/app/modules/logged-home/presenter/controllers/logged_home_controller.dart';
 import 'package:smile_front/app/modules/logged-home/ui/logged_adm_home_page.dart';
 import 'package:smile_front/app/modules/logged-home/ui/logged_user_home_page.dart';
@@ -19,7 +20,8 @@ class LoggedHomeModule extends Module {
         (i) => FutureActivityDatasourceImpl()),
     Bind.lazySingleton<FutureActivityRepository>(
         (i) => FutureActivityRepositoryImpl(datasource: i())),
-    Bind.lazySingleton<LoggedUserDatasource>((i) => LoggedUserDatasourceImpl()),
+    Bind.lazySingleton<LoggedUserDatasource>(
+        (i) => LoggedUserDatasourceImpl(i())),
     Bind.lazySingleton<LoggedUserRepository>(
         (i) => LoggedUserRepositoryImpl(datasource: i())),
     Bind.lazySingleton<LoggedHomeController>((i) => LoggedHomeController(
@@ -29,5 +31,6 @@ class LoggedHomeModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute('/user-home', child: (_, args) => const LoggedUserHomePage()),
     ChildRoute('/adm-home', child: (_, args) => const LoggedAdmHomePage()),
+    ModuleRoute('/filter-dashboard', module: DashboardModule())
   ];
 }
