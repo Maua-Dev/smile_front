@@ -5,18 +5,21 @@ class AuthController {
   final IAuthRepository repository;
   final ISecureStorage storage;
   bool _loggedIn = false;
+  int _accessLevel = 0;
 
   AuthController({required this.repository, required this.storage});
 
   bool get isLogged => _loggedIn;
+  int get accessLevel => _accessLevel;
 
   Future<void> loginWithEmail(
       String email, String password, bool persistence) async {
-    var token = await repository.loginWithEmail(email, password);
+    var loginResponse = await repository.loginWithEmail(email, password);
     if (persistence) {
-      await storage.saveToken(token);
+      await storage.saveToken(loginResponse['token']);
     }
     _loggedIn = true;
+    _accessLevel = loginResponse['accessLevel'];
   }
 
   Future<void> refreshToken() async {
@@ -29,13 +32,16 @@ class AuthController {
       token = await repository.refreshToken(token);
       await storage.saveToken(token);
       _loggedIn = true;
+
+      var accessLevel = await storage.getAccessLevel();
+      _accessLevel = accessLevel!;
     } catch (e) {
       _loggedIn = false;
     }
   }
 
   Future<void> logout() async {
-    await storage.cleanToken();
+    await storage.cleanSecureStorage();
     _loggedIn = false;
   }
 }

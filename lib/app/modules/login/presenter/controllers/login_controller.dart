@@ -40,7 +40,13 @@ abstract class _LoginController with Store {
     try {
       await authController.loginWithEmail(username, password, keepConected);
       if (authController.isLogged) {
-        Modular.to.navigate('/');
+        if (authController.accessLevel == 0) {
+          Modular.to.navigate('/adm-home');
+        } else if (authController.accessLevel == 1) {
+          Modular.to.navigate('/speaker-home');
+        } else {
+          Modular.to.navigate('/user-home');
+        }
       }
     } on Failure catch (e) {
       errors = e.message;
