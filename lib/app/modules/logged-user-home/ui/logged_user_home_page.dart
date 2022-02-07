@@ -66,14 +66,14 @@ class _LoggedHomePageState
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       NavigationButtonWidget(
-                        title: 'Atividades Inscritas',
+                        title: 'Todas as atividades',
                         icon: Icons.ac_unit_outlined,
                         onPressed: () {
-                          Modular.to.navigate('/home/logged/filter-dashboard');
+                          Modular.to.navigate('/user-home/filter-dashboard');
                         },
                       ),
                       const NavigationButtonWidget(
-                        title: 'Todas as atividades',
+                        title: 'Atividades Inscritas',
                         icon: Icons.ac_unit_outlined,
                       ),
                     ],

@@ -5,7 +5,6 @@ import 'package:smile_front/app/modules/home/presenter/controllers/home2_control
 import 'package:smile_front/app/modules/home/presenter/controllers/home4_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home_page.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/home3_controller.dart';
-// import 'package:smile_front/app/modules/logged-adm-home/ui/logged_adm_home_page.dart';
 import 'domain/repositories/lecture_images_repository.dart';
 import 'domain/repositories/rectors_repository.dart';
 import 'external/lecture_images_datasource_impl.dart';
@@ -34,6 +33,5 @@ class HomeModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute, child: (_, args) => const HomePage()),
-    // ModuleRoute('/logged', module: LoggedAdmHomePage())
   ];
 }
