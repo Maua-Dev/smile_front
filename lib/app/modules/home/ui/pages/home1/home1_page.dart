@@ -141,7 +141,7 @@ double apresentationFontSize(size, height) {
     if (height < 1080 && height >= 900) return 26;
     if (height < 900 && height >= 810) return 24.5;
     if (height < 810 && height >= 720) return 23;
-    return 21;
+    return 19;
   }
   if (size < 1760 && size >= 1600) {
     if (height < 1080 && height >= 810) return 26;
