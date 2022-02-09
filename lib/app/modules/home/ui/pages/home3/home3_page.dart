@@ -12,15 +12,25 @@ class Home3Page extends StatefulWidget {
   _Home3PageState createState() => _Home3PageState();
 }
 
-double imageSize(size) {
-  if (size >= 1600) {
+double imageSize(size, height) {
+  if (size <= 1920 && size >= 1760) {
+    if (height < 1080 && height >= 900) return 340;
+    if (height < 765 && height >= 720) return 260;
+    if (height < 720 && height >= 630) return 220;
+    return 300;
+  }
+  if (size < 1760 && size >= 1600) {
+    if (height < 765 && height >= 720) return 260;
+    if (height < 720 && height >= 630) return 220;
     return 280;
   }
   if (size < 1600 && size >= 1440) {
-    return 250;
+    if (height < 720 && height >= 630) return 220;
+    return 270;
   }
   if (size < 1440 && size >= 1280) {
-    return 225;
+    if (height < 675 && height >= 630) return 220;
+    return 250;
   }
   if (size < 1280 && size >= 1120) {
     return 205;
@@ -31,33 +41,79 @@ double imageSize(size) {
   return 160;
 }
 
-double titleFontSize(size) {
-  if (size >= 1600) {
+double titleFontSize(size, height) {
+  if (size <= 1920 && size >= 1760) {
+    if (height < 1080 && height >= 900) return 52;
+    return 44;
+  }
+  if (size < 1760 && size >= 1600) {
+    if (height < 1080 && height >= 900) return 52;
     return 44;
   }
   if (size < 1600 && size >= 1440) {
+    if (height < 1080 && height >= 900) return 46;
     return 40;
   }
   if (size < 1440 && size >= 1280) {
+    if (height < 1080 && height >= 900) return 42;
     return 36;
   }
-  if (size < 1280 && size >= 960) {
+  if (size < 1280 && size >= 1120) {
+    if (height < 1080 && height >= 990) return 36;
+    if (height < 990 && height >= 765) return 34;
+    return 30;
+  }
+  if (size < 1120 && size >= 960) {
+    if (height < 1080 && height >= 855) return 38;
     return 30;
   }
   return 30;
 }
 
-double textFontSize(size) {
-  if (size >= 1600) {
+double textFontSize(size, height) {
+  if (size <= 1920 && size >= 1760) {
+    if (height < 1080 && height >= 900) return 29;
+    if (height < 900 && height >= 810) return 26;
+    if (height < 810 && height >= 675) return 22;
+    return 20;
+  }
+  if (size < 1760 && size >= 1600) {
+    if (height < 1080 && height >= 900) return 29;
+    if (height < 900 && height >= 810) return 26;
+    if (height < 810 && height >= 675) return 22;
     return 20;
   }
   if (size < 1600 && size >= 1440) {
+    if (height < 1080 && height >= 990) return 27;
+    if (height < 990 && height >= 900) return 25;
+    if (height < 900 && height >= 810) return 24;
+    if (height < 810 && height >= 765) return 22;
+    if (height < 765 && height >= 675) return 20;
     return 18;
   }
   if (size < 1440 && size >= 1280) {
+    if (height < 1080 && height >= 990) return 27;
+    if (height < 990 && height >= 900) return 25;
+    if (height < 900 && height >= 810) return 24;
+    if (height < 810 && height >= 765) return 22;
+    if (height < 765 && height >= 675) return 20;
     return 16;
   }
-  if (size < 1280 && size >= 840) {
+  if (size < 1280 && size >= 1120) {
+    if (height < 1080 && height >= 900) return 25;
+    if (height < 900 && height >= 810) return 24;
+    if (height < 810 && height >= 765) return 23;
+    if (height < 765 && height >= 720) return 22;
+    if (height < 720 && height >= 675) return 20;
+    return 18;
+  }
+  if (size < 1120 && size >= 960) {
+    if (height < 1080 && height >= 990) return 22;
+    if (height < 990 && height >= 855) return 20;
+    if (height < 855 && height >= 675) return 18;
+    return 16;
+  }
+  if (size < 960 && size >= 840) {
     return 14;
   }
   return 12;
@@ -67,6 +123,7 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Observer(builder: (context) {
       if (controller.listRectors.isEmpty) {
         return Container(
@@ -95,14 +152,14 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 15, horizontal: 15),
                             child: Container(
-                              height: imageSize(size),
-                              width: imageSize(size),
+                              height: imageSize(size, height),
+                              width: imageSize(size, height),
                               color: AppColors.brandingBlue,
                             ),
                           ),
                           SizedBox(
-                              width: imageSize(size),
-                              height: imageSize(size),
+                              width: imageSize(size, height),
+                              height: imageSize(size, height),
                               child: Image.network(
                                   controller.listRectors[0].image))
                         ],
@@ -116,20 +173,21 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
                         children: [
                           Text(
                             controller.listRectors[0].name,
-                            style: AppTextStyles.titleH1
-                                .copyWith(fontSize: titleFontSize(size)),
+                            style: AppTextStyles.titleH1.copyWith(
+                                fontSize: titleFontSize(size, height)),
                           ),
                           Text(
                             controller.listRectors[0].role,
                             style: AppTextStyles.body.copyWith(
                                 fontWeight: FontWeight.bold,
-                                fontSize: titleFontSize(size) - 10),
+                                fontSize: titleFontSize(size, height) - 10),
                           ),
                           const SizedBox(
                             height: 20,
                           ),
                           Text(controller.listRectors[0].text,
-                              style: TextStyle(fontSize: textFontSize(size))),
+                              style: TextStyle(
+                                  fontSize: textFontSize(size, height))),
                         ],
                       ))
                 ],
@@ -153,7 +211,7 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
                         Text(
                           controller.listRectors[1].name,
                           style: AppTextStyles.titleH1
-                              .copyWith(fontSize: titleFontSize(size)),
+                              .copyWith(fontSize: titleFontSize(size, height)),
                         ),
                         Text(
                           controller.listRectors[1].role,
@@ -164,7 +222,8 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
                           height: 20,
                         ),
                         Text(controller.listRectors[1].text,
-                            style: TextStyle(fontSize: textFontSize(size)))
+                            style:
+                                TextStyle(fontSize: textFontSize(size, height)))
                       ],
                     ),
                   ),
@@ -180,14 +239,14 @@ class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 15, horizontal: 15),
                             child: Container(
-                              height: imageSize(size),
-                              width: imageSize(size),
+                              height: imageSize(size, height),
+                              width: imageSize(size, height),
                               color: AppColors.brandingBlue,
                             ),
                           ),
                           SizedBox(
-                            width: imageSize(size),
-                            height: imageSize(size),
+                            width: imageSize(size, height),
+                            height: imageSize(size, height),
                             child:
                                 Image.network(controller.listRectors[1].image),
                           )
