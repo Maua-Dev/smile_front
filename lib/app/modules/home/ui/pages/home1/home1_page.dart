@@ -30,7 +30,7 @@ double sizedBoxHeightByHeight(
 
 //104 >950
 double sizedBoxHeight(size, height) {
-  if (size < 1920 && size >= 1760) {
+  if (size <= 1920 && size >= 1760) {
     return sizedBoxHeightByHeight(height, 20, 17, 18);
   }
   if (size < 1760 && size >= 1600) {
@@ -52,7 +52,7 @@ double sizedBoxHeight(size, height) {
 }
 
 double fontSizeTitle(size, height) {
-  if (size < 1920 && size >= 1760) {
+  if (size <= 1920 && size >= 1760) {
     if (height < 1080 && height >= 990) return 54;
     if (height < 990 && height >= 855) return 54;
     return 52;
@@ -90,7 +90,7 @@ double fontSizeTitle(size, height) {
 }
 
 double weekBoxHeight(size, height) {
-  if (size < 1920 && size >= 1760) {
+  if (size <= 1920 && size >= 1760) {
     if (height < 1080 && height >= 855) return 80;
     return 70;
   }
@@ -118,7 +118,7 @@ double weekBoxHeight(size, height) {
 }
 
 double weekFontSize(size) {
-  if (size < 1920 && size >= 1760) {
+  if (size <= 1920 && size >= 1760) {
     return 62;
   }
   if (size < 1760 && size >= 1600) {
@@ -137,7 +137,7 @@ double weekFontSize(size) {
 }
 
 double apresentationFontSize(size, height) {
-  if (size < 1920 && size >= 1760) {
+  if (size <= 1920 && size >= 1760) {
     if (height < 1080 && height >= 900) return 26;
     if (height < 900 && height >= 810) return 24.5;
     if (height < 810 && height >= 720) return 23;
@@ -179,7 +179,7 @@ double apresentationFontSize(size, height) {
 }
 
 double participateBoxHeight(size, height) {
-  if (size < 1920 && size >= 1600) {
+  if (size <= 1920 && size >= 1600) {
     if (height < 1080 && height >= 855) return 64;
     if (height < 855 && height >= 720) return 58;
     return 50;
@@ -212,7 +212,7 @@ double signUpBoxWidth(size) {
 }
 
 double participateBoxFontSize(size, height) {
-  if (size < 1920 && size >= 1760) {
+  if (size <= 1920 && size >= 1760) {
     return 26;
   }
   if (size < 1760 && size >= 1600) {
