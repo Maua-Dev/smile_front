@@ -15,7 +15,7 @@ class MainSpeakersCard extends StatelessWidget {
   }) : super(key: key);
 
   double cardTitleFontSize(size, height) {
-    if (size < 1920 && size >= 1760) {
+    if (size <= 1920 && size >= 1760) {
       if (height < 1080 && height >= 810) return 88;
       if (height < 810 && height >= 720) return 78;
       return 68;
@@ -49,7 +49,7 @@ class MainSpeakersCard extends StatelessWidget {
   }
 
   double cardTextFontSize(size, height) {
-    if (size < 1920 && size >= 1760) {
+    if (size <= 1920 && size >= 1760) {
       if (height < 1080 && height >= 990) return 31;
       if (height < 990 && height >= 900) return 29;
       if (height < 900 && height >= 810) return 27;
@@ -94,7 +94,7 @@ class MainSpeakersCard extends StatelessWidget {
   }
 
   double circleImageSize(size) {
-    if (size < 1920 && size >= 1280) {
+    if (size <= 1920 && size >= 1280) {
       return 330;
     }
     if (size < 1280 && size >= 840) {
