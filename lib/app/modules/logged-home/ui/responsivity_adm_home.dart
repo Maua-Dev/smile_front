@@ -1,10 +1,10 @@
 // Main Navigation Button
 double mainNavigationWidth(size) {
-  if (size >= 1800) {
-    return 460;
+  if (size < 1920 && size >= 1760) {
+    return 540;
   }
-  if (size < 1800 && size >= 1600) {
-    return 460;
+  if (size < 1760 && size >= 1600) {
+    return 500;
   }
   if (size < 1600 && size >= 1440) {
     return 460;
@@ -41,11 +41,11 @@ double mainNavigationHeight(size) {
 }
 
 double mainNavigationActivitySize(size) {
-  if (size >= 1800) {
-    return 35;
+  if (size < 1920 && size >= 1760) {
+    return 30;
   }
-  if (size < 1800 && size >= 1600) {
-    return 35;
+  if (size < 1760 && size >= 1600) {
+    return 30;
   }
   if (size < 1600 && size >= 1440) {
     return 30;
@@ -60,11 +60,11 @@ double mainNavigationActivitySize(size) {
 }
 
 double mainNavigationIconSize(size) {
-  if (size >= 1800) {
-    return 35;
+  if (size < 1920 && size >= 1760) {
+    return 22;
   }
-  if (size < 1800 && size >= 1600) {
-    return 35;
+  if (size < 1760 && size >= 1600) {
+    return 22;
   }
   if (size < 1600 && size >= 1440) {
     return 22;
@@ -79,10 +79,10 @@ double mainNavigationIconSize(size) {
 }
 
 double mainNavigationTitleSize(size) {
-  if (size >= 1800) {
+  if (size < 1920 && size >= 1760) {
     return 35;
   }
-  if (size < 1800 && size >= 1600) {
+  if (size < 1760 && size >= 1600) {
     return 35;
   }
   if (size < 1600 && size >= 1440) {
@@ -98,11 +98,11 @@ double mainNavigationTitleSize(size) {
 }
 
 double mainNavigationCopyButtonSize(size) {
-  if (size >= 1800) {
-    return 35;
+  if (size < 1920 && size >= 1760) {
+    return 22;
   }
-  if (size < 1800 && size >= 1600) {
-    return 35;
+  if (size < 1760 && size >= 1600) {
+    return 22;
   }
   if (size < 1600 && size >= 1440) {
     return 22;
@@ -122,11 +122,11 @@ double secundaryNavigationHeight(size) {
 }
 
 double secundaryNavigationWidth(size) {
-  if (size >= 1800) {
-    return 300;
+  if (size < 1920 && size >= 1760) {
+    return 320;
   }
-  if (size < 1800 && size >= 1600) {
-    return 350;
+  if (size < 1760 && size >= 1600) {
+    return 280;
   }
   if (size < 1600 && size >= 1440) {
     return 240;
@@ -144,11 +144,11 @@ double secundaryNavigationWidth(size) {
 }
 
 double secundaryNavigationFontSize(size) {
-  if (size >= 1800) {
-    return 30;
+  if (size < 1920 && size >= 1760) {
+    return 24;
   }
-  if (size < 1800 && size >= 1600) {
-    return 35;
+  if (size < 1760 && size >= 1600) {
+    return 24;
   }
   if (size < 1600 && size >= 1440) {
     return 24;
@@ -189,11 +189,11 @@ double timerNavigationHeight(size) {
 }
 
 double timerNavigationTimeSize(size) {
-  if (size >= 1800) {
-    return 30;
+  if (size < 1920 && size >= 1760) {
+    return 65;
   }
-  if (size < 1800 && size >= 1600) {
-    return 35;
+  if (size < 1760 && size >= 1600) {
+    return 65;
   }
   if (size < 1600 && size >= 1440) {
     return 65;
@@ -208,11 +208,11 @@ double timerNavigationTimeSize(size) {
 }
 
 double timerNavigationTextSize(size, userType) {
-  if (size >= 1800) {
-    return 30;
+  if (size < 1920 && size >= 1760) {
+    return 24;
   }
-  if (size < 1800 && size >= 1600) {
-    return 35;
+  if (size < 1760 && size >= 1600) {
+    return 24;
   }
   if (size < 1600 && size >= 1440) {
     return 24;
@@ -236,11 +236,11 @@ double timerNavigationTextSize(size, userType) {
 
 //Sponsorship Navigation
 double sponsorNavigationHeight(size) {
-  if (size >= 1800) {
-    return 55;
+  if (size < 1920 && size >= 1760) {
+    return 40;
   }
-  if (size < 1800 && size >= 1600) {
-    return 50;
+  if (size < 1760 && size >= 1600) {
+    return 40;
   }
   if (size < 1600 && size >= 1440) {
     return 40;
