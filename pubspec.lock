@@ -377,7 +377,7 @@ packages:
       name: js
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.4"
+    version: "0.6.3"
   json_annotation:
     dependency: transitive
     description:
@@ -454,7 +454,7 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.1"
+    version: "1.8.0"
   path_provider:
     dependency: transitive
     description:
@@ -620,15 +620,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    version: "0.4.8"
-=======
     version: "0.4.2"
->>>>>>> Stashed changes
-=======
-    version: "0.4.9"
->>>>>>> aa086c1eb3acb6f42e6390acaae8c9b97dbb561c
   timing:
     dependency: transitive
     description:
@@ -693,5 +685,5 @@ packages:
     source: hosted
     version: "3.1.0"
 sdks:
-  dart: ">=2.16.0-100.0.dev <3.0.0"
+  dart: ">=2.14.0 <3.0.0"
   flutter: ">=2.5.0"
