@@ -63,7 +63,7 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                           InputBox(
                             validation: controller.validateName,
                             heightSize: 50,
-                            widthSize: 190,
+                            widthSize: 210,
                             icon: Icons.person,
                             placeholder: 'CPF',
                             setValue: controller.setCpf,
@@ -74,7 +74,7 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                           InputBox(
                             validation: controller.validateEmail,
                             heightSize: 50,
-                            widthSize: 390,
+                            widthSize: 370,
                             icon: Icons.mail,
                             placeholder: 'Email',
                             setValue: controller.setEmail,
