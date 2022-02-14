@@ -80,7 +80,6 @@ class _LoggedHomePageState
                   ),
                   TimerNavigationButtonWidget(
                     time: controller.formatTime,
-                    userType: 'user',
                   ),
                 ],
               ),
