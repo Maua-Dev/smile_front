@@ -1,3 +1,9 @@
-import 'package:smile_front/app/modules/logged-adm-home/domain/entities/logged_user.dart';
+import 'package:smile_front/app/shared/entities/user.dart';
 
-var loggedUserMock = LoggedUser(name: 'Yago');
+var loggedUserMock = User(
+    socialName: 'Yago',
+    accessLevel: '',
+    cpfRne: '',
+    email: '',
+    typeRole: '',
+    registration: '');

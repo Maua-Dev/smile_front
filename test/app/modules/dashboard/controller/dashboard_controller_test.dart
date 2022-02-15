@@ -20,14 +20,14 @@ void main() {
         name: '',
         description: '',
         date: DateTime.now(),
-        activityType: ActivityEnum.CURSOS,
+        type: ActivityEnum.CURSOS,
         createdAt: '',
         updateAt: '',
         workload: 0)
   ];
 
   setUpAll(() {
-    when(repository.getActivities(ActivityEnum.CURSOS))
+    when(repository.getActivitiesSelectedByType(ActivityEnum.CURSOS))
         .thenAnswer((_) async => mockActivities);
     controller = DashboardController(
         activityType: ActivityEnum.CURSOS, repository: repository);

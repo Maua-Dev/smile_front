@@ -7,6 +7,6 @@ void main() {
   test('teste', () async {
     final ds = LoggedUserDatasourceImpl(DioForNative(smileOption));
     final res = await ds.getLoggedUser();
-    expect(res.name, "r10");
+    expect(res.socialName, "r10");
   });
 }

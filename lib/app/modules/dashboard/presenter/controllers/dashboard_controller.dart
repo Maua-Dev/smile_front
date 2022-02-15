@@ -23,7 +23,7 @@ abstract class _DashboardControllerBase with Store {
 
   @action
   Future getActivities() async {
-    activitiesList = await repository.getActivities(activityType);
+    activitiesList = await repository.getActivitiesSelectedByType(activityType);
   }
 
   @action

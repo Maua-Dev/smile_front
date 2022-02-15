@@ -9,8 +9,15 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   ActivitiesRepositoryImpl({required this.datasource});
 
   @override
-  Future<List<ActivityModel>> getActivities(ActivityEnum activityEnum) {
-    final result = datasource.getActivities();
-    return Future.value(result);
+  Future<List<ActivityModel>> getActivitiesSelectedByType(
+      ActivityEnum activityEnum) async {
+    final result = await datasource.getActivities();
+    var list = <ActivityModel>[];
+    for (var i = 0; i < result.length; i++) {
+      if (result[i].type == activityEnum) {
+        list.add(result[i]);
+      }
+    }
+    return Future.value(list);
   }
 }

@@ -32,9 +32,10 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
   }
 
   @override
-  _i3.Future<List<_i4.ActivityModel>> getActivities(
+  _i3.Future<List<_i4.ActivityModel>> getActivitiesSelectedByType(
           _i5.ActivityEnum? activityEnum) =>
-      (super.noSuchMethod(Invocation.method(#getActivities, [activityEnum]),
+      (super.noSuchMethod(
+              Invocation.method(#getActivitiesSelectedByType, [activityEnum]),
               returnValue:
                   Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]))
           as _i3.Future<List<_i4.ActivityModel>>);

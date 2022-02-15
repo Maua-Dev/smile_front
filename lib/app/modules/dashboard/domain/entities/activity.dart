@@ -1,5 +1,4 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/logged-adm-home/domain/entities/logged_user.dart';
 
 class Activity {
   final String id;
@@ -9,9 +8,10 @@ class Activity {
   final String? location;
   final String name;
   final DateTime date;
-  final ActivityEnum activityType;
-  final List<LoggedUser> enrolledUsers;
-  final List<LoggedUser>? queue;
+  final ActivityEnum type;
+  //não é dynamic: UserModel, porém o back não implementou ainda
+  final List<dynamic> enrolledUsers;
+  final List<dynamic>? queue;
   final String createdAt;
   final String updateAt;
   final int workload;
@@ -29,5 +29,5 @@ class Activity {
       required this.name,
       required this.description,
       required this.date,
-      required this.activityType});
+      required this.type});
 }

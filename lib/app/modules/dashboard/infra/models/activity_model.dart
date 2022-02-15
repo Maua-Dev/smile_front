@@ -2,7 +2,6 @@
 
 import 'package:smile_front/app/modules/dashboard/domain/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/logged-adm-home/domain/entities/logged_user.dart';
 
 // ignore: duplicate_ignore
 class ActivityModel extends Activity {
@@ -13,9 +12,9 @@ class ActivityModel extends Activity {
   final String? location;
   final String name;
   final DateTime date;
-  final ActivityEnum activityType;
-  final List<LoggedUser> enrolledUsers;
-  final List<LoggedUser>? queue;
+  final ActivityEnum type;
+  final List<dynamic> enrolledUsers;
+  final List<dynamic>? queue;
   final String createdAt;
   final String updateAt;
   final int workload;
@@ -30,7 +29,7 @@ class ActivityModel extends Activity {
     required this.name,
     required this.description,
     required this.date,
-    required this.activityType,
+    required this.type,
     required this.createdAt,
     required this.updateAt,
     required this.workload,
@@ -44,7 +43,7 @@ class ActivityModel extends Activity {
           location: location,
           queue: queue,
           totalPlaces: totalPlaces,
-          activityType: activityType,
+          type: type,
           date: date,
           name: name,
           description: description,
@@ -64,11 +63,17 @@ class ActivityModel extends Activity {
       queue: map['queue'],
       link: map['link'],
       enrolledUsers: map['enrolledUsers'],
-      activityType: map['activityType'],
+      type: stringToEnumMap(map['type']),
     );
   }
 
   static List<ActivityModel> fromMaps(List array) {
     return array.map((e) => ActivityModel.fromMap(e)).toList();
+  }
+
+  static ActivityEnum stringToEnumMap(String toMap) {
+    ActivityEnum type = ActivityEnum.values
+        .firstWhere((e) => e.toString().toLowerCase() == toMap.toLowerCase());
+    return type;
   }
 }

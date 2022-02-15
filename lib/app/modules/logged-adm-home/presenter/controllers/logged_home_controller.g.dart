@@ -27,13 +27,13 @@ mixin _$LoggedHomeController on _LoggedHomeControllerBase, Store {
   final _$userAtom = Atom(name: '_LoggedHomeControllerBase.user');
 
   @override
-  LoggedUser get user {
+  User get user {
     _$userAtom.reportRead();
     return super.user;
   }
 
   @override
-  set user(LoggedUser value) {
+  set user(User value) {
     _$userAtom.reportWrite(value, super.user, () {
       super.user = value;
     });

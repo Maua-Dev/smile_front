@@ -27,7 +27,7 @@ class _LoggedAdmHomePageState
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Observer(builder: (_) {
             return MainNavigationButtonWidget(
-              userName: controller.user.name,
+              userName: controller.user.socialName,
               activityName: controller.activity.activityName,
               activityDate: controller.activity.activityDate,
               activityTime: controller.activity.activityTime,
