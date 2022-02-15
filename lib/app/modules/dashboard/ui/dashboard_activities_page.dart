@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widget.dart';
 import 'package:smile_front/app/shared/widgets/dashboard-appbar/dashboard_appbar_widget.dart';
@@ -81,24 +82,32 @@ class _DashboardActivitiesPageState
                     const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
                 child: Observer(builder: (_) {
                   return GridView.builder(
-                    itemCount: controller.activitiesList.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 5,
-                            mainAxisSpacing: 16,
-                            crossAxisSpacing: 8,
-                            childAspectRatio: 1.7),
-                    itemBuilder: (context, index) => ActivityCardWidget(
-                      name: controller.activitiesList[index].name,
-                      date: controller.activitiesList[index].date,
-                      description: controller.activitiesList[index].description,
-                      maxParticipants:
-                          controller.activitiesList[index].maxParticipants,
-                      totalParticipants:
-                          controller.activitiesList[index].totalParticipants,
-                      time: controller.activitiesList[index].time,
-                    ),
-                  );
+                      itemCount: controller.activitiesList.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 5,
+                              mainAxisSpacing: 16,
+                              crossAxisSpacing: 8,
+                              childAspectRatio: 1.7),
+                      itemBuilder: (context, index) {
+                        String date = DateFormat('dd/MM/yyyy')
+                            .format(controller.activitiesList[index].date);
+                        String time = DateFormat('hh:mm')
+                            .format(controller.activitiesList[index].date);
+                        return ActivityCardWidget(
+                          name: controller.activitiesList[index].name,
+                          date: date,
+                          description:
+                              controller.activitiesList[index].description,
+                          maxParticipants: controller
+                              .activitiesList[index].totalPlaces
+                              .toString(),
+                          totalParticipants: controller
+                              .activitiesList[index].enrolledUsers.length
+                              .toString(),
+                          time: time,
+                        );
+                      });
                 }),
               ),
             ),

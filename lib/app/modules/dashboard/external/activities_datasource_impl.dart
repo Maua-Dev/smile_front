@@ -8,9 +8,19 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   ActivitiesDatasourceImpl(this.dioClient);
 
   @override
-  Future<ActivityModel> getActivities() async {
-    final res = await dioClient.get('/lecture');
-
-    return ActivityModel.fromJson(res.data);
+  Future<List<ActivityModel>> getActivities() async {
+    try {
+      final res = await dioClient.get('/activity/getAll');
+      if (res.statusCode == 200) {
+        return ActivityModel.fromMaps(res.data);
+      }
+      throw Exception();
+    } on Exception catch (e) {
+      //Necessário um tratamento de erro visual para cada erro.
+      // ignore: avoid_print
+      print('Não foi possível se conectar com o Microsserviço, erro: ' +
+          e.toString());
+      rethrow;
+    }
   }
 }

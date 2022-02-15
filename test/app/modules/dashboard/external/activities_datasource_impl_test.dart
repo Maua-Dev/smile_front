@@ -4,9 +4,9 @@ import 'package:smile_front/app/modules/dashboard/external/activities_datasource
 import 'package:smile_front/app/shared/services/dio/smile_options.dart';
 
 void main() {
-  test('Teste', () async {
+  test('getActivities', () async {
     final ds = ActivitiesDatasourceImpl(DioForNative(smileOption));
     final res = await ds.getActivities();
-    print(res.name);
+    expect(res.isNotEmpty, true);
   });
 }
