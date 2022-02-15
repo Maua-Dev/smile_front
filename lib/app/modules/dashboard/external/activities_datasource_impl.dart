@@ -1,18 +1,16 @@
-import 'package:smile_front/app/modules/dashboard/domain/entities/activity.dart';
-import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:dio/dio.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
-import 'package:smile_front/app/modules/dashboard/utils/mocks/activities_mock.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/activity_model.dart';
 
 class ActivitiesDatasourceImpl extends ActivitiesDatasource {
+  final Dio dioClient;
+
+  ActivitiesDatasourceImpl(this.dioClient);
+
   @override
-  Future<List<Activity>> getActivities(ActivityEnum activityEnum) {
-    List<Activity> listActivities = [];
-    for (int i = 0; i < mockActivities.length; i++) {
-      if (mockActivities[i].activityType == activityEnum) {
-        listActivities.add(mockActivities[i]);
-      }
-    }
-    return Future.value(listActivities);
-    // aplicação do DIO
+  Future<ActivityModel> getActivities() async {
+    final res = await dioClient.get('/lecture');
+
+    return ActivityModel.fromJson(res.data);
   }
 }

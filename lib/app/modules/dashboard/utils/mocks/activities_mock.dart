@@ -1,8 +1,8 @@
-import 'package:smile_front/app/modules/dashboard/domain/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/activity_model.dart';
 
 final mockActivities = [
-  Activity(
+  ActivityModel(
       name: 'ABCDigitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -11,7 +11,7 @@ final mockActivities = [
       maxParticipants: 20,
       totalParticipants: 5,
       activityType: ActivityEnum.CURSOS),
-  Activity(
+  ActivityModel(
       name: 'ABDigitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -20,7 +20,7 @@ final mockActivities = [
       maxParticipants: 20,
       totalParticipants: 5,
       activityType: ActivityEnum.ACADEMIA_DE_PROFESSORES),
-  Activity(
+  ActivityModel(
       name: '123Digitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -29,7 +29,7 @@ final mockActivities = [
       maxParticipants: 30,
       totalParticipants: 1,
       activityType: ActivityEnum.PALESTRAS),
-  Activity(
+  ActivityModel(
       name: '1234Digitalização no contexto da Indústria 4.0',
       description:
           'sCompetitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -38,7 +38,7 @@ final mockActivities = [
       maxParticipants: 20,
       totalParticipants: 5,
       activityType: ActivityEnum.CURSOS),
-  Activity(
+  ActivityModel(
     name: 'Digitalização no contexto da Indústria 4.0',
     description:
         'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -48,7 +48,7 @@ final mockActivities = [
     totalParticipants: 10,
     activityType: ActivityEnum.PALESTRAS,
   ),
-  Activity(
+  ActivityModel(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -57,7 +57,7 @@ final mockActivities = [
       maxParticipants: 20,
       totalParticipants: 5,
       activityType: ActivityEnum.CURSOS),
-  Activity(
+  ActivityModel(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -66,7 +66,7 @@ final mockActivities = [
       maxParticipants: 20,
       totalParticipants: 2,
       activityType: ActivityEnum.CURSOS),
-  Activity(
+  ActivityModel(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -75,7 +75,7 @@ final mockActivities = [
       maxParticipants: 20,
       totalParticipants: 3,
       activityType: ActivityEnum.CURSOS),
-  Activity(
+  ActivityModel(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -84,7 +84,7 @@ final mockActivities = [
       maxParticipants: 20,
       totalParticipants: 5,
       activityType: ActivityEnum.CURSOS),
-  Activity(
+  ActivityModel(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -93,7 +93,7 @@ final mockActivities = [
       maxParticipants: 20,
       totalParticipants: 1,
       activityType: ActivityEnum.CURSOS),
-  Activity(
+  ActivityModel(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -102,7 +102,7 @@ final mockActivities = [
       maxParticipants: 20,
       totalParticipants: 5,
       activityType: ActivityEnum.CURSOS),
-  Activity(
+  ActivityModel(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
@@ -111,7 +111,7 @@ final mockActivities = [
       maxParticipants: 20,
       totalParticipants: 5,
       activityType: ActivityEnum.CURSOS),
-  Activity(
+  ActivityModel(
       name: 'Digitalização no contexto da Indústria 4.0',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',

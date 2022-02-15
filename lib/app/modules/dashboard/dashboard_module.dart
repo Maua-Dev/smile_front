@@ -12,7 +12,8 @@ import 'infra/repository/activities_repository_impl.dart';
 class DashboardModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton<ActivitiesDatasource>((i) => ActivitiesDatasourceImpl()),
+    Bind.lazySingleton<ActivitiesDatasource>(
+        (i) => ActivitiesDatasourceImpl(i())),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<DashboardController>(
