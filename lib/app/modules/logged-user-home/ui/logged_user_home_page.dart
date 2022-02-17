@@ -9,9 +9,11 @@ import 'package:smile_front/app/modules/logged-user-home/ui/widgets/main_navigat
 import 'package:smile_front/app/modules/logged-user-home/ui/widgets/navigation_button_widget.dart';
 import 'package:smile_front/app/modules/logged-user-home/ui/widgets/sponsorship_navigation_button.dart';
 import 'package:smile_front/app/modules/logged-user-home/ui/widgets/timer_navigation_button_widget.dart';
+import 'package:smile_front/app/shared/models/user_model.dart';
 
 class LoggedUserHomePage extends StatefulWidget {
-  const LoggedUserHomePage({Key? key}) : super(key: key);
+  final UserModel user;
+  const LoggedUserHomePage({Key? key, required this.user}) : super(key: key);
 
   @override
   _LoggedHomePageState createState() => _LoggedHomePageState();
@@ -51,7 +53,7 @@ class _LoggedHomePageState
             children: [
               Observer(builder: (_) {
                 return MainNavigationButtonWidget(
-                  userName: controller.user.socialName,
+                  userName: widget.user.socialName,
                   activityName: controller.activity.activityName,
                   activityDate: controller.activity.activityDate,
                   activityTime: controller.activity.activityTime,

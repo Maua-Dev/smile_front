@@ -24,21 +24,6 @@ mixin _$LoggedHomeController on _LoggedHomeControllerBase, Store {
     });
   }
 
-  final _$userAtom = Atom(name: '_LoggedHomeControllerBase.user');
-
-  @override
-  User get user {
-    _$userAtom.reportRead();
-    return super.user;
-  }
-
-  @override
-  set user(User value) {
-    _$userAtom.reportWrite(value, super.user, () {
-      super.user = value;
-    });
-  }
-
   final _$activityAtom = Atom(name: '_LoggedHomeControllerBase.activity');
 
   @override
@@ -54,11 +39,19 @@ mixin _$LoggedHomeController on _LoggedHomeControllerBase, Store {
     });
   }
 
-  final _$getTimeAsyncAction = AsyncAction('_LoggedHomeControllerBase.getTime');
+  final _$userAtom = Atom(name: '_LoggedHomeControllerBase.user');
 
   @override
-  Future<dynamic> getTime() {
-    return _$getTimeAsyncAction.run(() => super.getTime());
+  User get user {
+    _$userAtom.reportRead();
+    return super.user;
+  }
+
+  @override
+  set user(User value) {
+    _$userAtom.reportWrite(value, super.user, () {
+      super.user = value;
+    });
   }
 
   final _$getUserAsyncAction = AsyncAction('_LoggedHomeControllerBase.getUser');
@@ -68,12 +61,27 @@ mixin _$LoggedHomeController on _LoggedHomeControllerBase, Store {
     return _$getUserAsyncAction.run(() => super.getUser());
   }
 
+  final _$getActivityAsyncAction =
+      AsyncAction('_LoggedHomeControllerBase.getActivity');
+
+  @override
+  Future<dynamic> getActivity() {
+    return _$getActivityAsyncAction.run(() => super.getActivity());
+  }
+
+  final _$getTimeAsyncAction = AsyncAction('_LoggedHomeControllerBase.getTime');
+
+  @override
+  Future<dynamic> getTime() {
+    return _$getTimeAsyncAction.run(() => super.getTime());
+  }
+
   @override
   String toString() {
     return '''
 formatTime: ${formatTime},
-user: ${user},
-activity: ${activity}
+activity: ${activity},
+user: ${user}
     ''';
   }
 }

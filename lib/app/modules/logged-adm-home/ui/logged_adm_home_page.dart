@@ -8,8 +8,11 @@ import 'package:smile_front/app/modules/logged-adm-home/ui/widgets/navigation_bu
 import 'package:smile_front/app/modules/logged-adm-home/ui/widgets/sponsorship_navigation_button.dart';
 import 'package:smile_front/app/modules/logged-adm-home/ui/widgets/timer_navigation_button_widget.dart';
 
+import '../../../shared/models/user_model.dart';
+
 class LoggedAdmHomePage extends StatefulWidget {
-  const LoggedAdmHomePage({Key? key}) : super(key: key);
+  final UserModel user;
+  const LoggedAdmHomePage({Key? key, required this.user}) : super(key: key);
 
   @override
   _LoggedAdmHomePageState createState() => _LoggedAdmHomePageState();
@@ -27,7 +30,7 @@ class _LoggedAdmHomePageState
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Observer(builder: (_) {
             return MainNavigationButtonWidget(
-              userName: controller.user.socialName,
+              userName: widget.user.socialName,
               activityName: controller.activity.activityName,
               activityDate: controller.activity.activityDate,
               activityTime: controller.activity.activityTime,
