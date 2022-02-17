@@ -10,7 +10,8 @@ enum ActivityEnum {
   FEIRA_ESTAGIOS,
   CAFE_EX_ALUNOS,
   ACADEMIA_DE_PROFESSORES,
-  ATIVIDADE_CULTURAL
+  ATIVIDADE_CULTURAL,
+  WORKSHOP
 }
 
 extension ActivityEnumExtension on ActivityEnum {
@@ -36,6 +37,8 @@ extension ActivityEnumExtension on ActivityEnum {
         return 'Academia de Professores';
       case ActivityEnum.ATIVIDADE_CULTURAL:
         return 'Atividade Cultural';
+      case ActivityEnum.WORKSHOP:
+        return 'Workshop';
     }
   }
 }

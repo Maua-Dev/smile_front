@@ -72,8 +72,9 @@ class ActivityModel extends Activity {
   }
 
   static ActivityEnum stringToEnumMap(String toMap) {
+    toMap = toMap.toLowerCase();
     ActivityEnum type = ActivityEnum.values
-        .firstWhere((e) => e.toString().toLowerCase() == toMap.toLowerCase());
+        .firstWhere((element) => toMap == element.name.toLowerCase());
     return type;
   }
 }

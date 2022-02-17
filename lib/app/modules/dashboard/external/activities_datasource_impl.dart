@@ -10,7 +10,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   @override
   Future<List<ActivityModel>> getActivities() async {
     try {
-      final res = await dioClient.get('/activity/getAll');
+      final res = await dioClient.get('/smile_mss_activities/activity/getAll');
       if (res.statusCode == 200) {
         return ActivityModel.fromMaps(res.data);
       }
