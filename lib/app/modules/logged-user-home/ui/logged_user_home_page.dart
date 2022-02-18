@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/logged-user-home/presenter/controllers/logged_home_controller.dart';
 import 'package:smile_front/app/modules/logged-user-home/ui/widgets/appbar_logo_widget.dart';
 import 'package:smile_front/app/modules/logged-user-home/ui/widgets/main_navigation_button_widget.dart';
@@ -52,12 +53,17 @@ class _LoggedHomePageState
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Observer(builder: (_) {
+                String date =
+                    DateFormat('dd/MM/yyyy').format(controller.activity.date);
+                String time =
+                    DateFormat('hh:mm').format(controller.activity.date);
                 return MainNavigationButtonWidget(
                   userName: widget.user.socialName,
-                  activityName: controller.activity.activityName,
-                  activityDate: controller.activity.activityDate,
-                  activityTime: controller.activity.activityTime,
-                  activityRemainTime: controller.activity.activityRemainTime,
+                  activityName: controller.activity.name,
+                  activityDate: date,
+                  activityTime: time,
+                  activityRemainTime: '13:00',
+                  cardWidth: 664,
                 );
               }),
               Column(

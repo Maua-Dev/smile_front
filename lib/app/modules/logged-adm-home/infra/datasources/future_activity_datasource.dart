@@ -1,5 +1,5 @@
-import 'package:smile_front/app/modules/logged-adm-home/domain/entities/future_activity.dart';
+import '../../../../shared/entities/activity.dart';
 
 abstract class FutureActivityDatasource {
-  Future<FutureActivity> getFutureActivity();
+  Future<Activity> getFutureActivity();
 }

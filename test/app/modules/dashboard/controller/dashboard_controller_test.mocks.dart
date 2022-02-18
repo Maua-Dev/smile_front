@@ -9,8 +9,7 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
     as _i5;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i2;
-import 'package:smile_front/app/modules/dashboard/infra/models/activity_model.dart'
-    as _i4;
+import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

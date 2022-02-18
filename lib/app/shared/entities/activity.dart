@@ -30,4 +30,21 @@ class Activity {
       required this.description,
       required this.date,
       required this.type});
+
+  factory Activity.newInstance() {
+    return Activity(
+        createdAt: '',
+        date: DateTime.now(),
+        description: '',
+        enrolledUsers: [],
+        id: '',
+        name: '',
+        type: ActivityEnum.CAFE_EX_ALUNOS,
+        updateAt: '',
+        workload: 0,
+        link: '',
+        location: '',
+        queue: [],
+        totalPlaces: 0);
+  }
 }

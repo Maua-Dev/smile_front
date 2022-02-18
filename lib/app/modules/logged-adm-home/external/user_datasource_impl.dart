@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:smile_front/app/modules/logged-user-home/infra/datasources/user_datasource.dart';
+import 'package:smile_front/app/modules/logged-adm-home/infra/datasources/user_datasource.dart';
 import 'package:smile_front/app/shared/models/user_model.dart';
 
 class UserDatasourceImpl implements UserDatasource {

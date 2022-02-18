@@ -27,13 +27,13 @@ mixin _$LoggedHomeController on _LoggedHomeControllerBase, Store {
   final _$activityAtom = Atom(name: '_LoggedHomeControllerBase.activity');
 
   @override
-  FutureActivity get activity {
+  Activity get activity {
     _$activityAtom.reportRead();
     return super.activity;
   }
 
   @override
-  set activity(FutureActivity value) {
+  set activity(Activity value) {
     _$activityAtom.reportWrite(value, super.activity, () {
       super.activity = value;
     });

@@ -1,6 +1,6 @@
 // ignore_for_file: overridden_fields, annotate_overrides, duplicate_ignore
 
-import 'package:smile_front/app/modules/dashboard/domain/entities/activity.dart';
+import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 
 // ignore: duplicate_ignore
