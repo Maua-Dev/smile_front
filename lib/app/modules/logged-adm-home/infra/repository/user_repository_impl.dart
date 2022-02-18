@@ -5,7 +5,7 @@ import 'package:smile_front/app/shared/models/user_model.dart';
 class UserRepositoryImpl implements UserRepositoryInteface {
   final UserDatasource datasource;
 
-  UserRepositoryImpl(this.datasource);
+  UserRepositoryImpl({required this.datasource});
 
   @override
   Future<UserModel> getUser(String cpfRne) async {

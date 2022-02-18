@@ -6,7 +6,7 @@ import 'package:smile_front/app/shared/entities/user.dart';
 import 'package:smile_front/app/modules/logged-adm-home/domain/repositories/future_activity_repository_interface.dart';
 
 import '../../../../shared/entities/activity.dart';
-import '../../../logged-user-home/domain/repositories/user_repository_interface.dart';
+import '../../../logged-adm-home/domain/repositories/user_repository_interface.dart';
 
 part 'logged_home_controller.g.dart';
 
