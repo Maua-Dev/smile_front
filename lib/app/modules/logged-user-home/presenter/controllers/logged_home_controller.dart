@@ -5,7 +5,6 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/logged-adm-home/domain/entities/future_activity.dart';
 import 'package:smile_front/app/modules/logged-user-home/infra/repository/user_repository_impl.dart';
 import 'package:smile_front/app/shared/entities/user.dart';
-import 'package:smile_front/app/shared/models/user_model.dart';
 
 import '../../../logged-adm-home/domain/repositories/future_activity_repository.dart';
 
@@ -15,7 +14,7 @@ class LoggedHomeController = _LoggedHomeControllerBase
     with _$LoggedHomeController;
 
 abstract class _LoggedHomeControllerBase with Store {
-  final UserRepositoryImpl loggedHomeRepository;
+  final UserRepositoryImpl userRepository;
   final FutureActivityRepository futureActivityRepository;
   final String cpfRne;
   final timeNow = DateFormat.Hm();
@@ -23,7 +22,7 @@ abstract class _LoggedHomeControllerBase with Store {
   _LoggedHomeControllerBase({
     required this.futureActivityRepository,
     required this.cpfRne,
-    required this.loggedHomeRepository,
+    required this.userRepository,
   }) {
     getTime();
     getUser();
@@ -41,7 +40,7 @@ abstract class _LoggedHomeControllerBase with Store {
 
   @action
   Future getUser() async {
-    user = await loggedHomeRepository.getUser(cpfRne);
+    user = await userRepository.getUser(cpfRne);
   }
 
   @action

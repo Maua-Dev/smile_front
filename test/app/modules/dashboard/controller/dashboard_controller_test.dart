@@ -17,13 +17,33 @@ void main() {
     ActivityModel(
         id: '',
         enrolledUsers: [],
-        name: '',
+        name: 'ABCD123',
         description: '',
         date: DateTime.now(),
         type: ActivityEnum.CURSOS,
         createdAt: '',
         updateAt: '',
-        workload: 0)
+        workload: 0),
+    ActivityModel(
+        id: '',
+        enrolledUsers: [],
+        name: 'ABCD',
+        description: '',
+        date: DateTime.now(),
+        type: ActivityEnum.CURSOS,
+        createdAt: '',
+        updateAt: '',
+        workload: 0),
+    ActivityModel(
+        id: '',
+        enrolledUsers: [],
+        name: 'ABCC',
+        description: '',
+        date: DateTime.now(),
+        type: ActivityEnum.CURSOS,
+        createdAt: '',
+        updateAt: '',
+        workload: 0),
   ];
 
   setUpAll(() {
@@ -40,12 +60,12 @@ void main() {
 
   test('orderByDate', () {
     controller.orderByDate();
-    expect(controller.activitiesList[0].date, '16/05/2021');
+    expect(controller.activitiesList[0].date, isInstanceOf<DateTime>());
   });
 
   test('orderByParticipants', () {
     controller.orderByParticipants();
-    expect(controller.activitiesList[0].enrolledUsers, 0);
+    expect(controller.activitiesList[0].enrolledUsers, []);
   });
 
   test('searchActivityByName', () {

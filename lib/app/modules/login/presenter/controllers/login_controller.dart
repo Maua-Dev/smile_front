@@ -3,7 +3,6 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
 import 'package:smile_front/app/modules/logged-user-home/domain/repositories/user_repository_interface.dart';
 
-import '../../../../shared/models/user_model.dart';
 import '../../../auth/auth_controller.dart';
 
 part 'login_controller.g.dart';

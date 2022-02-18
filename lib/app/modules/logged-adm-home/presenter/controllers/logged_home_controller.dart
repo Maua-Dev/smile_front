@@ -14,14 +14,14 @@ class LoggedHomeController = _LoggedHomeControllerBase
     with _$LoggedHomeController;
 
 abstract class _LoggedHomeControllerBase with Store {
-  final UserRepositoryInteface loggedHomeRepository;
+  final UserRepositoryInteface userRepository;
   final FutureActivityRepository futureActivityRepository;
   final timeNow = DateFormat.Hm();
   final String cpfRne;
 
   _LoggedHomeControllerBase(
       {required this.cpfRne,
-      required this.loggedHomeRepository,
+      required this.userRepository,
       required this.futureActivityRepository}) {
     getActivity();
     getUser();
@@ -44,7 +44,7 @@ abstract class _LoggedHomeControllerBase with Store {
 
   @action
   Future getUser() async {
-    user = await loggedHomeRepository.getUser(cpfRne);
+    user = await userRepository.getUser(cpfRne);
   }
 
   @action
