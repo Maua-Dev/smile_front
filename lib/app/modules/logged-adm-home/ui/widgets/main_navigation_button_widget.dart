@@ -25,12 +25,13 @@ class MainNavigationButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         onPressed: onPressed,
         child: SizedBox(
-          height: mainNavigationHeight(size),
+          height: mainNavigationHeight(height),
           width: mainNavigationWidth(size),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,11 +46,11 @@ class MainNavigationButtonWidget extends StatelessWidget {
                       TextSpan(
                           text: 'Olá, ',
                           style: AppTextStyles.button.copyWith(
-                              fontSize: mainNavigationTitleSize(size))),
+                              fontSize: mainNavigationTitleSize(size, height))),
                       TextSpan(
                           text: '$userName!',
                           style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: mainNavigationTitleSize(size))),
+                              fontSize: mainNavigationTitleSize(size, height))),
                     ]),
                   ),
                   Text(
@@ -65,7 +66,8 @@ class MainNavigationButtonWidget extends StatelessWidget {
                   children: [
                     Text(activityName,
                         style: AppTextStyles.buttonBold.copyWith(
-                            fontSize: mainNavigationActivitySize(size))),
+                            fontSize:
+                                mainNavigationActivitySize(size, height))),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       child: Row(

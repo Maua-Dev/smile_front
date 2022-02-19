@@ -21,52 +21,27 @@ double mainNavigationWidth(size) {
   return 400;
 }
 
-double mainNavigationHeight(size) {
-  if (size >= 1800) {
-    return 300;
-  }
-  if (size < 1800 && size >= 1600) {
-    return 300;
-  }
-  if (size < 1600 && size >= 1440) {
-    return 300;
-  }
-  if (size < 1440 && size >= 1280) {
-    return 300;
-  }
-  if (size < 1280 && size >= 960) {
-    return 300;
+double mainNavigationHeight(height) {
+  if (height <= 720) {
+    return 270;
   }
   return 300;
 }
 
-double mainNavigationActivitySize(size) {
-  if (size < 1920 && size >= 1760) {
-    return 30;
-  }
-  if (size < 1760 && size >= 1600) {
-    return 30;
-  }
-  if (size < 1600 && size >= 1440) {
-    return 30;
-  }
-  if (size < 1440 && size >= 1280) {
+double mainNavigationActivitySize(size, height) {
+  if (size < 1920 && size >= 1280) {
+    if (height <= 720) return 24;
     return 30;
   }
   if (size < 1280 && size >= 960) {
+    if (height <= 720) return 20;
     return 22;
   }
-  return 35;
+  return 30;
 }
 
 double mainNavigationIconSize(size) {
-  if (size < 1920 && size >= 1760) {
-    return 22;
-  }
-  if (size < 1760 && size >= 1600) {
-    return 22;
-  }
-  if (size < 1600 && size >= 1440) {
+  if (size < 1920 && size >= 1440) {
     return 22;
   }
   if (size < 1440 && size >= 1280) {
@@ -78,23 +53,9 @@ double mainNavigationIconSize(size) {
   return 25;
 }
 
-double mainNavigationTitleSize(size) {
-  if (size < 1920 && size >= 1760) {
-    return 35;
-  }
-  if (size < 1760 && size >= 1600) {
-    return 35;
-  }
-  if (size < 1600 && size >= 1440) {
-    return 35;
-  }
-  if (size < 1440 && size >= 1280) {
-    return 35;
-  }
-  if (size < 1280 && size >= 960) {
-    return 35;
-  }
-  return 45;
+double mainNavigationTitleSize(size, height) {
+  if (height <= 720) return 28;
+  return 35;
 }
 
 double mainNavigationCopyButtonSize(size) {
@@ -117,8 +78,8 @@ double mainNavigationCopyButtonSize(size) {
 }
 
 // Secundary Navigation Button
-double secundaryNavigationHeight(size) {
-  return (mainNavigationHeight(size) - 48) / 2;
+double secundaryNavigationHeight(height) {
+  return (mainNavigationHeight(height) - 48) / 2;
 }
 
 double secundaryNavigationWidth(size) {
@@ -173,32 +134,17 @@ double secundaryNavigationIconSize(size) {
 }
 
 // Timer Navigation Button
-double timerNavigationWidth(size, userType) {
-  switch (userType) {
-    case 'adm':
-      return mainNavigationWidth(size);
-    case 'user':
-      return secundaryNavigationWidth(size) * 2 + 32 * 2;
-    default:
-      return mainNavigationWidth(size);
-  }
+double timerNavigationWidth(size) {
+  return mainNavigationWidth(size);
 }
 
-double timerNavigationHeight(size) {
-  return (mainNavigationHeight(size) - 48) / 2;
+double timerNavigationHeight(height) {
+  return (mainNavigationHeight(height) - 48) / 2;
 }
 
-double timerNavigationTimeSize(size) {
-  if (size < 1920 && size >= 1760) {
-    return 65;
-  }
-  if (size < 1760 && size >= 1600) {
-    return 65;
-  }
-  if (size < 1600 && size >= 1440) {
-    return 65;
-  }
-  if (size < 1440 && size >= 1280) {
+double timerNavigationTimeSize(size, height) {
+  if (size < 1920 && size >= 1280) {
+    if (height <= 720) return 60;
     return 65;
   }
   if (size < 1280 && size >= 960) {
@@ -207,29 +153,13 @@ double timerNavigationTimeSize(size) {
   return 100;
 }
 
-double timerNavigationTextSize(size, userType) {
-  if (size < 1920 && size >= 1760) {
+double timerNavigationTextSize(size, height) {
+  if (size < 1920 && size >= 1280) {
+    if (height <= 720) return 19;
     return 24;
   }
-  if (size < 1760 && size >= 1600) {
-    return 24;
-  }
-  if (size < 1600 && size >= 1440) {
-    return 24;
-  }
-  if (size < 1440 && size >= 1280) {
-    return 24;
-  }
-  if (size < 1280 && size >= 1120) {
-    return 20;
-  }
-  if (size < 1120 && size >= 960) {
-    switch (userType) {
-      case 'adm':
-        return 20;
-      case 'user':
-        return 18;
-    }
+  if (size < 1280 && size >= 960) {
+    return 18;
   }
   return 25;
 }

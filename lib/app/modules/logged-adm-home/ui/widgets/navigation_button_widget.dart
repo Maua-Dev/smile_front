@@ -14,12 +14,13 @@ class NavigationButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         onPressed: onPressed,
         child: SizedBox(
-          height: secundaryNavigationHeight(size),
+          height: secundaryNavigationHeight(height),
           width: secundaryNavigationWidth(size),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

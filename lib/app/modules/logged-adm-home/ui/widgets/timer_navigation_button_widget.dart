@@ -16,6 +16,7 @@ class TimerNavigationButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     final weekDay = DateFormat('EEEE').format(DateTime.now()).capitalize();
     final day = DateTime.now().day.toString();
     final month = DateFormat('MMMM').format(DateTime.now());
@@ -25,8 +26,8 @@ class TimerNavigationButtonWidget extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         child: SizedBox(
-          height: timerNavigationHeight(size),
-          width: timerNavigationWidth(size, userType),
+          height: timerNavigationHeight(height),
+          width: timerNavigationWidth(size),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Column(
@@ -34,23 +35,23 @@ class TimerNavigationButtonWidget extends StatelessWidget {
               children: [
                 Text(
                   time,
-                  style: AppTextStyles.buttonBold
-                      .copyWith(fontSize: timerNavigationTimeSize(size)),
+                  style: AppTextStyles.buttonBold.copyWith(
+                      fontSize: timerNavigationTimeSize(size, height)),
                 ),
                 RichText(
                   text: TextSpan(children: [
                     TextSpan(
                         text: '$weekDay, ',
                         style: AppTextStyles.button.copyWith(
-                            fontSize: timerNavigationTextSize(size, userType))),
+                            fontSize: timerNavigationTextSize(size, height))),
                     TextSpan(
                         text: '$day de $month ',
                         style: AppTextStyles.buttonBold.copyWith(
-                            fontSize: timerNavigationTextSize(size, userType))),
+                            fontSize: timerNavigationTextSize(size, height))),
                     TextSpan(
                         text: 'de $year',
                         style: AppTextStyles.button.copyWith(
-                            fontSize: timerNavigationTextSize(size, userType))),
+                            fontSize: timerNavigationTextSize(size, height))),
                   ]),
                 ),
               ],
