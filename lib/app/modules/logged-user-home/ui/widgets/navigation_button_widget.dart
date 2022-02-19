@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import '../responsivity_logged_user_home.dart';
 
 class NavigationButtonWidget extends StatelessWidget {
   final String title;
@@ -12,25 +13,28 @@ class NavigationButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         onPressed: onPressed,
         child: SizedBox(
-          height: 200,
-          width: 300,
+          height: secundaryNavigationHeight(height),
+          width: secundaryNavigationWidth(size),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Icon(
                 icon,
-                size: 64,
+                size: secundaryNavigationIconSize(size),
                 color: Colors.white,
               ),
               Text(
                 title,
-                style: AppTextStyles.body
-                    .copyWith(color: Colors.white, fontSize: 30),
+                style: AppTextStyles.body.copyWith(
+                    color: Colors.white,
+                    fontSize: secundaryNavigationFontSize(size)),
               )
             ],
           ),
