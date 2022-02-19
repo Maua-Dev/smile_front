@@ -36,6 +36,6 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
       (super.noSuchMethod(Invocation.method(#getActivities, [activityEnum]),
               returnValue: Future<List<_i4.Activity>>.value(<_i4.Activity>[]))
           as _i3.Future<List<_i4.Activity>>);
-  // @override
-  // String toString() => super.toString();
+  @override
+  String toString() => super.toString();
 }

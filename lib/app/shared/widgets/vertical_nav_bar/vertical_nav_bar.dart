@@ -3,13 +3,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar_controller.dart';
 
-class VerticalNavBar extends StatelessWidget {
-  var controller = VerticalNavBarController();
+class VerticalNavBar extends StatefulWidget {
+  final bool isAdmin;
 
-  VerticalNavBar({Key? key}) : super(key: key);
+  const VerticalNavBar({
+    Key? key,
+    required this.isAdmin,
+  }) : super(key: key);
+
+  @override
+  State<VerticalNavBar> createState() => _VerticalNavBarState();
+}
+
+class _VerticalNavBarState
+    extends ModularState<VerticalNavBar, VerticalNavBarController> {
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
@@ -23,7 +34,11 @@ class VerticalNavBar extends StatelessWidget {
             TextButton(
               onPressed: () {
                 controller.toggleIndex(0);
-                Modular.to.navigate('/home/logged/adm-home');
+                if (widget.isAdmin) {
+                  Modular.to.navigate('/adm-home');
+                } else {
+                  Modular.to.navigate('/user-home');
+                }
               },
               child: Column(
                 children: [
@@ -132,31 +147,32 @@ class VerticalNavBar extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TextButton(
-              onPressed: () {
-                controller.toggleIndex(4);
-                // Modular.to.navigate('/');
-              },
-              child: Column(
-                children: [
-                  Icon(
-                    Icons.insert_chart_rounded,
-                    color: controller.indexToShow == 4
-                        ? AppColors.brandingOrange
-                        : Colors.white,
-                    size: 55,
-                  ),
-                  Text(
-                    'RELATÓRIOS',
-                    style: TextStyle(
-                        color: controller.indexToShow == 4
-                            ? AppColors.brandingOrange
-                            : Colors.white,
-                        fontSize: 15),
-                  )
-                ],
+            if (widget.isAdmin)
+              TextButton(
+                onPressed: () {
+                  controller.toggleIndex(4);
+                  // Modular.to.navigate('/');
+                },
+                child: Column(
+                  children: [
+                    Icon(
+                      Icons.insert_chart_rounded,
+                      color: controller.indexToShow == 4
+                          ? AppColors.brandingOrange
+                          : Colors.white,
+                      size: 55,
+                    ),
+                    Text(
+                      'RELATÓRIOS',
+                      style: TextStyle(
+                          color: controller.indexToShow == 4
+                              ? AppColors.brandingOrange
+                              : Colors.white,
+                          fontSize: 15),
+                    )
+                  ],
+                ),
               ),
-            ),
           ]),
         ),
       );

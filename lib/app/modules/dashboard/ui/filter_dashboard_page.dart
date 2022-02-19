@@ -19,36 +19,33 @@ class _FilterDashboardPageState extends State<FilterDashboardPage> {
     return Material(
       child: Row(
         children: [
-          VerticalNavBar(),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const DashboardAppbarWidget(),
-                const TextHeaderScratched(title: 'Atividades'),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 64, vertical: 32),
-                    child: GridView.builder(
-                      itemCount: ActivityEnum.values.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 5,
-                              mainAxisSpacing: 24,
-                              crossAxisSpacing: 24),
-                      itemBuilder: (context, index) => FilterButtonWidget(
-                        index: index,
-                        onTap: () {
-                          Modular.to.pushNamed('./activities-dashboard',
-                              arguments: ActivityEnum.values[index]);
-                        },
-                      ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              const DashboardAppbarWidget(),
+              const TextHeaderScratched(title: 'Atividades'),
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
+                  child: GridView.builder(
+                    itemCount: ActivityEnum.values.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 5,
+                            mainAxisSpacing: 24,
+                            crossAxisSpacing: 24),
+                    itemBuilder: (context, index) => FilterButtonWidget(
+                      index: index,
+                      onTap: () {
+                        Modular.to.navigate('./activities-dashboard',
+                            arguments: ActivityEnum.values[index]);
+                      },
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
