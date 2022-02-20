@@ -5,10 +5,10 @@ import 'package:smile_front/app/modules/dashboard/external/activities_datasource
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/dashboard_activities_page.dart';
-import 'package:smile_front/app/modules/dashboard/ui/filter_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/index_pages.dart';
-import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar.dart';
+import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar_controller.dart';
 
+// import '../auth/repositories/secure_storage_interface.dart';
 import 'infra/repository/activities_repository_impl.dart';
 
 class DashboardModule extends Module {
@@ -19,10 +19,12 @@ class DashboardModule extends Module {
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<DashboardController>(
       (i) => DashboardController(
-          repository: i(), activityType: i.args!.data as ActivityEnum),
+          repository: i(), activityType: ActivityEnum.CURSOS),
     ),
-    Bind.lazySingleton<VerticalNavBar>(
-        (i) => VerticalNavBar(isAdmin: i.args!.data))
+    // Bind.lazySingleton<VerticalNavBarController>(
+    //     (i) => VerticalNavBarController(storage: i<ISecureStorage>()))
+    Bind.lazySingleton<VerticalNavBarController>(
+        (i) => VerticalNavBarController()),
   ];
 
   @override
