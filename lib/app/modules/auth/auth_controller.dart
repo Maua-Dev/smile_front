@@ -20,6 +20,7 @@ class AuthController {
     }
     _loggedIn = true;
     _accessLevel = loginResponse['accessLevel'];
+    await storage.saveAccessLevel(loginResponse['accessLevel']);
   }
 
   Future<void> refreshToken() async {
