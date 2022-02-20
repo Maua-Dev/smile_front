@@ -5,7 +5,7 @@ import 'package:smile_front/app/shared/services/dio/smile_options.dart';
 
 void main() {
   test('getActivities', () async {
-    final ds = UserDatasourceImpl(DioForNative(smileOption));
+    final ds = UserDatasourceImpl(dioClient: DioForNative(smileOption));
     final res = await ds.getLoggedUser('');
     expect(res.email.isNotEmpty, true);
   });

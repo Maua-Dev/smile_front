@@ -10,9 +10,9 @@ import 'package:smile_front/app/shared/models/user_model.dart';
 
 import 'logged_home_controller.mocks.dart';
 
-@GenerateMocks([UserRepositoryInteface, FutureActivityRepositoryInterface])
+@GenerateMocks([UserRepositoryInterface, FutureActivityRepositoryInterface])
 void main() {
-  UserRepositoryInteface userRepository = MockUserRepositoryInteface();
+  UserRepositoryInterface userRepository = MockUserRepositoryInteface();
   FutureActivityRepositoryInterface activityRepository =
       MockFutureActivityRepositoryInterface();
   late LoggedHomeController controller;

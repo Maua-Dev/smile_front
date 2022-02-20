@@ -1,9 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
-import 'package:smile_front/app/modules/logged-user-home/domain/repositories/user_repository_interface.dart';
 
 import '../../../auth/auth_controller.dart';
+import '../../../logged-home/domain/repositories/user_repository_interface.dart';
 
 part 'login_controller.g.dart';
 
@@ -11,7 +11,7 @@ class LoginController = _LoginController with _$LoginController;
 
 abstract class _LoginController with Store {
   final AuthController authController;
-  final UserRepositoryInteface repository;
+  final UserRepositoryInterface repository;
 
   _LoginController({required this.authController, required this.repository});
 

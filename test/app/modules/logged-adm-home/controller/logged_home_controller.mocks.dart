@@ -26,12 +26,12 @@ class _FakeUserModel_0 extends _i1.Fake implements _i2.UserModel {}
 
 class _FakeActivity_1 extends _i1.Fake implements _i3.Activity {}
 
-/// A class which mocks [UserRepositoryInteface].
+/// A class which mocks [UserRepositoryInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUserRepositoryInteface extends _i1.Mock
-    implements _i4.UserRepositoryInteface {
-  MockUserRepositoryInteface() {
+class MockUserRepositoryInterface extends _i1.Mock
+    implements _i4.UserRepositoryInterface {
+  MockUserRepositoryInterface() {
     _i1.throwOnMissingStub(this);
   }
 

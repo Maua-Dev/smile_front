@@ -3,10 +3,10 @@ import 'package:smile_front/app/modules/auth/errors/errors.dart';
 import 'auth_repository_interface.dart';
 
 class AuthRepositoryMock implements IAuthRepository {
-  final String _email = 'user';
+  final String _email = '30557126659';
   final String _pw = 'teste';
 
-  final String _emailAdm = 'admin';
+  final String _emailAdm = '30557126659';
   final String _pwAdm = 'teste';
 
   @override

@@ -3,8 +3,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/app_guard.dart';
 import 'package:smile_front/app/modules/auth/auth_guard_adm.dart';
 import 'package:smile_front/app/modules/auth/auth_guard_speaker.dart';
-import 'package:smile_front/app/modules/logged-adm-home/logged_adm_home_module.dart';
-import 'package:smile_front/app/modules/logged-user-home/logged_user_home_module.dart';
+import 'package:smile_front/app/modules/logged-adm-home/logged_user_home_module.dart';
+import 'package:smile_front/app/modules/logged-home/logged_adm_home_module.dart';
 import 'package:smile_front/app/modules/login/login_module.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
 
