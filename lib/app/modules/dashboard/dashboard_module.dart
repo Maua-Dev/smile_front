@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/auth/infra/auth_guards/auth_guard_user.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
@@ -25,7 +26,9 @@ class DashboardModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute,
-        child: (_, args) => const FilterDashboardPage()),
+        child: (_, args) => const FilterDashboardPage(),
+        guards: [AuthGuardUser()],
+        guardedRoute: '/logged-home/filter-dashboard/activities-dashboard'),
     ChildRoute('/activities-dashboard',
         child: (_, args) => const DashboardActivitiesPage()),
   ];

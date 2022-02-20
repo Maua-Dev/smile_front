@@ -10,11 +10,11 @@ import 'package:smile_front/app/modules/logged-home/ui/widgets/main_navigation_b
 import 'package:smile_front/app/modules/logged-home/ui/widgets/navigation_button_widget.dart';
 import 'package:smile_front/app/modules/logged-home/ui/widgets/sponsorship_navigation_button.dart';
 import 'package:smile_front/app/modules/logged-home/ui/widgets/timer_navigation_button_widget.dart';
-import 'package:smile_front/app/shared/models/user_model.dart';
 
 class LoggedUserHomePage extends StatefulWidget {
-  final UserModel user;
-  const LoggedUserHomePage({Key? key, required this.user}) : super(key: key);
+  const LoggedUserHomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _LoggedHomePageState createState() => _LoggedHomePageState();
@@ -58,7 +58,7 @@ class _LoggedHomePageState
                 String time =
                     DateFormat('hh:mm').format(controller.activity.date);
                 return MainNavigationButtonWidget(
-                  userName: widget.user.socialName,
+                  userName: controller.user.socialName,
                   activityName: controller.activity.name,
                   activityDate: date,
                   activityTime: time,
@@ -77,7 +77,7 @@ class _LoggedHomePageState
                         title: 'Todas as atividades',
                         icon: Icons.ac_unit_outlined,
                         onPressed: () {
-                          Modular.to.navigate('/user-home/filter-dashboard');
+                          Modular.to.navigate('/logged-home/filter-dashboard');
                         },
                       ),
                       const NavigationButtonWidget(

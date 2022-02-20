@@ -6,6 +6,10 @@ import 'package:smile_front/app/modules/login/presenter/controllers/login_contro
 import 'package:smile_front/app/modules/login/presenter/controllers/register_controller.dart';
 import 'package:smile_front/app/modules/login/ui/login_page.dart';
 
+import '../auth/domain/repositories/access_level_repository_interface.dart';
+import '../auth/external/access_level_datasource_impl.dart';
+import '../auth/infra/datasource/access_level_datasource.dart';
+import '../auth/infra/repositories/access_level_repository_impl.dart';
 import '../logged-home/domain/repositories/user_repository_interface.dart';
 
 class LoginModule extends Module {
@@ -18,6 +22,10 @@ class LoginModule extends Module {
         (i) => UserRepositoryImpl(datasource: i())),
     Bind.lazySingleton<UserDatasource>(
         (i) => UserDatasourceImpl(dioClient: i())),
+    Bind.lazySingleton<AccessLevelRepositoryInterface>(
+        (i) => AccessLevelRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<AccessLevelDatasource>(
+        (i) => AccessLevelDatasourceImpl(dioClient: i())),
   ];
 
   @override

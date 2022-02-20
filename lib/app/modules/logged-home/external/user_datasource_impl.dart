@@ -13,7 +13,6 @@ class UserDatasourceImpl implements UserDatasource {
       final res = await dioClient.get(
         '/smile_mss_users/user?cpfRne=$cpfRne',
       );
-      print(res.statusCode);
       if (res.statusCode == 200) {
         return UserModel.fromMap(res.data);
       }

@@ -2,7 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
 
-import '../../../auth/auth_controller.dart';
+import '../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../logged-home/domain/repositories/user_repository_interface.dart';
 
 part 'login_controller.g.dart';
@@ -40,14 +40,14 @@ abstract class _LoginController with Store {
   @action
   Future<void> login() async {
     try {
-      await authController.loginWithEmail(cpfRne, password, keepConected);
+      await authController.loginWithCpfRne(cpfRne, password, keepConected);
       if (authController.isLogged) {
-        if (authController.accessLevel == 0) {
-          Modular.to.navigate('/adm-home', arguments: cpfRne);
-        } else if (authController.accessLevel == 1) {
+        if (authController.accessLevel == 'ADMIN') {
+          Modular.to.navigate('/logged-home/adm-home', arguments: cpfRne);
+        } else if (authController.accessLevel == 'SPEAKER') {
           Modular.to.navigate('/speaker-home');
         } else {
-          Modular.to.navigate('/user-home', arguments: cpfRne);
+          Modular.to.navigate('/logged-home/user-home', arguments: cpfRne);
         }
       }
     } on Failure catch (e) {
