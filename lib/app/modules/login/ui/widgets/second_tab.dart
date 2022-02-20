@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -8,6 +10,7 @@ import 'package:smile_front/app/modules/login/ui/widgets/input_box.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/radios_ask_buttons.dart';
 
 import '../../../../shared/themes/app_colors.dart';
+import '../responsivity_login.dart';
 
 class SecondTab extends StatefulWidget {
   const SecondTab({
@@ -23,6 +26,9 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
 
   @override
   Widget build(BuildContext context) {
+    var widthSize = MediaQuery.of(context).size.width;
+    var heightSize = MediaQuery.of(context).size.height;
+
     return ListView(
       children: [
         Center(
@@ -49,10 +55,11 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                     children: [
                       InputBox(
                         validation: controller.validateName,
-                        heightSize: 50,
+                        heightSize: secondTabinputBoxHeight(heightSize),
                         icon: Icons.person,
                         placeholder: 'Nome Completo',
                         setValue: controller.setName,
+                        widthSize: largeInputBoxWidth(widthSize, heightSize),
                       ),
                       const SizedBox(
                         height: 10,
@@ -62,8 +69,8 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                         children: [
                           InputBox(
                             validation: controller.validateName,
-                            heightSize: 50,
-                            widthSize: 210,
+                            heightSize: secondTabinputBoxHeight(heightSize),
+                            widthSize: cpfInputBoxWidth(widthSize, heightSize),
                             icon: Icons.person,
                             placeholder: 'CPF',
                             setValue: controller.setCpf,
@@ -73,8 +80,9 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                           ),
                           InputBox(
                             validation: controller.validateEmail,
-                            heightSize: 50,
-                            widthSize: 370,
+                            heightSize: secondTabinputBoxHeight(heightSize),
+                            widthSize:
+                                emailInputBoxWidth(widthSize, heightSize),
                             icon: Icons.mail,
                             placeholder: 'Email',
                             setValue: controller.setEmail,
@@ -91,8 +99,10 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                             return RadioAskButtons(
                               question: 'Aluno Mauá?',
                               awnser: controller.isMauaStudent,
-                              widthSize: 290,
+                              widthSize:
+                                  mediumInputBoxWidth(widthSize, heightSize),
                               onPressed: controller.setIsMauaStudent,
+                              heightSize: secondTabinputBoxHeight(heightSize),
                             );
                           }),
                           const SizedBox(
@@ -102,8 +112,9 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                             return InputBox(
                               validation: controller.validateRa,
                               disable: !(controller.isMauaStudent),
-                              heightSize: 50,
-                              widthSize: 290,
+                              heightSize: secondTabinputBoxHeight(heightSize),
+                              widthSize:
+                                  mediumInputBoxWidth(widthSize, heightSize),
                               icon: Icons.lock,
                               placeholder: 'RA',
                               setValue: controller.setRa,
@@ -119,8 +130,9 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                         children: [
                           InputBox(
                             validation: controller.validateName,
-                            heightSize: 50,
-                            widthSize: 290,
+                            heightSize: secondTabinputBoxHeight(heightSize),
+                            widthSize:
+                                mediumInputBoxWidth(widthSize, heightSize),
                             icon: Icons.lock,
                             placeholder: 'Senha',
                             setValue: controller.setPassword,
@@ -131,8 +143,9 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                           ),
                           InputBox(
                             validation: controller.validateVerifyPassword,
-                            heightSize: 50,
-                            widthSize: 290,
+                            heightSize: secondTabinputBoxHeight(heightSize),
+                            widthSize:
+                                mediumInputBoxWidth(widthSize, heightSize),
                             icon: Icons.lock,
                             placeholder: 'Confirmar Senha',
                             setValue: controller.setVerifyPassword,
@@ -148,6 +161,8 @@ class _SecondTabState extends ModularState<SecondTab, RegisterController> {
                           question: 'Deseja receber notificações por Email?',
                           awnser: controller.aceptEmailNotifications,
                           onPressed: controller.setAceptEmailNotification,
+                          widthSize: largeInputBoxWidth(widthSize, heightSize),
+                          heightSize: secondTabinputBoxHeight(heightSize),
                         );
                       }),
                       const SizedBox(

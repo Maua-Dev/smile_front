@@ -6,6 +6,8 @@ import 'package:smile_front/app/modules/login/ui/widgets/input_box.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 
+import '../responsivity_login.dart';
+
 class FirstTab extends StatefulWidget {
   const FirstTab({Key? key}) : super(key: key);
 
@@ -44,6 +46,7 @@ class _FirstTabState extends ModularState<FirstTab, LoginController> {
                       icon: Icons.person,
                       placeholder: 'Email',
                       setValue: controller.setUsername,
+                      widthSize: largeInputBoxWidth(widthSize, heightSize),
                     ),
                     const SizedBox(
                       height: 20,
@@ -53,6 +56,7 @@ class _FirstTabState extends ModularState<FirstTab, LoginController> {
                       icon: Icons.lock,
                       placeholder: 'Senha',
                       setValue: controller.setPassword,
+                      widthSize: largeInputBoxWidth(widthSize, heightSize),
                     ),
                     const SizedBox(
                       height: 20,
