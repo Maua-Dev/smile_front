@@ -26,79 +26,83 @@ class _DashboardActivitiesPageState
     const orders = ['Ordenar', 'Por data', 'Por inscritos'];
     return Material(
         child: Row(children: [
-      Column(
-        children: [
-          const DashboardAppbarWidget(),
-          const TextHeaderScratched(title: 'Atividades'),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 24),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextFieldCustom(
-                  titulo: 'Buscar',
-                  value: searchController.text,
-                  onChanged: controller.searchActivityByName,
-                ),
-                const SizedBox(
-                  width: 32,
-                ),
-                DropDownFieldCustom<String>(
-                  titulo: 'Ordenar',
-                  items: orders.map((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  value: currentSelectedValue,
-                  onChanged: (newValue) {
-                    setState(() {
-                      currentSelectedValue = newValue;
-                      switch (newValue) {
-                        case 'Ordenar':
-                          controller.getActivities();
-                          break;
-                        case 'Por data':
-                          controller.orderByDate();
-                          break;
-                        case 'Por inscritos':
-                          controller.orderByParticipants();
-                          break;
-                      }
-                    });
-                  },
-                )
-              ],
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
-              child: Observer(builder: (_) {
-                return GridView.builder(
-                  itemCount: controller.activitiesList.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 5,
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 8,
-                      childAspectRatio: 1.7),
-                  itemBuilder: (context, index) => ActivityCardWidget(
-                    name: controller.activitiesList[index].name,
-                    date: controller.activitiesList[index].date,
-                    description: controller.activitiesList[index].description,
-                    maxParticipants:
-                        controller.activitiesList[index].maxParticipants,
-                    totalParticipants:
-                        controller.activitiesList[index].totalParticipants,
-                    time: controller.activitiesList[index].time,
+      Expanded(
+        child: Column(
+          children: [
+            const DashboardAppbarWidget(),
+            const TextHeaderScratched(title: 'Atividades'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 24),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextFieldCustom(
+                    titulo: 'Buscar',
+                    value: searchController.text,
+                    onChanged: controller.searchActivityByName,
                   ),
-                );
-              }),
+                  const SizedBox(
+                    width: 32,
+                  ),
+                  DropDownFieldCustom<String>(
+                    titulo: 'Ordenar',
+                    items: orders.map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    value: currentSelectedValue,
+                    onChanged: (newValue) {
+                      setState(() {
+                        currentSelectedValue = newValue;
+                        switch (newValue) {
+                          case 'Ordenar':
+                            controller.getActivities();
+                            break;
+                          case 'Por data':
+                            controller.orderByDate();
+                            break;
+                          case 'Por inscritos':
+                            controller.orderByParticipants();
+                            break;
+                        }
+                      });
+                    },
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+            Expanded(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
+                child: Observer(builder: (_) {
+                  return GridView.builder(
+                    itemCount: controller.activitiesList.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 5,
+                            mainAxisSpacing: 16,
+                            crossAxisSpacing: 0,
+                            childAspectRatio: 1.7),
+                    itemBuilder: (context, index) => ActivityCardWidget(
+                      name: controller.activitiesList[index].name,
+                      date: controller.activitiesList[index].date,
+                      description: controller.activitiesList[index].description,
+                      maxParticipants:
+                          controller.activitiesList[index].maxParticipants,
+                      totalParticipants:
+                          controller.activitiesList[index].totalParticipants,
+                      time: controller.activitiesList[index].time,
+                    ),
+                  );
+                }),
+              ),
+            ),
+          ],
+        ),
+      )
     ]));
   }
 }
