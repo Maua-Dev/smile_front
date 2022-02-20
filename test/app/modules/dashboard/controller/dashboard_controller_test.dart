@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:smile_front/app/modules/dashboard/domain/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/dashboard_controller.dart';
 
 import 'dashboard_controller_test.mocks.dart';
@@ -13,101 +13,41 @@ void main() {
   ActivitiesRepositoryInterface repository =
       MockActivitiesRepositoryInterface();
   late DashboardController controller;
-  final mockActivities = [
-    Activity(
-        name: 'ABCDIgitalização no contexto da Indústria 4.0',
-        description:
-            'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-        date: '25/05/2021',
-        time: '15:00',
-        maxParticipants: 20,
-        totalParticipants: 5,
-        activityType: ActivityEnum.CURSOS),
-    Activity(
-        name: 'ABCDigitalização no contexto da Indústria 4.0',
-        description:
-            'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-        date: '25/05/2021',
-        time: '15:00',
-        maxParticipants: 20,
-        totalParticipants: 5,
-        activityType: ActivityEnum.CURSOS),
-    Activity(
-        name: 'Digitalização no contexto da Indústria 4.0',
-        description:
-            'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-        date: '25/05/2021',
-        time: '15:00',
-        maxParticipants: 20,
-        totalParticipants: 5,
-        activityType: ActivityEnum.CURSOS),
-    Activity(
-        name: 'Digitalização no contexto da Indústria 4.0',
-        description:
-            'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-        date: '25/05/2021',
-        time: '15:00',
-        maxParticipants: 20,
-        totalParticipants: 5,
-        activityType: ActivityEnum.CURSOS),
-    Activity(
-        name: 'Digitalização no contexto da Indústria 4.0',
-        description:
-            'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-        date: '25/05/2021',
-        time: '15:00',
-        maxParticipants: 20,
-        totalParticipants: 5,
-        activityType: ActivityEnum.CURSOS),
-    Activity(
-        name: 'Digitalização no contexto da Indústria 4.0',
-        description:
-            'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-        date: '25/05/2021',
-        time: '15:00',
-        maxParticipants: 20,
-        totalParticipants: 5,
-        activityType: ActivityEnum.CURSOS),
-    Activity(
-        name: 'Digitalização no contexto da Indústria 4.0',
-        description:
-            'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-        date: '25/05/2021',
-        time: '15:00',
-        maxParticipants: 20,
-        totalParticipants: 5,
-        activityType: ActivityEnum.CURSOS),
-    Activity(
-        name: 'Digitalização no contexto da Indústria 4.0',
-        description:
-            'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-        date: '18/05/2021',
-        time: '15:00',
-        maxParticipants: 20,
-        totalParticipants: 3,
-        activityType: ActivityEnum.CURSOS),
-    Activity(
-        name: 'Digitalização no contexto da Indústria 4.0',
-        description:
-            'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-        date: '17/05/2021',
-        time: '15:00',
-        maxParticipants: 20,
-        totalParticipants: 2,
-        activityType: ActivityEnum.CURSOS),
-    Activity(
-        name: 'Digitalização no contexto da Indústria 4.0',
-        description:
-            'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-        date: '16/05/2021',
-        time: '15:00',
-        maxParticipants: 20,
-        totalParticipants: 1,
-        activityType: ActivityEnum.CURSOS),
+  final mockActivities = <ActivityModel>[
+    ActivityModel(
+        id: '',
+        enrolledUsers: [],
+        name: 'ABCD123',
+        description: '',
+        date: DateTime.now(),
+        type: ActivityEnum.CURSOS,
+        createdAt: '',
+        updateAt: '',
+        workload: 0),
+    ActivityModel(
+        id: '',
+        enrolledUsers: [],
+        name: 'ABCD',
+        description: '',
+        date: DateTime.now(),
+        type: ActivityEnum.CURSOS,
+        createdAt: '',
+        updateAt: '',
+        workload: 0),
+    ActivityModel(
+        id: '',
+        enrolledUsers: [],
+        name: 'ABCC',
+        description: '',
+        date: DateTime.now(),
+        type: ActivityEnum.CURSOS,
+        createdAt: '',
+        updateAt: '',
+        workload: 0),
   ];
 
   setUpAll(() {
-    when(repository.getActivities(ActivityEnum.CURSOS))
+    when(repository.getActivitiesSelectedByType(ActivityEnum.CURSOS))
         .thenAnswer((_) async => mockActivities);
     controller = DashboardController(
         activityType: ActivityEnum.CURSOS, repository: repository);
@@ -120,12 +60,12 @@ void main() {
 
   test('orderByDate', () {
     controller.orderByDate();
-    expect(controller.activitiesList[0].date, '16/05/2021');
+    expect(controller.activitiesList[0].date, isInstanceOf<DateTime>());
   });
 
   test('orderByParticipants', () {
     controller.orderByParticipants();
-    expect(controller.activitiesList[0].totalParticipants, 1);
+    expect(controller.activitiesList[0].enrolledUsers, []);
   });
 
   test('searchActivityByName', () {

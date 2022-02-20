@@ -1,6 +1,5 @@
-import 'package:smile_front/app/modules/dashboard/domain/entities/activity.dart';
-import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/shared/models/activity_model.dart';
 
 abstract class ActivitiesDatasource {
-  Future<List<Activity>> getActivities(ActivityEnum activityEnum);
+  Future<List<ActivityModel>> getActivities();
 }
