@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/home/domain/entities/rectors_a.dart';
-import 'package:smile_front/app/modules/home/domain/repositories/rectors_repository.dart';
+import 'package:smile_front/app/modules/home/domain/entities/rectors.dart';
+import 'package:smile_front/app/modules/home/domain/repositories/rectors_repository_interface.dart';
 
 part 'home3_controller.g.dart';
 

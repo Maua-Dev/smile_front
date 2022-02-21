@@ -5,9 +5,9 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:smile_front/app/modules/home/domain/entities/rectors_a.dart'
+import 'package:smile_front/app/modules/home/domain/entities/rectors.dart'
     as _i4;
-import 'package:smile_front/app/modules/home/domain/repositories/rectors_repository.dart'
+import 'package:smile_front/app/modules/home/domain/repositories/rectors_repository_interface.dart'
     as _i2;
 
 // ignore_for_file: type=lint

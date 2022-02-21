@@ -7,7 +7,7 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/home/domain/entities/lecture_images.dart'
     as _i4;
-import 'package:smile_front/app/modules/home/domain/repositories/lecture_images_repository.dart'
+import 'package:smile_front/app/modules/home/domain/repositories/lecture_images_repository_interface.dart'
     as _i2;
 
 // ignore_for_file: type=lint
