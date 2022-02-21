@@ -1,8 +1,8 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-import 'secure_storage_interface.dart';
+import '../../domain/repositories/secure_storage_interface.dart';
 
-class SecureStorage implements ISecureStorage {
+class SecureStorage implements SecureStorageInterface {
   final Box storage;
 
   SecureStorage._(this.storage);

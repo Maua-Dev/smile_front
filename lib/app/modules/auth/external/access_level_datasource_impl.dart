@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:smile_front/app/modules/auth/infra/datasource/access_level_datasource.dart';
+import 'package:smile_front/app/modules/auth/infra/datasource/access_level_datasource_interface.dart';
 
 import '../../../shared/models/user_model.dart';
 
-class AccessLevelDatasourceImpl implements AccessLevelDatasource {
+class AccessLevelDatasourceImpl implements AccessLevelDatasourceInterface {
   final Dio dioClient;
 
   AccessLevelDatasourceImpl({required this.dioClient});
