@@ -1,7 +1,7 @@
 import 'package:smile_front/app/modules/home/domain/entities/speaker.dart';
 import 'package:smile_front/app/modules/home/domain/repositories/home2_repository_interface.dart';
 
-class Home2Repository implements IHome2Repository {
+class Home2Repository implements Home2RepositoryInterface {
   var speakers = [
     Speaker(
         name: 'Gabe Gabrielle',

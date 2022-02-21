@@ -17,14 +17,14 @@ class HomeModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => Home2Controller(i())),
-    Bind.lazySingleton<LectureImagesRepository>(
+    Bind.lazySingleton<LectureImagesRepositoryInterface>(
         (i) => LectureImagesRepositoryImpl(datasource: i())),
     Bind.lazySingleton((i) => Home4Controller(repository: i())),
     Bind.lazySingleton<LectureImagesDatasource>(
         (i) => LectureImagesDatasourceImpl()),
     Bind.lazySingleton<Home2Repository>((i) => Home2Repository()),
     Bind.lazySingleton((i) => Home2Controller(i())),
-    Bind.lazySingleton<RectorsRepository>(
+    Bind.lazySingleton<RectorsRepositoryInterface>(
         (i) => RectorsRepositoryImpl(datasource: i())),
     Bind.lazySingleton((i) => Home3Controller(repository: i())),
     Bind.lazySingleton<RectorsDatasource>((i) => RectorsDatasourceImpl()),

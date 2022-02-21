@@ -7,7 +7,7 @@ part 'home3_controller.g.dart';
 class Home3Controller = _Home3ControllerBase with _$Home3Controller;
 
 abstract class _Home3ControllerBase with Store {
-  final RectorsRepository repository;
+  final RectorsRepositoryInterface repository;
 
   _Home3ControllerBase({required this.repository}) {
     getRectors();
