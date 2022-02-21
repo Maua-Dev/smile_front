@@ -1,8 +1,8 @@
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
 
-import 'auth_repository_interface.dart';
+import '../../domain/repositories/auth_repository_interface.dart';
 
-class AuthRepositoryMock implements IAuthRepository {
+class AuthRepositoryMock implements AuthRepositoryInterface {
   final String _email = '30557126659';
   final String _pw = 'teste';
 

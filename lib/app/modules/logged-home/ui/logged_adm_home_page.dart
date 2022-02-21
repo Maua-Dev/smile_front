@@ -50,7 +50,7 @@ class _LoggedAdmHomePageState
                     title: 'Todas as atividades',
                     icon: Icons.ac_unit_outlined,
                     onPressed: () {
-                      Modular.to.navigate('/adm-home/filter-dashboard');
+                      Modular.to.navigate('/logged-home/filter-dashboard');
                     },
                   ),
                   NavigationButtonWidget(

@@ -1,11 +1,11 @@
 import 'package:smile_front/app/modules/auth/domain/repositories/access_level_repository_interface.dart';
-import 'package:smile_front/app/modules/auth/infra/repositories/auth_repository_interface.dart';
-import 'package:smile_front/app/modules/auth/infra/repositories/secure_storage_interface.dart';
+import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
+import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 
 class AuthController {
-  final IAuthRepository authRepository;
+  final AuthRepositoryInterface authRepository;
   final AccessLevelRepositoryInterface repository;
-  final ISecureStorage storage;
+  final SecureStorageInterface storage;
   bool _loggedIn = false;
   String _accessLevel = 'USER';
 
