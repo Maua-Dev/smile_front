@@ -25,12 +25,13 @@ mixin _$DashboardController on _DashboardControllerBase, Store {
     });
   }
 
-  final _$getActivitiesAsyncAction =
-      AsyncAction('_DashboardControllerBase.getActivities');
+  final _$getActivitiesByTypeAsyncAction =
+      AsyncAction('_DashboardControllerBase.getActivitiesByType');
 
   @override
-  Future<dynamic> getActivities() {
-    return _$getActivitiesAsyncAction.run(() => super.getActivities());
+  Future<dynamic> getActivitiesByType() {
+    return _$getActivitiesByTypeAsyncAction
+        .run(() => super.getActivitiesByType());
   }
 
   final _$_DashboardControllerBaseActionController =

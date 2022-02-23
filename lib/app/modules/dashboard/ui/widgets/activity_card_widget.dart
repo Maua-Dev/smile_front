@@ -27,22 +27,32 @@ class ActivityCardWidget extends StatelessWidget {
       child: Column(
         children: [
           Container(
+            height: MediaQuery.of(context).size.height * 0.15,
+            width: Size.infinite.width,
             decoration: BoxDecoration(
                 color: AppColors.brandingBlue,
                 borderRadius: BorderRadius.circular(20)),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     name,
-                    style: AppTextStyles.buttonBold,
+                    style: AppTextStyles.buttonBold.copyWith(fontSize: 22),
                   ),
                   const SizedBox(
                     height: 4,
                   ),
-                  Text(description,
-                      style: AppTextStyles.button.copyWith(fontSize: 16)),
+                  Flexible(
+                    child: RichText(
+                      overflow: TextOverflow.clip,
+                      text: TextSpan(
+                          style: AppTextStyles.button.copyWith(fontSize: 16),
+                          text: description),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -59,12 +69,12 @@ class ActivityCardWidget extends StatelessWidget {
                       child: Icon(
                         Icons.calendar_today,
                         color: AppColors.brandingBlue,
-                        size: 32,
+                        size: 28,
                       ),
                     ),
                     Text(date,
                         style: AppTextStyles.button.copyWith(
-                            fontSize: 20, color: AppColors.brandingBlue))
+                            fontSize: 18, color: AppColors.brandingBlue))
                   ],
                 ),
                 Row(
@@ -74,12 +84,12 @@ class ActivityCardWidget extends StatelessWidget {
                       child: Icon(
                         Icons.access_time_outlined,
                         color: AppColors.brandingBlue,
-                        size: 32,
+                        size: 28,
                       ),
                     ),
                     Text(time,
                         style: AppTextStyles.button.copyWith(
-                            fontSize: 20, color: AppColors.brandingBlue))
+                            fontSize: 18, color: AppColors.brandingBlue))
                   ],
                 ),
                 Row(
@@ -89,7 +99,7 @@ class ActivityCardWidget extends StatelessWidget {
                       child: Icon(
                         Icons.person,
                         color: AppColors.brandingBlue,
-                        size: 32,
+                        size: 28,
                       ),
                     ),
                     RichText(
@@ -97,11 +107,11 @@ class ActivityCardWidget extends StatelessWidget {
                       TextSpan(
                           text: '$totalParticipants/',
                           style: AppTextStyles.button.copyWith(
-                              fontSize: 20, color: AppColors.brandingBlue)),
+                              fontSize: 18, color: AppColors.brandingBlue)),
                       TextSpan(
                           text: maxParticipants,
                           style: AppTextStyles.button.copyWith(
-                              fontSize: 20,
+                              fontSize: 18,
                               color: AppColors.brandingBlue,
                               fontWeight: FontWeight.bold)),
                     ])),

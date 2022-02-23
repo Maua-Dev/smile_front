@@ -20,4 +20,11 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
     }
     return Future.value(list);
   }
+
+  @override
+  Future<List<ActivityModel>> getAllActivities(
+      ActivityEnum activityEnum) async {
+    final result = await datasource.getActivities();
+    return Future.value(result);
+  }
 }

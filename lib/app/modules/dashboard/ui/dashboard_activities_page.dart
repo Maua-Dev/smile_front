@@ -61,7 +61,7 @@ class _DashboardActivitiesPageState
                         currentSelectedValue = newValue;
                         switch (newValue) {
                           case 'Ordenar':
-                            controller.getActivities();
+                            controller.getActivitiesByType();
                             break;
                           case 'Por data':
                             controller.orderByDate();

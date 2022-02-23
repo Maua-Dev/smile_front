@@ -25,10 +25,10 @@ class DashboardModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(Modular.initialRoute,
-        child: (_, args) => const FilterDashboardPage(),
-        guards: [AuthGuardUser()],
-        guardedRoute: '/logged-home/filter-dashboard/activities-dashboard'),
+    ChildRoute(
+      Modular.initialRoute,
+      child: (_, args) => const FilterDashboardPage(),
+    ),
     ChildRoute('/activities-dashboard',
         child: (_, args) => const DashboardActivitiesPage()),
   ];

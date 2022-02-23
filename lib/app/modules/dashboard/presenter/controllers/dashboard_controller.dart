@@ -15,14 +15,14 @@ abstract class _DashboardControllerBase with Store {
     required this.repository,
     required this.activityType,
   }) {
-    getActivities();
+    getActivitiesByType();
   }
 
   @observable
   List<ActivityModel> activitiesList = List.empty();
 
   @action
-  Future getActivities() async {
+  Future getActivitiesByType() async {
     activitiesList = await repository.getActivitiesSelectedByType(activityType);
   }
 
@@ -33,7 +33,7 @@ abstract class _DashboardControllerBase with Store {
             element.name.toLowerCase().startsWith(search.toLowerCase()))
         .toList();
     if (search == '') {
-      getActivities();
+      getActivitiesByType();
     }
   }
 

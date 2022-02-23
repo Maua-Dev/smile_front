@@ -54,7 +54,7 @@ void main() {
   });
 
   test('getActivities', () async {
-    await controller.getActivities();
+    await controller.getActivitiesByType();
     expect(controller.activitiesList, mockActivities);
   });
 
