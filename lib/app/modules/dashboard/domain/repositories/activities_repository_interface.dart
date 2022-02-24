@@ -5,4 +5,6 @@ abstract class ActivitiesRepositoryInterface {
   Future<List<ActivityModel>> getActivitiesSelectedByType(
       ActivityEnum activityEnum);
   Future<List<ActivityModel>> getAllActivities(ActivityEnum activityEnum);
+  Future editActivity(String title, String description, String activityType,
+      String id, int workload, int totalPlaces);
 }

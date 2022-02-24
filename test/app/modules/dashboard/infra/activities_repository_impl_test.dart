@@ -21,7 +21,7 @@ void main() {
         date: DateTime.now(),
         type: ActivityEnum.CURSOS,
         createdAt: '',
-        updateAt: '',
+        updatedAt: '',
         workload: 40),
     ActivityModel(
         id: '',
@@ -31,7 +31,7 @@ void main() {
         date: DateTime.now(),
         type: ActivityEnum.CURSOS,
         createdAt: '',
-        updateAt: '',
+        updatedAt: '',
         workload: 40),
     ActivityModel(
         id: '',
@@ -41,7 +41,7 @@ void main() {
         date: DateTime.now(),
         type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
         createdAt: '',
-        updateAt: '',
+        updatedAt: '',
         workload: 40),
   ];
 

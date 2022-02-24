@@ -47,4 +47,11 @@ abstract class _DashboardControllerBase with Store {
     activitiesList.sort(
         (a, b) => a.enrolledUsers.length.compareTo(b.enrolledUsers.length));
   }
+
+  @action
+  void editActivity(String title, String description, String activityType,
+      String id, int workload, int totalPlaces) async {
+    await repository.editActivity(
+        title, description, activityType, id, workload, totalPlaces);
+  }
 }

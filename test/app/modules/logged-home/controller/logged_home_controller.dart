@@ -25,7 +25,7 @@ void main() {
       date: DateTime.now(),
       type: ActivityEnum.CURSOS,
       createdAt: '',
-      updateAt: '',
+      updatedAt: '',
       workload: 0);
 
   final mockUser = UserModel(

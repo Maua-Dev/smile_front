@@ -16,7 +16,7 @@ class ActivityModel extends Activity {
   final List<dynamic> enrolledUsers;
   final List<dynamic>? queue;
   final String createdAt;
-  final String updateAt;
+  final String updatedAt;
   final int workload;
 
   ActivityModel({
@@ -31,11 +31,11 @@ class ActivityModel extends Activity {
     required this.date,
     required this.type,
     required this.createdAt,
-    required this.updateAt,
+    required this.updatedAt,
     required this.workload,
   }) : super(
           createdAt: createdAt,
-          updateAt: updateAt,
+          updateAt: updatedAt,
           workload: workload,
           id: id,
           enrolledUsers: enrolledUsers,
@@ -56,7 +56,7 @@ class ActivityModel extends Activity {
       date: DateTime.fromMillisecondsSinceEpoch(map['date']),
       createdAt: map['createdAt'],
       id: map['id'],
-      updateAt: map['updatedAt'],
+      updatedAt: map['updatedAt'],
       workload: map['workload'],
       location: map['location'],
       totalPlaces: map['totalPlaces'],
@@ -77,4 +77,20 @@ class ActivityModel extends Activity {
         .firstWhere((element) => toMap == element.name.toLowerCase());
     return type;
   }
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'description': description,
+        'date': date,
+        'createdAt': createdAt,
+        'id': id,
+        'updatedAt': updatedAt,
+        'workload': workload,
+        'location': location,
+        'totalPlaces': totalPlaces,
+        'queue': queue,
+        'link': link,
+        'enrolledUsers': enrolledUsers,
+        'type': type,
+      };
 }

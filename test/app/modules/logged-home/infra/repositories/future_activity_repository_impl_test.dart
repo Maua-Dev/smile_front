@@ -20,7 +20,7 @@ void main() {
       date: DateTime.now(),
       type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
       createdAt: '',
-      updateAt: '',
+      updatedAt: '',
       workload: 40);
 
   setUpAll(() {

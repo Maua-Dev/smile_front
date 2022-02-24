@@ -22,7 +22,7 @@ void main() {
         date: DateTime.now(),
         type: ActivityEnum.CURSOS,
         createdAt: '',
-        updateAt: '',
+        updatedAt: '',
         workload: 0),
     ActivityModel(
         id: '',
@@ -32,7 +32,7 @@ void main() {
         date: DateTime.now(),
         type: ActivityEnum.CURSOS,
         createdAt: '',
-        updateAt: '',
+        updatedAt: '',
         workload: 0),
     ActivityModel(
         id: '',
@@ -42,7 +42,7 @@ void main() {
         date: DateTime.now(),
         type: ActivityEnum.CURSOS,
         createdAt: '',
-        updateAt: '',
+        updatedAt: '',
         workload: 0),
   ];
 

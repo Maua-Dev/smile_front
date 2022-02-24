@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widget.dart';
+import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
@@ -111,7 +112,8 @@ class _DashboardActivitiesPageState
                               .toString(),
                           time: time,
                           onTap: () {
-                            showCustomDialog(context);
+                            showCustomDialog(
+                                context, controller.activitiesList[index]);
                           },
                         );
                       });
@@ -124,9 +126,11 @@ class _DashboardActivitiesPageState
     ]));
   }
 
-  void showCustomDialog(BuildContext context) {
+  void showCustomDialog(BuildContext context, Activity selectedActivity) {
     // ignore: prefer_typing_uninitialized_variables
     var currentSelectedValue;
+    var titleController = TextEditingController(text: '');
+    var descriptionController = TextEditingController(text: '');
     showGeneralDialog(
       context: context,
       barrierLabel: "Barrier",
@@ -167,6 +171,7 @@ class _DashboardActivitiesPageState
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25)),
                     child: TextField(
+                      controller: titleController,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
@@ -188,6 +193,7 @@ class _DashboardActivitiesPageState
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25)),
                     child: TextField(
+                      controller: descriptionController,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
@@ -225,9 +231,7 @@ class _DashboardActivitiesPageState
                           );
                         }).toList(),
                         onChanged: (newValue) {
-                          setState(() {
-                            currentSelectedValue = newValue;
-                          });
+                          currentSelectedValue = newValue;
                         },
                       ),
                     ),
@@ -242,14 +246,76 @@ class _DashboardActivitiesPageState
                     children: [
                       FormsButtonWidget(
                           buttonTittle: 'Cancelar',
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                           backgroundColor: AppColors.redButton),
                       const SizedBox(
                         width: 40,
                       ),
                       FormsButtonWidget(
                           buttonTittle: 'Salvar',
-                          onPressed: () {},
+                          onPressed: () {
+                            if (titleController.text != '' &&
+                                descriptionController.text != '' &&
+                                currentSelectedValue != null) {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  // retorna um objeto do tipo Dialog
+                                  return AlertDialog(
+                                    title: const Text(
+                                        'Tem certeza que deseja salvar?'),
+                                    content: const Text(
+                                        'Ao salvar todos os dados antigos serão perdidos.'),
+                                    actions: [
+                                      ElevatedButton(
+                                        child: const Text('Fechar'),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                      ElevatedButton(
+                                        child: const Text('Salvar'),
+                                        onPressed: () {
+                                          controller.editActivity(
+                                              titleController.text,
+                                              descriptionController.text,
+                                              currentSelectedValue,
+                                              selectedActivity.id,
+                                              selectedActivity.workload,
+                                              selectedActivity.totalPlaces ??
+                                                  0);
+                                          controller.getActivitiesByType();
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title:
+                                        const Text('Preencha todos os campos!'),
+                                    content: const Text(
+                                        'Confira se todos os campos estão corretamente preenchidos.'),
+                                    actions: [
+                                      ElevatedButton(
+                                        child: const Text('Fechar'),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            }
+                          },
                           backgroundColor: AppColors.greenButton),
                     ],
                   ),
