@@ -5,14 +5,16 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 class TextHeaderScratched extends StatelessWidget {
   final String title;
   final Color? color;
-  const TextHeaderScratched({Key? key, required this.title, this.color})
+  final double? leftPadding;
+  const TextHeaderScratched(
+      {Key? key, required this.title, this.color, this.leftPadding})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        left: 72,
+      padding: EdgeInsets.only(
+        left: leftPadding ?? 72,
       ),
       child: Row(
         children: [

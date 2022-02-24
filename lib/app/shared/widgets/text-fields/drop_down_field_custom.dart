@@ -6,9 +6,17 @@ class DropDownFieldCustom<T> extends StatelessWidget {
   final String? titulo;
   final void Function(T? value)? onChanged;
   final List<DropdownMenuItem<T>> items;
+  final TextStyle? textStyles;
+  final Color? filledColor;
   final T? value;
   const DropDownFieldCustom(
-      {Key? key, this.titulo, this.onChanged, required this.items, this.value})
+      {Key? key,
+      this.titulo,
+      this.onChanged,
+      required this.items,
+      this.value,
+      this.textStyles,
+      this.filledColor})
       : super(key: key);
 
   @override
@@ -23,16 +31,17 @@ class DropDownFieldCustom<T> extends StatelessWidget {
           items: items,
           iconEnabledColor: AppColors.brandingBlue,
           iconSize: 32,
-          style: AppTextStyles.button
-              .copyWith(fontSize: 24, color: AppColors.brandingBlue),
+          style: textStyles ??
+              AppTextStyles.button
+                  .copyWith(fontSize: 24, color: AppColors.brandingBlue),
           decoration: InputDecoration(
             hintText: titulo,
-            hintStyle: AppTextStyles.button
-                .copyWith(fontSize: 24, color: AppColors.brandingBlue),
-            fillColor: AppColors.lightBlue,
+            hintStyle: textStyles ??
+                AppTextStyles.button
+                    .copyWith(fontSize: 24, color: AppColors.brandingBlue),
+            fillColor: filledColor ?? AppColors.lightBlue,
             filled: true,
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),
               borderSide: BorderSide(color: AppColors.lightBlue),

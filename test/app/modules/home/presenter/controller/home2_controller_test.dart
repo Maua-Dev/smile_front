@@ -9,7 +9,8 @@ import 'home2_controller_test.mocks.dart';
 
 @GenerateMocks([Home2RepositoryInterface])
 void main() {
-  Home2RepositoryInterface repository = MockHome2RepositoryInterface();
+  Home2RepositoryInterface repository =
+      MockHome2RepositoryInterface() as Home2RepositoryInterface;
   late Home2Controller controller;
 
   var mock = <Speaker>[

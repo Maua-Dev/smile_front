@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 import 'package:smile_front/app/shared/widgets/dashboard-appbar/dashboard_appbar_widget.dart';
 import 'package:smile_front/app/shared/widgets/text-fields/drop_down_field_custom.dart';
 import 'package:smile_front/app/shared/widgets/text-fields/text_field_custom.dart';
@@ -122,6 +125,8 @@ class _DashboardActivitiesPageState
   }
 
   void showCustomDialog(BuildContext context) {
+    // ignore: prefer_typing_uninitialized_variables
+    var currentSelectedValue;
     showGeneralDialog(
       context: context,
       barrierLabel: "Barrier",
@@ -133,28 +138,42 @@ class _DashboardActivitiesPageState
           child: Container(
             height: MediaQuery.of(context).size.height * 0.75,
             width: MediaQuery.of(context).size.width * 0.75,
-            margin: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
                 color: AppColors.brandingBlue,
-                borderRadius: BorderRadius.circular(20)),
+                border: Border.all(color: AppColors.lightBlueBorder, width: 5),
+                borderRadius: BorderRadius.circular(25)),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const TextHeaderScratched(
-                  title: 'Editar Atividade',
-                  color: Colors.white,
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                  child: Material(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    color: AppColors.brandingBlue,
+                    child: const TextHeaderScratched(
+                      title: 'Editar Atividade',
+                      color: Colors.white,
+                      leftPadding: 24,
+                    ),
+                  ),
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 114, vertical: 4),
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
                   child: Material(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(25)),
                     child: TextField(
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                            borderRadius: BorderRadius.circular(25.0),
                           ),
-                          hintText: 'Enter a search term',
+                          hintText: 'Título da Atividade',
+                          hintStyle: AppTextStyles.body.copyWith(
+                              color: AppColors.brandingBlue, fontSize: 20),
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 16),
                           filled: true,
@@ -164,21 +183,75 @@ class _DashboardActivitiesPageState
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 114, vertical: 4),
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
                   child: Material(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(25)),
                     child: TextField(
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                            borderRadius: BorderRadius.circular(25.0),
                           ),
-                          hintText: 'Enter a search term',
+                          hintText: 'Descrição',
+                          hintStyle: AppTextStyles.body.copyWith(
+                              color: AppColors.brandingBlue, fontSize: 20),
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 16),
                           filled: true,
                           fillColor: Colors.white),
                     ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                  child: Material(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    child: SizedBox(
+                      width: 500,
+                      child: DropDownFieldCustom<String>(
+                        textStyles: AppTextStyles.body.copyWith(
+                            color: AppColors.brandingBlue, fontSize: 20),
+                        filledColor: Colors.white,
+                        titulo: 'Tipo de Atividade',
+                        value: currentSelectedValue,
+                        items: ActivityEnum.values
+                            .toList()
+                            .map((ActivityEnum value) {
+                          return DropdownMenuItem<String>(
+                            value: value.name,
+                            child: Text(value.name),
+                          );
+                        }).toList(),
+                        onChanged: (newValue) {
+                          setState(() {
+                            currentSelectedValue = newValue;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                const Spacer(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 48),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      FormsButtonWidget(
+                          buttonTittle: 'Cancelar',
+                          onPressed: () {},
+                          backgroundColor: AppColors.redButton),
+                      const SizedBox(
+                        width: 40,
+                      ),
+                      FormsButtonWidget(
+                          buttonTittle: 'Salvar',
+                          onPressed: () {},
+                          backgroundColor: AppColors.greenButton),
+                    ],
                   ),
                 ),
               ],
