@@ -13,13 +13,13 @@ mixin _$DashboardController on _DashboardControllerBase, Store {
       Atom(name: '_DashboardControllerBase.activitiesList');
 
   @override
-  List<Activity> get activitiesList {
+  List<ActivityModel> get activitiesList {
     _$activitiesListAtom.reportRead();
     return super.activitiesList;
   }
 
   @override
-  set activitiesList(List<Activity> value) {
+  set activitiesList(List<ActivityModel> value) {
     _$activitiesListAtom.reportWrite(value, super.activitiesList, () {
       super.activitiesList = value;
     });

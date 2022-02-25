@@ -7,8 +7,8 @@ class ActivityCardWidget extends StatelessWidget {
   final String description;
   final String date;
   final String time;
-  final int maxParticipants;
-  final int totalParticipants;
+  final String maxParticipants;
+  final String totalParticipants;
   const ActivityCardWidget(
       {Key? key,
       required this.name,
@@ -99,7 +99,7 @@ class ActivityCardWidget extends StatelessWidget {
                           style: AppTextStyles.button.copyWith(
                               fontSize: 20, color: AppColors.brandingBlue)),
                       TextSpan(
-                          text: '$maxParticipants',
+                          text: maxParticipants,
                           style: AppTextStyles.button.copyWith(
                               fontSize: 20,
                               color: AppColors.brandingBlue,
