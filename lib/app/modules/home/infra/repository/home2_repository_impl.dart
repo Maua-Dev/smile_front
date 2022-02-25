@@ -1,7 +1,7 @@
 import 'package:smile_front/app/modules/home/domain/entities/speaker.dart';
 import 'package:smile_front/app/modules/home/domain/repositories/home2_repository_interface.dart';
 
-class Home2RepositoryImpl implements Home2RepositoryInterface {
+class SpeakersRepositoryImpl implements SpeakersRepositoryInterface {
   var speakers = [
     Speaker(
         name: 'Gabe Gabrielle',
@@ -47,7 +47,6 @@ class Home2RepositoryImpl implements Home2RepositoryInterface {
   ];
 
   @override
-  // ignore: override_on_non_overriding_member
   Future<List<Speaker>> getSpeakers() {
     return Future.value(speakers);
   }

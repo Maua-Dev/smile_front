@@ -7,7 +7,7 @@ part 'home2_controller.g.dart';
 class Home2Controller = Home2ControllerBase with _$Home2Controller;
 
 abstract class Home2ControllerBase with Store {
-  final Home2RepositoryInterface repository;
+  final SpeakersRepositoryInterface repository;
 
   Home2ControllerBase(this.repository) {
     getSpeakers();
