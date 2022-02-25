@@ -1,4 +1,7 @@
 double largeInputBoxWidth(size, height) {
+  if (size > 1920) {
+    return 1100;
+  }
   if (size <= 1920 && size >= 1760) {
     return 1100;
   }

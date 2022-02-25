@@ -63,7 +63,6 @@ class _LoggedHomePageState
                   activityDate: date,
                   activityTime: time,
                   activityRemainTime: '13:00',
-                  cardWidth: 664,
                 );
               }),
               Column(
@@ -88,6 +87,7 @@ class _LoggedHomePageState
                   ),
                   TimerNavigationButtonWidget(
                     time: controller.formatTime,
+                    isUser: true,
                   ),
                 ],
               ),

@@ -47,6 +47,7 @@ class Home2RepositoryImpl implements Home2RepositoryInterface {
   ];
 
   @override
+  // ignore: override_on_non_overriding_member
   Future<List<Speaker>> getSpeakers() {
     return Future.value(speakers);
   }
