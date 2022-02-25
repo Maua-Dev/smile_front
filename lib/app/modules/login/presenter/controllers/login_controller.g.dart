@@ -9,18 +9,18 @@ part of 'login_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginController on _LoginController, Store {
-  final _$usernameAtom = Atom(name: '_LoginController.username');
+  final _$cpfRneAtom = Atom(name: '_LoginController.cpfRne');
 
   @override
-  String get username {
-    _$usernameAtom.reportRead();
-    return super.username;
+  String get cpfRne {
+    _$cpfRneAtom.reportRead();
+    return super.cpfRne;
   }
 
   @override
-  set username(String value) {
-    _$usernameAtom.reportWrite(value, super.username, () {
-      super.username = value;
+  set cpfRne(String value) {
+    _$cpfRneAtom.reportWrite(value, super.cpfRne, () {
+      super.cpfRne = value;
     });
   }
 
@@ -93,7 +93,7 @@ mixin _$LoginController on _LoginController, Store {
   @override
   String toString() {
     return '''
-username: ${username},
+cpfRne: ${cpfRne},
 password: ${password},
 keepConected: ${keepConected},
 errors: ${errors}

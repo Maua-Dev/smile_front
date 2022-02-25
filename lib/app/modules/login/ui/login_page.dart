@@ -26,8 +26,8 @@ class _LoginPageState extends ModularState<LoginPage, RegisterController> {
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.2,
-                vertical: MediaQuery.of(context).size.height * 0.1),
+                horizontal: MediaQuery.of(context).size.width * 0.1,
+                vertical: MediaQuery.of(context).size.height * 0.05),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
@@ -37,8 +37,8 @@ class _LoginPageState extends ModularState<LoginPage, RegisterController> {
               child: Padding(
                 padding: EdgeInsets.only(
                   top: MediaQuery.of(context).size.height * 0.025,
-                  left: MediaQuery.of(context).size.width * 0.040,
-                  right: MediaQuery.of(context).size.width * 0.040,
+                  left: MediaQuery.of(context).size.width * 0.030,
+                  right: MediaQuery.of(context).size.width * 0.030,
                   bottom: MediaQuery.of(context).size.height * 0.01,
                 ),
                 child: Column(
@@ -54,7 +54,7 @@ class _LoginPageState extends ModularState<LoginPage, RegisterController> {
                     ),
                     Center(
                         child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.6,
+                            height: MediaQuery.of(context).size.height * 0.75,
                             child: const LoginTabBar())),
                   ],
                 ),

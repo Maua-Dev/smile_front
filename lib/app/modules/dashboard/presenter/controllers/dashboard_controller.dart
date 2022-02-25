@@ -1,7 +1,7 @@
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/dashboard/domain/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/shared/models/activity_model.dart';
 
 part 'dashboard_controller.g.dart';
 
@@ -19,11 +19,11 @@ abstract class _DashboardControllerBase with Store {
   }
 
   @observable
-  List<Activity> activitiesList = List.empty();
+  List<ActivityModel> activitiesList = List.empty();
 
   @action
   Future getActivities() async {
-    activitiesList = await repository.getActivities(activityType);
+    activitiesList = await repository.getActivitiesSelectedByType(activityType);
   }
 
   @action
@@ -44,7 +44,7 @@ abstract class _DashboardControllerBase with Store {
 
   @action
   void orderByParticipants() {
-    activitiesList
-        .sort((a, b) => a.totalParticipants.compareTo(b.totalParticipants));
+    activitiesList.sort(
+        (a, b) => a.enrolledUsers.length.compareTo(b.enrolledUsers.length));
   }
 }

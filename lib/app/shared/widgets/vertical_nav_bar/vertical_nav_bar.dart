@@ -8,8 +8,9 @@ import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar
 
 class VerticalNavBar extends StatelessWidget {
   var controller = VerticalNavBarController();
+  final String? accessLevel;
 
-  VerticalNavBar({Key? key}) : super(key: key);
+  VerticalNavBar({Key? key, this.accessLevel}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
@@ -23,7 +24,7 @@ class VerticalNavBar extends StatelessWidget {
             TextButton(
               onPressed: () {
                 controller.toggleIndex(0);
-                Modular.to.navigate('/home/logged/adm-home');
+                Modular.to.navigate('/logged-home/user-home');
               },
               child: Column(
                 children: [
