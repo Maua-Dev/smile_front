@@ -15,6 +15,8 @@ import 'package:smile_front/app/shared/widgets/text-fields/text_field_custom.dar
 import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
 import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar.dart';
 
+import '../../../shared/models/activity_model.dart';
+
 class DashboardActivitiesPage extends StatefulWidget {
   const DashboardActivitiesPage({Key? key}) : super(key: key);
 
@@ -288,13 +290,21 @@ class _DashboardActivitiesPageState
                                         child: const Text('Salvar'),
                                         onPressed: () {
                                           controller.editActivity(
-                                              titleController.text,
-                                              descriptionController.text,
-                                              currentSelectedValue,
-                                              selectedActivity.id,
-                                              selectedActivity.workload,
-                                              selectedActivity.totalPlaces ??
-                                                  0);
+                                            selectedActivity.id,
+                                            descriptionController.text,
+                                            selectedActivity.link ?? '',
+                                            selectedActivity.totalPlaces ?? 0,
+                                            selectedActivity.location ?? '',
+                                            titleController.text,
+                                            selectedActivity.date,
+                                            ActivityModel.stringToEnumMap(
+                                                currentSelectedValue),
+                                            selectedActivity.enrolledUsers,
+                                            selectedActivity.queue ?? [],
+                                            selectedActivity.createdAt,
+                                            selectedActivity.updateAt,
+                                            selectedActivity.workload,
+                                          );
                                           controller.getActivitiesByType();
                                           Navigator.of(context).pop();
                                         },

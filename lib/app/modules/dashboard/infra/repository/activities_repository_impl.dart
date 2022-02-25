@@ -31,22 +31,35 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future editActivity(String title, String description, String activityType,
-      String id, int workload, int totalPlaces) async {
+  Future editActivity(
+      String id,
+      String description,
+      String link,
+      int totalPlaces,
+      String location,
+      String name,
+      DateTime date,
+      ActivityEnum type,
+      List<dynamic> enrolledUsers,
+      List<dynamic> queue,
+      String createdAt,
+      String updatedAt,
+      int workload) async {
     var activityToEdit = ActivityModel(
-        id: id,
-        enrolledUsers: [],
-        name: title,
-        description: description,
-        date: DateTime.now(),
-        type: ActivityModel.stringToEnumMap(activityType),
-        createdAt: '',
-        updatedAt: '',
-        workload: workload,
-        link: '',
-        location: '',
-        queue: [],
-        totalPlaces: totalPlaces);
+      name: name,
+      description: description,
+      date: date,
+      createdAt: createdAt,
+      id: id,
+      updatedAt: updatedAt,
+      workload: workload,
+      location: location,
+      totalPlaces: totalPlaces,
+      queue: queue,
+      link: link,
+      enrolledUsers: [],
+      type: type,
+    );
     var json = jsonEncode(activityToEdit.toJson());
     await datasource.putActivity(id, json);
   }

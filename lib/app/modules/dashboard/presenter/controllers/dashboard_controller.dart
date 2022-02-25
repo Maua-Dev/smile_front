@@ -51,9 +51,21 @@ abstract class _DashboardControllerBase with Store {
   }
 
   @action
-  void editActivity(String title, String description, String activityType,
-      String id, int workload, int totalPlaces) async {
-    await repository.editActivity(
-        title, description, activityType, id, workload, totalPlaces);
+  void editActivity(
+      String id,
+      String description,
+      String link,
+      int totalPlaces,
+      String location,
+      String name,
+      DateTime date,
+      ActivityEnum type,
+      List<dynamic> enrolledUsers,
+      List<dynamic> queue,
+      String createdAt,
+      String updatedAt,
+      int workload) async {
+    await repository.editActivity(id, description, link, totalPlaces, location,
+        name, date, type, enrolledUsers, queue, createdAt, updatedAt, workload);
   }
 }
