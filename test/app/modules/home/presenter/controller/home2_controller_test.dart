@@ -7,9 +7,9 @@ import 'package:smile_front/app/modules/home/presenter/controllers/home2_control
 
 import 'home2_controller_test.mocks.dart';
 
-@GenerateMocks([Home2RepositoryInterface])
+@GenerateMocks([SpeakersRepositoryInterface])
 void main() {
-  Home2RepositoryInterface repository = MockHome2RepositoryInterface();
+  SpeakersRepositoryInterface repository = MockSpeakersRepositoryInterface();
   late Home2Controller controller;
 
   var mock = <Speaker>[

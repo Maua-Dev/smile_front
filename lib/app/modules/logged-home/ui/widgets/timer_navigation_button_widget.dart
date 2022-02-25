@@ -3,16 +3,25 @@ import 'package:intl/intl.dart';
 import '../../utils/string_extensions.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import '../responsivity_logged_home.dart';
 
 class TimerNavigationButtonWidget extends StatelessWidget {
   final String time;
   final Function()? onPressed;
+  final String? userType;
+  final bool isUser;
   const TimerNavigationButtonWidget(
-      {Key? key, required this.time, this.onPressed})
+      {Key? key,
+      required this.time,
+      this.onPressed,
+      this.userType,
+      this.isUser = false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     final weekDay = DateFormat('EEEE').format(DateTime.now()).capitalize();
     final day = DateTime.now().day.toString();
     final month = DateFormat('MMMM').format(DateTime.now());
@@ -22,28 +31,32 @@ class TimerNavigationButtonWidget extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         child: SizedBox(
-          height: 200,
-          width: 664,
+          height: height * 0.176,
+          width: isUser ? width * 0.3 + 64 : width * 0.3,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
+            padding: const EdgeInsets.symmetric(vertical: 8),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   time,
-                  style: AppTextStyles.buttonBold.copyWith(fontSize: 100),
+                  style: AppTextStyles.buttonBold.copyWith(
+                      fontSize: timerNavigationTimeSize(width, height)),
                 ),
                 RichText(
                   text: TextSpan(children: [
                     TextSpan(
                         text: '$weekDay, ',
-                        style: AppTextStyles.button.copyWith(fontSize: 25)),
+                        style: AppTextStyles.button.copyWith(
+                            fontSize: timerNavigationTextSize(width, height))),
                     TextSpan(
                         text: '$day de $month ',
-                        style: AppTextStyles.buttonBold.copyWith(fontSize: 25)),
+                        style: AppTextStyles.buttonBold.copyWith(
+                            fontSize: timerNavigationTextSize(width, height))),
                     TextSpan(
                         text: 'de $year',
-                        style: AppTextStyles.button.copyWith(fontSize: 25)),
+                        style: AppTextStyles.button.copyWith(
+                            fontSize: timerNavigationTextSize(width, height))),
                   ]),
                 ),
               ],

@@ -6,6 +6,8 @@ import 'package:smile_front/app/modules/login/ui/widgets/input_box.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 
+import '../responsivity_login.dart';
+
 class FirstTab extends StatefulWidget {
   const FirstTab({Key? key}) : super(key: key);
 
@@ -16,14 +18,16 @@ class FirstTab extends StatefulWidget {
 class _FirstTabState extends ModularState<FirstTab, LoginController> {
   @override
   Widget build(BuildContext context) {
+    var widthSize = MediaQuery.of(context).size.width;
+    var heightSize = MediaQuery.of(context).size.height;
     return ListView(
       children: [
         Center(
           child: Container(
               constraints: BoxConstraints(
-                minHeight: MediaQuery.of(context).size.height * 0.52,
+                minHeight: heightSize * 0.52,
               ),
-              width: MediaQuery.of(context).size.width * 0.52,
+              width: widthSize,
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.white),
@@ -42,6 +46,7 @@ class _FirstTabState extends ModularState<FirstTab, LoginController> {
                       icon: Icons.person,
                       placeholder: 'Email',
                       setValue: controller.setUsername,
+                      widthSize: largeInputBoxWidth(widthSize, heightSize),
                     ),
                     const SizedBox(
                       height: 20,
@@ -51,6 +56,7 @@ class _FirstTabState extends ModularState<FirstTab, LoginController> {
                       icon: Icons.lock,
                       placeholder: 'Senha',
                       setValue: controller.setPassword,
+                      widthSize: largeInputBoxWidth(widthSize, heightSize),
                     ),
                     const SizedBox(
                       height: 20,
@@ -59,7 +65,10 @@ class _FirstTabState extends ModularState<FirstTab, LoginController> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text('Esqueci minha senha'),
+                        const Text(
+                          'Esqueci minha senha',
+                          style: TextStyle(fontSize: 18),
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(right: 16),
                           child: ActionTextButtonWidget(

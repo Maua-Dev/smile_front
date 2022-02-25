@@ -22,9 +22,7 @@ class _LoggedAdmHomePageState
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        const AppbarLogoWidget(
-          horizontalPadding: 164,
-        ),
+        const AppbarLogoWidget(),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Observer(builder: (_) {
             String date =
@@ -36,7 +34,6 @@ class _LoggedAdmHomePageState
               activityDate: date,
               activityTime: time,
               activityRemainTime: '13:00',
-              cardWidth: 664,
             );
           }),
           Column(
@@ -88,6 +85,7 @@ class _LoggedAdmHomePageState
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           TimerNavigationButtonWidget(
             time: controller.formatTime,
+            userType: 'adm',
           ),
           const NavigationButtonWidget(
             title: 'Atividades Inscritas',
@@ -102,9 +100,7 @@ class _LoggedAdmHomePageState
             icon: Icons.ac_unit_outlined,
           ),
         ]),
-        const SponsorshipNavigationButton(
-          cardWidth: 1756,
-        ),
+        const SponsorshipNavigationButton(),
       ]),
     );
   }

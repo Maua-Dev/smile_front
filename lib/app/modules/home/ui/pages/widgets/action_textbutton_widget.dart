@@ -8,6 +8,7 @@ class ActionTextButtonWidget extends StatelessWidget {
   final double? heightSize;
   final double? paddingHorizontal;
   final double? paddingVertical;
+  final double? fontSize;
   final Function()? onPressed;
 
   const ActionTextButtonWidget({
@@ -19,6 +20,7 @@ class ActionTextButtonWidget extends StatelessWidget {
     this.heightSize,
     this.paddingHorizontal,
     this.paddingVertical,
+    this.fontSize,
   }) : super(key: key);
 
   @override
@@ -40,7 +42,7 @@ class ActionTextButtonWidget extends StatelessWidget {
           child: Text(title ?? '',
               textAlign: TextAlign.center,
               style: AppTextStyles.body
-                  .copyWith(color: Colors.white, fontSize: 25)),
+                  .copyWith(color: Colors.white, fontSize: fontSize ?? 25)),
         ),
       ),
     );

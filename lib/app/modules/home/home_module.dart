@@ -22,7 +22,7 @@ class HomeModule extends Module {
     Bind.lazySingleton((i) => Home4Controller(repository: i())),
     Bind.lazySingleton<LectureImagesDatasourceInterface>(
         (i) => LectureImagesDatasourceImpl()),
-    Bind.lazySingleton<Home2RepositoryImpl>((i) => Home2RepositoryImpl()),
+    Bind.lazySingleton<SpeakersRepositoryImpl>((i) => SpeakersRepositoryImpl()),
     Bind.lazySingleton((i) => Home2Controller(i())),
     Bind.lazySingleton<RectorsRepositoryInterface>(
         (i) => RectorsRepositoryImpl(datasource: i())),

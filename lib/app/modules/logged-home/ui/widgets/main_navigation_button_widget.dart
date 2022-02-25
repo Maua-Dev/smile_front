@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import '../responsivity_logged_home.dart';
 
 class MainNavigationButtonWidget extends StatelessWidget {
   final String userName;
@@ -23,13 +24,15 @@ class MainNavigationButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         onPressed: onPressed,
         child: SizedBox(
-          height: 448,
-          width: cardWidth ?? 500,
+          height: height * 0.4,
+          width: cardWidth ?? width * 0.3,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,16 +45,18 @@ class MainNavigationButtonWidget extends StatelessWidget {
                     text: TextSpan(children: [
                       TextSpan(
                           text: 'Olá, ',
-                          style: AppTextStyles.button.copyWith(fontSize: 45)),
+                          style: AppTextStyles.button.copyWith(
+                              fontSize: mainNavigationTitleSize(height))),
                       TextSpan(
                           text: '$userName!',
-                          style:
-                              AppTextStyles.buttonBold.copyWith(fontSize: 45)),
+                          style: AppTextStyles.buttonBold.copyWith(
+                              fontSize: mainNavigationTitleSize(height))),
                     ]),
                   ),
                   Text(
                     'Sua próxima atividade é',
-                    style: AppTextStyles.button,
+                    style: AppTextStyles.button.copyWith(
+                        fontSize: mainNavigationCopyButtonSize(width)),
                   ),
                 ],
               ),
@@ -60,38 +65,45 @@ class MainNavigationButtonWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(activityName,
-                        style: AppTextStyles.buttonBold.copyWith(fontSize: 35)),
+                        style: AppTextStyles.buttonBold.copyWith(
+                            fontSize:
+                                mainNavigationActivitySize(width, height))),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       child: Row(
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.calendar_today,
-                            size: 25,
+                            size: mainNavigationIconSize(width),
                             color: Colors.white,
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
-                            child:
-                                Text(activityDate, style: AppTextStyles.button),
+                            child: Text(activityDate,
+                                style: AppTextStyles.button.copyWith(
+                                    fontSize:
+                                        mainNavigationCopyButtonSize(width))),
                           ),
                         ],
                       ),
                     ),
                     Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.timer,
-                          size: 25,
+                          size: mainNavigationIconSize(width),
                           color: Colors.white,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child:
-                              Text(activityTime, style: AppTextStyles.button),
+                          child: Text(activityTime,
+                              style: AppTextStyles.button.copyWith(
+                                  fontSize:
+                                      mainNavigationCopyButtonSize(width))),
                         ),
                         Text('($activityRemainTime)',
-                            style: AppTextStyles.button),
+                            style: AppTextStyles.button.copyWith(
+                                fontSize: mainNavigationCopyButtonSize(width))),
                       ],
                     ),
                   ],
@@ -99,7 +111,8 @@ class MainNavigationButtonWidget extends StatelessWidget {
               ),
               Center(
                 child: Text('Clique aqui para mais informações',
-                    style: AppTextStyles.thinButton),
+                    style: AppTextStyles.thinButton.copyWith(
+                        fontSize: mainNavigationCopyButtonSize(width))),
               ),
             ],
           ),
