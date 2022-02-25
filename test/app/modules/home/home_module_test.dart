@@ -22,7 +22,7 @@ void main() {
 
   test('Home2Controller Injection', () {
     var test = Modular.get<Home2Controller>();
-    expect(test.repository, isInstanceOf<Home2RepositoryInterface>());
+    expect(test.repository, isInstanceOf<SpeakersRepositoryInterface>());
   });
 
   test('LectureImagesRepositoryImpl Injection', () {
@@ -40,7 +40,7 @@ void main() {
   });
 
   test('Home2RepositoryImpl Injection', () {
-    Modular.get<Home2RepositoryImpl>();
+    Modular.get<SpeakersRepositoryImpl>();
   });
 
   test('RectorsRepositoryImpl Injection', () {

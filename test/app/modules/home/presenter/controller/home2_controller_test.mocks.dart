@@ -20,12 +20,12 @@ import 'package:smile_front/app/modules/home/domain/repositories/home2_repositor
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-/// A class which mocks [Home2RepositoryInterface].
+/// A class which mocks [SpeakersRepositoryInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockHome2RepositoryInterface extends _i1.Mock
-    implements _i2.Home2RepositoryInterface {
-  MockHome2RepositoryInterface() {
+class MockSpeakersRepositoryInterface extends _i1.Mock
+    implements _i2.SpeakersRepositoryInterface {
+  MockSpeakersRepositoryInterface() {
     _i1.throwOnMissingStub(this);
   }
 
