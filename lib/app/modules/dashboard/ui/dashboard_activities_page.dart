@@ -220,11 +220,11 @@ class _DashboardActivitiesPageState
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-                  child: Material(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)),
-                    child: SizedBox(
-                      width: 500,
+                  child: SizedBox(
+                    width: 500,
+                    child: Material(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
                       child: DropDownFieldCustom<String>(
                         textStyles: AppTextStyles.body.copyWith(
                             color: AppColors.brandingBlue, fontSize: 20),
