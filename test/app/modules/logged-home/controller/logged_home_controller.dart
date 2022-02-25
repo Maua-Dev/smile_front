@@ -41,6 +41,7 @@ void main() {
         .thenAnswer((_) async => mockActivity);
     controller = LoggedHomeController(
         cpfRne: '',
+        accessLevel: 'ADMIN',
         futureActivityRepository: activityRepository,
         userRepository: userRepository);
   });

@@ -18,7 +18,9 @@ class DashboardModule extends Module {
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<DashboardController>(
       (i) => DashboardController(
-          repository: i(), activityType: i.args!.data as ActivityEnum),
+          repository: i(),
+          activityType: i.args!.data[0] as ActivityEnum,
+          accessLevel: i.args!.data[1] as String),
     ),
   ];
 
@@ -26,7 +28,7 @@ class DashboardModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(
       Modular.initialRoute,
-      child: (_, args) => const FilterDashboardPage(),
+      child: (_, args) => FilterDashboardPage(accessLevel: args.data as String),
     ),
     ChildRoute('/activities-dashboard',
         child: (_, args) => const DashboardActivitiesPage()),

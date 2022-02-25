@@ -112,8 +112,13 @@ class _DashboardActivitiesPageState
                               .toString(),
                           time: time,
                           onTap: () {
-                            showCustomDialog(
-                                context, controller.activitiesList[index]);
+                            if (controller.accessLevel == 'ADMIN') {
+                              showCustomEditDialog(
+                                  context, controller.activitiesList[index]);
+                            } else {
+                              showCustomMoreInfoDialog(
+                                  context, controller.activitiesList[index]);
+                            }
                           },
                         );
                       });
@@ -126,7 +131,7 @@ class _DashboardActivitiesPageState
     ]));
   }
 
-  void showCustomDialog(BuildContext context, Activity selectedActivity) {
+  void showCustomEditDialog(BuildContext context, Activity selectedActivity) {
     // ignore: prefer_typing_uninitialized_variables
     var currentSelectedValue;
     var titleController = TextEditingController(text: '');
@@ -172,6 +177,8 @@ class _DashboardActivitiesPageState
                         borderRadius: BorderRadius.circular(25)),
                     child: TextField(
                       controller: titleController,
+                      style: AppTextStyles.body.copyWith(
+                          color: AppColors.brandingBlue, fontSize: 20),
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
@@ -194,6 +201,8 @@ class _DashboardActivitiesPageState
                         borderRadius: BorderRadius.circular(25)),
                     child: TextField(
                       controller: descriptionController,
+                      style: AppTextStyles.body.copyWith(
+                          color: AppColors.brandingBlue, fontSize: 20),
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
@@ -318,6 +327,65 @@ class _DashboardActivitiesPageState
                           },
                           backgroundColor: AppColors.greenButton),
                     ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+      transitionBuilder: (_, anim, __, child) {
+        Tween<Offset> tween;
+        if (anim.status == AnimationStatus.reverse) {
+          tween = Tween(begin: const Offset(-1, 0), end: Offset.zero);
+        } else {
+          tween = Tween(begin: const Offset(1, 0), end: Offset.zero);
+        }
+
+        return SlideTransition(
+          position: tween.animate(anim),
+          child: FadeTransition(
+            opacity: anim,
+            child: child,
+          ),
+        );
+      },
+    );
+  }
+
+  void showCustomMoreInfoDialog(
+      BuildContext context, Activity selectedActivity) {
+    showGeneralDialog(
+      context: context,
+      barrierLabel: "Barrier",
+      barrierDismissible: true,
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionDuration: const Duration(milliseconds: 500),
+      pageBuilder: (_, __, ___) {
+        return Center(
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.75,
+            width: MediaQuery.of(context).size.width * 0.75,
+            decoration: BoxDecoration(
+                color: AppColors.brandingBlue,
+                border: Border.all(color: AppColors.lightBlueBorder, width: 5),
+                borderRadius: BorderRadius.circular(25)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                  child: Material(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    color: AppColors.brandingBlue,
+                    child: TextHeaderScratched(
+                      title: selectedActivity.name,
+                      color: Colors.white,
+                      leftPadding: 24,
+                    ),
                   ),
                 ),
               ],

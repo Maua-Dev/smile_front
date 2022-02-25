@@ -50,7 +50,9 @@ void main() {
     when(repository.getActivitiesSelectedByType(ActivityEnum.CURSOS))
         .thenAnswer((_) async => mockActivities);
     controller = DashboardController(
-        activityType: ActivityEnum.CURSOS, repository: repository);
+        activityType: ActivityEnum.CURSOS,
+        repository: repository,
+        accessLevel: 'ADMIN');
   });
 
   test('getActivities', () async {

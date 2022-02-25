@@ -30,7 +30,8 @@ class LoggedHomeModule extends Module {
       (i) => LoggedHomeController(
           userRepository: i(),
           futureActivityRepository: i(),
-          cpfRne: i.args!.data as String),
+          cpfRne: i.args!.data[0] as String,
+          accessLevel: i.args!.data[1] as String),
     )
   ];
   @override

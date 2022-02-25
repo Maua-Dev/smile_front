@@ -10,8 +10,10 @@ class DashboardController = _DashboardControllerBase with _$DashboardController;
 abstract class _DashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final ActivityEnum activityType;
+  final String accessLevel;
 
   _DashboardControllerBase({
+    required this.accessLevel,
     required this.repository,
     required this.activityType,
   }) {
