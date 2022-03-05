@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
@@ -60,7 +58,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
       enrolledUsers: [],
       type: type,
     );
-    var json = jsonEncode(activityToEdit.toJson());
-    await datasource.putActivity(id, json);
+
+    await datasource.putActivity(id, activityToEdit);
   }
 }

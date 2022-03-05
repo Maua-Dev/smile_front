@@ -81,7 +81,7 @@ class ActivityModel extends Activity {
   Map<String, dynamic> toJson() => {
         'name': name,
         'description': description,
-        'date': date,
+        'date': date.millisecondsSinceEpoch,
         'createdAt': createdAt,
         'id': id,
         'updatedAt': updatedAt,
@@ -91,6 +91,6 @@ class ActivityModel extends Activity {
         'queue': queue,
         'link': link,
         'enrolledUsers': enrolledUsers,
-        'type': type,
+        'type': type.name,
       };
 }

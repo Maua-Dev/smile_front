@@ -25,9 +25,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   }
 
   @override
-  Future putActivity(String id, String json) async {
+  Future putActivity(String id, ActivityModel activity) async {
     try {
-      await dioClient.put('/smile_mss_activities/activity?id=$id', data: json);
+      await dioClient.put('/smile_mss_activities/activity?id=$id',
+          data: activity.toJson());
     } on Exception catch (e) {
       //Necessário um tratamento de erro visual para cada erro.
       // ignore: avoid_print
