@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
@@ -23,7 +23,7 @@ class AdmDashboardPage extends StatefulWidget {
 }
 
 class _AdmDashboardPageState
-    extends ModularState<AdmDashboardPage, DashboardController> {
+    extends ModularState<AdmDashboardPage, AdmDashboardController> {
   @override
   Widget build(BuildContext context) {
     var searchController = TextEditingController(text: '');
@@ -63,7 +63,7 @@ class _AdmDashboardPageState
                         currentSelectedValue = newValue;
                         switch (newValue) {
                           case 'Ordenar':
-                            controller.getActivitiesByType();
+                            // controller.getActivitiesByType();
                             break;
                           case 'Por data':
                             controller.orderByDate();
@@ -296,7 +296,7 @@ class _AdmDashboardPageState
                                                 currentSelectedValue),
                                             selectedActivity.workload,
                                           );
-                                          controller.getActivitiesByType();
+                                          controller.getAllActivities();
                                           Navigator.of(context).pop();
                                         },
                                       ),

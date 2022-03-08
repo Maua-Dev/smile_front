@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widget.dart';
 import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -16,6 +16,7 @@ import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
 import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar.dart';
 
 import '../../../shared/models/activity_model.dart';
+import '../presenter/controllers/user_dashboard_controller.dart';
 
 class DashboardActivitiesPage extends StatefulWidget {
   const DashboardActivitiesPage({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class DashboardActivitiesPage extends StatefulWidget {
 }
 
 class _DashboardActivitiesPageState
-    extends ModularState<DashboardActivitiesPage, DashboardController> {
+    extends ModularState<DashboardActivitiesPage, UserDashboardController> {
   @override
   Widget build(BuildContext context) {
     var searchController = TextEditingController(text: '');

@@ -3,7 +3,9 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/dashboard_activities_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/filter_dashboard_page.dart';
 
@@ -16,10 +18,14 @@ class DashboardModule extends Module {
         (i) => ActivitiesDatasourceImpl(i())),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
-    Bind.lazySingleton<DashboardController>(
-      (i) => DashboardController(
+    Bind.lazySingleton<AdmDashboardController>(
+      (i) => AdmDashboardController(
+          repository: i(), accessLevel: i.args!.data[1] as String),
+    ),
+    Bind.lazySingleton<UserDashboardController>(
+      (i) => UserDashboardController(
           repository: i(),
-          activityType: i.args?.data[0] as ActivityEnum?,
+          activityType: i.args!.data[0] as ActivityEnum,
           accessLevel: i.args!.data[1] as String),
     ),
   ];
@@ -32,5 +38,7 @@ class DashboardModule extends Module {
     ),
     ChildRoute('/activities-dashboard',
         child: (_, args) => const DashboardActivitiesPage()),
+    ChildRoute('/adm-activities-dashboard',
+        child: (_, args) => const AdmDashboardPage()),
   ];
 }

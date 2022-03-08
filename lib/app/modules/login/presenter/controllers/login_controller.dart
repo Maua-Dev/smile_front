@@ -43,7 +43,7 @@ abstract class _LoginController with Store {
       await authController.loginWithCpfRne(cpfRne, password, keepConected);
       if (authController.isLogged) {
         if (authController.accessLevel == 'ADMIN') {
-          Modular.to.navigate('/logged-home/dashboard/activities-dashboard',
+          Modular.to.navigate('/logged-home/dashboard/adm-activities-dashboard',
               arguments: [null, authController.accessLevel]);
         } else if (authController.accessLevel == 'SPEAKER') {
           Modular.to.navigate('/speaker-home');

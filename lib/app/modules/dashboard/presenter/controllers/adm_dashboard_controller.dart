@@ -3,35 +3,30 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
-part 'dashboard_controller.g.dart';
+part 'adm_dashboard_controller.g.dart';
 
-class DashboardController = _DashboardControllerBase with _$DashboardController;
+class AdmDashboardController = _AdmDashboardControllerBase
+    with _$AdmDashboardController;
 
-abstract class _DashboardControllerBase with Store {
+abstract class _AdmDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
-  final ActivityEnum? activityType;
   final String accessLevel;
 
-  _DashboardControllerBase({
+  _AdmDashboardControllerBase({
     required this.accessLevel,
     required this.repository,
-    this.activityType,
   }) {
-    if (activityType == null) {
-      getAllActivities();
-    } else {
-      getActivitiesByType();
-    }
+    getAllActivities();
   }
 
   @observable
   List<ActivityModel> activitiesList = List.empty();
 
-  @action
-  Future getActivitiesByType() async {
-    activitiesList =
-        await repository.getActivitiesSelectedByType(activityType!);
-  }
+  // @action
+  // Future getActivitiesByType() async {
+  //   activitiesList =
+  //       await repository.getActivitiesSelectedByType(activityType!);
+  // }
 
   @action
   Future getAllActivities() async {
@@ -45,7 +40,7 @@ abstract class _DashboardControllerBase with Store {
             element.name.toLowerCase().startsWith(search.toLowerCase()))
         .toList();
     if (search == '') {
-      getActivitiesByType();
+      getAllActivities();
     }
   }
 

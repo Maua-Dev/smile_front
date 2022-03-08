@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'dashboard_controller.dart';
+part of 'user_dashboard_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,9 @@ part of 'dashboard_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$DashboardController on _DashboardControllerBase, Store {
+mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   final _$activitiesListAtom =
-      Atom(name: '_DashboardControllerBase.activitiesList');
+      Atom(name: '_UserDashboardControllerBase.activitiesList');
 
   @override
   List<ActivityModel> get activitiesList {
@@ -26,7 +26,7 @@ mixin _$DashboardController on _DashboardControllerBase, Store {
   }
 
   final _$getActivitiesByTypeAsyncAction =
-      AsyncAction('_DashboardControllerBase.getActivitiesByType');
+      AsyncAction('_UserDashboardControllerBase.getActivitiesByType');
 
   @override
   Future<dynamic> getActivitiesByType() {
@@ -35,7 +35,7 @@ mixin _$DashboardController on _DashboardControllerBase, Store {
   }
 
   final _$getAllActivitiesAsyncAction =
-      AsyncAction('_DashboardControllerBase.getAllActivities');
+      AsyncAction('_UserDashboardControllerBase.getAllActivities');
 
   @override
   Future<dynamic> getAllActivities() {
@@ -43,7 +43,7 @@ mixin _$DashboardController on _DashboardControllerBase, Store {
   }
 
   final _$editActivityAsyncAction =
-      AsyncAction('_DashboardControllerBase.editActivity');
+      AsyncAction('_UserDashboardControllerBase.editActivity');
 
   @override
   Future<dynamic> editActivity(
@@ -60,28 +60,28 @@ mixin _$DashboardController on _DashboardControllerBase, Store {
         description, link, totalPlaces, location, name, date, type, workload));
   }
 
-  final _$_DashboardControllerBaseActionController =
-      ActionController(name: '_DashboardControllerBase');
+  final _$_UserDashboardControllerBaseActionController =
+      ActionController(name: '_UserDashboardControllerBase');
 
   @override
   void searchActivityByName(String search) {
-    final _$actionInfo = _$_DashboardControllerBaseActionController.startAction(
-        name: '_DashboardControllerBase.searchActivityByName');
+    final _$actionInfo = _$_UserDashboardControllerBaseActionController
+        .startAction(name: '_UserDashboardControllerBase.searchActivityByName');
     try {
       return super.searchActivityByName(search);
     } finally {
-      _$_DashboardControllerBaseActionController.endAction(_$actionInfo);
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void orderByDate() {
-    final _$actionInfo = _$_DashboardControllerBaseActionController.startAction(
-        name: '_DashboardControllerBase.orderByDate');
+    final _$actionInfo = _$_UserDashboardControllerBaseActionController
+        .startAction(name: '_UserDashboardControllerBase.orderByDate');
     try {
       return super.orderByDate();
     } finally {
-      _$_DashboardControllerBaseActionController.endAction(_$actionInfo);
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
