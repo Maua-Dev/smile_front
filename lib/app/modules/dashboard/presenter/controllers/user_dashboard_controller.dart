@@ -19,11 +19,7 @@ abstract class _UserDashboardControllerBase with Store {
     required this.repository,
     required this.activityType,
   }) {
-    if (activityType == null) {
-      getAllActivities();
-    } else {
-      getActivitiesByType();
-    }
+    getActivitiesByType();
   }
 
   @observable
@@ -31,8 +27,7 @@ abstract class _UserDashboardControllerBase with Store {
 
   @action
   Future getActivitiesByType() async {
-    activitiesList =
-        await repository.getActivitiesSelectedByType(activityType!);
+    activitiesList = await repository.getActivitiesSelectedByType(activityType);
   }
 
   @action

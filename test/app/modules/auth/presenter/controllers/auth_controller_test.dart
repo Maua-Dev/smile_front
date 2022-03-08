@@ -13,7 +13,6 @@ void main() {
   SecureStorageInterface storage = MockSecureStorageInterface();
   late AuthController controller;
 
-  var accessLevel = 'ADMIN';
   var loginWithEmail = {'token': 'token12354', 'accessLevel': 'ADMIN'};
 
   setUpAll(() {
