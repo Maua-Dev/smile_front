@@ -6,7 +6,7 @@ import 'package:smile_front/app/shared/services/dio/smile_options.dart';
 void main() {
   test('getActivities', () async {
     final ds = ActivitiesDatasourceImpl(DioForNative(smileOption));
-    final res = await ds.getActivities();
+    final res = await ds.getAllActivities();
     expect(res.isNotEmpty, true);
   });
 }

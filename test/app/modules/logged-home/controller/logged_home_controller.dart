@@ -19,13 +19,10 @@ void main() {
   late LoggedHomeController controller;
   final mockActivity = ActivityModel(
       id: '',
-      enrolledUsers: [],
       name: 'ABCD123',
       description: '',
       date: DateTime.now(),
       type: ActivityEnum.CURSOS,
-      createdAt: '',
-      updatedAt: '',
       workload: 0);
 
   final mockUser = UserModel(

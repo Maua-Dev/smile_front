@@ -14,13 +14,10 @@ void main() {
   FutureActivityDatasource datasource = MockFutureActivityDatasource();
   var activity = ActivityModel(
       id: '123',
-      enrolledUsers: [],
       name: '',
       description: '',
       date: DateTime.now(),
       type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
-      createdAt: '',
-      updatedAt: '',
       workload: 40);
 
   setUpAll(() {
