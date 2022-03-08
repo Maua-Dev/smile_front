@@ -52,4 +52,9 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
     await datasource.putActivity(id, activityToEdit);
   }
+
+  @override
+  Future removeActivity(String id) async {
+    await datasource.removeActivity(id);
+  }
 }

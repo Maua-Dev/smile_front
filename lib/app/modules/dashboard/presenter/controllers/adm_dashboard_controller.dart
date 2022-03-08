@@ -69,4 +69,9 @@ abstract class _AdmDashboardControllerBase with Store {
     await repository.editActivity(id, description, link, totalPlaces, location,
         name, date, type, workload);
   }
+
+  @action
+  Future deleteActivity(String id) async {
+    await repository.removeActivity(id);
+  }
 }

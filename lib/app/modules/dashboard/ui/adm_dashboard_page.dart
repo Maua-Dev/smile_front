@@ -6,10 +6,12 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/app/shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../shared/entities/activity.dart';
 import '../../../shared/models/activity_model.dart';
 import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/widgets/buttons/forms_button_widget.dart';
+import '../../../shared/widgets/dialogs/fill_all_fields_dialog_widget.dart';
 import '../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import '../../../shared/widgets/text-fields/text_field_custom.dart';
 import '../../../shared/widgets/text_header_scratched.dart';
@@ -288,7 +290,7 @@ class _AdmDashboardPageState
                           child: TextField(
                             inputFormatters: [
                               MaskTextInputFormatter(
-                                mask: '##-##-##T##:##',
+                                mask: '####-##-##T##:##',
                               )
                             ],
                             controller: dateController,
@@ -301,7 +303,7 @@ class _AdmDashboardPageState
                                       color: AppColors.brandingBlue,
                                       width: 0.0),
                                 ),
-                                hintText: 'Data (AAAA-MM-DD HH:MM',
+                                hintText: 'Data (AAAA-MM-DD HH:MM)',
                                 hintStyle: AppTextStyles.body.copyWith(
                                     color: AppColors.brandingBlue,
                                     fontSize: 20),
@@ -396,60 +398,35 @@ class _AdmDashboardPageState
                                 context: context,
                                 builder: (BuildContext context) {
                                   // retorna um objeto do tipo Dialog
-                                  return AlertDialog(
-                                    title: const Text(
-                                        'Tem certeza que deseja salvar?'),
-                                    content: const Text(
-                                        'Ao salvar todos os dados antigos serão perdidos.'),
-                                    actions: [
-                                      ElevatedButton(
-                                        child: const Text('Fechar'),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      ElevatedButton(
-                                        child: const Text('Salvar'),
-                                        onPressed: () {
-                                          controller.editActivity(
-                                            selectedActivity.id,
-                                            descriptionController.text,
-                                            selectedActivity.link ?? '',
-                                            int.parse(
-                                                numberOfPeopleController.text),
-                                            locationController.text,
-                                            titleController.text,
-                                            DateTime.parse(dateController.text),
-                                            ActivityModel.stringToEnumMap(
-                                                currentSelectedValue),
-                                            int.parse(workloadController.text),
-                                          );
-                                          controller.getAllActivities();
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
-                                  );
+                                  return ActionConfirmationDialogWidget(
+                                      title:
+                                          'Tem certeza que deseja continuar?',
+                                      content:
+                                          'Ao salvar todos os dados antigos serão perdidos.',
+                                      onPressed: () {
+                                        controller.editActivity(
+                                          selectedActivity.id,
+                                          descriptionController.text,
+                                          selectedActivity.link ?? '',
+                                          int.parse(
+                                              numberOfPeopleController.text),
+                                          locationController.text,
+                                          titleController.text,
+                                          DateTime.parse(dateController.text),
+                                          ActivityModel.stringToEnumMap(
+                                              currentSelectedValue),
+                                          int.parse(workloadController.text),
+                                        );
+                                        controller.getAllActivities();
+                                        Navigator.of(context).pop();
+                                      });
                                 },
                               );
                             } else {
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title:
-                                        const Text('Preencha todos os campos!'),
-                                    content: const Text(
-                                        'Confira se todos os campos estão corretamente preenchidos.'),
-                                    actions: [
-                                      ElevatedButton(
-                                        child: const Text('Fechar'),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
-                                  );
+                                  return const FillAllFieldsDialogWidget();
                                 },
                               );
                             }
