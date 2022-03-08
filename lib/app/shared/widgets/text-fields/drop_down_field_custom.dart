@@ -44,7 +44,7 @@ class DropDownFieldCustom<T> extends StatelessWidget {
             contentPadding: const EdgeInsets.symmetric(horizontal: 16),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(color: AppColors.lightBlue),
+              borderSide: BorderSide(color: AppColors.brandingBlue),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),

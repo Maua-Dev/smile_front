@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-
 import '../../../shared/entities/activity.dart';
 import '../../../shared/models/activity_model.dart';
 import '../../../shared/themes/app_text_styles.dart';
@@ -133,6 +133,10 @@ class _AdmDashboardPageState
     var currentSelectedValue;
     var titleController = TextEditingController(text: '');
     var descriptionController = TextEditingController(text: '');
+    var numberOfPeopleController = TextEditingController(text: '');
+    var dateController = TextEditingController(text: '');
+    var workloadController = TextEditingController(text: '');
+    var locationController = TextEditingController(text: '');
     showGeneralDialog(
       context: context,
       barrierLabel: "Barrier",
@@ -143,74 +147,22 @@ class _AdmDashboardPageState
         return Center(
           child: Container(
             height: MediaQuery.of(context).size.height * 0.75,
-            width: MediaQuery.of(context).size.width * 0.75,
+            width: MediaQuery.of(context).size.width * 0.6,
             decoration: BoxDecoration(
-                color: AppColors.brandingBlue,
+                color: Colors.white,
                 border: Border.all(color: AppColors.lightBlueBorder, width: 5),
                 borderRadius: BorderRadius.circular(25)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
                   child: Material(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)),
-                    color: AppColors.brandingBlue,
-                    child: const TextHeaderScratched(
+                    color: Colors.white,
+                    child: TextHeaderScratched(
                       title: 'Editar Atividade',
-                      color: Colors.white,
                       leftPadding: 24,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-                  child: Material(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)),
-                    child: TextField(
-                      controller: titleController,
-                      style: AppTextStyles.body.copyWith(
-                          color: AppColors.brandingBlue, fontSize: 20),
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                          ),
-                          hintText: 'Título da Atividade',
-                          hintStyle: AppTextStyles.body.copyWith(
-                              color: AppColors.brandingBlue, fontSize: 20),
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 16),
-                          filled: true,
-                          fillColor: Colors.white),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-                  child: Material(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)),
-                    child: TextField(
-                      controller: descriptionController,
-                      style: AppTextStyles.body.copyWith(
-                          color: AppColors.brandingBlue, fontSize: 20),
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                          ),
-                          hintText: 'Descrição',
-                          hintStyle: AppTextStyles.body.copyWith(
-                              color: AppColors.brandingBlue, fontSize: 20),
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 16),
-                          filled: true,
-                          fillColor: Colors.white),
                     ),
                   ),
                 ),
@@ -240,6 +192,181 @@ class _AdmDashboardPageState
                           currentSelectedValue = newValue;
                         },
                       ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                  child: Material(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    child: TextField(
+                      controller: titleController,
+                      style: AppTextStyles.body.copyWith(
+                          color: AppColors.brandingBlue, fontSize: 20),
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                            borderSide: BorderSide(
+                                color: AppColors.brandingBlue, width: 0.0),
+                          ),
+                          hintText: 'Título da Atividade',
+                          hintStyle: AppTextStyles.body.copyWith(
+                              color: AppColors.brandingBlue, fontSize: 20),
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 16),
+                          filled: true,
+                          fillColor: Colors.white),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                  child: Material(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    child: TextField(
+                      controller: descriptionController,
+                      style: AppTextStyles.body.copyWith(
+                          color: AppColors.brandingBlue, fontSize: 20),
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                            borderSide: BorderSide(
+                                color: AppColors.brandingBlue, width: 0.0),
+                          ),
+                          hintText: 'Descrição',
+                          hintStyle: AppTextStyles.body.copyWith(
+                              color: AppColors.brandingBlue, fontSize: 20),
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 16),
+                          filled: true,
+                          fillColor: Colors.white),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                  child: Row(
+                    children: [
+                      Flexible(
+                        child: Material(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)),
+                          child: TextField(
+                            controller: numberOfPeopleController,
+                            style: AppTextStyles.body.copyWith(
+                                color: AppColors.brandingBlue, fontSize: 20),
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  borderSide: BorderSide(
+                                      color: AppColors.brandingBlue,
+                                      width: 0.0),
+                                ),
+                                hintText: 'Número de Vagas',
+                                hintStyle: AppTextStyles.body.copyWith(
+                                    color: AppColors.brandingBlue,
+                                    fontSize: 20),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                filled: true,
+                                fillColor: Colors.white),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Flexible(
+                        child: Material(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)),
+                          child: TextField(
+                            inputFormatters: [
+                              MaskTextInputFormatter(
+                                mask: '##-##-##T##:##',
+                              )
+                            ],
+                            controller: dateController,
+                            style: AppTextStyles.body.copyWith(
+                                color: AppColors.brandingBlue, fontSize: 20),
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  borderSide: BorderSide(
+                                      color: AppColors.brandingBlue,
+                                      width: 0.0),
+                                ),
+                                hintText: 'Data (AAAA-MM-DD HH:MM',
+                                hintStyle: AppTextStyles.body.copyWith(
+                                    color: AppColors.brandingBlue,
+                                    fontSize: 20),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                filled: true,
+                                fillColor: Colors.white),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Flexible(
+                        child: Material(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)),
+                          child: TextField(
+                            controller: workloadController,
+                            style: AppTextStyles.body.copyWith(
+                                color: AppColors.brandingBlue, fontSize: 20),
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  borderSide: BorderSide(
+                                      color: AppColors.brandingBlue,
+                                      width: 0.0),
+                                ),
+                                hintText: 'Carga Horária',
+                                hintStyle: AppTextStyles.body.copyWith(
+                                    color: AppColors.brandingBlue,
+                                    fontSize: 20),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                filled: true,
+                                fillColor: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                  child: Material(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    child: TextField(
+                      controller: locationController,
+                      style: AppTextStyles.body.copyWith(
+                          color: AppColors.brandingBlue, fontSize: 20),
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                            borderSide: BorderSide(
+                                color: AppColors.brandingBlue, width: 0.0),
+                          ),
+                          hintText: 'Local',
+                          hintStyle: AppTextStyles.body.copyWith(
+                              color: AppColors.brandingBlue, fontSize: 20),
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 16),
+                          filled: true,
+                          fillColor: Colors.white),
                     ),
                   ),
                 ),
@@ -288,13 +415,14 @@ class _AdmDashboardPageState
                                             selectedActivity.id,
                                             descriptionController.text,
                                             selectedActivity.link ?? '',
-                                            selectedActivity.totalPlaces ?? 0,
-                                            selectedActivity.location ?? '',
+                                            int.parse(
+                                                numberOfPeopleController.text),
+                                            locationController.text,
                                             titleController.text,
-                                            selectedActivity.date,
+                                            DateTime.parse(dateController.text),
                                             ActivityModel.stringToEnumMap(
                                                 currentSelectedValue),
-                                            selectedActivity.workload,
+                                            int.parse(workloadController.text),
                                           );
                                           controller.getAllActivities();
                                           Navigator.of(context).pop();
