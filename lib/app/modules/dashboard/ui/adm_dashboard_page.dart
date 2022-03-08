@@ -146,16 +146,19 @@ class _AdmDashboardPageState
           children: [
             if (controller.isFloatActionButtonOpen)
               Padding(
-                padding: const EdgeInsets.only(right: 8.0),
+                padding: const EdgeInsets.only(right: 36.0),
                 child: SizedBox(
-                  width: 90,
-                  child: FloatingActionButton(
-                      backgroundColor: Colors.white,
-                      child: Icon(
-                        Icons.insert_chart_rounded,
-                        color: AppColors.brandingBlue,
-                      ),
-                      onPressed: () {}),
+                  width: 70,
+                  child: FittedBox(
+                    child: FloatingActionButton(
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.insert_chart_rounded,
+                          size: 35,
+                          color: AppColors.brandingBlue,
+                        ),
+                        onPressed: () {}),
+                  ),
                 ),
               ),
             const SizedBox(
@@ -163,16 +166,19 @@ class _AdmDashboardPageState
             ),
             if (controller.isFloatActionButtonOpen)
               Padding(
-                padding: const EdgeInsets.only(right: 8.0),
+                padding: const EdgeInsets.only(right: 36.0),
                 child: SizedBox(
-                  width: 90,
-                  child: FloatingActionButton(
-                      backgroundColor: Colors.white,
-                      child: Icon(
-                        Icons.edit,
-                        color: AppColors.brandingBlue,
-                      ),
-                      onPressed: () {}),
+                  width: 70,
+                  child: FittedBox(
+                    child: FloatingActionButton(
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.edit,
+                          size: 35,
+                          color: AppColors.brandingBlue,
+                        ),
+                        onPressed: () {}),
+                  ),
                 ),
               ),
             const SizedBox(
@@ -186,7 +192,9 @@ class _AdmDashboardPageState
                   child: FloatingActionButton(
                       backgroundColor: Colors.white,
                       child: Icon(
-                        Icons.add,
+                        controller.isFloatActionButtonOpen
+                            ? Icons.close
+                            : Icons.add,
                         color: AppColors.brandingBlue,
                       ),
                       onPressed: () {
