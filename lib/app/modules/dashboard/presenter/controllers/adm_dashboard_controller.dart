@@ -20,7 +20,15 @@ abstract class _AdmDashboardControllerBase with Store {
   }
 
   @observable
+  bool isFloatActionButtonOpen = false;
+
+  @observable
   List<ActivityModel> activitiesList = List.empty();
+
+  @action
+  void toggleFloatActionButton() {
+    isFloatActionButtonOpen = !isFloatActionButtonOpen;
+  }
 
   // @action
   // Future getActivitiesByType() async {

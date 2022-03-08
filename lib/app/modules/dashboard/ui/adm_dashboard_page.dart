@@ -32,102 +32,173 @@ class _AdmDashboardPageState
     // ignore: prefer_typing_uninitialized_variables
     var currentSelectedValue;
     const orders = ['Ordenar', 'Por data', 'Por inscritos'];
-    return Material(
-        child: Row(children: [
-      Expanded(
-        child: Column(
-          children: [
-            const TextHeaderScratched(title: 'Atividades'),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextFieldCustom(
-                    titulo: 'Buscar',
-                    value: searchController.text,
-                    onChanged: controller.searchActivityByName,
-                  ),
-                  const SizedBox(
-                    width: 32,
-                  ),
-                  DropDownFieldCustom<String>(
-                    titulo: 'Ordenar',
-                    items: orders.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    value: currentSelectedValue,
-                    onChanged: (newValue) {
-                      setState(() {
-                        currentSelectedValue = newValue;
-                        switch (newValue) {
-                          case 'Ordenar':
-                            // controller.getActivitiesByType();
-                            break;
-                          case 'Por data':
-                            controller.orderByDate();
-                            break;
-                          case 'Por inscritos':
-                            // controller.orderByParticipants();
-                            break;
-                        }
-                      });
-                    },
-                  )
-                ],
+    return Scaffold(
+      body: Material(
+          child: Row(children: [
+        Expanded(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 16,
               ),
-            ),
-            Expanded(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
-                child: Observer(builder: (_) {
-                  return GridView.builder(
-                      itemCount: controller.activitiesList.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 5,
-                              mainAxisSpacing: 16,
-                              crossAxisSpacing: 8,
-                              childAspectRatio: 1.7),
-                      itemBuilder: (context, index) {
-                        String date = DateFormat('dd/MM/yyyy')
-                            .format(controller.activitiesList[index].date);
-                        String time = DateFormat('hh:mm')
-                            .format(controller.activitiesList[index].date);
-                        return ActivityCardWidget(
-                          name: controller.activitiesList[index].name,
-                          date: date,
-                          description:
-                              controller.activitiesList[index].description,
-                          maxParticipants: controller
-                              .activitiesList[index].totalPlaces
-                              .toString(),
-                          totalParticipants: controller
-                              .activitiesList[index].totalPlaces
-                              .toString(),
-                          time: time,
-                          onTap: () {
-                            if (controller.accessLevel == 'ADMIN') {
-                              showCustomEditDialog(
-                                  context, controller.activitiesList[index]);
-                            } else {
-                              showCustomMoreInfoDialog(
-                                  context, controller.activitiesList[index]);
-                            }
-                          },
+              const TextHeaderScratched(title: 'Atividades'),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.16,
+                    vertical: 24),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextFieldCustom(
+                      titulo: 'Buscar',
+                      value: searchController.text,
+                      onChanged: controller.searchActivityByName,
+                    ),
+                    const SizedBox(
+                      width: 32,
+                    ),
+                    DropDownFieldCustom<String>(
+                      titulo: 'Ordenar',
+                      items: orders.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
                         );
-                      });
-                }),
+                      }).toList(),
+                      value: currentSelectedValue,
+                      onChanged: (newValue) {
+                        setState(() {
+                          currentSelectedValue = newValue;
+                          switch (newValue) {
+                            case 'Ordenar':
+                              // controller.getActivitiesByType();
+                              break;
+                            case 'Por data':
+                              controller.orderByDate();
+                              break;
+                            case 'Por inscritos':
+                              // controller.orderByParticipants();
+                              break;
+                          }
+                        });
+                      },
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width * 0.6,
+                    ),
+                    child: Observer(builder: (_) {
+                      return GridView.builder(
+                          itemCount: controller.activitiesList.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  mainAxisSpacing: 16,
+                                  crossAxisSpacing: 8,
+                                  childAspectRatio: 1.7),
+                          itemBuilder: (context, index) {
+                            String date = DateFormat('dd/MM/yyyy')
+                                .format(controller.activitiesList[index].date);
+                            String time = DateFormat('hh:mm')
+                                .format(controller.activitiesList[index].date);
+                            return ActivityCardWidget(
+                              name: controller.activitiesList[index].name,
+                              date: date,
+                              description:
+                                  controller.activitiesList[index].description,
+                              maxParticipants: controller
+                                  .activitiesList[index].totalPlaces
+                                  .toString(),
+                              totalParticipants: controller
+                                  .activitiesList[index].totalPlaces
+                                  .toString(),
+                              time: time,
+                              onTap: () {
+                                if (controller.accessLevel == 'ADMIN') {
+                                  showCustomEditDialog(context,
+                                      controller.activitiesList[index]);
+                                } else {
+                                  showCustomMoreInfoDialog(context,
+                                      controller.activitiesList[index]);
+                                }
+                              },
+                            );
+                          });
+                    }),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )
+      ])),
+      floatingActionButton: Observer(builder: (_) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            if (controller.isFloatActionButtonOpen)
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: SizedBox(
+                  width: 90,
+                  child: FloatingActionButton(
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.insert_chart_rounded,
+                        color: AppColors.brandingBlue,
+                      ),
+                      onPressed: () {}),
+                ),
+              ),
+            const SizedBox(
+              height: 20,
+            ),
+            if (controller.isFloatActionButtonOpen)
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: SizedBox(
+                  width: 90,
+                  child: FloatingActionButton(
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.edit,
+                        color: AppColors.brandingBlue,
+                      ),
+                      onPressed: () {}),
+                ),
+              ),
+            const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 36.0, bottom: 36.0),
+              child: SizedBox(
+                width: 100,
+                child: FittedBox(
+                  child: FloatingActionButton(
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.add,
+                        color: AppColors.brandingBlue,
+                      ),
+                      onPressed: () {
+                        controller.toggleFloatActionButton();
+                      }),
+                ),
               ),
             ),
           ],
-        ),
-      )
-    ]));
+        );
+      }),
+    );
   }
 
   void showCustomEditDialog(BuildContext context, Activity selectedActivity) {
