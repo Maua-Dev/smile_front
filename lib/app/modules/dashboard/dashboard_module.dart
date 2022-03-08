@@ -1,10 +1,11 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/auth/infra/auth_guards/auth_guard_user.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/dashboard_activities_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/filter_dashboard_page.dart';
 
@@ -17,19 +18,27 @@ class DashboardModule extends Module {
         (i) => ActivitiesDatasourceImpl(i())),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
-    Bind.lazySingleton<DashboardController>(
-      (i) => DashboardController(
-          repository: i(), activityType: i.args!.data as ActivityEnum),
+    Bind.lazySingleton<AdmDashboardController>(
+      (i) => AdmDashboardController(
+          repository: i(), accessLevel: i.args!.data[1] as String),
+    ),
+    Bind.lazySingleton<UserDashboardController>(
+      (i) => UserDashboardController(
+          repository: i(),
+          activityType: i.args!.data[0] as ActivityEnum,
+          accessLevel: i.args!.data[1] as String),
     ),
   ];
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(Modular.initialRoute,
-        child: (_, args) => const FilterDashboardPage(),
-        guards: [AuthGuardUser()],
-        guardedRoute: '/logged-home/filter-dashboard/activities-dashboard'),
+    ChildRoute(
+      Modular.initialRoute,
+      child: (_, args) => FilterDashboardPage(accessLevel: args.data as String),
+    ),
     ChildRoute('/activities-dashboard',
         child: (_, args) => const DashboardActivitiesPage()),
+    ChildRoute('/adm-activities-dashboard',
+        child: (_, args) => const AdmDashboardPage()),
   ];
 }

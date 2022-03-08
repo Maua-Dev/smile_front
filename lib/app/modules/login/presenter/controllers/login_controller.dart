@@ -43,11 +43,13 @@ abstract class _LoginController with Store {
       await authController.loginWithCpfRne(cpfRne, password, keepConected);
       if (authController.isLogged) {
         if (authController.accessLevel == 'ADMIN') {
-          Modular.to.navigate('/logged-home/adm-home', arguments: cpfRne);
+          Modular.to.navigate('/logged-home/dashboard/adm-activities-dashboard',
+              arguments: [null, authController.accessLevel]);
         } else if (authController.accessLevel == 'SPEAKER') {
           Modular.to.navigate('/speaker-home');
         } else {
-          Modular.to.navigate('/logged-home/user-home', arguments: cpfRne);
+          Modular.to.navigate('/logged-home/user-home',
+              arguments: [cpfRne, authController.accessLevel]);
         }
       }
     } on Failure catch (e) {

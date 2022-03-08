@@ -15,39 +15,30 @@ void main() {
   var activitiesList = <ActivityModel>[
     ActivityModel(
         id: '',
-        enrolledUsers: [],
         name: '',
         description: '',
         date: DateTime.now(),
         type: ActivityEnum.CURSOS,
-        createdAt: '',
-        updateAt: '',
         workload: 40),
     ActivityModel(
         id: '',
-        enrolledUsers: [],
         name: '',
         description: '',
         date: DateTime.now(),
         type: ActivityEnum.CURSOS,
-        createdAt: '',
-        updateAt: '',
         workload: 40),
     ActivityModel(
         id: '',
-        enrolledUsers: [],
         name: '',
         description: '',
         date: DateTime.now(),
         type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
-        createdAt: '',
-        updateAt: '',
         workload: 40),
   ];
 
   setUpAll(() {
     repository = ActivitiesRepositoryImpl(datasource: datasource);
-    when(datasource.getActivities()).thenAnswer((_) async => activitiesList);
+    when(datasource.getAllActivities()).thenAnswer((_) async => activitiesList);
   });
 
   test('getActivitiesSelectedByType', () async {

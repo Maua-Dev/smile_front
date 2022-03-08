@@ -1,18 +1,16 @@
-import 'package:smile_front/app/modules/auth/domain/repositories/access_level_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 
 class AuthController {
   final AuthRepositoryInterface authRepository;
-  final AccessLevelRepositoryInterface repository;
   final SecureStorageInterface storage;
   bool _loggedIn = false;
-  String _accessLevel = 'USER';
+  String _accessLevel = '';
 
-  AuthController(
-      {required this.authRepository,
-      required this.storage,
-      required this.repository});
+  AuthController({
+    required this.authRepository,
+    required this.storage,
+  });
 
   bool get isLogged => _loggedIn;
   String get accessLevel => _accessLevel;
@@ -20,10 +18,10 @@ class AuthController {
   Future<void> loginWithCpfRne(
       String cpfRne, String password, bool persistence) async {
     var loginResponse = await authRepository.loginWithEmail(cpfRne, password);
-    //_accessLevel = await repository.getAccessLevel(cpfRne);
+    _accessLevel = loginResponse.entries.last.toString();
     if (persistence) {
       await storage.saveToken(loginResponse['token']);
-      await storage.saveAccessLevel(accessLevel);
+      await storage.saveAccessLevel(_accessLevel);
     }
     _loggedIn = true;
     _accessLevel = loginResponse['accessLevel'];

@@ -19,13 +19,10 @@ void main() {
   late LoggedHomeController controller;
   final mockActivity = ActivityModel(
       id: '',
-      enrolledUsers: [],
       name: 'ABCD123',
       description: '',
       date: DateTime.now(),
       type: ActivityEnum.CURSOS,
-      createdAt: '',
-      updateAt: '',
       workload: 0);
 
   final mockUser = UserModel(
@@ -41,6 +38,7 @@ void main() {
         .thenAnswer((_) async => mockActivity);
     controller = LoggedHomeController(
         cpfRne: '',
+        accessLevel: 'ADMIN',
         futureActivityRepository: activityRepository,
         userRepository: userRepository);
   });

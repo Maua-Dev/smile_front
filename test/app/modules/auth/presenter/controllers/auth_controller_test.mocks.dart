@@ -5,12 +5,10 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:smile_front/app/modules/auth/domain/repositories/access_level_repository_interface.dart'
-    as _i4;
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart'
     as _i2;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
-    as _i5;
+    as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -44,26 +42,11 @@ class MockAuthRepositoryInterface extends _i1.Mock
           returnValue: Future<String>.value('')) as _i3.Future<String>);
 }
 
-/// A class which mocks [AccessLevelRepositoryInterface].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockAccessLevelRepositoryInterface extends _i1.Mock
-    implements _i4.AccessLevelRepositoryInterface {
-  MockAccessLevelRepositoryInterface() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i3.Future<String> getAccessLevel(String? cpfRne) =>
-      (super.noSuchMethod(Invocation.method(#getAccessLevel, [cpfRne]),
-          returnValue: Future<String>.value('')) as _i3.Future<String>);
-}
-
 /// A class which mocks [SecureStorageInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSecureStorageInterface extends _i1.Mock
-    implements _i5.SecureStorageInterface {
+    implements _i4.SecureStorageInterface {
   MockSecureStorageInterface() {
     _i1.throwOnMissingStub(this);
   }

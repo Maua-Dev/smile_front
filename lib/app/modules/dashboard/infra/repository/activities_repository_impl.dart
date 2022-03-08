@@ -11,7 +11,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   @override
   Future<List<ActivityModel>> getActivitiesSelectedByType(
       ActivityEnum activityEnum) async {
-    final result = await datasource.getActivities();
+    final result = await datasource.getAllActivities();
     var list = <ActivityModel>[];
     for (var i = 0; i < result.length; i++) {
       if (result[i].type == activityEnum) {
@@ -19,5 +19,37 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
       }
     }
     return Future.value(list);
+  }
+
+  @override
+  Future<List<ActivityModel>> getAllActivities() async {
+    final result = await datasource.getAllActivities();
+    return Future.value(result);
+  }
+
+  @override
+  Future editActivity(
+      String id,
+      String description,
+      String link,
+      int totalPlaces,
+      String location,
+      String name,
+      DateTime date,
+      ActivityEnum type,
+      int workload) async {
+    var activityToEdit = ActivityModel(
+      name: name,
+      description: description,
+      date: date,
+      id: id,
+      workload: workload,
+      location: location,
+      totalPlaces: totalPlaces,
+      link: link,
+      type: type,
+    );
+
+    await datasource.putActivity(id, activityToEdit);
   }
 }

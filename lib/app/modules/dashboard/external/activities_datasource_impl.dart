@@ -8,7 +8,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   ActivitiesDatasourceImpl(this.dioClient);
 
   @override
-  Future<List<ActivityModel>> getActivities() async {
+  Future<List<ActivityModel>> getAllActivities() async {
     try {
       final res = await dioClient.get('/smile_mss_activities/activity/getAll');
       if (res.statusCode == 200) {
@@ -21,6 +21,19 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
       print('Não foi possível se conectar com o Microsserviço, erro: ' +
           e.toString());
       rethrow;
+    }
+  }
+
+  @override
+  Future putActivity(String id, ActivityModel activity) async {
+    try {
+      await dioClient.put('/smile_mss_activities/activity?id=$id',
+          data: activity.toJson());
+    } on Exception catch (e) {
+      //Necessário um tratamento de erro visual para cada erro.
+      // ignore: avoid_print
+      print('Não foi possível se conectar com o Microsserviço, erro: ' +
+          e.toString());
     }
   }
 }

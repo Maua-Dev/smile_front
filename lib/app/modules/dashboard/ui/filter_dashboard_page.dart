@@ -7,7 +7,9 @@ import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
 import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar.dart';
 
 class FilterDashboardPage extends StatefulWidget {
-  const FilterDashboardPage({Key? key}) : super(key: key);
+  final String accessLevel;
+  const FilterDashboardPage({Key? key, required this.accessLevel})
+      : super(key: key);
 
   @override
   _FilterDashboardPageState createState() => _FilterDashboardPageState();
@@ -41,7 +43,10 @@ class _FilterDashboardPageState extends State<FilterDashboardPage> {
                         index: index,
                         onTap: () {
                           Modular.to.pushNamed('./activities-dashboard',
-                              arguments: ActivityEnum.values[index]);
+                              arguments: [
+                                ActivityEnum.values[index],
+                                widget.accessLevel
+                              ]);
                         },
                       ),
                     ),

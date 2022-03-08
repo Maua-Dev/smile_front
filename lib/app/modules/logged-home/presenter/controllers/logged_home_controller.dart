@@ -18,9 +18,11 @@ abstract class _LoggedHomeControllerBase with Store {
   final FutureActivityRepositoryInterface futureActivityRepository;
   final timeNow = DateFormat.Hm();
   final String cpfRne;
+  final String accessLevel;
 
   _LoggedHomeControllerBase(
-      {required this.cpfRne,
+      {required this.accessLevel,
+      required this.cpfRne,
       required this.userRepository,
       required this.futureActivityRepository}) {
     getActivity();

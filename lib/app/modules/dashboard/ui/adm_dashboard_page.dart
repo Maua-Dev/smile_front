@@ -2,31 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widget.dart';
-import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
-import 'package:smile_front/app/shared/widgets/dashboard-appbar/dashboard_appbar_widget.dart';
-import 'package:smile_front/app/shared/widgets/text-fields/drop_down_field_custom.dart';
-import 'package:smile_front/app/shared/widgets/text-fields/text_field_custom.dart';
-import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
-import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar.dart';
 
+import '../../../shared/entities/activity.dart';
 import '../../../shared/models/activity_model.dart';
-import '../presenter/controllers/user_dashboard_controller.dart';
+import '../../../shared/themes/app_text_styles.dart';
+import '../../../shared/widgets/buttons/forms_button_widget.dart';
+import '../../../shared/widgets/text-fields/drop_down_field_custom.dart';
+import '../../../shared/widgets/text-fields/text_field_custom.dart';
+import '../../../shared/widgets/text_header_scratched.dart';
+import '../domain/infra/activity_enum.dart';
 
-class DashboardActivitiesPage extends StatefulWidget {
-  const DashboardActivitiesPage({Key? key}) : super(key: key);
+class AdmDashboardPage extends StatefulWidget {
+  const AdmDashboardPage({Key? key}) : super(key: key);
 
   @override
-  _DashboardActivitiesPageState createState() =>
-      _DashboardActivitiesPageState();
+  State<AdmDashboardPage> createState() => _AdmDashboardPageState();
 }
 
-class _DashboardActivitiesPageState
-    extends ModularState<DashboardActivitiesPage, UserDashboardController> {
+class _AdmDashboardPageState
+    extends ModularState<AdmDashboardPage, AdmDashboardController> {
   @override
   Widget build(BuildContext context) {
     var searchController = TextEditingController(text: '');
@@ -35,11 +32,9 @@ class _DashboardActivitiesPageState
     const orders = ['Ordenar', 'Por data', 'Por inscritos'];
     return Material(
         child: Row(children: [
-      VerticalNavBar(),
       Expanded(
         child: Column(
           children: [
-            const DashboardAppbarWidget(),
             const TextHeaderScratched(title: 'Atividades'),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 24),
@@ -68,7 +63,7 @@ class _DashboardActivitiesPageState
                         currentSelectedValue = newValue;
                         switch (newValue) {
                           case 'Ordenar':
-                            controller.getActivitiesByType();
+                            // controller.getActivitiesByType();
                             break;
                           case 'Por data':
                             controller.orderByDate();
@@ -301,7 +296,7 @@ class _DashboardActivitiesPageState
                                                 currentSelectedValue),
                                             selectedActivity.workload,
                                           );
-                                          controller.getActivitiesByType();
+                                          controller.getAllActivities();
                                           Navigator.of(context).pop();
                                         },
                                       ),

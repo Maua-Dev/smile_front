@@ -1,9 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/auth/infra/auth_guards/auth_guard_adm.dart';
 import 'package:smile_front/app/modules/dashboard/dashboard_module.dart';
 import 'package:smile_front/app/modules/logged-home/domain/repositories/future_activity_repository_interface.dart';
 import 'package:smile_front/app/modules/logged-home/infra/repository/future_activity_repository_impl.dart';
-import 'package:smile_front/app/modules/logged-home/ui/logged_adm_home_page.dart';
 import 'package:smile_front/app/modules/logged-home/presenter/controllers/logged_home_controller.dart';
 import 'package:smile_front/app/modules/logged-home/ui/logged_user_home_page.dart';
 
@@ -30,17 +28,15 @@ class LoggedHomeModule extends Module {
       (i) => LoggedHomeController(
           userRepository: i(),
           futureActivityRepository: i(),
-          cpfRne: i.args!.data as String),
+          cpfRne: i.args!.data[0] as String,
+          accessLevel: i.args!.data[1] as String),
     )
   ];
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/adm-home',
-        child: (_, args) => const LoggedAdmHomePage(),
-        guards: [AuthGuardAdm()]),
     ChildRoute('/user-home',
         child: (_, args) => const LoggedUserHomePage(),
         guards: [AuthGuardUser()]),
-    ModuleRoute('/filter-dashboard', module: DashboardModule())
+    ModuleRoute('/dashboard', module: DashboardModule())
   ];
 }
