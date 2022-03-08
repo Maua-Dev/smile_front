@@ -9,23 +9,14 @@ class Activity {
   final String name;
   final DateTime date;
   final ActivityEnum type;
-  //não é dynamic: UserModel, porém o back não implementou ainda
-  final List<dynamic> enrolledUsers;
-  final List<dynamic>? queue;
-  final String createdAt;
-  final String updateAt;
   final int workload;
 
   Activity(
-      {required this.createdAt,
-      required this.updateAt,
-      required this.workload,
+      {required this.workload,
       required this.id,
       this.link,
       this.totalPlaces,
       this.location,
-      required this.enrolledUsers,
-      this.queue,
       required this.name,
       required this.description,
       required this.date,
@@ -33,18 +24,14 @@ class Activity {
 
   factory Activity.newInstance() {
     return Activity(
-        createdAt: '',
         date: DateTime.now(),
         description: '',
-        enrolledUsers: [],
         id: '',
         name: '',
         type: ActivityEnum.CAFE_EX_ALUNOS,
-        updateAt: '',
         workload: 0,
         link: '',
         location: '',
-        queue: [],
         totalPlaces: 0);
   }
 }

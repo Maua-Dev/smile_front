@@ -19,7 +19,7 @@ class DashboardModule extends Module {
     Bind.lazySingleton<DashboardController>(
       (i) => DashboardController(
           repository: i(),
-          activityType: i.args!.data[0] as ActivityEnum,
+          activityType: i.args?.data[0] as ActivityEnum?,
           accessLevel: i.args!.data[1] as String),
     ),
   ];

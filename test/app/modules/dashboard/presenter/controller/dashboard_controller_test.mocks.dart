@@ -39,10 +39,33 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
                   Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]))
           as _i3.Future<List<_i4.ActivityModel>>);
   @override
-  _i3.Future<List<_i4.ActivityModel>> getAllActivities(
-          _i5.ActivityEnum? activityEnum) =>
-      (super.noSuchMethod(Invocation.method(#getAllActivities, [activityEnum]),
+  _i3.Future<List<_i4.ActivityModel>> getAllActivities() =>
+      (super.noSuchMethod(Invocation.method(#getAllActivities, []),
               returnValue:
                   Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]))
           as _i3.Future<List<_i4.ActivityModel>>);
+  @override
+  _i3.Future<dynamic> editActivity(
+          String? id,
+          String? description,
+          String? link,
+          int? totalPlaces,
+          String? location,
+          String? name,
+          DateTime? date,
+          _i5.ActivityEnum? type,
+          int? workload) =>
+      (super.noSuchMethod(
+          Invocation.method(#editActivity, [
+            id,
+            description,
+            link,
+            totalPlaces,
+            location,
+            name,
+            date,
+            type,
+            workload
+          ]),
+          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
 }

@@ -9,15 +9,19 @@ class DashboardController = _DashboardControllerBase with _$DashboardController;
 
 abstract class _DashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
-  final ActivityEnum activityType;
+  final ActivityEnum? activityType;
   final String accessLevel;
 
   _DashboardControllerBase({
     required this.accessLevel,
     required this.repository,
-    required this.activityType,
+    this.activityType,
   }) {
-    getActivitiesByType();
+    if (activityType == null) {
+      getAllActivities();
+    } else {
+      getActivitiesByType();
+    }
   }
 
   @observable
@@ -25,7 +29,13 @@ abstract class _DashboardControllerBase with Store {
 
   @action
   Future getActivitiesByType() async {
-    activitiesList = await repository.getActivitiesSelectedByType(activityType);
+    activitiesList =
+        await repository.getActivitiesSelectedByType(activityType!);
+  }
+
+  @action
+  Future getAllActivities() async {
+    activitiesList = await repository.getAllActivities();
   }
 
   @action
@@ -44,14 +54,14 @@ abstract class _DashboardControllerBase with Store {
     activitiesList.sort((a, b) => a.date.compareTo(b.date));
   }
 
-  @action
-  void orderByParticipants() {
-    activitiesList.sort(
-        (a, b) => a.enrolledUsers.length.compareTo(b.enrolledUsers.length));
-  }
+  // @action
+  // void orderByParticipants() {
+  //   activitiesList.sort(
+  //       (a, b) => a.enrolledUsers!.length.compareTo(b.enrolledUsers!.length));
+  // }
 
   @action
-  void editActivity(
+  Future editActivity(
       String id,
       String description,
       String link,
@@ -60,12 +70,8 @@ abstract class _DashboardControllerBase with Store {
       String name,
       DateTime date,
       ActivityEnum type,
-      List<dynamic> enrolledUsers,
-      List<dynamic> queue,
-      String createdAt,
-      String updatedAt,
       int workload) async {
     await repository.editActivity(id, description, link, totalPlaces, location,
-        name, date, type, enrolledUsers, queue, createdAt, updatedAt, workload);
+        name, date, type, workload);
   }
 }

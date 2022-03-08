@@ -4,7 +4,7 @@ import 'package:smile_front/app/shared/models/activity_model.dart';
 abstract class ActivitiesRepositoryInterface {
   Future<List<ActivityModel>> getActivitiesSelectedByType(
       ActivityEnum activityEnum);
-  Future<List<ActivityModel>> getAllActivities(ActivityEnum activityEnum);
+  Future<List<ActivityModel>> getAllActivities();
   Future editActivity(
       String id,
       String description,
@@ -14,9 +14,5 @@ abstract class ActivitiesRepositoryInterface {
       String name,
       DateTime date,
       ActivityEnum type,
-      List<dynamic> enrolledUsers,
-      List<dynamic> queue,
-      String createdAt,
-      String updatedAt,
       int workload);
 }

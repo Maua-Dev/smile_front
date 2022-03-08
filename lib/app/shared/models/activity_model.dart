@@ -13,10 +13,6 @@ class ActivityModel extends Activity {
   final String name;
   final DateTime date;
   final ActivityEnum type;
-  final List<dynamic> enrolledUsers;
-  final List<dynamic>? queue;
-  final String createdAt;
-  final String updatedAt;
   final int workload;
 
   ActivityModel({
@@ -24,24 +20,16 @@ class ActivityModel extends Activity {
     this.link,
     this.totalPlaces,
     this.location,
-    required this.enrolledUsers,
-    this.queue,
     required this.name,
     required this.description,
     required this.date,
     required this.type,
-    required this.createdAt,
-    required this.updatedAt,
     required this.workload,
   }) : super(
-          createdAt: createdAt,
-          updateAt: updatedAt,
           workload: workload,
           id: id,
-          enrolledUsers: enrolledUsers,
           link: link,
           location: location,
-          queue: queue,
           totalPlaces: totalPlaces,
           type: type,
           date: date,
@@ -54,15 +42,11 @@ class ActivityModel extends Activity {
       name: map['name'] ?? '',
       description: map['description'] ?? '',
       date: DateTime.fromMillisecondsSinceEpoch(map['date']),
-      createdAt: map['createdAt'],
       id: map['id'],
-      updatedAt: map['updatedAt'],
       workload: map['workload'],
       location: map['location'],
       totalPlaces: map['totalPlaces'],
-      queue: map['queue'],
       link: map['link'],
-      enrolledUsers: map['enrolledUsers'],
       type: stringToEnumMap(map['type']),
     );
   }
@@ -82,15 +66,11 @@ class ActivityModel extends Activity {
         'name': name,
         'description': description,
         'date': date.millisecondsSinceEpoch,
-        'createdAt': createdAt,
         'id': id,
-        'updatedAt': updatedAt,
         'workload': workload,
         'location': location,
         'totalPlaces': totalPlaces,
-        'queue': queue,
         'link': link,
-        'enrolledUsers': enrolledUsers,
         'type': type.name,
       };
 }

@@ -30,7 +30,6 @@ class MockSpeakersRepositoryInterface extends _i1.Mock
   }
 
   @override
-  // ignore: override_on_non_overriding_member
   _i3.Future<List<_i4.Speaker>> getSpeakers() =>
       (super.noSuchMethod(Invocation.method(#getSpeakers, []),
               returnValue: Future<List<_i4.Speaker>>.value(<_i4.Speaker>[]))
