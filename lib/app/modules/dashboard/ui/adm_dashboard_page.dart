@@ -334,22 +334,6 @@ class _AdmDashboardPageState
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Material(
-                        color: Colors.white,
-                        child: IconButton(
-                            onPressed: () {
-                              controller.deleteActivity(selectedActivity.id);
-                            },
-                            icon: const Icon(
-                              FontAwesome5.trash,
-                              size: 32,
-                            ),
-                            hoverColor: AppColors.lightBlue,
-                            color: AppColors.brandingBlue),
-                      ),
-                      const SizedBox(
-                        width: 40,
-                      ),
                       FormsButtonWidget(
                           buttonTittle: 'Cancelar',
                           onPressed: () {
@@ -368,7 +352,6 @@ class _AdmDashboardPageState
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  // retorna um objeto do tipo Dialog
                                   return ActionConfirmationDialogWidget(
                                       title:
                                           'Tem certeza que deseja continuar?',
@@ -388,8 +371,11 @@ class _AdmDashboardPageState
                                               currentSelectedValue),
                                           int.parse(workloadController.text),
                                         );
-                                        controller.getAllActivities();
+
                                         Navigator.of(context).pop();
+                                        setState(() async {
+                                          await controller.getAllActivities();
+                                        });
                                       });
                                 },
                               );
@@ -403,6 +389,41 @@ class _AdmDashboardPageState
                             }
                           },
                           backgroundColor: AppColors.greenButton),
+                      const SizedBox(
+                        width: 40,
+                      ),
+                      Material(
+                        color: Colors.white,
+                        child: IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return ActionConfirmationDialogWidget(
+                                      title:
+                                          'Tem certeza que deseja continuar?',
+                                      content:
+                                          'Os dados da atividade serão perdidos.',
+                                      onPressed: () {
+                                        controller.deleteActivity(
+                                            selectedActivity.id);
+
+                                        Navigator.of(context).pop();
+                                        setState(() async {
+                                          await controller.getAllActivities();
+                                        });
+                                      });
+                                },
+                              );
+                            },
+                            icon: const Icon(
+                              FontAwesome5.trash,
+                              size: 32,
+                            ),
+                            hoverColor: AppColors.lightBlue,
+                            color: AppColors.brandingBlue),
+                      ),
                     ],
                   ),
                 ),
