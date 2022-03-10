@@ -9,15 +9,15 @@ import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widge
 import 'package:smile_front/app/modules/dashboard/ui/widgets/text_field_dialog_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
-import '../../../shared/entities/activity.dart';
-import '../../../shared/models/activity_model.dart';
-import '../../../shared/themes/app_text_styles.dart';
-import '../../../shared/widgets/buttons/forms_button_widget.dart';
-import '../../../shared/widgets/dialogs/fill_all_fields_dialog_widget.dart';
-import '../../../shared/widgets/text-fields/drop_down_field_custom.dart';
-import '../../../shared/widgets/text-fields/text_field_custom.dart';
-import '../../../shared/widgets/text_header_scratched.dart';
-import '../domain/infra/activity_enum.dart';
+import '../../../../shared/entities/activity.dart';
+import '../../../../shared/models/activity_model.dart';
+import '../../../../shared/themes/app_text_styles.dart';
+import '../../../../shared/widgets/buttons/forms_button_widget.dart';
+import '../../../../shared/widgets/dialogs/fill_all_fields_dialog_widget.dart';
+import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
+import '../../../../shared/widgets/text-fields/text_field_custom.dart';
+import '../../../../shared/widgets/text_header_scratched.dart';
+import '../../domain/infra/activity_enum.dart';
 
 class AdmDashboardPage extends StatefulWidget {
   const AdmDashboardPage({Key? key}) : super(key: key);
@@ -373,8 +373,9 @@ class _AdmDashboardPageState
                                         );
 
                                         Navigator.of(context).pop();
-                                        setState(() async {
-                                          await controller.getAllActivities();
+                                        Navigator.of(context).pop();
+                                        setState(() {
+                                          controller.getAllActivities();
                                         });
                                       });
                                 },

@@ -5,7 +5,7 @@ import 'package:smile_front/app/modules/dashboard/external/activities_datasource
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm_dashboard_page.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/adm_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/dashboard_activities_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/filter_dashboard_page.dart';
 
