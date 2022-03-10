@@ -36,4 +36,16 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
           e.toString());
     }
   }
+
+  @override
+  Future removeActivity(String id) async {
+    try {
+      await dioClient.delete('/smile_mss_activities/activity?id=$id');
+    } on Exception catch (e) {
+      //Necessário um tratamento de erro visual para cada erro.
+      // ignore: avoid_print
+      print('Não foi possível se conectar com o Microsserviço, erro: ' +
+          e.toString());
+    }
+  }
 }

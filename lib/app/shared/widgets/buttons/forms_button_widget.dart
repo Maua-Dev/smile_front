@@ -15,8 +15,8 @@ class FormsButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.1,
-      height: MediaQuery.of(context).size.height * 0.05,
+      width: MediaQuery.of(context).size.width * 0.08,
+      height: MediaQuery.of(context).size.height * 0.04,
       child: ElevatedButton(
         onPressed: onPressed,
         child: Text(

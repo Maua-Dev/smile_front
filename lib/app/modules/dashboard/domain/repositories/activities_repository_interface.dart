@@ -15,4 +15,5 @@ abstract class ActivitiesRepositoryInterface {
       DateTime date,
       ActivityEnum type,
       int workload);
+  Future removeActivity(String id);
 }

@@ -6,7 +6,7 @@ class AuthRepositoryMock implements AuthRepositoryInterface {
   final String _email = '30557126659';
   final String _pw = 'user';
 
-  final String _emailAdm = '30557126659';
+  final String _emailAdm = 'adm';
   final String _pwAdm = 'adm';
 
   @override

@@ -20,7 +20,15 @@ abstract class _AdmDashboardControllerBase with Store {
   }
 
   @observable
+  bool isFloatActionButtonOpen = false;
+
+  @observable
   List<ActivityModel> activitiesList = List.empty();
+
+  @action
+  void toggleFloatActionButton() {
+    isFloatActionButtonOpen = !isFloatActionButtonOpen;
+  }
 
   // @action
   // Future getActivitiesByType() async {
@@ -68,5 +76,10 @@ abstract class _AdmDashboardControllerBase with Store {
       int workload) async {
     await repository.editActivity(id, description, link, totalPlaces, location,
         name, date, type, workload);
+  }
+
+  @action
+  Future deleteActivity(String id) async {
+    await repository.removeActivity(id);
   }
 }
