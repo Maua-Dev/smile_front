@@ -48,8 +48,9 @@ class ActivityModel extends Activity {
       date: DateTime.fromMillisecondsSinceEpoch(map['date']),
       hour: DateTime.fromMillisecondsSinceEpoch(map['hour']),
       location: map['location'],
-      totalParticipants: map['totalParticipants'],
-      speaker: map['speaker'],
+      totalParticipants: map['totalParticipants'] ?? 0,
+      speaker: map['speaker'] ??
+          SpeakerActivityModel(bio: '', company: '', linkPhoto: '', name: ''),
     );
   }
 

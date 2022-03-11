@@ -41,7 +41,7 @@ class TextFieldDialogWidget extends StatelessWidget {
             hintText: hintText,
             labelText: hintText,
             labelStyle: AppTextStyles.titleH1
-                .copyWith(color: AppColors.brandingBlue, fontSize: 24),
+                .copyWith(color: AppColors.brandingBlue, fontSize: 22),
             hintStyle: AppTextStyles.body
                 .copyWith(color: AppColors.brandingBlue, fontSize: 20),
             contentPadding:
