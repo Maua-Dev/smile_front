@@ -38,7 +38,7 @@ class DropDownFieldCustom<T> extends StatelessWidget {
             hintText: titulo,
             labelText: titulo,
             labelStyle: AppTextStyles.titleH1
-                .copyWith(color: AppColors.brandingBlue, fontSize: 24),
+                .copyWith(color: AppColors.brandingBlue, fontSize: 22),
             hintStyle: textStyles ??
                 AppTextStyles.button
                     .copyWith(fontSize: 20, color: AppColors.brandingBlue),

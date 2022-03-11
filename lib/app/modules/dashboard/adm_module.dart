@@ -42,6 +42,7 @@ class AdmModule extends Module {
     ChildRoute('/edit-activity',
         child: (_, args) =>
             EditActivityPage(selectedActivity: args.data as ActivityModel)),
-    ChildRoute('/save-activity', child: (_, args) => const CreateActivityPage())
+    ChildRoute('/create-activity',
+        child: (_, args) => const CreateActivityPage())
   ];
 }

@@ -23,7 +23,8 @@ class _CreateActivityPageState
     extends ModularState<CreateActivityPage, CreateActivityController> {
   @override
   Widget build(BuildContext context) {
-    var currentSelectedValue = '';
+    // ignore: prefer_typing_uninitialized_variables
+    var currentSelectedValue;
     var titleController = TextEditingController();
     var descriptionController = TextEditingController();
     var totalParticipantsController = TextEditingController();
@@ -56,7 +57,7 @@ class _CreateActivityPageState
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
               child: TextHeaderScratched(
-                title: 'Editar Atividade',
+                title: 'Criar Atividade',
                 leftPadding: 24,
               ),
             ),

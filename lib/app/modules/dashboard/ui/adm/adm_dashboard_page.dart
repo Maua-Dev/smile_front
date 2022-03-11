@@ -165,7 +165,9 @@ class _AdmDashboardPageState
                           size: 35,
                           color: AppColors.brandingBlue,
                         ),
-                        onPressed: () {}),
+                        onPressed: () {
+                          Modular.to.pushNamed('/adm/create-activity');
+                        }),
                   ),
                 ),
               ),
