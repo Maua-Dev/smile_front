@@ -58,4 +58,29 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   Future removeActivity(String id) async {
     await datasource.removeActivity(id);
   }
+
+  @override
+  Future createActivity(
+      String id,
+      ActivityEnum type,
+      String title,
+      String description,
+      DateTime date,
+      DateTime hour,
+      String location,
+      int totalParticipants,
+      SpeakerActivityModel speaker) async {
+    var activityToEdit = ActivityModel(
+        id: id,
+        type: type,
+        title: title,
+        description: description,
+        date: date,
+        hour: hour,
+        location: location,
+        totalParticipants: totalParticipants,
+        speaker: speaker);
+
+    await datasource.postActivity(id, activityToEdit);
+  }
 }

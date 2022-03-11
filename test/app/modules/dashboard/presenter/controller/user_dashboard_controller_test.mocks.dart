@@ -71,6 +71,30 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
           ]),
           returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
   @override
+  _i3.Future<dynamic> createActivity(
+          String? id,
+          _i5.ActivityEnum? type,
+          String? title,
+          String? description,
+          DateTime? date,
+          DateTime? hour,
+          String? location,
+          int? totalParticipants,
+          _i6.SpeakerActivityModel? speaker) =>
+      (super.noSuchMethod(
+          Invocation.method(#createActivity, [
+            id,
+            type,
+            title,
+            description,
+            date,
+            hour,
+            location,
+            totalParticipants,
+            speaker
+          ]),
+          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
+  @override
   _i3.Future<dynamic> removeActivity(String? id) =>
       (super.noSuchMethod(Invocation.method(#removeActivity, [id]),
           returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);

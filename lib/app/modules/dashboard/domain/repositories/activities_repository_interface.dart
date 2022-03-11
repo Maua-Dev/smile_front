@@ -18,5 +18,16 @@ abstract class ActivitiesRepositoryInterface {
     int totalParticipants,
     SpeakerActivityModel speaker,
   );
+  Future createActivity(
+    String id,
+    ActivityEnum type,
+    String title,
+    String description,
+    DateTime date,
+    DateTime hour,
+    String location,
+    int totalParticipants,
+    SpeakerActivityModel speaker,
+  );
   Future removeActivity(String id);
 }

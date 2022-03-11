@@ -39,6 +39,10 @@ class MockActivitiesDatasource extends _i1.Mock
       (super.noSuchMethod(Invocation.method(#putActivity, [id, activity]),
           returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
   @override
+  _i3.Future<dynamic> postActivity(String? id, _i4.ActivityModel? activity) =>
+      (super.noSuchMethod(Invocation.method(#postActivity, [id, activity]),
+          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
+  @override
   _i3.Future<dynamic> removeActivity(String? id) =>
       (super.noSuchMethod(Invocation.method(#removeActivity, [id]),
           returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
