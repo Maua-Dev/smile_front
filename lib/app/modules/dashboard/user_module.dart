@@ -3,25 +3,19 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm_dashboard_page.dart';
-import 'package:smile_front/app/modules/dashboard/ui/dashboard_activities_page.dart';
-import 'package:smile_front/app/modules/dashboard/ui/filter_dashboard_page.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/dashboard_activities_page.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/filter_dashboard_page.dart';
 
 import 'infra/repository/activities_repository_impl.dart';
 
-class DashboardModule extends Module {
+class UserModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton<ActivitiesDatasource>(
         (i) => ActivitiesDatasourceImpl(i())),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
-    Bind.lazySingleton<AdmDashboardController>(
-      (i) => AdmDashboardController(
-          repository: i(), accessLevel: i.args!.data[1] as String),
-    ),
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
           repository: i(),
@@ -38,7 +32,5 @@ class DashboardModule extends Module {
     ),
     ChildRoute('/activities-dashboard',
         child: (_, args) => const DashboardActivitiesPage()),
-    ChildRoute('/adm-activities-dashboard',
-        child: (_, args) => const AdmDashboardPage()),
   ];
 }

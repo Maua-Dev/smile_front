@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/dashboard/dashboard_module.dart';
+import 'package:smile_front/app/modules/dashboard/user_module.dart';
 import 'package:smile_front/app/modules/logged-home/domain/repositories/future_activity_repository_interface.dart';
 import 'package:smile_front/app/modules/logged-home/infra/repository/future_activity_repository_impl.dart';
 import 'package:smile_front/app/modules/logged-home/presenter/controllers/logged_home_controller.dart';
@@ -37,6 +37,6 @@ class LoggedHomeModule extends Module {
     ChildRoute('/user-home',
         child: (_, args) => const LoggedUserHomePage(),
         guards: [AuthGuardUser()]),
-    ModuleRoute('/dashboard', module: DashboardModule())
+    ModuleRoute('/dashboard', module: UserModule())
   ];
 }

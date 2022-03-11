@@ -1,10 +1,10 @@
 import 'package:mobx/mobx.dart';
 
-import '../../../../shared/models/activity_model.dart';
-import '../../domain/infra/activity_enum.dart';
-import '../../domain/repositories/activities_repository_interface.dart';
+import '../../../../../shared/models/activity_model.dart';
+import '../../../domain/infra/activity_enum.dart';
+import '../../../domain/repositories/activities_repository_interface.dart';
 
-part 'user_dashboard_controller.g.dart';
+part '../user_dashboard_controller.g.dart';
 
 class UserDashboardController = _UserDashboardControllerBase
     with _$UserDashboardController;

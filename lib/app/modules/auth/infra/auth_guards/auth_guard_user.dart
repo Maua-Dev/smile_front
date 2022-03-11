@@ -18,5 +18,5 @@ class AuthGuardUser implements RouteGuard {
   }
 
   @override
-  String? get guardedRoute => '/logged-home/adm-home';
+  String? get guardedRoute => '/adm';
 }

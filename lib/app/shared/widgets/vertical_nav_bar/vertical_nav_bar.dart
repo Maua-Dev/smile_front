@@ -24,7 +24,7 @@ class VerticalNavBar extends StatelessWidget {
             TextButton(
               onPressed: () {
                 controller.toggleIndex(0);
-                Modular.to.navigate('/logged-home/user-home');
+                Modular.to.navigate('/user');
               },
               child: Column(
                 children: [

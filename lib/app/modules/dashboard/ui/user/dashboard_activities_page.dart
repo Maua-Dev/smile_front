@@ -14,8 +14,8 @@ import 'package:smile_front/app/shared/widgets/text-fields/text_field_custom.dar
 import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
 import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar.dart';
 
-import '../../../shared/models/activity_model.dart';
-import '../presenter/controllers/user_dashboard_controller.dart';
+import '../../../../shared/models/activity_model.dart';
+import '../../presenter/controllers/user/user_dashboard_controller.dart';
 
 class DashboardActivitiesPage extends StatefulWidget {
   const DashboardActivitiesPage({Key? key}) : super(key: key);

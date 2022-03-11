@@ -76,7 +76,7 @@ class _LoggedHomePageState
                         title: 'Todas as atividades',
                         icon: Icons.ac_unit_outlined,
                         onPressed: () {
-                          Modular.to.navigate('/logged-home/filter-dashboard',
+                          Modular.to.navigate('/user',
                               arguments: controller.accessLevel);
                         },
                       ),

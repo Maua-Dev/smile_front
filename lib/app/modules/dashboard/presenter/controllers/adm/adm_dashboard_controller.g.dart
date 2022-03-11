@@ -50,32 +50,6 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
   }
 
-  final _$editActivityAsyncAction =
-      AsyncAction('_AdmDashboardControllerBase.editActivity');
-
-  @override
-  Future<dynamic> editActivity(
-      String id,
-      String description,
-      String link,
-      int totalPlaces,
-      String location,
-      String name,
-      DateTime date,
-      ActivityEnum type,
-      int workload) {
-    return _$editActivityAsyncAction.run(() => super.editActivity(id,
-        description, link, totalPlaces, location, name, date, type, workload));
-  }
-
-  final _$deleteActivityAsyncAction =
-      AsyncAction('_AdmDashboardControllerBase.deleteActivity');
-
-  @override
-  Future<dynamic> deleteActivity(String id) {
-    return _$deleteActivityAsyncAction.run(() => super.deleteActivity(id));
-  }
-
   final _$_AdmDashboardControllerBaseActionController =
       ActionController(name: '_AdmDashboardControllerBase');
 
