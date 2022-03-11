@@ -43,65 +43,24 @@ class _AdmDashboardPageState
               const SizedBox(
                 height: 16,
               ),
-              const TextHeaderScratched(title: 'Atividades'),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.16,
-                    vertical: 24),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextFieldCustom(
-                      titulo: 'Buscar',
-                      value: searchController.text,
-                      onChanged: controller.searchActivityByName,
-                    ),
-                    const SizedBox(
-                      width: 32,
-                    ),
-                    DropDownFieldCustom<String>(
-                      titulo: 'Ordenar',
-                      items: orders.map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      value: currentSelectedValue,
-                      onChanged: (newValue) {
-                        setState(() {
-                          currentSelectedValue = newValue;
-                          switch (newValue) {
-                            case 'Ordenar':
-                              // controller.getActivitiesByType();
-                              break;
-                            case 'Por data':
-                              controller.orderByDate();
-                              break;
-                            case 'Por inscritos':
-                              // controller.orderByParticipants();
-                              break;
-                          }
-                        });
-                      },
-                    )
-                  ],
-                ),
-              ),
+              const TextHeaderScratched(title: 'Próximas Atividades'),
               Expanded(
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
+                      const EdgeInsets.symmetric(horizontal: 78, vertical: 32),
                   child: Container(
                     constraints: BoxConstraints(
-                      maxWidth: MediaQuery.of(context).size.width * 0.6,
+                      maxWidth: MediaQuery.of(context).size.width * 0.7,
                     ),
                     child: Observer(builder: (_) {
                       return GridView.builder(
                           itemCount: controller.activitiesList.length,
                           gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 3,
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount:
+                                      MediaQuery.of(context).size.width < 1350
+                                          ? 2
+                                          : 3,
                                   mainAxisSpacing: 16,
                                   crossAxisSpacing: 8,
                                   childAspectRatio: 1.7),

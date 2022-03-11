@@ -23,7 +23,7 @@ class TextHeaderScratched extends StatelessWidget {
             child: Text(
               title,
               style: AppTextStyles.titleH1.copyWith(
-                  fontSize: 45, color: color ?? AppColors.brandingBlue),
+                  fontSize: 60, color: color ?? AppColors.brandingBlue),
             ),
           ),
           Expanded(
