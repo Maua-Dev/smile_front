@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:intl/intl.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
@@ -13,43 +9,30 @@ import '../../../../shared/widgets/dialogs/fill_all_fields_dialog_widget.dart';
 import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import '../../../../shared/widgets/text_header_scratched.dart';
 import '../../domain/infra/activity_enum.dart';
-import '../../infra/models/speaker_activity_model.dart';
+import '../../presenter/controllers/adm/create_activity_controller.dart';
 import '../widgets/text_field_dialog_widget.dart';
 
-class EditActivityPage extends StatefulWidget {
-  final ActivityModel selectedActivity;
-  const EditActivityPage({Key? key, required this.selectedActivity})
-      : super(key: key);
+class CreateActivityPage extends StatefulWidget {
+  const CreateActivityPage({Key? key}) : super(key: key);
 
   @override
-  State<EditActivityPage> createState() => _EditActivityPageState();
+  State<CreateActivityPage> createState() => _CreateActivityPageState();
 }
 
-class _EditActivityPageState
-    extends ModularState<EditActivityPage, EditActivityController> {
+class _CreateActivityPageState
+    extends ModularState<CreateActivityPage, CreateActivityController> {
   @override
   Widget build(BuildContext context) {
-    String formattedDate =
-        DateFormat('dd-MM-yyyy').format(widget.selectedActivity.date);
-    String formattedHour =
-        DateFormat('hh:mm').format(widget.selectedActivity.date);
-    var currentSelectedValue = widget.selectedActivity.type.name;
-    var titleController =
-        TextEditingController(text: widget.selectedActivity.title);
-    var descriptionController =
-        TextEditingController(text: widget.selectedActivity.description);
-    var totalParticipantsController = TextEditingController(
-        text: widget.selectedActivity.totalParticipants.toString());
-    var dateController = TextEditingController(text: formattedDate);
-    var hourController = TextEditingController(text: formattedHour);
-    var locationController =
-        TextEditingController(text: widget.selectedActivity.location);
-    var speakerNameController =
-        TextEditingController(text: widget.selectedActivity.speaker.name);
-    var speakerCompanyController =
-        TextEditingController(text: widget.selectedActivity.speaker.company);
-    var speakerBioController =
-        TextEditingController(text: widget.selectedActivity.speaker.bio);
+    var currentSelectedValue = '';
+    var titleController = TextEditingController();
+    var descriptionController = TextEditingController();
+    var totalParticipantsController = TextEditingController();
+    var dateController = TextEditingController();
+    var hourController = TextEditingController();
+    var locationController = TextEditingController();
+    var speakerNameController = TextEditingController();
+    var speakerCompanyController = TextEditingController();
+    var speakerBioController = TextEditingController();
     bool isFilled() {
       if (titleController.text != '' &&
           descriptionController.text != '' &&
@@ -212,7 +195,7 @@ class _EditActivityPageState
                     width: 40,
                   ),
                   FormsButtonWidget(
-                    buttonTittle: 'Salvar',
+                    buttonTittle: 'Criar',
                     onPressed: () {
                       if (isFilled()) {
                         showDialog(
@@ -221,25 +204,8 @@ class _EditActivityPageState
                             return ActionConfirmationDialogWidget(
                                 title: 'Tem certeza que deseja continuar?',
                                 content:
-                                    'Ao salvar todos os dados antigos serão perdidos.',
-                                onPressed: () {
-                                  controller.editActivity(
-                                    widget.selectedActivity.id,
-                                    ActivityModel.stringToEnumMap(
-                                        currentSelectedValue),
-                                    titleController.text,
-                                    descriptionController.text,
-                                    DateTime.parse(dateController.text),
-                                    DateTime.parse(hourController.text),
-                                    locationController.text,
-                                    int.parse(totalParticipantsController.text),
-                                    SpeakerActivityModel(
-                                        name: speakerNameController.text,
-                                        bio: speakerBioController.text,
-                                        company: speakerCompanyController.text,
-                                        linkPhoto: ''),
-                                  );
-                                });
+                                    'Ao continuar novos dados serão criados no banco de dados alterando-o.',
+                                onPressed: () {});
                           },
                         );
                       } else {
@@ -253,32 +219,6 @@ class _EditActivityPageState
                     },
                     backgroundColor: AppColors.greenButton,
                   ),
-                  const SizedBox(
-                    width: 40,
-                  ),
-                  IconButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return ActionConfirmationDialogWidget(
-                                title: 'Tem certeza que deseja continuar?',
-                                content:
-                                    'Ao confirmar todos os dados antigos serão perdidos.',
-                                onPressed: () {
-                                  controller.deleteActivity(
-                                      widget.selectedActivity.id);
-                                });
-                          },
-                        );
-                      },
-                      icon: const Icon(
-                        FontAwesome5.trash,
-                        size: 32,
-                      ),
-                      padding: EdgeInsets.zero,
-                      hoverColor: AppColors.lightBlue,
-                      color: AppColors.brandingBlue),
                 ],
               ),
             ),
