@@ -9,6 +9,8 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
     as _i5;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i2;
+import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart'
+    as _i6;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 
 // ignore_for_file: type=lint
@@ -47,25 +49,25 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
   @override
   _i3.Future<dynamic> editActivity(
           String? id,
-          String? description,
-          String? link,
-          int? totalPlaces,
-          String? location,
-          String? name,
-          DateTime? date,
           _i5.ActivityEnum? type,
-          int? workload) =>
+          String? title,
+          String? description,
+          DateTime? date,
+          DateTime? hour,
+          String? location,
+          int? totalParticipants,
+          _i6.SpeakerActivityModel? speaker) =>
       (super.noSuchMethod(
           Invocation.method(#editActivity, [
             id,
-            description,
-            link,
-            totalPlaces,
-            location,
-            name,
-            date,
             type,
-            workload
+            title,
+            description,
+            date,
+            hour,
+            location,
+            totalParticipants,
+            speaker
           ]),
           returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
   @override

@@ -21,38 +21,33 @@ class TextFieldDialogWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: padding ? 114 : 0, vertical: padding ? 8 : 0),
-      child: Material(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-        child: TextField(
-          keyboardType: TextInputType.multiline,
-          maxLines: null,
-          textAlignVertical: TextAlignVertical.center,
-          inputFormatters: inputFormatters,
-          controller: controller,
-          style: AppTextStyles.body
-              .copyWith(color: AppColors.brandingBlue, fontSize: 20),
-          decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(25.0),
-                borderSide:
-                    BorderSide(color: AppColors.brandingBlue, width: 0.0),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(25.0),
-                borderSide:
-                    BorderSide(color: AppColors.brandingBlue, width: 0.0),
-              ),
-              hintText: hintText,
-              labelText: hintText,
-              labelStyle: AppTextStyles.titleH1
-                  .copyWith(color: AppColors.brandingBlue, fontSize: 24),
-              hintStyle: AppTextStyles.body
-                  .copyWith(color: AppColors.brandingBlue, fontSize: 20),
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              filled: true,
-              fillColor: Colors.white),
-        ),
+      child: TextField(
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        textAlignVertical: TextAlignVertical.center,
+        inputFormatters: inputFormatters,
+        controller: controller,
+        style: AppTextStyles.body
+            .copyWith(color: AppColors.brandingBlue, fontSize: 20),
+        decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(25.0),
+              borderSide: BorderSide(color: AppColors.brandingBlue, width: 0.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(25.0),
+              borderSide: BorderSide(color: AppColors.brandingBlue, width: 0.0),
+            ),
+            hintText: hintText,
+            labelText: hintText,
+            labelStyle: AppTextStyles.titleH1
+                .copyWith(color: AppColors.brandingBlue, fontSize: 24),
+            hintStyle: AppTextStyles.body
+                .copyWith(color: AppColors.brandingBlue, fontSize: 20),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            filled: true,
+            fillColor: Colors.white),
       ),
     );
   }

@@ -15,16 +15,16 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   @override
   Future<dynamic> editActivity(
       String id,
-      String description,
-      String link,
-      int totalPlaces,
-      String location,
-      String name,
-      DateTime date,
       ActivityEnum type,
-      int workload) {
-    return _$editActivityAsyncAction.run(() => super.editActivity(id,
-        description, link, totalPlaces, location, name, date, type, workload));
+      String title,
+      String description,
+      DateTime date,
+      DateTime hour,
+      String location,
+      int totalParticipants,
+      SpeakerActivityModel speaker) {
+    return _$editActivityAsyncAction.run(() => super.editActivity(id, type,
+        title, description, date, hour, location, totalParticipants, speaker));
   }
 
   final _$deleteActivityAsyncAction =

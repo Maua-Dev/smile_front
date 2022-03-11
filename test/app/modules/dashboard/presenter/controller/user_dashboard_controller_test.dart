@@ -3,6 +3,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
@@ -16,25 +17,37 @@ void main() {
   final mockActivities = <ActivityModel>[
     ActivityModel(
         id: '',
-        name: 'ABCD123',
+        type: ActivityEnum.CURSOS,
+        title: 'ABCD123',
         description: '',
         date: DateTime.now(),
-        type: ActivityEnum.CURSOS,
-        workload: 0),
+        hour: DateTime.now(),
+        totalParticipants: 10,
+        location: '',
+        speaker: SpeakerActivityModel(
+            bio: '', company: '', name: '', linkPhoto: '')),
     ActivityModel(
         id: '',
-        name: 'ABCD',
+        type: ActivityEnum.CURSOS,
+        title: 'ABCD123',
         description: '',
         date: DateTime.now(),
-        type: ActivityEnum.CURSOS,
-        workload: 0),
+        hour: DateTime.now(),
+        totalParticipants: 10,
+        location: '',
+        speaker: SpeakerActivityModel(
+            bio: '', company: '', name: '', linkPhoto: '')),
     ActivityModel(
         id: '',
-        name: 'ABCC',
+        type: ActivityEnum.CURSOS,
+        title: 'A',
         description: '',
         date: DateTime.now(),
-        type: ActivityEnum.CURSOS,
-        workload: 0),
+        hour: DateTime.now(),
+        totalParticipants: 10,
+        location: '',
+        speaker: SpeakerActivityModel(
+            bio: '', company: '', name: '', linkPhoto: '')),
   ];
 
   setUpAll(() {
@@ -62,7 +75,7 @@ void main() {
   // });
 
   test('searchActivityByName', () {
-    controller.searchActivityByName('ABCD');
+    controller.searchActivityByName('ABCD123');
     expect(controller.activitiesList.length, 2);
   });
 }

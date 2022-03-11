@@ -4,8 +4,8 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/activities
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/dashboard_activities_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/filter_dashboard_page.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
 
 import 'infra/repository/activities_repository_impl.dart';
 
@@ -31,6 +31,6 @@ class UserModule extends Module {
       child: (_, args) => FilterDashboardPage(accessLevel: args.data as String),
     ),
     ChildRoute('/activities-dashboard',
-        child: (_, args) => const DashboardActivitiesPage()),
+        child: (_, args) => const UserDashboardPage()),
   ];
 }

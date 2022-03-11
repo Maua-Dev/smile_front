@@ -1,37 +1,41 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 
+import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
+
 class Activity {
   final String id;
-  final String description;
-  final String? link;
-  final int? totalPlaces;
-  final String? location;
-  final String name;
-  final DateTime date;
   final ActivityEnum type;
-  final int workload;
+  final String title;
+  final String description;
+  final DateTime date;
+  final DateTime hour;
+  final String? location;
+  final int totalParticipants;
+  final SpeakerActivityModel speaker;
 
-  Activity(
-      {required this.workload,
-      required this.id,
-      this.link,
-      this.totalPlaces,
-      this.location,
-      required this.name,
-      required this.description,
-      required this.date,
-      required this.type});
+  Activity({
+    required this.id,
+    required this.type,
+    required this.title,
+    required this.description,
+    required this.date,
+    required this.hour,
+    this.location,
+    required this.totalParticipants,
+    required this.speaker,
+  });
 
   factory Activity.newInstance() {
     return Activity(
         date: DateTime.now(),
         description: '',
         id: '',
-        name: '',
+        title: '',
         type: ActivityEnum.CAFE_EX_ALUNOS,
-        workload: 0,
-        link: '',
         location: '',
-        totalPlaces: 0);
+        totalParticipants: 0,
+        hour: DateTime.now(),
+        speaker: SpeakerActivityModel(
+            bio: '', company: '', name: '', linkPhoto: ''));
   }
 }

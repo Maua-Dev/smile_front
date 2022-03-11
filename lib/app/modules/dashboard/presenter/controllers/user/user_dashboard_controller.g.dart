@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user/user_dashboard_controller.dart';
+part of 'user_dashboard_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -40,24 +40,6 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   @override
   Future<dynamic> getAllActivities() {
     return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
-  }
-
-  final _$editActivityAsyncAction =
-      AsyncAction('_UserDashboardControllerBase.editActivity');
-
-  @override
-  Future<dynamic> editActivity(
-      String id,
-      String description,
-      String link,
-      int totalPlaces,
-      String location,
-      String name,
-      DateTime date,
-      ActivityEnum type,
-      int workload) {
-    return _$editActivityAsyncAction.run(() => super.editActivity(id,
-        description, link, totalPlaces, location, name, date, type, workload));
   }
 
   final _$_UserDashboardControllerBaseActionController =

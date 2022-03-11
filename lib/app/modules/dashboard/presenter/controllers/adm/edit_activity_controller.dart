@@ -1,7 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-
 import '../../../domain/repositories/activities_repository_interface.dart';
+import '../../../infra/models/speaker_activity_model.dart';
 
 part 'edit_activity_controller.g.dart';
 
@@ -17,17 +17,18 @@ abstract class _EditActivityControllerBase with Store {
 
   @action
   Future editActivity(
-      String id,
-      String description,
-      String link,
-      int totalPlaces,
-      String location,
-      String name,
-      DateTime date,
-      ActivityEnum type,
-      int workload) async {
-    await repository.editActivity(id, description, link, totalPlaces, location,
-        name, date, type, workload);
+    String id,
+    ActivityEnum type,
+    String title,
+    String description,
+    DateTime date,
+    DateTime hour,
+    String location,
+    int totalParticipants,
+    SpeakerActivityModel speaker,
+  ) async {
+    await repository.editActivity(id, type, title, description, date, hour,
+        location, totalParticipants, speaker);
   }
 
   @action

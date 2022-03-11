@@ -3,51 +3,53 @@
 import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 
+import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
+
 // ignore: duplicate_ignore
 class ActivityModel extends Activity {
   final String id;
-  final String description;
-  final String? link;
-  final int? totalPlaces;
-  final String? location;
-  final String name;
-  final DateTime date;
   final ActivityEnum type;
-  final int workload;
+  final String title;
+  final String description;
+  final DateTime date;
+  final DateTime hour;
+  final String? location;
+  final int totalParticipants;
+  final SpeakerActivityModel speaker;
 
   ActivityModel({
     required this.id,
-    this.link,
-    this.totalPlaces,
-    this.location,
-    required this.name,
+    required this.type,
+    required this.title,
     required this.description,
     required this.date,
-    required this.type,
-    required this.workload,
+    required this.hour,
+    this.location,
+    required this.totalParticipants,
+    required this.speaker,
   }) : super(
-          workload: workload,
           id: id,
-          link: link,
           location: location,
-          totalPlaces: totalPlaces,
+          totalParticipants: totalParticipants,
           type: type,
           date: date,
-          name: name,
+          title: title,
           description: description,
+          hour: hour,
+          speaker: speaker,
         );
 
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
     return ActivityModel(
-      name: map['name'] ?? '',
-      description: map['description'] ?? '',
-      date: DateTime.fromMillisecondsSinceEpoch(map['date']),
       id: map['id'],
-      workload: map['workload'],
-      location: map['location'],
-      totalPlaces: map['totalPlaces'],
-      link: map['link'],
       type: stringToEnumMap(map['type']),
+      title: map['name'],
+      description: map['description'],
+      date: DateTime.fromMillisecondsSinceEpoch(map['date']),
+      hour: DateTime.fromMillisecondsSinceEpoch(map['hour']),
+      location: map['location'],
+      totalParticipants: map['totalParticipants'],
+      speaker: map['speaker'],
     );
   }
 
@@ -63,14 +65,14 @@ class ActivityModel extends Activity {
   }
 
   Map<String, dynamic> toJson() => {
-        'name': name,
+        'id': id,
+        'type': type.name,
+        'title': title,
         'description': description,
         'date': date.millisecondsSinceEpoch,
-        'id': id,
-        'workload': workload,
+        'hour': hour.millisecondsSinceEpoch,
         'location': location,
-        'totalPlaces': totalPlaces,
-        'link': link,
-        'type': type.name,
+        'totalParticipants': totalParticipants,
+        'speaker': speaker,
       };
 }

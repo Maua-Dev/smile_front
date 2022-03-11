@@ -44,7 +44,7 @@ abstract class _AdmDashboardControllerBase with Store {
   void searchActivityByName(String search) {
     activitiesList = activitiesList
         .where((element) =>
-            element.name.toLowerCase().startsWith(search.toLowerCase()))
+            element.title.toLowerCase().startsWith(search.toLowerCase()))
         .toList();
     if (search == '') {
       getAllActivities();

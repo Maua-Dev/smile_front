@@ -4,7 +4,7 @@ import '../../../../../shared/models/activity_model.dart';
 import '../../../domain/infra/activity_enum.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
 
-part '../user_dashboard_controller.g.dart';
+part 'user_dashboard_controller.g.dart';
 
 class UserDashboardController = _UserDashboardControllerBase
     with _$UserDashboardController;
@@ -39,7 +39,7 @@ abstract class _UserDashboardControllerBase with Store {
   void searchActivityByName(String search) {
     activitiesList = activitiesList
         .where((element) =>
-            element.name.toLowerCase().startsWith(search.toLowerCase()))
+            element.title.toLowerCase().startsWith(search.toLowerCase()))
         .toList();
     if (search == '') {
       getActivitiesByType();
@@ -57,18 +57,4 @@ abstract class _UserDashboardControllerBase with Store {
   //       (a, b) => a.enrolledUsers!.length.compareTo(b.enrolledUsers!.length));
   // }
 
-  @action
-  Future editActivity(
-      String id,
-      String description,
-      String link,
-      int totalPlaces,
-      String location,
-      String name,
-      DateTime date,
-      ActivityEnum type,
-      int workload) async {
-    await repository.editActivity(id, description, link, totalPlaces, location,
-        name, date, type, workload);
-  }
 }
