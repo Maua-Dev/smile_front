@@ -1,6 +1,6 @@
 class ScheduleActivity {
-  final DateTime date;
-  final DateTime hour;
+  final DateTime? date;
+  final DateTime? hour;
   final int totalParticipants;
 
   ScheduleActivity(

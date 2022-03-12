@@ -2,8 +2,8 @@ import '../../domain/entities/schedule_activity.dart';
 // ignore_for_file: overridden_fields, annotate_overrides, duplicate_ignore
 
 class ScheduleActivityModel extends ScheduleActivity {
-  final DateTime date;
-  final DateTime hour;
+  final DateTime? date;
+  final DateTime? hour;
   final int totalParticipants;
 
   ScheduleActivityModel(
@@ -19,8 +19,24 @@ class ScheduleActivityModel extends ScheduleActivity {
   }
 
   Map<String, dynamic> toJson() => {
-        'date': date.millisecondsSinceEpoch,
-        'hour': hour.millisecondsSinceEpoch,
+        'date': date!.millisecondsSinceEpoch,
+        'hour': hour!.millisecondsSinceEpoch,
         'totalParticipants': totalParticipants,
       };
+
+  ScheduleActivityModel copyWith({
+    DateTime? date,
+    DateTime? hour,
+    int? totalParticipants,
+  }) {
+    return ScheduleActivityModel(
+      date: date ?? this.date,
+      hour: hour ?? this.hour,
+      totalParticipants: totalParticipants ?? this.totalParticipants,
+    );
+  }
+
+  factory ScheduleActivityModel.newInstance() {
+    return ScheduleActivityModel(date: null, hour: null, totalParticipants: 0);
+  }
 }

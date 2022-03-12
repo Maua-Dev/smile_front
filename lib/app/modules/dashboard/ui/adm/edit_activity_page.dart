@@ -80,12 +80,29 @@ class _EditActivityPageState
               onChanged: controller.setDescription,
             ),
             Observer(builder: (_) {
-              return Expanded(
+              return Flexible(
                 child: ListView.builder(
-                  itemCount: controller.activityToEdit.schedule.length + 1,
-                  itemBuilder: (context, index) => const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-                    child: ScheduleAddWidget(),
+                  shrinkWrap: true,
+                  itemCount: controller.activityToEdit.schedule.length,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 114, vertical: 8),
+                    child: ScheduleAddWidget(
+                      date: controller.activity.schedule[index].date,
+                      hour: controller.activityToEdit.schedule[index].hour,
+                      totalParticipants: controller
+                          .activityToEdit.schedule[index].totalParticipants
+                          .toString(),
+                      onChangedDate: (value) {
+                        controller.setHour(value, index);
+                      },
+                      onChangedHour: (value) {
+                        controller.setHour(value, index);
+                      },
+                      onChangedParticipants: (value) {
+                        controller.setHour(value, index);
+                      },
+                    ),
                   ),
                 ),
               );
@@ -112,7 +129,7 @@ class _EditActivityPageState
                   Flexible(
                     child: TextFieldDialogWidget(
                       hintText: 'Empresa',
-                      value: controller.activityToEdit.speaker.name,
+                      value: controller.activityToEdit.speaker.company,
                       padding: false,
                     ),
                   ),

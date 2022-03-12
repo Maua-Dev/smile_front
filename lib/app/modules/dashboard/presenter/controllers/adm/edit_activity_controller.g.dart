@@ -100,6 +100,61 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
+  void setDate(String value, int index) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setDate');
+    try {
+      return super.setDate(value, index);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setHour(String value, int index) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setHour');
+    try {
+      return super.setHour(value, index);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setParticipants(int value, int index) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setParticipants');
+    try {
+      return super.setParticipants(value, index);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addSchedule() {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.addSchedule');
+    try {
+      return super.addSchedule();
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeSchedule(int index) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.removeSchedule');
+    try {
+      return super.removeSchedule(index);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 activityToEdit: ${activityToEdit}

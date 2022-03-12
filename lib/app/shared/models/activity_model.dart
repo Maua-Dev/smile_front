@@ -85,6 +85,9 @@ class ActivityModel extends Activity {
     String? title,
     String? description,
     List<ScheduleActivityModel>? schedule,
+    DateTime? date,
+    DateTime? hour,
+    int? totalParticipants,
     String? location,
     SpeakerActivityModel? speaker,
   }) {

@@ -21,8 +21,8 @@ class ActivityCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String date = DateFormat('dd/MM/yyyy').format(schedule[0].date);
-    String hour = DateFormat('hh:mm').format(schedule[0].hour);
+    String date = DateFormat('dd/MM/yyyy').format(schedule[0].date!);
+    String hour = DateFormat('hh:mm').format(schedule[0].hour!);
     return GestureDetector(
       onTap: onTap,
       child: Container(
