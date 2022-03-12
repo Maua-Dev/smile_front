@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intl/intl.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/widgets/activities_carousel_widget.dart';
+
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import '../../../../shared/widgets/text-fields/text_field_custom.dart';
 import '../../../../shared/widgets/text_header_scratched.dart';
+import '../../domain/infra/activity_enum.dart';
+import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
+import '../widgets/filter_chip_widget.dart';
 
 class AdmDashboardPage extends StatefulWidget {
   const AdmDashboardPage({Key? key}) : super(key: key);
@@ -19,114 +20,77 @@ class _AdmDashboardPageState
     extends ModularState<AdmDashboardPage, AdmDashboardController> {
   @override
   Widget build(BuildContext context) {
-    var searchController = TextEditingController(text: '');
-    // ignore: unused_local_variable
-    var currentSelectedValue = '';
-    // ignore: unused_local_variable
-    const orders = ['Ordenar', 'Por data', 'Por inscritos'];
     return Scaffold(
       body: Material(
-          child: Row(children: [
-        Expanded(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 16,
-              ),
-              const TextHeaderScratched(title: 'Atividades'),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.16,
-                    vertical: 24),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextFieldCustom(
-                      titulo: 'Buscar',
-                      value: searchController.text,
-                      onChanged: controller.searchActivityByName,
+          child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 16,
+            ),
+            const TextHeaderScratched(
+              title: 'Próximas Atividades',
+            ),
+            Observer(builder: (_) {
+              return ActivitiesCarouselWidget(
+                  textColor: Colors.white,
+                  cardColor: AppColors.brandingOrange,
+                  list: controller.nextActivitiesList);
+            }),
+            const TextHeaderScratched(title: 'Todas Atividades'),
+            //filtros
+            Padding(
+              padding: const EdgeInsets.only(left: 72),
+              child: SizedBox(
+                height: 50,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: const [
+                    FilterChipWidget(
+                      activityType: ActivityEnum.CURSOS,
                     ),
-                    const SizedBox(
-                      width: 32,
+                    FilterChipWidget(
+                      activityType: ActivityEnum.ACADEMIA_DE_PROFESSORES,
                     ),
-                    // DropDownFieldCustom<String>(
-                    //   titulo: 'Ordenar',
-                    //   items: orders.map((String value) {
-                    //     return DropdownMenuItem<String>(
-                    //       value: value,
-                    //       child: Text(value),
-                    //     );
-                    //   }).toList(),
-                    //   value: currentSelectedValue,
-                    //   onChanged: (newValue) {
-                    //     setState(() {
-                    //       currentSelectedValue = newValue!;
-                    //       switch (newValue) {
-                    //         case 'Ordenar':
-                    //           // controller.getActivitiesByType();
-                    //           break;
-                    //         case 'Por data':
-                    //           controller.orderByDate();
-                    //           break;
-                    //         case 'Por inscritos':
-                    //           // controller.orderByParticipants();
-                    //           break;
-                    //       }
-                    //     });
-                    //   },
-                    // )
+                    FilterChipWidget(
+                      activityType: ActivityEnum.COMPETICOES_ACADEMICAS,
+                    ),
+                    FilterChipWidget(
+                      activityType: ActivityEnum.CURSOS,
+                    ),
+                    FilterChipWidget(
+                      activityType: ActivityEnum.CURSOS,
+                    ),
+                    FilterChipWidget(
+                      activityType: ActivityEnum.CURSOS,
+                    ),
                   ],
                 ),
               ),
-              Expanded(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
-                  child: Container(
-                    constraints: BoxConstraints(
-                      maxWidth: MediaQuery.of(context).size.width * 0.6,
-                    ),
-                    child: Observer(builder: (_) {
-                      return GridView.builder(
-                          itemCount: controller.activitiesList.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 3,
-                                  mainAxisSpacing: 16,
-                                  crossAxisSpacing: 8,
-                                  childAspectRatio: 1.7),
-                          itemBuilder: (context, index) {
-                            String date = DateFormat('dd/MM/yyyy')
-                                .format(controller.activitiesList[index].date);
-                            String time = DateFormat('hh:mm')
-                                .format(controller.activitiesList[index].date);
-                            return ActivityCardWidget(
-                              name: controller.activitiesList[index].title,
-                              date: date,
-                              description:
-                                  controller.activitiesList[index].description,
-                              maxParticipants: controller
-                                  .activitiesList[index].totalParticipants
-                                  .toString(),
-                              totalParticipants: controller
-                                  .activitiesList[index].totalParticipants
-                                  .toString(),
-                              time: time,
-                              onTap: () {
-                                Modular.to.pushNamed('/adm/edit-activity',
-                                    arguments:
-                                        controller.activitiesList[index]);
-                              },
-                            );
-                          });
-                    }),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        )
-      ])),
+            ),
+            Observer(builder: (_) {
+              return Column(
+                children: [
+                  ActivitiesCarouselWidget(
+                      list: controller.mondayActivitiesList,
+                      weekday: 'Segunda'),
+                  ActivitiesCarouselWidget(
+                      list: controller.tuesdayActivitiesList, weekday: 'Terça'),
+                  ActivitiesCarouselWidget(
+                      list: controller.wednesdayActivitiesList,
+                      weekday: 'Quarta'),
+                  ActivitiesCarouselWidget(
+                      list: controller.thursdayActivitiesList,
+                      weekday: 'Quinta'),
+                  ActivitiesCarouselWidget(
+                      list: controller.fridayActivitiesList, weekday: 'Sexta'),
+                ],
+              );
+            }),
+          ],
+        ),
+      )),
       floatingActionButton: Observer(builder: (_) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,

@@ -94,6 +94,7 @@ class _UserDashboardPageState
                         String time = DateFormat('hh:mm')
                             .format(controller.activitiesList[index].date);
                         return ActivityCardWidget(
+                          cardColor: Colors.white,
                           name: controller.activitiesList[index].title,
                           date: date,
                           description:

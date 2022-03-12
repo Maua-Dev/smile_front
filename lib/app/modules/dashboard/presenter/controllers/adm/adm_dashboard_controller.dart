@@ -24,6 +24,31 @@ abstract class _AdmDashboardControllerBase with Store {
   @observable
   List<ActivityModel> activitiesList = List.empty();
 
+  @computed
+  List<ActivityModel> get nextActivitiesList => activitiesList.length >= 5
+      ? activitiesList.sublist(0, 5)
+      : activitiesList;
+
+  @computed
+  List<ActivityModel> get mondayActivitiesList =>
+      activitiesList.where((activity) => activity.date.weekday == 1).toList();
+
+  @computed
+  List<ActivityModel> get tuesdayActivitiesList =>
+      activitiesList.where((activity) => activity.date.weekday == 2).toList();
+
+  @computed
+  List<ActivityModel> get wednesdayActivitiesList =>
+      activitiesList.where((activity) => activity.date.weekday == 3).toList();
+
+  @computed
+  List<ActivityModel> get thursdayActivitiesList =>
+      activitiesList.where((activity) => activity.date.weekday == 4).toList();
+
+  @computed
+  List<ActivityModel> get fridayActivitiesList =>
+      activitiesList.where((activity) => activity.date.weekday == 5).toList();
+
   @action
   void toggleFloatActionButton() {
     isFloatActionButtonOpen = !isFloatActionButtonOpen;

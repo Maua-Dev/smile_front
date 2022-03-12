@@ -9,126 +9,146 @@ class ActivityCardWidget extends StatelessWidget {
   final String time;
   final String maxParticipants;
   final String totalParticipants;
+  final Color? cardColor;
+  final Color? textColor;
   final Function()? onTap;
-  const ActivityCardWidget(
-      {Key? key,
-      required this.name,
-      required this.description,
-      required this.date,
-      required this.time,
-      required this.maxParticipants,
-      required this.totalParticipants,
-      this.onTap})
-      : super(key: key);
+  const ActivityCardWidget({
+    Key? key,
+    required this.name,
+    required this.description,
+    required this.date,
+    required this.time,
+    required this.maxParticipants,
+    required this.totalParticipants,
+    this.onTap,
+    this.cardColor,
+    this.textColor,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-            color: AppColors.lightBlue,
-            borderRadius: BorderRadius.circular(20)),
-        child: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.15,
-              width: Size.infinite.width,
-              decoration: BoxDecoration(
-                  color: AppColors.brandingBlue,
-                  borderRadius: BorderRadius.circular(20)),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
-                      style: AppTextStyles.buttonBold.copyWith(fontSize: 22),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Flexible(
-                      child: RichText(
-                        overflow: TextOverflow.clip,
-                        text: TextSpan(
-                            style: AppTextStyles.button.copyWith(
-                              fontSize: 16,
-                            ),
-                            text: description),
-                      ),
-                    ),
-                  ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          constraints: const BoxConstraints(
+            minWidth: 350,
+            // maxHeight: MediaQuery.of(context).size.height * 0.4,
+          ),
+          width: MediaQuery.of(context).size.height * 0.2,
+          height: MediaQuery.of(context).size.height * 0.1,
+          // width: Size.infinite.width,
+          decoration: BoxDecoration(
+            color: cardColor ?? Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.4),
+                spreadRadius: 0.5,
+                blurRadius: 3,
+                offset: const Offset(5, 5), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  name,
+                  style: AppTextStyles.buttonBold
+                      .copyWith(fontSize: 22, color: textColor ?? Colors.black),
                 ),
-              ),
+                Flexible(
+                  child: RichText(
+                    overflow: TextOverflow.clip,
+                    text: TextSpan(
+                        style: AppTextStyles.button.copyWith(
+                            fontSize: 16, color: textColor ?? Colors.black),
+                        text: description),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 4,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 4),
+                            child: Icon(
+                              Icons.calendar_today,
+                              color: textColor ?? AppColors.brandingBlue,
+                              size: MediaQuery.of(context).size.width < 1200
+                                  ? 10
+                                  : 20,
+                            ),
+                          ),
+                          Text(date,
+                              style: AppTextStyles.button.copyWith(
+                                  fontSize: 18,
+                                  color: textColor ?? AppColors.brandingBlue))
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 4),
+                            child: Icon(
+                              Icons.access_time_outlined,
+                              color: textColor ?? AppColors.brandingBlue,
+                              size: MediaQuery.of(context).size.width < 1200
+                                  ? 10
+                                  : 20,
+                            ),
+                          ),
+                          Text(time,
+                              style: AppTextStyles.button.copyWith(
+                                  fontSize: 18,
+                                  color: textColor ?? AppColors.brandingBlue))
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 4),
+                            child: Icon(
+                              Icons.person,
+                              color: textColor ?? AppColors.brandingBlue,
+                              size: MediaQuery.of(context).size.width < 1200
+                                  ? 10
+                                  : 20,
+                            ),
+                          ),
+                          RichText(
+                              text: TextSpan(children: [
+                            TextSpan(
+                                text: '$totalParticipants/',
+                                style: AppTextStyles.button.copyWith(
+                                    fontSize: 18,
+                                    color:
+                                        textColor ?? AppColors.brandingBlue)),
+                            TextSpan(
+                                text: maxParticipants,
+                                style: AppTextStyles.button.copyWith(
+                                    fontSize: 18,
+                                    color: textColor ?? AppColors.brandingBlue,
+                                    fontWeight: FontWeight.bold)),
+                          ])),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 4),
-                        child: Icon(
-                          Icons.calendar_today,
-                          color: AppColors.brandingBlue,
-                          size: 28,
-                        ),
-                      ),
-                      Text(date,
-                          style: AppTextStyles.button.copyWith(
-                              fontSize: 18, color: AppColors.brandingBlue))
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 4),
-                        child: Icon(
-                          Icons.access_time_outlined,
-                          color: AppColors.brandingBlue,
-                          size: 28,
-                        ),
-                      ),
-                      Text(time,
-                          style: AppTextStyles.button.copyWith(
-                              fontSize: 18, color: AppColors.brandingBlue))
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 4),
-                        child: Icon(
-                          Icons.person,
-                          color: AppColors.brandingBlue,
-                          size: 28,
-                        ),
-                      ),
-                      RichText(
-                          text: TextSpan(children: [
-                        TextSpan(
-                            text: '$totalParticipants/',
-                            style: AppTextStyles.button.copyWith(
-                                fontSize: 18, color: AppColors.brandingBlue)),
-                        TextSpan(
-                            text: maxParticipants,
-                            style: AppTextStyles.button.copyWith(
-                                fontSize: 18,
-                                color: AppColors.brandingBlue,
-                                fontWeight: FontWeight.bold)),
-                      ])),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
+          ),
         ),
       ),
     );
