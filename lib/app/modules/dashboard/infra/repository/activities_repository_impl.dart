@@ -2,7 +2,6 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
-import '../models/speaker_activity_model.dart';
 
 class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   final ActivitiesDatasource datasource;
@@ -29,29 +28,8 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future editActivity(
-    String id,
-    ActivityEnum type,
-    String title,
-    String description,
-    DateTime date,
-    DateTime hour,
-    String location,
-    int totalParticipants,
-    SpeakerActivityModel speaker,
-  ) async {
-    var activityToEdit = ActivityModel(
-        id: id,
-        type: type,
-        title: title,
-        description: description,
-        date: date,
-        hour: hour,
-        location: location,
-        totalParticipants: totalParticipants,
-        speaker: speaker);
-
-    await datasource.putActivity(id, activityToEdit);
+  Future editActivity(ActivityModel activityToEdit) async {
+    await datasource.putActivity(activityToEdit.id, activityToEdit);
   }
 
   @override

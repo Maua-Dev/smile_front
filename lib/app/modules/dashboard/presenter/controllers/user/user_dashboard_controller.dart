@@ -48,7 +48,8 @@ abstract class _UserDashboardControllerBase with Store {
 
   @action
   void orderByDate() {
-    activitiesList.sort((a, b) => a.date.compareTo(b.date));
+    activitiesList
+        .sort((a, b) => a.schedule[0].date.compareTo(b.schedule[0].date));
   }
 
   // @action

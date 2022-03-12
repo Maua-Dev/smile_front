@@ -3,18 +3,16 @@
 import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 
+import '../../modules/dashboard/infra/models/schedule_activity_model.dart';
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
-// ignore: duplicate_ignore
 class ActivityModel extends Activity {
   final String id;
   final ActivityEnum type;
   final String title;
   final String description;
-  final DateTime date;
-  final DateTime hour;
+  final List<ScheduleActivityModel> schedule;
   final String? location;
-  final int totalParticipants;
   final SpeakerActivityModel speaker;
 
   ActivityModel({
@@ -22,20 +20,16 @@ class ActivityModel extends Activity {
     required this.type,
     required this.title,
     required this.description,
-    required this.date,
-    required this.hour,
+    required this.schedule,
     this.location,
-    required this.totalParticipants,
     required this.speaker,
   }) : super(
           id: id,
-          location: location,
-          totalParticipants: totalParticipants,
           type: type,
-          date: date,
           title: title,
           description: description,
-          hour: hour,
+          schedule: schedule,
+          location: location,
           speaker: speaker,
         );
 
@@ -45,10 +39,8 @@ class ActivityModel extends Activity {
       type: stringToEnumMap(map['type']),
       title: map['name'],
       description: map['description'],
-      date: DateTime.fromMillisecondsSinceEpoch(map['date']),
-      hour: DateTime.fromMillisecondsSinceEpoch(map['hour']),
+      schedule: map['schedule'],
       location: map['location'],
-      totalParticipants: map['totalParticipants'] ?? 0,
       speaker: map['speaker'] ??
           SpeakerActivityModel(bio: '', company: '', linkPhoto: '', name: ''),
     );
@@ -70,10 +62,40 @@ class ActivityModel extends Activity {
         'type': type.name,
         'title': title,
         'description': description,
-        'date': date.millisecondsSinceEpoch,
-        'hour': hour.millisecondsSinceEpoch,
+        'schedule': schedule,
         'location': location,
-        'totalParticipants': totalParticipants,
         'speaker': speaker,
       };
+
+  factory ActivityModel.newInstance() {
+    return ActivityModel(
+        schedule: [],
+        description: '',
+        id: '',
+        title: '',
+        type: ActivityEnum.CURSOS,
+        location: '',
+        speaker: SpeakerActivityModel(
+            bio: '', company: '', name: '', linkPhoto: ''));
+  }
+
+  ActivityModel copyWith({
+    String? id,
+    ActivityEnum? type,
+    String? title,
+    String? description,
+    List<ScheduleActivityModel>? schedule,
+    String? location,
+    SpeakerActivityModel? speaker,
+  }) {
+    return ActivityModel(
+      id: id ?? this.id,
+      type: type ?? this.type,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      schedule: schedule ?? this.schedule,
+      location: location ?? this.location,
+      speaker: speaker ?? this.speaker,
+    );
+  }
 }

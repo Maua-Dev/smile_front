@@ -5,23 +5,27 @@ import '../../../../shared/themes/app_text_styles.dart';
 
 class TextFieldDialogWidget extends StatelessWidget {
   final String hintText;
-  final TextEditingController? controller;
+  final String? value;
   final bool padding;
+  final void Function(String value)? onChanged;
   final List<TextInputFormatter>? inputFormatters;
   const TextFieldDialogWidget({
     Key? key,
     required this.hintText,
-    this.controller,
+    this.value,
     this.padding = true,
     this.inputFormatters,
+    this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var controller = TextEditingController(text: value);
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: padding ? 114 : 0, vertical: padding ? 8 : 0),
       child: TextField(
+        onChanged: onChanged,
         keyboardType: TextInputType.multiline,
         maxLines: null,
         textAlignVertical: TextAlignVertical.center,

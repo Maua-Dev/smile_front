@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class ActivityCardWidget extends StatelessWidget {
   final String name;
   final String description;
-  final String date;
-  final String time;
-  final String maxParticipants;
+  final List<ScheduleActivityModel> schedule;
   final String totalParticipants;
   final Function()? onTap;
   const ActivityCardWidget(
       {Key? key,
       required this.name,
       required this.description,
-      required this.date,
-      required this.time,
-      required this.maxParticipants,
+      required this.schedule,
       required this.totalParticipants,
       this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String date = DateFormat('dd/MM/yyyy').format(schedule[0].date);
+    String hour = DateFormat('hh:mm').format(schedule[0].hour);
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -95,7 +95,7 @@ class ActivityCardWidget extends StatelessWidget {
                           size: 28,
                         ),
                       ),
-                      Text(time,
+                      Text(hour,
                           style: AppTextStyles.button.copyWith(
                               fontSize: 18, color: AppColors.brandingBlue))
                     ],
@@ -117,7 +117,7 @@ class ActivityCardWidget extends StatelessWidget {
                             style: AppTextStyles.button.copyWith(
                                 fontSize: 18, color: AppColors.brandingBlue)),
                         TextSpan(
-                            text: maxParticipants,
+                            text: schedule[0].totalParticipants.toString(),
                             style: AppTextStyles.button.copyWith(
                                 fontSize: 18,
                                 color: AppColors.brandingBlue,

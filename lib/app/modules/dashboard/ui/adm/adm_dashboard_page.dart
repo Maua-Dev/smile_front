@@ -96,26 +96,18 @@ class _AdmDashboardPageState
                                   crossAxisSpacing: 8,
                                   childAspectRatio: 1.7),
                           itemBuilder: (context, index) {
-                            String date = DateFormat('dd/MM/yyyy')
-                                .format(controller.activitiesList[index].date);
-                            String time = DateFormat('hh:mm')
-                                .format(controller.activitiesList[index].date);
                             return ActivityCardWidget(
                               name: controller.activitiesList[index].title,
-                              date: date,
                               description:
                                   controller.activitiesList[index].description,
-                              maxParticipants: controller
-                                  .activitiesList[index].totalParticipants
-                                  .toString(),
-                              totalParticipants: controller
-                                  .activitiesList[index].totalParticipants
-                                  .toString(),
-                              time: time,
+                              schedule:
+                                  controller.activitiesList[index].schedule,
+                              totalParticipants: '20',
                               onTap: () {
-                                Modular.to.pushNamed('/adm/edit-activity',
-                                    arguments:
-                                        controller.activitiesList[index]);
+                                Modular.to.pushNamed(
+                                  '/adm/edit-activity',
+                                  arguments: controller.activitiesList[index],
+                                );
                               },
                             );
                           });
