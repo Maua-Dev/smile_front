@@ -1,7 +1,7 @@
 class ScheduleActivity {
   final DateTime? date;
   final DateTime? hour;
-  final int totalParticipants;
+  final int? totalParticipants;
 
   ScheduleActivity(
       {required this.date,

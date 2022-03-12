@@ -91,8 +91,7 @@ class _EditActivityPageState
                       date: controller.activity.schedule[index].date,
                       hour: controller.activityToEdit.schedule[index].hour,
                       totalParticipants: controller
-                          .activityToEdit.schedule[index].totalParticipants
-                          .toString(),
+                          .activityToEdit.schedule[index].totalParticipants,
                       onChangedDate: (value) {
                         controller.setHour(value, index);
                       },
@@ -102,11 +101,26 @@ class _EditActivityPageState
                       onChangedParticipants: (value) {
                         controller.setHour(value, index);
                       },
+                      removeSchedule: () {
+                        controller.removeSchedule(index);
+                        setState(() {});
+                      },
                     ),
                   ),
                 ),
               );
             }),
+            Center(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                child: FormsButtonWidget(
+                    buttonTittle: 'Adicionar',
+                    onPressed: controller.addSchedule,
+                    backgroundColor: AppColors.brandingBlue,
+                    icon: const Icon(Icons.add, color: Colors.white, size: 22)),
+              ),
+            ),
             TextFieldDialogWidget(
               hintText: 'Local/Link',
               value: controller.activityToEdit.location,

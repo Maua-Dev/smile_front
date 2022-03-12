@@ -4,10 +4,9 @@ import '../../domain/entities/schedule_activity.dart';
 class ScheduleActivityModel extends ScheduleActivity {
   final DateTime? date;
   final DateTime? hour;
-  final int totalParticipants;
+  final int? totalParticipants;
 
-  ScheduleActivityModel(
-      {required this.date, required this.hour, required this.totalParticipants})
+  ScheduleActivityModel({this.date, this.hour, this.totalParticipants})
       : super(date: date, hour: hour, totalParticipants: totalParticipants);
 
   factory ScheduleActivityModel.fromMap(Map<String, dynamic> map) {
@@ -16,6 +15,9 @@ class ScheduleActivityModel extends ScheduleActivity {
       hour: map['hour'],
       totalParticipants: map['totalParticipants'],
     );
+  }
+  static List<ScheduleActivityModel> fromMaps(List array) {
+    return array.map((e) => ScheduleActivityModel.fromMap(e)).toList();
   }
 
   Map<String, dynamic> toJson() => {
@@ -37,6 +39,7 @@ class ScheduleActivityModel extends ScheduleActivity {
   }
 
   factory ScheduleActivityModel.newInstance() {
-    return ScheduleActivityModel(date: null, hour: null, totalParticipants: 0);
+    return ScheduleActivityModel(
+        date: null, hour: null, totalParticipants: null);
   }
 }

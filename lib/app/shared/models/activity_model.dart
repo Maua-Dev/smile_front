@@ -39,10 +39,9 @@ class ActivityModel extends Activity {
       type: stringToEnumMap(map['type']),
       title: map['name'],
       description: map['description'],
-      schedule: map['schedule'],
+      schedule: ScheduleActivityModel.fromMaps(map['schedule']),
       location: map['location'],
-      speaker: map['speaker'] ??
-          SpeakerActivityModel(bio: '', company: '', linkPhoto: '', name: ''),
+      speaker: SpeakerActivityModel.fromMap(map['speaker']),
     );
   }
 
