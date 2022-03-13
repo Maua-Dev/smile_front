@@ -135,7 +135,7 @@ class _AdmDashboardPageState
                       child: Icon(
                         controller.isFloatActionButtonOpen
                             ? Icons.close
-                            : Icons.add,
+                            : Icons.keyboard_arrow_up_rounded,
                         color: AppColors.brandingBlue,
                       ),
                       onPressed: () {
