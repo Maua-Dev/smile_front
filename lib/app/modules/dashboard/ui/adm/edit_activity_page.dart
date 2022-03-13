@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
+import 'package:smile_front/app/modules/dashboard/ui/widgets/add_photo_widget.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
@@ -31,6 +32,12 @@ class _EditActivityPageState
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: Image.asset('assets/images/maua_campus_blur.png',
+                  fit: BoxFit.cover),
+            ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
               child: TextHeaderScratched(
@@ -129,35 +136,52 @@ class _EditActivityPageState
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Flexible(
-                    child: TextFieldDialogWidget(
-                      hintText: 'Nome Palestrante',
-                      padding: false,
-                      value: controller.activityToEdit.speaker.name,
-                    ),
-                  ),
+                  const AddPhotoWidget(),
                   const SizedBox(
                     width: 16,
                   ),
                   Flexible(
-                    child: TextFieldDialogWidget(
-                      hintText: 'Empresa',
-                      value: controller.activityToEdit.speaker.company,
-                      padding: false,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            Flexible(
+                              child: TextFieldDialogWidget(
+                                hintText: 'Nome Palestrante',
+                                padding: false,
+                                value: controller.activityToEdit.speaker.name,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 16,
+                            ),
+                            Flexible(
+                              child: TextFieldDialogWidget(
+                                hintText: 'Empresa',
+                                value:
+                                    controller.activityToEdit.speaker.company,
+                                padding: false,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                          child: TextFieldDialogWidget(
+                            hintText: 'Bio',
+                            value: controller.activityToEdit.speaker.bio,
+                            padding: false,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-              child: Flexible(
-                child: TextFieldDialogWidget(
-                  hintText: 'Bio',
-                  value: controller.activityToEdit.speaker.bio,
-                  padding: false,
-                ),
               ),
             ),
             Padding(
