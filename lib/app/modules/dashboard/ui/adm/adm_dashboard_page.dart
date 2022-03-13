@@ -62,18 +62,15 @@ class _AdmDashboardPageState
               return Column(
                 children: [
                   ActivitiesCarouselWidget(
-                      list: controller.mondayActivitiesList,
-                      weekday: 'Segunda'),
+                      list: controller.mondayActivitiesList, weekday: 1),
                   ActivitiesCarouselWidget(
-                      list: controller.tuesdayActivitiesList, weekday: 'Terça'),
+                      list: controller.tuesdayActivitiesList, weekday: 2),
                   ActivitiesCarouselWidget(
-                      list: controller.wednesdayActivitiesList,
-                      weekday: 'Quarta'),
+                      list: controller.wednesdayActivitiesList, weekday: 3),
                   ActivitiesCarouselWidget(
-                      list: controller.thursdayActivitiesList,
-                      weekday: 'Quinta'),
+                      list: controller.thursdayActivitiesList, weekday: 4),
                   ActivitiesCarouselWidget(
-                      list: controller.fridayActivitiesList, weekday: 'Sexta'),
+                      list: controller.fridayActivitiesList, weekday: 5),
                 ],
               );
             }),

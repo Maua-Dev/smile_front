@@ -14,16 +14,18 @@ class ActivityModel extends Activity {
   final List<ScheduleActivityModel> schedule;
   final String? location;
   final SpeakerActivityModel speaker;
+  final int? totalParticipants;
 
-  ActivityModel({
-    required this.id,
-    required this.type,
-    required this.title,
-    required this.description,
-    required this.schedule,
-    this.location,
-    required this.speaker,
-  }) : super(
+  ActivityModel(
+      {required this.id,
+      required this.type,
+      required this.title,
+      required this.description,
+      required this.schedule,
+      this.location,
+      required this.speaker,
+      this.totalParticipants})
+      : super(
           id: id,
           type: type,
           title: title,
@@ -42,6 +44,7 @@ class ActivityModel extends Activity {
       schedule: ScheduleActivityModel.fromMaps(map['schedule']),
       location: map['location'],
       speaker: SpeakerActivityModel.fromMap(map['speaker']),
+      totalParticipants: map['totalParticipants'],
     );
   }
 
@@ -98,6 +101,7 @@ class ActivityModel extends Activity {
       schedule: schedule ?? this.schedule,
       location: location ?? this.location,
       speaker: speaker ?? this.speaker,
+      totalParticipants: totalParticipants ?? this.totalParticipants,
     );
   }
 }

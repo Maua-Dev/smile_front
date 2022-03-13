@@ -95,7 +95,7 @@ class _UserDashboardPageState
                           time: controller
                               .activitiesList[index].schedule[0].hour
                               .toString(),
-                          totalParticipants: '20',
+                          totalParticipants: 20,
                           onTap: () {},
                         );
                       });

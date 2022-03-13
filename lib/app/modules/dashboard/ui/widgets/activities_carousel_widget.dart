@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/weekdays_enum.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -8,7 +9,7 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'activity_card_widget.dart';
 
 class ActivitiesCarouselWidget extends StatelessWidget {
-  final String? weekday;
+  final int? weekday;
   final Color? cardColor;
   final Color? textColor;
   final List<ActivityModel> list;
@@ -42,7 +43,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  weekday ?? '',
+                  weekday != null ? WeekdaysEnum.values[weekday!].name : '',
                   style: AppTextStyles.titleH1
                       .copyWith(fontSize: 40, color: AppColors.brandingBlue),
                 ),
@@ -67,10 +68,20 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         itemCount: list.length,
                         itemBuilder: (BuildContext ctx, index) {
-                          String date = DateFormat('dd/MM/yyyy')
-                              .format(list[index].schedule[0].date!);
-                          String time = DateFormat('hh:mm')
-                              .format(list[index].schedule[0].hour!);
+                          String date = '';
+                          String time = '';
+                          for (var element in list[index].schedule) {
+                            if (element.date?.weekday == weekday) {
+                              date = DateFormat('dd/MM/yyyy')
+                                  .format(element.date!);
+                              time = DateFormat('hh:mm').format(element.hour!);
+                            } else if (weekday == null) {
+                              date = DateFormat('dd/MM/yyyy')
+                                  .format(list[index].schedule[0].date!);
+                              time = DateFormat('hh:mm')
+                                  .format(list[index].schedule[0].hour!);
+                            }
+                          }
                           return Row(
                             children: [
                               if (index == 0)
@@ -92,7 +103,8 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                   description: list[index].description,
                                   date: date,
                                   time: time,
-                                  totalParticipants: '',
+                                  totalParticipants:
+                                      list[index].totalParticipants,
                                 ),
                               ),
                               if (index == list.length - 1)
