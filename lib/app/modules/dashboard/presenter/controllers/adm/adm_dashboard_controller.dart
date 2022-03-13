@@ -28,10 +28,8 @@ abstract class _AdmDashboardControllerBase with Store {
   @observable
   List<ActivityModel> activitiesList = List.empty();
 
-  @computed
-  List<ActivityModel> get nextActivitiesList => activitiesList.length >= 5
-      ? activitiesList.sublist(0, 5)
-      : activitiesList;
+  @observable
+  List<ActivityModel> nextActivitiesList = List.empty();
 
   @computed
   List<ActivityModel> get mondayActivitiesList =>
@@ -78,6 +76,9 @@ abstract class _AdmDashboardControllerBase with Store {
   @action
   Future getAllActivities() async {
     activitiesList = await repository.getAllActivities();
+    nextActivitiesList = activitiesList.length >= 5
+        ? activitiesList.sublist(0, 5)
+        : activitiesList;
   }
 
   @action

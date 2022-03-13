@@ -9,14 +9,6 @@ part of 'adm_dashboard_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
-  Computed<List<ActivityModel>>? _$nextActivitiesListComputed;
-
-  @override
-  List<ActivityModel> get nextActivitiesList =>
-      (_$nextActivitiesListComputed ??= Computed<List<ActivityModel>>(
-              () => super.nextActivitiesList,
-              name: '_AdmDashboardControllerBase.nextActivitiesList'))
-          .value;
   Computed<List<ActivityModel>>? _$mondayActivitiesListComputed;
 
   @override
@@ -105,6 +97,22 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   set activitiesList(List<ActivityModel> value) {
     _$activitiesListAtom.reportWrite(value, super.activitiesList, () {
       super.activitiesList = value;
+    });
+  }
+
+  final _$nextActivitiesListAtom =
+      Atom(name: '_AdmDashboardControllerBase.nextActivitiesList');
+
+  @override
+  List<ActivityModel> get nextActivitiesList {
+    _$nextActivitiesListAtom.reportRead();
+    return super.nextActivitiesList;
+  }
+
+  @override
+  set nextActivitiesList(List<ActivityModel> value) {
+    _$nextActivitiesListAtom.reportWrite(value, super.nextActivitiesList, () {
+      super.nextActivitiesList = value;
     });
   }
 

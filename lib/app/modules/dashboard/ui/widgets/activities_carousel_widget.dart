@@ -23,6 +23,17 @@ class ActivitiesCarouselWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ScrollController _controller = ScrollController();
+    void _scrollRight(length) {
+      _controller.animateTo(_controller.position.pixels + 400,
+          duration: const Duration(seconds: 1), curve: Curves.ease);
+    }
+
+    void _scrollLeft(length) {
+      _controller.animateTo(_controller.position.pixels - 400,
+          duration: const Duration(seconds: 1), curve: Curves.ease);
+    }
+
     return Column(
       children: [
         if (weekday != null)
@@ -38,36 +49,128 @@ class ActivitiesCarouselWidget extends StatelessWidget {
               ],
             ),
           ),
-        Padding(
-          padding: const EdgeInsets.only(top: 30, bottom: 30, left: 72),
-          child: SizedBox(
-            height: 250,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: list.length,
-                itemBuilder: (BuildContext ctx, index) {
-                  String date =
-                      DateFormat('dd/MM/yyyy').format(list[index].date);
-                  String time = DateFormat('hh:mm').format(list[index].date);
-                  return ActivityCardWidget(
-                    onTap: () {
-                      Modular.to.pushNamed(
-                        '/adm/edit-activity',
-                        arguments: list[index],
-                      );
-                    },
-                    cardColor: cardColor,
-                    textColor: textColor,
-                    name: list[index].title,
-                    description: list[index].description,
-                    date: date,
-                    time: time,
-                    maxParticipants: list[index].totalParticipants.toString(),
-                    totalParticipants: list[index].totalParticipants.toString(),
-                  );
-                }),
-          ),
-        )
+        if (list.isEmpty)
+          const Padding(
+            padding: EdgeInsets.all(28.0),
+            child: Text(
+                'Ops..., parece que não há atividades cadastradas nesse dia.'),
+          )
+        else
+          Padding(
+            padding: const EdgeInsets.only(top: 30, bottom: 30),
+            child: Stack(
+              children: [
+                SizedBox(
+                    height: 250,
+                    child: ListView.builder(
+                        controller: _controller,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: list.length,
+                        itemBuilder: (BuildContext ctx, index) {
+                          String date =
+                              DateFormat('dd/MM/yyyy').format(list[index].date);
+                          String time =
+                              DateFormat('hh:mm').format(list[index].date);
+                          return Row(
+                            children: [
+                              if (index == 0)
+                                const SizedBox(
+                                  width: 120,
+                                ),
+                              SizedBox(
+                                height: 240,
+                                child: ActivityCardWidget(
+                                  onTap: () {
+                                    Modular.to.pushNamed(
+                                      '/adm/edit-activity',
+                                      arguments: list[index],
+                                    );
+                                  },
+                                  cardColor: cardColor,
+                                  textColor: textColor,
+                                  name: list[index].title,
+                                  description: list[index].description,
+                                  date: date,
+                                  time: time,
+                                  maxParticipants:
+                                      list[index].totalParticipants.toString(),
+                                  totalParticipants:
+                                      list[index].totalParticipants.toString(),
+                                ),
+                              ),
+                              if (index == list.length - 1)
+                                const SizedBox(
+                                  width: 172,
+                                ),
+                            ],
+                          );
+                        })),
+                if (list.isNotEmpty)
+                  Positioned(
+                    top: 90,
+                    left: 40,
+                    child: GestureDetector(
+                      onTap: () => _scrollLeft(list.length),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.4),
+                              spreadRadius: 0.5,
+                              blurRadius: 3,
+                              offset: const Offset(
+                                  5, 5), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        width: 60,
+                        height: 60,
+                        child: Center(
+                            child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            color: AppColors.brandingBlue,
+                          ),
+                        )),
+                      ),
+                    ),
+                  ),
+                if (list.isNotEmpty)
+                  Positioned(
+                    top: 90,
+                    left: MediaQuery.of(context).size.width - 120,
+                    child: GestureDetector(
+                      onTap: () => _scrollRight(list.length),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.4),
+                              spreadRadius: 0.5,
+                              blurRadius: 3,
+                              offset: const Offset(
+                                  5, 5), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        width: 60,
+                        height: 60,
+                        child: Center(
+                            child: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: AppColors.brandingBlue,
+                        )),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          )
       ],
     );
   }
