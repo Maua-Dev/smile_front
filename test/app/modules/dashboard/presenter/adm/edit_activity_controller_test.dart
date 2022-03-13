@@ -40,23 +40,38 @@ void main() {
         EditActivityController(repository: repository, activity: activity);
   });
 
-  test('isFilled', () {});
+  test('isFilled', () {
+    var test = controller.isFilled();
+    expect(test, false);
+  });
 
-  test('editActivity', () {});
+  test('setType', () {
+    var str = ActivityEnum.CAFE_EX_ALUNOS;
+    controller.setType(str);
+    expect(controller.activityToEdit.type, str);
+  });
 
-  test('deleteActivity', () {});
+  test('setTitle', () {
+    var str = 'teste';
+    controller.setTitle(str);
+    expect(controller.activityToEdit.title, str);
+  });
 
-  test('setType', () {});
+  test('setDescription', () {
+    var str = 'teste';
+    controller.setDescription(str);
+    expect(controller.activityToEdit.description, str);
+  });
 
-  test('setTitle', () {});
-
-  test('setDescription', () {});
-
-  test('setLocation', () {});
+  test('setLocation', () {
+    var str = 'teste';
+    controller.setLocation(str);
+    expect(controller.activityToEdit.location, str);
+  });
 
   test('setDate', () {
-    var strDt = '2021-01-02';
-    controller.setDate(strDt, 0);
-    expect(controller.activityToEdit.schedule[0].date, DateTime.parse(strDt));
+    var str = '2021-01-02';
+    controller.setDate(str, 0);
+    expect(controller.activityToEdit.schedule[0].date, DateTime.parse(str));
   });
 }

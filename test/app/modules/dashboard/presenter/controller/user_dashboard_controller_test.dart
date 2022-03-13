@@ -39,7 +39,7 @@ void main() {
     ActivityModel(
         id: '1',
         type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
-        title: 'Atividade 1',
+        title: 'ABCD123',
         description: '12345',
         schedule: [
           ScheduleActivityModel(
@@ -104,6 +104,6 @@ void main() {
 
   test('searchActivityByName', () {
     controller.searchActivityByName('ABCD123');
-    expect(controller.activitiesList.length, 2);
+    expect(controller.activitiesList.length, 1);
   });
 }
