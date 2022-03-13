@@ -5,11 +5,13 @@ class FormsButtonWidget extends StatelessWidget {
   final Function()? onPressed;
   final String buttonTittle;
   final Color backgroundColor;
+  final Widget? icon;
   const FormsButtonWidget(
       {Key? key,
       this.onPressed,
       required this.buttonTittle,
-      required this.backgroundColor})
+      required this.backgroundColor,
+      this.icon})
       : super(key: key);
 
   @override
@@ -19,9 +21,19 @@ class FormsButtonWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.04,
       child: ElevatedButton(
         onPressed: onPressed,
-        child: Text(
-          buttonTittle,
-          style: AppTextStyles.button.copyWith(fontSize: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 4),
+              child: icon ?? const SizedBox.shrink(),
+            ),
+            Text(
+              buttonTittle,
+              style: AppTextStyles.button.copyWith(fontSize: 20),
+            ),
+          ],
         ),
         style: ButtonStyle(
             elevation: MaterialStateProperty.all(20),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -96,26 +95,18 @@ class _AdmDashboardPageState
                                   crossAxisSpacing: 8,
                                   childAspectRatio: 1.7),
                           itemBuilder: (context, index) {
-                            String date = DateFormat('dd/MM/yyyy')
-                                .format(controller.activitiesList[index].date);
-                            String time = DateFormat('hh:mm')
-                                .format(controller.activitiesList[index].date);
                             return ActivityCardWidget(
                               name: controller.activitiesList[index].title,
-                              date: date,
                               description:
                                   controller.activitiesList[index].description,
-                              maxParticipants: controller
-                                  .activitiesList[index].totalParticipants
-                                  .toString(),
-                              totalParticipants: controller
-                                  .activitiesList[index].totalParticipants
-                                  .toString(),
-                              time: time,
+                              schedule:
+                                  controller.activitiesList[index].schedule,
+                              totalParticipants: '20',
                               onTap: () {
-                                Modular.to.pushNamed('/adm/edit-activity',
-                                    arguments:
-                                        controller.activitiesList[index]);
+                                Modular.to.pushNamed(
+                                  '/adm/edit-activity',
+                                  arguments: controller.activitiesList[index],
+                                );
                               },
                             );
                           });

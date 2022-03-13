@@ -51,10 +51,11 @@ abstract class _AdmDashboardControllerBase with Store {
     }
   }
 
-  @action
-  void orderByDate() {
-    activitiesList.sort((a, b) => a.date.compareTo(b.date));
-  }
+  // @action
+  // void orderByDate(int index) {
+  //   activitiesList.sort(
+  //       (a, b) => a.schedule[index].date.compareTo(b.schedule[index].date));
+  // }
 
   // @action
   // void orderByParticipants() {

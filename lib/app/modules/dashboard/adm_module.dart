@@ -21,8 +21,7 @@ class AdmModule extends Module {
     ),
     Bind.lazySingleton<EditActivityController>(
       (i) => EditActivityController(
-        repository: i(),
-      ),
+          repository: i(), activity: i.args!.data as ActivityModel),
     ),
     Bind.lazySingleton<CreateActivityController>(
       (i) => CreateActivityController(
@@ -39,10 +38,8 @@ class AdmModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute,
         child: (_, args) => const AdmDashboardPage()),
-    ChildRoute('/edit-activity',
-        child: (_, args) =>
-            EditActivityPage(selectedActivity: args.data as ActivityModel)),
     ChildRoute('/create-activity',
-        child: (_, args) => const CreateActivityPage())
+        child: (_, args) => const CreateActivityPage()),
+    ChildRoute('/edit-activity', child: (_, args) => const EditActivityPage())
   ];
 }

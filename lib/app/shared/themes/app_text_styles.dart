@@ -28,7 +28,7 @@ class AppTextStyles {
   );
 
   static final TextStyle button = GoogleFonts.roboto(
-    color: Colors.white.withOpacity(0.8),
+    color: Colors.white,
     fontSize: 25,
   );
 }
