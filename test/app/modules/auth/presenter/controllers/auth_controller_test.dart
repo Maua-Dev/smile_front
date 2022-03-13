@@ -16,7 +16,7 @@ void main() {
   var loginWithEmail = {'token': 'token12354', 'accessLevel': 'ADMIN'};
 
   setUpAll(() {
-    when(authRepository.loginWithEmail('adm', 'teste'))
+    when(authRepository.login('adm', 'teste'))
         .thenAnswer((_) async => loginWithEmail);
     controller =
         AuthController(authRepository: authRepository, storage: storage);

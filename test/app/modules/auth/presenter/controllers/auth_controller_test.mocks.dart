@@ -30,15 +30,18 @@ class MockAuthRepositoryInterface extends _i1.Mock
   }
 
   @override
-  _i3.Future<Map<String, dynamic>> loginWithEmail(
-          String? email, String? password) =>
-      (super.noSuchMethod(Invocation.method(#loginWithEmail, [email, password]),
+  _i3.Future<Map<String, dynamic>> login(String? user, String? password) =>
+      (super.noSuchMethod(Invocation.method(#login, [user, password]),
               returnValue:
                   Future<Map<String, dynamic>>.value(<String, dynamic>{}))
           as _i3.Future<Map<String, dynamic>>);
   @override
   _i3.Future<String> refreshToken(String? token) =>
       (super.noSuchMethod(Invocation.method(#refreshToken, [token]),
+          returnValue: Future<String>.value('')) as _i3.Future<String>);
+  @override
+  _i3.Future<String> getAccessLevel(String? user) =>
+      (super.noSuchMethod(Invocation.method(#getAccessLevel, [user]),
           returnValue: Future<String>.value('')) as _i3.Future<String>);
 }
 
