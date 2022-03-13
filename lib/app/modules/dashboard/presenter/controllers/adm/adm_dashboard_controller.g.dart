@@ -172,17 +172,6 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   @override
-  void orderByDate() {
-    final _$actionInfo = _$_AdmDashboardControllerBaseActionController
-        .startAction(name: '_AdmDashboardControllerBase.orderByDate');
-    try {
-      return super.orderByDate();
-    } finally {
-      _$_AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 isFloatActionButtonOpen: ${isFloatActionButtonOpen},

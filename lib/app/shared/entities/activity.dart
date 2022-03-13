@@ -1,4 +1,5 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
@@ -7,10 +8,8 @@ class Activity {
   final ActivityEnum type;
   final String title;
   final String description;
-  final DateTime date;
-  final DateTime hour;
+  final List<ScheduleActivityModel> schedule;
   final String? location;
-  final int totalParticipants;
   final SpeakerActivityModel speaker;
 
   Activity({
@@ -18,23 +17,19 @@ class Activity {
     required this.type,
     required this.title,
     required this.description,
-    required this.date,
-    required this.hour,
+    required this.schedule,
     this.location,
-    required this.totalParticipants,
     required this.speaker,
   });
 
   factory Activity.newInstance() {
     return Activity(
-        date: DateTime.now(),
+        schedule: [],
         description: '',
         id: '',
         title: '',
         type: ActivityEnum.CAFE_EX_ALUNOS,
         location: '',
-        totalParticipants: 0,
-        hour: DateTime.now(),
         speaker: SpeakerActivityModel(
             bio: '', company: '', name: '', linkPhoto: ''));
   }

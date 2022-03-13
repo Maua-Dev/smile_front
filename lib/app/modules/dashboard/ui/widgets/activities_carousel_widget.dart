@@ -67,10 +67,10 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         itemCount: list.length,
                         itemBuilder: (BuildContext ctx, index) {
-                          String date =
-                              DateFormat('dd/MM/yyyy').format(list[index].date);
-                          String time =
-                              DateFormat('hh:mm').format(list[index].date);
+                          String date = DateFormat('dd/MM/yyyy')
+                              .format(list[index].schedule[0].date!);
+                          String time = DateFormat('hh:mm')
+                              .format(list[index].schedule[0].hour!);
                           return Row(
                             children: [
                               if (index == 0)
@@ -92,10 +92,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                   description: list[index].description,
                                   date: date,
                                   time: time,
-                                  maxParticipants:
-                                      list[index].totalParticipants.toString(),
-                                  totalParticipants:
-                                      list[index].totalParticipants.toString(),
+                                  totalParticipants: '',
                                 ),
                               ),
                               if (index == list.length - 1)

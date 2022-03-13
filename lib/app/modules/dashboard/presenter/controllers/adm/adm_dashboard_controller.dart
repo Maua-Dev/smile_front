@@ -32,24 +32,29 @@ abstract class _AdmDashboardControllerBase with Store {
   List<ActivityModel> nextActivitiesList = List.empty();
 
   @computed
-  List<ActivityModel> get mondayActivitiesList =>
-      activitiesList.where((activity) => activity.date.weekday == 1).toList();
+  List<ActivityModel> get mondayActivitiesList => activitiesList
+      .where((activity) => activity.schedule[0].date!.weekday == 1)
+      .toList();
 
   @computed
-  List<ActivityModel> get tuesdayActivitiesList =>
-      activitiesList.where((activity) => activity.date.weekday == 2).toList();
+  List<ActivityModel> get tuesdayActivitiesList => activitiesList
+      .where((activity) => activity.schedule[0].date!.weekday == 2)
+      .toList();
 
   @computed
-  List<ActivityModel> get wednesdayActivitiesList =>
-      activitiesList.where((activity) => activity.date.weekday == 3).toList();
+  List<ActivityModel> get wednesdayActivitiesList => activitiesList
+      .where((activity) => activity.schedule[0].date!.weekday == 3)
+      .toList();
 
   @computed
-  List<ActivityModel> get thursdayActivitiesList =>
-      activitiesList.where((activity) => activity.date.weekday == 4).toList();
+  List<ActivityModel> get thursdayActivitiesList => activitiesList
+      .where((activity) => activity.schedule[0].date!.weekday == 4)
+      .toList();
 
   @computed
-  List<ActivityModel> get fridayActivitiesList =>
-      activitiesList.where((activity) => activity.date.weekday == 5).toList();
+  List<ActivityModel> get fridayActivitiesList => activitiesList
+      .where((activity) => activity.schedule[0].date!.weekday == 5)
+      .toList();
 
   @action
   void toggleFloatActionButton() {
@@ -92,10 +97,11 @@ abstract class _AdmDashboardControllerBase with Store {
     }
   }
 
-  @action
-  void orderByDate() {
-    activitiesList.sort((a, b) => a.date.compareTo(b.date));
-  }
+  // @action
+  // void orderByDate(int index) {
+  //   activitiesList.sort(
+  //       (a, b) => a.schedule[index].date.compareTo(b.schedule[index].date));
+  // }
 
   // @action
   // void orderByParticipants() {

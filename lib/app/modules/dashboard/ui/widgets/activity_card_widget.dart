@@ -7,7 +7,6 @@ class ActivityCardWidget extends StatelessWidget {
   final String description;
   final String date;
   final String time;
-  final String maxParticipants;
   final String totalParticipants;
   final Color? cardColor;
   final Color? textColor;
@@ -18,7 +17,6 @@ class ActivityCardWidget extends StatelessWidget {
     required this.description,
     required this.date,
     required this.time,
-    required this.maxParticipants,
     required this.totalParticipants,
     this.onTap,
     this.cardColor,
@@ -135,7 +133,7 @@ class ActivityCardWidget extends StatelessWidget {
                                     color:
                                         textColor ?? AppColors.brandingBlue)),
                             TextSpan(
-                                text: maxParticipants,
+                                text: totalParticipants,
                                 style: AppTextStyles.button.copyWith(
                                     fontSize: 18,
                                     color: textColor ?? AppColors.brandingBlue,

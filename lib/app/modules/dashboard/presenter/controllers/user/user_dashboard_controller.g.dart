@@ -57,17 +57,6 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   }
 
   @override
-  void orderByDate() {
-    final _$actionInfo = _$_UserDashboardControllerBaseActionController
-        .startAction(name: '_UserDashboardControllerBase.orderByDate');
-    try {
-      return super.orderByDate();
-    } finally {
-      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 activitiesList: ${activitiesList}
