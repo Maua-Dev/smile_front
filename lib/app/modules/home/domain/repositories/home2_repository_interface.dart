@@ -1,5 +1,5 @@
-import 'package:smile_front/app/modules/home/domain/entities/speaker.dart';
+import '../../infra/models/home_speaker_model.dart';
 
 abstract class SpeakersRepositoryInterface {
-  Future<List<Speaker>> getSpeakers();
+  Future<List<HomeSpeakerModel>> getSpeakers();
 }

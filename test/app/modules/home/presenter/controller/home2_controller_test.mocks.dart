@@ -5,10 +5,10 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:smile_front/app/modules/home/domain/entities/speaker.dart'
-    as _i4;
 import 'package:smile_front/app/modules/home/domain/repositories/home2_repository_interface.dart'
     as _i2;
+import 'package:smile_front/app/modules/home/infra/models/home_speaker_model.dart'
+    as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -30,8 +30,8 @@ class MockSpeakersRepositoryInterface extends _i1.Mock
   }
 
   @override
-  _i3.Future<List<_i4.Speaker>> getSpeakers() =>
-      (super.noSuchMethod(Invocation.method(#getSpeakers, []),
-              returnValue: Future<List<_i4.Speaker>>.value(<_i4.Speaker>[]))
-          as _i3.Future<List<_i4.Speaker>>);
+  _i3.Future<List<_i4.HomeSpeakerModel>> getSpeakers() => (super.noSuchMethod(
+      Invocation.method(#getSpeakers, []),
+      returnValue: Future<List<_i4.HomeSpeakerModel>>.value(
+          <_i4.HomeSpeakerModel>[])) as _i3.Future<List<_i4.HomeSpeakerModel>>);
 }

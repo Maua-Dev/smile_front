@@ -28,29 +28,8 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future editActivity(
-      String id,
-      String description,
-      String link,
-      int totalPlaces,
-      String location,
-      String name,
-      DateTime date,
-      ActivityEnum type,
-      int workload) async {
-    var activityToEdit = ActivityModel(
-      name: name,
-      description: description,
-      date: date,
-      id: id,
-      workload: workload,
-      location: location,
-      totalPlaces: totalPlaces,
-      link: link,
-      type: type,
-    );
-
-    await datasource.putActivity(id, activityToEdit);
+  Future editActivity(ActivityModel activityToEdit) async {
+    await datasource.putActivity(activityToEdit.id, activityToEdit);
   }
 
   @override

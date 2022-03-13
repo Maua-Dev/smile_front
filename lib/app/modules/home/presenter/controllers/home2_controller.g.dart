@@ -12,13 +12,13 @@ mixin _$Home2Controller on Home2ControllerBase, Store {
   final _$speakersAtom = Atom(name: 'Home2ControllerBase.speakers');
 
   @override
-  List<Speaker> get speakers {
+  List<HomeSpeakerModel> get speakers {
     _$speakersAtom.reportRead();
     return super.speakers;
   }
 
   @override
-  set speakers(List<Speaker> value) {
+  set speakers(List<HomeSpeakerModel> value) {
     _$speakersAtom.reportWrite(value, super.speakers, () {
       super.speakers = value;
     });

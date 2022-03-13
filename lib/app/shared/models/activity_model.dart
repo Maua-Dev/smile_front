@@ -3,51 +3,45 @@
 import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 
-// ignore: duplicate_ignore
+import '../../modules/dashboard/infra/models/schedule_activity_model.dart';
+import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
+
 class ActivityModel extends Activity {
   final String id;
-  final String description;
-  final String? link;
-  final int? totalPlaces;
-  final String? location;
-  final String name;
-  final DateTime date;
   final ActivityEnum type;
-  final int workload;
+  final String title;
+  final String description;
+  final List<ScheduleActivityModel> schedule;
+  final String? location;
+  final SpeakerActivityModel speaker;
 
   ActivityModel({
     required this.id,
-    this.link,
-    this.totalPlaces,
-    this.location,
-    required this.name,
-    required this.description,
-    required this.date,
     required this.type,
-    required this.workload,
+    required this.title,
+    required this.description,
+    required this.schedule,
+    this.location,
+    required this.speaker,
   }) : super(
-          workload: workload,
           id: id,
-          link: link,
-          location: location,
-          totalPlaces: totalPlaces,
           type: type,
-          date: date,
-          name: name,
+          title: title,
           description: description,
+          schedule: schedule,
+          location: location,
+          speaker: speaker,
         );
 
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
     return ActivityModel(
-      name: map['name'] ?? '',
-      description: map['description'] ?? '',
-      date: DateTime.fromMillisecondsSinceEpoch(map['date']),
       id: map['id'],
-      workload: map['workload'],
-      location: map['location'],
-      totalPlaces: map['totalPlaces'],
-      link: map['link'],
       type: stringToEnumMap(map['type']),
+      title: map['name'],
+      description: map['description'],
+      schedule: ScheduleActivityModel.fromMaps(map['schedule']),
+      location: map['location'],
+      speaker: SpeakerActivityModel.fromMap(map['speaker']),
     );
   }
 
@@ -63,14 +57,47 @@ class ActivityModel extends Activity {
   }
 
   Map<String, dynamic> toJson() => {
-        'name': name,
-        'description': description,
-        'date': date.millisecondsSinceEpoch,
         'id': id,
-        'workload': workload,
-        'location': location,
-        'totalPlaces': totalPlaces,
-        'link': link,
         'type': type.name,
+        'title': title,
+        'description': description,
+        'schedule': schedule,
+        'location': location,
+        'speaker': speaker,
       };
+
+  factory ActivityModel.newInstance() {
+    return ActivityModel(
+        schedule: [],
+        description: '',
+        id: '',
+        title: '',
+        type: ActivityEnum.CURSOS,
+        location: '',
+        speaker: SpeakerActivityModel(
+            bio: '', company: '', name: '', linkPhoto: ''));
+  }
+
+  ActivityModel copyWith({
+    String? id,
+    ActivityEnum? type,
+    String? title,
+    String? description,
+    List<ScheduleActivityModel>? schedule,
+    DateTime? date,
+    DateTime? hour,
+    int? totalParticipants,
+    String? location,
+    SpeakerActivityModel? speaker,
+  }) {
+    return ActivityModel(
+      id: id ?? this.id,
+      type: type ?? this.type,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      schedule: schedule ?? this.schedule,
+      location: location ?? this.location,
+      speaker: speaker ?? this.speaker,
+    );
+  }
 }
