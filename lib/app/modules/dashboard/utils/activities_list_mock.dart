@@ -84,8 +84,8 @@ var listActivitiesMock = [
       title: 'Atividade 06',
       description:
           'Competitividade, modernização, produtividade: a aplicação dos conceitos da indústria 4.0. Breve relato de como a Merc...',
-      date: DateTime(2022, 3, 15),
-      hour: DateTime(2022, 3, 15),
+      date: DateTime(2022, 3, 14),
+      hour: DateTime(2022, 3, 14),
       totalParticipants: 10,
       speaker: SpeakerActivityModel(
         name: 'José Carlos',

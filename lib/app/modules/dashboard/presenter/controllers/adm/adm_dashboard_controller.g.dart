@@ -75,6 +75,23 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
+  final _$filterActivityChipIndexSelectedAtom =
+      Atom(name: '_AdmDashboardControllerBase.filterActivityChipIndexSelected');
+
+  @override
+  int? get filterActivityChipIndexSelected {
+    _$filterActivityChipIndexSelectedAtom.reportRead();
+    return super.filterActivityChipIndexSelected;
+  }
+
+  @override
+  set filterActivityChipIndexSelected(int? value) {
+    _$filterActivityChipIndexSelectedAtom
+        .reportWrite(value, super.filterActivityChipIndexSelected, () {
+      super.filterActivityChipIndexSelected = value;
+    });
+  }
+
   final _$activitiesListAtom =
       Atom(name: '_AdmDashboardControllerBase.activitiesList');
 
@@ -89,6 +106,15 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     _$activitiesListAtom.reportWrite(value, super.activitiesList, () {
       super.activitiesList = value;
     });
+  }
+
+  final _$getActivitiesByTypeAsyncAction =
+      AsyncAction('_AdmDashboardControllerBase.getActivitiesByType');
+
+  @override
+  Future<dynamic> getActivitiesByType(dynamic index) {
+    return _$getActivitiesByTypeAsyncAction
+        .run(() => super.getActivitiesByType(index));
   }
 
   final _$getAllActivitiesAsyncAction =
@@ -109,6 +135,18 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
             name: '_AdmDashboardControllerBase.toggleFloatActionButton');
     try {
       return super.toggleFloatActionButton();
+    } finally {
+      _$_AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void toggleFilterActivityChipIndex(dynamic index) {
+    final _$actionInfo =
+        _$_AdmDashboardControllerBaseActionController.startAction(
+            name: '_AdmDashboardControllerBase.toggleFilterActivityChipIndex');
+    try {
+      return super.toggleFilterActivityChipIndex(index);
     } finally {
       _$_AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -140,6 +178,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   String toString() {
     return '''
 isFloatActionButtonOpen: ${isFloatActionButtonOpen},
+filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 activitiesList: ${activitiesList},
 nextActivitiesList: ${nextActivitiesList},
 mondayActivitiesList: ${mondayActivitiesList},

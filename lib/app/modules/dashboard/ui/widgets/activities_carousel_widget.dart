@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -24,22 +25,21 @@ class ActivitiesCarouselWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        weekday != null
-            ? Padding(
-                padding: const EdgeInsets.only(left: 72.0),
-                child: Row(
-                  children: [
-                    Text(
-                      weekday ?? '',
-                      style: AppTextStyles.titleH1.copyWith(
-                          fontSize: 40, color: AppColors.brandingBlue),
-                    ),
-                  ],
+        if (weekday != null)
+          Padding(
+            padding: const EdgeInsets.only(left: 72.0),
+            child: Row(
+              children: [
+                Text(
+                  weekday ?? '',
+                  style: AppTextStyles.titleH1
+                      .copyWith(fontSize: 40, color: AppColors.brandingBlue),
                 ),
-              )
-            : Container(),
+              ],
+            ),
+          ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 78, vertical: 32),
+          padding: const EdgeInsets.only(top: 30, bottom: 30, left: 72),
           child: SizedBox(
             height: 250,
             child: ListView.builder(
@@ -50,6 +50,12 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                       DateFormat('dd/MM/yyyy').format(list[index].date);
                   String time = DateFormat('hh:mm').format(list[index].date);
                   return ActivityCardWidget(
+                    onTap: () {
+                      Modular.to.pushNamed(
+                        '/adm/edit-activity',
+                        arguments: list[index],
+                      );
+                    },
                     cardColor: cardColor,
                     textColor: textColor,
                     name: list[index].title,

@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
@@ -20,6 +21,9 @@ abstract class _AdmDashboardControllerBase with Store {
 
   @observable
   bool isFloatActionButtonOpen = false;
+
+  @observable
+  int? filterActivityChipIndexSelected;
 
   @observable
   List<ActivityModel> activitiesList = List.empty();
@@ -54,11 +58,22 @@ abstract class _AdmDashboardControllerBase with Store {
     isFloatActionButtonOpen = !isFloatActionButtonOpen;
   }
 
-  // @action
-  // Future getActivitiesByType() async {
-  //   activitiesList =
-  //       await repository.getActivitiesSelectedByType(activityType!);
-  // }
+  @action
+  void toggleFilterActivityChipIndex(index) {
+    if (index == filterActivityChipIndexSelected) {
+      filterActivityChipIndexSelected = null;
+      getAllActivities();
+    } else {
+      filterActivityChipIndexSelected = index;
+      getActivitiesByType(index);
+    }
+  }
+
+  @action
+  Future getActivitiesByType(index) async {
+    activitiesList = await repository
+        .getActivitiesSelectedByType(ActivityEnum.values[index]);
+  }
 
   @action
   Future getAllActivities() async {
