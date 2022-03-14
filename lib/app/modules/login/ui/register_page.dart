@@ -108,7 +108,7 @@ class _RegisterPageState
                       Observer(builder: (_) {
                         return InputBox(
                           disable: !controller.isMauaStudent,
-                          icon: Icons.lock,
+                          icon: Icons.person,
                           placeholder: 'RA',
                           setValue: controller.setRa,
                           widthSize: 400,
