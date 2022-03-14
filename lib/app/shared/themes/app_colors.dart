@@ -8,4 +8,6 @@ class AppColors {
   static get lightBlueBorder => const Color(0xFFABC2D5);
   static get greenButton => const Color(0xFF58D22D);
   static get redButton => const Color(0xFFF93737);
+  static get gray => const Color(0xFF5C5C5C);
+  static get placeholder => const Color(0xFFFFFFFF).withOpacity(0.7);
 }

@@ -12,7 +12,7 @@ import 'modules/home/home_module.dart';
 class AppModule extends Module {
   @override
   final List<Module> imports = [AuthModule(), RegisterModule()];
-  @override
+
   @override
   final List<ModularRoute> routes = [
     ModuleRoute(

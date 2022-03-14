@@ -62,7 +62,7 @@ class InputBox extends StatelessWidget {
             padding: const EdgeInsets.only(left: 70),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.gray,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Padding(
@@ -74,16 +74,17 @@ class InputBox extends StatelessWidget {
                     validator: (value) {
                       return validation!(value!);
                     },
-                    onChanged: (value) {
-                      setValue(value);
-                    },
+                    onChanged: setValue,
                     obscureText: isPassword ?? false,
                     enabled: disable != null ? !disable! : true,
                     decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: placeholder,
-                        fillColor: AppColors.brandingBlue,
-                        isDense: true),
+                      border: InputBorder.none,
+                      hintText: placeholder,
+                      fillColor: Colors.white,
+                      isDense: true,
+                      hintStyle: TextStyle(color: AppColors.placeholder),
+                    ),
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
               ),
