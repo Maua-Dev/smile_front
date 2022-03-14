@@ -18,8 +18,6 @@ class MainSpeakersCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
     return Center(
       child: Stack(
         alignment: Alignment.centerRight,
