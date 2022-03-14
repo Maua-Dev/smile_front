@@ -8,7 +8,7 @@ import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
 class ActivityModel extends Activity {
   final String id;
-  final ActivityEnum type;
+  final ActivityEnum? type;
   final String title;
   final String description;
   final List<ScheduleActivityModel> schedule;
@@ -58,7 +58,7 @@ class ActivityModel extends Activity {
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'type': type.name,
+        'type': type!.name,
         'title': title,
         'description': description,
         'schedule': schedule,
@@ -68,11 +68,11 @@ class ActivityModel extends Activity {
 
   factory ActivityModel.newInstance() {
     return ActivityModel(
-        schedule: [],
+        schedule: [ScheduleActivityModel.newInstance()],
         description: '',
         id: '',
         title: '',
-        type: ActivityEnum.CURSOS,
+        type: null,
         location: '',
         speaker: SpeakerActivityModel(
             bio: '', company: '', name: '', linkPhoto: ''));

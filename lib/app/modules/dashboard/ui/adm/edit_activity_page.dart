@@ -95,7 +95,7 @@ class _EditActivityPageState
                     padding: const EdgeInsets.symmetric(
                         horizontal: 114, vertical: 8),
                     child: ScheduleAddWidget(
-                      date: controller.activity.schedule[index].date,
+                      date: controller.activityToEdit.schedule[index].date,
                       hour: controller.activityToEdit.schedule[index].hour,
                       totalParticipants: controller
                           .activityToEdit.schedule[index].totalParticipants,

@@ -43,7 +43,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   @override
   Future postActivity(String id, ActivityModel activity) async {
     try {
-      await dioClient.post('/smile_mss_activities/activity?id=$id',
+      await dioClient.post('/smile_mss_activities/activity',
           data: activity.toJson());
     } on Exception catch (e) {
       //Necessário um tratamento de erro visual para cada erro.

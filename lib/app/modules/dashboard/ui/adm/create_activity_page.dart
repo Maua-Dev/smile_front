@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
@@ -10,6 +11,8 @@ import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import '../../../../shared/widgets/text_header_scratched.dart';
 import '../../domain/infra/activity_enum.dart';
 import '../../presenter/controllers/adm/create_activity_controller.dart';
+import '../widgets/add_photo_widget.dart';
+import '../widgets/schedule_add_widget.dart';
 import '../widgets/text_field_dialog_widget.dart';
 
 class CreateActivityPage extends StatefulWidget {
@@ -23,41 +26,22 @@ class _CreateActivityPageState
     extends ModularState<CreateActivityPage, CreateActivityController> {
   @override
   Widget build(BuildContext context) {
-    // ignore: prefer_typing_uninitialized_variables
-    var currentSelectedValue;
-    var titleController = TextEditingController();
-    var descriptionController = TextEditingController();
-    var totalParticipantsController = TextEditingController();
-    var dateController = TextEditingController();
-    var hourController = TextEditingController();
-    var locationController = TextEditingController();
-    var speakerNameController = TextEditingController();
-    var speakerCompanyController = TextEditingController();
-    var speakerBioController = TextEditingController();
-    bool isFilled() {
-      if (titleController.text != '' &&
-          descriptionController.text != '' &&
-          currentSelectedValue != '' &&
-          totalParticipantsController.text != '' &&
-          dateController.text != '' &&
-          hourController.text != '' &&
-          locationController.text != '' &&
-          speakerNameController.text != '' &&
-          speakerCompanyController.text != '' &&
-          speakerBioController.text != '') return true;
-      return false;
-    }
-
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: Image.asset('assets/images/maua_campus_blur.png',
+                  fit: BoxFit.cover),
+            ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
               child: TextHeaderScratched(
-                title: 'Criar Atividade',
+                title: 'Editar Atividade',
                 leftPadding: 24,
               ),
             ),
@@ -67,117 +51,137 @@ class _CreateActivityPageState
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.2,
-                    child: DropDownFieldCustom<String>(
+                    child: DropDownFieldCustom<ActivityEnum>(
                       textStyles: AppTextStyles.body.copyWith(
                           color: AppColors.brandingBlue, fontSize: 20),
                       filledColor: Colors.white,
                       titulo: 'Tipo de Atividade',
-                      value: currentSelectedValue,
+                      value: controller.activityToEdit.type,
                       items: ActivityEnum.values
                           .toList()
                           .map((ActivityEnum value) {
-                        return DropdownMenuItem<String>(
-                          value: value.name,
+                        return DropdownMenuItem<ActivityEnum>(
+                          value: value,
                           child: Text(value.name),
                         );
                       }).toList(),
-                      onChanged: (newValue) {
-                        currentSelectedValue = newValue!;
-                      },
+                      onChanged: controller.setType,
                     ),
                   ),
                   const SizedBox(
                     width: 16,
                   ),
                   Flexible(
-                    child: TextFieldDialogWidget(
-                        hintText: 'Titulo da Atividade',
-                        padding: false,
-                        controller: titleController),
-                  ),
+                      child: TextFieldDialogWidget(
+                    hintText: 'Titulo da Atividade',
+                    padding: false,
+                    onChanged: controller.setTitle,
+                    value: controller.activityToEdit.title,
+                  )),
                 ],
               ),
             ),
             TextFieldDialogWidget(
               hintText: 'Descrição',
-              controller: descriptionController,
+              value: controller.activityToEdit.description,
+              onChanged: controller.setDescription,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-              child: Row(
-                children: [
-                  Flexible(
-                    child: TextFieldDialogWidget(
-                      hintText: 'Número de Vagas',
-                      controller: totalParticipantsController,
-                      padding: false,
+            Observer(builder: (_) {
+              return Flexible(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.activityToEdit.schedule.length,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 114, vertical: 8),
+                    child: ScheduleAddWidget(
+                      date: controller.activityToEdit.schedule[index].date,
+                      hour: controller.activityToEdit.schedule[index].hour,
+                      totalParticipants: controller
+                          .activityToEdit.schedule[index].totalParticipants,
+                      onChangedDate: (value) {
+                        controller.setHour(value, index);
+                      },
+                      onChangedHour: (value) {
+                        controller.setHour(value, index);
+                      },
+                      onChangedParticipants: (value) {
+                        controller.setHour(value, index);
+                      },
+                      removeSchedule: () {
+                        controller.removeSchedule(index);
+                        setState(() {});
+                      },
                     ),
                   ),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Flexible(
-                    child: TextFieldDialogWidget(
-                        hintText: 'Data (DD-MM-AAAA)',
-                        controller: dateController,
-                        padding: false,
-                        inputFormatters: [
-                          MaskTextInputFormatter(
-                            mask: '##-##-####',
-                          )
-                        ]),
-                  ),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Flexible(
-                    child: TextFieldDialogWidget(
-                        hintText: 'Hora (hh:mm)',
-                        controller: hourController,
-                        padding: false,
-                        inputFormatters: [
-                          MaskTextInputFormatter(
-                            mask: '##:##',
-                          )
-                        ]),
-                  ),
-                ],
+                ),
+              );
+            }),
+            Center(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                child: FormsButtonWidget(
+                    buttonTittle: 'Adicionar',
+                    onPressed: controller.addSchedule,
+                    backgroundColor: AppColors.brandingBlue,
+                    icon: const Icon(Icons.add, color: Colors.white, size: 22)),
               ),
             ),
             TextFieldDialogWidget(
-                hintText: 'Local/Link', controller: locationController),
+              hintText: 'Local/Link',
+              value: controller.activityToEdit.location,
+              onChanged: controller.setLocation,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Flexible(
-                    child: TextFieldDialogWidget(
-                      hintText: 'Nome Palestrante',
-                      controller: speakerNameController,
-                      padding: false,
-                    ),
-                  ),
+                  const AddPhotoWidget(),
                   const SizedBox(
                     width: 16,
                   ),
                   Flexible(
-                    child: TextFieldDialogWidget(
-                      hintText: 'Empresa',
-                      controller: speakerCompanyController,
-                      padding: false,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            Flexible(
+                              child: TextFieldDialogWidget(
+                                hintText: 'Nome Palestrante',
+                                padding: false,
+                                value: controller.activityToEdit.speaker.name,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 16,
+                            ),
+                            Flexible(
+                              child: TextFieldDialogWidget(
+                                hintText: 'Empresa',
+                                value:
+                                    controller.activityToEdit.speaker.company,
+                                padding: false,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                          child: TextFieldDialogWidget(
+                            hintText: 'Bio',
+                            value: controller.activityToEdit.speaker.bio,
+                            padding: false,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-              child: Flexible(
-                child: TextFieldDialogWidget(
-                  hintText: 'Bio',
-                  controller: speakerBioController,
-                  padding: false,
-                ),
               ),
             ),
             Padding(
@@ -196,30 +200,57 @@ class _CreateActivityPageState
                     width: 40,
                   ),
                   FormsButtonWidget(
-                    buttonTittle: 'Criar',
-                    onPressed: () {
-                      if (isFilled()) {
+                      buttonTittle: 'Salvar',
+                      onPressed: () {
+                        if (controller.isFilled()) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return ActionConfirmationDialogWidget(
+                                  title: 'Tem certeza que deseja continuar?',
+                                  content:
+                                      'Ao salvar todos os dados antigos serão perdidos.',
+                                  onPressed: () {
+                                    controller.createActivity();
+                                  });
+                            },
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return const FillAllFieldsDialogWidget();
+                            },
+                          );
+                        }
+                      },
+                      backgroundColor: AppColors.greenButton),
+                  const SizedBox(
+                    width: 40,
+                  ),
+                  IconButton(
+                      onPressed: () {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
                             return ActionConfirmationDialogWidget(
                                 title: 'Tem certeza que deseja continuar?',
                                 content:
-                                    'Ao continuar novos dados serão criados no banco de dados alterando-o.',
-                                onPressed: () {});
+                                    'Ao confirmar todos os dados antigos serão perdidos.',
+                                onPressed: () {
+                                  controller.deleteActivity(
+                                      controller.activityToEdit.id);
+                                });
                           },
                         );
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return const FillAllFieldsDialogWidget();
-                          },
-                        );
-                      }
-                    },
-                    backgroundColor: AppColors.greenButton,
-                  ),
+                      },
+                      icon: const Icon(
+                        FontAwesome5.trash,
+                        size: 32,
+                      ),
+                      padding: EdgeInsets.zero,
+                      hoverColor: AppColors.lightBlue,
+                      color: AppColors.brandingBlue),
                 ],
               ),
             ),

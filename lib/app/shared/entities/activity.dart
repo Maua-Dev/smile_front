@@ -5,7 +5,7 @@ import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
 class Activity {
   final String id;
-  final ActivityEnum type;
+  final ActivityEnum? type;
   final String title;
   final String description;
   final List<ScheduleActivityModel> schedule;

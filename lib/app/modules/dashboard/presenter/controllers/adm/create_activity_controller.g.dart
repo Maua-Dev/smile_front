@@ -9,28 +9,155 @@ part of 'create_activity_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
+  final _$activityToEditAtom =
+      Atom(name: '_CreateActivityControllerBase.activityToEdit');
+
+  @override
+  ActivityModel get activityToEdit {
+    _$activityToEditAtom.reportRead();
+    return super.activityToEdit;
+  }
+
+  @override
+  set activityToEdit(ActivityModel value) {
+    _$activityToEditAtom.reportWrite(value, super.activityToEdit, () {
+      super.activityToEdit = value;
+    });
+  }
+
   final _$createActivityAsyncAction =
       AsyncAction('_CreateActivityControllerBase.createActivity');
 
   @override
-  Future<dynamic> createActivity(
-      String id,
-      ActivityEnum type,
-      String title,
-      String description,
-      DateTime date,
-      DateTime hour,
-      String location,
-      int totalParticipants,
-      SpeakerActivityModel speaker) {
-    return _$createActivityAsyncAction.run(() => super.createActivity(id, type,
-        title, description, date, hour, location, totalParticipants, speaker));
+  Future<dynamic> createActivity() {
+    return _$createActivityAsyncAction.run(() => super.createActivity());
+  }
+
+  final _$deleteActivityAsyncAction =
+      AsyncAction('_CreateActivityControllerBase.deleteActivity');
+
+  @override
+  Future<dynamic> deleteActivity(String id) {
+    return _$deleteActivityAsyncAction.run(() => super.deleteActivity(id));
+  }
+
+  final _$_CreateActivityControllerBaseActionController =
+      ActionController(name: '_CreateActivityControllerBase');
+
+  @override
+  bool isFilled() {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.isFilled');
+    try {
+      return super.isFilled();
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setType(ActivityEnum? value) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setType');
+    try {
+      return super.setType(value);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTitle(String value) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setTitle');
+    try {
+      return super.setTitle(value);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDescription(String value) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setDescription');
+    try {
+      return super.setDescription(value);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setLocation(String value) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setLocation');
+    try {
+      return super.setLocation(value);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDate(String value, int index) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setDate');
+    try {
+      return super.setDate(value, index);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setHour(String value, int index) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setHour');
+    try {
+      return super.setHour(value, index);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setParticipants(int value, int index) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setParticipants');
+    try {
+      return super.setParticipants(value, index);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addSchedule() {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.addSchedule');
+    try {
+      return super.addSchedule();
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeSchedule(int index) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.removeSchedule');
+    try {
+      return super.removeSchedule(index);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
   }
 
   @override
   String toString() {
     return '''
-
+activityToEdit: ${activityToEdit}
     ''';
   }
 }
