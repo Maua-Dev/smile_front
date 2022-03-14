@@ -29,9 +29,21 @@ class MockActivitiesDatasource extends _i1.Mock
   }
 
   @override
-  _i3.Future<List<_i4.ActivityModel>> getActivities() =>
-      (super.noSuchMethod(Invocation.method(#getActivities, []),
+  _i3.Future<List<_i4.ActivityModel>> getAllActivities() =>
+      (super.noSuchMethod(Invocation.method(#getAllActivities, []),
               returnValue:
                   Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]))
           as _i3.Future<List<_i4.ActivityModel>>);
+  @override
+  _i3.Future<dynamic> putActivity(String? id, _i4.ActivityModel? activity) =>
+      (super.noSuchMethod(Invocation.method(#putActivity, [id, activity]),
+          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
+  @override
+  _i3.Future<dynamic> postActivity(String? id, _i4.ActivityModel? activity) =>
+      (super.noSuchMethod(Invocation.method(#postActivity, [id, activity]),
+          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
+  @override
+  _i3.Future<dynamic> removeActivity(String? id) =>
+      (super.noSuchMethod(Invocation.method(#removeActivity, [id]),
+          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
 }

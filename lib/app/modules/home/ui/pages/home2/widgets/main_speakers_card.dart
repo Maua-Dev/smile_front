@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:smile_front/app/modules/home/domain/entities/speaker.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
+import '../../../../infra/models/home_speaker_model.dart';
+
 class MainSpeakersCard extends StatelessWidget {
-  final List<Speaker> speakers;
+  final List<HomeSpeakerModel> speakers;
   final int indexToShow;
   final Function toggleIndex;
 
@@ -200,7 +201,7 @@ class MainSpeakersCard extends StatelessWidget {
                               backgroundColor: AppColors.brandingOrange,
                               radius: index == indexToShow ? 54 : 31,
                               backgroundImage: NetworkImage(
-                                  item.linkPhoto), // for Network image
+                                  item.linkPhoto!), // for Network image
                             ),
                           ),
                         ),
@@ -225,7 +226,7 @@ class MainSpeakersCard extends StatelessWidget {
                   child: CircleAvatar(
                     radius: 102.0,
                     backgroundImage: NetworkImage(
-                        speakers[indexToShow].linkPhoto), // for Network image
+                        speakers[indexToShow].linkPhoto!), // for Network image
                   ),
                 ),
                 visible: size >= 1280 ? true : false,
@@ -260,9 +261,7 @@ class MainSpeakersCard extends StatelessWidget {
                     height: 16,
                   ),
                   Text(
-                    speakers.isNotEmpty
-                        ? speakers[indexToShow].description
-                        : '',
+                    speakers.isNotEmpty ? speakers[indexToShow].bio : '',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: cardTextFontSize(size, height),

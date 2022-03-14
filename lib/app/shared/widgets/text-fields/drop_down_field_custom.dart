@@ -6,41 +6,50 @@ class DropDownFieldCustom<T> extends StatelessWidget {
   final String? titulo;
   final void Function(T? value)? onChanged;
   final List<DropdownMenuItem<T>> items;
+  final TextStyle? textStyles;
+  final Color? filledColor;
   final T? value;
   const DropDownFieldCustom(
-      {Key? key, this.titulo, this.onChanged, required this.items, this.value})
+      {Key? key,
+      this.titulo,
+      this.onChanged,
+      required this.items,
+      this.value,
+      this.textStyles,
+      this.filledColor})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: DropdownButtonHideUnderline(
-        child: DropdownButtonFormField<T>(
-          value: value,
-          isExpanded: true,
-          onChanged: onChanged,
-          items: items,
-          iconEnabledColor: AppColors.brandingBlue,
-          iconSize: 32,
-          style: AppTextStyles.button
-              .copyWith(fontSize: 24, color: AppColors.brandingBlue),
-          decoration: InputDecoration(
-            hintText: titulo,
-            hintStyle: AppTextStyles.button
+    return DropdownButtonHideUnderline(
+      child: DropdownButtonFormField<T>(
+        value: value,
+        isExpanded: true,
+        onChanged: onChanged,
+        items: items,
+        iconEnabledColor: AppColors.brandingBlue,
+        iconSize: 32,
+        style: textStyles ??
+            AppTextStyles.button
                 .copyWith(fontSize: 24, color: AppColors.brandingBlue),
-            fillColor: AppColors.lightBlue,
-            filled: true,
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(color: AppColors.lightBlue),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(color: AppColors.lightBlue),
-            ),
+        decoration: InputDecoration(
+          hintText: titulo,
+          labelText: titulo,
+          labelStyle: AppTextStyles.titleH1
+              .copyWith(color: AppColors.brandingBlue, fontSize: 24),
+          hintStyle: textStyles ??
+              AppTextStyles.button
+                  .copyWith(fontSize: 20, color: AppColors.brandingBlue),
+          fillColor: filledColor ?? AppColors.lightBlue,
+          filled: true,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(25.0),
+            borderSide: BorderSide(color: AppColors.brandingBlue),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(25.0),
+            borderSide: BorderSide(color: AppColors.brandingBlue),
           ),
         ),
       ),

@@ -4,10 +4,10 @@ import '../../domain/repositories/auth_repository_interface.dart';
 
 class AuthRepositoryMock implements AuthRepositoryInterface {
   final String _email = '30557126659';
-  final String _pw = 'teste';
+  final String _pw = 'user';
 
   final String _emailAdm = 'adm';
-  final String _pwAdm = 'teste';
+  final String _pwAdm = 'adm';
 
   @override
   Future<Map<String, dynamic>> loginWithEmail(

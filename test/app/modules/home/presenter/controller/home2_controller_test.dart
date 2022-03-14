@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:smile_front/app/modules/home/domain/entities/speaker.dart';
 import 'package:smile_front/app/modules/home/domain/repositories/home2_repository_interface.dart';
+import 'package:smile_front/app/modules/home/infra/models/home_speaker_model.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/home2_controller.dart';
 
 import 'home2_controller_test.mocks.dart';
@@ -12,8 +12,8 @@ void main() {
   SpeakersRepositoryInterface repository = MockSpeakersRepositoryInterface();
   late Home2Controller controller;
 
-  var mock = <Speaker>[
-    Speaker(name: '', description: '', date: '', linkPhoto: '')
+  var mock = <HomeSpeakerModel>[
+    HomeSpeakerModel(name: '', bio: '', date: '', linkPhoto: '')
   ];
 
   setUpAll(() {

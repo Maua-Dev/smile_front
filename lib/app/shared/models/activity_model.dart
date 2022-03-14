@@ -3,67 +3,48 @@
 import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 
-// ignore: duplicate_ignore
+import '../../modules/dashboard/infra/models/schedule_activity_model.dart';
+import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
+
 class ActivityModel extends Activity {
   final String id;
+  final ActivityEnum? type;
+  final String title;
   final String description;
-  final String? link;
-  final int? totalPlaces;
+  final List<ScheduleActivityModel> schedule;
   final String? location;
-  final String name;
-  final DateTime date;
-  final ActivityEnum type;
-  final List<dynamic> enrolledUsers;
-  final List<dynamic>? queue;
-  final String createdAt;
-  final String updateAt;
-  final int workload;
+  final SpeakerActivityModel speaker;
+  final int? totalParticipants;
 
-  ActivityModel({
-    required this.id,
-    this.link,
-    this.totalPlaces,
-    this.location,
-    required this.enrolledUsers,
-    this.queue,
-    required this.name,
-    required this.description,
-    required this.date,
-    required this.type,
-    required this.createdAt,
-    required this.updateAt,
-    required this.workload,
-  }) : super(
-          createdAt: createdAt,
-          updateAt: updateAt,
-          workload: workload,
+  ActivityModel(
+      {required this.id,
+      required this.type,
+      required this.title,
+      required this.description,
+      required this.schedule,
+      this.location,
+      required this.speaker,
+      this.totalParticipants})
+      : super(
           id: id,
-          enrolledUsers: enrolledUsers,
-          link: link,
-          location: location,
-          queue: queue,
-          totalPlaces: totalPlaces,
           type: type,
-          date: date,
-          name: name,
+          title: title,
           description: description,
+          schedule: schedule,
+          location: location,
+          speaker: speaker,
         );
 
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
     return ActivityModel(
-      name: map['name'] ?? '',
-      description: map['description'] ?? '',
-      date: DateTime.fromMillisecondsSinceEpoch(map['date']),
-      createdAt: map['createdAt'],
       id: map['id'],
-      updateAt: map['updatedAt'],
-      workload: map['workload'],
-      location: map['location'],
-      totalPlaces: map['totalPlaces'],
-      queue: map['queue'],
-      link: map['link'],
-      enrolledUsers: map['enrolledUsers'],
       type: stringToEnumMap(map['type']),
+      title: map['name'],
+      description: map['description'],
+      schedule: ScheduleActivityModel.fromMaps(map['schedule']),
+      location: map['location'],
+      speaker: SpeakerActivityModel.fromMap(map['speaker']),
+      totalParticipants: map['totalParticipants'],
     );
   }
 
@@ -76,5 +57,51 @@ class ActivityModel extends Activity {
     ActivityEnum type = ActivityEnum.values
         .firstWhere((element) => toMap == element.name.toLowerCase());
     return type;
+  }
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'type': type!.name,
+        'title': title,
+        'description': description,
+        'schedule': schedule,
+        'location': location,
+        'speaker': speaker,
+      };
+
+  factory ActivityModel.newInstance() {
+    return ActivityModel(
+        schedule: [ScheduleActivityModel.newInstance()],
+        description: '',
+        id: '',
+        title: '',
+        type: null,
+        location: '',
+        speaker: SpeakerActivityModel(
+            bio: '', company: '', name: '', linkPhoto: ''));
+  }
+
+  ActivityModel copyWith({
+    String? id,
+    ActivityEnum? type,
+    String? title,
+    String? description,
+    List<ScheduleActivityModel>? schedule,
+    DateTime? date,
+    DateTime? hour,
+    int? totalParticipants,
+    String? location,
+    SpeakerActivityModel? speaker,
+  }) {
+    return ActivityModel(
+      id: id ?? this.id,
+      type: type ?? this.type,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      schedule: schedule ?? this.schedule,
+      location: location ?? this.location,
+      speaker: speaker ?? this.speaker,
+      totalParticipants: totalParticipants ?? this.totalParticipants,
+    );
   }
 }

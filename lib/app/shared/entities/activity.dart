@@ -1,50 +1,36 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
+
+import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
 class Activity {
   final String id;
+  final ActivityEnum? type;
+  final String title;
   final String description;
-  final String? link;
-  final int? totalPlaces;
+  final List<ScheduleActivityModel> schedule;
   final String? location;
-  final String name;
-  final DateTime date;
-  final ActivityEnum type;
-  //não é dynamic: UserModel, porém o back não implementou ainda
-  final List<dynamic> enrolledUsers;
-  final List<dynamic>? queue;
-  final String createdAt;
-  final String updateAt;
-  final int workload;
+  final SpeakerActivityModel speaker;
 
-  Activity(
-      {required this.createdAt,
-      required this.updateAt,
-      required this.workload,
-      required this.id,
-      this.link,
-      this.totalPlaces,
-      this.location,
-      required this.enrolledUsers,
-      this.queue,
-      required this.name,
-      required this.description,
-      required this.date,
-      required this.type});
+  Activity({
+    required this.id,
+    required this.type,
+    required this.title,
+    required this.description,
+    required this.schedule,
+    this.location,
+    required this.speaker,
+  });
 
   factory Activity.newInstance() {
     return Activity(
-        createdAt: '',
-        date: DateTime.now(),
+        schedule: [],
         description: '',
-        enrolledUsers: [],
         id: '',
-        name: '',
+        title: '',
         type: ActivityEnum.CAFE_EX_ALUNOS,
-        updateAt: '',
-        workload: 0,
-        link: '',
         location: '',
-        queue: [],
-        totalPlaces: 0);
+        speaker: SpeakerActivityModel(
+            bio: '', company: '', name: '', linkPhoto: ''));
   }
 }
