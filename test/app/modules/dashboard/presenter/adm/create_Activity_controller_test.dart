@@ -20,7 +20,7 @@ void main() {
 
   test('isFilled', () {
     var test = controller.isFilled();
-    expect(test, false);
+    expect(test, true);
   });
 
   test('setType', () {
