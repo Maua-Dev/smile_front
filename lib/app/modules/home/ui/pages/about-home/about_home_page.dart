@@ -18,13 +18,16 @@ class AboutHomeState extends ModularState<AboutHomePage, AboutHomeController> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(
+          height: 48,
+        ),
         const TextHeaderScratched(title: 'PRINCIPAIS PALESTRANTES'),
         const SizedBox(
           height: 32,
         ),
         Observer(builder: (context) {
           if (controller.speakers.isEmpty) {
-            return Container();
+            return const SizedBox.shrink();
           }
           return MainSpeakersCard(
             speakers: controller.speakers,

@@ -137,6 +137,9 @@ class _CalendarHomePageState
       padding: const EdgeInsets.only(top: 16),
       child: Column(
         children: [
+          const SizedBox(
+            height: 48,
+          ),
           const TextHeaderScratched(title: 'EDIÇÕES ANTERIORES'),
           Expanded(
             child: Observer(builder: (_) {
