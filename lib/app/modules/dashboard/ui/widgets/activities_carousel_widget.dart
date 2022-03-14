@@ -104,7 +104,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                   date: date,
                                   time: time,
                                   totalParticipants:
-                                      list[index].totalParticipants,
+                                      list[index].schedule[0].totalParticipants,
                                 ),
                               ),
                               if (index == list.length - 1)

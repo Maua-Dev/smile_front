@@ -10,8 +10,8 @@ class ScheduleAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedHour;
   final void Function()? removeSchedule;
   final int? totalParticipants;
-  final DateTime? date;
-  final DateTime? hour;
+  final String? date;
+  final String? hour;
 
   const ScheduleAddWidget(
       {Key? key,
@@ -32,7 +32,7 @@ class ScheduleAddWidget extends StatelessWidget {
           child: TextFieldDialogWidget(
               hintText: 'Data (DD-MM-AAAA)',
               onChanged: onChangedDate,
-              value: date == null ? '' : date.toString(),
+              value: date ?? '',
               padding: false,
               inputFormatters: [
                 MaskTextInputFormatter(

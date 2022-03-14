@@ -12,7 +12,7 @@ class ScheduleActivityModel extends ScheduleActivity {
   factory ScheduleActivityModel.fromMap(Map<String, dynamic> map) {
     return ScheduleActivityModel(
       date: map['date'],
-      hour: map['hour'],
+      hour: map['date'],
       totalParticipants: map['totalParticipants'],
     );
   }
@@ -22,7 +22,6 @@ class ScheduleActivityModel extends ScheduleActivity {
 
   Map<String, dynamic> toJson() => {
         'date': date!.millisecondsSinceEpoch,
-        'hour': hour!.millisecondsSinceEpoch,
         'totalParticipants': totalParticipants,
       };
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:intl/intl.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
@@ -89,32 +90,37 @@ class _CreateActivityPageState
             Observer(builder: (_) {
               return Flexible(
                 child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.activityToEdit.schedule.length,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 114, vertical: 8),
-                    child: ScheduleAddWidget(
-                      date: controller.activityToEdit.schedule[index].date,
-                      hour: controller.activityToEdit.schedule[index].hour,
-                      totalParticipants: controller
-                          .activityToEdit.schedule[index].totalParticipants,
-                      onChangedDate: (value) {
-                        controller.setHour(value, index);
-                      },
-                      onChangedHour: (value) {
-                        controller.setHour(value, index);
-                      },
-                      onChangedParticipants: (value) {
-                        controller.setHour(value, index);
-                      },
-                      removeSchedule: () {
-                        controller.removeSchedule(index);
-                        setState(() {});
-                      },
-                    ),
-                  ),
-                ),
+                    shrinkWrap: true,
+                    itemCount: controller.activityToEdit.schedule.length,
+                    itemBuilder: (context, index) {
+                      var hour = DateFormat('hh:mm').format(
+                          controller.activityToEdit.schedule[index].hour!);
+                      var date = DateFormat('dd/MM/yyyy').format(
+                          controller.activityToEdit.schedule[index].date!);
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 114, vertical: 8),
+                        child: ScheduleAddWidget(
+                          date: date,
+                          hour: hour,
+                          totalParticipants: controller
+                              .activityToEdit.schedule[index].totalParticipants,
+                          onChangedDate: (value) {
+                            controller.setHour(value, index);
+                          },
+                          onChangedHour: (value) {
+                            controller.setHour(value, index);
+                          },
+                          onChangedParticipants: (value) {
+                            controller.setHour(value, index);
+                          },
+                          removeSchedule: () {
+                            controller.removeSchedule(index);
+                            setState(() {});
+                          },
+                        ),
+                      );
+                    }),
               );
             }),
             Center(
