@@ -3,7 +3,6 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
 
 import '../../../auth/presenter/controllers/auth_controller.dart';
-import '../../../logged-home/domain/repositories/user_repository_interface.dart';
 
 part 'login_controller.g.dart';
 
@@ -11,9 +10,8 @@ class LoginController = _LoginController with _$LoginController;
 
 abstract class _LoginController with Store {
   final AuthController authController;
-  final UserRepositoryInterface repository;
 
-  _LoginController({required this.authController, required this.repository});
+  _LoginController({required this.authController});
 
   @observable
   String cpfRne = '';

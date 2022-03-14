@@ -1,16 +1,16 @@
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/home/domain/repositories/home2_repository_interface.dart';
+import 'package:smile_front/app/modules/home/domain/repositories/speakers_repository_interface.dart';
 
 import '../../infra/models/home_speaker_model.dart';
 
-part 'home2_controller.g.dart';
+part 'about_home_controller.g.dart';
 
-class Home2Controller = Home2ControllerBase with _$Home2Controller;
+class AboutHomeController = AboutHomeControllerBase with _$AboutHomeController;
 
-abstract class Home2ControllerBase with Store {
+abstract class AboutHomeControllerBase with Store {
   final SpeakersRepositoryInterface repository;
 
-  Home2ControllerBase(this.repository) {
+  AboutHomeControllerBase(this.repository) {
     getSpeakers();
   }
 
