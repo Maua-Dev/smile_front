@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/home/domain/repositories/home2_repository_interface.dart';
+import 'package:smile_front/app/modules/home/domain/repositories/speakers_repository_interface.dart';
 
 import '../../infra/models/home_speaker_model.dart';
 

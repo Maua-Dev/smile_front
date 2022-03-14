@@ -5,7 +5,7 @@ import 'package:smile_front/app/modules/home/domain/entities/rectors.dart';
 import 'package:smile_front/app/modules/home/domain/repositories/rectors_repository_interface.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
 
-import 'home3_controller_test.mocks.dart';
+import 'activity_home_controller_test.mocks.dart';
 
 @GenerateMocks([RectorsRepositoryInterface])
 void main() {

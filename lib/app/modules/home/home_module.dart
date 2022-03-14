@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/infra/repository/home2_repository_impl.dart';
+import 'package:smile_front/app/modules/home/infra/repository/speakers_repository_impl.dart';
 import 'package:smile_front/app/modules/home/infra/repository/lecture_images_repository_impl.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/about_home_controller.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/calendar_home_controller.dart';
