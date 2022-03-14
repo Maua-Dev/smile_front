@@ -20,7 +20,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
-            // color: const Color(0xFF000000).withOpacity(0.8),
             image: DecorationImage(
               image: AssetImage("assets/images/maua_campus_blur.png"),
               fit: BoxFit.cover,
@@ -31,7 +30,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
-                color: const Color(0xFF000000).withOpacity(0.5),
+                color: const Color(0xFF000000).withOpacity(0.6),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +81,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     heightSize: 50,
                     backgroundColor: AppColors.brandingBlue,
                     onPressed: () {
-                      // modular.navigate()
+                      Modular.to.navigate('/login/cadastro');
                     },
                   ),
                 ],

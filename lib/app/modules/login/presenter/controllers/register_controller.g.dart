@@ -165,7 +165,7 @@ mixin _$RegisterController on _RegisterController, Store {
       AsyncAction('_RegisterController.setIsMauaStudent');
 
   @override
-  Future<void> setIsMauaStudent(bool value) {
+  Future<void> setIsMauaStudent(bool? value) {
     return _$setIsMauaStudentAsyncAction
         .run(() => super.setIsMauaStudent(value));
   }
