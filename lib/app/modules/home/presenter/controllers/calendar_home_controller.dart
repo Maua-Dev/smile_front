@@ -2,14 +2,15 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/home/domain/entities/lecture_images.dart';
 import 'package:smile_front/app/modules/home/domain/repositories/lecture_images_repository_interface.dart';
 
-part 'home4_controller.g.dart';
+part 'calendar_home_controller.g.dart';
 
-class Home4Controller = _Home4ControllerBase with _$Home4Controller;
+class CalendarHomeController = _CalendarHomeControllerBase
+    with _$CalendarHomeController;
 
-abstract class _Home4ControllerBase with Store {
+abstract class _CalendarHomeControllerBase with Store {
   final LectureImagesRepositoryInterface repository;
 
-  _Home4ControllerBase({required this.repository}) {
+  _CalendarHomeControllerBase({required this.repository}) {
     getLectureImages();
   }
 

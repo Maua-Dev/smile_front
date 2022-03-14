@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/home3_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-class Home3Page extends StatefulWidget {
-  const Home3Page({Key? key}) : super(key: key);
+class ActivityHomePage extends StatefulWidget {
+  const ActivityHomePage({Key? key}) : super(key: key);
 
   @override
-  _Home3PageState createState() => _Home3PageState();
+  _ActivityHomePageState createState() => _ActivityHomePageState();
 }
 
 double imageSize(size, height) {
@@ -119,7 +119,8 @@ double textFontSize(size, height) {
   return 12;
 }
 
-class _Home3PageState extends ModularState<Home3Page, Home3Controller> {
+class _ActivityHomePageState
+    extends ModularState<ActivityHomePage, ActivityHomeController> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;

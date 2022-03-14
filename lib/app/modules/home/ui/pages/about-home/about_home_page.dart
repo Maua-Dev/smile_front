@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/home2_controller.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home2/widgets/main_speakers_card.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/about_home_controller.dart';
 import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
 
-class Home2Page extends StatefulWidget {
-  const Home2Page({Key? key}) : super(key: key);
+import 'widgets/main_speakers_card.dart';
+
+class AboutHomePage extends StatefulWidget {
+  const AboutHomePage({Key? key}) : super(key: key);
 
   @override
-  HomePage2State createState() => HomePage2State();
+  AboutHomeState createState() => AboutHomeState();
 }
 
-class HomePage2State extends ModularState<Home2Page, Home2Controller> {
+class AboutHomeState extends ModularState<AboutHomePage, AboutHomeController> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(
+          height: 48,
+        ),
         const TextHeaderScratched(title: 'PRINCIPAIS PALESTRANTES'),
         const SizedBox(
           height: 32,
         ),
         Observer(builder: (context) {
           if (controller.speakers.isEmpty) {
-            return Container();
+            return const SizedBox.shrink();
           }
           return MainSpeakersCard(
             speakers: controller.speakers,
