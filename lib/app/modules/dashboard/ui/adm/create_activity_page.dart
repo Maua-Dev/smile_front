@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/add_photo_widget.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
@@ -12,18 +10,20 @@ import '../../../../shared/widgets/dialogs/fill_all_fields_dialog_widget.dart';
 import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import '../../../../shared/widgets/text_header_scratched.dart';
 import '../../domain/infra/activity_enum.dart';
+import '../../presenter/controllers/adm/create_activity_controller.dart';
+import '../widgets/add_photo_widget.dart';
 import '../widgets/schedule_add_widget.dart';
 import '../widgets/text_field_dialog_widget.dart';
 
-class EditActivityPage extends StatefulWidget {
-  const EditActivityPage({Key? key}) : super(key: key);
+class CreateActivityPage extends StatefulWidget {
+  const CreateActivityPage({Key? key}) : super(key: key);
 
   @override
-  State<EditActivityPage> createState() => _EditActivityPageState();
+  State<CreateActivityPage> createState() => _CreateActivityPageState();
 }
 
-class _EditActivityPageState
-    extends ModularState<EditActivityPage, EditActivityController> {
+class _CreateActivityPageState
+    extends ModularState<CreateActivityPage, CreateActivityController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -211,7 +211,7 @@ class _EditActivityPageState
                                   content:
                                       'Ao salvar todos os dados antigos serão perdidos.',
                                   onPressed: () {
-                                    controller.editActivity();
+                                    controller.createActivity();
                                   });
                             },
                           );
