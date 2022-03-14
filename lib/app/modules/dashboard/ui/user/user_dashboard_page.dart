@@ -85,11 +85,17 @@ class _UserDashboardPageState
                               childAspectRatio: 1.7),
                       itemBuilder: (context, index) {
                         return ActivityCardWidget(
+                          cardColor: Colors.white,
                           name: controller.activitiesList[index].title,
                           description:
                               controller.activitiesList[index].description,
-                          schedule: controller.activitiesList[index].schedule,
-                          totalParticipants: '20',
+                          date: controller
+                              .activitiesList[index].schedule[0].date
+                              .toString(),
+                          time: controller
+                              .activitiesList[index].schedule[0].hour
+                              .toString(),
+                          totalParticipants: 20,
                           onTap: () {},
                         );
                       });
