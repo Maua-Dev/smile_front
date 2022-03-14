@@ -13,15 +13,15 @@ import 'package:smile_front/app/modules/home/infra/datasources/rectors_datasourc
 import 'package:smile_front/app/modules/home/infra/repository/home2_repository_impl.dart';
 import 'package:smile_front/app/modules/home/infra/repository/lecture_images_repository_impl.dart';
 import 'package:smile_front/app/modules/home/infra/repository/rectors_repository_impl.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/home2_controller.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/home3_controller.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/home4_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/about_home_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/calendar_home_controller.dart';
 
 void main() {
   initModules([AppModule(), HomeModule()]);
 
   test('Home2Controller Injection', () {
-    var test = Modular.get<Home2Controller>();
+    var test = Modular.get<AboutHomeController>();
     expect(test.repository, isInstanceOf<SpeakersRepositoryInterface>());
   });
 
@@ -31,7 +31,7 @@ void main() {
   });
 
   test('Home4Controller Injection', () {
-    var test = Modular.get<Home4Controller>();
+    var test = Modular.get<CalendarHomeController>();
     expect(test.repository, isInstanceOf<LectureImagesRepositoryInterface>());
   });
 
@@ -49,7 +49,7 @@ void main() {
   });
 
   test('Home3Controller Injection', () {
-    var test = Modular.get<Home3Controller>();
+    var test = Modular.get<ActivityHomeController>();
     expect(test.repository, isInstanceOf<RectorsRepositoryInterface>());
   });
 

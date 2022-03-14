@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home1/utils/text_utils.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home1/widgets/branding_textbutton_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-class Home1Page extends StatefulWidget {
-  const Home1Page({Key? key}) : super(key: key);
+import 'utils/text_utils.dart';
+import 'widgets/branding_textbutton_widget.dart';
+
+class MainHomePage extends StatefulWidget {
+  const MainHomePage({Key? key}) : super(key: key);
 
   @override
-  _Home1PageState createState() => _Home1PageState();
+  _MainHomePageState createState() => _MainHomePageState();
 }
 
 double sizedBoxHeightByHeight(
@@ -230,7 +231,7 @@ double participateBoxFontSize(size, height) {
   return 14;
 }
 
-class _Home1PageState extends State<Home1Page> {
+class _MainHomePageState extends State<MainHomePage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;

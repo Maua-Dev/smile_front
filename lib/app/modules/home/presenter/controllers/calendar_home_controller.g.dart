@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home4_controller.dart';
+part of 'calendar_home_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,9 @@ part of 'home4_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$Home4Controller on _Home4ControllerBase, Store {
+mixin _$CalendarHomeController on _CalendarHomeControllerBase, Store {
   final _$listLectureImagesAtom =
-      Atom(name: '_Home4ControllerBase.listLectureImages');
+      Atom(name: '_CalendarHomeControllerBase.listLectureImages');
 
   @override
   List<LectureImages> get listLectureImages {
@@ -26,7 +26,7 @@ mixin _$Home4Controller on _Home4ControllerBase, Store {
   }
 
   final _$getLectureImagesAsyncAction =
-      AsyncAction('_Home4ControllerBase.getLectureImages');
+      AsyncAction('_CalendarHomeControllerBase.getLectureImages');
 
   @override
   Future<dynamic> getLectureImages() {

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home3_controller.dart';
+part of 'activity_home_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,9 @@ part of 'home3_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$Home3Controller on _Home3ControllerBase, Store {
-  final _$listRectorsAtom = Atom(name: '_Home3ControllerBase.listRectors');
+mixin _$ActivityHomeController on _ActivityHomeControllerBase, Store {
+  final _$listRectorsAtom =
+      Atom(name: '_ActivityHomeControllerBase.listRectors');
 
   @override
   List<Rectors> get listRectors {
@@ -25,7 +26,7 @@ mixin _$Home3Controller on _Home3ControllerBase, Store {
   }
 
   final _$getRectorsAsyncAction =
-      AsyncAction('_Home3ControllerBase.getRectors');
+      AsyncAction('_ActivityHomeControllerBase.getRectors');
 
   @override
   Future<dynamic> getRectors() {

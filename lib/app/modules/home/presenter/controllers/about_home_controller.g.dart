@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home2_controller.dart';
+part of 'about_home_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,8 @@ part of 'home2_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$Home2Controller on Home2ControllerBase, Store {
-  final _$speakersAtom = Atom(name: 'Home2ControllerBase.speakers');
+mixin _$AboutHomeController on AboutHomeControllerBase, Store {
+  final _$speakersAtom = Atom(name: 'AboutHomeControllerBase.speakers');
 
   @override
   List<HomeSpeakerModel> get speakers {
@@ -24,7 +24,7 @@ mixin _$Home2Controller on Home2ControllerBase, Store {
     });
   }
 
-  final _$indexToShowAtom = Atom(name: 'Home2ControllerBase.indexToShow');
+  final _$indexToShowAtom = Atom(name: 'AboutHomeControllerBase.indexToShow');
 
   @override
   int get indexToShow {
@@ -40,7 +40,7 @@ mixin _$Home2Controller on Home2ControllerBase, Store {
   }
 
   final _$getSpeakersAsyncAction =
-      AsyncAction('Home2ControllerBase.getSpeakers');
+      AsyncAction('AboutHomeControllerBase.getSpeakers');
 
   @override
   Future<void> getSpeakers() {
@@ -48,7 +48,7 @@ mixin _$Home2Controller on Home2ControllerBase, Store {
   }
 
   final _$toggleIndexAsyncAction =
-      AsyncAction('Home2ControllerBase.toggleIndex');
+      AsyncAction('AboutHomeControllerBase.toggleIndex');
 
   @override
   Future<void> toggleIndex(dynamic index) {

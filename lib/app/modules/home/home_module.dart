@@ -1,10 +1,10 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/infra/repository/home2_repository_impl.dart';
 import 'package:smile_front/app/modules/home/infra/repository/lecture_images_repository_impl.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/home2_controller.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/home4_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/about_home_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/calendar_home_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home_page.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/home3_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
 import 'domain/repositories/lecture_images_repository_interface.dart';
 import 'domain/repositories/rectors_repository_interface.dart';
 import 'external/lecture_images_datasource_impl.dart';
@@ -16,17 +16,17 @@ import 'infra/repository/rectors_repository_impl.dart';
 class HomeModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => Home2Controller(i())),
+    Bind.lazySingleton((i) => AboutHomeController(i())),
     Bind.lazySingleton<LectureImagesRepositoryInterface>(
         (i) => LectureImagesRepositoryImpl(datasource: i())),
-    Bind.lazySingleton((i) => Home4Controller(repository: i())),
+    Bind.lazySingleton((i) => CalendarHomeController(repository: i())),
     Bind.lazySingleton<LectureImagesDatasourceInterface>(
         (i) => LectureImagesDatasourceImpl()),
     Bind.lazySingleton<SpeakersRepositoryImpl>((i) => SpeakersRepositoryImpl()),
-    Bind.lazySingleton((i) => Home2Controller(i())),
+    Bind.lazySingleton((i) => AboutHomeController(i())),
     Bind.lazySingleton<RectorsRepositoryInterface>(
         (i) => RectorsRepositoryImpl(datasource: i())),
-    Bind.lazySingleton((i) => Home3Controller(repository: i())),
+    Bind.lazySingleton((i) => ActivityHomeController(repository: i())),
     Bind.lazySingleton<RectorsDatasourceInterface>(
         (i) => RectorsDatasourceImpl()),
   ];

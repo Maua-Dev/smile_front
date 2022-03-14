@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/home4_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/calendar_home_controller.dart';
 import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
 
-class Home4Page extends StatefulWidget {
-  const Home4Page({Key? key}) : super(key: key);
+class CalendarHomePage extends StatefulWidget {
+  const CalendarHomePage({Key? key}) : super(key: key);
 
   @override
-  _Home4PageState createState() => _Home4PageState();
+  _CalendarHomePageState createState() => _CalendarHomePageState();
 }
 
 int crossAxisCount(size, height) {
@@ -127,7 +127,8 @@ double imagePadding(size, height) {
   return 100;
 }
 
-class _Home4PageState extends ModularState<Home4Page, Home4Controller> {
+class _CalendarHomePageState
+    extends ModularState<CalendarHomePage, CalendarHomeController> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;
