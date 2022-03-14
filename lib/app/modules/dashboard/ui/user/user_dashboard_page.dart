@@ -93,7 +93,7 @@ class _UserDashboardPageState
                               .activitiesList[index].schedule[0].date
                               .toString(),
                           time: controller
-                              .activitiesList[index].schedule[0].hour
+                              .activitiesList[index].schedule[0].date
                               .toString(),
                           totalParticipants: 20,
                           onTap: () {},

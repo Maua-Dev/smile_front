@@ -4,7 +4,7 @@ import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
 class Activity {
-  final String id;
+  final String? id;
   final ActivityEnum? type;
   final String title;
   final String description;
@@ -26,7 +26,7 @@ class Activity {
     return Activity(
         schedule: [],
         description: '',
-        id: '',
+        id: null,
         title: '',
         type: ActivityEnum.CAFE_EX_ALUNOS,
         location: '',

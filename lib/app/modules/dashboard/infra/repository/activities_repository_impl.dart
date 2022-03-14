@@ -29,7 +29,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   @override
   Future editActivity(ActivityModel activityToEdit) async {
-    await datasource.putActivity(activityToEdit.id, activityToEdit);
+    await datasource.putActivity(activityToEdit.id!, activityToEdit);
   }
 
   @override
@@ -39,6 +39,6 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   @override
   Future createActivity(ActivityModel activityToCreate) async {
-    await datasource.postActivity(activityToCreate.id, activityToCreate);
+    await datasource.postActivity(activityToCreate);
   }
 }

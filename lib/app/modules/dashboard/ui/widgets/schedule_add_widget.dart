@@ -47,7 +47,7 @@ class ScheduleAddWidget extends StatelessWidget {
           child: TextFieldDialogWidget(
               hintText: 'Hora (hh:mm)',
               onChanged: onChangedHour,
-              value: hour == null ? '' : hour.toString(),
+              value: hour ?? '',
               padding: false,
               inputFormatters: [
                 MaskTextInputFormatter(

@@ -93,9 +93,9 @@ class _EditActivityPageState
                     shrinkWrap: true,
                     itemCount: controller.activityToEdit.schedule.length,
                     itemBuilder: (context, index) {
-                      var hour = DateFormat('hh:mm').format(
-                          controller.activityToEdit.schedule[index].hour!);
-                      var date = DateFormat('dd/MM/yyyy').format(
+                      var hour = DateFormat('HH:mm').format(
+                          controller.activityToEdit.schedule[index].date!);
+                      var date = DateFormat('dd-MM-yyyy').format(
                           controller.activityToEdit.schedule[index].date!);
                       return Padding(
                         padding: const EdgeInsets.symmetric(
@@ -106,13 +106,13 @@ class _EditActivityPageState
                           totalParticipants: controller
                               .activityToEdit.schedule[index].totalParticipants,
                           onChangedDate: (value) {
-                            controller.setHour(value, index);
+                            controller.setDate(value, index);
                           },
                           onChangedHour: (value) {
                             controller.setHour(value, index);
                           },
                           onChangedParticipants: (value) {
-                            controller.setHour(value, index);
+                            controller.setParticipants(int.parse(value), index);
                           },
                           removeSchedule: () {
                             controller.removeSchedule(index);
@@ -218,6 +218,7 @@ class _EditActivityPageState
                                       'Ao salvar todos os dados antigos serão perdidos.',
                                   onPressed: () {
                                     controller.editActivity();
+                                    Modular.to.navigate('/adm');
                                   });
                             },
                           );
@@ -245,7 +246,7 @@ class _EditActivityPageState
                                     'Ao confirmar todos os dados antigos serão perdidos.',
                                 onPressed: () {
                                   controller.deleteActivity(
-                                      controller.activityToEdit.id);
+                                      controller.activityToEdit.id!);
                                 });
                           },
                         );

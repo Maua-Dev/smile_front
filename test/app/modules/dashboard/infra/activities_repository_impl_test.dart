@@ -23,32 +23,10 @@ void main() {
         schedule: [
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 10,
           ),
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
-            totalParticipants: 10,
-          ),
-        ],
-        location: '',
-        speaker: SpeakerActivityModel(
-            bio: '', company: '', name: '', linkPhoto: '')),
-    ActivityModel(
-        id: '',
-        type: ActivityEnum.CURSOS,
-        title: 'ABCD123',
-        description: '',
-        schedule: [
-          ScheduleActivityModel(
-            date: DateTime.now(),
-            hour: DateTime.now(),
-            totalParticipants: 10,
-          ),
-          ScheduleActivityModel(
-            date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 10,
           ),
         ],
@@ -63,12 +41,28 @@ void main() {
         schedule: [
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 10,
           ),
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
+            totalParticipants: 10,
+          ),
+        ],
+        location: '',
+        speaker: SpeakerActivityModel(
+            bio: '', company: '', name: '', linkPhoto: '')),
+    ActivityModel(
+        id: '',
+        type: ActivityEnum.CURSOS,
+        title: 'ABCD123',
+        description: '',
+        schedule: [
+          ScheduleActivityModel(
+            date: DateTime.now(),
+            totalParticipants: 10,
+          ),
+          ScheduleActivityModel(
+            date: DateTime.now(),
             totalParticipants: 10,
           ),
         ],

@@ -26,30 +26,52 @@ void main() {
   test('setType', () {
     var str = ActivityEnum.CAFE_EX_ALUNOS;
     controller.setType(str);
-    expect(controller.activityToEdit.type, str);
+    expect(controller.activityToCreate.type, str);
   });
 
   test('setTitle', () {
     var str = 'teste';
     controller.setTitle(str);
-    expect(controller.activityToEdit.title, str);
+    expect(controller.activityToCreate.title, str);
   });
 
   test('setDescription', () {
     var str = 'teste';
     controller.setDescription(str);
-    expect(controller.activityToEdit.description, str);
+    expect(controller.activityToCreate.description, str);
   });
 
   test('setLocation', () {
     var str = 'teste';
     controller.setLocation(str);
-    expect(controller.activityToEdit.location, str);
+    expect(controller.activityToCreate.location, str);
   });
 
   test('setDate', () {
-    var str = '2021-01-02';
+    var str = '02/01/2021';
     controller.setDate(str, 0);
-    expect(controller.activityToEdit.schedule[0].date, DateTime.parse(str));
+    expect(controller.activityToCreate.schedule[0].date!.day, 02);
+  });
+
+  test('setHour', () {
+    var str = '22:00';
+    controller.setHour(str, 0);
+    expect(controller.activityToCreate.schedule[0].date!.hour, 22);
+  });
+
+  test('setParticipants', () {
+    var str = 1;
+    controller.setParticipants(str, 0);
+    expect(controller.activityToCreate.schedule[0].totalParticipants, str);
+  });
+
+  test('addSchedule', () {
+    controller.addSchedule();
+    expect(controller.activityToCreate.schedule.length, 2);
+  });
+
+  test('removeSchedule', () {
+    controller.removeSchedule(0);
+    expect(controller.activityToCreate.schedule.length, 0);
   });
 }

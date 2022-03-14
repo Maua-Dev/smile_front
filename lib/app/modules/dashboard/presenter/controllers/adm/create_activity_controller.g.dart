@@ -9,19 +9,19 @@ part of 'create_activity_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
-  final _$activityToEditAtom =
-      Atom(name: '_CreateActivityControllerBase.activityToEdit');
+  final _$activityToCreateAtom =
+      Atom(name: '_CreateActivityControllerBase.activityToCreate');
 
   @override
-  ActivityModel get activityToEdit {
-    _$activityToEditAtom.reportRead();
-    return super.activityToEdit;
+  ActivityModel get activityToCreate {
+    _$activityToCreateAtom.reportRead();
+    return super.activityToCreate;
   }
 
   @override
-  set activityToEdit(ActivityModel value) {
-    _$activityToEditAtom.reportWrite(value, super.activityToEdit, () {
-      super.activityToEdit = value;
+  set activityToCreate(ActivityModel value) {
+    _$activityToCreateAtom.reportWrite(value, super.activityToCreate, () {
+      super.activityToCreate = value;
     });
   }
 
@@ -31,14 +31,6 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   @override
   Future<dynamic> createActivity() {
     return _$createActivityAsyncAction.run(() => super.createActivity());
-  }
-
-  final _$deleteActivityAsyncAction =
-      AsyncAction('_CreateActivityControllerBase.deleteActivity');
-
-  @override
-  Future<dynamic> deleteActivity(String id) {
-    return _$deleteActivityAsyncAction.run(() => super.deleteActivity(id));
   }
 
   final _$_CreateActivityControllerBaseActionController =
@@ -157,7 +149,7 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   @override
   String toString() {
     return '''
-activityToEdit: ${activityToEdit}
+activityToCreate: ${activityToCreate}
     ''';
   }
 }
