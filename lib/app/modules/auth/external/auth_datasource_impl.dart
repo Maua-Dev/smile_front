@@ -20,16 +20,23 @@ class AuthDatasourceImpl implements AuthDatasource {
       }
       throw Exception();
     } catch (e) {
-      print('Não foi possível se conectar com o Microsserviço, erro: ' +
-          e.toString());
       rethrow;
     }
   }
 
   @override
   Future<Map<String, dynamic>> login(cpfRne, password) async {
+    var uri =
+        "https://b574ab6867.execute-api.sa-east-1.amazonaws.com/dev/smile-mss-cognito";
+    BaseOptions options = BaseOptions(
+      baseUrl: uri,
+      responseType: ResponseType.json,
+      connectTimeout: 30000,
+      receiveTimeout: 30000,
+    );
+    Dio dio = Dio(options);
     try {
-      final res = await dioClient.post('/login', data: {
+      final res = await dio.post('/login', data: {
         'login': cpfRne,
         'password': password,
       });
@@ -39,30 +46,30 @@ class AuthDatasourceImpl implements AuthDatasource {
       }
       throw Exception();
     } catch (e) {
-      // ignore: avoid_print
       throw LoginInvalid('Login ou Senha inválida');
     }
   }
 
   @override
-  Future<String> refreshToken(String token) async {
+  Future<Map<String, dynamic>> refreshToken(String token) async {
     try {
-      final res = await dioClient.get(
-        '/refreshToken',
-        options: Options(
-          headers: {
-            Headers.wwwAuthenticateHeader: token,
-          },
-        ),
+      var uri =
+          "https://b574ab6867.execute-api.sa-east-1.amazonaws.com/dev/smile-mss-cognito";
+      BaseOptions options = BaseOptions(
+        baseUrl: uri,
+        responseType: ResponseType.json,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
       );
+      Dio dio = Dio(options);
+      dio.options.headers["authorization"] = "Bearer $token";
+      final res = await dio.get("/refreshToken");
       if (res.statusCode == 200) {
         var tokens = res.data;
         return tokens;
       }
       throw Exception();
     } catch (e) {
-      print('Não foi possível se conectar com o Microsserviço, erro: ' +
-          e.toString());
       rethrow;
     }
   }

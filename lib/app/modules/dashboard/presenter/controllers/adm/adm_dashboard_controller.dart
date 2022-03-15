@@ -10,10 +10,8 @@ class AdmDashboardController = _AdmDashboardControllerBase
 
 abstract class _AdmDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
-  final String accessLevel;
 
   _AdmDashboardControllerBase({
-    required this.accessLevel,
     required this.repository,
   }) {
     getAllActivities();
@@ -33,27 +31,32 @@ abstract class _AdmDashboardControllerBase with Store {
 
   @computed
   List<ActivityModel> get mondayActivitiesList => activitiesList
-      .where((activity) => activity.schedule.map((e) => e.date!.weekday == 1).contains(true))
+      .where((activity) =>
+          activity.schedule.map((e) => e.date!.weekday == 1).contains(true))
       .toList();
 
   @computed
   List<ActivityModel> get tuesdayActivitiesList => activitiesList
-      .where((activity) => activity.schedule.map((e) => e.date!.weekday == 2).contains(true))
+      .where((activity) =>
+          activity.schedule.map((e) => e.date!.weekday == 2).contains(true))
       .toList();
 
   @computed
   List<ActivityModel> get wednesdayActivitiesList => activitiesList
-      .where((activity) => activity.schedule.map((e) => e.date!.weekday == 3).contains(true))
+      .where((activity) =>
+          activity.schedule.map((e) => e.date!.weekday == 3).contains(true))
       .toList();
 
   @computed
   List<ActivityModel> get thursdayActivitiesList => activitiesList
-      .where((activity) => activity.schedule.map((e) => e.date!.weekday == 4).contains(true))
+      .where((activity) =>
+          activity.schedule.map((e) => e.date!.weekday == 4).contains(true))
       .toList();
 
   @computed
   List<ActivityModel> get fridayActivitiesList => activitiesList
-      .where((activity) => activity.schedule.map((e) => e.date!.weekday == 5).contains(true))
+      .where((activity) =>
+          activity.schedule.map((e) => e.date!.weekday == 5).contains(true))
       .toList();
 
   @action

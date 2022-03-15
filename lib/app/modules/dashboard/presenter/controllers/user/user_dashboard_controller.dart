@@ -12,10 +12,8 @@ class UserDashboardController = _UserDashboardControllerBase
 abstract class _UserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final ActivityEnum activityType;
-  final String accessLevel;
 
   _UserDashboardControllerBase({
-    required this.accessLevel,
     required this.repository,
     required this.activityType,
   }) {

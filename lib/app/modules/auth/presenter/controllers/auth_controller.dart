@@ -28,7 +28,7 @@ class AuthController {
   }
 
   Future<void> refreshToken() async {
-    var token = await storage.getAccessToken();
+    var token = await storage.getRefreshToken();
     if (token == null) {
       _loggedIn = false;
       return;

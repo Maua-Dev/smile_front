@@ -21,7 +21,8 @@ class LoginModule extends Module {
     Bind.lazySingleton<AuthDatasource>(
         (i) => AuthDatasourceImpl(dioClient: i())),
     Bind.lazySingleton<AuthRepositoryInterface>(
-        (i) => AuthRepositoryImpl(datasource: i())),
+        (i) => AuthRepositoryImpl(datasource: i()),
+        export: true),
     Bind.lazySingleton((i) => Dio(smileLoginOption))
   ];
 

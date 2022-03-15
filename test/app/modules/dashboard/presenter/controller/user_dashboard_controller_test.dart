@@ -82,9 +82,9 @@ void main() {
     when(repository.getActivitiesSelectedByType(ActivityEnum.CURSOS))
         .thenAnswer((_) async => mockActivities);
     controller = UserDashboardController(
-        activityType: ActivityEnum.CURSOS,
-        repository: repository,
-        accessLevel: 'ADMIN');
+      activityType: ActivityEnum.CURSOS,
+      repository: repository,
+    );
   });
 
   test('getActivities', () async {
