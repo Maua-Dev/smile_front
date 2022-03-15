@@ -3,8 +3,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/adm_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/edit_activity_page.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/create_activity_page.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
 import '../../shared/services/dio/smile_activities_options.dart';
@@ -27,6 +29,11 @@ class AdmModule extends Module {
       (i) => EditActivityController(
           repository: i(), activity: i.args!.data as ActivityModel),
     ),
+    Bind.lazySingleton<CreateActivityController>(
+      (i) => CreateActivityController(
+        repository: i(),
+      ),
+    ),
     Bind.lazySingleton<ActivitiesDatasource>(
         (i) => ActivitiesDatasourceImpl(i())),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
@@ -44,6 +51,8 @@ class AdmModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute,
         child: (_, args) => const AdmDashboardPage()),
+    ChildRoute('/create-activity',
+        child: (_, args) => const CreateActivityPage()),
     ChildRoute('/edit-activity', child: (_, args) => const EditActivityPage())
   ];
 }

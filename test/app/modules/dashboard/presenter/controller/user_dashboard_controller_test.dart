@@ -24,12 +24,28 @@ void main() {
         schedule: [
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 20,
           ),
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
+            totalParticipants: 20,
+          )
+        ],
+        location: 'SALA 123',
+        speaker: SpeakerActivityModel(
+            bio: '', company: '', name: '', linkPhoto: '')),
+    ActivityModel(
+        id: '1',
+        type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
+        title: 'ABCD123',
+        description: '12345',
+        schedule: [
+          ScheduleActivityModel(
+            date: DateTime.now(),
+            totalParticipants: 20,
+          ),
+          ScheduleActivityModel(
+            date: DateTime.now(),
             totalParticipants: 20,
           )
         ],
@@ -44,32 +60,10 @@ void main() {
         schedule: [
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 20,
           ),
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
-            totalParticipants: 20,
-          )
-        ],
-        location: 'SALA 123',
-        speaker: SpeakerActivityModel(
-            bio: '', company: '', name: '', linkPhoto: '')),
-    ActivityModel(
-        id: '1',
-        type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
-        title: 'Atividade 1',
-        description: '12345',
-        schedule: [
-          ScheduleActivityModel(
-            date: DateTime.now(),
-            hour: DateTime.now(),
-            totalParticipants: 20,
-          ),
-          ScheduleActivityModel(
-            date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 20,
           )
         ],
@@ -104,6 +98,6 @@ void main() {
 
   test('searchActivityByName', () {
     controller.searchActivityByName('ABCD123');
-    expect(controller.activitiesList.length, 2);
+    expect(controller.activitiesList.length, 1);
   });
 }

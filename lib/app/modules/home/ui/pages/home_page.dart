@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home1/home1_page.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home2/home2_page.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home3/home3_page.dart';
-import 'package:smile_front/app/modules/home/ui/pages/home4/home4_page.dart';
+import 'package:smile_front/app/modules/home/ui/pages/about-home/about_home_page.dart';
+import 'package:smile_front/app/modules/home/ui/pages/activity-home/activity_home_page.dart';
+import 'package:smile_front/app/modules/home/ui/pages/calendar-home/calendar_home_page.dart';
+import 'package:smile_front/app/modules/home/ui/pages/main-home/main_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-
 import '../../../../app_module.dart';
 
 class HomePage extends StatefulWidget {
@@ -109,7 +108,12 @@ class _HomePageState extends State<HomePage> {
           controller: controller,
           pageSnapping: false,
           scrollDirection: Axis.vertical,
-          children: const [Home1Page(), Home2Page(), Home3Page(), Home4Page()],
+          children: const [
+            MainHomePage(),
+            AboutHomePage(),
+            ActivityHomePage(),
+            CalendarHomePage(),
+          ],
         ),
       ),
     );

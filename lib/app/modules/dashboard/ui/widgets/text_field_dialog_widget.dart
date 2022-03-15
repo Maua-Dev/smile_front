@@ -4,18 +4,20 @@ import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 
 class TextFieldDialogWidget extends StatelessWidget {
-  final String hintText;
+  final String? hintText;
+  final String labelText;
   final String? value;
   final bool padding;
   final void Function(String value)? onChanged;
   final List<TextInputFormatter>? inputFormatters;
   const TextFieldDialogWidget({
     Key? key,
-    required this.hintText,
+    this.hintText,
     this.value,
     this.padding = true,
     this.inputFormatters,
     this.onChanged,
+    required this.labelText,
   }) : super(key: key);
 
   @override
@@ -45,7 +47,7 @@ class TextFieldDialogWidget extends StatelessWidget {
                   BorderSide(color: AppColors.brandingPurple, width: 0.0),
             ),
             hintText: hintText,
-            labelText: hintText,
+            labelText: labelText,
             labelStyle: AppTextStyles.titleH1
                 .copyWith(color: AppColors.brandingPurple, fontSize: 22),
             hintStyle: AppTextStyles.body

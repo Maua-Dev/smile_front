@@ -2,14 +2,15 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/home/domain/entities/rectors.dart';
 import 'package:smile_front/app/modules/home/domain/repositories/rectors_repository_interface.dart';
 
-part 'home3_controller.g.dart';
+part 'activity_home_controller.g.dart';
 
-class Home3Controller = _Home3ControllerBase with _$Home3Controller;
+class ActivityHomeController = _ActivityHomeControllerBase
+    with _$ActivityHomeController;
 
-abstract class _Home3ControllerBase with Store {
+abstract class _ActivityHomeControllerBase with Store {
   final RectorsRepositoryInterface repository;
 
-  _Home3ControllerBase({required this.repository}) {
+  _ActivityHomeControllerBase({required this.repository}) {
     getRectors();
   }
 

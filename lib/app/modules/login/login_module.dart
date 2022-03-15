@@ -23,7 +23,7 @@ class LoginModule extends Module {
     Bind.lazySingleton<AuthRepositoryInterface>(
         (i) => AuthRepositoryImpl(datasource: i()),
         export: true),
-    Bind.lazySingleton((i) => Dio(smileLoginOption))
+    Bind.lazySingleton((i) => Dio(smileLoginOption)),
   ];
 
   @override
