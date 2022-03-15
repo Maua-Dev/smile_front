@@ -50,7 +50,7 @@ class ActivityModel extends Activity {
   }
 
   Map<String, dynamic> toJson() => {
-        'type': type!.name,
+        'type': ActivityEnumExtension.enumToStringMap(type!),
         'title': title,
         'description': description,
         'schedule': schedule,

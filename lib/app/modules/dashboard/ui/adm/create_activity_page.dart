@@ -225,9 +225,10 @@ class _CreateActivityPageState
                               return ActionConfirmationDialogWidget(
                                   title: 'Tem certeza que deseja continuar?',
                                   content:
-                                      'Ao salvar todos os dados antigos serão perdidos.',
+                                      'Ao salvar o banco de dados de atividade será alterado.',
                                   onPressed: () {
                                     controller.createActivity();
+                                    Modular.to.navigate('/adm');
                                   });
                             },
                           );
