@@ -27,29 +27,29 @@ class DropDownFieldCustom<T> extends StatelessWidget {
         isExpanded: true,
         onChanged: onChanged,
         items: items,
-        iconEnabledColor: AppColors.brandingBlue,
+        iconEnabledColor: AppColors.brandingPurple,
         iconSize: 32,
         style: textStyles ??
             AppTextStyles.button
-                .copyWith(fontSize: 24, color: AppColors.brandingBlue),
+                .copyWith(fontSize: 24, color: AppColors.brandingPurple),
         decoration: InputDecoration(
           hintText: titulo,
           labelText: titulo,
           labelStyle: AppTextStyles.titleH1
-              .copyWith(color: AppColors.brandingBlue, fontSize: 24),
+              .copyWith(color: AppColors.brandingPurple, fontSize: 24),
           hintStyle: textStyles ??
               AppTextStyles.button
-                  .copyWith(fontSize: 20, color: AppColors.brandingBlue),
-          fillColor: filledColor ?? AppColors.lightBlue,
+                  .copyWith(fontSize: 20, color: AppColors.brandingPurple),
+          fillColor: filledColor ?? AppColors.lightPurple,
           filled: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.0),
-            borderSide: BorderSide(color: AppColors.brandingBlue),
+            borderSide: BorderSide(color: AppColors.brandingPurple),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.0),
-            borderSide: BorderSide(color: AppColors.brandingBlue),
+            borderSide: BorderSide(color: AppColors.brandingPurple),
           ),
         ),
       ),

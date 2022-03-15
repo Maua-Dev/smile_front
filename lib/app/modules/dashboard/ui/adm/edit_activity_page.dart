@@ -54,7 +54,7 @@ class _EditActivityPageState
                     width: MediaQuery.of(context).size.width * 0.2,
                     child: DropDownFieldCustom<ActivityEnum>(
                       textStyles: AppTextStyles.body.copyWith(
-                          color: AppColors.brandingBlue, fontSize: 20),
+                          color: AppColors.brandingPurple, fontSize: 20),
                       filledColor: Colors.white,
                       titulo: 'Tipo de Atividade',
                       value: controller.activityToEdit.type,
@@ -74,7 +74,7 @@ class _EditActivityPageState
                   ),
                   Flexible(
                       child: TextFieldDialogWidget(
-                    hintText: 'Titulo da Atividade',
+                    labelText: 'Titulo da Atividade',
                     padding: false,
                     onChanged: controller.setTitle,
                     value: controller.activityToEdit.title,
@@ -83,7 +83,7 @@ class _EditActivityPageState
               ),
             ),
             TextFieldDialogWidget(
-              hintText: 'Descrição',
+              labelText: 'Descrição',
               value: controller.activityToEdit.description,
               onChanged: controller.setDescription,
             ),
@@ -130,12 +130,12 @@ class _EditActivityPageState
                 child: FormsButtonWidget(
                     buttonTittle: 'Adicionar',
                     onPressed: controller.addSchedule,
-                    backgroundColor: AppColors.brandingBlue,
+                    backgroundColor: AppColors.brandingOrange,
                     icon: const Icon(Icons.add, color: Colors.white, size: 22)),
               ),
             ),
             TextFieldDialogWidget(
-              hintText: 'Local/Link',
+              labelText: 'Local/Link',
               value: controller.activityToEdit.location,
               onChanged: controller.setLocation,
             ),
@@ -158,7 +158,7 @@ class _EditActivityPageState
                           children: [
                             Flexible(
                               child: TextFieldDialogWidget(
-                                hintText: 'Nome Palestrante',
+                                labelText: 'Nome Palestrante',
                                 padding: false,
                                 onChanged: controller.setSpeakerName,
                                 value: controller.activityToEdit.speaker.name,
@@ -169,7 +169,7 @@ class _EditActivityPageState
                             ),
                             Flexible(
                               child: TextFieldDialogWidget(
-                                hintText: 'Empresa',
+                                labelText: 'Empresa',
                                 onChanged: controller.setSpeakerCompany,
                                 value:
                                     controller.activityToEdit.speaker.company,
@@ -181,7 +181,7 @@ class _EditActivityPageState
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
                           child: TextFieldDialogWidget(
-                            hintText: 'Bio',
+                            labelText: 'Bio',
                             value: controller.activityToEdit.speaker.bio,
                             onChanged: controller.setSpeakerBio,
                             padding: false,
@@ -199,6 +199,32 @@ class _EditActivityPageState
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return ActionConfirmationDialogWidget(
+                                title: 'Tem certeza que deseja continuar?',
+                                content:
+                                    'Ao confirmar todos os dados antigos serão perdidos.',
+                                onPressed: () {
+                                  controller.deleteActivity(
+                                      controller.activityToEdit.id);
+                                });
+                          },
+                        );
+                      },
+                      icon: const Icon(
+                        FontAwesome5.trash,
+                        size: 32,
+                      ),
+                      padding: EdgeInsets.zero,
+                      hoverColor: AppColors.lightPurple,
+                      color: AppColors.brandingPurple),
+                  const SizedBox(
+                    width: 40,
+                  ),
                   FormsButtonWidget(
                       buttonTittle: 'Cancelar',
                       onPressed: () {
@@ -235,32 +261,6 @@ class _EditActivityPageState
                         }
                       },
                       backgroundColor: AppColors.greenButton),
-                  const SizedBox(
-                    width: 40,
-                  ),
-                  IconButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return ActionConfirmationDialogWidget(
-                                title: 'Tem certeza que deseja continuar?',
-                                content:
-                                    'Ao confirmar todos os dados antigos serão perdidos.',
-                                onPressed: () {
-                                  controller.deleteActivity(
-                                      controller.activityToEdit.id);
-                                });
-                          },
-                        );
-                      },
-                      icon: const Icon(
-                        FontAwesome5.trash,
-                        size: 32,
-                      ),
-                      padding: EdgeInsets.zero,
-                      hoverColor: AppColors.lightBlue,
-                      color: AppColors.brandingBlue),
                 ],
               ),
             ),

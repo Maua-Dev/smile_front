@@ -50,8 +50,8 @@ class _LoginTabBarState extends State<LoginTabBar>
                 border: Border.all(color: Colors.white),
                 color: Colors.white,
               ),
-              labelColor: AppColors.brandingBlue,
-              unselectedLabelColor: AppColors.brandingBlue,
+              labelColor: AppColors.brandingPurple,
+              unselectedLabelColor: AppColors.brandingPurple,
               tabs: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),

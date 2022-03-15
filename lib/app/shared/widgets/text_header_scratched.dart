@@ -4,10 +4,15 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class TextHeaderScratched extends StatelessWidget {
   final String title;
+  final double? fontSize;
   final Color? color;
   final double? leftPadding;
   const TextHeaderScratched(
-      {Key? key, required this.title, this.color, this.leftPadding})
+      {Key? key,
+      required this.title,
+      this.color,
+      this.leftPadding,
+      this.fontSize})
       : super(key: key);
 
   @override
@@ -23,15 +28,10 @@ class TextHeaderScratched extends StatelessWidget {
             child: Text(
               title,
               style: AppTextStyles.titleH1.copyWith(
-                  fontSize: 45, color: color ?? AppColors.brandingBlue),
+                  fontSize: fontSize ?? 45,
+                  color: color ?? AppColors.brandingPurple),
             ),
           ),
-          Expanded(
-            child: Divider(
-              color: color ?? AppColors.brandingBlue,
-              thickness: 7,
-            ),
-          )
         ],
       ),
     );

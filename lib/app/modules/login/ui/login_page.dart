@@ -31,7 +31,7 @@ class _LoginPageState extends ModularState<LoginPage, RegisterController> {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                color: AppColors.brandingBlue,
+                color: AppColors.brandingPurple,
               ),
               alignment: Alignment.center,
               child: Padding(

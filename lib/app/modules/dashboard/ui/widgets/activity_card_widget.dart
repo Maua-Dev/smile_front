@@ -50,7 +50,7 @@ class ActivityCardWidget extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -59,6 +59,9 @@ class ActivityCardWidget extends StatelessWidget {
                   name,
                   style: AppTextStyles.buttonBold
                       .copyWith(fontSize: 22, color: textColor ?? Colors.black),
+                ),
+                const SizedBox(
+                  height: 8,
                 ),
                 Flexible(
                   child: RichText(
@@ -71,7 +74,7 @@ class ActivityCardWidget extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    vertical: 4,
+                    vertical: 8,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -82,7 +85,7 @@ class ActivityCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
                               Icons.calendar_today,
-                              color: textColor ?? AppColors.brandingBlue,
+                              color: textColor ?? AppColors.brandingPurple,
                               size: MediaQuery.of(context).size.width < 1200
                                   ? 10
                                   : 20,
@@ -91,7 +94,7 @@ class ActivityCardWidget extends StatelessWidget {
                           Text(date,
                               style: AppTextStyles.button.copyWith(
                                   fontSize: 18,
-                                  color: textColor ?? AppColors.brandingBlue))
+                                  color: textColor ?? AppColors.brandingPurple))
                         ],
                       ),
                       Row(
@@ -100,7 +103,7 @@ class ActivityCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
                               Icons.access_time_outlined,
-                              color: textColor ?? AppColors.brandingBlue,
+                              color: textColor ?? AppColors.brandingPurple,
                               size: MediaQuery.of(context).size.width < 1200
                                   ? 10
                                   : 20,
@@ -109,7 +112,7 @@ class ActivityCardWidget extends StatelessWidget {
                           Text(time,
                               style: AppTextStyles.button.copyWith(
                                   fontSize: 18,
-                                  color: textColor ?? AppColors.brandingBlue))
+                                  color: textColor ?? AppColors.brandingPurple))
                         ],
                       ),
                       Row(
@@ -118,7 +121,7 @@ class ActivityCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
                               Icons.person,
-                              color: textColor ?? AppColors.brandingBlue,
+                              color: textColor ?? AppColors.brandingPurple,
                               size: MediaQuery.of(context).size.width < 1200
                                   ? 10
                                   : 20,
@@ -131,12 +134,13 @@ class ActivityCardWidget extends StatelessWidget {
                                 style: AppTextStyles.button.copyWith(
                                     fontSize: 18,
                                     color:
-                                        textColor ?? AppColors.brandingBlue)),
+                                        textColor ?? AppColors.brandingPurple)),
                             TextSpan(
                                 text: '$totalParticipants',
                                 style: AppTextStyles.button.copyWith(
                                     fontSize: 18,
-                                    color: textColor ?? AppColors.brandingBlue,
+                                    color:
+                                        textColor ?? AppColors.brandingPurple,
                                     fontWeight: FontWeight.bold)),
                           ])),
                         ],
