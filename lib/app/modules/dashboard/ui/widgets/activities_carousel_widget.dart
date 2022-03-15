@@ -10,8 +10,8 @@ import 'activity_card_widget.dart';
 
 class ActivitiesCarouselWidget extends StatelessWidget {
   final int? weekday;
+  final bool isNextActivity;
   final Color? cardColor;
-  final Color? textColor;
   final List<ActivityModel> list;
 
   const ActivitiesCarouselWidget({
@@ -19,7 +19,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
     required this.list,
     this.weekday,
     this.cardColor,
-    this.textColor,
+    this.isNextActivity = false,
   }) : super(key: key);
 
   @override
@@ -91,7 +91,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                   width: 120,
                                 ),
                               SizedBox(
-                                height: 240,
+                                height: 200,
                                 child: ActivityCardWidget(
                                   onTap: () {
                                     Modular.to.pushNamed(
@@ -100,7 +100,9 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                     );
                                   },
                                   cardColor: cardColor,
-                                  textColor: textColor,
+                                  textColor: isNextActivity
+                                      ? Colors.white
+                                      : Colors.black,
                                   name: list[index].title,
                                   description: list[index].description,
                                   date: date,

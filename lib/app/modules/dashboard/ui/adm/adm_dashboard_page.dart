@@ -48,21 +48,23 @@ class _AdmDashboardPageState
             ),
             Observer(builder: (_) {
               return ActivitiesCarouselWidget(
-                  textColor: Colors.white,
-                  cardColor: AppColors.brandingOrange,
-                  list: controller.nextActivitiesList);
+                cardColor: AppColors.brandingOrange,
+                list: controller.nextActivitiesList,
+                isNextActivity: true,
+              );
             }),
             const TextHeaderScratched(
               title: 'Todas Atividades',
               fontSize: 38,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 72.0, top: 20, bottom: 20),
+              padding: const EdgeInsets.only(left: 72.0, top: 20),
               child: SizedBox(
                   height: 50,
                   child: ListView.builder(
+                      shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: ActivityEnum.values.length,
+                      itemCount: ActivityEnum.values.length - 3,
                       itemBuilder: (BuildContext ctx, index) {
                         return Observer(builder: (_) {
                           return FilterChipWidget(
@@ -75,19 +77,49 @@ class _AdmDashboardPageState
                         });
                       })),
             ),
+            Padding(
+              padding: const EdgeInsets.only(left: 72.0, bottom: 20),
+              child: SizedBox(
+                  height: 50,
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 3,
+                      itemBuilder: (BuildContext ctx, index) {
+                        return Observer(builder: (_) {
+                          return FilterChipWidget(
+                              onTap: () => controller
+                                  .toggleFilterActivityChipIndex(index + 8),
+                              selected:
+                                  controller.filterActivityChipIndexSelected ==
+                                      index + 8,
+                              activityType: ActivityEnum.values[index + 8]);
+                        });
+                      })),
+            ),
             Observer(builder: (_) {
               return Column(
                 children: [
                   ActivitiesCarouselWidget(
-                      list: controller.mondayActivitiesList, weekday: 0),
+                    list: controller.mondayActivitiesList,
+                    weekday: 0,
+                  ),
                   ActivitiesCarouselWidget(
-                      list: controller.tuesdayActivitiesList, weekday: 1),
+                    list: controller.tuesdayActivitiesList,
+                    weekday: 1,
+                  ),
                   ActivitiesCarouselWidget(
-                      list: controller.wednesdayActivitiesList, weekday: 2),
+                    list: controller.wednesdayActivitiesList,
+                    weekday: 2,
+                  ),
                   ActivitiesCarouselWidget(
-                      list: controller.thursdayActivitiesList, weekday: 3),
+                    list: controller.thursdayActivitiesList,
+                    weekday: 3,
+                  ),
                   ActivitiesCarouselWidget(
-                      list: controller.fridayActivitiesList, weekday: 4),
+                    list: controller.fridayActivitiesList,
+                    weekday: 4,
+                  ),
                 ],
               );
             }),

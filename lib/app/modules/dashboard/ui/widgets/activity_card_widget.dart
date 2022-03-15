@@ -50,7 +50,7 @@ class ActivityCardWidget extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -59,6 +59,9 @@ class ActivityCardWidget extends StatelessWidget {
                   name,
                   style: AppTextStyles.buttonBold
                       .copyWith(fontSize: 22, color: textColor ?? Colors.black),
+                ),
+                const SizedBox(
+                  height: 8,
                 ),
                 Flexible(
                   child: RichText(
@@ -71,7 +74,7 @@ class ActivityCardWidget extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    vertical: 4,
+                    vertical: 8,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
