@@ -3,16 +3,14 @@ import '../../domain/entities/schedule_activity.dart';
 
 class ScheduleActivityModel extends ScheduleActivity {
   final DateTime? date;
-  final DateTime? hour;
   final int? totalParticipants;
 
-  ScheduleActivityModel({this.date, this.hour, this.totalParticipants})
-      : super(date: date, hour: hour, totalParticipants: totalParticipants);
+  ScheduleActivityModel({this.date, this.totalParticipants})
+      : super(date: date, totalParticipants: totalParticipants);
 
   factory ScheduleActivityModel.fromMap(Map<String, dynamic> map) {
     return ScheduleActivityModel(
-      date: map['date'],
-      hour: map['hour'],
+      date: DateTime.fromMillisecondsSinceEpoch(map['date'], isUtc: true),
       totalParticipants: map['totalParticipants'],
     );
   }
@@ -22,24 +20,20 @@ class ScheduleActivityModel extends ScheduleActivity {
 
   Map<String, dynamic> toJson() => {
         'date': date!.millisecondsSinceEpoch,
-        'hour': hour!.millisecondsSinceEpoch,
         'totalParticipants': totalParticipants,
       };
 
   ScheduleActivityModel copyWith({
     DateTime? date,
-    DateTime? hour,
     int? totalParticipants,
   }) {
     return ScheduleActivityModel(
       date: date ?? this.date,
-      hour: hour ?? this.hour,
       totalParticipants: totalParticipants ?? this.totalParticipants,
     );
   }
 
   factory ScheduleActivityModel.newInstance() {
-    return ScheduleActivityModel(
-        date: null, hour: null, totalParticipants: null);
+    return ScheduleActivityModel(date: null, totalParticipants: null);
   }
 }

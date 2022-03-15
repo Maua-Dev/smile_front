@@ -1,0 +1,65 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'about_home_controller.dart';
+
+// **************************************************************************
+// StoreGenerator
+// **************************************************************************
+
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+
+mixin _$AboutHomeController on AboutHomeControllerBase, Store {
+  final _$speakersAtom = Atom(name: 'AboutHomeControllerBase.speakers');
+
+  @override
+  List<HomeSpeakerModel> get speakers {
+    _$speakersAtom.reportRead();
+    return super.speakers;
+  }
+
+  @override
+  set speakers(List<HomeSpeakerModel> value) {
+    _$speakersAtom.reportWrite(value, super.speakers, () {
+      super.speakers = value;
+    });
+  }
+
+  final _$indexToShowAtom = Atom(name: 'AboutHomeControllerBase.indexToShow');
+
+  @override
+  int get indexToShow {
+    _$indexToShowAtom.reportRead();
+    return super.indexToShow;
+  }
+
+  @override
+  set indexToShow(int value) {
+    _$indexToShowAtom.reportWrite(value, super.indexToShow, () {
+      super.indexToShow = value;
+    });
+  }
+
+  final _$getSpeakersAsyncAction =
+      AsyncAction('AboutHomeControllerBase.getSpeakers');
+
+  @override
+  Future<void> getSpeakers() {
+    return _$getSpeakersAsyncAction.run(() => super.getSpeakers());
+  }
+
+  final _$toggleIndexAsyncAction =
+      AsyncAction('AboutHomeControllerBase.toggleIndex');
+
+  @override
+  Future<void> toggleIndex(dynamic index) {
+    return _$toggleIndexAsyncAction.run(() => super.toggleIndex(index));
+  }
+
+  @override
+  String toString() {
+    return '''
+speakers: ${speakers},
+indexToShow: ${indexToShow}
+    ''';
+  }
+}

@@ -74,12 +74,12 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                             if (element.date?.weekday == weekday) {
                               date = DateFormat('dd/MM/yyyy')
                                   .format(element.date!);
-                              time = DateFormat('hh:mm').format(element.hour!);
+                              time = DateFormat('HH:mm').format(element.date!);
                             } else if (weekday == null) {
                               date = DateFormat('dd/MM/yyyy')
                                   .format(list[index].schedule[0].date!);
-                              time = DateFormat('hh:mm')
-                                  .format(list[index].schedule[0].hour!);
+                              time = DateFormat('HH:mm')
+                                  .format(list[index].schedule[0].date!);
                             }
                           }
                           return Row(
@@ -104,7 +104,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                   date: date,
                                   time: time,
                                   totalParticipants:
-                                      list[index].totalParticipants,
+                                      list[index].schedule[0].totalParticipants,
                                 ),
                               ),
                               if (index == list.length - 1)

@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../../shared/models/activity_model.dart';
@@ -18,81 +19,112 @@ abstract class _CreateActivityControllerBase with Store {
   });
 
   @observable
-  var activityToEdit = ActivityModel.newInstance();
+  var activityToCreate = ActivityModel.newInstance();
 
   @action
   bool isFilled() {
-    if (activityToEdit.title != '') {
-      return false;
+    if (activityToCreate.title != '') {
+      return true;
     }
-    return true;
+    return false;
   }
 
   @action
   Future createActivity() async {
-    await repository.createActivity(activityToEdit);
-  }
-
-  @action
-  Future deleteActivity(String id) async {
-    await repository.removeActivity(id);
+    await repository.createActivity(activityToCreate);
   }
 
   @action
   void setType(ActivityEnum? value) {
-    activityToEdit = activityToEdit.copyWith(type: value);
+    activityToCreate = activityToCreate.copyWith(type: value);
   }
 
   @action
   void setTitle(String value) {
-    activityToEdit = activityToEdit.copyWith(title: value);
+    activityToCreate = activityToCreate.copyWith(title: value);
   }
 
   @action
   void setDescription(String value) {
-    activityToEdit = activityToEdit.copyWith(description: value);
+    activityToCreate = activityToCreate.copyWith(description: value);
   }
 
   @action
   void setLocation(String value) {
-    activityToEdit = activityToEdit.copyWith(location: value);
+    activityToCreate = activityToCreate.copyWith(location: value);
   }
 
   @action
   void setDate(String value, int index) {
-    var date = DateTime.parse(value);
-    var list = activityToEdit.schedule;
-    list[index] = activityToEdit.schedule[index].copyWith(date: date);
-    activityToEdit = activityToEdit.copyWith(schedule: list);
+    if (value.length >= 10) {
+      var year = value.substring(6, 10);
+      var month = value.substring(3, 5);
+      var day = value.substring(0, 2);
+      value = '$year-$month-$day';
+      var hour = activityToCreate.schedule[index].date != null
+          ? DateFormat('HH:mm').format(activityToCreate.schedule[index].date!)
+          : '';
+      var date =
+          hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
+      var list = activityToCreate.schedule;
+      list[index] = activityToCreate.schedule[index].copyWith(date: date);
+      activityToCreate = activityToCreate.copyWith(schedule: list);
+    }
   }
 
   @action
   void setHour(String value, int index) {
-    var hour = DateTime.parse(value);
-    var list = activityToEdit.schedule;
-    list[index] = activityToEdit.schedule[index].copyWith(hour: hour);
-    activityToEdit = activityToEdit.copyWith(schedule: list);
+    if (value.length >= 5) {
+      var date = activityToCreate.schedule[index].date != null
+          ? DateFormat('yyyy-MM-dd')
+              .format(activityToCreate.schedule[index].date!)
+          : '';
+      var hour = date == ''
+          ? DateTime.parse('0000-00-00 $value')
+          : DateTime.parse("$date $value");
+      var list = activityToCreate.schedule;
+      list[index] = activityToCreate.schedule[index].copyWith(date: hour);
+      activityToCreate = activityToCreate.copyWith(schedule: list);
+    }
   }
 
   @action
   void setParticipants(int value, int index) {
-    var list = activityToEdit.schedule;
+    var list = activityToCreate.schedule;
     list[index] =
-        activityToEdit.schedule[index].copyWith(totalParticipants: value);
-    activityToEdit = activityToEdit.copyWith(schedule: list);
+        activityToCreate.schedule[index].copyWith(totalParticipants: value);
+    activityToCreate = activityToCreate.copyWith(schedule: list);
+  }
+
+  @action
+  void setSpeakerName(String value) {
+    var speaker = activityToCreate.speaker.copyWith(name: value);
+    activityToCreate = activityToCreate.copyWith(speaker: speaker);
+  }
+
+  @action
+  void setSpeakerBio(String value) {
+    var speaker = activityToCreate.speaker.copyWith(bio: value);
+    activityToCreate = activityToCreate.copyWith(speaker: speaker);
+  }
+
+  @action
+  void setSpeakerCompany(String value) {
+    var speaker = activityToCreate.speaker.copyWith(company: value);
+    activityToCreate = activityToCreate.copyWith(speaker: speaker);
   }
 
   @action
   void addSchedule() {
-    var list = activityToEdit.schedule;
+    var list = activityToCreate.schedule;
     list.add(ScheduleActivityModel.newInstance());
-    activityToEdit = activityToEdit.copyWith(schedule: list);
+    activityToCreate = activityToCreate.copyWith(schedule: list);
   }
 
   @action
   void removeSchedule(int index) {
-    var list = activityToEdit.schedule;
+    var list = activityToCreate.schedule;
     list.removeAt(index);
-    activityToEdit = activityToEdit.copyWith(schedule: list);
+    activityToCreate = activityToCreate.copyWith(schedule: list);
   }
 }
