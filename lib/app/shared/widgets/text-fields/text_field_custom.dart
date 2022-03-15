@@ -22,17 +22,17 @@ class TextFieldCustom extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         style: AppTextStyles.button
-            .copyWith(fontSize: 24, color: AppColors.brandingBlue),
+            .copyWith(fontSize: 24, color: AppColors.brandingPurple),
         decoration: InputDecoration(
-          fillColor: AppColors.lightBlue,
+          fillColor: AppColors.lightPurple,
           filled: true,
           hintText: titulo,
           hintStyle: AppTextStyles.button
-              .copyWith(fontSize: 24, color: AppColors.brandingBlue),
+              .copyWith(fontSize: 24, color: AppColors.brandingPurple),
           suffixIcon: Padding(
             padding: const EdgeInsets.only(right: 8),
             child: CircleAvatar(
-              backgroundColor: AppColors.brandingBlue,
+              backgroundColor: AppColors.brandingPurple,
               radius: 25,
               child: const Icon(
                 Icons.search,
@@ -45,11 +45,11 @@ class TextFieldCustom extends StatelessWidget {
               const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.0),
-            borderSide: BorderSide(color: AppColors.lightBlue),
+            borderSide: BorderSide(color: AppColors.lightPurple),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.0),
-            borderSide: BorderSide(color: AppColors.lightBlue),
+            borderSide: BorderSide(color: AppColors.lightPurple),
           ),
         ),
       ),

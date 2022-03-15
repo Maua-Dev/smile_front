@@ -32,22 +32,24 @@ class TextFieldDialogWidget extends StatelessWidget {
         inputFormatters: inputFormatters,
         controller: controller,
         style: AppTextStyles.body
-            .copyWith(color: AppColors.brandingBlue, fontSize: 20),
+            .copyWith(color: AppColors.brandingPurple, fontSize: 20),
         decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(color: AppColors.brandingBlue, width: 0.0),
+              borderSide:
+                  BorderSide(color: AppColors.brandingPurple, width: 0.0),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(color: AppColors.brandingBlue, width: 0.0),
+              borderSide:
+                  BorderSide(color: AppColors.brandingPurple, width: 0.0),
             ),
             hintText: hintText,
             labelText: hintText,
             labelStyle: AppTextStyles.titleH1
-                .copyWith(color: AppColors.brandingBlue, fontSize: 22),
+                .copyWith(color: AppColors.brandingPurple, fontSize: 22),
             hintStyle: AppTextStyles.body
-                .copyWith(color: AppColors.brandingBlue, fontSize: 20),
+                .copyWith(color: AppColors.brandingPurple, fontSize: 20),
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             filled: true,

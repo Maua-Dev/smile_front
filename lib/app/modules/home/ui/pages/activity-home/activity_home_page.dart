@@ -128,11 +128,11 @@ class _ActivityHomePageState
     return Observer(builder: (context) {
       if (controller.listRectors.isEmpty) {
         return Container(
-          color: AppColors.lightBlue,
+          color: AppColors.lightPurple,
         );
       }
       return Container(
-        color: AppColors.lightBlue,
+        color: AppColors.lightPurple,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 120.0),
           child: Column(
@@ -155,7 +155,7 @@ class _ActivityHomePageState
                             child: Container(
                               height: imageSize(size, height),
                               width: imageSize(size, height),
-                              color: AppColors.brandingBlue,
+                              color: AppColors.brandingPurple,
                             ),
                           ),
                           SizedBox(
@@ -242,7 +242,7 @@ class _ActivityHomePageState
                             child: Container(
                               height: imageSize(size, height),
                               width: imageSize(size, height),
-                              color: AppColors.brandingBlue,
+                              color: AppColors.brandingPurple,
                             ),
                           ),
                           SizedBox(

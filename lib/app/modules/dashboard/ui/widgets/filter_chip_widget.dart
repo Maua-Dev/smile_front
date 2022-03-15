@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class FilterChipWidget extends StatelessWidget {
   final ActivityEnum activityType;
@@ -21,23 +22,24 @@ class FilterChipWidget extends StatelessWidget {
           onTap: onTap,
           child: Container(
             decoration: BoxDecoration(
-                color: selected ? AppColors.brandingBlue : AppColors.lightBlue,
-                borderRadius: BorderRadius.circular(20)),
+                color:
+                    selected ? AppColors.brandingPurple : AppColors.lightPurple,
+                borderRadius: BorderRadius.circular(45)),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 activityType.name,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: selected ? Colors.white : AppColors.brandingBlue,
-                  // color: Colors.white,
+                style: AppTextStyles.body.copyWith(
+                  color: selected ? Colors.white : AppColors.brandingPurple,
+                  fontSize: 20,
                 ),
               ),
             ),
           ),
         ),
         const SizedBox(
-          width: 5,
+          width: 8,
         )
       ],
     );

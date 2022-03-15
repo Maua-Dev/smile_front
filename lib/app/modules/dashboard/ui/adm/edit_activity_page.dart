@@ -54,7 +54,7 @@ class _EditActivityPageState
                     width: MediaQuery.of(context).size.width * 0.2,
                     child: DropDownFieldCustom<ActivityEnum>(
                       textStyles: AppTextStyles.body.copyWith(
-                          color: AppColors.brandingBlue, fontSize: 20),
+                          color: AppColors.brandingPurple, fontSize: 20),
                       filledColor: Colors.white,
                       titulo: 'Tipo de Atividade',
                       value: controller.activityToEdit.type,
@@ -130,7 +130,7 @@ class _EditActivityPageState
                 child: FormsButtonWidget(
                     buttonTittle: 'Adicionar',
                     onPressed: controller.addSchedule,
-                    backgroundColor: AppColors.brandingBlue,
+                    backgroundColor: AppColors.brandingPurple,
                     icon: const Icon(Icons.add, color: Colors.white, size: 22)),
               ),
             ),
@@ -259,8 +259,8 @@ class _EditActivityPageState
                         size: 32,
                       ),
                       padding: EdgeInsets.zero,
-                      hoverColor: AppColors.lightBlue,
-                      color: AppColors.brandingBlue),
+                      hoverColor: AppColors.lightPurple,
+                      color: AppColors.brandingPurple),
                 ],
               ),
             ),

@@ -45,16 +45,18 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                 Text(
                   weekday != null ? WeekdaysEnum.values[weekday!].name : '',
                   style: AppTextStyles.titleH1
-                      .copyWith(fontSize: 40, color: AppColors.brandingBlue),
+                      .copyWith(fontSize: 32, color: AppColors.brandingPurple),
                 ),
               ],
             ),
           ),
         if (list.isEmpty)
-          const Padding(
-            padding: EdgeInsets.all(28.0),
+          Padding(
+            padding: const EdgeInsets.all(28.0),
             child: Text(
-                'Ops..., parece que não há atividades cadastradas nesse dia.'),
+              'Ops..., parece que não há atividades cadastradas nesse dia.',
+              style: AppTextStyles.body.copyWith(fontSize: 20),
+            ),
           )
         else
           Padding(
@@ -141,7 +143,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 8.0),
                           child: Icon(
                             Icons.arrow_back_ios,
-                            color: AppColors.brandingBlue,
+                            color: AppColors.brandingPurple,
                           ),
                         )),
                       ),
@@ -172,7 +174,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                         child: Center(
                             child: Icon(
                           Icons.arrow_forward_ios_rounded,
-                          color: AppColors.brandingBlue,
+                          color: AppColors.brandingPurple,
                         )),
                       ),
                     ),
