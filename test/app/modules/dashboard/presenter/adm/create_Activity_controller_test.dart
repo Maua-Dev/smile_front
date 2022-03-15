@@ -20,7 +20,7 @@ void main() {
 
   test('isFilled', () {
     var test = controller.isFilled();
-    expect(test, true);
+    expect(test, false);
   });
 
   test('setType', () {
@@ -83,13 +83,13 @@ void main() {
     expect(controller.activityToCreate.speaker.company, str);
   });
 
-  test('addSchedule', () {
-    controller.addSchedule();
-    expect(controller.activityToCreate.schedule.length, 2);
-  });
-
   test('removeSchedule', () {
     controller.removeSchedule(0);
     expect(controller.activityToCreate.schedule.length, 0);
+  });
+
+  test('addSchedule', () {
+    controller.addSchedule();
+    expect(controller.activityToCreate.schedule.length, 1);
   });
 }
