@@ -25,8 +25,8 @@ class AuthRepositoryMock implements AuthRepositoryInterface {
   }
 
   @override
-  Future<String> refreshToken(String token) async {
-    return 'newtoken';
+  Future<Map<String, dynamic>> refreshToken(String token) async {
+    return {'token': 'token12354', 'refreshToken': 'token5423534'};
   }
 
   @override

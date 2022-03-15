@@ -13,7 +13,7 @@ class AuthRepositoryImpl extends AuthRepositoryInterface {
   }
 
   @override
-  Future<String> refreshToken(String token) {
+  Future<Map<String, dynamic>> refreshToken(String token) {
     throw UnimplementedError();
   }
 

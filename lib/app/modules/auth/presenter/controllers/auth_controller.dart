@@ -19,7 +19,8 @@ class AuthController {
     var loginResponse = await authRepository.login(cpfRne, password);
     _accessLevel = loginResponse.entries.last.toString();
 
-    await storage.saveToken(loginResponse['access_token']);
+    await storage.saveAccessToken(loginResponse['access_token']);
+    await storage.saveRefreshToken(loginResponse['refresh_token']);
     await storage.saveAccessLevel(_accessLevel);
 
     _loggedIn = true;
@@ -27,14 +28,15 @@ class AuthController {
   }
 
   Future<void> refreshToken() async {
-    var token = await storage.getToken();
+    var token = await storage.getAccessToken();
     if (token == null) {
       _loggedIn = false;
       return;
     }
     try {
-      token = await authRepository.refreshToken(token);
-      await storage.saveToken(token);
+      var tokens = await authRepository.refreshToken(token);
+      await storage.saveAccessToken(tokens['access_token']);
+      await storage.saveRefreshToken(tokens['refresh_token']);
       _loggedIn = true;
 
       var accessLevel = await storage.getAccessLevel();

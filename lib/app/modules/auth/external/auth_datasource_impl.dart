@@ -43,4 +43,27 @@ class AuthDatasourceImpl implements AuthDatasource {
       throw LoginInvalid('Login ou Senha inválida');
     }
   }
+
+  @override
+  Future<String> refreshToken(String token) async {
+    try {
+      final res = await dioClient.get(
+        '/refreshToken',
+        options: Options(
+          headers: {
+            Headers.wwwAuthenticateHeader: token,
+          },
+        ),
+      );
+      if (res.statusCode == 200) {
+        var tokens = res.data;
+        return tokens;
+      }
+      throw Exception();
+    } catch (e) {
+      print('Não foi possível se conectar com o Microsserviço, erro: ' +
+          e.toString());
+      rethrow;
+    }
+  }
 }
