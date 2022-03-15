@@ -138,11 +138,11 @@ class _AdmDashboardPageState
                   width: 70,
                   child: FittedBox(
                     child: FloatingActionButton(
-                        backgroundColor: Colors.white,
-                        child: Icon(
+                        backgroundColor: AppColors.brandingOrange,
+                        child: const Icon(
                           Icons.insert_chart_rounded,
                           size: 35,
-                          color: AppColors.brandingPurple,
+                          color: Colors.white,
                         ),
                         onPressed: () {}),
                   ),
@@ -158,14 +158,14 @@ class _AdmDashboardPageState
                   width: 70,
                   child: FittedBox(
                     child: FloatingActionButton(
-                        backgroundColor: Colors.white,
-                        child: Icon(
+                        backgroundColor: AppColors.brandingOrange,
+                        child: const Icon(
                           Icons.edit,
                           size: 35,
-                          color: AppColors.brandingPurple,
+                          color: Colors.white,
                         ),
                         onPressed: () {
-                          Modular.to.pushNamed('/adm/create-activity');
+                          Modular.to.navigate('/adm/create-activity');
                         }),
                   ),
                 ),
@@ -179,12 +179,12 @@ class _AdmDashboardPageState
                 width: 100,
                 child: FittedBox(
                   child: FloatingActionButton(
-                      backgroundColor: Colors.white,
+                      backgroundColor: AppColors.brandingOrange,
                       child: Icon(
                         controller.isFloatActionButtonOpen
                             ? Icons.close
                             : Icons.keyboard_arrow_up_rounded,
-                        color: AppColors.brandingPurple,
+                        color: Colors.white,
                       ),
                       onPressed: () {
                         controller.toggleFloatActionButton();
