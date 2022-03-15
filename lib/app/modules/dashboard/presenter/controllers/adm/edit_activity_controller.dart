@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
@@ -24,9 +25,9 @@ abstract class _EditActivityControllerBase with Store {
   @action
   bool isFilled() {
     if (activityToEdit.title != '') {
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 
   @action
@@ -61,18 +62,33 @@ abstract class _EditActivityControllerBase with Store {
 
   @action
   void setDate(String value, int index) {
-    var date = DateTime.parse(value);
-    var list = activityToEdit.schedule;
-    list[index] = activityToEdit.schedule[index].copyWith(date: date);
-    activityToEdit = activityToEdit.copyWith(schedule: list);
+    if (value.length >= 10) {
+      var year = value.substring(6, 10);
+      var month = value.substring(3, 5);
+      var day = value.substring(0, 2);
+      value = '$year-$month-$day';
+      var hour = activityToEdit.schedule[index].date != null
+          ? DateFormat('HH:mm').format(activityToEdit.schedule[index].date!)
+          : '';
+      var date = DateTime.parse("$value $hour");
+      var list = activityToEdit.schedule;
+      list[index] = activityToEdit.schedule[index].copyWith(date: date);
+      activityToEdit = activityToEdit.copyWith(schedule: list);
+    }
   }
 
   @action
   void setHour(String value, int index) {
-    var hour = DateTime.parse(value);
-    var list = activityToEdit.schedule;
-    list[index] = activityToEdit.schedule[index].copyWith(hour: hour);
-    activityToEdit = activityToEdit.copyWith(schedule: list);
+    if (value.length >= 5) {
+      var date = activityToEdit.schedule[index].date != null
+          ? DateFormat('yyyy-MM-dd')
+              .format(activityToEdit.schedule[index].date!)
+          : '';
+      var hour = DateTime.parse("$date $value");
+      var list = activityToEdit.schedule;
+      list[index] = activityToEdit.schedule[index].copyWith(date: hour);
+      activityToEdit = activityToEdit.copyWith(schedule: list);
+    }
   }
 
   @action
@@ -81,6 +97,24 @@ abstract class _EditActivityControllerBase with Store {
     list[index] =
         activityToEdit.schedule[index].copyWith(totalParticipants: value);
     activityToEdit = activityToEdit.copyWith(schedule: list);
+  }
+
+  @action
+  void setSpeakerName(String value) {
+    var speaker = activityToEdit.speaker.copyWith(name: value);
+    activityToEdit = activityToEdit.copyWith(speaker: speaker);
+  }
+
+  @action
+  void setSpeakerBio(String value) {
+    var speaker = activityToEdit.speaker.copyWith(bio: value);
+    activityToEdit = activityToEdit.copyWith(speaker: speaker);
+  }
+
+  @action
+  void setSpeakerCompany(String value) {
+    var speaker = activityToEdit.speaker.copyWith(company: value);
+    activityToEdit = activityToEdit.copyWith(speaker: speaker);
   }
 
   @action

@@ -41,4 +41,10 @@ extension ActivityEnumExtension on ActivityEnum {
         return 'Workshop';
     }
   }
+
+  static ActivityEnum stringToEnumMap(String toMap) {
+    ActivityEnum type = ActivityEnum.values
+        .firstWhere((type) => type.toString().split(".").last == toMap);
+    return type;
+  }
 }

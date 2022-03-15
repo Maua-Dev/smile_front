@@ -36,8 +36,8 @@ class ActivityModel extends Activity {
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
     return ActivityModel(
       id: map['id'],
-      type: stringToEnumMap(map['type']),
-      title: map['name'],
+      type: ActivityEnumExtension.stringToEnumMap(map['type']),
+      title: map['title'],
       description: map['description'],
       schedule: ScheduleActivityModel.fromMaps(map['schedule']),
       location: map['location'],
@@ -49,15 +49,7 @@ class ActivityModel extends Activity {
     return array.map((e) => ActivityModel.fromMap(e)).toList();
   }
 
-  static ActivityEnum stringToEnumMap(String toMap) {
-    toMap = toMap.toLowerCase();
-    ActivityEnum type = ActivityEnum.values
-        .firstWhere((element) => toMap == element.name.toLowerCase());
-    return type;
-  }
-
   Map<String, dynamic> toJson() => {
-        'id': id,
         'type': type!.name,
         'title': title,
         'description': description,

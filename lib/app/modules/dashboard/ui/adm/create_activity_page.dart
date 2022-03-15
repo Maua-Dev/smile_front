@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:intl/intl.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
@@ -57,7 +56,7 @@ class _CreateActivityPageState
                           color: AppColors.brandingBlue, fontSize: 20),
                       filledColor: Colors.white,
                       titulo: 'Tipo de Atividade',
-                      value: controller.activityToEdit.type,
+                      value: controller.activityToCreate.type,
                       items: ActivityEnum.values
                           .toList()
                           .map((ActivityEnum value) {
@@ -77,42 +76,50 @@ class _CreateActivityPageState
                     hintText: 'Titulo da Atividade',
                     padding: false,
                     onChanged: controller.setTitle,
-                    value: controller.activityToEdit.title,
+                    value: controller.activityToCreate.title,
                   )),
                 ],
               ),
             ),
             TextFieldDialogWidget(
               hintText: 'Descrição',
-              value: controller.activityToEdit.description,
+              value: controller.activityToCreate.description,
               onChanged: controller.setDescription,
             ),
             Observer(builder: (_) {
               return Flexible(
                 child: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: controller.activityToEdit.schedule.length,
+                    itemCount: controller.activityToCreate.schedule.length,
                     itemBuilder: (context, index) {
-                      var hour = DateFormat('hh:mm').format(
-                          controller.activityToEdit.schedule[index].hour!);
-                      var date = DateFormat('dd/MM/yyyy').format(
-                          controller.activityToEdit.schedule[index].date!);
+                      var hour =
+                          controller.activityToCreate.schedule[index].date ==
+                                  null
+                              ? ''
+                              : DateFormat('HH:mm').format(controller
+                                  .activityToCreate.schedule[index].date!);
+                      var date =
+                          controller.activityToCreate.schedule[index].date ==
+                                  null
+                              ? ''
+                              : DateFormat('dd-MM-yyyy').format(controller
+                                  .activityToCreate.schedule[index].date!);
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
+                          totalParticipants: controller.activityToCreate
+                              .schedule[index].totalParticipants,
                           date: date,
                           hour: hour,
-                          totalParticipants: controller
-                              .activityToEdit.schedule[index].totalParticipants,
                           onChangedDate: (value) {
-                            controller.setHour(value, index);
+                            controller.setDate(value, index);
                           },
                           onChangedHour: (value) {
                             controller.setHour(value, index);
                           },
                           onChangedParticipants: (value) {
-                            controller.setHour(value, index);
+                            controller.setParticipants(int.parse(value), index);
                           },
                           removeSchedule: () {
                             controller.removeSchedule(index);
@@ -136,7 +143,7 @@ class _CreateActivityPageState
             ),
             TextFieldDialogWidget(
               hintText: 'Local/Link',
-              value: controller.activityToEdit.location,
+              value: controller.activityToCreate.location,
               onChanged: controller.setLocation,
             ),
             Padding(
@@ -160,7 +167,8 @@ class _CreateActivityPageState
                               child: TextFieldDialogWidget(
                                 hintText: 'Nome Palestrante',
                                 padding: false,
-                                value: controller.activityToEdit.speaker.name,
+                                onChanged: controller.setSpeakerName,
+                                value: controller.activityToCreate.speaker.name,
                               ),
                             ),
                             const SizedBox(
@@ -169,8 +177,9 @@ class _CreateActivityPageState
                             Flexible(
                               child: TextFieldDialogWidget(
                                 hintText: 'Empresa',
+                                onChanged: controller.setSpeakerCompany,
                                 value:
-                                    controller.activityToEdit.speaker.company,
+                                    controller.activityToCreate.speaker.company,
                                 padding: false,
                               ),
                             ),
@@ -180,7 +189,8 @@ class _CreateActivityPageState
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
                           child: TextFieldDialogWidget(
                             hintText: 'Bio',
-                            value: controller.activityToEdit.speaker.bio,
+                            value: controller.activityToCreate.speaker.bio,
+                            onChanged: controller.setSpeakerBio,
                             padding: false,
                           ),
                         ),
@@ -231,32 +241,6 @@ class _CreateActivityPageState
                         }
                       },
                       backgroundColor: AppColors.greenButton),
-                  const SizedBox(
-                    width: 40,
-                  ),
-                  IconButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return ActionConfirmationDialogWidget(
-                                title: 'Tem certeza que deseja continuar?',
-                                content:
-                                    'Ao confirmar todos os dados antigos serão perdidos.',
-                                onPressed: () {
-                                  controller.deleteActivity(
-                                      controller.activityToEdit.id);
-                                });
-                          },
-                        );
-                      },
-                      icon: const Icon(
-                        FontAwesome5.trash,
-                        size: 32,
-                      ),
-                      padding: EdgeInsets.zero,
-                      hoverColor: AppColors.lightBlue,
-                      color: AppColors.brandingBlue),
                 ],
               ),
             ),

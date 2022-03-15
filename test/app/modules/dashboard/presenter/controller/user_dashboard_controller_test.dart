@@ -24,12 +24,10 @@ void main() {
         schedule: [
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 20,
           ),
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 20,
           )
         ],
@@ -44,12 +42,10 @@ void main() {
         schedule: [
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 20,
           ),
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 20,
           )
         ],
@@ -64,12 +60,10 @@ void main() {
         schedule: [
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 20,
           ),
           ScheduleActivityModel(
             date: DateTime.now(),
-            hour: DateTime.now(),
             totalParticipants: 20,
           )
         ],

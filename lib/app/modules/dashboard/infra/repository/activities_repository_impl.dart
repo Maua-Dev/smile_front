@@ -39,6 +39,6 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   @override
   Future createActivity(ActivityModel activityToCreate) async {
-    await datasource.postActivity(activityToCreate.id, activityToCreate);
+    await datasource.postActivity(activityToCreate);
   }
 }

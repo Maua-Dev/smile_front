@@ -21,13 +21,11 @@ void main() {
       description: '12345',
       schedule: [
         ScheduleActivityModel(
-          date: DateTime.now(),
-          hour: DateTime.now(),
+          date: DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
           totalParticipants: 20,
         ),
         ScheduleActivityModel(
           date: DateTime.now(),
-          hour: DateTime.now(),
           totalParticipants: 20,
         )
       ],
@@ -42,7 +40,7 @@ void main() {
 
   test('isFilled', () {
     var test = controller.isFilled();
-    expect(test, false);
+    expect(test, true);
   });
 
   test('setType', () {
@@ -70,8 +68,47 @@ void main() {
   });
 
   test('setDate', () {
-    var str = '2021-01-02';
+    var str = '02/01/2021';
     controller.setDate(str, 0);
-    expect(controller.activityToEdit.schedule[0].date, DateTime.parse(str));
+    expect(controller.activityToEdit.schedule[0].date!.day, 02);
+  });
+
+  test('setHour', () {
+    var str = '22:00';
+    controller.setHour(str, 0);
+    expect(controller.activityToEdit.schedule[0].date!.hour, 22);
+  });
+
+  test('setParticipants', () {
+    var str = 1;
+    controller.setParticipants(str, 0);
+    expect(controller.activityToEdit.schedule[0].totalParticipants, str);
+  });
+
+  test('setSpeakerBio', () {
+    var str = 'teste';
+    controller.setSpeakerBio(str);
+    expect(controller.activityToEdit.speaker.bio, str);
+  });
+
+  test('setSpeakerCompany', () {
+    var str = 'teste';
+    controller.setSpeakerCompany(str);
+    expect(controller.activityToEdit.speaker.company, str);
+  });
+  test('setSpeakerName', () {
+    var str = 'teste';
+    controller.setSpeakerName(str);
+    expect(controller.activityToEdit.speaker.name, str);
+  });
+
+  test('removeSchedule', () {
+    controller.removeSchedule(0);
+    expect(controller.activityToEdit.schedule.length, 1);
+  });
+
+  test('addSchedule', () {
+    controller.addSchedule();
+    expect(controller.activityToEdit.schedule.length, 2);
   });
 }
