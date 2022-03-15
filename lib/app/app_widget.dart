@@ -33,7 +33,7 @@ class AppWidget extends StatelessWidget {
           appBarTheme: AppBarTheme(
             color: AppColors.brandingPurple,
           ),
-          scaffoldBackgroundColor: Colors.white),
+          scaffoldBackgroundColor: AppColors.backgroudColor),
     ).modular();
   }
 }

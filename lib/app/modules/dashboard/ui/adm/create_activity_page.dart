@@ -73,7 +73,7 @@ class _CreateActivityPageState
                   ),
                   Flexible(
                       child: TextFieldDialogWidget(
-                    hintText: 'Titulo da Atividade',
+                    labelText: 'Titulo da Atividade',
                     padding: false,
                     onChanged: controller.setTitle,
                     value: controller.activityToCreate.title,
@@ -82,7 +82,7 @@ class _CreateActivityPageState
               ),
             ),
             TextFieldDialogWidget(
-              hintText: 'Descrição',
+              labelText: 'Descrição',
               value: controller.activityToCreate.description,
               onChanged: controller.setDescription,
             ),
@@ -137,12 +137,12 @@ class _CreateActivityPageState
                 child: FormsButtonWidget(
                     buttonTittle: 'Adicionar',
                     onPressed: controller.addSchedule,
-                    backgroundColor: AppColors.brandingPurple,
+                    backgroundColor: AppColors.brandingOrange,
                     icon: const Icon(Icons.add, color: Colors.white, size: 22)),
               ),
             ),
             TextFieldDialogWidget(
-              hintText: 'Local/Link',
+              labelText: 'Local/Link',
               value: controller.activityToCreate.location,
               onChanged: controller.setLocation,
             ),
@@ -165,7 +165,7 @@ class _CreateActivityPageState
                           children: [
                             Flexible(
                               child: TextFieldDialogWidget(
-                                hintText: 'Nome Palestrante',
+                                labelText: 'Nome Palestrante',
                                 padding: false,
                                 onChanged: controller.setSpeakerName,
                                 value: controller.activityToCreate.speaker.name,
@@ -176,7 +176,7 @@ class _CreateActivityPageState
                             ),
                             Flexible(
                               child: TextFieldDialogWidget(
-                                hintText: 'Empresa',
+                                labelText: 'Empresa',
                                 onChanged: controller.setSpeakerCompany,
                                 value:
                                     controller.activityToCreate.speaker.company,
@@ -188,7 +188,7 @@ class _CreateActivityPageState
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
                           child: TextFieldDialogWidget(
-                            hintText: 'Bio',
+                            labelText: 'Bio',
                             value: controller.activityToCreate.speaker.bio,
                             onChanged: controller.setSpeakerBio,
                             padding: false,
