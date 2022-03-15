@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:intl/intl.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
@@ -168,6 +167,7 @@ class _CreateActivityPageState
                               child: TextFieldDialogWidget(
                                 hintText: 'Nome Palestrante',
                                 padding: false,
+                                onChanged: controller.setSpeakerName,
                                 value: controller.activityToCreate.speaker.name,
                               ),
                             ),
@@ -177,6 +177,7 @@ class _CreateActivityPageState
                             Flexible(
                               child: TextFieldDialogWidget(
                                 hintText: 'Empresa',
+                                onChanged: controller.setSpeakerCompany,
                                 value:
                                     controller.activityToCreate.speaker.company,
                                 padding: false,
@@ -189,6 +190,7 @@ class _CreateActivityPageState
                           child: TextFieldDialogWidget(
                             hintText: 'Bio',
                             value: controller.activityToCreate.speaker.bio,
+                            onChanged: controller.setSpeakerBio,
                             padding: false,
                           ),
                         ),

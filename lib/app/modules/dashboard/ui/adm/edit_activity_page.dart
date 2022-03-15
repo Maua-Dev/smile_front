@@ -160,6 +160,7 @@ class _EditActivityPageState
                               child: TextFieldDialogWidget(
                                 hintText: 'Nome Palestrante',
                                 padding: false,
+                                onChanged: controller.setSpeakerName,
                                 value: controller.activityToEdit.speaker.name,
                               ),
                             ),
@@ -169,6 +170,7 @@ class _EditActivityPageState
                             Flexible(
                               child: TextFieldDialogWidget(
                                 hintText: 'Empresa',
+                                onChanged: controller.setSpeakerCompany,
                                 value:
                                     controller.activityToEdit.speaker.company,
                                 padding: false,
@@ -181,6 +183,7 @@ class _EditActivityPageState
                           child: TextFieldDialogWidget(
                             hintText: 'Bio',
                             value: controller.activityToEdit.speaker.bio,
+                            onChanged: controller.setSpeakerBio,
                             padding: false,
                           ),
                         ),
@@ -246,7 +249,7 @@ class _EditActivityPageState
                                     'Ao confirmar todos os dados antigos serão perdidos.',
                                 onPressed: () {
                                   controller.deleteActivity(
-                                      controller.activityToEdit.id!);
+                                      controller.activityToEdit.id);
                                 });
                           },
                         );

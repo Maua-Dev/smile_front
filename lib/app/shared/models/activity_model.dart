@@ -7,7 +7,7 @@ import '../../modules/dashboard/infra/models/schedule_activity_model.dart';
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
 class ActivityModel extends Activity {
-  final String? id;
+  final String id;
   final ActivityEnum? type;
   final String title;
   final String description;
@@ -50,7 +50,6 @@ class ActivityModel extends Activity {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
         'type': type!.name,
         'title': title,
         'description': description,
@@ -63,7 +62,7 @@ class ActivityModel extends Activity {
     return ActivityModel(
         schedule: [ScheduleActivityModel.newInstance()],
         description: '',
-        id: null,
+        id: '',
         title: '',
         type: null,
         location: '',

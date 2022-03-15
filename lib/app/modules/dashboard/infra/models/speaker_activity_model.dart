@@ -35,4 +35,18 @@ class SpeakerActivityModel extends Speaker {
       linkPhoto: map['linkPhoto'] ?? '',
     );
   }
+
+  SpeakerActivityModel copyWith({
+    String? name,
+    String? bio,
+    String? linkPhoto,
+    String? company,
+  }) {
+    return SpeakerActivityModel(
+      name: name ?? this.name,
+      bio: bio ?? this.bio,
+      company: company ?? this.company,
+      linkPhoto: linkPhoto ?? this.linkPhoto,
+    );
+  }
 }

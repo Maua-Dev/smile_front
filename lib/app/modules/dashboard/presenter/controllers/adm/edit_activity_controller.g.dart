@@ -133,6 +133,39 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
+  void setSpeakerName(String value) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setSpeakerName');
+    try {
+      return super.setSpeakerName(value);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSpeakerBio(String value) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setSpeakerBio');
+    try {
+      return super.setSpeakerBio(value);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSpeakerCompany(String value) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setSpeakerCompany');
+    try {
+      return super.setSpeakerCompany(value);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void addSchedule() {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.addSchedule');

@@ -100,6 +100,24 @@ abstract class _EditActivityControllerBase with Store {
   }
 
   @action
+  void setSpeakerName(String value) {
+    var speaker = activityToEdit.speaker.copyWith(name: value);
+    activityToEdit = activityToEdit.copyWith(speaker: speaker);
+  }
+
+  @action
+  void setSpeakerBio(String value) {
+    var speaker = activityToEdit.speaker.copyWith(bio: value);
+    activityToEdit = activityToEdit.copyWith(speaker: speaker);
+  }
+
+  @action
+  void setSpeakerCompany(String value) {
+    var speaker = activityToEdit.speaker.copyWith(company: value);
+    activityToEdit = activityToEdit.copyWith(speaker: speaker);
+  }
+
+  @action
   void addSchedule() {
     var list = activityToEdit.schedule;
     list.add(ScheduleActivityModel.newInstance());

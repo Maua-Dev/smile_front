@@ -125,6 +125,39 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
+  void setSpeakerName(String value) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setSpeakerName');
+    try {
+      return super.setSpeakerName(value);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSpeakerBio(String value) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setSpeakerBio');
+    try {
+      return super.setSpeakerBio(value);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSpeakerCompany(String value) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setSpeakerCompany');
+    try {
+      return super.setSpeakerCompany(value);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void addSchedule() {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.addSchedule');

@@ -97,6 +97,24 @@ abstract class _CreateActivityControllerBase with Store {
   }
 
   @action
+  void setSpeakerName(String value) {
+    var speaker = activityToCreate.speaker.copyWith(name: value);
+    activityToCreate = activityToCreate.copyWith(speaker: speaker);
+  }
+
+  @action
+  void setSpeakerBio(String value) {
+    var speaker = activityToCreate.speaker.copyWith(bio: value);
+    activityToCreate = activityToCreate.copyWith(speaker: speaker);
+  }
+
+  @action
+  void setSpeakerCompany(String value) {
+    var speaker = activityToCreate.speaker.copyWith(company: value);
+    activityToCreate = activityToCreate.copyWith(speaker: speaker);
+  }
+
+  @action
   void addSchedule() {
     var list = activityToCreate.schedule;
     list.add(ScheduleActivityModel.newInstance());

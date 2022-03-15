@@ -85,6 +85,23 @@ void main() {
     expect(controller.activityToEdit.schedule[0].totalParticipants, str);
   });
 
+  test('setSpeakerBio', () {
+    var str = 'teste';
+    controller.setSpeakerBio(str);
+    expect(controller.activityToEdit.speaker.bio, str);
+  });
+
+  test('setSpeakerCompany', () {
+    var str = 'teste';
+    controller.setSpeakerCompany(str);
+    expect(controller.activityToEdit.speaker.company, str);
+  });
+  test('setSpeakerName', () {
+    var str = 'teste';
+    controller.setSpeakerName(str);
+    expect(controller.activityToEdit.speaker.name, str);
+  });
+
   test('addSchedule', () {
     controller.addSchedule();
     expect(controller.activityToEdit.schedule.length, 3);
