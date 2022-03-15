@@ -15,7 +15,7 @@ class FilterButtonWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            color: AppColors.brandingBlue,
+            color: AppColors.brandingPurple,
             borderRadius: BorderRadius.circular(10)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 32),

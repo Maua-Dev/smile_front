@@ -8,6 +8,7 @@ import 'package:smile_front/app/modules/dashboard/ui/widgets/filter_chip_widget.
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../shared/widgets/text_header_scratched.dart';
 import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
+import '../widgets/logout_button_widget.dart';
 
 class AdmDashboardPage extends StatefulWidget {
   const AdmDashboardPage({Key? key}) : super(key: key);
@@ -21,31 +22,49 @@ class _AdmDashboardPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Material(
-          child: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 16,
+              height: 32,
             ),
-            const TextHeaderScratched(
-              title: 'Próximas Atividades',
+            Padding(
+              padding: const EdgeInsets.only(right: 72.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const TextHeaderScratched(
+                    title: 'Próximas Atividades',
+                    fontSize: 50,
+                  ),
+                  LogoutButtonWidget(
+                    backgroundColor: AppColors.brandingOrange,
+                    buttonTittle: 'Sair',
+                    onPressed: () {},
+                  ),
+                ],
+              ),
             ),
             Observer(builder: (_) {
               return ActivitiesCarouselWidget(
-                  textColor: Colors.white,
-                  cardColor: AppColors.brandingOrange,
-                  list: controller.nextActivitiesList);
+                cardColor: AppColors.brandingOrange,
+                list: controller.nextActivitiesList,
+                isNextActivity: true,
+              );
             }),
-            const TextHeaderScratched(title: 'Todas Atividades'),
+            const TextHeaderScratched(
+              title: 'Todas Atividades',
+              fontSize: 38,
+            ),
             Padding(
-              padding: const EdgeInsets.only(left: 72.0, top: 20, bottom: 20),
+              padding: const EdgeInsets.only(left: 72.0, top: 20),
               child: SizedBox(
                   height: 50,
                   child: ListView.builder(
+                      shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: ActivityEnum.values.length,
+                      itemCount: ActivityEnum.values.length - 3,
                       itemBuilder: (BuildContext ctx, index) {
                         return Observer(builder: (_) {
                           return FilterChipWidget(
@@ -58,25 +77,55 @@ class _AdmDashboardPageState
                         });
                       })),
             ),
+            Padding(
+              padding: const EdgeInsets.only(left: 72.0, bottom: 20),
+              child: SizedBox(
+                  height: 50,
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 3,
+                      itemBuilder: (BuildContext ctx, index) {
+                        return Observer(builder: (_) {
+                          return FilterChipWidget(
+                              onTap: () => controller
+                                  .toggleFilterActivityChipIndex(index + 8),
+                              selected:
+                                  controller.filterActivityChipIndexSelected ==
+                                      index + 8,
+                              activityType: ActivityEnum.values[index + 8]);
+                        });
+                      })),
+            ),
             Observer(builder: (_) {
               return Column(
                 children: [
                   ActivitiesCarouselWidget(
-                      list: controller.mondayActivitiesList, weekday: 1),
+                    list: controller.mondayActivitiesList,
+                    weekday: 0,
+                  ),
                   ActivitiesCarouselWidget(
-                      list: controller.tuesdayActivitiesList, weekday: 2),
+                    list: controller.tuesdayActivitiesList,
+                    weekday: 1,
+                  ),
                   ActivitiesCarouselWidget(
-                      list: controller.wednesdayActivitiesList, weekday: 3),
+                    list: controller.wednesdayActivitiesList,
+                    weekday: 2,
+                  ),
                   ActivitiesCarouselWidget(
-                      list: controller.thursdayActivitiesList, weekday: 4),
+                    list: controller.thursdayActivitiesList,
+                    weekday: 3,
+                  ),
                   ActivitiesCarouselWidget(
-                      list: controller.fridayActivitiesList, weekday: 5),
+                    list: controller.fridayActivitiesList,
+                    weekday: 4,
+                  ),
                 ],
               );
             }),
           ],
         ),
-      )),
+      ),
       floatingActionButton: Observer(builder: (_) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,7 +142,7 @@ class _AdmDashboardPageState
                         child: Icon(
                           Icons.insert_chart_rounded,
                           size: 35,
-                          color: AppColors.brandingBlue,
+                          color: AppColors.brandingPurple,
                         ),
                         onPressed: () {}),
                   ),
@@ -113,7 +162,7 @@ class _AdmDashboardPageState
                         child: Icon(
                           Icons.edit,
                           size: 35,
-                          color: AppColors.brandingBlue,
+                          color: AppColors.brandingPurple,
                         ),
                         onPressed: () {
                           Modular.to.pushNamed('/adm/create-activity');
@@ -135,7 +184,7 @@ class _AdmDashboardPageState
                         controller.isFloatActionButtonOpen
                             ? Icons.close
                             : Icons.keyboard_arrow_up_rounded,
-                        color: AppColors.brandingBlue,
+                        color: AppColors.brandingPurple,
                       ),
                       onPressed: () {
                         controller.toggleFloatActionButton();

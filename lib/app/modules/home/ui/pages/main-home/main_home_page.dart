@@ -322,7 +322,7 @@ class _MainHomePageState extends State<MainHomePage> {
                           fontSize: 70,
                           boxHeight: weekBoxHeight(size, height),
                           boxWidth: 634,
-                          backgroundColor: AppColors.brandingBlue,
+                          backgroundColor: AppColors.brandingPurple,
                         ),
                       ),
                       BrandingTextButtonWidget(

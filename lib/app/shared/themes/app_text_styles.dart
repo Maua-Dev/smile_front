@@ -4,13 +4,13 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 class AppTextStyles {
   static final TextStyle titleH1 = GoogleFonts.roboto(
-    color: AppColors.brandingBlue,
+    color: AppColors.brandingPurple,
     fontSize: 60,
     fontWeight: FontWeight.w700,
   );
 
   static final TextStyle body = GoogleFonts.roboto(
-    color: AppColors.brandingBlue,
+    color: AppColors.brandingPurple,
     fontSize: 25,
     fontWeight: FontWeight.w400,
   );

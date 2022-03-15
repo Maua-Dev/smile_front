@@ -30,7 +30,8 @@ class ScheduleAddWidget extends StatelessWidget {
       children: [
         Flexible(
           child: TextFieldDialogWidget(
-              hintText: 'Data (DD-MM-AAAA)',
+              labelText: 'Data',
+              hintText: 'DD-MM-AAAA',
               onChanged: onChangedDate,
               value: date ?? '',
               padding: false,
@@ -45,7 +46,8 @@ class ScheduleAddWidget extends StatelessWidget {
         ),
         Flexible(
           child: TextFieldDialogWidget(
-              hintText: 'Hora (hh:mm)',
+              labelText: 'Hora',
+              hintText: 'HH:MM',
               onChanged: onChangedHour,
               value: hour ?? '',
               padding: false,
@@ -60,7 +62,7 @@ class ScheduleAddWidget extends StatelessWidget {
         ),
         Flexible(
           child: TextFieldDialogWidget(
-            hintText: 'Número de Vagas',
+            labelText: 'Número de Vagas',
             onChanged: onChangedParticipants,
             value:
                 totalParticipants == null ? '' : totalParticipants.toString(),

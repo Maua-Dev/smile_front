@@ -25,7 +25,7 @@ class MainSpeakersCard extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(38),
-              color: AppColors.brandingBlue,
+              color: AppColors.brandingPurple,
             ),
             height: MediaQuery.of(context).size.height * 0.65,
             width: MediaQuery.of(context).size.width * 0.7,
@@ -82,7 +82,7 @@ class MainSpeakersCard extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(38),
-              color: AppColors.lightBlue,
+              color: AppColors.lightPurple,
             ),
             height: MediaQuery.of(context).size.height * 0.65,
             width: MediaQuery.of(context).size.width * 0.8,

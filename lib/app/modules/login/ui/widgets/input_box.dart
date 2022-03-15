@@ -44,9 +44,9 @@ class InputBox extends StatelessWidget {
             decoration: BoxDecoration(
               color: disable != null
                   ? disable!
-                      ? AppColors.lightBlue
-                      : AppColors.brandingBlue
-                  : AppColors.brandingBlue,
+                      ? AppColors.lightPurple
+                      : AppColors.brandingPurple
+                  : AppColors.brandingPurple,
               borderRadius: BorderRadius.circular(10),
             ),
           ),
@@ -82,7 +82,7 @@ class InputBox extends StatelessWidget {
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: placeholder,
-                        fillColor: AppColors.brandingBlue,
+                        fillColor: AppColors.brandingPurple,
                         isDense: true),
                   ),
                 ),
