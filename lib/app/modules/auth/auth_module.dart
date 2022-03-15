@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/auth/infra/repositories/auth_repository_mock.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
 
 import '../../shared/services/dio/smile_login_options.dart';
@@ -22,8 +23,9 @@ class AuthModule extends Module {
     Bind.lazySingleton<AuthDatasource>(
         (i) => AuthDatasourceImpl(dioClient: i()),
         export: true),
-    Bind.lazySingleton<AuthRepositoryInterface>(
-        (i) => AuthRepositoryImpl(datasource: i())),
+    // Bind.lazySingleton<AuthRepositoryInterface>(
+    //     (i) => AuthRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<AuthRepositoryInterface>((i) => AuthRepositoryMock()),
     AsyncBind<SecureStorageInterface>((i) => SecureStorage.instance(),
         export: true),
     Bind.lazySingleton((i) => Dio(smileLoginOption))

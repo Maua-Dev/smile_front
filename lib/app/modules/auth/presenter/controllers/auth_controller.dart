@@ -15,14 +15,13 @@ class AuthController {
   bool get isLogged => _loggedIn;
   String get accessLevel => _accessLevel;
 
-  Future<void> loginWithCpfRne(
-      String cpfRne, String password, bool persistence) async {
+  Future<void> loginWithCpfRne(String cpfRne, String password) async {
     var loginResponse = await authRepository.login(cpfRne, password);
     _accessLevel = loginResponse.entries.last.toString();
-    if (persistence) {
-      await storage.saveToken(loginResponse['access_token']);
-      await storage.saveAccessLevel(_accessLevel);
-    }
+
+    await storage.saveToken(loginResponse['access_token']);
+    await storage.saveAccessLevel(_accessLevel);
+
     _loggedIn = true;
     _accessLevel = loginResponse['access_level'];
   }

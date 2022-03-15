@@ -23,7 +23,7 @@ void main() {
   });
 
   test('loginWithCpfRne', () async {
-    await controller.loginWithCpfRne('adm', 'teste', false);
+    await controller.loginWithCpfRne('adm', 'teste');
     expect(controller.isLogged, true);
   });
 

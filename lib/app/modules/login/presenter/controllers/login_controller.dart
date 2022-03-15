@@ -14,6 +14,9 @@ abstract class _LoginController with Store {
   _LoginController({required this.authController});
 
   @observable
+  bool isLoading = false;
+
+  @observable
   String cpfRne = '';
 
   @observable
@@ -37,8 +40,9 @@ abstract class _LoginController with Store {
 
   @action
   Future<void> login() async {
+    setIsLoading(true);
     try {
-      await authController.loginWithCpfRne(cpfRne, password, keepConected);
+      await authController.loginWithCpfRne(cpfRne, password);
       if (authController.isLogged) {
         if (authController.accessLevel == 'ADMIN') {
           Modular.to
@@ -53,5 +57,16 @@ abstract class _LoginController with Store {
     } on Failure catch (e) {
       errors = e.message;
     }
+    setIsLoading(false);
+  }
+
+  @action
+  Future<void> setError(String value) async {
+    errors = value;
+  }
+
+  @action
+  Future<void> setIsLoading(bool value) async {
+    isLoading = value;
   }
 }

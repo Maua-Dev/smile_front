@@ -6,14 +6,15 @@ import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
 import '../presenter/controllers/login_controller.dart';
 import 'widgets/input_box.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
-class _LoginPageState extends ModularState<LoginPage, LoginController> {
+class _ForgotPasswordState
+    extends ModularState<ForgotPassword, LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,22 +82,17 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     }
                     return Container();
                   }),
+                  const Text(
+                    'Uma nova senha será enviada no email cadastrado',
+                    style: TextStyle(color: Colors.white),
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
                   InputBox(
                     icon: Icons.person,
-                    placeholder: 'CPF / RNE ou E-mail',
+                    placeholder: 'CPF / RNE',
                     setValue: controller.setUsername,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  InputBox(
-                    icon: Icons.lock,
-                    placeholder: 'Senha',
-                    setValue: controller.setPassword,
-                    isPassword: true,
                   ),
                   const SizedBox(
                     height: 40,
@@ -104,12 +100,12 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   Observer(builder: (_) {
                     return ActionTextButtonWidget(
                       isLoading: controller.isLoading,
-                      title: 'Login',
+                      title: 'Enviar',
                       widthSize: 600,
                       heightSize: 50,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () {
-                        controller.login();
+                        // gerar nova senha
                       },
                     );
                   }),
@@ -125,27 +121,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       Modular.to.navigate('/login/cadastro');
                     },
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Modular.to.navigate('/login/esqueci-minha-senha');
-                    },
-                    child: const Text(
-                      'Esqueci minha senha',
-                      style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: Colors.white),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.white.withOpacity(0),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 50, vertical: 20),
-                        textStyle: const TextStyle(
-                          fontSize: 20,
-                        )),
-                  )
                 ],
               ),
             ],

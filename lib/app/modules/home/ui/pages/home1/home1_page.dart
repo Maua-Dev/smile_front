@@ -304,7 +304,7 @@ class _Home1PageState extends State<Home1Page> {
                           fontSize: 70,
                           boxHeight: weekBoxHeight(size, height),
                           boxWidth: 634,
-                          backgroundColor: AppColors.brandingBlue,
+                          backgroundColor: AppColors.brandingPurple,
                         ),
                       ),
                       BrandingTextButtonWidget(

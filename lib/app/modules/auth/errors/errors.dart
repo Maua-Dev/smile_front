@@ -3,10 +3,6 @@ class Failure implements Exception {
   Failure(this.message);
 }
 
-class PasswordInvalid extends Failure {
-  PasswordInvalid(String message) : super(message);
-}
-
-class EmailInvalid extends Failure {
-  EmailInvalid(String message) : super(message);
+class LoginInvalid extends Failure {
+  LoginInvalid(String message) : super(message);
 }

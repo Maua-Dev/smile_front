@@ -130,7 +130,7 @@ class MainSpeakersCard extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(38),
-            color: AppColors.brandingBlue,
+            color: AppColors.brandingPurple,
           ),
           height: MediaQuery.of(context).size.height * 0.6,
           width: MediaQuery.of(context).size.width * 0.7,
@@ -138,7 +138,7 @@ class MainSpeakersCard extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(38),
-            color: AppColors.lightBlue,
+            color: AppColors.lightPurple,
           ),
           height: MediaQuery.of(context).size.height * 0.6,
           width: MediaQuery.of(context).size.width * 0.8,
@@ -171,7 +171,7 @@ class MainSpeakersCard extends StatelessWidget {
                           child: Container(
                             width: 20,
                             height: 2,
-                            color: AppColors.brandingBlue,
+                            color: AppColors.brandingPurple,
                           ),
                         ),
                         visible: size >= 1280 ? true : false,

@@ -9,6 +9,21 @@ part of 'login_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginController on _LoginController, Store {
+  final _$isLoadingAtom = Atom(name: '_LoginController.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   final _$cpfRneAtom = Atom(name: '_LoginController.cpfRne');
 
   @override
@@ -90,9 +105,25 @@ mixin _$LoginController on _LoginController, Store {
     return _$loginAsyncAction.run(() => super.login());
   }
 
+  final _$setErrorAsyncAction = AsyncAction('_LoginController.setError');
+
+  @override
+  Future<void> setError(String value) {
+    return _$setErrorAsyncAction.run(() => super.setError(value));
+  }
+
+  final _$setIsLoadingAsyncAction =
+      AsyncAction('_LoginController.setIsLoading');
+
+  @override
+  Future<void> setIsLoading(bool value) {
+    return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
+  }
+
   @override
   String toString() {
     return '''
+isLoading: ${isLoading},
 cpfRne: ${cpfRne},
 password: ${password},
 keepConected: ${keepConected},

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../../shared/models/user_model.dart';
+import '../errors/errors.dart';
 import '../infra/datasource/auth_datasource.dart';
 
 class AuthDatasourceImpl implements AuthDatasource {
@@ -19,7 +20,6 @@ class AuthDatasourceImpl implements AuthDatasource {
       }
       throw Exception();
     } catch (e) {
-      // ignore: avoid_print
       print('Não foi possível se conectar com o Microsserviço, erro: ' +
           e.toString());
       rethrow;
@@ -30,7 +30,7 @@ class AuthDatasourceImpl implements AuthDatasource {
   Future<Map<String, dynamic>> login(cpfRne, password) async {
     try {
       final res = await dioClient.post('/login', data: {
-        'cpfRne': cpfRne,
+        'login': cpfRne,
         'password': password,
       });
       if (res.statusCode == 200) {
@@ -40,9 +40,7 @@ class AuthDatasourceImpl implements AuthDatasource {
       throw Exception();
     } catch (e) {
       // ignore: avoid_print
-      print('Não foi possível se conectar com o Microsserviço, erro: ' +
-          e.toString());
-      rethrow;
+      throw LoginInvalid('Login ou Senha inválida');
     }
   }
 }

@@ -93,7 +93,7 @@ class _AdmDashboardPageState
                         child: Icon(
                           Icons.insert_chart_rounded,
                           size: 35,
-                          color: AppColors.brandingBlue,
+                          color: AppColors.brandingPurple,
                         ),
                         onPressed: () {}),
                   ),
@@ -113,7 +113,7 @@ class _AdmDashboardPageState
                         child: Icon(
                           Icons.edit,
                           size: 35,
-                          color: AppColors.brandingBlue,
+                          color: AppColors.brandingPurple,
                         ),
                         onPressed: () {}),
                   ),
@@ -133,7 +133,7 @@ class _AdmDashboardPageState
                         controller.isFloatActionButtonOpen
                             ? Icons.close
                             : Icons.keyboard_arrow_up_rounded,
-                        color: AppColors.brandingBlue,
+                        color: AppColors.brandingPurple,
                       ),
                       onPressed: () {
                         controller.toggleFloatActionButton();

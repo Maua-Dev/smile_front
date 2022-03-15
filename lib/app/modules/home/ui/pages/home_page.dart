@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
           : EdgeInsets.zero,
       child: Scaffold(
         appBar: AppBar(
-            backgroundColor: AppColors.brandingBlue,
+            backgroundColor: AppColors.brandingPurple,
             title: Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Image.asset(

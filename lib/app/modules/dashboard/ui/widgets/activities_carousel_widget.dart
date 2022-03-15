@@ -45,7 +45,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                 Text(
                   weekday != null ? WeekdaysEnum.values[weekday!].name : '',
                   style: AppTextStyles.titleH1
-                      .copyWith(fontSize: 40, color: AppColors.brandingBlue),
+                      .copyWith(fontSize: 40, color: AppColors.brandingPurple),
                 ),
               ],
             ),
@@ -141,7 +141,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 8.0),
                           child: Icon(
                             Icons.arrow_back_ios,
-                            color: AppColors.brandingBlue,
+                            color: AppColors.brandingPurple,
                           ),
                         )),
                       ),
@@ -172,7 +172,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                         child: Center(
                             child: Icon(
                           Icons.arrow_forward_ios_rounded,
-                          color: AppColors.brandingBlue,
+                          color: AppColors.brandingPurple,
                         )),
                       ),
                     ),

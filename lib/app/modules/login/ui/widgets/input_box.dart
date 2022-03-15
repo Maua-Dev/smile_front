@@ -38,59 +38,37 @@ class InputBox extends StatelessWidget {
       ),
       width: widthSize ?? 600,
       height: heightSize ?? 60,
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: disable != null
-                  ? disable!
-                      ? AppColors.lightBlue
-                      : AppColors.brandingBlue
-                  : AppColors.brandingBlue,
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-                left: 25, top: heightSize != null ? heightSize! / 3.3 : 19),
-            child: Icon(
-              icon,
-              color: Colors.white,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 70),
-            child: Container(
-              decoration: BoxDecoration(
-                color: AppColors.gray,
-                borderRadius: BorderRadius.circular(10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.gray,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 10.0, left: 10),
+          child: TextFormField(
+            textAlignVertical: TextAlignVertical.center,
+            validator: (value) {
+              return validation!(value!);
+            },
+            onChanged: setValue,
+            obscureText: isPassword ?? false,
+            enabled: disable != null ? !disable! : true,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.only(top: 10),
+              border: InputBorder.none,
+              hintText: placeholder,
+              fillColor: Colors.white,
+              isDense: true,
+              hintStyle: TextStyle(color: AppColors.placeholder),
+              errorStyle: TextStyle(
+                color: AppColors.brandingOrange,
+                fontSize: 24,
               ),
-              child: Padding(
-                padding:
-                    EdgeInsets.all(heightSize != null ? heightSize! / 4 : 19),
-                child: Container(
-                  margin: const EdgeInsets.only(left: 10.0),
-                  child: TextFormField(
-                    validator: (value) {
-                      return validation!(value!);
-                    },
-                    onChanged: setValue,
-                    obscureText: isPassword ?? false,
-                    enabled: disable != null ? !disable! : true,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: placeholder,
-                      fillColor: Colors.white,
-                      isDense: true,
-                      hintStyle: TextStyle(color: AppColors.placeholder),
-                    ),
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
+              prefixIcon: Icon(icon, size: 24),
             ),
+            style: const TextStyle(color: Colors.white),
           ),
-        ],
+        ),
       ),
     );
   }
