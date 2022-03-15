@@ -59,130 +59,127 @@ class ActivitiesCarouselWidget extends StatelessWidget {
             ),
           )
         else
-          Padding(
-            padding: const EdgeInsets.only(top: 30, bottom: 30),
-            child: Stack(
-              children: [
-                SizedBox(
-                    height: 250,
-                    child: ListView.builder(
-                        controller: _controller,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: list.length,
-                        itemBuilder: (BuildContext ctx, index) {
-                          String date = '';
-                          String time = '';
-                          for (var element in list[index].schedule) {
-                            if (element.date?.weekday == weekday) {
-                              date = DateFormat('dd/MM/yyyy')
-                                  .format(element.date!);
-                              time = DateFormat('HH:mm').format(element.date!);
-                            } else if (weekday == null) {
-                              date = DateFormat('dd/MM/yyyy')
-                                  .format(list[index].schedule[0].date!);
-                              time = DateFormat('HH:mm')
-                                  .format(list[index].schedule[0].date!);
-                            }
+          Stack(
+            children: [
+              SizedBox(
+                  height: 250,
+                  child: ListView.builder(
+                      controller: _controller,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: list.length,
+                      itemBuilder: (BuildContext ctx, index) {
+                        String date = '';
+                        String time = '';
+                        for (var element in list[index].schedule) {
+                          if (element.date?.weekday == weekday) {
+                            date =
+                                DateFormat('dd/MM/yyyy').format(element.date!);
+                            time = DateFormat('HH:mm').format(element.date!);
+                          } else if (weekday == null) {
+                            date = DateFormat('dd/MM/yyyy')
+                                .format(list[index].schedule[0].date!);
+                            time = DateFormat('HH:mm')
+                                .format(list[index].schedule[0].date!);
                           }
-                          return Row(
-                            children: [
-                              if (index == 0)
-                                const SizedBox(
-                                  width: 120,
-                                ),
-                              SizedBox(
-                                height: 200,
-                                child: ActivityCardWidget(
-                                  onTap: () {
-                                    Modular.to.pushNamed(
-                                      '/adm/edit-activity',
-                                      arguments: list[index],
-                                    );
-                                  },
-                                  cardColor: cardColor,
-                                  textColor: isNextActivity
-                                      ? Colors.white
-                                      : Colors.black,
-                                  name: list[index].title,
-                                  description: list[index].description,
-                                  date: date,
-                                  time: time,
-                                  totalParticipants:
-                                      list[index].schedule[0].totalParticipants,
-                                ),
+                        }
+                        return Row(
+                          children: [
+                            if (index == 0)
+                              const SizedBox(
+                                width: 120,
                               ),
-                              if (index == list.length - 1)
-                                const SizedBox(
-                                  width: 172,
-                                ),
-                            ],
-                          );
-                        })),
-                if (list.isNotEmpty)
-                  Positioned(
-                    top: 90,
-                    left: 40,
-                    child: GestureDetector(
-                      onTap: () => _scrollLeft(list.length),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.4),
-                              spreadRadius: 0.5,
-                              blurRadius: 3,
-                              offset: const Offset(
-                                  5, 5), // changes position of shadow
+                            SizedBox(
+                              height: 200,
+                              child: ActivityCardWidget(
+                                onTap: () {
+                                  Modular.to.pushNamed(
+                                    '/adm/edit-activity',
+                                    arguments: list[index],
+                                  );
+                                },
+                                cardColor: cardColor,
+                                textColor: isNextActivity
+                                    ? Colors.white
+                                    : Colors.black,
+                                name: list[index].title,
+                                description: list[index].description,
+                                date: date,
+                                time: time,
+                                totalParticipants:
+                                    list[index].schedule[0].totalParticipants,
+                              ),
                             ),
+                            if (index == list.length - 1)
+                              const SizedBox(
+                                width: 172,
+                              ),
                           ],
-                        ),
-                        width: 60,
-                        height: 60,
-                        child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color: AppColors.brandingPurple,
+                        );
+                      })),
+              if (list.isNotEmpty)
+                Positioned(
+                  top: 90,
+                  left: 40,
+                  child: GestureDetector(
+                    onTap: () => _scrollLeft(list.length),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.4),
+                            spreadRadius: 0.5,
+                            blurRadius: 3,
+                            offset: const Offset(
+                                5, 5), // changes position of shadow
                           ),
-                        )),
+                        ],
                       ),
-                    ),
-                  ),
-                if (list.isNotEmpty)
-                  Positioned(
-                    top: 90,
-                    left: MediaQuery.of(context).size.width - 120,
-                    child: GestureDetector(
-                      onTap: () => _scrollRight(list.length),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.4),
-                              spreadRadius: 0.5,
-                              blurRadius: 3,
-                              offset: const Offset(
-                                  5, 5), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        width: 60,
-                        height: 60,
-                        child: Center(
-                            child: Icon(
-                          Icons.arrow_forward_ios_rounded,
+                      width: 60,
+                      height: 60,
+                      child: Center(
+                          child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Icon(
+                          Icons.arrow_back_ios,
                           color: AppColors.brandingPurple,
-                        )),
-                      ),
+                        ),
+                      )),
                     ),
                   ),
-              ],
-            ),
+                ),
+              if (list.isNotEmpty)
+                Positioned(
+                  top: 90,
+                  left: MediaQuery.of(context).size.width - 120,
+                  child: GestureDetector(
+                    onTap: () => _scrollRight(list.length),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.4),
+                            spreadRadius: 0.5,
+                            blurRadius: 3,
+                            offset: const Offset(
+                                5, 5), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      width: 60,
+                      height: 60,
+                      child: Center(
+                          child: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: AppColors.brandingPurple,
+                      )),
+                    ),
+                  ),
+                ),
+            ],
           )
       ],
     );

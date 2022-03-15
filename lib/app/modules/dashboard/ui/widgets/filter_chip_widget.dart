@@ -23,7 +23,7 @@ class FilterChipWidget extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 color:
-                    selected ? AppColors.brandingPurple : AppColors.lightPurple,
+                    selected ? AppColors.brandingPurple : AppColors.lightBlue,
                 borderRadius: BorderRadius.circular(45)),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
