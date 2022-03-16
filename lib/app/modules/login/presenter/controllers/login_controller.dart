@@ -23,9 +23,6 @@ abstract class _LoginController with Store {
   String password = '';
 
   @observable
-  bool keepConected = false;
-
-  @observable
   String errors = '';
 
   @action

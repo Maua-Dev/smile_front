@@ -54,21 +54,6 @@ mixin _$LoginController on _LoginController, Store {
     });
   }
 
-  final _$keepConectedAtom = Atom(name: '_LoginController.keepConected');
-
-  @override
-  bool get keepConected {
-    _$keepConectedAtom.reportRead();
-    return super.keepConected;
-  }
-
-  @override
-  set keepConected(bool value) {
-    _$keepConectedAtom.reportWrite(value, super.keepConected, () {
-      super.keepConected = value;
-    });
-  }
-
   final _$errorsAtom = Atom(name: '_LoginController.errors');
 
   @override
@@ -126,7 +111,6 @@ mixin _$LoginController on _LoginController, Store {
 isLoading: ${isLoading},
 cpfRne: ${cpfRne},
 password: ${password},
-keepConected: ${keepConected},
 errors: ${errors}
     ''';
   }
