@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
 
 import '../controller/user_dashboard_controller_test.mocks.dart';
@@ -12,10 +13,13 @@ import '../controller/user_dashboard_controller_test.mocks.dart';
 void main() {
   ActivitiesRepositoryInterface repository =
       MockActivitiesRepositoryInterface();
+
   late CreateActivityController controller;
+  // late AdmDashboardController admDashboardController;
 
   setUpAll(() {
     controller = CreateActivityController(repository: repository);
+    // admDashboardController = AdmDashboardController(repository: repository);
   });
 
   test('isFilled', () {

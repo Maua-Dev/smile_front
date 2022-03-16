@@ -21,13 +21,15 @@ class AdmModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton<AdmDashboardController>(
-      (i) => AdmDashboardController(
-        repository: i(),
-      ),
-    ),
+        (i) => AdmDashboardController(
+              repository: i(),
+            ),
+        export: true),
     Bind.lazySingleton<EditActivityController>(
       (i) => EditActivityController(
-          repository: i(), activity: i.args!.data as ActivityModel),
+        repository: i(),
+        activity: i.args!.data as ActivityModel,
+      ),
     ),
     Bind.lazySingleton<CreateActivityController>(
       (i) => CreateActivityController(
