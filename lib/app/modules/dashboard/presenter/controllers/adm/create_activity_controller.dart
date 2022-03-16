@@ -15,7 +15,7 @@ class CreateActivityController = _CreateActivityControllerBase
 
 abstract class _CreateActivityControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
-  // final admDashboardController = Modular.get<AdmDashboardController>();
+  final admDashboardController = Modular.get<AdmDashboardController>();
 
   _CreateActivityControllerBase({
     required this.repository,
@@ -35,7 +35,7 @@ abstract class _CreateActivityControllerBase with Store {
   @action
   Future createActivity() async {
     await repository.createActivity(activityToCreate);
-    // admDashboardController.getAllActivities();
+    admDashboardController.getAllActivities();
   }
 
   @action

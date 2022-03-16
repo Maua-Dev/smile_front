@@ -1,7 +1,9 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
 
@@ -13,7 +15,7 @@ class EditActivityController = _EditActivityControllerBase
 abstract class _EditActivityControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final ActivityModel activity;
-  // final admDashboardController = Modular.get<AdmDashboardController>();
+  final admDashboardController = Modular.get<AdmDashboardController>();
 
   _EditActivityControllerBase({
     required this.activity,
@@ -34,13 +36,13 @@ abstract class _EditActivityControllerBase with Store {
   @action
   Future editActivity() async {
     await repository.editActivity(activityToEdit);
-    // admDashboardController.getAllActivities();
+    admDashboardController.getAllActivities();
   }
 
   @action
   Future deleteActivity(String id) async {
     await repository.removeActivity(id);
-    // admDashboardController.getAllActivities();
+    admDashboardController.getAllActivities();
   }
 
   @action
