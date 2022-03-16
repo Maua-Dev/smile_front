@@ -9,6 +9,7 @@ class AuthGuardAdm implements RouteGuard {
     var authController = Modular.get<AuthController>();
     if (!authController.isLogged) {
       await authController.refreshToken();
+      return authController.isLogged;
     }
     if (authController.accessLevel == 'ADMIN' && authController.isLogged) {
       return true;
@@ -17,5 +18,5 @@ class AuthGuardAdm implements RouteGuard {
   }
 
   @override
-  String? get guardedRoute => '/logged-home/user-home';
+  String? get guardedRoute => '/login';
 }

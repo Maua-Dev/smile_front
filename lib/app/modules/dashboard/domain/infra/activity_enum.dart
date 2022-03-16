@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:enum_to_string/enum_to_string.dart';
+
 enum ActivityEnum {
   CURSOS,
   PALESTRAS,
@@ -40,5 +42,15 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.WORKSHOP:
         return 'Workshop';
     }
+  }
+
+  static ActivityEnum stringToEnumMap(String toMap) {
+    ActivityEnum type = ActivityEnum.values
+        .firstWhere((type) => EnumToString.convertToString(type) == toMap);
+    return type;
+  }
+
+  static String enumToStringMap(ActivityEnum type) {
+    return EnumToString.convertToString(type);
   }
 }

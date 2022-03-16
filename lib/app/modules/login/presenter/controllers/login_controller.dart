@@ -3,7 +3,6 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
 
 import '../../../auth/presenter/controllers/auth_controller.dart';
-import '../../../logged-home/domain/repositories/user_repository_interface.dart';
 
 part 'login_controller.g.dart';
 
@@ -11,18 +10,17 @@ class LoginController = _LoginController with _$LoginController;
 
 abstract class _LoginController with Store {
   final AuthController authController;
-  final UserRepositoryInterface repository;
 
-  _LoginController({required this.authController, required this.repository});
+  _LoginController({required this.authController});
+
+  @observable
+  bool isLoading = false;
 
   @observable
   String cpfRne = '';
 
   @observable
   String password = '';
-
-  @observable
-  bool keepConected = false;
 
   @observable
   String errors = '';
@@ -39,21 +37,33 @@ abstract class _LoginController with Store {
 
   @action
   Future<void> login() async {
+    setIsLoading(true);
     try {
-      await authController.loginWithCpfRne(cpfRne, password, keepConected);
+      await authController.loginWithCpfRne(cpfRne, password);
       if (authController.isLogged) {
         if (authController.accessLevel == 'ADMIN') {
-          Modular.to.navigate('/logged-home/dashboard/adm-activities-dashboard',
-              arguments: [null, authController.accessLevel]);
+          Modular.to
+              .navigate('/adm', arguments: [null, authController.accessLevel]);
         } else if (authController.accessLevel == 'SPEAKER') {
           Modular.to.navigate('/speaker-home');
         } else {
-          Modular.to.navigate('/logged-home/user-home',
+          Modular.to.navigate('/user',
               arguments: [cpfRne, authController.accessLevel]);
         }
       }
     } on Failure catch (e) {
       errors = e.message;
     }
+    setIsLoading(false);
+  }
+
+  @action
+  Future<void> setError(String value) async {
+    errors = value;
+  }
+
+  @action
+  Future<void> setIsLoading(bool value) async {
+    isLoading = value;
   }
 }

@@ -15,7 +15,7 @@ class VerticalNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
       return Container(
-        color: AppColors.brandingBlue,
+        color: AppColors.brandingPurple,
         height: MediaQuery.of(context).size.height,
         width: 120,
         child: Padding(
@@ -24,7 +24,7 @@ class VerticalNavBar extends StatelessWidget {
             TextButton(
               onPressed: () {
                 controller.toggleIndex(0);
-                Modular.to.navigate('/logged-home/user-home');
+                Modular.to.navigate('/user');
               },
               child: Column(
                 children: [

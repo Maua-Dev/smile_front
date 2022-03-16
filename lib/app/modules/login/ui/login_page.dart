@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/login/presenter/controllers/register_controller.dart';
-import 'package:smile_front/app/modules/login/ui/widgets/login_tab_bar.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
+import '../presenter/controllers/login_controller.dart';
+import 'widgets/input_box.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends ModularState<LoginPage, RegisterController> {
+class _LoginPageState extends ModularState<LoginPage, LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,42 +26,129 @@ class _LoginPageState extends ModularState<LoginPage, RegisterController> {
               fit: BoxFit.cover,
             ),
           ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.1,
-                vertical: MediaQuery.of(context).size.height * 0.05),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                color: AppColors.brandingBlue,
+          child: Stack(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                color: const Color(0xFF000000).withOpacity(0.6),
               ),
-              alignment: Alignment.center,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.025,
-                  left: MediaQuery.of(context).size.width * 0.030,
-                  right: MediaQuery.of(context).size.width * 0.030,
-                  bottom: MediaQuery.of(context).size.height * 0.01,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Center(
-                      child: SizedBox(
-                          child: Image.asset('assets/images/logo_smile.png')),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Image.asset(
+                      'assets/images/logo_smile.png',
+                      width: 300,
+                      fit: BoxFit.cover,
                     ),
-                    const SizedBox(
-                      height: 10,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Observer(builder: (_) {
+                    if (controller.errors != '') {
+                      return Container(
+                        width: 300,
+                        decoration: BoxDecoration(
+                            color: Colors.red[100],
+                            border: Border.all(color: Colors.red),
+                            borderRadius: BorderRadius.circular(8)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  controller.setError('');
+                                },
+                                icon: const Icon(Icons.close),
+                              ),
+                              Text(
+                                controller.errors,
+                                style: const TextStyle(
+                                    color: Colors.black, fontSize: 16),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    return Container();
+                  }),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  InputBox(
+                    icon: Icons.person,
+                    placeholder: 'CPF / RNE ou E-mail',
+                    setValue: controller.setUsername,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  InputBox(
+                    icon: Icons.lock,
+                    placeholder: 'Senha',
+                    setValue: controller.setPassword,
+                    isPassword: true,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Observer(builder: (_) {
+                    return ActionTextButtonWidget(
+                      isLoading: controller.isLoading,
+                      title: 'Login',
+                      widthSize: 600,
+                      heightSize: 50,
+                      backgroundColor: AppColors.brandingOrange,
+                      onPressed: () {
+                        controller.login();
+                      },
+                    );
+                  }),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ActionTextButtonWidget(
+                    title: 'Não tenho cadastro',
+                    widthSize: 600,
+                    heightSize: 50,
+                    backgroundColor: AppColors.brandingPurple,
+                    onPressed: () {
+                      Modular.to.navigate('/login/cadastro');
+                    },
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Modular.to.navigate('/login/esqueci-minha-senha');
+                    },
+                    child: const Text(
+                      'Esqueci minha senha',
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.white),
                     ),
-                    Center(
-                        child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.75,
-                            child: const LoginTabBar())),
-                  ],
-                ),
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.white.withOpacity(0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 50, vertical: 20),
+                        textStyle: const TextStyle(
+                          fontSize: 20,
+                        )),
+                  )
+                ],
               ),
-            ),
+            ],
           )),
     );
   }
