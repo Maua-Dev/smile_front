@@ -28,7 +28,7 @@ void main() {
     Modular.get<AuthRepositoryMock>();
   });
 
-  test('AccessLevelDatasourceImpl Injection', () {
+  test('AuthDatasourceImpl Injection', () {
     var test = Modular.get<AuthDatasourceImpl>();
     expect(test.dioClient, isInstanceOf<Dio>());
   });
