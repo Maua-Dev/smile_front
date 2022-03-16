@@ -255,10 +255,7 @@ class _EditActivityPageState
                                     title: 'Tem certeza que deseja continuar?',
                                     content:
                                         'Ao salvar todos os dados antigos serão perdidos.',
-                                    onPressed: () {
-                                      controller.editActivity();
-                                      Modular.to.navigate('/adm');
-                                    });
+                                    onPressed: controller.editActivity);
                               },
                             );
                           } else {
