@@ -18,9 +18,9 @@ class UserModule extends Module {
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
-          repository: i(),
-          activityType: i.args!.data[0] as ActivityEnum,
-          accessLevel: i.args!.data[1] as String),
+        repository: i(),
+        activityType: i.args!.data[0] as ActivityEnum,
+      ),
     ),
   ];
 

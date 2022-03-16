@@ -92,7 +92,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                               height: 200,
                               child: ActivityCardWidget(
                                 onTap: () {
-                                  Modular.to.pushNamed(
+                                  Modular.to.navigate(
                                     '/adm/edit-activity',
                                     arguments: list[index],
                                   );

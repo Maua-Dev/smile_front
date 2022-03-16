@@ -1,6 +1,8 @@
 abstract class SecureStorageInterface {
-  Future<void> saveToken(String token);
-  Future<String?> getToken();
+  Future<void> saveAccessToken(String token);
+  Future<void> saveRefreshToken(String token);
+  Future<String?> getAccessToken();
+  Future<String?> getRefreshToken();
   Future<void> saveAccessLevel(String accessLevel);
   Future<String?> getAccessLevel();
   Future<void> cleanSecureStorage();

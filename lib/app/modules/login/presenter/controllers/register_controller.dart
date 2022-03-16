@@ -78,8 +78,8 @@ abstract class _RegisterController with Store {
   }
 
   @action
-  Future<void> setIsMauaStudent(bool value) async {
-    isMauaStudent = value;
+  Future<void> setIsMauaStudent(bool? value) async {
+    isMauaStudent = value!;
     if (!isMauaStudent) {
       ra = '';
     }

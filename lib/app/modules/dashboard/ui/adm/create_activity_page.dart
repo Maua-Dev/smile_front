@@ -27,68 +27,69 @@ class _CreateActivityPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.2,
-              child: Image.asset('assets/images/maua_campus_blur.png',
-                  fit: BoxFit.cover),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-              child: TextHeaderScratched(
-                title: 'Editar Atividade',
-                leftPadding: 24,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.2,
+                child: Image.asset('assets/images/maua_campus_blur.png',
+                    fit: BoxFit.cover),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.2,
-                    child: DropDownFieldCustom<ActivityEnum>(
-                      textStyles: AppTextStyles.body.copyWith(
-                          color: AppColors.brandingPurple, fontSize: 20),
-                      filledColor: Colors.white,
-                      titulo: 'Tipo de Atividade',
-                      value: controller.activityToCreate.type,
-                      items: ActivityEnum.values
-                          .toList()
-                          .map((ActivityEnum value) {
-                        return DropdownMenuItem<ActivityEnum>(
-                          value: value,
-                          child: Text(value.name),
-                        );
-                      }).toList(),
-                      onChanged: controller.setType,
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                child: TextHeaderScratched(
+                  title: 'Editar Atividade',
+                  leftPadding: 24,
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      child: DropDownFieldCustom<ActivityEnum>(
+                        textStyles: AppTextStyles.body.copyWith(
+                            color: AppColors.brandingPurple, fontSize: 20),
+                        filledColor: Colors.white,
+                        titulo: 'Tipo de Atividade',
+                        value: controller.activityToCreate.type,
+                        items: ActivityEnum.values
+                            .toList()
+                            .map((ActivityEnum value) {
+                          return DropdownMenuItem<ActivityEnum>(
+                            value: value,
+                            child: Text(value.name),
+                          );
+                        }).toList(),
+                        onChanged: controller.setType,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Flexible(
-                      child: TextFieldDialogWidget(
-                    labelText: 'Titulo da Atividade',
-                    padding: false,
-                    onChanged: controller.setTitle,
-                    value: controller.activityToCreate.title,
-                  )),
-                ],
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Flexible(
+                        child: TextFieldDialogWidget(
+                      labelText: 'Titulo da Atividade',
+                      padding: false,
+                      onChanged: controller.setTitle,
+                      value: controller.activityToCreate.title,
+                    )),
+                  ],
+                ),
               ),
-            ),
-            TextFieldDialogWidget(
-              labelText: 'Descrição',
-              value: controller.activityToCreate.description,
-              onChanged: controller.setDescription,
-            ),
-            Observer(builder: (_) {
-              return Flexible(
-                child: ListView.builder(
+              TextFieldDialogWidget(
+                labelText: 'Descrição',
+                value: controller.activityToCreate.description,
+                onChanged: controller.setDescription,
+              ),
+              Observer(builder: (_) {
+                return ListView.builder(
                     shrinkWrap: true,
                     itemCount: controller.activityToCreate.schedule.length,
                     itemBuilder: (context, index) {
@@ -127,124 +128,128 @@ class _CreateActivityPageState
                           },
                         ),
                       );
-                    }),
-              );
-            }),
-            Center(
-              child: Padding(
+                    });
+              }),
+              Center(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                  child: FormsButtonWidget(
+                      buttonTittle: 'Adicionar',
+                      onPressed: controller.addSchedule,
+                      backgroundColor: AppColors.brandingOrange,
+                      icon:
+                          const Icon(Icons.add, color: Colors.white, size: 22)),
+                ),
+              ),
+              TextFieldDialogWidget(
+                labelText: 'Local/Link',
+                value: controller.activityToCreate.location,
+                onChanged: controller.setLocation,
+              ),
+              Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-                child: FormsButtonWidget(
-                    buttonTittle: 'Adicionar',
-                    onPressed: controller.addSchedule,
-                    backgroundColor: AppColors.brandingOrange,
-                    icon: const Icon(Icons.add, color: Colors.white, size: 22)),
-              ),
-            ),
-            TextFieldDialogWidget(
-              labelText: 'Local/Link',
-              value: controller.activityToCreate.location,
-              onChanged: controller.setLocation,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const AddPhotoWidget(),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Flexible(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Flexible(
-                              child: TextFieldDialogWidget(
-                                labelText: 'Nome Palestrante',
-                                padding: false,
-                                onChanged: controller.setSpeakerName,
-                                value: controller.activityToCreate.speaker.name,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 16,
-                            ),
-                            Flexible(
-                              child: TextFieldDialogWidget(
-                                labelText: 'Empresa',
-                                onChanged: controller.setSpeakerCompany,
-                                value:
-                                    controller.activityToCreate.speaker.company,
-                                padding: false,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          child: TextFieldDialogWidget(
-                            labelText: 'Bio',
-                            value: controller.activityToCreate.speaker.bio,
-                            onChanged: controller.setSpeakerBio,
-                            padding: false,
-                          ),
-                        ),
-                      ],
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const AddPhotoWidget(),
+                    const SizedBox(
+                      width: 16,
                     ),
-                  ),
-                ],
+                    Flexible(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              Flexible(
+                                child: TextFieldDialogWidget(
+                                  labelText: 'Nome Palestrante',
+                                  padding: false,
+                                  onChanged: controller.setSpeakerName,
+                                  value:
+                                      controller.activityToCreate.speaker.name,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 16,
+                              ),
+                              Flexible(
+                                child: TextFieldDialogWidget(
+                                  labelText: 'Empresa',
+                                  onChanged: controller.setSpeakerCompany,
+                                  value: controller
+                                      .activityToCreate.speaker.company,
+                                  padding: false,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 16.0),
+                            child: TextFieldDialogWidget(
+                              labelText: 'Bio',
+                              value: controller.activityToCreate.speaker.bio,
+                              onChanged: controller.setSpeakerBio,
+                              padding: false,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 48),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  FormsButtonWidget(
-                      buttonTittle: 'Cancelar',
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      backgroundColor: AppColors.redButton),
-                  const SizedBox(
-                    width: 40,
-                  ),
-                  FormsButtonWidget(
-                      buttonTittle: 'Salvar',
-                      onPressed: () {
-                        if (controller.isFilled()) {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return ActionConfirmationDialogWidget(
-                                  title: 'Tem certeza que deseja continuar?',
-                                  content:
-                                      'Ao salvar todos os dados antigos serão perdidos.',
-                                  onPressed: () {
-                                    controller.createActivity();
-                                  });
-                            },
-                          );
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return const FillAllFieldsDialogWidget();
-                            },
-                          );
-                        }
-                      },
-                      backgroundColor: AppColors.greenButton),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 48),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    FormsButtonWidget(
+                        buttonTittle: 'Cancelar',
+                        onPressed: () {
+                          Modular.to.navigate('/adm');
+                        },
+                        backgroundColor: AppColors.redButton),
+                    const SizedBox(
+                      width: 40,
+                    ),
+                    FormsButtonWidget(
+                        buttonTittle: 'Salvar',
+                        onPressed: () {
+                          if (controller.isFilled()) {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return ActionConfirmationDialogWidget(
+                                    title: 'Tem certeza que deseja continuar?',
+                                    content:
+                                        'Ao salvar o banco de dados de atividade será alterado.',
+                                    onPressed: () {
+                                      controller.createActivity();
+                                      Modular.to.navigate('/adm');
+                                    });
+                              },
+                            );
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return const FillAllFieldsDialogWidget();
+                              },
+                            );
+                          }
+                        },
+                        backgroundColor: AppColors.greenButton),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

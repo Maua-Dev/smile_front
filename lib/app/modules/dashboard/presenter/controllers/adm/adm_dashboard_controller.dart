@@ -10,10 +10,8 @@ class AdmDashboardController = _AdmDashboardControllerBase
 
 abstract class _AdmDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
-  final String accessLevel;
 
   _AdmDashboardControllerBase({
-    required this.accessLevel,
     required this.repository,
   }) {
     getAllActivities();

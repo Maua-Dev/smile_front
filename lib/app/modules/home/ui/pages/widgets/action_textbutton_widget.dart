@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class ActionTextButtonWidget extends StatelessWidget {
+  final bool? isLoading;
   final String? title;
   final Color? backgroundColor;
   final double? widthSize;
@@ -21,6 +22,7 @@ class ActionTextButtonWidget extends StatelessWidget {
     this.paddingHorizontal,
     this.paddingVertical,
     this.fontSize,
+    this.isLoading,
   }) : super(key: key);
 
   @override
@@ -39,10 +41,12 @@ class ActionTextButtonWidget extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           ),
-          child: Text(title ?? '',
-              textAlign: TextAlign.center,
-              style: AppTextStyles.body
-                  .copyWith(color: Colors.white, fontSize: fontSize ?? 25)),
+          child: isLoading != null && isLoading!
+              ? const CircularProgressIndicator()
+              : Text(title ?? '',
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.body
+                      .copyWith(color: Colors.white, fontSize: fontSize ?? 25)),
         ),
       ),
     );

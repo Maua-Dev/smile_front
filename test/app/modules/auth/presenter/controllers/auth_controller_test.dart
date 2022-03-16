@@ -13,17 +13,21 @@ void main() {
   SecureStorageInterface storage = MockSecureStorageInterface();
   late AuthController controller;
 
-  var loginWithEmail = {'token': 'token12354', 'accessLevel': 'ADMIN'};
+  var loginWithCpfRne = {
+    'access_token': 'token12354',
+    'refresh_token': 'refreshToken342315',
+    'access_level': 'ADMIN'
+  };
 
   setUpAll(() {
-    when(authRepository.loginWithEmail('adm', 'teste'))
-        .thenAnswer((_) async => loginWithEmail);
+    when(authRepository.login('adm', 'teste'))
+        .thenAnswer((_) async => loginWithCpfRne);
     controller =
         AuthController(authRepository: authRepository, storage: storage);
   });
 
   test('loginWithCpfRne', () async {
-    await controller.loginWithCpfRne('adm', 'teste', false);
+    await controller.loginWithCpfRne('adm', 'teste');
     expect(controller.isLogged, true);
   });
 

@@ -42,7 +42,7 @@ class _FilterDashboardPageState extends State<FilterDashboardPage> {
                       itemBuilder: (context, index) => FilterButtonWidget(
                         index: index,
                         onTap: () {
-                          Modular.to.pushNamed('./activities-dashboard',
+                          Modular.to.navigate('./activities-dashboard',
                               arguments: [
                                 ActivityEnum.values[index],
                                 widget.accessLevel
