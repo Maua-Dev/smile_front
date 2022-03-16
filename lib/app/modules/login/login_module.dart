@@ -15,9 +15,11 @@ class LoginModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => RegisterController(i())),
-    Bind.lazySingleton((i) => LoginController(
-          authController: i(),
-        )),
+    Bind.lazySingleton(
+        (i) => LoginController(
+              authController: i(),
+            ),
+        export: true),
     Bind.lazySingleton<AuthDatasource>(
         (i) => AuthDatasourceImpl(dioClient: i())),
     Bind.lazySingleton<AuthRepositoryInterface>(
