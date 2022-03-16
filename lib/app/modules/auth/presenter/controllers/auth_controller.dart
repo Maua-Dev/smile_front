@@ -15,27 +15,28 @@ class AuthController {
   bool get isLogged => _loggedIn;
   String get accessLevel => _accessLevel;
 
-  Future<void> loginWithCpfRne(
-      String cpfRne, String password, bool persistence) async {
-    var loginResponse = await authRepository.loginWithEmail(cpfRne, password);
+  Future<void> loginWithCpfRne(String cpfRne, String password) async {
+    var loginResponse = await authRepository.login(cpfRne, password);
     _accessLevel = loginResponse.entries.last.toString();
-    if (persistence) {
-      await storage.saveToken(loginResponse['token']);
-      await storage.saveAccessLevel(_accessLevel);
-    }
+
+    await storage.saveAccessToken(loginResponse['access_token']);
+    await storage.saveRefreshToken(loginResponse['refresh_token']);
+    await storage.saveAccessLevel(_accessLevel);
+
     _loggedIn = true;
-    _accessLevel = loginResponse['accessLevel'];
+    _accessLevel = loginResponse['access_level'];
   }
 
   Future<void> refreshToken() async {
-    var token = await storage.getToken();
+    var token = await storage.getRefreshToken();
     if (token == null) {
       _loggedIn = false;
       return;
     }
     try {
-      token = await authRepository.refreshToken(token);
-      await storage.saveToken(token);
+      var tokens = await authRepository.refreshToken(token);
+      await storage.saveAccessToken(tokens['access_token']);
+      await storage.saveRefreshToken(tokens['refresh_token']);
       _loggedIn = true;
 
       var accessLevel = await storage.getAccessLevel();

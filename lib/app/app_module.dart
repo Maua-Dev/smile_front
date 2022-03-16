@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/app_guard.dart';
 import 'package:smile_front/app/modules/auth/infra/auth_guards/auth_guard_adm.dart';
@@ -9,13 +8,10 @@ import 'package:smile_front/app/modules/login/login_module.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
 import 'modules/auth/auth_module.dart';
 import 'modules/home/home_module.dart';
-import 'shared/services/dio/smile_options.dart';
 
 class AppModule extends Module {
   @override
   final List<Module> imports = [AuthModule(), RegisterModule()];
-  @override
-  final List<Bind> binds = [Bind.lazySingleton((i) => Dio(smileOption))];
 
   @override
   final List<ModularRoute> routes = [

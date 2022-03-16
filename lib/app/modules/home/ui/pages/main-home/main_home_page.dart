@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -362,6 +363,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                     fontWeight: FontWeight.w300),
                               ),
                               BrandingTextButtonWidget(
+                                onPressed: () =>
+                                    Modular.to.navigate('/login/cadastro'),
                                 title: 'CADASTRE-SE',
                                 fontSize:
                                     participateBoxFontSize(size, height) + 5,

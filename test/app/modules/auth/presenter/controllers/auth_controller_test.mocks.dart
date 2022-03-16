@@ -30,15 +30,20 @@ class MockAuthRepositoryInterface extends _i1.Mock
   }
 
   @override
-  _i3.Future<Map<String, dynamic>> loginWithEmail(
-          String? email, String? password) =>
-      (super.noSuchMethod(Invocation.method(#loginWithEmail, [email, password]),
+  _i3.Future<Map<String, dynamic>> login(String? user, String? password) =>
+      (super.noSuchMethod(Invocation.method(#login, [user, password]),
               returnValue:
                   Future<Map<String, dynamic>>.value(<String, dynamic>{}))
           as _i3.Future<Map<String, dynamic>>);
   @override
-  _i3.Future<String> refreshToken(String? token) =>
+  _i3.Future<Map<String, dynamic>> refreshToken(String? token) =>
       (super.noSuchMethod(Invocation.method(#refreshToken, [token]),
+              returnValue:
+                  Future<Map<String, dynamic>>.value(<String, dynamic>{}))
+          as _i3.Future<Map<String, dynamic>>);
+  @override
+  _i3.Future<String> getAccessLevel(String? user) =>
+      (super.noSuchMethod(Invocation.method(#getAccessLevel, [user]),
           returnValue: Future<String>.value('')) as _i3.Future<String>);
 }
 
@@ -52,13 +57,22 @@ class MockSecureStorageInterface extends _i1.Mock
   }
 
   @override
-  _i3.Future<void> saveToken(String? token) =>
-      (super.noSuchMethod(Invocation.method(#saveToken, [token]),
+  _i3.Future<void> saveAccessToken(String? token) =>
+      (super.noSuchMethod(Invocation.method(#saveAccessToken, [token]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
   @override
-  _i3.Future<String?> getToken() =>
-      (super.noSuchMethod(Invocation.method(#getToken, []),
+  _i3.Future<void> saveRefreshToken(String? token) =>
+      (super.noSuchMethod(Invocation.method(#saveRefreshToken, [token]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+  @override
+  _i3.Future<String?> getAccessToken() =>
+      (super.noSuchMethod(Invocation.method(#getAccessToken, []),
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
+  @override
+  _i3.Future<String?> getRefreshToken() =>
+      (super.noSuchMethod(Invocation.method(#getRefreshToken, []),
           returnValue: Future<String?>.value()) as _i3.Future<String?>);
   @override
   _i3.Future<void> saveAccessLevel(String? accessLevel) =>

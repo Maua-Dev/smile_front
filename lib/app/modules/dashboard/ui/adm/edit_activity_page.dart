@@ -238,7 +238,7 @@ class _EditActivityPageState
                     FormsButtonWidget(
                         buttonTittle: 'Cancelar',
                         onPressed: () {
-                          Navigator.pop(context);
+                          Modular.to.navigate('/adm');
                         },
                         backgroundColor: AppColors.redButton),
                     const SizedBox(
