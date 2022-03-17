@@ -41,32 +41,6 @@ class _UserDashboardPageState
                   const SizedBox(
                     width: 32,
                   ),
-                  // DropDownFieldCustom<String>(
-                  //   titulo: 'Ordenar',
-                  //   items: orders.map((String value) {
-                  //     return DropdownMenuItem<String>(
-                  //       value: value,
-                  //       child: Text(value),
-                  //     );
-                  //   }).toList(),
-                  //   value: currentSelectedValue,
-                  //   onChanged: (newValue) {
-                  //     setState(() {
-                  //       currentSelectedValue = newValue;
-                  //       switch (newValue) {
-                  //         case 'Ordenar':
-                  //           controller.getActivitiesByType();
-                  //           break;
-                  //         case 'Por data':
-                  //           controller.orderByDate();
-                  //           break;
-                  //         case 'Por inscritos':
-                  //           // controller.orderByParticipants();
-                  //           break;
-                  //       }
-                  //     });
-                  //   },
-                  // )
                 ],
               ),
             ),
