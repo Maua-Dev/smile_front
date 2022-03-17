@@ -114,6 +114,17 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
+  void setDuration(String value, int index) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setDuration');
+    try {
+      return super.setDuration(value, index);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setParticipants(int value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setParticipants');

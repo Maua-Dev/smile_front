@@ -98,6 +98,15 @@ abstract class _EditActivityControllerBase with Store {
   }
 
   @action
+  void setDuration(String value, int index) {
+    var format = DateFormat('HH:mm');
+    var duration = format.parse(value);
+    var list = activityToEdit.schedule;
+    list[index] = activityToEdit.schedule[index].copyWith(duration: duration);
+    activityToEdit = activityToEdit.copyWith(schedule: list);
+  }
+
+  @action
   void setParticipants(int value, int index) {
     var list = activityToEdit.schedule;
     list[index] =

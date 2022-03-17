@@ -32,11 +32,9 @@ class ActivityCardWidget extends StatelessWidget {
         child: Container(
           constraints: const BoxConstraints(
             minWidth: 350,
-            // maxHeight: MediaQuery.of(context).size.height * 0.4,
           ),
           width: MediaQuery.of(context).size.height * 0.2,
           height: MediaQuery.of(context).size.height * 0.1,
-          // width: Size.infinite.width,
           decoration: BoxDecoration(
             color: cardColor ?? Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -60,16 +58,15 @@ class ActivityCardWidget extends StatelessWidget {
                   style: AppTextStyles.buttonBold
                       .copyWith(fontSize: 22, color: textColor ?? Colors.black),
                 ),
-                const SizedBox(
-                  height: 8,
-                ),
                 Flexible(
-                  child: RichText(
-                    overflow: TextOverflow.clip,
-                    text: TextSpan(
-                        style: AppTextStyles.button.copyWith(
-                            fontSize: 16, color: textColor ?? Colors.black),
-                        text: description),
+                  child: Text(
+                    description,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.button.copyWith(
+                      fontSize: 16,
+                      color: textColor ?? Colors.black,
+                    ),
                   ),
                 ),
                 Padding(
@@ -130,7 +127,7 @@ class ActivityCardWidget extends StatelessWidget {
                           RichText(
                               text: TextSpan(children: [
                             TextSpan(
-                                text: '$totalParticipants/',
+                                text: '0/',
                                 style: AppTextStyles.button.copyWith(
                                     fontSize: 18,
                                     color:

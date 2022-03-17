@@ -84,6 +84,12 @@ void main() {
     expect(controller.activityToEdit.schedule[0].date!.hour, 22);
   });
 
+  test('setDuration', () {
+    var str = '22:00';
+    controller.setDuration(str, 0);
+    expect(controller.activityToEdit.schedule[0].duration!.hour, 22);
+  });
+
   test('setParticipants', () {
     var str = 1;
     controller.setParticipants(str, 0);
