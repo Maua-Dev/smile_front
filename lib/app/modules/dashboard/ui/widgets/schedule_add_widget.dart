@@ -8,21 +8,27 @@ class ScheduleAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedParticipants;
   final void Function(String value)? onChangedDate;
   final void Function(String value)? onChangedHour;
+  final void Function(String value)? onChangedDuration;
   final void Function()? removeSchedule;
   final int? totalParticipants;
   final String? date;
   final String? hour;
+  final String? duration;
+  final int index;
 
-  const ScheduleAddWidget(
-      {Key? key,
-      this.onChangedParticipants,
-      this.onChangedDate,
-      this.onChangedHour,
-      this.totalParticipants,
-      this.date,
-      this.hour,
-      this.removeSchedule})
-      : super(key: key);
+  const ScheduleAddWidget({
+    Key? key,
+    this.onChangedParticipants,
+    this.onChangedDate,
+    this.onChangedHour,
+    this.totalParticipants,
+    this.date,
+    this.hour,
+    this.removeSchedule,
+    this.duration,
+    required this.index,
+    this.onChangedDuration,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +68,21 @@ class ScheduleAddWidget extends StatelessWidget {
         ),
         Flexible(
           child: TextFieldDialogWidget(
+              labelText: 'Duração',
+              onChanged: onChangedDuration,
+              value: duration ?? '',
+              padding: false,
+              inputFormatters: [
+                MaskTextInputFormatter(
+                  mask: '##:##',
+                )
+              ]),
+        ),
+        const SizedBox(
+          width: 16,
+        ),
+        Flexible(
+          child: TextFieldDialogWidget(
             labelText: 'Número de Vagas',
             onChanged: onChangedParticipants,
             value:
@@ -72,15 +93,17 @@ class ScheduleAddWidget extends StatelessWidget {
         const SizedBox(
           width: 16,
         ),
-        IconButton(
-            padding: EdgeInsets.zero,
-            hoverColor: Colors.red.shade100,
-            onPressed: removeSchedule,
-            icon: Icon(
-              Icons.close,
-              size: 32,
-              color: AppColors.redButton,
-            ))
+        index != 0
+            ? IconButton(
+                padding: EdgeInsets.zero,
+                hoverColor: Colors.red.shade100,
+                onPressed: removeSchedule,
+                icon: Icon(
+                  Icons.close,
+                  size: 32,
+                  color: AppColors.redButton,
+                ))
+            : const SizedBox.shrink(),
       ],
     );
   }
