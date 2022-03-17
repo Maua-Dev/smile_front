@@ -1,7 +1,10 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+
+import '../../../../auth/presenter/controllers/auth_controller.dart';
 
 part 'adm_dashboard_controller.g.dart';
 
@@ -10,10 +13,10 @@ class AdmDashboardController = _AdmDashboardControllerBase
 
 abstract class _AdmDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
+  final AuthController authController;
 
-  _AdmDashboardControllerBase({
-    required this.repository,
-  }) {
+  _AdmDashboardControllerBase(
+      {required this.repository, required this.authController}) {
     getAllActivities();
   }
 
@@ -112,4 +115,9 @@ abstract class _AdmDashboardControllerBase with Store {
   //       (a, b) => a.enrolledUsers!.length.compareTo(b.enrolledUsers!.length));
   // }
 
+  @action
+  Future<void> logout() async {
+    await authController.logout();
+    Modular.to.navigate('/home');
+  }
 }
