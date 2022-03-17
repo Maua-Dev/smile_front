@@ -1,11 +1,11 @@
 // ignore_for_file: file_names
 
-import 'package:mockito/annotations.dart';
+// import 'package:mockito/annotations.dart';
 
-import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+// import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 
-@GenerateMocks([ActivitiesRepositoryInterface])
-void main() {
+// @GenerateMocks([ActivitiesRepositoryInterface])
+// void main() {
   // ActivitiesRepositoryInterface repository =
   //     MockActivitiesRepositoryInterface();
 
@@ -96,4 +96,4 @@ void main() {
   //   controller.addSchedule();
   //   expect(controller.activityToCreate.schedule.length, 1);
   // });
-}
+// }
