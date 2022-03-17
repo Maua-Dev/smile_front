@@ -44,6 +44,7 @@ abstract class _EditActivityControllerBase with Store {
   Future deleteActivity(String id) async {
     await repository.removeActivity(id);
     await admDashboardController.getAllActivities();
+    Modular.to.navigate('/adm');
   }
 
   @action

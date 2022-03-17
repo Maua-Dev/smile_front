@@ -12,6 +12,9 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/crea
 void main() {
   initModules([AppModule(), AdmModule()]);
 
+  setUp(() async {
+    await Modular.isModuleReady<AppModule>();
+  });
   test('AdmDashboardController Injection', () {
     Modular.get<AdmDashboardController>();
   });

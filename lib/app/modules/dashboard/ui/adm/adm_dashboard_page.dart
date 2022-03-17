@@ -41,7 +41,9 @@ class _AdmDashboardPageState
                   LogoutButtonWidget(
                     backgroundColor: AppColors.brandingOrange,
                     buttonTittle: 'Sair',
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.logout();
+                    },
                   ),
                 ],
               ),

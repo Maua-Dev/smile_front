@@ -35,7 +35,8 @@ abstract class _CreateActivityControllerBase with Store {
   @action
   Future createActivity() async {
     await repository.createActivity(activityToCreate);
-    admDashboardController.getAllActivities();
+    await admDashboardController.getAllActivities();
+    Modular.to.navigate('/adm');
   }
 
   @action

@@ -242,7 +242,6 @@ class _CreateActivityPageState
                                         'Ao salvar o banco de dados de atividade será alterado.',
                                     onPressed: () {
                                       controller.createActivity();
-                                      Modular.to.navigate('/adm');
                                     });
                               },
                             );
