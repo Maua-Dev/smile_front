@@ -133,6 +133,13 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
   }
 
+  final _$logoutAsyncAction = AsyncAction('_AdmDashboardControllerBase.logout');
+
+  @override
+  Future<void> logout() {
+    return _$logoutAsyncAction.run(() => super.logout());
+  }
+
   final _$_AdmDashboardControllerBaseActionController =
       ActionController(name: '_AdmDashboardControllerBase');
 

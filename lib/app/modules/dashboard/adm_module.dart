@@ -23,6 +23,7 @@ class AdmModule extends Module {
     Bind.lazySingleton<AdmDashboardController>(
         (i) => AdmDashboardController(
               repository: i(),
+              authController: i(),
             ),
         export: true),
     Bind.lazySingleton<EditActivityController>(
