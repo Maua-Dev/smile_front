@@ -118,6 +118,6 @@ abstract class _AdmDashboardControllerBase with Store {
   @action
   Future<void> logout() async {
     await authController.logout();
-    Modular.to.navigate('/home');
+    Modular.to.navigate('/login');
   }
 }
