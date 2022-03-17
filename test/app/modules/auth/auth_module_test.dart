@@ -4,10 +4,11 @@ import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/auth/auth_module.dart';
-import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
-import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/external/auth_datasource_impl.dart';
-import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
+// import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
+// import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
+// import 'package:smile_front/app/modules/auth/external/auth_datasource_impl.dart';
+// import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
 
 void main() {
   initModules([AuthModule(), AppModule()]);
