@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
+import 'package:smile_front/app/modules/auth/infra/repositories/secure_storage.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
@@ -48,6 +49,9 @@ class AdmModule extends Module {
               storage: i<SecureStorageInterface>(),
             ),
         export: true),
+    AsyncBind<SecureStorageInterface>(
+      (i) => SecureStorage.instance(),
+    ),
   ];
 
   @override
