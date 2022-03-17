@@ -268,7 +268,6 @@ class _EditActivityPageState
                                         'Ao salvar todos os dados antigos serão perdidos.',
                                     onPressed: () {
                                       controller.editActivity();
-                                      Modular.to.navigate('/adm');
                                     });
                               },
                             );
