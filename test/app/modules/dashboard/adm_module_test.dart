@@ -6,8 +6,6 @@ import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
 
 void main() {
   initModules([AppModule(), AdmModule()]);

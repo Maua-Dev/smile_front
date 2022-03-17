@@ -1,18 +1,18 @@
-import 'package:flutter_modular_test/flutter_modular_test.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:smile_front/app/modules/dashboard/adm_module.dart';
-import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+// import 'package:flutter_modular_test/flutter_modular_test.dart';
+// import 'package:flutter_test/flutter_test.dart';
+// import 'package:mockito/annotations.dart';
+// import 'package:smile_front/app/modules/dashboard/adm_module.dart';
+// import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+// import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+// import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
+// import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
+// import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
+// import 'package:smile_front/app/shared/models/activity_model.dart';
 
-import '../../../login/presenter/controller/login_controller_test.mocks.dart';
+// import '../../../login/presenter/controller/login_controller_test.mocks.dart';
 
-@GenerateMocks([ActivitiesRepositoryInterface])
-void main() {
+// @GenerateMocks([ActivitiesRepositoryInterface])
+// void main() {
   // initModules([AdmModule()]);
   // ActivitiesRepositoryInterface repository =
   //     MockActivitiesRepositoryInterface();
@@ -122,4 +122,4 @@ void main() {
   //   controller.addSchedule();
   //   expect(controller.activityToEdit.schedule.length, 2);
   // });
-}
+// }
