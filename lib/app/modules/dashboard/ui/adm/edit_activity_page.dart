@@ -106,10 +106,21 @@ class _EditActivityPageState
                           ? ''
                           : DateFormat('dd-MM-yyyy').format(
                               controller.activityToEdit.schedule[index].date!);
+                      var duration =
+                          controller.activityToEdit.schedule[index].duration ==
+                                  null
+                              ? ''
+                              : DateFormat('HH:mm').format(controller
+                                  .activityToEdit.schedule[index].duration!);
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
+                          duration: duration,
+                          onChangedDuration: (value) {
+                            controller.setDuration(value, index);
+                          },
+                          index: index,
                           date: date,
                           hour: hour,
                           totalParticipants: controller
@@ -136,7 +147,7 @@ class _EditActivityPageState
                   padding:
                       const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
                   child: FormsButtonWidget(
-                      buttonTittle: 'Adicionar',
+                      buttonTittle: 'Adicionar novo horário',
                       onPressed: controller.addSchedule,
                       backgroundColor: AppColors.brandingOrange,
                       icon:
@@ -255,7 +266,10 @@ class _EditActivityPageState
                                     title: 'Tem certeza que deseja continuar?',
                                     content:
                                         'Ao salvar todos os dados antigos serão perdidos.',
-                                    onPressed: controller.editActivity);
+                                    onPressed: () {
+                                      controller.editActivity();
+                                      Modular.to.navigate('/adm');
+                                    });
                               },
                             );
                           } else {

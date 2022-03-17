@@ -17,7 +17,7 @@ class FormsButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.08,
+      width: MediaQuery.of(context).size.width * 0.18,
       height: MediaQuery.of(context).size.height * 0.04,
       child: ElevatedButton(
         onPressed: onPressed,
@@ -31,7 +31,8 @@ class FormsButtonWidget extends StatelessWidget {
             ),
             Text(
               buttonTittle,
-              style: AppTextStyles.button.copyWith(fontSize: 20),
+              style: AppTextStyles.button.copyWith(
+                  fontSize: MediaQuery.of(context).size.width < 1630 ? 15 : 20),
             ),
           ],
         ),

@@ -122,6 +122,17 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
+  void setDuration(String value, int index) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setDuration');
+    try {
+      return super.setDuration(value, index);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setParticipants(int value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setParticipants');
