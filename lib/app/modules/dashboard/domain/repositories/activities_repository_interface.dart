@@ -5,6 +5,7 @@ abstract class ActivitiesRepositoryInterface {
   Future<List<ActivityModel>> getActivitiesSelectedByType(
       ActivityEnum activityEnum);
   Future<List<ActivityModel>> getAllActivities();
+  Future<List<ActivityModel>> getUserSubscribedActivities();
   Future createActivity(ActivityModel activityToCreate);
   Future editActivity(ActivityModel activityToEdit);
   Future removeActivity(String id);

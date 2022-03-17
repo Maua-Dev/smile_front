@@ -1,7 +1,6 @@
 import 'package:mobx/mobx.dart';
 
 import '../../../../../shared/models/activity_model.dart';
-import '../../../domain/infra/activity_enum.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
 
 part 'user_dashboard_controller.g.dart';
@@ -11,49 +10,52 @@ class UserDashboardController = _UserDashboardControllerBase
 
 abstract class _UserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
-  final ActivityEnum activityType;
 
   _UserDashboardControllerBase({
     required this.repository,
-    required this.activityType,
   }) {
-    getActivitiesByType();
+    getUserSubscribedActivities();
   }
 
   @observable
   List<ActivityModel> activitiesList = List.empty();
 
-  @action
-  Future getActivitiesByType() async {
-    activitiesList = await repository.getActivitiesSelectedByType(activityType);
-  }
+  @observable
+  ActivityModel nextActivity = ActivityModel.newInstance();
 
   @action
-  Future getAllActivities() async {
-    activitiesList = await repository.getAllActivities();
+  Future getUserSubscribedActivities() async {
+    activitiesList = await repository.getUserSubscribedActivities();
+    nextActivity = activitiesList[0];
   }
 
-  @action
-  void searchActivityByName(String search) {
-    activitiesList = activitiesList
-        .where((element) =>
-            element.title.toLowerCase().startsWith(search.toLowerCase()))
-        .toList();
-    if (search == '') {
-      getActivitiesByType();
-    }
-  }
+  @computed
+  List<ActivityModel> get mondayActivitiesList => activitiesList
+      .where((activity) =>
+          activity.schedule.map((e) => e.date!.weekday == 1).contains(true))
+      .toList();
 
-  // @action
-  // void orderByDate() {
-  //   activitiesList
-  //       .sort((a, b) => a.schedule[0].date.compareTo(b.schedule[0].date));
-  // }
+  @computed
+  List<ActivityModel> get tuesdayActivitiesList => activitiesList
+      .where((activity) =>
+          activity.schedule.map((e) => e.date!.weekday == 2).contains(true))
+      .toList();
 
-  // @action
-  // void orderByParticipants() {
-  //   activitiesList.sort(
-  //       (a, b) => a.enrolledUsers!.length.compareTo(b.enrolledUsers!.length));
-  // }
+  @computed
+  List<ActivityModel> get wednesdayActivitiesList => activitiesList
+      .where((activity) =>
+          activity.schedule.map((e) => e.date!.weekday == 3).contains(true))
+      .toList();
 
+  @computed
+  List<ActivityModel> get thursdayActivitiesList => activitiesList
+      .where((activity) =>
+          activity.schedule.map((e) => e.date!.weekday == 4).contains(true))
+      .toList();
+
+  @computed
+  List<ActivityModel> get fridayActivitiesList => activitiesList
+      .where((activity) =>
+          activity.schedule.map((e) => e.date!.weekday == 5).contains(true))
+      .toList();
 }

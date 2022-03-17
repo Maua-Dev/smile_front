@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar_controller.dart';
 import 'package:smile_front/app/shared/widgets/vertical_nav_bar/widgets/nav_bar_button_widget.dart';
@@ -27,7 +28,7 @@ class VerticalNavBar extends StatelessWidget {
               icon: Icons.apps_outlined,
               onPressed: () {
                 controller.toggleIndex(0);
-                // Modular.to.navigate('/');
+                Modular.to.navigate('/user');
               },
             ),
             const SizedBox(
@@ -38,7 +39,7 @@ class VerticalNavBar extends StatelessWidget {
               indexToShow: controller.indexToShow,
               onPressed: () {
                 controller.toggleIndex(1);
-                // Modular.to.navigate('/');
+                Modular.to.navigate('/user/all-activities');
               },
               icon: Icons.library_books,
             ),

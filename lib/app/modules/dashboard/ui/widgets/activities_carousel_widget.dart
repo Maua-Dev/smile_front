@@ -6,6 +6,7 @@ import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
+import '../../../auth/infra/repositories/secure_storage.dart';
 import 'activity_card_widget.dart';
 
 class ActivitiesCarouselWidget extends StatelessWidget {
@@ -24,6 +25,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var secureStorage = Modular.get<SecureStorage>();
     final ScrollController _controller = ScrollController();
     void _scrollRight(length) {
       _controller.animateTo(_controller.position.pixels + 400,
@@ -91,11 +93,20 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                             SizedBox(
                               height: 200,
                               child: ActivityCardWidget(
-                                onTap: () {
-                                  Modular.to.navigate(
-                                    '/adm/edit-activity',
-                                    arguments: list[index],
-                                  );
+                                onTap: () async {
+                                  var accessLevel =
+                                      await secureStorage.getAccessLevel();
+                                  if (accessLevel == 'ADMIN') {
+                                    Modular.to.navigate(
+                                      '/adm/edit-activity',
+                                      arguments: list[index],
+                                    );
+                                  } else {
+                                    Modular.to.navigate(
+                                      '/user',
+                                      arguments: list[index],
+                                    );
+                                  }
                                 },
                                 cardColor: cardColor,
                                 textColor: isNextActivity

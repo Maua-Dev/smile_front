@@ -10,7 +10,6 @@ import '../../../../shared/widgets/vertical_nav_bar/vertical_nav_bar.dart';
 import '../../domain/infra/activity_enum.dart';
 import '../widgets/activities_carousel_widget.dart';
 import '../widgets/filter_chip_widget.dart';
-import '../widgets/logout_button_widget.dart';
 
 class AllActivitiesUserDashboardPage extends StatefulWidget {
   const AllActivitiesUserDashboardPage({Key? key}) : super(key: key);
@@ -33,7 +32,6 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const DashboardAppbarWidget(),
                   const SizedBox(
                     height: 32,
                   ),
@@ -41,16 +39,12 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                     padding: const EdgeInsets.only(right: 72.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const TextHeaderScratched(
+                      children: const [
+                        TextHeaderScratched(
                           title: 'Próximas Atividades',
                           fontSize: 50,
                         ),
-                        LogoutButtonWidget(
-                          backgroundColor: AppColors.brandingOrange,
-                          buttonTittle: 'Sair',
-                          onPressed: () {},
-                        ),
+                        DashboardAppbarWidget(),
                       ],
                     ),
                   ),
@@ -139,75 +133,6 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
           ),
         ],
       ),
-      floatingActionButton: Observer(builder: (_) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            if (controller.isFloatActionButtonOpen)
-              Padding(
-                padding: const EdgeInsets.only(right: 36.0),
-                child: SizedBox(
-                  width: 70,
-                  child: FittedBox(
-                    child: FloatingActionButton(
-                        backgroundColor: AppColors.brandingOrange,
-                        child: const Icon(
-                          Icons.insert_chart_rounded,
-                          size: 35,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {}),
-                  ),
-                ),
-              ),
-            const SizedBox(
-              height: 20,
-            ),
-            if (controller.isFloatActionButtonOpen)
-              Padding(
-                padding: const EdgeInsets.only(right: 36.0),
-                child: SizedBox(
-                  width: 70,
-                  child: FittedBox(
-                    child: FloatingActionButton(
-                        backgroundColor: AppColors.brandingOrange,
-                        child: const Icon(
-                          Icons.edit,
-                          size: 35,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          Modular.to.navigate('/adm/create-activity');
-                        }),
-                  ),
-                ),
-              ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 36.0, bottom: 36.0),
-              child: SizedBox(
-                width: 100,
-                child: FittedBox(
-                  child: FloatingActionButton(
-                      backgroundColor: AppColors.brandingOrange,
-                      child: Icon(
-                        controller.isFloatActionButtonOpen
-                            ? Icons.close
-                            : Icons.keyboard_arrow_up_rounded,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        controller.toggleFloatActionButton();
-                      }),
-                ),
-              ),
-            ),
-          ],
-        );
-      }),
     );
   }
 }

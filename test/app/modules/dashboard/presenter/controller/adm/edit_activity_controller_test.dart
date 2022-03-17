@@ -9,7 +9,7 @@ import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
-import '../../../login/presenter/controller/login_controller_test.mocks.dart';
+import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
 
 @GenerateMocks([ActivitiesRepositoryInterface])
 void main() {

@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
@@ -30,7 +29,6 @@ class UserModule extends Module {
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
         repository: i(),
-        activityType: i.args!.data[0] as ActivityEnum,
       ),
     ),
     Bind.lazySingleton((i) => Dio(smileOption)),
@@ -44,9 +42,9 @@ class UserModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/activities-dashboard',
-        child: (_, args) => const UserDashboardPage()),
     ChildRoute(Modular.initialRoute,
+        child: (_, args) => const UserDashboardPage()),
+    ChildRoute('/all-activities',
         child: (_, args) => const AllActivitiesUserDashboardPage()),
   ];
 }
