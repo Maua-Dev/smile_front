@@ -14,16 +14,20 @@ class EditActivityController = _EditActivityControllerBase
 
 abstract class _EditActivityControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
-  final ActivityModel activity;
+  final ActivityModel activityModel;
   final admDashboardController = Modular.get<AdmDashboardController>();
 
   _EditActivityControllerBase({
-    required this.activity,
     required this.repository,
-  });
+    required this.activityModel,
+  }) {
+    if (activityModel.id.isEmpty) {
+      Modular.to.navigate('/adm');
+    }
+  }
 
   @observable
-  late var activityToEdit = activity;
+  late var activityToEdit = activityModel;
 
   @action
   bool isFilled() {
@@ -44,6 +48,7 @@ abstract class _EditActivityControllerBase with Store {
   Future deleteActivity(String id) async {
     await repository.removeActivity(id);
     await admDashboardController.getAllActivities();
+    Modular.to.navigate('/adm');
   }
 
   @action
@@ -98,11 +103,19 @@ abstract class _EditActivityControllerBase with Store {
   }
 
   @action
+  void setDuration(String value, int index) {
+    if (value.length >= 5) {
+      var format = DateFormat('HH:mm');
+      var duration = format.parse(value);
+      var list = activityToEdit.schedule;
+      list[index] = activityToEdit.schedule[index].copyWith(duration: duration);
+      activityToEdit = activityToEdit.copyWith(schedule: list);
+    }
+  }
+
+  @action
   void setParticipants(int value, int index) {
-    var list = activityToEdit.schedule;
-    list[index] =
-        activityToEdit.schedule[index].copyWith(totalParticipants: value);
-    activityToEdit = activityToEdit.copyWith(schedule: list);
+    activityToEdit.schedule[index].totalParticipants = value;
   }
 
   @action

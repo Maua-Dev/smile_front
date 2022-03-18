@@ -1,6 +1,8 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
+import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
@@ -13,7 +15,7 @@ import '../../../../login/presenter/controller/login_controller_test.mocks.dart'
 
 @GenerateMocks([ActivitiesRepositoryInterface])
 void main() {
-  initModules([AdmModule()]);
+  initModules([AppModule(), AdmModule()]);
   ActivitiesRepositoryInterface repository =
       MockActivitiesRepositoryInterface();
   late EditActivityController controller;
@@ -36,10 +38,11 @@ void main() {
       speaker:
           SpeakerActivityModel(bio: '', company: '', name: '', linkPhoto: ''));
 
-  setUpAll(() {
+  setUpAll(() async {
+    await Modular.isModuleReady<AppModule>();
     controller = EditActivityController(
       repository: repository,
-      activity: activity,
+      activityModel: activity,
     );
   });
 
@@ -82,6 +85,12 @@ void main() {
     var str = '22:00';
     controller.setHour(str, 0);
     expect(controller.activityToEdit.schedule[0].date!.hour, 22);
+  });
+
+  test('setDuration', () {
+    var str = '22:00';
+    controller.setDuration(str, 0);
+    expect(controller.activityToEdit.schedule[0].duration!.hour, 22);
   });
 
   test('setParticipants', () {

@@ -105,10 +105,21 @@ class _CreateActivityPageState
                               ? ''
                               : DateFormat('dd-MM-yyyy').format(controller
                                   .activityToCreate.schedule[index].date!);
+                      var duration = controller
+                                  .activityToCreate.schedule[index].duration ==
+                              null
+                          ? ''
+                          : DateFormat('HH:mm').format(controller
+                              .activityToCreate.schedule[index].duration!);
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
+                          duration: duration,
+                          onChangedDuration: (value) {
+                            controller.setDuration(value, index);
+                          },
+                          index: index,
                           totalParticipants: controller.activityToCreate
                               .schedule[index].totalParticipants,
                           date: date,
@@ -135,11 +146,11 @@ class _CreateActivityPageState
                   padding:
                       const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
                   child: FormsButtonWidget(
-                      buttonTittle: 'Adicionar',
-                      onPressed: controller.addSchedule,
-                      backgroundColor: AppColors.brandingOrange,
-                      icon:
-                          const Icon(Icons.add, color: Colors.white, size: 22)),
+                    buttonTittle: 'Adicionar novo horário',
+                    onPressed: controller.addSchedule,
+                    backgroundColor: AppColors.brandingOrange,
+                    icon: const Icon(Icons.add, color: Colors.white, size: 22),
+                  ),
                 ),
               ),
               TextFieldDialogWidget(
@@ -231,7 +242,6 @@ class _CreateActivityPageState
                                         'Ao salvar o banco de dados de atividade será alterado.',
                                     onPressed: () {
                                       controller.createActivity();
-                                      Modular.to.navigate('/adm');
                                     });
                               },
                             );

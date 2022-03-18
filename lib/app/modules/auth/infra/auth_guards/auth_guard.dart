@@ -10,7 +10,10 @@ class AuthGuard implements RouteGuard {
     if (!authController.isLogged) {
       await authController.refreshToken();
     }
-    return authController.isLogged;
+    if (authController.isLogged) {
+      Modular.to.navigate('/adm');
+    }
+    return true;
   }
 
   @override

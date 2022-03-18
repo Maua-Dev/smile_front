@@ -35,7 +35,8 @@ abstract class _CreateActivityControllerBase with Store {
   @action
   Future createActivity() async {
     await repository.createActivity(activityToCreate);
-    admDashboardController.getAllActivities();
+    await admDashboardController.getAllActivities();
+    Modular.to.navigate('/adm');
   }
 
   @action
@@ -93,11 +94,19 @@ abstract class _CreateActivityControllerBase with Store {
   }
 
   @action
+  void setDuration(String value, int index) {
+    if (value.length >= 5) {
+      var duration = DateFormat('HH:mm').parse(value);
+      var list = activityToCreate.schedule;
+      list[index] =
+          activityToCreate.schedule[index].copyWith(duration: duration);
+      activityToCreate = activityToCreate.copyWith(schedule: list);
+    }
+  }
+
+  @action
   void setParticipants(int value, int index) {
-    var list = activityToCreate.schedule;
-    list[index] =
-        activityToCreate.schedule[index].copyWith(totalParticipants: value);
-    activityToCreate = activityToCreate.copyWith(schedule: list);
+    activityToCreate.schedule[index].totalParticipants = value;
   }
 
   @action

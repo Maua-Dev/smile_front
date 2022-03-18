@@ -22,17 +22,18 @@ class TextFieldDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = TextEditingController(text: value);
+    // var controller = TextEditingController(text: value);
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: padding ? 114 : 0, vertical: padding ? 8 : 0),
-      child: TextField(
+      child: TextFormField(
+        initialValue: value,
         onChanged: onChanged,
         keyboardType: TextInputType.multiline,
         maxLines: null,
         textAlignVertical: TextAlignVertical.center,
         inputFormatters: inputFormatters,
-        controller: controller,
+        // controller: controller,
         style: AppTextStyles.body
             .copyWith(color: AppColors.brandingPurple, fontSize: 20),
         decoration: InputDecoration(
