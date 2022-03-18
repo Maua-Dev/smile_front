@@ -69,6 +69,7 @@ class ScheduleAddWidget extends StatelessWidget {
         Flexible(
           child: TextFieldDialogWidget(
               labelText: 'Duração',
+              hintText: 'HH:MM',
               onChanged: onChangedDuration,
               value: duration ?? '',
               padding: false,
