@@ -81,7 +81,8 @@ abstract class _EditActivityControllerBase with Store {
       var hour = activityToEdit.schedule[index].date != null
           ? DateFormat('HH:mm').format(activityToEdit.schedule[index].date!)
           : '';
-      var date = DateTime.parse("$value $hour");
+      var date =
+          hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
       var list = activityToEdit.schedule;
       list[index] = activityToEdit.schedule[index].copyWith(date: date);
       activityToEdit = activityToEdit.copyWith(schedule: list);
