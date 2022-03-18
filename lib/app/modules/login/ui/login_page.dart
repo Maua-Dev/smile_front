@@ -97,6 +97,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     placeholder: 'Senha',
                     setValue: controller.setPassword,
                     isPassword: true,
+                    onFieldSubmitted: (value) {
+                      controller.login();
+                    },
                   ),
                   const SizedBox(
                     height: 40,
