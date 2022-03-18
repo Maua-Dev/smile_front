@@ -3,7 +3,7 @@ import '../../domain/entities/schedule_activity.dart';
 
 class ScheduleActivityModel extends ScheduleActivity {
   final DateTime? date;
-  final int? totalParticipants;
+  int? totalParticipants;
   final DateTime? duration;
 
   ScheduleActivityModel({this.duration, this.date, this.totalParticipants})
@@ -15,10 +15,9 @@ class ScheduleActivityModel extends ScheduleActivity {
 
   factory ScheduleActivityModel.fromMap(Map<String, dynamic> map) {
     return ScheduleActivityModel(
-      date: DateTime.fromMillisecondsSinceEpoch(map['date'], isUtc: true),
+      date: DateTime.fromMillisecondsSinceEpoch(map['date']),
       totalParticipants: map['totalParticipants'],
-      duration:
-          DateTime.fromMillisecondsSinceEpoch(map['duration'], isUtc: true),
+      duration: DateTime.fromMillisecondsSinceEpoch(map['duration']),
     );
   }
   static List<ScheduleActivityModel> fromMaps(List array) {

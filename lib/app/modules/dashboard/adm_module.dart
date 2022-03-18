@@ -29,7 +29,8 @@ class AdmModule extends Module {
     Bind.lazySingleton<EditActivityController>(
       (i) => EditActivityController(
         repository: i(),
-        activity: i.args!.data as ActivityModel,
+        activityModel:
+            i.args!.data as ActivityModel? ?? ActivityModel.newInstance(),
       ),
     ),
     Bind.lazySingleton<CreateActivityController>(

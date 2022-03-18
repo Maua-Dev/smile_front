@@ -10,18 +10,20 @@ class InputBox extends StatelessWidget {
   final bool? isPassword;
   final String? Function(String value)? validation;
   final Function(String value) setValue;
+  final void Function(String?)? onFieldSubmitted;
 
-  const InputBox({
-    Key? key,
-    required this.icon,
-    required this.placeholder,
-    this.widthSize,
-    this.heightSize,
-    this.disable,
-    this.isPassword,
-    this.validation,
-    required this.setValue,
-  }) : super(key: key);
+  const InputBox(
+      {Key? key,
+      required this.icon,
+      required this.placeholder,
+      this.widthSize,
+      this.heightSize,
+      this.disable,
+      this.isPassword,
+      this.validation,
+      required this.setValue,
+      this.onFieldSubmitted})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +52,7 @@ class InputBox extends StatelessWidget {
             validator: (value) {
               return validation!(value!);
             },
+            onFieldSubmitted: onFieldSubmitted,
             onChanged: setValue,
             obscureText: isPassword ?? false,
             enabled: disable != null ? !disable! : true,

@@ -42,7 +42,7 @@ void main() {
     await Modular.isModuleReady<AppModule>();
     controller = EditActivityController(
       repository: repository,
-      activity: activity,
+      activityModel: activity,
     );
   });
 
