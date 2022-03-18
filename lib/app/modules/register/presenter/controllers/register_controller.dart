@@ -1,16 +1,11 @@
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/entities/register_informations.dart';
-import 'package:smile_front/app/modules/register/presenter/controllers/register_user_controller.dart';
 
 part 'register_controller.g.dart';
 
 class RegisterController = _RegisterController with _$RegisterController;
 
 abstract class _RegisterController with Store {
-  final RegisterUserController registerUserController;
-
-  _RegisterController(this.registerUserController);
-
   @observable
   String name = '';
 

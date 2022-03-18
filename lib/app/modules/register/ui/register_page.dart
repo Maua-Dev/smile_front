@@ -3,8 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
+import '../../../shared/widgets/input-box/input_box.dart';
 import '../presenter/controllers/register_controller.dart';
-import 'widgets/input_box.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
