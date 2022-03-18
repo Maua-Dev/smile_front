@@ -4,12 +4,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 
 import '../../../../shared/themes/app_colors.dart';
-import '../../../../shared/widgets/dashboard-appbar/dashboard_appbar_widget.dart';
 import '../../../../shared/widgets/text_header_scratched.dart';
 import '../../../../shared/widgets/vertical_nav_bar/vertical_nav_bar.dart';
 import '../../domain/infra/activity_enum.dart';
 import '../widgets/activities_carousel_widget.dart';
 import '../widgets/filter_chip_widget.dart';
+import '../widgets/logout_button_widget.dart';
 
 class AllActivitiesUserDashboardPage extends StatefulWidget {
   const AllActivitiesUserDashboardPage({Key? key}) : super(key: key);
@@ -39,12 +39,18 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                     padding: const EdgeInsets.only(right: 72.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        TextHeaderScratched(
+                      children: [
+                        const TextHeaderScratched(
                           title: 'Próximas Atividades',
                           fontSize: 50,
                         ),
-                        DashboardAppbarWidget(),
+                        LogoutButtonWidget(
+                          backgroundColor: AppColors.brandingOrange,
+                          buttonTittle: 'Sair',
+                          onPressed: () {
+                            controller.logout();
+                          },
+                        ),
                       ],
                     ),
                   ),

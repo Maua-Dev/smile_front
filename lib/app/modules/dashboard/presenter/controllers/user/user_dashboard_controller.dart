@@ -1,6 +1,9 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../../shared/models/activity_model.dart';
+import '../../../../../shared/models/user_model.dart';
+import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
 
 part 'user_dashboard_controller.g.dart';
@@ -10,11 +13,12 @@ class UserDashboardController = _UserDashboardControllerBase
 
 abstract class _UserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
+  final AuthController authController;
 
-  _UserDashboardControllerBase({
-    required this.repository,
-  }) {
+  _UserDashboardControllerBase(
+      {required this.repository, required this.authController}) {
     getUserSubscribedActivities();
+    getUser();
   }
 
   @observable
@@ -23,11 +27,23 @@ abstract class _UserDashboardControllerBase with Store {
   @observable
   ActivityModel nextActivity = ActivityModel.newInstance();
 
+  @observable
+  UserModel user = UserModel.newInstance();
+
   @action
   Future getUserSubscribedActivities() async {
     activitiesList = await repository.getUserSubscribedActivities();
     nextActivity = activitiesList[0];
   }
+
+  @action
+  Future getUser() async {
+    user = await repository.getUser();
+  }
+
+  @computed
+  String get userName =>
+      user.socialName.substring(0, user.socialName.indexOf(' '));
 
   @computed
   List<ActivityModel> get mondayActivitiesList => activitiesList
@@ -58,4 +74,10 @@ abstract class _UserDashboardControllerBase with Store {
       .where((activity) =>
           activity.schedule.map((e) => e.date!.weekday == 5).contains(true))
       .toList();
+
+  @action
+  Future<void> logout() async {
+    await authController.logout();
+    Modular.to.navigate('/login');
+  }
 }

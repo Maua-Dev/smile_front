@@ -9,6 +9,13 @@ part of 'user_dashboard_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
+  Computed<String>? _$userNameComputed;
+
+  @override
+  String get userName =>
+      (_$userNameComputed ??= Computed<String>(() => super.userName,
+              name: '_UserDashboardControllerBase.userName'))
+          .value;
   Computed<List<ActivityModel>>? _$mondayActivitiesListComputed;
 
   @override
@@ -82,6 +89,21 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
+  final _$userAtom = Atom(name: '_UserDashboardControllerBase.user');
+
+  @override
+  UserModel get user {
+    _$userAtom.reportRead();
+    return super.user;
+  }
+
+  @override
+  set user(UserModel value) {
+    _$userAtom.reportWrite(value, super.user, () {
+      super.user = value;
+    });
+  }
+
   final _$getUserSubscribedActivitiesAsyncAction =
       AsyncAction('_UserDashboardControllerBase.getUserSubscribedActivities');
 
@@ -91,11 +113,29 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
         .run(() => super.getUserSubscribedActivities());
   }
 
+  final _$getUserAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.getUser');
+
+  @override
+  Future<dynamic> getUser() {
+    return _$getUserAsyncAction.run(() => super.getUser());
+  }
+
+  final _$logoutAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.logout');
+
+  @override
+  Future<void> logout() {
+    return _$logoutAsyncAction.run(() => super.logout());
+  }
+
   @override
   String toString() {
     return '''
 activitiesList: ${activitiesList},
 nextActivity: ${nextActivity},
+user: ${user},
+userName: ${userName},
 mondayActivitiesList: ${mondayActivitiesList},
 tuesdayActivitiesList: ${tuesdayActivitiesList},
 wednesdayActivitiesList: ${wednesdayActivitiesList},

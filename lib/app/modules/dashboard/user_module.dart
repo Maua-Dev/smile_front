@@ -20,6 +20,7 @@ class UserModule extends Module {
     Bind.lazySingleton<AllActivitiesUserDashboardController>(
         (i) => AllActivitiesUserDashboardController(
               repository: i(),
+              authController: i(),
             ),
         export: true),
     Bind.lazySingleton<ActivitiesDatasource>(
@@ -29,6 +30,7 @@ class UserModule extends Module {
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
         repository: i(),
+        authController: i(),
       ),
     ),
     Bind.lazySingleton((i) => Dio(smileOption)),

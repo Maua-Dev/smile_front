@@ -141,6 +141,14 @@ mixin _$AllActivitiesUserDashboardController
     return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
   }
 
+  final _$logoutAsyncAction =
+      AsyncAction('_AllActivitiesUserDashboardControllerBase.logout');
+
+  @override
+  Future<void> logout() {
+    return _$logoutAsyncAction.run(() => super.logout());
+  }
+
   final _$_AllActivitiesUserDashboardControllerBaseActionController =
       ActionController(name: '_AllActivitiesUserDashboardControllerBase');
 

@@ -15,6 +15,7 @@ void main() {
   ActivitiesRepositoryInterface repository =
       MockActivitiesRepositoryInterface();
   late UserDashboardController controller;
+
   final mockActivities = <ActivityModel>[
     ActivityModel(
       id: '0',
@@ -116,6 +117,7 @@ void main() {
   setUpAll(() {
     when(repository.getUserSubscribedActivities())
         .thenAnswer((_) async => mockActivities);
+
     controller = UserDashboardController(
       repository: repository,
     );

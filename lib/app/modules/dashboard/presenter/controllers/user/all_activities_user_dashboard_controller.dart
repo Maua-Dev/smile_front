@@ -1,6 +1,8 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../../shared/models/activity_model.dart';
+import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/infra/activity_enum.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
 
@@ -11,9 +13,11 @@ class AllActivitiesUserDashboardController = _AllActivitiesUserDashboardControll
 
 abstract class _AllActivitiesUserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
+  final AuthController authController;
 
   _AllActivitiesUserDashboardControllerBase({
     required this.repository,
+    required this.authController,
   }) {
     getAllActivities();
   }
@@ -99,5 +103,11 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
     if (search == '') {
       getAllActivities();
     }
+  }
+
+  @action
+  Future<void> logout() async {
+    await authController.logout();
+    Modular.to.navigate('/login');
   }
 }

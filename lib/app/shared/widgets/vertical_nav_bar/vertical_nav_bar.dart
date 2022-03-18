@@ -20,7 +20,7 @@ class VerticalNavBar extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: 120,
         child: Padding(
-          padding: const EdgeInsets.only(top: 100.0),
+          padding: const EdgeInsets.only(top: 32.0),
           child: Column(children: [
             NavBarButtonWidget(
               buttonText: 'INÍCIO',
