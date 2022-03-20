@@ -49,6 +49,64 @@ class _RegisterPageState
                     const SizedBox(
                       height: 20,
                     ),
+                    Observer(builder: (_) {
+                      if (controller.successRegistration) {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 20.0),
+                          child: Container(
+                            width: 400,
+                            decoration: BoxDecoration(
+                                color: Colors.green[100],
+                                border: Border.all(color: Colors.green),
+                                borderRadius: BorderRadius.circular(8)),
+                            child: const Padding(
+                              padding: EdgeInsets.all(4.0),
+                              child: Text(
+                                'Cadastro concluído com sucesso! \n Redirecionando para o login...',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16),
+                              ),
+                            ),
+                          ),
+                        );
+                      } else if (controller.errors != '') {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 20.0),
+                          child: Container(
+                            width: 400,
+                            decoration: BoxDecoration(
+                                color: Colors.red[100],
+                                border: Border.all(color: Colors.red),
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      controller.setError('');
+                                    },
+                                    icon: const Icon(Icons.close),
+                                  ),
+                                  Text(
+                                    controller.errors,
+                                    style: const TextStyle(
+                                        color: Colors.black, fontSize: 16),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      return Container();
+                    }),
                     InputBox(
                       icon: Icons.person,
                       placeholder: 'Nome Completo',
@@ -118,9 +176,7 @@ class _RegisterPageState
                             placeholder: 'RA',
                             setValue: controller.setRa,
                             widthSize: 400,
-                            validation: controller.isMauaStudent
-                                ? controller.validateRa
-                                : null,
+                            validation: controller.validateRa,
                           );
                         }),
                       ],
@@ -146,21 +202,25 @@ class _RegisterPageState
                       validation: controller.validateVerifyPassword,
                     ),
                     const SizedBox(
-                      height: 40,
+                      height: 20,
                     ),
-                    ActionTextButtonWidget(
-                      title: 'Cadastrar',
-                      widthSize: 600,
-                      heightSize: 50,
-                      backgroundColor: AppColors.brandingOrange,
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          controller.register();
-                          Modular.to.navigate('/login');
-                        }
-                        controller.register();
-                      },
+                    const SizedBox(
+                      height: 20,
                     ),
+                    Observer(builder: (_) {
+                      return ActionTextButtonWidget(
+                        isLoading: controller.isLoading,
+                        title: 'Cadastrar',
+                        widthSize: 600,
+                        heightSize: 50,
+                        backgroundColor: AppColors.brandingOrange,
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            await controller.register();
+                          }
+                        },
+                      );
+                    }),
                     const SizedBox(
                       height: 20,
                     ),
