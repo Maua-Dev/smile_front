@@ -1,10 +1,20 @@
 import '../../../../shared/entities/user_registration.dart';
 
 class RegisterUserInformationsModel extends UserRegistration {
+  @override
+  // ignore: overridden_fields
   final String name;
+  @override
+  // ignore: overridden_fields
   final String email;
+  @override
+  // ignore: overridden_fields
   final String cpfRne;
+  @override
+  // ignore: overridden_fields
   final int? ra;
+  @override
+  // ignore: overridden_fields
   final String password;
 
   RegisterUserInformationsModel({

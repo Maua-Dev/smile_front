@@ -17,7 +17,7 @@ class UserRegistration {
       name: '',
       email: '',
       cpfRne: '',
-      ra: 0,
+      ra: null,
       password: '',
     );
   }
