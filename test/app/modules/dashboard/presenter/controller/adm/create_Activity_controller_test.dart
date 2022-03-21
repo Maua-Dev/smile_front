@@ -10,7 +10,7 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
 
-import '../../../login/presenter/controller/login_controller_test.mocks.dart';
+import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
 
 @GenerateMocks([ActivitiesRepositoryInterface])
 void main() {
@@ -76,6 +76,12 @@ void main() {
     var str = 1;
     controller.setParticipants(str, 0);
     expect(controller.activityToCreate.schedule[0].totalParticipants, str);
+  });
+
+  test('setSpeakerName', () {
+    var str = 'teste';
+    controller.setSpeakerName(str);
+    expect(controller.activityToCreate.speaker.name, str);
   });
 
   test('setSpeakerBio', () {

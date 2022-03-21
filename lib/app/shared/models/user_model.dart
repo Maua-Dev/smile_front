@@ -37,4 +37,15 @@ class UserModel extends User {
       registration: map['registration'],
     );
   }
+
+  factory UserModel.newInstance() {
+    return UserModel(
+      accessLevel: '',
+      cpfRne: '',
+      email: '',
+      socialName: '',
+      typeRole: '',
+      registration: '',
+    );
+  }
 }

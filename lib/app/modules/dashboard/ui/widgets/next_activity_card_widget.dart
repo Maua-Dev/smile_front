@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:intl/intl.dart';
 
-class ActivityCardWidget extends StatelessWidget {
+import '../../../../shared/themes/app_colors.dart';
+import '../../../../shared/themes/app_text_styles.dart';
+
+class NextActivityCardWidget extends StatelessWidget {
   final String name;
   final String description;
-  final String date;
-  final String time;
+  final DateTime? date;
   final int? totalParticipants;
   final Color? cardColor;
   final Color? textColor;
   final Function()? onTap;
-  const ActivityCardWidget({
+  const NextActivityCardWidget({
     Key? key,
     required this.name,
     required this.description,
     required this.date,
-    required this.time,
     required this.totalParticipants,
     this.onTap,
     this.cardColor,
@@ -25,16 +25,15 @@ class ActivityCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var dateString = date == null ? '' : DateFormat('dd/MM/yyyy').format(date!);
+    var timeString = date == null ? '' : DateFormat('HH:mm').format(date!);
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(right: 72, left: 72, bottom: 48, top: 8),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          constraints: const BoxConstraints(
-            minWidth: 350,
-          ),
-          width: MediaQuery.of(context).size.height * 0.2,
-          height: MediaQuery.of(context).size.height * 0.1,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.2,
           decoration: BoxDecoration(
             color: cardColor ?? Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -74,7 +73,7 @@ class ActivityCardWidget extends StatelessWidget {
                     vertical: 8,
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Row(
                         children: [
@@ -86,11 +85,14 @@ class ActivityCardWidget extends StatelessWidget {
                               size: 20,
                             ),
                           ),
-                          Text(date,
+                          Text(dateString,
                               style: AppTextStyles.button.copyWith(
                                   fontSize: 18,
                                   color: textColor ?? AppColors.brandingPurple))
                         ],
+                      ),
+                      const SizedBox(
+                        width: 16,
                       ),
                       Row(
                         children: [
@@ -102,11 +104,14 @@ class ActivityCardWidget extends StatelessWidget {
                               size: 20,
                             ),
                           ),
-                          Text(time,
+                          Text(timeString,
                               style: AppTextStyles.button.copyWith(
                                   fontSize: 18,
                                   color: textColor ?? AppColors.brandingPurple))
                         ],
+                      ),
+                      const SizedBox(
+                        width: 16,
                       ),
                       Row(
                         children: [
