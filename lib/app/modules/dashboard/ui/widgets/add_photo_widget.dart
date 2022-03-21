@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 class AddPhotoWidget extends StatelessWidget {
   final void Function()? onPressed;
-  const AddPhotoWidget({Key? key, this.onPressed}) : super(key: key);
+  final double? size;
+  const AddPhotoWidget({Key? key, this.onPressed, this.size}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.height * 0.15,
+      width: size == null
+          ? MediaQuery.of(context).size.height * 0.15
+          : MediaQuery.of(context).size.height * size!,
       height: MediaQuery.of(context).size.height * 0.15,
       child: CircleAvatar(
         radius: 30,

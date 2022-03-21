@@ -8,15 +8,21 @@ var subscribedActivities = <ActivityModel>[
     id: '0',
     type: ActivityEnum.CURSOS,
     title: 'Atividade 01',
-    description: 'Teste de atividade mock',
+    description:
+        'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
     location: 'H244',
     speaker: SpeakerActivityModel(
       name: 'Gabriel Godoy',
-      bio: 'Qualquer',
+      bio: 'Caros participantes, este é um teste, aproveitem a atividade',
       company: 'Oracle',
       linkPhoto: 'http://',
     ),
     schedule: <ScheduleActivityModel>[
+      ScheduleActivityModel(
+        date: DateTime.parse('2022-03-21 13:00'),
+        totalParticipants: 20,
+        duration: DateTime.parse('2022-03-21 13:00'),
+      ),
       ScheduleActivityModel(
         date: DateTime.parse('2022-03-21 13:00'),
         totalParticipants: 20,

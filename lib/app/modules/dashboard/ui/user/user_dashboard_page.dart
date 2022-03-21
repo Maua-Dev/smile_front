@@ -7,6 +7,7 @@ import '../../presenter/controllers/user/user_dashboard_controller.dart';
 import '../widgets/activities_carousel_widget.dart';
 import '../widgets/logout_button_widget.dart';
 import '../widgets/next_activity_card_widget.dart';
+import 'more_info_dialog_widget.dart';
 
 class UserDashboardPage extends StatefulWidget {
   const UserDashboardPage({Key? key}) : super(key: key);
@@ -61,9 +62,7 @@ class _UserDashboardPageState
             Observer(builder: (_) {
               return NextActivityCardWidget(
                 onTap: () {
-                  Modular.to.navigate(
-                    '/user',
-                  );
+                  moreInfoDialogWidget(context, controller.nextActivity);
                 },
                 cardColor: AppColors.brandingOrange,
                 textColor: Colors.white,
