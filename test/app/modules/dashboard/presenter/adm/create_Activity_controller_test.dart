@@ -66,12 +66,6 @@ void main() {
     expect(controller.activityToCreate.schedule[0].date!.hour, 22);
   });
 
-  test('setHour', () {
-    var str = '22:00';
-    controller.setHour(str, 0);
-    expect(controller.activityToCreate.schedule[0].date!.hour, 22);
-  });
-
   test('setDuration', () {
     var str = '22:00';
     controller.setDuration(str, 0);
