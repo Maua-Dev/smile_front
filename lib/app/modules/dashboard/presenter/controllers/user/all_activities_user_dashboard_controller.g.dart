@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'adm_dashboard_controller.dart';
+part of 'all_activities_user_dashboard_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,14 +8,16 @@ part of 'adm_dashboard_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
+mixin _$AllActivitiesUserDashboardController
+    on _AllActivitiesUserDashboardControllerBase, Store {
   Computed<List<ActivityModel>>? _$mondayActivitiesListComputed;
 
   @override
   List<ActivityModel> get mondayActivitiesList =>
       (_$mondayActivitiesListComputed ??= Computed<List<ActivityModel>>(
               () => super.mondayActivitiesList,
-              name: '_AdmDashboardControllerBase.mondayActivitiesList'))
+              name:
+                  '_AllActivitiesUserDashboardControllerBase.mondayActivitiesList'))
           .value;
   Computed<List<ActivityModel>>? _$tuesdayActivitiesListComputed;
 
@@ -23,7 +25,8 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   List<ActivityModel> get tuesdayActivitiesList =>
       (_$tuesdayActivitiesListComputed ??= Computed<List<ActivityModel>>(
               () => super.tuesdayActivitiesList,
-              name: '_AdmDashboardControllerBase.tuesdayActivitiesList'))
+              name:
+                  '_AllActivitiesUserDashboardControllerBase.tuesdayActivitiesList'))
           .value;
   Computed<List<ActivityModel>>? _$wednesdayActivitiesListComputed;
 
@@ -31,7 +34,8 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   List<ActivityModel> get wednesdayActivitiesList =>
       (_$wednesdayActivitiesListComputed ??= Computed<List<ActivityModel>>(
               () => super.wednesdayActivitiesList,
-              name: '_AdmDashboardControllerBase.wednesdayActivitiesList'))
+              name:
+                  '_AllActivitiesUserDashboardControllerBase.wednesdayActivitiesList'))
           .value;
   Computed<List<ActivityModel>>? _$thursdayActivitiesListComputed;
 
@@ -39,7 +43,8 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   List<ActivityModel> get thursdayActivitiesList =>
       (_$thursdayActivitiesListComputed ??= Computed<List<ActivityModel>>(
               () => super.thursdayActivitiesList,
-              name: '_AdmDashboardControllerBase.thursdayActivitiesList'))
+              name:
+                  '_AllActivitiesUserDashboardControllerBase.thursdayActivitiesList'))
           .value;
   Computed<List<ActivityModel>>? _$fridayActivitiesListComputed;
 
@@ -47,11 +52,13 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   List<ActivityModel> get fridayActivitiesList =>
       (_$fridayActivitiesListComputed ??= Computed<List<ActivityModel>>(
               () => super.fridayActivitiesList,
-              name: '_AdmDashboardControllerBase.fridayActivitiesList'))
+              name:
+                  '_AllActivitiesUserDashboardControllerBase.fridayActivitiesList'))
           .value;
 
-  final _$isFloatActionButtonOpenAtom =
-      Atom(name: '_AdmDashboardControllerBase.isFloatActionButtonOpen');
+  final _$isFloatActionButtonOpenAtom = Atom(
+      name:
+          '_AllActivitiesUserDashboardControllerBase.isFloatActionButtonOpen');
 
   @override
   bool get isFloatActionButtonOpen {
@@ -67,8 +74,9 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
-  final _$filterActivityChipIndexSelectedAtom =
-      Atom(name: '_AdmDashboardControllerBase.filterActivityChipIndexSelected');
+  final _$filterActivityChipIndexSelectedAtom = Atom(
+      name:
+          '_AllActivitiesUserDashboardControllerBase.filterActivityChipIndexSelected');
 
   @override
   int? get filterActivityChipIndexSelected {
@@ -85,7 +93,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   final _$activitiesListAtom =
-      Atom(name: '_AdmDashboardControllerBase.activitiesList');
+      Atom(name: '_AllActivitiesUserDashboardControllerBase.activitiesList');
 
   @override
   List<ActivityModel> get activitiesList {
@@ -100,8 +108,8 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
-  final _$nextActivitiesListAtom =
-      Atom(name: '_AdmDashboardControllerBase.nextActivitiesList');
+  final _$nextActivitiesListAtom = Atom(
+      name: '_AllActivitiesUserDashboardControllerBase.nextActivitiesList');
 
   @override
   List<ActivityModel> get nextActivitiesList {
@@ -116,8 +124,8 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
-  final _$getActivitiesByTypeAsyncAction =
-      AsyncAction('_AdmDashboardControllerBase.getActivitiesByType');
+  final _$getActivitiesByTypeAsyncAction = AsyncAction(
+      '_AllActivitiesUserDashboardControllerBase.getActivitiesByType');
 
   @override
   Future<dynamic> getActivitiesByType(dynamic index) {
@@ -126,44 +134,49 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   final _$getAllActivitiesAsyncAction =
-      AsyncAction('_AdmDashboardControllerBase.getAllActivities');
+      AsyncAction('_AllActivitiesUserDashboardControllerBase.getAllActivities');
 
   @override
   Future<dynamic> getAllActivities() {
     return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
   }
 
-  final _$logoutAsyncAction = AsyncAction('_AdmDashboardControllerBase.logout');
+  final _$logoutAsyncAction =
+      AsyncAction('_AllActivitiesUserDashboardControllerBase.logout');
 
   @override
   Future<void> logout() {
     return _$logoutAsyncAction.run(() => super.logout());
   }
 
-  final _$_AdmDashboardControllerBaseActionController =
-      ActionController(name: '_AdmDashboardControllerBase');
+  final _$_AllActivitiesUserDashboardControllerBaseActionController =
+      ActionController(name: '_AllActivitiesUserDashboardControllerBase');
 
   @override
   void toggleFloatActionButton() {
     final _$actionInfo =
-        _$_AdmDashboardControllerBaseActionController.startAction(
-            name: '_AdmDashboardControllerBase.toggleFloatActionButton');
+        _$_AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name:
+                '_AllActivitiesUserDashboardControllerBase.toggleFloatActionButton');
     try {
       return super.toggleFloatActionButton();
     } finally {
-      _$_AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+      _$_AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void toggleFilterActivityChipIndex(dynamic index) {
     final _$actionInfo =
-        _$_AdmDashboardControllerBaseActionController.startAction(
-            name: '_AdmDashboardControllerBase.toggleFilterActivityChipIndex');
+        _$_AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name:
+                '_AllActivitiesUserDashboardControllerBase.toggleFilterActivityChipIndex');
     try {
       return super.toggleFilterActivityChipIndex(index);
     } finally {
-      _$_AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+      _$_AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
