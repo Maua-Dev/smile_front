@@ -2,6 +2,7 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/user_model.dart';
 
 class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   final ActivitiesDatasource datasource;
@@ -40,5 +41,17 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   @override
   Future createActivity(ActivityModel activityToCreate) async {
     await datasource.postActivity(activityToCreate);
+  }
+
+  @override
+  Future<List<ActivityModel>> getUserSubscribedActivities() async {
+    final result = await datasource.getUserSubscribedActivities();
+    return result;
+  }
+
+  @override
+  Future<UserModel> getUser() async {
+    final result = await datasource.getUser();
+    return result;
   }
 }
