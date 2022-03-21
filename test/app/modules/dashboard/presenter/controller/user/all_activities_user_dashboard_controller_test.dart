@@ -102,7 +102,7 @@ void main() {
     ),
     ActivityModel(
       id: '2',
-      type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
+      type: ActivityEnum.CURSOS,
       title: 'Atividade 03',
       description: 'Teste de atividade mock',
       location: 'H244',
