@@ -8,9 +8,8 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
-import 'package:smile_front/app/shared/models/user_model.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
@@ -21,16 +20,8 @@ void main() {
       MockActivitiesRepositoryInterface();
   AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
-  late UserDashboardController controller;
+  late AllActivitiesUserDashboardController controller;
   late AuthController authController;
-
-  final userMock = UserModel(
-    email: '',
-    cpfRne: '',
-    accessLevel: '',
-    typeRole: '',
-    socialName: 'Gabriel Godoy',
-  );
 
   final mockActivities = <ActivityModel>[
     ActivityModel(
@@ -111,7 +102,7 @@ void main() {
     ),
     ActivityModel(
       id: '2',
-      type: ActivityEnum.CURSOS,
+      type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
       title: 'Atividade 03',
       description: 'Teste de atividade mock',
       location: 'H244',
@@ -131,37 +122,29 @@ void main() {
   ];
 
   setUpAll(() {
-    when(repository.getUserSubscribedActivities())
-        .thenAnswer((_) async => mockActivities);
-    when(repository.getUser()).thenAnswer((_) async => userMock);
+    when(repository.getAllActivities()).thenAnswer((_) async => mockActivities);
+    when(repository.getActivitiesSelectedByType(ActivityEnum.CURSOS))
+        .thenAnswer((_) async => mockActivities
+            .where((element) => element.type == ActivityEnum.CURSOS)
+            .toList());
     authController =
         AuthController(authRepository: authRepository, storage: secureStorage);
 
-    controller = UserDashboardController(
+    controller = AllActivitiesUserDashboardController(
       repository: repository,
       authController: authController,
     );
   });
 
-  test('getUserSubscribedActivities', () {
-    controller.getUserSubscribedActivities();
+  test('getAllActivities', () {
+    controller.getAllActivities();
     expect(controller.activitiesList.isNotEmpty, true);
-    expect(controller.nextActivity.id.isNotEmpty, true);
+    expect(controller.nextActivitiesList.isNotEmpty, true);
   });
 
-  test('getNextActivity', () {
-    controller.getNextActivity();
-    expect(controller.nextActivity, mockActivities[0]);
-  });
-
-  test('getUser', () {
-    controller.getUser();
-    expect(controller.user, userMock);
-  });
-
-  test('getUserFirstName', () {
-    controller.getUser();
-    expect(controller.userName.length, 7);
+  test('getActivitiesByType', () {
+    controller.getActivitiesByType(0);
+    expect(controller.activitiesList.length, 5);
   });
 
   test('mondayActivitiesList', () {

@@ -95,17 +95,6 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
   }
 
   @action
-  void searchActivityByName(String search) {
-    activitiesList = activitiesList
-        .where((element) =>
-            element.title.toLowerCase().startsWith(search.toLowerCase()))
-        .toList();
-    if (search == '') {
-      getAllActivities();
-    }
-  }
-
-  @action
   Future<void> logout() async {
     await authController.logout();
     Modular.to.navigate('/login');

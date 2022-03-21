@@ -84,6 +84,12 @@ void main() {
     expect(controller.activityToCreate.schedule[0].totalParticipants, str);
   });
 
+  test('setSpeakerName', () {
+    var str = 'teste';
+    controller.setSpeakerName(str);
+    expect(controller.activityToCreate.speaker.name, str);
+  });
+
   test('setSpeakerBio', () {
     var str = 'teste';
     controller.setSpeakerBio(str);

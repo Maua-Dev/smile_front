@@ -181,20 +181,6 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   @override
-  void searchActivityByName(String search) {
-    final _$actionInfo =
-        _$_AllActivitiesUserDashboardControllerBaseActionController.startAction(
-            name:
-                '_AllActivitiesUserDashboardControllerBase.searchActivityByName');
-    try {
-      return super.searchActivityByName(search);
-    } finally {
-      _$_AllActivitiesUserDashboardControllerBaseActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 isFloatActionButtonOpen: ${isFloatActionButtonOpen},

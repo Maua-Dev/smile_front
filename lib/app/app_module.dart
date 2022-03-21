@@ -5,7 +5,6 @@ import 'package:smile_front/app/modules/auth/infra/auth_guards/auth_guard_adm.da
 import 'package:smile_front/app/modules/auth/infra/auth_guards/auth_guard_user.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/landing_module.dart';
-import 'package:smile_front/app/modules/dashboard/user_module.dart';
 import 'package:smile_front/app/modules/login/login_module.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
 import 'modules/auth/auth_module.dart';

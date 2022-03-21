@@ -5,7 +5,6 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all
 
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/widgets/text_header_scratched.dart';
-import '../../../../shared/widgets/vertical_nav_bar/vertical_nav_bar.dart';
 import '../../domain/infra/activity_enum.dart';
 import '../widgets/activities_carousel_widget.dart';
 import '../widgets/filter_chip_widget.dart';

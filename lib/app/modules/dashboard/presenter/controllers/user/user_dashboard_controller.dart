@@ -40,19 +40,19 @@ abstract class _UserDashboardControllerBase with Store {
   }
 
   @action
-  Future getUser() async {
-    user = await repository.getUser();
-    getUserName();
-  }
-
-  @action
-  void getUserName() {
-    userName = user.socialName.substring(0, user.socialName.indexOf(' '));
-  }
-
-  @action
   void getNextActivity() {
     nextActivity = activitiesList[0];
+  }
+
+  @action
+  Future getUser() async {
+    user = await repository.getUser();
+    getUserFirstName();
+  }
+
+  @action
+  void getUserFirstName() {
+    userName = user.socialName.substring(0, user.socialName.indexOf(' '));
   }
 
   @computed

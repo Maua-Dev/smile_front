@@ -93,29 +93,6 @@ abstract class _AdmDashboardControllerBase with Store {
   }
 
   @action
-  void searchActivityByName(String search) {
-    activitiesList = activitiesList
-        .where((element) =>
-            element.title.toLowerCase().startsWith(search.toLowerCase()))
-        .toList();
-    if (search == '') {
-      getAllActivities();
-    }
-  }
-
-  // @action
-  // void orderByDate(int index) {
-  //   activitiesList.sort(
-  //       (a, b) => a.schedule[index].date.compareTo(b.schedule[index].date));
-  // }
-
-  // @action
-  // void orderByParticipants() {
-  //   activitiesList.sort(
-  //       (a, b) => a.enrolledUsers!.length.compareTo(b.enrolledUsers!.length));
-  // }
-
-  @action
   Future<void> logout() async {
     await authController.logout();
     Modular.to.navigate('/login');

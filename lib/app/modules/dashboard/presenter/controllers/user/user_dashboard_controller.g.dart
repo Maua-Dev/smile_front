@@ -141,22 +141,22 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
       ActionController(name: '_UserDashboardControllerBase');
 
   @override
-  void getUserName() {
+  void getNextActivity() {
     final _$actionInfo = _$_UserDashboardControllerBaseActionController
-        .startAction(name: '_UserDashboardControllerBase.getUserName');
+        .startAction(name: '_UserDashboardControllerBase.getNextActivity');
     try {
-      return super.getUserName();
+      return super.getNextActivity();
     } finally {
       _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void getNextActivity() {
+  void getUserFirstName() {
     final _$actionInfo = _$_UserDashboardControllerBaseActionController
-        .startAction(name: '_UserDashboardControllerBase.getNextActivity');
+        .startAction(name: '_UserDashboardControllerBase.getUserFirstName');
     try {
-      return super.getNextActivity();
+      return super.getUserFirstName();
     } finally {
       _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
