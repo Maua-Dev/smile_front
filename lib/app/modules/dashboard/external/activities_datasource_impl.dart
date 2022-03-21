@@ -30,7 +30,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
 
   @override
   Future<List<ActivityModel>> getUserSubscribedActivities() async {
-    return subscribedActivities;
+    return await Future.value(subscribedActivities);
     // try {
     //   final res = await dioClient.get('/smile_mss_activities/activity/getAll');
     //   if (res.statusCode == 200) {
@@ -85,7 +85,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   }
 
   @override
-  Future<UserModel> getUser() {
-    return Future.value(userMock);
+  Future<UserModel> getUser() async {
+    return await Future.value(userMock);
   }
 }

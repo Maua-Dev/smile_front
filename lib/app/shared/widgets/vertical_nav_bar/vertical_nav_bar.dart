@@ -26,6 +26,7 @@ class VerticalNavBar extends StatelessWidget {
               buttonText: 'INÍCIO',
               indexToShow: controller.indexToShow,
               icon: Icons.apps_outlined,
+              myIndex: 0,
               onPressed: () {
                 controller.toggleIndex(0);
                 Modular.to.navigate('/user');
@@ -37,8 +38,9 @@ class VerticalNavBar extends StatelessWidget {
             NavBarButtonWidget(
               buttonText: 'ATIVIDADES',
               indexToShow: controller.indexToShow,
-              onPressed: () {
-                controller.toggleIndex(1);
+              myIndex: 1,
+              onPressed: () async {
+                await controller.toggleIndex(1);
                 Modular.to.navigate('/user/all-activities');
               },
               icon: Icons.library_books,
@@ -49,6 +51,7 @@ class VerticalNavBar extends StatelessWidget {
             NavBarButtonWidget(
               buttonText: 'CERTIFICADOS',
               indexToShow: controller.indexToShow,
+              myIndex: 2,
               onPressed: () {
                 controller.toggleIndex(2);
                 // Modular.to.navigate('/');

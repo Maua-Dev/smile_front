@@ -9,13 +9,6 @@ part of 'user_dashboard_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
-  Computed<String>? _$userNameComputed;
-
-  @override
-  String get userName =>
-      (_$userNameComputed ??= Computed<String>(() => super.userName,
-              name: '_UserDashboardControllerBase.userName'))
-          .value;
   Computed<List<ActivityModel>>? _$mondayActivitiesListComputed;
 
   @override
@@ -104,6 +97,21 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
+  final _$userNameAtom = Atom(name: '_UserDashboardControllerBase.userName');
+
+  @override
+  String get userName {
+    _$userNameAtom.reportRead();
+    return super.userName;
+  }
+
+  @override
+  set userName(String value) {
+    _$userNameAtom.reportWrite(value, super.userName, () {
+      super.userName = value;
+    });
+  }
+
   final _$getUserSubscribedActivitiesAsyncAction =
       AsyncAction('_UserDashboardControllerBase.getUserSubscribedActivities');
 
@@ -127,6 +135,31 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   @override
   Future<void> logout() {
     return _$logoutAsyncAction.run(() => super.logout());
+  }
+
+  final _$_UserDashboardControllerBaseActionController =
+      ActionController(name: '_UserDashboardControllerBase');
+
+  @override
+  void getUserName() {
+    final _$actionInfo = _$_UserDashboardControllerBaseActionController
+        .startAction(name: '_UserDashboardControllerBase.getUserName');
+    try {
+      return super.getUserName();
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void getNextActivity() {
+    final _$actionInfo = _$_UserDashboardControllerBaseActionController
+        .startAction(name: '_UserDashboardControllerBase.getNextActivity');
+    try {
+      return super.getNextActivity();
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
   }
 
   @override

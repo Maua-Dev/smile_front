@@ -5,6 +5,7 @@ import '../../../themes/app_colors.dart';
 class NavBarButtonWidget extends StatelessWidget {
   final Function()? onPressed;
   final int indexToShow;
+  final int myIndex;
   final String buttonText;
   final IconData icon;
   const NavBarButtonWidget({
@@ -13,6 +14,7 @@ class NavBarButtonWidget extends StatelessWidget {
     required this.indexToShow,
     required this.buttonText,
     required this.icon,
+    required this.myIndex,
   }) : super(key: key);
 
   @override
@@ -23,14 +25,17 @@ class NavBarButtonWidget extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: indexToShow == 4 ? AppColors.brandingOrange : Colors.white,
+            color: indexToShow == myIndex
+                ? AppColors.brandingOrange
+                : Colors.white,
             size: 55,
           ),
           Text(
             buttonText,
             style: TextStyle(
-                color:
-                    indexToShow == 4 ? AppColors.brandingOrange : Colors.white,
+                color: indexToShow == myIndex
+                    ? AppColors.brandingOrange
+                    : Colors.white,
                 fontSize: 15),
           )
         ],

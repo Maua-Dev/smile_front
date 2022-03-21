@@ -30,20 +30,30 @@ abstract class _UserDashboardControllerBase with Store {
   @observable
   UserModel user = UserModel.newInstance();
 
+  @observable
+  String userName = '';
+
   @action
   Future getUserSubscribedActivities() async {
     activitiesList = await repository.getUserSubscribedActivities();
-    nextActivity = activitiesList[0];
+    getNextActivity();
   }
 
   @action
   Future getUser() async {
     user = await repository.getUser();
+    getUserName();
   }
 
-  @computed
-  String get userName =>
-      user.socialName.substring(0, user.socialName.indexOf(' '));
+  @action
+  void getUserName() {
+    userName = user.socialName.substring(0, user.socialName.indexOf(' '));
+  }
+
+  @action
+  void getNextActivity() {
+    nextActivity = activitiesList[0];
+  }
 
   @computed
   List<ActivityModel> get mondayActivitiesList => activitiesList

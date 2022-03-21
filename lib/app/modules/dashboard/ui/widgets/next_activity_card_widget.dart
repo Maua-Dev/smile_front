@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
@@ -6,8 +7,7 @@ import '../../../../shared/themes/app_text_styles.dart';
 class NextActivityCardWidget extends StatelessWidget {
   final String name;
   final String description;
-  final String date;
-  final String time;
+  final DateTime? date;
   final int? totalParticipants;
   final Color? cardColor;
   final Color? textColor;
@@ -17,7 +17,6 @@ class NextActivityCardWidget extends StatelessWidget {
     required this.name,
     required this.description,
     required this.date,
-    required this.time,
     required this.totalParticipants,
     this.onTap,
     this.cardColor,
@@ -26,6 +25,8 @@ class NextActivityCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var dateString = date == null ? '' : DateFormat('dd/MM/yyyy').format(date!);
+    var timeString = date == null ? '' : DateFormat('HH:mm').format(date!);
     return Padding(
       padding: const EdgeInsets.only(right: 72, left: 72, bottom: 48, top: 8),
       child: GestureDetector(
@@ -84,7 +85,7 @@ class NextActivityCardWidget extends StatelessWidget {
                               size: 20,
                             ),
                           ),
-                          Text(date,
+                          Text(dateString,
                               style: AppTextStyles.button.copyWith(
                                   fontSize: 18,
                                   color: textColor ?? AppColors.brandingPurple))
@@ -103,7 +104,7 @@ class NextActivityCardWidget extends StatelessWidget {
                               size: 20,
                             ),
                           ),
-                          Text(time,
+                          Text(timeString,
                               style: AppTextStyles.button.copyWith(
                                   fontSize: 18,
                                   color: textColor ?? AppColors.brandingPurple))

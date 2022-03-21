@@ -18,8 +18,9 @@ var subscribedActivities = <ActivityModel>[
     ),
     schedule: <ScheduleActivityModel>[
       ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 16, 13),
+        date: DateTime.parse('2022-03-21 13:00'),
         totalParticipants: 20,
+        duration: DateTime.parse('2022-03-21 13:00'),
       ),
     ],
   ),
@@ -37,8 +38,9 @@ var subscribedActivities = <ActivityModel>[
     ),
     schedule: <ScheduleActivityModel>[
       ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 17, 13),
+        date: DateTime.parse('2022-03-21 13:00'),
         totalParticipants: 20,
+        duration: DateTime.parse('2022-03-21 13:00'),
       ),
     ],
   ),
@@ -56,8 +58,9 @@ var subscribedActivities = <ActivityModel>[
     ),
     schedule: <ScheduleActivityModel>[
       ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 18, 13),
+        date: DateTime.parse('2022-03-21 13:00'),
         totalParticipants: 20,
+        duration: DateTime.parse('2022-03-21 13:00'),
       ),
     ],
   ),
