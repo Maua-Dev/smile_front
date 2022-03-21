@@ -3,18 +3,18 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
-import '../presenter/controllers/login_controller.dart';
-import 'widgets/input_box.dart';
+import '../../login/ui/widgets/input_box.dart';
+import '../presenter/controller/forgot_password_controller.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({Key? key}) : super(key: key);
+class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({Key? key}) : super(key: key);
 
   @override
-  _ForgotPasswordState createState() => _ForgotPasswordState();
+  _ForgotPasswordPageState createState() => _ForgotPasswordPageState();
 }
 
-class _ForgotPasswordState
-    extends ModularState<ForgotPassword, LoginController> {
+class _ForgotPasswordPageState
+    extends ModularState<ForgotPasswordPage, ForgotPasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +51,7 @@ class _ForgotPasswordState
                   Observer(builder: (_) {
                     if (controller.errors != '') {
                       return Container(
-                        width: 300,
+                        width: 500,
                         decoration: BoxDecoration(
                             color: Colors.red[100],
                             border: Border.all(color: Colors.red),
@@ -82,8 +82,11 @@ class _ForgotPasswordState
                     }
                     return Container();
                   }),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   const Text(
-                    'Uma nova senha será enviada no email cadastrado',
+                    'Um código será enviado no email cadastrado',
                     style: TextStyle(color: Colors.white),
                   ),
                   const SizedBox(
@@ -91,7 +94,7 @@ class _ForgotPasswordState
                   ),
                   InputBox(
                     icon: Icons.person,
-                    placeholder: 'CPF / RNE',
+                    placeholder: 'CPF / RNE ou Email',
                     setValue: controller.setUsername,
                   ),
                   const SizedBox(
@@ -105,7 +108,7 @@ class _ForgotPasswordState
                       heightSize: 50,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () {
-                        // gerar nova senha
+                        controller.forgotPassword();
                       },
                     );
                   }),
