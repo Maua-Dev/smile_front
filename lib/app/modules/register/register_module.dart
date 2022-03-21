@@ -12,21 +12,6 @@ import 'infra/repository/register_repository_impl.dart';
 class RegisterModule extends Module {
   @override
   final List<Bind> binds = [
-    // Bind.lazySingleton<RegisterController>(
-    //     (i) => RegisterController(
-    //         registerUserRepository: i<RegisterRepositoryInterface>()),
-    //     export: true),
-    // // Bind.lazySingleton<RegisterRepositoryInterface>(
-    // //     (i) => RegisterRepositoryMock(),
-    // //     export: true),
-    // Bind.lazySingleton<RegisterDatasource>(
-    //     (i) => RegisterDatasourceImpl(dioClient: i()),
-    //     export: true),
-    // Bind.lazySingleton<RegisterRepositoryInterface>(
-    //     (i) => RegisterRepositoryImpl(datasource: i()),
-    //     export: true),
-    // Bind.lazySingleton((i) => Dio(smileLoginOption)),
-
     Bind.lazySingleton<RegisterController>(
         (i) => RegisterController(
               registerUserRepository: i<RegisterRepositoryInterface>(),
