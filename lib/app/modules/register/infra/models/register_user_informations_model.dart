@@ -1,60 +1,58 @@
-import '../../../../shared/entities/user_registration.dart';
+// ignore_for_file: overridden_fields, annotate_overrides, duplicate_ignore
 
-class RegisterUserInformationsModel extends UserRegistration {
-  @override
-  // ignore: overridden_fields
-  final String name;
-  @override
-  // ignore: overridden_fields
+import 'package:smile_front/app/shared/entities/user.dart';
+
+class RegisterUserInformationsModel extends User {
+  final String socialName;
   final String email;
-  @override
-  // ignore: overridden_fields
   final String cpfRne;
-  @override
-  // ignore: overridden_fields
-  final int? ra;
-  @override
-  // ignore: overridden_fields
+  final String? registration;
+  final String accessLevel;
+  final String typeRole;
+
   final String password;
+  final int? ra;
 
-  RegisterUserInformationsModel({
-    required this.name,
-    required this.email,
-    required this.cpfRne,
-    this.ra,
-    required this.password,
-  }) : super(name: name, email: email, cpfRne: cpfRne, password: password);
-
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'cpfRne': cpfRne,
-        'ra': ra,
-        'password': password,
-      };
+  RegisterUserInformationsModel(
+      {required this.email,
+      required this.cpfRne,
+      this.registration,
+      required this.accessLevel,
+      required this.typeRole,
+      required this.socialName,
+      required this.password,
+      this.ra,
+      })
+      : super(
+            socialName: socialName,
+            accessLevel: accessLevel,
+            cpfRne: cpfRne,
+            email: email,
+            typeRole: typeRole,
+            registration: registration);
 
   factory RegisterUserInformationsModel.fromMap(Map<String, dynamic> map) {
     return RegisterUserInformationsModel(
-      name: map['name'] ?? '',
-      email: map['email'] ?? '',
-      cpfRne: map['cpfRne'] ?? 0,
-      ra: map['ra'] ?? 0,
-      password: map['password'] ?? '',
+      socialName: map['socialName'],
+      accessLevel: map['accessLevel'],
+      cpfRne: map['cpfRne'],
+      email: map['email'],
+      typeRole: map['typeRole'],
+      registration: map['registration'], 
+      password: map['password'],
     );
   }
 
-  RegisterUserInformationsModel copyWith({
-    String? name,
-    String? email,
-    String? cpfRne,
-    int? ra,
-    String? password,
-  }) {
+  factory RegisterUserInformationsModel.newInstance() {
     return RegisterUserInformationsModel(
-      name: name ?? this.name,
-      email: email ?? this.email,
-      cpfRne: cpfRne ?? this.cpfRne,
-      ra: ra ?? this.ra,
-      password: password ?? this.password,
+      accessLevel: '',
+      cpfRne: '',
+      email: '',
+      socialName: '',
+      typeRole: '',
+      registration: '', 
+      password: '',
+      ra: null,
     );
   }
 }
