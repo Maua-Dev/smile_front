@@ -9,14 +9,66 @@ part of 'register_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$RegisterController on _RegisterController, Store {
-  Computed<RegisterInformations>? _$registerInformationsComputed;
+  Computed<int?>? _$raIntComputed;
 
   @override
-  RegisterInformations get registerInformations =>
-      (_$registerInformationsComputed ??= Computed<RegisterInformations>(
+  int? get raInt => (_$raIntComputed ??=
+          Computed<int?>(() => super.raInt, name: '_RegisterController.raInt'))
+      .value;
+  Computed<UserRegistration>? _$registerInformationsComputed;
+
+  @override
+  UserRegistration get registerInformations =>
+      (_$registerInformationsComputed ??= Computed<UserRegistration>(
               () => super.registerInformations,
               name: '_RegisterController.registerInformations'))
           .value;
+
+  final _$errorsAtom = Atom(name: '_RegisterController.errors');
+
+  @override
+  String get errors {
+    _$errorsAtom.reportRead();
+    return super.errors;
+  }
+
+  @override
+  set errors(String value) {
+    _$errorsAtom.reportWrite(value, super.errors, () {
+      super.errors = value;
+    });
+  }
+
+  final _$isLoadingAtom = Atom(name: '_RegisterController.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
+  final _$successRegistrationAtom =
+      Atom(name: '_RegisterController.successRegistration');
+
+  @override
+  bool get successRegistration {
+    _$successRegistrationAtom.reportRead();
+    return super.successRegistration;
+  }
+
+  @override
+  set successRegistration(bool value) {
+    _$successRegistrationAtom.reportWrite(value, super.successRegistration, () {
+      super.successRegistration = value;
+    });
+  }
 
   final _$nameAtom = Atom(name: '_RegisterController.name');
 
@@ -140,6 +192,13 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
+  final _$setErrorAsyncAction = AsyncAction('_RegisterController.setError');
+
+  @override
+  Future<void> setError(String value) {
+    return _$setErrorAsyncAction.run(() => super.setError(value));
+  }
+
   final _$setNameAsyncAction = AsyncAction('_RegisterController.setName');
 
   @override
@@ -210,6 +269,23 @@ mixin _$RegisterController on _RegisterController, Store {
     return _$registerAsyncAction.run(() => super.register());
   }
 
+  final _$setIsLoadingAsyncAction =
+      AsyncAction('_RegisterController.setIsLoading');
+
+  @override
+  Future<void> setIsLoading(bool value) {
+    return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
+  }
+
+  final _$setSuccessRegistrationAsyncAction =
+      AsyncAction('_RegisterController.setSuccessRegistration');
+
+  @override
+  Future<void> setSuccessRegistration(bool value) {
+    return _$setSuccessRegistrationAsyncAction
+        .run(() => super.setSuccessRegistration(value));
+  }
+
   final _$_RegisterControllerActionController =
       ActionController(name: '_RegisterController');
 
@@ -271,6 +347,9 @@ mixin _$RegisterController on _RegisterController, Store {
   @override
   String toString() {
     return '''
+errors: ${errors},
+isLoading: ${isLoading},
+successRegistration: ${successRegistration},
 name: ${name},
 cpf: ${cpf},
 email: ${email},
@@ -279,6 +358,7 @@ ra: ${ra},
 password: ${password},
 verifyPassword: ${verifyPassword},
 aceptEmailNotifications: ${aceptEmailNotifications},
+raInt: ${raInt},
 registerInformations: ${registerInformations}
     ''';
   }

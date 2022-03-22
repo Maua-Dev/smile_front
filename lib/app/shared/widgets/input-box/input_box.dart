@@ -31,7 +31,7 @@ class InputBox extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withOpacity(0.3),
             spreadRadius: 1,
             blurRadius: 10,
             offset: const Offset(1, 1),
@@ -42,7 +42,11 @@ class InputBox extends StatelessWidget {
       height: heightSize ?? 60,
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.gray,
+          color: disable != null
+              ? disable!
+                  ? const Color(0xFF5C5C5C).withOpacity(0.2)
+                  : AppColors.gray
+              : AppColors.gray,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(
@@ -65,7 +69,8 @@ class InputBox extends StatelessWidget {
               hintStyle: TextStyle(color: AppColors.placeholder),
               errorStyle: TextStyle(
                 color: AppColors.brandingOrange,
-                fontSize: 24,
+                fontSize: 16,
+                height: 0.08,
               ),
               prefixIcon: Icon(icon, size: 24),
             ),
