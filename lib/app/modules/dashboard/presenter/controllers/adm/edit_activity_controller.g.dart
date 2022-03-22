@@ -144,33 +144,33 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
-  void setSpeakerName(String value) {
+  void setSpeakerName(String value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setSpeakerName');
     try {
-      return super.setSpeakerName(value);
+      return super.setSpeakerName(value, index);
     } finally {
       _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSpeakerBio(String value) {
+  void setSpeakerBio(String value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setSpeakerBio');
     try {
-      return super.setSpeakerBio(value);
+      return super.setSpeakerBio(value, index);
     } finally {
       _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSpeakerCompany(String value) {
+  void setSpeakerCompany(String value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setSpeakerCompany');
     try {
-      return super.setSpeakerCompany(value);
+      return super.setSpeakerCompany(value, index);
     } finally {
       _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -193,6 +193,28 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
         .startAction(name: '_EditActivityControllerBase.removeSchedule');
     try {
       return super.removeSchedule(index);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addSpeaker() {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.addSpeaker');
+    try {
+      return super.addSpeaker();
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeSpeaker(int index) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.removeSpeaker');
+    try {
+      return super.removeSpeaker(index);
     } finally {
       _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }

@@ -48,16 +48,16 @@ class VerticalNavBar extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            NavBarButtonWidget(
-              buttonText: 'CERTIFICADOS',
-              indexToShow: controller.indexToShow,
-              myIndex: 2,
-              onPressed: () {
-                controller.toggleIndex(2);
-                // Modular.to.navigate('/');
-              },
-              icon: Icons.assignment,
-            ),
+            // NavBarButtonWidget(
+            //   buttonText: 'CERTIFICADOS',
+            //   indexToShow: controller.indexToShow,
+            //   myIndex: 2,
+            //   onPressed: () {
+            //     controller.toggleIndex(2);
+            //     // Modular.to.navigate('/');
+            //   },
+            //   icon: Icons.assignment,
+            // ),
           ]),
         ),
       );

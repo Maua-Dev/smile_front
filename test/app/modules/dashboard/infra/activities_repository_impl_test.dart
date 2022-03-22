@@ -17,6 +17,7 @@ void main() {
   var activitiesList = <ActivityModel>[
     ActivityModel(
         id: '',
+        activityCode: 'C01',
         type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
         title: 'ABCD123',
         description: '',
@@ -31,10 +32,12 @@ void main() {
           ),
         ],
         location: '',
-        speaker: SpeakerActivityModel(
-            bio: '', company: '', name: '', linkPhoto: '')),
+        speaker: [
+          SpeakerActivityModel(bio: '', company: '', name: '', linkPhoto: '')
+        ]),
     ActivityModel(
         id: '',
+        activityCode: 'C01',
         type: ActivityEnum.CURSOS,
         title: 'ABCD123',
         description: '',
@@ -49,10 +52,12 @@ void main() {
           ),
         ],
         location: '',
-        speaker: SpeakerActivityModel(
-            bio: '', company: '', name: '', linkPhoto: '')),
+        speaker: [
+          SpeakerActivityModel(bio: '', company: '', name: '', linkPhoto: '')
+        ]),
     ActivityModel(
         id: '',
+        activityCode: 'C01',
         type: ActivityEnum.CURSOS,
         title: 'ABCD123',
         description: '',
@@ -67,8 +72,9 @@ void main() {
           ),
         ],
         location: '',
-        speaker: SpeakerActivityModel(
-            bio: '', company: '', name: '', linkPhoto: '')),
+        speaker: [
+          SpeakerActivityModel(bio: '', company: '', name: '', linkPhoto: '')
+        ]),
   ];
 
   setUpAll(() {

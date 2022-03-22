@@ -8,15 +8,17 @@ import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
 class ActivityModel extends Activity {
   final String id;
+  final String activityCode;
   final ActivityEnum? type;
   final String title;
   final String description;
   final List<ScheduleActivityModel> schedule;
   final String? location;
-  final SpeakerActivityModel speaker;
+  final List<SpeakerActivityModel> speaker;
 
   ActivityModel({
     required this.id,
+    required this.activityCode,
     required this.type,
     required this.title,
     required this.description,
@@ -25,6 +27,7 @@ class ActivityModel extends Activity {
     required this.speaker,
   }) : super(
           id: id,
+          activityCode: activityCode,
           type: type,
           title: title,
           description: description,
@@ -36,12 +39,13 @@ class ActivityModel extends Activity {
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
     return ActivityModel(
       id: map['id'],
+      activityCode: map['activityCode'],
       type: ActivityEnumExtension.stringToEnumMap(map['type']),
       title: map['title'],
       description: map['description'],
       schedule: ScheduleActivityModel.fromMaps(map['schedule']),
       location: map['location'],
-      speaker: SpeakerActivityModel.fromMap(map['speaker']),
+      speaker: SpeakerActivityModel.fromMaps(map['speaker']),
     );
   }
 
@@ -63,15 +67,16 @@ class ActivityModel extends Activity {
         schedule: [ScheduleActivityModel.newInstance()],
         description: '',
         id: '',
+        activityCode: '',
         title: '',
         type: null,
         location: '',
-        speaker: SpeakerActivityModel(
-            bio: '', company: '', name: '', linkPhoto: ''));
+        speaker: [SpeakerActivityModel.newInstance()]);
   }
 
   ActivityModel copyWith({
     String? id,
+    String? activityCode,
     ActivityEnum? type,
     String? title,
     String? description,
@@ -79,10 +84,11 @@ class ActivityModel extends Activity {
     DateTime? date,
     DateTime? hour,
     String? location,
-    SpeakerActivityModel? speaker,
+    List<SpeakerActivityModel>? speaker,
   }) {
     return ActivityModel(
       id: id ?? this.id,
+      activityCode: activityCode ?? this.activityCode,
       type: type ?? this.type,
       title: title ?? this.title,
       description: description ?? this.description,

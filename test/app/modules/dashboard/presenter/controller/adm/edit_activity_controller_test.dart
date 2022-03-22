@@ -21,6 +21,7 @@ void main() {
   late EditActivityController controller;
   final activity = ActivityModel(
       id: '1',
+      activityCode: 'C01',
       type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
       title: 'Atividade 1',
       description: '12345',
@@ -29,14 +30,11 @@ void main() {
           date: DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
           totalParticipants: 20,
         ),
-        ScheduleActivityModel(
-          date: DateTime.now(),
-          totalParticipants: 20,
-        )
       ],
       location: 'SALA 123',
-      speaker:
-          SpeakerActivityModel(bio: '', company: '', name: '', linkPhoto: ''));
+      speaker: [
+        SpeakerActivityModel(bio: '', company: '', name: '', linkPhoto: '')
+      ]);
 
   setUpAll(() async {
     await Modular.isModuleReady<AppModule>();
@@ -101,25 +99,20 @@ void main() {
 
   test('setSpeakerName', () {
     var str = 'teste';
-    controller.setSpeakerName(str);
-    expect(controller.activityToEdit.speaker.name, str);
+    controller.setSpeakerName(str, 0);
+    expect(controller.activityToEdit.speaker[0].name, str);
   });
 
   test('setSpeakerBio', () {
     var str = 'teste';
-    controller.setSpeakerBio(str);
-    expect(controller.activityToEdit.speaker.bio, str);
+    controller.setSpeakerBio(str, 0);
+    expect(controller.activityToEdit.speaker[0].bio, str);
   });
 
   test('setSpeakerCompany', () {
     var str = 'teste';
-    controller.setSpeakerCompany(str);
-    expect(controller.activityToEdit.speaker.company, str);
-  });
-  test('setSpeakerName', () {
-    var str = 'teste';
-    controller.setSpeakerName(str);
-    expect(controller.activityToEdit.speaker.name, str);
+    controller.setSpeakerCompany(str, 0);
+    expect(controller.activityToEdit.speaker[0].company, str);
   });
 
   test('removeSchedule', () {

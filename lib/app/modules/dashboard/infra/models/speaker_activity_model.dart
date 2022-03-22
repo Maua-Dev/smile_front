@@ -2,12 +2,12 @@ import 'package:smile_front/app/shared/entities/speaker.dart';
 
 class SpeakerActivityModel extends Speaker {
   // ignore: overridden_fields, annotate_overrides
-  final String name;
+  String name;
   // ignore: overridden_fields, annotate_overrides
-  final String bio;
+  String bio;
   // ignore: overridden_fields, annotate_overrides
-  final String? linkPhoto;
-  final String company;
+  String? linkPhoto;
+  String company;
 
   SpeakerActivityModel({
     required this.name,
@@ -35,6 +35,9 @@ class SpeakerActivityModel extends Speaker {
       linkPhoto: map['linkPhoto'] ?? '',
     );
   }
+  static List<SpeakerActivityModel> fromMaps(List array) {
+    return array.map((e) => SpeakerActivityModel.fromMap(e)).toList();
+  }
 
   SpeakerActivityModel copyWith({
     String? name,
@@ -47,6 +50,15 @@ class SpeakerActivityModel extends Speaker {
       bio: bio ?? this.bio,
       company: company ?? this.company,
       linkPhoto: linkPhoto ?? this.linkPhoto,
+    );
+  }
+
+  factory SpeakerActivityModel.newInstance() {
+    return SpeakerActivityModel(
+      name: '',
+      bio: '',
+      company: '',
+      linkPhoto: '',
     );
   }
 }

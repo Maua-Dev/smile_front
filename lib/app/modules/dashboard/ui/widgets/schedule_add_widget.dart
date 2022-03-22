@@ -91,9 +91,11 @@ class ScheduleAddWidget extends StatelessWidget {
             padding: false,
           ),
         ),
-        const SizedBox(
-          width: 16,
-        ),
+        index != 0
+            ? const SizedBox(
+                width: 16,
+              )
+            : const SizedBox.shrink(),
         index != 0
             ? IconButton(
                 padding: EdgeInsets.zero,

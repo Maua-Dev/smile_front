@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
+import '../../infra/models/schedule_activity_model.dart';
+
 class ActivityCardWidget extends StatelessWidget {
   final String name;
+  final String activityCode;
   final String description;
-  final String date;
-  final String time;
-  final int? totalParticipants;
+  final ScheduleActivityModel schedule;
   final Color? cardColor;
   final Color? textColor;
   final Function()? onTap;
@@ -15,16 +17,17 @@ class ActivityCardWidget extends StatelessWidget {
     Key? key,
     required this.name,
     required this.description,
-    required this.date,
-    required this.time,
-    required this.totalParticipants,
+    required this.schedule,
     this.onTap,
     this.cardColor,
     this.textColor,
+    required this.activityCode,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var date = DateFormat('dd/MM/yyyy').format(schedule.date!);
+    var time = DateFormat('HH:mm').format(schedule.date!);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
@@ -54,7 +57,7 @@ class ActivityCardWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  name,
+                  '$activityCode - $name',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.buttonBold
@@ -129,7 +132,7 @@ class ActivityCardWidget extends StatelessWidget {
                                     color:
                                         textColor ?? AppColors.brandingPurple)),
                             TextSpan(
-                                text: '$totalParticipants',
+                                text: '${schedule.totalParticipants}',
                                 style: AppTextStyles.button.copyWith(
                                     fontSize: 18,
                                     color:

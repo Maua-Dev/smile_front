@@ -4,7 +4,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/add_photo_widget.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
@@ -14,6 +13,7 @@ import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import '../../../../shared/widgets/text_header_scratched.dart';
 import '../../domain/infra/activity_enum.dart';
 import '../widgets/schedule_add_widget.dart';
+import '../widgets/speaker_add_widget.dart';
 import '../widgets/text_field_dialog_widget.dart';
 
 class EditActivityPage extends StatefulWidget {
@@ -36,7 +36,7 @@ class _EditActivityPageState
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.2,
+                height: MediaQuery.of(context).size.height * 0.15,
                 child: Image.asset('assets/images/maua_campus_blur.png',
                     fit: BoxFit.cover),
               ),
@@ -53,7 +53,7 @@ class _EditActivityPageState
                 child: Row(
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.2,
+                      width: MediaQuery.of(context).size.width * 0.25,
                       child: DropDownFieldCustom<ActivityEnum>(
                         textStyles: AppTextStyles.body.copyWith(
                             color: AppColors.brandingPurple, fontSize: 20),
@@ -71,6 +71,17 @@ class _EditActivityPageState
                         onChanged: controller.setType,
                       ),
                     ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.1,
+                        child: TextFieldDialogWidget(
+                          labelText: 'Código',
+                          padding: false,
+                          onChanged: controller.setActivityCode,
+                          value: controller.activityToEdit.activityCode,
+                        )),
                     const SizedBox(
                       width: 16,
                     ),
@@ -159,59 +170,45 @@ class _EditActivityPageState
                 value: controller.activityToEdit.location,
                 onChanged: controller.setLocation,
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const AddPhotoWidget(),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Flexible(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              Flexible(
-                                child: TextFieldDialogWidget(
-                                  labelText: 'Nome Palestrante',
-                                  padding: false,
-                                  onChanged: controller.setSpeakerName,
-                                  value: controller.activityToEdit.speaker.name,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 16,
-                              ),
-                              Flexible(
-                                child: TextFieldDialogWidget(
-                                  labelText: 'Empresa',
-                                  onChanged: controller.setSpeakerCompany,
-                                  value:
-                                      controller.activityToEdit.speaker.company,
-                                  padding: false,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16.0),
-                            child: TextFieldDialogWidget(
-                              labelText: 'Bio',
-                              value: controller.activityToEdit.speaker.bio,
-                              onChanged: controller.setSpeakerBio,
-                              padding: false,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+              Observer(builder: (_) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.activityToEdit.speaker.length,
+                  itemBuilder: (context, index) {
+                    return SpeakerAddWidget(
+                      index: index,
+                      name: controller.activityToEdit.speaker[index].name,
+                      bio: controller.activityToEdit.speaker[index].bio,
+                      company: controller.activityToEdit.speaker[index].company,
+                      onChangedName: (value) {
+                        controller.setSpeakerName(value, index);
+                      },
+                      onChangedBio: (value) {
+                        controller.setSpeakerBio(value, index);
+                      },
+                      onChangedCompany: (value) {
+                        controller.setSpeakerCompany(value, index);
+                      },
+                      removeSpeaker: () {
+                        controller.removeSpeaker(index);
+                        setState(() {});
+                      },
+                    );
+                  },
+                );
+              }),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 114),
+                  child: FormsButtonWidget(
+                      buttonTittle: 'Adicionar palestrante',
+                      onPressed: controller.addSpeaker,
+                      backgroundColor: AppColors.brandingOrange,
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 22,
+                      )),
                 ),
               ),
               Padding(
@@ -226,6 +223,7 @@ class _EditActivityPageState
                             context: context,
                             builder: (BuildContext context) {
                               return ActionConfirmationDialogWidget(
+                                  isLoading: controller.isLoading,
                                   title: 'Tem certeza que deseja continuar?',
                                   content:
                                       'Ao confirmar todos os dados antigos serão perdidos.',
@@ -263,6 +261,7 @@ class _EditActivityPageState
                               context: context,
                               builder: (BuildContext context) {
                                 return ActionConfirmationDialogWidget(
+                                    isLoading: controller.isLoading,
                                     title: 'Tem certeza que deseja continuar?',
                                     content:
                                         'Ao salvar todos os dados antigos serão perdidos.',

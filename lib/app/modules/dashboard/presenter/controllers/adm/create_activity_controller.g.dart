@@ -136,33 +136,33 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
-  void setSpeakerName(String value) {
+  void setSpeakerName(String value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setSpeakerName');
     try {
-      return super.setSpeakerName(value);
+      return super.setSpeakerName(value, index);
     } finally {
       _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSpeakerBio(String value) {
+  void setSpeakerBio(String value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setSpeakerBio');
     try {
-      return super.setSpeakerBio(value);
+      return super.setSpeakerBio(value, index);
     } finally {
       _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSpeakerCompany(String value) {
+  void setSpeakerCompany(String value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setSpeakerCompany');
     try {
-      return super.setSpeakerCompany(value);
+      return super.setSpeakerCompany(value, index);
     } finally {
       _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -185,6 +185,28 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
         .startAction(name: '_CreateActivityControllerBase.removeSchedule');
     try {
       return super.removeSchedule(index);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addSpeaker() {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.addSpeaker');
+    try {
+      return super.addSpeaker();
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeSpeaker(int index) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.removeSpeaker');
+    try {
+      return super.removeSpeaker(index);
     } finally {
       _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
