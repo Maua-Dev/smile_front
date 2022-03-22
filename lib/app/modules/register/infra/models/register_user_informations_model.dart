@@ -13,17 +13,16 @@ class RegisterUserInformationsModel extends User {
   final String password;
   final int? ra;
 
-  RegisterUserInformationsModel(
-      {required this.email,
-      required this.cpfRne,
-      this.registration,
-      required this.accessLevel,
-      required this.typeRole,
-      required this.socialName,
-      required this.password,
-      this.ra,
-      })
-      : super(
+  RegisterUserInformationsModel({
+    required this.email,
+    required this.cpfRne,
+    this.registration,
+    required this.accessLevel,
+    required this.typeRole,
+    required this.socialName,
+    required this.password,
+    this.ra,
+  }) : super(
             socialName: socialName,
             accessLevel: accessLevel,
             cpfRne: cpfRne,
@@ -38,7 +37,7 @@ class RegisterUserInformationsModel extends User {
       cpfRne: map['cpfRne'],
       email: map['email'],
       typeRole: map['typeRole'],
-      registration: map['registration'], 
+      registration: map['registration'],
       password: map['password'],
     );
   }
@@ -50,7 +49,7 @@ class RegisterUserInformationsModel extends User {
       email: '',
       socialName: '',
       typeRole: '',
-      registration: '', 
+      registration: '',
       password: '',
       ra: null,
     );
