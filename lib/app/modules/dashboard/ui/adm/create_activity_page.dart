@@ -42,7 +42,7 @@ class _CreateActivityPageState
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
                 child: TextHeaderScratched(
-                  title: 'Editar Atividade',
+                  title: 'Criar Atividade',
                   leftPadding: 24,
                 ),
               ),

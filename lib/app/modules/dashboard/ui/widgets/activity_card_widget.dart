@@ -48,13 +48,15 @@ class ActivityCardWidget extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   name,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.buttonBold
                       .copyWith(fontSize: 22, color: textColor ?? Colors.black),
                 ),
@@ -83,9 +85,7 @@ class ActivityCardWidget extends StatelessWidget {
                             child: Icon(
                               Icons.calendar_today,
                               color: textColor ?? AppColors.brandingPurple,
-                              size: MediaQuery.of(context).size.width < 1200
-                                  ? 10
-                                  : 20,
+                              size: 20,
                             ),
                           ),
                           Text(date,
@@ -101,9 +101,7 @@ class ActivityCardWidget extends StatelessWidget {
                             child: Icon(
                               Icons.access_time_outlined,
                               color: textColor ?? AppColors.brandingPurple,
-                              size: MediaQuery.of(context).size.width < 1200
-                                  ? 10
-                                  : 20,
+                              size: 20,
                             ),
                           ),
                           Text(time,
@@ -119,9 +117,7 @@ class ActivityCardWidget extends StatelessWidget {
                             child: Icon(
                               Icons.person,
                               color: textColor ?? AppColors.brandingPurple,
-                              size: MediaQuery.of(context).size.width < 1200
-                                  ? 10
-                                  : 20,
+                              size: 20,
                             ),
                           ),
                           RichText(
