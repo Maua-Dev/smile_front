@@ -7,7 +7,7 @@ class VerticalNavBarController = VerticalNavBarControllerBase
 
 abstract class VerticalNavBarControllerBase with Store {
   @observable
-  int indexToShow = 1;
+  int indexToShow = 0;
 
   @action
   Future<void> toggleIndex(index) async {
