@@ -13,8 +13,6 @@ import 'domain/repositories/secure_storage_interface.dart';
 class AuthModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton<AuthRepositoryInterface>(
-        (i) => AuthRepositoryImpl(datasource: i())),
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(
               authRepository: i<AuthRepositoryInterface>(),

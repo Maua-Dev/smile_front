@@ -37,7 +37,7 @@ void main() {
   });
 
   test('setTitle', () {
-    var str = 'teste';
+    var str = 'Titulo';
     controller.setTitle(str);
     expect(controller.activityToCreate.title, str);
   });
@@ -58,12 +58,6 @@ void main() {
     var str = '02/01/2021';
     controller.setDate(str, 0);
     expect(controller.activityToCreate.schedule[0].date!.day, 02);
-  });
-
-  test('setHour', () {
-    var str = '22:00';
-    controller.setHour(str, 0);
-    expect(controller.activityToCreate.schedule[0].date!.hour, 22);
   });
 
   test('setHour', () {
