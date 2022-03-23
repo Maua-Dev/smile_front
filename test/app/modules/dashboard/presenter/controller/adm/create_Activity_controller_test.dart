@@ -50,8 +50,14 @@ void main() {
 
   test('setLocation', () {
     var str = 'teste';
-    controller.setLocation(str);
-    expect(controller.activityToCreate.location, str);
+    controller.setLocation(str, 0);
+    expect(controller.activityToCreate.schedule[0].location, str);
+  });
+
+  test('setLink', () {
+    var str = 'teste';
+    controller.setLink(str, 0);
+    expect(controller.activityToCreate.schedule[0].link, str);
   });
 
   test('setDate', () {

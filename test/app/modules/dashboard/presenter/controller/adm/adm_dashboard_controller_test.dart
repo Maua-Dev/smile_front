@@ -32,19 +32,18 @@ void main() {
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
       description: 'Teste de atividade mock',
-      location: 'H244',
-      speaker: [
+      speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
           bio: 'Qualquer',
           company: 'Oracle',
-          linkPhoto: 'http://',
         ),
       ],
       schedule: <ScheduleActivityModel>[
         ScheduleActivityModel(
           date: DateTime.utc(2022, 03, 14, 13),
           totalParticipants: 20,
+          location: 'H244',
         ),
       ],
     ),
@@ -54,19 +53,18 @@ void main() {
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
       description: 'Teste de atividade mock',
-      location: 'H244',
-      speaker: [
+      speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
           bio: 'Qualquer',
           company: 'Oracle',
-          linkPhoto: 'http://',
         ),
       ],
       schedule: <ScheduleActivityModel>[
         ScheduleActivityModel(
           date: DateTime.utc(2022, 03, 15, 13),
           totalParticipants: 20,
+          location: 'H244',
         ),
       ],
     ),
@@ -76,19 +74,18 @@ void main() {
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
       description: 'Teste de atividade mock',
-      location: 'H244',
-      speaker: [
+      speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
           bio: 'Qualquer',
           company: 'Oracle',
-          linkPhoto: 'http://',
         ),
       ],
       schedule: <ScheduleActivityModel>[
         ScheduleActivityModel(
           date: DateTime.utc(2022, 03, 16, 13),
           totalParticipants: 20,
+          location: 'H244',
         ),
       ],
     ),
@@ -98,19 +95,18 @@ void main() {
       type: ActivityEnum.CURSOS,
       title: 'Atividade 02',
       description: 'Teste de atividade mock',
-      location: 'H244',
-      speaker: [
+      speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
           bio: 'Qualquer',
           company: 'Oracle',
-          linkPhoto: 'http://',
         ),
       ],
       schedule: <ScheduleActivityModel>[
         ScheduleActivityModel(
           date: DateTime.utc(2022, 03, 17, 13),
           totalParticipants: 20,
+          location: 'H244',
         ),
       ],
     ),
@@ -120,19 +116,18 @@ void main() {
       type: ActivityEnum.CURSOS,
       title: 'Atividade 03',
       description: 'Teste de atividade mock',
-      location: 'H244',
-      speaker: [
+      speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
           bio: 'Qualquer',
           company: 'Oracle',
-          linkPhoto: 'http://',
         ),
       ],
       schedule: <ScheduleActivityModel>[
         ScheduleActivityModel(
           date: DateTime.utc(2022, 03, 18, 13),
           totalParticipants: 20,
+          location: 'H244',
         ),
       ],
     ),

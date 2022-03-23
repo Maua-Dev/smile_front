@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-
-import '../../infra/models/schedule_activity_model.dart';
 
 class ActivityCardWidget extends StatelessWidget {
   final String name;

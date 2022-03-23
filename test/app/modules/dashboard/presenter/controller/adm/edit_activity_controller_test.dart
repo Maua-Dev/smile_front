@@ -27,13 +27,17 @@ void main() {
       description: '12345',
       schedule: [
         ScheduleActivityModel(
-          date: DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
-          totalParticipants: 20,
-        ),
+            date:
+                DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
+            totalParticipants: 20,
+            location: ''),
       ],
-      location: 'SALA 123',
-      speaker: [
-        SpeakerActivityModel(bio: '', company: '', name: '', linkPhoto: '')
+      speakers: [
+        SpeakerActivityModel(
+          bio: '',
+          company: '',
+          name: '',
+        )
       ]);
 
   setUpAll(() async {
@@ -69,8 +73,14 @@ void main() {
 
   test('setLocation', () {
     var str = 'teste';
-    controller.setLocation(str);
-    expect(controller.activityToEdit.location, str);
+    controller.setLocation(str, 0);
+    expect(controller.activityToEdit.schedule[0].location, str);
+  });
+
+  test('setLink', () {
+    var str = 'teste';
+    controller.setLink(str, 0);
+    expect(controller.activityToEdit.schedule[0].link, str);
   });
 
   test('setDate', () {
