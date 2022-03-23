@@ -99,6 +99,77 @@ class _CreateActivityPageState
                 value: controller.activityToCreate.description,
                 onChanged: controller.setDescription,
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.1,
+                      child: CheckboxListTile(
+                        title: Text(
+                          'Online',
+                          style: AppTextStyles.body
+                              .copyWith(color: Colors.white, fontSize: 20),
+                        ),
+                        value: controller.isOnline,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            controller.setIsOnline(value!);
+                            if (value == false) {
+                              for (var i = 0;
+                                  i <
+                                      controller
+                                          .activityToCreate.schedule.length;
+                                  i++) {
+                                controller.setLink('', i);
+                              }
+                            }
+                          });
+                        },
+                        tileColor: AppColors.brandingOrange,
+                        checkColor: AppColors.brandingOrange,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.1,
+                      child: CheckboxListTile(
+                        title: Text(
+                          'Presencial',
+                          style: AppTextStyles.body
+                              .copyWith(color: Colors.white, fontSize: 20),
+                        ),
+                        value: controller.isInPerson,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            controller.setIsInPerson(value!);
+                            if (value == false) {
+                              for (var i = 0;
+                                  i <
+                                      controller
+                                          .activityToCreate.schedule.length;
+                                  i++) {
+                                controller.setLocation('', i);
+                              }
+                            }
+                          });
+                        },
+                        tileColor: AppColors.brandingOrange,
+                        checkColor: AppColors.brandingOrange,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Observer(builder: (_) {
                 return ListView.builder(
                     shrinkWrap: true,
@@ -126,6 +197,8 @@ class _CreateActivityPageState
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
+                          isInPerson: controller.isInPerson,
+                          isOnline: controller.isOnline,
                           link:
                               controller.activityToCreate.schedule[index].link,
                           onChangedLink: (value) {

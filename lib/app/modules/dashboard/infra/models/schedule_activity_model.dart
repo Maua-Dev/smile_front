@@ -37,8 +37,8 @@ class ScheduleActivityModel extends ScheduleActivity {
         'date': date!.millisecondsSinceEpoch,
         'totalParticipants': totalParticipants,
         'duration': duration!.millisecondsSinceEpoch,
-        'location': location,
-        'link': link
+        'location': location ?? '',
+        'link': link ?? ''
       };
 
   ScheduleActivityModel copyWith({
