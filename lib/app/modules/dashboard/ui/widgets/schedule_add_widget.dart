@@ -19,6 +19,8 @@ class ScheduleAddWidget extends StatelessWidget {
   final String? link;
   final String? location;
   final int index;
+  final bool? isInPerson;
+  final bool? isOnline;
 
   const ScheduleAddWidget({
     Key? key,
@@ -36,6 +38,8 @@ class ScheduleAddWidget extends StatelessWidget {
     this.onChangedLink,
     this.link,
     this.location,
+    this.isInPerson,
+    this.isOnline,
   }) : super(key: key);
 
   @override
@@ -124,25 +128,31 @@ class ScheduleAddWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Row(
             children: [
-              Flexible(
-                child: TextFieldDialogWidget(
-                  labelText: 'Local',
-                  value: location,
-                  onChanged: onChangedLocation,
-                  padding: false,
-                ),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              Flexible(
-                child: TextFieldDialogWidget(
-                  labelText: 'Link',
-                  value: link,
-                  onChanged: onChangedLink,
-                  padding: false,
-                ),
-              ),
+              (link != null && link != '' && isOnline!) || isOnline!
+                  ? Flexible(
+                      child: TextFieldDialogWidget(
+                        labelText: 'Link',
+                        value: link,
+                        onChanged: onChangedLink,
+                        padding: false,
+                      ),
+                    )
+                  : const SizedBox.shrink(),
+              (isOnline! && isInPerson!)
+                  ? const SizedBox(
+                      width: 16,
+                    )
+                  : const SizedBox.shrink(),
+              (location != null && location != '' && isInPerson!) || isInPerson!
+                  ? Flexible(
+                      child: TextFieldDialogWidget(
+                        labelText: 'Local',
+                        value: location,
+                        onChanged: onChangedLocation,
+                        padding: false,
+                      ),
+                    )
+                  : const SizedBox.shrink(),
             ],
           ),
         ),
