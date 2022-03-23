@@ -179,12 +179,8 @@ class _CreateActivityPageState
                     itemBuilder: (context, index) {
                       var dateTime =
                           controller.activityToCreate.schedule[index].date;
-                      var hour =
-                          controller.activityToCreate.schedule[index].date ==
-                                  null
-                              ? ''
-                              : DateFormat('HH:mm').format(controller
-                                  .activityToCreate.schedule[index].date!);
+                      var hour = TimeOfDay.fromDateTime(
+                          controller.activityToCreate.schedule[index].date!);
                       var date =
                           controller.activityToCreate.schedule[index].date ==
                                   null
@@ -201,7 +197,7 @@ class _CreateActivityPageState
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
-                          dateTime: dateTime,
+                          date: dateTime,
                           isInPerson: controller.isInPerson,
                           isOnline: controller.isOnline,
                           link:
@@ -243,8 +239,24 @@ class _CreateActivityPageState
                               controller.setDate(value!, index);
                             });
                           },
-                          onChangedHour: (value) {
-                            controller.setHour(value, index);
+                          onChangedHour: () {
+                            showTimePicker(
+                              context: context,
+                              initialTime: TimeOfDay.now(),
+                              confirmText: 'CONFIRMAR',
+                              builder: (BuildContext context, Widget? child) {
+                                return Theme(
+                                  data: ThemeData.light().copyWith(
+                                    primaryColor: AppColors.brandingOrange,
+                                    colorScheme: ColorScheme.light(
+                                        primary: AppColors.brandingOrange),
+                                  ),
+                                  child: child!,
+                                );
+                              },
+                            ).then((value) {
+                              controller.setHour(value!.format(context), index);
+                            });
                           },
                           onChangedParticipants: (value) {
                             controller.setParticipants(int.parse(value), index);
@@ -260,7 +272,7 @@ class _CreateActivityPageState
               Center(
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
                   child: FormsButtonWidget(
                     buttonTittle: 'Adicionar novo horário',
                     onPressed: controller.addSchedule,

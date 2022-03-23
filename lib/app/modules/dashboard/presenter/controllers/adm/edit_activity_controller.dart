@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
@@ -147,16 +148,15 @@ abstract class _EditActivityControllerBase with Store {
 
   @action
   void setHour(String value, int index) {
-    if (value.length >= 5) {
-      var date = activityToEdit.schedule[index].date != null
-          ? DateFormat('yyyy-MM-dd')
-              .format(activityToEdit.schedule[index].date!)
-          : '';
-      var hour = DateTime.parse("$date $value");
-      var list = activityToEdit.schedule;
-      list[index] = activityToEdit.schedule[index].copyWith(date: hour);
-      activityToEdit = activityToEdit.copyWith(schedule: list);
-    }
+    var date = activityToEdit.schedule[index].date != null
+        ? DateFormat('yyyy-MM-dd').format(activityToEdit.schedule[index].date!)
+        : '';
+    var hour = date == ''
+        ? DateTime.parse('0000-00-00 $value')
+        : DateTime.parse("$date $value");
+    var list = activityToEdit.schedule;
+    list[index] = activityToEdit.schedule[index].copyWith(date: hour);
+    activityToEdit = activityToEdit.copyWith(schedule: list);
   }
 
   @action

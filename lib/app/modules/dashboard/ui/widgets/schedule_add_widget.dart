@@ -9,14 +9,14 @@ import '../../../../shared/themes/app_text_styles.dart';
 class ScheduleAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedParticipants;
   final void Function()? onChangedDate;
-  final void Function(String value)? onChangedHour;
+  final void Function()? onChangedHour;
   final void Function(String value)? onChangedDuration;
   final void Function(String value)? onChangedLocation;
   final void Function(String value)? onChangedLink;
   final void Function()? removeSchedule;
   final int? totalParticipants;
-  final DateTime? dateTime;
-  final String? hour;
+  final DateTime? date;
+  final TimeOfDay? hour;
   final String? duration;
   final String? link;
   final String? location;
@@ -41,7 +41,7 @@ class ScheduleAddWidget extends StatelessWidget {
     this.location,
     this.isInPerson,
     this.isOnline,
-    this.dateTime,
+    this.date,
   }) : super(key: key);
 
   @override
@@ -56,9 +56,9 @@ class ScheduleAddWidget extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: onChangedDate,
                 child: Text(
-                  dateTime == null
+                  date == null
                       ? 'Selecione uma data'
-                      : DateFormat('dd/MM/yyyy').format(dateTime!),
+                      : DateFormat('dd/MM/yyyy').format(date!),
                   style: AppTextStyles.button.copyWith(
                       fontSize:
                           MediaQuery.of(context).size.width < 1630 ? 15 : 20),
@@ -76,18 +76,26 @@ class ScheduleAddWidget extends StatelessWidget {
             const SizedBox(
               width: 16,
             ),
-            Flexible(
-              child: TextFieldDialogWidget(
-                  labelText: 'Hora',
-                  hintText: 'HH:MM',
-                  onChanged: onChangedHour,
-                  value: hour ?? '',
-                  padding: false,
-                  inputFormatters: [
-                    MaskTextInputFormatter(
-                      mask: '##:##',
-                    )
-                  ]),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.18,
+              height: MediaQuery.of(context).size.height * 0.05,
+              child: ElevatedButton(
+                onPressed: onChangedHour,
+                child: Text(
+                  hour == null ? 'Selecione o horário' : hour!.format(context),
+                  style: AppTextStyles.button.copyWith(
+                      fontSize:
+                          MediaQuery.of(context).size.width < 1630 ? 15 : 20),
+                ),
+                style: ButtonStyle(
+                    elevation: MaterialStateProperty.all(20),
+                    backgroundColor:
+                        MaterialStateProperty.all(AppColors.brandingOrange),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
+                    )),
+              ),
             ),
             const SizedBox(
               width: 16,

@@ -174,12 +174,8 @@ class _EditActivityPageState
                     shrinkWrap: true,
                     itemCount: controller.activityToEdit.schedule.length,
                     itemBuilder: (context, index) {
-                      var hour = controller
-                                  .activityToEdit.schedule[index].date ==
-                              null
-                          ? ''
-                          : DateFormat('HH:mm').format(
-                              controller.activityToEdit.schedule[index].date!);
+                      var hour = TimeOfDay.fromDateTime(
+                          controller.activityToEdit.schedule[index].date!);
                       var date = controller
                                   .activityToEdit.schedule[index].date ==
                               null
@@ -196,8 +192,7 @@ class _EditActivityPageState
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
-                          dateTime:
-                              controller.activityToEdit.schedule[index].date,
+                          date: controller.activityToEdit.schedule[index].date,
                           isInPerson: controller.isInPerson,
                           isOnline: controller.isOnline,
                           link: controller.activityToEdit.schedule[index].link,
@@ -238,8 +233,24 @@ class _EditActivityPageState
                               controller.setDate(value!, index);
                             });
                           },
-                          onChangedHour: (value) {
-                            controller.setHour(value, index);
+                          onChangedHour: () {
+                            showTimePicker(
+                              context: context,
+                              initialTime: TimeOfDay.now(),
+                              confirmText: 'CONFIRMAR',
+                              builder: (BuildContext context, Widget? child) {
+                                return Theme(
+                                  data: ThemeData.light().copyWith(
+                                    primaryColor: AppColors.brandingOrange,
+                                    colorScheme: ColorScheme.light(
+                                        primary: AppColors.brandingOrange),
+                                  ),
+                                  child: child!,
+                                );
+                              },
+                            ).then((value) {
+                              controller.setHour(value!.format(context), index);
+                            });
                           },
                           onChangedParticipants: (value) {
                             controller.setParticipants(int.parse(value), index);
@@ -255,7 +266,7 @@ class _EditActivityPageState
               Center(
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
                   child: FormsButtonWidget(
                       buttonTittle: 'Adicionar novo horário',
                       onPressed: controller.addSchedule,
