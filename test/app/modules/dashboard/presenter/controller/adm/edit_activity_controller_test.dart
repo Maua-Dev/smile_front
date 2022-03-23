@@ -50,7 +50,7 @@ void main() {
 
   test('isFilled', () {
     var test = controller.isFilled();
-    expect(test, true);
+    expect(test, false);
   });
 
   test('setType', () {
@@ -127,11 +127,11 @@ void main() {
 
   test('removeSchedule', () {
     controller.removeSchedule(0);
-    expect(controller.activityToEdit.schedule.length, 1);
+    expect(controller.activityToEdit.schedule.length, 0);
   });
 
   test('addSchedule', () {
     controller.addSchedule();
-    expect(controller.activityToEdit.schedule.length, 2);
+    expect(controller.activityToEdit.schedule.length, 1);
   });
 }
