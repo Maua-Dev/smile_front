@@ -176,12 +176,6 @@ class _EditActivityPageState
                     itemBuilder: (context, index) {
                       var hour = TimeOfDay.fromDateTime(
                           controller.activityToEdit.schedule[index].date!);
-                      var date = controller
-                                  .activityToEdit.schedule[index].date ==
-                              null
-                          ? ''
-                          : DateFormat('dd-MM-yyyy').format(
-                              controller.activityToEdit.schedule[index].date!);
                       var duration =
                           controller.activityToEdit.schedule[index].duration ==
                                   null
