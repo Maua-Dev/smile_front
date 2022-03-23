@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/text_field_dialog_widget.dart';
 
 import '../../../../shared/themes/app_colors.dart';
-import 'add_photo_widget.dart';
 
 class SpeakerAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedName;
@@ -33,10 +32,6 @@ class SpeakerAddWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const AddPhotoWidget(),
-          const SizedBox(
-            width: 16,
-          ),
           Flexible(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

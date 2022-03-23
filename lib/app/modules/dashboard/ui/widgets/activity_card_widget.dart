@@ -8,6 +8,7 @@ class ActivityCardWidget extends StatelessWidget {
   final String description;
   final String date;
   final String time;
+  final String finalTime;
   final int? totalParticipants;
   final Color? cardColor;
   final Color? textColor;
@@ -23,6 +24,7 @@ class ActivityCardWidget extends StatelessWidget {
     required this.date,
     required this.time,
     this.totalParticipants,
+    required this.finalTime,
   }) : super(key: key);
 
   @override
@@ -106,7 +108,7 @@ class ActivityCardWidget extends StatelessWidget {
                               size: 20,
                             ),
                           ),
-                          Text(time,
+                          Text('$time - $finalTime',
                               style: AppTextStyles.button.copyWith(
                                   fontSize: 18,
                                   color: textColor ?? AppColors.brandingPurple))

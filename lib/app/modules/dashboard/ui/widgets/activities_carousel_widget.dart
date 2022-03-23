@@ -65,16 +65,21 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                       itemBuilder: (BuildContext ctx, index) {
                         String date = '';
                         String time = '';
+                        String finalTime = '';
                         for (var element in list[index].schedule) {
                           if (element.date?.weekday == weekday) {
                             date =
                                 DateFormat('dd/MM/yyyy').format(element.date!);
                             time = DateFormat('HH:mm').format(element.date!);
+                            finalTime =
+                                DateFormat('HH:mm').format(element.duration!);
                           } else if (weekday == null) {
                             date = DateFormat('dd/MM/yyyy')
                                 .format(list[index].schedule[0].date!);
                             time = DateFormat('HH:mm')
                                 .format(list[index].schedule[0].date!);
+                            finalTime = DateFormat('HH:mm')
+                                .format(list[index].schedule[0].duration!);
                           }
                         }
                         return Row(
@@ -98,6 +103,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                     moreInfoDialogWidget(context, list[index]);
                                   }
                                 },
+                                finalTime: finalTime,
                                 activityCode: list[index].activityCode,
                                 cardColor: cardColor,
                                 textColor: isNextActivity
