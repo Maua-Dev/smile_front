@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/weekdays_enum.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -62,6 +63,20 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: list.length,
                       itemBuilder: (BuildContext ctx, index) {
+                        String date = '';
+                        String time = '';
+                        for (var element in list[index].schedule) {
+                          if (element.date?.weekday == weekday) {
+                            date =
+                                DateFormat('dd/MM/yyyy').format(element.date!);
+                            time = DateFormat('HH:mm').format(element.date!);
+                          } else if (weekday == null) {
+                            date = DateFormat('dd/MM/yyyy')
+                                .format(list[index].schedule[0].date!);
+                            time = DateFormat('HH:mm')
+                                .format(list[index].schedule[0].date!);
+                          }
+                        }
                         return Row(
                           children: [
                             if (index == 0)
@@ -90,7 +105,10 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                     : Colors.black,
                                 name: list[index].title,
                                 description: list[index].description,
-                                schedule: list[index].schedule.first,
+                                date: date,
+                                time: time,
+                                totalParticipants:
+                                    list[index].schedule[0].totalParticipants,
                               ),
                             ),
                             if (index == list.length - 1)

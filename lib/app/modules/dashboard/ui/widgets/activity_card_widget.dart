@@ -9,7 +9,9 @@ class ActivityCardWidget extends StatelessWidget {
   final String name;
   final String activityCode;
   final String description;
-  final ScheduleActivityModel schedule;
+  final String date;
+  final String time;
+  final int? totalParticipants;
   final Color? cardColor;
   final Color? textColor;
   final Function()? onTap;
@@ -17,17 +19,17 @@ class ActivityCardWidget extends StatelessWidget {
     Key? key,
     required this.name,
     required this.description,
-    required this.schedule,
     this.onTap,
     this.cardColor,
     this.textColor,
     required this.activityCode,
+    required this.date,
+    required this.time,
+    this.totalParticipants,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var date = DateFormat('dd/MM/yyyy').format(schedule.date!);
-    var time = DateFormat('HH:mm').format(schedule.date!);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
@@ -132,7 +134,7 @@ class ActivityCardWidget extends StatelessWidget {
                                     color:
                                         textColor ?? AppColors.brandingPurple)),
                             TextSpan(
-                                text: '${schedule.totalParticipants}',
+                                text: totalParticipants.toString(),
                                 style: AppTextStyles.button.copyWith(
                                     fontSize: 18,
                                     color:
