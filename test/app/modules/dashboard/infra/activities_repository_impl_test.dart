@@ -130,6 +130,6 @@ void main() {
     var list =
         await repository.getActivitiesSelectedByType(ActivityEnum.CURSOS);
     expect(list.isNotEmpty, true);
-    expect(list.length, 2);
+    expect(list.length, 5);
   });
 }
