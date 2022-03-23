@@ -45,7 +45,7 @@ class ActivityModel extends Activity {
       description: map['description'],
       schedule: ScheduleActivityModel.fromMaps(map['schedule']),
       location: map['location'],
-      speaker: SpeakerActivityModel.fromMaps(map['speaker']),
+      speaker: SpeakerActivityModel.fromMaps(map['speakers']),
     );
   }
 

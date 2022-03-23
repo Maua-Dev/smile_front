@@ -13,20 +13,19 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
 
   @override
   Future<List<ActivityModel>> getAllActivities() async {
-    return await Future.value(subscribedActivities);
-    // try {
-    //   final res = await dioClient.get('/smile_mss_activities/activity/getAll');
-    //   if (res.statusCode == 200) {
-    //     return ActivityModel.fromMaps(res.data);
-    //   }
-    //   throw Exception();
-    // } on Exception catch (e) {
-    //   //Necessário um tratamento de erro visual para cada erro.
-    //   // ignore: avoid_print
-    //   print('Não foi possível se conectar com o Microsserviço, erro: ' +
-    //       e.toString());
-    //   rethrow;
-    // }
+    try {
+      final res = await dioClient.get('/smile_mss_activities/activity/getAll');
+      if (res.statusCode == 200) {
+        return ActivityModel.fromMaps(res.data);
+      }
+      throw Exception();
+    } on Exception catch (e) {
+      //Necessário um tratamento de erro visual para cada erro.
+      // ignore: avoid_print
+      print('Não foi possível se conectar com o Microsserviço, erro: ' +
+          e.toString());
+      rethrow;
+    }
   }
 
   @override

@@ -18,7 +18,6 @@ var subscribedActivities = <ActivityModel>[
         name: 'Gabriel Godoy',
         bio: 'Caros participantes, este é um teste, aproveitem a atividade',
         company: 'Oracle',
-        linkPhoto: 'http://',
       ),
     ],
     schedule: <ScheduleActivityModel>[
@@ -46,7 +45,6 @@ var subscribedActivities = <ActivityModel>[
         name: 'Gabriel Godoy',
         bio: 'Qualquer',
         company: 'Oracle',
-        linkPhoto: 'http://',
       ),
     ],
     schedule: <ScheduleActivityModel>[
@@ -69,7 +67,6 @@ var subscribedActivities = <ActivityModel>[
         name: 'Gabriel Godoy',
         bio: 'Qualquer',
         company: 'Oracle',
-        linkPhoto: 'http://',
       ),
     ],
     schedule: <ScheduleActivityModel>[
