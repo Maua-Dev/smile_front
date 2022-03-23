@@ -12,8 +12,7 @@ var subscribedActivities = <ActivityModel>[
     title: 'Atividade 01',
     description:
         'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
-    location: 'H244',
-    speaker: [
+    speakers: [
       SpeakerActivityModel(
         name: 'Gabriel Godoy',
         bio: 'Caros participantes, este é um teste, aproveitem a atividade',
@@ -25,12 +24,14 @@ var subscribedActivities = <ActivityModel>[
         date: DateTime.parse('2022-03-21 13:00'),
         totalParticipants: 20,
         duration: DateFormat('HH:mm').parse('13:00'),
+        location: 'H244',
       ),
       ScheduleActivityModel(
-        date: DateTime.parse('2022-03-22 13:00'),
-        totalParticipants: 30,
-        duration: DateFormat('HH:mm').parse('13:00'),
-      ),
+          date: DateTime.parse('2022-03-22 13:00'),
+          totalParticipants: 30,
+          duration: DateFormat('HH:mm').parse('13:00'),
+          location: 'H244',
+          link: 'https://'),
     ],
   ),
   ActivityModel(
@@ -39,8 +40,7 @@ var subscribedActivities = <ActivityModel>[
     type: ActivityEnum.CURSOS,
     title: 'Atividade 02',
     description: 'Teste de atividade mock',
-    location: 'H244',
-    speaker: [
+    speakers: [
       SpeakerActivityModel(
         name: 'Gabriel Godoy',
         bio: 'Qualquer',
@@ -52,6 +52,7 @@ var subscribedActivities = <ActivityModel>[
         date: DateTime.parse('2022-03-21 13:00'),
         totalParticipants: 20,
         duration: DateFormat('HH:mm').parse('13:00'),
+        location: 'H244',
       ),
     ],
   ),
@@ -61,8 +62,7 @@ var subscribedActivities = <ActivityModel>[
     type: ActivityEnum.CURSOS,
     title: 'Atividade 03',
     description: 'Teste de atividade mock',
-    location: 'H244',
-    speaker: [
+    speakers: [
       SpeakerActivityModel(
         name: 'Gabriel Godoy',
         bio: 'Qualquer',
@@ -74,6 +74,7 @@ var subscribedActivities = <ActivityModel>[
         date: DateTime.parse('2022-03-21 13:00'),
         totalParticipants: 20,
         duration: DateFormat('HH:mm').parse('13:00'),
+        location: 'H244',
       ),
     ],
   ),

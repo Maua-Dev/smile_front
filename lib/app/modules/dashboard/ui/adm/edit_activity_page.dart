@@ -127,6 +127,15 @@ class _EditActivityPageState
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
+                          link: controller.activityToEdit.schedule[index].link,
+                          onChangedLink: (value) {
+                            controller.setLink(value, index);
+                          },
+                          location: controller
+                              .activityToEdit.schedule[index].location,
+                          onChangedLocation: (value) {
+                            controller.setLocation(value, index);
+                          },
                           duration: duration,
                           onChangedDuration: (value) {
                             controller.setDuration(value, index);
@@ -164,11 +173,6 @@ class _EditActivityPageState
                       icon:
                           const Icon(Icons.add, color: Colors.white, size: 22)),
                 ),
-              ),
-              TextFieldDialogWidget(
-                labelText: 'Local/Link',
-                value: controller.activityToEdit.location,
-                onChanged: controller.setLocation,
               ),
               Observer(builder: (_) {
                 return ListView.builder(

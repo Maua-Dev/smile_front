@@ -6,7 +6,6 @@ class SpeakerActivityModel extends Speaker {
   // ignore: overridden_fields, annotate_overrides
   String bio;
   // ignore: overridden_fields, annotate_overrides
-  String? linkPhoto;
   String company;
 
   SpeakerActivityModel({
@@ -38,7 +37,6 @@ class SpeakerActivityModel extends Speaker {
   SpeakerActivityModel copyWith({
     String? name,
     String? bio,
-    String? linkPhoto,
     String? company,
   }) {
     return SpeakerActivityModel(

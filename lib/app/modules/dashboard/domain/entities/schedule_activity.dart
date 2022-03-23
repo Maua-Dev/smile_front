@@ -1,10 +1,14 @@
 class ScheduleActivity {
   final DateTime? date;
-  final int? totalParticipants;
+  int? totalParticipants;
   final DateTime? duration;
+  final String? location;
+  final String? link;
 
   ScheduleActivity(
-      {required this.duration,
-      required this.date,
-      required this.totalParticipants});
+      {this.location,
+      this.link,
+      this.duration,
+      this.date,
+      this.totalParticipants});
 }

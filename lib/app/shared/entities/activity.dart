@@ -10,7 +10,6 @@ class Activity {
   final String title;
   final String description;
   final List<ScheduleActivityModel> schedule;
-  final String? location;
   final List<SpeakerActivityModel> speaker;
 
   Activity({
@@ -20,7 +19,6 @@ class Activity {
     required this.title,
     required this.description,
     required this.schedule,
-    this.location,
     required this.speaker,
   });
 
@@ -32,7 +30,6 @@ class Activity {
         id: '',
         title: '',
         type: ActivityEnum.CAFE_EX_ALUNOS,
-        location: '',
         speaker: []);
   }
 }

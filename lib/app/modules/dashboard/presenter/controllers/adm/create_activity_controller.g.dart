@@ -25,6 +25,29 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
     });
   }
 
+  final _$isLoadingAtom = Atom(name: '_CreateActivityControllerBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
+  final _$setIsLoadingAsyncAction =
+      AsyncAction('_CreateActivityControllerBase.setIsLoading');
+
+  @override
+  Future<void> setIsLoading(bool value) {
+    return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
+  }
+
   final _$createActivityAsyncAction =
       AsyncAction('_CreateActivityControllerBase.createActivity');
 
@@ -59,6 +82,17 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
+  void setActivityCode(String value) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setActivityCode');
+    try {
+      return super.setActivityCode(value);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setTitle(String value) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setTitle');
@@ -81,11 +115,22 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
-  void setLocation(String value) {
+  void setLocation(String value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setLocation');
     try {
-      return super.setLocation(value);
+      return super.setLocation(value, index);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setLink(String value, int index) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setLink');
+    try {
+      return super.setLink(value, index);
     } finally {
       _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -215,7 +260,8 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   @override
   String toString() {
     return '''
-activityToCreate: ${activityToCreate}
+activityToCreate: ${activityToCreate},
+isLoading: ${isLoading}
     ''';
   }
 }

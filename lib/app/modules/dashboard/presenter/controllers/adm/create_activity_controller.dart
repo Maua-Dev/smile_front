@@ -82,8 +82,13 @@ abstract class _CreateActivityControllerBase with Store {
   }
 
   @action
-  void setLocation(String value) {
-    activityToCreate = activityToCreate.copyWith(location: value);
+  void setLocation(String value, int index) {
+    activityToCreate.schedule[index].location = value;
+  }
+
+  @action
+  void setLink(String value, int index) {
+    activityToCreate.schedule[index].link = value;
   }
 
   @action

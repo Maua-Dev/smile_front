@@ -51,7 +51,8 @@ abstract class _EditActivityControllerBase with Store {
         scheduleFirst.totalParticipants != null &&
         speakerFirst.bio != '' &&
         speakerFirst.name != '' &&
-        speakerFirst.company != '') {
+        speakerFirst.company != '' &&
+        activityToEdit.linkPhoto != null) {
       return true;
     }
     return false;
@@ -94,8 +95,13 @@ abstract class _EditActivityControllerBase with Store {
   }
 
   @action
-  void setLocation(String value) {
-    activityToEdit = activityToEdit.copyWith(location: value);
+  void setLocation(String value, int index) {
+    activityToEdit.schedule[index].location = value;
+  }
+
+  @action
+  void setLink(String value, int index) {
+    activityToEdit.schedule[index].link = value;
   }
 
   @action

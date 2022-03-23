@@ -25,6 +25,29 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
     });
   }
 
+  final _$isLoadingAtom = Atom(name: '_EditActivityControllerBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
+  final _$setIsLoadingAsyncAction =
+      AsyncAction('_EditActivityControllerBase.setIsLoading');
+
+  @override
+  Future<void> setIsLoading(bool value) {
+    return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
+  }
+
   final _$editActivityAsyncAction =
       AsyncAction('_EditActivityControllerBase.editActivity');
 
@@ -67,6 +90,17 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
+  void setActivityCode(String value) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setActivityCode');
+    try {
+      return super.setActivityCode(value);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setTitle(String value) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setTitle');
@@ -89,11 +123,22 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
-  void setLocation(String value) {
+  void setLocation(String value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setLocation');
     try {
-      return super.setLocation(value);
+      return super.setLocation(value, index);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setLink(String value, int index) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setLink');
+    try {
+      return super.setLink(value, index);
     } finally {
       _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -223,7 +268,8 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   @override
   String toString() {
     return '''
-activityToEdit: ${activityToEdit}
+activityToEdit: ${activityToEdit},
+isLoading: ${isLoading}
     ''';
   }
 }

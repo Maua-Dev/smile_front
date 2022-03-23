@@ -13,8 +13,8 @@ class ActivityModel extends Activity {
   final String title;
   final String description;
   final List<ScheduleActivityModel> schedule;
-  final String? location;
-  final List<SpeakerActivityModel> speaker;
+  final List<SpeakerActivityModel> speakers;
+  final String? linkPhoto;
 
   ActivityModel({
     required this.id,
@@ -23,8 +23,8 @@ class ActivityModel extends Activity {
     required this.title,
     required this.description,
     required this.schedule,
-    this.location,
-    required this.speaker,
+    required this.speakers,
+    this.linkPhoto,
   }) : super(
           id: id,
           activityCode: activityCode,
@@ -32,8 +32,7 @@ class ActivityModel extends Activity {
           title: title,
           description: description,
           schedule: schedule,
-          location: location,
-          speaker: speaker,
+          speaker: speakers,
         );
 
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
@@ -44,8 +43,8 @@ class ActivityModel extends Activity {
       title: map['title'],
       description: map['description'],
       schedule: ScheduleActivityModel.fromMaps(map['schedule']),
-      location: map['location'],
-      speaker: SpeakerActivityModel.fromMaps(map['speakers']),
+      speakers: SpeakerActivityModel.fromMaps(map['speakers']),
+      linkPhoto: map['linkPhoto'],
     );
   }
 
@@ -55,23 +54,24 @@ class ActivityModel extends Activity {
 
   Map<String, dynamic> toJson() => {
         'type': ActivityEnumExtension.enumToStringMap(type!),
+        'activityCode': activityCode,
         'title': title,
         'description': description,
         'schedule': schedule,
-        'location': location,
-        'speaker': speaker,
+        'speakers': speaker,
+        'linkPhoto': ''
       };
 
   factory ActivityModel.newInstance() {
     return ActivityModel(
         schedule: [ScheduleActivityModel.newInstance()],
+        linkPhoto: '',
         description: '',
         id: '',
         activityCode: '',
         title: '',
         type: null,
-        location: '',
-        speaker: [SpeakerActivityModel.newInstance()]);
+        speakers: [SpeakerActivityModel.newInstance()]);
   }
 
   ActivityModel copyWith({
@@ -81,10 +81,8 @@ class ActivityModel extends Activity {
     String? title,
     String? description,
     List<ScheduleActivityModel>? schedule,
-    DateTime? date,
-    DateTime? hour,
-    String? location,
     List<SpeakerActivityModel>? speaker,
+    String? linkPhoto,
   }) {
     return ActivityModel(
       id: id ?? this.id,
@@ -93,8 +91,8 @@ class ActivityModel extends Activity {
       title: title ?? this.title,
       description: description ?? this.description,
       schedule: schedule ?? this.schedule,
-      location: location ?? this.location,
-      speaker: speaker ?? this.speaker,
+      speakers: speaker ?? this.speaker,
+      linkPhoto: linkPhoto ?? this.linkPhoto,
     );
   }
 }
