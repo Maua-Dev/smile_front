@@ -185,7 +185,7 @@ void moreInfoDialogWidget(BuildContext context, ActivityModel activity) {
                         Material(
                           color: AppColors.brandingPurple,
                           child: Text(
-                            '${activity.speaker.name} - ${activity.speaker.company}',
+                            '${activity.speaker[0].name} - ${activity.speaker[0].company}',
                             style: AppTextStyles.body
                                 .copyWith(color: Colors.white, fontSize: 30),
                           ),
@@ -196,7 +196,7 @@ void moreInfoDialogWidget(BuildContext context, ActivityModel activity) {
                         Material(
                           color: AppColors.brandingPurple,
                           child: Text(
-                            activity.speaker.bio,
+                            activity.speaker[0].bio,
                             textAlign: TextAlign.justify,
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,

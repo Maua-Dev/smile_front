@@ -7,6 +7,7 @@ import '../../../../../shared/models/activity_model.dart';
 import '../../../domain/infra/activity_enum.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
 import '../../../infra/models/schedule_activity_model.dart';
+import '../../../infra/models/speaker_activity_model.dart';
 
 part 'create_activity_controller.g.dart';
 
@@ -24,9 +25,28 @@ abstract class _CreateActivityControllerBase with Store {
   @observable
   var activityToCreate = ActivityModel.newInstance();
 
+  @observable
+  bool isLoading = false;
+
+  @action
+  Future<void> setIsLoading(bool value) async {
+    isLoading = value;
+  }
+
   @action
   bool isFilled() {
-    if (activityToCreate.title != '') {
+    var scheduleFirst = activityToCreate.schedule.first;
+    var speakerFirst = activityToCreate.speaker.first;
+    if (activityToCreate.title != '' &&
+        activityToCreate.description != '' &&
+        activityToCreate.type != null &&
+        activityToCreate.activityCode != '' &&
+        scheduleFirst.date != null &&
+        scheduleFirst.duration != null &&
+        scheduleFirst.totalParticipants != null &&
+        speakerFirst.bio != '' &&
+        speakerFirst.name != '' &&
+        speakerFirst.company != '') {
       return true;
     }
     return false;
@@ -34,14 +54,21 @@ abstract class _CreateActivityControllerBase with Store {
 
   @action
   Future createActivity() async {
+    setIsLoading(true);
     await repository.createActivity(activityToCreate);
     await admDashboardController.getAllActivities();
+    setIsLoading(false);
     Modular.to.navigate('/adm');
   }
 
   @action
   void setType(ActivityEnum? value) {
     activityToCreate = activityToCreate.copyWith(type: value);
+  }
+
+  @action
+  void setActivityCode(String value) {
+    activityToCreate = activityToCreate.copyWith(activityCode: value);
   }
 
   @action
@@ -55,8 +82,13 @@ abstract class _CreateActivityControllerBase with Store {
   }
 
   @action
-  void setLocation(String value) {
-    activityToCreate = activityToCreate.copyWith(location: value);
+  void setLocation(String value, int index) {
+    activityToCreate.schedule[index].location = value;
+  }
+
+  @action
+  void setLink(String value, int index) {
+    activityToCreate.schedule[index].link = value;
   }
 
   @action
@@ -110,21 +142,18 @@ abstract class _CreateActivityControllerBase with Store {
   }
 
   @action
-  void setSpeakerName(String value) {
-    var speaker = activityToCreate.speaker.copyWith(name: value);
-    activityToCreate = activityToCreate.copyWith(speaker: speaker);
+  void setSpeakerName(String value, int index) {
+    activityToCreate.speaker[index].name = value;
   }
 
   @action
-  void setSpeakerBio(String value) {
-    var speaker = activityToCreate.speaker.copyWith(bio: value);
-    activityToCreate = activityToCreate.copyWith(speaker: speaker);
+  void setSpeakerBio(String value, int index) {
+    activityToCreate.speaker[index].bio = value;
   }
 
   @action
-  void setSpeakerCompany(String value) {
-    var speaker = activityToCreate.speaker.copyWith(company: value);
-    activityToCreate = activityToCreate.copyWith(speaker: speaker);
+  void setSpeakerCompany(String value, int index) {
+    activityToCreate.speaker[index].company = value;
   }
 
   @action
@@ -139,5 +168,19 @@ abstract class _CreateActivityControllerBase with Store {
     var list = activityToCreate.schedule;
     list.removeAt(index);
     activityToCreate = activityToCreate.copyWith(schedule: list);
+  }
+
+  @action
+  void addSpeaker() {
+    var list = activityToCreate.speaker;
+    list.add(SpeakerActivityModel.newInstance());
+    activityToCreate = activityToCreate.copyWith(speaker: list);
+  }
+
+  @action
+  void removeSpeaker(int index) {
+    var list = activityToCreate.speaker;
+    list.removeAt(index);
+    activityToCreate = activityToCreate.copyWith(speaker: list);
   }
 }

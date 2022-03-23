@@ -21,22 +21,24 @@ void main() {
   late EditActivityController controller;
   final activity = ActivityModel(
       id: '1',
+      activityCode: 'C01',
       type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
       title: 'Atividade 1',
       description: '12345',
       schedule: [
         ScheduleActivityModel(
-          date: DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
-          totalParticipants: 20,
-        ),
-        ScheduleActivityModel(
-          date: DateTime.now(),
-          totalParticipants: 20,
-        )
+            date:
+                DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
+            totalParticipants: 20,
+            location: ''),
       ],
-      location: 'SALA 123',
-      speaker:
-          SpeakerActivityModel(bio: '', company: '', name: '', linkPhoto: ''));
+      speakers: [
+        SpeakerActivityModel(
+          bio: '',
+          company: '',
+          name: '',
+        )
+      ]);
 
   setUpAll(() async {
     await Modular.isModuleReady<AppModule>();
@@ -48,7 +50,7 @@ void main() {
 
   test('isFilled', () {
     var test = controller.isFilled();
-    expect(test, true);
+    expect(test, false);
   });
 
   test('setType', () {
@@ -71,8 +73,14 @@ void main() {
 
   test('setLocation', () {
     var str = 'teste';
-    controller.setLocation(str);
-    expect(controller.activityToEdit.location, str);
+    controller.setLocation(str, 0);
+    expect(controller.activityToEdit.schedule[0].location, str);
+  });
+
+  test('setLink', () {
+    var str = 'teste';
+    controller.setLink(str, 0);
+    expect(controller.activityToEdit.schedule[0].link, str);
   });
 
   test('setDate', () {
@@ -101,34 +109,29 @@ void main() {
 
   test('setSpeakerName', () {
     var str = 'teste';
-    controller.setSpeakerName(str);
-    expect(controller.activityToEdit.speaker.name, str);
+    controller.setSpeakerName(str, 0);
+    expect(controller.activityToEdit.speaker[0].name, str);
   });
 
   test('setSpeakerBio', () {
     var str = 'teste';
-    controller.setSpeakerBio(str);
-    expect(controller.activityToEdit.speaker.bio, str);
+    controller.setSpeakerBio(str, 0);
+    expect(controller.activityToEdit.speaker[0].bio, str);
   });
 
   test('setSpeakerCompany', () {
     var str = 'teste';
-    controller.setSpeakerCompany(str);
-    expect(controller.activityToEdit.speaker.company, str);
-  });
-  test('setSpeakerName', () {
-    var str = 'teste';
-    controller.setSpeakerName(str);
-    expect(controller.activityToEdit.speaker.name, str);
+    controller.setSpeakerCompany(str, 0);
+    expect(controller.activityToEdit.speaker[0].company, str);
   });
 
   test('removeSchedule', () {
     controller.removeSchedule(0);
-    expect(controller.activityToEdit.schedule.length, 1);
+    expect(controller.activityToEdit.schedule.length, 0);
   });
 
   test('addSchedule', () {
     controller.addSchedule();
-    expect(controller.activityToEdit.schedule.length, 2);
+    expect(controller.activityToEdit.schedule.length, 1);
   });
 }

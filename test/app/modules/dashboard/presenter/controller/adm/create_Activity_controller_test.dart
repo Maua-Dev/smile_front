@@ -50,8 +50,14 @@ void main() {
 
   test('setLocation', () {
     var str = 'teste';
-    controller.setLocation(str);
-    expect(controller.activityToCreate.location, str);
+    controller.setLocation(str, 0);
+    expect(controller.activityToCreate.schedule[0].location, str);
+  });
+
+  test('setLink', () {
+    var str = 'teste';
+    controller.setLink(str, 0);
+    expect(controller.activityToCreate.schedule[0].link, str);
   });
 
   test('setDate', () {
@@ -80,20 +86,20 @@ void main() {
 
   test('setSpeakerName', () {
     var str = 'teste';
-    controller.setSpeakerName(str);
-    expect(controller.activityToCreate.speaker.name, str);
+    controller.setSpeakerName(str, 0);
+    expect(controller.activityToCreate.speaker[0].name, str);
   });
 
   test('setSpeakerBio', () {
     var str = 'teste';
-    controller.setSpeakerBio(str);
-    expect(controller.activityToCreate.speaker.bio, str);
+    controller.setSpeakerBio(str, 0);
+    expect(controller.activityToCreate.speaker[0].bio, str);
   });
 
   test('setSpeakerCompany', () {
     var str = 'teste';
-    controller.setSpeakerCompany(str);
-    expect(controller.activityToCreate.speaker.company, str);
+    controller.setSpeakerCompany(str, 0);
+    expect(controller.activityToCreate.speaker[0].company, str);
   });
 
   test('removeSchedule', () {
