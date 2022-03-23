@@ -11,4 +11,10 @@ class ForgotPasswordRepositoryImpl extends ForgotPasswordRepositoryInterface {
     final response = datasource.forgotPassword(username);
     return Future.value(response);
   }
+
+  @override
+  Future<String> changePassword(String username, String password, String code) {
+    final response = datasource.changePassword(username, password, code);
+    return Future.value(response);
+  }
 }

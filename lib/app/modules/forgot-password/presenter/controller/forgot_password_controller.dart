@@ -27,11 +27,22 @@ abstract class _ForgotPasswordController with Store {
   String verifyPassword = '';
 
   @observable
+  String code = '';
+
+  @observable
   String errors = '';
+
+  @observable
+  bool successRegistration = false;
 
   @action
   Future<void> setError(String value) async {
     errors = value;
+  }
+
+  @action
+  Future<void> setCode(String value) async {
+    code = value;
   }
 
   @action
@@ -61,10 +72,39 @@ abstract class _ForgotPasswordController with Store {
     setIsLoading(true);
     try {
       await forgotPasswordRepository.forgotPassword(username);
-      Modular.to.navigate('/escolher-senha');
+      Modular.to.navigate('/login/esqueci-minha-senha/escolher-senha');
     } on Failure catch (e) {
       errors = e.message;
     }
     setIsLoading(false);
+  }
+
+  @action
+  Future<void> changePassword() async {
+    setIsLoading(true);
+    try {
+      await forgotPasswordRepository.changePassword(username, password, code);
+      setSuccessRegistration(true);
+      await Future.delayed(const Duration(seconds: 5));
+      Modular.to.navigate('/login');
+    } on Failure catch (e) {
+      errors = e.message;
+    }
+    setIsLoading(false);
+  }
+
+  @action
+  Future<void> setPassword(String value) async {
+    password = value;
+  }
+
+  @action
+  Future<void> setVerifyPassword(String value) async {
+    verifyPassword = value;
+  }
+
+  @action
+  Future<void> setSuccessRegistration(bool value) async {
+    successRegistration = value;
   }
 }

@@ -70,6 +70,21 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
     });
   }
 
+  final _$codeAtom = Atom(name: '_ForgotPasswordController.code');
+
+  @override
+  String get code {
+    _$codeAtom.reportRead();
+    return super.code;
+  }
+
+  @override
+  set code(String value) {
+    _$codeAtom.reportWrite(value, super.code, () {
+      super.code = value;
+    });
+  }
+
   final _$errorsAtom = Atom(name: '_ForgotPasswordController.errors');
 
   @override
@@ -85,12 +100,35 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
     });
   }
 
+  final _$successRegistrationAtom =
+      Atom(name: '_ForgotPasswordController.successRegistration');
+
+  @override
+  bool get successRegistration {
+    _$successRegistrationAtom.reportRead();
+    return super.successRegistration;
+  }
+
+  @override
+  set successRegistration(bool value) {
+    _$successRegistrationAtom.reportWrite(value, super.successRegistration, () {
+      super.successRegistration = value;
+    });
+  }
+
   final _$setErrorAsyncAction =
       AsyncAction('_ForgotPasswordController.setError');
 
   @override
   Future<void> setError(String value) {
     return _$setErrorAsyncAction.run(() => super.setError(value));
+  }
+
+  final _$setCodeAsyncAction = AsyncAction('_ForgotPasswordController.setCode');
+
+  @override
+  Future<void> setCode(String value) {
+    return _$setCodeAsyncAction.run(() => super.setCode(value));
   }
 
   final _$setUsernameAsyncAction =
@@ -117,6 +155,40 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
     return _$forgotPasswordAsyncAction.run(() => super.forgotPassword());
   }
 
+  final _$changePasswordAsyncAction =
+      AsyncAction('_ForgotPasswordController.changePassword');
+
+  @override
+  Future<void> changePassword() {
+    return _$changePasswordAsyncAction.run(() => super.changePassword());
+  }
+
+  final _$setPasswordAsyncAction =
+      AsyncAction('_ForgotPasswordController.setPassword');
+
+  @override
+  Future<void> setPassword(String value) {
+    return _$setPasswordAsyncAction.run(() => super.setPassword(value));
+  }
+
+  final _$setVerifyPasswordAsyncAction =
+      AsyncAction('_ForgotPasswordController.setVerifyPassword');
+
+  @override
+  Future<void> setVerifyPassword(String value) {
+    return _$setVerifyPasswordAsyncAction
+        .run(() => super.setVerifyPassword(value));
+  }
+
+  final _$setSuccessRegistrationAsyncAction =
+      AsyncAction('_ForgotPasswordController.setSuccessRegistration');
+
+  @override
+  Future<void> setSuccessRegistration(bool value) {
+    return _$setSuccessRegistrationAsyncAction
+        .run(() => super.setSuccessRegistration(value));
+  }
+
   final _$_ForgotPasswordControllerActionController =
       ActionController(name: '_ForgotPasswordController');
 
@@ -138,7 +210,9 @@ isLoading: ${isLoading},
 username: ${username},
 password: ${password},
 verifyPassword: ${verifyPassword},
-errors: ${errors}
+code: ${code},
+errors: ${errors},
+successRegistration: ${successRegistration}
     ''';
   }
 }

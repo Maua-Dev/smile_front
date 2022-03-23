@@ -49,33 +49,56 @@ class _ChangePasswordPageState
                     height: 10,
                   ),
                   Observer(builder: (_) {
-                    if (controller.errors != '') {
-                      return Container(
-                        width: 300,
-                        decoration: BoxDecoration(
-                            color: Colors.red[100],
-                            border: Border.all(color: Colors.red),
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  controller.setError('');
-                                },
-                                icon: const Icon(Icons.close),
-                              ),
-                              Text(
-                                controller.errors,
-                                style: const TextStyle(
-                                    color: Colors.black, fontSize: 16),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              )
-                            ],
+                    if (controller.successRegistration) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 20.0),
+                        child: Container(
+                          width: 400,
+                          decoration: BoxDecoration(
+                              color: Colors.green[100],
+                              border: Border.all(color: Colors.green),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: const Padding(
+                            padding: EdgeInsets.all(4.0),
+                            child: Text(
+                              'Senha alterada com sucesso! \n Redirecionando para o login...',
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 16),
+                            ),
+                          ),
+                        ),
+                      );
+                    } else if (controller.errors != '') {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 20.0),
+                        child: Container(
+                          width: 450,
+                          decoration: BoxDecoration(
+                              color: Colors.red[100],
+                              border: Border.all(color: Colors.red),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    controller.setError('');
+                                  },
+                                  icon: const Icon(Icons.close),
+                                ),
+                                Text(
+                                  controller.errors,
+                                  style: const TextStyle(
+                                      color: Colors.black, fontSize: 16),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -83,24 +106,32 @@ class _ChangePasswordPageState
                     return Container();
                   }),
                   const Text(
-                    'Enviamos um codigo para seu e-mail, insira:',
+                    'Insira sua nova senha e o codigo enviado para o seu email:',
                     style: TextStyle(color: Colors.white),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   InputBox(
-                    icon: Icons.person,
+                    icon: Icons.lock,
                     placeholder: 'Senha',
-                    setValue: controller.setUsername,
+                    setValue: controller.setPassword,
                   ),
                   const SizedBox(
-                    height: 40,
+                    height: 20,
                   ),
                   InputBox(
-                    icon: Icons.person,
+                    icon: Icons.lock,
                     placeholder: 'Confirme sua senha',
-                    setValue: controller.setUsername,
+                    setValue: controller.setVerifyPassword,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  InputBox(
+                    icon: Icons.lock,
+                    placeholder: 'Código',
+                    setValue: controller.setCode,
                   ),
                   const SizedBox(
                     height: 40,
@@ -113,7 +144,7 @@ class _ChangePasswordPageState
                       heightSize: 50,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () {
-                        controller.forgotPassword();
+                        controller.changePassword();
                       },
                     );
                   }),
