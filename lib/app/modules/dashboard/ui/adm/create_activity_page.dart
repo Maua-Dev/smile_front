@@ -129,6 +129,7 @@ class _CreateActivityPageState
                         },
                         tileColor: AppColors.brandingOrange,
                         checkColor: AppColors.brandingOrange,
+                        activeColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -162,6 +163,7 @@ class _CreateActivityPageState
                         },
                         tileColor: AppColors.brandingOrange,
                         checkColor: AppColors.brandingOrange,
+                        activeColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -175,6 +177,8 @@ class _CreateActivityPageState
                     shrinkWrap: true,
                     itemCount: controller.activityToCreate.schedule.length,
                     itemBuilder: (context, index) {
+                      var dateTime =
+                          controller.activityToCreate.schedule[index].date;
                       var hour =
                           controller.activityToCreate.schedule[index].date ==
                                   null
@@ -197,6 +201,7 @@ class _CreateActivityPageState
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
+                          dateTime: dateTime,
                           isInPerson: controller.isInPerson,
                           isOnline: controller.isOnline,
                           link:
@@ -214,12 +219,29 @@ class _CreateActivityPageState
                             controller.setDuration(value, index);
                           },
                           index: index,
-                          date: date,
                           hour: hour,
                           totalParticipants: controller.activityToCreate
                               .schedule[index].totalParticipants,
-                          onChangedDate: (value) {
-                            controller.setDate(value, index);
+                          onChangedDate: () {
+                            showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2022),
+                              lastDate: DateTime(2023),
+                              confirmText: 'CONFIRMAR',
+                              builder: (BuildContext context, Widget? child) {
+                                return Theme(
+                                  data: ThemeData.light().copyWith(
+                                    primaryColor: AppColors.brandingOrange,
+                                    colorScheme: ColorScheme.light(
+                                        primary: AppColors.brandingOrange),
+                                  ),
+                                  child: child!,
+                                );
+                              },
+                            ).then((value) {
+                              controller.setDate(value!, index);
+                            });
                           },
                           onChangedHour: (value) {
                             controller.setHour(value, index);

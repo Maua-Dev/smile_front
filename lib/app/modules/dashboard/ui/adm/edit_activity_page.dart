@@ -128,6 +128,7 @@ class _EditActivityPageState
                         },
                         tileColor: AppColors.brandingOrange,
                         checkColor: AppColors.brandingOrange,
+                        activeColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -159,6 +160,7 @@ class _EditActivityPageState
                         },
                         tileColor: AppColors.brandingOrange,
                         checkColor: AppColors.brandingOrange,
+                        activeColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -194,6 +196,8 @@ class _EditActivityPageState
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
+                          dateTime:
+                              controller.activityToEdit.schedule[index].date,
                           isInPerson: controller.isInPerson,
                           isOnline: controller.isOnline,
                           link: controller.activityToEdit.schedule[index].link,
@@ -210,12 +214,29 @@ class _EditActivityPageState
                             controller.setDuration(value, index);
                           },
                           index: index,
-                          date: date,
                           hour: hour,
                           totalParticipants: controller
                               .activityToEdit.schedule[index].totalParticipants,
-                          onChangedDate: (value) {
-                            controller.setDate(value, index);
+                          onChangedDate: () {
+                            showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2022),
+                              lastDate: DateTime(2023),
+                              confirmText: 'CONFIRMAR',
+                              builder: (BuildContext context, Widget? child) {
+                                return Theme(
+                                  data: ThemeData.light().copyWith(
+                                    primaryColor: AppColors.brandingOrange,
+                                    colorScheme: ColorScheme.light(
+                                        primary: AppColors.brandingOrange),
+                                  ),
+                                  child: child!,
+                                );
+                              },
+                            ).then((value) {
+                              controller.setDate(value!, index);
+                            });
                           },
                           onChangedHour: (value) {
                             controller.setHour(value, index);

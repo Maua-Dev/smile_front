@@ -40,6 +40,53 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
     });
   }
 
+  final _$isOnlineAtom = Atom(name: '_CreateActivityControllerBase.isOnline');
+
+  @override
+  bool get isOnline {
+    _$isOnlineAtom.reportRead();
+    return super.isOnline;
+  }
+
+  @override
+  set isOnline(bool value) {
+    _$isOnlineAtom.reportWrite(value, super.isOnline, () {
+      super.isOnline = value;
+    });
+  }
+
+  final _$isInPersonAtom =
+      Atom(name: '_CreateActivityControllerBase.isInPerson');
+
+  @override
+  bool get isInPerson {
+    _$isInPersonAtom.reportRead();
+    return super.isInPerson;
+  }
+
+  @override
+  set isInPerson(bool value) {
+    _$isInPersonAtom.reportWrite(value, super.isInPerson, () {
+      super.isInPerson = value;
+    });
+  }
+
+  final _$setIsOnlineAsyncAction =
+      AsyncAction('_CreateActivityControllerBase.setIsOnline');
+
+  @override
+  Future<void> setIsOnline(bool value) {
+    return _$setIsOnlineAsyncAction.run(() => super.setIsOnline(value));
+  }
+
+  final _$setIsInPersonAsyncAction =
+      AsyncAction('_CreateActivityControllerBase.setIsInPerson');
+
+  @override
+  Future<void> setIsInPerson(bool value) {
+    return _$setIsInPersonAsyncAction.run(() => super.setIsInPerson(value));
+  }
+
   final _$setIsLoadingAsyncAction =
       AsyncAction('_CreateActivityControllerBase.setIsLoading');
 
@@ -137,7 +184,7 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
-  void setDate(String value, int index) {
+  void setDate(DateTime value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setDate');
     try {
@@ -261,7 +308,9 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   String toString() {
     return '''
 activityToCreate: ${activityToCreate},
-isLoading: ${isLoading}
+isLoading: ${isLoading},
+isOnline: ${isOnline},
+isInPerson: ${isInPerson}
     ''';
   }
 }

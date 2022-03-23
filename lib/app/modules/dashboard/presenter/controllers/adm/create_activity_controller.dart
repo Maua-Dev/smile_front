@@ -118,21 +118,15 @@ abstract class _CreateActivityControllerBase with Store {
   }
 
   @action
-  void setDate(String value, int index) {
-    if (value.length >= 10) {
-      var year = value.substring(6, 10);
-      var month = value.substring(3, 5);
-      var day = value.substring(0, 2);
-      value = '$year-$month-$day';
-      var hour = activityToCreate.schedule[index].date != null
-          ? DateFormat('HH:mm').format(activityToCreate.schedule[index].date!)
-          : '';
-      var date =
-          hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
-      var list = activityToCreate.schedule;
-      list[index] = activityToCreate.schedule[index].copyWith(date: date);
-      activityToCreate = activityToCreate.copyWith(schedule: list);
-    }
+  void setDate(DateTime value, int index) {
+    var dateValue = DateFormat('yyyy-MM-dd').format(value);
+    var hour = activityToCreate.schedule[index].date != null
+        ? DateFormat('HH:mm').format(activityToCreate.schedule[index].date!)
+        : '';
+    var date = hour == '' ? value : DateTime.parse("$dateValue $hour");
+    var list = activityToCreate.schedule;
+    list[index] = activityToCreate.schedule[index].copyWith(date: date);
+    activityToCreate = activityToCreate.copyWith(schedule: list);
   }
 
   @action

@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/text_field_dialog_widget.dart';
 
 import '../../../../shared/themes/app_colors.dart';
+import '../../../../shared/themes/app_text_styles.dart';
 
 class ScheduleAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedParticipants;
-  final void Function(String value)? onChangedDate;
+  final void Function()? onChangedDate;
   final void Function(String value)? onChangedHour;
   final void Function(String value)? onChangedDuration;
   final void Function(String value)? onChangedLocation;
   final void Function(String value)? onChangedLink;
   final void Function()? removeSchedule;
   final int? totalParticipants;
-  final String? date;
+  final DateTime? dateTime;
   final String? hour;
   final String? duration;
   final String? link;
@@ -28,7 +30,6 @@ class ScheduleAddWidget extends StatelessWidget {
     this.onChangedDate,
     this.onChangedHour,
     this.totalParticipants,
-    this.date,
     this.hour,
     this.removeSchedule,
     this.duration,
@@ -40,6 +41,7 @@ class ScheduleAddWidget extends StatelessWidget {
     this.location,
     this.isInPerson,
     this.isOnline,
+    this.dateTime,
   }) : super(key: key);
 
   @override
@@ -48,18 +50,28 @@ class ScheduleAddWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            Flexible(
-              child: TextFieldDialogWidget(
-                  labelText: 'Data',
-                  hintText: 'DD-MM-AAAA',
-                  onChanged: onChangedDate,
-                  value: date ?? '',
-                  padding: false,
-                  inputFormatters: [
-                    MaskTextInputFormatter(
-                      mask: '##-##-####',
-                    )
-                  ]),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.18,
+              height: MediaQuery.of(context).size.height * 0.05,
+              child: ElevatedButton(
+                onPressed: onChangedDate,
+                child: Text(
+                  dateTime == null
+                      ? 'Selecione uma data'
+                      : DateFormat('dd/MM/yyyy').format(dateTime!),
+                  style: AppTextStyles.button.copyWith(
+                      fontSize:
+                          MediaQuery.of(context).size.width < 1630 ? 15 : 20),
+                ),
+                style: ButtonStyle(
+                    elevation: MaterialStateProperty.all(20),
+                    backgroundColor:
+                        MaterialStateProperty.all(AppColors.brandingOrange),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
+                    )),
+              ),
             ),
             const SizedBox(
               width: 16,
