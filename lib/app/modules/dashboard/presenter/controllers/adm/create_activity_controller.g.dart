@@ -184,7 +184,7 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
-  void setDate(DateTime value, int index) {
+  void setDate(String value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setDate');
     try {

@@ -202,7 +202,7 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
-  void setDate(DateTime value, int index) {
+  void setDate(String value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setDate');
     try {

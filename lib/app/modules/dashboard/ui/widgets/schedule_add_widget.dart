@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/text_field_dialog_widget.dart';
 
 import '../../../../shared/themes/app_colors.dart';
-import '../../../../shared/themes/app_text_styles.dart';
 
 class ScheduleAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedParticipants;
-  final void Function()? onChangedDate;
-  final void Function()? onChangedHour;
+  final void Function(String)? onChangedDate;
+  final void Function(String)? onChangedHour;
   final void Function(String value)? onChangedDuration;
   final void Function(String value)? onChangedLocation;
   final void Function(String value)? onChangedLink;
+  final void Function()? onPressedIconDate;
+  final void Function()? onPressedIconTime;
   final void Function()? removeSchedule;
   final int? totalParticipants;
-  final DateTime? date;
-  final TimeOfDay? hour;
+  final String date;
+  final String? hour;
   final String? duration;
   final String? link;
   final String? location;
   final int index;
-  final bool? isInPerson;
-  final bool? isOnline;
 
   const ScheduleAddWidget({
     Key? key,
@@ -39,9 +37,9 @@ class ScheduleAddWidget extends StatelessWidget {
     this.onChangedLink,
     this.link,
     this.location,
-    this.isInPerson,
-    this.isOnline,
-    this.date,
+    required this.date,
+    this.onPressedIconDate,
+    this.onPressedIconTime,
   }) : super(key: key);
 
   @override
@@ -50,52 +48,38 @@ class ScheduleAddWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.18,
-              height: MediaQuery.of(context).size.height * 0.05,
-              child: ElevatedButton(
-                onPressed: onChangedDate,
-                child: Text(
-                  date == null
-                      ? 'Selecione uma data'
-                      : DateFormat('dd/MM/yyyy').format(date!),
-                  style: AppTextStyles.button.copyWith(
-                      fontSize:
-                          MediaQuery.of(context).size.width < 1630 ? 15 : 20),
-                ),
-                style: ButtonStyle(
-                    elevation: MaterialStateProperty.all(20),
-                    backgroundColor:
-                        MaterialStateProperty.all(AppColors.brandingOrange),
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40)),
-                    )),
-              ),
+            Flexible(
+              child: TextFieldDialogWidget(
+                  onPressedIcon: onPressedIconDate,
+                  suffixIcon: Icons.timer,
+                  labelText: 'Data',
+                  hintText: 'DD-MM-AAAA',
+                  onChanged: onChangedDate,
+                  value: date,
+                  padding: false,
+                  inputFormatters: [
+                    MaskTextInputFormatter(
+                      mask: '##-##-####',
+                    )
+                  ]),
             ),
             const SizedBox(
               width: 16,
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.18,
-              height: MediaQuery.of(context).size.height * 0.05,
-              child: ElevatedButton(
-                onPressed: onChangedHour,
-                child: Text(
-                  hour == null ? 'Selecione o horário' : hour!.format(context),
-                  style: AppTextStyles.button.copyWith(
-                      fontSize:
-                          MediaQuery.of(context).size.width < 1630 ? 15 : 20),
-                ),
-                style: ButtonStyle(
-                    elevation: MaterialStateProperty.all(20),
-                    backgroundColor:
-                        MaterialStateProperty.all(AppColors.brandingOrange),
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40)),
-                    )),
-              ),
+            Flexible(
+              child: TextFieldDialogWidget(
+                  onPressedIcon: onPressedIconTime,
+                  suffixIcon: Icons.timer,
+                  labelText: 'Hora',
+                  hintText: 'HH:MM',
+                  onChanged: onChangedHour,
+                  value: hour ?? '',
+                  padding: false,
+                  inputFormatters: [
+                    MaskTextInputFormatter(
+                      mask: '##:##',
+                    )
+                  ]),
             ),
             const SizedBox(
               width: 16,
@@ -148,31 +132,25 @@ class ScheduleAddWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Row(
             children: [
-              (link != null && link != '' && isOnline!) || isOnline!
-                  ? Flexible(
-                      child: TextFieldDialogWidget(
-                        labelText: 'Link',
-                        value: link,
-                        onChanged: onChangedLink,
-                        padding: false,
-                      ),
-                    )
-                  : const SizedBox.shrink(),
-              (isOnline! && isInPerson!)
-                  ? const SizedBox(
-                      width: 16,
-                    )
-                  : const SizedBox.shrink(),
-              (location != null && location != '' && isInPerson!) || isInPerson!
-                  ? Flexible(
-                      child: TextFieldDialogWidget(
-                        labelText: 'Local',
-                        value: location,
-                        onChanged: onChangedLocation,
-                        padding: false,
-                      ),
-                    )
-                  : const SizedBox.shrink(),
+              Flexible(
+                child: TextFieldDialogWidget(
+                  labelText: 'Link',
+                  value: link,
+                  onChanged: onChangedLink,
+                  padding: false,
+                ),
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              Flexible(
+                child: TextFieldDialogWidget(
+                  labelText: 'Local',
+                  value: location,
+                  onChanged: onChangedLocation,
+                  padding: false,
+                ),
+              ),
             ],
           ),
         ),
