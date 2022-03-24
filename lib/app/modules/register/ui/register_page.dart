@@ -139,13 +139,15 @@ class _RegisterPageState
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          width: 190,
+                          width: MediaQuery.of(context).size.width < 650 ? MediaQuery.of(context).size.width*0.35 : 190,
                           height: 60,
                           decoration: BoxDecoration(
                             color: AppColors.gray,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Row(
+                          child:
+                          MediaQuery.of(context).size.width > 600 ?
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Observer(builder: (_) {
@@ -161,10 +163,32 @@ class _RegisterPageState
                               const Text(
                                 'Sou Aluno Mauá',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
+                                    color: Colors.white, fontSize: 14),
+                              )
+                            ],
+                          )
+                          :
+                           Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Observer(builder: (_) {
+                                return Checkbox(
+                                  activeColor: AppColors.brandingPurple,
+                                  value: controller.isMauaStudent,
+                                  onChanged: (bool? value) {
+                                    controller.setIsMauaStudent(value);
+                                  },
+                                );
+                              }),
+                              const SizedBox(width: 5),
+                              const Text(
+                                'Sou Aluno Mauá',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 14),
                               )
                             ],
                           ),
+                          
                         ),
                         const SizedBox(
                           width: 10,
@@ -175,7 +199,7 @@ class _RegisterPageState
                             icon: Icons.person,
                             placeholder: 'RA',
                             setValue: controller.setRa,
-                            widthSize: 400,
+                            widthSize: MediaQuery.of(context).size.width < 650 ? MediaQuery.of(context).size.width*0.48 : 400,
                             validation: controller.validateRa,
                           );
                         }),

@@ -38,7 +38,8 @@ class InputBox extends StatelessWidget {
           ),
         ],
       ),
-      width: widthSize ?? 600,
+      // ignore: prefer_if_null_operators
+      width: widthSize != null ? widthSize: MediaQuery.of(context).size.width < 650 ? MediaQuery.of(context).size.width*0.85 : 600 ,
       height: heightSize ?? 60,
       child: Container(
         decoration: BoxDecoration(
