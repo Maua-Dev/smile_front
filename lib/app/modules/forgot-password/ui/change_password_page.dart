@@ -147,7 +147,6 @@ class _ChangePasswordPageState
                       heightSize: 50,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () {
-                        print(widget.username ?? 'não passou');
                         controller.changePassword(widget.username ?? '');
                       },
                     );
