@@ -50,6 +50,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
           ),
           Observer(builder: (_) {
             return ActivitiesCarouselWidget(
+              listToEdit: controller.activitiesList,
               cardColor: AppColors.brandingOrange,
               list: controller.nextActivitiesList,
               isNextActivity: true,
@@ -103,22 +104,27 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
             return Column(
               children: [
                 ActivitiesCarouselWidget(
+                  listToEdit: controller.activitiesList,
                   list: controller.mondayActivitiesList,
                   weekday: 0,
                 ),
                 ActivitiesCarouselWidget(
+                  listToEdit: controller.activitiesList,
                   list: controller.tuesdayActivitiesList,
                   weekday: 1,
                 ),
                 ActivitiesCarouselWidget(
+                  listToEdit: controller.activitiesList,
                   list: controller.wednesdayActivitiesList,
                   weekday: 2,
                 ),
                 ActivitiesCarouselWidget(
+                  listToEdit: controller.activitiesList,
                   list: controller.thursdayActivitiesList,
                   weekday: 3,
                 ),
                 ActivitiesCarouselWidget(
+                  listToEdit: controller.activitiesList,
                   list: controller.fridayActivitiesList,
                   weekday: 4,
                 ),
