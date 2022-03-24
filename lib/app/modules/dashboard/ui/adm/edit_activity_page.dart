@@ -128,6 +128,7 @@ class _EditActivityPageState
                         },
                         tileColor: AppColors.brandingOrange,
                         checkColor: AppColors.brandingOrange,
+                        activeColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -159,6 +160,7 @@ class _EditActivityPageState
                         },
                         tileColor: AppColors.brandingOrange,
                         checkColor: AppColors.brandingOrange,
+                        activeColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -172,18 +174,8 @@ class _EditActivityPageState
                     shrinkWrap: true,
                     itemCount: controller.activityToEdit.schedule.length,
                     itemBuilder: (context, index) {
-                      var hour = controller
-                                  .activityToEdit.schedule[index].date ==
-                              null
-                          ? ''
-                          : DateFormat('HH:mm').format(
-                              controller.activityToEdit.schedule[index].date!);
-                      var date = controller
-                                  .activityToEdit.schedule[index].date ==
-                              null
-                          ? ''
-                          : DateFormat('dd-MM-yyyy').format(
-                              controller.activityToEdit.schedule[index].date!);
+                      var hour = TimeOfDay.fromDateTime(
+                          controller.activityToEdit.schedule[index].date!);
                       var duration =
                           controller.activityToEdit.schedule[index].duration ==
                                   null
@@ -194,6 +186,7 @@ class _EditActivityPageState
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
+                          date: controller.activityToEdit.schedule[index].date,
                           isInPerson: controller.isInPerson,
                           isOnline: controller.isOnline,
                           link: controller.activityToEdit.schedule[index].link,
@@ -210,15 +203,48 @@ class _EditActivityPageState
                             controller.setDuration(value, index);
                           },
                           index: index,
-                          date: date,
                           hour: hour,
                           totalParticipants: controller
                               .activityToEdit.schedule[index].totalParticipants,
-                          onChangedDate: (value) {
-                            controller.setDate(value, index);
+                          onChangedDate: () {
+                            showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2022),
+                              lastDate: DateTime(2023),
+                              confirmText: 'CONFIRMAR',
+                              builder: (BuildContext context, Widget? child) {
+                                return Theme(
+                                  data: ThemeData.light().copyWith(
+                                    primaryColor: AppColors.brandingOrange,
+                                    colorScheme: ColorScheme.light(
+                                        primary: AppColors.brandingOrange),
+                                  ),
+                                  child: child!,
+                                );
+                              },
+                            ).then((value) {
+                              controller.setDate(value!, index);
+                            });
                           },
-                          onChangedHour: (value) {
-                            controller.setHour(value, index);
+                          onChangedHour: () {
+                            showTimePicker(
+                              context: context,
+                              initialTime: TimeOfDay.now(),
+                              confirmText: 'CONFIRMAR',
+                              builder: (BuildContext context, Widget? child) {
+                                return Theme(
+                                  data: ThemeData.light().copyWith(
+                                    primaryColor: AppColors.brandingOrange,
+                                    colorScheme: ColorScheme.light(
+                                        primary: AppColors.brandingOrange),
+                                  ),
+                                  child: child!,
+                                );
+                              },
+                            ).then((value) {
+                              controller.setHour(value!.format(context), index);
+                            });
                           },
                           onChangedParticipants: (value) {
                             controller.setParticipants(int.parse(value), index);
@@ -234,7 +260,7 @@ class _EditActivityPageState
               Center(
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
                   child: FormsButtonWidget(
                       buttonTittle: 'Adicionar novo horário',
                       onPressed: controller.addSchedule,

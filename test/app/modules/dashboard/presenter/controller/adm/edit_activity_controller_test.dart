@@ -84,9 +84,9 @@ void main() {
   });
 
   test('setDate', () {
-    var str = '02/01/2021';
+    var str = DateTime.now();
     controller.setDate(str, 0);
-    expect(controller.activityToEdit.schedule[0].date!.day, 02);
+    expect(controller.activityToEdit.schedule[0].date!.day, DateTime.now().day);
   });
 
   test('setHour', () {

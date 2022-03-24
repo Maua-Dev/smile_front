@@ -105,7 +105,7 @@ class _CreateActivityPageState
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.1,
+                      width: MediaQuery.of(context).size.width * 0.15,
                       child: CheckboxListTile(
                         title: Text(
                           'Online',
@@ -129,6 +129,7 @@ class _CreateActivityPageState
                         },
                         tileColor: AppColors.brandingOrange,
                         checkColor: AppColors.brandingOrange,
+                        activeColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -138,7 +139,7 @@ class _CreateActivityPageState
                       width: 16,
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.1,
+                      width: MediaQuery.of(context).size.width * 0.15,
                       child: CheckboxListTile(
                         title: Text(
                           'Presencial',
@@ -162,6 +163,7 @@ class _CreateActivityPageState
                         },
                         tileColor: AppColors.brandingOrange,
                         checkColor: AppColors.brandingOrange,
+                        activeColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -178,14 +180,8 @@ class _CreateActivityPageState
                       var hour =
                           controller.activityToCreate.schedule[index].date ==
                                   null
-                              ? ''
-                              : DateFormat('HH:mm').format(controller
-                                  .activityToCreate.schedule[index].date!);
-                      var date =
-                          controller.activityToCreate.schedule[index].date ==
-                                  null
-                              ? ''
-                              : DateFormat('dd-MM-yyyy').format(controller
+                              ? null
+                              : TimeOfDay.fromDateTime(controller
                                   .activityToCreate.schedule[index].date!);
                       var duration = controller
                                   .activityToCreate.schedule[index].duration ==
@@ -194,51 +190,87 @@ class _CreateActivityPageState
                           : DateFormat('HH:mm').format(controller
                               .activityToCreate.schedule[index].duration!);
                       return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 114, vertical: 8),
-                        child: ScheduleAddWidget(
-                          isInPerson: controller.isInPerson,
-                          isOnline: controller.isOnline,
-                          link:
-                              controller.activityToCreate.schedule[index].link,
-                          onChangedLink: (value) {
-                            controller.setLink(value, index);
-                          },
-                          location: controller
-                              .activityToCreate.schedule[index].location,
-                          onChangedLocation: (value) {
-                            controller.setLocation(value, index);
-                          },
-                          duration: duration,
-                          onChangedDuration: (value) {
-                            controller.setDuration(value, index);
-                          },
-                          index: index,
-                          date: date,
-                          hour: hour,
-                          totalParticipants: controller.activityToCreate
-                              .schedule[index].totalParticipants,
-                          onChangedDate: (value) {
-                            controller.setDate(value, index);
-                          },
-                          onChangedHour: (value) {
-                            controller.setHour(value, index);
-                          },
-                          onChangedParticipants: (value) {
-                            controller.setParticipants(int.parse(value), index);
-                          },
-                          removeSchedule: () {
-                            controller.removeSchedule(index);
-                            setState(() {});
-                          },
-                        ),
-                      );
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 114, vertical: 8),
+                          child: ScheduleAddWidget(
+                            date: controller
+                                .activityToCreate.schedule[index].date,
+                            isInPerson: controller.isInPerson,
+                            isOnline: controller.isOnline,
+                            link: controller
+                                .activityToCreate.schedule[index].link,
+                            onChangedLink: (value) {
+                              controller.setLink(value, index);
+                            },
+                            location: controller
+                                .activityToCreate.schedule[index].location,
+                            onChangedLocation: (value) {
+                              controller.setLocation(value, index);
+                            },
+                            duration: duration,
+                            onChangedDuration: (value) {
+                              controller.setDuration(value, index);
+                            },
+                            index: index,
+                            hour: hour,
+                            totalParticipants: controller.activityToCreate
+                                .schedule[index].totalParticipants,
+                            onChangedDate: () {
+                              showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2022),
+                                lastDate: DateTime(2023),
+                                confirmText: 'CONFIRMAR',
+                                builder: (BuildContext context, Widget? child) {
+                                  return Theme(
+                                    data: ThemeData.light().copyWith(
+                                      primaryColor: AppColors.brandingOrange,
+                                      colorScheme: ColorScheme.light(
+                                          primary: AppColors.brandingOrange),
+                                    ),
+                                    child: child!,
+                                  );
+                                },
+                              ).then((value) {
+                                controller.setDate(value!, index);
+                              });
+                            },
+                            onChangedHour: () {
+                              showTimePicker(
+                                context: context,
+                                initialTime: TimeOfDay.now(),
+                                confirmText: 'CONFIRMAR',
+                                builder: (BuildContext context, Widget? child) {
+                                  return Theme(
+                                    data: ThemeData.light().copyWith(
+                                      primaryColor: AppColors.brandingOrange,
+                                      colorScheme: ColorScheme.light(
+                                          primary: AppColors.brandingOrange),
+                                    ),
+                                    child: child!,
+                                  );
+                                },
+                              ).then((value) {
+                                controller.setHour(
+                                    value!.format(context), index);
+                              });
+                            },
+                            onChangedParticipants: (value) {
+                              controller.setParticipants(
+                                  int.parse(value), index);
+                            },
+                            removeSchedule: () {
+                              controller.removeSchedule(index);
+                              setState(() {});
+                            },
+                          ));
                     });
               }),
               Center(
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
                   child: FormsButtonWidget(
                     buttonTittle: 'Adicionar novo horário',
                     onPressed: controller.addSchedule,
