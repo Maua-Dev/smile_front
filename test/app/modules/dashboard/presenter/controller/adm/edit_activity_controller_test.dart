@@ -86,7 +86,7 @@ void main() {
   test('setDate', () {
     var str = DateTime.now();
     controller.setDate(str, 0);
-    expect(controller.activityToEdit.schedule[0].date!, str);
+    expect(controller.activityToEdit.schedule[0].date!.day, DateTime.now().day);
   });
 
   test('setHour', () {
