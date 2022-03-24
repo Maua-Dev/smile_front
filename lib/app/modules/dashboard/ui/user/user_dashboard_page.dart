@@ -81,22 +81,27 @@ class _UserDashboardPageState
               return Column(
                 children: [
                   ActivitiesCarouselWidget(
+                    listToEdit: controller.activitiesList,
                     list: controller.mondayActivitiesList,
                     weekday: 0,
                   ),
                   ActivitiesCarouselWidget(
+                    listToEdit: controller.activitiesList,
                     list: controller.tuesdayActivitiesList,
                     weekday: 1,
                   ),
                   ActivitiesCarouselWidget(
+                    listToEdit: controller.activitiesList,
                     list: controller.wednesdayActivitiesList,
                     weekday: 2,
                   ),
                   ActivitiesCarouselWidget(
+                    listToEdit: controller.activitiesList,
                     list: controller.thursdayActivitiesList,
                     weekday: 3,
                   ),
                   ActivitiesCarouselWidget(
+                    listToEdit: controller.activitiesList,
                     list: controller.fridayActivitiesList,
                     weekday: 4,
                   ),

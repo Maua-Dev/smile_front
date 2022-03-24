@@ -2,6 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller.dart';
@@ -30,36 +31,34 @@ abstract class _AdmDashboardControllerBase with Store {
   List<ActivityModel> activitiesList = List.empty();
 
   @observable
-  List<ActivityModel> nextActivitiesList = List.empty();
+  List<CardActivity> allActivitiesToCards = List.empty();
+
+  @observable
+  List<CardActivity> nextActivitiesList = List.empty();
 
   @computed
-  List<ActivityModel> get mondayActivitiesList => activitiesList
-      .where((activity) =>
-          activity.schedule.map((e) => e.date!.weekday == 1).contains(true))
+  List<CardActivity> get mondayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 1)
       .toList();
 
   @computed
-  List<ActivityModel> get tuesdayActivitiesList => activitiesList
-      .where((activity) =>
-          activity.schedule.map((e) => e.date!.weekday == 2).contains(true))
+  List<CardActivity> get tuesdayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 2)
       .toList();
 
   @computed
-  List<ActivityModel> get wednesdayActivitiesList => activitiesList
-      .where((activity) =>
-          activity.schedule.map((e) => e.date!.weekday == 3).contains(true))
+  List<CardActivity> get wednesdayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 3)
       .toList();
 
   @computed
-  List<ActivityModel> get thursdayActivitiesList => activitiesList
-      .where((activity) =>
-          activity.schedule.map((e) => e.date!.weekday == 4).contains(true))
+  List<CardActivity> get thursdayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 4)
       .toList();
 
   @computed
-  List<ActivityModel> get fridayActivitiesList => activitiesList
-      .where((activity) =>
-          activity.schedule.map((e) => e.date!.weekday == 5).contains(true))
+  List<CardActivity> get fridayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 5)
       .toList();
 
   @action
@@ -87,9 +86,26 @@ abstract class _AdmDashboardControllerBase with Store {
   @action
   Future getAllActivities() async {
     activitiesList = await repository.getAllActivities();
-    nextActivitiesList = activitiesList.length >= 5
-        ? activitiesList.sublist(0, 5)
-        : activitiesList;
+    allActivitiesToCards = [];
+    for (var activity in activitiesList) {
+      for (var time in activity.schedule) {
+        allActivitiesToCards.add(CardActivity(
+          id: activity.id,
+          activityCode: activity.activityCode,
+          type: activity.type,
+          title: activity.title,
+          description: activity.description,
+          date: time.date,
+          duration: time.duration,
+          totalParticipants: time.totalParticipants,
+          location: time.location,
+          link: time.link,
+        ));
+      }
+    }
+    nextActivitiesList = allActivitiesToCards.length >= 5
+        ? allActivitiesToCards.sublist(0, 5)
+        : allActivitiesToCards;
   }
 
   @action

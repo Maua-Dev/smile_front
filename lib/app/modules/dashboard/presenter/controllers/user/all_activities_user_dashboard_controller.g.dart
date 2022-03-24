@@ -10,47 +10,47 @@ part of 'all_activities_user_dashboard_controller.dart';
 
 mixin _$AllActivitiesUserDashboardController
     on _AllActivitiesUserDashboardControllerBase, Store {
-  Computed<List<ActivityModel>>? _$mondayActivitiesListComputed;
+  Computed<List<CardActivity>>? _$mondayActivitiesListComputed;
 
   @override
-  List<ActivityModel> get mondayActivitiesList =>
-      (_$mondayActivitiesListComputed ??= Computed<List<ActivityModel>>(
+  List<CardActivity> get mondayActivitiesList =>
+      (_$mondayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.mondayActivitiesList,
               name:
                   '_AllActivitiesUserDashboardControllerBase.mondayActivitiesList'))
           .value;
-  Computed<List<ActivityModel>>? _$tuesdayActivitiesListComputed;
+  Computed<List<CardActivity>>? _$tuesdayActivitiesListComputed;
 
   @override
-  List<ActivityModel> get tuesdayActivitiesList =>
-      (_$tuesdayActivitiesListComputed ??= Computed<List<ActivityModel>>(
+  List<CardActivity> get tuesdayActivitiesList =>
+      (_$tuesdayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.tuesdayActivitiesList,
               name:
                   '_AllActivitiesUserDashboardControllerBase.tuesdayActivitiesList'))
           .value;
-  Computed<List<ActivityModel>>? _$wednesdayActivitiesListComputed;
+  Computed<List<CardActivity>>? _$wednesdayActivitiesListComputed;
 
   @override
-  List<ActivityModel> get wednesdayActivitiesList =>
-      (_$wednesdayActivitiesListComputed ??= Computed<List<ActivityModel>>(
+  List<CardActivity> get wednesdayActivitiesList =>
+      (_$wednesdayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.wednesdayActivitiesList,
               name:
                   '_AllActivitiesUserDashboardControllerBase.wednesdayActivitiesList'))
           .value;
-  Computed<List<ActivityModel>>? _$thursdayActivitiesListComputed;
+  Computed<List<CardActivity>>? _$thursdayActivitiesListComputed;
 
   @override
-  List<ActivityModel> get thursdayActivitiesList =>
-      (_$thursdayActivitiesListComputed ??= Computed<List<ActivityModel>>(
+  List<CardActivity> get thursdayActivitiesList =>
+      (_$thursdayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.thursdayActivitiesList,
               name:
                   '_AllActivitiesUserDashboardControllerBase.thursdayActivitiesList'))
           .value;
-  Computed<List<ActivityModel>>? _$fridayActivitiesListComputed;
+  Computed<List<CardActivity>>? _$fridayActivitiesListComputed;
 
   @override
-  List<ActivityModel> get fridayActivitiesList =>
-      (_$fridayActivitiesListComputed ??= Computed<List<ActivityModel>>(
+  List<CardActivity> get fridayActivitiesList =>
+      (_$fridayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.fridayActivitiesList,
               name:
                   '_AllActivitiesUserDashboardControllerBase.fridayActivitiesList'))
@@ -112,15 +112,32 @@ mixin _$AllActivitiesUserDashboardController
       name: '_AllActivitiesUserDashboardControllerBase.nextActivitiesList');
 
   @override
-  List<ActivityModel> get nextActivitiesList {
+  List<CardActivity> get nextActivitiesList {
     _$nextActivitiesListAtom.reportRead();
     return super.nextActivitiesList;
   }
 
   @override
-  set nextActivitiesList(List<ActivityModel> value) {
+  set nextActivitiesList(List<CardActivity> value) {
     _$nextActivitiesListAtom.reportWrite(value, super.nextActivitiesList, () {
       super.nextActivitiesList = value;
+    });
+  }
+
+  final _$allActivitiesToCardsAtom = Atom(
+      name: '_AllActivitiesUserDashboardControllerBase.allActivitiesToCards');
+
+  @override
+  List<CardActivity> get allActivitiesToCards {
+    _$allActivitiesToCardsAtom.reportRead();
+    return super.allActivitiesToCards;
+  }
+
+  @override
+  set allActivitiesToCards(List<CardActivity> value) {
+    _$allActivitiesToCardsAtom.reportWrite(value, super.allActivitiesToCards,
+        () {
+      super.allActivitiesToCards = value;
     });
   }
 
@@ -187,6 +204,7 @@ isFloatActionButtonOpen: ${isFloatActionButtonOpen},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 activitiesList: ${activitiesList},
 nextActivitiesList: ${nextActivitiesList},
+allActivitiesToCards: ${allActivitiesToCards},
 mondayActivitiesList: ${mondayActivitiesList},
 tuesdayActivitiesList: ${tuesdayActivitiesList},
 wednesdayActivitiesList: ${wednesdayActivitiesList},
