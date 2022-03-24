@@ -111,6 +111,7 @@ class _ChangePasswordPageState
                   const Text(
                     'Insira sua nova senha e o codigo enviado para o seu email:',
                     style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
                   ),
                   const SizedBox(
                     height: 20,
@@ -119,6 +120,7 @@ class _ChangePasswordPageState
                     icon: Icons.lock,
                     placeholder: 'Senha',
                     setValue: controller.setPassword,
+                    isPassword: true,
                   ),
                   const SizedBox(
                     height: 20,
@@ -127,6 +129,7 @@ class _ChangePasswordPageState
                     icon: Icons.lock,
                     placeholder: 'Confirme sua senha',
                     setValue: controller.setVerifyPassword,
+                    isPassword: true,
                   ),
                   const SizedBox(
                     height: 20,
@@ -143,7 +146,9 @@ class _ChangePasswordPageState
                     return ActionTextButtonWidget(
                       isLoading: controller.isLoading,
                       title: 'Trocar senha',
-                      widthSize: 600,
+                      widthSize: MediaQuery.of(context).size.width < 650
+                          ? MediaQuery.of(context).size.width * 0.85
+                          : 600,
                       heightSize: 50,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () {

@@ -88,6 +88,7 @@ class _ForgotPasswordPageState
                   const Text(
                     'Um código será enviado no email cadastrado',
                     style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
                   ),
                   const SizedBox(
                     height: 20,
@@ -104,7 +105,9 @@ class _ForgotPasswordPageState
                     return ActionTextButtonWidget(
                       isLoading: controller.isLoading,
                       title: 'Enviar',
-                      widthSize: 600,
+                      widthSize: MediaQuery.of(context).size.width < 650
+                          ? MediaQuery.of(context).size.width * 0.85
+                          : 600,
                       heightSize: 50,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () {
@@ -117,7 +120,9 @@ class _ForgotPasswordPageState
                   ),
                   ActionTextButtonWidget(
                     title: 'Não tenho cadastro',
-                    widthSize: 600,
+                    widthSize: MediaQuery.of(context).size.width < 650
+                        ? MediaQuery.of(context).size.width * 0.85
+                        : 600,
                     heightSize: 50,
                     backgroundColor: AppColors.brandingPurple,
                     onPressed: () {
