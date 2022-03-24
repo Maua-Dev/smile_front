@@ -159,8 +159,9 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
       AsyncAction('_ForgotPasswordController.changePassword');
 
   @override
-  Future<void> changePassword() {
-    return _$changePasswordAsyncAction.run(() => super.changePassword());
+  Future<void> changePassword(dynamic username) {
+    return _$changePasswordAsyncAction
+        .run(() => super.changePassword(username));
   }
 
   final _$setPasswordAsyncAction =

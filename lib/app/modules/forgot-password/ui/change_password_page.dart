@@ -7,7 +7,10 @@ import '../../login/ui/widgets/input_box.dart';
 import '../presenter/controller/forgot_password_controller.dart';
 
 class ChangePasswordPage extends StatefulWidget {
-  const ChangePasswordPage({Key? key}) : super(key: key);
+  final String? username;
+
+  const ChangePasswordPage({Key? key, required this.username})
+      : super(key: key);
 
   @override
   _ChangePasswordPageState createState() => _ChangePasswordPageState();
@@ -144,7 +147,8 @@ class _ChangePasswordPageState
                       heightSize: 50,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () {
-                        controller.changePassword();
+                        print(widget.username ?? 'não passou');
+                        controller.changePassword(widget.username ?? '');
                       },
                     );
                   }),

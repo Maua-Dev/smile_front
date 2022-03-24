@@ -72,7 +72,8 @@ abstract class _ForgotPasswordController with Store {
     setIsLoading(true);
     try {
       await forgotPasswordRepository.forgotPassword(username);
-      Modular.to.navigate('/login/esqueci-minha-senha/escolher-senha');
+      Modular.to.navigate('/login/esqueci-minha-senha/escolher-senha',
+          arguments: {'username': username});
     } on Failure catch (e) {
       errors = e.message;
     }
@@ -80,7 +81,7 @@ abstract class _ForgotPasswordController with Store {
   }
 
   @action
-  Future<void> changePassword() async {
+  Future<void> changePassword(username) async {
     setIsLoading(true);
     try {
       await forgotPasswordRepository.changePassword(username, password, code);
