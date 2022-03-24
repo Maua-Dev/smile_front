@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/activity_card_widget.dart';
-import 'package:smile_front/app/shared/widgets/dashboard-appbar/dashboard_appbar_widget.dart';
-import 'package:smile_front/app/shared/widgets/text-fields/text_field_custom.dart';
 import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
-import 'package:smile_front/app/shared/widgets/vertical_nav_bar/vertical_nav_bar.dart';
+import '../../../../shared/themes/app_colors.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
+import '../widgets/activities_carousel_widget.dart';
+import '../widgets/logout_button_widget.dart';
+import '../widgets/next_activity_card_widget.dart';
+import 'more_info_dialog_widget.dart';
 
 class UserDashboardPage extends StatefulWidget {
   const UserDashboardPage({Key? key}) : super(key: key);
@@ -19,92 +20,92 @@ class _UserDashboardPageState
     extends ModularState<UserDashboardPage, UserDashboardController> {
   @override
   Widget build(BuildContext context) {
-    var searchController = TextEditingController(text: '');
-    return Material(
-        child: Row(children: [
-      VerticalNavBar(),
-      Expanded(
+    return Scaffold(
+      body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const DashboardAppbarWidget(),
-            const TextHeaderScratched(title: 'Atividades'),
+            const SizedBox(
+              height: 32,
+            ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              padding: const EdgeInsets.only(right: 72.0),
+              child: Observer(builder: (_) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextHeaderScratched(
+                      title: 'Olá, ${controller.userName}',
+                      fontSize: 50,
+                    ),
+                    LogoutButtonWidget(
+                      backgroundColor: AppColors.brandingOrange,
+                      buttonTittle: 'Sair',
+                      onPressed: () {
+                        controller.logout();
+                      },
+                    ),
+                  ],
+                );
+              }),
+            ),
+            const SizedBox(
+              height: 48,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(right: 72.0),
+              child: TextHeaderScratched(
+                title: 'Próxima Atividade',
+                fontSize: 38,
+              ),
+            ),
+            Observer(builder: (_) {
+              return NextActivityCardWidget(
+                onTap: () {
+                  moreInfoDialogWidget(context, controller.nextActivity);
+                },
+                cardColor: AppColors.brandingOrange,
+                textColor: Colors.white,
+                name: controller.nextActivity.title,
+                description: controller.nextActivity.description,
+                date: controller.nextActivity.schedule[0].date,
+                totalParticipants:
+                    controller.nextActivity.schedule[0].totalParticipants,
+              );
+            }),
+            const TextHeaderScratched(
+              title: 'Minhas Atividades',
+              fontSize: 38,
+            ),
+            Observer(builder: (_) {
+              return Column(
                 children: [
-                  TextFieldCustom(
-                    titulo: 'Buscar',
-                    value: searchController.text,
-                    onChanged: controller.searchActivityByName,
+                  ActivitiesCarouselWidget(
+                    list: controller.mondayActivitiesList,
+                    weekday: 0,
                   ),
-                  const SizedBox(
-                    width: 32,
+                  ActivitiesCarouselWidget(
+                    list: controller.tuesdayActivitiesList,
+                    weekday: 1,
                   ),
-                  // DropDownFieldCustom<String>(
-                  //   titulo: 'Ordenar',
-                  //   items: orders.map((String value) {
-                  //     return DropdownMenuItem<String>(
-                  //       value: value,
-                  //       child: Text(value),
-                  //     );
-                  //   }).toList(),
-                  //   value: currentSelectedValue,
-                  //   onChanged: (newValue) {
-                  //     setState(() {
-                  //       currentSelectedValue = newValue;
-                  //       switch (newValue) {
-                  //         case 'Ordenar':
-                  //           controller.getActivitiesByType();
-                  //           break;
-                  //         case 'Por data':
-                  //           controller.orderByDate();
-                  //           break;
-                  //         case 'Por inscritos':
-                  //           // controller.orderByParticipants();
-                  //           break;
-                  //       }
-                  //     });
-                  //   },
-                  // )
+                  ActivitiesCarouselWidget(
+                    list: controller.wednesdayActivitiesList,
+                    weekday: 2,
+                  ),
+                  ActivitiesCarouselWidget(
+                    list: controller.thursdayActivitiesList,
+                    weekday: 3,
+                  ),
+                  ActivitiesCarouselWidget(
+                    list: controller.fridayActivitiesList,
+                    weekday: 4,
+                  ),
                 ],
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
-                child: Observer(builder: (_) {
-                  return GridView.builder(
-                      itemCount: controller.activitiesList.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 5,
-                              mainAxisSpacing: 16,
-                              crossAxisSpacing: 8,
-                              childAspectRatio: 1.7),
-                      itemBuilder: (context, index) {
-                        return ActivityCardWidget(
-                          cardColor: Colors.white,
-                          name: controller.activitiesList[index].title,
-                          description:
-                              controller.activitiesList[index].description,
-                          date: controller
-                              .activitiesList[index].schedule[0].date
-                              .toString(),
-                          time: controller
-                              .activitiesList[index].schedule[0].date
-                              .toString(),
-                          totalParticipants: 20,
-                          onTap: () {},
-                        );
-                      });
-                }),
-              ),
-            ),
+              );
+            }),
           ],
         ),
-      )
-    ]));
+      ),
+    );
   }
 }

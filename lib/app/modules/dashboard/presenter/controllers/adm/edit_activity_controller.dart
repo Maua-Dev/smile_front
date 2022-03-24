@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
@@ -24,14 +25,63 @@ abstract class _EditActivityControllerBase with Store {
     if (activityModel.id.isEmpty) {
       Modular.to.navigate('/adm');
     }
+    startSchedule();
   }
 
   @observable
   late var activityToEdit = activityModel;
 
+  @observable
+  bool isLoading = false;
+
+  @observable
+  bool isOnline = false;
+
+  @observable
+  bool isInPerson = false;
+
+  @action
+  Future<void> setIsOnline(bool value) async {
+    isOnline = value;
+  }
+
+  @action
+  Future<void> setIsInPerson(bool value) async {
+    isInPerson = value;
+  }
+
+  @action
+  Future<void> setIsLoading(bool value) async {
+    isLoading = value;
+  }
+
+  @action
+  void startSchedule() {
+    if (activityToEdit.schedule[0].location != null &&
+        activityToEdit.schedule[0].location != '') {
+      setIsInPerson(true);
+    }
+    if (activityToEdit.schedule[0].link != null &&
+        activityToEdit.schedule[0].link != '') {
+      setIsOnline(true);
+    }
+  }
+
   @action
   bool isFilled() {
-    if (activityToEdit.title != '') {
+    var scheduleFirst = activityToEdit.schedule.first;
+    var speakerFirst = activityToEdit.speaker.first;
+    if (activityToEdit.title != '' &&
+        activityToEdit.description != '' &&
+        activityToEdit.type != null &&
+        activityToEdit.activityCode != '' &&
+        scheduleFirst.date != null &&
+        scheduleFirst.duration != null &&
+        scheduleFirst.totalParticipants != null &&
+        speakerFirst.bio != '' &&
+        speakerFirst.name != '' &&
+        speakerFirst.company != '' &&
+        activityToEdit.linkPhoto != null) {
       return true;
     }
     return false;
@@ -39,8 +89,10 @@ abstract class _EditActivityControllerBase with Store {
 
   @action
   Future editActivity() async {
+    setIsLoading(true);
     await repository.editActivity(activityToEdit);
     await admDashboardController.getAllActivities();
+    setIsLoading(false);
     Modular.to.navigate('/adm');
   }
 
@@ -57,6 +109,11 @@ abstract class _EditActivityControllerBase with Store {
   }
 
   @action
+  void setActivityCode(String value) {
+    activityToEdit = activityToEdit.copyWith(activityCode: value);
+  }
+
+  @action
   void setTitle(String value) {
     activityToEdit = activityToEdit.copyWith(title: value);
   }
@@ -67,40 +124,38 @@ abstract class _EditActivityControllerBase with Store {
   }
 
   @action
-  void setLocation(String value) {
-    activityToEdit = activityToEdit.copyWith(location: value);
+  void setLocation(String value, int index) {
+    activityToEdit.schedule[index].location = value;
   }
 
   @action
-  void setDate(String value, int index) {
-    if (value.length >= 10) {
-      var year = value.substring(6, 10);
-      var month = value.substring(3, 5);
-      var day = value.substring(0, 2);
-      value = '$year-$month-$day';
-      var hour = activityToEdit.schedule[index].date != null
-          ? DateFormat('HH:mm').format(activityToEdit.schedule[index].date!)
-          : '';
-      var date =
-          hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
-      var list = activityToEdit.schedule;
-      list[index] = activityToEdit.schedule[index].copyWith(date: date);
-      activityToEdit = activityToEdit.copyWith(schedule: list);
-    }
+  void setLink(String value, int index) {
+    activityToEdit.schedule[index].link = value;
+  }
+
+  @action
+  void setDate(DateTime value, int index) {
+    var dateValue = DateFormat('yyyy-MM-dd').format(value);
+    var hour = activityToEdit.schedule[index].date != null
+        ? DateFormat('HH:mm').format(activityToEdit.schedule[index].date!)
+        : '';
+    var date = hour == '' ? value : DateTime.parse("$dateValue $hour");
+    var list = activityToEdit.schedule;
+    list[index] = activityToEdit.schedule[index].copyWith(date: date);
+    activityToEdit = activityToEdit.copyWith(schedule: list);
   }
 
   @action
   void setHour(String value, int index) {
-    if (value.length >= 5) {
-      var date = activityToEdit.schedule[index].date != null
-          ? DateFormat('yyyy-MM-dd')
-              .format(activityToEdit.schedule[index].date!)
-          : '';
-      var hour = DateTime.parse("$date $value");
-      var list = activityToEdit.schedule;
-      list[index] = activityToEdit.schedule[index].copyWith(date: hour);
-      activityToEdit = activityToEdit.copyWith(schedule: list);
-    }
+    var date = activityToEdit.schedule[index].date != null
+        ? DateFormat('yyyy-MM-dd').format(activityToEdit.schedule[index].date!)
+        : '';
+    var hour = date == ''
+        ? DateTime.parse('0000-00-00 $value')
+        : DateTime.parse("$date $value");
+    var list = activityToEdit.schedule;
+    list[index] = activityToEdit.schedule[index].copyWith(date: hour);
+    activityToEdit = activityToEdit.copyWith(schedule: list);
   }
 
   @action
@@ -120,21 +175,18 @@ abstract class _EditActivityControllerBase with Store {
   }
 
   @action
-  void setSpeakerName(String value) {
-    var speaker = activityToEdit.speaker.copyWith(name: value);
-    activityToEdit = activityToEdit.copyWith(speaker: speaker);
+  void setSpeakerName(String value, int index) {
+    activityToEdit.speaker[index].name = value;
   }
 
   @action
-  void setSpeakerBio(String value) {
-    var speaker = activityToEdit.speaker.copyWith(bio: value);
-    activityToEdit = activityToEdit.copyWith(speaker: speaker);
+  void setSpeakerBio(String value, int index) {
+    activityToEdit.speaker[index].bio = value;
   }
 
   @action
-  void setSpeakerCompany(String value) {
-    var speaker = activityToEdit.speaker.copyWith(company: value);
-    activityToEdit = activityToEdit.copyWith(speaker: speaker);
+  void setSpeakerCompany(String value, int index) {
+    activityToEdit.speaker[index].company = value;
   }
 
   @action
@@ -149,5 +201,19 @@ abstract class _EditActivityControllerBase with Store {
     var list = activityToEdit.schedule;
     list.removeAt(index);
     activityToEdit = activityToEdit.copyWith(schedule: list);
+  }
+
+  @action
+  void addSpeaker() {
+    var list = activityToEdit.speaker;
+    list.add(SpeakerActivityModel.newInstance());
+    activityToEdit = activityToEdit.copyWith(speaker: list);
+  }
+
+  @action
+  void removeSpeaker(int index) {
+    var list = activityToEdit.speaker;
+    list.removeAt(index);
+    activityToEdit = activityToEdit.copyWith(speaker: list);
   }
 }

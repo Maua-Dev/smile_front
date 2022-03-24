@@ -8,40 +8,43 @@ import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
 class ActivityModel extends Activity {
   final String id;
+  final String activityCode;
   final ActivityEnum? type;
   final String title;
   final String description;
   final List<ScheduleActivityModel> schedule;
-  final String? location;
-  final SpeakerActivityModel speaker;
+  final List<SpeakerActivityModel> speakers;
+  final String? linkPhoto;
 
   ActivityModel({
     required this.id,
+    required this.activityCode,
     required this.type,
     required this.title,
     required this.description,
     required this.schedule,
-    this.location,
-    required this.speaker,
+    required this.speakers,
+    this.linkPhoto,
   }) : super(
           id: id,
+          activityCode: activityCode,
           type: type,
           title: title,
           description: description,
           schedule: schedule,
-          location: location,
-          speaker: speaker,
+          speaker: speakers,
         );
 
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
     return ActivityModel(
       id: map['id'],
+      activityCode: map['activityCode'],
       type: ActivityEnumExtension.stringToEnumMap(map['type']),
       title: map['title'],
       description: map['description'],
       schedule: ScheduleActivityModel.fromMaps(map['schedule']),
-      location: map['location'],
-      speaker: SpeakerActivityModel.fromMap(map['speaker']),
+      speakers: SpeakerActivityModel.fromMaps(map['speakers']),
+      linkPhoto: map['linkPhoto'],
     );
   }
 
@@ -51,44 +54,45 @@ class ActivityModel extends Activity {
 
   Map<String, dynamic> toJson() => {
         'type': ActivityEnumExtension.enumToStringMap(type!),
+        'activityCode': activityCode,
         'title': title,
         'description': description,
         'schedule': schedule,
-        'location': location,
-        'speaker': speaker,
+        'speakers': speaker,
+        'linkPhoto': ''
       };
 
   factory ActivityModel.newInstance() {
     return ActivityModel(
         schedule: [ScheduleActivityModel.newInstance()],
+        linkPhoto: '',
         description: '',
         id: '',
+        activityCode: '',
         title: '',
         type: null,
-        location: '',
-        speaker: SpeakerActivityModel(
-            bio: '', company: '', name: '', linkPhoto: ''));
+        speakers: [SpeakerActivityModel.newInstance()]);
   }
 
   ActivityModel copyWith({
     String? id,
+    String? activityCode,
     ActivityEnum? type,
     String? title,
     String? description,
     List<ScheduleActivityModel>? schedule,
-    DateTime? date,
-    DateTime? hour,
-    String? location,
-    SpeakerActivityModel? speaker,
+    List<SpeakerActivityModel>? speaker,
+    String? linkPhoto,
   }) {
     return ActivityModel(
       id: id ?? this.id,
+      activityCode: activityCode ?? this.activityCode,
       type: type ?? this.type,
       title: title ?? this.title,
       description: description ?? this.description,
       schedule: schedule ?? this.schedule,
-      location: location ?? this.location,
-      speaker: speaker ?? this.speaker,
+      speakers: speaker ?? this.speaker,
+      linkPhoto: linkPhoto ?? this.linkPhoto,
     );
   }
 }

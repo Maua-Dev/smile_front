@@ -25,6 +25,75 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
     });
   }
 
+  final _$isLoadingAtom = Atom(name: '_EditActivityControllerBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
+  final _$isOnlineAtom = Atom(name: '_EditActivityControllerBase.isOnline');
+
+  @override
+  bool get isOnline {
+    _$isOnlineAtom.reportRead();
+    return super.isOnline;
+  }
+
+  @override
+  set isOnline(bool value) {
+    _$isOnlineAtom.reportWrite(value, super.isOnline, () {
+      super.isOnline = value;
+    });
+  }
+
+  final _$isInPersonAtom = Atom(name: '_EditActivityControllerBase.isInPerson');
+
+  @override
+  bool get isInPerson {
+    _$isInPersonAtom.reportRead();
+    return super.isInPerson;
+  }
+
+  @override
+  set isInPerson(bool value) {
+    _$isInPersonAtom.reportWrite(value, super.isInPerson, () {
+      super.isInPerson = value;
+    });
+  }
+
+  final _$setIsOnlineAsyncAction =
+      AsyncAction('_EditActivityControllerBase.setIsOnline');
+
+  @override
+  Future<void> setIsOnline(bool value) {
+    return _$setIsOnlineAsyncAction.run(() => super.setIsOnline(value));
+  }
+
+  final _$setIsInPersonAsyncAction =
+      AsyncAction('_EditActivityControllerBase.setIsInPerson');
+
+  @override
+  Future<void> setIsInPerson(bool value) {
+    return _$setIsInPersonAsyncAction.run(() => super.setIsInPerson(value));
+  }
+
+  final _$setIsLoadingAsyncAction =
+      AsyncAction('_EditActivityControllerBase.setIsLoading');
+
+  @override
+  Future<void> setIsLoading(bool value) {
+    return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
+  }
+
   final _$editActivityAsyncAction =
       AsyncAction('_EditActivityControllerBase.editActivity');
 
@@ -45,6 +114,17 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
       ActionController(name: '_EditActivityControllerBase');
 
   @override
+  void startSchedule() {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.startSchedule');
+    try {
+      return super.startSchedule();
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   bool isFilled() {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.isFilled');
@@ -61,6 +141,17 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
         .startAction(name: '_EditActivityControllerBase.setType');
     try {
       return super.setType(value);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setActivityCode(String value) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setActivityCode');
+    try {
+      return super.setActivityCode(value);
     } finally {
       _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -89,18 +180,29 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
-  void setLocation(String value) {
+  void setLocation(String value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setLocation');
     try {
-      return super.setLocation(value);
+      return super.setLocation(value, index);
     } finally {
       _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setDate(String value, int index) {
+  void setLink(String value, int index) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setLink');
+    try {
+      return super.setLink(value, index);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDate(DateTime value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setDate');
     try {
@@ -144,33 +246,33 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
-  void setSpeakerName(String value) {
+  void setSpeakerName(String value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setSpeakerName');
     try {
-      return super.setSpeakerName(value);
+      return super.setSpeakerName(value, index);
     } finally {
       _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSpeakerBio(String value) {
+  void setSpeakerBio(String value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setSpeakerBio');
     try {
-      return super.setSpeakerBio(value);
+      return super.setSpeakerBio(value, index);
     } finally {
       _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSpeakerCompany(String value) {
+  void setSpeakerCompany(String value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setSpeakerCompany');
     try {
-      return super.setSpeakerCompany(value);
+      return super.setSpeakerCompany(value, index);
     } finally {
       _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -199,9 +301,34 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
+  void addSpeaker() {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.addSpeaker');
+    try {
+      return super.addSpeaker();
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeSpeaker(int index) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.removeSpeaker');
+    try {
+      return super.removeSpeaker(index);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-activityToEdit: ${activityToEdit}
+activityToEdit: ${activityToEdit},
+isLoading: ${isLoading},
+isOnline: ${isOnline},
+isInPerson: ${isInPerson}
     ''';
   }
 }

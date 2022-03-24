@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
-import '../../login/ui/widgets/input_box.dart';
+import '../../../shared/widgets/input-box/input_box.dart';
 import '../presenter/controller/forgot_password_controller.dart';
 
 class ChangePasswordPage extends StatefulWidget {

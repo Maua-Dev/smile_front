@@ -60,13 +60,15 @@ class _AdmDashboardPageState
               fontSize: 38,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 72.0, top: 20),
+              padding: const EdgeInsets.only(left: 72.0, top: 20, right: 72),
               child: SizedBox(
                   height: 50,
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: ActivityEnum.values.length - 3,
+                      itemCount: MediaQuery.of(context).size.width < 1650
+                          ? ActivityEnum.values.length - 6
+                          : ActivityEnum.values.length - 4,
                       itemBuilder: (BuildContext ctx, index) {
                         return Observer(builder: (_) {
                           return FilterChipWidget(
@@ -80,22 +82,33 @@ class _AdmDashboardPageState
                       })),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 72.0, bottom: 20),
+              padding: const EdgeInsets.only(left: 72.0, bottom: 20, right: 72),
               child: SizedBox(
                   height: 50,
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: 3,
+                      itemCount:
+                          MediaQuery.of(context).size.width < 1650 ? 6 : 4,
                       itemBuilder: (BuildContext ctx, index) {
                         return Observer(builder: (_) {
                           return FilterChipWidget(
-                              onTap: () => controller
-                                  .toggleFilterActivityChipIndex(index + 8),
-                              selected:
-                                  controller.filterActivityChipIndexSelected ==
+                              onTap: () =>
+                                  controller.toggleFilterActivityChipIndex(
+                                      MediaQuery.of(context).size.width < 1650
+                                          ? index + 6
+                                          : index + 8),
+                              selected: MediaQuery.of(context).size.width < 1650
+                                  ? controller
+                                          .filterActivityChipIndexSelected ==
+                                      index + 6
+                                  : controller
+                                          .filterActivityChipIndexSelected ==
                                       index + 8,
-                              activityType: ActivityEnum.values[index + 8]);
+                              activityType: ActivityEnum.values[
+                                  MediaQuery.of(context).size.width < 1650
+                                      ? index + 6
+                                      : index + 8]);
                         });
                       })),
             ),

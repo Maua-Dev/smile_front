@@ -1,9 +1,10 @@
-import 'package:smile_front/app/modules/register/domain/entities/register_informations.dart';
-import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository.dart';
+import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 
-class RegisterUserRepositoryMock implements RegisterUserRepository {
+import '../../../../shared/entities/user_registration.dart';
+
+class RegisterRepositoryMock implements RegisterRepositoryInterface {
   @override
-  Future<String> registerUser(RegisterInformations registerInformations) async {
+  Future<String> registerUser(UserRegistration userRegistration) async {
     return 'Registered';
   }
 }

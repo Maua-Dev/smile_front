@@ -2,9 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/forgot-password/forgot_password_module.dart';
 import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
-import 'package:smile_front/app/modules/login/presenter/controllers/register_controller.dart';
 import 'package:smile_front/app/modules/login/ui/login_page.dart';
-import 'package:smile_front/app/modules/login/ui/register_page.dart';
+import 'package:smile_front/app/modules/register/register_module.dart';
 import '../../shared/services/dio/smile_login_options.dart';
 import '../auth/domain/repositories/auth_repository_interface.dart';
 import '../auth/external/auth_datasource_impl.dart';
@@ -14,7 +13,6 @@ import '../auth/infra/repositories/auth_repository_impl.dart';
 class LoginModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => RegisterController(i())),
     Bind.lazySingleton(
         (i) => LoginController(
               authController: i(),
@@ -31,7 +29,7 @@ class LoginModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute, child: (_, args) => const LoginPage()),
-    ChildRoute('/cadastro', child: (_, args) => const RegisterPage()),
+    ModuleRoute('/cadastro', module: RegisterModule()),
     ModuleRoute('/esqueci-minha-senha', module: ForgotPasswordModule()),
   ];
 }

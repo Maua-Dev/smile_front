@@ -4,9 +4,11 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class ActivityCardWidget extends StatelessWidget {
   final String name;
+  final String activityCode;
   final String description;
   final String date;
   final String time;
+  final String finalTime;
   final int? totalParticipants;
   final Color? cardColor;
   final Color? textColor;
@@ -15,12 +17,14 @@ class ActivityCardWidget extends StatelessWidget {
     Key? key,
     required this.name,
     required this.description,
-    required this.date,
-    required this.time,
-    required this.totalParticipants,
     this.onTap,
     this.cardColor,
     this.textColor,
+    required this.activityCode,
+    required this.date,
+    required this.time,
+    this.totalParticipants,
+    required this.finalTime,
   }) : super(key: key);
 
   @override
@@ -48,13 +52,15 @@ class ActivityCardWidget extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  name,
+                  '$activityCode - $name',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.buttonBold
                       .copyWith(fontSize: 22, color: textColor ?? Colors.black),
                 ),
@@ -83,9 +89,7 @@ class ActivityCardWidget extends StatelessWidget {
                             child: Icon(
                               Icons.calendar_today,
                               color: textColor ?? AppColors.brandingPurple,
-                              size: MediaQuery.of(context).size.width < 1200
-                                  ? 10
-                                  : 20,
+                              size: 20,
                             ),
                           ),
                           Text(date,
@@ -101,12 +105,10 @@ class ActivityCardWidget extends StatelessWidget {
                             child: Icon(
                               Icons.access_time_outlined,
                               color: textColor ?? AppColors.brandingPurple,
-                              size: MediaQuery.of(context).size.width < 1200
-                                  ? 10
-                                  : 20,
+                              size: 20,
                             ),
                           ),
-                          Text(time,
+                          Text('$time - $finalTime',
                               style: AppTextStyles.button.copyWith(
                                   fontSize: 18,
                                   color: textColor ?? AppColors.brandingPurple))
@@ -119,9 +121,7 @@ class ActivityCardWidget extends StatelessWidget {
                             child: Icon(
                               Icons.person,
                               color: textColor ?? AppColors.brandingPurple,
-                              size: MediaQuery.of(context).size.width < 1200
-                                  ? 10
-                                  : 20,
+                              size: 20,
                             ),
                           ),
                           RichText(
@@ -133,7 +133,7 @@ class ActivityCardWidget extends StatelessWidget {
                                     color:
                                         textColor ?? AppColors.brandingPurple)),
                             TextSpan(
-                                text: '$totalParticipants',
+                                text: totalParticipants.toString(),
                                 style: AppTextStyles.button.copyWith(
                                     fontSize: 18,
                                     color:

@@ -25,6 +25,76 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
     });
   }
 
+  final _$isLoadingAtom = Atom(name: '_CreateActivityControllerBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
+  final _$isOnlineAtom = Atom(name: '_CreateActivityControllerBase.isOnline');
+
+  @override
+  bool get isOnline {
+    _$isOnlineAtom.reportRead();
+    return super.isOnline;
+  }
+
+  @override
+  set isOnline(bool value) {
+    _$isOnlineAtom.reportWrite(value, super.isOnline, () {
+      super.isOnline = value;
+    });
+  }
+
+  final _$isInPersonAtom =
+      Atom(name: '_CreateActivityControllerBase.isInPerson');
+
+  @override
+  bool get isInPerson {
+    _$isInPersonAtom.reportRead();
+    return super.isInPerson;
+  }
+
+  @override
+  set isInPerson(bool value) {
+    _$isInPersonAtom.reportWrite(value, super.isInPerson, () {
+      super.isInPerson = value;
+    });
+  }
+
+  final _$setIsOnlineAsyncAction =
+      AsyncAction('_CreateActivityControllerBase.setIsOnline');
+
+  @override
+  Future<void> setIsOnline(bool value) {
+    return _$setIsOnlineAsyncAction.run(() => super.setIsOnline(value));
+  }
+
+  final _$setIsInPersonAsyncAction =
+      AsyncAction('_CreateActivityControllerBase.setIsInPerson');
+
+  @override
+  Future<void> setIsInPerson(bool value) {
+    return _$setIsInPersonAsyncAction.run(() => super.setIsInPerson(value));
+  }
+
+  final _$setIsLoadingAsyncAction =
+      AsyncAction('_CreateActivityControllerBase.setIsLoading');
+
+  @override
+  Future<void> setIsLoading(bool value) {
+    return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
+  }
+
   final _$createActivityAsyncAction =
       AsyncAction('_CreateActivityControllerBase.createActivity');
 
@@ -59,6 +129,17 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
+  void setActivityCode(String value) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setActivityCode');
+    try {
+      return super.setActivityCode(value);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setTitle(String value) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setTitle');
@@ -81,18 +162,29 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
-  void setLocation(String value) {
+  void setLocation(String value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setLocation');
     try {
-      return super.setLocation(value);
+      return super.setLocation(value, index);
     } finally {
       _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setDate(String value, int index) {
+  void setLink(String value, int index) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.setLink');
+    try {
+      return super.setLink(value, index);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDate(DateTime value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setDate');
     try {
@@ -136,33 +228,33 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
-  void setSpeakerName(String value) {
+  void setSpeakerName(String value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setSpeakerName');
     try {
-      return super.setSpeakerName(value);
+      return super.setSpeakerName(value, index);
     } finally {
       _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSpeakerBio(String value) {
+  void setSpeakerBio(String value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setSpeakerBio');
     try {
-      return super.setSpeakerBio(value);
+      return super.setSpeakerBio(value, index);
     } finally {
       _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSpeakerCompany(String value) {
+  void setSpeakerCompany(String value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setSpeakerCompany');
     try {
-      return super.setSpeakerCompany(value);
+      return super.setSpeakerCompany(value, index);
     } finally {
       _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -191,9 +283,34 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
+  void addSpeaker() {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.addSpeaker');
+    try {
+      return super.addSpeaker();
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeSpeaker(int index) {
+    final _$actionInfo = _$_CreateActivityControllerBaseActionController
+        .startAction(name: '_CreateActivityControllerBase.removeSpeaker');
+    try {
+      return super.removeSpeaker(index);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-activityToCreate: ${activityToCreate}
+activityToCreate: ${activityToCreate},
+isLoading: ${isLoading},
+isOnline: ${isOnline},
+isInPerson: ${isInPerson}
     ''';
   }
 }
