@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/weekdays_enum.dart';
+import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -14,11 +15,13 @@ class ActivitiesCarouselWidget extends StatelessWidget {
   final int? weekday;
   final bool isNextActivity;
   final Color? cardColor;
-  final List<ActivityModel> list;
+  final List<CardActivity> list;
+  final List<ActivityModel> listToEdit;
 
   const ActivitiesCarouselWidget({
     Key? key,
     required this.list,
+    required this.listToEdit,
     this.weekday,
     this.cardColor,
     this.isNextActivity = false,
@@ -63,25 +66,12 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: list.length,
                       itemBuilder: (BuildContext ctx, index) {
-                        String date = '';
-                        String time = '';
-                        String finalTime = '';
-                        for (var element in list[index].schedule) {
-                          if (element.date?.weekday == weekday) {
-                            date =
-                                DateFormat('dd/MM/yyyy').format(element.date!);
-                            time = DateFormat('HH:mm').format(element.date!);
-                            finalTime =
-                                DateFormat('HH:mm').format(element.duration!);
-                          } else if (weekday == null) {
-                            date = DateFormat('dd/MM/yyyy')
-                                .format(list[index].schedule[0].date!);
-                            time = DateFormat('HH:mm')
-                                .format(list[index].schedule[0].date!);
-                            finalTime = DateFormat('HH:mm')
-                                .format(list[index].schedule[0].duration!);
-                          }
-                        }
+                        String date =
+                            DateFormat('dd/MM/yyyy').format(list[index].date!);
+                        String time =
+                            DateFormat('HH:mm').format(list[index].date!);
+                        String finalTime =
+                            DateFormat('HH:mm').format(list[index].duration!);
                         return Row(
                           children: [
                             if (index == 0)
@@ -97,10 +87,15 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                   if (accessLevel == 'ADMIN') {
                                     Modular.to.navigate(
                                       '/adm/edit-activity',
-                                      arguments: list[index],
+                                      arguments: listToEdit.firstWhere(
+                                          (element) =>
+                                              element.id == list[index].id),
                                     );
                                   } else {
-                                    moreInfoDialogWidget(context, list[index]);
+                                    moreInfoDialogWidget(
+                                        context,
+                                        listToEdit.firstWhere((element) =>
+                                            element.id == list[index].id));
                                   }
                                 },
                                 finalTime: finalTime,
@@ -114,7 +109,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                 date: date,
                                 time: time,
                                 totalParticipants:
-                                    list[index].schedule[0].totalParticipants,
+                                    list[index].totalParticipants,
                               ),
                             ),
                             if (index == list.length - 1)
