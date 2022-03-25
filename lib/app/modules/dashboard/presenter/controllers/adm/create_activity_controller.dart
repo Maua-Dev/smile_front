@@ -28,32 +28,6 @@ abstract class _CreateActivityControllerBase with Store {
   @observable
   bool isLoading = false;
 
-  @observable
-  bool isOnline = false;
-
-  @observable
-  bool isInPerson = false;
-
-  @action
-  Future<void> setIsOnline(bool value) async {
-    isOnline = value;
-    if (value == false) {
-      for (var i = 0; i < activityToCreate.schedule.length; i++) {
-        activityToCreate.schedule[i].link == null;
-      }
-    }
-  }
-
-  @action
-  Future<void> setIsInPerson(bool value) async {
-    isInPerson = value;
-    if (value == false) {
-      for (var i = 0; i < activityToCreate.schedule.length; i++) {
-        activityToCreate.schedule[i].location == null;
-      }
-    }
-  }
-
   @action
   Future<void> setIsLoading(bool value) async {
     isLoading = value;

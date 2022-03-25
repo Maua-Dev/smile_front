@@ -20,7 +20,7 @@ class ScheduleAddWidget extends StatelessWidget {
   final String? duration;
   final String? link;
   final String? location;
-  final int index;
+  final int length;
 
   const ScheduleAddWidget({
     Key? key,
@@ -31,7 +31,7 @@ class ScheduleAddWidget extends StatelessWidget {
     this.hour,
     this.removeSchedule,
     this.duration,
-    required this.index,
+    required this.length,
     this.onChangedDuration,
     this.onChangedLocation,
     this.onChangedLink,
@@ -44,116 +44,124 @@ class ScheduleAddWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Row(
-          children: [
-            Flexible(
-              child: TextFieldDialogWidget(
-                  onPressedIcon: onPressedIconDate,
-                  suffixIcon: Icons.timer,
-                  labelText: 'Data',
-                  hintText: 'DD-MM-AAAA',
-                  onChanged: onChangedDate,
-                  value: date,
-                  padding: false,
-                  inputFormatters: [
-                    MaskTextInputFormatter(
-                      mask: '##-##-####',
-                    )
-                  ]),
-            ),
-            const SizedBox(
-              width: 16,
-            ),
-            Flexible(
-              child: TextFieldDialogWidget(
-                  onPressedIcon: onPressedIconTime,
-                  suffixIcon: Icons.timer,
-                  labelText: 'Hora',
-                  hintText: 'HH:MM',
-                  onChanged: onChangedHour,
-                  value: hour ?? '',
-                  padding: false,
-                  inputFormatters: [
-                    MaskTextInputFormatter(
-                      mask: '##:##',
-                    )
-                  ]),
-            ),
-            const SizedBox(
-              width: 16,
-            ),
-            Flexible(
-              child: TextFieldDialogWidget(
-                  labelText: 'Duração',
-                  hintText: 'HH:MM',
-                  onChanged: onChangedDuration,
-                  value: duration ?? '',
-                  padding: false,
-                  inputFormatters: [
-                    MaskTextInputFormatter(
-                      mask: '##:##',
-                    )
-                  ]),
-            ),
-            const SizedBox(
-              width: 16,
-            ),
-            Flexible(
-              child: TextFieldDialogWidget(
-                labelText: 'Número de Vagas',
-                onChanged: onChangedParticipants,
-                value: totalParticipants == null
-                    ? ''
-                    : totalParticipants.toString(),
-                padding: false,
-              ),
-            ),
-            index != 0
-                ? const SizedBox(
-                    width: 16,
-                  )
-                : const SizedBox.shrink(),
-            index != 0
-                ? IconButton(
-                    padding: EdgeInsets.zero,
-                    hoverColor: Colors.red.shade100,
-                    onPressed: removeSchedule,
-                    icon: Icon(
-                      Icons.close,
-                      size: 32,
-                      color: AppColors.redButton,
-                    ))
-                : const SizedBox.shrink(),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: Row(
+        Flexible(
+          child: Column(
             children: [
-              Flexible(
-                child: TextFieldDialogWidget(
-                  labelText: 'Link',
-                  value: link,
-                  onChanged: onChangedLink,
-                  padding: false,
-                ),
+              Row(
+                children: [
+                  Flexible(
+                    child: TextFieldDialogWidget(
+                        onPressedIcon: onPressedIconDate,
+                        suffixIcon: Icons.timer,
+                        labelText: 'Data',
+                        hintText: 'DD-MM-AAAA',
+                        onChanged: onChangedDate,
+                        value: date,
+                        padding: false,
+                        inputFormatters: [
+                          MaskTextInputFormatter(
+                            mask: '##-##-####',
+                          )
+                        ]),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Flexible(
+                    child: TextFieldDialogWidget(
+                        onPressedIcon: onPressedIconTime,
+                        suffixIcon: Icons.timer,
+                        labelText: 'Hora',
+                        hintText: 'HH:MM',
+                        onChanged: onChangedHour,
+                        value: hour ?? '',
+                        padding: false,
+                        inputFormatters: [
+                          MaskTextInputFormatter(
+                            mask: '##:##',
+                          )
+                        ]),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Flexible(
+                    child: TextFieldDialogWidget(
+                        labelText: 'Duração',
+                        hintText: 'HH:MM',
+                        onChanged: onChangedDuration,
+                        value: duration ?? '',
+                        padding: false,
+                        inputFormatters: [
+                          MaskTextInputFormatter(
+                            mask: '##:##',
+                          )
+                        ]),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Flexible(
+                    child: TextFieldDialogWidget(
+                      labelText: 'Número de Vagas',
+                      onChanged: onChangedParticipants,
+                      value: totalParticipants == null
+                          ? ''
+                          : totalParticipants.toString(),
+                      padding: false,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(
-                width: 16,
-              ),
-              Flexible(
-                child: TextFieldDialogWidget(
-                  labelText: 'Local',
-                  value: location,
-                  onChanged: onChangedLocation,
-                  padding: false,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: TextFieldDialogWidget(
+                        labelText: 'Link',
+                        value: link,
+                        onChanged: onChangedLink,
+                        padding: false,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Flexible(
+                      child: TextFieldDialogWidget(
+                        labelText: 'Local',
+                        value: location,
+                        onChanged: onChangedLocation,
+                        padding: false,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
         ),
+        length > 1
+            ? const SizedBox(
+                width: 16,
+              )
+            : const SizedBox.shrink(),
+        length > 1
+            ? IconButton(
+                padding: EdgeInsets.zero,
+                hoverColor: Colors.red.shade100,
+                onPressed: removeSchedule,
+                icon: Icon(
+                  Icons.close,
+                  size: 32,
+                  color: AppColors.redButton,
+                ))
+            : const SizedBox.shrink(),
       ],
     );
   }

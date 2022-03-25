@@ -25,7 +25,6 @@ abstract class _EditActivityControllerBase with Store {
     if (activityModel.id.isEmpty) {
       Modular.to.navigate('/adm');
     }
-    startSchedule();
   }
 
   @observable
@@ -34,37 +33,9 @@ abstract class _EditActivityControllerBase with Store {
   @observable
   bool isLoading = false;
 
-  @observable
-  bool isOnline = false;
-
-  @observable
-  bool isInPerson = false;
-
-  @action
-  Future<void> setIsOnline(bool value) async {
-    isOnline = value;
-  }
-
-  @action
-  Future<void> setIsInPerson(bool value) async {
-    isInPerson = value;
-  }
-
   @action
   Future<void> setIsLoading(bool value) async {
     isLoading = value;
-  }
-
-  @action
-  void startSchedule() {
-    if (activityToEdit.schedule[0].location != null &&
-        activityToEdit.schedule[0].location != '') {
-      setIsInPerson(true);
-    }
-    if (activityToEdit.schedule[0].link != null &&
-        activityToEdit.schedule[0].link != '') {
-      setIsOnline(true);
-    }
   }
 
   @action

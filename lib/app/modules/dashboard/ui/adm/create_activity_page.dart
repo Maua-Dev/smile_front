@@ -142,7 +142,7 @@ class _CreateActivityPageState
                             onChangedDuration: (value) {
                               controller.setDuration(value, index);
                             },
-                            index: index,
+                            length: controller.activityToCreate.schedule.length,
                             totalParticipants: controller.activityToCreate
                                 .schedule[index].totalParticipants,
                             onChangedDate: (value) {
@@ -223,7 +223,7 @@ class _CreateActivityPageState
                   itemCount: controller.activityToCreate.speaker.length,
                   itemBuilder: (context, index) {
                     return SpeakerAddWidget(
-                      index: index,
+                      length: controller.activityToCreate.speaker.length,
                       name: controller.activityToCreate.speaker[index].name,
                       bio: controller.activityToCreate.speaker[index].bio,
                       company:

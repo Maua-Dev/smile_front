@@ -142,7 +142,7 @@ class _EditActivityPageState
                           onChangedDuration: (value) {
                             controller.setDuration(value, index);
                           },
-                          index: index,
+                          length: controller.activityToEdit.schedule.length,
                           totalParticipants: controller
                               .activityToEdit.schedule[index].totalParticipants,
                           onChangedDate: (value) {
@@ -222,7 +222,7 @@ class _EditActivityPageState
                   itemCount: controller.activityToEdit.speaker.length,
                   itemBuilder: (context, index) {
                     return SpeakerAddWidget(
-                      index: index,
+                      length: controller.activityToEdit.speaker.length,
                       name: controller.activityToEdit.speaker[index].name,
                       bio: controller.activityToEdit.speaker[index].bio,
                       company: controller.activityToEdit.speaker[index].company,
