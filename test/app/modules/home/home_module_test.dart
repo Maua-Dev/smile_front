@@ -49,7 +49,7 @@ void main() {
 
   test('ActivityHomeController Injection', () {
     var test = Modular.get<ActivityHomeController>();
-    expect(test.repository, isInstanceOf<RectorsRepositoryInterface>());
+    expect(test.repository, isInstanceOf<SpeakersRepositoryImpl>());
   });
 
   test('RectorsDatasourceImpl Injection', () {
