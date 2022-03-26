@@ -108,7 +108,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     return ActionTextButtonWidget(
                       isLoading: controller.isLoading,
                       title: 'Login',
-                      widthSize: 600,
+                      widthSize: MediaQuery.of(context).size.width < 650
+                          ? MediaQuery.of(context).size.width * 0.85
+                          : 600,
                       heightSize: 50,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () {
@@ -121,7 +123,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   ),
                   ActionTextButtonWidget(
                     title: 'Não tenho cadastro',
-                    widthSize: 600,
+                    widthSize: MediaQuery.of(context).size.width < 650
+                        ? MediaQuery.of(context).size.width * 0.85
+                        : 600,
                     heightSize: 50,
                     backgroundColor: AppColors.brandingPurple,
                     onPressed: () {
