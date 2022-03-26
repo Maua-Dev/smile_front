@@ -3,6 +3,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intl/intl.dart';
 import 'package:mockito/annotations.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
@@ -61,7 +62,7 @@ void main() {
   });
 
   test('setDate', () {
-    var str = DateTime.now();
+    var str = DateFormat('dd-MM-yyyy').format(DateTime.now());
     controller.setDate(str, 0);
     expect(controller.activityToCreate.schedule[0].date!, str);
   });
