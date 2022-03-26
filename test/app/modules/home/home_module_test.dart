@@ -3,7 +3,6 @@ import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/home/domain/repositories/lecture_images_repository_interface.dart';
-import 'package:smile_front/app/modules/home/domain/repositories/rectors_repository_interface.dart';
 import 'package:smile_front/app/modules/home/external/lecture_images_datasource_impl.dart';
 import 'package:smile_front/app/modules/home/external/rectors_datasource_impl.dart';
 import 'package:smile_front/app/modules/home/home_module.dart';
