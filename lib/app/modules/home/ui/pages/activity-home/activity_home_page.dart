@@ -159,10 +159,18 @@ class _ActivityHomePageState
                             ),
                           ),
                           SizedBox(
-                              width: imageSize(size, height),
-                              height: imageSize(size, height),
-                              child: Image.network(
-                                  controller.listRectors[0].image))
+                            width: imageSize(size, height),
+                            height: imageSize(size, height),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      alignment: Alignment.centerLeft,
+                                      image: NetworkImage(
+                                        controller.listRectors[0].image,
+                                      ))),
+                            ),
+                          )
                         ],
                       ),
                     ),
@@ -248,8 +256,17 @@ class _ActivityHomePageState
                           SizedBox(
                             width: imageSize(size, height),
                             height: imageSize(size, height),
-                            child:
-                                Image.network(controller.listRectors[1].image),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  alignment: Alignment.centerLeft,
+                                  image: NetworkImage(
+                                    controller.listRectors[1].image,
+                                  ),
+                                ),
+                              ),
+                            ),
                           )
                         ],
                       ),

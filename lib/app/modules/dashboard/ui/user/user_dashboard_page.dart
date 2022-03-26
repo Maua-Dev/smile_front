@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
+import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
 import '../widgets/activities_carousel_widget.dart';
@@ -34,7 +34,7 @@ class _UserDashboardPageState
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextHeaderScratched(
+                    TextHeader(
                       title: 'Olá, ${controller.userName}',
                       fontSize: 50,
                     ),
@@ -54,7 +54,7 @@ class _UserDashboardPageState
             ),
             const Padding(
               padding: EdgeInsets.only(right: 72.0),
-              child: TextHeaderScratched(
+              child: TextHeader(
                 title: 'Próxima Atividade',
                 fontSize: 38,
               ),
@@ -73,7 +73,7 @@ class _UserDashboardPageState
                     controller.nextActivity.schedule[0].totalParticipants,
               );
             }),
-            const TextHeaderScratched(
+            const TextHeader(
               title: 'Minhas Atividades',
               fontSize: 38,
             ),

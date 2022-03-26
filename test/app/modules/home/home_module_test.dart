@@ -15,7 +15,7 @@ import 'package:smile_front/app/modules/home/infra/repository/lecture_images_rep
 import 'package:smile_front/app/modules/home/infra/repository/rectors_repository_impl.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/about_home_controller.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/calendar_home_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/previous_editions_home_controller.dart';
 
 void main() {
   initModules([AppModule(), HomeModule()]);
@@ -31,7 +31,7 @@ void main() {
   });
 
   test('CalendarHomeController Injection', () {
-    var test = Modular.get<CalendarHomeController>();
+    var test = Modular.get<PreviousEditionsHomeController>();
     expect(test.repository, isInstanceOf<LectureImagesRepositoryInterface>());
   });
 

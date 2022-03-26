@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/about_home_controller.dart';
-import 'package:smile_front/app/shared/widgets/text_header_scratched.dart';
+import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 
+import '../../../../../shared/widgets/text-header/text_header_scratched.dart';
 import 'widgets/main_speakers_card.dart';
 
 class AboutHomePage extends StatefulWidget {

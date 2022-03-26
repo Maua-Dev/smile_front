@@ -4,7 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 
 import '../../../../shared/themes/app_colors.dart';
-import '../../../../shared/widgets/text_header_scratched.dart';
+import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../domain/infra/activity_enum.dart';
 import '../widgets/activities_carousel_widget.dart';
 import '../widgets/filter_chip_widget.dart';
@@ -34,7 +34,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const TextHeaderScratched(
+                const TextHeader(
                   title: 'Próximas Atividades',
                   fontSize: 50,
                 ),
@@ -56,7 +56,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
               isNextActivity: true,
             );
           }),
-          const TextHeaderScratched(
+          const TextHeader(
             title: 'Todas Atividades',
             fontSize: 38,
           ),

@@ -9,7 +9,7 @@ import '../../../../shared/widgets/buttons/forms_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/dialogs/fill_all_fields_dialog_widget.dart';
 import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
-import '../../../../shared/widgets/text_header_scratched.dart';
+import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../domain/infra/activity_enum.dart';
 import '../../presenter/controllers/adm/create_activity_controller.dart';
 import '../widgets/schedule_add_widget.dart';
@@ -41,7 +41,7 @@ class _CreateActivityPageState
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                child: TextHeaderScratched(
+                child: TextHeader(
                   title: 'Criar Atividade',
                   leftPadding: 24,
                 ),

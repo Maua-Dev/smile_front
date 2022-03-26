@@ -2,15 +2,15 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/home/domain/entities/lecture_images.dart';
 import 'package:smile_front/app/modules/home/domain/repositories/lecture_images_repository_interface.dart';
 
-part 'calendar_home_controller.g.dart';
+part 'previous_editions_home_controller.g.dart';
 
-class CalendarHomeController = _CalendarHomeControllerBase
-    with _$CalendarHomeController;
+class PreviousEditionsHomeController = _PreviousEditionsHomeControllerBase
+    with _$PreviousEditionsHomeController;
 
-abstract class _CalendarHomeControllerBase with Store {
+abstract class _PreviousEditionsHomeControllerBase with Store {
   final LectureImagesRepositoryInterface repository;
 
-  _CalendarHomeControllerBase({required this.repository}) {
+  _PreviousEditionsHomeControllerBase({required this.repository}) {
     getLectureImages();
   }
 

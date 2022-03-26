@@ -2,7 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/infra/repository/speakers_repository_impl.dart';
 import 'package:smile_front/app/modules/home/infra/repository/lecture_images_repository_impl.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/about_home_controller.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/calendar_home_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/previous_editions_home_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home_page.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
 import 'domain/repositories/lecture_images_repository_interface.dart';
@@ -19,7 +19,7 @@ class HomeModule extends Module {
     Bind.lazySingleton((i) => AboutHomeController(i())),
     Bind.lazySingleton<LectureImagesRepositoryInterface>(
         (i) => LectureImagesRepositoryImpl(datasource: i())),
-    Bind.lazySingleton((i) => CalendarHomeController(repository: i())),
+    Bind.lazySingleton((i) => PreviousEditionsHomeController(repository: i())),
     Bind.lazySingleton<LectureImagesDatasourceInterface>(
         (i) => LectureImagesDatasourceImpl()),
     Bind.lazySingleton<SpeakersRepositoryImpl>((i) => SpeakersRepositoryImpl()),
