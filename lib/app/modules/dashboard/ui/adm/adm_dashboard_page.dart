@@ -6,7 +6,7 @@ import 'package:smile_front/app/modules/dashboard/ui/widgets/activities_carousel
 import 'package:smile_front/app/modules/dashboard/ui/widgets/filter_chip_widget.dart';
 
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import '../../../../shared/widgets/text_header_scratched.dart';
+import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
 import '../widgets/logout_button_widget.dart';
 
@@ -34,7 +34,7 @@ class _AdmDashboardPageState
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const TextHeaderScratched(
+                  const TextHeader(
                     title: 'Próximas Atividades',
                     fontSize: 50,
                   ),
@@ -56,7 +56,7 @@ class _AdmDashboardPageState
                 isNextActivity: true,
               );
             }),
-            const TextHeaderScratched(
+            const TextHeader(
               title: 'Todas Atividades',
               fontSize: 38,
             ),

@@ -151,6 +151,8 @@ class MainSpeakersCard extends StatelessWidget {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
                                   image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.center,
                                     image: NetworkImage(item.linkPhoto!),
                                   ))),
                         ),
