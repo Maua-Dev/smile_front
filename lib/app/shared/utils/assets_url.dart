@@ -6,3 +6,5 @@ var previousEditionsBaseUrl = '${baseAssetsUrl}edicoes-anteriores/';
 var rectorsBaseUrl = '${baseAssetsUrl}activities/reitor-e-pro-reitor/';
 
 var smileLogoUrl = '${baseAssetsUrl}logo_smileee.png';
+
+var speakersLogoUrl = '${baseAssetsUrl}activities/palestra-de-alto-impacto/';

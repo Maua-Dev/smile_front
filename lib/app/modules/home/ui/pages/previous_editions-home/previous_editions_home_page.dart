@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/previous_editions_home_controller.dart';
-import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
-
 import '../../../../../shared/widgets/text-header/text_header_scratched.dart';
 
 class PreviousEditionsHomePage extends StatefulWidget {
@@ -36,8 +34,9 @@ class _PreviousEditionsHomePageState extends ModularState<
                 child: GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 1.3,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio:
+                          MediaQuery.of(context).size.width < 1400 ? 1 : 1.3,
                       crossAxisCount: 4,
                       mainAxisSpacing: 16,
                       crossAxisSpacing: 16),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/ui/pages/about-home/about_home_page.dart';
-import 'package:smile_front/app/modules/home/ui/pages/activity-home/activity_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/main-home/main_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/previous_editions-home/previous_editions_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../app_module.dart';
 import '../../../../shared/utils/assets_url.dart';
+import 'about-home/about_home_page.dart';
+import 'activity-home/activity_home_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

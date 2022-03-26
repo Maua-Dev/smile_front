@@ -1,24 +1,33 @@
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/home/domain/entities/rectors.dart';
-import 'package:smile_front/app/modules/home/domain/repositories/rectors_repository_interface.dart';
+import 'package:smile_front/app/modules/home/domain/repositories/speakers_repository_interface.dart';
+
+import '../../infra/models/home_speaker_model.dart';
 
 part 'activity_home_controller.g.dart';
 
-class ActivityHomeController = _ActivityHomeControllerBase
+class ActivityHomeController = ActivityHomeControllerBase
     with _$ActivityHomeController;
 
-abstract class _ActivityHomeControllerBase with Store {
-  final RectorsRepositoryInterface repository;
+abstract class ActivityHomeControllerBase with Store {
+  final SpeakersRepositoryInterface repository;
 
-  _ActivityHomeControllerBase({required this.repository}) {
-    getRectors();
+  ActivityHomeControllerBase(this.repository) {
+    getSpeakers();
   }
 
   @observable
-  List<Rectors> listRectors = [];
+  List<HomeSpeakerModel> speakers = [];
+
+  @observable
+  int indexToShow = 0;
 
   @action
-  Future getRectors() async {
-    listRectors = await repository.getRectors();
+  Future<void> getSpeakers() async {
+    speakers = await repository.getSpeakers();
+  }
+
+  @action
+  Future<void> toggleIndex(index) async {
+    indexToShow = index;
   }
 }
