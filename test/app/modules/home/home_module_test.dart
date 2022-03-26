@@ -2,7 +2,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:smile_front/app/app_module.dart';
-import 'package:smile_front/app/modules/home/domain/repositories/speakers_repository_interface.dart';
 import 'package:smile_front/app/modules/home/domain/repositories/lecture_images_repository_interface.dart';
 import 'package:smile_front/app/modules/home/domain/repositories/rectors_repository_interface.dart';
 import 'package:smile_front/app/modules/home/external/lecture_images_datasource_impl.dart';
@@ -22,7 +21,7 @@ void main() {
 
   test('AboutHomeController Injection', () {
     var test = Modular.get<AboutHomeController>();
-    expect(test.repository, isInstanceOf<SpeakersRepositoryInterface>());
+    expect(test.repository, isInstanceOf<RectorsRepositoryImpl>());
   });
 
   test('LectureImagesRepositoryImpl Injection', () {
