@@ -8,58 +8,34 @@ part of 'about_home_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$AboutHomeController on AboutHomeControllerBase, Store {
-  final _$speakersAtom = Atom(name: 'AboutHomeControllerBase.speakers');
+mixin _$AboutHomeController on _AboutHomeControllerBase, Store {
+  final _$listRectorsAtom = Atom(name: '_AboutHomeControllerBase.listRectors');
 
   @override
-  List<HomeSpeakerModel> get speakers {
-    _$speakersAtom.reportRead();
-    return super.speakers;
+  List<Rectors> get listRectors {
+    _$listRectorsAtom.reportRead();
+    return super.listRectors;
   }
 
   @override
-  set speakers(List<HomeSpeakerModel> value) {
-    _$speakersAtom.reportWrite(value, super.speakers, () {
-      super.speakers = value;
+  set listRectors(List<Rectors> value) {
+    _$listRectorsAtom.reportWrite(value, super.listRectors, () {
+      super.listRectors = value;
     });
   }
 
-  final _$indexToShowAtom = Atom(name: 'AboutHomeControllerBase.indexToShow');
+  final _$getRectorsAsyncAction =
+      AsyncAction('_AboutHomeControllerBase.getRectors');
 
   @override
-  int get indexToShow {
-    _$indexToShowAtom.reportRead();
-    return super.indexToShow;
-  }
-
-  @override
-  set indexToShow(int value) {
-    _$indexToShowAtom.reportWrite(value, super.indexToShow, () {
-      super.indexToShow = value;
-    });
-  }
-
-  final _$getSpeakersAsyncAction =
-      AsyncAction('AboutHomeControllerBase.getSpeakers');
-
-  @override
-  Future<void> getSpeakers() {
-    return _$getSpeakersAsyncAction.run(() => super.getSpeakers());
-  }
-
-  final _$toggleIndexAsyncAction =
-      AsyncAction('AboutHomeControllerBase.toggleIndex');
-
-  @override
-  Future<void> toggleIndex(dynamic index) {
-    return _$toggleIndexAsyncAction.run(() => super.toggleIndex(index));
+  Future<dynamic> getRectors() {
+    return _$getRectorsAsyncAction.run(() => super.getRectors());
   }
 
   @override
   String toString() {
     return '''
-speakers: ${speakers},
-indexToShow: ${indexToShow}
+listRectors: ${listRectors}
     ''';
   }
 }

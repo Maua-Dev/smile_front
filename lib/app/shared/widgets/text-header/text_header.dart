@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-class TextHeaderScratched extends StatelessWidget {
+class TextHeader extends StatelessWidget {
   final String title;
   final double? fontSize;
   final Color? color;
   final double? leftPadding;
-  const TextHeaderScratched(
+  const TextHeader(
       {Key? key,
       required this.title,
       this.color,

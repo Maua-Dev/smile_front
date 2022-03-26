@@ -4,7 +4,7 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 import '../../../../shared/models/activity_model.dart';
 import '../../../../shared/themes/app_colors.dart';
-import '../../../../shared/widgets/text_header_scratched.dart';
+import '../../../../shared/widgets/text-header/text_header.dart';
 import '../widgets/add_photo_widget.dart';
 
 void moreInfoDialogWidget(BuildContext context, ActivityModel activity) {
@@ -32,7 +32,7 @@ void moreInfoDialogWidget(BuildContext context, ActivityModel activity) {
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
                 child: Material(
                   color: AppColors.brandingPurple,
-                  child: TextHeaderScratched(
+                  child: TextHeader(
                     title: activity.title,
                     color: Colors.white,
                     leftPadding: 24,
