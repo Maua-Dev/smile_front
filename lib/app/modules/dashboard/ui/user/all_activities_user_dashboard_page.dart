@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
-
-import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
-import '../../domain/infra/activity_enum.dart';
-import '../widgets/activities_carousel_widget.dart';
-import '../widgets/filter_chip_widget.dart';
-import '../widgets/logout_button_widget.dart';
+import '../widgets/dropdown-field/dropdown_field_widget.dart';
+import '../widgets/user_weekday/user_weekday_filter_widget.dart';
 
 class AllActivitiesUserDashboardPage extends StatefulWidget {
   const AllActivitiesUserDashboardPage({Key? key}) : super(key: key);
@@ -27,110 +23,33 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const SizedBox(
-            height: 32,
+            height: 16,
+          ),
+          TextHeader(
+            title: 'Todas as Atividades',
+            fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
+            leftPadding: MediaQuery.of(context).size.width < 1000 ? 12 : 24,
+          ),
+          UserWeekdayFilterWidget(
+            onPressed: controller.toggleFilterActivityChipIndex,
+          ),
+          const SizedBox(
+            height: 16,
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 72.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const TextHeader(
-                  title: 'Próximas Atividades',
-                  fontSize: 50,
-                ),
-                LogoutButtonWidget(
-                  backgroundColor: AppColors.brandingOrange,
-                  buttonTittle: 'Sair',
-                  onPressed: () {
-                    controller.logout();
-                  },
-                ),
-              ],
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: DropDownFieldWidget<ActivityEnum>(
+              titulo: 'Tipo',
+              items: ActivityEnum.values.map((ActivityEnum value) {
+                return DropdownMenuItem<ActivityEnum>(
+                  value: value,
+                  child: Text(value.name),
+                );
+              }).toList(),
+              onChanged: controller.getActivitiesByType,
+              value: controller.activityType,
             ),
           ),
-          Observer(builder: (_) {
-            return ActivitiesCarouselWidget(
-              listToEdit: controller.activitiesList,
-              cardColor: AppColors.brandingOrange,
-              list: controller.nextActivitiesList,
-              isNextActivity: true,
-            );
-          }),
-          const TextHeader(
-            title: 'Todas Atividades',
-            fontSize: 38,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 72.0, top: 20),
-            child: SizedBox(
-                height: 50,
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: ActivityEnum.values.length - 3,
-                    itemBuilder: (BuildContext ctx, index) {
-                      return Observer(builder: (_) {
-                        return FilterChipWidget(
-                            onTap: () =>
-                                controller.toggleFilterActivityChipIndex(index),
-                            selected:
-                                controller.filterActivityChipIndexSelected ==
-                                    index,
-                            activityType: ActivityEnum.values[index]);
-                      });
-                    })),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 72.0, bottom: 20),
-            child: SizedBox(
-                height: 50,
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 3,
-                    itemBuilder: (BuildContext ctx, index) {
-                      return Observer(builder: (_) {
-                        return FilterChipWidget(
-                            onTap: () => controller
-                                .toggleFilterActivityChipIndex(index + 8),
-                            selected:
-                                controller.filterActivityChipIndexSelected ==
-                                    index + 8,
-                            activityType: ActivityEnum.values[index + 8]);
-                      });
-                    })),
-          ),
-          Observer(builder: (_) {
-            return Column(
-              children: [
-                ActivitiesCarouselWidget(
-                  listToEdit: controller.activitiesList,
-                  list: controller.mondayActivitiesList,
-                  weekday: 0,
-                ),
-                ActivitiesCarouselWidget(
-                  listToEdit: controller.activitiesList,
-                  list: controller.tuesdayActivitiesList,
-                  weekday: 1,
-                ),
-                ActivitiesCarouselWidget(
-                  listToEdit: controller.activitiesList,
-                  list: controller.wednesdayActivitiesList,
-                  weekday: 2,
-                ),
-                ActivitiesCarouselWidget(
-                  listToEdit: controller.activitiesList,
-                  list: controller.thursdayActivitiesList,
-                  weekday: 3,
-                ),
-                ActivitiesCarouselWidget(
-                  listToEdit: controller.activitiesList,
-                  list: controller.fridayActivitiesList,
-                  weekday: 4,
-                ),
-              ],
-            );
-          }),
         ],
       ),
     );

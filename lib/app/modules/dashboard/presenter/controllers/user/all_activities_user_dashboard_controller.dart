@@ -24,19 +24,19 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
   }
 
   @observable
-  bool isFloatActionButtonOpen = false;
+  int filterActivityChipIndexSelected = 0;
 
   @observable
-  int? filterActivityChipIndexSelected;
+  List<CardActivity> weekActivitiesList = List.empty();
 
   @observable
   List<ActivityModel> activitiesList = List.empty();
 
   @observable
-  List<CardActivity> nextActivitiesList = List.empty();
+  List<CardActivity> allActivitiesToCards = List.empty();
 
   @observable
-  List<CardActivity> allActivitiesToCards = List.empty();
+  ActivityEnum? activityType;
 
   @computed
   List<CardActivity> get mondayActivitiesList => allActivitiesToCards
@@ -63,26 +63,41 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
       .where((activity) => activity.date!.weekday == 5)
       .toList();
 
-  @action
-  void toggleFloatActionButton() {
-    isFloatActionButtonOpen = !isFloatActionButtonOpen;
-  }
+  @computed
+  List<CardActivity> get saturdayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 6)
+      .toList();
 
   @action
   void toggleFilterActivityChipIndex(index) {
-    if (index == filterActivityChipIndexSelected) {
-      filterActivityChipIndexSelected = null;
-      getAllActivities();
-    } else {
-      filterActivityChipIndexSelected = index;
-      getActivitiesByType(index);
+    filterActivityChipIndexSelected = index;
+    switch (filterActivityChipIndexSelected) {
+      case 0:
+        weekActivitiesList = mondayActivitiesList;
+        break;
+      case 1:
+        weekActivitiesList = tuesdayActivitiesList;
+        break;
+      case 2:
+        weekActivitiesList = wednesdayActivitiesList;
+        break;
+      case 3:
+        weekActivitiesList = thursdayActivitiesList;
+        break;
+      case 4:
+        weekActivitiesList = fridayActivitiesList;
+        break;
+      case 5:
+        weekActivitiesList = saturdayActivitiesList;
+        break;
     }
   }
 
   @action
-  Future getActivitiesByType(index) async {
-    activitiesList = await repository
-        .getActivitiesSelectedByType(ActivityEnum.values[index]);
+  Future getActivitiesByType(ActivityEnum? typeActivity) async {
+    activityType = typeActivity;
+    activitiesList =
+        await repository.getActivitiesSelectedByType(typeActivity!);
   }
 
   @action
@@ -105,9 +120,7 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
         ));
       }
     }
-    nextActivitiesList = allActivitiesToCards.length >= 5
-        ? allActivitiesToCards.sublist(0, 5)
-        : allActivitiesToCards;
+    toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
   }
 
   @action

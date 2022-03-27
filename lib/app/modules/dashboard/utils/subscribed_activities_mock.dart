@@ -38,7 +38,7 @@ var subscribedActivities = <ActivityModel>[
   ActivityModel(
     id: '0',
     activityCode: 'C01',
-    type: ActivityEnum.CURSOS,
+    type: ActivityEnum.PALESTRAS,
     title:
         'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
     description:
@@ -68,7 +68,7 @@ var subscribedActivities = <ActivityModel>[
   ActivityModel(
     id: '0',
     activityCode: 'C01',
-    type: ActivityEnum.CURSOS,
+    type: ActivityEnum.PALESTRAS,
     title:
         'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
     description:
