@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'vertical_nav_bar_controller.dart';
+part of 'bottom_navigation_bar_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,10 @@ part of 'vertical_nav_bar_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$VerticalNavBarController on VerticalNavBarControllerBase, Store {
+mixin _$BottomNavigationBarController
+    on BottomNavigationBarControllerBase, Store {
   final _$indexToShowAtom =
-      Atom(name: 'VerticalNavBarControllerBase.indexToShow');
+      Atom(name: 'BottomNavigationBarControllerBase.indexToShow');
 
   @override
   int get indexToShow {
@@ -26,7 +27,7 @@ mixin _$VerticalNavBarController on VerticalNavBarControllerBase, Store {
   }
 
   final _$toggleIndexAsyncAction =
-      AsyncAction('VerticalNavBarControllerBase.toggleIndex');
+      AsyncAction('BottomNavigationBarControllerBase.toggleIndex');
 
   @override
   Future<void> toggleIndex(dynamic index) {

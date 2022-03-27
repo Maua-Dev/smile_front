@@ -4,9 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
-import '../widgets/activities_carousel_widget.dart';
-import '../widgets/logout_button_widget.dart';
 import '../widgets/next_activity_card_widget.dart';
+import '../widgets/user_weekday/user_weekday_filter_widget.dart';
 import 'more_info_dialog_widget.dart';
 
 class UserDashboardPage extends StatefulWidget {
@@ -26,37 +25,14 @@ class _UserDashboardPageState
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 32,
+              height: 16,
             ),
             Padding(
               padding: const EdgeInsets.only(right: 72.0),
-              child: Observer(builder: (_) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextHeader(
-                      title: 'Olá, ${controller.userName}',
-                      fontSize: 50,
-                    ),
-                    LogoutButtonWidget(
-                      backgroundColor: AppColors.brandingOrange,
-                      buttonTittle: 'Sair',
-                      onPressed: () {
-                        controller.logout();
-                      },
-                    ),
-                  ],
-                );
-              }),
-            ),
-            const SizedBox(
-              height: 48,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 72.0),
               child: TextHeader(
-                title: 'Próxima Atividade',
-                fontSize: 38,
+                title: 'Sua Próxima Atividade',
+                fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
+                leftPadding: MediaQuery.of(context).size.width < 1000 ? 12 : 24,
               ),
             ),
             Observer(builder: (_) {
@@ -73,38 +49,15 @@ class _UserDashboardPageState
                     controller.nextActivity.schedule[0].totalParticipants,
               );
             }),
-            const TextHeader(
-              title: 'Minhas Atividades',
-              fontSize: 38,
+            TextHeader(
+              title: 'Seu Calendário',
+              fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
+              leftPadding: MediaQuery.of(context).size.width < 1000 ? 12 : 24,
             ),
             Observer(builder: (_) {
               return Column(
-                children: [
-                  ActivitiesCarouselWidget(
-                    listToEdit: controller.activitiesList,
-                    list: controller.mondayActivitiesList,
-                    weekday: 0,
-                  ),
-                  ActivitiesCarouselWidget(
-                    listToEdit: controller.activitiesList,
-                    list: controller.tuesdayActivitiesList,
-                    weekday: 1,
-                  ),
-                  ActivitiesCarouselWidget(
-                    listToEdit: controller.activitiesList,
-                    list: controller.wednesdayActivitiesList,
-                    weekday: 2,
-                  ),
-                  ActivitiesCarouselWidget(
-                    listToEdit: controller.activitiesList,
-                    list: controller.thursdayActivitiesList,
-                    weekday: 3,
-                  ),
-                  ActivitiesCarouselWidget(
-                    listToEdit: controller.activitiesList,
-                    list: controller.fridayActivitiesList,
-                    weekday: 4,
-                  ),
+                children: const [
+                  UserWeekdayFilterWidget(),
                 ],
               );
             }),
