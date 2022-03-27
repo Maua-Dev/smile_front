@@ -70,8 +70,8 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                             DateFormat('dd/MM/yyyy').format(list[index].date!);
                         String time =
                             DateFormat('HH:mm').format(list[index].date!);
-                        String finalTime =
-                            DateFormat('HH:mm').format(list[index].duration!);
+                        String finalTime = getActivityFinalTime(
+                            list[index].date!, list[index].duration!);
                         return Row(
                           children: [
                             if (index == 0)
@@ -187,5 +187,12 @@ class ActivitiesCarouselWidget extends StatelessWidget {
     } else {
       return const SizedBox.shrink();
     }
+  }
+
+  String getActivityFinalTime(DateTime time, DateTime duration) {
+    var newDate = DateTime(time.year, time.month, time.day,
+        time.hour + duration.hour, time.minute + duration.minute);
+
+    return DateFormat('HH:mm').format(newDate);
   }
 }

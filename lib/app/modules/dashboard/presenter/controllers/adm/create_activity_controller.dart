@@ -28,32 +28,6 @@ abstract class _CreateActivityControllerBase with Store {
   @observable
   bool isLoading = false;
 
-  @observable
-  bool isOnline = false;
-
-  @observable
-  bool isInPerson = false;
-
-  @action
-  Future<void> setIsOnline(bool value) async {
-    isOnline = value;
-    if (value == false) {
-      for (var i = 0; i < activityToCreate.schedule.length; i++) {
-        activityToCreate.schedule[i].link == null;
-      }
-    }
-  }
-
-  @action
-  Future<void> setIsInPerson(bool value) async {
-    isInPerson = value;
-    if (value == false) {
-      for (var i = 0; i < activityToCreate.schedule.length; i++) {
-        activityToCreate.schedule[i].location == null;
-      }
-    }
-  }
-
   @action
   Future<void> setIsLoading(bool value) async {
     isLoading = value;
@@ -118,29 +92,35 @@ abstract class _CreateActivityControllerBase with Store {
   }
 
   @action
-  void setDate(DateTime value, int index) {
-    var dateValue = DateFormat('yyyy-MM-dd').format(value);
-    var hour = activityToCreate.schedule[index].date != null
-        ? DateFormat('HH:mm').format(activityToCreate.schedule[index].date!)
-        : '';
-    var date = hour == '' ? value : DateTime.parse("$dateValue $hour");
-    var list = activityToCreate.schedule;
-    list[index] = activityToCreate.schedule[index].copyWith(date: date);
-    activityToCreate = activityToCreate.copyWith(schedule: list);
+  void setDate(String value, int index) {
+    if (value.length > 9) {
+      var year = value.substring(6, 10);
+      var month = value.substring(3, 5);
+      var day = value.substring(0, 2);
+      value = '$year-$month-$day';
+      var hour = activityToCreate.schedule[index].date != null
+          ? DateFormat('HH:mm').format(activityToCreate.schedule[index].date!)
+          : '';
+      var date =
+          hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
+      var list = activityToCreate.schedule;
+      list[index] = activityToCreate.schedule[index].copyWith(date: date);
+      activityToCreate = activityToCreate.copyWith(schedule: list);
+    }
   }
 
   @action
   void setHour(String value, int index) {
-    var date = activityToCreate.schedule[index].date != null
-        ? DateFormat('yyyy-MM-dd')
-            .format(activityToCreate.schedule[index].date!)
-        : '';
-    var hour = date == ''
-        ? DateTime.parse('0000-00-00 $value')
-        : DateTime.parse("$date $value");
-    var list = activityToCreate.schedule;
-    list[index] = activityToCreate.schedule[index].copyWith(date: hour);
-    activityToCreate = activityToCreate.copyWith(schedule: list);
+    if (value.length > 4) {
+      var date = activityToCreate.schedule[index].date != null
+          ? DateFormat('yyyy-MM-dd')
+              .format(activityToCreate.schedule[index].date!)
+          : '0000-00-00';
+      var hour = DateTime.parse("$date $value");
+      var list = activityToCreate.schedule;
+      list[index] = activityToCreate.schedule[index].copyWith(date: hour);
+      activityToCreate = activityToCreate.copyWith(schedule: list);
+    }
   }
 
   @action

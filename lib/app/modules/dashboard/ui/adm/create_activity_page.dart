@@ -99,79 +99,6 @@ class _CreateActivityPageState
                 value: controller.activityToCreate.description,
                 onChanged: controller.setDescription,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.15,
-                      child: CheckboxListTile(
-                        title: Text(
-                          'Online',
-                          style: AppTextStyles.body
-                              .copyWith(color: Colors.white, fontSize: 20),
-                        ),
-                        value: controller.isOnline,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            controller.setIsOnline(value!);
-                            if (value == false) {
-                              for (var i = 0;
-                                  i <
-                                      controller
-                                          .activityToCreate.schedule.length;
-                                  i++) {
-                                controller.setLink('', i);
-                              }
-                            }
-                          });
-                        },
-                        tileColor: AppColors.brandingOrange,
-                        checkColor: AppColors.brandingOrange,
-                        activeColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.15,
-                      child: CheckboxListTile(
-                        title: Text(
-                          'Presencial',
-                          style: AppTextStyles.body
-                              .copyWith(color: Colors.white, fontSize: 20),
-                        ),
-                        value: controller.isInPerson,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            controller.setIsInPerson(value!);
-                            if (value == false) {
-                              for (var i = 0;
-                                  i <
-                                      controller
-                                          .activityToCreate.schedule.length;
-                                  i++) {
-                                controller.setLocation('', i);
-                              }
-                            }
-                          });
-                        },
-                        tileColor: AppColors.brandingOrange,
-                        checkColor: AppColors.brandingOrange,
-                        activeColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               Observer(builder: (_) {
                 return ListView.builder(
                     shrinkWrap: true,
@@ -180,8 +107,14 @@ class _CreateActivityPageState
                       var hour =
                           controller.activityToCreate.schedule[index].date ==
                                   null
-                              ? null
-                              : TimeOfDay.fromDateTime(controller
+                              ? ''
+                              : DateFormat('HH:mm').format(controller
+                                  .activityToCreate.schedule[index].date!);
+                      var date =
+                          controller.activityToCreate.schedule[index].date ==
+                                  null
+                              ? ''
+                              : DateFormat('dd-MM-yyyy').format(controller
                                   .activityToCreate.schedule[index].date!);
                       var duration = controller
                                   .activityToCreate.schedule[index].duration ==
@@ -193,10 +126,8 @@ class _CreateActivityPageState
                           padding: const EdgeInsets.symmetric(
                               horizontal: 114, vertical: 8),
                           child: ScheduleAddWidget(
-                            date: controller
-                                .activityToCreate.schedule[index].date,
-                            isInPerson: controller.isInPerson,
-                            isOnline: controller.isOnline,
+                            date: date,
+                            hour: hour,
                             link: controller
                                 .activityToCreate.schedule[index].link,
                             onChangedLink: (value) {
@@ -211,11 +142,24 @@ class _CreateActivityPageState
                             onChangedDuration: (value) {
                               controller.setDuration(value, index);
                             },
-                            index: index,
-                            hour: hour,
+                            length: controller.activityToCreate.schedule.length,
                             totalParticipants: controller.activityToCreate
                                 .schedule[index].totalParticipants,
-                            onChangedDate: () {
+                            onChangedDate: (value) {
+                              controller.setDate(value, index);
+                            },
+                            onChangedHour: (value) {
+                              controller.setHour(value, index);
+                            },
+                            onChangedParticipants: (value) {
+                              controller.setParticipants(
+                                  int.parse(value), index);
+                            },
+                            removeSchedule: () {
+                              controller.removeSchedule(index);
+                              setState(() {});
+                            },
+                            onPressedIconDate: () {
                               showDatePicker(
                                 context: context,
                                 initialDate: DateTime.now(),
@@ -233,10 +177,12 @@ class _CreateActivityPageState
                                   );
                                 },
                               ).then((value) {
-                                controller.setDate(value!, index);
+                                controller.setDate(
+                                    DateFormat('dd-MM-yyyy').format(value!),
+                                    index);
                               });
                             },
-                            onChangedHour: () {
+                            onPressedIconTime: () {
                               showTimePicker(
                                 context: context,
                                 initialTime: TimeOfDay.now(),
@@ -255,14 +201,6 @@ class _CreateActivityPageState
                                 controller.setHour(
                                     value!.format(context), index);
                               });
-                            },
-                            onChangedParticipants: (value) {
-                              controller.setParticipants(
-                                  int.parse(value), index);
-                            },
-                            removeSchedule: () {
-                              controller.removeSchedule(index);
-                              setState(() {});
                             },
                           ));
                     });
@@ -285,7 +223,7 @@ class _CreateActivityPageState
                   itemCount: controller.activityToCreate.speaker.length,
                   itemBuilder: (context, index) {
                     return SpeakerAddWidget(
-                      index: index,
+                      length: controller.activityToCreate.speaker.length,
                       name: controller.activityToCreate.speaker[index].name,
                       bio: controller.activityToCreate.speaker[index].bio,
                       company:

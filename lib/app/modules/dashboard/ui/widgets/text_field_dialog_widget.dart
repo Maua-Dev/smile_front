@@ -8,7 +8,9 @@ class TextFieldDialogWidget extends StatelessWidget {
   final String labelText;
   final String? value;
   final bool padding;
+  final IconData? suffixIcon;
   final void Function(String value)? onChanged;
+  final void Function()? onPressedIcon;
   final List<TextInputFormatter>? inputFormatters;
   const TextFieldDialogWidget({
     Key? key,
@@ -18,6 +20,8 @@ class TextFieldDialogWidget extends StatelessWidget {
     this.inputFormatters,
     this.onChanged,
     required this.labelText,
+    this.suffixIcon,
+    this.onPressedIcon,
   }) : super(key: key);
 
   @override
@@ -35,6 +39,16 @@ class TextFieldDialogWidget extends StatelessWidget {
         style: AppTextStyles.body
             .copyWith(color: AppColors.brandingPurple, fontSize: 20),
         decoration: InputDecoration(
+            suffixIcon: Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: IconButton(
+                icon: Icon(
+                  suffixIcon,
+                  color: AppColors.brandingPurple,
+                ),
+                onPressed: onPressedIcon,
+              ),
+            ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),
               borderSide:

@@ -40,52 +40,6 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
     });
   }
 
-  final _$isOnlineAtom = Atom(name: '_EditActivityControllerBase.isOnline');
-
-  @override
-  bool get isOnline {
-    _$isOnlineAtom.reportRead();
-    return super.isOnline;
-  }
-
-  @override
-  set isOnline(bool value) {
-    _$isOnlineAtom.reportWrite(value, super.isOnline, () {
-      super.isOnline = value;
-    });
-  }
-
-  final _$isInPersonAtom = Atom(name: '_EditActivityControllerBase.isInPerson');
-
-  @override
-  bool get isInPerson {
-    _$isInPersonAtom.reportRead();
-    return super.isInPerson;
-  }
-
-  @override
-  set isInPerson(bool value) {
-    _$isInPersonAtom.reportWrite(value, super.isInPerson, () {
-      super.isInPerson = value;
-    });
-  }
-
-  final _$setIsOnlineAsyncAction =
-      AsyncAction('_EditActivityControllerBase.setIsOnline');
-
-  @override
-  Future<void> setIsOnline(bool value) {
-    return _$setIsOnlineAsyncAction.run(() => super.setIsOnline(value));
-  }
-
-  final _$setIsInPersonAsyncAction =
-      AsyncAction('_EditActivityControllerBase.setIsInPerson');
-
-  @override
-  Future<void> setIsInPerson(bool value) {
-    return _$setIsInPersonAsyncAction.run(() => super.setIsInPerson(value));
-  }
-
   final _$setIsLoadingAsyncAction =
       AsyncAction('_EditActivityControllerBase.setIsLoading');
 
@@ -112,17 +66,6 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
 
   final _$_EditActivityControllerBaseActionController =
       ActionController(name: '_EditActivityControllerBase');
-
-  @override
-  void startSchedule() {
-    final _$actionInfo = _$_EditActivityControllerBaseActionController
-        .startAction(name: '_EditActivityControllerBase.startSchedule');
-    try {
-      return super.startSchedule();
-    } finally {
-      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
 
   @override
   bool isFilled() {
@@ -202,7 +145,7 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
-  void setDate(DateTime value, int index) {
+  void setDate(String value, int index) {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.setDate');
     try {
@@ -326,9 +269,7 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   String toString() {
     return '''
 activityToEdit: ${activityToEdit},
-isLoading: ${isLoading},
-isOnline: ${isOnline},
-isInPerson: ${isInPerson}
+isLoading: ${isLoading}
     ''';
   }
 }

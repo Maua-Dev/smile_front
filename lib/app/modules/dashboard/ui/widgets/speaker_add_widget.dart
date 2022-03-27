@@ -11,7 +11,7 @@ class SpeakerAddWidget extends StatelessWidget {
   final String? name;
   final String? bio;
   final String? company;
-  final int index;
+  final int length;
   const SpeakerAddWidget(
       {Key? key,
       this.onChangedName,
@@ -21,7 +21,7 @@ class SpeakerAddWidget extends StatelessWidget {
       this.name,
       this.bio,
       this.company,
-      required this.index})
+      required this.length})
       : super(key: key);
 
   @override
@@ -72,12 +72,12 @@ class SpeakerAddWidget extends StatelessWidget {
               ],
             ),
           ),
-          index != 0
+          length > 1
               ? const SizedBox(
                   width: 16,
                 )
               : const SizedBox.shrink(),
-          index != 0
+          length > 1
               ? IconButton(
                   padding: EdgeInsets.zero,
                   hoverColor: Colors.red.shade100,
