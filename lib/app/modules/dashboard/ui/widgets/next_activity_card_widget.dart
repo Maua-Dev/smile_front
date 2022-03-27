@@ -3,14 +3,14 @@ import 'package:intl/intl.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
+import '../../utils/final_time_calculation.dart';
 
 class NextActivityCardWidget extends StatelessWidget {
   final String name;
   final String description;
   final DateTime? date;
   final int? totalParticipants;
-  final Color? cardColor;
-  final Color? textColor;
+  final DateTime? duration;
   final Function()? onTap;
   const NextActivityCardWidget({
     Key? key,
@@ -19,14 +19,16 @@ class NextActivityCardWidget extends StatelessWidget {
     required this.date,
     required this.totalParticipants,
     this.onTap,
-    this.cardColor,
-    this.textColor,
+    required this.duration,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var dateString = date == null ? '' : DateFormat('dd/MM/yyyy').format(date!);
     var timeString = date == null ? '' : DateFormat('HH:mm').format(date!);
+    var finalTime = duration == null || date == null
+        ? ''
+        : getActivityFinalTime(date!, duration!);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       child: GestureDetector(
@@ -35,7 +37,7 @@ class NextActivityCardWidget extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 0.2,
           decoration: BoxDecoration(
-            color: cardColor ?? Colors.white,
+            color: AppColors.brandingOrange,
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
@@ -53,12 +55,20 @@ class NextActivityCardWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                const SizedBox(
+                  height: 8,
+                ),
                 Text(
                   name,
+                  maxLines: MediaQuery.of(context).size.width < 1000 ? 2 : 3,
+                  overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.buttonBold.copyWith(
                       fontSize:
                           MediaQuery.of(context).size.width < 1000 ? 20 : 22,
-                      color: textColor ?? Colors.black),
+                      color: Colors.white),
+                ),
+                const SizedBox(
+                  height: 8,
                 ),
                 Flexible(
                   child: Text(
@@ -68,7 +78,7 @@ class NextActivityCardWidget extends StatelessWidget {
                     style: AppTextStyles.button.copyWith(
                       fontSize:
                           MediaQuery.of(context).size.width < 1000 ? 14 : 16,
-                      color: textColor ?? Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -85,14 +95,15 @@ class NextActivityCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
                               Icons.calendar_today,
-                              color: textColor ?? AppColors.brandingPurple,
-                              size: 20,
+                              color: Colors.white,
+                              size: MediaQuery.of(context).size.width < 1000
+                                  ? 18
+                                  : 20,
                             ),
                           ),
                           Text(dateString,
-                              style: AppTextStyles.button.copyWith(
-                                  fontSize: 18,
-                                  color: textColor ?? AppColors.brandingPurple))
+                              style: AppTextStyles.button
+                                  .copyWith(fontSize: 18, color: Colors.white))
                         ],
                       ),
                       const SizedBox(
@@ -104,14 +115,15 @@ class NextActivityCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
                               Icons.access_time_outlined,
-                              color: textColor ?? AppColors.brandingPurple,
-                              size: 20,
+                              color: Colors.white,
+                              size: MediaQuery.of(context).size.width < 1000
+                                  ? 18
+                                  : 20,
                             ),
                           ),
-                          Text(timeString,
-                              style: AppTextStyles.button.copyWith(
-                                  fontSize: 18,
-                                  color: textColor ?? AppColors.brandingPurple))
+                          Text('$timeString - $finalTime',
+                              style: AppTextStyles.button
+                                  .copyWith(fontSize: 18, color: Colors.white))
                         ],
                       ),
                       const SizedBox(
@@ -123,8 +135,10 @@ class NextActivityCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
                               Icons.person,
-                              color: textColor ?? AppColors.brandingPurple,
-                              size: 20,
+                              color: Colors.white,
+                              size: MediaQuery.of(context).size.width < 1000
+                                  ? 18
+                                  : 20,
                             ),
                           ),
                           RichText(
@@ -132,15 +146,12 @@ class NextActivityCardWidget extends StatelessWidget {
                             TextSpan(
                                 text: '0/',
                                 style: AppTextStyles.button.copyWith(
-                                    fontSize: 18,
-                                    color:
-                                        textColor ?? AppColors.brandingPurple)),
+                                    fontSize: 18, color: Colors.white)),
                             TextSpan(
                                 text: '$totalParticipants',
                                 style: AppTextStyles.button.copyWith(
                                     fontSize: 18,
-                                    color:
-                                        textColor ?? AppColors.brandingPurple,
+                                    color: Colors.white,
                                     fontWeight: FontWeight.bold)),
                           ])),
                         ],

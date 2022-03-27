@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
-import '../../../../shared/themes/app_colors.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
 import '../widgets/next_activity_card_widget.dart';
 import '../widgets/user_weekday/user_activity_card_widget.dart';
@@ -38,11 +37,10 @@ class _UserDashboardPageState
           ),
           Observer(builder: (_) {
             return NextActivityCardWidget(
+              duration: controller.nextActivity.schedule[0].duration,
               onTap: () {
                 moreInfoDialogWidget(context, controller.nextActivity);
               },
-              cardColor: AppColors.brandingOrange,
-              textColor: Colors.white,
               name: controller.nextActivity.title,
               description: controller.nextActivity.description,
               date: controller.nextActivity.schedule[0].date,
