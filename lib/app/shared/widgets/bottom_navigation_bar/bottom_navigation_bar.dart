@@ -17,6 +17,10 @@ class BottomNavigationBarWidget extends StatelessWidget {
 
     return Observer(builder: (context) {
       return Container(
+        padding: MediaQuery.of(context).size.width < 1000
+            ? const EdgeInsets.symmetric(horizontal: 0)
+            : EdgeInsets.symmetric(
+                horizontal: (MediaQuery.of(context).size.width - 1000.0) / 2),
         color: AppColors.brandingPurple,
         height: MediaQuery.of(context).size.height * 0.08,
         child: Row(

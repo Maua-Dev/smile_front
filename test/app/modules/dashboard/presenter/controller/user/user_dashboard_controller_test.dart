@@ -164,16 +164,6 @@ void main() {
     expect(controller.nextActivity, mockActivities[0]);
   });
 
-  test('getUser', () {
-    controller.getUser();
-    expect(controller.user, userMock);
-  });
-
-  test('getUserFirstName', () {
-    controller.getUser();
-    expect(controller.userName.length, 7);
-  });
-
   test('mondayActivitiesList', () {
     expect(controller.mondayActivitiesList.isNotEmpty, true);
   });
@@ -192,10 +182,5 @@ void main() {
 
   test('fridayActivitiesList', () {
     expect(controller.fridayActivitiesList.isNotEmpty, true);
-  });
-
-  test('logout', () {
-    controller.logout();
-    expect(authController.isLogged, false);
   });
 }

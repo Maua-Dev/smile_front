@@ -27,7 +27,7 @@ class UserWeekdayIconWidget extends StatelessWidget {
           Text(
             weekday != null ? WeekdaysEnum.values[weekday!].abreviation : '',
             style: AppTextStyles.titleH1.copyWith(
-                fontSize: MediaQuery.of(context).size.width < 1000 ? 24 : 32,
+                fontSize: MediaQuery.of(context).size.width < 900 ? 24 : 32,
                 color: indexToShow == myIndex
                     ? Colors.white
                     : AppColors.brandingPurple),
@@ -35,7 +35,7 @@ class UserWeekdayIconWidget extends StatelessWidget {
           Text(
             weekday != null ? WeekdaysEnum.values[weekday!].date : '',
             style: AppTextStyles.button.copyWith(
-                fontSize: MediaQuery.of(context).size.width < 1000 ? 16 : 24,
+                fontSize: MediaQuery.of(context).size.width < 900 ? 16 : 24,
                 color: indexToShow == myIndex
                     ? Colors.white
                     : AppColors.brandingPurple),

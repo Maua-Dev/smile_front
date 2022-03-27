@@ -28,7 +28,7 @@ class NextActivityCardWidget extends StatelessWidget {
     var dateString = date == null ? '' : DateFormat('dd/MM/yyyy').format(date!);
     var timeString = date == null ? '' : DateFormat('HH:mm').format(date!);
     return Padding(
-      padding: const EdgeInsets.only(right: 72, left: 72, bottom: 48, top: 8),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
@@ -47,15 +47,18 @@ class NextActivityCardWidget extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16),
+            padding:
+                const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
                   name,
-                  style: AppTextStyles.buttonBold
-                      .copyWith(fontSize: 22, color: textColor ?? Colors.black),
+                  style: AppTextStyles.buttonBold.copyWith(
+                      fontSize:
+                          MediaQuery.of(context).size.width < 1000 ? 20 : 22,
+                      color: textColor ?? Colors.black),
                 ),
                 Flexible(
                   child: Text(
@@ -63,7 +66,8 @@ class NextActivityCardWidget extends StatelessWidget {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.button.copyWith(
-                      fontSize: 16,
+                      fontSize:
+                          MediaQuery.of(context).size.width < 1000 ? 14 : 16,
                       color: textColor ?? Colors.black,
                     ),
                   ),

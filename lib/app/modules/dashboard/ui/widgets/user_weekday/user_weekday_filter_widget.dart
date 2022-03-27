@@ -4,7 +4,8 @@ import 'package:smile_front/app/modules/dashboard/ui/widgets/user_weekday/user_w
 import 'package:smile_front/app/modules/dashboard/ui/widgets/user_weekday/user_weekday_icon_widget.dart';
 
 class UserWeekdayFilterWidget extends StatelessWidget {
-  const UserWeekdayFilterWidget({Key? key}) : super(key: key);
+  final void Function(int)? onPressed;
+  const UserWeekdayFilterWidget({Key? key, this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class UserWeekdayFilterWidget extends StatelessWidget {
                 indexToShow: controller.indexToShow,
                 onPressed: () {
                   controller.toggleIndex(0);
+                  onPressed!(0);
                 },
                 weekday: 0,
               ),
@@ -30,6 +32,7 @@ class UserWeekdayFilterWidget extends StatelessWidget {
                 indexToShow: controller.indexToShow,
                 onPressed: () {
                   controller.toggleIndex(1);
+                  onPressed!(1);
                 },
                 weekday: 1,
               ),
@@ -38,6 +41,7 @@ class UserWeekdayFilterWidget extends StatelessWidget {
                 indexToShow: controller.indexToShow,
                 onPressed: () {
                   controller.toggleIndex(2);
+                  onPressed!(2);
                 },
                 weekday: 2,
               ),
@@ -46,6 +50,7 @@ class UserWeekdayFilterWidget extends StatelessWidget {
                 indexToShow: controller.indexToShow,
                 onPressed: () {
                   controller.toggleIndex(3);
+                  onPressed!(3);
                 },
                 weekday: 3,
               ),
@@ -54,6 +59,7 @@ class UserWeekdayFilterWidget extends StatelessWidget {
                 indexToShow: controller.indexToShow,
                 onPressed: () {
                   controller.toggleIndex(4);
+                  onPressed!(4);
                 },
                 weekday: 4,
               ),
@@ -62,6 +68,7 @@ class UserWeekdayFilterWidget extends StatelessWidget {
                 indexToShow: controller.indexToShow,
                 onPressed: () {
                   controller.toggleIndex(5);
+                  onPressed!(5);
                 },
                 weekday: 5,
               ),

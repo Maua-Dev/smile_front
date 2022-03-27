@@ -31,7 +31,7 @@ class CardActivity {
       description: '',
       id: '',
       title: '',
-      type: ActivityEnum.CAFE_EX_ALUNOS,
+      type: null,
       date: DateTime.now(),
       duration: DateTime.now(),
       link: '',

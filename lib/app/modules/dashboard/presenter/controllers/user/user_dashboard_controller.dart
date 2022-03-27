@@ -1,4 +1,3 @@
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
@@ -19,14 +18,19 @@ abstract class _UserDashboardControllerBase with Store {
   _UserDashboardControllerBase(
       {required this.repository, required this.authController}) {
     getUserSubscribedActivities();
-    getUser();
   }
+
+  @observable
+  int filterActivityChipIndexSelected = 0;
 
   @observable
   List<ActivityModel> activitiesList = List.empty();
 
   @observable
   ActivityModel nextActivity = ActivityModel.newInstance();
+
+  @observable
+  List<CardActivity> weekActivitiesList = List.empty();
 
   @observable
   UserModel user = UserModel.newInstance();
@@ -54,18 +58,13 @@ abstract class _UserDashboardControllerBase with Store {
         ));
       }
     }
+    toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
     getNextActivity();
   }
 
   @action
   void getNextActivity() {
     nextActivity = activitiesList[0];
-  }
-
-  @action
-  Future getUser() async {
-    user = await repository.getUser();
-    getUserFirstName();
   }
 
   @action
@@ -101,9 +100,33 @@ abstract class _UserDashboardControllerBase with Store {
       .where((activity) => activity.date!.weekday == 5)
       .toList();
 
+  @computed
+  List<CardActivity> get saturdayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 6)
+      .toList();
+
   @action
-  Future<void> logout() async {
-    await authController.logout();
-    Modular.to.navigate('/login');
+  void toggleFilterActivityChipIndex(index) {
+    filterActivityChipIndexSelected = index;
+    switch (filterActivityChipIndexSelected) {
+      case 0:
+        weekActivitiesList = mondayActivitiesList;
+        break;
+      case 1:
+        weekActivitiesList = tuesdayActivitiesList;
+        break;
+      case 2:
+        weekActivitiesList = wednesdayActivitiesList;
+        break;
+      case 3:
+        weekActivitiesList = thursdayActivitiesList;
+        break;
+      case 4:
+        weekActivitiesList = fridayActivitiesList;
+        break;
+      case 5:
+        weekActivitiesList = saturdayActivitiesList;
+        break;
+    }
   }
 }

@@ -9,7 +9,8 @@ var subscribedActivities = <ActivityModel>[
     id: '0',
     activityCode: 'C01',
     type: ActivityEnum.CURSOS,
-    title: 'Atividade 01',
+    title:
+        'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
     description:
         'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
     speakers: [
