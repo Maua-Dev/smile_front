@@ -8,6 +8,6 @@ final mockLectureImages = [
   LectureImages(image: '${previousEditionsBaseUrl}img+4.jpg'),
   LectureImages(image: '${previousEditionsBaseUrl}img+5.jpg'),
   LectureImages(image: '${previousEditionsBaseUrl}img+6.jpg'),
-  LectureImages(image: '${previousEditionsBaseUrl}img+9.jpg'),
+  LectureImages(image: '${previousEditionsBaseUrl}img+7.jpg'),
   LectureImages(image: '${previousEditionsBaseUrl}img+8.jpg'),
 ];
