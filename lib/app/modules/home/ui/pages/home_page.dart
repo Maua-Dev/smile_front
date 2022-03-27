@@ -5,7 +5,7 @@ import 'package:smile_front/app/modules/home/ui/pages/previous_editions-home/pre
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../app_module.dart';
-import '../../../../shared/utils/assets_url.dart';
+import '../../../../shared/utils/s3_assets_url.dart';
 import 'about-home/about_home_page.dart';
 import 'activity-home/activity_home_page.dart';
 

@@ -1,4 +1,4 @@
-import '../../../../shared/utils/assets_url.dart';
+import '../../../../shared/utils/s3_assets_url.dart';
 import '../../infra/models/home_speaker_model.dart';
 
 var speakersMock = [
