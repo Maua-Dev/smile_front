@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/speaker_add_widget.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
+import '../../../../shared/utils/assets_url.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/dialogs/fill_all_fields_dialog_widget.dart';
@@ -36,8 +37,14 @@ class _CreateActivityPageState
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.15,
-                child: Image.asset('assets/images/maua_campus_blur.png',
-                    fit: BoxFit.cover),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(mauaCampusBlurUrl),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),

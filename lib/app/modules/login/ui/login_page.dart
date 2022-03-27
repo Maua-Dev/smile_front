@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../shared/utils/assets_url.dart';
 import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
 import '../presenter/controllers/login_controller.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
@@ -20,9 +21,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
       body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/maua_campus_blur.png"),
+              image: NetworkImage(mauaCampusBlurUrl),
               fit: BoxFit.cover,
             ),
           ),

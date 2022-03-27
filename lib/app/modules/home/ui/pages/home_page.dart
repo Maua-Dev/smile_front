@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                       fit: BoxFit.contain,
                       alignment: Alignment.centerLeft,
                       image: NetworkImage(
-                        smileLogoUrl,
+                        smileeeLogoUrl,
                       ))),
             ),
           ),

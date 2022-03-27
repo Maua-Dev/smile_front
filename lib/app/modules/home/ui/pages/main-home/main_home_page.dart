@@ -4,6 +4,7 @@ import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
+import '../../../../../shared/utils/assets_url.dart';
 import 'utils/text_utils.dart';
 import 'widgets/branding_textbutton_widget.dart';
 
@@ -404,9 +405,9 @@ class _MainHomePageState extends State<MainHomePage> {
           ),
           Expanded(
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/maua_campus.png'),
+                  image: NetworkImage(mauaCampusUrl),
                   fit: BoxFit.fill,
                 ),
               ),
