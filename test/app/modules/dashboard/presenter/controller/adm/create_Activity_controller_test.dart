@@ -64,7 +64,10 @@ void main() {
   test('setDate', () {
     var str = DateFormat('dd-MM-yyyy').format(DateTime.now());
     controller.setDate(str, 0);
-    expect(controller.activityToCreate.schedule[0].date!, str);
+    expect(
+        controller.activityToCreate.schedule[0].date!,
+        DateTime(
+            DateTime.now().year, DateTime.now().month, DateTime.now().day));
   });
 
   test('setHour', () {
