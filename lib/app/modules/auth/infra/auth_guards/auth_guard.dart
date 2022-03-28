@@ -12,9 +12,9 @@ class AuthGuard implements RouteGuard {
     }
     if (authController.isLogged && authController.accessLevel == 'ADMIN') {
       Modular.to.navigate('/adm');
-    }
-    if (authController.isLogged && authController.accessLevel == 'USER') {
-      Modular.to.navigate('/user');
+    } else if (authController.isLogged &&
+        authController.accessLevel == 'USER') {
+      Modular.to.navigate('/user/home');
     }
     return true;
   }

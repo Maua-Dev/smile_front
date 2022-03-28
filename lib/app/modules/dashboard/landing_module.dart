@@ -11,7 +11,7 @@ class LandingModule extends Module {
     ChildRoute(Modular.initialRoute,
         child: (_, args) => const LandingUserPage(),
         children: [
-          ModuleRoute('/user', module: UserModule()),
+          ModuleRoute('/home', module: UserModule()),
         ]),
   ];
 }
