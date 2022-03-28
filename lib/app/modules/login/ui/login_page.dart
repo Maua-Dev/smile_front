@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../dashboard/ui/widgets/logout_button_widget.dart';
 import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
 import '../presenter/controllers/login_controller.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
