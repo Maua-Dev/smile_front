@@ -47,7 +47,7 @@ abstract class _LoginController with Store {
         } else if (authController.accessLevel == 'SPEAKER') {
           Modular.to.navigate('/speaker-home');
         } else {
-          Modular.to.navigate('/user',
+          Modular.to.navigate('/user/home',
               arguments: [cpfRne, authController.accessLevel]);
         }
       }

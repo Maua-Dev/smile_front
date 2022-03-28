@@ -33,7 +33,7 @@ class AppModule extends Module {
       guardedRoute: '/login',
     ),
     ModuleRoute(
-      '/',
+      '/user',
       module: LandingModule(),
       guards: [AuthGuardUser()],
       guardedRoute: '/login',
