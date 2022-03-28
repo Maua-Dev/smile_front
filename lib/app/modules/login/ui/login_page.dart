@@ -39,10 +39,15 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Center(
-                    child: Image.asset(
-                      'assets/images/logo_smile.png',
-                      width: 300,
-                      fit: BoxFit.cover,
+                    child: GestureDetector(
+                      onTap: () {
+                        Modular.to.navigate('/home');
+                      },
+                      child: Image.asset(
+                        'assets/images/logo_smile.png',
+                        width: 300,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   const SizedBox(
