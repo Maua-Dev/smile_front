@@ -1,5 +1,7 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 
+import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
+
 class CardActivity {
   final String id;
   final String activityCode;
@@ -8,6 +10,7 @@ class CardActivity {
   final String description;
   final DateTime? date;
   final int? totalParticipants;
+  final List<SpeakerActivityModel> speakers;
   final DateTime? duration;
   final String? location;
   final String? link;
@@ -22,6 +25,7 @@ class CardActivity {
     required this.duration,
     required this.totalParticipants,
     required this.location,
+    required this.speakers,
     required this.link,
   }) : super();
 
@@ -36,6 +40,7 @@ class CardActivity {
       duration: DateTime.now(),
       link: '',
       location: '',
+      speakers: [],
       totalParticipants: 0,
     );
   }

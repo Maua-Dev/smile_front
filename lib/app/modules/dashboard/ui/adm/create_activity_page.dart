@@ -227,14 +227,14 @@ class _CreateActivityPageState
               Observer(builder: (_) {
                 return ListView.builder(
                   shrinkWrap: true,
-                  itemCount: controller.activityToCreate.speaker.length,
+                  itemCount: controller.activityToCreate.speakers.length,
                   itemBuilder: (context, index) {
                     return SpeakerAddWidget(
-                      length: controller.activityToCreate.speaker.length,
-                      name: controller.activityToCreate.speaker[index].name,
-                      bio: controller.activityToCreate.speaker[index].bio,
+                      length: controller.activityToCreate.speakers.length,
+                      name: controller.activityToCreate.speakers[index].name,
+                      bio: controller.activityToCreate.speakers[index].bio,
                       company:
-                          controller.activityToCreate.speaker[index].company,
+                          controller.activityToCreate.speakers[index].company,
                       onChangedName: (value) {
                         controller.setSpeakerName(value, index);
                       },

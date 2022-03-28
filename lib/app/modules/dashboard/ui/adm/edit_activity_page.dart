@@ -226,13 +226,14 @@ class _EditActivityPageState
               Observer(builder: (_) {
                 return ListView.builder(
                   shrinkWrap: true,
-                  itemCount: controller.activityToEdit.speaker.length,
+                  itemCount: controller.activityToEdit.speakers.length,
                   itemBuilder: (context, index) {
                     return SpeakerAddWidget(
-                      length: controller.activityToEdit.speaker.length,
-                      name: controller.activityToEdit.speaker[index].name,
-                      bio: controller.activityToEdit.speaker[index].bio,
-                      company: controller.activityToEdit.speaker[index].company,
+                      length: controller.activityToEdit.speakers.length,
+                      name: controller.activityToEdit.speakers[index].name,
+                      bio: controller.activityToEdit.speakers[index].bio,
+                      company:
+                          controller.activityToEdit.speakers[index].company,
                       onChangedName: (value) {
                         controller.setSpeakerName(value, index);
                       },

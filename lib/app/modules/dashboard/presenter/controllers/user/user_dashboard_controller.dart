@@ -30,6 +30,9 @@ abstract class _UserDashboardControllerBase with Store {
   ActivityModel nextActivity = ActivityModel.newInstance();
 
   @observable
+  CardActivity cardNextActivity = CardActivity.newInstance();
+
+  @observable
   List<CardActivity> weekActivitiesList = List.empty();
 
   @observable
@@ -53,6 +56,7 @@ abstract class _UserDashboardControllerBase with Store {
           date: time.date,
           duration: time.duration,
           totalParticipants: time.totalParticipants,
+          speakers: activity.speakers,
           location: time.location,
           link: time.link,
         ));
@@ -65,6 +69,21 @@ abstract class _UserDashboardControllerBase with Store {
   @action
   void getNextActivity() {
     nextActivity = activitiesList[0];
+    for (var time in activitiesList[0].schedule) {
+      cardNextActivity = CardActivity(
+        id: nextActivity.id,
+        activityCode: nextActivity.activityCode,
+        type: nextActivity.type,
+        title: nextActivity.title,
+        description: nextActivity.description,
+        date: time.date,
+        duration: time.duration,
+        totalParticipants: time.totalParticipants,
+        speakers: nextActivity.speakers,
+        location: time.location,
+        link: time.link,
+      );
+    }
   }
 
   @action

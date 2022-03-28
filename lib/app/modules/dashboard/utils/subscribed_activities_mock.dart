@@ -19,6 +19,16 @@ var subscribedActivities = <ActivityModel>[
         bio: 'Caros participantes, este é um teste, aproveitem a atividade',
         company: 'Oracle',
       ),
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
+      ),
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
+      ),
     ],
     schedule: <ScheduleActivityModel>[
       ScheduleActivityModel(

@@ -110,6 +110,7 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
             date: time.date,
             duration: time.duration,
             totalParticipants: time.totalParticipants,
+            speakers: activity.speakers,
             location: time.location,
             link: time.link,
           ),

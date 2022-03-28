@@ -32,7 +32,7 @@ class ActivityModel extends Activity {
           title: title,
           description: description,
           schedule: schedule,
-          speaker: speakers,
+          speakers: speakers,
         );
 
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
@@ -58,7 +58,7 @@ class ActivityModel extends Activity {
         'title': title,
         'description': description,
         'schedule': schedule,
-        'speakers': speaker,
+        'speakers': speakers,
         'linkPhoto': ''
       };
 
@@ -81,7 +81,7 @@ class ActivityModel extends Activity {
     String? title,
     String? description,
     List<ScheduleActivityModel>? schedule,
-    List<SpeakerActivityModel>? speaker,
+    List<SpeakerActivityModel>? speakers,
     String? linkPhoto,
   }) {
     return ActivityModel(
@@ -91,7 +91,7 @@ class ActivityModel extends Activity {
       title: title ?? this.title,
       description: description ?? this.description,
       schedule: schedule ?? this.schedule,
-      speakers: speaker ?? this.speaker,
+      speakers: speakers ?? this.speakers,
       linkPhoto: linkPhoto ?? this.linkPhoto,
     );
   }
