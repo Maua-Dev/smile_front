@@ -26,6 +26,7 @@ var subscribedActivities = <ActivityModel>[
         totalParticipants: 20,
         duration: DateFormat('HH:mm').parse('01:00'),
         location: 'H244',
+        link: 'https://www.google.com.br',
       ),
       ScheduleActivityModel(
           date: DateTime.parse('2022-05-17 13:00'),

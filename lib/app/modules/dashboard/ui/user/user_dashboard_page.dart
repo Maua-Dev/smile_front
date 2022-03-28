@@ -27,13 +27,10 @@ class _UserDashboardPageState
           const SizedBox(
             height: 16,
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 72.0),
-            child: TextHeader(
-              title: 'Sua Próxima Atividade',
-              fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
-              leftPadding: MediaQuery.of(context).size.width < 1000 ? 12 : 24,
-            ),
+          TextHeader(
+            title: 'Sua Próxima Atividade',
+            fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
+            leftPadding: MediaQuery.of(context).size.width < 1000 ? 12 : 24,
           ),
           Observer(builder: (_) {
             return NextActivityCardWidget(

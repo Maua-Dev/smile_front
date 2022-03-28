@@ -30,26 +30,26 @@ class DropDownFieldWidget<T> extends StatelessWidget {
         onChanged: onChanged,
         items: items,
         style: AppTextStyles.buttonBold.copyWith(
-            fontSize: MediaQuery.of(context).size.width < 1000 ? 18 : 24,
-            color: AppColors.brandingOrange),
+            fontSize: MediaQuery.of(context).size.width < 1000 ? 20 : 24,
+            color: Colors.black),
         decoration: InputDecoration(
           labelText: titulo,
           labelStyle: AppTextStyles.buttonBold.copyWith(
-              fontSize: MediaQuery.of(context).size.width < 1000 ? 18 : 24,
-              color: AppColors.brandingOrange),
+              fontSize: MediaQuery.of(context).size.width < 1000 ? 24 : 28,
+              color: AppColors.brandingPurple),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 24, vertical: 22.5),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(40),
-            borderSide: BorderSide(color: AppColors.brandingOrange, width: 0.0),
+            borderSide: BorderSide(color: AppColors.brandingPurple, width: 0.0),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(40),
-            borderSide: BorderSide(color: AppColors.brandingOrange, width: 0.0),
+            borderSide: BorderSide(color: AppColors.brandingPurple, width: 0.0),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(40),
-            borderSide: BorderSide(color: AppColors.brandingOrange, width: 0.0),
+            borderSide: BorderSide(color: AppColors.brandingPurple, width: 0.0),
           ),
         ),
       ),
