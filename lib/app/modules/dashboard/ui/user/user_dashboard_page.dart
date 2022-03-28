@@ -7,7 +7,6 @@ import '../../presenter/controllers/user/user_dashboard_controller.dart';
 import '../widgets/next_activity_card_widget.dart';
 import '../widgets/user_weekday/user_activity_card_widget.dart';
 import '../widgets/user_weekday/user_weekday_filter_widget.dart';
-import 'more_info_dialog_widget.dart';
 
 class UserDashboardPage extends StatefulWidget {
   const UserDashboardPage({Key? key}) : super(key: key);
@@ -38,9 +37,7 @@ class _UserDashboardPageState
               link: controller.nextActivity.schedule[0].link,
               location: controller.nextActivity.schedule[0].location,
               duration: controller.nextActivity.schedule[0].duration,
-              onTap: () {
-                moreInfoDialogWidget(context, controller.nextActivity);
-              },
+              onTap: () {},
               name: controller.nextActivity.title,
               description: controller.nextActivity.description,
               date: controller.nextActivity.schedule[0].date,

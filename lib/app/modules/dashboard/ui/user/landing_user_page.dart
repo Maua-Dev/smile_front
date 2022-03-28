@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar.dart';
 
@@ -16,6 +17,10 @@ class _LandingUserPageState extends State<LandingUserPage> {
     return SafeArea(
       child: Scaffold(
           bottomNavigationBar: const BottomNavigationBarWidget(),
+          appBar: PreferredSize(
+              preferredSize:
+                  Size.fromHeight(MediaQuery.of(context).size.height * 0.04),
+              child: AppBar(foregroundColor: AppColors.brandingPurple)),
           body: Center(
             child: SizedBox(
                 width: MediaQuery.of(context).size.width < 1000
