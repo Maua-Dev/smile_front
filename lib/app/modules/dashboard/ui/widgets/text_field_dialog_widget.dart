@@ -26,11 +26,12 @@ class TextFieldDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = TextEditingController(text: value);
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: padding ? 114 : 0, vertical: padding ? 8 : 0),
       child: TextFormField(
-        initialValue: value,
+        controller: controller,
         onChanged: onChanged,
         keyboardType: TextInputType.multiline,
         maxLines: null,
