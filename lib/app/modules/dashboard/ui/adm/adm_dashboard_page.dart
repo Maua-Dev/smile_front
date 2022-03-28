@@ -38,12 +38,26 @@ class _AdmDashboardPageState
                     title: 'Próximas Atividades',
                     fontSize: 50,
                   ),
-                  LogoutButtonWidget(
-                    backgroundColor: AppColors.brandingOrange,
-                    buttonTittle: 'Sair',
-                    onPressed: () {
-                      controller.logout();
-                    },
+                  Row(
+                    children: [
+                      LogoutButtonWidget(
+                        backgroundColor: AppColors.brandingOrange,
+                        buttonTittle: 'Home',
+                        onPressed: () {
+                          Modular.to.navigate('/home');
+                        },
+                      ),
+                      const SizedBox(
+                        width: 32,
+                      ),
+                      LogoutButtonWidget(
+                        backgroundColor: AppColors.brandingOrange,
+                        buttonTittle: 'Sair',
+                        onPressed: () {
+                          controller.logout();
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
