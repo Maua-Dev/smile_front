@@ -19,7 +19,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
           bottomNavigationBar: const BottomNavigationBarWidget(),
           appBar: PreferredSize(
               preferredSize:
-                  Size.fromHeight(MediaQuery.of(context).size.height * 0.04),
+                  Size.fromHeight(MediaQuery.of(context).size.height * 0.05),
               child: AppBar(foregroundColor: AppColors.brandingPurple)),
           body: Center(
             child: SizedBox(

@@ -37,7 +37,10 @@ class _UserDashboardPageState
               link: controller.nextActivity.schedule[0].link,
               location: controller.nextActivity.schedule[0].location,
               duration: controller.nextActivity.schedule[0].duration,
-              onTap: () {},
+              onTap: () {
+                Modular.to.navigate('/user/more-info',
+                    arguments: controller.nextActivity);
+              },
               name: controller.nextActivity.title,
               description: controller.nextActivity.description,
               date: controller.nextActivity.schedule[0].date,

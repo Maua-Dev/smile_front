@@ -6,7 +6,9 @@ import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_d
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_dashboard_page.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
+import 'package:smile_front/app/shared/models/activity_model.dart';
 
 import '../../shared/services/dio/smile_activities_options.dart';
 import '../auth/domain/repositories/auth_repository_interface.dart';
@@ -48,5 +50,9 @@ class UserModule extends Module {
         child: (_, args) => const UserDashboardPage()),
     ChildRoute('/all-activities',
         child: (_, args) => const AllActivitiesUserDashboardPage()),
+    ChildRoute('/more-info',
+        child: (_, args) => MoreInfoPage(
+              activity: args.data as ActivityModel,
+            )),
   ];
 }
