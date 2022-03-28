@@ -38,7 +38,7 @@ class DropDownFieldWidget<T> extends StatelessWidget {
               fontSize: MediaQuery.of(context).size.width < 1000 ? 18 : 24,
               color: AppColors.brandingOrange),
           contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 22.5),
+              const EdgeInsets.symmetric(horizontal: 24, vertical: 22.5),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(40),
             borderSide: BorderSide(color: AppColors.brandingOrange, width: 0.0),

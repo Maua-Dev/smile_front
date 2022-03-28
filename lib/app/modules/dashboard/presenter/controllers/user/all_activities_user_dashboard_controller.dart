@@ -91,13 +91,7 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
         weekActivitiesList = saturdayActivitiesList;
         break;
     }
-  }
-
-  @action
-  Future getActivitiesByType(ActivityEnum? typeActivity) async {
-    activityType = typeActivity;
-    activitiesList =
-        await repository.getActivitiesSelectedByType(typeActivity!);
+    getActivitiesByType(activityType);
   }
 
   @action
@@ -106,21 +100,54 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
     allActivitiesToCards = [];
     for (var activity in activitiesList) {
       for (var time in activity.schedule) {
-        allActivitiesToCards.add(CardActivity(
-          id: activity.id,
-          activityCode: activity.activityCode,
-          type: activity.type,
-          title: activity.title,
-          description: activity.description,
-          date: time.date,
-          duration: time.duration,
-          totalParticipants: time.totalParticipants,
-          location: time.location,
-          link: time.link,
-        ));
+        allActivitiesToCards.add(
+          CardActivity(
+            id: activity.id,
+            activityCode: activity.activityCode,
+            type: activity.type,
+            title: activity.title,
+            description: activity.description,
+            date: time.date,
+            duration: time.duration,
+            totalParticipants: time.totalParticipants,
+            location: time.location,
+            link: time.link,
+          ),
+        );
       }
     }
     toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
+    getActivitiesByType(activityType);
+  }
+
+  @action
+  Future getActivitiesByType(ActivityEnum? typeActivity) async {
+    if (typeActivity != null) {
+      switch (filterActivityChipIndexSelected) {
+        case 0:
+          weekActivitiesList = mondayActivitiesList;
+          break;
+        case 1:
+          weekActivitiesList = tuesdayActivitiesList;
+          break;
+        case 2:
+          weekActivitiesList = wednesdayActivitiesList;
+          break;
+        case 3:
+          weekActivitiesList = thursdayActivitiesList;
+          break;
+        case 4:
+          weekActivitiesList = fridayActivitiesList;
+          break;
+        case 5:
+          weekActivitiesList = saturdayActivitiesList;
+          break;
+      }
+      activityType = typeActivity;
+      weekActivitiesList = weekActivitiesList
+          .where((element) => element.type == activityType)
+          .toList();
+    }
   }
 
   @action

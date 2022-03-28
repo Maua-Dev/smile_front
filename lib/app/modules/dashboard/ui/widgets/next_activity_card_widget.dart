@@ -10,16 +10,22 @@ class NextActivityCardWidget extends StatelessWidget {
   final String description;
   final DateTime? date;
   final int? totalParticipants;
+  final String? link;
+  final String? location;
   final DateTime? duration;
   final Function()? onTap;
+  final bool isUser;
   const NextActivityCardWidget({
     Key? key,
     required this.name,
     required this.description,
     required this.date,
-    required this.totalParticipants,
+    this.totalParticipants,
     this.onTap,
     required this.duration,
+    this.link,
+    this.location,
+    this.isUser = false,
   }) : super(key: key);
 
   @override
@@ -35,7 +41,7 @@ class NextActivityCardWidget extends StatelessWidget {
         onTap: onTap,
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.2,
+          height: MediaQuery.of(context).size.height * 0.25,
           decoration: BoxDecoration(
             color: AppColors.brandingOrange,
             borderRadius: BorderRadius.circular(20),
@@ -87,7 +93,9 @@ class NextActivityCardWidget extends StatelessWidget {
                     vertical: 8,
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MediaQuery.of(context).size.width < 1000
+                        ? MainAxisAlignment.spaceBetween
+                        : MainAxisAlignment.end,
                     children: [
                       Row(
                         children: [
@@ -134,26 +142,30 @@ class NextActivityCardWidget extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
-                              Icons.person,
+                              isUser ? Icons.location_on : Icons.person,
                               color: Colors.white,
                               size: MediaQuery.of(context).size.width < 1000
-                                  ? 18
-                                  : 20,
+                                  ? 20
+                                  : 22,
                             ),
                           ),
-                          RichText(
-                              text: TextSpan(children: [
-                            TextSpan(
-                                text: '0/',
-                                style: AppTextStyles.button.copyWith(
-                                    fontSize: 18, color: Colors.white)),
-                            TextSpan(
-                                text: '$totalParticipants',
-                                style: AppTextStyles.button.copyWith(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold)),
-                          ])),
+                          isUser
+                              ? Text('$location',
+                                  style: AppTextStyles.button.copyWith(
+                                      fontSize: 18, color: Colors.white))
+                              : RichText(
+                                  text: TextSpan(children: [
+                                  TextSpan(
+                                      text: '0/',
+                                      style: AppTextStyles.button.copyWith(
+                                          fontSize: 18, color: Colors.white)),
+                                  TextSpan(
+                                      text: '$totalParticipants',
+                                      style: AppTextStyles.button.copyWith(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold)),
+                                ])),
                         ],
                       ),
                     ],

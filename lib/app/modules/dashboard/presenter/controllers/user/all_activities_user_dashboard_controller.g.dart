@@ -148,6 +148,14 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
+  final _$getAllActivitiesAsyncAction =
+      AsyncAction('_AllActivitiesUserDashboardControllerBase.getAllActivities');
+
+  @override
+  Future<dynamic> getAllActivities() {
+    return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
+  }
+
   final _$getActivitiesByTypeAsyncAction = AsyncAction(
       '_AllActivitiesUserDashboardControllerBase.getActivitiesByType');
 
@@ -155,14 +163,6 @@ mixin _$AllActivitiesUserDashboardController
   Future<dynamic> getActivitiesByType(ActivityEnum? typeActivity) {
     return _$getActivitiesByTypeAsyncAction
         .run(() => super.getActivitiesByType(typeActivity));
-  }
-
-  final _$getAllActivitiesAsyncAction =
-      AsyncAction('_AllActivitiesUserDashboardControllerBase.getAllActivities');
-
-  @override
-  Future<dynamic> getAllActivities() {
-    return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
   }
 
   final _$logoutAsyncAction =

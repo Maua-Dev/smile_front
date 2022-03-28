@@ -37,6 +37,9 @@ class _UserDashboardPageState
           ),
           Observer(builder: (_) {
             return NextActivityCardWidget(
+              isUser: true,
+              link: controller.nextActivity.schedule[0].link,
+              location: controller.nextActivity.schedule[0].location,
               duration: controller.nextActivity.schedule[0].duration,
               onTap: () {
                 moreInfoDialogWidget(context, controller.nextActivity);
@@ -44,8 +47,6 @@ class _UserDashboardPageState
               name: controller.nextActivity.title,
               description: controller.nextActivity.description,
               date: controller.nextActivity.schedule[0].date,
-              totalParticipants:
-                  controller.nextActivity.schedule[0].totalParticipants,
             );
           }),
           TextHeader(
