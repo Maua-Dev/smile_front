@@ -10,7 +10,7 @@ class CardActivity {
   final String description;
   final DateTime? date;
   final int? totalParticipants;
-  final List<SpeakerActivityModel> speakers;
+  final List<SpeakerActivityModel>? speakers;
   final DateTime? duration;
   final String? location;
   final String? link;
@@ -25,7 +25,7 @@ class CardActivity {
     required this.duration,
     required this.totalParticipants,
     required this.location,
-    required this.speakers,
+    this.speakers,
     required this.link,
   }) : super();
 
