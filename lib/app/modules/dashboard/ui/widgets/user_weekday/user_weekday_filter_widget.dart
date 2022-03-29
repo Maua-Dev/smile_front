@@ -12,7 +12,7 @@ class UserWeekdayFilterWidget extends StatelessWidget {
     var controller = UserWeekdayController();
     return Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width < 1000 ? 12 : 24.0,
+            horizontal: 8,
             vertical: MediaQuery.of(context).size.width < 1000 ? 8 : 16),
         child: Observer(builder: (_) {
           return Row(

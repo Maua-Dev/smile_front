@@ -27,7 +27,11 @@ class UserWeekdayIconWidget extends StatelessWidget {
           Text(
             weekday != null ? WeekdaysEnum.values[weekday!].abreviation : '',
             style: AppTextStyles.titleH1.copyWith(
-                fontSize: MediaQuery.of(context).size.width < 900 ? 24 : 32,
+                fontSize: MediaQuery.of(context).size.width < 530
+                    ? 16
+                    : MediaQuery.of(context).size.width < 1000
+                        ? 24
+                        : 32,
                 color: indexToShow == myIndex
                     ? Colors.white
                     : AppColors.brandingPurple),
@@ -35,7 +39,11 @@ class UserWeekdayIconWidget extends StatelessWidget {
           Text(
             weekday != null ? WeekdaysEnum.values[weekday!].date : '',
             style: AppTextStyles.button.copyWith(
-                fontSize: MediaQuery.of(context).size.width < 900 ? 16 : 24,
+                fontSize: MediaQuery.of(context).size.width < 530
+                    ? 12
+                    : MediaQuery.of(context).size.width < 1000
+                        ? 16
+                        : 24,
                 color: indexToShow == myIndex
                     ? Colors.white
                     : AppColors.brandingPurple),
@@ -43,7 +51,9 @@ class UserWeekdayIconWidget extends StatelessWidget {
         ],
       ),
       style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width < 530 ? 8 : 16,
+              vertical: 16),
           primary: indexToShow == myIndex
               ? AppColors.brandingPurple
               : AppColors.lilac,
