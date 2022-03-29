@@ -273,13 +273,13 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: widget.activity.speakers.length,
+              itemCount: widget.activity.speakers!.length,
               itemBuilder: (context, index) => Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (widget.activity.speakers[index].linkPhoto != null)
+                      if (widget.activity.speakers![index].linkPhoto != null)
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.1,
                           height: MediaQuery.of(context).size.width * 0.1,
@@ -287,14 +287,14 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                             radius: 102.0,
                             backgroundImage: NetworkImage(widget
                                 .activity
-                                .speakers[index]
+                                .speakers![index]
                                 .linkPhoto!), // for Network image
                           ),
                         ),
                       Column(
                         children: [
                           Text(
-                            widget.activity.speakers[index].name,
+                            widget.activity.speakers![index].name,
                             textAlign: TextAlign.justify,
                             style: AppTextStyles.buttonBold.copyWith(
                                 fontSize:
@@ -304,7 +304,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                 color: Colors.black),
                           ),
                           Text(
-                            'Empresa: ${widget.activity.speakers[index].company}',
+                            'Empresa: ${widget.activity.speakers![index].company}',
                             textAlign: TextAlign.justify,
                             style: AppTextStyles.buttonBold.copyWith(
                                 fontSize:
@@ -322,7 +322,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(widget.activity.speakers[index].bio,
+                    child: Text(widget.activity.speakers![index].bio,
                         textAlign: TextAlign.justify,
                         style: AppTextStyles.body.copyWith(
                             fontSize: MediaQuery.of(context).size.width < 1000
