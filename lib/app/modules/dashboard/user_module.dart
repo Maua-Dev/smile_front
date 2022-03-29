@@ -52,7 +52,8 @@ class UserModule extends Module {
         child: (_, args) => const AllActivitiesUserDashboardPage()),
     ChildRoute('/more-info',
         child: (_, args) => MoreInfoPage(
-              activity: args.data as CardActivity,
+              activity: args.data[0] as CardActivity,
+              isRegistered: args.data[1] as bool,
             )),
   ];
 }

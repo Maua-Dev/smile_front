@@ -67,7 +67,12 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                   hour: hour,
                   activityCode:
                       controller.weekActivitiesList[index].activityCode,
-                  onTap: () {},
+                  onTap: () {
+                    Modular.to.navigate('/user/more-info', arguments: [
+                      controller.weekActivitiesList[index],
+                      false
+                    ]);
+                  },
                 );
               },
             ),

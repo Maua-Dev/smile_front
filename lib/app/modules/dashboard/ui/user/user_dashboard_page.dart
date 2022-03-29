@@ -39,7 +39,7 @@ class _UserDashboardPageState
               duration: controller.nextActivity.schedule[0].duration,
               onTap: () {
                 Modular.to.navigate('/user/more-info',
-                    arguments: controller.cardNextActivity);
+                    arguments: [controller.cardNextActivity, true]);
               },
               name: controller.nextActivity.title,
               description: controller.nextActivity.description,
@@ -66,7 +66,12 @@ class _UserDashboardPageState
                     hour: hour,
                     activityCode:
                         controller.weekActivitiesList[index].activityCode,
-                    onTap: () {},
+                    onTap: () {
+                      Modular.to.navigate('/user/more-info', arguments: [
+                        controller.weekActivitiesList[index],
+                        false
+                      ]);
+                    },
                   );
                 },
               ),

@@ -8,11 +8,15 @@ import 'package:smile_front/app/shared/utils/capitalize.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../utils/final_time_calculation.dart';
+import '../widgets/register_button_widget.dart';
 
 class MoreInfoPage extends StatefulWidget {
   final CardActivity activity;
+  final bool isRegistered;
 
-  const MoreInfoPage({Key? key, required this.activity}) : super(key: key);
+  const MoreInfoPage(
+      {Key? key, required this.activity, required this.isRegistered})
+      : super(key: key);
 
   @override
   State<MoreInfoPage> createState() => _MoreInfoPageState();
@@ -140,7 +144,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                       ),
                     ],
                   ),
-                if (widget.activity.link != null)
+                if (widget.activity.link != null && widget.isRegistered)
                   Column(
                     children: [
                       Text(
@@ -182,29 +186,63 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                   ),
               ],
             ),
+            if (widget.isRegistered)
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          'Código',
+                          style: AppTextStyles.buttonBold.copyWith(
+                              fontSize: MediaQuery.of(context).size.width < 1000
+                                  ? 14
+                                  : 18,
+                              color: AppColors.brandingPurple),
+                        ),
+                        Text(
+                          '9999999999',
+                          style: AppTextStyles.buttonBold.copyWith(
+                              fontSize: MediaQuery.of(context).size.width < 1000
+                                  ? 20
+                                  : 24,
+                              color: AppColors.brandingPurple),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          'Senha',
+                          style: AppTextStyles.buttonBold.copyWith(
+                              fontSize: MediaQuery.of(context).size.width < 1000
+                                  ? 14
+                                  : 18,
+                              color: AppColors.brandingPurple),
+                        ),
+                        Text(
+                          '9999999999',
+                          style: AppTextStyles.buttonBold.copyWith(
+                              fontSize: MediaQuery.of(context).size.width < 1000
+                                  ? 20
+                                  : 24,
+                              color: AppColors.brandingPurple),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             const SizedBox(
               height: 16,
             ),
             Center(
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
-                          const EdgeInsets.symmetric(
-                              vertical: 12, horizontal: 64)),
-                      elevation: MaterialStateProperty.all(20),
-                      backgroundColor:
-                          MaterialStateProperty.all(AppColors.brandingPurple),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(40)),
-                      )),
-                  child: Text('Inscrever',
-                      style: AppTextStyles.buttonBold.copyWith(
-                          fontSize: MediaQuery.of(context).size.width < 1000
-                              ? 24
-                              : 28,
-                          color: Colors.white)),
-                  onPressed: () {}),
+              child: RegisterButtonWidget(isRegistered: widget.isRegistered),
             ),
             const SizedBox(
               height: 16,
@@ -227,7 +265,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                   style: AppTextStyles.body.copyWith(
                       fontSize:
                           MediaQuery.of(context).size.width < 1000 ? 18 : 22,
-                      color: AppColors.brandingPurple)),
+                      color: Colors.black)),
             ),
             const SizedBox(
               height: 16,
@@ -290,7 +328,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                             fontSize: MediaQuery.of(context).size.width < 1000
                                 ? 18
                                 : 22,
-                            color: AppColors.brandingPurple)),
+                            color: Colors.black)),
                   ),
                   const SizedBox(
                     height: 8,
