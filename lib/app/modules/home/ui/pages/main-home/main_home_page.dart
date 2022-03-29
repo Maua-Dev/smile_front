@@ -4,6 +4,7 @@ import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
+import '../../../../../shared/utils/s3_assets_url.dart';
 import 'utils/text_utils.dart';
 import 'widgets/branding_textbutton_widget.dart';
 
@@ -326,13 +327,22 @@ class _MainHomePageState extends State<MainHomePage> {
                           backgroundColor: AppColors.brandingPurple,
                         ),
                       ),
-                      BrandingTextButtonWidget(
-                        title: '17 a 22 de Maio',
-                        fontSize: weekFontSize(size),
-                        boxHeight: weekBoxHeight(size, height),
-                        boxWidth: 634,
-                        backgroundColor: AppColors.brandingOrange,
-                      )
+                      Container(
+                        height: weekBoxHeight(size, height),
+                        width: 634,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: AppColors.brandingOrange,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
+                        ),
+                        child: Text(
+                          '16 a 21 de Maio',
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.buttonBold
+                              .copyWith(fontSize: weekFontSize(size)),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -404,9 +414,9 @@ class _MainHomePageState extends State<MainHomePage> {
           ),
           Expanded(
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/maua_campus.png'),
+                  image: NetworkImage(mauaCampusUrl),
                   fit: BoxFit.fill,
                 ),
               ),

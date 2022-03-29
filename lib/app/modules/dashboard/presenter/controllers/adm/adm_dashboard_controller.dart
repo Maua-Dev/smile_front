@@ -114,6 +114,7 @@ abstract class _AdmDashboardControllerBase with Store {
           description: activity.description,
           date: time.date,
           duration: time.duration,
+          speakers: activity.speakers,
           totalParticipants: time.totalParticipants,
           location: time.location,
           link: time.link,

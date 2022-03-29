@@ -36,7 +36,7 @@ abstract class _CreateActivityControllerBase with Store {
   @action
   bool isFilled() {
     var scheduleFirst = activityToCreate.schedule.first;
-    var speakerFirst = activityToCreate.speaker.first;
+    var speakerFirst = activityToCreate.speakers.first;
     if (activityToCreate.title != '' &&
         activityToCreate.description != '' &&
         activityToCreate.type != null &&
@@ -141,17 +141,17 @@ abstract class _CreateActivityControllerBase with Store {
 
   @action
   void setSpeakerName(String value, int index) {
-    activityToCreate.speaker[index].name = value;
+    activityToCreate.speakers[index].name = value;
   }
 
   @action
   void setSpeakerBio(String value, int index) {
-    activityToCreate.speaker[index].bio = value;
+    activityToCreate.speakers[index].bio = value;
   }
 
   @action
   void setSpeakerCompany(String value, int index) {
-    activityToCreate.speaker[index].company = value;
+    activityToCreate.speakers[index].company = value;
   }
 
   @action
@@ -170,15 +170,15 @@ abstract class _CreateActivityControllerBase with Store {
 
   @action
   void addSpeaker() {
-    var list = activityToCreate.speaker;
+    var list = activityToCreate.speakers;
     list.add(SpeakerActivityModel.newInstance());
-    activityToCreate = activityToCreate.copyWith(speaker: list);
+    activityToCreate = activityToCreate.copyWith(speakers: list);
   }
 
   @action
   void removeSpeaker(int index) {
-    var list = activityToCreate.speaker;
+    var list = activityToCreate.speakers;
     list.removeAt(index);
-    activityToCreate = activityToCreate.copyWith(speaker: list);
+    activityToCreate = activityToCreate.copyWith(speakers: list);
   }
 }

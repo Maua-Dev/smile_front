@@ -149,12 +149,6 @@ void main() {
   test('getAllActivities', () {
     controller.getAllActivities();
     expect(controller.activitiesList.isNotEmpty, true);
-    expect(controller.nextActivitiesList.isNotEmpty, true);
-  });
-
-  test('getActivitiesByType', () {
-    controller.getActivitiesByType(0);
-    expect(controller.activitiesList.length, 5);
   });
 
   test('mondayActivitiesList', () {

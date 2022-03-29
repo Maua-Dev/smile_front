@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
+import '../../../../shared/utils/s3_assets_url.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/dialogs/fill_all_fields_dialog_widget.dart';
@@ -37,8 +38,14 @@ class _EditActivityPageState
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.15,
-                child: Image.asset('assets/images/maua_campus_blur.png',
-                    fit: BoxFit.cover),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(mauaCampusBlurUrl),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
@@ -219,13 +226,14 @@ class _EditActivityPageState
               Observer(builder: (_) {
                 return ListView.builder(
                   shrinkWrap: true,
-                  itemCount: controller.activityToEdit.speaker.length,
+                  itemCount: controller.activityToEdit.speakers.length,
                   itemBuilder: (context, index) {
                     return SpeakerAddWidget(
-                      length: controller.activityToEdit.speaker.length,
-                      name: controller.activityToEdit.speaker[index].name,
-                      bio: controller.activityToEdit.speaker[index].bio,
-                      company: controller.activityToEdit.speaker[index].company,
+                      length: controller.activityToEdit.speakers.length,
+                      name: controller.activityToEdit.speakers[index].name,
+                      bio: controller.activityToEdit.speakers[index].bio,
+                      company:
+                          controller.activityToEdit.speakers[index].company,
                       onChangedName: (value) {
                         controller.setSpeakerName(value, index);
                       },

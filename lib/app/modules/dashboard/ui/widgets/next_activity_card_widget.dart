@@ -1,41 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:math' as math;
 
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
+import '../../utils/final_time_calculation.dart';
 
 class NextActivityCardWidget extends StatelessWidget {
   final String name;
   final String description;
   final DateTime? date;
   final int? totalParticipants;
-  final Color? cardColor;
-  final Color? textColor;
+  final String? link;
+  final String? location;
+  final DateTime? duration;
   final Function()? onTap;
+  final bool isUser;
   const NextActivityCardWidget({
     Key? key,
     required this.name,
     required this.description,
     required this.date,
-    required this.totalParticipants,
+    this.totalParticipants,
     this.onTap,
-    this.cardColor,
-    this.textColor,
+    required this.duration,
+    this.link,
+    this.location,
+    this.isUser = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var dateString = date == null ? '' : DateFormat('dd/MM/yyyy').format(date!);
     var timeString = date == null ? '' : DateFormat('HH:mm').format(date!);
+    var weekday = date == null
+        ? ''
+        : DateFormat('EEEE').format(date!).substring(0, 3).toUpperCase();
+    var finalTime = duration == null || date == null
+        ? ''
+        : getActivityFinalTime(date!, duration!);
     return Padding(
-      padding: const EdgeInsets.only(right: 72, left: 72, bottom: 48, top: 8),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.2,
+          height: MediaQuery.of(context).size.width < 1000
+              ? MediaQuery.of(context).size.height * 0.3
+              : MediaQuery.of(context).size.height * 0.25,
           decoration: BoxDecoration(
-            color: cardColor ?? Colors.white,
+            color: AppColors.brandingOrange,
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
@@ -47,24 +61,36 @@ class NextActivityCardWidget extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16),
+            padding:
+                const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                const SizedBox(
+                  height: 8,
+                ),
                 Text(
                   name,
-                  style: AppTextStyles.buttonBold
-                      .copyWith(fontSize: 22, color: textColor ?? Colors.black),
+                  maxLines: MediaQuery.of(context).size.width < 1000 ? 2 : 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.buttonBold.copyWith(
+                      fontSize:
+                          MediaQuery.of(context).size.width < 1000 ? 20 : 22,
+                      color: Colors.white),
+                ),
+                const SizedBox(
+                  height: 8,
                 ),
                 Flexible(
                   child: Text(
                     description,
-                    maxLines: 3,
+                    maxLines: 5,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.button.copyWith(
-                      fontSize: 16,
-                      color: textColor ?? Colors.black,
+                      fontSize:
+                          MediaQuery.of(context).size.width < 1000 ? 14 : 16,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -73,26 +99,31 @@ class NextActivityCardWidget extends StatelessWidget {
                     vertical: 8,
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
-                              Icons.calendar_today,
-                              color: textColor ?? AppColors.brandingPurple,
-                              size: 20,
+                              Icons.date_range,
+                              color: Colors.white,
+                              size: MediaQuery.of(context).size.width < 1000
+                                  ? 24
+                                  : 26,
                             ),
                           ),
-                          Text(dateString,
-                              style: AppTextStyles.button.copyWith(
-                                  fontSize: 18,
-                                  color: textColor ?? AppColors.brandingPurple))
+                          isUser
+                              ? Text(weekday,
+                                  style: AppTextStyles.button.copyWith(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  400
+                                              ? 14
+                                              : 18,
+                                      color: Colors.white))
+                              : const SizedBox.shrink(),
                         ],
-                      ),
-                      const SizedBox(
-                        width: 16,
                       ),
                       Row(
                         children: [
@@ -100,47 +131,105 @@ class NextActivityCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
                               Icons.access_time_outlined,
-                              color: textColor ?? AppColors.brandingPurple,
-                              size: 20,
+                              color: Colors.white,
+                              size: MediaQuery.of(context).size.width < 1000
+                                  ? 24
+                                  : 26,
                             ),
                           ),
-                          Text(timeString,
+                          Text('$timeString - $finalTime',
                               style: AppTextStyles.button.copyWith(
-                                  fontSize: 18,
-                                  color: textColor ?? AppColors.brandingPurple))
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 400
+                                          ? 14
+                                          : 18,
+                                  color: Colors.white))
                         ],
                       ),
-                      const SizedBox(
-                        width: 16,
-                      ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 4),
-                            child: Icon(
-                              Icons.person,
-                              color: textColor ?? AppColors.brandingPurple,
-                              size: 20,
+                      if (!isUser)
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 4),
+                              child: Icon(
+                                isUser ? Icons.location_on : Icons.person,
+                                color: Colors.white,
+                                size: MediaQuery.of(context).size.width < 1000
+                                    ? 24
+                                    : 26,
+                              ),
                             ),
-                          ),
-                          RichText(
-                              text: TextSpan(children: [
-                            TextSpan(
-                                text: '0/',
+                            RichText(
+                                text: TextSpan(children: [
+                              TextSpan(
+                                  text: '0/',
+                                  style: AppTextStyles.button.copyWith(
+                                      fontSize: 18, color: Colors.white)),
+                              TextSpan(
+                                  text: '$totalParticipants',
+                                  style: AppTextStyles.button.copyWith(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  400
+                                              ? 14
+                                              : 18,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold)),
+                            ])),
+                          ],
+                        ),
+                      if (isUser && location != null)
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 4),
+                              child: Icon(
+                                Icons.location_on,
+                                color: Colors.white,
+                                size: MediaQuery.of(context).size.width < 1000
+                                    ? 24
+                                    : 26,
+                              ),
+                            ),
+                            Text(location!,
                                 style: AppTextStyles.button.copyWith(
-                                    fontSize: 18,
-                                    color:
-                                        textColor ?? AppColors.brandingPurple)),
-                            TextSpan(
-                                text: '$totalParticipants',
-                                style: AppTextStyles.button.copyWith(
-                                    fontSize: 18,
-                                    color:
-                                        textColor ?? AppColors.brandingPurple,
-                                    fontWeight: FontWeight.bold)),
-                          ])),
-                        ],
-                      ),
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 400
+                                            ? 14
+                                            : 18,
+                                    color: Colors.white))
+                          ],
+                        ),
+                      if (isUser && link != null)
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 4),
+                              child: Transform.rotate(
+                                angle: 135 * math.pi / 180,
+                                child: Icon(
+                                  Icons.link,
+                                  color: Colors.white,
+                                  size: MediaQuery.of(context).size.width < 1000
+                                      ? 24
+                                      : 26,
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () => launch(link!),
+                              child: Text('Link',
+                                  style: AppTextStyles.button.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 400
+                                            ? 14
+                                            : 18,
+                                    color: Colors.white,
+                                    decoration: TextDecoration.underline,
+                                  )),
+                            )
+                          ],
+                        ),
                     ],
                   ),
                 )

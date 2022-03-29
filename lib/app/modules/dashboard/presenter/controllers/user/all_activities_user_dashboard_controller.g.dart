@@ -55,40 +55,47 @@ mixin _$AllActivitiesUserDashboardController
               name:
                   '_AllActivitiesUserDashboardControllerBase.fridayActivitiesList'))
           .value;
-
-  final _$isFloatActionButtonOpenAtom = Atom(
-      name:
-          '_AllActivitiesUserDashboardControllerBase.isFloatActionButtonOpen');
+  Computed<List<CardActivity>>? _$saturdayActivitiesListComputed;
 
   @override
-  bool get isFloatActionButtonOpen {
-    _$isFloatActionButtonOpenAtom.reportRead();
-    return super.isFloatActionButtonOpen;
-  }
-
-  @override
-  set isFloatActionButtonOpen(bool value) {
-    _$isFloatActionButtonOpenAtom
-        .reportWrite(value, super.isFloatActionButtonOpen, () {
-      super.isFloatActionButtonOpen = value;
-    });
-  }
+  List<CardActivity> get saturdayActivitiesList =>
+      (_$saturdayActivitiesListComputed ??= Computed<List<CardActivity>>(
+              () => super.saturdayActivitiesList,
+              name:
+                  '_AllActivitiesUserDashboardControllerBase.saturdayActivitiesList'))
+          .value;
 
   final _$filterActivityChipIndexSelectedAtom = Atom(
       name:
           '_AllActivitiesUserDashboardControllerBase.filterActivityChipIndexSelected');
 
   @override
-  int? get filterActivityChipIndexSelected {
+  int get filterActivityChipIndexSelected {
     _$filterActivityChipIndexSelectedAtom.reportRead();
     return super.filterActivityChipIndexSelected;
   }
 
   @override
-  set filterActivityChipIndexSelected(int? value) {
+  set filterActivityChipIndexSelected(int value) {
     _$filterActivityChipIndexSelectedAtom
         .reportWrite(value, super.filterActivityChipIndexSelected, () {
       super.filterActivityChipIndexSelected = value;
+    });
+  }
+
+  final _$weekActivitiesListAtom = Atom(
+      name: '_AllActivitiesUserDashboardControllerBase.weekActivitiesList');
+
+  @override
+  List<CardActivity> get weekActivitiesList {
+    _$weekActivitiesListAtom.reportRead();
+    return super.weekActivitiesList;
+  }
+
+  @override
+  set weekActivitiesList(List<CardActivity> value) {
+    _$weekActivitiesListAtom.reportWrite(value, super.weekActivitiesList, () {
+      super.weekActivitiesList = value;
     });
   }
 
@@ -105,22 +112,6 @@ mixin _$AllActivitiesUserDashboardController
   set activitiesList(List<ActivityModel> value) {
     _$activitiesListAtom.reportWrite(value, super.activitiesList, () {
       super.activitiesList = value;
-    });
-  }
-
-  final _$nextActivitiesListAtom = Atom(
-      name: '_AllActivitiesUserDashboardControllerBase.nextActivitiesList');
-
-  @override
-  List<CardActivity> get nextActivitiesList {
-    _$nextActivitiesListAtom.reportRead();
-    return super.nextActivitiesList;
-  }
-
-  @override
-  set nextActivitiesList(List<CardActivity> value) {
-    _$nextActivitiesListAtom.reportWrite(value, super.nextActivitiesList, () {
-      super.nextActivitiesList = value;
     });
   }
 
@@ -141,13 +132,20 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
-  final _$getActivitiesByTypeAsyncAction = AsyncAction(
-      '_AllActivitiesUserDashboardControllerBase.getActivitiesByType');
+  final _$activityTypeAtom =
+      Atom(name: '_AllActivitiesUserDashboardControllerBase.activityType');
 
   @override
-  Future<dynamic> getActivitiesByType(dynamic index) {
-    return _$getActivitiesByTypeAsyncAction
-        .run(() => super.getActivitiesByType(index));
+  ActivityEnum? get activityType {
+    _$activityTypeAtom.reportRead();
+    return super.activityType;
+  }
+
+  @override
+  set activityType(ActivityEnum? value) {
+    _$activityTypeAtom.reportWrite(value, super.activityType, () {
+      super.activityType = value;
+    });
   }
 
   final _$getAllActivitiesAsyncAction =
@@ -156,6 +154,15 @@ mixin _$AllActivitiesUserDashboardController
   @override
   Future<dynamic> getAllActivities() {
     return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
+  }
+
+  final _$getActivitiesByTypeAsyncAction = AsyncAction(
+      '_AllActivitiesUserDashboardControllerBase.getActivitiesByType');
+
+  @override
+  Future<dynamic> getActivitiesByType(ActivityEnum? typeActivity) {
+    return _$getActivitiesByTypeAsyncAction
+        .run(() => super.getActivitiesByType(typeActivity));
   }
 
   final _$logoutAsyncAction =
@@ -168,20 +175,6 @@ mixin _$AllActivitiesUserDashboardController
 
   final _$_AllActivitiesUserDashboardControllerBaseActionController =
       ActionController(name: '_AllActivitiesUserDashboardControllerBase');
-
-  @override
-  void toggleFloatActionButton() {
-    final _$actionInfo =
-        _$_AllActivitiesUserDashboardControllerBaseActionController.startAction(
-            name:
-                '_AllActivitiesUserDashboardControllerBase.toggleFloatActionButton');
-    try {
-      return super.toggleFloatActionButton();
-    } finally {
-      _$_AllActivitiesUserDashboardControllerBaseActionController
-          .endAction(_$actionInfo);
-    }
-  }
 
   @override
   void toggleFilterActivityChipIndex(dynamic index) {
@@ -200,16 +193,17 @@ mixin _$AllActivitiesUserDashboardController
   @override
   String toString() {
     return '''
-isFloatActionButtonOpen: ${isFloatActionButtonOpen},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
+weekActivitiesList: ${weekActivitiesList},
 activitiesList: ${activitiesList},
-nextActivitiesList: ${nextActivitiesList},
 allActivitiesToCards: ${allActivitiesToCards},
+activityType: ${activityType},
 mondayActivitiesList: ${mondayActivitiesList},
 tuesdayActivitiesList: ${tuesdayActivitiesList},
 wednesdayActivitiesList: ${wednesdayActivitiesList},
 thursdayActivitiesList: ${thursdayActivitiesList},
-fridayActivitiesList: ${fridayActivitiesList}
+fridayActivitiesList: ${fridayActivitiesList},
+saturdayActivitiesList: ${saturdayActivitiesList}
     ''';
   }
 }

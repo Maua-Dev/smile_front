@@ -10,7 +10,7 @@ class Activity {
   final String title;
   final String description;
   final List<ScheduleActivityModel> schedule;
-  final List<SpeakerActivityModel> speaker;
+  final List<SpeakerActivityModel> speakers;
 
   Activity({
     required this.id,
@@ -19,7 +19,7 @@ class Activity {
     required this.title,
     required this.description,
     required this.schedule,
-    required this.speaker,
+    required this.speakers,
   });
 
   factory Activity.newInstance() {
@@ -30,6 +30,6 @@ class Activity {
         id: '',
         title: '',
         type: ActivityEnum.CAFE_EX_ALUNOS,
-        speaker: []);
+        speakers: []);
   }
 }

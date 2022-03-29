@@ -9,7 +9,49 @@ var subscribedActivities = <ActivityModel>[
     id: '0',
     activityCode: 'C01',
     type: ActivityEnum.CURSOS,
-    title: 'Atividade 01',
+    title:
+        'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+    description:
+        'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
+    speakers: [
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
+      ),
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
+      ),
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
+      ),
+    ],
+    schedule: <ScheduleActivityModel>[
+      ScheduleActivityModel(
+        date: DateTime.parse('2022-05-16 13:00'),
+        totalParticipants: 20,
+        duration: DateFormat('HH:mm').parse('01:00'),
+        location: 'H244',
+        link: 'https://www.google.com.br',
+      ),
+      ScheduleActivityModel(
+          date: DateTime.parse('2022-05-17 13:00'),
+          totalParticipants: 30,
+          duration: DateFormat('HH:mm').parse('01:00'),
+          location: 'H244',
+          link: 'https://'),
+    ],
+  ),
+  ActivityModel(
+    id: '0',
+    activityCode: 'C01',
+    type: ActivityEnum.PALESTRAS,
+    title:
+        'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
     description:
         'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
     speakers: [
@@ -21,15 +63,45 @@ var subscribedActivities = <ActivityModel>[
     ],
     schedule: <ScheduleActivityModel>[
       ScheduleActivityModel(
-        date: DateTime.parse('2022-03-21 13:00'),
+        date: DateTime.parse('2022-05-16 13:00'),
         totalParticipants: 20,
-        duration: DateFormat('HH:mm').parse('13:00'),
+        duration: DateFormat('HH:mm').parse('01:00'),
         location: 'H244',
       ),
       ScheduleActivityModel(
-          date: DateTime.parse('2022-03-22 13:00'),
+          date: DateTime.parse('2022-05-17 13:00'),
           totalParticipants: 30,
-          duration: DateFormat('HH:mm').parse('13:00'),
+          duration: DateFormat('HH:mm').parse('01:00'),
+          location: 'H244',
+          link: 'https://'),
+    ],
+  ),
+  ActivityModel(
+    id: '0',
+    activityCode: 'C01',
+    type: ActivityEnum.PALESTRAS,
+    title:
+        'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+    description:
+        'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
+    speakers: [
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
+      ),
+    ],
+    schedule: <ScheduleActivityModel>[
+      ScheduleActivityModel(
+        date: DateTime.parse('2022-05-16 13:00'),
+        totalParticipants: 20,
+        duration: DateFormat('HH:mm').parse('01:00'),
+        location: 'H244',
+      ),
+      ScheduleActivityModel(
+          date: DateTime.parse('2022-05-17 13:00'),
+          totalParticipants: 30,
+          duration: DateFormat('HH:mm').parse('01:00'),
           location: 'H244',
           link: 'https://'),
     ],
@@ -49,9 +121,9 @@ var subscribedActivities = <ActivityModel>[
     ],
     schedule: <ScheduleActivityModel>[
       ScheduleActivityModel(
-        date: DateTime.parse('2022-03-21 13:00'),
+        date: DateTime.parse('2022-05-18 13:00'),
         totalParticipants: 20,
-        duration: DateFormat('HH:mm').parse('13:00'),
+        duration: DateFormat('HH:mm').parse('01:00'),
         location: 'H244',
       ),
     ],
@@ -71,9 +143,9 @@ var subscribedActivities = <ActivityModel>[
     ],
     schedule: <ScheduleActivityModel>[
       ScheduleActivityModel(
-        date: DateTime.parse('2022-03-21 13:00'),
+        date: DateTime.parse('2022-05-19 13:00'),
         totalParticipants: 20,
-        duration: DateFormat('HH:mm').parse('13:00'),
+        duration: DateFormat('HH:mm').parse('01:00'),
         location: 'H244',
       ),
     ],

@@ -49,6 +49,31 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
               () => super.fridayActivitiesList,
               name: '_UserDashboardControllerBase.fridayActivitiesList'))
           .value;
+  Computed<List<CardActivity>>? _$saturdayActivitiesListComputed;
+
+  @override
+  List<CardActivity> get saturdayActivitiesList =>
+      (_$saturdayActivitiesListComputed ??= Computed<List<CardActivity>>(
+              () => super.saturdayActivitiesList,
+              name: '_UserDashboardControllerBase.saturdayActivitiesList'))
+          .value;
+
+  final _$filterActivityChipIndexSelectedAtom = Atom(
+      name: '_UserDashboardControllerBase.filterActivityChipIndexSelected');
+
+  @override
+  int get filterActivityChipIndexSelected {
+    _$filterActivityChipIndexSelectedAtom.reportRead();
+    return super.filterActivityChipIndexSelected;
+  }
+
+  @override
+  set filterActivityChipIndexSelected(int value) {
+    _$filterActivityChipIndexSelectedAtom
+        .reportWrite(value, super.filterActivityChipIndexSelected, () {
+      super.filterActivityChipIndexSelected = value;
+    });
+  }
 
   final _$activitiesListAtom =
       Atom(name: '_UserDashboardControllerBase.activitiesList');
@@ -79,6 +104,22 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   set nextActivity(ActivityModel value) {
     _$nextActivityAtom.reportWrite(value, super.nextActivity, () {
       super.nextActivity = value;
+    });
+  }
+
+  final _$weekActivitiesListAtom =
+      Atom(name: '_UserDashboardControllerBase.weekActivitiesList');
+
+  @override
+  List<CardActivity> get weekActivitiesList {
+    _$weekActivitiesListAtom.reportRead();
+    return super.weekActivitiesList;
+  }
+
+  @override
+  set weekActivitiesList(List<CardActivity> value) {
+    _$weekActivitiesListAtom.reportWrite(value, super.weekActivitiesList, () {
+      super.weekActivitiesList = value;
     });
   }
 
@@ -138,22 +179,6 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
         .run(() => super.getUserSubscribedActivities());
   }
 
-  final _$getUserAsyncAction =
-      AsyncAction('_UserDashboardControllerBase.getUser');
-
-  @override
-  Future<dynamic> getUser() {
-    return _$getUserAsyncAction.run(() => super.getUser());
-  }
-
-  final _$logoutAsyncAction =
-      AsyncAction('_UserDashboardControllerBase.logout');
-
-  @override
-  Future<void> logout() {
-    return _$logoutAsyncAction.run(() => super.logout());
-  }
-
   final _$_UserDashboardControllerBaseActionController =
       ActionController(name: '_UserDashboardControllerBase');
 
@@ -180,10 +205,24 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   }
 
   @override
+  void toggleFilterActivityChipIndex(dynamic index) {
+    final _$actionInfo =
+        _$_UserDashboardControllerBaseActionController.startAction(
+            name: '_UserDashboardControllerBase.toggleFilterActivityChipIndex');
+    try {
+      return super.toggleFilterActivityChipIndex(index);
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 activitiesList: ${activitiesList},
 nextActivity: ${nextActivity},
+weekActivitiesList: ${weekActivitiesList},
 user: ${user},
 userName: ${userName},
 allActivitiesToCards: ${allActivitiesToCards},
@@ -191,7 +230,8 @@ mondayActivitiesList: ${mondayActivitiesList},
 tuesdayActivitiesList: ${tuesdayActivitiesList},
 wednesdayActivitiesList: ${wednesdayActivitiesList},
 thursdayActivitiesList: ${thursdayActivitiesList},
-fridayActivitiesList: ${fridayActivitiesList}
+fridayActivitiesList: ${fridayActivitiesList},
+saturdayActivitiesList: ${saturdayActivitiesList}
     ''';
   }
 }

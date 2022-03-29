@@ -1,6 +1,6 @@
 import 'package:smile_front/app/modules/home/domain/entities/rectors.dart';
 
-import '../../../../shared/utils/assets_url.dart';
+import '../../../../shared/utils/s3_assets_url.dart';
 
 final mockRectors = [
   Rectors(

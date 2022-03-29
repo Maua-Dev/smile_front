@@ -41,7 +41,7 @@ abstract class _EditActivityControllerBase with Store {
   @action
   bool isFilled() {
     var scheduleFirst = activityToEdit.schedule.first;
-    var speakerFirst = activityToEdit.speaker.first;
+    var speakerFirst = activityToEdit.speakers.first;
     if (activityToEdit.title != '' &&
         activityToEdit.description != '' &&
         activityToEdit.type != null &&
@@ -154,17 +154,17 @@ abstract class _EditActivityControllerBase with Store {
 
   @action
   void setSpeakerName(String value, int index) {
-    activityToEdit.speaker[index].name = value;
+    activityToEdit.speakers[index].name = value;
   }
 
   @action
   void setSpeakerBio(String value, int index) {
-    activityToEdit.speaker[index].bio = value;
+    activityToEdit.speakers[index].bio = value;
   }
 
   @action
   void setSpeakerCompany(String value, int index) {
-    activityToEdit.speaker[index].company = value;
+    activityToEdit.speakers[index].company = value;
   }
 
   @action
@@ -183,15 +183,15 @@ abstract class _EditActivityControllerBase with Store {
 
   @action
   void addSpeaker() {
-    var list = activityToEdit.speaker;
+    var list = activityToEdit.speakers;
     list.add(SpeakerActivityModel.newInstance());
-    activityToEdit = activityToEdit.copyWith(speaker: list);
+    activityToEdit = activityToEdit.copyWith(speakers: list);
   }
 
   @action
   void removeSpeaker(int index) {
-    var list = activityToEdit.speaker;
+    var list = activityToEdit.speakers;
     list.removeAt(index);
-    activityToEdit = activityToEdit.copyWith(speaker: list);
+    activityToEdit = activityToEdit.copyWith(speakers: list);
   }
 }

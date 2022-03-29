@@ -91,19 +91,19 @@ void main() {
   test('setSpeakerName', () {
     var str = 'teste';
     controller.setSpeakerName(str, 0);
-    expect(controller.activityToCreate.speaker[0].name, str);
+    expect(controller.activityToCreate.speakers[0].name, str);
   });
 
   test('setSpeakerBio', () {
     var str = 'teste';
     controller.setSpeakerBio(str, 0);
-    expect(controller.activityToCreate.speaker[0].bio, str);
+    expect(controller.activityToCreate.speakers[0].bio, str);
   });
 
   test('setSpeakerCompany', () {
     var str = 'teste';
     controller.setSpeakerCompany(str, 0);
-    expect(controller.activityToCreate.speaker[0].company, str);
+    expect(controller.activityToCreate.speakers[0].company, str);
   });
 
   test('removeSchedule', () {

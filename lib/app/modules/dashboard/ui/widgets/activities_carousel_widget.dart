@@ -8,7 +8,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 import '../../../auth/infra/repositories/secure_storage.dart';
-import '../user/more_info_dialog_widget.dart';
+import '../../utils/final_time_calculation.dart';
 import 'activity_card_widget.dart';
 
 class ActivitiesCarouselWidget extends StatelessWidget {
@@ -91,12 +91,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                           (element) =>
                                               element.id == list[index].id),
                                     );
-                                  } else {
-                                    moreInfoDialogWidget(
-                                        context,
-                                        listToEdit.firstWhere((element) =>
-                                            element.id == list[index].id));
-                                  }
+                                  } else {}
                                 },
                                 finalTime: finalTime,
                                 activityCode: list[index].activityCode,
@@ -187,12 +182,5 @@ class ActivitiesCarouselWidget extends StatelessWidget {
     } else {
       return const SizedBox.shrink();
     }
-  }
-
-  String getActivityFinalTime(DateTime time, DateTime duration) {
-    var newDate = DateTime(time.year, time.month, time.day,
-        time.hour + duration.hour, time.minute + duration.minute);
-
-    return DateFormat('HH:mm').format(newDate);
   }
 }
