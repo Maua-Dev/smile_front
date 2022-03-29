@@ -327,13 +327,22 @@ class _MainHomePageState extends State<MainHomePage> {
                           backgroundColor: AppColors.brandingPurple,
                         ),
                       ),
-                      BrandingTextButtonWidget(
-                        title: '17 a 22 de Maio',
-                        fontSize: weekFontSize(size),
-                        boxHeight: weekBoxHeight(size, height),
-                        boxWidth: 634,
-                        backgroundColor: AppColors.brandingOrange,
-                      )
+                      Container(
+                        height: weekBoxHeight(size, height),
+                        width: 634,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: AppColors.brandingOrange,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
+                        ),
+                        child: Text(
+                          '16 a 21 de Maio',
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.buttonBold
+                              .copyWith(fontSize: weekFontSize(size)),
+                        ),
+                      ),
                     ],
                   ),
                 ),
