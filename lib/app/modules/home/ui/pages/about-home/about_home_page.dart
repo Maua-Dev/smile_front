@@ -165,7 +165,7 @@ class _AboutHomePageState
                             child: Container(
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      fit: BoxFit.fill,
+                                      fit: BoxFit.cover,
                                       alignment: Alignment.centerLeft,
                                       image: CachedNetworkImageProvider(
                                         controller.listRectors[0].image,
@@ -260,7 +260,7 @@ class _AboutHomePageState
                             child: Container(
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                   alignment: Alignment.centerLeft,
                                   image: CachedNetworkImageProvider(
                                     controller.listRectors[1].image,

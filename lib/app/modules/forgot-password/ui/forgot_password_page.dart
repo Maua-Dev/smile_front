@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -40,8 +41,8 @@ class _ForgotPasswordPageState
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Center(
-                    child: Image.asset(
-                      'assets/images/logo_smile.png',
+                    child: CachedNetworkImage(
+                      imageUrl: smileLogoUrl,
                       width: 300,
                       fit: BoxFit.cover,
                     ),

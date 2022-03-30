@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -42,8 +43,8 @@ class _RegisterPageState
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'assets/images/logo_smile.png',
+                    CachedNetworkImage(
+                      imageUrl: smileLogoUrl,
                       width: 300,
                       fit: BoxFit.cover,
                     ),
