@@ -1,6 +1,6 @@
 class UserRegistration {
   final String name;
-  final String socialName;
+  final String? socialName;
   final String email;
   final String cpfRne;
   final int? ra;
@@ -9,23 +9,21 @@ class UserRegistration {
 
   UserRegistration(
       {required this.name,
-      required this.socialName,
+      this.socialName,
       required this.email,
       required this.cpfRne,
       this.ra,
       required this.password,
-      required this.acceptEmails
-    });
+      required this.acceptEmails});
 
   factory UserRegistration.newInstance() {
     return UserRegistration(
-      name: '',
-      socialName: '',
-      email: '',
-      cpfRne: '',
-      ra: null,
-      password: '',
-      acceptEmails: false
-    );
+        name: '',
+        socialName: '',
+        email: '',
+        cpfRne: '',
+        ra: null,
+        password: '',
+        acceptEmails: false);
   }
 }

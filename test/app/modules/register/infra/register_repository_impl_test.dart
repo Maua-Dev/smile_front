@@ -12,7 +12,8 @@ void main() {
       name: 'Caio Toledo',
       email: 'caio@caio.com',
       cpfRne: '63480154085',
-      password: 'Teste123!');
+      password: 'Teste123!',
+      acceptEmails: true);
 
   setUpAll(() {
     when(datasource.registerUser(userInformations))
