@@ -22,6 +22,7 @@ class RegisterDatasourceImpl implements RegisterDatasource {
     try {
       final res = await dio.post('/user', data: {
         "name": userRegistration.name,
+        "social_name": userRegistration.socialName,
         "cpf_rne": userRegistration.cpfRne,
         "ra": userRegistration.ra,
         "role": "STUDENT",

@@ -31,6 +31,12 @@ abstract class _RegisterController with Store {
   String name = '';
 
   @observable
+  String socialName = '';
+  
+  @observable
+  bool hasSocialName = false;
+
+  @observable
   String cpf = '';
 
   @observable
@@ -49,7 +55,10 @@ abstract class _RegisterController with Store {
   String verifyPassword = '';
 
   @observable
-  bool aceptEmailNotifications = true;
+  bool canSendEmails = false;
+
+  @observable
+  bool acceptTermsOfUse = false;
 
   @action
   Future<void> setError(String value) async {
@@ -59,6 +68,11 @@ abstract class _RegisterController with Store {
   @action
   Future<void> setName(String value) async {
     name = value;
+  }
+
+  @action
+  Future<void> setSocialName(String value) async {
+    socialName = value;
   }
 
   @action
@@ -105,6 +119,14 @@ abstract class _RegisterController with Store {
     isMauaStudent = value!;
     if (isMauaStudent == false) {
       ra = '';
+    }
+  }
+
+  @action
+  Future<void> setHasSocialName(bool? value) async {
+    hasSocialName = value!;
+    if (hasSocialName == false) {
+      socialName = '';
     }
   }
 
@@ -157,33 +179,34 @@ abstract class _RegisterController with Store {
     return null;
   }
 
-  @action
-  Future<void> setAceptEmailNotification(bool value) async {
-    aceptEmailNotifications = value;
-  }
-
   @computed
   UserRegistration get registerInformations => UserRegistration(
         name: name,
+        socialName: socialName,
         email: email,
         cpfRne: cpf,
         ra: raInt,
         password: password,
+        acceptEmails: canSendEmails,
       );
 
   @action
   Future<void> register() async {
-    setIsLoading(true);
-    try {
-      await registerUserRepository.registerUser(registerInformations);
+    if(acceptTermsOfUse){
+      setIsLoading(true);
+      try {
+        await registerUserRepository.registerUser(registerInformations);
+        setIsLoading(false);
+        setSuccessRegistration(true);
+        await Future.delayed(const Duration(seconds: 5));
+        Modular.to.navigate('/login');
+      } on Failure catch (e) {
+        errors = e.message;
+      }
       setIsLoading(false);
-      setSuccessRegistration(true);
-      await Future.delayed(const Duration(seconds: 5));
-      Modular.to.navigate('/login');
-    } on Failure catch (e) {
-      errors = e.message;
+    }else{
+      errors = "Aceite os Termos de Uso para realizar o cadastro";
     }
-    setIsLoading(false);
   }
 
   @action
@@ -194,5 +217,15 @@ abstract class _RegisterController with Store {
   @action
   Future<void> setSuccessRegistration(bool value) async {
     successRegistration = value;
+  }
+
+  @action
+  Future<void> setCanSendEmails(bool? value) async {
+    canSendEmails = value!;
+  }
+
+  @action
+  Future<void> setAcceptTermsOfUse(bool? value) async {
+    acceptTermsOfUse = value!;
   }
 }

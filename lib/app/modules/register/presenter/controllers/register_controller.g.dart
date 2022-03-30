@@ -85,6 +85,36 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
+  final _$socialNameAtom = Atom(name: '_RegisterController.socialName');
+
+  @override
+  String get socialName {
+    _$socialNameAtom.reportRead();
+    return super.socialName;
+  }
+
+  @override
+  set socialName(String value) {
+    _$socialNameAtom.reportWrite(value, super.socialName, () {
+      super.socialName = value;
+    });
+  }
+
+  final _$hasSocialNameAtom = Atom(name: '_RegisterController.hasSocialName');
+
+  @override
+  bool get hasSocialName {
+    _$hasSocialNameAtom.reportRead();
+    return super.hasSocialName;
+  }
+
+  @override
+  set hasSocialName(bool value) {
+    _$hasSocialNameAtom.reportWrite(value, super.hasSocialName, () {
+      super.hasSocialName = value;
+    });
+  }
+
   final _$cpfAtom = Atom(name: '_RegisterController.cpf');
 
   @override
@@ -175,20 +205,34 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$aceptEmailNotificationsAtom =
-      Atom(name: '_RegisterController.aceptEmailNotifications');
+  final _$canSendEmailsAtom = Atom(name: '_RegisterController.canSendEmails');
 
   @override
-  bool get aceptEmailNotifications {
-    _$aceptEmailNotificationsAtom.reportRead();
-    return super.aceptEmailNotifications;
+  bool get canSendEmails {
+    _$canSendEmailsAtom.reportRead();
+    return super.canSendEmails;
   }
 
   @override
-  set aceptEmailNotifications(bool value) {
-    _$aceptEmailNotificationsAtom
-        .reportWrite(value, super.aceptEmailNotifications, () {
-      super.aceptEmailNotifications = value;
+  set canSendEmails(bool value) {
+    _$canSendEmailsAtom.reportWrite(value, super.canSendEmails, () {
+      super.canSendEmails = value;
+    });
+  }
+
+  final _$acceptTermsOfUseAtom =
+      Atom(name: '_RegisterController.acceptTermsOfUse');
+
+  @override
+  bool get acceptTermsOfUse {
+    _$acceptTermsOfUseAtom.reportRead();
+    return super.acceptTermsOfUse;
+  }
+
+  @override
+  set acceptTermsOfUse(bool value) {
+    _$acceptTermsOfUseAtom.reportWrite(value, super.acceptTermsOfUse, () {
+      super.acceptTermsOfUse = value;
     });
   }
 
@@ -204,6 +248,14 @@ mixin _$RegisterController on _RegisterController, Store {
   @override
   Future<void> setName(String value) {
     return _$setNameAsyncAction.run(() => super.setName(value));
+  }
+
+  final _$setSocialNameAsyncAction =
+      AsyncAction('_RegisterController.setSocialName');
+
+  @override
+  Future<void> setSocialName(String value) {
+    return _$setSocialNameAsyncAction.run(() => super.setSocialName(value));
   }
 
   final _$setCpfAsyncAction = AsyncAction('_RegisterController.setCpf');
@@ -227,6 +279,15 @@ mixin _$RegisterController on _RegisterController, Store {
   Future<void> setIsMauaStudent(bool? value) {
     return _$setIsMauaStudentAsyncAction
         .run(() => super.setIsMauaStudent(value));
+  }
+
+  final _$setHasSocialNameAsyncAction =
+      AsyncAction('_RegisterController.setHasSocialName');
+
+  @override
+  Future<void> setHasSocialName(bool? value) {
+    return _$setHasSocialNameAsyncAction
+        .run(() => super.setHasSocialName(value));
   }
 
   final _$setRaAsyncAction = AsyncAction('_RegisterController.setRa');
@@ -253,15 +314,6 @@ mixin _$RegisterController on _RegisterController, Store {
         .run(() => super.setVerifyPassword(value));
   }
 
-  final _$setAceptEmailNotificationAsyncAction =
-      AsyncAction('_RegisterController.setAceptEmailNotification');
-
-  @override
-  Future<void> setAceptEmailNotification(bool value) {
-    return _$setAceptEmailNotificationAsyncAction
-        .run(() => super.setAceptEmailNotification(value));
-  }
-
   final _$registerAsyncAction = AsyncAction('_RegisterController.register');
 
   @override
@@ -284,6 +336,24 @@ mixin _$RegisterController on _RegisterController, Store {
   Future<void> setSuccessRegistration(bool value) {
     return _$setSuccessRegistrationAsyncAction
         .run(() => super.setSuccessRegistration(value));
+  }
+
+  final _$setCanSendEmailsAsyncAction =
+      AsyncAction('_RegisterController.setCanSendEmails');
+
+  @override
+  Future<void> setCanSendEmails(bool? value) {
+    return _$setCanSendEmailsAsyncAction
+        .run(() => super.setCanSendEmails(value));
+  }
+
+  final _$setAcceptTermsOfUseAsyncAction =
+      AsyncAction('_RegisterController.setAcceptTermsOfUse');
+
+  @override
+  Future<void> setAcceptTermsOfUse(bool? value) {
+    return _$setAcceptTermsOfUseAsyncAction
+        .run(() => super.setAcceptTermsOfUse(value));
   }
 
   final _$_RegisterControllerActionController =
@@ -351,13 +421,16 @@ errors: ${errors},
 isLoading: ${isLoading},
 successRegistration: ${successRegistration},
 name: ${name},
+socialName: ${socialName},
+hasSocialName: ${hasSocialName},
 cpf: ${cpf},
 email: ${email},
 isMauaStudent: ${isMauaStudent},
 ra: ${ra},
 password: ${password},
 verifyPassword: ${verifyPassword},
-aceptEmailNotifications: ${aceptEmailNotifications},
+canSendEmails: ${canSendEmails},
+acceptTermsOfUse: ${acceptTermsOfUse},
 raInt: ${raInt},
 registerInformations: ${registerInformations}
     ''';

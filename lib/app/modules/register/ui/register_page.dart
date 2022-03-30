@@ -117,6 +117,83 @@ class _RegisterPageState
                     const SizedBox(
                       height: 20,
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width < 650
+                              ? MediaQuery.of(context).size.width * 0.35
+                              : 190,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: AppColors.gray,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: MediaQuery.of(context).size.width > 600
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Observer(builder: (_) {
+                                      return Checkbox(
+                                        activeColor: AppColors.brandingPurple,
+                                        value: controller.hasSocialName,
+                                        onChanged: (bool? value) {
+                                          controller.setHasSocialName(value);
+                                        },
+                                      );
+                                    }),
+                                    const SizedBox(width: 5),
+                                    const Text(
+                                      'Nome Social',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 14),
+                                    )
+                                  ],
+                                )
+                              : Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Observer(builder: (_) {
+                                      return Checkbox(
+                                        activeColor: AppColors.brandingPurple,
+                                        value: controller.hasSocialName,
+                                        onChanged: (bool? value) {
+                                          controller.setHasSocialName(value);
+                                        },
+                                      );
+                                    }),
+                                    const SizedBox(width: 5),
+                                    const Flexible(
+                                      child: Text(
+                                        'Nome Social',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 14),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Observer(builder: (_) {
+                          return InputBox(
+                            disable: !controller.hasSocialName,
+                            icon: Icons.person,
+                            placeholder: 'Nome Social',
+                            setValue: controller.setSocialName,
+                            widthSize: MediaQuery.of(context).size.width < 650
+                                ? MediaQuery.of(context).size.width * 0.48
+                                : 400,
+                            validation: controller.validateName,
+                          );
+                        }),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     InputBox(
                       icon: Icons.person,
                       placeholder: 'CPF / RNE',
@@ -162,10 +239,12 @@ class _RegisterPageState
                                       );
                                     }),
                                     const SizedBox(width: 5),
-                                    const Text(
-                                      'Sou Aluno Mauá',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 14),
+                                    const Flexible(
+                                      child: Text(
+                                        'Sou Aluno Mauá',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 14),
+                                      ),
                                     )
                                   ],
                                 )
@@ -182,10 +261,12 @@ class _RegisterPageState
                                       );
                                     }),
                                     const SizedBox(width: 5),
-                                    const Text(
-                                      'Sou Aluno Mauá',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 14),
+                                    const Flexible(
+                                      child: Text(
+                                        'Sou Aluno Mauá',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 14),
+                                      ),
                                     )
                                   ],
                                 ),
@@ -230,14 +311,83 @@ class _RegisterPageState
                     const SizedBox(
                       height: 20,
                     ),
+                    Container(
+                      width: MediaQuery.of(context).size.width < 650
+                              ? MediaQuery.of(context).size.width * 0.75
+                              : 600,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: AppColors.gray,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Observer(builder: (_) {
+                            return Checkbox(
+                              activeColor: AppColors.brandingPurple,
+                              value: controller.canSendEmails,
+                              onChanged: (bool? value) {
+                                controller.setCanSendEmails(value);
+                              },
+                            );
+                          }),
+                          const SizedBox(width: 5),
+                          const Flexible(
+                            child: Text(
+                              'Quero receber notificações por email e SMS durante o evento',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 14),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                     const SizedBox(
                       height: 20,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width < 650
+                              ? MediaQuery.of(context).size.width * 0.75
+                              : 600,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: AppColors.gray,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Observer(builder: (_) {
+                            return Checkbox(
+                              activeColor: AppColors.brandingPurple,
+                              value: controller.acceptTermsOfUse,
+                              onChanged: (bool? value) {
+                                controller.setAcceptTermsOfUse(value);
+                              },
+                            );
+                          }),
+                          const SizedBox(width: 5),
+                          const Flexible(
+                            child: Text(
+                              'Li e Aceito os Termos de Uso',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 14),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40,
                     ),
                     Observer(builder: (_) {
                       return ActionTextButtonWidget(
                         isLoading: controller.isLoading,
                         title: 'Cadastrar',
-                        widthSize: 600,
+                        widthSize: MediaQuery.of(context).size.width < 650
+                        ? MediaQuery.of(context).size.width * 0.85
+                        : 600,
                         heightSize: 50,
                         backgroundColor: AppColors.brandingOrange,
                         onPressed: () async {
@@ -252,7 +402,9 @@ class _RegisterPageState
                     ),
                     ActionTextButtonWidget(
                       title: 'Já tenho um cadastro',
-                      widthSize: 600,
+                      widthSize: MediaQuery.of(context).size.width < 650
+                        ? MediaQuery.of(context).size.width * 0.85
+                        : 600,
                       heightSize: 50,
                       backgroundColor: AppColors.brandingPurple,
                       onPressed: () {
