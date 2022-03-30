@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
-import '../utils/subscribed_activities_mock.dart';
+import '../utils/mocks/subscribed_activities_mock.dart';
 
 class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   final Dio dioClient;
