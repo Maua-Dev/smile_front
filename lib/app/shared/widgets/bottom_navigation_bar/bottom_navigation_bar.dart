@@ -13,7 +13,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var controller = BottomNavigationBarController();
+    var controller = Modular.get<BottomNavigationBarController>();
     return Observer(builder: (context) {
       return Container(
         padding: MediaQuery.of(context).size.width < 1000

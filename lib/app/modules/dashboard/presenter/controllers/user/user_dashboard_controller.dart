@@ -21,6 +21,14 @@ abstract class _UserDashboardControllerBase with Store {
   }
 
   @observable
+  bool isLoading = false;
+
+  @action
+  Future<void> setIsLoading(bool value) async {
+    isLoading = value;
+  }
+
+  @observable
   int filterActivityChipIndexSelected = 0;
 
   @observable
@@ -43,27 +51,31 @@ abstract class _UserDashboardControllerBase with Store {
 
   @action
   Future getUserSubscribedActivities() async {
+    setIsLoading(true);
     activitiesList = await repository.getUserSubscribedActivities();
-    allActivitiesToCards = [];
-    for (var activity in activitiesList) {
-      for (var time in activity.schedule) {
-        allActivitiesToCards.add(CardActivity(
-          id: activity.id,
-          activityCode: activity.activityCode,
-          type: activity.type,
-          title: activity.title,
-          description: activity.description,
-          date: time.date,
-          duration: time.duration,
-          totalParticipants: time.totalParticipants,
-          speakers: activity.speakers,
-          location: time.location,
-          link: time.link,
-        ));
+    if (activitiesList.isNotEmpty) {
+      allActivitiesToCards = [];
+      for (var activity in activitiesList) {
+        for (var time in activity.schedule) {
+          allActivitiesToCards.add(CardActivity(
+            id: activity.id,
+            activityCode: activity.activityCode,
+            type: activity.type,
+            title: activity.title,
+            description: activity.description,
+            date: time.date,
+            duration: time.duration,
+            totalParticipants: time.totalParticipants,
+            speakers: activity.speakers,
+            location: time.location,
+            link: time.link,
+          ));
+        }
       }
+      toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
+      getNextActivity();
     }
-    toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
-    getNextActivity();
+    setIsLoading(false);
   }
 
   @action

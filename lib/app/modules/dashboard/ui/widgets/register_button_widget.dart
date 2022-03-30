@@ -5,7 +5,9 @@ import '../../../../shared/themes/app_text_styles.dart';
 
 class RegisterButtonWidget extends StatelessWidget {
   final bool isRegistered;
-  const RegisterButtonWidget({Key? key, required this.isRegistered})
+  final Function()? onPressed;
+  const RegisterButtonWidget(
+      {Key? key, required this.isRegistered, this.onPressed})
       : super(key: key);
 
   @override
@@ -24,6 +26,6 @@ class RegisterButtonWidget extends StatelessWidget {
             style: AppTextStyles.buttonBold.copyWith(
                 fontSize: MediaQuery.of(context).size.width < 1000 ? 24 : 28,
                 color: Colors.white)),
-        onPressed: () {});
+        onPressed: onPressed);
   }
 }
