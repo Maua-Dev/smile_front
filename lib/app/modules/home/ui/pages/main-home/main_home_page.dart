@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
@@ -416,7 +417,7 @@ class _MainHomePageState extends State<MainHomePage> {
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(mauaCampusUrl),
+                  image: CachedNetworkImageProvider(mauaCampusUrl),
                   fit: BoxFit.fill,
                 ),
               ),
