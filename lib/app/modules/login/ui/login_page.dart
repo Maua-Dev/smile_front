@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/login/ui/widgets/smile_logo_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
@@ -39,17 +40,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        Modular.to.navigate('/home');
-                      },
-                      child: CachedNetworkImage(
-                        imageUrl: smileLogoUrl,
-                        width: 300,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                  const Center(
+                    child: SmileLogoWidget(),
                   ),
                   const SizedBox(
                     height: 10,

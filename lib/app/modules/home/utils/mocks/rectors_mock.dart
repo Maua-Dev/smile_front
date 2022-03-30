@@ -4,7 +4,7 @@ import '../../../../shared/utils/s3_assets_url.dart';
 
 final mockRectors = [
   Rectors(
-    image: '${rectorsBaseUrl}JoséCarlos.jpg',
+    image: '${rectorsBaseUrl}JoseCarlos.jpg',
     name: 'Prof. Dr. José Carlos de Souza Junior',
     role: 'Reitor do CEUN-IMT',
     text:
