@@ -105,6 +105,20 @@ mixin _$LoginController on _LoginController, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
+  final _$_LoginControllerActionController =
+      ActionController(name: '_LoginController');
+
+  @override
+  String? validateCpf(String value) {
+    final _$actionInfo = _$_LoginControllerActionController.startAction(
+        name: '_LoginController.validateCpf');
+    try {
+      return super.validateCpf(value);
+    } finally {
+      _$_LoginControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

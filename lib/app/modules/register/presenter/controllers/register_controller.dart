@@ -4,7 +4,7 @@ import 'package:smile_front/app/modules/register/domain/repositories/register_in
 
 import '../../../../shared/entities/user_registration.dart';
 import '../../external/errors/errors.dart';
-
+import 'package:cpf_cnpj_validator/cpf_validator.dart';
 part 'register_controller.g.dart';
 
 class RegisterController = _RegisterController with _$RegisterController;
@@ -65,6 +65,8 @@ abstract class _RegisterController with Store {
   String? validateName(String value) {
     if (value.isEmpty) {
       return "         Campo obrigatório";
+    }else if(value.split(' ').length < 2){
+      return "         Insira seu nome completo";
     }
     return null;
   }
@@ -78,8 +80,12 @@ abstract class _RegisterController with Store {
 
   @action
   String? validateCpf(String value) {
+    value = value.replaceAll('.', '');
+    value = value.replaceAll('-', '');
     if (value.isEmpty) {
       return "         Campo obrigatório";
+    }else if(!CPFValidator.isValid(value)){
+      return "         CPF inválido";
     }
     return null;
   }

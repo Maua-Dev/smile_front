@@ -28,6 +28,7 @@ dependencies:
   enum_to_string: ^2.0.1
   syncfusion_flutter_datepicker: ^19.4.56
   url_launcher: ^6.0.20
+  cpf_cnpj_validator: ^2.0.0
 
 dev_dependencies:
   build_runner: ^2.1.5
