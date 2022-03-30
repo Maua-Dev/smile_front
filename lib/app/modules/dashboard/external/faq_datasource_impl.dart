@@ -3,9 +3,9 @@ import 'package:smile_front/app/modules/dashboard/infra/datasources/faq_datasour
 
 import '../utils/faq_mock.dart';
 
-class FaqDatasouceImpl extends FaqDatasource {
+class FaqDatasourceImpl extends FaqDatasource {
   @override
   Future<List<Faq>> getAllFaq() async {
-    return faqMock;
+    return await Future.value(faqMock);
   }
 }

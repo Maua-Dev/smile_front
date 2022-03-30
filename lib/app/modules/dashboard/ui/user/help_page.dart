@@ -27,6 +27,9 @@ class _HelpPageState extends ModularState<HelpPage, HelpController> {
             fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
             leftPadding: MediaQuery.of(context).size.width < 1000 ? 12 : 24,
           ),
+          const SizedBox(
+            height: 16,
+          ),
           Expanded(child: Observer(builder: (_) {
             return ListView.builder(
               shrinkWrap: true,

@@ -74,7 +74,10 @@ class BottomNavigationBarWidget extends StatelessWidget {
               NavBarButtonWidget(
                 indexToShow: controller.indexToShow,
                 myIndex: 4,
-                onPressed: () {},
+                onPressed: () async {
+                  await controller.toggleIndex(4);
+                  Modular.to.navigate('/user/help');
+                },
                 icon: Icons.help,
               ),
             ]),

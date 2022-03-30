@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class FaqCardWidget extends StatelessWidget {
   final String titulo;
@@ -16,11 +17,12 @@ class FaqCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: ExpansionPanelList(
         animationDuration: const Duration(seconds: 1),
         elevation: 4,
-        expandedHeaderPadding: const EdgeInsets.all(8),
+        expandedHeaderPadding:
+            const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
         children: [
           ExpansionPanel(
               canTapOnHeader: true,
@@ -28,35 +30,32 @@ class FaqCardWidget extends StatelessWidget {
               headerBuilder: (context, isExpanded) => Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const SizedBox(
-                        width: 16,
-                      ),
-                      Expanded(
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
                           titulo,
-                          style: const TextStyle(color: Colors.black),
+                          style: AppTextStyles.titleH1.copyWith(
+                              color: Colors.black,
+                              fontSize: MediaQuery.of(context).size.width < 1000
+                                  ? 22
+                                  : 28),
                         ),
                       ),
                     ],
                   ),
-              body: Padding(
-                padding: const EdgeInsets.fromLTRB(12, 4, 12, 8),
-                child: Row(
-                  children: [
-                    const Spacer(
-                      flex: 1,
-                    ),
-                    Expanded(
-                      flex: 14,
-                      child: Text(
-                        descricao,
-                        style: const TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              body: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(descricao,
+                        style: AppTextStyles.titleH1.copyWith(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width < 1000
+                                ? 16
+                                : 24)),
+                  ),
+                ],
               )),
         ],
         expansionCallback: (i, isExpanded) {
