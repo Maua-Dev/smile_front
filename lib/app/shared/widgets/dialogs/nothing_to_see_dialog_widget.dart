@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class NoActivityDialogWidget extends StatelessWidget {
+class NothingToSeeDialogWidget extends StatelessWidget {
   final Function()? onPressed;
   final String title;
   final String content;
 
-  const NoActivityDialogWidget({
+  const NothingToSeeDialogWidget({
     Key? key,
     this.onPressed,
     required this.title,
