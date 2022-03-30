@@ -7,8 +7,8 @@ import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
+import '../../../../shared/utils/utils.dart';
 import '../../../auth/infra/repositories/secure_storage.dart';
-import '../../utils/final_time_calculation.dart';
 import 'activity_card_widget.dart';
 
 class ActivitiesCarouselWidget extends StatelessWidget {
@@ -70,7 +70,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                             DateFormat('dd/MM/yyyy').format(list[index].date!);
                         String time =
                             DateFormat('HH:mm').format(list[index].date!);
-                        String finalTime = getActivityFinalTime(
+                        String finalTime = Utils.getActivityFinalTime(
                             list[index].date!, list[index].duration!);
                         return Row(
                           children: [

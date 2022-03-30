@@ -5,9 +5,9 @@ import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
+import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
-import '../../utils/final_time_calculation.dart';
 import '../widgets/next_activity_card_widget.dart';
 import '../widgets/user_weekday/user_activity_card_widget.dart';
 import '../widgets/user_weekday/user_weekday_filter_widget.dart';
@@ -77,7 +77,7 @@ class _UserDashboardPageState
                                 controller.weekActivitiesList[index].date ==
                                     null
                             ? ''
-                            : getActivityFinalTime(
+                            : Utils.getActivityFinalTime(
                                 controller.weekActivitiesList[index].date!,
                                 controller.weekActivitiesList[index].duration!);
                         var hour = DateFormat('HH:mm')

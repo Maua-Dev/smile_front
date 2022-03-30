@@ -10,7 +10,6 @@ import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
-import 'package:smile_front/app/shared/models/user_model.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
@@ -23,14 +22,6 @@ void main() {
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
   late UserDashboardController controller;
   late AuthController authController;
-
-  final userMock = UserModel(
-    email: '',
-    cpfRne: '',
-    accessLevel: '',
-    typeRole: '',
-    socialName: 'Gabriel Godoy',
-  );
 
   final mockActivities = <ActivityModel>[
     ActivityModel(
@@ -143,7 +134,6 @@ void main() {
   setUpAll(() {
     when(repository.getUserSubscribedActivities())
         .thenAnswer((_) async => mockActivities);
-    when(repository.getUser()).thenAnswer((_) async => userMock);
     authController =
         AuthController(authRepository: authRepository, storage: secureStorage);
 
