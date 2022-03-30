@@ -58,6 +58,21 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
               name: '_UserDashboardControllerBase.saturdayActivitiesList'))
           .value;
 
+  final _$isLoadingAtom = Atom(name: '_UserDashboardControllerBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   final _$filterActivityChipIndexSelectedAtom = Atom(
       name: '_UserDashboardControllerBase.filterActivityChipIndexSelected');
 
@@ -104,6 +119,22 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   set nextActivity(ActivityModel value) {
     _$nextActivityAtom.reportWrite(value, super.nextActivity, () {
       super.nextActivity = value;
+    });
+  }
+
+  final _$cardNextActivityAtom =
+      Atom(name: '_UserDashboardControllerBase.cardNextActivity');
+
+  @override
+  CardActivity get cardNextActivity {
+    _$cardNextActivityAtom.reportRead();
+    return super.cardNextActivity;
+  }
+
+  @override
+  set cardNextActivity(CardActivity value) {
+    _$cardNextActivityAtom.reportWrite(value, super.cardNextActivity, () {
+      super.cardNextActivity = value;
     });
   }
 
@@ -170,6 +201,14 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
+  final _$setIsLoadingAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.setIsLoading');
+
+  @override
+  Future<void> setIsLoading(bool value) {
+    return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
+  }
+
   final _$getUserSubscribedActivitiesAsyncAction =
       AsyncAction('_UserDashboardControllerBase.getUserSubscribedActivities');
 
@@ -219,9 +258,11 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   @override
   String toString() {
     return '''
+isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 activitiesList: ${activitiesList},
 nextActivity: ${nextActivity},
+cardNextActivity: ${cardNextActivity},
 weekActivitiesList: ${weekActivitiesList},
 user: ${user},
 userName: ${userName},
