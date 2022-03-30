@@ -48,8 +48,9 @@ extension ActivityEnumExtension on ActivityEnum {
   }
 
   static ActivityEnum stringToEnumMap(String toMap) {
-    ActivityEnum type = ActivityEnum.values
-        .firstWhere((type) => EnumToString.convertToString(type) == toMap);
+    ActivityEnum type = ActivityEnum.values.firstWhere((type) =>
+        EnumToString.convertToString(type).toUpperCase() ==
+        toMap.toUpperCase());
     return type;
   }
 
