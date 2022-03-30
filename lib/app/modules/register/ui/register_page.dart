@@ -145,7 +145,7 @@ class _RegisterPageState
                               : 190,
                           height: 60,
                           decoration: BoxDecoration(
-                            color: AppColors.gray,
+                            color: AppColors.grey,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: MediaQuery.of(context).size.width > 600

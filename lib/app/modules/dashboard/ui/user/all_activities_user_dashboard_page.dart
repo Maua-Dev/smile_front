@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
+import '../../utils/final_time_calculation.dart';
 import '../widgets/dropdown-field/dropdown_field_widget.dart';
 import '../widgets/user_weekday/user_activity_card_widget.dart';
 import '../widgets/user_weekday/user_weekday_filter_widget.dart';
@@ -60,9 +61,21 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
             child: ListView.builder(
               itemCount: controller.weekActivitiesList.length,
               itemBuilder: (context, index) {
+                var finalTime =
+                    controller.weekActivitiesList[index].duration == null ||
+                            controller.weekActivitiesList[index].date == null
+                        ? ''
+                        : getActivityFinalTime(
+                            controller.weekActivitiesList[index].date!,
+                            controller.weekActivitiesList[index].duration!);
                 var hour = DateFormat('HH:mm')
                     .format(controller.weekActivitiesList[index].date!);
                 return UserActivityCardWidget(
+                  finalTime: finalTime,
+                  location: controller.weekActivitiesList[index].location,
+                  isOnline: controller.weekActivitiesList[index].link == null
+                      ? false
+                      : true,
                   title: controller.weekActivitiesList[index].title,
                   hour: hour,
                   activityCode:

@@ -18,12 +18,12 @@ class NavBarButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: onPressed,
-      child: Icon(
-        icon,
-        color: indexToShow == myIndex ? AppColors.brandingOrange : Colors.white,
-        size: 48,
-      ),
-    );
+        onPressed: onPressed,
+        child: Icon(
+          icon,
+          color:
+              indexToShow == myIndex ? AppColors.brandingOrange : Colors.white,
+          size: 48,
+        ));
   }
 }
