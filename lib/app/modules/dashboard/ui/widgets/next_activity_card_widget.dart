@@ -5,7 +5,7 @@ import 'dart:math' as math;
 
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
-import '../../utils/final_time_calculation.dart';
+import '../../../../shared/utils/utils.dart';
 
 class NextActivityCardWidget extends StatelessWidget {
   final String name;
@@ -38,7 +38,7 @@ class NextActivityCardWidget extends StatelessWidget {
         : DateFormat('EEEE').format(date!).substring(0, 3).toUpperCase();
     var finalTime = duration == null || date == null
         ? ''
-        : getActivityFinalTime(date!, duration!);
+        : Utils.getActivityFinalTime(date!, duration!);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       child: GestureDetector(
