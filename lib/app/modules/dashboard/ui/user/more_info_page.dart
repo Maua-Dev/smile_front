@@ -254,7 +254,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                           onPressed: () {
                             Modular.to.pop();
                           },
-                          title: 'Inscrições ainda não liberadas.',
+                          title: 'Inscrições não abertas.',
                           content: 'Aguarde novas informações!',
                         );
                       });
