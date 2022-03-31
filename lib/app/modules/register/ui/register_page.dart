@@ -5,6 +5,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
+import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controllers/register_controller.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -42,11 +43,7 @@ class _RegisterPageState
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'assets/images/logo_smile.png',
-                      width: 300,
-                      fit: BoxFit.cover,
-                    ),
+                    const SmileLogoWidget(),
                     const SizedBox(
                       height: 20,
                     ),
@@ -145,7 +142,7 @@ class _RegisterPageState
                               : 190,
                           height: 60,
                           decoration: BoxDecoration(
-                            color: AppColors.gray,
+                            color: AppColors.grey,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: MediaQuery.of(context).size.width > 600

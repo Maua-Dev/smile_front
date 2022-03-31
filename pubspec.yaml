@@ -29,6 +29,7 @@ dependencies:
   syncfusion_flutter_datepicker: ^19.4.56
   url_launcher: ^6.0.20
   cpf_cnpj_validator: ^2.0.0
+  cached_network_image: ^3.2.0
 
 dev_dependencies:
   build_runner: ^2.1.5

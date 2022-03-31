@@ -1,4 +1,4 @@
-import '../../../shared/models/user_model.dart';
+import '../../../../shared/models/user_model.dart';
 
 var userMock = UserModel(
   accessLevel: 'USER',
