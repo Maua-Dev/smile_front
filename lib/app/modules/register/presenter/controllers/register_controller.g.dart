@@ -371,6 +371,17 @@ mixin _$RegisterController on _RegisterController, Store {
   }
 
   @override
+  String? validateSocialName(String value) {
+    final _$actionInfo = _$_RegisterControllerActionController.startAction(
+        name: '_RegisterController.validateSocialName');
+    try {
+      return super.validateSocialName(value);
+    } finally {
+      _$_RegisterControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String? validateCpf(String value) {
     final _$actionInfo = _$_RegisterControllerActionController.startAction(
         name: '_RegisterController.validateCpf');

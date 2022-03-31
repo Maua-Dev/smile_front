@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'dart:math' as math;
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/utils/capitalize.dart';
+import 'package:smile_front/app/shared/widgets/dialogs/nothing_to_see_dialog_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
-import '../../utils/final_time_calculation.dart';
+import '../../../../shared/utils/utils.dart';
 import '../widgets/register_button_widget.dart';
 
 class MoreInfoPage extends StatefulWidget {
@@ -38,7 +39,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
     var finalTime =
         widget.activity.duration == null || widget.activity.date == null
             ? ''
-            : getActivityFinalTime(
+            : Utils.getActivityFinalTime(
                 widget.activity.date!, widget.activity.duration!);
     return SingleChildScrollView(
       child: Padding(
@@ -242,7 +243,22 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
               height: 16,
             ),
             Center(
-              child: RegisterButtonWidget(isRegistered: widget.isRegistered),
+              child: RegisterButtonWidget(
+                isRegistered: widget.isRegistered,
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return NothingToSeeDialogWidget(
+                          onPressed: () {
+                            Modular.to.pop();
+                          },
+                          title: 'Inscrições não abertas.',
+                          content: 'Aguarde novas informações!',
+                        );
+                      });
+                },
+              ),
             ),
             const SizedBox(
               height: 16,

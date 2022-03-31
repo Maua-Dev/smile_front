@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 
+import '../dialogs/nothing_to_see_dialog_widget.dart';
 import 'widgets/nav_bar_button_widget.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
@@ -13,7 +14,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var controller = BottomNavigationBarController();
+    var controller = Modular.get<BottomNavigationBarController>();
     return Observer(builder: (context) {
       return Container(
         padding: MediaQuery.of(context).size.width < 1000
@@ -56,17 +57,26 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 indexToShow: controller.indexToShow,
                 myIndex: 3,
                 onPressed: () {
-                  controller.toggleIndex(3);
-                  // Modular.to.navigate('/');
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return NothingToSeeDialogWidget(
+                          onPressed: () {
+                            Modular.to.pop();
+                          },
+                          title: 'Página de certificados ainda não disponível.',
+                          content: 'Aguarde novas informações!',
+                        );
+                      });
                 },
                 icon: Icons.assignment,
               ),
               NavBarButtonWidget(
                 indexToShow: controller.indexToShow,
                 myIndex: 4,
-                onPressed: () {
-                  controller.toggleIndex(4);
-                  // Modular.to.navigate('/');
+                onPressed: () async {
+                  await controller.toggleIndex(4);
+                  Modular.to.navigate('/user/help');
                 },
                 icon: Icons.help,
               ),
