@@ -31,6 +31,9 @@ abstract class _AdmDashboardControllerBase with Store {
   List<ActivityModel> activitiesList = List.empty();
 
   @observable
+  List<ActivityModel> saveActivitiesList = List.empty();
+
+  @observable
   List<CardActivity> allActivitiesToCards = List.empty();
 
   @observable
@@ -70,7 +73,8 @@ abstract class _AdmDashboardControllerBase with Store {
   void toggleFilterActivityChipIndex(index) {
     if (index == filterActivityChipIndexSelected) {
       filterActivityChipIndexSelected = null;
-      getAllActivities();
+      activitiesList = saveActivitiesList;
+      changeFormatToCards();
     } else {
       filterActivityChipIndexSelected = index;
       getActivitiesByType(index);
@@ -79,10 +83,12 @@ abstract class _AdmDashboardControllerBase with Store {
 
   @action
   Future getActivitiesByType(index) async {
-    activitiesList = await repository
-        .getActivitiesSelectedByType(ActivityEnum.values[index]);
+    var list = activitiesList
+        .where((element) => element.type == ActivityEnum.values[index])
+        .toList();
+
     allActivitiesToCards = [];
-    for (var activity in activitiesList) {
+    for (var activity in list) {
       for (var time in activity.schedule) {
         allActivitiesToCards.add(CardActivity(
           id: activity.id,
@@ -103,6 +109,21 @@ abstract class _AdmDashboardControllerBase with Store {
   @action
   Future getAllActivities() async {
     activitiesList = await repository.getAllActivities();
+    saveActivitiesList = activitiesList;
+    changeFormatToCards();
+    nextActivitiesList = allActivitiesToCards.length >= 5
+        ? allActivitiesToCards.sublist(0, 5)
+        : allActivitiesToCards;
+  }
+
+  @action
+  Future<void> logout() async {
+    await authController.logout();
+    Modular.to.navigate('/login');
+  }
+
+  @action
+  void changeFormatToCards() {
     allActivitiesToCards = [];
     for (var activity in activitiesList) {
       for (var time in activity.schedule) {
@@ -121,14 +142,5 @@ abstract class _AdmDashboardControllerBase with Store {
         ));
       }
     }
-    nextActivitiesList = allActivitiesToCards.length >= 5
-        ? allActivitiesToCards.sublist(0, 5)
-        : allActivitiesToCards;
-  }
-
-  @action
-  Future<void> logout() async {
-    await authController.logout();
-    Modular.to.navigate('/login');
   }
 }
