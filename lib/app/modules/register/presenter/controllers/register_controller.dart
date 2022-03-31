@@ -65,7 +65,7 @@ abstract class _RegisterController with Store {
   String? validateName(String value) {
     if (value.isEmpty) {
       return "         Campo obrigatório";
-    }else if(value.split(' ').length < 2){
+    } else if (value.split(' ').length < 2) {
       return "         Insira seu nome completo";
     }
     return null;
@@ -84,7 +84,7 @@ abstract class _RegisterController with Store {
     value = value.replaceAll('-', '');
     if (value.isEmpty) {
       return "         Campo obrigatório";
-    }else if(!CPFValidator.isValid(value)){
+    } else if (!CPFValidator.isValid(value)) {
       return "         CPF inválido";
     }
     return null;

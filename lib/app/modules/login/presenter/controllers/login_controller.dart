@@ -70,20 +70,20 @@ abstract class _LoginController with Store {
 
   @action
   String? validateCpf(String value) {
-    if(!value.contains('@')){
+    if (!value.contains('@')) {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (value.isEmpty) {
         return "         Campo obrigatório";
-      }else if(!CPFValidator.isValid(value)){
+      } else if (!CPFValidator.isValid(value)) {
         return "         CPF inválido";
       }
-    }else{
+    } else {
       if (value.isEmpty) {
         return "         Campo obrigatório";
       }
     }
-    
+
     return null;
   }
 }
