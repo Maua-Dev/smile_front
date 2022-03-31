@@ -1,3 +1,4 @@
+import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
@@ -65,5 +66,24 @@ abstract class _LoginController with Store {
   @action
   Future<void> setIsLoading(bool value) async {
     isLoading = value;
+  }
+
+  @action
+  String? validateCpf(String value) {
+    if (!value.contains('@')) {
+      value = value.replaceAll('.', '');
+      value = value.replaceAll('-', '');
+      if (value.isEmpty) {
+        return "         Campo obrigatório";
+      } else if (!CPFValidator.isValid(value)) {
+        return "         CPF inválido";
+      }
+    } else {
+      if (value.isEmpty) {
+        return "         Campo obrigatório";
+      }
+    }
+
+    return null;
   }
 }
