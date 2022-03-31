@@ -72,7 +72,7 @@ class UserActivityCardWidget extends StatelessWidget {
                                     MediaQuery.of(context).size.width < 1000
                                         ? 12
                                         : 16,
-                                color: AppColors.grey),
+                                color: AppColors.gray),
                           ),
                           Text(
                             location == null
@@ -85,7 +85,7 @@ class UserActivityCardWidget extends StatelessWidget {
                                     MediaQuery.of(context).size.width < 1000
                                         ? 12
                                         : 16,
-                                color: AppColors.grey),
+                                color: AppColors.gray),
                           ),
                         ],
                       ),
