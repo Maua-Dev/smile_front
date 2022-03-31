@@ -6,15 +6,18 @@ class UserRegistration {
   final int? ra;
   final String password;
   final bool acceptEmails;
+  final bool acceptTerms;
 
-  UserRegistration(
-      {required this.name,
-      this.socialName,
-      required this.email,
-      required this.cpfRne,
-      this.ra,
-      required this.password,
-      required this.acceptEmails});
+  UserRegistration({
+    required this.name,
+    this.socialName,
+    required this.email,
+    required this.cpfRne,
+    this.ra,
+    required this.password,
+    required this.acceptEmails,
+    required this.acceptTerms,
+  });
 
   factory UserRegistration.newInstance() {
     return UserRegistration(
@@ -24,6 +27,7 @@ class UserRegistration {
         cpfRne: '',
         ra: null,
         password: '',
-        acceptEmails: false);
+        acceptEmails: true,
+        acceptTerms: true);
   }
 }

@@ -9,11 +9,13 @@ import 'register_repository_impl_test.mocks.dart';
 void main() {
   RegisterDatasource datasource = MockRegisterDatasource();
   var userInformations = UserRegistration(
-      name: 'Caio Toledo',
-      email: 'caio@caio.com',
-      cpfRne: '63480154085',
-      password: 'Teste123!',
-      acceptEmails: true);
+    name: 'Caio Toledo',
+    email: 'caio@caio.com',
+    cpfRne: '63480154085',
+    password: 'Teste123!',
+    acceptEmails: true,
+    acceptTerms: true,
+  );
 
   setUpAll(() {
     when(datasource.registerUser(userInformations))

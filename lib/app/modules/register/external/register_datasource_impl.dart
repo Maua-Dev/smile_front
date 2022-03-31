@@ -21,14 +21,16 @@ class RegisterDatasourceImpl implements RegisterDatasource {
     Dio dio = Dio(options);
     try {
       final res = await dio.post('/user', data: {
-        "name": userRegistration.name,
-        "social_name": userRegistration.socialName,
+        "access_level": "USER",
         "cpf_rne": userRegistration.cpfRne,
+        "email": userRegistration.email,
+        "name": userRegistration.name,
+        "password": userRegistration.password,
         "ra": userRegistration.ra,
         "role": "STUDENT",
-        "access_level": "USER",
-        "email": userRegistration.email,
-        "password": userRegistration.password
+        "accepted_notifications": userRegistration.acceptEmails,
+        "social_name": userRegistration.socialName,
+        "accepted_terms": userRegistration.acceptTerms
       });
       if (res.statusCode == 200) {
         return 'Usuário criado com sucesso!';

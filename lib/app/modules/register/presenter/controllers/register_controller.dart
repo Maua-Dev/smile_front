@@ -32,7 +32,7 @@ abstract class _RegisterController with Store {
 
   @observable
   String socialName = '';
-  
+
   @observable
   bool hasSocialName = false;
 
@@ -71,13 +71,21 @@ abstract class _RegisterController with Store {
   }
 
   @action
+  String? validateName(String value) {
+    if (value.isEmpty) {
+      return "         Campo obrigatório";
+    }
+    return null;
+  }
+
+  @action
   Future<void> setSocialName(String value) async {
     socialName = value;
   }
 
   @action
-  String? validateName(String value) {
-    if (value.isEmpty) {
+  String? validateSocialName(String value) {
+    if (hasSocialName && value.isEmpty) {
       return "         Campo obrigatório";
     }
     return null;
@@ -181,18 +189,18 @@ abstract class _RegisterController with Store {
 
   @computed
   UserRegistration get registerInformations => UserRegistration(
-        name: name,
-        socialName: socialName,
-        email: email,
-        cpfRne: cpf,
-        ra: raInt,
-        password: password,
-        acceptEmails: canSendEmails,
-      );
+      name: name,
+      socialName: socialName == '' ? null : socialName,
+      email: email,
+      cpfRne: cpf,
+      ra: raInt,
+      password: password,
+      acceptEmails: canSendEmails,
+      acceptTerms: acceptTermsOfUse);
 
   @action
   Future<void> register() async {
-    if(acceptTermsOfUse){
+    if (acceptTermsOfUse) {
       setIsLoading(true);
       try {
         await registerUserRepository.registerUser(registerInformations);
@@ -204,7 +212,7 @@ abstract class _RegisterController with Store {
         errors = e.message;
       }
       setIsLoading(false);
-    }else{
+    } else {
       errors = "Aceite os Termos de Uso para realizar o cadastro";
     }
   }

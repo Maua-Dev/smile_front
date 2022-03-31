@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
@@ -191,7 +192,7 @@ class _RegisterPageState
                               widthSize: MediaQuery.of(context).size.width < 650
                                   ? MediaQuery.of(context).size.width * 0.48
                                   : 400,
-                              validation: controller.validateName,
+                              validation: controller.validateSocialName,
                             );
                           }),
                         ],
@@ -375,11 +376,22 @@ class _RegisterPageState
                               );
                             }),
                             const SizedBox(width: 5),
-                            const Flexible(
-                              child: Text(
-                                'Li e Aceito os Termos de Uso',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 14),
+                            Flexible(
+                              child: MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                  onTap: () => {
+                                    launch(
+                                        'https://www.maua.br/a-maua/politica-de-privacidade')
+                                  },
+                                  child: const Text(
+                                    'Li e Aceito os Termos de Uso',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        decoration: TextDecoration.underline),
+                                  ),
+                                ),
                               ),
                             )
                           ],

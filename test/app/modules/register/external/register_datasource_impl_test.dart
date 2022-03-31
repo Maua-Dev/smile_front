@@ -16,6 +16,7 @@ void main() {
         cpfRne: '63480154085',
         password: 'Teste123!',
         acceptEmails: true,
+        acceptTerms: true,
       ));
     } catch (e) {
       res = 'erro';
