@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:smile_front/app/modules/dashboard/ui/widgets/speaker_add_widget.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
+import '../../../../shared/utils/s3_assets_url.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/dialogs/fill_all_fields_dialog_widget.dart';
 import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
-import '../../../../shared/widgets/text_header_scratched.dart';
+import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../domain/infra/activity_enum.dart';
 import '../../presenter/controllers/adm/create_activity_controller.dart';
-import '../widgets/add_photo_widget.dart';
 import '../widgets/schedule_add_widget.dart';
 import '../widgets/text_field_dialog_widget.dart';
 
@@ -35,14 +36,20 @@ class _CreateActivityPageState
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.2,
-                child: Image.asset('assets/images/maua_campus_blur.png',
-                    fit: BoxFit.cover),
+                height: MediaQuery.of(context).size.height * 0.15,
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(mauaCampusBlurUrl),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                child: TextHeaderScratched(
-                  title: 'Editar Atividade',
+                child: TextHeader(
+                  title: 'Criar Atividade',
                   leftPadding: 24,
                 ),
               ),
@@ -70,6 +77,17 @@ class _CreateActivityPageState
                         onChanged: controller.setType,
                       ),
                     ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.1,
+                        child: TextFieldDialogWidget(
+                          labelText: 'Código',
+                          padding: false,
+                          onChanged: controller.setActivityCode,
+                          value: controller.activityToCreate.activityCode,
+                        )),
                     const SizedBox(
                       width: 16,
                     ),
@@ -112,39 +130,92 @@ class _CreateActivityPageState
                           : DateFormat('HH:mm').format(controller
                               .activityToCreate.schedule[index].duration!);
                       return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 114, vertical: 8),
-                        child: ScheduleAddWidget(
-                          duration: duration,
-                          onChangedDuration: (value) {
-                            controller.setDuration(value, index);
-                          },
-                          index: index,
-                          totalParticipants: controller.activityToCreate
-                              .schedule[index].totalParticipants,
-                          date: date,
-                          hour: hour,
-                          onChangedDate: (value) {
-                            controller.setDate(value, index);
-                          },
-                          onChangedHour: (value) {
-                            controller.setHour(value, index);
-                          },
-                          onChangedParticipants: (value) {
-                            controller.setParticipants(int.parse(value), index);
-                          },
-                          removeSchedule: () {
-                            controller.removeSchedule(index);
-                            setState(() {});
-                          },
-                        ),
-                      );
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 114, vertical: 8),
+                          child: ScheduleAddWidget(
+                            date: date,
+                            hour: hour,
+                            link: controller
+                                .activityToCreate.schedule[index].link,
+                            onChangedLink: (value) {
+                              controller.setLink(value, index);
+                            },
+                            location: controller
+                                .activityToCreate.schedule[index].location,
+                            onChangedLocation: (value) {
+                              controller.setLocation(value, index);
+                            },
+                            duration: duration,
+                            onChangedDuration: (value) {
+                              controller.setDuration(value, index);
+                            },
+                            length: controller.activityToCreate.schedule.length,
+                            totalParticipants: controller.activityToCreate
+                                .schedule[index].totalParticipants,
+                            onChangedDate: (value) {
+                              controller.setDate(value, index);
+                            },
+                            onChangedHour: (value) {
+                              controller.setHour(value, index);
+                            },
+                            onChangedParticipants: (value) {
+                              controller.setParticipants(
+                                  int.parse(value), index);
+                            },
+                            removeSchedule: () {
+                              controller.removeSchedule(index);
+                              setState(() {});
+                            },
+                            onPressedIconDate: () {
+                              showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2022),
+                                lastDate: DateTime(2023),
+                                confirmText: 'CONFIRMAR',
+                                builder: (BuildContext context, Widget? child) {
+                                  return Theme(
+                                    data: ThemeData.light().copyWith(
+                                      primaryColor: AppColors.brandingOrange,
+                                      colorScheme: ColorScheme.light(
+                                          primary: AppColors.brandingOrange),
+                                    ),
+                                    child: child!,
+                                  );
+                                },
+                              ).then((value) {
+                                controller.setDate(
+                                    DateFormat('dd-MM-yyyy').format(value!),
+                                    index);
+                              });
+                            },
+                            onPressedIconTime: () {
+                              showTimePicker(
+                                context: context,
+                                initialTime: TimeOfDay.now(),
+                                confirmText: 'CONFIRMAR',
+                                builder: (BuildContext context, Widget? child) {
+                                  return Theme(
+                                    data: ThemeData.light().copyWith(
+                                      primaryColor: AppColors.brandingOrange,
+                                      colorScheme: ColorScheme.light(
+                                          primary: AppColors.brandingOrange),
+                                    ),
+                                    child: child!,
+                                  );
+                                },
+                              ).then((value) {
+                                controller.setHour(
+                                    value!.format(context), index);
+                              });
+                            },
+                          ));
                     });
               }),
               Center(
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
                   child: FormsButtonWidget(
                     buttonTittle: 'Adicionar novo horário',
                     onPressed: controller.addSchedule,
@@ -153,65 +224,47 @@ class _CreateActivityPageState
                   ),
                 ),
               ),
-              TextFieldDialogWidget(
-                labelText: 'Local/Link',
-                value: controller.activityToCreate.location,
-                onChanged: controller.setLocation,
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const AddPhotoWidget(),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Flexible(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              Flexible(
-                                child: TextFieldDialogWidget(
-                                  labelText: 'Nome Palestrante',
-                                  padding: false,
-                                  onChanged: controller.setSpeakerName,
-                                  value:
-                                      controller.activityToCreate.speaker.name,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 16,
-                              ),
-                              Flexible(
-                                child: TextFieldDialogWidget(
-                                  labelText: 'Empresa',
-                                  onChanged: controller.setSpeakerCompany,
-                                  value: controller
-                                      .activityToCreate.speaker.company,
-                                  padding: false,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16.0),
-                            child: TextFieldDialogWidget(
-                              labelText: 'Bio',
-                              value: controller.activityToCreate.speaker.bio,
-                              onChanged: controller.setSpeakerBio,
-                              padding: false,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+              Observer(builder: (_) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.activityToCreate.speakers.length,
+                  itemBuilder: (context, index) {
+                    return SpeakerAddWidget(
+                      length: controller.activityToCreate.speakers.length,
+                      name: controller.activityToCreate.speakers[index].name,
+                      bio: controller.activityToCreate.speakers[index].bio,
+                      company:
+                          controller.activityToCreate.speakers[index].company,
+                      onChangedName: (value) {
+                        controller.setSpeakerName(value, index);
+                      },
+                      onChangedBio: (value) {
+                        controller.setSpeakerBio(value, index);
+                      },
+                      onChangedCompany: (value) {
+                        controller.setSpeakerCompany(value, index);
+                      },
+                      removeSpeaker: () {
+                        controller.removeSpeaker(index);
+                        setState(() {});
+                      },
+                    );
+                  },
+                );
+              }),
+              Center(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                  child: FormsButtonWidget(
+                      buttonTittle: 'Adicionar palestrante',
+                      onPressed: controller.addSpeaker,
+                      backgroundColor: AppColors.brandingOrange,
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 22,
+                      )),
                 ),
               ),
               Padding(
@@ -237,6 +290,7 @@ class _CreateActivityPageState
                               context: context,
                               builder: (BuildContext context) {
                                 return ActionConfirmationDialogWidget(
+                                    isLoading: controller.isLoading,
                                     title: 'Tem certeza que deseja continuar?',
                                     content:
                                         'Ao salvar o banco de dados de atividade será alterado.',

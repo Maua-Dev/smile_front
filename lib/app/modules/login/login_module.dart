@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/forgot-password/forgot_password_module.dart';
 import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
-import 'package:smile_front/app/modules/login/ui/forgot_password_page.dart';
 import 'package:smile_front/app/modules/login/ui/login_page.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
 import '../../shared/services/dio/smile_login_options.dart';
@@ -30,7 +30,6 @@ class LoginModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute, child: (_, args) => const LoginPage()),
     ModuleRoute('/cadastro', module: RegisterModule()),
-    ChildRoute('/esqueci-minha-senha',
-        child: (_, args) => const ForgotPassword()),
+    ModuleRoute('/esqueci-minha-senha', module: ForgotPasswordModule()),
   ];
 }

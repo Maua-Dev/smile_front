@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/login/ui/widgets/smile_logo_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../shared/utils/s3_assets_url.dart';
 import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
 import '../presenter/controllers/login_controller.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
@@ -20,9 +22,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
       body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/maua_campus_blur.png"),
+              image: NetworkImage(mauaCampusBlurUrl),
               fit: BoxFit.cover,
             ),
           ),
@@ -37,12 +39,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/images/logo_smile.png',
-                      width: 300,
-                      fit: BoxFit.cover,
-                    ),
+                  const Center(
+                    child: SmileLogoWidget(),
                   ),
                   const SizedBox(
                     height: 10,
@@ -108,7 +106,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     return ActionTextButtonWidget(
                       isLoading: controller.isLoading,
                       title: 'Login',
-                      widthSize: 600,
+                      widthSize: MediaQuery.of(context).size.width < 650
+                          ? MediaQuery.of(context).size.width * 0.85
+                          : 600,
                       heightSize: 50,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () {
@@ -121,7 +121,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   ),
                   ActionTextButtonWidget(
                     title: 'Não tenho cadastro',
-                    widthSize: 600,
+                    widthSize: MediaQuery.of(context).size.width < 650
+                        ? MediaQuery.of(context).size.width * 0.85
+                        : 600,
                     heightSize: 50,
                     backgroundColor: AppColors.brandingPurple,
                     onPressed: () {

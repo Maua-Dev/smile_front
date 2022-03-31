@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/infra/activity_enum.dart';
@@ -23,75 +24,131 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
   }
 
   @observable
-  bool isFloatActionButtonOpen = false;
+  int filterActivityChipIndexSelected = 0;
 
   @observable
-  int? filterActivityChipIndexSelected;
+  List<CardActivity> weekActivitiesList = List.empty();
 
   @observable
   List<ActivityModel> activitiesList = List.empty();
 
   @observable
-  List<ActivityModel> nextActivitiesList = List.empty();
+  List<CardActivity> allActivitiesToCards = List.empty();
+
+  @observable
+  ActivityEnum? activityType;
 
   @computed
-  List<ActivityModel> get mondayActivitiesList => activitiesList
-      .where((activity) =>
-          activity.schedule.map((e) => e.date!.weekday == 1).contains(true))
+  List<CardActivity> get mondayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 1)
       .toList();
 
   @computed
-  List<ActivityModel> get tuesdayActivitiesList => activitiesList
-      .where((activity) =>
-          activity.schedule.map((e) => e.date!.weekday == 2).contains(true))
+  List<CardActivity> get tuesdayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 2)
       .toList();
 
   @computed
-  List<ActivityModel> get wednesdayActivitiesList => activitiesList
-      .where((activity) =>
-          activity.schedule.map((e) => e.date!.weekday == 3).contains(true))
+  List<CardActivity> get wednesdayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 3)
       .toList();
 
   @computed
-  List<ActivityModel> get thursdayActivitiesList => activitiesList
-      .where((activity) =>
-          activity.schedule.map((e) => e.date!.weekday == 4).contains(true))
+  List<CardActivity> get thursdayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 4)
       .toList();
 
   @computed
-  List<ActivityModel> get fridayActivitiesList => activitiesList
-      .where((activity) =>
-          activity.schedule.map((e) => e.date!.weekday == 5).contains(true))
+  List<CardActivity> get fridayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 5)
       .toList();
 
-  @action
-  void toggleFloatActionButton() {
-    isFloatActionButtonOpen = !isFloatActionButtonOpen;
-  }
+  @computed
+  List<CardActivity> get saturdayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 6)
+      .toList();
 
   @action
   void toggleFilterActivityChipIndex(index) {
-    if (index == filterActivityChipIndexSelected) {
-      filterActivityChipIndexSelected = null;
-      getAllActivities();
-    } else {
-      filterActivityChipIndexSelected = index;
-      getActivitiesByType(index);
+    filterActivityChipIndexSelected = index;
+    switch (filterActivityChipIndexSelected) {
+      case 0:
+        weekActivitiesList = mondayActivitiesList;
+        break;
+      case 1:
+        weekActivitiesList = tuesdayActivitiesList;
+        break;
+      case 2:
+        weekActivitiesList = wednesdayActivitiesList;
+        break;
+      case 3:
+        weekActivitiesList = thursdayActivitiesList;
+        break;
+      case 4:
+        weekActivitiesList = fridayActivitiesList;
+        break;
+      case 5:
+        weekActivitiesList = saturdayActivitiesList;
+        break;
     }
-  }
-
-  @action
-  Future getActivitiesByType(index) async {
-    activitiesList = await repository
-        .getActivitiesSelectedByType(ActivityEnum.values[index]);
+    getActivitiesByType(activityType);
   }
 
   @action
   Future getAllActivities() async {
     activitiesList = await repository.getAllActivities();
-    nextActivitiesList = activitiesList.length >= 5
-        ? activitiesList.sublist(0, 5)
-        : activitiesList;
+    allActivitiesToCards = [];
+    for (var activity in activitiesList) {
+      for (var time in activity.schedule) {
+        allActivitiesToCards.add(
+          CardActivity(
+            id: activity.id,
+            activityCode: activity.activityCode,
+            type: activity.type,
+            title: activity.title,
+            description: activity.description,
+            date: time.date,
+            duration: time.duration,
+            totalParticipants: time.totalParticipants,
+            speakers: activity.speakers,
+            location: time.location,
+            link: time.link,
+          ),
+        );
+      }
+    }
+    toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
+    getActivitiesByType(activityType);
+  }
+
+  @action
+  Future getActivitiesByType(ActivityEnum? typeActivity) async {
+    if (typeActivity != null) {
+      switch (filterActivityChipIndexSelected) {
+        case 0:
+          weekActivitiesList = mondayActivitiesList;
+          break;
+        case 1:
+          weekActivitiesList = tuesdayActivitiesList;
+          break;
+        case 2:
+          weekActivitiesList = wednesdayActivitiesList;
+          break;
+        case 3:
+          weekActivitiesList = thursdayActivitiesList;
+          break;
+        case 4:
+          weekActivitiesList = fridayActivitiesList;
+          break;
+        case 5:
+          weekActivitiesList = saturdayActivitiesList;
+          break;
+      }
+      activityType = typeActivity;
+      weekActivitiesList = weekActivitiesList
+          .where((element) => element.type == activityType)
+          .toList();
+    }
   }
 
   @action

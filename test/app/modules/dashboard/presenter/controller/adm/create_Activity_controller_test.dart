@@ -3,6 +3,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intl/intl.dart';
 import 'package:mockito/annotations.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
@@ -50,14 +51,23 @@ void main() {
 
   test('setLocation', () {
     var str = 'teste';
-    controller.setLocation(str);
-    expect(controller.activityToCreate.location, str);
+    controller.setLocation(str, 0);
+    expect(controller.activityToCreate.schedule[0].location, str);
+  });
+
+  test('setLink', () {
+    var str = 'teste';
+    controller.setLink(str, 0);
+    expect(controller.activityToCreate.schedule[0].link, str);
   });
 
   test('setDate', () {
-    var str = '02/01/2021';
+    var str = DateFormat('dd-MM-yyyy').format(DateTime.now());
     controller.setDate(str, 0);
-    expect(controller.activityToCreate.schedule[0].date!.day, 02);
+    expect(
+        controller.activityToCreate.schedule[0].date!,
+        DateTime(
+            DateTime.now().year, DateTime.now().month, DateTime.now().day));
   });
 
   test('setHour', () {
@@ -80,20 +90,20 @@ void main() {
 
   test('setSpeakerName', () {
     var str = 'teste';
-    controller.setSpeakerName(str);
-    expect(controller.activityToCreate.speaker.name, str);
+    controller.setSpeakerName(str, 0);
+    expect(controller.activityToCreate.speakers[0].name, str);
   });
 
   test('setSpeakerBio', () {
     var str = 'teste';
-    controller.setSpeakerBio(str);
-    expect(controller.activityToCreate.speaker.bio, str);
+    controller.setSpeakerBio(str, 0);
+    expect(controller.activityToCreate.speakers[0].bio, str);
   });
 
   test('setSpeakerCompany', () {
     var str = 'teste';
-    controller.setSpeakerCompany(str);
-    expect(controller.activityToCreate.speaker.company, str);
+    controller.setSpeakerCompany(str, 0);
+    expect(controller.activityToCreate.speakers[0].company, str);
   });
 
   test('removeSchedule', () {

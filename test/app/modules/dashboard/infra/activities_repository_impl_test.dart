@@ -14,63 +14,113 @@ import 'activities_repository_impl_test.mocks.dart';
 void main() {
   late ActivitiesRepositoryImpl repository;
   ActivitiesDatasource datasource = MockActivitiesDatasource();
-  var activitiesList = <ActivityModel>[
+  final activitiesList = <ActivityModel>[
     ActivityModel(
-        id: '',
-        type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
-        title: 'ABCD123',
-        description: '',
-        schedule: [
-          ScheduleActivityModel(
-            date: DateTime.now(),
-            totalParticipants: 10,
-          ),
-          ScheduleActivityModel(
-            date: DateTime.now(),
-            totalParticipants: 10,
-          ),
-        ],
-        location: '',
-        speaker: SpeakerActivityModel(
-            bio: '', company: '', name: '', linkPhoto: '')),
+      id: '0',
+      activityCode: 'C01',
+      type: ActivityEnum.CURSOS,
+      title: 'Atividade 01',
+      description: 'Teste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Qualquer',
+          company: 'Oracle',
+        ),
+      ],
+      schedule: <ScheduleActivityModel>[
+        ScheduleActivityModel(
+          date: DateTime.utc(2022, 03, 14, 13),
+          totalParticipants: 20,
+          location: 'H244',
+        ),
+      ],
+    ),
     ActivityModel(
-        id: '',
-        type: ActivityEnum.CURSOS,
-        title: 'ABCD123',
-        description: '',
-        schedule: [
-          ScheduleActivityModel(
-            date: DateTime.now(),
-            totalParticipants: 10,
-          ),
-          ScheduleActivityModel(
-            date: DateTime.now(),
-            totalParticipants: 10,
-          ),
-        ],
-        location: '',
-        speaker: SpeakerActivityModel(
-            bio: '', company: '', name: '', linkPhoto: '')),
+      id: '0',
+      activityCode: 'C01',
+      type: ActivityEnum.CURSOS,
+      title: 'Atividade 01',
+      description: 'Teste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Qualquer',
+          company: 'Oracle',
+        ),
+      ],
+      schedule: <ScheduleActivityModel>[
+        ScheduleActivityModel(
+          date: DateTime.utc(2022, 03, 15, 13),
+          totalParticipants: 20,
+          location: 'H244',
+        ),
+      ],
+    ),
     ActivityModel(
-        id: '',
-        type: ActivityEnum.CURSOS,
-        title: 'ABCD123',
-        description: '',
-        schedule: [
-          ScheduleActivityModel(
-            date: DateTime.now(),
-            totalParticipants: 10,
-          ),
-          ScheduleActivityModel(
-            date: DateTime.now(),
-            totalParticipants: 10,
-          ),
-        ],
-        location: '',
-        speaker: SpeakerActivityModel(
-            bio: '', company: '', name: '', linkPhoto: '')),
+      id: '0',
+      activityCode: 'C01',
+      type: ActivityEnum.CURSOS,
+      title: 'Atividade 01',
+      description: 'Teste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Qualquer',
+          company: 'Oracle',
+        ),
+      ],
+      schedule: <ScheduleActivityModel>[
+        ScheduleActivityModel(
+          date: DateTime.utc(2022, 03, 16, 13),
+          totalParticipants: 20,
+          location: 'H244',
+        ),
+      ],
+    ),
+    ActivityModel(
+      id: '1',
+      activityCode: 'C01',
+      type: ActivityEnum.CURSOS,
+      title: 'Atividade 02',
+      description: 'Teste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Qualquer',
+          company: 'Oracle',
+        ),
+      ],
+      schedule: <ScheduleActivityModel>[
+        ScheduleActivityModel(
+          date: DateTime.utc(2022, 03, 17, 13),
+          totalParticipants: 20,
+          location: 'H244',
+        ),
+      ],
+    ),
+    ActivityModel(
+      id: '2',
+      activityCode: 'C01',
+      type: ActivityEnum.CURSOS,
+      title: 'Atividade 03',
+      description: 'Teste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Qualquer',
+          company: 'Oracle',
+        ),
+      ],
+      schedule: <ScheduleActivityModel>[
+        ScheduleActivityModel(
+          date: DateTime.utc(2022, 03, 18, 13),
+          totalParticipants: 20,
+          location: 'H244',
+        ),
+      ],
+    ),
   ];
-
   setUpAll(() {
     repository = ActivitiesRepositoryImpl(datasource: datasource);
     when(datasource.getAllActivities()).thenAnswer((_) async => activitiesList);
@@ -80,6 +130,6 @@ void main() {
     var list =
         await repository.getActivitiesSelectedByType(ActivityEnum.CURSOS);
     expect(list.isNotEmpty, true);
-    expect(list.length, 2);
+    expect(list.length, 5);
   });
 }

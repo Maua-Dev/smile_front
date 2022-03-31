@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../shared/utils/s3_assets_url.dart';
 import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
+import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controllers/register_controller.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -24,9 +26,9 @@ class _RegisterPageState
         child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/maua_campus_blur.png"),
+                image: NetworkImage(mauaCampusBlurUrl),
                 fit: BoxFit.cover,
               ),
             ),
@@ -41,11 +43,7 @@ class _RegisterPageState
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'assets/images/logo_smile.png',
-                      width: 300,
-                      fit: BoxFit.cover,
-                    ),
+                    const SmileLogoWidget(),
                     const SizedBox(
                       height: 20,
                     ),
@@ -139,32 +137,55 @@ class _RegisterPageState
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          width: 190,
+                          width: MediaQuery.of(context).size.width < 650
+                              ? MediaQuery.of(context).size.width * 0.35
+                              : 190,
                           height: 60,
                           decoration: BoxDecoration(
-                            color: AppColors.gray,
+                            color: AppColors.grey,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Observer(builder: (_) {
-                                return Checkbox(
-                                  activeColor: AppColors.brandingPurple,
-                                  value: controller.isMauaStudent,
-                                  onChanged: (bool? value) {
-                                    controller.setIsMauaStudent(value);
-                                  },
-                                );
-                              }),
-                              const SizedBox(width: 5),
-                              const Text(
-                                'Sou Aluno Mauá',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
-                              )
-                            ],
-                          ),
+                          child: MediaQuery.of(context).size.width > 600
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Observer(builder: (_) {
+                                      return Checkbox(
+                                        activeColor: AppColors.brandingPurple,
+                                        value: controller.isMauaStudent,
+                                        onChanged: (bool? value) {
+                                          controller.setIsMauaStudent(value);
+                                        },
+                                      );
+                                    }),
+                                    const SizedBox(width: 5),
+                                    const Text(
+                                      'Sou Aluno Mauá',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 14),
+                                    )
+                                  ],
+                                )
+                              : Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Observer(builder: (_) {
+                                      return Checkbox(
+                                        activeColor: AppColors.brandingPurple,
+                                        value: controller.isMauaStudent,
+                                        onChanged: (bool? value) {
+                                          controller.setIsMauaStudent(value);
+                                        },
+                                      );
+                                    }),
+                                    const SizedBox(width: 5),
+                                    const Text(
+                                      'Sou Aluno Mauá',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 14),
+                                    )
+                                  ],
+                                ),
                         ),
                         const SizedBox(
                           width: 10,
@@ -175,7 +196,9 @@ class _RegisterPageState
                             icon: Icons.person,
                             placeholder: 'RA',
                             setValue: controller.setRa,
-                            widthSize: 400,
+                            widthSize: MediaQuery.of(context).size.width < 650
+                                ? MediaQuery.of(context).size.width * 0.48
+                                : 400,
                             validation: controller.validateRa,
                           );
                         }),

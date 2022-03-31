@@ -5,10 +5,10 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:smile_front/app/modules/home/domain/entities/rectors.dart'
-    as _i4;
-import 'package:smile_front/app/modules/home/domain/repositories/rectors_repository_interface.dart'
+import 'package:smile_front/app/modules/home/domain/repositories/speakers_repository_interface.dart'
     as _i2;
+import 'package:smile_front/app/modules/home/infra/models/home_speaker_model.dart'
+    as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -20,18 +20,18 @@ import 'package:smile_front/app/modules/home/domain/repositories/rectors_reposit
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-/// A class which mocks [RectorsRepositoryInterface].
+/// A class which mocks [SpeakersRepositoryInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRectorsRepositoryInterface extends _i1.Mock
-    implements _i2.RectorsRepositoryInterface {
-  MockRectorsRepositoryInterface() {
+class MockSpeakersRepositoryInterface extends _i1.Mock
+    implements _i2.SpeakersRepositoryInterface {
+  MockSpeakersRepositoryInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<List<_i4.Rectors>> getRectors() =>
-      (super.noSuchMethod(Invocation.method(#getRectors, []),
-              returnValue: Future<List<_i4.Rectors>>.value(<_i4.Rectors>[]))
-          as _i3.Future<List<_i4.Rectors>>);
+  _i3.Future<List<_i4.HomeSpeakerModel>> getSpeakers() => (super.noSuchMethod(
+      Invocation.method(#getSpeakers, []),
+      returnValue: Future<List<_i4.HomeSpeakerModel>>.value(
+          <_i4.HomeSpeakerModel>[])) as _i3.Future<List<_i4.HomeSpeakerModel>>);
 }

@@ -8,7 +8,9 @@ class TextFieldDialogWidget extends StatelessWidget {
   final String labelText;
   final String? value;
   final bool padding;
+  final IconData? suffixIcon;
   final void Function(String value)? onChanged;
+  final void Function()? onPressedIcon;
   final List<TextInputFormatter>? inputFormatters;
   const TextFieldDialogWidget({
     Key? key,
@@ -18,25 +20,36 @@ class TextFieldDialogWidget extends StatelessWidget {
     this.inputFormatters,
     this.onChanged,
     required this.labelText,
+    this.suffixIcon,
+    this.onPressedIcon,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // var controller = TextEditingController(text: value);
+    var controller = TextEditingController(text: value);
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: padding ? 114 : 0, vertical: padding ? 8 : 0),
       child: TextFormField(
-        initialValue: value,
+        controller: controller,
         onChanged: onChanged,
         keyboardType: TextInputType.multiline,
         maxLines: null,
         textAlignVertical: TextAlignVertical.center,
         inputFormatters: inputFormatters,
-        // controller: controller,
         style: AppTextStyles.body
             .copyWith(color: AppColors.brandingPurple, fontSize: 20),
         decoration: InputDecoration(
+            suffixIcon: Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: IconButton(
+                icon: Icon(
+                  suffixIcon,
+                  color: AppColors.brandingPurple,
+                ),
+                onPressed: onPressedIcon,
+              ),
+            ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),
               borderSide:

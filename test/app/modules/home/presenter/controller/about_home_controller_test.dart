@@ -1,33 +1,26 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:smile_front/app/modules/home/domain/repositories/speakers_repository_interface.dart';
-import 'package:smile_front/app/modules/home/infra/models/home_speaker_model.dart';
+import 'package:smile_front/app/modules/home/domain/entities/rectors.dart';
+import 'package:smile_front/app/modules/home/domain/repositories/rectors_repository_interface.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/about_home_controller.dart';
 
 import 'about_home_controller_test.mocks.dart';
 
-@GenerateMocks([SpeakersRepositoryInterface])
+@GenerateMocks([RectorsRepositoryInterface])
 void main() {
-  SpeakersRepositoryInterface repository = MockSpeakersRepositoryInterface();
+  RectorsRepositoryInterface repository = MockRectorsRepositoryInterface();
   late AboutHomeController controller;
 
-  var mock = <HomeSpeakerModel>[
-    HomeSpeakerModel(name: '', bio: '', date: '', linkPhoto: '')
-  ];
+  var mock = <Rectors>[Rectors(image: '', name: '', role: '', text: '')];
 
   setUpAll(() {
-    when(repository.getSpeakers()).thenAnswer((_) async => mock);
-    controller = AboutHomeController(repository);
+    when(repository.getRectors()).thenAnswer((_) async => mock);
+    controller = AboutHomeController(repository: repository);
   });
 
-  test('getSpeakers', () {
-    controller.getSpeakers();
-    expect(controller.speakers.isNotEmpty, true);
-  });
-
-  test('toggleIndex', () {
-    controller.toggleIndex(10);
-    expect(controller.indexToShow, 10);
+  test('getRectors', () {
+    controller.getRectors();
+    expect(controller.listRectors.isNotEmpty, true);
   });
 }

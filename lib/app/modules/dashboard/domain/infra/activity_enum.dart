@@ -8,12 +8,13 @@ enum ActivityEnum {
   PALESTRAS_ALTO_IMPACTO,
   VISITAS_TECNICAS,
   COMPETICOES_ACADEMICAS,
-  HACKATONS,
+  HACKATHONS,
   FEIRA_ESTAGIOS,
   CAFE_EX_ALUNOS,
   ACADEMIA_DE_PROFESSORES,
   ATIVIDADE_CULTURAL,
-  WORKSHOP
+  GCSP,
+  ATIVIDADE_ESPORTIVA
 }
 
 extension ActivityEnumExtension on ActivityEnum {
@@ -29,8 +30,8 @@ extension ActivityEnumExtension on ActivityEnum {
         return 'Visitas Técnicas';
       case ActivityEnum.COMPETICOES_ACADEMICAS:
         return 'Competições Acadêmicas';
-      case ActivityEnum.HACKATONS:
-        return 'Hackatons';
+      case ActivityEnum.HACKATHONS:
+        return 'Hackathons';
       case ActivityEnum.FEIRA_ESTAGIOS:
         return 'Feira de Estágios';
       case ActivityEnum.CAFE_EX_ALUNOS:
@@ -39,14 +40,17 @@ extension ActivityEnumExtension on ActivityEnum {
         return 'Academia de Professores';
       case ActivityEnum.ATIVIDADE_CULTURAL:
         return 'Atividade Cultural';
-      case ActivityEnum.WORKSHOP:
-        return 'Workshop';
+      case ActivityEnum.GCSP:
+        return 'GCSP';
+      case ActivityEnum.ATIVIDADE_ESPORTIVA:
+        return 'Atividade Esportiva';
     }
   }
 
   static ActivityEnum stringToEnumMap(String toMap) {
-    ActivityEnum type = ActivityEnum.values
-        .firstWhere((type) => EnumToString.convertToString(type) == toMap);
+    ActivityEnum type = ActivityEnum.values.firstWhere((type) =>
+        EnumToString.convertToString(type).toUpperCase() ==
+        toMap.toUpperCase());
     return type;
   }
 

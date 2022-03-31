@@ -10,7 +10,6 @@ import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
-import 'package:smile_front/app/shared/models/user_model.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
@@ -24,107 +23,109 @@ void main() {
   late UserDashboardController controller;
   late AuthController authController;
 
-  final userMock = UserModel(
-    email: '',
-    cpfRne: '',
-    accessLevel: '',
-    typeRole: '',
-    socialName: 'Gabriel Godoy',
-  );
-
   final mockActivities = <ActivityModel>[
     ActivityModel(
       id: '0',
+      activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
       description: 'Teste de atividade mock',
-      location: 'H244',
-      speaker: SpeakerActivityModel(
-        name: 'Gabriel Godoy',
-        bio: 'Qualquer',
-        company: 'Oracle',
-        linkPhoto: 'http://',
-      ),
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Qualquer',
+          company: 'Oracle',
+        ),
+      ],
       schedule: <ScheduleActivityModel>[
         ScheduleActivityModel(
           date: DateTime.utc(2022, 03, 14, 13),
           totalParticipants: 20,
+          location: 'H244',
         ),
       ],
     ),
     ActivityModel(
       id: '0',
+      activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
       description: 'Teste de atividade mock',
-      location: 'H244',
-      speaker: SpeakerActivityModel(
-        name: 'Gabriel Godoy',
-        bio: 'Qualquer',
-        company: 'Oracle',
-        linkPhoto: 'http://',
-      ),
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Qualquer',
+          company: 'Oracle',
+        ),
+      ],
       schedule: <ScheduleActivityModel>[
         ScheduleActivityModel(
           date: DateTime.utc(2022, 03, 15, 13),
           totalParticipants: 20,
+          location: 'H244',
         ),
       ],
     ),
     ActivityModel(
       id: '0',
+      activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
       description: 'Teste de atividade mock',
-      location: 'H244',
-      speaker: SpeakerActivityModel(
-        name: 'Gabriel Godoy',
-        bio: 'Qualquer',
-        company: 'Oracle',
-        linkPhoto: 'http://',
-      ),
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Qualquer',
+          company: 'Oracle',
+        ),
+      ],
       schedule: <ScheduleActivityModel>[
         ScheduleActivityModel(
           date: DateTime.utc(2022, 03, 16, 13),
           totalParticipants: 20,
+          location: 'H244',
         ),
       ],
     ),
     ActivityModel(
       id: '1',
+      activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 02',
       description: 'Teste de atividade mock',
-      location: 'H244',
-      speaker: SpeakerActivityModel(
-        name: 'Gabriel Godoy',
-        bio: 'Qualquer',
-        company: 'Oracle',
-        linkPhoto: 'http://',
-      ),
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Qualquer',
+          company: 'Oracle',
+        ),
+      ],
       schedule: <ScheduleActivityModel>[
         ScheduleActivityModel(
           date: DateTime.utc(2022, 03, 17, 13),
           totalParticipants: 20,
+          location: 'H244',
         ),
       ],
     ),
     ActivityModel(
       id: '2',
+      activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 03',
       description: 'Teste de atividade mock',
-      location: 'H244',
-      speaker: SpeakerActivityModel(
-        name: 'Gabriel Godoy',
-        bio: 'Qualquer',
-        company: 'Oracle',
-        linkPhoto: 'http://',
-      ),
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Qualquer',
+          company: 'Oracle',
+        ),
+      ],
       schedule: <ScheduleActivityModel>[
         ScheduleActivityModel(
           date: DateTime.utc(2022, 03, 18, 13),
           totalParticipants: 20,
+          location: 'H244',
         ),
       ],
     ),
@@ -133,7 +134,6 @@ void main() {
   setUpAll(() {
     when(repository.getUserSubscribedActivities())
         .thenAnswer((_) async => mockActivities);
-    when(repository.getUser()).thenAnswer((_) async => userMock);
     authController =
         AuthController(authRepository: authRepository, storage: secureStorage);
 
@@ -154,16 +154,6 @@ void main() {
     expect(controller.nextActivity, mockActivities[0]);
   });
 
-  test('getUser', () {
-    controller.getUser();
-    expect(controller.user, userMock);
-  });
-
-  test('getUserFirstName', () {
-    controller.getUser();
-    expect(controller.userName.length, 7);
-  });
-
   test('mondayActivitiesList', () {
     expect(controller.mondayActivitiesList.isNotEmpty, true);
   });
@@ -182,10 +172,5 @@ void main() {
 
   test('fridayActivitiesList', () {
     expect(controller.fridayActivitiesList.isNotEmpty, true);
-  });
-
-  test('logout', () {
-    controller.logout();
-    expect(authController.isLogged, false);
   });
 }

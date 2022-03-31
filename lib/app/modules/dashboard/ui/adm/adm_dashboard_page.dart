@@ -6,7 +6,7 @@ import 'package:smile_front/app/modules/dashboard/ui/widgets/activities_carousel
 import 'package:smile_front/app/modules/dashboard/ui/widgets/filter_chip_widget.dart';
 
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import '../../../../shared/widgets/text_header_scratched.dart';
+import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
 import '../widgets/logout_button_widget.dart';
 
@@ -34,16 +34,30 @@ class _AdmDashboardPageState
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const TextHeaderScratched(
+                  const TextHeader(
                     title: 'Próximas Atividades',
                     fontSize: 50,
                   ),
-                  LogoutButtonWidget(
-                    backgroundColor: AppColors.brandingOrange,
-                    buttonTittle: 'Sair',
-                    onPressed: () {
-                      controller.logout();
-                    },
+                  Row(
+                    children: [
+                      LogoutButtonWidget(
+                        backgroundColor: AppColors.brandingOrange,
+                        buttonTittle: 'Home',
+                        onPressed: () {
+                          Modular.to.navigate('/home');
+                        },
+                      ),
+                      const SizedBox(
+                        width: 32,
+                      ),
+                      LogoutButtonWidget(
+                        backgroundColor: AppColors.brandingOrange,
+                        buttonTittle: 'Sair',
+                        onPressed: () {
+                          controller.logout();
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -52,21 +66,24 @@ class _AdmDashboardPageState
               return ActivitiesCarouselWidget(
                 cardColor: AppColors.brandingOrange,
                 list: controller.nextActivitiesList,
+                listToEdit: controller.activitiesList,
                 isNextActivity: true,
               );
             }),
-            const TextHeaderScratched(
+            const TextHeader(
               title: 'Todas Atividades',
               fontSize: 38,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 72.0, top: 20),
+              padding: const EdgeInsets.only(left: 72.0, top: 20, right: 72),
               child: SizedBox(
                   height: 50,
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: ActivityEnum.values.length - 3,
+                      itemCount: MediaQuery.of(context).size.width < 1650
+                          ? ActivityEnum.values.length - 6
+                          : ActivityEnum.values.length - 4,
                       itemBuilder: (BuildContext ctx, index) {
                         return Observer(builder: (_) {
                           return FilterChipWidget(
@@ -80,22 +97,33 @@ class _AdmDashboardPageState
                       })),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 72.0, bottom: 20),
+              padding: const EdgeInsets.only(left: 72.0, bottom: 20, right: 72),
               child: SizedBox(
                   height: 50,
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: 3,
+                      itemCount:
+                          MediaQuery.of(context).size.width < 1650 ? 6 : 4,
                       itemBuilder: (BuildContext ctx, index) {
                         return Observer(builder: (_) {
                           return FilterChipWidget(
-                              onTap: () => controller
-                                  .toggleFilterActivityChipIndex(index + 8),
-                              selected:
-                                  controller.filterActivityChipIndexSelected ==
+                              onTap: () =>
+                                  controller.toggleFilterActivityChipIndex(
+                                      MediaQuery.of(context).size.width < 1650
+                                          ? index + 6
+                                          : index + 8),
+                              selected: MediaQuery.of(context).size.width < 1650
+                                  ? controller
+                                          .filterActivityChipIndexSelected ==
+                                      index + 6
+                                  : controller
+                                          .filterActivityChipIndexSelected ==
                                       index + 8,
-                              activityType: ActivityEnum.values[index + 8]);
+                              activityType: ActivityEnum.values[
+                                  MediaQuery.of(context).size.width < 1650
+                                      ? index + 6
+                                      : index + 8]);
                         });
                       })),
             ),
@@ -104,22 +132,27 @@ class _AdmDashboardPageState
                 children: [
                   ActivitiesCarouselWidget(
                     list: controller.mondayActivitiesList,
+                    listToEdit: controller.activitiesList,
                     weekday: 0,
                   ),
                   ActivitiesCarouselWidget(
                     list: controller.tuesdayActivitiesList,
+                    listToEdit: controller.activitiesList,
                     weekday: 1,
                   ),
                   ActivitiesCarouselWidget(
                     list: controller.wednesdayActivitiesList,
+                    listToEdit: controller.activitiesList,
                     weekday: 2,
                   ),
                   ActivitiesCarouselWidget(
                     list: controller.thursdayActivitiesList,
+                    listToEdit: controller.activitiesList,
                     weekday: 3,
                   ),
                   ActivitiesCarouselWidget(
                     list: controller.fridayActivitiesList,
+                    listToEdit: controller.activitiesList,
                     weekday: 4,
                   ),
                 ],
