@@ -125,11 +125,4 @@ void main() {
     repository = ActivitiesRepositoryImpl(datasource: datasource);
     when(datasource.getAllActivities()).thenAnswer((_) async => activitiesList);
   });
-
-  test('getActivitiesSelectedByType', () async {
-    var list =
-        await repository.getActivitiesSelectedByType(ActivityEnum.CURSOS);
-    expect(list.isNotEmpty, true);
-    expect(list.length, 5);
-  });
 }
