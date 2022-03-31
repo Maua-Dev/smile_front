@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -44,8 +45,9 @@ class MainSpeakersCard extends StatelessWidget {
                           height: MediaQuery.of(context).size.width * 0.12,
                           child: CircleAvatar(
                             radius: 102.0,
-                            backgroundImage: NetworkImage(speakers[indexToShow]
-                                .linkPhoto!), // for Network image
+                            backgroundImage: CachedNetworkImageProvider(
+                                speakers[indexToShow]
+                                    .linkPhoto!), // for Network image
                           ),
                         ),
                         const SizedBox(
