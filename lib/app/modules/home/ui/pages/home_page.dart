@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/ui/pages/main-home/main_home_page.dart';
+import 'package:smile_front/app/modules/home/ui/pages/main-home/pages/first_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/previous_editions-home/previous_editions_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -8,6 +8,7 @@ import '../../../../app_module.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
 import 'about-home/about_home_page.dart';
 import 'activity-home/activity_home_page.dart';
+import 'main-home/main_home_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,10 +27,7 @@ double appBarFontSize(size) {
   return 18;
 }
 
-class _HomePageState extends State<HomePage> {
-  final controller = PageController(
-    initialPage: 0,
-  );
+class _HomePageState extends ModularState<HomePage, PageController> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.width;
@@ -109,16 +107,23 @@ class _HomePageState extends State<HomePage> {
                   fontSize: appBarFontSize(size)),
             )
           ]),
-      body: PageView(
-        controller: controller,
-        pageSnapping: false,
-        scrollDirection: Axis.vertical,
-        children: const [
-          MainHomePage(),
-          AboutHomePage(),
-          ActivityHomePage(),
-          PreviousEditionsHomePage(),
-        ],
+      body: Center(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width < 1980
+              ? MediaQuery.of(context).size.width
+              : 1980,
+          child: PageView(
+            controller: controller,
+            pageSnapping: false,
+            scrollDirection: Axis.vertical,
+            children: const [
+              MainHomePage(),
+              AboutHomePage(),
+              ActivityHomePage(),
+              PreviousEditionsHomePage(),
+            ],
+          ),
+        ),
       ),
     );
   }

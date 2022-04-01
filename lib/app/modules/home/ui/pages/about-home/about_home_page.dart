@@ -133,7 +133,7 @@ class _AboutHomePageState
         );
       }
       return Container(
-        color: AppColors.lightPurple,
+        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 120.0),
           child: Column(
