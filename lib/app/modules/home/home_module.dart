@@ -1,36 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/infra/repository/speakers_repository_impl.dart';
-import 'package:smile_front/app/modules/home/infra/repository/lecture_images_repository_impl.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/about_home_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home_controller.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/previous_editions_home_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home_page.dart';
-import 'domain/repositories/lecture_images_repository_interface.dart';
-import 'domain/repositories/rectors_repository_interface.dart';
-import 'external/lecture_images_datasource_impl.dart';
-import 'external/rectors_datasource_impl.dart';
-import 'infra/datasources/lecture_images_datasource_interface.dart';
-import 'infra/datasources/rectors_datasource_interface.dart';
-import 'infra/repository/rectors_repository_impl.dart';
+import 'external/speakers_datasource_impl.dart';
+import 'infra/datasources/speakers_datasource_interface.dart';
 
 class HomeModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => ActivityHomeController(i())),
     Bind.lazySingleton((i) => PageController()),
-    Bind.lazySingleton<LectureImagesRepositoryInterface>(
-        (i) => LectureImagesRepositoryImpl(datasource: i())),
-    Bind.lazySingleton((i) => PreviousEditionsHomeController(repository: i())),
-    Bind.lazySingleton<LectureImagesDatasourceInterface>(
-        (i) => LectureImagesDatasourceImpl()),
     Bind.lazySingleton<SpeakersRepositoryImpl>((i) => SpeakersRepositoryImpl()),
     Bind.lazySingleton((i) => ActivityHomeController(i())),
-    Bind.lazySingleton<RectorsRepositoryInterface>(
-        (i) => RectorsRepositoryImpl(datasource: i())),
-    Bind.lazySingleton((i) => AboutHomeController(repository: i())),
-    Bind.lazySingleton<RectorsDatasourceInterface>(
-        (i) => RectorsDatasourceImpl()),
+    Bind.lazySingleton((i) => SpeakersHomeController(repository: i())),
+    Bind.lazySingleton<SpeakersDatasourceInterface>(
+        (i) => SpeakersDatasourceImpl()),
   ];
 
   @override

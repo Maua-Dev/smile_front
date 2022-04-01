@@ -1,10 +1,8 @@
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/main-home/pages/first_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/main-home/pages/next_home_page.dart';
-import 'package:smile_front/app/modules/home/ui/pages/main-home/pages/widgets/circular_icon_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 import '../../../../../shared/utils/s3_assets_url.dart';

@@ -9,7 +9,7 @@ var speakersMock = [
       date: '17/05',
       linkPhoto: '${speakersLogoUrl}Viviane+Nunes.png'),
   HomeSpeakerModel(
-      name: 'Bóriis Fabris',
+      name: 'Bóris Fabris',
       bio:
           'Designer, Consultor de Design Automotivo, professor e palestrante com experiências de trabalho internacionais nos EUA, Índia, China, Europa e diversos outros países.',
       date: '18/05',

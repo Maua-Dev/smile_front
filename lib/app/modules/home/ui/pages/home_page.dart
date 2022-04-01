@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/ui/pages/main-home/pages/first_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/previous_editions-home/previous_editions_home_page.dart';
+import 'package:smile_front/app/modules/home/ui/pages/speakers-home/speakers_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../app_module.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
-import 'about-home/about_home_page.dart';
 import 'activity-home/activity_home_page.dart';
 import 'main-home/main_home_page.dart';
 
@@ -63,7 +62,7 @@ class _HomePageState extends ModularState<HomePage, PageController> {
               fontSize: appBarFontSize(size),
             ),
             ActionTextButtonWidget(
-                title: 'SOBRE',
+                title: 'PALESTRANTES',
                 paddingHorizontal: 16,
                 paddingVertical: 8,
                 onPressed: () {
@@ -83,7 +82,7 @@ class _HomePageState extends ModularState<HomePage, PageController> {
                 },
                 fontSize: appBarFontSize(size)),
             ActionTextButtonWidget(
-                title: 'EDIÇÕES',
+                title: 'PATROCINADORES',
                 paddingHorizontal: 16,
                 paddingVertical: 8,
                 onPressed: () {
@@ -109,16 +108,16 @@ class _HomePageState extends ModularState<HomePage, PageController> {
           ]),
       body: Center(
         child: SizedBox(
-          width: MediaQuery.of(context).size.width < 1980
+          width: MediaQuery.of(context).size.width < 2200
               ? MediaQuery.of(context).size.width
-              : 1980,
+              : 2200,
           child: PageView(
             controller: controller,
             pageSnapping: false,
             scrollDirection: Axis.vertical,
             children: const [
               MainHomePage(),
-              AboutHomePage(),
+              SpeakersHomePage(),
               ActivityHomePage(),
               PreviousEditionsHomePage(),
             ],
