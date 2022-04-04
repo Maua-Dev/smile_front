@@ -59,7 +59,9 @@ class InputBox extends StatelessWidget {
           child: TextFormField(
             textAlignVertical: TextAlignVertical.center,
             validator: (value) {
-              return validation!(value!);
+              if (validation != null) {
+                return validation!(value!);
+              }
             },
             onFieldSubmitted: onFieldSubmitted,
             onChanged: setValue,

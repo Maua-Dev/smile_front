@@ -212,8 +212,6 @@ abstract class _RegisterController with Store {
         await registerUserRepository.registerUser(registerInformations);
         setIsLoading(false);
         setSuccessRegistration(true);
-        await Future.delayed(const Duration(seconds: 5));
-        Modular.to.navigate('/login');
       } on Failure catch (e) {
         errors = e.message;
       }
