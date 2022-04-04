@@ -65,7 +65,7 @@ class SpeakersCardWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    alignment: Alignment.centerLeft,
+                    alignment: Alignment.center,
                     image: NetworkImage(
                       linkPhoto,
                     ))),
@@ -83,7 +83,7 @@ class SpeakersCardWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    alignment: Alignment.centerLeft,
+                    alignment: Alignment.center,
                     image: NetworkImage(
                       linkPhoto,
                     ))),
