@@ -133,8 +133,8 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      height: MediaQuery.of(context).size.height * 0.12,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      height: MediaQuery.of(context).size.height * 0.15,
                       child: Container(
                         decoration: BoxDecoration(
                           image: DecorationImage(
@@ -144,6 +144,9 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
                           ),
                         ),
                       ),
+                    ),
+                    const SizedBox(
+                      width: 24,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
