@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dart';
 
 final smileLoginOption = BaseOptions(
-    baseUrl:
-        'https://b574ab6867.execute-api.sa-east-1.amazonaws.com/dev/smile-mss-cognito',
+    baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
     connectTimeout: 5000,
     receiveTimeout: 3000);

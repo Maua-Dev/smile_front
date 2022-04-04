@@ -1,5 +1,6 @@
-var s3AssetsBaseUrl =
-    'https://smile2022-frontend-assets.s3.sa-east-1.amazonaws.com/';
+import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dart';
+
+var s3AssetsBaseUrl = EnvironmentConfig.S3_BASE_URL;
 
 var previousEditionsBaseUrl = '${s3AssetsBaseUrl}edicoes-anteriores/';
 

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../../../shared/services/enviroment/enviroment_config.dart';
 import '../infra/datasources/forgot_password_datasource.dart';
 import 'errors.dart';
 
@@ -10,10 +11,8 @@ class ForgotPasswordDatasourceImpl implements ForgotPasswordDatasource {
 
   @override
   Future<String> forgotPassword(String username) async {
-    var uri =
-        "https://b574ab6867.execute-api.sa-east-1.amazonaws.com/dev/smile-mss-cognito";
     BaseOptions options = BaseOptions(
-      baseUrl: uri,
+      baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
       responseType: ResponseType.json,
       connectTimeout: 30000,
       receiveTimeout: 30000,
@@ -35,10 +34,8 @@ class ForgotPasswordDatasourceImpl implements ForgotPasswordDatasource {
   @override
   Future<String> changePassword(
       String username, String password, String code) async {
-    var uri =
-        "https://b574ab6867.execute-api.sa-east-1.amazonaws.com/dev/smile-mss-cognito";
     BaseOptions options = BaseOptions(
-      baseUrl: uri,
+      baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
       responseType: ResponseType.json,
       connectTimeout: 30000,
       receiveTimeout: 30000,
