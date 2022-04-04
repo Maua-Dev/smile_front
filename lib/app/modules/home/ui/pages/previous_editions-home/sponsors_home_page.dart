@@ -85,7 +85,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.33,
+            height: MediaQuery.of(context).size.height * 0.31,
             decoration: BoxDecoration(color: AppColors.brandingPurple),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
