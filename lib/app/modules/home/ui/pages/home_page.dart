@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/previous_editions-home/sponsors_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/speakers_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/video_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import '../../../../app_module.dart';
@@ -57,7 +58,10 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                   MediaQuery.of(context).size.width < 1300 ? 8 : 16,
               paddingVertical: 8,
               onPressed: () {
-                controller.animateTo(MediaQuery.of(context).size.height - 55,
+                controller.animateTo(
+                    MediaQuery.of(context).size.height -
+                        55 +
+                        (MediaQuery.of(context).size.height * 0.5 + 48),
                     duration: const Duration(milliseconds: 1500),
                     curve: Curves.easeInOut);
               },
@@ -72,8 +76,11 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                     MediaQuery.of(context).size.height < 1080
                         ? MediaQuery.of(context).size.height * 2 +
                             (1080 - MediaQuery.of(context).size.height) -
-                            55
-                        : MediaQuery.of(context).size.height * 2 - 55,
+                            55 +
+                            (MediaQuery.of(context).size.height * 0.5 + 48)
+                        : MediaQuery.of(context).size.height * 2 -
+                            55 +
+                            (MediaQuery.of(context).size.height * 0.5 + 48),
                     duration: const Duration(milliseconds: 1500),
                     curve: Curves.easeInOut);
               },
@@ -121,6 +128,11 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                 height: MediaQuery.of(context).size.height - 55,
                 child: const MainHomePage(),
               ),
+              const Center(
+                  child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 16),
+                child: VideoCardWidget(),
+              )),
               SizedBox(
                   height: MediaQuery.of(context).size.height < 1080
                       ? MediaQuery.of(context).size.height +
