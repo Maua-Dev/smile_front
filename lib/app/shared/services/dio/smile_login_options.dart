@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-final smileLoginOption = BaseOptions(
-    baseUrl:
-        'https://b574ab6867.execute-api.sa-east-1.amazonaws.com/dev/smile-mss-cognito',
-    connectTimeout: 5000,
-    receiveTimeout: 3000);
+final String? url = dotenv.env['MSS_USER_BASE_URL'];
+
+final smileLoginOption =
+    BaseOptions(baseUrl: url!, connectTimeout: 5000, receiveTimeout: 3000);

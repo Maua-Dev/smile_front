@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-final smileOption = BaseOptions(
-    baseUrl: 'http://smile-mss-lb-1299697253.sa-east-1.elb.amazonaws.com',
-    connectTimeout: 5000,
-    receiveTimeout: 3000);
+final String? url = dotenv.env['MSS_ACTIVITIES_BASE_URL'];
+
+final smileOption =
+    BaseOptions(baseUrl: url!, connectTimeout: 5000, receiveTimeout: 3000);

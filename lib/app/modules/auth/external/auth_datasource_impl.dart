@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import '../../../shared/models/user_model.dart';
 import '../errors/errors.dart';
@@ -26,10 +27,9 @@ class AuthDatasourceImpl implements AuthDatasource {
 
   @override
   Future<Map<String, dynamic>> login(cpfRne, password) async {
-    var uri =
-        "https://b574ab6867.execute-api.sa-east-1.amazonaws.com/dev/smile-mss-cognito";
+    final String? uri = dotenv.env['MSS_USER_BASE_URL'];
     BaseOptions options = BaseOptions(
-      baseUrl: uri,
+      baseUrl: uri!,
       responseType: ResponseType.json,
       connectTimeout: 30000,
       receiveTimeout: 30000,
@@ -53,10 +53,9 @@ class AuthDatasourceImpl implements AuthDatasource {
   @override
   Future<Map<String, dynamic>> refreshToken(String token) async {
     try {
-      var uri =
-          "https://b574ab6867.execute-api.sa-east-1.amazonaws.com/dev/smile-mss-cognito";
+      final String? uri = dotenv.env['MSS_USER_BASE_URL'];
       BaseOptions options = BaseOptions(
-        baseUrl: uri,
+        baseUrl: uri!,
         responseType: ResponseType.json,
         connectTimeout: 30000,
         receiveTimeout: 30000,

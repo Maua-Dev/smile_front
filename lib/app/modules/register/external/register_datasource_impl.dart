@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:smile_front/app/shared/entities/user_registration.dart';
 import '../infra/datasources/register_datasource.dart';
 import 'errors/errors.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class RegisterDatasourceImpl implements RegisterDatasource {
   final Dio dioClient;
@@ -10,10 +11,9 @@ class RegisterDatasourceImpl implements RegisterDatasource {
 
   @override
   Future<String> registerUser(UserRegistration userRegistration) async {
-    var uri =
-        "https://b574ab6867.execute-api.sa-east-1.amazonaws.com/dev/smile-mss-cognito";
+    final String? uri = dotenv.env['MSS_USER_BASE_URL'];
     BaseOptions options = BaseOptions(
-      baseUrl: uri,
+      baseUrl: uri!,
       responseType: ResponseType.json,
       connectTimeout: 30000,
       receiveTimeout: 30000,
