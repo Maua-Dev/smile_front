@@ -14,7 +14,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var controller = Modular.get<BottomNavigationBarController>();
+    var controller = Modular.get<NavigationBarController>();
     return Observer(builder: (context) {
       return Container(
         padding: MediaQuery.of(context).size.width < 1000
@@ -32,6 +32,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 icon: Icons.home,
                 myIndex: 0,
                 onPressed: () {
+                  controller.toggleIndex(0);
                   Modular.to.navigate('/home');
                 },
               ),

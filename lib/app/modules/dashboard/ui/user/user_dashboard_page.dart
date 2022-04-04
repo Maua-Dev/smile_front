@@ -21,7 +21,7 @@ class UserDashboardPage extends StatefulWidget {
 
 class _UserDashboardPageState
     extends ModularState<UserDashboardPage, UserDashboardController> {
-  var navBarController = Modular.get<BottomNavigationBarController>();
+  var navBarController = Modular.get<NavigationBarController>();
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
