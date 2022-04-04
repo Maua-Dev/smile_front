@@ -31,7 +31,8 @@ class UserActivityCardWidget extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
+              padding: EdgeInsets.symmetric(
+                  vertical: MediaQuery.of(context).size.width < 1000 ? 8 : 16),
               child: IntrinsicHeight(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,7 +71,7 @@ class UserActivityCardWidget extends StatelessWidget {
                             style: AppTextStyles.buttonBold.copyWith(
                                 fontSize:
                                     MediaQuery.of(context).size.width < 1000
-                                        ? 12
+                                        ? 14
                                         : 16,
                                 color: AppColors.gray),
                           ),
@@ -83,7 +84,7 @@ class UserActivityCardWidget extends StatelessWidget {
                             style: AppTextStyles.buttonBold.copyWith(
                                 fontSize:
                                     MediaQuery.of(context).size.width < 1000
-                                        ? 12
+                                        ? 14
                                         : 16,
                                 color: AppColors.gray),
                           ),
