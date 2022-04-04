@@ -7,8 +7,8 @@ import '../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_control
 class LandingModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton<BottomNavigationBarController>(
-        (i) => BottomNavigationBarController()),
+    Bind.lazySingleton<NavigationBarController>(
+        (i) => NavigationBarController()),
   ];
 
   @override

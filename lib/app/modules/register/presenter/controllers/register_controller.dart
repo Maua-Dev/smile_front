@@ -1,4 +1,3 @@
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 
@@ -212,8 +211,6 @@ abstract class _RegisterController with Store {
         await registerUserRepository.registerUser(registerInformations);
         setIsLoading(false);
         setSuccessRegistration(true);
-        await Future.delayed(const Duration(seconds: 5));
-        Modular.to.navigate('/login');
       } on Failure catch (e) {
         errors = e.message;
       }
