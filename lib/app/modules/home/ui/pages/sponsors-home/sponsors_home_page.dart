@@ -72,6 +72,19 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                              '${s3AssetsBaseUrl}amblegis_logo.png'),
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -115,7 +128,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
                     style: AppTextStyles.body.copyWith(
                         color: Colors.black,
                         fontSize:
-                            MediaQuery.of(context).size.width < 1200 ? 14 : 16),
+                            MediaQuery.of(context).size.width < 1200 ? 16 : 18),
                   ),
                 ),
               ],

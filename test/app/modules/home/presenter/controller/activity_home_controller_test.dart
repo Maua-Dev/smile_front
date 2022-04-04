@@ -25,9 +25,4 @@ void main() {
     controller.getSpeakers();
     expect(controller.speakers.isNotEmpty, true);
   });
-
-  test('toggleIndex', () {
-    controller.toggleIndex(10);
-    expect(controller.indexToShow, 10);
-  });
 }

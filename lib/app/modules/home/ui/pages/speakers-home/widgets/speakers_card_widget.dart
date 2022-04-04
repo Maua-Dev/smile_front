@@ -1,128 +1,80 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 import '../../../../../../shared/themes/app_text_styles.dart';
 
 class SpeakersCardWidget extends StatelessWidget {
-  final String socialName;
-  final String bio;
   final String linkPhoto;
-  final bool isEven;
-  const SpeakersCardWidget(
-      {Key? key,
-      required this.socialName,
-      required this.bio,
-      required this.linkPhoto,
-      required this.isEven})
-      : super(key: key);
+  final String name;
+  final void Function()? onTap;
+  final int myIndex;
+  final int indexToShow;
+  const SpeakersCardWidget({
+    Key? key,
+    required this.linkPhoto,
+    this.onTap,
+    required this.myIndex,
+    required this.indexToShow,
+    required this.name,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (isEven) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Flexible(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  socialName,
-                  style: AppTextStyles.buttonBold.copyWith(
-                      color: AppColors.brandingPurple,
-                      fontSize:
-                          MediaQuery.of(context).size.width < 1400 ? 24 : 30),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left:
-                          MediaQuery.of(context).size.width < 1400 ? 160 : 232),
-                  child: Text(
-                    bio,
-                    textAlign: TextAlign.right,
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize:
-                            MediaQuery.of(context).size.width < 1400 ? 14 : 18),
-                  ),
-                ),
-              ],
+    return Padding(
+      padding: EdgeInsets.only(
+          right: MediaQuery.of(context).size.width < 1500 ? 16 : 32),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Column(
+          children: [
+            Container(
+                width: indexToShow == myIndex
+                    ? (MediaQuery.of(context).size.width < 1100
+                        ? 180
+                        : MediaQuery.of(context).size.width < 1380
+                            ? 200
+                            : MediaQuery.of(context).size.width < 1750
+                                ? 250
+                                : 350)
+                    : (MediaQuery.of(context).size.width < 1100
+                        ? 130
+                        : MediaQuery.of(context).size.width < 1380
+                            ? 150
+                            : MediaQuery.of(context).size.width < 1750
+                                ? 200
+                                : 250),
+                height: indexToShow == myIndex
+                    ? (MediaQuery.of(context).size.width < 1100
+                        ? 180
+                        : MediaQuery.of(context).size.width < 1380
+                            ? 200
+                            : MediaQuery.of(context).size.width < 1750
+                                ? 250
+                                : 350)
+                    : (MediaQuery.of(context).size.width < 1100
+                        ? 130
+                        : MediaQuery.of(context).size.width < 1380
+                            ? 150
+                            : MediaQuery.of(context).size.width < 1750
+                                ? 200
+                                : 250),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        fit: BoxFit.cover, image: NetworkImage(linkPhoto)))),
+            const SizedBox(
+              height: 8,
             ),
-          ),
-          const SizedBox(
-            width: 32,
-          ),
-          Container(
-            height: 150,
-            width: 150,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    alignment: Alignment.center,
-                    image: NetworkImage(
-                      linkPhoto,
-                    ))),
-          ),
-        ],
-      );
-    } else {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 150,
-            width: 150,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    alignment: Alignment.center,
-                    image: NetworkImage(
-                      linkPhoto,
-                    ))),
-          ),
-          const SizedBox(
-            width: 32,
-          ),
-          Flexible(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  socialName,
-                  style: AppTextStyles.buttonBold.copyWith(
-                      color: AppColors.brandingPurple,
-                      fontSize:
-                          MediaQuery.of(context).size.width < 1400 ? 24 : 30),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      right:
-                          MediaQuery.of(context).size.width < 1400 ? 148 : 200),
-                  child: Text(
-                    bio,
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize:
-                            MediaQuery.of(context).size.width < 1400 ? 14 : 18),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      );
-    }
+            Text(
+              name,
+              style: AppTextStyles.button.copyWith(
+                  fontSize: MediaQuery.of(context).size.width < 1500 ? 18 : 24,
+                  color: Colors.white),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

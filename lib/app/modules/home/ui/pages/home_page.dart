@@ -58,10 +58,7 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                   MediaQuery.of(context).size.width < 1300 ? 8 : 16,
               paddingVertical: 8,
               onPressed: () {
-                controller.animateTo(
-                    MediaQuery.of(context).size.height -
-                        55 +
-                        (MediaQuery.of(context).size.height * 0.5 + 48),
+                controller.animateTo(MediaQuery.of(context).size.height - 55,
                     duration: const Duration(milliseconds: 1500),
                     curve: Curves.easeInOut);
               },
@@ -72,15 +69,7 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                   MediaQuery.of(context).size.width < 1300 ? 8 : 16,
               paddingVertical: 8,
               onPressed: () {
-                controller.animateTo(
-                    MediaQuery.of(context).size.height < 1080
-                        ? MediaQuery.of(context).size.height * 2 +
-                            (1080 - MediaQuery.of(context).size.height) -
-                            55 +
-                            (MediaQuery.of(context).size.height * 0.5 + 48)
-                        : MediaQuery.of(context).size.height * 2 -
-                            55 +
-                            (MediaQuery.of(context).size.height * 0.5 + 48),
+                controller.animateTo(MediaQuery.of(context).size.height * 2,
                     duration: const Duration(milliseconds: 1500),
                     curve: Curves.easeInOut);
               },
@@ -134,12 +123,11 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                 child: VideoCardWidget(),
               )),
               SizedBox(
-                  height: MediaQuery.of(context).size.height < 1080
-                      ? MediaQuery.of(context).size.height +
-                          (1080 - MediaQuery.of(context).size.height)
-                      : MediaQuery.of(context).size.height,
+                  height: MediaQuery.of(context).size.height,
                   child: const SpeakersHomePage()),
-              const ActivitiesHomePage(),
+              SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: const ActivitiesHomePage()),
               const SponsorsHomePage(),
             ],
           ),

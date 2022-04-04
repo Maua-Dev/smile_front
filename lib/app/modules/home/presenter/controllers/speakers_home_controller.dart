@@ -26,10 +26,18 @@ abstract class _SpeakersHomeControllerBase with Store {
   @observable
   List<HomeSpeakerModel> listSpeakers = [];
 
+  @observable
+  int indexToShow = 0;
+
   @action
   Future getSpeakers() async {
     setIsLoading(true);
     listSpeakers = await repository.getSpeakers();
     setIsLoading(false);
+  }
+
+  @action
+  Future<void> toggleIndex(index) async {
+    indexToShow = index;
   }
 }

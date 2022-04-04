@@ -40,6 +40,22 @@ mixin _$SpeakersHomeController on _SpeakersHomeControllerBase, Store {
     });
   }
 
+  final _$indexToShowAtom =
+      Atom(name: '_SpeakersHomeControllerBase.indexToShow');
+
+  @override
+  int get indexToShow {
+    _$indexToShowAtom.reportRead();
+    return super.indexToShow;
+  }
+
+  @override
+  set indexToShow(int value) {
+    _$indexToShowAtom.reportWrite(value, super.indexToShow, () {
+      super.indexToShow = value;
+    });
+  }
+
   final _$setIsLoadingAsyncAction =
       AsyncAction('_SpeakersHomeControllerBase.setIsLoading');
 
@@ -56,11 +72,20 @@ mixin _$SpeakersHomeController on _SpeakersHomeControllerBase, Store {
     return _$getSpeakersAsyncAction.run(() => super.getSpeakers());
   }
 
+  final _$toggleIndexAsyncAction =
+      AsyncAction('_SpeakersHomeControllerBase.toggleIndex');
+
+  @override
+  Future<void> toggleIndex(dynamic index) {
+    return _$toggleIndexAsyncAction.run(() => super.toggleIndex(index));
+  }
+
   @override
   String toString() {
     return '''
 isLoading: ${isLoading},
-listSpeakers: ${listSpeakers}
+listSpeakers: ${listSpeakers},
+indexToShow: ${indexToShow}
     ''';
   }
 }
