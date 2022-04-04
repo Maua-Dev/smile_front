@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/ui/pages/previous_editions-home/sponsors_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/speakers_home_page.dart';
+import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/video_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';

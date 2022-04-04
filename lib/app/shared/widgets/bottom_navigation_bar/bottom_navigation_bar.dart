@@ -40,7 +40,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 myIndex: 1,
                 onPressed: () async {
                   controller.toggleIndex(1);
-                  Modular.to.navigate('/user');
+                  Modular.to.navigate('/user/home');
                 },
                 icon: Icons.person,
               ),
@@ -49,7 +49,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 myIndex: 2,
                 onPressed: () async {
                   await controller.toggleIndex(2);
-                  Modular.to.navigate('/user/all-activities');
+                  Modular.to.navigate('/user/home/all-activities');
                 },
                 icon: Icons.grid_on,
               ),
@@ -76,7 +76,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 myIndex: 4,
                 onPressed: () async {
                   await controller.toggleIndex(4);
-                  Modular.to.navigate('/user/help');
+                  Modular.to.navigate('/user/home/help');
                 },
                 icon: Icons.help,
               ),
