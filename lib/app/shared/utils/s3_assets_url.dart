@@ -1,5 +1,6 @@
-var s3AssetsBaseUrl =
-    'https://smile2022-frontend-assets.s3.sa-east-1.amazonaws.com/';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+var s3AssetsBaseUrl = dotenv.env['S3_BASE_URL'];
 
 var previousEditionsBaseUrl = '${s3AssetsBaseUrl}edicoes-anteriores/';
 
