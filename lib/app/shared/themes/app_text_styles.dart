@@ -6,7 +6,7 @@ class AppTextStyles {
   static final TextStyle titleH1 = GoogleFonts.roboto(
     color: AppColors.brandingPurple,
     fontSize: 60,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w900,
   );
 
   static final TextStyle body = GoogleFonts.roboto(

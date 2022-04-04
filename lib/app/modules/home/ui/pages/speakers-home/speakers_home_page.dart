@@ -27,27 +27,28 @@ class _SpeakersHomePageState
             height: 24,
           ),
           TextHeader(
-              title: 'Principais Palestrantes',
-              leftPadding: 32,
-              color: AppColors.brandingOrange),
+            title: 'Principais Palestrantes',
+            leftPadding: 32,
+            color: AppColors.brandingOrange,
+          ),
           const SizedBox(
             height: 32,
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 128),
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: controller.listSpeakers.length,
-                itemBuilder: (context, index) {
-                  return SpeakersCardWidget(
-                    socialName: controller.listSpeakers[index].name,
-                    bio: controller.listSpeakers[index].bio,
-                    linkPhoto: controller.listSpeakers[index].linkPhoto!,
-                    isEven: index % 2 == 0 ? false : true,
-                  );
-                },
-              ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal:
+                    MediaQuery.of(context).size.width < 1700 ? 64 : 128),
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: controller.listSpeakers.length,
+              itemBuilder: (context, index) {
+                return SpeakersCardWidget(
+                  socialName: controller.listSpeakers[index].name,
+                  bio: controller.listSpeakers[index].bio,
+                  linkPhoto: controller.listSpeakers[index].linkPhoto!,
+                  isEven: index % 2 == 0 ? false : true,
+                );
+              },
             ),
           )
         ],

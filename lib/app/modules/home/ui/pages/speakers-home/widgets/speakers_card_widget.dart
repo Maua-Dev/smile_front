@@ -22,7 +22,7 @@ class SpeakersCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isEven) {
       return Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Flexible(
@@ -41,14 +41,16 @@ class SpeakersCardWidget extends StatelessWidget {
                   height: 16,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 232),
+                  padding: EdgeInsets.only(
+                      left:
+                          MediaQuery.of(context).size.width < 1400 ? 160 : 232),
                   child: Text(
                     bio,
                     textAlign: TextAlign.right,
                     style: AppTextStyles.body.copyWith(
                         color: Colors.black,
                         fontSize:
-                            MediaQuery.of(context).size.width < 1600 ? 20 : 24),
+                            MediaQuery.of(context).size.width < 1400 ? 14 : 18),
                   ),
                 ),
               ],
@@ -105,13 +107,15 @@ class SpeakersCardWidget extends StatelessWidget {
                   height: 16,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 232),
+                  padding: EdgeInsets.only(
+                      right:
+                          MediaQuery.of(context).size.width < 1400 ? 148 : 200),
                   child: Text(
                     bio,
                     style: AppTextStyles.body.copyWith(
                         color: Colors.black,
                         fontSize:
-                            MediaQuery.of(context).size.width < 1600 ? 18 : 22),
+                            MediaQuery.of(context).size.width < 1400 ? 14 : 18),
                   ),
                 ),
               ],

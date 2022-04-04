@@ -4,7 +4,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 import '../../../../../../shared/utils/s3_assets_url.dart';
-import '../utils/text_utils.dart';
+import '../../../../utils/text_utils.dart';
 
 class FirstHomePage extends StatefulWidget {
   const FirstHomePage({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class _FirstHomePageState extends State<FirstHomePage> {
               ),
               child: Padding(
                 padding: EdgeInsets.only(
-                    right: MediaQuery.of(context).size.width < 1400 ? 64 : 128,
+                    right: MediaQuery.of(context).size.width < 1500 ? 64 : 128,
                     bottom: 64),
                 child: Align(
                   alignment: Alignment.centerRight,
@@ -40,30 +40,38 @@ class _FirstHomePageState extends State<FirstHomePage> {
                         Text('Semana Mauá de Inovação,',
                             style: AppTextStyles.titleH1.copyWith(
                                 color: Colors.white,
-                                fontSize:
-                                    MediaQuery.of(context).size.width < 1400
+                                fontSize: MediaQuery.of(context).size.width <
+                                        1500
+                                    ? 40
+                                    : MediaQuery.of(context).size.width < 1500
                                         ? 48
                                         : 55)),
                         Text('Liderança e Empreendedorismo',
                             style: AppTextStyles.titleH1.copyWith(
                                 color: Colors.white,
-                                fontSize:
-                                    MediaQuery.of(context).size.width < 1400
+                                fontSize: MediaQuery.of(context).size.width <
+                                        1500
+                                    ? 40
+                                    : MediaQuery.of(context).size.width < 1500
                                         ? 48
                                         : 55)),
                         const SizedBox(
                           height: 16,
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width < 1400
-                              ? 680
-                              : 800,
+                          width: MediaQuery.of(context).size.width < 1500
+                              ? 560
+                              : MediaQuery.of(context).size.width < 1500
+                                  ? 680
+                                  : 800,
                           child: Text(
                             apresentationText,
                             style: AppTextStyles.body.copyWith(
                                 color: Colors.white,
-                                fontSize:
-                                    MediaQuery.of(context).size.width < 1400
+                                fontSize: MediaQuery.of(context).size.width <
+                                        1500
+                                    ? 19
+                                    : MediaQuery.of(context).size.width < 1500
                                         ? 22
                                         : 25),
                             textAlign: TextAlign.start,
@@ -84,8 +92,10 @@ class _FirstHomePageState extends State<FirstHomePage> {
                             '16 a 21 de Maio',
                             textAlign: TextAlign.center,
                             style: AppTextStyles.buttonBold.copyWith(
-                                fontSize:
-                                    MediaQuery.of(context).size.width < 1400
+                                fontSize: MediaQuery.of(context).size.width <
+                                        1500
+                                    ? 40
+                                    : MediaQuery.of(context).size.width < 1500
                                         ? 48
                                         : 55),
                           ),
