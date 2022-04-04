@@ -50,8 +50,8 @@ class InputBox extends StatelessWidget {
           color: disable != null
               ? disable!
                   ? const Color(0xFF5C5C5C).withOpacity(0.2)
-                  : AppColors.grey
-              : AppColors.grey,
+                  : AppColors.gray
+              : AppColors.gray,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(

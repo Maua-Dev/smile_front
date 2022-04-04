@@ -100,6 +100,22 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
+  final _$saveActivitiesListAtom =
+      Atom(name: '_AdmDashboardControllerBase.saveActivitiesList');
+
+  @override
+  List<ActivityModel> get saveActivitiesList {
+    _$saveActivitiesListAtom.reportRead();
+    return super.saveActivitiesList;
+  }
+
+  @override
+  set saveActivitiesList(List<ActivityModel> value) {
+    _$saveActivitiesListAtom.reportWrite(value, super.saveActivitiesList, () {
+      super.saveActivitiesList = value;
+    });
+  }
+
   final _$allActivitiesToCardsAtom =
       Atom(name: '_AdmDashboardControllerBase.allActivitiesToCards');
 
@@ -185,11 +201,23 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   @override
+  void changeFormatToCards() {
+    final _$actionInfo = _$_AdmDashboardControllerBaseActionController
+        .startAction(name: '_AdmDashboardControllerBase.changeFormatToCards');
+    try {
+      return super.changeFormatToCards();
+    } finally {
+      _$_AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isFloatActionButtonOpen: ${isFloatActionButtonOpen},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 activitiesList: ${activitiesList},
+saveActivitiesList: ${saveActivitiesList},
 allActivitiesToCards: ${allActivitiesToCards},
 nextActivitiesList: ${nextActivitiesList},
 mondayActivitiesList: ${mondayActivitiesList},

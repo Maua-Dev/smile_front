@@ -133,10 +133,6 @@ void main() {
 
   setUpAll(() {
     when(repository.getAllActivities()).thenAnswer((_) async => mockActivities);
-    when(repository.getActivitiesSelectedByType(ActivityEnum.CURSOS))
-        .thenAnswer((_) async => mockActivities
-            .where((element) => element.type == ActivityEnum.CURSOS)
-            .toList());
     authController =
         AuthController(authRepository: authRepository, storage: secureStorage);
 

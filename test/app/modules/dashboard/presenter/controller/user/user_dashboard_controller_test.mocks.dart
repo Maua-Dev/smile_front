@@ -5,8 +5,6 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart'
-    as _i5;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i2;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
@@ -30,14 +28,6 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
     _i1.throwOnMissingStub(this);
   }
 
-  @override
-  _i3.Future<List<_i4.ActivityModel>> getActivitiesSelectedByType(
-          _i5.ActivityEnum? activityEnum) =>
-      (super.noSuchMethod(
-              Invocation.method(#getActivitiesSelectedByType, [activityEnum]),
-              returnValue:
-                  Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]))
-          as _i3.Future<List<_i4.ActivityModel>>);
   @override
   _i3.Future<List<_i4.ActivityModel>> getAllActivities() =>
       (super.noSuchMethod(Invocation.method(#getAllActivities, []),

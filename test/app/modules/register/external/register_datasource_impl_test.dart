@@ -11,10 +11,13 @@ void main() {
     var res = '';
     try {
       res = await ds.registerUser(UserRegistration(
-          name: 'Caio Toledo',
-          email: 'caio@caio.com',
-          cpfRne: '63480154085',
-          password: 'Teste123!'));
+        name: 'Caio Toledo',
+        email: 'caio@caio.com',
+        cpfRne: '63480154085',
+        password: 'Teste123!',
+        acceptEmails: true,
+        acceptTerms: true,
+      ));
     } catch (e) {
       res = 'erro';
     }

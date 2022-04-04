@@ -5,11 +5,11 @@ class ActionTextButtonWidget extends StatelessWidget {
   final bool? isLoading;
   final String? title;
   final Color? backgroundColor;
+  final TextStyle? textStyle;
   final double? widthSize;
   final double? heightSize;
   final double? paddingHorizontal;
   final double? paddingVertical;
-  final double? fontSize;
   final Function()? onPressed;
 
   const ActionTextButtonWidget({
@@ -21,8 +21,8 @@ class ActionTextButtonWidget extends StatelessWidget {
     this.heightSize,
     this.paddingHorizontal,
     this.paddingVertical,
-    this.fontSize,
     this.isLoading,
+    this.textStyle,
   }) : super(key: key);
 
   @override
@@ -45,8 +45,12 @@ class ActionTextButtonWidget extends StatelessWidget {
               ? const CircularProgressIndicator()
               : Text(title ?? '',
                   textAlign: TextAlign.center,
-                  style: AppTextStyles.body
-                      .copyWith(color: Colors.white, fontSize: fontSize ?? 25)),
+                  style: textStyle ??
+                      AppTextStyles.body.copyWith(
+                          color: Colors.white,
+                          fontSize: MediaQuery.of(context).size.width < 1300
+                              ? 20
+                              : 24)),
         ),
       ),
     );
