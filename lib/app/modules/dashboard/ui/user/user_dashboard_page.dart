@@ -21,7 +21,7 @@ class UserDashboardPage extends StatefulWidget {
 
 class _UserDashboardPageState
     extends ModularState<UserDashboardPage, UserDashboardController> {
-  var navBarController = Modular.get<BottomNavigationBarController>();
+  var navBarController = Modular.get<NavigationBarController>();
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
@@ -49,7 +49,7 @@ class _UserDashboardPageState
                     location: controller.nextActivity.schedule[0].location,
                     duration: controller.nextActivity.schedule[0].duration,
                     onTap: () {
-                      Modular.to.navigate('/user/more-info',
+                      Modular.to.navigate('/user/home/more-info',
                           arguments: [controller.cardNextActivity, true]);
                     },
                     name: controller.nextActivity.title,
@@ -95,10 +95,11 @@ class _UserDashboardPageState
                           activityCode:
                               controller.weekActivitiesList[index].activityCode,
                           onTap: () {
-                            Modular.to.navigate('/user/more-info', arguments: [
-                              controller.weekActivitiesList[index],
-                              false
-                            ]);
+                            Modular.to.navigate('/user/home/more-info',
+                                arguments: [
+                                  controller.weekActivitiesList[index],
+                                  false
+                                ]);
                           },
                         );
                       },
@@ -135,7 +136,7 @@ class _UserDashboardPageState
                   child: ElevatedButton(
                     onPressed: () async {
                       await navBarController.toggleIndex(2);
-                      Modular.to.navigate('/user/all-activities');
+                      Modular.to.navigate('/user/home/all-activities');
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -23,7 +23,7 @@ class NavBarButtonWidget extends StatelessWidget {
           icon,
           color:
               indexToShow == myIndex ? AppColors.brandingOrange : Colors.white,
-          size: 48,
+          size: 32,
         ));
   }
 }
