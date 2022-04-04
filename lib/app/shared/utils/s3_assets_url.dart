@@ -1,6 +1,6 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dart';
 
-var s3AssetsBaseUrl = dotenv.env['S3_BASE_URL'];
+var s3AssetsBaseUrl = EnvironmentConfig.S3_BASE_URL;
 
 var previousEditionsBaseUrl = '${s3AssetsBaseUrl}edicoes-anteriores/';
 

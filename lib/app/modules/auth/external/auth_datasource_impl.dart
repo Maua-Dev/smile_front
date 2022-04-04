@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dart';
 
 import '../../../shared/models/user_model.dart';
 import '../errors/errors.dart';
@@ -27,9 +27,8 @@ class AuthDatasourceImpl implements AuthDatasource {
 
   @override
   Future<Map<String, dynamic>> login(cpfRne, password) async {
-    final String? uri = dotenv.env['MSS_USER_BASE_URL'];
     BaseOptions options = BaseOptions(
-      baseUrl: uri!,
+      baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
       responseType: ResponseType.json,
       connectTimeout: 30000,
       receiveTimeout: 30000,
@@ -53,9 +52,8 @@ class AuthDatasourceImpl implements AuthDatasource {
   @override
   Future<Map<String, dynamic>> refreshToken(String token) async {
     try {
-      final String? uri = dotenv.env['MSS_USER_BASE_URL'];
       BaseOptions options = BaseOptions(
-        baseUrl: uri!,
+        baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
         responseType: ResponseType.json,
         connectTimeout: 30000,
         receiveTimeout: 30000,

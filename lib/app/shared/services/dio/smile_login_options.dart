@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dart';
 
-final String? url = dotenv.env['MSS_USER_BASE_URL'];
-
-final smileLoginOption =
-    BaseOptions(baseUrl: url!, connectTimeout: 5000, receiveTimeout: 3000);
+final smileLoginOption = BaseOptions(
+    baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
+    connectTimeout: 5000,
+    receiveTimeout: 3000);

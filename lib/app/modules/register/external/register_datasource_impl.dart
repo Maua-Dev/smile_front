@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:smile_front/app/shared/entities/user_registration.dart';
+import '../../../shared/services/enviroment/enviroment_config.dart';
 import '../infra/datasources/register_datasource.dart';
 import 'errors/errors.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class RegisterDatasourceImpl implements RegisterDatasource {
   final Dio dioClient;
@@ -11,9 +11,8 @@ class RegisterDatasourceImpl implements RegisterDatasource {
 
   @override
   Future<String> registerUser(UserRegistration userRegistration) async {
-    final String? uri = dotenv.env['MSS_USER_BASE_URL'];
     BaseOptions options = BaseOptions(
-      baseUrl: uri!,
+      baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
       responseType: ResponseType.json,
       connectTimeout: 30000,
       receiveTimeout: 30000,
