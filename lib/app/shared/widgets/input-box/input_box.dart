@@ -62,6 +62,7 @@ class InputBox extends StatelessWidget {
               if (validation != null) {
                 return validation!(value!);
               }
+              return '';
             },
             onFieldSubmitted: onFieldSubmitted,
             onChanged: setValue,

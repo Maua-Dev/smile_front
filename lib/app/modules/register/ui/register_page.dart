@@ -437,7 +437,6 @@ class _RegisterPageState
                                 heightSize: 50,
                                 backgroundColor: AppColors.brandingOrange,
                                 onPressed: () async {
-                                  print("cliquei pra cadastrar");
                                   if (_formKey.currentState!.validate()) {
                                     await controller.register();
                                   }
