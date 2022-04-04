@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home_controller.dart';
-import 'package:smile_front/app/modules/home/ui/pages/speakers-home/widgets/speakers_Card_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/speakers-home/widgets/speakers_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../../shared/widgets/text-header/text_header.dart';
 
