@@ -49,7 +49,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-    - .env
 
 scripts:
   mobx_build: flutter pub run build_runner build
