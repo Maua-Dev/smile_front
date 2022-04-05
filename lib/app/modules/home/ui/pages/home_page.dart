@@ -29,15 +29,22 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
           leadingWidth: 0,
           title: Padding(
             padding: const EdgeInsets.only(left: 32.0),
-            child: Container(
-              height: 40,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.contain,
-                      alignment: Alignment.centerLeft,
-                      image: NetworkImage(
-                        smileeeLogoUrl,
-                      ))),
+            child: GestureDetector(
+              onTap: () {
+                controller.animateTo(controller.position.minScrollExtent,
+                    duration: const Duration(milliseconds: 1500),
+                    curve: Curves.easeInOut);
+              },
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.contain,
+                        alignment: Alignment.centerLeft,
+                        image: NetworkImage(
+                          smileeeLogoUrl,
+                        ))),
+              ),
             ),
           ),
           actions: [
@@ -58,7 +65,10 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                   MediaQuery.of(context).size.width < 1300 ? 8 : 16,
               paddingVertical: 8,
               onPressed: () {
-                controller.animateTo(MediaQuery.of(context).size.height * 2,
+                controller.animateTo(
+                    MediaQuery.of(context).size.height * 2 +
+                        MediaQuery.of(context).size.height * 0.5 +
+                        32,
                     duration: const Duration(milliseconds: 1500),
                     curve: Curves.easeInOut);
               },
