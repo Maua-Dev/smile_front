@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../shared/themes/app_text_styles.dart';
@@ -62,7 +63,8 @@ class SpeakersCardWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        fit: BoxFit.cover, image: NetworkImage(linkPhoto)))),
+                        fit: BoxFit.cover,
+                        image: CachedNetworkImageProvider(linkPhoto)))),
             const SizedBox(
               height: 8,
             ),

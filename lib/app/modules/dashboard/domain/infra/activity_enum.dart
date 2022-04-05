@@ -64,7 +64,7 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.HACKATHON:
         return 'Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa sendo uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.';
       case ActivityEnum.FEIRA_ESTAGIOS:
-        return 'Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes. Serão 10 empresas distribuídas entre os dias 17 e 18 de Maio.                                                                                                                                                   Empresas confirmadas: Santander, Accenture, Braskem, Scania, Cisco do Brasil, Nestlé, Ambev, Globo,Thyssenkrupp e Novartis. Condução – Anfitrião - Academia de Talentos';
+        return 'Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes. Serão 10 empresas distribuídas entre os dias 17 e 18 de Maio. Empresas confirmadas: Santander, Accenture, Braskem, Scania, Cisco do Brasil, Nestlé, Ambev, Globo,Thyssenkrupp e Novartis. Condução – Anfitrião - Academia de Talentos';
       case ActivityEnum.CAFE_EX_ALUNOS:
         return 'A atividade tem como objetivo promover conversas informais entre alunos do Instituto Mauá de Tecnologia e egressos que ocupam posições de destaque em suas áreas de atuação. Os egressos mostrarão sua trajetória profissional, desafios, dificuldades e oportunidades da carreira. Venha participar!';
       case ActivityEnum.ACADEMIA_DE_PROFESSORES:
@@ -85,7 +85,7 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.PALESTRAS:
         return '${previousEditionsBaseUrl}palestras.png';
       case ActivityEnum.PALESTRAS_ALTO_IMPACTO:
-        return '${previousEditionsBaseUrl}palestras.png';
+        return '${previousEditionsBaseUrl}palestra_alto_impacto.png';
       case ActivityEnum.VISITAS_TECNICAS:
         return '${previousEditionsBaseUrl}visitas_tecnicas.png';
       case ActivityEnum.COMPETICOES_ACADEMICAS:

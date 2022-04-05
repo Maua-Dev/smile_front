@@ -41,20 +41,16 @@ class _MainHomePageState extends ModularState<MainHomePage, PageController> {
                         Text('Semana Mauá de Inovação,',
                             style: AppTextStyles.titleH1.copyWith(
                                 color: Colors.white,
-                                fontSize: MediaQuery.of(context).size.width <
-                                        1500
-                                    ? 40
-                                    : MediaQuery.of(context).size.width < 1500
-                                        ? 48
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1500
+                                        ? 40
                                         : 55)),
                         Text('Liderança e Empreendedorismo',
                             style: AppTextStyles.titleH1.copyWith(
                                 color: Colors.white,
-                                fontSize: MediaQuery.of(context).size.width <
-                                        1500
-                                    ? 40
-                                    : MediaQuery.of(context).size.width < 1500
-                                        ? 48
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1500
+                                        ? 40
                                         : 55)),
                         const SizedBox(
                           height: 16,
@@ -83,6 +79,7 @@ class _MainHomePageState extends ModularState<MainHomePage, PageController> {
                         ),
                         Container(
                           width: 500,
+                          padding: const EdgeInsets.symmetric(vertical: 4),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: AppColors.brandingOrange,
@@ -99,6 +96,20 @@ class _MainHomePageState extends ModularState<MainHomePage, PageController> {
                                     : MediaQuery.of(context).size.width < 1500
                                         ? 48
                                         : 55),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 48,
+                        ),
+                        Text(
+                          'Saiba mais >>>',
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.buttonBold.copyWith(
+                            color: AppColors.brandingOrange,
+                            fontSize: MediaQuery.of(context).size.width < 1500
+                                ? 40
+                                : 48,
+                            decoration: TextDecoration.underline,
                           ),
                         ),
                       ]),
