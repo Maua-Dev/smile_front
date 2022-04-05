@@ -25,6 +25,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
             title: 'Patrocinadores',
             leftPadding: 32,
             color: AppColors.brandingPurple,
+            fontSize: MediaQuery.of(context).size.width < 530 ? 28 : null,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24.0),
@@ -92,11 +93,15 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
           const SizedBox(
             height: 24,
           ),
-          TextHeader(
-            title: 'Criado e desenvolvido por Dev. Community',
-            leftPadding: 32,
-            color: AppColors.brandingPurple,
-            fontSize: 28,
+          Center(
+            child: Text(
+              'Criado e desenvolvido por Dev. Community',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: AppColors.brandingPurple,
+                  fontSize: MediaQuery.of(context).size.width < 530 ? 16 : 28,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),

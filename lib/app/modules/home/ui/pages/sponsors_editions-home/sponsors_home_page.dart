@@ -50,7 +50,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
             title: 'Criado e desenvolvido por Dev. Community',
             leftPadding: 32,
             color: AppColors.brandingPurple,
-            fontSize: 28,
+            fontSize: MediaQuery.of(context).size.width < 530 ? 16 : null,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
