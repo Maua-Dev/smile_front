@@ -41,50 +41,54 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
             ),
           ),
           actions: [
-            ActionTextButtonWidget(
-              title: 'HOME',
-              paddingHorizontal:
-                  MediaQuery.of(context).size.width < 1300 ? 8 : 16,
-              paddingVertical: 8,
-              onPressed: () {
-                controller.animateTo(controller.position.minScrollExtent,
-                    duration: const Duration(milliseconds: 1500),
-                    curve: Curves.easeInOut);
-              },
-            ),
-            ActionTextButtonWidget(
-              title: 'PALESTRANTES',
-              paddingHorizontal:
-                  MediaQuery.of(context).size.width < 1300 ? 8 : 16,
-              paddingVertical: 8,
-              onPressed: () {
-                controller.animateTo(MediaQuery.of(context).size.height - 55,
-                    duration: const Duration(milliseconds: 1500),
-                    curve: Curves.easeInOut);
-              },
-            ),
-            ActionTextButtonWidget(
-              title: 'ATIVIDADES',
-              paddingHorizontal:
-                  MediaQuery.of(context).size.width < 1300 ? 8 : 16,
-              paddingVertical: 8,
-              onPressed: () {
-                controller.animateTo(MediaQuery.of(context).size.height * 2,
-                    duration: const Duration(milliseconds: 1500),
-                    curve: Curves.easeInOut);
-              },
-            ),
-            ActionTextButtonWidget(
-              title: 'PATROCINADORES',
-              paddingHorizontal:
-                  MediaQuery.of(context).size.width < 1300 ? 8 : 16,
-              paddingVertical: 8,
-              onPressed: () {
-                controller.animateTo(controller.position.maxScrollExtent,
-                    duration: const Duration(milliseconds: 1500),
-                    curve: Curves.easeInOut);
-              },
-            ),
+            if (MediaQuery.of(context).size.width > 1024)
+              ActionTextButtonWidget(
+                title: 'HOME',
+                paddingHorizontal:
+                    MediaQuery.of(context).size.width < 1300 ? 8 : 16,
+                paddingVertical: 8,
+                onPressed: () {
+                  controller.animateTo(controller.position.minScrollExtent,
+                      duration: const Duration(milliseconds: 1500),
+                      curve: Curves.easeInOut);
+                },
+              ),
+            if (MediaQuery.of(context).size.width > 1024)
+              ActionTextButtonWidget(
+                title: 'PALESTRANTES',
+                paddingHorizontal:
+                    MediaQuery.of(context).size.width < 1300 ? 8 : 16,
+                paddingVertical: 8,
+                onPressed: () {
+                  controller.animateTo(MediaQuery.of(context).size.height - 55,
+                      duration: const Duration(milliseconds: 1500),
+                      curve: Curves.easeInOut);
+                },
+              ),
+            if (MediaQuery.of(context).size.width > 1024)
+              ActionTextButtonWidget(
+                title: 'ATIVIDADES',
+                paddingHorizontal:
+                    MediaQuery.of(context).size.width < 1300 ? 8 : 16,
+                paddingVertical: 8,
+                onPressed: () {
+                  controller.animateTo(MediaQuery.of(context).size.height * 2,
+                      duration: const Duration(milliseconds: 1500),
+                      curve: Curves.easeInOut);
+                },
+              ),
+            if (MediaQuery.of(context).size.width > 1024)
+              ActionTextButtonWidget(
+                title: 'PATROCINADORES',
+                paddingHorizontal:
+                    MediaQuery.of(context).size.width < 1300 ? 8 : 16,
+                paddingVertical: 8,
+                onPressed: () {
+                  controller.animateTo(controller.position.maxScrollExtent,
+                      duration: const Duration(milliseconds: 1500),
+                      curve: Curves.easeInOut);
+                },
+              ),
             Padding(
               padding: const EdgeInsets.only(right: 16),
               child: ActionTextButtonWidget(
