@@ -21,7 +21,7 @@ class AppWidget extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       scrollBehavior: AppScrollBehavior(),
-      title: 'Smile',
+      title: 'Semana Mauá de Inovação, Liderança e Empreendedorismo',
       theme: ThemeData(
           fontFamily: 'Roboto',
           colorScheme: const ColorScheme.light().copyWith(
