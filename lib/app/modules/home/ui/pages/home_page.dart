@@ -53,17 +53,6 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
               },
             ),
             ActionTextButtonWidget(
-              title: 'PALESTRANTES',
-              paddingHorizontal:
-                  MediaQuery.of(context).size.width < 1300 ? 8 : 16,
-              paddingVertical: 8,
-              onPressed: () {
-                controller.animateTo(MediaQuery.of(context).size.height - 55,
-                    duration: const Duration(milliseconds: 1500),
-                    curve: Curves.easeInOut);
-              },
-            ),
-            ActionTextButtonWidget(
               title: 'ATIVIDADES',
               paddingHorizontal:
                   MediaQuery.of(context).size.width < 1300 ? 8 : 16,
