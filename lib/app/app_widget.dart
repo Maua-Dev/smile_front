@@ -11,6 +11,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Intl.defaultLocale = 'pt_BR';
+
     return MaterialApp(
       supportedLocales: const [Locale('pt', 'BR')],
       debugShowCheckedModeBanner: false,

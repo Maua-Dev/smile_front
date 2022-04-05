@@ -69,7 +69,7 @@ class VerticalNavBarWidget extends StatelessWidget {
                 showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return NothingToSeeDialogWidget(
+                      return CustomAlertDialogWidget(
                         onPressed: () {
                           Modular.to.pop();
                         },

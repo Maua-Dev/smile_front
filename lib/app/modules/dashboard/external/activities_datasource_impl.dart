@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 import '../utils/mocks/subscribed_activities_mock.dart';
 
@@ -18,10 +21,11 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
       }
       throw Exception();
     } on Exception catch (e) {
-      //Necessário um tratamento de erro visual para cada erro.
-      // ignore: avoid_print
-      print('Não foi possível se conectar com o Microsserviço, erro: ' +
-          e.toString());
+      getMyDialog(
+        title: 'Não foi possível se conectar com o Serviço' + e.toString(),
+        content: 'Não foi possível se conectar com o Microsserviço, erro: ' +
+            e.toString(),
+      );
       rethrow;
     }
   }
@@ -36,7 +40,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
     //   }
     //   throw Exception();
     // } on Exception catch (e) {
-    //   //Necessário um tratamento de erro visual para cada erro.
     //   // ignore: avoid_print
     //   print('Não foi possível se conectar com o Microsserviço, erro: ' +
     //       e.toString());
@@ -50,10 +53,11 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
       await dioClient.put('/smile_mss_activities/activity?id=$id',
           data: activity.toJson());
     } on Exception catch (e) {
-      //Necessário um tratamento de erro visual para cada erro.
-      // ignore: avoid_print
-      print('Não foi possível se conectar com o Microsserviço, erro: ' +
-          e.toString());
+      getMyDialog(
+        title: 'Não foi possível se conectar com o Serviço' + e.toString(),
+        content: 'Não foi possível se conectar com o Microsserviço, erro: ' +
+            e.toString(),
+      );
     }
   }
 
@@ -63,10 +67,11 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
       await dioClient.post('/smile_mss_activities/activity',
           data: activity.toJson());
     } on Exception catch (e) {
-      //Necessário um tratamento de erro visual para cada erro.
-      // ignore: avoid_print
-      print('Não foi possível se conectar com o Microsserviço, erro: ' +
-          e.toString());
+      getMyDialog(
+        title: 'Não foi possível se conectar com o Serviço' + e.toString(),
+        content: 'Não foi possível se conectar com o Microsserviço, erro: ' +
+            e.toString(),
+      );
     }
   }
 
@@ -75,10 +80,20 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
     try {
       await dioClient.delete('/smile_mss_activities/activity?id=$id');
     } on Exception catch (e) {
-      //Necessário um tratamento de erro visual para cada erro.
-      // ignore: avoid_print
-      print('Não foi possível se conectar com o Microsserviço, erro: ' +
-          e.toString());
+      getMyDialog(
+        title: 'Não foi possível se conectar com o Serviço' + e.toString(),
+        content: 'Não foi possível se conectar com o Microsserviço, erro: ' +
+            e.toString(),
+      );
     }
   }
+}
+
+void getMyDialog({required String title, required String content}) {
+  Get.defaultDialog(
+    title: title,
+    content: Text(content),
+    textCancel: 'Fechar',
+    cancelTextColor: AppColors.redButton,
+  );
 }
