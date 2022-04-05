@@ -37,9 +37,11 @@ class NextHomePage extends StatelessWidget {
                           fontSize: MediaQuery.of(context).size.width < 1400
                               ? 48
                               : 55)),
+                  if(MediaQuery.of(context).size.width > 900)
                   const SizedBox(
                     height: 16,
                   ),
+                  if(MediaQuery.of(context).size.width > 900)
                   SizedBox(
                     width:
                         MediaQuery.of(context).size.width < 1400 ? 1000 : 1200,
@@ -48,7 +50,7 @@ class NextHomePage extends StatelessWidget {
                       style: AppTextStyles.body.copyWith(
                           color: Colors.white,
                           fontSize: MediaQuery.of(context).size.width < 1400
-                              ? 19
+                              ? 14
                               : 22),
                       textAlign: TextAlign.justify,
                     ),
