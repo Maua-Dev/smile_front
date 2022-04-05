@@ -11,6 +11,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Intl.defaultLocale = 'pt_BR';
+
     return MaterialApp(
       supportedLocales: const [Locale('pt', 'BR')],
       debugShowCheckedModeBanner: false,
@@ -21,7 +22,7 @@ class AppWidget extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       scrollBehavior: AppScrollBehavior(),
-      title: 'Smile',
+      title: 'Semana Mauá de Inovação, Liderança e Empreendedorismo',
       theme: ThemeData(
           fontFamily: 'Roboto',
           colorScheme: const ColorScheme.light().copyWith(

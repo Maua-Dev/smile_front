@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:smile_front/app/shared/entities/user_registration.dart';
+import '../../../shared/services/enviroment/enviroment_config.dart';
 import '../infra/datasources/register_datasource.dart';
 import 'errors/errors.dart';
 
@@ -10,10 +11,8 @@ class RegisterDatasourceImpl implements RegisterDatasource {
 
   @override
   Future<String> registerUser(UserRegistration userRegistration) async {
-    var uri =
-        "https://b574ab6867.execute-api.sa-east-1.amazonaws.com/dev/smile-mss-cognito";
     BaseOptions options = BaseOptions(
-      baseUrl: uri,
+      baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
       responseType: ResponseType.json,
       connectTimeout: 30000,
       receiveTimeout: 30000,

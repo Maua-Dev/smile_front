@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/speakers_home_page.dart';
-import 'package:smile_front/app/modules/home/ui/pages/sponsors_editions-home/sponsors_home_page.dart';
+import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/video_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -29,15 +29,22 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
           leadingWidth: 0,
           title: Padding(
             padding: const EdgeInsets.only(left: 32.0),
-            child: Container(
-              height: 40,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.contain,
-                      alignment: Alignment.centerLeft,
-                      image: NetworkImage(
-                        smileeeLogoUrl,
-                      ))),
+            child: GestureDetector(
+              onTap: () {
+                controller.animateTo(controller.position.minScrollExtent,
+                    duration: const Duration(milliseconds: 1500),
+                    curve: Curves.easeInOut);
+              },
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.contain,
+                        alignment: Alignment.centerLeft,
+                        image: NetworkImage(
+                          smileeeLogoUrl,
+                        ))),
+              ),
             ),
           ),
           actions: [
@@ -53,34 +60,15 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
               },
             ),
             ActionTextButtonWidget(
-              title: 'PALESTRANTES',
-              paddingHorizontal:
-                  MediaQuery.of(context).size.width < 1300 ? 8 : 16,
-              paddingVertical: 8,
-              onPressed: () {
-                controller.animateTo(
-                    MediaQuery.of(context).size.height -
-                        55 +
-                        (MediaQuery.of(context).size.height * 0.5 + 48),
-                    duration: const Duration(milliseconds: 1500),
-                    curve: Curves.easeInOut);
-              },
-            ),
-            ActionTextButtonWidget(
               title: 'ATIVIDADES',
               paddingHorizontal:
                   MediaQuery.of(context).size.width < 1300 ? 8 : 16,
               paddingVertical: 8,
               onPressed: () {
                 controller.animateTo(
-                    MediaQuery.of(context).size.height < 1080
-                        ? MediaQuery.of(context).size.height * 2 +
-                            (1080 - MediaQuery.of(context).size.height) -
-                            55 +
-                            (MediaQuery.of(context).size.height * 0.5 + 48)
-                        : MediaQuery.of(context).size.height * 2 -
-                            55 +
-                            (MediaQuery.of(context).size.height * 0.5 + 48),
+                    MediaQuery.of(context).size.height * 2 +
+                        MediaQuery.of(context).size.height * 0.5 +
+                        32,
                     duration: const Duration(milliseconds: 1500),
                     curve: Curves.easeInOut);
               },
@@ -134,12 +122,11 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                 child: VideoCardWidget(),
               )),
               SizedBox(
-                  height: MediaQuery.of(context).size.height < 1080
-                      ? MediaQuery.of(context).size.height +
-                          (1080 - MediaQuery.of(context).size.height)
-                      : MediaQuery.of(context).size.height,
+                  height: MediaQuery.of(context).size.height,
                   child: const SpeakersHomePage()),
-              const ActivitiesHomePage(),
+              SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: const ActivitiesHomePage()),
               const SponsorsHomePage(),
             ],
           ),

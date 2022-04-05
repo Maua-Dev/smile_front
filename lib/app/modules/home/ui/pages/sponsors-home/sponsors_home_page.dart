@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 
@@ -28,18 +29,63 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24.0),
             child: Center(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.5,
-                height: MediaQuery.of(context).size.height * 0.15,
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image:
-                          NetworkImage('${s3AssetsBaseUrl}advantech_logo.png'),
-                      fit: BoxFit.contain,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                              '${s3AssetsBaseUrl}advantech_logo.png'),
+                          fit: BoxFit.contain,
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                              '${s3AssetsBaseUrl}delta_logo.jpg'),
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                              '${s3AssetsBaseUrl}covestro_logo.jpg'),
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                              '${s3AssetsBaseUrl}amblegis_logo.png'),
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -59,26 +105,30 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
+                  width: MediaQuery.of(context).size.width * 0.2,
                   height: MediaQuery.of(context).size.height * 0.15,
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image:
-                            NetworkImage('${s3AssetsBaseUrl}full_logo_dev.png'),
+                        image: CachedNetworkImageProvider(
+                            '${s3AssetsBaseUrl}full_logo_dev.png'),
                         fit: BoxFit.contain,
                       ),
                     ),
                   ),
                 ),
-                Expanded(
+                const SizedBox(
+                  width: 16,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.5,
                   child: Text(
                     devPresentation,
                     textAlign: TextAlign.justify,
                     style: AppTextStyles.body.copyWith(
                         color: Colors.black,
                         fontSize:
-                            MediaQuery.of(context).size.width < 1350 ? 16 : 20),
+                            MediaQuery.of(context).size.width < 1200 ? 16 : 18),
                   ),
                 ),
               ],
@@ -96,17 +146,20 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      height: MediaQuery.of(context).size.height * 0.12,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      height: MediaQuery.of(context).size.height * 0.15,
                       child: Container(
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage(
+                            image: CachedNetworkImageProvider(
                                 '${s3AssetsBaseUrl}full_logo_smile.png'),
                             fit: BoxFit.contain,
                           ),
                         ),
                       ),
+                    ),
+                    const SizedBox(
+                      width: 24,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
