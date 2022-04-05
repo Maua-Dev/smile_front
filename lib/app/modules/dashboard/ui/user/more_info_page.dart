@@ -249,7 +249,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                   showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return NothingToSeeDialogWidget(
+                        return CustomAlertDialogWidget(
                           onPressed: () {
                             Modular.to.pop();
                           },
