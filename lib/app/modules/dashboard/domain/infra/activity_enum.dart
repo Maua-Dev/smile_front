@@ -2,6 +2,8 @@
 
 import 'package:enum_to_string/enum_to_string.dart';
 
+import '../../../../shared/utils/s3_assets_url.dart';
+
 enum ActivityEnum {
   CURSOS,
   PALESTRAS,
@@ -25,32 +27,32 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.PALESTRAS:
         return 'Palestras';
       case ActivityEnum.PALESTRAS_ALTO_IMPACTO:
-        return 'Palestras de Alto Impacto';
+        return 'Palestras de alto impacto';
       case ActivityEnum.VISITAS_TECNICAS:
-        return 'Visitas Técnicas';
+        return 'Visitas técnicas';
       case ActivityEnum.COMPETICOES_ACADEMICAS:
-        return 'Competições Acadêmicas';
+        return 'Competições acadêmicas';
       case ActivityEnum.HACKATHON:
         return 'Hackathon';
       case ActivityEnum.FEIRA_ESTAGIOS:
-        return 'Feira de Estágios';
+        return 'Feira de estágios';
       case ActivityEnum.CAFE_EX_ALUNOS:
-        return 'Café com Ex-aluno(a)';
+        return 'Café com ex-aluno(a)';
       case ActivityEnum.ACADEMIA_DE_PROFESSORES:
-        return 'Academia de Professores';
+        return 'Academia de professores';
       case ActivityEnum.ATIVIDADE_CULTURAL:
-        return 'Atividade Cultural';
+        return 'Atividade cultural';
       case ActivityEnum.GCSP:
         return 'GCSP';
       case ActivityEnum.ATIVIDADE_ESPORTIVA:
-        return 'Atividade Esportiva';
+        return 'Atividade esportiva';
     }
   }
 
   String get description {
     switch (this) {
       case ActivityEnum.CURSOS:
-        return 'Cursos';
+        return 'Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.';
       case ActivityEnum.PALESTRAS:
         return 'As palestras contarão com a participação de empresas de diversos setores, trazendo profissionais e pesquisadores do Brasil e de outros países, de elevado reconhecimento no mercado, falando sobre os Desafios da Humanidade. As palestras são gratuitas e ocorrerão de forma presencial ou mediadas por tecnologia. Inscreva-se o quanto antes para assistir aos conteúdos técnicos e transversais ligados entre as áreas de Administração, Design, Engenharia, Ciência da Computação e Sistemas de Informação.';
       case ActivityEnum.PALESTRAS_ALTO_IMPACTO:
@@ -62,7 +64,7 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.HACKATHON:
         return 'Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa sendo uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.';
       case ActivityEnum.FEIRA_ESTAGIOS:
-        return 'Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos estudantes. Serão 10 empresas distribuídas entre os dias 17 e 18 de Maio.                                                                                                                                                   Empresas confirmadas: Santander, Accenture, Braskem, Scania, Cisco do Brasil, Nestlé, Ambev, Globo,Thyssenkrupp e Novartis. Condução – Anfitrião - Academia de Talentos';
+        return 'Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes. Serão 10 empresas distribuídas entre os dias 17 e 18 de Maio.                                                                                                                                                   Empresas confirmadas: Santander, Accenture, Braskem, Scania, Cisco do Brasil, Nestlé, Ambev, Globo,Thyssenkrupp e Novartis. Condução – Anfitrião - Academia de Talentos';
       case ActivityEnum.CAFE_EX_ALUNOS:
         return 'A atividade tem como objetivo promover conversas informais entre alunos do Instituto Mauá de Tecnologia e egressos que ocupam posições de destaque em suas áreas de atuação. Os egressos mostrarão sua trajetória profissional, desafios, dificuldades e oportunidades da carreira. Venha participar!';
       case ActivityEnum.ACADEMIA_DE_PROFESSORES:
@@ -73,6 +75,35 @@ extension ActivityEnumExtension on ActivityEnum {
         return 'O GCSP - Grand Challenges Scholars Program é um programa que oferece aos alunos de graduação a oportunidade de trabalhar com grandes desafios da humanidade, sendo mentorados por professores.';
       case ActivityEnum.ATIVIDADE_ESPORTIVA:
         return 'Os participantes conhecerão duas atividades interessantes: spikeball e flag football. Além disso, também serão oferecidas diversas atividades, tais como, ginástica funcional, meditação energizante e pilates! Todos os participantes poderão interagir com o(a) palestrante e professores(as)! Acompanhe e participe!';
+    }
+  }
+
+  String get linkPhoto {
+    switch (this) {
+      case ActivityEnum.CURSOS:
+        return '${previousEditionsBaseUrl}cursos.png';
+      case ActivityEnum.PALESTRAS:
+        return '${previousEditionsBaseUrl}palestras.png';
+      case ActivityEnum.PALESTRAS_ALTO_IMPACTO:
+        return '${previousEditionsBaseUrl}palestras.png';
+      case ActivityEnum.VISITAS_TECNICAS:
+        return '${previousEditionsBaseUrl}visitas_tecnicas.png';
+      case ActivityEnum.COMPETICOES_ACADEMICAS:
+        return '${previousEditionsBaseUrl}competicao_academica.png';
+      case ActivityEnum.HACKATHON:
+        return '${previousEditionsBaseUrl}hackathon.png';
+      case ActivityEnum.FEIRA_ESTAGIOS:
+        return '${previousEditionsBaseUrl}feira_estagios.png';
+      case ActivityEnum.CAFE_EX_ALUNOS:
+        return '${previousEditionsBaseUrl}cafe_ex_aluno.png';
+      case ActivityEnum.ACADEMIA_DE_PROFESSORES:
+        return '${previousEditionsBaseUrl}academia_professores.png';
+      case ActivityEnum.ATIVIDADE_CULTURAL:
+        return '${previousEditionsBaseUrl}atividade_cultural.png';
+      case ActivityEnum.GCSP:
+        return '${previousEditionsBaseUrl}gcsp.png';
+      case ActivityEnum.ATIVIDADE_ESPORTIVA:
+        return '${previousEditionsBaseUrl}atividade_esportiva.png';
     }
   }
 
