@@ -120,11 +120,11 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   @override
-  String? validateFieldIsFull(String value) {
+  String? validateField(String value) {
     final _$actionInfo = _$_LoginControllerActionController.startAction(
-        name: '_LoginController.validateFieldIsFull');
+        name: '_LoginController.validateField');
     try {
-      return super.validateFieldIsFull(value);
+      return super.validateField(value);
     } finally {
       _$_LoginControllerActionController.endAction(_$actionInfo);
     }
