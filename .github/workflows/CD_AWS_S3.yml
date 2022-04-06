@@ -40,7 +40,7 @@ jobs:
       name: Build Flutter (WEB)    
       needs: build_WEB
       runs-on: ubuntu-latest
-      if: github.ref_name == develop
+      if: github.ref_name == 'develop'
       environment: develop
       steps:
          - name: Upload to S3   
@@ -56,7 +56,7 @@ jobs:
       name: Build Flutter (WEB)    
       needs: build_WEB
       runs-on: ubuntu-latest
-      if: github.ref_name == homolog
+      if: github.ref_name == 'homolog'
       environment: homolog
       steps:
          - name: Upload to S3   
