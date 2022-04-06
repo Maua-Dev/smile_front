@@ -42,6 +42,7 @@ jobs:
       runs-on: ubuntu-latest
       if: ${GITHUB_REF##*/} == develop
       environment: develop
+      steps:
          - name: Upload to S3   
            uses: shallwefootball/s3-upload-action@master
            with:
@@ -56,6 +57,7 @@ jobs:
       needs: build_WEB
       runs-on: ubuntu-latest
       if: ${GITHUB_REF##*/} == homolog
+      steps:
       environment: homolog
          - name: Upload to S3   
            uses: shallwefootball/s3-upload-action@master
