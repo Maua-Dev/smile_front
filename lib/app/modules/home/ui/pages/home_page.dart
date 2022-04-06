@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/home/ui/pages/footer/footer.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/speakers_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
@@ -121,11 +122,11 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                     : MediaQuery.of(context).size.height - 55,
                 child: const MainHomePage(),
               ),
-              // const Center(
-              //     child: Padding(
-              //   padding: EdgeInsets.symmetric(vertical: 16),
-              //   child: VideoCardWidget(),
-              // )),
+              const Center(
+                  child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 16),
+                child: VideoCardWidget(),
+              )),
               SizedBox(
                   height: MediaQuery.of(context).size.width < 900
                       ? null
@@ -137,6 +138,7 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                       : MediaQuery.of(context).size.height,
                   child: const ActivitiesHomePage()),
               const SponsorsHomePage(),
+              const Footer(),
             ],
           ),
         ),

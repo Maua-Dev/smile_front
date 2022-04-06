@@ -18,7 +18,6 @@ class _SpeakersHomePageState
     extends ModularState<SpeakersHomePage, SpeakersHomeController> {
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Column(
       children: [
@@ -28,7 +27,7 @@ class _SpeakersHomePageState
             title: 'Principais Palestrantes',
             leftPadding: 32,
             color: AppColors.brandingOrange,
-            fontSize: MediaQuery.of(context).size.width < 530 ? 28 : null,
+            fontSize: width < 530 ? 28 : null,
           ),
         ),
         Observer(builder: (_) {
@@ -49,7 +48,7 @@ class _SpeakersHomePageState
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (MediaQuery.of(context).size.width < 1000)
+                  if (width < 1000)
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -171,9 +170,7 @@ class _SpeakersHomePageState
                     child: Text(
                       controller.listSpeakers[controller.indexToShow].bio,
                       style: AppTextStyles.button.copyWith(
-                          fontSize: MediaQuery.of(context).size.width < 1300
-                              ? 20
-                              : 24,
+                          fontSize: width < 1300 ? 20 : 24,
                           color: Colors.white),
                     ),
                   )
