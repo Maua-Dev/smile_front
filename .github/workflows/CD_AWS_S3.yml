@@ -6,7 +6,8 @@ name: CD_AWS_S3
 on:
   # Triggers the workflow on push or pull request events but only for the develop branch
   push:
-    branches: [ homolog ]
+    branches: [ homolog, develop ]
+
 
 
   # Allows you to run this workflow manually from the Actions tab
@@ -18,6 +19,8 @@ jobs:
   build_WEB:
       name: Build Flutter (WEB)    
       runs-on: ubuntu-latest
+      environment: ${{ github.ref_name }}
+
       steps:
          - name: Checkout code
            uses: actions/checkout@v2
@@ -35,7 +38,7 @@ jobs:
            run: flutter pub get   
 
          - run: flutter build web -t lib/main.dart
-         
+
          - name: Upload to S3   
            uses: shallwefootball/s3-upload-action@master
            with:
