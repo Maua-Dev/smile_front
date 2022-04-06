@@ -39,76 +39,77 @@ class _SpeakersHomePageState
           } else {
             return Container(
               padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 32),
-              height: height * 0.75,
+              // height: height,
               width: width * 0.9,
               decoration: BoxDecoration(
                   color: AppColors.brandingPurple,
                   borderRadius: BorderRadius.circular(40)),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if(MediaQuery.of(context).size.width < 1000)
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SpeakersCardWidget(
-                          linkPhoto: controller.listSpeakers[0].linkPhoto!,
-                          name: controller.listSpeakers[0].name,
-                          myIndex: 0,
-                          indexToShow: controller.indexToShow,
-                          onTap: () {
-                            controller.toggleIndex(0);
-                            setState(() {});
-                          },
-                        ),
-                        SpeakersCardWidget(
-                          linkPhoto: controller.listSpeakers[1].linkPhoto!,
-                          name: controller.listSpeakers[1].name,
-                          myIndex: 1,
-                          indexToShow: controller.indexToShow,
-                          onTap: () {
-                            controller.toggleIndex(1);
-                            setState(() {});
-                          },
-                        ),
-                        SpeakersCardWidget(
-                          linkPhoto: controller.listSpeakers[2].linkPhoto!,
-                          name: controller.listSpeakers[2].name,
-                          myIndex: 2,
-                          indexToShow: controller.indexToShow,
-                          onTap: () {
-                            controller.toggleIndex(2);
-                            setState(() {});
-                          },
-                        ),
-                        SpeakersCardWidget(
-                          linkPhoto: controller.listSpeakers[3].linkPhoto!,
-                          name: controller.listSpeakers[3].name,
-                          myIndex: 3,
-                          indexToShow: controller.indexToShow,
-                          onTap: () {
-                            controller.toggleIndex(3);
-                            setState(() {});
-                          },
-                        ),
-                        SpeakersCardWidget(
-                          linkPhoto: controller.listSpeakers[4].linkPhoto!,
-                          name: controller.listSpeakers[4].name,
-                          myIndex: 4,
-                          indexToShow: controller.indexToShow,
-                          onTap: () {
-                            controller.toggleIndex(4);
-                            setState(() {});
-                          },
-                        ),
-                      ],
-                    ),
-                  )
+                  if (MediaQuery.of(context).size.width < 1000)
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SpeakersCardWidget(
+                            linkPhoto: controller.listSpeakers[0].linkPhoto!,
+                            name: controller.listSpeakers[0].name,
+                            myIndex: 0,
+                            indexToShow: controller.indexToShow,
+                            onTap: () {
+                              controller.toggleIndex(0);
+                              setState(() {});
+                            },
+                          ),
+                          SpeakersCardWidget(
+                            linkPhoto: controller.listSpeakers[1].linkPhoto!,
+                            name: controller.listSpeakers[1].name,
+                            myIndex: 1,
+                            indexToShow: controller.indexToShow,
+                            onTap: () {
+                              controller.toggleIndex(1);
+                              setState(() {});
+                            },
+                          ),
+                          SpeakersCardWidget(
+                            linkPhoto: controller.listSpeakers[2].linkPhoto!,
+                            name: controller.listSpeakers[2].name,
+                            myIndex: 2,
+                            indexToShow: controller.indexToShow,
+                            onTap: () {
+                              controller.toggleIndex(2);
+                              setState(() {});
+                            },
+                          ),
+                          SpeakersCardWidget(
+                            linkPhoto: controller.listSpeakers[3].linkPhoto!,
+                            name: controller.listSpeakers[3].name,
+                            myIndex: 3,
+                            indexToShow: controller.indexToShow,
+                            onTap: () {
+                              controller.toggleIndex(3);
+                              setState(() {});
+                            },
+                          ),
+                          SpeakersCardWidget(
+                            linkPhoto: controller.listSpeakers[4].linkPhoto!,
+                            name: controller.listSpeakers[4].name,
+                            myIndex: 4,
+                            indexToShow: controller.indexToShow,
+                            onTap: () {
+                              controller.toggleIndex(4);
+                              setState(() {});
+                            },
+                          ),
+                        ],
+                      ),
+                    )
                   else
-                  Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SpeakersCardWidget(

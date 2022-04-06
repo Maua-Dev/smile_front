@@ -17,7 +17,7 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends ModularState<MainHomePage, PageController> {
   @override
   Widget build(BuildContext context) {
-    if (MediaQuery.of(context).size.width > 700) {
+    if (MediaQuery.of(context).size.width > 650) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -134,9 +134,10 @@ class _MainHomePageState extends ModularState<MainHomePage, PageController> {
           Padding(
             padding: const EdgeInsets.only(top: 16.0, left: 32, right: 32),
             child: Text(
-              'Nesta quarta edição da SMILE destaca-se ainda mais a união primordial entre as áreas de Administração, Engenharia, Ciência da Computação, Design e Sistemas de Informação, necessárias para a inovação e geração de valor agregado tanto para a formação dos futuros profissionais quanto para o desenvolvimento de novas ideias. O principal retorno esperado com essa iniciativa é a ampliação da cultura de inovação pelo campus, com a participação de alunos, egressos, docentes e comunidade, mostrando que a diversidade de ideias e a integração de áreas são catalisadoras do desenvolvimento de competências.',
+              apresentationText,
               style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.043),
+                  fontSize: MediaQuery.of(context).size.width * 0.040),
+              textAlign: TextAlign.justify,
             ),
           ),
         ],
