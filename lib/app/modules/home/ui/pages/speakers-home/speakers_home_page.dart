@@ -18,7 +18,6 @@ class _SpeakersHomePageState
     extends ModularState<SpeakersHomePage, SpeakersHomeController> {
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Column(
       children: [
@@ -28,6 +27,7 @@ class _SpeakersHomePageState
             title: 'Principais Palestrantes',
             leftPadding: 32,
             color: AppColors.brandingOrange,
+            fontSize: width < 530 ? 28 : null,
           ),
         ),
         Observer(builder: (_) {
@@ -38,70 +38,131 @@ class _SpeakersHomePageState
           } else {
             return Container(
               padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 32),
-              height: height * 0.75,
+              // height: height,
               width: width * 0.9,
               decoration: BoxDecoration(
                   color: AppColors.brandingPurple,
                   borderRadius: BorderRadius.circular(40)),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SpeakersCardWidget(
-                        linkPhoto: controller.listSpeakers[0].linkPhoto!,
-                        name: controller.listSpeakers[0].name,
-                        myIndex: 0,
-                        indexToShow: controller.indexToShow,
-                        onTap: () {
-                          controller.toggleIndex(0);
-                          setState(() {});
-                        },
+                  if (width < 1000)
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SpeakersCardWidget(
+                            linkPhoto: controller.listSpeakers[0].linkPhoto!,
+                            name: controller.listSpeakers[0].name,
+                            myIndex: 0,
+                            indexToShow: controller.indexToShow,
+                            onTap: () {
+                              controller.toggleIndex(0);
+                              setState(() {});
+                            },
+                          ),
+                          SpeakersCardWidget(
+                            linkPhoto: controller.listSpeakers[1].linkPhoto!,
+                            name: controller.listSpeakers[1].name,
+                            myIndex: 1,
+                            indexToShow: controller.indexToShow,
+                            onTap: () {
+                              controller.toggleIndex(1);
+                              setState(() {});
+                            },
+                          ),
+                          SpeakersCardWidget(
+                            linkPhoto: controller.listSpeakers[2].linkPhoto!,
+                            name: controller.listSpeakers[2].name,
+                            myIndex: 2,
+                            indexToShow: controller.indexToShow,
+                            onTap: () {
+                              controller.toggleIndex(2);
+                              setState(() {});
+                            },
+                          ),
+                          SpeakersCardWidget(
+                            linkPhoto: controller.listSpeakers[3].linkPhoto!,
+                            name: controller.listSpeakers[3].name,
+                            myIndex: 3,
+                            indexToShow: controller.indexToShow,
+                            onTap: () {
+                              controller.toggleIndex(3);
+                              setState(() {});
+                            },
+                          ),
+                          SpeakersCardWidget(
+                            linkPhoto: controller.listSpeakers[4].linkPhoto!,
+                            name: controller.listSpeakers[4].name,
+                            myIndex: 4,
+                            indexToShow: controller.indexToShow,
+                            onTap: () {
+                              controller.toggleIndex(4);
+                              setState(() {});
+                            },
+                          ),
+                        ],
                       ),
-                      SpeakersCardWidget(
-                        linkPhoto: controller.listSpeakers[1].linkPhoto!,
-                        name: controller.listSpeakers[1].name,
-                        myIndex: 1,
-                        indexToShow: controller.indexToShow,
-                        onTap: () {
-                          controller.toggleIndex(1);
-                          setState(() {});
-                        },
-                      ),
-                      SpeakersCardWidget(
-                        linkPhoto: controller.listSpeakers[2].linkPhoto!,
-                        name: controller.listSpeakers[2].name,
-                        myIndex: 2,
-                        indexToShow: controller.indexToShow,
-                        onTap: () {
-                          controller.toggleIndex(2);
-                          setState(() {});
-                        },
-                      ),
-                      SpeakersCardWidget(
-                        linkPhoto: controller.listSpeakers[3].linkPhoto!,
-                        name: controller.listSpeakers[3].name,
-                        myIndex: 3,
-                        indexToShow: controller.indexToShow,
-                        onTap: () {
-                          controller.toggleIndex(3);
-                          setState(() {});
-                        },
-                      ),
-                      SpeakersCardWidget(
-                        linkPhoto: controller.listSpeakers[4].linkPhoto!,
-                        name: controller.listSpeakers[4].name,
-                        myIndex: 4,
-                        indexToShow: controller.indexToShow,
-                        onTap: () {
-                          controller.toggleIndex(4);
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ),
+                    )
+                  else
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SpeakersCardWidget(
+                          linkPhoto: controller.listSpeakers[0].linkPhoto!,
+                          name: controller.listSpeakers[0].name,
+                          myIndex: 0,
+                          indexToShow: controller.indexToShow,
+                          onTap: () {
+                            controller.toggleIndex(0);
+                            setState(() {});
+                          },
+                        ),
+                        SpeakersCardWidget(
+                          linkPhoto: controller.listSpeakers[1].linkPhoto!,
+                          name: controller.listSpeakers[1].name,
+                          myIndex: 1,
+                          indexToShow: controller.indexToShow,
+                          onTap: () {
+                            controller.toggleIndex(1);
+                            setState(() {});
+                          },
+                        ),
+                        SpeakersCardWidget(
+                          linkPhoto: controller.listSpeakers[2].linkPhoto!,
+                          name: controller.listSpeakers[2].name,
+                          myIndex: 2,
+                          indexToShow: controller.indexToShow,
+                          onTap: () {
+                            controller.toggleIndex(2);
+                            setState(() {});
+                          },
+                        ),
+                        SpeakersCardWidget(
+                          linkPhoto: controller.listSpeakers[3].linkPhoto!,
+                          name: controller.listSpeakers[3].name,
+                          myIndex: 3,
+                          indexToShow: controller.indexToShow,
+                          onTap: () {
+                            controller.toggleIndex(3);
+                            setState(() {});
+                          },
+                        ),
+                        SpeakersCardWidget(
+                          linkPhoto: controller.listSpeakers[4].linkPhoto!,
+                          name: controller.listSpeakers[4].name,
+                          myIndex: 4,
+                          indexToShow: controller.indexToShow,
+                          onTap: () {
+                            controller.toggleIndex(4);
+                            setState(() {});
+                          },
+                        ),
+                      ],
+                    ),
                   const SizedBox(
                     height: 64,
                   ),
@@ -109,9 +170,7 @@ class _SpeakersHomePageState
                     child: Text(
                       controller.listSpeakers[controller.indexToShow].bio,
                       style: AppTextStyles.button.copyWith(
-                          fontSize: MediaQuery.of(context).size.width < 1300
-                              ? 20
-                              : 24,
+                          fontSize: width < 1300 ? 20 : 24,
                           color: Colors.white),
                     ),
                   )

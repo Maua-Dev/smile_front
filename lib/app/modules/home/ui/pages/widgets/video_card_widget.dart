@@ -24,8 +24,12 @@ class _VideoCardWidgetState extends State<VideoCardWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.5,
-      width: MediaQuery.of(context).size.width * 0.5,
+      height: MediaQuery.of(context).size.width > 900
+          ? MediaQuery.of(context).size.height * 0.5
+          : MediaQuery.of(context).size.height * 0.3,
+      width: MediaQuery.of(context).size.width > 900
+          ? MediaQuery.of(context).size.width * 0.5
+          : MediaQuery.of(context).size.width * 0.9,
       child: YoutubePlayerControllerProvider(
         controller: _controller,
         child: const YoutubePlayerIFrame(
