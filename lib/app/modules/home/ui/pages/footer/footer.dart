@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
@@ -62,22 +63,30 @@ class Footer extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.location_on,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          'COMO CHEGAR',
-                          style: AppTextStyles.body.copyWith(
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () =>
+                            launch('https://g.page/IMT-instituto-maua?share'),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.location_on,
                               color: Colors.white,
-                              fontSize: MediaQuery.of(context).size.width < 1350
-                                  ? 16
-                                  : 20),
+                            ),
+                            Text(
+                              'COMO CHEGAR',
+                              style: AppTextStyles.body.copyWith(
+                                  color: Colors.white,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 1350
+                                          ? 16
+                                          : 20),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
@@ -128,22 +137,30 @@ class Footer extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.location_on,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          'COMO CHEGAR',
-                          style: AppTextStyles.body.copyWith(
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () =>
+                            launch('https://g.page/IMT-instituto-maua?share'),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.location_on,
                               color: Colors.white,
-                              fontSize: MediaQuery.of(context).size.width < 1350
-                                  ? 16
-                                  : 20),
+                            ),
+                            Text(
+                              'COMO CHEGAR',
+                              style: AppTextStyles.body.copyWith(
+                                  color: Colors.white,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 1350
+                                          ? 16
+                                          : 20),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
