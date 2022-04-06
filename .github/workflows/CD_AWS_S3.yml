@@ -18,6 +18,7 @@ jobs:
   build_WEB:
       name: Build Flutter (WEB)    
       runs-on: ubuntu-latest
+      environment: github.ref_name
       steps:
          - name: Checkout code
            uses: actions/checkout@v2
@@ -35,30 +36,7 @@ jobs:
            run: flutter pub get   
 
          - run: flutter build web -t lib/main.dart
-
-  deployToDev:
-      name: Build Flutter (WEB)    
-      needs: build_WEB
-      runs-on: ubuntu-latest
-      if: github.ref_name == 'develop'
-      environment: develop
-      steps:
-         - name: Upload to S3   
-           uses: shallwefootball/s3-upload-action@master
-           with:
-             aws_key_id: ${{ secrets.AWS_KEY_ID }}
-             aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-             aws_bucket: ${{ secrets.AWS_BUCKET }}
-             source_dir: 'build/web'
-             destination_dir: ''
-
-  deployToHomolog:
-      name: Build Flutter (WEB)    
-      needs: build_WEB
-      runs-on: ubuntu-latest
-      if: github.ref_name == 'homolog'
-      environment: homolog
-      steps:
+              
          - name: Upload to S3   
            uses: shallwefootball/s3-upload-action@master
            with:
