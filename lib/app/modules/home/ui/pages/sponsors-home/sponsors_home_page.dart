@@ -25,10 +25,163 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
             title: 'Patrocinadores',
             leftPadding: 32,
             color: AppColors.brandingPurple,
+            fontSize: MediaQuery.of(context).size.width < 530 ? 28 : null,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24.0),
-            child: Center(
+          if (MediaQuery.of(context).size.width > 700)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24.0),
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: CachedNetworkImageProvider(
+                                '${s3AssetsBaseUrl}advantech_logo.png'),
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: CachedNetworkImageProvider(
+                                '${s3AssetsBaseUrl}delta_logo.jpg'),
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: CachedNetworkImageProvider(
+                                '${s3AssetsBaseUrl}covestro_logo.jpg'),
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: CachedNetworkImageProvider(
+                                '${s3AssetsBaseUrl}amblegis_logo.png'),
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          else
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24.0),
+              child: Center(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: CachedNetworkImageProvider(
+                                    '${s3AssetsBaseUrl}advantech_logo.png'),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: CachedNetworkImageProvider(
+                                    '${s3AssetsBaseUrl}delta_logo.jpg'),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: CachedNetworkImageProvider(
+                                    '${s3AssetsBaseUrl}covestro_logo.jpg'),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: CachedNetworkImageProvider(
+                                    '${s3AssetsBaseUrl}amblegis_logo.png'),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          const SizedBox(
+            height: 24,
+          ),
+          Center(
+            child: Text(
+              'Criado e desenvolvido por Dev. Community',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: AppColors.brandingPurple,
+                  fontSize: MediaQuery.of(context).size.width < 530 ? 16 : 28,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          if (MediaQuery.of(context).size.width > 900)
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,184 +193,68 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: CachedNetworkImageProvider(
-                              '${s3AssetsBaseUrl}advantech_logo.png'),
+                              '${s3AssetsBaseUrl}full_logo_dev.png'),
                           fit: BoxFit.contain,
                         ),
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    width: 16,
+                  ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.2,
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Text(
+                      devPresentation,
+                      textAlign: TextAlign.justify,
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.width < 1200
+                              ? 16
+                              : 18),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          else
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16.0, left: 16, right: 16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.4,
                     height: MediaQuery.of(context).size.height * 0.15,
                     child: Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: CachedNetworkImageProvider(
-                              '${s3AssetsBaseUrl}delta_logo.jpg'),
+                              '${s3AssetsBaseUrl}full_logo_dev.png'),
                           fit: BoxFit.contain,
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.2,
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: CachedNetworkImageProvider(
-                              '${s3AssetsBaseUrl}covestro_logo.jpg'),
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ),
+                  const SizedBox(
+                    width: 16,
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.2,
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: CachedNetworkImageProvider(
-                              '${s3AssetsBaseUrl}amblegis_logo.png'),
-                          fit: BoxFit.contain,
-                        ),
-                      ),
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: Text(
+                      devPresentation,
+                      textAlign: TextAlign.justify,
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.width < 1200
+                              ? 16
+                              : 18),
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          TextHeader(
-            title: 'Criado e desenvolvido por Dev. Community',
-            leftPadding: 32,
-            color: AppColors.brandingPurple,
-            fontSize: 28,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.2,
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                            '${s3AssetsBaseUrl}full_logo_dev.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Text(
-                    devPresentation,
-                    textAlign: TextAlign.justify,
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize:
-                            MediaQuery.of(context).size.width < 1200 ? 16 : 18),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.31,
-            decoration: BoxDecoration(color: AppColors.brandingPurple),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.3,
-                      height: MediaQuery.of(context).size.height * 0.15,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: CachedNetworkImageProvider(
-                                '${s3AssetsBaseUrl}full_logo_smile.png'),
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 24,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          localizationTitle,
-                          style: AppTextStyles.titleH1.copyWith(
-                              color: Colors.white,
-                              fontSize: MediaQuery.of(context).size.width < 1350
-                                  ? 16
-                                  : 20),
-                        ),
-                        Text(
-                          localization,
-                          style: AppTextStyles.body.copyWith(
-                              color: Colors.white,
-                              fontSize: MediaQuery.of(context).size.width < 1350
-                                  ? 16
-                                  : 20),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Text(
-                          'COMO CHEGAR',
-                          style: AppTextStyles.body.copyWith(
-                              color: Colors.white,
-                              fontSize: MediaQuery.of(context).size.width < 1350
-                                  ? 16
-                                  : 20),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                RichText(
-                  text: TextSpan(
-                      text: 'Desenvolvido por ',
-                      style: AppTextStyles.body.copyWith(
-                          color: Colors.white,
-                          fontSize: MediaQuery.of(context).size.width < 1350
-                              ? 24
-                              : 28),
-                      children: [
-                        TextSpan(
-                          text: 'Dev. Community Mauá',
-                          style: AppTextStyles.titleH1.copyWith(
-                              color: Colors.white,
-                              fontSize: MediaQuery.of(context).size.width < 1350
-                                  ? 24
-                                  : 28),
-                        )
-                      ]),
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );
