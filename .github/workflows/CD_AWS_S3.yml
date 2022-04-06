@@ -18,7 +18,7 @@ jobs:
   build_WEB:
       name: Build Flutter (WEB)    
       runs-on: ubuntu-latest
-      environment: ${GITHUB_REF##*/}
+      environment: ${{ github.ref_name }}
       steps:
          - name: Checkout code
            uses: actions/checkout@v2
