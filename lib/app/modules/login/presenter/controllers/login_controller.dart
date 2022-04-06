@@ -83,7 +83,14 @@ abstract class _LoginController with Store {
         return "         Campo obrigatório";
       }
     }
+    return null;
+  }
 
+  @action
+  String? validateFieldIsFull(String value) {
+    if (value.isEmpty) {
+      return "         Campo obrigatório";
+    }
     return null;
   }
 }
