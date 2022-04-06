@@ -6,7 +6,7 @@ name: CD_AWS_S3
 on:
   # Triggers the workflow on push or pull request events but only for the develop branch
   push:
-    branches: [ homolog ]
+    branches: [ homolog develop ]
 
 
   # Allows you to run this workflow manually from the Actions tab
