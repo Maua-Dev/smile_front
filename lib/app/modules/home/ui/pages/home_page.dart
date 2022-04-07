@@ -1,10 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/footer/footer.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/speakers_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
-import 'package:smile_front/app/modules/home/ui/pages/widgets/video_card_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/video_player_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import '../../../../app_module.dart';
@@ -42,7 +43,7 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                     image: DecorationImage(
                         fit: BoxFit.contain,
                         alignment: Alignment.centerLeft,
-                        image: NetworkImage(
+                        image: CachedNetworkImageProvider(
                           smileeeLogoUrl,
                         ))),
               ),
@@ -122,15 +123,18 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                     : MediaQuery.of(context).size.height - 55,
                 child: const MainHomePage(),
               ),
-              const Center(
-                  child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 16),
-                child: VideoCardWidget(),
-              )),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 24),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: const VideoPlayerWidget(),
+                ),
+              ),
               SizedBox(
                   height: MediaQuery.of(context).size.width < 900
                       ? null
-                      : MediaQuery.of(context).size.height,
+                      : MediaQuery.of(context).size.height * 0.9,
                   child: const SpeakersHomePage()),
               SizedBox(
                   height: MediaQuery.of(context).size.width < 900

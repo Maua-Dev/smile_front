@@ -45,9 +45,11 @@ class Footer extends StatelessWidget {
                         localizationTitle,
                         style: AppTextStyles.titleH1.copyWith(
                             color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 1350
-                                ? 16
-                                : 20),
+                            fontSize: MediaQuery.of(context).size.width < 900
+                                ? 14
+                                : MediaQuery.of(context).size.width < 1350
+                                    ? 16
+                                    : 20),
                       ),
                     ),
                     Center(
@@ -79,8 +81,10 @@ class Footer extends StatelessWidget {
                               'COMO CHEGAR',
                               style: AppTextStyles.body.copyWith(
                                   color: Colors.white,
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1350
+                                  fontSize: MediaQuery.of(context).size.width <
+                                          900
+                                      ? 14
+                                      : MediaQuery.of(context).size.width < 1350
                                           ? 16
                                           : 20),
                             ),
@@ -119,9 +123,11 @@ class Footer extends StatelessWidget {
                         localizationTitle,
                         style: AppTextStyles.titleH1.copyWith(
                             color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 1350
-                                ? 16
-                                : 20),
+                            fontSize: MediaQuery.of(context).size.width < 900
+                                ? 14
+                                : MediaQuery.of(context).size.width < 1350
+                                    ? 16
+                                    : 20),
                       ),
                     ),
                     Center(
@@ -129,9 +135,11 @@ class Footer extends StatelessWidget {
                         localization,
                         style: AppTextStyles.body.copyWith(
                             color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 1350
-                                ? 16
-                                : 20),
+                            fontSize: MediaQuery.of(context).size.width < 900
+                                ? 14
+                                : MediaQuery.of(context).size.width < 1350
+                                    ? 16
+                                    : 20),
                       ),
                     ),
                     const SizedBox(
@@ -153,8 +161,10 @@ class Footer extends StatelessWidget {
                               'COMO CHEGAR',
                               style: AppTextStyles.body.copyWith(
                                   color: Colors.white,
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1350
+                                  fontSize: MediaQuery.of(context).size.width <
+                                          900
+                                      ? 14
+                                      : MediaQuery.of(context).size.width < 1350
                                           ? 16
                                           : 20),
                             ),
@@ -172,15 +182,21 @@ class Footer extends StatelessWidget {
                 text: 'Desenvolvido por ',
                 style: AppTextStyles.body.copyWith(
                     color: Colors.white,
-                    fontSize:
-                        MediaQuery.of(context).size.width < 1350 ? 24 : 28),
+                    fontSize: MediaQuery.of(context).size.width < 900
+                        ? 18
+                        : MediaQuery.of(context).size.width < 1350
+                            ? 24
+                            : 28),
                 children: [
                   TextSpan(
                     text: 'Dev. Community Mauá',
                     style: AppTextStyles.titleH1.copyWith(
                         color: Colors.white,
-                        fontSize:
-                            MediaQuery.of(context).size.width < 1350 ? 24 : 28),
+                        fontSize: MediaQuery.of(context).size.width < 900
+                            ? 18
+                            : MediaQuery.of(context).size.width < 1350
+                                ? 24
+                                : 28),
                   )
                 ]),
           ),
