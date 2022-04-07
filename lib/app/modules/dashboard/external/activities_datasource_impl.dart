@@ -96,7 +96,9 @@ void getMyDialog({required String title, required String content}) {
     textCancel: 'Fechar',
     cancelTextColor: AppColors.redButton,
     onCancel: () {
-      Navigator.of(Get.context!).pop();
+      if (Get.context != null) {
+        Navigator.of(Get.context!).pop();
+      }
     },
   );
 }

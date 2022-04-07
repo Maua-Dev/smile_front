@@ -103,6 +103,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       onFieldSubmitted: (value) {
                         controller.login();
                       },
+                      validation: controller.validateField,
                     ),
                     const SizedBox(
                       height: 40,

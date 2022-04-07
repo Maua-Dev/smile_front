@@ -1,0 +1,50 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CD_AWS_S3
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the develop branch
+  push:
+    branches: [ homolog, develop ]
+
+
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build_WEB:
+      name: Build Flutter (WEB)    
+      runs-on: ubuntu-latest
+      environment: ${{ github.ref_name }}
+
+      steps:
+         - name: Checkout code
+           uses: actions/checkout@v2
+         - name: Setup Java Version
+           uses: actions/setup-java@v1
+           with:
+             java-version: "12.x"
+
+         - name: Setup Flutter Version
+           uses: subosito/flutter-action@v1
+           with:
+             channel: "stable"
+
+         - name: Get flutter dependencies
+           run: flutter pub get   
+
+         - run: flutter build web --dart-define=MSS_USER_BASE_URL=${{secrets.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{secrets.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=https://smile2022-frontend-assets.s3.sa-east-1.amazonaws.com/
+
+         - name: Upload to S3   
+           uses: shallwefootball/s3-upload-action@master
+           with:
+             aws_key_id: ${{ secrets.AWS_KEY_ID }}
+             aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+             aws_bucket: ${{ secrets.AWS_BUCKET }}
+             source_dir: 'build/web'
+             destination_dir: ''
+
