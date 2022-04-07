@@ -126,7 +126,7 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                 ),
               ),
               SizedBox(
-                  height: MediaQuery.of(context).size.height,
+                  height: MediaQuery.of(context).size.height * 0.9,
                   child: const SpeakersHomePage()),
               SizedBox(
                   height: MediaQuery.of(context).size.height,
