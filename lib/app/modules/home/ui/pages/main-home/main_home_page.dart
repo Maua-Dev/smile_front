@@ -101,17 +101,22 @@ class _MainHomePageState extends ModularState<MainHomePage, PageController> {
                         const SizedBox(
                           height: 48,
                         ),
-                        Text(
-                          'Saiba mais >>>',
-                          textAlign: TextAlign.center,
-                          style: AppTextStyles.buttonBold.copyWith(
-                            color: AppColors.brandingOrange,
-                            fontSize: MediaQuery.of(context).size.width < 1500
-                                ? 40
-                                : 48,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
+                        TextButton(
+                            onPressed: () {
+                              Modular.to.navigate('/home/home-more-info');
+                            },
+                            child: Text(
+                              'Saiba mais >>>',
+                              textAlign: TextAlign.center,
+                              style: AppTextStyles.buttonBold.copyWith(
+                                color: AppColors.brandingOrange,
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1500
+                                        ? 40
+                                        : 48,
+                                decoration: TextDecoration.underline,
+                              ),
+                            )),
                       ]),
                 ),
               )),
