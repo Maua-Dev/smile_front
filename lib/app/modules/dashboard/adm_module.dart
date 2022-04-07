@@ -38,8 +38,10 @@ class AdmModule extends Module {
         repository: i(),
       ),
     ),
-    Bind.lazySingleton<ActivitiesDatasource>(
-        (i) => ActivitiesDatasourceImpl(i())),
+    Bind.lazySingleton<ActivitiesDatasource>((i) => ActivitiesDatasourceImpl(
+          i(),
+          storage: i<SecureStorageInterface>(),
+        )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton((i) => Dio(smileOption)),
