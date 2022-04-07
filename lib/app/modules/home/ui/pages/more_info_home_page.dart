@@ -9,6 +9,7 @@ import '../../../../app_module.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../utils/text_utils.dart';
+import 'footer/footer.dart';
 
 class MoreInfoHomePage extends StatelessWidget {
   const MoreInfoHomePage({Key? key}) : super(key: key);
@@ -65,8 +66,11 @@ class MoreInfoHomePage extends StatelessWidget {
                 title: 'Inscreva-se',
                 textStyle: AppTextStyles.buttonBold.copyWith(
                     color: Colors.white,
-                    fontSize:
-                        MediaQuery.of(context).size.width < 1300 ? 48 : 60),
+                    fontSize: MediaQuery.of(context).size.width < 1300
+                        ? 36
+                        : MediaQuery.of(context).size.width < 1300
+                            ? 48
+                            : 60),
                 paddingVertical: 24,
                 widthSize: 400,
                 backgroundColor: AppColors.brandingOrange,
@@ -77,6 +81,7 @@ class MoreInfoHomePage extends StatelessWidget {
               ),
             ),
             const SponsorsHomePage(),
+            const Footer(),
           ],
         ),
       ),
