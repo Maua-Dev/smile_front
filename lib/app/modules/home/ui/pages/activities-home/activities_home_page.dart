@@ -110,8 +110,9 @@ class ActivityHomeState
         if (MediaQuery.of(context).size.width <= 900)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Container(
-              child: textList[_current],
+            child: Text(
+              ActivityEnum.values[_current].description,
+              style: const TextStyle(fontSize: 14),
             ),
           )
       ],

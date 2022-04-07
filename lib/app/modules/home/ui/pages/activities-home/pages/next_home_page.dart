@@ -34,26 +34,29 @@ class NextHomePage extends StatelessWidget {
                     Text(title,
                         style: AppTextStyles.titleH1.copyWith(
                             color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 1400
-                                ? 48
-                                : 55)),
+                            fontSize: MediaQuery.of(context).size.width < 900
+                                ? 38
+                                : MediaQuery.of(context).size.width < 1400
+                                    ? 48
+                                    : 55)),
                     const SizedBox(
                       height: 16,
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width < 1400
-                          ? 1000
-                          : 1200,
-                      child: Text(
-                        description,
-                        style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 1400
-                                ? 19
-                                : 22),
-                        textAlign: TextAlign.justify,
+                    if (MediaQuery.of(context).size.width >= 900)
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width < 1400
+                            ? 1000
+                            : 1200,
+                        child: Text(
+                          description,
+                          style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: MediaQuery.of(context).size.width < 1400
+                                  ? 19
+                                  : 22),
+                          textAlign: TextAlign.justify,
+                        ),
                       ),
-                    ),
                   ]),
             ),
           ));
