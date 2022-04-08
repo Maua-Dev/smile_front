@@ -70,9 +70,10 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                 paddingVertical: 8,
                 onPressed: () {
                   controller.animateTo(
-                      MediaQuery.of(context).size.height * 2 +
+                      MediaQuery.of(context).size.height +
                           MediaQuery.of(context).size.height * 0.5 +
-                          32,
+                          48 +
+                          MediaQuery.of(context).size.height * 0.8,
                       duration: const Duration(milliseconds: 1500),
                       curve: Curves.easeInOut);
                 },
@@ -131,11 +132,7 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                   child: const VideoPlayerWidget(),
                 ),
               ),
-              SizedBox(
-                  height: MediaQuery.of(context).size.width < 900
-                      ? null
-                      : MediaQuery.of(context).size.height * 0.9,
-                  child: const SpeakersHomePage()),
+              const SpeakersHomePage(),
               SizedBox(
                   height: MediaQuery.of(context).size.width < 900
                       ? null
