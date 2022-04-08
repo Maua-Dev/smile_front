@@ -5,7 +5,7 @@ var speakersMock = [
   HomeSpeakerModel(
       name: 'Nina Silva',
       bio:
-          'Cursou Administração na Universidade Federal Fluminense, teve seu primeiro contato com tecnologia no segundo ano da faculdade, em seu primeiro emprego. Foi convidada a integrar o time da empresa que trabalhava com o sistema ERP da SAP. A partir de então, aprofundou seus estudos, tirou a sua certiﬁcação e trilhou seu caminho dentro da tecnologia.',
+          'Cursou administração na Universidade Federal Fluminense, teve seu primeiro contato com tecnologia no segundo ano da faculdade, em seu primeiro emprego. Foi convidada a integrar o time da empresa que trabalhava com o sistema ERP da SAP. A partir de então, aprofundou seus estudos, tirou a sua certiﬁcação e trilhou seu caminho dentro da tecnologia.',
       date: '16/05',
       linkPhoto: '${speakersLogoUrl}nina_silva.png'),
   HomeSpeakerModel(

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
@@ -5,7 +6,7 @@ import 'dart:math' as math;
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/widgets/dialogs/nothing_to_see_dialog_widget.dart';
+import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/utils.dart';
@@ -301,7 +302,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                           height: MediaQuery.of(context).size.width * 0.1,
                           child: CircleAvatar(
                             radius: 102.0,
-                            backgroundImage: NetworkImage(widget
+                            backgroundImage: CachedNetworkImageProvider(widget
                                 .activity
                                 .speakers![index]
                                 .linkPhoto!), // for Network image

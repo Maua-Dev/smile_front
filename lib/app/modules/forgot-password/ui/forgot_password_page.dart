@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -25,7 +26,7 @@ class _ForgotPasswordPageState
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(mauaCampusBlurUrl),
+              image: CachedNetworkImageProvider(mauaCampusBlurUrl),
               fit: BoxFit.cover,
             ),
           ),
