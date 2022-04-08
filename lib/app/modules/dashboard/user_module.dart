@@ -31,8 +31,10 @@ class UserModule extends Module {
               authController: i(),
             ),
         export: true),
-    Bind.lazySingleton<ActivitiesDatasource>(
-        (i) => ActivitiesDatasourceImpl(i())),
+    Bind.lazySingleton<ActivitiesDatasource>((i) => ActivitiesDatasourceImpl(
+          i(),
+          storage: i<SecureStorageInterface>(),
+        )),
     Bind.lazySingleton<HelpController>((i) => HelpController(i())),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),

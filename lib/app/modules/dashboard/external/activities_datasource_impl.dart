@@ -5,17 +5,32 @@ import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_d
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
+import '../../../shared/services/enviroment/enviroment_config.dart';
+import '../../auth/domain/repositories/secure_storage_interface.dart';
 import '../utils/mocks/subscribed_activities_mock.dart';
 
 class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   final Dio dioClient;
+  final SecureStorageInterface storage;
 
-  ActivitiesDatasourceImpl(this.dioClient);
+  ActivitiesDatasourceImpl(
+    this.dioClient, {
+    required this.storage,
+  });
 
   @override
   Future<List<ActivityModel>> getAllActivities() async {
+    var token = await storage.getAccessToken();
     try {
-      final res = await dioClient.get('/smile_mss_activities/activity/getAll');
+      BaseOptions options = BaseOptions(
+        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
+        responseType: ResponseType.json,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+      );
+      Dio dio = Dio(options);
+      dio.options.headers["authorization"] = "Bearer $token";
+      final res = await dio.get('/activity/getAll');
       if (res.statusCode == 200) {
         return ActivityModel.fromMaps(res.data);
       }
@@ -34,7 +49,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   Future<List<ActivityModel>> getUserSubscribedActivities() async {
     return await Future.value(subscribedActivities);
     // try {
-    //   final res = await dioClient.get('/smile_mss_activities/activity/getAll');
+    //   final res = await dioClient.get('/activity/getAll');
     //   if (res.statusCode == 200) {
     //     return ActivityModel.fromMaps(res.data);
     //   }
@@ -49,9 +64,17 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
 
   @override
   Future putActivity(String id, ActivityModel activity) async {
+    var token = await storage.getAccessToken();
     try {
-      await dioClient.put('/smile_mss_activities/activity?id=$id',
-          data: activity.toJson());
+      BaseOptions options = BaseOptions(
+        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
+        responseType: ResponseType.json,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+      );
+      Dio dio = Dio(options);
+      dio.options.headers["authorization"] = "Bearer $token";
+      await dio.put('/activity?id=$id', data: activity.toJson());
     } on Exception catch (e) {
       getMyDialog(
         title: 'Não foi possível se conectar com o Serviço' + e.toString(),
@@ -63,9 +86,17 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
 
   @override
   Future postActivity(ActivityModel activity) async {
+    var token = await storage.getAccessToken();
     try {
-      await dioClient.post('/smile_mss_activities/activity',
-          data: activity.toJson());
+      BaseOptions options = BaseOptions(
+        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
+        responseType: ResponseType.json,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+      );
+      Dio dio = Dio(options);
+      dio.options.headers["authorization"] = "Bearer $token";
+      await dio.post('/activity', data: activity.toJson());
     } on Exception catch (e) {
       getMyDialog(
         title: 'Não foi possível se conectar com o Serviço' + e.toString(),
@@ -77,8 +108,17 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
 
   @override
   Future removeActivity(String id) async {
+    var token = await storage.getAccessToken();
     try {
-      await dioClient.delete('/smile_mss_activities/activity?id=$id');
+      BaseOptions options = BaseOptions(
+        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
+        responseType: ResponseType.json,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+      );
+      Dio dio = Dio(options);
+      dio.options.headers["authorization"] = "Bearer $token";
+      await dio.delete('/activity?id=$id');
     } on Exception catch (e) {
       getMyDialog(
         title: 'Não foi possível se conectar com o Serviço' + e.toString(),
