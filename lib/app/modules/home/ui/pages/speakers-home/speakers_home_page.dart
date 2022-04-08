@@ -38,8 +38,8 @@ class _SpeakersHomePageState
           } else {
             return Container(
               padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 32),
-              // height: height,
               width: width * 0.9,
+              height: MediaQuery.of(context).size.height * 0.7,
               decoration: BoxDecoration(
                   color: AppColors.brandingPurple,
                   borderRadius: BorderRadius.circular(40)),
