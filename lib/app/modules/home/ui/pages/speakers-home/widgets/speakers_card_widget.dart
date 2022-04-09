@@ -34,40 +34,40 @@ class SpeakersCardWidget extends StatelessWidget {
                     ? (MediaQuery.of(context).size.width < 500
                         ? 100
                         : MediaQuery.of(context).size.width < 1100
-                            ? 180
+                            ? 150
                             : MediaQuery.of(context).size.width < 1380
-                                ? 200
+                                ? 180
                                 : MediaQuery.of(context).size.width < 1750
-                                    ? 250
-                                    : 350)
+                                    ? 220
+                                    : 270)
                     : (MediaQuery.of(context).size.width < 500
                         ? 80
                         : MediaQuery.of(context).size.width < 1100
-                            ? 130
+                            ? 120
                             : MediaQuery.of(context).size.width < 1380
                                 ? 150
                                 : MediaQuery.of(context).size.width < 1750
                                     ? 200
-                                    : 250),
+                                    : 230),
                 height: indexToShow == myIndex
                     ? (MediaQuery.of(context).size.width < 500
                         ? 100
                         : MediaQuery.of(context).size.width < 1100
-                            ? 180
+                            ? 150
                             : MediaQuery.of(context).size.width < 1380
-                                ? 200
+                                ? 180
                                 : MediaQuery.of(context).size.width < 1750
-                                    ? 250
-                                    : 350)
+                                    ? 220
+                                    : 270)
                     : (MediaQuery.of(context).size.width < 500
                         ? 80
                         : MediaQuery.of(context).size.width < 1100
-                            ? 130
+                            ? 120
                             : MediaQuery.of(context).size.width < 1380
                                 ? 150
                                 : MediaQuery.of(context).size.width < 1750
                                     ? 200
-                                    : 250),
+                                    : 230),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
