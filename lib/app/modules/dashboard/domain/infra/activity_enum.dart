@@ -27,25 +27,25 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.PALESTRAS:
         return 'Palestras';
       case ActivityEnum.PALESTRAS_ALTO_IMPACTO:
-        return 'Palestras de alto impacto';
+        return 'Palestras de Alto Impacto';
       case ActivityEnum.VISITAS_TECNICAS:
-        return 'Visitas técnicas';
+        return 'Visitas Técnicas';
       case ActivityEnum.COMPETICOES_ACADEMICAS:
-        return 'Competições acadêmicas';
+        return 'Competições Acadêmicas';
       case ActivityEnum.HACKATHON:
         return 'Hackathon';
       case ActivityEnum.FEIRA_ESTAGIOS:
-        return 'Feira de estágios';
+        return 'Feira de Estágios';
       case ActivityEnum.CAFE_EX_ALUNOS:
-        return 'Café com ex-aluno(a)';
+        return 'Café com Ex-aluno(a)';
       case ActivityEnum.ACADEMIA_DE_PROFESSORES:
-        return 'Academia de professores';
+        return 'Academia de Professores';
       case ActivityEnum.ATIVIDADE_CULTURAL:
-        return 'Atividade cultural';
+        return 'Atividade Cultural';
       case ActivityEnum.GCSP:
         return 'GCSP';
       case ActivityEnum.ATIVIDADE_ESPORTIVA:
-        return 'Atividade esportiva';
+        return 'Atividade Esportiva';
     }
   }
 
