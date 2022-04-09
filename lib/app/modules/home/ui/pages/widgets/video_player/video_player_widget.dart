@@ -42,21 +42,20 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return MouseRegion(
-            onHover: (pointerEnterEvent) async {
-              setState(() {
-                isClicked = false;
-              });
-            },
             onEnter: (pointerEnterEvent) async {
-              setState(() {
-                isClicked = false;
-              });
+              if (mounted) {
+                setState(() {
+                  isClicked = false;
+                });
+              }
             },
             onExit: (pointerEnterEvent) async {
               await Future.delayed(const Duration(seconds: 2));
-              setState(() {
-                isClicked = true;
-              });
+              if (mounted) {
+                setState(() {
+                  isClicked = true;
+                });
+              }
             },
             child: GestureDetector(
               onTap: () {
@@ -72,18 +71,16 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
               child: Stack(
                 children: [
                   VideoPlayer(_controller),
-                  Visibility(
-                    child: Center(
-                      child: AnimatedOpacity(
-                        opacity: isClicked ? 0.0 : 1.0,
-                        duration: const Duration(milliseconds: 1000),
-                        child: Icon(
-                          _controller.value.isPlaying
-                              ? Icons.pause
-                              : Icons.play_arrow,
-                          color: AppColors.brandingOrange,
-                          size: 100,
-                        ),
+                  Center(
+                    child: AnimatedOpacity(
+                      opacity: isClicked ? 0.0 : 1.0,
+                      duration: const Duration(milliseconds: 1000),
+                      child: Icon(
+                        _controller.value.isPlaying
+                            ? Icons.pause
+                            : Icons.play_arrow,
+                        color: AppColors.brandingOrange,
+                        size: 100,
                       ),
                     ),
                   ),

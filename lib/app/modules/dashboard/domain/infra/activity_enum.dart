@@ -27,25 +27,25 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.PALESTRAS:
         return 'Palestras';
       case ActivityEnum.PALESTRAS_ALTO_IMPACTO:
-        return 'Palestras de alto impacto';
+        return 'Palestras de Alto Impacto';
       case ActivityEnum.VISITAS_TECNICAS:
-        return 'Visitas técnicas';
+        return 'Visitas Técnicas';
       case ActivityEnum.COMPETICOES_ACADEMICAS:
-        return 'Competições acadêmicas';
+        return 'Competições Acadêmicas';
       case ActivityEnum.HACKATHON:
         return 'Hackathon';
       case ActivityEnum.FEIRA_ESTAGIOS:
-        return 'Feira de estágios';
+        return 'Feira de Estágios';
       case ActivityEnum.CAFE_EX_ALUNOS:
-        return 'Café com ex-aluno(a)';
+        return 'Café com Ex-aluno(a)';
       case ActivityEnum.ACADEMIA_DE_PROFESSORES:
-        return 'Academia de professores';
+        return 'Academia de Professores';
       case ActivityEnum.ATIVIDADE_CULTURAL:
-        return 'Atividade cultural';
+        return 'Atividade Cultural';
       case ActivityEnum.GCSP:
         return 'GCSP';
       case ActivityEnum.ATIVIDADE_ESPORTIVA:
-        return 'Atividade esportiva';
+        return 'Atividade Esportiva';
     }
   }
 
@@ -54,23 +54,23 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.CURSOS:
         return 'Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.';
       case ActivityEnum.PALESTRAS:
-        return 'As palestras contarão com a participação de empresas de diversos setores, trazendo profissionais e pesquisadores do Brasil e de outros países, de elevado reconhecimento no mercado, falando sobre os Desafios da Humanidade. As palestras são gratuitas e ocorrerão de forma presencial ou mediadas por tecnologia. Inscreva-se o quanto antes para assistir aos conteúdos técnicos e transversais ligados entre as áreas de Administração, Design, Engenharia, Ciência da Computação e Sistemas de Informação.';
+        return 'As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.';
       case ActivityEnum.PALESTRAS_ALTO_IMPACTO:
-        return 'As Palestras de Alto Impacto da SMILE 2022 serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Os temas abordados pelos palestrantes estão associados a diferentes áreas, tais como, inovação, tecnologia, liderança, empreendedorismo e filosofia.  As palestras são gratuitas e ocorrerão em ambiente híbrido (presencial - sala H201 e online - via Zoom) com transmissão simultânea. Inscreva-se o quanto antes e garanta a sua vaga!';
+        return 'As palestras de alto impacto serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!';
       case ActivityEnum.VISITAS_TECNICAS:
-        return 'A busca pela conexão entre os mundo acadêmico e o mercado de trabalho ainda é um grande desafio institucional. Estreitar a relação é o caminho necessário para trazer o conhecimento acadêmico para as empresas, o que gera benefícios para ambas às partes e de ser almejado pelos estudantes/professores. Assim, os conhecimentos adquiridos pelos estudantes no ambiente escolar agregam experiências, valores pessoais e profissionais. Isso traz motivação para exercer sua profissão no futuro fazendo com que o estudante se inspire cada vez mais na carreira escolhida. Portanto a visita técnica é um recurso metodológico que facilita o processo de ensino/aprendizagem.';
+        return 'Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.';
       case ActivityEnum.COMPETICOES_ACADEMICAS:
-        return 'Os e-Sports, esportes eletrônicos, são competições de alto nível de jogos digitais que atraem um grande número de pessoas no Brasil e no mundo. Vai além de um simples jogo, sua infraestrutura é bastante complexa integrando diversos campos profissionais como Engenharia, Administração e Design. A equipe Mauá e-Sports compete no cenário universitário, venha prestigiar a competição acadêmica da Mauá que acontecerá em um ambiente divertido, colaborativo e tecnológico.';
+        return 'Durante a Smile, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).';
       case ActivityEnum.HACKATHON:
         return 'Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa sendo uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.';
       case ActivityEnum.FEIRA_ESTAGIOS:
-        return 'Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes. Serão 10 empresas distribuídas entre os dias 17 e 18 de Maio. Empresas confirmadas: Santander, Accenture, Braskem, Scania, Cisco do Brasil, Nestlé, Ambev, Globo,Thyssenkrupp e Novartis. Condução – Anfitrião - Academia de Talentos';
+        return 'Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes.';
       case ActivityEnum.CAFE_EX_ALUNOS:
-        return 'A atividade tem como objetivo promover conversas informais entre alunos do Instituto Mauá de Tecnologia e egressos que ocupam posições de destaque em suas áreas de atuação. Os egressos mostrarão sua trajetória profissional, desafios, dificuldades e oportunidades da carreira. Venha participar!';
+        return 'A atividade tem como objetivo promover conversas informais entre estudantes do IMT e egressos que ocupam posições de destaque em suas áreas de atuação. Venha participar!';
       case ActivityEnum.ACADEMIA_DE_PROFESSORES:
-        return 'A Academia dos Professores visa contribuir para a formação de um professor que seja colaborador na construção do Projeto Pedagógico Institucional do CEUN-IMT e alinhado com o Modelo Mauá de Ensino, tendo como referência métodos e estratégias de ensino que promovam um aprendizado efetivo dos Conhecimentos, Habilidades e Atitudes importantes para a formação de um profissional empreendedor, versátil e com forte base técnica e conceitual. Na SMILE 2022 a Academia de Professores tem como foco a formação continuada, disseminação de estratégias e ferramentas de ensino para professores do IMT e professores do Ensino Médio.';
+        return 'A Academia de Professores tem como foco a formação continuada, disseminação de estratégias e ferramentas de ensino para professores do IMT e professores do Ensino Médio.';
       case ActivityEnum.ATIVIDADE_CULTURAL:
-        return 'Em 20 de maio de 2022, das 15h às 19h, no auditório H201, haverá um Show de Talentos com votação e premiação aos participantes! Toda a comunidade Mauá é bem-vinda! Alunos, professores e funcionários estão convidados a compartilhar seus talentos. Você faz parte de uma banda? Canta? Toca algum instrumento? Gosta de poesia, literatura? Faz teatro? Dança? Vem compatilhar seu talento com a gente! Será uma tarde de apresentações, integração e muita alegria no campus. O auditório estará equipado e sonorizado, técnicos de som estarão presentes e toda a estrutura necessária estará lá para você se apresentar. Para se inscrever e se apresentar, preencha o "forms" e compareça. Para assistir o show e prestigiar os colegas, só vem! Em caso de dúvida, mande um e-mail para a professora Juliana Cordeiro (juliana.rc@maua.br). Esperamos vocês!';
+        return 'Você faz parte de uma banda? Canta? Toca algum instrumento? Gosta de poesia, literatura? Faz teatro? Dança? Venha compatilhar seu talento com a gente! Será uma tarde de apresentações, integração e muita alegria no campus.';
       case ActivityEnum.GCSP:
         return 'O GCSP - Grand Challenges Scholars Program é um programa que oferece aos alunos de graduação a oportunidade de trabalhar com grandes desafios da humanidade, sendo mentorados por professores.';
       case ActivityEnum.ATIVIDADE_ESPORTIVA:

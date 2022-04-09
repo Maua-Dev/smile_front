@@ -49,10 +49,10 @@ class _RegisterPageState
                         const SizedBox(
                           height: 140,
                         ),
-                        Image.asset(
-                          'assets/images/logo_smile.png',
+                        CachedNetworkImage(
                           width: 300,
                           fit: BoxFit.cover,
+                          imageUrl: smileLogoUrl,
                         ),
                         if (controller.successRegistration)
                           Padding(
