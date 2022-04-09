@@ -15,9 +15,6 @@ const String secondParagraph =
     'A SMILE representa uma oportunidade para de renovação e aprendizado contínuo, bem como uma excelente experiência para aprimoramento de rede de contatos, com os profissionais de diversos ramos nos âmbitos nacional e internacional. Isso faz com que eles passem a compartilhar experiências e interagir com o mercado de trabalho.';
 
 const String thirdParagraph =
-    'Nesta quarta edição da SMILE destaca-se ainda mais a união primordial entre as áreas de Administração, Engenharia, Ciência da Computação, Design e Sistemas de Informação, necessárias para a inovação e geração de valor agregado tanto para a formação dos futuros profissionais quanto para o desenvolvimento de novas ideias. O principal retorno esperado com essa iniciativa é a ampliação da cultura de inovação pelo campus, com a participação de alunos, egressos, docentes e comunidade, mostrando que a diversidade de ideias e a integração de áreas são catalisadoras do desenvolvimento de competências.';
-
-const String fourthParagraph =
     'O evento é organizado pelo Instituto Mauá de Tecnologia - IMT, online/presencial (Híbrido) e aberto ao público.';
 
 const String smileDate = 'Data: 16 a 21 de maio de 2022.';

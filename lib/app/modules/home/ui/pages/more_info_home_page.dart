@@ -49,12 +49,6 @@ class MoreInfoHomePage extends StatelessWidget {
               height: 24,
             ),
             const ParagraphTextWidget(
-              paragraph: fourthParagraph,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            const ParagraphTextWidget(
               paragraph: smileDate,
               isBold: true,
             ),

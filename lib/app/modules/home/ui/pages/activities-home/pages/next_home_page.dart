@@ -42,7 +42,7 @@ class NextHomePage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    if (MediaQuery.of(context).size.width >= 900)
+                    if (MediaQuery.of(context).size.width >= 1024)
                       SizedBox(
                         width: MediaQuery.of(context).size.width < 1400
                             ? 1000
