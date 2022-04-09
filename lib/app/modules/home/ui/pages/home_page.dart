@@ -31,21 +31,24 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
           leadingWidth: 0,
           title: Padding(
             padding: const EdgeInsets.only(left: 32.0),
-            child: GestureDetector(
-              onTap: () {
-                controller.animateTo(controller.position.minScrollExtent,
-                    duration: const Duration(milliseconds: 1500),
-                    curve: Curves.easeInOut);
-              },
-              child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.contain,
-                        alignment: Alignment.centerLeft,
-                        image: CachedNetworkImageProvider(
-                          smileeeLogoUrl,
-                        ))),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () {
+                  controller.animateTo(controller.position.minScrollExtent,
+                      duration: const Duration(milliseconds: 1500),
+                      curve: Curves.easeInOut);
+                },
+                child: Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.contain,
+                          alignment: Alignment.centerLeft,
+                          image: CachedNetworkImageProvider(
+                            smileeeLogoUrl,
+                          ))),
+                ),
               ),
             ),
           ),
