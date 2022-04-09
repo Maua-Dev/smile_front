@@ -5,7 +5,7 @@ import 'package:smile_front/app/modules/home/ui/pages/footer/footer.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/speakers_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
-import 'package:smile_front/app/modules/home/ui/pages/widgets/video_player_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/video_player/video_player_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import '../../../../app_module.dart';
@@ -31,21 +31,24 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
           leadingWidth: 0,
           title: Padding(
             padding: const EdgeInsets.only(left: 32.0),
-            child: GestureDetector(
-              onTap: () {
-                controller.animateTo(controller.position.minScrollExtent,
-                    duration: const Duration(milliseconds: 1500),
-                    curve: Curves.easeInOut);
-              },
-              child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.contain,
-                        alignment: Alignment.centerLeft,
-                        image: CachedNetworkImageProvider(
-                          smileeeLogoUrl,
-                        ))),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () {
+                  controller.animateTo(controller.position.minScrollExtent,
+                      duration: const Duration(milliseconds: 1500),
+                      curve: Curves.easeInOut);
+                },
+                child: Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.contain,
+                          alignment: Alignment.centerLeft,
+                          image: CachedNetworkImageProvider(
+                            smileeeLogoUrl,
+                          ))),
+                ),
               ),
             ),
           ),
@@ -70,10 +73,9 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                 paddingVertical: 8,
                 onPressed: () {
                   controller.animateTo(
-                      MediaQuery.of(context).size.height +
+                      MediaQuery.of(context).size.height * 2 +
                           MediaQuery.of(context).size.height * 0.5 +
-                          48 +
-                          MediaQuery.of(context).size.height * 0.8,
+                          48,
                       duration: const Duration(milliseconds: 1500),
                       curve: Curves.easeInOut);
                 },
@@ -119,7 +121,7 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
             controller: controller,
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.width < 650
+                height: MediaQuery.of(context).size.width < 750
                     ? null
                     : MediaQuery.of(context).size.height - 55,
                 child: const MainHomePage(),
@@ -132,7 +134,11 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                   child: const VideoPlayerWidget(),
                 ),
               ),
-              const SpeakersHomePage(),
+              SizedBox(
+                  height: MediaQuery.of(context).size.width < 1000
+                      ? null
+                      : MediaQuery.of(context).size.height,
+                  child: const SpeakersHomePage()),
               SizedBox(
                   height: MediaQuery.of(context).size.width < 900
                       ? null

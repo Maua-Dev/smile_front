@@ -19,6 +19,7 @@ class _SpeakersHomePageState
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
     return Column(
       children: [
         Padding(
@@ -39,7 +40,9 @@ class _SpeakersHomePageState
             return Container(
               padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 32),
               width: width * 0.9,
-              height: MediaQuery.of(context).size.height * 0.7,
+              height: MediaQuery.of(context).size.width < 1000
+                  ? null
+                  : height * 0.8,
               decoration: BoxDecoration(
                   color: AppColors.brandingPurple,
                   borderRadius: BorderRadius.circular(40)),
@@ -170,7 +173,11 @@ class _SpeakersHomePageState
                     child: Text(
                       controller.listSpeakers[controller.indexToShow].bio,
                       style: AppTextStyles.button.copyWith(
-                          fontSize: width < 1300 ? 20 : 24,
+                          fontSize: width < 1000
+                              ? 14
+                              : width < 1500
+                                  ? 16
+                                  : 18,
                           color: Colors.white),
                     ),
                   )

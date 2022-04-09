@@ -45,10 +45,10 @@ class _SuccessRegisterPageState
                       const SizedBox(
                         height: 140,
                       ),
-                      Image.asset(
-                        'assets/images/logo_smile.png',
+                      CachedNetworkImage(
                         width: 300,
                         fit: BoxFit.cover,
+                        imageUrl: smileLogoUrl,
                       ),
                       const SizedBox(
                         height: 10,

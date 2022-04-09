@@ -10,6 +10,7 @@ class ActionTextButtonWidget extends StatelessWidget {
   final double? heightSize;
   final double? paddingHorizontal;
   final double? paddingVertical;
+  final double? borderRadius;
   final Function()? onPressed;
 
   const ActionTextButtonWidget({
@@ -23,6 +24,7 @@ class ActionTextButtonWidget extends StatelessWidget {
     this.paddingVertical,
     this.isLoading,
     this.textStyle,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -38,8 +40,8 @@ class ActionTextButtonWidget extends StatelessWidget {
           style: TextButton.styleFrom(
             backgroundColor: backgroundColor,
             alignment: Alignment.center,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 15)),
           ),
           child: isLoading != null && isLoading!
               ? const CircularProgressIndicator()
