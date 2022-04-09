@@ -119,7 +119,7 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
             controller: controller,
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.width < 650
+                height: MediaQuery.of(context).size.width < 750
                     ? null
                     : MediaQuery.of(context).size.height - 55,
                 child: const MainHomePage(),
