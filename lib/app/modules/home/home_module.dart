@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
 import 'package:smile_front/app/modules/home/infra/repository/speakers_repository_impl.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home_controller.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
