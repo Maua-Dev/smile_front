@@ -54,13 +54,13 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.CURSOS:
         return 'Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.';
       case ActivityEnum.PALESTRAS:
-        return ' As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.';
+        return 'As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.';
       case ActivityEnum.PALESTRAS_ALTO_IMPACTO:
-        return 'As Palestras de Alto Impacto serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!';
+        return 'As palestras de alto impacto serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!';
       case ActivityEnum.VISITAS_TECNICAS:
-        return 'A busca pela conexão entre os mundo acadêmico e o mercado de trabalho ainda é um grande desafio institucional. Estreitar a relação é o caminho necessário para trazer o conhecimento acadêmico para as empresas, o que gera benefícios para ambas às partes e de ser almejado pelos estudantes/professores. Assim, os conhecimentos adquiridos pelos estudantes no ambiente escolar agregam experiências, valores pessoais e profissionais. Isso traz motivação para exercer sua profissão no futuro fazendo com que o estudante se inspire cada vez mais na carreira escolhida. Portanto a visita técnica é um recurso metodológico que facilita o processo de ensino/aprendizagem.';
+        return 'Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.';
       case ActivityEnum.COMPETICOES_ACADEMICAS:
-        return 'Os e-Sports, esportes eletrônicos, são competições de alto nível de jogos digitais que atraem um grande número de pessoas no Brasil e no mundo. Vai além de um simples jogo, sua infraestrutura é bastante complexa integrando diversos campos profissionais como Engenharia, Administração e Design. A equipe Mauá e-Sports compete no cenário universitário, venha prestigiar a competição acadêmica da Mauá que acontecerá em um ambiente divertido, colaborativo e tecnológico.';
+        return 'Durante a Smile, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).';
       case ActivityEnum.HACKATHON:
         return 'Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa sendo uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.';
       case ActivityEnum.FEIRA_ESTAGIOS:
