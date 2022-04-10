@@ -57,39 +57,43 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
           height: 16,
         ),
         Observer(builder: (_) {
-          return Flexible(
-            child: ListView.builder(
-              itemCount: controller.weekActivitiesList.length,
-              itemBuilder: (context, index) {
-                var finalTime =
-                    controller.weekActivitiesList[index].duration == null ||
-                            controller.weekActivitiesList[index].date == null
-                        ? ''
-                        : Utils.getActivityFinalTime(
-                            controller.weekActivitiesList[index].date!,
-                            controller.weekActivitiesList[index].duration!);
-                var hour = DateFormat('HH:mm')
-                    .format(controller.weekActivitiesList[index].date!);
-                return UserActivityCardWidget(
-                  finalTime: finalTime,
-                  location: controller.weekActivitiesList[index].location,
-                  isOnline: controller.weekActivitiesList[index].link == null
-                      ? false
-                      : true,
-                  title: controller.weekActivitiesList[index].title,
-                  hour: hour,
-                  activityCode:
-                      controller.weekActivitiesList[index].activityCode,
-                  onTap: () {
-                    Modular.to.navigate('/user/home/more-info', arguments: [
-                      controller.weekActivitiesList[index],
-                      false
-                    ]);
-                  },
-                );
-              },
-            ),
-          );
+          if (controller.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            return Flexible(
+              child: ListView.builder(
+                itemCount: controller.weekActivitiesList.length,
+                itemBuilder: (context, index) {
+                  var finalTime =
+                      controller.weekActivitiesList[index].duration == null ||
+                              controller.weekActivitiesList[index].date == null
+                          ? ''
+                          : Utils.getActivityFinalTime(
+                              controller.weekActivitiesList[index].date!,
+                              controller.weekActivitiesList[index].duration!);
+                  var hour = DateFormat('HH:mm')
+                      .format(controller.weekActivitiesList[index].date!);
+                  return UserActivityCardWidget(
+                    finalTime: finalTime,
+                    location: controller.weekActivitiesList[index].location,
+                    isOnline: controller.weekActivitiesList[index].link == null
+                        ? false
+                        : true,
+                    title: controller.weekActivitiesList[index].title,
+                    hour: hour,
+                    activityCode:
+                        controller.weekActivitiesList[index].activityCode,
+                    onTap: () {
+                      Modular.to.navigate('/user/home/more-info', arguments: [
+                        controller.weekActivitiesList[index],
+                        false
+                      ]);
+                    },
+                  );
+                },
+              ),
+            );
+          }
         }),
       ],
     );

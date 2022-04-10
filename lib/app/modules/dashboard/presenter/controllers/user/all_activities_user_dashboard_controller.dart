@@ -24,6 +24,14 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
   }
 
   @observable
+  bool isLoading = false;
+
+  @action
+  Future<void> setIsLoading(bool value) async {
+    isLoading = value;
+  }
+
+  @observable
   int filterActivityChipIndexSelected = 0;
 
   @observable
@@ -96,6 +104,7 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
 
   @action
   Future getAllActivities() async {
+    setIsLoading(true);
     activitiesList = await repository.getAllActivities();
     allActivitiesToCards = [];
     for (var activity in activitiesList) {
@@ -123,6 +132,7 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
 
   @action
   Future getActivitiesByType(ActivityEnum? typeActivity) async {
+    setIsLoading(true);
     if (typeActivity != null) {
       switch (filterActivityChipIndexSelected) {
         case 0:
@@ -149,6 +159,7 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
           .where((element) => element.type == activityType)
           .toList();
     }
+    setIsLoading(false);
   }
 
   @action
