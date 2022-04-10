@@ -6,7 +6,6 @@ import 'package:smile_front/app/modules/dashboard/infra/models/subscription_acti
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../shared/services/enviroment/enviroment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
-import '../utils/mocks/subscribed_activities_mock.dart';
 
 class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   final SecureStorageInterface storage;
@@ -42,19 +41,27 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
 
   @override
   Future<List<ActivityModel>> getUserSubscribedActivities() async {
-    return await Future.value(subscribedActivities);
-    // try {
-    //   final res = await dioClient.get('/activity/getAll');
-    //   if (res.statusCode == 200) {
-    //     return ActivityModel.fromMaps(res.data);
-    //   }
-    //   throw Exception();
-    // } on Exception catch (e) {
-    //   // ignore: avoid_print
-    //   print('Não foi possível se conectar com o Microsserviço, erro: ' +
-    //       e.toString());
-    //   rethrow;
-    // }
+    // return await Future.value(subscribedActivities);
+    var token = await storage.getAccessToken();
+    try {
+      BaseOptions options = BaseOptions(
+        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
+        responseType: ResponseType.json,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+      );
+      Dio dio = Dio(options);
+      dio.options.headers["authorization"] = "Bearer $token";
+      final res = await dio.get('/activity/userisenrolled');
+      if (res.statusCode == 200) {
+        return ActivityModel.fromMaps(res.data);
+      }
+      throw Exception();
+    } on Exception catch (e) {
+      print('Não foi possível se conectar com o Microsserviço, erro: ' +
+          e.toString());
+      rethrow;
+    }
   }
 
   @override
