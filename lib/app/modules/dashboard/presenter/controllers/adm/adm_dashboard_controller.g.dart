@@ -50,6 +50,21 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
               name: '_AdmDashboardControllerBase.fridayActivitiesList'))
           .value;
 
+  final _$isLoadingAtom = Atom(name: '_AdmDashboardControllerBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   final _$isFloatActionButtonOpenAtom =
       Atom(name: '_AdmDashboardControllerBase.isFloatActionButtonOpen');
 
@@ -149,6 +164,14 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
+  final _$setIsLoadingAsyncAction =
+      AsyncAction('_AdmDashboardControllerBase.setIsLoading');
+
+  @override
+  Future<void> setIsLoading(bool value) {
+    return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
+  }
+
   final _$getActivitiesByTypeAsyncAction =
       AsyncAction('_AdmDashboardControllerBase.getActivitiesByType');
 
@@ -214,6 +237,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   @override
   String toString() {
     return '''
+isLoading: ${isLoading},
 isFloatActionButtonOpen: ${isFloatActionButtonOpen},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 activitiesList: ${activitiesList},

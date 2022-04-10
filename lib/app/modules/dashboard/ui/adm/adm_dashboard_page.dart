@@ -63,12 +63,18 @@ class _AdmDashboardPageState
               ),
             ),
             Observer(builder: (_) {
-              return ActivitiesCarouselWidget(
-                cardColor: AppColors.brandingOrange,
-                list: controller.nextActivitiesList,
-                listToEdit: controller.activitiesList,
-                isNextActivity: true,
-              );
+              if (controller.isLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return ActivitiesCarouselWidget(
+                  cardColor: AppColors.brandingOrange,
+                  list: controller.nextActivitiesList,
+                  listToEdit: controller.activitiesList,
+                  isNextActivity: true,
+                );
+              }
             }),
             const TextHeader(
               title: 'Todas Atividades',
@@ -128,35 +134,41 @@ class _AdmDashboardPageState
                       })),
             ),
             Observer(builder: (_) {
-              return Column(
-                children: [
-                  ActivitiesCarouselWidget(
-                    list: controller.mondayActivitiesList,
-                    listToEdit: controller.activitiesList,
-                    weekday: 0,
-                  ),
-                  ActivitiesCarouselWidget(
-                    list: controller.tuesdayActivitiesList,
-                    listToEdit: controller.activitiesList,
-                    weekday: 1,
-                  ),
-                  ActivitiesCarouselWidget(
-                    list: controller.wednesdayActivitiesList,
-                    listToEdit: controller.activitiesList,
-                    weekday: 2,
-                  ),
-                  ActivitiesCarouselWidget(
-                    list: controller.thursdayActivitiesList,
-                    listToEdit: controller.activitiesList,
-                    weekday: 3,
-                  ),
-                  ActivitiesCarouselWidget(
-                    list: controller.fridayActivitiesList,
-                    listToEdit: controller.activitiesList,
-                    weekday: 4,
-                  ),
-                ],
-              );
+              if (controller.isLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return Column(
+                  children: [
+                    ActivitiesCarouselWidget(
+                      list: controller.mondayActivitiesList,
+                      listToEdit: controller.activitiesList,
+                      weekday: 0,
+                    ),
+                    ActivitiesCarouselWidget(
+                      list: controller.tuesdayActivitiesList,
+                      listToEdit: controller.activitiesList,
+                      weekday: 1,
+                    ),
+                    ActivitiesCarouselWidget(
+                      list: controller.wednesdayActivitiesList,
+                      listToEdit: controller.activitiesList,
+                      weekday: 2,
+                    ),
+                    ActivitiesCarouselWidget(
+                      list: controller.thursdayActivitiesList,
+                      listToEdit: controller.activitiesList,
+                      weekday: 3,
+                    ),
+                    ActivitiesCarouselWidget(
+                      list: controller.fridayActivitiesList,
+                      listToEdit: controller.activitiesList,
+                      weekday: 4,
+                    ),
+                  ],
+                );
+              }
             }),
           ],
         ),

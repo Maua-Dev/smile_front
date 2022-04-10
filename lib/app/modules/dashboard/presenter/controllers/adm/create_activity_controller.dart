@@ -36,17 +36,13 @@ abstract class _CreateActivityControllerBase with Store {
   @action
   bool isFilled() {
     var scheduleFirst = activityToCreate.schedule.first;
-    var speakerFirst = activityToCreate.speakers.first;
     if (activityToCreate.title != '' &&
         activityToCreate.description != '' &&
         activityToCreate.type != null &&
         activityToCreate.activityCode != '' &&
         scheduleFirst.date != null &&
         scheduleFirst.duration != null &&
-        scheduleFirst.totalParticipants != null &&
-        speakerFirst.bio != '' &&
-        speakerFirst.name != '' &&
-        speakerFirst.company != '') {
+        scheduleFirst.totalParticipants != null) {
       return true;
     }
     return false;

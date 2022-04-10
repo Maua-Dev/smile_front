@@ -10,6 +10,7 @@ class ActivityCardWidget extends StatelessWidget {
   final String time;
   final String finalTime;
   final int? totalParticipants;
+  final int enrolledUsersLength;
   final Color? cardColor;
   final Color? textColor;
   final Function()? onTap;
@@ -25,6 +26,7 @@ class ActivityCardWidget extends StatelessWidget {
     required this.time,
     this.totalParticipants,
     required this.finalTime,
+    required this.enrolledUsersLength,
   }) : super(key: key);
 
   @override
@@ -94,7 +96,7 @@ class ActivityCardWidget extends StatelessWidget {
                           ),
                           Text(date,
                               style: AppTextStyles.button.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: textColor ?? AppColors.brandingPurple))
                         ],
                       ),
@@ -110,7 +112,7 @@ class ActivityCardWidget extends StatelessWidget {
                           ),
                           Text('$time - $finalTime',
                               style: AppTextStyles.button.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: textColor ?? AppColors.brandingPurple))
                         ],
                       ),
@@ -127,15 +129,17 @@ class ActivityCardWidget extends StatelessWidget {
                           RichText(
                               text: TextSpan(children: [
                             TextSpan(
-                                text: '0/',
+                                text: '$enrolledUsersLength/',
                                 style: AppTextStyles.button.copyWith(
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     color:
                                         textColor ?? AppColors.brandingPurple)),
                             TextSpan(
-                                text: totalParticipants.toString(),
+                                text: totalParticipants == -1
+                                    ? '∞'
+                                    : totalParticipants.toString(),
                                 style: AppTextStyles.button.copyWith(
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     color:
                                         textColor ?? AppColors.brandingPurple,
                                     fontWeight: FontWeight.bold)),

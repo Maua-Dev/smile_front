@@ -65,6 +65,22 @@ mixin _$AllActivitiesUserDashboardController
                   '_AllActivitiesUserDashboardControllerBase.saturdayActivitiesList'))
           .value;
 
+  final _$isLoadingAtom =
+      Atom(name: '_AllActivitiesUserDashboardControllerBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   final _$filterActivityChipIndexSelectedAtom = Atom(
       name:
           '_AllActivitiesUserDashboardControllerBase.filterActivityChipIndexSelected');
@@ -148,6 +164,14 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
+  final _$setIsLoadingAsyncAction =
+      AsyncAction('_AllActivitiesUserDashboardControllerBase.setIsLoading');
+
+  @override
+  Future<void> setIsLoading(bool value) {
+    return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
+  }
+
   final _$getAllActivitiesAsyncAction =
       AsyncAction('_AllActivitiesUserDashboardControllerBase.getAllActivities');
 
@@ -193,6 +217,7 @@ mixin _$AllActivitiesUserDashboardController
   @override
   String toString() {
     return '''
+isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 weekActivitiesList: ${weekActivitiesList},
 activitiesList: ${activitiesList},
