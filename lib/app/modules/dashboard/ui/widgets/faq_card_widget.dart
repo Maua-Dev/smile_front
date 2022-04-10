@@ -21,38 +21,41 @@ class FaqCardWidget extends StatelessWidget {
       child: ExpansionPanelList(
         animationDuration: const Duration(seconds: 1),
         elevation: 4,
-        expandedHeaderPadding:
-            const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
         children: [
           ExpansionPanel(
               canTapOnHeader: true,
               isExpanded: isOpen,
-              headerBuilder: (context, isExpanded) => Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              headerBuilder: (context, isExpanded) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
                           titulo,
+                          textAlign: TextAlign.justify,
                           style: AppTextStyles.titleH1.copyWith(
                               color: Colors.black,
                               fontSize: MediaQuery.of(context).size.width < 1000
-                                  ? 22
-                                  : 28),
+                                  ? 14
+                                  : 24),
                         ),
                       ),
                     ],
                   ),
-              body: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    padding:
+                        const EdgeInsets.only(right: 8.0, left: 8, bottom: 8),
                     child: Text(descricao,
-                        style: AppTextStyles.titleH1.copyWith(
+                        textAlign: TextAlign.justify,
+                        style: AppTextStyles.body.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 1000
-                                ? 16
+                                ? 14
                                 : 24)),
                   ),
                 ],
