@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/infra/repository/speakers_repository_impl.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home_controller.dart';
@@ -14,7 +13,6 @@ class HomeModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => ActivityHomeController(i())),
-    Bind.lazySingleton((i) => PageController()),
     Bind.lazySingleton<SpeakersRepositoryImpl>((i) => SpeakersRepositoryImpl()),
     Bind.lazySingleton((i) => ActivityHomeController(i())),
     Bind.lazySingleton((i) => SpeakersHomeController(repository: i())),
