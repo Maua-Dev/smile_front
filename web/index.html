@@ -96,6 +96,12 @@
       // Service workers not supported. Just drop the <script> tag.
       loadMainDartJs();
     }
+
+    document.addEventListener('wheel', function(e) {
+      e.ctrlKey && e.preventDefault();
+    }, {
+      passive: false,
+    });
   </script>
 </body>
 </html>
