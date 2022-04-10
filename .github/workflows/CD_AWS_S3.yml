@@ -37,7 +37,7 @@ jobs:
          - name: Get flutter dependencies
            run: flutter pub get
 
-         - run: flutter build web --dart-define=MSS_USER_BASE_URL=${{secrets.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{secrets.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=https://dgdeg32eu6sux.cloudfront.net/dgdeg32eu6sux.cloudfront.net/
+         - run: flutter build web --dart-define=MSS_USER_BASE_URL=${{secrets.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{secrets.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=https://dgdeg32eu6sux.cloudfront.net/
 
          - name: Upload to S3
            uses: shallwefootball/s3-upload-action@master
