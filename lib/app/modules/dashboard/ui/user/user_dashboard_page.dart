@@ -8,6 +8,7 @@ import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
+import '../widgets/logout_button_widget.dart';
 import '../widgets/next_activity_card_widget.dart';
 import '../widgets/user_weekday/user_activity_card_widget.dart';
 import '../widgets/user_weekday/user_weekday_filter_widget.dart';
@@ -35,6 +36,24 @@ class _UserDashboardPageState
               children: [
                 const SizedBox(
                   height: 16,
+                ),
+                MediaQuery.of(context).size.width < 1024
+                    ? Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: LogoutButtonWidget(
+                            backgroundColor: AppColors.brandingOrange,
+                            buttonTittle: 'Sair',
+                            onPressed: () {
+                              navBarController.logout();
+                            },
+                          ),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+                const SizedBox(
+                  height: 8,
                 ),
                 TextHeader(
                   title: 'Sua Próxima Atividade',
