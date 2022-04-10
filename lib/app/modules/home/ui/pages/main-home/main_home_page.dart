@@ -15,7 +15,7 @@ class MainHomePage extends StatefulWidget {
   State<MainHomePage> createState() => _MainHomePageState();
 }
 
-class _MainHomePageState extends ModularState<MainHomePage, PageController> {
+class _MainHomePageState extends State<MainHomePage> {
   @override
   Widget build(BuildContext context) {
     if (MediaQuery.of(context).size.width > 750) {

@@ -20,10 +20,93 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends ModularState<HomePage, ScrollController> {
+class _HomePageState extends State<HomePage> {
+  final homeKey = GlobalKey();
+  final activityKey = GlobalKey();
+  final sponsorsKey = GlobalKey();
+
+  Future scrollToHome() async {
+    final context = homeKey.currentContext;
+    await Scrollable.ensureVisible(context!,
+        duration: const Duration(milliseconds: 1500));
+  }
+
+  Future scrollToActivity() async {
+    final context = activityKey.currentContext;
+    await Scrollable.ensureVisible(context!,
+        duration: const Duration(milliseconds: 1500));
+  }
+
+  Future scrollToSponsors() async {
+    final context = sponsorsKey.currentContext;
+    await Scrollable.ensureVisible(context!,
+        duration: const Duration(milliseconds: 1500));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: MediaQuery.of(context).size.width < 1024
+          ? Drawer(
+              backgroundColor: AppColors.brandingPurple,
+              elevation: 40,
+              child: ListView(
+                controller: ScrollController(),
+                padding: EdgeInsets.zero,
+                children: [
+                  ListTile(
+                    title: Text(
+                      'HOME',
+                      style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      scrollToHome();
+                    },
+                  ),
+                  ListTile(
+                    title: Text(
+                      'ATIVIDADES',
+                      style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      scrollToActivity();
+                    },
+                  ),
+                  ListTile(
+                    title: Text(
+                      'PATROCINADORES',
+                      style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      scrollToSponsors();
+                    },
+                  ),
+                  ListTile(
+                    title: ActionTextButtonWidget(
+                      title: 'LOGIN',
+                      textStyle: AppTextStyles.buttonBold
+                          .copyWith(color: Colors.white, fontSize: 16),
+                      paddingHorizontal: 8,
+                      paddingVertical: 8,
+                      widthSize: 160,
+                      backgroundColor: AppColors.brandingOrange,
+                      onPressed: () async {
+                        await Modular.isModuleReady<AppModule>();
+                        Modular.to.navigate('/login');
+                      },
+                    ),
+                    onTap: () async {
+                      await Modular.isModuleReady<AppModule>();
+                      Modular.to.navigate('/login');
+                    },
+                  ),
+                ],
+              ),
+            )
+          : null,
       appBar: AppBar(
           elevation: 40,
           backgroundColor: AppColors.brandingPurple,
@@ -34,11 +117,7 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
-                onTap: () {
-                  controller.animateTo(controller.position.minScrollExtent,
-                      duration: const Duration(milliseconds: 1500),
-                      curve: Curves.easeInOut);
-                },
+                onTap: () {},
                 child: Container(
                   height: 40,
                   decoration: BoxDecoration(
@@ -60,9 +139,7 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                     MediaQuery.of(context).size.width < 1300 ? 8 : 16,
                 paddingVertical: 8,
                 onPressed: () {
-                  controller.animateTo(controller.position.minScrollExtent,
-                      duration: const Duration(milliseconds: 1500),
-                      curve: Curves.easeInOut);
+                  scrollToHome();
                 },
               ),
             if (MediaQuery.of(context).size.width > 1024)
@@ -72,12 +149,7 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                     MediaQuery.of(context).size.width < 1300 ? 8 : 16,
                 paddingVertical: 8,
                 onPressed: () {
-                  controller.animateTo(
-                      MediaQuery.of(context).size.height * 2 +
-                          MediaQuery.of(context).size.height * 0.5 +
-                          48,
-                      duration: const Duration(milliseconds: 1500),
-                      curve: Curves.easeInOut);
+                  scrollToActivity();
                 },
               ),
             if (MediaQuery.of(context).size.width > 1024)
@@ -87,66 +159,56 @@ class _HomePageState extends ModularState<HomePage, ScrollController> {
                     MediaQuery.of(context).size.width < 1300 ? 8 : 16,
                 paddingVertical: 8,
                 onPressed: () {
-                  controller.animateTo(controller.position.maxScrollExtent,
-                      duration: const Duration(milliseconds: 1500),
-                      curve: Curves.easeInOut);
+                  scrollToSponsors();
                 },
               ),
-            Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: ActionTextButtonWidget(
-                title: 'LOGIN',
-                textStyle: AppTextStyles.buttonBold.copyWith(
-                    color: Colors.white,
-                    fontSize:
-                        MediaQuery.of(context).size.width < 1300 ? 20 : 24),
-                paddingHorizontal:
-                    MediaQuery.of(context).size.width < 1300 ? 8 : 16,
-                paddingVertical: 8,
-                widthSize: 160,
-                backgroundColor: AppColors.brandingOrange,
-                onPressed: () async {
-                  await Modular.isModuleReady<AppModule>();
-                  Modular.to.navigate('/login');
-                },
-              ),
-            )
+            if (MediaQuery.of(context).size.width > 1024)
+              Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: ActionTextButtonWidget(
+                  title: 'LOGIN',
+                  textStyle: AppTextStyles.buttonBold.copyWith(
+                      color: Colors.white,
+                      fontSize:
+                          MediaQuery.of(context).size.width < 1300 ? 20 : 24),
+                  paddingHorizontal:
+                      MediaQuery.of(context).size.width < 1300 ? 8 : 16,
+                  paddingVertical: 8,
+                  widthSize: 160,
+                  backgroundColor: AppColors.brandingOrange,
+                  onPressed: () async {
+                    await Modular.isModuleReady<AppModule>();
+                    Modular.to.navigate('/login');
+                  },
+                ),
+              )
           ]),
       body: Center(
         child: SizedBox(
           width: MediaQuery.of(context).size.width < 2200
               ? MediaQuery.of(context).size.width
               : 2200,
-          child: ListView(
-            controller: controller,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.width < 750
-                    ? null
-                    : MediaQuery.of(context).size.height - 55,
-                child: const MainHomePage(),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24),
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: const VideoPlayerWidget(),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                    key: homeKey,
+                    height: MediaQuery.of(context).size.height,
+                    child: const MainHomePage()),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 24),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: const VideoPlayerWidget(),
+                  ),
                 ),
-              ),
-              SizedBox(
-                  height: MediaQuery.of(context).size.width < 1000
-                      ? null
-                      : MediaQuery.of(context).size.height,
-                  child: const SpeakersHomePage()),
-              SizedBox(
-                  height: MediaQuery.of(context).size.width < 900
-                      ? null
-                      : MediaQuery.of(context).size.height,
-                  child: const ActivitiesHomePage()),
-              const SponsorsHomePage(),
-              const Footer(),
-            ],
+                const SpeakersHomePage(),
+                SizedBox(key: activityKey, child: const ActivitiesHomePage()),
+                SizedBox(key: sponsorsKey, child: const SponsorsHomePage()),
+                const Footer(),
+              ],
+            ),
           ),
         ),
       ),
