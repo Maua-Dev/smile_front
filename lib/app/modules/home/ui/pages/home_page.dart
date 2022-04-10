@@ -191,15 +191,16 @@ class _HomePageState extends State<HomePage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
-                    key: homeKey,
-                    height: MediaQuery.of(context).size.height,
-                    child: const MainHomePage()),
+                SizedBox(key: homeKey, child: const MainHomePage()),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 24),
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: MediaQuery.of(context).size.width < 1024
+                        ? MediaQuery.of(context).size.height * 0.4
+                        : MediaQuery.of(context).size.height * 0.5,
+                    width: MediaQuery.of(context).size.width < 1024
+                        ? MediaQuery.of(context).size.height * 0.6
+                        : MediaQuery.of(context).size.width * 0.5,
                     child: const VideoPlayerWidget(),
                   ),
                 ),
