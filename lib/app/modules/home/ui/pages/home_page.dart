@@ -10,6 +10,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import '../../../../app_module.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
+import '../../../auth/presenter/controllers/auth_controller.dart';
 import 'activities-home/activities_home_page.dart';
 import 'main-home/main_home_page.dart';
 
@@ -18,6 +19,16 @@ class HomePage extends StatefulWidget {
 
   @override
   _HomePageState createState() => _HomePageState();
+
+  void redirect() async {
+    await Modular.isModuleReady<AppModule>();
+    var authController = Modular.get<AuthController>();
+    if (authController.accessLevel == 'ADMIN') {
+      Modular.to.navigate('/adm');
+    } else {
+      Modular.to.navigate('/user/home');
+    }
+  }
 }
 
 class _HomePageState extends State<HomePage> {
@@ -162,26 +173,24 @@ class _HomePageState extends State<HomePage> {
                   scrollToSponsors();
                 },
               ),
-            if (MediaQuery.of(context).size.width > 1024)
-              Padding(
-                padding: const EdgeInsets.only(right: 16),
-                child: ActionTextButtonWidget(
-                  title: 'LOGIN',
-                  textStyle: AppTextStyles.buttonBold.copyWith(
-                      color: Colors.white,
-                      fontSize:
-                          MediaQuery.of(context).size.width < 1300 ? 20 : 24),
-                  paddingHorizontal:
-                      MediaQuery.of(context).size.width < 1300 ? 8 : 16,
-                  paddingVertical: 8,
-                  widthSize: 160,
-                  backgroundColor: AppColors.brandingOrange,
-                  onPressed: () async {
-                    await Modular.isModuleReady<AppModule>();
-                    Modular.to.navigate('/login');
-                  },
-                ),
-              )
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: ActionTextButtonWidget(
+                title: 'LOGIN',
+                textStyle: AppTextStyles.buttonBold.copyWith(
+                    color: Colors.white,
+                    fontSize:
+                        MediaQuery.of(context).size.width < 1300 ? 20 : 24),
+                paddingHorizontal:
+                    MediaQuery.of(context).size.width < 1300 ? 8 : 16,
+                paddingVertical: 8,
+                widthSize: 160,
+                backgroundColor: AppColors.brandingOrange,
+                onPressed: () async {
+                  widget.redirect();
+                },
+              ),
+            )
           ]),
       body: Center(
         child: SizedBox(

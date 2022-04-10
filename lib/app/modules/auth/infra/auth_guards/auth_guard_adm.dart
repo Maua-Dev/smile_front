@@ -9,7 +9,6 @@ class AuthGuardAdm implements RouteGuard {
     var authController = Modular.get<AuthController>();
     if (!authController.isLogged) {
       await authController.refreshToken();
-      return authController.isLogged;
     }
     if (authController.accessLevel == 'ADMIN' && authController.isLogged) {
       return true;
