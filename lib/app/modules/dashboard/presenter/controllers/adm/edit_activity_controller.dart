@@ -41,18 +41,13 @@ abstract class _EditActivityControllerBase with Store {
   @action
   bool isFilled() {
     var scheduleFirst = activityToEdit.schedule.first;
-    var speakerFirst = activityToEdit.speakers.first;
     if (activityToEdit.title != '' &&
         activityToEdit.description != '' &&
         activityToEdit.type != null &&
         activityToEdit.activityCode != '' &&
         scheduleFirst.date != null &&
         scheduleFirst.duration != null &&
-        scheduleFirst.totalParticipants != null &&
-        speakerFirst.bio != '' &&
-        speakerFirst.name != '' &&
-        speakerFirst.company != '' &&
-        activityToEdit.linkPhoto != null) {
+        scheduleFirst.totalParticipants != null) {
       return true;
     }
     return false;

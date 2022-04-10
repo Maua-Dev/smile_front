@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
+import '../../presenter/controllers/user/user_dashboard_controller.dart';
 import '../widgets/dropdown-field/dropdown_field_widget.dart';
 import '../widgets/user_weekday/user_activity_card_widget.dart';
 import '../widgets/user_weekday/user_weekday_filter_widget.dart';
@@ -20,6 +21,7 @@ class AllActivitiesUserDashboardPage extends StatefulWidget {
 
 class _AllActivitiesUserDashboardPageState extends ModularState<
     AllActivitiesUserDashboardPage, AllActivitiesUserDashboardController> {
+  final subscribedActivitiesController = Modular.get<UserDashboardController>();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -86,7 +88,10 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                     onTap: () {
                       Modular.to.navigate('/user/home/more-info', arguments: [
                         controller.weekActivitiesList[index],
-                        false
+                        subscribedActivitiesController.weekActivitiesList
+                                .contains(controller.weekActivitiesList[index])
+                            ? true
+                            : false
                       ]);
                     },
                   );

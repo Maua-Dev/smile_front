@@ -14,7 +14,6 @@ class ActivityModel extends Activity {
   final String description;
   final List<ScheduleActivityModel> schedule;
   final List<SpeakerActivityModel> speakers;
-  final String? linkPhoto;
 
   ActivityModel({
     required this.id,
@@ -24,7 +23,6 @@ class ActivityModel extends Activity {
     required this.description,
     required this.schedule,
     required this.speakers,
-    this.linkPhoto,
   }) : super(
           id: id,
           activityCode: activityCode,
@@ -44,7 +42,6 @@ class ActivityModel extends Activity {
       description: map['description'],
       schedule: ScheduleActivityModel.fromMaps(map['schedule']),
       speakers: SpeakerActivityModel.fromMaps(map['speakers']),
-      linkPhoto: map['linkPhoto'],
     );
   }
 
@@ -59,13 +56,11 @@ class ActivityModel extends Activity {
         'description': description,
         'schedule': schedule,
         'speakers': speakers,
-        'linkPhoto': ''
       };
 
   factory ActivityModel.newInstance() {
     return ActivityModel(
         schedule: [ScheduleActivityModel.newInstance()],
-        linkPhoto: '',
         description: '',
         id: '',
         activityCode: '',
@@ -82,7 +77,6 @@ class ActivityModel extends Activity {
     String? description,
     List<ScheduleActivityModel>? schedule,
     List<SpeakerActivityModel>? speakers,
-    String? linkPhoto,
   }) {
     return ActivityModel(
       id: id ?? this.id,
@@ -92,7 +86,6 @@ class ActivityModel extends Activity {
       description: description ?? this.description,
       schedule: schedule ?? this.schedule,
       speakers: speakers ?? this.speakers,
-      linkPhoto: linkPhoto ?? this.linkPhoto,
     );
   }
 }

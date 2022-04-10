@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'dart:math' as math;
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
@@ -17,14 +19,15 @@ class MoreInfoPage extends StatefulWidget {
   final bool isRegistered;
 
   const MoreInfoPage(
-      {Key? key, required this.activity, required this.isRegistered})
+      {Key? key, required this.activity, this.isRegistered = false})
       : super(key: key);
 
   @override
   State<MoreInfoPage> createState() => _MoreInfoPageState();
 }
 
-class _MoreInfoPageState extends State<MoreInfoPage> {
+class _MoreInfoPageState
+    extends ModularState<MoreInfoPage, MoreInfoController> {
   @override
   Widget build(BuildContext context) {
     var timeString = widget.activity.date == null
@@ -243,24 +246,32 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
             const SizedBox(
               height: 16,
             ),
-            Center(
-              child: RegisterButtonWidget(
-                isRegistered: widget.isRegistered,
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return CustomAlertDialogWidget(
-                          onPressed: () {
-                            Modular.to.pop();
-                          },
-                          title: 'Inscrições não abertas.',
-                          content: 'Aguarde novas informações!',
-                        );
-                      });
-                },
-              ),
-            ),
+            Observer(builder: (_) {
+              return Center(
+                child: RegisterButtonWidget(
+                  isRegistered: widget.isRegistered,
+                  isLoading: controller.isLoading,
+                  onPressed: () {
+                    if (widget.isRegistered) {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return CustomAlertDialogWidget(
+                              onPressed: () {
+                                Modular.to.pop();
+                              },
+                              title: 'Ainda não é possível se desinscrever.',
+                              content: 'Aguarde novas informações!',
+                            );
+                          });
+                    } else {
+                      controller.subscribeActivity(
+                          widget.activity.id, widget.activity.date!);
+                    }
+                  },
+                ),
+              );
+            }),
             const SizedBox(
               height: 16,
             ),

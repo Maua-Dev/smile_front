@@ -1,20 +1,17 @@
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
+// ignore_for_file: avoid_print
 
+import 'package:dio/dio.dart';
+import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/subscription_activity_model.dart';
+import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../shared/services/enviroment/enviroment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
 import '../utils/mocks/subscribed_activities_mock.dart';
 
 class ActivitiesDatasourceImpl extends ActivitiesDatasource {
-  final Dio dioClient;
   final SecureStorageInterface storage;
 
-  ActivitiesDatasourceImpl(
-    this.dioClient, {
+  ActivitiesDatasourceImpl({
     required this.storage,
   });
 
@@ -36,11 +33,9 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
       }
       throw Exception();
     } on Exception catch (e) {
-      getMyDialog(
-        title: 'Não foi possível se conectar com o Serviço' + e.toString(),
-        content: 'Não foi possível se conectar com o Microsserviço, erro: ' +
-            e.toString(),
-      );
+      print(
+          'Não foi possível se conectar com o Microsserviço na rota /activity/getAll, erro: ' +
+              e.toString());
       rethrow;
     }
   }
@@ -63,6 +58,28 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
   }
 
   @override
+  Future postSubscribe(String activityId, DateTime activityDate) async {
+    var token = await storage.getAccessToken();
+    var body = SubscriptionActivityModel(
+        activityDate: activityDate, activityId: activityId);
+    try {
+      BaseOptions options = BaseOptions(
+        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
+        responseType: ResponseType.json,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+      );
+      Dio dio = Dio(options);
+      dio.options.headers["authorization"] = "Bearer $token";
+      await dio.post('/activity/enroll', data: body.toJson());
+    } on Exception catch (e) {
+      print(
+          'Não foi possível se conectar com o Microsserviço na rota /activity/enroll, erro: ' +
+              e.toString());
+    }
+  }
+
+  @override
   Future putActivity(String id, ActivityModel activity) async {
     var token = await storage.getAccessToken();
     try {
@@ -76,11 +93,9 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.put('/activity?id=$id', data: activity.toJson());
     } on Exception catch (e) {
-      getMyDialog(
-        title: 'Não foi possível se conectar com o Serviço' + e.toString(),
-        content: 'Não foi possível se conectar com o Microsserviço, erro: ' +
-            e.toString(),
-      );
+      print(
+          'Não foi possível se conectar com o Microsserviço na rota /activity?id=$id, erro: ' +
+              e.toString());
     }
   }
 
@@ -98,11 +113,9 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity', data: activity.toJson());
     } on Exception catch (e) {
-      getMyDialog(
-        title: 'Não foi possível se conectar com o Serviço' + e.toString(),
-        content: 'Não foi possível se conectar com o Microsserviço, erro: ' +
-            e.toString(),
-      );
+      print(
+          'Não foi possível se conectar com o Microsserviço na rota /activity, erro: ' +
+              e.toString());
     }
   }
 
@@ -120,25 +133,31 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.delete('/activity?id=$id');
     } on Exception catch (e) {
-      getMyDialog(
-        title: 'Não foi possível se conectar com o Serviço' + e.toString(),
-        content: 'Não foi possível se conectar com o Microsserviço, erro: ' +
-            e.toString(),
-      );
+      print(
+          'Não foi possível se conectar com o Microsserviçona rota /activity?id=$id, erro: ' +
+              e.toString());
     }
   }
-}
 
-void getMyDialog({required String title, required String content}) {
-  Get.defaultDialog(
-    title: title,
-    content: Text(content),
-    textCancel: 'Fechar',
-    cancelTextColor: AppColors.redButton,
-    onCancel: () {
-      if (Get.context != null) {
-        Navigator.of(Get.context!).pop();
-      }
-    },
-  );
+  @override
+  Future postUnsubscribe(String activityId, DateTime activityDate) async {
+    var token = await storage.getAccessToken();
+    var body = SubscriptionActivityModel(
+        activityDate: activityDate, activityId: activityId);
+    try {
+      BaseOptions options = BaseOptions(
+        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
+        responseType: ResponseType.json,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+      );
+      Dio dio = Dio(options);
+      dio.options.headers["authorization"] = "Bearer $token";
+      await dio.post('/activity/unenroll', data: body.toJson());
+    } on Exception catch (e) {
+      print(
+          'Não foi possível se conectar com o Microsserviço na rota /activity/unenroll, erro: ' +
+              e.toString());
+    }
+  }
 }

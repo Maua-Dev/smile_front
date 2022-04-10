@@ -33,4 +33,14 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
     final result = await datasource.getUserSubscribedActivities();
     return result;
   }
+
+  @override
+  Future subscribeActivity(String activityId, DateTime activityDate) async {
+    await datasource.postSubscribe(activityId, activityDate);
+  }
+
+  @override
+  Future unsubscribeActivity(String activityId, DateTime activityDate) async {
+    await datasource.postUnsubscribe(activityId, activityDate);
+  }
 }

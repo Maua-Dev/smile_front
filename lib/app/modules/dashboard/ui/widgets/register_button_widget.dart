@@ -5,9 +5,13 @@ import '../../../../shared/themes/app_text_styles.dart';
 
 class RegisterButtonWidget extends StatelessWidget {
   final bool isRegistered;
+  final bool isLoading;
   final Function()? onPressed;
   const RegisterButtonWidget(
-      {Key? key, required this.isRegistered, this.onPressed})
+      {Key? key,
+      required this.isRegistered,
+      this.onPressed,
+      required this.isLoading})
       : super(key: key);
 
   @override
@@ -22,10 +26,16 @@ class RegisterButtonWidget extends StatelessWidget {
             shape: MaterialStateProperty.all(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
             )),
-        child: Text(isRegistered ? 'Desinscrever' : 'Inscrever',
-            style: AppTextStyles.buttonBold.copyWith(
-                fontSize: MediaQuery.of(context).size.width < 1000 ? 24 : 28,
-                color: Colors.white)),
+        child: isLoading
+            ? const Center(
+                child: CircularProgressIndicator(
+                color: Colors.white,
+              ))
+            : Text(isRegistered ? 'Desinscrever' : 'Inscrever',
+                style: AppTextStyles.buttonBold.copyWith(
+                    fontSize:
+                        MediaQuery.of(context).size.width < 1000 ? 24 : 28,
+                    color: Colors.white)),
         onPressed: onPressed);
   }
 }
