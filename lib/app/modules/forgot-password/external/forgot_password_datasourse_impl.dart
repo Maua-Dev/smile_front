@@ -45,7 +45,7 @@ class ForgotPasswordDatasourceImpl implements ForgotPasswordDatasource {
       final res = await dio.post('/changePassword', data: {
         "login": username,
         "new_password": password,
-        "confirmation_code": int.parse(code)
+        "confirmation_code": code
       });
       if (res.statusCode == 200) {
         return 'Senha alterada com sucesso!';

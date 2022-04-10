@@ -84,50 +84,66 @@ class _ForgotPasswordPageState
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    'Um código será enviado no email cadastrado',
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  InputBox(
-                    icon: Icons.person,
-                    placeholder: 'CPF / RNE ou Email',
-                    setValue: controller.setUsername,
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Observer(builder: (_) {
-                    return ActionTextButtonWidget(
-                      isLoading: controller.isLoading,
-                      title: 'Enviar',
-                      widthSize: MediaQuery.of(context).size.width < 650
-                          ? MediaQuery.of(context).size.width * 0.85
-                          : 600,
-                      heightSize: 50,
-                      backgroundColor: AppColors.brandingOrange,
-                      onPressed: () {
-                        controller.forgotPassword();
-                      },
-                    );
+                  Observer(builder: (context) {
+                    if (controller.emailSent) {
+                      return const Center(
+                        child: Text(
+                          "O email foi enviado com sucesso! Acesse o link para alterar sua senha.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      );
+                    } else {
+                      return Column(
+                        children: [
+                          const Text(
+                            'Um código será enviado no email cadastrado',
+                            style: TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          InputBox(
+                            icon: Icons.person,
+                            placeholder: 'CPF / RNE ou Email',
+                            setValue: controller.setUsername,
+                          ),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          Observer(builder: (_) {
+                            return ActionTextButtonWidget(
+                              isLoading: controller.isLoading,
+                              title: 'Enviar',
+                              widthSize: MediaQuery.of(context).size.width < 650
+                                  ? MediaQuery.of(context).size.width * 0.85
+                                  : 600,
+                              heightSize: 50,
+                              backgroundColor: AppColors.brandingOrange,
+                              onPressed: () {
+                                controller.forgotPassword();
+                              },
+                            );
+                          }),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          ActionTextButtonWidget(
+                            title: 'Não tenho cadastro',
+                            widthSize: MediaQuery.of(context).size.width < 650
+                                ? MediaQuery.of(context).size.width * 0.85
+                                : 600,
+                            heightSize: 50,
+                            backgroundColor: AppColors.brandingPurple,
+                            onPressed: () {
+                              Modular.to.navigate('/login/cadastro');
+                            },
+                          ),
+                        ],
+                      );
+                    }
                   }),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ActionTextButtonWidget(
-                    title: 'Não tenho cadastro',
-                    widthSize: MediaQuery.of(context).size.width < 650
-                        ? MediaQuery.of(context).size.width * 0.85
-                        : 600,
-                    heightSize: 50,
-                    backgroundColor: AppColors.brandingPurple,
-                    onPressed: () {
-                      Modular.to.navigate('/login/cadastro');
-                    },
-                  ),
                 ],
               ),
             ],

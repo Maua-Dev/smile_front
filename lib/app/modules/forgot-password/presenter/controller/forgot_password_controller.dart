@@ -18,6 +18,9 @@ abstract class _ForgotPasswordController with Store {
   bool isLoading = false;
 
   @observable
+  bool emailSent = false;
+
+  @observable
   String username = '';
 
   @observable
@@ -72,8 +75,7 @@ abstract class _ForgotPasswordController with Store {
     setIsLoading(true);
     try {
       await forgotPasswordRepository.forgotPassword(username);
-      Modular.to.navigate('/login/esqueci-minha-senha/escolher-senha',
-          arguments: {'username': username});
+      emailSent = true;
     } on Failure catch (e) {
       errors = e.message;
     }
@@ -81,10 +83,16 @@ abstract class _ForgotPasswordController with Store {
   }
 
   @action
-  Future<void> changePassword(username) async {
+  Future<void> changePassword() async {
     setIsLoading(true);
     try {
-      await forgotPasswordRepository.changePassword(username, password, code);
+      String? myurl = Uri.base.toString();
+      var params = myurl.split('?')[1];
+      var code = params.split("&")[0].split('=')[1];
+      var email = params.split("&")[1].split('=')[1];
+      var emailProvider = params.split("&")[2].split('=')[1];
+      var finalEmail = email + "@" + emailProvider;
+      await forgotPasswordRepository.changePassword(finalEmail, password, code);
       setSuccessRegistration(true);
       await Future.delayed(const Duration(seconds: 5));
       Modular.to.navigate('/login');
@@ -107,5 +115,24 @@ abstract class _ForgotPasswordController with Store {
   @action
   Future<void> setSuccessRegistration(bool value) async {
     successRegistration = value;
+  }
+
+  @action
+  String? validateVerifyPassword(String value) {
+    if (value.isEmpty) {
+      return "         Campo obrigatório";
+    }
+    if (password != verifyPassword) {
+      return "Digite a mesma senha";
+    }
+    String pattern =
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+    RegExp regExp = RegExp(pattern);
+    if (!regExp.hasMatch(value)) {
+      setError(
+          "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais \n - Mínimo de 8 caracteres");
+      return '';
+    }
+    return null;
   }
 }
