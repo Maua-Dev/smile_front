@@ -39,7 +39,6 @@ class AdmModule extends Module {
       ),
     ),
     Bind.lazySingleton<ActivitiesDatasource>((i) => ActivitiesDatasourceImpl(
-          i(),
           storage: i<SecureStorageInterface>(),
         )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(

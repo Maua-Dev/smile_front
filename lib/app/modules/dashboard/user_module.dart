@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/dashboard/external/activities_datasource
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
@@ -32,7 +33,6 @@ class UserModule extends Module {
             ),
         export: true),
     Bind.lazySingleton<ActivitiesDatasource>((i) => ActivitiesDatasourceImpl(
-          i(),
           storage: i<SecureStorageInterface>(),
         )),
     Bind.lazySingleton<HelpController>((i) => HelpController(i())),
@@ -45,6 +45,11 @@ class UserModule extends Module {
       (i) => UserDashboardController(
         repository: i(),
         authController: i(),
+      ),
+    ),
+    Bind.lazySingleton<MoreInfoController>(
+      (i) => MoreInfoController(
+        repository: i(),
       ),
     ),
     Bind.lazySingleton((i) => Dio(smileOption)),

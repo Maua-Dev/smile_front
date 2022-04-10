@@ -98,7 +98,7 @@ class _UserDashboardPageState
                             Modular.to.navigate('/user/home/more-info',
                                 arguments: [
                                   controller.weekActivitiesList[index],
-                                  false
+                                  true
                                 ]);
                           },
                         );

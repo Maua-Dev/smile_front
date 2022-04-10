@@ -22,6 +22,14 @@ abstract class _AdmDashboardControllerBase with Store {
   }
 
   @observable
+  bool isLoading = false;
+
+  @action
+  Future<void> setIsLoading(bool value) async {
+    isLoading = value;
+  }
+
+  @observable
   bool isFloatActionButtonOpen = false;
 
   @observable
@@ -101,6 +109,8 @@ abstract class _AdmDashboardControllerBase with Store {
           totalParticipants: time.totalParticipants,
           location: time.location,
           link: time.link,
+          queue: time.queue,
+          enrolledUsers: time.enrolledUsers,
         ));
       }
     }
@@ -108,6 +118,7 @@ abstract class _AdmDashboardControllerBase with Store {
 
   @action
   Future getAllActivities() async {
+    setIsLoading(true);
     activitiesList = await repository.getAllActivities();
     saveActivitiesList = activitiesList;
     changeFormatToCards();
@@ -124,10 +135,13 @@ abstract class _AdmDashboardControllerBase with Store {
 
   @action
   void changeFormatToCards() {
+    setIsLoading(true);
     allActivitiesToCards = [];
     for (var activity in activitiesList) {
       for (var time in activity.schedule) {
         allActivitiesToCards.add(CardActivity(
+          enrolledUsers: time.enrolledUsers,
+          queue: time.queue,
           id: activity.id,
           activityCode: activity.activityCode,
           type: activity.type,
@@ -142,5 +156,6 @@ abstract class _AdmDashboardControllerBase with Store {
         ));
       }
     }
+    setIsLoading(false);
   }
 }

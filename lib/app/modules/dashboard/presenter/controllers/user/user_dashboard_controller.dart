@@ -69,6 +69,8 @@ abstract class _UserDashboardControllerBase with Store {
             speakers: activity.speakers,
             location: time.location,
             link: time.link,
+            enrolledUsers: time.enrolledUsers,
+            queue: time.queue,
           ));
         }
       }
@@ -94,6 +96,8 @@ abstract class _UserDashboardControllerBase with Store {
         speakers: nextActivity.speakers,
         location: time.location,
         link: time.link,
+        enrolledUsers: time.enrolledUsers,
+        queue: time.queue,
       );
     }
   }

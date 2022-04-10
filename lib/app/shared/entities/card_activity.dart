@@ -1,4 +1,5 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/user_id_model.dart';
 
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
@@ -14,8 +15,12 @@ class CardActivity {
   final DateTime? duration;
   final String? location;
   final String? link;
+  final List<UserIdModel>? enrolledUsers;
+  final List<UserIdModel>? queue;
 
   CardActivity({
+    required this.enrolledUsers,
+    required this.queue,
     required this.id,
     required this.activityCode,
     required this.type,
@@ -31,6 +36,8 @@ class CardActivity {
 
   factory CardActivity.newInstance() {
     return CardActivity(
+      enrolledUsers: [],
+      queue: [],
       activityCode: '',
       description: '',
       id: '',
