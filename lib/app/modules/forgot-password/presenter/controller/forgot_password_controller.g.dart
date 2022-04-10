@@ -24,6 +24,21 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
     });
   }
 
+  final _$emailSentAtom = Atom(name: '_ForgotPasswordController.emailSent');
+
+  @override
+  bool get emailSent {
+    _$emailSentAtom.reportRead();
+    return super.emailSent;
+  }
+
+  @override
+  set emailSent(bool value) {
+    _$emailSentAtom.reportWrite(value, super.emailSent, () {
+      super.emailSent = value;
+    });
+  }
+
   final _$usernameAtom = Atom(name: '_ForgotPasswordController.username');
 
   @override
@@ -159,9 +174,8 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
       AsyncAction('_ForgotPasswordController.changePassword');
 
   @override
-  Future<void> changePassword(dynamic username) {
-    return _$changePasswordAsyncAction
-        .run(() => super.changePassword(username));
+  Future<void> changePassword() {
+    return _$changePasswordAsyncAction.run(() => super.changePassword());
   }
 
   final _$setPasswordAsyncAction =
@@ -205,9 +219,21 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
   }
 
   @override
+  String? validateVerifyPassword(String value) {
+    final _$actionInfo = _$_ForgotPasswordControllerActionController
+        .startAction(name: '_ForgotPasswordController.validateVerifyPassword');
+    try {
+      return super.validateVerifyPassword(value);
+    } finally {
+      _$_ForgotPasswordControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isLoading: ${isLoading},
+emailSent: ${emailSent},
 username: ${username},
 password: ${password},
 verifyPassword: ${verifyPassword},
