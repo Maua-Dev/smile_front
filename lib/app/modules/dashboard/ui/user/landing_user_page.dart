@@ -17,7 +17,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          bottomNavigationBar: MediaQuery.of(context).size.width < 1000
+          bottomNavigationBar: MediaQuery.of(context).size.width < 1024
               ? const BottomNavigationBarWidget()
               : null,
           appBar: PreferredSize(
@@ -27,9 +27,9 @@ class _LandingUserPageState extends State<LandingUserPage> {
           body: MediaQuery.of(context).size.width < 1000
               ? Center(
                   child: SizedBox(
-                      width: MediaQuery.of(context).size.width < 1000
+                      width: MediaQuery.of(context).size.width < 1024
                           ? MediaQuery.of(context).size.width
-                          : 1000,
+                          : 1024,
                       child: RouterOutlet()),
                 )
               : Row(
@@ -38,7 +38,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
                     Flexible(
                       child: Center(
                         child: SizedBox(
-                            width: MediaQuery.of(context).size.width < 1000
+                            width: MediaQuery.of(context).size.width < 1024
                                 ? MediaQuery.of(context).size.width
                                 : 1000,
                             child: RouterOutlet()),

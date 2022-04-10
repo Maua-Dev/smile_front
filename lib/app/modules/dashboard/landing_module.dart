@@ -8,7 +8,7 @@ class LandingModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton<NavigationBarController>(
-        (i) => NavigationBarController()),
+        (i) => NavigationBarController(authController: i())),
   ];
 
   @override
