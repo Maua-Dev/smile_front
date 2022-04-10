@@ -115,6 +115,9 @@ class Footer extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(
+                  width: 8,
+                ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,

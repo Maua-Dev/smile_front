@@ -12,9 +12,9 @@ const String firstParagraph =
     'A SMILE é um evento integrador entre as áreas de Administração, Engenharia, Ciência da Computação, Design e Sistemas de Informação, que tem como objetivo apresentar novas tendências, tecnologias e conteúdos com a finalidade de incentivar o intercâmbio e a atualização de conhecimentos entre profissionais e estudantes.';
 
 const String secondParagraph =
-    'A SMILE representa uma oportunidade para de renovação e aprendizado contínuo, bem como uma excelente experiência para aprimoramento de rede de contatos, com os profissionais de diversos ramos nos âmbitos nacional e internacional. Isso faz com que eles passem a compartilhar experiências e interagir com o mercado de trabalho.';
+    'O evento representa uma oportunidade para de renovação e aprendizado contínuo, bem como uma excelente experiência para aprimoramento de rede de contatos, com os profissionais de diversos ramos nos âmbitos nacional e internacional. Isso faz com que eles passem a compartilhar experiências e interagir com o mercado de trabalho.';
 
 const String thirdParagraph =
-    'O evento é organizado pelo Instituto Mauá de Tecnologia - IMT, online/presencial (Híbrido) e aberto ao público.';
+    'Organizado pelo Instituto Mauá de Tecnologia - IMT e aberto ao público, online/presencial (Híbrido).';
 
 const String smileDate = 'Data: 16 a 21 de maio de 2022.';

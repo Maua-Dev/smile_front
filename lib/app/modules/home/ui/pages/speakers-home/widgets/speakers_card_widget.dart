@@ -22,68 +22,73 @@ class SpeakersCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-          right: MediaQuery.of(context).size.width < 1500 ? 16 : 32),
-      child: GestureDetector(
-        onTap: onTap,
-        child: Column(
-          children: [
-            Container(
-                width: indexToShow == myIndex
-                    ? (MediaQuery.of(context).size.width < 500
-                        ? 100
-                        : MediaQuery.of(context).size.width < 1100
-                            ? 150
-                            : MediaQuery.of(context).size.width < 1380
-                                ? 180
-                                : MediaQuery.of(context).size.width < 1750
-                                    ? 220
-                                    : 270)
-                    : (MediaQuery.of(context).size.width < 500
-                        ? 80
-                        : MediaQuery.of(context).size.width < 1100
-                            ? 120
-                            : MediaQuery.of(context).size.width < 1380
-                                ? 150
-                                : MediaQuery.of(context).size.width < 1750
-                                    ? 200
-                                    : 230),
-                height: indexToShow == myIndex
-                    ? (MediaQuery.of(context).size.width < 500
-                        ? 100
-                        : MediaQuery.of(context).size.width < 1100
-                            ? 150
-                            : MediaQuery.of(context).size.width < 1380
-                                ? 180
-                                : MediaQuery.of(context).size.width < 1750
-                                    ? 220
-                                    : 270)
-                    : (MediaQuery.of(context).size.width < 500
-                        ? 80
-                        : MediaQuery.of(context).size.width < 1100
-                            ? 120
-                            : MediaQuery.of(context).size.width < 1380
-                                ? 150
-                                : MediaQuery.of(context).size.width < 1750
-                                    ? 200
-                                    : 230),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: CachedNetworkImageProvider(linkPhoto)))),
-            const SizedBox(
-              height: 8,
-            ),
-            Text(
-              name,
-              style: AppTextStyles.button.copyWith(
-                  fontSize: MediaQuery.of(context).size.width < 1500 ? 18 : 24,
-                  color: Colors.white,
-                  fontWeight: indexToShow == myIndex ? FontWeight.bold : null),
-            ),
-          ],
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Padding(
+        padding: EdgeInsets.only(
+            right: MediaQuery.of(context).size.width < 1500 ? 16 : 32),
+        child: GestureDetector(
+          onTap: onTap,
+          child: Column(
+            children: [
+              Container(
+                  width: indexToShow == myIndex
+                      ? (MediaQuery.of(context).size.width < 500
+                          ? 100
+                          : MediaQuery.of(context).size.width < 1100
+                              ? 150
+                              : MediaQuery.of(context).size.width < 1380
+                                  ? 180
+                                  : MediaQuery.of(context).size.width < 1750
+                                      ? 220
+                                      : 270)
+                      : (MediaQuery.of(context).size.width < 500
+                          ? 80
+                          : MediaQuery.of(context).size.width < 1100
+                              ? 120
+                              : MediaQuery.of(context).size.width < 1380
+                                  ? 150
+                                  : MediaQuery.of(context).size.width < 1750
+                                      ? 200
+                                      : 230),
+                  height: indexToShow == myIndex
+                      ? (MediaQuery.of(context).size.width < 500
+                          ? 100
+                          : MediaQuery.of(context).size.width < 1100
+                              ? 150
+                              : MediaQuery.of(context).size.width < 1380
+                                  ? 180
+                                  : MediaQuery.of(context).size.width < 1750
+                                      ? 220
+                                      : 270)
+                      : (MediaQuery.of(context).size.width < 500
+                          ? 80
+                          : MediaQuery.of(context).size.width < 1100
+                              ? 120
+                              : MediaQuery.of(context).size.width < 1380
+                                  ? 150
+                                  : MediaQuery.of(context).size.width < 1750
+                                      ? 200
+                                      : 230),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: CachedNetworkImageProvider(linkPhoto)))),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                name,
+                style: AppTextStyles.button.copyWith(
+                    fontSize:
+                        MediaQuery.of(context).size.width < 1500 ? 18 : 24,
+                    color: Colors.white,
+                    fontWeight:
+                        indexToShow == myIndex ? FontWeight.bold : null),
+              ),
+            ],
+          ),
         ),
       ),
     );

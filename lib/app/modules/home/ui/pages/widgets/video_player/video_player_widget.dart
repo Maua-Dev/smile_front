@@ -22,7 +22,6 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
     _controller = VideoPlayerController.network(
       'https://smile2022-frontend-assets.s3.sa-east-1.amazonaws.com/video_smile1280x720.mp4',
     );
-    _controller.value.size.width == 100;
 
     _initializeVideoPlayerFuture = _controller.initialize();
 
@@ -80,7 +79,8 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                             ? Icons.pause
                             : Icons.play_arrow,
                         color: AppColors.brandingOrange,
-                        size: 100,
+                        size:
+                            MediaQuery.of(context).size.width < 1024 ? 50 : 100,
                       ),
                     ),
                   ),

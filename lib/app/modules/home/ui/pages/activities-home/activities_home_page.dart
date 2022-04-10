@@ -70,10 +70,12 @@ class ActivityHomeState
             return GestureDetector(
               onTap: () => _controller.animateToPage(entry.key),
               child: Container(
-                width: 15,
-                height: 15,
-                margin:
-                    const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+                width: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
+                height: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
+                margin: EdgeInsets.symmetric(
+                    vertical: 16.0,
+                    horizontal:
+                        MediaQuery.of(context).size.width < 1024 ? 6 : 8),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: (Theme.of(context).brightness == Brightness.dark
