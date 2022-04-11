@@ -60,7 +60,7 @@ abstract class _UserDashboardControllerBase with Store {
   @action
   Future getUserSubscribedActivities() async {
     setIsLoading(true);
-    getActivities();
+    subscribedActivitiesList = await repository.getUserSubscribedActivities();
     if (subscribedActivitiesList.isNotEmpty) {
       allActivitiesToCards = [];
       for (var activity in subscribedActivitiesList) {
