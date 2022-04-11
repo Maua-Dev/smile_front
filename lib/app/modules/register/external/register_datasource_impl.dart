@@ -36,7 +36,11 @@ class RegisterDatasourceImpl implements RegisterDatasource {
       }
       throw Exception();
     } catch (e) {
-      throw RegisterInvalid('Falha ao realizar o cadastro, tente novamente.');
+      if (e.toString().contains('400')) {
+        throw RegisterInvalid('Usuário já existente.');
+      } else {
+        throw RegisterInvalid('Falha ao realizar o cadastro, tente novamente.');
+      }
     }
   }
 }
