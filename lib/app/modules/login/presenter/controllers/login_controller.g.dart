@@ -24,6 +24,21 @@ mixin _$LoginController on _LoginController, Store {
     });
   }
 
+  final _$showPwdAtom = Atom(name: '_LoginController.showPwd');
+
+  @override
+  bool get showPwd {
+    _$showPwdAtom.reportRead();
+    return super.showPwd;
+  }
+
+  @override
+  set showPwd(bool value) {
+    _$showPwdAtom.reportWrite(value, super.showPwd, () {
+      super.showPwd = value;
+    });
+  }
+
   final _$cpfRneAtom = Atom(name: '_LoginController.cpfRne');
 
   @override
@@ -131,9 +146,21 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   @override
+  void toggleVisibilityPwd(bool value) {
+    final _$actionInfo = _$_LoginControllerActionController.startAction(
+        name: '_LoginController.toggleVisibilityPwd');
+    try {
+      return super.toggleVisibilityPwd(value);
+    } finally {
+      _$_LoginControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isLoading: ${isLoading},
+showPwd: ${showPwd},
 cpfRne: ${cpfRne},
 password: ${password},
 errors: ${errors}

@@ -95,16 +95,20 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     const SizedBox(
                       height: 20,
                     ),
-                    InputBox(
-                      icon: Icons.lock,
-                      placeholder: 'Senha',
-                      setValue: controller.setPassword,
-                      isPassword: true,
-                      onFieldSubmitted: (value) {
-                        controller.login();
-                      },
-                      validation: controller.validateField,
-                    ),
+                    Observer(builder: (context) {
+                      return InputBox(
+                        icon: Icons.lock,
+                        placeholder: 'Senha',
+                        setValue: controller.setPassword,
+                        isPassword: true,
+                        onFieldSubmitted: (value) {
+                          controller.login();
+                        },
+                        validation: controller.validateField,
+                        showPwd: controller.showPwd,
+                        onToggleVisibilityPwd: controller.toggleVisibilityPwd,
+                      );
+                    }),
                     const SizedBox(
                       height: 40,
                     ),

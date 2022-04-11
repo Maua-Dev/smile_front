@@ -11,19 +11,23 @@ class InputBox extends StatelessWidget {
   final String? Function(String value)? validation;
   final Function(String value) setValue;
   final void Function(String?)? onFieldSubmitted;
+  final void Function(bool)? onToggleVisibilityPwd;
+  final bool? showPwd;
 
-  const InputBox(
-      {Key? key,
-      required this.icon,
-      required this.placeholder,
-      this.widthSize,
-      this.heightSize,
-      this.disable,
-      this.isPassword,
-      this.validation,
-      required this.setValue,
-      this.onFieldSubmitted})
-      : super(key: key);
+  const InputBox({
+    Key? key,
+    required this.icon,
+    required this.placeholder,
+    this.widthSize,
+    this.heightSize,
+    this.disable,
+    this.isPassword,
+    this.validation,
+    required this.setValue,
+    this.onFieldSubmitted,
+    this.onToggleVisibilityPwd,
+    this.showPwd,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,22 +70,34 @@ class InputBox extends StatelessWidget {
             },
             onFieldSubmitted: onFieldSubmitted,
             onChanged: setValue,
-            obscureText: isPassword ?? false,
+            obscureText: showPwd != null ? !showPwd! : false,
             enabled: disable != null ? !disable! : true,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.only(top: 10),
-              border: InputBorder.none,
-              hintText: placeholder,
-              fillColor: Colors.white,
-              isDense: true,
-              hintStyle: TextStyle(color: AppColors.placeholder),
-              errorStyle: TextStyle(
-                color: AppColors.brandingOrange,
-                fontSize: 16,
-                height: 0.08,
-              ),
-              prefixIcon: Icon(icon, size: 24),
-            ),
+                contentPadding: const EdgeInsets.only(top: 10),
+                border: InputBorder.none,
+                hintText: placeholder,
+                fillColor: Colors.white,
+                isDense: true,
+                hintStyle: TextStyle(color: AppColors.placeholder),
+                errorStyle: TextStyle(
+                  color: AppColors.brandingOrange,
+                  fontSize: 16,
+                  height: 0.08,
+                ),
+                prefixIcon: Icon(icon, size: 24),
+                suffixIcon: onToggleVisibilityPwd != null
+                    ? Padding(
+                        padding: const EdgeInsets.only(right: 16.0),
+                        child: InkWell(
+                          onTap: () => onToggleVisibilityPwd!(showPwd!),
+                          child: Icon(
+                            showPwd! ? Icons.visibility : Icons.visibility_off,
+                            color: AppColors.brandingPurple,
+                            size: 20,
+                          ),
+                        ),
+                      )
+                    : null),
             style: const TextStyle(color: Colors.white),
           ),
         ),
