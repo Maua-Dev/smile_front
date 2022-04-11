@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../../../../../shared/services/enviroment/enviroment_config.dart';
+
 class VideoPlayerWidget extends StatefulWidget {
   const VideoPlayerWidget({Key? key}) : super(key: key);
 
@@ -20,7 +22,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.network(
-      'https://smile2022-frontend-assets.s3.sa-east-1.amazonaws.com/video_smile1280x720.mp4',
+      '${EnvironmentConfig.S3_BASE_URL}video_smile1280x720.mp4',
     );
 
     _initializeVideoPlayerFuture = _controller.initialize();

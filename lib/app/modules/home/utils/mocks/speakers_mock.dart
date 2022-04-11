@@ -29,7 +29,7 @@ var speakersMock = [
   HomeSpeakerModel(
       name: 'Marco Antonio Teixeira',
       bio:
-          'Mestrado em Ciências Sociais (1999) e doutorado em Ciências Sociais (2004) pela Pontifícia Universidade Católica de São Paulo. É professor-adjunto e pesquisador do Departamento de Gestão Pública junto a Escola de Administração de Empresas da Fundação Getulio Vargas de São Paulo (EAESP-FGV), onde leciona nos cursos de graduação em Administração Pública e Administração de Empresas, bem como no Mestrado e Doutorado em Administração Pública e Governo e, também, no Mestrado Profissional em Gestão e Políticas Públicas. Desenvolve pesquisas acadêmicas e vem atuando como Consultor de organismos nacionais e internacionais em temas como: Transparência, Accountability e Controle da administração pública com foco no papel dos órgãos de controle e no controle social; arranjos cooperativos intergovernamentais, política brasileira e eleições. É líder do grupo temático Federalismo, Relações Intergovernamentais e Descentralização, junto a área de Administração Pública do ENANPAD (biênio 2020-2021). Foi comentarista do programa CBNSP, da Rádio CBN, entre 2012 e 2021, onde tratou de questões ligadas aos problemas da cidade de São Paulo e suas políticas públicas. É um dos editores do Blog "Gestão, Política & Sociedade" abrigado no jornal O Estado de São Paulo.',
+          'Cientista Político, Professor e Pesquisador na área de Gestão e Políticas Públicas.',
       date: '20/05',
       linkPhoto: '${speakersLogoUrl}marco_antonio.png'),
 ];

@@ -116,22 +116,36 @@ class _ChangePasswordPageState
                     const SizedBox(
                       height: 20,
                     ),
-                    InputBox(
-                      icon: Icons.lock,
-                      placeholder: 'Senha',
-                      setValue: controller.setPassword,
-                      isPassword: true,
-                    ),
+                    Observer(builder: (context) {
+                      return InputBox(
+                        icon: Icons.lock,
+                        placeholder: 'Senha',
+                        setValue: controller.setPassword,
+                        isPassword: true,
+                        showPwd: controller.showPwd,
+                        onToggleVisibilityPwd: controller.toggleVisibilityPwd,
+                      );
+                    }),
                     const SizedBox(
                       height: 20,
                     ),
-                    InputBox(
-                      icon: Icons.lock,
-                      placeholder: 'Confirme sua senha',
-                      setValue: controller.setVerifyPassword,
-                      isPassword: true,
-                      validation: controller.validateVerifyPassword,
-                    ),
+                    Observer(builder: (context) {
+                      return InputBox(
+                        icon: Icons.lock,
+                        placeholder: 'Confirme sua senha',
+                        setValue: controller.setVerifyPassword,
+                        isPassword: true,
+                        validation: controller.validateVerifyPassword,
+                        showPwd: controller.showConfirmPwd,
+                        onToggleVisibilityPwd:
+                            controller.toggleVisibilityConfirmPwd,
+                        onFieldSubmitted: (value) async {
+                          if (_formKey.currentState!.validate()) {
+                            await controller.changePassword();
+                          }
+                        },
+                      );
+                    }),
                     const SizedBox(
                       height: 40,
                     ),

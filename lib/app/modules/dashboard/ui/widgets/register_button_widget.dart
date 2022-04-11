@@ -31,7 +31,7 @@ class RegisterButtonWidget extends StatelessWidget {
                 child: CircularProgressIndicator(
                 color: Colors.white,
               ))
-            : Text(isRegistered ? 'Desinscrever' : 'Inscrever',
+            : Text(isRegistered ? 'Desinscrever-se' : 'Inscreva-se',
                 style: AppTextStyles.buttonBold.copyWith(
                     fontSize:
                         MediaQuery.of(context).size.width < 1000 ? 24 : 28,

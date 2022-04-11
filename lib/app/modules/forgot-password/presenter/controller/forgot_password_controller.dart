@@ -1,3 +1,4 @@
+import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
@@ -19,6 +20,12 @@ abstract class _ForgotPasswordController with Store {
 
   @observable
   bool emailSent = false;
+
+  @observable
+  bool showPwd = false;
+
+  @observable
+  bool showConfirmPwd = false;
 
   @observable
   String username = '';
@@ -58,10 +65,19 @@ abstract class _ForgotPasswordController with Store {
 
   @action
   String? validateUsername(String value) {
-    if (value.isEmpty) {
-      return "         Campo obrigatório";
+    if (!value.contains('@')) {
+      value = value.replaceAll('.', '');
+      value = value.replaceAll('-', '');
+      if (value.isEmpty) {
+        return "         Campo obrigatório";
+      } else if (!CPFValidator.isValid(value)) {
+        return "         CPF inválido";
+      }
+    } else {
+      if (value.isEmpty) {
+        return "         Campo obrigatório";
+      }
     }
-    //fazer a velidação do cpf
     return null;
   }
 
@@ -134,5 +150,15 @@ abstract class _ForgotPasswordController with Store {
       return '';
     }
     return null;
+  }
+
+  @action
+  void toggleVisibilityPwd(bool value) {
+    showPwd = !value;
+  }
+
+  @action
+  void toggleVisibilityConfirmPwd(bool value) {
+    showConfirmPwd = !value;
   }
 }

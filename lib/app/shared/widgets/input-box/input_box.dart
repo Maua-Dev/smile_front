@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 class InputBox extends StatelessWidget {
@@ -11,6 +12,9 @@ class InputBox extends StatelessWidget {
   final String? Function(String value)? validation;
   final Function(String value) setValue;
   final void Function(String?)? onFieldSubmitted;
+  final void Function(bool)? onToggleVisibilityPwd;
+  final bool? showPwd;
+  final bool? isCpfField;
 
   const InputBox(
       {Key? key,
@@ -22,11 +26,16 @@ class InputBox extends StatelessWidget {
       this.isPassword,
       this.validation,
       required this.setValue,
-      this.onFieldSubmitted})
+      this.onFieldSubmitted,
+      this.onToggleVisibilityPwd,
+      this.showPwd,
+      this.isCpfField})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final maskCpf = MaskTextInputFormatter(
+        mask: "###.###.###-##", filter: {"#": RegExp(r'[0-9]')});
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -57,6 +66,7 @@ class InputBox extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 10.0, left: 10),
           child: TextFormField(
+            inputFormatters: isCpfField != null ? [maskCpf] : null,
             textAlignVertical: TextAlignVertical.center,
             validator: (value) {
               if (validation != null) {
@@ -66,22 +76,34 @@ class InputBox extends StatelessWidget {
             },
             onFieldSubmitted: onFieldSubmitted,
             onChanged: setValue,
-            obscureText: isPassword ?? false,
+            obscureText: showPwd != null ? !showPwd! : false,
             enabled: disable != null ? !disable! : true,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.only(top: 10),
-              border: InputBorder.none,
-              hintText: placeholder,
-              fillColor: Colors.white,
-              isDense: true,
-              hintStyle: TextStyle(color: AppColors.placeholder),
-              errorStyle: TextStyle(
-                color: AppColors.brandingOrange,
-                fontSize: 16,
-                height: 0.08,
-              ),
-              prefixIcon: Icon(icon, size: 24),
-            ),
+                contentPadding: const EdgeInsets.only(top: 10),
+                border: InputBorder.none,
+                hintText: placeholder,
+                fillColor: Colors.white,
+                isDense: true,
+                hintStyle: TextStyle(color: AppColors.placeholder),
+                errorStyle: TextStyle(
+                  color: AppColors.brandingOrange,
+                  fontSize: 16,
+                  height: 0.08,
+                ),
+                prefixIcon: Icon(icon, size: 24),
+                suffixIcon: onToggleVisibilityPwd != null
+                    ? Padding(
+                        padding: const EdgeInsets.only(right: 16.0),
+                        child: InkWell(
+                          onTap: () => onToggleVisibilityPwd!(showPwd!),
+                          child: Icon(
+                            showPwd! ? Icons.visibility : Icons.visibility_off,
+                            color: AppColors.brandingPurple,
+                            size: 20,
+                          ),
+                        ),
+                      )
+                    : null),
             style: const TextStyle(color: Colors.white),
           ),
         ),

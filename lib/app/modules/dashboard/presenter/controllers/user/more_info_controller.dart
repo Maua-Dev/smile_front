@@ -12,7 +12,7 @@ class MoreInfoController = _MoreInfoControllerBase with _$MoreInfoController;
 abstract class _MoreInfoControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final CardActivity activity;
-  final controller = Modular.get<UserDashboardController>();
+  final userDashboardController = Modular.get<UserDashboardController>();
 
   _MoreInfoControllerBase({required this.activity, required this.repository}) {
     startIsRegistered();
@@ -23,12 +23,14 @@ abstract class _MoreInfoControllerBase with Store {
 
   @action
   Future<void> startIsRegistered() async {
-    if (controller.allActivitiesToCards
-        .map((e) => e.id)
-        .contains(activity.id)) {
-      isRegistered = true;
+    userDashboardController.getActivities();
+    var list = userDashboardController.subscribedActivitiesList
+        .where((element) => element.id == activity.id)
+        .toList();
+    if (list.isNotEmpty) {
+      setIsRegistered(true);
     } else {
-      isRegistered = false;
+      setIsRegistered(false);
     }
   }
 
@@ -48,9 +50,8 @@ abstract class _MoreInfoControllerBase with Store {
   Future<void> subscribeActivity() async {
     setIsLoading(true);
     await repository.subscribeActivity(activity.id, activity.date!);
-    controller.allActivitiesToCards
-        .insert(controller.allActivitiesToCards.length, activity);
-    controller.getNextActivity();
+    await userDashboardController.getUserSubscribedActivities();
+    userDashboardController.getNextActivity();
     setIsLoading(false);
     setIsRegistered(true);
   }
@@ -58,9 +59,9 @@ abstract class _MoreInfoControllerBase with Store {
   Future<void> unsubscribeActivity() async {
     setIsLoading(true);
     await repository.unsubscribeActivity(activity.id, activity.date!);
-    controller.allActivitiesToCards
+    userDashboardController.allActivitiesToCards
         .removeWhere((element) => element.id == activity.id);
-    controller.getNextActivity();
+    userDashboardController.getNextActivity();
     setIsLoading(false);
     setIsRegistered(false);
   }

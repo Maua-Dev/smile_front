@@ -25,6 +25,14 @@ mixin _$NavigationBarController on BottomNavigationBarControllerBase, Store {
     });
   }
 
+  final _$logoutAsyncAction =
+      AsyncAction('BottomNavigationBarControllerBase.logout');
+
+  @override
+  Future<void> logout() {
+    return _$logoutAsyncAction.run(() => super.logout());
+  }
+
   final _$toggleIndexAsyncAction =
       AsyncAction('BottomNavigationBarControllerBase.toggleIndex');
 
