@@ -50,6 +50,7 @@ class UserModule extends Module {
     Bind.lazySingleton<MoreInfoController>(
       (i) => MoreInfoController(
         repository: i(),
+        activity: i.args!.data as CardActivity,
       ),
     ),
     Bind.lazySingleton((i) => Dio(smileOption)),
@@ -67,11 +68,7 @@ class UserModule extends Module {
         child: (_, args) => const UserDashboardPage()),
     ChildRoute('/all-activities',
         child: (_, args) => const AllActivitiesUserDashboardPage()),
-    ChildRoute('/more-info',
-        child: (_, args) => MoreInfoPage(
-              activity: args.data[0] as CardActivity,
-              isRegistered: args.data[1] as bool,
-            )),
+    ChildRoute('/more-info', child: (_, args) => const MoreInfoPage()),
     ChildRoute('/help', child: (_, args) => const HelpPage()),
   ];
 }

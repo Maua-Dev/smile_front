@@ -82,23 +82,27 @@ abstract class _UserDashboardControllerBase with Store {
 
   @action
   void getNextActivity() {
-    nextActivity = activitiesList[0];
-    for (var time in activitiesList[0].schedule) {
-      cardNextActivity = CardActivity(
-        id: nextActivity.id,
-        activityCode: nextActivity.activityCode,
-        type: nextActivity.type,
-        title: nextActivity.title,
-        description: nextActivity.description,
-        date: time.date,
-        duration: time.duration,
-        totalParticipants: time.totalParticipants,
-        speakers: nextActivity.speakers,
-        location: time.location,
-        link: time.link,
-        enrolledUsers: time.enrolledUsers,
-        queue: time.queue,
-      );
+    if (activitiesList.isNotEmpty) {
+      nextActivity = activitiesList.first;
+      for (var time in activitiesList.first.schedule) {
+        cardNextActivity = CardActivity(
+          id: nextActivity.id,
+          activityCode: nextActivity.activityCode,
+          type: nextActivity.type,
+          title: nextActivity.title,
+          description: nextActivity.description,
+          date: time.date,
+          duration: time.duration,
+          totalParticipants: time.totalParticipants,
+          speakers: nextActivity.speakers,
+          location: time.location,
+          link: time.link,
+          enrolledUsers: time.enrolledUsers,
+          queue: time.queue,
+        );
+      }
+    } else {
+      nextActivity = ActivityModel.newInstance();
     }
   }
 

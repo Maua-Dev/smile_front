@@ -1,6 +1,6 @@
 class Speaker {
-  final String name;
-  final String bio;
+  final String? name;
+  final String? bio;
   final String? linkPhoto;
 
   Speaker({
