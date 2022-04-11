@@ -8,6 +8,7 @@ import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
+import '../widgets/logout_button_widget.dart';
 import '../widgets/next_activity_card_widget.dart';
 import '../widgets/user_weekday/user_activity_card_widget.dart';
 import '../widgets/user_weekday/user_weekday_filter_widget.dart';
@@ -28,13 +29,32 @@ class _UserDashboardPageState
       if (controller.isLoading) {
         return const Center(child: CircularProgressIndicator());
       } else {
-        if (controller.activitiesList.isNotEmpty) {
+        if (controller.subscribedActivitiesList.isNotEmpty &&
+            controller.nextActivity.type != null) {
           return Scaffold(
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
                   height: 16,
+                ),
+                MediaQuery.of(context).size.width < 1024
+                    ? Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: LogoutButtonWidget(
+                            backgroundColor: AppColors.brandingOrange,
+                            buttonTittle: 'Sair',
+                            onPressed: () {
+                              navBarController.logout();
+                            },
+                          ),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+                const SizedBox(
+                  height: 8,
                 ),
                 TextHeader(
                   title: 'Sua Próxima Atividade',
@@ -50,7 +70,7 @@ class _UserDashboardPageState
                     duration: controller.nextActivity.schedule[0].duration,
                     onTap: () {
                       Modular.to.navigate('/user/home/more-info',
-                          arguments: [controller.cardNextActivity, true]);
+                          arguments: controller.cardNextActivity);
                     },
                     name: controller.nextActivity.title,
                     description: controller.nextActivity.description,
@@ -96,10 +116,8 @@ class _UserDashboardPageState
                               controller.weekActivitiesList[index].activityCode,
                           onTap: () {
                             Modular.to.navigate('/user/home/more-info',
-                                arguments: [
-                                  controller.weekActivitiesList[index],
-                                  true
-                                ]);
+                                arguments:
+                                    controller.weekActivitiesList[index]);
                           },
                         );
                       },
@@ -152,20 +170,22 @@ class _UserDashboardPageState
                         Text(
                           'INSCREVA-SE',
                           style: AppTextStyles.button.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 1630
-                                  ? 20
-                                  : 24),
+                            fontSize: MediaQuery.of(context).size.width < 1630
+                                ? 20
+                                : 24,
+                          ),
                         ),
                       ],
                     ),
                     style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(20),
-                        backgroundColor:
-                            MaterialStateProperty.all(AppColors.brandingOrange),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40)),
-                        )),
+                      elevation: MaterialStateProperty.all(20),
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.brandingOrange),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40)),
+                      ),
+                    ),
                   ),
                 ),
               ),

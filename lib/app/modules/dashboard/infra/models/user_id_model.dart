@@ -1,11 +1,11 @@
 class UserIdModel {
-  final String id;
+  final String userId;
 
-  UserIdModel({required this.id});
+  UserIdModel({required this.userId});
 
   factory UserIdModel.fromMap(Map<String, dynamic> map) {
     return UserIdModel(
-      id: map['id'],
+      userId: map['id'],
     );
   }
 

@@ -1,5 +1,3 @@
-import 'package:smile_front/app/modules/dashboard/infra/models/user_id_model.dart';
-
 import '../../domain/entities/schedule_activity.dart';
 // ignore_for_file: overridden_fields, annotate_overrides, duplicate_ignore
 
@@ -9,8 +7,8 @@ class ScheduleActivityModel extends ScheduleActivity {
   final DateTime? duration;
   String? location;
   String? link;
-  final List<UserIdModel>? enrolledUsers;
-  final List<UserIdModel>? queue;
+  final List<dynamic>? enrolledUsers;
+  final List<dynamic>? queue;
 
   ScheduleActivityModel(
       {this.queue,
@@ -36,8 +34,8 @@ class ScheduleActivityModel extends ScheduleActivity {
       duration: DateTime.fromMillisecondsSinceEpoch(map['duration']),
       location: map['location'],
       link: map['link'],
-      enrolledUsers: UserIdModel.fromMaps(map['enrolledUsers']),
-      queue: UserIdModel.fromMaps(map['queue']),
+      enrolledUsers: map['enrolledUsers'],
+      queue: map['queue'],
     );
   }
   static List<ScheduleActivityModel> fromMaps(List array) {

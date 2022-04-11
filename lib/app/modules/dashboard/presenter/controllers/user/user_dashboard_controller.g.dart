@@ -90,19 +90,20 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$activitiesListAtom =
-      Atom(name: '_UserDashboardControllerBase.activitiesList');
+  final _$subscribedActivitiesListAtom =
+      Atom(name: '_UserDashboardControllerBase.subscribedActivitiesList');
 
   @override
-  List<ActivityModel> get activitiesList {
-    _$activitiesListAtom.reportRead();
-    return super.activitiesList;
+  List<ActivityModel> get subscribedActivitiesList {
+    _$subscribedActivitiesListAtom.reportRead();
+    return super.subscribedActivitiesList;
   }
 
   @override
-  set activitiesList(List<ActivityModel> value) {
-    _$activitiesListAtom.reportWrite(value, super.activitiesList, () {
-      super.activitiesList = value;
+  set subscribedActivitiesList(List<ActivityModel> value) {
+    _$subscribedActivitiesListAtom
+        .reportWrite(value, super.subscribedActivitiesList, () {
+      super.subscribedActivitiesList = value;
     });
   }
 
@@ -260,7 +261,7 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     return '''
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
-activitiesList: ${activitiesList},
+subscribedActivitiesList: ${subscribedActivitiesList},
 nextActivity: ${nextActivity},
 cardNextActivity: ${cardNextActivity},
 weekActivitiesList: ${weekActivitiesList},
