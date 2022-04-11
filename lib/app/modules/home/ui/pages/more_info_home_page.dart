@@ -23,12 +23,32 @@ class MoreInfoHomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24.0),
-              child: TextHeader(
-                title: 'Sobre a Smile',
-                leftPadding: MediaQuery.of(context).size.width < 800 ? 16 : 32,
-                fontSize: MediaQuery.of(context).size.width < 800 ? 24 : 45,
-                color: AppColors.brandingOrange,
+              padding: EdgeInsets.symmetric(
+                vertical: 24.0,
+                horizontal: MediaQuery.of(context).size.width < 800 ? 16 : 32,
+              ),
+              child: Row(
+                children: [
+                  IconButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        Modular.to.pop();
+                      },
+                      icon: Icon(
+                        Icons.arrow_back_sharp,
+                        color: AppColors.brandingOrange,
+                        size: MediaQuery.of(context).size.width < 800 ? 24 : 32,
+                      )),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width < 800 ? 8 : 16,
+                  ),
+                  TextHeader(
+                    title: 'Sobre a Smile',
+                    fontSize: MediaQuery.of(context).size.width < 800 ? 24 : 45,
+                    leftPadding: 0,
+                    color: AppColors.brandingOrange,
+                  ),
+                ],
               ),
             ),
             const ParagraphTextWidget(

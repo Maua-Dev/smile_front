@@ -56,7 +56,7 @@ class UserActivityCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '$title - $activityCode',
+                            '$activityCode - $title',
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.buttonBold.copyWith(
@@ -77,10 +77,10 @@ class UserActivityCardWidget extends StatelessWidget {
                           ),
                           Text(
                             location == null
-                                ? 'Local: Online'
+                                ? 'Local: On-line'
                                 : isOnline == false
                                     ? 'Local: $location'
-                                    : 'Local: $location e Online',
+                                    : 'Local: ${location}e On-line',
                             style: AppTextStyles.buttonBold.copyWith(
                                 fontSize:
                                     MediaQuery.of(context).size.width < 1000
