@@ -12,11 +12,16 @@ class ParagraphTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 108),
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width < 800 ? 16 : 108),
       child: Text(
         paragraph,
         style: AppTextStyles.body.copyWith(
-            fontSize: MediaQuery.of(context).size.width < 1300 ? 24 : 28,
+            fontSize: MediaQuery.of(context).size.width < 800
+                ? 12
+                : MediaQuery.of(context).size.width < 1300
+                    ? 24
+                    : 28,
             fontWeight: isBold ? FontWeight.bold : null),
         textAlign: TextAlign.justify,
       ),

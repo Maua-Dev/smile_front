@@ -189,19 +189,30 @@ class _MainHomePageState extends State<MainHomePage> {
               style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
             ),
           ),
-          ActionTextButtonWidget(
-            title: 'SAIBA MAIS >>>',
-            textStyle: AppTextStyles.buttonBold
-                .copyWith(color: Colors.white, fontSize: 14),
-            paddingHorizontal: 8,
-            paddingVertical: 8,
-            widthSize: 200,
-            heightSize: 20,
-            borderRadius: 20,
-            backgroundColor: AppColors.brandingPurple,
-            onPressed: () {
-              Modular.to.navigate('/home/home-more-info');
-            },
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () {
+                  Modular.to.navigate('/home/home-more-info');
+                },
+                child: Container(
+                  width: 200,
+                  height: 20,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: AppColors.brandingPurple,
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: Text(
+                    'SAIBA MAIS >>>',
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       );

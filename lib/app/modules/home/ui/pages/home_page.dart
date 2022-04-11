@@ -173,24 +173,25 @@ class _HomePageState extends State<HomePage> {
                   scrollToSponsors();
                 },
               ),
-            Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: ActionTextButtonWidget(
-                title: 'LOGIN',
-                textStyle: AppTextStyles.buttonBold.copyWith(
-                    color: Colors.white,
-                    fontSize:
-                        MediaQuery.of(context).size.width < 1300 ? 20 : 24),
-                paddingHorizontal:
-                    MediaQuery.of(context).size.width < 1300 ? 8 : 16,
-                paddingVertical: 8,
-                widthSize: 160,
-                backgroundColor: AppColors.brandingOrange,
-                onPressed: () async {
-                  widget.redirect();
-                },
-              ),
-            )
+            if (MediaQuery.of(context).size.width > 1024)
+              Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: ActionTextButtonWidget(
+                  title: 'LOGIN',
+                  textStyle: AppTextStyles.buttonBold.copyWith(
+                      color: Colors.white,
+                      fontSize:
+                          MediaQuery.of(context).size.width < 1300 ? 20 : 24),
+                  paddingHorizontal:
+                      MediaQuery.of(context).size.width < 1300 ? 8 : 16,
+                  paddingVertical: 8,
+                  widthSize: 160,
+                  backgroundColor: AppColors.brandingOrange,
+                  onPressed: () async {
+                    widget.redirect();
+                  },
+                ),
+              )
           ]),
       body: Center(
         child: SizedBox(
