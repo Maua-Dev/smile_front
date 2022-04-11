@@ -29,7 +29,8 @@ class _UserDashboardPageState
       if (controller.isLoading) {
         return const Center(child: CircularProgressIndicator());
       } else {
-        if (controller.activitiesList.isNotEmpty) {
+        if (controller.subscribedActivitiesList.isNotEmpty &&
+            controller.nextActivity.type != null) {
           return Scaffold(
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -69,7 +70,7 @@ class _UserDashboardPageState
                     duration: controller.nextActivity.schedule[0].duration,
                     onTap: () {
                       Modular.to.navigate('/user/home/more-info',
-                          arguments: [controller.cardNextActivity, true]);
+                          arguments: controller.cardNextActivity);
                     },
                     name: controller.nextActivity.title,
                     description: controller.nextActivity.description,
@@ -115,10 +116,8 @@ class _UserDashboardPageState
                               controller.weekActivitiesList[index].activityCode,
                           onTap: () {
                             Modular.to.navigate('/user/home/more-info',
-                                arguments: [
-                                  controller.weekActivitiesList[index],
-                                  true
-                                ]);
+                                arguments:
+                                    controller.weekActivitiesList[index]);
                           },
                         );
                       },
@@ -171,20 +170,22 @@ class _UserDashboardPageState
                         Text(
                           'INSCREVA-SE',
                           style: AppTextStyles.button.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 1630
-                                  ? 20
-                                  : 24),
+                            fontSize: MediaQuery.of(context).size.width < 1630
+                                ? 20
+                                : 24,
+                          ),
                         ),
                       ],
                     ),
                     style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(20),
-                        backgroundColor:
-                            MaterialStateProperty.all(AppColors.brandingOrange),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40)),
-                        )),
+                      elevation: MaterialStateProperty.all(20),
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.brandingOrange),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40)),
+                      ),
+                    ),
                   ),
                 ),
               ),

@@ -145,7 +145,7 @@ void main() {
 
   test('getUserSubscribedActivities', () {
     controller.getUserSubscribedActivities();
-    expect(controller.activitiesList.isNotEmpty, true);
+    expect(controller.subscribedActivitiesList.isNotEmpty, true);
     expect(controller.nextActivity.id.isNotEmpty, true);
   });
 

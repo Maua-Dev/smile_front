@@ -86,12 +86,10 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                     activityCode:
                         controller.weekActivitiesList[index].activityCode,
                     onTap: () {
-                      Modular.to.navigate('/user/home/more-info', arguments: [
-                        controller.weekActivitiesList[index],
-                        subscribedActivitiesController.allActivitiesToCards
-                            .map((e) => e.id)
-                            .contains(controller.weekActivitiesList[index].id)
-                      ]);
+                      Modular.to.navigate(
+                        '/user/home/more-info',
+                        arguments: controller.weekActivitiesList[index],
+                      );
                     },
                   );
                 },

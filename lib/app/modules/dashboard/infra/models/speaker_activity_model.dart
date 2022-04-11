@@ -2,16 +2,16 @@ import 'package:smile_front/app/shared/entities/speaker.dart';
 
 class SpeakerActivityModel extends Speaker {
   // ignore: overridden_fields, annotate_overrides
-  String name;
+  String? name;
   // ignore: overridden_fields, annotate_overrides
-  String bio;
+  String? bio;
   // ignore: overridden_fields, annotate_overrides
-  String company;
+  String? company;
 
   SpeakerActivityModel({
     required this.name,
     required this.bio,
-    required this.company,
+    this.company,
   }) : super(
           name: name,
           bio: bio,
