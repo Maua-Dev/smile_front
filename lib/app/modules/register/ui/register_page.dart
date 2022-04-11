@@ -222,6 +222,7 @@ class _RegisterPageState
                               placeholder: 'CPF / RNE',
                               setValue: controller.setCpf,
                               validation: controller.validateCpf,
+                              isCpfField: true,
                             ),
                             const SizedBox(
                               height: 20,
