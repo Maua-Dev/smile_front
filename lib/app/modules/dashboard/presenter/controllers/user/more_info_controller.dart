@@ -15,14 +15,14 @@ abstract class _MoreInfoControllerBase with Store {
   final controller = Modular.get<UserDashboardController>();
 
   _MoreInfoControllerBase({required this.activity, required this.repository}) {
-    setIsRegistered();
+    startIsRegistered();
   }
 
   @observable
   bool isRegistered = false;
 
   @action
-  Future<void> setIsRegistered() async {
+  Future<void> startIsRegistered() async {
     if (controller.allActivitiesToCards
         .map((e) => e.id)
         .contains(activity.id)) {
@@ -30,6 +30,11 @@ abstract class _MoreInfoControllerBase with Store {
     } else {
       isRegistered = false;
     }
+  }
+
+  @action
+  Future<void> setIsRegistered(bool value) async {
+    isRegistered = value;
   }
 
   @observable
@@ -43,18 +48,20 @@ abstract class _MoreInfoControllerBase with Store {
   Future<void> subscribeActivity() async {
     setIsLoading(true);
     await repository.subscribeActivity(activity.id, activity.date!);
-    await controller.getUserSubscribedActivities();
+    controller.allActivitiesToCards
+        .insert(controller.allActivitiesToCards.length, activity);
     controller.getNextActivity();
-    Modular.to.navigate('/user/home');
     setIsLoading(false);
+    setIsRegistered(true);
   }
 
   Future<void> unsubscribeActivity() async {
     setIsLoading(true);
     await repository.unsubscribeActivity(activity.id, activity.date!);
-    await controller.getUserSubscribedActivities();
+    controller.allActivitiesToCards
+        .removeWhere((element) => element.id == activity.id);
     controller.getNextActivity();
-    Modular.to.navigate('/user/home');
     setIsLoading(false);
+    setIsRegistered(false);
   }
 }

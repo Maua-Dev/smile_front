@@ -29,7 +29,7 @@ class _UserDashboardPageState
       if (controller.isLoading) {
         return const Center(child: CircularProgressIndicator());
       } else {
-        if (controller.activitiesList.isNotEmpty &&
+        if (controller.subscribedActivitiesList.isNotEmpty &&
             controller.nextActivity.type != null) {
           return Scaffold(
             body: Column(

@@ -32,7 +32,7 @@ abstract class _UserDashboardControllerBase with Store {
   int filterActivityChipIndexSelected = 0;
 
   @observable
-  List<ActivityModel> activitiesList = List.empty();
+  List<ActivityModel> subscribedActivitiesList = List.empty();
 
   @observable
   ActivityModel nextActivity = ActivityModel.newInstance();
@@ -49,13 +49,16 @@ abstract class _UserDashboardControllerBase with Store {
   @observable
   String userName = '';
 
+  @observable
+  List<CardActivity> allActivitiesToCards = List.empty();
+
   @action
   Future getUserSubscribedActivities() async {
     setIsLoading(true);
-    activitiesList = await repository.getUserSubscribedActivities();
-    if (activitiesList.isNotEmpty) {
+    subscribedActivitiesList = await repository.getUserSubscribedActivities();
+    if (subscribedActivitiesList.isNotEmpty) {
       allActivitiesToCards = [];
-      for (var activity in activitiesList) {
+      for (var activity in subscribedActivitiesList) {
         for (var time in activity.schedule) {
           allActivitiesToCards.add(CardActivity(
             id: activity.id,
@@ -82,9 +85,9 @@ abstract class _UserDashboardControllerBase with Store {
 
   @action
   void getNextActivity() {
-    if (activitiesList.isNotEmpty) {
-      nextActivity = activitiesList.first;
-      for (var time in activitiesList.first.schedule) {
+    if (subscribedActivitiesList.isNotEmpty) {
+      nextActivity = subscribedActivitiesList.first;
+      for (var time in subscribedActivitiesList.first.schedule) {
         cardNextActivity = CardActivity(
           id: nextActivity.id,
           activityCode: nextActivity.activityCode,
@@ -110,9 +113,6 @@ abstract class _UserDashboardControllerBase with Store {
   void getUserFirstName() {
     userName = user.socialName.substring(0, user.socialName.indexOf(' '));
   }
-
-  @observable
-  List<CardActivity> allActivitiesToCards = List.empty();
 
   @computed
   List<CardActivity> get mondayActivitiesList => allActivitiesToCards
