@@ -26,7 +26,8 @@ class MoreInfoHomePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 24.0),
               child: TextHeader(
                 title: 'Sobre a Smile',
-                leftPadding: 32,
+                leftPadding: MediaQuery.of(context).size.width < 800 ? 16 : 32,
+                fontSize: MediaQuery.of(context).size.width < 800 ? 24 : 45,
                 color: AppColors.brandingOrange,
               ),
             ),
@@ -60,13 +61,16 @@ class MoreInfoHomePage extends StatelessWidget {
                 title: 'Inscreva-se',
                 textStyle: AppTextStyles.buttonBold.copyWith(
                     color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width < 1300
-                        ? 36
+                    fontSize: MediaQuery.of(context).size.width < 800
+                        ? 24
                         : MediaQuery.of(context).size.width < 1300
-                            ? 48
-                            : 60),
-                paddingVertical: 24,
-                widthSize: 400,
+                            ? 36
+                            : MediaQuery.of(context).size.width < 1300
+                                ? 48
+                                : 60),
+                paddingVertical:
+                    MediaQuery.of(context).size.width < 800 ? 12 : 24,
+                widthSize: MediaQuery.of(context).size.width < 800 ? 200 : 400,
                 backgroundColor: AppColors.brandingOrange,
                 onPressed: () async {
                   await Modular.isModuleReady<AppModule>();
