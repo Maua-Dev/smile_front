@@ -210,6 +210,14 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
+  final _$getActivitiesAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.getActivities');
+
+  @override
+  Future<dynamic> getActivities() {
+    return _$getActivitiesAsyncAction.run(() => super.getActivities());
+  }
+
   final _$getUserSubscribedActivitiesAsyncAction =
       AsyncAction('_UserDashboardControllerBase.getUserSubscribedActivities');
 

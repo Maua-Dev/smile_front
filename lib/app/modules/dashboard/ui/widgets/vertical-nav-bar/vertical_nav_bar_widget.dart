@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/widgets/vertical-nav-bar/nav_bar_button_widget.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
@@ -15,6 +16,7 @@ class VerticalNavBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Modular.get<NavigationBarController>();
+    var controllerDashboard = Modular.get<UserDashboardController>();
     return Observer(builder: (context) {
       return Container(
         color: AppColors.brandingPurple,
@@ -43,6 +45,7 @@ class VerticalNavBarWidget extends StatelessWidget {
               onPressed: () async {
                 await controller.toggleIndex(1);
                 Modular.to.navigate('/user/home');
+                await controllerDashboard.getUserSubscribedActivities();
               },
               icon: Icons.person,
             ),
