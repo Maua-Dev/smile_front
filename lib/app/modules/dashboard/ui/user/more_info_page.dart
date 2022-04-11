@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'dart:math' as math;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/utils.dart';
@@ -247,23 +246,11 @@ class _MoreInfoPageState
                   isRegistered: controller.isRegistered,
                   isLoading: controller.isLoading,
                   onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return CustomAlertDialogWidget(
-                            title: 'Inscrições ainda não abertas.',
-                            content: 'Aguarde novas informações',
-                            onPressed: () {
-                              Modular.to.pop();
-                            });
-                      },
-                    );
-                    // if (controller.isRegistered) {
-
-                    //   controller.unsubscribeActivity();
-                    // } else {
-                    //   controller.subscribeActivity();
-                    // }
+                    if (controller.isRegistered) {
+                      controller.unsubscribeActivity();
+                    } else {
+                      controller.subscribeActivity();
+                    }
                   },
                 ),
               );
