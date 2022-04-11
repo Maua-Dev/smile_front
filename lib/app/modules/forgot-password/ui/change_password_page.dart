@@ -139,6 +139,11 @@ class _ChangePasswordPageState
                         showPwd: controller.showConfirmPwd,
                         onToggleVisibilityPwd:
                             controller.toggleVisibilityConfirmPwd,
+                        onFieldSubmitted: (value) async {
+                          if (_formKey.currentState!.validate()) {
+                            await controller.changePassword();
+                          }
+                        },
                       );
                     }),
                     const SizedBox(

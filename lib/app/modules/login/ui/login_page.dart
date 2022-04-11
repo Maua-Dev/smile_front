@@ -101,8 +101,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         placeholder: 'Senha',
                         setValue: controller.setPassword,
                         isPassword: true,
-                        onFieldSubmitted: (value) {
-                          controller.login();
+                        onFieldSubmitted: (value) async {
+                          if (_formKey.currentState!.validate()) {
+                            await controller.login();
+                          }
                         },
                         validation: controller.validateField,
                         showPwd: controller.showPwd,
