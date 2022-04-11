@@ -24,6 +24,12 @@ abstract class _RegisterController with Store {
   bool isLoading = false;
 
   @observable
+  bool showPwd = false;
+
+  @observable
+  bool showConfirmPwd = false;
+
+  @observable
   bool successRegistration = false;
 
   @observable
@@ -238,5 +244,15 @@ abstract class _RegisterController with Store {
   @action
   Future<void> setAcceptTermsOfUse(bool? value) async {
     acceptTermsOfUse = value!;
+  }
+
+  @action
+  void toggleVisibilityPwd(bool value) {
+    showPwd = !value;
+  }
+
+  @action
+  void toggleVisibilityConfirmPwd(bool value) {
+    showConfirmPwd = !value;
   }
 }

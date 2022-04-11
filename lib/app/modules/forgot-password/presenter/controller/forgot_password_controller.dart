@@ -21,6 +21,12 @@ abstract class _ForgotPasswordController with Store {
   bool emailSent = false;
 
   @observable
+  bool showPwd = false;
+
+  @observable
+  bool showConfirmPwd = false;
+
+  @observable
   String username = '';
 
   @observable
@@ -134,5 +140,15 @@ abstract class _ForgotPasswordController with Store {
       return '';
     }
     return null;
+  }
+
+  @action
+  void toggleVisibilityPwd(bool value) {
+    showPwd = !value;
+  }
+
+  @action
+  void toggleVisibilityConfirmPwd(bool value) {
+    showConfirmPwd = !value;
   }
 }
