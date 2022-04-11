@@ -90,19 +90,25 @@ class _ForgotPasswordPageState
                     Observer(builder: (context) {
                       if (controller.emailSent) {
                         return const Center(
-                          child: Text(
-                            "O email foi enviado com sucesso! Acesse o link para alterar sua senha.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white),
+                          child: Padding(
+                            padding: EdgeInsets.all(42.0),
+                            child: Text(
+                              "O email foi enviado com sucesso! Acesse o link para alterar sua senha.",
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
                         );
                       } else {
                         return Column(
                           children: [
-                            const Text(
-                              'Um código será enviado no email cadastrado',
-                              style: TextStyle(color: Colors.white),
-                              textAlign: TextAlign.center,
+                            const Padding(
+                              padding: EdgeInsets.all(42.0),
+                              child: Text(
+                                'Um código será enviado no email cadastrado',
+                                style: TextStyle(color: Colors.white),
+                                textAlign: TextAlign.justify,
+                              ),
                             ),
                             const SizedBox(
                               height: 20,
