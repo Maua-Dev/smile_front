@@ -39,6 +39,37 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
     });
   }
 
+  final _$showPwdAtom = Atom(name: '_ForgotPasswordController.showPwd');
+
+  @override
+  bool get showPwd {
+    _$showPwdAtom.reportRead();
+    return super.showPwd;
+  }
+
+  @override
+  set showPwd(bool value) {
+    _$showPwdAtom.reportWrite(value, super.showPwd, () {
+      super.showPwd = value;
+    });
+  }
+
+  final _$showConfirmPwdAtom =
+      Atom(name: '_ForgotPasswordController.showConfirmPwd');
+
+  @override
+  bool get showConfirmPwd {
+    _$showConfirmPwdAtom.reportRead();
+    return super.showConfirmPwd;
+  }
+
+  @override
+  set showConfirmPwd(bool value) {
+    _$showConfirmPwdAtom.reportWrite(value, super.showConfirmPwd, () {
+      super.showConfirmPwd = value;
+    });
+  }
+
   final _$usernameAtom = Atom(name: '_ForgotPasswordController.username');
 
   @override
@@ -230,10 +261,35 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
   }
 
   @override
+  void toggleVisibilityPwd(bool value) {
+    final _$actionInfo = _$_ForgotPasswordControllerActionController
+        .startAction(name: '_ForgotPasswordController.toggleVisibilityPwd');
+    try {
+      return super.toggleVisibilityPwd(value);
+    } finally {
+      _$_ForgotPasswordControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void toggleVisibilityConfirmPwd(bool value) {
+    final _$actionInfo =
+        _$_ForgotPasswordControllerActionController.startAction(
+            name: '_ForgotPasswordController.toggleVisibilityConfirmPwd');
+    try {
+      return super.toggleVisibilityConfirmPwd(value);
+    } finally {
+      _$_ForgotPasswordControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isLoading: ${isLoading},
 emailSent: ${emailSent},
+showPwd: ${showPwd},
+showConfirmPwd: ${showConfirmPwd},
 username: ${username},
 password: ${password},
 verifyPassword: ${verifyPassword},

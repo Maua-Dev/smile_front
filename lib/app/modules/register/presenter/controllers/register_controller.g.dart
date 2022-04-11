@@ -54,6 +54,36 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
+  final _$showPwdAtom = Atom(name: '_RegisterController.showPwd');
+
+  @override
+  bool get showPwd {
+    _$showPwdAtom.reportRead();
+    return super.showPwd;
+  }
+
+  @override
+  set showPwd(bool value) {
+    _$showPwdAtom.reportWrite(value, super.showPwd, () {
+      super.showPwd = value;
+    });
+  }
+
+  final _$showConfirmPwdAtom = Atom(name: '_RegisterController.showConfirmPwd');
+
+  @override
+  bool get showConfirmPwd {
+    _$showConfirmPwdAtom.reportRead();
+    return super.showConfirmPwd;
+  }
+
+  @override
+  set showConfirmPwd(bool value) {
+    _$showConfirmPwdAtom.reportWrite(value, super.showConfirmPwd, () {
+      super.showConfirmPwd = value;
+    });
+  }
+
   final _$successRegistrationAtom =
       Atom(name: '_RegisterController.successRegistration');
 
@@ -426,10 +456,34 @@ mixin _$RegisterController on _RegisterController, Store {
   }
 
   @override
+  void toggleVisibilityPwd(bool value) {
+    final _$actionInfo = _$_RegisterControllerActionController.startAction(
+        name: '_RegisterController.toggleVisibilityPwd');
+    try {
+      return super.toggleVisibilityPwd(value);
+    } finally {
+      _$_RegisterControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void toggleVisibilityConfirmPwd(bool value) {
+    final _$actionInfo = _$_RegisterControllerActionController.startAction(
+        name: '_RegisterController.toggleVisibilityConfirmPwd');
+    try {
+      return super.toggleVisibilityConfirmPwd(value);
+    } finally {
+      _$_RegisterControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 errors: ${errors},
 isLoading: ${isLoading},
+showPwd: ${showPwd},
+showConfirmPwd: ${showConfirmPwd},
 successRegistration: ${successRegistration},
 name: ${name},
 socialName: ${socialName},

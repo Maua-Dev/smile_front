@@ -18,6 +18,9 @@ abstract class _LoginController with Store {
   bool isLoading = false;
 
   @observable
+  bool showPwd = false;
+
+  @observable
   String cpfRne = '';
 
   @observable
@@ -92,5 +95,10 @@ abstract class _LoginController with Store {
       return "         Campo obrigatório";
     }
     return null;
+  }
+
+  @action
+  void toggleVisibilityPwd(bool value) {
+    showPwd = !value;
   }
 }
