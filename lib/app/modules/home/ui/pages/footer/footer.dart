@@ -44,23 +44,15 @@ class Footer extends StatelessWidget {
                     Center(
                       child: Text(
                         localizationTitle,
-                        style: AppTextStyles.titleH1.copyWith(
-                            color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 900
-                                ? 14
-                                : MediaQuery.of(context).size.width < 1350
-                                    ? 16
-                                    : 20),
+                        style: AppTextStyles.titleH1
+                            .copyWith(color: Colors.white, fontSize: 12),
                       ),
                     ),
                     Center(
                       child: Text(
                         localization,
-                        style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 1350
-                                ? 16
-                                : 20),
+                        style: AppTextStyles.body
+                            .copyWith(color: Colors.white, fontSize: 12),
                       ),
                     ),
                     const SizedBox(
@@ -73,21 +65,20 @@ class Footer extends StatelessWidget {
                             launch('https://g.page/IMT-instituto-maua?share'),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             const Icon(
                               Icons.location_on,
                               color: Colors.white,
+                              size: 16,
+                            ),
+                            const SizedBox(
+                              width: 4,
                             ),
                             Text(
                               'COMO CHEGAR',
-                              style: AppTextStyles.body.copyWith(
-                                  color: Colors.white,
-                                  fontSize: MediaQuery.of(context).size.width <
-                                          900
-                                      ? 14
-                                      : MediaQuery.of(context).size.width < 1350
-                                          ? 16
-                                          : 20),
+                              style: AppTextStyles.body
+                                  .copyWith(color: Colors.white, fontSize: 12),
                             ),
                           ],
                         ),
@@ -156,10 +147,14 @@ class Footer extends StatelessWidget {
                             launch('https://g.page/IMT-instituto-maua?share'),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             const Icon(
                               Icons.location_on,
                               color: Colors.white,
+                            ),
+                            const SizedBox(
+                              width: 8,
                             ),
                             Text(
                               'COMO CHEGAR',
@@ -186,8 +181,8 @@ class Footer extends StatelessWidget {
                 text: 'Desenvolvido por ',
                 style: AppTextStyles.body.copyWith(
                     color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width < 900
-                        ? 18
+                    fontSize: MediaQuery.of(context).size.width < 800
+                        ? 16
                         : MediaQuery.of(context).size.width < 1350
                             ? 24
                             : 28),
@@ -196,8 +191,8 @@ class Footer extends StatelessWidget {
                     text: 'Dev. Community Mauá',
                     style: AppTextStyles.titleH1.copyWith(
                         color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.width < 900
-                            ? 18
+                        fontSize: MediaQuery.of(context).size.width < 800
+                            ? 16
                             : MediaQuery.of(context).size.width < 1350
                                 ? 24
                                 : 28),

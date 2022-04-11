@@ -15,6 +15,6 @@ const String secondParagraph =
     'O evento representa uma oportunidade para de renovação e aprendizado contínuo, bem como uma excelente experiência para aprimoramento de rede de contatos, com os profissionais de diversos ramos nos âmbitos nacional e internacional. Isso faz com que eles passem a compartilhar experiências e interagir com o mercado de trabalho.';
 
 const String thirdParagraph =
-    'Organizado pelo Instituto Mauá de Tecnologia - IMT e aberto ao público, online/presencial (Híbrido).';
+    'Organizado pelo Instituto Mauá de Tecnologia - IMT e aberto ao público, on-line/presencial (Híbrido).';
 
 const String smileDate = 'Data: 16 a 21 de maio de 2022.';

@@ -9,6 +9,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/utils.dart';
+import '../../domain/infra/activity_enum.dart';
 import '../widgets/register_button_widget.dart';
 
 class MoreInfoPage extends StatefulWidget {
@@ -53,8 +54,11 @@ class _MoreInfoPageState
                   controller.activity.type!.name,
                   textAlign: TextAlign.justify,
                   style: AppTextStyles.buttonBold.copyWith(
-                    fontSize:
-                        MediaQuery.of(context).size.width < 1000 ? 22 : 28,
+                    fontSize: MediaQuery.of(context).size.width < 800
+                        ? 18
+                        : MediaQuery.of(context).size.width < 1000
+                            ? 22
+                            : 28,
                     color: AppColors.brandingPurple,
                   ),
                 ),
@@ -66,10 +70,14 @@ class _MoreInfoPageState
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                controller.activity.title,
+                '${controller.activity.activityCode} - ${controller.activity.title}',
+                textAlign: TextAlign.justify,
                 style: AppTextStyles.buttonBold.copyWith(
-                    fontSize:
-                        MediaQuery.of(context).size.width < 1000 ? 22 : 28,
+                    fontSize: MediaQuery.of(context).size.width < 800
+                        ? 20
+                        : MediaQuery.of(context).size.width < 1000
+                            ? 24
+                            : 28,
                     color: Colors.black),
               ),
             ),
@@ -95,9 +103,11 @@ class _MoreInfoPageState
                     Text(
                       weekday,
                       style: AppTextStyles.buttonBold.copyWith(
-                          fontSize: MediaQuery.of(context).size.width < 1000
-                              ? 20
-                              : 24,
+                          fontSize: MediaQuery.of(context).size.width < 800
+                              ? 16
+                              : MediaQuery.of(context).size.width < 1000
+                                  ? 20
+                                  : 24,
                           color: AppColors.brandingPurple),
                     ),
                   ],
@@ -107,17 +117,21 @@ class _MoreInfoPageState
                     Text(
                       'Horário',
                       style: AppTextStyles.buttonBold.copyWith(
-                          fontSize: MediaQuery.of(context).size.width < 1000
-                              ? 14
-                              : 18,
+                          fontSize: MediaQuery.of(context).size.width < 800
+                              ? 12
+                              : MediaQuery.of(context).size.width < 1000
+                                  ? 14
+                                  : 18,
                           color: AppColors.brandingPurple),
                     ),
                     Text(
                       '$timeString - $finalTime',
                       style: AppTextStyles.buttonBold.copyWith(
-                          fontSize: MediaQuery.of(context).size.width < 1000
-                              ? 20
-                              : 24,
+                          fontSize: MediaQuery.of(context).size.width < 800
+                              ? 16
+                              : MediaQuery.of(context).size.width < 1000
+                                  ? 20
+                                  : 24,
                           color: AppColors.brandingPurple),
                     ),
                   ],
@@ -128,17 +142,21 @@ class _MoreInfoPageState
                       Text(
                         'Local',
                         style: AppTextStyles.buttonBold.copyWith(
-                            fontSize: MediaQuery.of(context).size.width < 1000
-                                ? 14
-                                : 18,
+                            fontSize: MediaQuery.of(context).size.width < 800
+                                ? 12
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 14
+                                    : 18,
                             color: AppColors.brandingPurple),
                       ),
                       Text(
                         controller.activity.location!,
                         style: AppTextStyles.buttonBold.copyWith(
-                            fontSize: MediaQuery.of(context).size.width < 1000
-                                ? 20
-                                : 24,
+                            fontSize: MediaQuery.of(context).size.width < 800
+                                ? 16
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 20
+                                    : 24,
                             color: AppColors.brandingPurple),
                       ),
                     ],
@@ -149,9 +167,11 @@ class _MoreInfoPageState
                       Text(
                         'Zoom',
                         style: AppTextStyles.buttonBold.copyWith(
-                            fontSize: MediaQuery.of(context).size.width < 1000
-                                ? 14
-                                : 18,
+                            fontSize: MediaQuery.of(context).size.width < 800
+                                ? 12
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 14
+                                    : 18,
                             color: AppColors.brandingPurple),
                       ),
                       Row(
@@ -163,9 +183,11 @@ class _MoreInfoPageState
                               child: Icon(
                                 Icons.link,
                                 color: AppColors.brandingPurple,
-                                size: MediaQuery.of(context).size.width < 1000
-                                    ? 20
-                                    : 24,
+                                size: MediaQuery.of(context).size.width < 800
+                                    ? 16
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 20
+                                        : 24,
                               ),
                             ),
                           ),
@@ -174,9 +196,14 @@ class _MoreInfoPageState
                             child: Text('Link',
                                 style: AppTextStyles.buttonBold.copyWith(
                                     fontSize:
-                                        MediaQuery.of(context).size.width < 1000
-                                            ? 20
-                                            : 24,
+                                        MediaQuery.of(context).size.width < 800
+                                            ? 16
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1000
+                                                ? 20
+                                                : 24,
                                     color: AppColors.brandingPurple)),
                           ),
                         ],
@@ -196,17 +223,21 @@ class _MoreInfoPageState
                         Text(
                           'Código',
                           style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 1000
-                                  ? 14
-                                  : 18,
+                              fontSize: MediaQuery.of(context).size.width < 800
+                                  ? 12
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 14
+                                      : 18,
                               color: AppColors.brandingPurple),
                         ),
                         Text(
                           '9999999999',
                           style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 1000
-                                  ? 20
-                                  : 24,
+                              fontSize: MediaQuery.of(context).size.width < 800
+                                  ? 16
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 20
+                                      : 24,
                               color: AppColors.brandingPurple),
                         ),
                       ],
@@ -219,17 +250,21 @@ class _MoreInfoPageState
                         Text(
                           'Senha',
                           style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 1000
-                                  ? 14
-                                  : 18,
+                              fontSize: MediaQuery.of(context).size.width < 800
+                                  ? 12
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 14
+                                      : 18,
                               color: AppColors.brandingPurple),
                         ),
                         Text(
                           '9999999999',
                           style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 1000
-                                  ? 20
-                                  : 24,
+                              fontSize: MediaQuery.of(context).size.width < 800
+                                  ? 16
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 20
+                                      : 24,
                               color: AppColors.brandingPurple),
                         ),
                       ],
@@ -262,8 +297,11 @@ class _MoreInfoPageState
               alignment: Alignment.centerLeft,
               child: Text('Descrição',
                   style: AppTextStyles.buttonBold.copyWith(
-                      fontSize:
-                          MediaQuery.of(context).size.width < 1000 ? 24 : 28,
+                      fontSize: MediaQuery.of(context).size.width < 800
+                          ? 20
+                          : MediaQuery.of(context).size.width < 1000
+                              ? 24
+                              : 28,
                       color: AppColors.brandingPurple)),
             ),
             const SizedBox(
@@ -274,8 +312,11 @@ class _MoreInfoPageState
               child: Text(controller.activity.description,
                   textAlign: TextAlign.justify,
                   style: AppTextStyles.body.copyWith(
-                      fontSize:
-                          MediaQuery.of(context).size.width < 1000 ? 18 : 22,
+                      fontSize: MediaQuery.of(context).size.width < 800
+                          ? 16
+                          : MediaQuery.of(context).size.width < 1000
+                              ? 18
+                              : 22,
                       color: Colors.black)),
             ),
             const SizedBox(
@@ -302,36 +343,48 @@ class _MoreInfoPageState
                                     .linkPhoto!), // for Network image
                           ),
                         ),
-                      Column(
-                        children: [
-                          if (controller.activity.speakers![index].name !=
-                                  null &&
-                              controller.activity.speakers![index].name != '')
-                            Text(
-                              controller.activity.speakers![index].name!,
-                              textAlign: TextAlign.justify,
-                              style: AppTextStyles.buttonBold.copyWith(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1000
-                                          ? 22
-                                          : 28,
-                                  color: Colors.black),
-                            ),
-                          if (controller.activity.speakers![index].company !=
-                                  null &&
-                              controller.activity.speakers![index].company !=
-                                  '')
-                            Text(
-                              'Empresa: ${controller.activity.speakers![index].company}',
-                              textAlign: TextAlign.justify,
-                              style: AppTextStyles.buttonBold.copyWith(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1000
-                                          ? 14
-                                          : 20,
-                                  color: AppColors.brandingPurple),
-                            ),
-                        ],
+                      Flexible(
+                        child: Column(
+                          children: [
+                            if (controller.activity.speakers![index].name !=
+                                    null &&
+                                controller.activity.speakers![index].name != '')
+                              Text(
+                                controller.activity.speakers![index].name!,
+                                textAlign: TextAlign.justify,
+                                style: AppTextStyles.buttonBold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 800
+                                            ? 18
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1000
+                                                ? 22
+                                                : 28,
+                                    color: Colors.black),
+                              ),
+                            if (controller.activity.speakers![index].company !=
+                                    null &&
+                                controller.activity.speakers![index].company !=
+                                    '')
+                              Text(
+                                'Empresa: ${controller.activity.speakers![index].company}',
+                                textAlign: TextAlign.justify,
+                                style: AppTextStyles.buttonBold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 800
+                                            ? 12
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1000
+                                                ? 14
+                                                : 20,
+                                    color: AppColors.brandingPurple),
+                              ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -345,9 +398,11 @@ class _MoreInfoPageState
                       child: Text(controller.activity.speakers![index].bio!,
                           textAlign: TextAlign.justify,
                           style: AppTextStyles.body.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 1000
-                                  ? 18
-                                  : 22,
+                              fontSize: MediaQuery.of(context).size.width < 800
+                                  ? 16
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 18
+                                      : 22,
                               color: Colors.black)),
                     ),
                   const SizedBox(
