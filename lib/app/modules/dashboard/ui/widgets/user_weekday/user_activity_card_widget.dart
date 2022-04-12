@@ -80,7 +80,7 @@ class UserActivityCardWidget extends StatelessWidget {
                                 ? 'Local: On-line'
                                 : isOnline == false
                                     ? 'Local: $location'
-                                    : 'Local: ${location}e On-line',
+                                    : 'Local: ${location} e On-line',
                             style: AppTextStyles.buttonBold.copyWith(
                                 fontSize:
                                     MediaQuery.of(context).size.width < 1000
