@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-
-import '../../../../../shared/themes/app_text_styles.dart';
+import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class DropDownFieldWidget<T> extends StatelessWidget {
   final String? titulo;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/vertical-nav-bar/vertical_nav_bar_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar.dart';
+import 'widgets/vertical-nav-bar/vertical_nav_bar_widget.dart';
 
 class LandingUserPage extends StatefulWidget {
   const LandingUserPage({Key? key}) : super(key: key);

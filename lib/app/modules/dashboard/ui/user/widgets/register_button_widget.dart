@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../shared/themes/app_colors.dart';
-import '../../../../shared/themes/app_text_styles.dart';
+import '../../../../../shared/themes/app_colors.dart';
+import '../../../../../shared/themes/app_text_styles.dart';
 
 class RegisterButtonWidget extends StatelessWidget {
   final bool isRegistered;

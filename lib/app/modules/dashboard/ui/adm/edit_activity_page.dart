@@ -14,9 +14,9 @@ import '../../../../shared/widgets/dialogs/fill_all_fields_dialog_widget.dart';
 import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../domain/infra/activity_enum.dart';
-import '../widgets/schedule_add_widget.dart';
-import '../widgets/speaker_add_widget.dart';
-import '../widgets/text_field_dialog_widget.dart';
+import 'widgets/add_forms/schedule_add_widget.dart';
+import 'widgets/add_forms/speaker_add_widget.dart';
+import 'widgets/add_forms/text_field_dialog_widget.dart';
 
 class EditActivityPage extends StatefulWidget {
   const EditActivityPage({Key? key}) : super(key: key);

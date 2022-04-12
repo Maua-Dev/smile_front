@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/text_field_dialog_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/add_forms/text_field_dialog_widget.dart';
 
-import '../../../../shared/themes/app_colors.dart';
+import '../../../../../../shared/themes/app_colors.dart';
 
 class SpeakerAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedName;

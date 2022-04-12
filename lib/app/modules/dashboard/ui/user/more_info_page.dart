@@ -10,7 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../domain/infra/activity_enum.dart';
-import '../widgets/register_button_widget.dart';
+import 'widgets/register_button_widget.dart';
 
 class MoreInfoPage extends StatefulWidget {
   const MoreInfoPage({Key? key}) : super(key: key);

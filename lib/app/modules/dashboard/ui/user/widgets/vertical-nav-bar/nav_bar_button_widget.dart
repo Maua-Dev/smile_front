@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../shared/themes/app_colors.dart';
+import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 class VerticalNavBarButtonWidget extends StatelessWidget {
   final Function()? onPressed;

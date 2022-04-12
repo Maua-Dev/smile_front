@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/faq_card_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/faq/faq_card_widget.dart';
 
 import '../../../../shared/widgets/text-header/text_header.dart';
 
