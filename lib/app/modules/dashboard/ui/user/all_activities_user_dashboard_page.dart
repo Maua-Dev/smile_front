@@ -86,9 +86,21 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                     activityCode:
                         controller.weekActivitiesList[index].activityCode,
                     onTap: () {
+                      var isRegistered = false;
+                      var list = controller.controller.subscribedActivitiesList
+                          .where((element) =>
+                              element.id ==
+                              controller.weekActivitiesList[index].id)
+                          .toList();
+                      if (list.isNotEmpty) {
+                        isRegistered = true;
+                      }
                       Modular.to.navigate(
                         '/user/home/more-info',
-                        arguments: controller.weekActivitiesList[index],
+                        arguments: [
+                          controller.weekActivitiesList[index],
+                          isRegistered
+                        ],
                       );
                     },
                   );
