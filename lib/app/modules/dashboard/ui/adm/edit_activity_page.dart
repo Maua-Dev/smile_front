@@ -5,12 +5,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
+import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
-import '../../../../shared/widgets/dialogs/fill_all_fields_dialog_widget.dart';
 import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../domain/infra/activity_enum.dart';
@@ -278,7 +278,6 @@ class _EditActivityPageState
                             context: context,
                             builder: (BuildContext context) {
                               return ActionConfirmationDialogWidget(
-                                  isLoading: controller.isLoading,
                                   title: 'Tem certeza que deseja continuar?',
                                   content:
                                       'Ao confirmar todos os dados antigos serão perdidos.',
@@ -316,7 +315,6 @@ class _EditActivityPageState
                               context: context,
                               builder: (BuildContext context) {
                                 return ActionConfirmationDialogWidget(
-                                    isLoading: controller.isLoading,
                                     title: 'Tem certeza que deseja continuar?',
                                     content:
                                         'Ao salvar todos os dados antigos serão perdidos.',
@@ -329,7 +327,11 @@ class _EditActivityPageState
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return const FillAllFieldsDialogWidget();
+                                return const CustomAlertDialogWidget(
+                                  title: 'Preencha todos os campos!',
+                                  content:
+                                      'Confira se todos os campos estão corretamente preenchidos.',
+                                );
                               },
                             );
                           }

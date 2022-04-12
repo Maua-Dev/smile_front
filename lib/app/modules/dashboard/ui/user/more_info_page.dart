@@ -9,6 +9,8 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/utils.dart';
+import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
+import '../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../domain/infra/activity_enum.dart';
 import 'widgets/register_button_widget.dart';
 
@@ -281,10 +283,48 @@ class _MoreInfoPageState
                   isRegistered: controller.isRegistered,
                   isLoading: controller.isLoading,
                   onPressed: () {
-                    if (controller.isRegistered) {
-                      controller.unsubscribeActivity();
+                    if (controller.activity.enrolledUsers!.length ==
+                        controller.activity.totalParticipants) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const CustomAlertDialogWidget(
+                            title:
+                                'Parece que o número de vagas da atividade se esgotou :(',
+                          );
+                        },
+                      );
                     } else {
-                      controller.subscribeActivity();
+                      if (controller.isRegistered) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return ActionConfirmationDialogWidget(
+                                title:
+                                    'Tem certeza que deseja se desinscrever?',
+                                content:
+                                    'Você perderá sua vaga na atividade ao continuar!',
+                                onPressed: () {
+                                  controller.unsubscribeActivity();
+                                  Modular.to.pop();
+                                });
+                          },
+                        );
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return ActionConfirmationDialogWidget(
+                                title: 'Tem certeza que deseja se inscrever?',
+                                content:
+                                    'Se atente aos seus horários e atividades que você já se inscreveu!',
+                                onPressed: () {
+                                  controller.unsubscribeActivity();
+                                  Modular.to.pop();
+                                });
+                          },
+                        );
+                      }
                     }
                   },
                 ),
