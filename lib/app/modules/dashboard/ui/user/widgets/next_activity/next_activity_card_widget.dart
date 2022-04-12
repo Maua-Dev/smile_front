@@ -110,7 +110,7 @@ class NextActivityCardWidget extends StatelessWidget {
                               Icons.date_range,
                               color: Colors.white,
                               size: MediaQuery.of(context).size.width < 500
-                                  ? 20
+                                  ? 18
                                   : MediaQuery.of(context).size.width < 1000
                                       ? 24
                                       : 26,
@@ -121,8 +121,8 @@ class NextActivityCardWidget extends StatelessWidget {
                                   style: AppTextStyles.button.copyWith(
                                       fontSize:
                                           MediaQuery.of(context).size.width <
-                                                  400
-                                              ? 14
+                                                  500
+                                              ? 12
                                               : 18,
                                       color: Colors.white))
                               : const SizedBox.shrink(),
@@ -136,7 +136,7 @@ class NextActivityCardWidget extends StatelessWidget {
                               Icons.access_time_outlined,
                               color: Colors.white,
                               size: MediaQuery.of(context).size.width < 500
-                                  ? 20
+                                  ? 18
                                   : MediaQuery.of(context).size.width < 1000
                                       ? 24
                                       : 26,
@@ -145,8 +145,8 @@ class NextActivityCardWidget extends StatelessWidget {
                           Text('$timeString - $finalTime',
                               style: AppTextStyles.button.copyWith(
                                   fontSize:
-                                      MediaQuery.of(context).size.width < 400
-                                          ? 14
+                                      MediaQuery.of(context).size.width < 500
+                                          ? 12
                                           : 18,
                                   color: Colors.white))
                         ],
@@ -160,7 +160,7 @@ class NextActivityCardWidget extends StatelessWidget {
                                 isUser ? Icons.location_on : Icons.person,
                                 color: Colors.white,
                                 size: MediaQuery.of(context).size.width < 500
-                                    ? 20
+                                    ? 18
                                     : MediaQuery.of(context).size.width < 1000
                                         ? 24
                                         : 26,
@@ -177,8 +177,8 @@ class NextActivityCardWidget extends StatelessWidget {
                                   style: AppTextStyles.button.copyWith(
                                       fontSize:
                                           MediaQuery.of(context).size.width <
-                                                  400
-                                              ? 14
+                                                  500
+                                              ? 12
                                               : 18,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold)),
@@ -194,7 +194,7 @@ class NextActivityCardWidget extends StatelessWidget {
                                 Icons.location_on,
                                 color: Colors.white,
                                 size: MediaQuery.of(context).size.width < 500
-                                    ? 20
+                                    ? 18
                                     : MediaQuery.of(context).size.width < 1000
                                         ? 24
                                         : 26,
@@ -203,8 +203,8 @@ class NextActivityCardWidget extends StatelessWidget {
                             Text(location!,
                                 style: AppTextStyles.button.copyWith(
                                     fontSize:
-                                        MediaQuery.of(context).size.width < 400
-                                            ? 14
+                                        MediaQuery.of(context).size.width < 500
+                                            ? 12
                                             : 18,
                                     color: Colors.white))
                           ],
@@ -220,7 +220,7 @@ class NextActivityCardWidget extends StatelessWidget {
                                   Icons.link,
                                   color: Colors.white,
                                   size: MediaQuery.of(context).size.width < 500
-                                      ? 20
+                                      ? 18
                                       : MediaQuery.of(context).size.width < 1000
                                           ? 24
                                           : 26,
@@ -232,8 +232,8 @@ class NextActivityCardWidget extends StatelessWidget {
                               child: Text('Link',
                                   style: AppTextStyles.button.copyWith(
                                     fontSize:
-                                        MediaQuery.of(context).size.width < 400
-                                            ? 14
+                                        MediaQuery.of(context).size.width < 500
+                                            ? 12
                                             : 18,
                                     color: Colors.white,
                                     decoration: TextDecoration.underline,
