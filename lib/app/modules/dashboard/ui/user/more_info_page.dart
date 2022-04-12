@@ -306,17 +306,24 @@ class _MoreInfoPageState
                                     'Você perderá sua vaga na atividade ao continuar!',
                                 onPressed: () {
                                   controller.unsubscribeActivity();
+                                  Modular.to.pop();
                                 });
                           },
                         );
                       } else {
-                        return ActionConfirmationDialogWidget(
-                            title: 'Tem certeza que deseja se inscrever?',
-                            content:
-                                'Se atente aos seus horários e atividades que você já se inscreveu!',
-                            onPressed: () {
-                              controller.subscribeActivity();
-                            });
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return ActionConfirmationDialogWidget(
+                                title: 'Tem certeza que deseja se inscrever?',
+                                content:
+                                    'Se atente aos seus horários e atividades que você já se inscreveu!',
+                                onPressed: () {
+                                  controller.unsubscribeActivity();
+                                  Modular.to.pop();
+                                });
+                          },
+                        );
                       }
                     }
                   },
