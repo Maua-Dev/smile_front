@@ -55,39 +55,38 @@ class UserActivityCardWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            '$activityCode - $title',
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: AppTextStyles.buttonBold.copyWith(
-                                fontSize:
-                                    MediaQuery.of(context).size.width < 1000
-                                        ? 16
-                                        : 24,
-                                color: Colors.black),
-                          ),
-                          Text(
-                            'Término: $finalTime',
-                            style: AppTextStyles.buttonBold.copyWith(
-                                fontSize:
-                                    MediaQuery.of(context).size.width < 1000
-                                        ? 14
-                                        : 16,
-                                color: AppColors.gray),
-                          ),
-                          Text(
-                            location == null
-                                ? 'Local: On-line'
-                                : isOnline == false
-                                    ? 'Local: $location'
-                                    : 'Local: $location e On-line',
-                            style: AppTextStyles.buttonBold.copyWith(
-                                fontSize:
-                                    MediaQuery.of(context).size.width < 1000
-                                        ? 14
-                                        : 16,
-                                color: AppColors.gray),
-                          ),
+                          if (activityCode != '' && title != '')
+                            Text(
+                              '$activityCode - $title',
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTextStyles.buttonBold.copyWith(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 1000
+                                          ? 16
+                                          : 24,
+                                  color: Colors.black),
+                            ),
+                          if (location != null && location != '')
+                            Text(
+                              'Término: $finalTime',
+                              style: AppTextStyles.buttonBold.copyWith(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 1000
+                                          ? 14
+                                          : 16,
+                                  color: AppColors.gray),
+                            ),
+                          if (location != null && location != '')
+                            Text(
+                              'Local: $location',
+                              style: AppTextStyles.buttonBold.copyWith(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 1000
+                                          ? 14
+                                          : 16,
+                                  color: AppColors.gray),
+                            ),
                         ],
                       ),
                     ),
