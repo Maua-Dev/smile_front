@@ -8,9 +8,11 @@ class ScheduleActivityModel extends ScheduleActivity {
   String? location;
   String? link;
   final List<String>? enrolledUsers;
+  bool enableSubscription;
 
   ScheduleActivityModel(
-      {this.location,
+      {required this.enableSubscription,
+      this.location,
       this.link,
       this.duration,
       this.date,
@@ -23,6 +25,7 @@ class ScheduleActivityModel extends ScheduleActivity {
           enrolledUsers: enrolledUsers,
           link: link,
           location: location,
+          enableSubscription: enableSubscription,
         );
 
   factory ScheduleActivityModel.fromMap(Map<String, dynamic> map) {
@@ -33,6 +36,7 @@ class ScheduleActivityModel extends ScheduleActivity {
       location: map['location'],
       link: map['link'],
       enrolledUsers: (map['enrolledUsers'] as List<dynamic>).cast<String>(),
+      enableSubscription: map['enableSubscription'] ?? false,
     );
   }
   static List<ScheduleActivityModel> fromMaps(List array) {
@@ -53,21 +57,26 @@ class ScheduleActivityModel extends ScheduleActivity {
     int? totalParticipants,
     String? location,
     String? link,
+    bool? enableSubscription,
   }) {
     return ScheduleActivityModel(
-        date: date ?? this.date,
-        totalParticipants: totalParticipants ?? this.totalParticipants,
-        duration: duration ?? this.duration,
-        location: location ?? this.location,
-        link: link ?? this.link);
+      date: date ?? this.date,
+      totalParticipants: totalParticipants ?? this.totalParticipants,
+      duration: duration ?? this.duration,
+      location: location ?? this.location,
+      link: link ?? this.link,
+      enableSubscription: enableSubscription ?? this.enableSubscription,
+    );
   }
 
   factory ScheduleActivityModel.newInstance() {
     return ScheduleActivityModel(
-        date: null,
-        totalParticipants: null,
-        duration: null,
-        location: null,
-        link: null);
+      date: null,
+      totalParticipants: null,
+      duration: null,
+      location: null,
+      link: null,
+      enableSubscription: false,
+    );
   }
 }
