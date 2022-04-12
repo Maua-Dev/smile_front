@@ -291,8 +291,6 @@ class _MoreInfoPageState
                           return const CustomAlertDialogWidget(
                             title:
                                 'Parece que o número de vagas da atividade se esgotou :(',
-                            content:
-                                'Você perderá sua vaga na atividade ao continuar!',
                           );
                         },
                       );
