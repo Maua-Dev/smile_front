@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:smile_front/app/modules/dashboard/ui/shared/widgets/logout_button_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
-import '../widgets/logout_button_widget.dart';
-import '../widgets/next_activity_card_widget.dart';
-import '../widgets/user_weekday/user_activity_card_widget.dart';
-import '../widgets/user_weekday/user_weekday_filter_widget.dart';
+import 'widgets/next_activity/next_activity_card_widget.dart';
+import 'widgets/user_weekday/user_weekday_filter_widget.dart';
 
 class UserDashboardPage extends StatefulWidget {
   const UserDashboardPage({Key? key}) : super(key: key);
