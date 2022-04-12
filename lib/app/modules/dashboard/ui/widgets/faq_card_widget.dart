@@ -43,22 +43,19 @@ class FaqCardWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(right: 8.0, left: 8, bottom: 8),
-                    child: Text(descricao,
-                        textAlign: TextAlign.justify,
-                        style: AppTextStyles.body.copyWith(
-                            color: Colors.black,
-                            fontSize: MediaQuery.of(context).size.width < 1000
-                                ? 14
-                                : 24)),
-                  ),
-                ],
+              body: Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(right: 8.0, left: 8, bottom: 8),
+                  child: Text(descricao,
+                      textAlign: TextAlign.justify,
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.width < 1000
+                              ? 14
+                              : 24)),
+                ),
               )),
         ],
         expansionCallback: (i, isExpanded) {
