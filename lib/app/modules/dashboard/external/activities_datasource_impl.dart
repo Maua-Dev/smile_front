@@ -41,7 +41,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasource {
 
   @override
   Future<List<ActivityModel>> getUserSubscribedActivities() async {
-    // return await Future.value(subscribedActivities);
     var token = await storage.getAccessToken();
     try {
       BaseOptions options = BaseOptions(

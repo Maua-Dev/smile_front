@@ -319,7 +319,7 @@ class _MoreInfoPageState
                                 content:
                                     'Se atente aos seus horários e atividades que você já se inscreveu!',
                                 onPressed: () {
-                                  controller.unsubscribeActivity();
+                                  controller.subscribeActivity();
                                   Modular.to.pop();
                                 });
                           },
