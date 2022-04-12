@@ -7,7 +7,7 @@ class ScheduleActivityModel extends ScheduleActivity {
   final DateTime? duration;
   String? location;
   String? link;
-  final List<dynamic>? enrolledUsers;
+  final List<String>? enrolledUsers;
 
   ScheduleActivityModel(
       {this.location,
@@ -32,7 +32,7 @@ class ScheduleActivityModel extends ScheduleActivity {
       duration: DateTime.fromMillisecondsSinceEpoch(map['duration']),
       location: map['location'],
       link: map['link'],
-      enrolledUsers: map['enrolledUsers'],
+      enrolledUsers: (map['enrolledUsers'] as List<dynamic>).cast<String>(),
     );
   }
   static List<ScheduleActivityModel> fromMaps(List array) {

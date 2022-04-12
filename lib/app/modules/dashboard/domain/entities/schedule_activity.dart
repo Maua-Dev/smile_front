@@ -4,7 +4,7 @@ class ScheduleActivity {
   final DateTime? duration;
   final String? location;
   final String? link;
-  final List<dynamic>? enrolledUsers;
+  final List<String>? enrolledUsers;
 
   ScheduleActivity({
     this.enrolledUsers,
