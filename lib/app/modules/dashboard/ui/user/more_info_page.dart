@@ -40,122 +40,76 @@ class _MoreInfoPageState
             ? ''
             : Utils.getActivityFinalTime(
                 controller.activity.date!, controller.activity.duration!);
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        child: Column(
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.05,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40),
-                  color: AppColors.lilac),
-              child: Center(
-                child: Text(
-                  controller.activity.type!.name,
-                  textAlign: TextAlign.justify,
-                  style: AppTextStyles.buttonBold.copyWith(
-                    fontSize: MediaQuery.of(context).size.width < 800
-                        ? 18
-                        : MediaQuery.of(context).size.width < 1000
-                            ? 22
-                            : 28,
-                    color: AppColors.brandingPurple,
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          child: Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.05,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: AppColors.lilac),
+                child: Center(
+                  child: Text(
+                    controller.activity.type!.name,
+                    textAlign: TextAlign.justify,
+                    style: AppTextStyles.buttonBold.copyWith(
+                      fontSize: MediaQuery.of(context).size.width < 800
+                          ? 18
+                          : MediaQuery.of(context).size.width < 1000
+                              ? 22
+                              : 28,
+                      color: AppColors.brandingPurple,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '${controller.activity.activityCode} - ${controller.activity.title}',
-                textAlign: TextAlign.justify,
-                style: AppTextStyles.buttonBold.copyWith(
-                    fontSize: MediaQuery.of(context).size.width < 800
-                        ? 20
-                        : MediaQuery.of(context).size.width < 1000
-                            ? 24
-                            : 28,
-                    color: Colors.black),
+              const SizedBox(
+                height: 16,
               ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      controller.activity.date == null
-                          ? ''
-                          : DateFormat('dd/MM')
-                              .format(controller.activity.date!),
-                      style: AppTextStyles.buttonBold.copyWith(
-                          fontSize: MediaQuery.of(context).size.width < 1000
-                              ? 14
-                              : 18,
-                          color: AppColors.brandingPurple),
-                    ),
-                    Text(
-                      weekday,
-                      style: AppTextStyles.buttonBold.copyWith(
-                          fontSize: MediaQuery.of(context).size.width < 800
-                              ? 16
-                              : MediaQuery.of(context).size.width < 1000
-                                  ? 20
-                                  : 24,
-                          color: AppColors.brandingPurple),
-                    ),
-                  ],
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '${controller.activity.activityCode} - ${controller.activity.title}',
+                  textAlign: TextAlign.justify,
+                  style: AppTextStyles.buttonBold.copyWith(
+                      fontSize: MediaQuery.of(context).size.width < 800
+                          ? 20
+                          : MediaQuery.of(context).size.width < 1000
+                              ? 24
+                              : 28,
+                      color: Colors.black),
                 ),
-                Column(
-                  children: [
-                    Text(
-                      'Horário',
-                      style: AppTextStyles.buttonBold.copyWith(
-                          fontSize: MediaQuery.of(context).size.width < 800
-                              ? 12
-                              : MediaQuery.of(context).size.width < 1000
-                                  ? 14
-                                  : 18,
-                          color: AppColors.brandingPurple),
-                    ),
-                    Text(
-                      '$timeString - $finalTime',
-                      style: AppTextStyles.buttonBold.copyWith(
-                          fontSize: MediaQuery.of(context).size.width < 800
-                              ? 16
-                              : MediaQuery.of(context).size.width < 1000
-                                  ? 20
-                                  : 24,
-                          color: AppColors.brandingPurple),
-                    ),
-                  ],
-                ),
-                if (controller.activity.location != null)
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                   Column(
                     children: [
                       Text(
-                        'Local',
+                        controller.activity.date == null
+                            ? ''
+                            : DateFormat('dd/MM')
+                                .format(controller.activity.date!),
                         style: AppTextStyles.buttonBold.copyWith(
                             fontSize: MediaQuery.of(context).size.width < 800
-                                ? 12
+                                ? 10
                                 : MediaQuery.of(context).size.width < 1000
                                     ? 14
                                     : 18,
                             color: AppColors.brandingPurple),
                       ),
                       Text(
-                        controller.activity.location!,
+                        weekday,
                         style: AppTextStyles.buttonBold.copyWith(
                             fontSize: MediaQuery.of(context).size.width < 800
-                                ? 16
+                                ? 14
                                 : MediaQuery.of(context).size.width < 1000
                                     ? 20
                                     : 24,
@@ -163,295 +117,290 @@ class _MoreInfoPageState
                       ),
                     ],
                   ),
-                if (controller.activity.link != null && controller.isRegistered)
                   Column(
                     children: [
                       Text(
-                        'Zoom',
+                        'Horário',
                         style: AppTextStyles.buttonBold.copyWith(
                             fontSize: MediaQuery.of(context).size.width < 800
-                                ? 12
+                                ? 10
                                 : MediaQuery.of(context).size.width < 1000
                                     ? 14
                                     : 18,
                             color: AppColors.brandingPurple),
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 4),
-                            child: Transform.rotate(
-                              angle: 135 * math.pi / 180,
-                              child: Icon(
-                                Icons.link,
-                                color: AppColors.brandingPurple,
-                                size: MediaQuery.of(context).size.width < 800
-                                    ? 16
-                                    : MediaQuery.of(context).size.width < 1000
-                                        ? 20
-                                        : 24,
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () => launch(controller.activity.link!),
-                            child: Text('Link',
-                                style: AppTextStyles.buttonBold.copyWith(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width < 800
-                                            ? 16
-                                            : MediaQuery.of(context)
-                                                        .size
-                                                        .width <
-                                                    1000
-                                                ? 20
-                                                : 24,
-                                    color: AppColors.brandingPurple)),
-                          ),
-                        ],
+                      Text(
+                        '$timeString - $finalTime',
+                        style: AppTextStyles.buttonBold.copyWith(
+                            fontSize: MediaQuery.of(context).size.width < 800
+                                ? 14
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 20
+                                    : 24,
+                            color: AppColors.brandingPurple),
                       ),
                     ],
                   ),
-              ],
-            ),
-            if (controller.isRegistered)
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  if (controller.activity.location != null)
                     Column(
                       children: [
                         Text(
-                          'Código',
+                          'Local',
                           style: AppTextStyles.buttonBold.copyWith(
                               fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 12
+                                  ? 10
                                   : MediaQuery.of(context).size.width < 1000
                                       ? 14
                                       : 18,
                               color: AppColors.brandingPurple),
                         ),
                         Text(
-                          '9999999999',
+                          controller.activity.location!,
                           style: AppTextStyles.buttonBold.copyWith(
                               fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 16
+                                  ? 14
                                   : MediaQuery.of(context).size.width < 1000
                                       ? 20
                                       : 24,
                               color: AppColors.brandingPurple),
+                        ),
+                      ],
+                    ),
+                  if (controller.activity.link != null &&
+                      controller.isRegistered)
+                    Column(
+                      children: [
+                        Text(
+                          'Zoom',
+                          style: AppTextStyles.buttonBold.copyWith(
+                              fontSize: MediaQuery.of(context).size.width < 800
+                                  ? 10
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 14
+                                      : 18,
+                              color: AppColors.brandingPurple),
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 4),
+                              child: Transform.rotate(
+                                angle: 135 * math.pi / 180,
+                                child: Icon(
+                                  Icons.link,
+                                  color: AppColors.brandingPurple,
+                                  size: MediaQuery.of(context).size.width < 800
+                                      ? 14
+                                      : MediaQuery.of(context).size.width < 1000
+                                          ? 20
+                                          : 24,
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () => launch(controller.activity.link!),
+                              child: Text('Link',
+                                  style: AppTextStyles.buttonBold.copyWith(
+                                      fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width <
+                                              800
+                                          ? 14
+                                          : MediaQuery.of(context).size.width <
+                                                  1000
+                                              ? 20
+                                              : 24,
+                                      color: AppColors.brandingPurple)),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                ],
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Observer(builder: (_) {
+                return Center(
+                  child: RegisterButtonWidget(
+                    isRegistered: controller.isRegistered,
+                    isLoading: controller.isLoading,
+                    onPressed: () {
+                      if (controller.activity.enrolledUsers!.length ==
+                          controller.activity.totalParticipants) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return const CustomAlertDialogWidget(
+                              title:
+                                  'Parece que o número de vagas da atividade se esgotou :(',
+                            );
+                          },
+                        );
+                      } else {
+                        if (controller.isRegistered) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return ActionConfirmationDialogWidget(
+                                  title:
+                                      'Tem certeza que deseja se desinscrever?',
+                                  content:
+                                      'Você perderá sua vaga na atividade ao continuar!',
+                                  onPressed: () {
+                                    controller.unsubscribeActivity();
+                                    Modular.to.pop();
+                                  });
+                            },
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return ActionConfirmationDialogWidget(
+                                  title: 'Tem certeza que deseja se inscrever?',
+                                  content:
+                                      'Se atente aos seus horários e atividades que você já se inscreveu!',
+                                  onPressed: () {
+                                    controller.subscribeActivity();
+                                    Modular.to.pop();
+                                  });
+                            },
+                          );
+                        }
+                      }
+                    },
+                  ),
+                );
+              }),
+              const SizedBox(
+                height: 16,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text('Descrição',
+                    style: AppTextStyles.buttonBold.copyWith(
+                        fontSize: MediaQuery.of(context).size.width < 800
+                            ? 20
+                            : MediaQuery.of(context).size.width < 1000
+                                ? 24
+                                : 28,
+                        color: AppColors.brandingPurple)),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(controller.activity.description,
+                    textAlign: TextAlign.justify,
+                    style: AppTextStyles.body.copyWith(
+                        fontSize: MediaQuery.of(context).size.width < 800
+                            ? 16
+                            : MediaQuery.of(context).size.width < 1000
+                                ? 18
+                                : 22,
+                        color: Colors.black)),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: controller.activity.speakers!.length,
+                itemBuilder: (context, index) => Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (controller.activity.speakers![index].linkPhoto !=
+                            null)
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.1,
+                            height: MediaQuery.of(context).size.width * 0.1,
+                            child: CircleAvatar(
+                              radius: 102.0,
+                              backgroundImage: CachedNetworkImageProvider(
+                                  controller.activity.speakers![index]
+                                      .linkPhoto!), // for Network image
+                            ),
+                          ),
+                        Flexible(
+                          child: Column(
+                            children: [
+                              if (controller.activity.speakers![index].name !=
+                                      null &&
+                                  controller.activity.speakers![index].name !=
+                                      '')
+                                Text(
+                                  controller.activity.speakers![index].name!,
+                                  textAlign: TextAlign.justify,
+                                  style: AppTextStyles.buttonBold.copyWith(
+                                      fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width <
+                                              800
+                                          ? 18
+                                          : MediaQuery.of(context).size.width <
+                                                  1000
+                                              ? 22
+                                              : 28,
+                                      color: Colors.black),
+                                ),
+                              if (controller
+                                          .activity.speakers![index].company !=
+                                      null &&
+                                  controller
+                                          .activity.speakers![index].company !=
+                                      '')
+                                Text(
+                                  'Empresa: ${controller.activity.speakers![index].company}',
+                                  textAlign: TextAlign.justify,
+                                  style: AppTextStyles.buttonBold.copyWith(
+                                      fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width <
+                                              800
+                                          ? 12
+                                          : MediaQuery.of(context).size.width <
+                                                  1000
+                                              ? 14
+                                              : 20,
+                                      color: AppColors.brandingPurple),
+                                ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                     const SizedBox(
-                      width: 16,
+                      height: 8,
                     ),
-                    Column(
-                      children: [
-                        Text(
-                          'Senha',
-                          style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 12
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 14
-                                      : 18,
-                              color: AppColors.brandingPurple),
-                        ),
-                        Text(
-                          '9999999999',
-                          style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 16
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 20
-                                      : 24,
-                              color: AppColors.brandingPurple),
-                        ),
-                      ],
+                    if (controller.activity.speakers![index].bio != null &&
+                        controller.activity.speakers![index].bio != '')
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(controller.activity.speakers![index].bio!,
+                            textAlign: TextAlign.justify,
+                            style: AppTextStyles.body.copyWith(
+                                fontSize: MediaQuery.of(context).size.width <
+                                        800
+                                    ? 16
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 18
+                                        : 22,
+                                color: Colors.black)),
+                      ),
+                    const SizedBox(
+                      height: 8,
                     ),
                   ],
                 ),
-              ),
-            const SizedBox(
-              height: 16,
-            ),
-            Observer(builder: (_) {
-              return Center(
-                child: RegisterButtonWidget(
-                  isRegistered: controller.isRegistered,
-                  isLoading: controller.isLoading,
-                  onPressed: () {
-                    if (controller.activity.enrolledUsers!.length ==
-                        controller.activity.totalParticipants) {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const CustomAlertDialogWidget(
-                            title:
-                                'Parece que o número de vagas da atividade se esgotou :(',
-                          );
-                        },
-                      );
-                    } else {
-                      if (controller.isRegistered) {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return ActionConfirmationDialogWidget(
-                                title:
-                                    'Tem certeza que deseja se desinscrever?',
-                                content:
-                                    'Você perderá sua vaga na atividade ao continuar!',
-                                onPressed: () {
-                                  controller.unsubscribeActivity();
-                                  Modular.to.pop();
-                                });
-                          },
-                        );
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return ActionConfirmationDialogWidget(
-                                title: 'Tem certeza que deseja se inscrever?',
-                                content:
-                                    'Se atente aos seus horários e atividades que você já se inscreveu!',
-                                onPressed: () {
-                                  controller.subscribeActivity();
-                                  Modular.to.pop();
-                                });
-                          },
-                        );
-                      }
-                    }
-                  },
-                ),
-              );
-            }),
-            const SizedBox(
-              height: 16,
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Descrição',
-                  style: AppTextStyles.buttonBold.copyWith(
-                      fontSize: MediaQuery.of(context).size.width < 800
-                          ? 20
-                          : MediaQuery.of(context).size.width < 1000
-                              ? 24
-                              : 28,
-                      color: AppColors.brandingPurple)),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(controller.activity.description,
-                  textAlign: TextAlign.justify,
-                  style: AppTextStyles.body.copyWith(
-                      fontSize: MediaQuery.of(context).size.width < 800
-                          ? 16
-                          : MediaQuery.of(context).size.width < 1000
-                              ? 18
-                              : 22,
-                      color: Colors.black)),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: controller.activity.speakers!.length,
-              itemBuilder: (context, index) => Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (controller.activity.speakers![index].linkPhoto !=
-                          null)
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.1,
-                          height: MediaQuery.of(context).size.width * 0.1,
-                          child: CircleAvatar(
-                            radius: 102.0,
-                            backgroundImage: CachedNetworkImageProvider(
-                                controller.activity.speakers![index]
-                                    .linkPhoto!), // for Network image
-                          ),
-                        ),
-                      Flexible(
-                        child: Column(
-                          children: [
-                            if (controller.activity.speakers![index].name !=
-                                    null &&
-                                controller.activity.speakers![index].name != '')
-                              Text(
-                                controller.activity.speakers![index].name!,
-                                textAlign: TextAlign.justify,
-                                style: AppTextStyles.buttonBold.copyWith(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width < 800
-                                            ? 18
-                                            : MediaQuery.of(context)
-                                                        .size
-                                                        .width <
-                                                    1000
-                                                ? 22
-                                                : 28,
-                                    color: Colors.black),
-                              ),
-                            if (controller.activity.speakers![index].company !=
-                                    null &&
-                                controller.activity.speakers![index].company !=
-                                    '')
-                              Text(
-                                'Empresa: ${controller.activity.speakers![index].company}',
-                                textAlign: TextAlign.justify,
-                                style: AppTextStyles.buttonBold.copyWith(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width < 800
-                                            ? 12
-                                            : MediaQuery.of(context)
-                                                        .size
-                                                        .width <
-                                                    1000
-                                                ? 14
-                                                : 20,
-                                    color: AppColors.brandingPurple),
-                              ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  if (controller.activity.speakers![index].bio != null &&
-                      controller.activity.speakers![index].bio != '')
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(controller.activity.speakers![index].bio!,
-                          textAlign: TextAlign.justify,
-                          style: AppTextStyles.body.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 16
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 18
-                                      : 22,
-                              color: Colors.black)),
-                    ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                ],
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

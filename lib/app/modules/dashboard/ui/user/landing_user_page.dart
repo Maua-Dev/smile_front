@@ -15,24 +15,26 @@ class LandingUserPage extends StatefulWidget {
 class _LandingUserPageState extends State<LandingUserPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          bottomNavigationBar: MediaQuery.of(context).size.width < 1024
-              ? const BottomNavigationBarWidget()
-              : null,
-          appBar: PreferredSize(
-              preferredSize:
-                  Size.fromHeight(MediaQuery.of(context).size.height * 0.05),
-              child: AppBar(foregroundColor: AppColors.brandingPurple)),
-          body: MediaQuery.of(context).size.width < 1000
-              ? Center(
+    return Scaffold(
+        bottomNavigationBar: MediaQuery.of(context).size.width < 1024
+            ? const BottomNavigationBarWidget()
+            : null,
+        appBar: PreferredSize(
+            preferredSize:
+                Size.fromHeight(MediaQuery.of(context).size.height * 0.05),
+            child: AppBar(foregroundColor: AppColors.brandingPurple)),
+        body: MediaQuery.of(context).size.width < 1024
+            ? SafeArea(
+                child: Center(
                   child: SizedBox(
                       width: MediaQuery.of(context).size.width < 1024
                           ? MediaQuery.of(context).size.width
                           : 1024,
                       child: RouterOutlet()),
-                )
-              : Row(
+                ),
+              )
+            : SafeArea(
+                child: Row(
                   children: [
                     const VerticalNavBarWidget(),
                     Flexible(
@@ -45,7 +47,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
                       ),
                     ),
                   ],
-                )),
-    );
+                ),
+              ));
   }
 }

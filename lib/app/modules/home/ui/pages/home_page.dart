@@ -105,14 +105,9 @@ class _HomePageState extends State<HomePage> {
                       widthSize: 160,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () async {
-                        await Modular.isModuleReady<AppModule>();
-                        Modular.to.navigate('/login');
+                        widget.redirect();
                       },
                     ),
-                    onTap: () async {
-                      await Modular.isModuleReady<AppModule>();
-                      Modular.to.navigate('/login');
-                    },
                   ),
                 ],
               ),
@@ -193,32 +188,34 @@ class _HomePageState extends State<HomePage> {
                 ),
               )
           ]),
-      body: Center(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width < 2200
-              ? MediaQuery.of(context).size.width
-              : 2200,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(key: homeKey, child: const MainHomePage()),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 24),
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.width < 1024
-                        ? MediaQuery.of(context).size.height * 0.4
-                        : MediaQuery.of(context).size.height * 0.5,
-                    width: MediaQuery.of(context).size.width < 1024
-                        ? MediaQuery.of(context).size.height * 0.6
-                        : MediaQuery.of(context).size.width * 0.5,
-                    child: const VideoPlayerWidget(),
+      body: SafeArea(
+        child: Center(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width < 2200
+                ? MediaQuery.of(context).size.width
+                : 2200,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(key: homeKey, child: const MainHomePage()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 24),
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.width < 1024
+                          ? MediaQuery.of(context).size.height * 0.4
+                          : MediaQuery.of(context).size.height * 0.5,
+                      width: MediaQuery.of(context).size.width < 1024
+                          ? MediaQuery.of(context).size.height * 0.6
+                          : MediaQuery.of(context).size.width * 0.5,
+                      child: const VideoPlayerWidget(),
+                    ),
                   ),
-                ),
-                const SpeakersHomePage(),
-                SizedBox(key: activityKey, child: const ActivitiesHomePage()),
-                SizedBox(key: sponsorsKey, child: const SponsorsHomePage()),
-                const Footer(),
-              ],
+                  const SpeakersHomePage(),
+                  SizedBox(key: activityKey, child: const ActivitiesHomePage()),
+                  SizedBox(key: sponsorsKey, child: const SponsorsHomePage()),
+                  const Footer(),
+                ],
+              ),
             ),
           ),
         ),
