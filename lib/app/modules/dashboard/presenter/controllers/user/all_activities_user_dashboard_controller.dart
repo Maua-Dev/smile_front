@@ -129,6 +129,7 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
     }
     toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
     getActivitiesByType(activityType);
+    print(allActivitiesToCards[0].duration);
   }
 
   @action

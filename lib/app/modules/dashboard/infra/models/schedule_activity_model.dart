@@ -29,7 +29,7 @@ class ScheduleActivityModel extends ScheduleActivity {
     return ScheduleActivityModel(
       date: DateTime.fromMillisecondsSinceEpoch(map['date']),
       totalParticipants: map['totalParticipants'],
-      duration: DateTime.fromMillisecondsSinceEpoch(map['duration']),
+      duration: DateTime.fromMillisecondsSinceEpoch(map['duration']).toUtc(),
       location: map['location'],
       link: map['link'],
       enrolledUsers: (map['enrolledUsers'] as List<dynamic>).cast<String>(),
