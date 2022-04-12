@@ -278,57 +278,61 @@ class _MoreInfoPageState
               height: 16,
             ),
             Observer(builder: (_) {
-              return Center(
-                child: RegisterButtonWidget(
-                  isRegistered: controller.isRegistered,
-                  isLoading: controller.isLoading,
-                  onPressed: () {
-                    if (controller.activity.enrolledUsers!.length ==
-                        controller.activity.totalParticipants) {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const CustomAlertDialogWidget(
-                            title:
-                                'Parece que o número de vagas da atividade se esgotou :(',
-                          );
-                        },
-                      );
-                    } else {
-                      if (controller.isRegistered) {
+              if (!controller.activity.enableSubscription) {
+                return const SizedBox.shrink();
+              } else {
+                return Center(
+                  child: RegisterButtonWidget(
+                    isRegistered: controller.isRegistered,
+                    isLoading: controller.isLoading,
+                    onPressed: () {
+                      if (controller.activity.enrolledUsers!.length ==
+                          controller.activity.totalParticipants) {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return ActionConfirmationDialogWidget(
-                                title:
-                                    'Tem certeza que deseja se desinscrever?',
-                                content:
-                                    'Você perderá sua vaga na atividade ao continuar!',
-                                onPressed: () {
-                                  controller.unsubscribeActivity();
-                                  Modular.to.pop();
-                                });
+                            return const CustomAlertDialogWidget(
+                              title:
+                                  'Parece que o número de vagas da atividade se esgotou :(',
+                            );
                           },
                         );
                       } else {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return ActionConfirmationDialogWidget(
-                                title: 'Tem certeza que deseja se inscrever?',
-                                content:
-                                    'Se atente aos seus horários e atividades que você já se inscreveu!',
-                                onPressed: () {
-                                  controller.subscribeActivity();
-                                  Modular.to.pop();
-                                });
-                          },
-                        );
+                        if (controller.isRegistered) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return ActionConfirmationDialogWidget(
+                                  title:
+                                      'Tem certeza que deseja se desinscrever?',
+                                  content:
+                                      'Você perderá sua vaga na atividade ao continuar!',
+                                  onPressed: () {
+                                    controller.unsubscribeActivity();
+                                    Modular.to.pop();
+                                  });
+                            },
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return ActionConfirmationDialogWidget(
+                                  title: 'Tem certeza que deseja se inscrever?',
+                                  content:
+                                      'Se atente aos seus horários e atividades que você já se inscreveu!',
+                                  onPressed: () {
+                                    controller.subscribeActivity();
+                                    Modular.to.pop();
+                                  });
+                            },
+                          );
+                        }
                       }
-                    }
-                  },
-                ),
-              );
+                    },
+                  ),
+                );
+              }
             }),
             const SizedBox(
               height: 16,
