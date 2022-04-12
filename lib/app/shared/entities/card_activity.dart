@@ -14,11 +14,9 @@ class CardActivity {
   final String? location;
   final String? link;
   final List<dynamic>? enrolledUsers;
-  final List<dynamic>? queue;
 
   CardActivity({
     required this.enrolledUsers,
-    required this.queue,
     required this.id,
     required this.activityCode,
     required this.type,
@@ -35,7 +33,6 @@ class CardActivity {
   factory CardActivity.newInstance() {
     return CardActivity(
       enrolledUsers: [],
-      queue: [],
       activityCode: '',
       description: '',
       id: '',

@@ -109,7 +109,6 @@ abstract class _AdmDashboardControllerBase with Store {
           totalParticipants: time.totalParticipants,
           location: time.location,
           link: time.link,
-          queue: time.queue,
           enrolledUsers: time.enrolledUsers,
         ));
       }
@@ -141,7 +140,6 @@ abstract class _AdmDashboardControllerBase with Store {
       for (var time in activity.schedule) {
         allActivitiesToCards.add(CardActivity(
           enrolledUsers: time.enrolledUsers,
-          queue: time.queue,
           id: activity.id,
           activityCode: activity.activityCode,
           type: activity.type,

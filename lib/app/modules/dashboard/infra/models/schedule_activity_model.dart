@@ -8,11 +8,9 @@ class ScheduleActivityModel extends ScheduleActivity {
   String? location;
   String? link;
   final List<dynamic>? enrolledUsers;
-  final List<dynamic>? queue;
 
   ScheduleActivityModel(
-      {this.queue,
-      this.location,
+      {this.location,
       this.link,
       this.duration,
       this.date,
@@ -35,7 +33,6 @@ class ScheduleActivityModel extends ScheduleActivity {
       location: map['location'],
       link: map['link'],
       enrolledUsers: map['enrolledUsers'],
-      queue: map['queue'],
     );
   }
   static List<ScheduleActivityModel> fromMaps(List array) {
