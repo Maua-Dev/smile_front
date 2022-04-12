@@ -73,10 +73,7 @@ class VerticalNavBarWidget extends StatelessWidget {
                 showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return CustomAlertDialogWidget(
-                        onPressed: () {
-                          Modular.to.pop();
-                        },
+                      return const CustomAlertDialogWidget(
                         title: 'Página de certificados ainda não disponível.',
                         content: 'Aguarde novas informações!',
                       );
