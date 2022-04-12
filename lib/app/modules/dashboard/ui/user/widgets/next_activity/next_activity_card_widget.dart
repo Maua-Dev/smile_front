@@ -109,9 +109,11 @@ class NextActivityCardWidget extends StatelessWidget {
                             child: Icon(
                               Icons.date_range,
                               color: Colors.white,
-                              size: MediaQuery.of(context).size.width < 1000
-                                  ? 24
-                                  : 26,
+                              size: MediaQuery.of(context).size.width < 500
+                                  ? 20
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 24
+                                      : 26,
                             ),
                           ),
                           isUser
@@ -133,9 +135,11 @@ class NextActivityCardWidget extends StatelessWidget {
                             child: Icon(
                               Icons.access_time_outlined,
                               color: Colors.white,
-                              size: MediaQuery.of(context).size.width < 1000
-                                  ? 24
-                                  : 26,
+                              size: MediaQuery.of(context).size.width < 500
+                                  ? 20
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 24
+                                      : 26,
                             ),
                           ),
                           Text('$timeString - $finalTime',
@@ -155,9 +159,11 @@ class NextActivityCardWidget extends StatelessWidget {
                               child: Icon(
                                 isUser ? Icons.location_on : Icons.person,
                                 color: Colors.white,
-                                size: MediaQuery.of(context).size.width < 1000
-                                    ? 24
-                                    : 26,
+                                size: MediaQuery.of(context).size.width < 500
+                                    ? 20
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 24
+                                        : 26,
                               ),
                             ),
                             RichText(
@@ -187,9 +193,11 @@ class NextActivityCardWidget extends StatelessWidget {
                               child: Icon(
                                 Icons.location_on,
                                 color: Colors.white,
-                                size: MediaQuery.of(context).size.width < 1000
-                                    ? 24
-                                    : 26,
+                                size: MediaQuery.of(context).size.width < 500
+                                    ? 20
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 24
+                                        : 26,
                               ),
                             ),
                             Text(location!,
@@ -211,9 +219,11 @@ class NextActivityCardWidget extends StatelessWidget {
                                 child: Icon(
                                   Icons.link,
                                   color: Colors.white,
-                                  size: MediaQuery.of(context).size.width < 1000
-                                      ? 24
-                                      : 26,
+                                  size: MediaQuery.of(context).size.width < 500
+                                      ? 20
+                                      : MediaQuery.of(context).size.width < 1000
+                                          ? 24
+                                          : 26,
                                 ),
                               ),
                             ),

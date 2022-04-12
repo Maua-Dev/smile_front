@@ -25,7 +25,7 @@ class ActionConfirmationDialogWidget extends StatelessWidget {
           },
         ),
         ElevatedButton(
-          child: const Text('Salvar'),
+          child: const Text('Confirmar'),
           onPressed: onPressed,
         ),
       ],
