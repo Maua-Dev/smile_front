@@ -78,7 +78,6 @@ abstract class _UserDashboardControllerBase with Store {
             location: time.location,
             link: time.link,
             enrolledUsers: time.enrolledUsers,
-            queue: time.queue,
           ));
         }
       }
@@ -106,7 +105,6 @@ abstract class _UserDashboardControllerBase with Store {
           location: time.location,
           link: time.link,
           enrolledUsers: time.enrolledUsers,
-          queue: time.queue,
         );
       }
     } else {
