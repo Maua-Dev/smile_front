@@ -3,8 +3,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../shared/themes/app_text_styles.dart';
-
 class SpeakersCardWidget extends StatelessWidget {
   final String linkPhoto;
   final String name;
