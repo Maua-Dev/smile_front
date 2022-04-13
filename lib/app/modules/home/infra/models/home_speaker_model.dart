@@ -8,12 +8,10 @@ class HomeSpeakerModel extends Speaker {
   final String bio;
   // ignore: overridden_fields, annotate_overrides
   final String? linkPhoto;
-  final String date;
 
   HomeSpeakerModel({
     required this.name,
     required this.bio,
-    required this.date,
     required this.linkPhoto,
   }) : super(
           name: name,
@@ -25,7 +23,6 @@ class HomeSpeakerModel extends Speaker {
     return {
       'name': name,
       'bio': bio,
-      'date': date,
       'linkPhoto': linkPhoto,
     };
   }
@@ -34,7 +31,6 @@ class HomeSpeakerModel extends Speaker {
     return HomeSpeakerModel(
       name: map['name'] ?? '',
       bio: map['bio'] ?? '',
-      date: map['date'] ?? '',
       linkPhoto: map['linkPhoto'] ?? '',
     );
   }

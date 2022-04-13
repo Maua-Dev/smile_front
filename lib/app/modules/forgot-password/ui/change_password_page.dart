@@ -110,7 +110,7 @@ class _ChangePasswordPageState
                         return Container();
                       }),
                       const Text(
-                        'Insira sua nova senha e o codigo enviado para o seu email:',
+                        'Insira sua nova senha e o codigo enviado para o seu e-mail:',
                         style: TextStyle(color: Colors.white),
                         textAlign: TextAlign.center,
                       ),
