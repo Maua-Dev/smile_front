@@ -19,15 +19,6 @@ class _SpeakersHomePageState
   @override
   Widget build(BuildContext context) {
     var scrollController = ScrollController();
-    void _scrollRight(length) {
-      scrollController.animateTo(scrollController.position.pixels + 400,
-          duration: const Duration(seconds: 1), curve: Curves.ease);
-    }
-
-    void _scrollLeft(length) {
-      scrollController.animateTo(scrollController.position.pixels - 400,
-          duration: const Duration(seconds: 1), curve: Curves.ease);
-    }
 
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
