@@ -51,7 +51,7 @@ class ActivityHomeState
             carouselController: _controller,
             options: CarouselOptions(
                 autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 6),
+                autoPlayInterval: const Duration(seconds: 10),
                 autoPlayAnimationDuration: const Duration(milliseconds: 800),
                 autoPlayCurve: Curves.fastOutSlowIn,
                 height: height,

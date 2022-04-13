@@ -65,6 +65,14 @@ abstract class _RegisterController with Store {
   @observable
   bool acceptTermsOfUse = false;
 
+  @observable
+  bool acceptImage = false;
+
+  @action
+  Future<void> setAcceptImage(bool? value) async {
+    acceptImage = value!;
+  }
+
   @action
   Future<void> setError(String value) async {
     errors = value;
