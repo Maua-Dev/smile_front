@@ -33,7 +33,7 @@ class MoreInfoHomePage extends StatelessWidget {
                     IconButton(
                         padding: EdgeInsets.zero,
                         onPressed: () {
-                          Modular.to.pop();
+                          Modular.to.navigate('/home');
                         },
                         icon: Icon(
                           Icons.arrow_back_sharp,
