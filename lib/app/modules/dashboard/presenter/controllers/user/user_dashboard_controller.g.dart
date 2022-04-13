@@ -58,6 +58,37 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
               name: '_UserDashboardControllerBase.saturdayActivitiesList'))
           .value;
 
+  final _$socialNameAtom =
+      Atom(name: '_UserDashboardControllerBase.socialName');
+
+  @override
+  String? get socialName {
+    _$socialNameAtom.reportRead();
+    return super.socialName;
+  }
+
+  @override
+  set socialName(String? value) {
+    _$socialNameAtom.reportWrite(value, super.socialName, () {
+      super.socialName = value;
+    });
+  }
+
+  final _$nameAtom = Atom(name: '_UserDashboardControllerBase.name');
+
+  @override
+  String? get name {
+    _$nameAtom.reportRead();
+    return super.name;
+  }
+
+  @override
+  set name(String? value) {
+    _$nameAtom.reportWrite(value, super.name, () {
+      super.name = value;
+    });
+  }
+
   final _$isLoadingAtom = Atom(name: '_UserDashboardControllerBase.isLoading');
 
   @override
@@ -155,36 +186,6 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$userAtom = Atom(name: '_UserDashboardControllerBase.user');
-
-  @override
-  UserModel get user {
-    _$userAtom.reportRead();
-    return super.user;
-  }
-
-  @override
-  set user(UserModel value) {
-    _$userAtom.reportWrite(value, super.user, () {
-      super.user = value;
-    });
-  }
-
-  final _$userNameAtom = Atom(name: '_UserDashboardControllerBase.userName');
-
-  @override
-  String get userName {
-    _$userNameAtom.reportRead();
-    return super.userName;
-  }
-
-  @override
-  set userName(String value) {
-    _$userNameAtom.reportWrite(value, super.userName, () {
-      super.userName = value;
-    });
-  }
-
   final _$allActivitiesToCardsAtom =
       Atom(name: '_UserDashboardControllerBase.allActivitiesToCards');
 
@@ -200,6 +201,22 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
         () {
       super.allActivitiesToCards = value;
     });
+  }
+
+  final _$getUserNameAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.getUserName');
+
+  @override
+  Future<void> getUserName() {
+    return _$getUserNameAsyncAction.run(() => super.getUserName());
+  }
+
+  final _$getUserSocialNameAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.getUserSocialName');
+
+  @override
+  Future<void> getUserSocialName() {
+    return _$getUserSocialNameAsyncAction.run(() => super.getUserSocialName());
   }
 
   final _$setIsLoadingAsyncAction =
@@ -242,17 +259,6 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   }
 
   @override
-  void getUserFirstName() {
-    final _$actionInfo = _$_UserDashboardControllerBaseActionController
-        .startAction(name: '_UserDashboardControllerBase.getUserFirstName');
-    try {
-      return super.getUserFirstName();
-    } finally {
-      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void toggleFilterActivityChipIndex(dynamic index) {
     final _$actionInfo =
         _$_UserDashboardControllerBaseActionController.startAction(
@@ -267,14 +273,14 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   @override
   String toString() {
     return '''
+socialName: ${socialName},
+name: ${name},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 subscribedActivitiesList: ${subscribedActivitiesList},
 nextActivity: ${nextActivity},
 cardNextActivity: ${cardNextActivity},
 weekActivitiesList: ${weekActivitiesList},
-user: ${user},
-userName: ${userName},
 allActivitiesToCards: ${allActivitiesToCards},
 mondayActivitiesList: ${mondayActivitiesList},
 tuesdayActivitiesList: ${tuesdayActivitiesList},

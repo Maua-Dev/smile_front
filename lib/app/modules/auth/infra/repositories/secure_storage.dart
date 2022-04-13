@@ -46,4 +46,24 @@ class SecureStorage implements SecureStorageInterface {
   Future<void> saveAccessLevel(String accessLevel) async {
     await storage.put('accessLevel', accessLevel);
   }
+
+  @override
+  Future<String?> getName() async {
+    return await storage.get('name') as String?;
+  }
+
+  @override
+  Future<String?> getSocialName() async {
+    return await storage.get('socialName') as String?;
+  }
+
+  @override
+  Future<void> saveName(String name) async {
+    await storage.put('name', name);
+  }
+
+  @override
+  Future<void> saveSocialName(String socialName) async {
+    await storage.put('socialName', socialName);
+  }
 }

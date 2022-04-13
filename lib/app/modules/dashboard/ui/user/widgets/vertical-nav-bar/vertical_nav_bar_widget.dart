@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/dashboard/ui/shared/widgets/logout_button_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/vertical-nav-bar/nav_bar_button_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
@@ -90,16 +89,6 @@ class VerticalNavBarWidget extends StatelessWidget {
                 Modular.to.navigate('/user/home/help');
               },
               icon: Icons.help,
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            LogoutButtonWidget(
-              backgroundColor: AppColors.brandingOrange,
-              buttonTittle: 'Sair',
-              onPressed: () {
-                controller.logout();
-              },
             ),
           ]),
         ),

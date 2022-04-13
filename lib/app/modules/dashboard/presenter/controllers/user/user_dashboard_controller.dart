@@ -1,9 +1,8 @@
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
-import '../../../../../shared/models/user_model.dart';
-import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
 
 part 'user_dashboard_controller.g.dart';
@@ -13,15 +12,35 @@ class UserDashboardController = _UserDashboardControllerBase
 
 abstract class _UserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
-  final AuthController authController;
+  final SecureStorageInterface secureStorage;
 
-  _UserDashboardControllerBase(
-      {required this.repository, required this.authController}) {
+  _UserDashboardControllerBase({
+    required this.secureStorage,
+    required this.repository,
+  }) {
     getUserSubscribedActivities();
+    getUserName();
+    getUserSocialName();
   }
 
   @observable
+  String? socialName = '';
+
+  @observable
+  String? name = '';
+
+  @observable
   bool isLoading = false;
+
+  @action
+  Future<void> getUserName() async {
+    name = await secureStorage.getName();
+  }
+
+  @action
+  Future<void> getUserSocialName() async {
+    socialName = await secureStorage.getSocialName();
+  }
 
   @action
   Future<void> setIsLoading(bool value) async {
@@ -42,12 +61,6 @@ abstract class _UserDashboardControllerBase with Store {
 
   @observable
   List<CardActivity> weekActivitiesList = List.empty();
-
-  @observable
-  UserModel user = UserModel.newInstance();
-
-  @observable
-  String userName = '';
 
   @observable
   List<CardActivity> allActivitiesToCards = List.empty();
@@ -110,11 +123,6 @@ abstract class _UserDashboardControllerBase with Store {
     } else {
       nextActivity = ActivityModel.newInstance();
     }
-  }
-
-  @action
-  void getUserFirstName() {
-    userName = user.socialName.substring(0, user.socialName.indexOf(' '));
   }
 
   @computed

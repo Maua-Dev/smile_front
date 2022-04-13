@@ -5,6 +5,8 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
+    as _i5;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i2;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
@@ -65,4 +67,65 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
       (super.noSuchMethod(
           Invocation.method(#unsubscribeActivity, [activityId, activityDate]),
           returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
+}
+
+/// A class which mocks [SecureStorageInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSecureStorageInterface extends _i1.Mock
+    implements _i5.SecureStorageInterface {
+  MockSecureStorageInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<void> saveAccessToken(String? token) =>
+      (super.noSuchMethod(Invocation.method(#saveAccessToken, [token]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+  @override
+  _i3.Future<void> saveRefreshToken(String? token) =>
+      (super.noSuchMethod(Invocation.method(#saveRefreshToken, [token]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+  @override
+  _i3.Future<String?> getAccessToken() =>
+      (super.noSuchMethod(Invocation.method(#getAccessToken, []),
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
+  @override
+  _i3.Future<String?> getRefreshToken() =>
+      (super.noSuchMethod(Invocation.method(#getRefreshToken, []),
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
+  @override
+  _i3.Future<void> saveAccessLevel(String? accessLevel) =>
+      (super.noSuchMethod(Invocation.method(#saveAccessLevel, [accessLevel]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+  @override
+  _i3.Future<void> saveName(String? name) =>
+      (super.noSuchMethod(Invocation.method(#saveName, [name]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+  @override
+  _i3.Future<void> saveSocialName(String? socialName) =>
+      (super.noSuchMethod(Invocation.method(#saveSocialName, [socialName]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+  @override
+  _i3.Future<String?> getAccessLevel() =>
+      (super.noSuchMethod(Invocation.method(#getAccessLevel, []),
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
+  @override
+  _i3.Future<String?> getName() =>
+      (super.noSuchMethod(Invocation.method(#getName, []),
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
+  @override
+  _i3.Future<String?> getSocialName() =>
+      (super.noSuchMethod(Invocation.method(#getSocialName, []),
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
+  @override
+  _i3.Future<void> cleanSecureStorage() =>
+      (super.noSuchMethod(Invocation.method(#cleanSecureStorage, []),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
 }

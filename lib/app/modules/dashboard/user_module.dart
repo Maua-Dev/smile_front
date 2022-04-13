@@ -44,7 +44,7 @@ class UserModule extends Module {
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
         repository: i(),
-        authController: i(),
+        secureStorage: i(),
       ),
     ),
     Bind.lazySingleton<MoreInfoController>(

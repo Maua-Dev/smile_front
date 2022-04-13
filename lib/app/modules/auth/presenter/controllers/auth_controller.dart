@@ -6,6 +6,8 @@ class AuthController {
   final SecureStorageInterface storage;
   bool _loggedIn = false;
   String _accessLevel = '';
+  String _name = '';
+  String? _socialname = '';
 
   AuthController({
     required this.authRepository,
@@ -14,14 +16,19 @@ class AuthController {
 
   bool get isLogged => _loggedIn;
   String get accessLevel => _accessLevel;
+  String get name => _name;
+  String get socialname => _socialname ?? '';
 
   Future<void> loginWithCpfRne(String cpfRne, String password) async {
     var loginResponse = await authRepository.login(cpfRne, password);
     _accessLevel = loginResponse['access_level'];
+    _name = loginResponse['name'];
+    _socialname = loginResponse['social_name'];
 
     await storage.saveAccessToken(loginResponse['access_token']);
     await storage.saveRefreshToken(loginResponse['refresh_token']);
     await storage.saveAccessLevel(_accessLevel);
+    await storage.saveName(_name);
 
     _loggedIn = true;
   }

@@ -80,8 +80,26 @@ class MockSecureStorageInterface extends _i1.Mock
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
   @override
+  _i3.Future<void> saveName(String? name) =>
+      (super.noSuchMethod(Invocation.method(#saveName, [name]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+  @override
+  _i3.Future<void> saveSocialName(String? socialName) =>
+      (super.noSuchMethod(Invocation.method(#saveSocialName, [socialName]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+  @override
   _i3.Future<String?> getAccessLevel() =>
       (super.noSuchMethod(Invocation.method(#getAccessLevel, []),
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
+  @override
+  _i3.Future<String?> getName() =>
+      (super.noSuchMethod(Invocation.method(#getName, []),
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
+  @override
+  _i3.Future<String?> getSocialName() =>
+      (super.noSuchMethod(Invocation.method(#getSocialName, []),
           returnValue: Future<String?>.value()) as _i3.Future<String?>);
   @override
   _i3.Future<void> cleanSecureStorage() =>

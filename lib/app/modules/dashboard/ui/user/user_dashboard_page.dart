@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/modules/dashboard/ui/shared/widgets/logout_button_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -39,21 +38,70 @@ class _UserDashboardPageState
                 const SizedBox(
                   height: 16,
                 ),
-                MediaQuery.of(context).size.width < 1024
-                    ? Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: LogoutButtonWidget(
-                            backgroundColor: AppColors.brandingOrange,
-                            buttonTittle: 'Sair',
-                            onPressed: () {
-                              navBarController.logout();
-                            },
-                          ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width < 1000 ? 12 : 8,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      if (controller.socialName == '' ||
+                          controller.socialName == null)
+                        Text(
+                          'Olá, ${controller.name!.split(' ').first}',
+                          style: AppTextStyles.titleH1.copyWith(
+                              fontSize: MediaQuery.of(context).size.width < 500
+                                  ? 35
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 40
+                                      : 45,
+                              color: AppColors.brandingPurple),
+                        )
+                      else
+                        Text(
+                          'Olá, ${controller.socialName!.split(' ').first}',
+                          style: AppTextStyles.titleH1.copyWith(
+                              fontSize: MediaQuery.of(context).size.width < 500
+                                  ? 35
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 40
+                                      : 45,
+                              color: AppColors.brandingPurple),
                         ),
-                      )
-                    : const SizedBox.shrink(),
+                      Row(
+                        children: [
+                          IconButton(
+                              padding: EdgeInsets.zero,
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.edit,
+                                color: AppColors.brandingPurple,
+                                size: MediaQuery.of(context).size.width < 1000
+                                    ? 30
+                                    : 45,
+                              )),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width < 1000
+                                ? 8
+                                : 32,
+                          ),
+                          IconButton(
+                              padding: EdgeInsets.zero,
+                              onPressed: () {
+                                navBarController.logout();
+                              },
+                              icon: Icon(
+                                Icons.logout,
+                                color: AppColors.brandingPurple,
+                                size: MediaQuery.of(context).size.width < 1000
+                                    ? 30
+                                    : 45,
+                              )),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
                 const SizedBox(
                   height: 8,
                 ),
@@ -65,7 +113,7 @@ class _UserDashboardPageState
                           ? 30
                           : 38,
                   leftPadding:
-                      MediaQuery.of(context).size.width < 1000 ? 12 : 24,
+                      MediaQuery.of(context).size.width < 1000 ? 12 : 8,
                 ),
                 Observer(builder: (_) {
                   return NextActivityCardWidget(
@@ -100,7 +148,7 @@ class _UserDashboardPageState
                           ? 30
                           : 38,
                   leftPadding:
-                      MediaQuery.of(context).size.width < 1000 ? 12 : 24,
+                      MediaQuery.of(context).size.width < 1000 ? 12 : 8,
                 ),
                 UserWeekdayFilterWidget(
                   onPressed: controller.toggleFilterActivityChipIndex,
