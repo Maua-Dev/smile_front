@@ -47,6 +47,11 @@ abstract class _UserDashboardControllerBase with Store {
     isLoading = value;
   }
 
+  @action
+  void setName(String value) {
+    name = value;
+  }
+
   @observable
   int filterActivityChipIndexSelected = 0;
 

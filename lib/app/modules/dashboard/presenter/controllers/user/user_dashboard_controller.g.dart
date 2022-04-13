@@ -248,6 +248,17 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
       ActionController(name: '_UserDashboardControllerBase');
 
   @override
+  void setName(String value) {
+    final _$actionInfo = _$_UserDashboardControllerBaseActionController
+        .startAction(name: '_UserDashboardControllerBase.setName');
+    try {
+      return super.setName(value);
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void getNextActivity() {
     final _$actionInfo = _$_UserDashboardControllerBaseActionController
         .startAction(name: '_UserDashboardControllerBase.getNextActivity');

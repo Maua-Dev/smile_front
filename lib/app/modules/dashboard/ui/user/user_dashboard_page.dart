@@ -72,7 +72,92 @@ class _UserDashboardPageState
                         children: [
                           IconButton(
                               padding: EdgeInsets.zero,
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) {
+                                    return Dialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0)),
+                                      child: Column(
+                                        children: [
+                                          Center(
+                                            child: Text(
+                                              'Alteração de nome',
+                                              style: AppTextStyles.titleH1
+                                                  .copyWith(
+                                                      fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width <
+                                                              500
+                                                          ? 35
+                                                          : MediaQuery.of(context)
+                                                                      .size
+                                                                      .width <
+                                                                  1000
+                                                              ? 40
+                                                              : 45,
+                                                      color: AppColors
+                                                          .brandingPurple),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 16,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 32),
+                                            child: TextFormField(
+                                              initialValue: controller.name,
+                                              textAlignVertical:
+                                                  TextAlignVertical.center,
+                                              onChanged: controller.setName,
+                                              style: AppTextStyles.body
+                                                  .copyWith(
+                                                      color: Colors.white,
+                                                      fontSize: 24),
+                                              cursorColor: Colors.white,
+                                              decoration: InputDecoration(
+                                                fillColor:
+                                                    AppColors.brandingPurple,
+                                                prefixIcon: Icon(
+                                                  Icons.abc,
+                                                  color:
+                                                      AppColors.brandingPurple,
+                                                ),
+                                                filled: true,
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.0),
+                                                  borderSide: BorderSide(
+                                                      color: AppColors
+                                                          .brandingPurple,
+                                                      width: 0.0),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.0),
+                                                  borderSide: BorderSide(
+                                                      color: AppColors
+                                                          .brandingPurple,
+                                                      width: 0.0),
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
                               icon: Icon(
                                 Icons.edit,
                                 color: AppColors.brandingPurple,
