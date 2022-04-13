@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/activities_carousel_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/filter_chip_widget.dart';
-
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_carousel/activities_carousel_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/shared/widgets/logout_button_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
-import '../widgets/logout_button_widget.dart';
+import 'widgets/filter/filter_chip_widget.dart';
 
 class AdmDashboardPage extends StatefulWidget {
   const AdmDashboardPage({Key? key}) : super(key: key);

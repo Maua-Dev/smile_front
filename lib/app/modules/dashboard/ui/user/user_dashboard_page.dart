@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:smile_front/app/modules/dashboard/ui/shared/widgets/logout_button_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
-import '../widgets/logout_button_widget.dart';
-import '../widgets/next_activity_card_widget.dart';
-import '../widgets/user_weekday/user_activity_card_widget.dart';
-import '../widgets/user_weekday/user_weekday_filter_widget.dart';
+import 'widgets/next_activity/next_activity_card_widget.dart';
+import 'widgets/user_weekday/user_weekday_filter_widget.dart';
 
 class UserDashboardPage extends StatefulWidget {
   const UserDashboardPage({Key? key}) : super(key: key);
@@ -32,7 +32,8 @@ class _UserDashboardPageState
         if (controller.subscribedActivitiesList.isNotEmpty &&
             controller.nextActivity.type != null) {
           return Scaffold(
-            body: Column(
+              body: SingleChildScrollView(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
@@ -58,7 +59,11 @@ class _UserDashboardPageState
                 ),
                 TextHeader(
                   title: 'Sua Próxima Atividade',
-                  fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
+                  fontSize: MediaQuery.of(context).size.width < 500
+                      ? 28
+                      : MediaQuery.of(context).size.width < 1000
+                          ? 30
+                          : 38,
                   leftPadding:
                       MediaQuery.of(context).size.width < 1000 ? 12 : 24,
                 ),
@@ -69,8 +74,18 @@ class _UserDashboardPageState
                     location: controller.nextActivity.schedule[0].location,
                     duration: controller.nextActivity.schedule[0].duration,
                     onTap: () {
-                      Modular.to.navigate('/user/home/more-info',
-                          arguments: controller.cardNextActivity);
+                      var isRegistered = false;
+                      var list = controller.subscribedActivitiesList
+                          .where((element) =>
+                              element.id == controller.cardNextActivity.id)
+                          .toList();
+                      if (list.isNotEmpty) {
+                        isRegistered = true;
+                      }
+                      Modular.to.navigate('/user/home/more-info', arguments: [
+                        controller.cardNextActivity,
+                        isRegistered
+                      ]);
                     },
                     name: controller.nextActivity.title,
                     description: controller.nextActivity.description,
@@ -79,7 +94,11 @@ class _UserDashboardPageState
                 }),
                 TextHeader(
                   title: 'Seu Calendário',
-                  fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
+                  fontSize: MediaQuery.of(context).size.width < 500
+                      ? 28
+                      : MediaQuery.of(context).size.width < 1000
+                          ? 30
+                          : 38,
                   leftPadding:
                       MediaQuery.of(context).size.width < 1000 ? 12 : 24,
                 ),
@@ -87,46 +106,55 @@ class _UserDashboardPageState
                   onPressed: controller.toggleFilterActivityChipIndex,
                 ),
                 Observer(builder: (_) {
-                  return Flexible(
-                    child: ListView.builder(
-                      itemCount: controller.weekActivitiesList.length,
-                      itemBuilder: (context, index) {
-                        var finalTime = controller
-                                        .weekActivitiesList[index].duration ==
-                                    null ||
-                                controller.weekActivitiesList[index].date ==
-                                    null
-                            ? ''
-                            : Utils.getActivityFinalTime(
-                                controller.weekActivitiesList[index].date!,
-                                controller.weekActivitiesList[index].duration!);
-                        var hour = DateFormat('HH:mm')
-                            .format(controller.weekActivitiesList[index].date!);
-                        return UserActivityCardWidget(
-                          finalTime: finalTime,
-                          location:
-                              controller.weekActivitiesList[index].location,
-                          isOnline:
-                              controller.weekActivitiesList[index].link == null
-                                  ? false
-                                  : true,
-                          title: controller.weekActivitiesList[index].title,
-                          hour: hour,
-                          activityCode:
-                              controller.weekActivitiesList[index].activityCode,
-                          onTap: () {
-                            Modular.to.navigate('/user/home/more-info',
-                                arguments:
-                                    controller.weekActivitiesList[index]);
-                          },
-                        );
-                      },
-                    ),
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: controller.weekActivitiesList.length,
+                    itemBuilder: (context, index) {
+                      var finalTime = controller
+                                      .weekActivitiesList[index].duration ==
+                                  null ||
+                              controller.weekActivitiesList[index].date == null
+                          ? ''
+                          : Utils.getActivityFinalTime(
+                              controller.weekActivitiesList[index].date!,
+                              controller.weekActivitiesList[index].duration!);
+                      var hour = DateFormat('HH:mm')
+                          .format(controller.weekActivitiesList[index].date!);
+                      return UserActivityCardWidget(
+                        finalTime: finalTime,
+                        location: controller.weekActivitiesList[index].location,
+                        isOnline:
+                            controller.weekActivitiesList[index].link == null
+                                ? false
+                                : true,
+                        title: controller.weekActivitiesList[index].title,
+                        hour: hour,
+                        activityCode:
+                            controller.weekActivitiesList[index].activityCode,
+                        onTap: () {
+                          var isRegistered = false;
+                          var list = controller.subscribedActivitiesList
+                              .where((element) =>
+                                  element.id ==
+                                  controller.weekActivitiesList[index].id)
+                              .toList();
+                          if (list.isNotEmpty) {
+                            isRegistered = true;
+                          }
+                          Modular.to.navigate('/user/home/more-info',
+                              arguments: [
+                                controller.weekActivitiesList[index],
+                                isRegistered
+                              ]);
+                        },
+                      );
+                    },
                   );
                 }),
               ],
             ),
-          );
+          ));
         } else {
           return Scaffold(
               body: Column(

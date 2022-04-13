@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../shared/themes/app_colors.dart';
-import '../../../../shared/themes/app_text_styles.dart';
+import '../../../../../shared/themes/app_colors.dart';
+import '../../../../../shared/themes/app_text_styles.dart';
 
 class RegisterButtonWidget extends StatelessWidget {
   final bool isRegistered;
@@ -33,8 +33,11 @@ class RegisterButtonWidget extends StatelessWidget {
               ))
             : Text(isRegistered ? 'Desinscrever-se' : 'Inscreva-se',
                 style: AppTextStyles.buttonBold.copyWith(
-                    fontSize:
-                        MediaQuery.of(context).size.width < 1000 ? 24 : 28,
+                    fontSize: MediaQuery.of(context).size.width < 500
+                        ? 20
+                        : MediaQuery.of(context).size.width < 1000
+                            ? 24
+                            : 28,
                     color: Colors.white)),
         onPressed: onPressed);
   }

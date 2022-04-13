@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/user_weekday/user_weekday_controller.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/user_weekday/user_weekday_icon_widget.dart';
+
+import 'user_weekday_controller.dart';
+import 'user_weekday_icon_widget.dart';
 
 class UserWeekdayFilterWidget extends StatelessWidget {
   final void Function(int)? onPressed;

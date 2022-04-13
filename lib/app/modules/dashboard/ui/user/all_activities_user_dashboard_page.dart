@@ -4,12 +4,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/dropdown-field/dropdown_field_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
-import '../widgets/dropdown-field/dropdown_field_widget.dart';
-import '../widgets/user_weekday/user_activity_card_widget.dart';
-import '../widgets/user_weekday/user_weekday_filter_widget.dart';
+import 'widgets/user_weekday/user_weekday_filter_widget.dart';
 
 class AllActivitiesUserDashboardPage extends StatefulWidget {
   const AllActivitiesUserDashboardPage({Key? key}) : super(key: key);
@@ -86,9 +86,21 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                     activityCode:
                         controller.weekActivitiesList[index].activityCode,
                     onTap: () {
+                      var isRegistered = false;
+                      var list = controller.controller.subscribedActivitiesList
+                          .where((element) =>
+                              element.id ==
+                              controller.weekActivitiesList[index].id)
+                          .toList();
+                      if (list.isNotEmpty) {
+                        isRegistered = true;
+                      }
                       Modular.to.navigate(
                         '/user/home/more-info',
-                        arguments: controller.weekActivitiesList[index],
+                        arguments: [
+                          controller.weekActivitiesList[index],
+                          isRegistered
+                        ],
                       );
                     },
                   );

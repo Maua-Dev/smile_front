@@ -12,27 +12,18 @@ class MoreInfoController = _MoreInfoControllerBase with _$MoreInfoController;
 abstract class _MoreInfoControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final CardActivity activity;
+  final bool registered;
   final userDashboardController = Modular.get<UserDashboardController>();
 
-  _MoreInfoControllerBase({required this.activity, required this.repository}) {
-    startIsRegistered();
+  _MoreInfoControllerBase(
+      {required this.registered,
+      required this.activity,
+      required this.repository}) {
+    isRegistered = registered;
   }
 
   @observable
   bool isRegistered = false;
-
-  @action
-  Future<void> startIsRegistered() async {
-    userDashboardController.getActivities();
-    var list = userDashboardController.subscribedActivitiesList
-        .where((element) => element.id == activity.id)
-        .toList();
-    if (list.isNotEmpty) {
-      setIsRegistered(true);
-    } else {
-      setIsRegistered(false);
-    }
-  }
 
   @action
   Future<void> setIsRegistered(bool value) async {
@@ -59,8 +50,7 @@ abstract class _MoreInfoControllerBase with Store {
   Future<void> unsubscribeActivity() async {
     setIsLoading(true);
     await repository.unsubscribeActivity(activity.id, activity.date!);
-    userDashboardController.allActivitiesToCards
-        .removeWhere((element) => element.id == activity.id);
+    await userDashboardController.getUserSubscribedActivities();
     userDashboardController.getNextActivity();
     setIsLoading(false);
     setIsRegistered(false);

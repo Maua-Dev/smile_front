@@ -39,14 +39,6 @@ mixin _$MoreInfoController on _MoreInfoControllerBase, Store {
     });
   }
 
-  final _$startIsRegisteredAsyncAction =
-      AsyncAction('_MoreInfoControllerBase.startIsRegistered');
-
-  @override
-  Future<void> startIsRegistered() {
-    return _$startIsRegisteredAsyncAction.run(() => super.startIsRegistered());
-  }
-
   final _$setIsRegisteredAsyncAction =
       AsyncAction('_MoreInfoControllerBase.setIsRegistered');
 

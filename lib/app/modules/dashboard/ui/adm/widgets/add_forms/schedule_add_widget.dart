@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:smile_front/app/modules/dashboard/ui/widgets/text_field_dialog_widget.dart';
-
-import '../../../../shared/themes/app_colors.dart';
+import '../../../../../../shared/themes/app_colors.dart';
+import 'text_field_dialog_widget.dart';
 
 class ScheduleAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedParticipants;

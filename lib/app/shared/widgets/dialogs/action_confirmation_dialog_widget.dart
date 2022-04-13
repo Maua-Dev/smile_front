@@ -2,23 +2,21 @@ import 'package:flutter/material.dart';
 
 class ActionConfirmationDialogWidget extends StatelessWidget {
   final Function()? onPressed;
-  final bool isLoading;
   final String title;
-  final String content;
+  final String? content;
 
-  const ActionConfirmationDialogWidget(
-      {Key? key,
-      this.onPressed,
-      required this.title,
-      required this.content,
-      required this.isLoading})
-      : super(key: key);
+  const ActionConfirmationDialogWidget({
+    Key? key,
+    this.onPressed,
+    required this.title,
+    this.content,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: isLoading ? const CircularProgressIndicator() : Text(title),
-      content: isLoading ? const CircularProgressIndicator() : Text(content),
+      title: Text(title),
+      content: content != null ? Text(content!) : null,
       actions: [
         ElevatedButton(
           child: const Text('Fechar'),
@@ -27,7 +25,7 @@ class ActionConfirmationDialogWidget extends StatelessWidget {
           },
         ),
         ElevatedButton(
-          child: const Text('Salvar'),
+          child: const Text('Confirmar'),
           onPressed: onPressed,
         ),
       ],

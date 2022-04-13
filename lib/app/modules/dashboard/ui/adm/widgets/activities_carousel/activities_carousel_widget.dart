@@ -7,8 +7,8 @@ import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-import '../../../../shared/utils/utils.dart';
-import '../../../auth/infra/repositories/secure_storage.dart';
+import '../../../../../../shared/utils/utils.dart';
+import '../../../../../auth/infra/repositories/secure_storage.dart';
 import 'activity_card_widget.dart';
 
 class ActivitiesCarouselWidget extends StatelessWidget {

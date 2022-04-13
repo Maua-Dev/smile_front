@@ -4,15 +4,14 @@ class ScheduleActivity {
   final DateTime? duration;
   final String? location;
   final String? link;
-  final List<dynamic>? enrolledUsers;
-  final List<dynamic>? queue;
+  final List<String>? enrolledUsers;
 
-  ScheduleActivity(
-      {this.enrolledUsers,
-      this.location,
-      this.link,
-      this.duration,
-      this.date,
-      this.totalParticipants,
-      this.queue});
+  ScheduleActivity({
+    this.enrolledUsers,
+    this.location,
+    this.link,
+    this.duration,
+    this.date,
+    this.totalParticipants,
+  });
 }

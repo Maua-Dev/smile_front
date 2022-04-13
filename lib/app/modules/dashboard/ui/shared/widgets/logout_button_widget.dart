@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../shared/themes/app_text_styles.dart';
+import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class LogoutButtonWidget extends StatelessWidget {
   final Function()? onPressed;

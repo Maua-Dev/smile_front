@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
@@ -15,6 +16,7 @@ class AllActivitiesUserDashboardController = _AllActivitiesUserDashboardControll
 abstract class _AllActivitiesUserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final AuthController authController;
+  final controller = Modular.get<UserDashboardController>();
 
   _AllActivitiesUserDashboardControllerBase({
     required this.repository,
@@ -123,7 +125,6 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
             location: time.location,
             link: time.link,
             enrolledUsers: time.enrolledUsers,
-            queue: time.queue,
           ),
         );
       }

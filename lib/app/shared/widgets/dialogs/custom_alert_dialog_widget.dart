@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 
 class CustomAlertDialogWidget extends StatelessWidget {
-  final Function()? onPressed;
   final String title;
-  final String content;
+  final String? content;
 
   const CustomAlertDialogWidget({
     Key? key,
-    this.onPressed,
     required this.title,
-    required this.content,
+    this.content,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text(title),
-      content: Text(content),
+      content: content != null ? Text(content!) : null,
       actions: [
         ElevatedButton(
           child: const Text('Fechar'),
