@@ -13,7 +13,7 @@ void main() {
   late ActivityHomeController controller;
 
   var mock = <HomeSpeakerModel>[
-    HomeSpeakerModel(name: '', bio: '', date: '', linkPhoto: '')
+    HomeSpeakerModel(name: '', bio: '', linkPhoto: '')
   ];
 
   setUpAll(() {

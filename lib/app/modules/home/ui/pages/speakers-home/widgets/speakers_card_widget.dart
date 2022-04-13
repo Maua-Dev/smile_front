@@ -40,8 +40,8 @@ class SpeakersCardWidget extends StatelessWidget {
                               : MediaQuery.of(context).size.width < 1380
                                   ? 180
                                   : MediaQuery.of(context).size.width < 1750
-                                      ? 220
-                                      : 270)
+                                      ? 200
+                                      : 220)
                       : (MediaQuery.of(context).size.width < 500
                           ? 80
                           : MediaQuery.of(context).size.width < 1100
@@ -49,8 +49,8 @@ class SpeakersCardWidget extends StatelessWidget {
                               : MediaQuery.of(context).size.width < 1380
                                   ? 150
                                   : MediaQuery.of(context).size.width < 1750
-                                      ? 200
-                                      : 230),
+                                      ? 180
+                                      : 200),
                   height: indexToShow == myIndex
                       ? (MediaQuery.of(context).size.width < 500
                           ? 100
@@ -59,8 +59,8 @@ class SpeakersCardWidget extends StatelessWidget {
                               : MediaQuery.of(context).size.width < 1380
                                   ? 180
                                   : MediaQuery.of(context).size.width < 1750
-                                      ? 220
-                                      : 270)
+                                      ? 200
+                                      : 220)
                       : (MediaQuery.of(context).size.width < 500
                           ? 80
                           : MediaQuery.of(context).size.width < 1100
@@ -68,8 +68,8 @@ class SpeakersCardWidget extends StatelessWidget {
                               : MediaQuery.of(context).size.width < 1380
                                   ? 150
                                   : MediaQuery.of(context).size.width < 1750
-                                      ? 200
-                                      : 230),
+                                      ? 180
+                                      : 200),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
@@ -77,15 +77,6 @@ class SpeakersCardWidget extends StatelessWidget {
                           image: CachedNetworkImageProvider(linkPhoto)))),
               const SizedBox(
                 height: 8,
-              ),
-              Text(
-                name,
-                style: AppTextStyles.button.copyWith(
-                    fontSize:
-                        MediaQuery.of(context).size.width < 1500 ? 18 : 24,
-                    color: Colors.white,
-                    fontWeight:
-                        indexToShow == myIndex ? FontWeight.bold : null),
               ),
             ],
           ),

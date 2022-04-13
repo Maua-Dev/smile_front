@@ -58,7 +58,7 @@ class _UserDashboardPageState
                   height: 8,
                 ),
                 TextHeader(
-                  title: 'Sua Próxima Atividade',
+                  title: 'Sua próxima atividade',
                   fontSize: MediaQuery.of(context).size.width < 500
                       ? 28
                       : MediaQuery.of(context).size.width < 1000
