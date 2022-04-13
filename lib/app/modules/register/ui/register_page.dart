@@ -4,7 +4,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
@@ -387,6 +386,8 @@ class _RegisterPageState
                                 return CheckBoxWidget(
                                   check: controller.acceptTermsOfUse,
                                   text: 'Li e Aceito os Termos de Uso',
+                                  link:
+                                      'https://www.maua.br/a-maua/politica-de-privacidade',
                                   onChanged: (bool? value) {
                                     controller.setAcceptTermsOfUse(value);
                                   },

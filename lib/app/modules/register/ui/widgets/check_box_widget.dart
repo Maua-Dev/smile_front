@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 
@@ -6,8 +8,13 @@ class CheckBoxWidget extends StatelessWidget {
   final bool check;
   final Function(bool?)? onChanged;
   final String text;
+  final String? link;
   const CheckBoxWidget(
-      {Key? key, required this.check, this.onChanged, required this.text})
+      {Key? key,
+      required this.check,
+      this.onChanged,
+      required this.text,
+      this.link})
       : super(key: key);
 
   @override
@@ -30,12 +37,26 @@ class CheckBoxWidget extends StatelessWidget {
             onChanged: onChanged,
           ),
           const SizedBox(width: 5),
-          Flexible(
-            child: Text(
-              text,
-              style: const TextStyle(color: Colors.white, fontSize: 14),
-            ),
-          )
+          link == null
+              ? Flexible(
+                  child: Text(
+                    text,
+                    style: const TextStyle(color: Colors.white, fontSize: 14),
+                  ),
+                )
+              : MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () => {launch(link!)},
+                    child: Text(
+                      text,
+                      style: AppTextStyles.titleH1.copyWith(
+                          color: Colors.white,
+                          fontSize: 14,
+                          decoration: TextDecoration.underline),
+                    ),
+                  ),
+                )
         ],
       ),
     );
