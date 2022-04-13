@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
-import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
+import 'package:smile_front/app/shared/widgets/action_textbutton_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/paragraph_text_widget.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
@@ -80,7 +80,7 @@ class MoreInfoHomePage extends StatelessWidget {
                 height: 24,
               ),
               Center(
-                child: ActionTextButtonWidget(
+                child: CustomElevatedButtonWidget(
                   title: 'Inscreva-se',
                   textStyle: AppTextStyles.buttonBold.copyWith(
                       color: Colors.white,
