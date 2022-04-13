@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../shared/utils/s3_assets_url.dart';
@@ -280,7 +281,7 @@ class _RegisterPageState
                                               const SizedBox(width: 5),
                                               const Flexible(
                                                 child: Text(
-                                                  'Sou Aluno Mauá',
+                                                  'Aluno Mauá',
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 14),
@@ -307,7 +308,7 @@ class _RegisterPageState
                                               const SizedBox(width: 5),
                                               const Flexible(
                                                 child: Text(
-                                                  'Sou Aluno Mauá',
+                                                  'Aluno Mauá',
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 14),
@@ -369,85 +370,41 @@ class _RegisterPageState
                               const SizedBox(
                                 height: 20,
                               ),
-                              Container(
-                                width: MediaQuery.of(context).size.width < 650
-                                    ? MediaQuery.of(context).size.width * 0.85
-                                    : 600,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  color: AppColors.gray,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Observer(builder: (_) {
-                                      return Checkbox(
-                                        activeColor: AppColors.brandingPurple,
-                                        value: controller.canSendEmails,
-                                        onChanged: (bool? value) {
-                                          controller.setCanSendEmails(value);
-                                        },
-                                      );
-                                    }),
-                                    const SizedBox(width: 5),
-                                    const Flexible(
-                                      child: Text(
-                                        'Quero receber notificações por email e SMS durante o evento',
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 14),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
+                              Observer(builder: (_) {
+                                return CheckBoxWidget(
+                                  check: controller.acceptImage,
+                                  text:
+                                      'Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile',
+                                  onChanged: (bool? value) {
+                                    controller.setAcceptImage(value);
+                                  },
+                                );
+                              }),
                               const SizedBox(
                                 height: 20,
                               ),
-                              Container(
-                                width: MediaQuery.of(context).size.width < 650
-                                    ? MediaQuery.of(context).size.width * 0.85
-                                    : 600,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  color: AppColors.gray,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Observer(builder: (_) {
-                                      return Checkbox(
-                                        activeColor: AppColors.brandingPurple,
-                                        value: controller.acceptTermsOfUse,
-                                        onChanged: (bool? value) {
-                                          controller.setAcceptTermsOfUse(value);
-                                        },
-                                      );
-                                    }),
-                                    const SizedBox(width: 5),
-                                    Flexible(
-                                      child: MouseRegion(
-                                        cursor: SystemMouseCursors.click,
-                                        child: GestureDetector(
-                                          onTap: () => {
-                                            launch(
-                                                'https://www.maua.br/a-maua/politica-de-privacidade')
-                                          },
-                                          child: const Text(
-                                            'Li e Aceito os Termos de Uso',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 14,
-                                                decoration:
-                                                    TextDecoration.underline),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
+                              Observer(builder: (_) {
+                                return CheckBoxWidget(
+                                  check: controller.acceptTermsOfUse,
+                                  text: 'Li e Aceito os Termos de Uso',
+                                  onChanged: (bool? value) {
+                                    controller.setAcceptTermsOfUse(value);
+                                  },
+                                );
+                              }),
+                              const SizedBox(
+                                height: 20,
                               ),
+                              Observer(builder: (_) {
+                                return CheckBoxWidget(
+                                  check: controller.canSendEmails,
+                                  text:
+                                      'Autorizo o envio de notificação por email, para fins de divulgação da Smile',
+                                  onChanged: (bool? value) {
+                                    controller.setCanSendEmails(value);
+                                  },
+                                );
+                              }),
                               const SizedBox(
                                 height: 40,
                               ),
@@ -461,11 +418,15 @@ class _RegisterPageState
                                       : 600,
                                   heightSize: 50,
                                   backgroundColor: AppColors.brandingOrange,
-                                  onPressed: () async {
-                                    if (_formKey.currentState!.validate()) {
-                                      await controller.register();
-                                    }
-                                  },
+                                  onPressed: controller.acceptTermsOfUse &&
+                                          controller.acceptImage
+                                      ? () async {
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            await controller.register();
+                                          }
+                                        }
+                                      : null,
                                 );
                               }),
                               const SizedBox(
