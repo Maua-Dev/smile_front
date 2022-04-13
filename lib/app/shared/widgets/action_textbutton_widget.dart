@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-class ActionTextButtonWidget extends StatelessWidget {
+class CustomElevatedButtonWidget extends StatelessWidget {
   final bool? isLoading;
   final String? title;
   final Color? backgroundColor;
@@ -14,7 +14,7 @@ class ActionTextButtonWidget extends StatelessWidget {
   final double? borderRadius;
   final Function()? onPressed;
 
-  const ActionTextButtonWidget({
+  const CustomElevatedButtonWidget({
     Key? key,
     this.backgroundColor,
     this.onPressed,
