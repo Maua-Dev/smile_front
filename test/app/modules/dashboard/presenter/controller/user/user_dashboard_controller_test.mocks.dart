@@ -9,6 +9,10 @@ import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_
     as _i5;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i2;
+import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart'
+    as _i6;
+import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart'
+    as _i7;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 
 // ignore_for_file: type=lint
@@ -140,4 +144,20 @@ class MockSecureStorageInterface extends _i1.Mock
       (super.noSuchMethod(Invocation.method(#cleanSecureStorage, []),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+}
+
+/// A class which mocks [UserRepositoryInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUserRepositoryInterface extends _i1.Mock
+    implements _i6.UserRepositoryInterface {
+  MockUserRepositoryInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<dynamic> changeData(
+          _i7.UserChangeDataModel? userChangeDataModel) =>
+      (super.noSuchMethod(Invocation.method(#changeData, [userChangeDataModel]),
+          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
 }

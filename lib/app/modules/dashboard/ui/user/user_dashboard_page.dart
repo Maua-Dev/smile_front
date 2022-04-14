@@ -94,7 +94,11 @@ class _UserDashboardPageState
                                         onChangedCertificateWithSocialName:
                                             controller
                                                 .setCertificateWithSocialName,
+                                        nameValidation: controller.validateName,
+                                        socialNameValidation:
+                                            controller.validateSocialName,
                                         isLoading: controller.isLoading,
+                                        changeData: controller.changeData,
                                       );
                                     });
                                   },
@@ -292,6 +296,7 @@ class _UserDashboardPageState
                                       socialNameValidation:
                                           controller.validateSocialName,
                                       isLoading: controller.isLoading,
+                                      changeData: controller.changeData,
                                     );
                                   });
                                 },

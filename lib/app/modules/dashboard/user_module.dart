@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
-import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
+import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
@@ -18,10 +18,14 @@ import '../auth/domain/repositories/auth_repository_interface.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import 'domain/repositories/faq_repository_interface.dart';
+import 'domain/repositories/user_repository_interface.dart';
 import 'external/faq_datasource_impl.dart';
-import 'infra/datasources/faq_datasource.dart';
+import 'external/user_datasource_impl.dart';
+import 'infra/datasources/faq_datasource_interface.dart';
+import 'infra/datasources/user_datasource_interface.dart';
 import 'infra/repository/activities_repository_impl.dart';
 import 'infra/repository/faq_repository_impl.dart';
+import 'infra/repository/user_repository_impl.dart';
 
 class UserModule extends Module {
   @override
@@ -32,20 +36,24 @@ class UserModule extends Module {
               authController: i(),
             ),
         export: true),
-    Bind.lazySingleton<ActivitiesDatasource>((i) => ActivitiesDatasourceImpl(
+    Bind.lazySingleton<ActivitiesDatasourceInterface>(
+        (i) => ActivitiesDatasourceImpl(
+              storage: i<SecureStorageInterface>(),
+            )),
+    Bind.lazySingleton<UserDatasourceInterface>((i) => UserDatasourceImpl(
           storage: i<SecureStorageInterface>(),
         )),
     Bind.lazySingleton<HelpController>((i) => HelpController(i())),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
-    Bind.lazySingleton<FaqDatasource>((i) => FaqDatasourceImpl()),
+    Bind.lazySingleton<UserRepositoryInterface>(
+        (i) => UserRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<FaqDatasourceInterface>((i) => FaqDatasourceImpl()),
     Bind.lazySingleton<FaqRepositoryInterface>(
         (i) => FaqRepositoryImpl(datasource: i())),
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
-        repository: i(),
-        secureStorage: i(),
-      ),
+          repository: i(), secureStorage: i(), userRepository: i()),
     ),
     Bind.lazySingleton<MoreInfoController>(
       (i) => MoreInfoController(

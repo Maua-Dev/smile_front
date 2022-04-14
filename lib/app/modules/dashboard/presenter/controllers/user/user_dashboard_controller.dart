@@ -1,9 +1,11 @@
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
+import '../../../infra/models/user_change_data_model.dart';
 
 part 'user_dashboard_controller.g.dart';
 
@@ -12,9 +14,11 @@ class UserDashboardController = _UserDashboardControllerBase
 
 abstract class _UserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
+  final UserRepositoryInterface userRepository;
   final SecureStorageInterface secureStorage;
 
   _UserDashboardControllerBase({
+    required this.userRepository,
     required this.secureStorage,
     required this.repository,
   }) {
@@ -80,6 +84,17 @@ abstract class _UserDashboardControllerBase with Store {
   @action
   void setCertificateWithSocialName(bool value) {
     certificateWithSocialName = value;
+  }
+
+  @action
+  Future<void> changeData() async {
+    setIsLoading(true);
+    var userData = UserChangeDataModel(
+        name: nameToChange,
+        socialName: socialNameToChange,
+        certificateWithSocialName: certificateWithSocialName!);
+    await userRepository.changeData(userData);
+    setIsLoading(false);
   }
 
   @action

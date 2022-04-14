@@ -17,7 +17,7 @@ class NameAlterationDialog extends StatelessWidget {
   final bool certificateWithSocialName;
   final bool wantSocialName;
   final bool isLoading;
-  final Function()? changeName;
+  final Function()? changeData;
 
   const NameAlterationDialog(
       {Key? key,
@@ -32,18 +32,19 @@ class NameAlterationDialog extends StatelessWidget {
       this.nameValidation,
       this.socialNameValidation,
       required this.isLoading,
-      this.changeName})
+      this.changeData})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
+    final _nameKey = GlobalKey<FormState>();
+    final _socialNameKey = GlobalKey<FormState>();
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      child: Form(
-        key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width < 600 ? null : 500,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -51,13 +52,13 @@ class NameAlterationDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Alteração de nome',
+                    'Alteração de dados',
                     style: AppTextStyles.titleH1.copyWith(
                         fontSize: MediaQuery.of(context).size.width < 500
-                            ? 28
+                            ? 24
                             : MediaQuery.of(context).size.width < 1000
-                                ? 34
-                                : 40,
+                                ? 30
+                                : 36,
                         color: AppColors.brandingPurple),
                   ),
                   IconButton(
@@ -82,8 +83,13 @@ class NameAlterationDialog extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Nome:',
-                    style: AppTextStyles.body
-                        .copyWith(color: Colors.black, fontSize: 20),
+                    style: AppTextStyles.body.copyWith(
+                        color: Colors.black,
+                        fontSize: MediaQuery.of(context).size.width < 500
+                            ? 16
+                            : MediaQuery.of(context).size.width < 1000
+                                ? 20
+                                : 24),
                   ),
                 ),
               ),
@@ -91,12 +97,18 @@ class NameAlterationDialog extends StatelessWidget {
                 height: 8,
               ),
               TextFormField(
+                key: _nameKey,
                 validator: nameValidation,
                 initialValue: name,
                 textAlignVertical: TextAlignVertical.center,
                 onChanged: onChangedName,
-                style: AppTextStyles.body
-                    .copyWith(color: Colors.white, fontSize: 16),
+                style: AppTextStyles.body.copyWith(
+                    color: Colors.white,
+                    fontSize: MediaQuery.of(context).size.width < 500
+                        ? 14
+                        : MediaQuery.of(context).size.width < 1000
+                            ? 18
+                            : 22),
                 cursorColor: Colors.white,
                 decoration: InputDecoration(
                   fillColor: AppColors.brandingPurple,
@@ -123,8 +135,13 @@ class NameAlterationDialog extends StatelessWidget {
                   children: [
                     Text(
                       'Deseja nome social?',
-                      style: AppTextStyles.body
-                          .copyWith(color: Colors.black, fontSize: 20),
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.width < 500
+                              ? 16
+                              : MediaQuery.of(context).size.width < 1000
+                                  ? 20
+                                  : 24),
                     ),
                     CupertinoSwitch(
                       value: wantSocialName,
@@ -145,8 +162,13 @@ class NameAlterationDialog extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Nome social:',
-                    style: AppTextStyles.body
-                        .copyWith(color: Colors.black, fontSize: 20),
+                    style: AppTextStyles.body.copyWith(
+                        color: Colors.black,
+                        fontSize: MediaQuery.of(context).size.width < 500
+                            ? 16
+                            : MediaQuery.of(context).size.width < 1000
+                                ? 20
+                                : 24),
                   ),
                 ),
               ),
@@ -154,13 +176,19 @@ class NameAlterationDialog extends StatelessWidget {
                 height: 8,
               ),
               TextFormField(
+                key: _socialNameKey,
                 validator: socialNameValidation,
                 initialValue: socialName,
                 enabled: wantSocialName ? true : false,
                 textAlignVertical: TextAlignVertical.center,
                 onChanged: onChangedSocialName,
-                style: AppTextStyles.body
-                    .copyWith(color: Colors.white, fontSize: 16),
+                style: AppTextStyles.body.copyWith(
+                    color: Colors.white,
+                    fontSize: MediaQuery.of(context).size.width < 500
+                        ? 12
+                        : MediaQuery.of(context).size.width < 1000
+                            ? 16
+                            : 20),
                 cursorColor: Colors.white,
                 decoration: InputDecoration(
                   fillColor: wantSocialName
@@ -193,9 +221,16 @@ class NameAlterationDialog extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Usar nome social\nno certificado?',
-                        style: AppTextStyles.body
-                            .copyWith(color: Colors.black, fontSize: 20),
+                        MediaQuery.of(context).size.width < 410
+                            ? 'Usar nome social\nno certificado?'
+                            : 'Usar nome social no certificado?',
+                        style: AppTextStyles.body.copyWith(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width < 500
+                                ? 16
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 20
+                                    : 24),
                         textAlign: TextAlign.center,
                       ),
                       CupertinoSwitch(
@@ -216,19 +251,34 @@ class NameAlterationDialog extends StatelessWidget {
                 text: TextSpan(
                     text:
                         '* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia ',
-                    style: AppTextStyles.body
-                        .copyWith(color: Colors.black, fontSize: 14),
+                    style: AppTextStyles.body.copyWith(
+                        color: Colors.black,
+                        fontSize: MediaQuery.of(context).size.width < 500
+                            ? 12
+                            : MediaQuery.of(context).size.width < 1000
+                                ? 14
+                                : 16),
                     children: [
                       TextSpan(
                         text: '23/05/2022',
-                        style: AppTextStyles.titleH1
-                            .copyWith(color: Colors.black, fontSize: 14),
+                        style: AppTextStyles.titleH1.copyWith(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width < 500
+                                ? 12
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 14
+                                    : 16),
                       ),
                       TextSpan(
                         text:
                             ', sob pena do certificado ser emitido com os dados aqui fornecidos.',
-                        style: AppTextStyles.body
-                            .copyWith(color: Colors.black, fontSize: 14),
+                        style: AppTextStyles.body.copyWith(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width < 500
+                                ? 12
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 14
+                                    : 16),
                       ),
                     ]),
               ),
@@ -243,11 +293,18 @@ class NameAlterationDialog extends StatelessWidget {
                     : 600,
                 heightSize: 50,
                 backgroundColor: AppColors.brandingOrange,
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    await changeName!();
-                  }
-                },
+                onPressed: certificateWithSocialName
+                    ? () async {
+                        if (_socialNameKey.currentState!.validate() &&
+                            _nameKey.currentState!.validate()) {
+                          await changeData!();
+                        }
+                      }
+                    : () async {
+                        if (_nameKey.currentState!.validate()) {
+                          await changeData!();
+                        }
+                      },
               ),
             ],
           ),
