@@ -47,4 +47,7 @@ jobs:
              aws_bucket: ${{ secrets.AWS_BUCKET }}
              source_dir: 'build/web'
              destination_dir: ''
+             
+         - name: Clear CDN cache
+           run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUD_FRONT_ID}} --paths "/*"
 
