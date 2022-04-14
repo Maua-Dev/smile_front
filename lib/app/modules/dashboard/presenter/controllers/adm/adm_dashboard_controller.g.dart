@@ -49,6 +49,22 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
               () => super.fridayActivitiesList,
               name: '_AdmDashboardControllerBase.fridayActivitiesList'))
           .value;
+  Computed<List<CardActivity>>? _$saturdayActivitiesListComputed;
+
+  @override
+  List<CardActivity> get saturdayActivitiesList =>
+      (_$saturdayActivitiesListComputed ??= Computed<List<CardActivity>>(
+              () => super.saturdayActivitiesList,
+              name: '_AdmDashboardControllerBase.saturdayActivitiesList'))
+          .value;
+  Computed<List<CardActivity>>? _$sundayActivitiesListComputed;
+
+  @override
+  List<CardActivity> get sundayActivitiesList =>
+      (_$sundayActivitiesListComputed ??= Computed<List<CardActivity>>(
+              () => super.sundayActivitiesList,
+              name: '_AdmDashboardControllerBase.sundayActivitiesList'))
+          .value;
 
   final _$isLoadingAtom = Atom(name: '_AdmDashboardControllerBase.isLoading');
 
@@ -248,7 +264,9 @@ mondayActivitiesList: ${mondayActivitiesList},
 tuesdayActivitiesList: ${tuesdayActivitiesList},
 wednesdayActivitiesList: ${wednesdayActivitiesList},
 thursdayActivitiesList: ${thursdayActivitiesList},
-fridayActivitiesList: ${fridayActivitiesList}
+fridayActivitiesList: ${fridayActivitiesList},
+saturdayActivitiesList: ${saturdayActivitiesList},
+sundayActivitiesList: ${sundayActivitiesList}
     ''';
   }
 }
