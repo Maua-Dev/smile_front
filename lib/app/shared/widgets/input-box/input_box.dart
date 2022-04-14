@@ -15,22 +15,24 @@ class InputBox extends StatelessWidget {
   final void Function(bool)? onToggleVisibilityPwd;
   final bool? showPwd;
   final bool? isCpfField;
+  final bool? isValidated;
 
-  const InputBox(
-      {Key? key,
-      required this.icon,
-      required this.placeholder,
-      this.widthSize,
-      this.heightSize,
-      this.disable,
-      this.isPassword,
-      this.validation,
-      required this.setValue,
-      this.onFieldSubmitted,
-      this.onToggleVisibilityPwd,
-      this.showPwd,
-      this.isCpfField})
-      : super(key: key);
+  const InputBox({
+    Key? key,
+    required this.icon,
+    required this.placeholder,
+    this.widthSize,
+    this.heightSize,
+    this.disable,
+    this.isPassword,
+    this.validation,
+    required this.setValue,
+    this.onFieldSubmitted,
+    this.onToggleVisibilityPwd,
+    this.showPwd,
+    this.isCpfField,
+    this.isValidated,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,13 +58,17 @@ class InputBox extends StatelessWidget {
       height: heightSize ?? 60,
       child: Container(
         decoration: BoxDecoration(
-          color: disable != null
-              ? disable!
-                  ? const Color(0xFF5C5C5C).withOpacity(0.2)
-                  : AppColors.gray
-              : AppColors.gray,
-          borderRadius: BorderRadius.circular(10),
-        ),
+            color: disable != null
+                ? disable!
+                    ? const Color(0xFF5C5C5C).withOpacity(0.2)
+                    : AppColors.gray
+                : AppColors.gray,
+            borderRadius: BorderRadius.circular(10),
+            border: isValidated != null
+                ? !isValidated!
+                    ? Border.all(color: Colors.red)
+                    : null
+                : null),
         child: Padding(
           padding: const EdgeInsets.only(top: 10.0, left: 10),
           child: TextFormField(
