@@ -100,7 +100,7 @@ class _RegisterPageState
                                           children: [
                                             IconButton(
                                               onPressed: () {
-                                                controller.setError('');
+                                                controller.resetErrors();
                                               },
                                               icon: const Icon(Icons.close),
                                             ),
