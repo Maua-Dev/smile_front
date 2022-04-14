@@ -1,27 +1,30 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
-import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'user_dashboard_controller_test.mocks.dart';
 
-import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
-import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
-
-@GenerateMocks([ActivitiesRepositoryInterface])
+@GenerateMocks([
+  ActivitiesRepositoryInterface,
+  SecureStorageInterface,
+  UserRepositoryInterface
+])
 void main() {
   ActivitiesRepositoryInterface repository =
       MockActivitiesRepositoryInterface();
-  AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
+
+  UserRepositoryInterface userRepository = MockUserRepositoryInterface();
+
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
+
   late UserDashboardController controller;
-  late AuthController authController;
 
   final mockActivities = <ActivityModel>[
     ActivityModel(
@@ -134,13 +137,10 @@ void main() {
   setUpAll(() {
     when(repository.getUserSubscribedActivities())
         .thenAnswer((_) async => mockActivities);
-    authController =
-        AuthController(authRepository: authRepository, storage: secureStorage);
-
     controller = UserDashboardController(
-      repository: repository,
-      authController: authController,
-    );
+        repository: repository,
+        secureStorage: secureStorage,
+        userRepository: userRepository);
   });
 
   test('getUserSubscribedActivities', () {

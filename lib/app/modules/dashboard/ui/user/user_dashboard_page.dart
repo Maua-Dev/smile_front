@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/modules/dashboard/ui/shared/widgets/logout_button_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_data_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -39,21 +39,12 @@ class _UserDashboardPageState
                 const SizedBox(
                   height: 16,
                 ),
-                MediaQuery.of(context).size.width < 1024
-                    ? Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: LogoutButtonWidget(
-                            backgroundColor: AppColors.brandingOrange,
-                            buttonTittle: 'Sair',
-                            onPressed: () {
-                              navBarController.logout();
-                            },
-                          ),
-                        ),
-                      )
-                    : const SizedBox.shrink(),
+                UserDataWidget(
+                  logout: () {
+                    navBarController.logout();
+                  },
+                  controller: controller,
+                ),
                 const SizedBox(
                   height: 8,
                 ),
@@ -65,7 +56,7 @@ class _UserDashboardPageState
                           ? 30
                           : 38,
                   leftPadding:
-                      MediaQuery.of(context).size.width < 1000 ? 12 : 24,
+                      MediaQuery.of(context).size.width < 1000 ? 12 : 8,
                 ),
                 Observer(builder: (_) {
                   return NextActivityCardWidget(
@@ -100,7 +91,7 @@ class _UserDashboardPageState
                           ? 30
                           : 38,
                   leftPadding:
-                      MediaQuery.of(context).size.width < 1000 ? 12 : 24,
+                      MediaQuery.of(context).size.width < 1000 ? 12 : 8,
                 ),
                 UserWeekdayFilterWidget(
                   onPressed: controller.toggleFilterActivityChipIndex,
@@ -158,10 +149,21 @@ class _UserDashboardPageState
         } else {
           return Scaffold(
               body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const SizedBox(
                 height: 16,
+              ),
+              Observer(builder: (_) {
+                return UserDataWidget(
+                  logout: () {
+                    navBarController.logout();
+                  },
+                  controller: controller,
+                );
+              }),
+              const SizedBox(
+                height: 200,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),

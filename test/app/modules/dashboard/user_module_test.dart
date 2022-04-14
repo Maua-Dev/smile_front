@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
-import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
+import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/user_module.dart';
@@ -22,7 +22,7 @@ void main() {
   });
 
   test('ActivitiesDatasource Injection', () {
-    Modular.get<ActivitiesDatasource>();
+    Modular.get<ActivitiesDatasourceInterface>();
   });
 
   test('ActivitiesRepositoryInterface Injection', () {
