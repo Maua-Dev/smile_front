@@ -20,9 +20,6 @@ abstract class _RegisterController with Store {
   @observable
   List<String> errorsList = [];
 
-  // @computed
-  // String get errors => errorsList.isNotEmpty ? errorsList.join(", \n") : '';
-
   @observable
   String errors = '';
 
