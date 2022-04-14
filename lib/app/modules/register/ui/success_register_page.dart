@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/utils/s3_assets_url.dart';
-import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
+import '../../../shared/widgets/action_textbutton_widget.dart';
 import '../presenter/controllers/register_controller.dart';
 
 class SuccessRegisterPage extends StatefulWidget {
@@ -70,7 +70,7 @@ class _SuccessRegisterPageState
                         const SizedBox(
                           height: 20,
                         ),
-                        ActionTextButtonWidget(
+                        CustomElevatedButtonWidget(
                           title: 'Fazer Login',
                           widthSize: MediaQuery.of(context).size.width < 650
                               ? MediaQuery.of(context).size.width * 0.85

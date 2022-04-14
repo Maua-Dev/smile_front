@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-class ActionTextButtonWidget extends StatelessWidget {
+class CustomElevatedButtonWidget extends StatelessWidget {
   final bool? isLoading;
   final String? title;
   final Color? backgroundColor;
@@ -13,7 +14,7 @@ class ActionTextButtonWidget extends StatelessWidget {
   final double? borderRadius;
   final Function()? onPressed;
 
-  const ActionTextButtonWidget({
+  const CustomElevatedButtonWidget({
     Key? key,
     this.backgroundColor,
     this.onPressed,
@@ -35,13 +36,21 @@ class ActionTextButtonWidget extends StatelessWidget {
       child: SizedBox(
         width: widthSize,
         height: heightSize,
-        child: TextButton(
+        child: ElevatedButton(
           onPressed: onPressed,
-          style: TextButton.styleFrom(
-            backgroundColor: backgroundColor,
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
+              if (states.contains(MaterialState.pressed)) {
+                return backgroundColor!;
+              } else if (states.contains(MaterialState.disabled)) {
+                return AppColors.gray;
+              }
+              return backgroundColor!;
+            }),
             alignment: Alignment.center,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(borderRadius ?? 15)),
+            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 15))),
           ),
           child: isLoading != null && isLoading!
               ? const CircularProgressIndicator()

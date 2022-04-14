@@ -266,6 +266,29 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
+  final _$acceptImageAtom = Atom(name: '_RegisterController.acceptImage');
+
+  @override
+  bool get acceptImage {
+    _$acceptImageAtom.reportRead();
+    return super.acceptImage;
+  }
+
+  @override
+  set acceptImage(bool value) {
+    _$acceptImageAtom.reportWrite(value, super.acceptImage, () {
+      super.acceptImage = value;
+    });
+  }
+
+  final _$setAcceptImageAsyncAction =
+      AsyncAction('_RegisterController.setAcceptImage');
+
+  @override
+  Future<void> setAcceptImage(bool? value) {
+    return _$setAcceptImageAsyncAction.run(() => super.setAcceptImage(value));
+  }
+
   final _$setErrorAsyncAction = AsyncAction('_RegisterController.setError');
 
   @override
@@ -496,6 +519,7 @@ password: ${password},
 verifyPassword: ${verifyPassword},
 canSendEmails: ${canSendEmails},
 acceptTermsOfUse: ${acceptTermsOfUse},
+acceptImage: ${acceptImage},
 raInt: ${raInt},
 registerInformations: ${registerInformations}
     ''';
