@@ -49,4 +49,18 @@ class AuthController {
     await storage.cleanSecureStorage();
     _loggedIn = false;
   }
+
+  Future<void> verifyIfHaveTokens() async {
+    var accessLevel = await storage.getAccessLevel();
+    var accessToken = await storage.getAccessToken();
+    var refreshToken = await storage.getRefreshToken();
+    if (accessToken!.isNotEmpty &&
+        accessLevel!.isNotEmpty &&
+        refreshToken!.isNotEmpty) {
+      _loggedIn = true;
+      _accessLevel = accessLevel;
+    } else {
+      _loggedIn = false;
+    }
+  }
 }
