@@ -210,6 +210,7 @@ class _MoreInfoPageState
                                       launch(controller.activity.link!),
                                   child: Text('Link',
                                       style: AppTextStyles.buttonBold.copyWith(
+                                          decoration: TextDecoration.underline,
                                           fontSize: MediaQuery.of(context)
                                                       .size
                                                       .width <
