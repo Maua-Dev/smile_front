@@ -87,65 +87,17 @@ class _MoreInfoPageState
               const SizedBox(
                 height: 16,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        controller.activity.date == null
-                            ? ''
-                            : DateFormat('dd/MM')
-                                .format(controller.activity.date!),
-                        style: AppTextStyles.buttonBold.copyWith(
-                            fontSize: MediaQuery.of(context).size.width < 800
-                                ? 10
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 14
-                                    : 18,
-                            color: AppColors.brandingPurple),
-                      ),
-                      Text(
-                        weekday,
-                        style: AppTextStyles.buttonBold.copyWith(
-                            fontSize: MediaQuery.of(context).size.width < 800
-                                ? 14
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 20
-                                    : 24,
-                            color: AppColors.brandingPurple),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        'Horário',
-                        style: AppTextStyles.buttonBold.copyWith(
-                            fontSize: MediaQuery.of(context).size.width < 800
-                                ? 10
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 14
-                                    : 18,
-                            color: AppColors.brandingPurple),
-                      ),
-                      Text(
-                        '$timeString - $finalTime',
-                        style: AppTextStyles.buttonBold.copyWith(
-                            fontSize: MediaQuery.of(context).size.width < 800
-                                ? 14
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 20
-                                    : 24,
-                            color: AppColors.brandingPurple),
-                      ),
-                    ],
-                  ),
-                  if (controller.activity.location != null)
+              Observer(builder: (_) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
                     Column(
                       children: [
                         Text(
-                          'Local',
+                          controller.activity.date == null
+                              ? ''
+                              : DateFormat('dd/MM')
+                                  .format(controller.activity.date!),
                           style: AppTextStyles.buttonBold.copyWith(
                               fontSize: MediaQuery.of(context).size.width < 800
                                   ? 10
@@ -155,7 +107,7 @@ class _MoreInfoPageState
                               color: AppColors.brandingPurple),
                         ),
                         Text(
-                          controller.activity.location!,
+                          weekday,
                           style: AppTextStyles.buttonBold.copyWith(
                               fontSize: MediaQuery.of(context).size.width < 800
                                   ? 14
@@ -166,12 +118,10 @@ class _MoreInfoPageState
                         ),
                       ],
                     ),
-                  if (controller.activity.link != null &&
-                      controller.isRegistered)
                     Column(
                       children: [
                         Text(
-                          'Zoom',
+                          'Horário',
                           style: AppTextStyles.buttonBold.copyWith(
                               fontSize: MediaQuery.of(context).size.width < 800
                                   ? 10
@@ -180,44 +130,108 @@ class _MoreInfoPageState
                                       : 18,
                               color: AppColors.brandingPurple),
                         ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 4),
-                              child: Transform.rotate(
-                                angle: 135 * math.pi / 180,
-                                child: Icon(
-                                  Icons.link,
-                                  color: AppColors.brandingPurple,
-                                  size: MediaQuery.of(context).size.width < 800
-                                      ? 14
-                                      : MediaQuery.of(context).size.width < 1000
-                                          ? 20
-                                          : 24,
-                                ),
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () => launch(controller.activity.link!),
-                              child: Text('Link',
-                                  style: AppTextStyles.buttonBold.copyWith(
-                                      fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width <
+                        Text(
+                          '$timeString - $finalTime',
+                          style: AppTextStyles.buttonBold.copyWith(
+                              fontSize: MediaQuery.of(context).size.width < 800
+                                  ? 14
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 20
+                                      : 24,
+                              color: AppColors.brandingPurple),
+                        ),
+                      ],
+                    ),
+                    if (controller.activity.location != null)
+                      Column(
+                        children: [
+                          Text(
+                            'Local',
+                            style: AppTextStyles.buttonBold.copyWith(
+                                fontSize: MediaQuery.of(context).size.width <
+                                        800
+                                    ? 10
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 14
+                                        : 18,
+                                color: AppColors.brandingPurple),
+                          ),
+                          Text(
+                            controller.activity.location!,
+                            style: AppTextStyles.buttonBold.copyWith(
+                                fontSize: MediaQuery.of(context).size.width <
+                                        800
+                                    ? 14
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 20
+                                        : 24,
+                                color: AppColors.brandingPurple),
+                          ),
+                        ],
+                      ),
+                    if (controller.activity.link != null &&
+                        controller.isRegistered)
+                      Column(
+                        children: [
+                          Text(
+                            'Zoom',
+                            style: AppTextStyles.buttonBold.copyWith(
+                                fontSize: MediaQuery.of(context).size.width <
+                                        800
+                                    ? 10
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 14
+                                        : 18,
+                                color: AppColors.brandingPurple),
+                          ),
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 4),
+                                  child: Transform.rotate(
+                                    angle: 135 * math.pi / 180,
+                                    child: Icon(
+                                      Icons.link,
+                                      color: AppColors.brandingPurple,
+                                      size: MediaQuery.of(context).size.width <
                                               800
                                           ? 14
                                           : MediaQuery.of(context).size.width <
                                                   1000
                                               ? 20
                                               : 24,
-                                      color: AppColors.brandingPurple)),
+                                    ),
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () =>
+                                      launch(controller.activity.link!),
+                                  child: Text('Link',
+                                      style: AppTextStyles.buttonBold.copyWith(
+                                          decoration: TextDecoration.underline,
+                                          fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  800
+                                              ? 14
+                                              : MediaQuery.of(context)
+                                                          .size
+                                                          .width <
+                                                      1000
+                                                  ? 20
+                                                  : 24,
+                                          color: AppColors.brandingPurple)),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                ],
-              ),
+                          ),
+                        ],
+                      ),
+                  ],
+                );
+              }),
               const SizedBox(
                 height: 16,
               ),

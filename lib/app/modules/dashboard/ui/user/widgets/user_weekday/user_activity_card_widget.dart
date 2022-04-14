@@ -57,7 +57,7 @@ class UserActivityCardWidget extends StatelessWidget {
                         children: [
                           if (activityCode != '' && title != '')
                             Text(
-                              '$activityCode - $title',
+                              '$title ($activityCode)',
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: AppTextStyles.buttonBold.copyWith(
