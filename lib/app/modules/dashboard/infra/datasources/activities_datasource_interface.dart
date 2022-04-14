@@ -1,6 +1,6 @@
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
-abstract class ActivitiesDatasource {
+abstract class ActivitiesDatasourceInterface {
   Future<List<ActivityModel>> getAllActivities();
   Future<List<ActivityModel>> getUserSubscribedActivities();
   Future postSubscribe(String activityId, DateTime activityDate);

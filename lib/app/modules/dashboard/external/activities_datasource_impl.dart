@@ -2,14 +2,14 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource.dart';
+import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/subscription_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../shared/services/enviroment/enviroment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
 import '../../auth/presenter/controllers/auth_controller.dart';
 
-class ActivitiesDatasourceImpl extends ActivitiesDatasource {
+class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   final SecureStorageInterface storage;
   var authController = Modular.get<AuthController>();
 

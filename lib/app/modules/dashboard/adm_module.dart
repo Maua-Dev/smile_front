@@ -14,7 +14,7 @@ import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import 'domain/repositories/activities_repository_interface.dart';
 import 'external/activities_datasource_impl.dart';
-import 'infra/datasources/activities_datasource.dart';
+import 'infra/datasources/activities_datasource_interface.dart';
 import 'infra/repository/activities_repository_impl.dart';
 
 class AdmModule extends Module {
@@ -38,9 +38,10 @@ class AdmModule extends Module {
         repository: i(),
       ),
     ),
-    Bind.lazySingleton<ActivitiesDatasource>((i) => ActivitiesDatasourceImpl(
-          storage: i<SecureStorageInterface>(),
-        )),
+    Bind.lazySingleton<ActivitiesDatasourceInterface>(
+        (i) => ActivitiesDatasourceImpl(
+              storage: i<SecureStorageInterface>(),
+            )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton((i) => Dio(smileOption)),

@@ -9,14 +9,17 @@ class SmileLogoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Modular.to.navigate('/home');
-      },
-      child: CachedNetworkImage(
-        imageUrl: smileLogoUrl,
-        width: 300,
-        fit: BoxFit.cover,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () {
+          Modular.to.navigate('/home');
+        },
+        child: CachedNetworkImage(
+          imageUrl: smileLogoUrl,
+          width: 300,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
