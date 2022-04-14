@@ -49,5 +49,5 @@ jobs:
              destination_dir: ''
              
          - name: Clear CDN cache
-           run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUD_FRONT_ID}} --paths "/*"
+           run: aws cloudfront create-invalidation --distribution-id E1ITPPNOZVXL6Z --paths "/*"
 
