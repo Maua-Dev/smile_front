@@ -58,6 +58,21 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
               name: '_UserDashboardControllerBase.saturdayActivitiesList'))
           .value;
 
+  final _$errorAtom = Atom(name: '_UserDashboardControllerBase.error');
+
+  @override
+  String? get error {
+    _$errorAtom.reportRead();
+    return super.error;
+  }
+
+  @override
+  set error(String? value) {
+    _$errorAtom.reportWrite(value, super.error, () {
+      super.error = value;
+    });
+  }
+
   final _$socialNameAtom =
       Atom(name: '_UserDashboardControllerBase.socialName');
 
@@ -93,13 +108,13 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
       Atom(name: '_UserDashboardControllerBase.certificateWithSocialName');
 
   @override
-  bool? get certificateWithSocialName {
+  bool get certificateWithSocialName {
     _$certificateWithSocialNameAtom.reportRead();
     return super.certificateWithSocialName;
   }
 
   @override
-  set certificateWithSocialName(bool? value) {
+  set certificateWithSocialName(bool value) {
     _$certificateWithSocialNameAtom
         .reportWrite(value, super.certificateWithSocialName, () {
       super.certificateWithSocialName = value;
@@ -373,22 +388,22 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   }
 
   @override
-  String? validateName(String? value) {
+  bool validateName() {
     final _$actionInfo = _$_UserDashboardControllerBaseActionController
         .startAction(name: '_UserDashboardControllerBase.validateName');
     try {
-      return super.validateName(value);
+      return super.validateName();
     } finally {
       _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  String? validateSocialName(String? value) {
+  bool validateSocialName() {
     final _$actionInfo = _$_UserDashboardControllerBaseActionController
         .startAction(name: '_UserDashboardControllerBase.validateSocialName');
     try {
-      return super.validateSocialName(value);
+      return super.validateSocialName();
     } finally {
       _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -420,6 +435,7 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   @override
   String toString() {
     return '''
+error: ${error},
 socialName: ${socialName},
 name: ${name},
 certificateWithSocialName: ${certificateWithSocialName},

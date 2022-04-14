@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/name_alteration_dialog.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/name_alteration_dialog.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_data_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
+import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
+import '../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
 import 'widgets/next_activity/next_activity_card_widget.dart';
 import 'widgets/user_weekday/user_weekday_filter_widget.dart';
@@ -39,99 +42,11 @@ class _UserDashboardPageState
                 const SizedBox(
                   height: 16,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width < 1000 ? 12 : 8,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      if (controller.socialName == '' ||
-                          controller.socialName == null)
-                        Text(
-                          'Olá, ${controller.name!.split(' ').first}',
-                          style: AppTextStyles.titleH1.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 500
-                                  ? 35
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 40
-                                      : 45,
-                              color: AppColors.brandingPurple),
-                        )
-                      else
-                        Text(
-                          'Olá, ${controller.socialName!.split(' ').first}',
-                          style: AppTextStyles.titleH1.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 500
-                                  ? 35
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 40
-                                      : 45,
-                              color: AppColors.brandingPurple),
-                        ),
-                      Row(
-                        children: [
-                          IconButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return Observer(builder: (_) {
-                                      return NameAlterationDialog(
-                                        name: controller.nameToChange,
-                                        onChangedName: controller.setName,
-                                        socialName:
-                                            controller.socialNameToChange,
-                                        onChangedSocialName:
-                                            controller.setUserSocialName,
-                                        onChangedWantSocialName:
-                                            controller.setWantSocialName,
-                                        wantSocialName:
-                                            controller.wantSocialName,
-                                        certificateWithSocialName: controller
-                                            .certificateWithSocialName!,
-                                        onChangedCertificateWithSocialName:
-                                            controller
-                                                .setCertificateWithSocialName,
-                                        nameValidation: controller.validateName,
-                                        socialNameValidation:
-                                            controller.validateSocialName,
-                                        isLoading: controller.isLoading,
-                                        changeData: controller.changeData,
-                                      );
-                                    });
-                                  },
-                                );
-                              },
-                              icon: Icon(
-                                Icons.edit,
-                                color: AppColors.brandingPurple,
-                                size: MediaQuery.of(context).size.width < 1000
-                                    ? 30
-                                    : 45,
-                              )),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width < 1000
-                                ? 8
-                                : 32,
-                          ),
-                          IconButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: () {
-                                navBarController.logout();
-                              },
-                              icon: Icon(
-                                Icons.logout,
-                                color: AppColors.brandingPurple,
-                                size: MediaQuery.of(context).size.width < 1000
-                                    ? 30
-                                    : 45,
-                              )),
-                        ],
-                      ),
-                    ],
-                  ),
+                UserDataWidget(
+                  logout: () {
+                    navBarController.logout();
+                  },
+                  controller: controller,
                 ),
                 const SizedBox(
                   height: 8,
@@ -239,97 +154,17 @@ class _UserDashboardPageState
               body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width < 1000 ? 12 : 8,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    if (controller.socialName == '' ||
-                        controller.socialName == null)
-                      Text(
-                        'Olá, ${controller.name!.split(' ').first}',
-                        style: AppTextStyles.titleH1.copyWith(
-                            fontSize: MediaQuery.of(context).size.width < 500
-                                ? 35
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 40
-                                    : 45,
-                            color: AppColors.brandingPurple),
-                      )
-                    else
-                      Text(
-                        'Olá, ${controller.socialName!.split(' ').first}',
-                        style: AppTextStyles.titleH1.copyWith(
-                            fontSize: MediaQuery.of(context).size.width < 500
-                                ? 35
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 40
-                                    : 45,
-                            color: AppColors.brandingPurple),
-                      ),
-                    Row(
-                      children: [
-                        IconButton(
-                            padding: EdgeInsets.zero,
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return Observer(builder: (_) {
-                                    return NameAlterationDialog(
-                                      name: controller.nameToChange,
-                                      onChangedName: controller.setName,
-                                      socialName: controller.socialNameToChange,
-                                      onChangedSocialName:
-                                          controller.setUserSocialName,
-                                      onChangedWantSocialName:
-                                          controller.setWantSocialName,
-                                      wantSocialName: controller.wantSocialName,
-                                      certificateWithSocialName:
-                                          controller.certificateWithSocialName!,
-                                      onChangedCertificateWithSocialName:
-                                          controller
-                                              .setCertificateWithSocialName,
-                                      nameValidation: controller.validateName,
-                                      socialNameValidation:
-                                          controller.validateSocialName,
-                                      isLoading: controller.isLoading,
-                                      changeData: controller.changeData,
-                                    );
-                                  });
-                                },
-                              );
-                            },
-                            icon: Icon(
-                              Icons.edit,
-                              color: AppColors.brandingPurple,
-                              size: MediaQuery.of(context).size.width < 1000
-                                  ? 30
-                                  : 45,
-                            )),
-                        SizedBox(
-                          width:
-                              MediaQuery.of(context).size.width < 1000 ? 8 : 32,
-                        ),
-                        IconButton(
-                            padding: EdgeInsets.zero,
-                            onPressed: () {
-                              navBarController.logout();
-                            },
-                            icon: Icon(
-                              Icons.logout,
-                              color: AppColors.brandingPurple,
-                              size: MediaQuery.of(context).size.width < 1000
-                                  ? 30
-                                  : 45,
-                            )),
-                      ],
-                    ),
-                  ],
-                ),
+              const SizedBox(
+                height: 16,
               ),
+              Observer(builder: (_) {
+                return UserDataWidget(
+                  logout: () {
+                    navBarController.logout();
+                  },
+                  controller: controller,
+                );
+              }),
               const SizedBox(
                 height: 200,
               ),

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../shared/themes/app_colors.dart';
-import '../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../shared/widgets/action_textbutton_widget.dart';
+import '../../../../../../shared/themes/app_colors.dart';
+import '../../../../../../shared/themes/app_text_styles.dart';
+import '../../../../../../shared/widgets/action_textbutton_widget.dart';
 
 class NameAlterationDialog extends StatelessWidget {
   final String name;
@@ -12,8 +12,6 @@ class NameAlterationDialog extends StatelessWidget {
   final Function(String)? onChangedSocialName;
   final Function(bool)? onChangedWantSocialName;
   final Function(bool)? onChangedCertificateWithSocialName;
-  final String? Function(String?)? nameValidation;
-  final String? Function(String?)? socialNameValidation;
   final bool certificateWithSocialName;
   final bool wantSocialName;
   final bool isLoading;
@@ -29,16 +27,12 @@ class NameAlterationDialog extends StatelessWidget {
       this.onChangedWantSocialName,
       this.onChangedCertificateWithSocialName,
       required this.certificateWithSocialName,
-      this.nameValidation,
-      this.socialNameValidation,
       required this.isLoading,
       this.changeData})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _nameKey = GlobalKey<FormState>();
-    final _socialNameKey = GlobalKey<FormState>();
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Padding(
@@ -97,8 +91,6 @@ class NameAlterationDialog extends StatelessWidget {
                 height: 8,
               ),
               TextFormField(
-                key: _nameKey,
-                validator: nameValidation,
                 initialValue: name,
                 textAlignVertical: TextAlignVertical.center,
                 onChanged: onChangedName,
@@ -176,8 +168,6 @@ class NameAlterationDialog extends StatelessWidget {
                 height: 8,
               ),
               TextFormField(
-                key: _socialNameKey,
-                validator: socialNameValidation,
                 initialValue: socialName,
                 enabled: wantSocialName ? true : false,
                 textAlignVertical: TextAlignVertical.center,
@@ -293,18 +283,9 @@ class NameAlterationDialog extends StatelessWidget {
                     : 600,
                 heightSize: 50,
                 backgroundColor: AppColors.brandingOrange,
-                onPressed: certificateWithSocialName
-                    ? () async {
-                        if (_socialNameKey.currentState!.validate() &&
-                            _nameKey.currentState!.validate()) {
-                          await changeData!();
-                        }
-                      }
-                    : () async {
-                        if (_nameKey.currentState!.validate()) {
-                          await changeData!();
-                        }
-                      },
+                onPressed: () async {
+                  await changeData!();
+                },
               ),
             ],
           ),

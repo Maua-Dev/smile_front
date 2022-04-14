@@ -32,6 +32,7 @@ class AuthController {
     await storage.saveRefreshToken(loginResponse['refresh_token']);
     await storage.saveAccessLevel(_accessLevel);
     await storage.saveName(_name);
+    await storage.saveSocialName(_socialname ?? '');
     await storage
         .saveCertificateWithSocialName(_certificateWithSocialName ?? false);
 

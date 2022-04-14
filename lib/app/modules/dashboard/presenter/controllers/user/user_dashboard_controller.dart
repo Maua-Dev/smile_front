@@ -28,13 +28,16 @@ abstract class _UserDashboardControllerBase with Store {
   }
 
   @observable
+  String? error;
+
+  @observable
   String? socialName = '';
 
   @observable
   String? name = '';
 
   @observable
-  bool? certificateWithSocialName = false;
+  bool certificateWithSocialName = false;
 
   @observable
   String socialNameToChange = '';
@@ -48,27 +51,31 @@ abstract class _UserDashboardControllerBase with Store {
   @action
   Future<void> getCertificateWithSocialName() async {
     certificateWithSocialName =
-        await secureStorage.getCertificateWithSocialName();
-    wantSocialName = certificateWithSocialName!;
+        (await secureStorage.getCertificateWithSocialName())!;
   }
 
   @action
   Future<void> getUserName() async {
     name = await secureStorage.getName();
-    nameToChange = name ?? '';
+    setName(name ?? '');
   }
 
   @action
   Future<void> getUserSocialName() async {
     socialName = await secureStorage.getSocialName();
-    socialNameToChange = socialName ?? '';
+    setUserSocialName(socialName ?? '');
+    if (socialName != null && socialName != '') {
+      wantSocialName = true;
+    } else {
+      wantSocialName = false;
+    }
   }
 
   @action
   Future<void> setWantSocialName(bool? value) async {
     wantSocialName = value!;
-    certificateWithSocialName = value;
-    socialNameToChange = '';
+    setCertificateWithSocialName(value);
+    setUserSocialName('');
   }
 
   @action
@@ -92,27 +99,37 @@ abstract class _UserDashboardControllerBase with Store {
     var userData = UserChangeDataModel(
         name: nameToChange,
         socialName: socialNameToChange,
-        certificateWithSocialName: certificateWithSocialName!);
+        certificateWithSocialName: certificateWithSocialName);
     await userRepository.changeData(userData);
+    await secureStorage.saveName(nameToChange);
+    await secureStorage.saveSocialName(socialNameToChange);
+    await secureStorage
+        .saveCertificateWithSocialName(certificateWithSocialName);
+    getUserName();
+    getUserSocialName();
+    getUserSubscribedActivities();
     setIsLoading(false);
   }
 
   @action
-  String? validateName(String? value) {
-    if (value!.isEmpty) {
-      return "         Campo obrigatório";
-    } else if (value.split(' ').length < 2) {
-      return "         Insira seu nome completo";
+  bool validateName() {
+    if (nameToChange.isEmpty) {
+      error = 'Campo "Nome" obrigatório!';
+      return false;
+    } else if (nameToChange.split(' ').length < 2) {
+      error = 'Preencha seu nome completo!';
+      return false;
     }
-    return null;
+    return true;
   }
 
   @action
-  String? validateSocialName(String? value) {
-    if (wantSocialName && value!.isEmpty) {
-      return "         Campo obrigatório";
+  bool validateSocialName() {
+    if (wantSocialName && socialNameToChange.isEmpty) {
+      error = 'Campo "Nome Social" obrigatório!';
+      return false;
     }
-    return null;
+    return true;
   }
 
   @observable
