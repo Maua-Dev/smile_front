@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/utils/s3_assets_url.dart';
-import '../../home/ui/pages/widgets/action_textbutton_widget.dart';
+import '../../../shared/widgets/action_textbutton_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controllers/register_controller.dart';
@@ -409,7 +409,7 @@ class _RegisterPageState
                                 height: 40,
                               ),
                               Observer(builder: (_) {
-                                return ActionTextButtonWidget(
+                                return CustomElevatedButtonWidget(
                                   isLoading: controller.isLoading,
                                   title: 'Cadastrar',
                                   widthSize: MediaQuery.of(context).size.width <
@@ -432,7 +432,7 @@ class _RegisterPageState
                               const SizedBox(
                                 height: 20,
                               ),
-                              ActionTextButtonWidget(
+                              CustomElevatedButtonWidget(
                                 title: 'Já tenho um cadastro',
                                 widthSize: MediaQuery.of(context).size.width <
                                         650

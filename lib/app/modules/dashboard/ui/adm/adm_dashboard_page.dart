@@ -165,6 +165,16 @@ class _AdmDashboardPageState
                       listToEdit: controller.activitiesList,
                       weekday: 4,
                     ),
+                    ActivitiesCarouselWidget(
+                      list: controller.saturdayActivitiesList,
+                      listToEdit: controller.activitiesList,
+                      weekday: 5,
+                    ),
+                    ActivitiesCarouselWidget(
+                      list: controller.sundayActivitiesList,
+                      listToEdit: controller.activitiesList,
+                      weekday: 6,
+                    ),
                   ],
                 );
               }
