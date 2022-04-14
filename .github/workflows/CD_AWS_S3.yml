@@ -24,6 +24,7 @@ jobs:
       steps:
          - name: Checkout code
            uses: actions/checkout@v2
+           
          - name: Setup Java Version
            uses: actions/setup-java@v1
            with:
@@ -38,16 +39,30 @@ jobs:
            run: flutter pub get
 
          - run: flutter build web --dart-define=MSS_USER_BASE_URL=${{secrets.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{secrets.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=https://dgdeg32eu6sux.cloudfront.net/
-
-         - name: Upload to S3
-           uses: shallwefootball/s3-upload-action@master
+         
+         - name: S3 and CloudFront Deploy
+           uses: lbertenasco/s3-deploy@v1.2.4
            with:
-             aws_key_id: ${{ secrets.AWS_KEY_ID }}
-             aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-             aws_bucket: ${{ secrets.AWS_BUCKET }}
-             source_dir: 'build/web'
-             destination_dir: ''
+             folder: build/web
+             bucket: ${{ secrets.AWS_BUCKET }}
+             dist-id: ${{secrets.CLOUD_FRONT_ID}}
+             invalidation: / *
+           env:
+              AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
+              AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+              AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+
+#          - name: Upload to S3
+#            uses: shallwefootball/s3-upload-action@master
+#            with:
+#              aws_key_id: ${{ secrets.AWS_KEY_ID }}
+#              aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+#              aws_bucket: ${{ secrets.AWS_BUCKET }}
+#              source_dir: 'build/web'
+#              destination_dir: ''
+         
              
-         - name: Clear CDN cache
-           run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUD_FRONT_ID}} --paths "/*" --region sa-east-1
+             
+#          - name: Clear CDN cache
+#            run: AWS_ACCESS_KEY_ID=ABCD AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY}} aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUD_FRONT_ID}} --paths "/*" --region sa-east-1
 
