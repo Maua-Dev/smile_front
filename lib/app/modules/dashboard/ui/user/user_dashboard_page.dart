@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/name_alteration_dialog.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -75,86 +76,27 @@ class _UserDashboardPageState
                               onPressed: () {
                                 showDialog(
                                   context: context,
-                                  barrierDismissible: false,
                                   builder: (BuildContext context) {
-                                    return Dialog(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20.0)),
-                                      child: Column(
-                                        children: [
-                                          Center(
-                                            child: Text(
-                                              'Alteração de nome',
-                                              style: AppTextStyles.titleH1
-                                                  .copyWith(
-                                                      fontSize: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width <
-                                                              500
-                                                          ? 35
-                                                          : MediaQuery.of(context)
-                                                                      .size
-                                                                      .width <
-                                                                  1000
-                                                              ? 40
-                                                              : 45,
-                                                      color: AppColors
-                                                          .brandingPurple),
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 16,
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 32),
-                                            child: TextFormField(
-                                              initialValue: controller.name,
-                                              textAlignVertical:
-                                                  TextAlignVertical.center,
-                                              onChanged: controller.setName,
-                                              style: AppTextStyles.body
-                                                  .copyWith(
-                                                      color: Colors.white,
-                                                      fontSize: 24),
-                                              cursorColor: Colors.white,
-                                              decoration: InputDecoration(
-                                                fillColor:
-                                                    AppColors.brandingPurple,
-                                                prefixIcon: Icon(
-                                                  Icons.abc,
-                                                  color:
-                                                      AppColors.brandingPurple,
-                                                ),
-                                                filled: true,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0),
-                                                  borderSide: BorderSide(
-                                                      color: AppColors
-                                                          .brandingPurple,
-                                                      width: 0.0),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0),
-                                                  borderSide: BorderSide(
-                                                      color: AppColors
-                                                          .brandingPurple,
-                                                      width: 0.0),
-                                                ),
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    );
+                                    return Observer(builder: (_) {
+                                      return NameAlterationDialog(
+                                        name: controller.nameToChange,
+                                        onChangedName: controller.setName,
+                                        socialName:
+                                            controller.socialNameToChange,
+                                        onChangedSocialName:
+                                            controller.setUserSocialName,
+                                        onChangedWantSocialName:
+                                            controller.setWantSocialName,
+                                        wantSocialName:
+                                            controller.wantSocialName,
+                                        certificateWithSocialName: controller
+                                            .certificateWithSocialName!,
+                                        onChangedCertificateWithSocialName:
+                                            controller
+                                                .setCertificateWithSocialName,
+                                        isLoading: controller.isLoading,
+                                      );
+                                    });
                                   },
                                 );
                               },
@@ -291,10 +233,100 @@ class _UserDashboardPageState
         } else {
           return Scaffold(
               body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width < 1000 ? 12 : 8,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    if (controller.socialName == '' ||
+                        controller.socialName == null)
+                      Text(
+                        'Olá, ${controller.name!.split(' ').first}',
+                        style: AppTextStyles.titleH1.copyWith(
+                            fontSize: MediaQuery.of(context).size.width < 500
+                                ? 35
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 40
+                                    : 45,
+                            color: AppColors.brandingPurple),
+                      )
+                    else
+                      Text(
+                        'Olá, ${controller.socialName!.split(' ').first}',
+                        style: AppTextStyles.titleH1.copyWith(
+                            fontSize: MediaQuery.of(context).size.width < 500
+                                ? 35
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 40
+                                    : 45,
+                            color: AppColors.brandingPurple),
+                      ),
+                    Row(
+                      children: [
+                        IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return Observer(builder: (_) {
+                                    return NameAlterationDialog(
+                                      name: controller.nameToChange,
+                                      onChangedName: controller.setName,
+                                      socialName: controller.socialNameToChange,
+                                      onChangedSocialName:
+                                          controller.setUserSocialName,
+                                      onChangedWantSocialName:
+                                          controller.setWantSocialName,
+                                      wantSocialName: controller.wantSocialName,
+                                      certificateWithSocialName:
+                                          controller.certificateWithSocialName!,
+                                      onChangedCertificateWithSocialName:
+                                          controller
+                                              .setCertificateWithSocialName,
+                                      nameValidation: controller.validateName,
+                                      socialNameValidation:
+                                          controller.validateSocialName,
+                                      isLoading: controller.isLoading,
+                                    );
+                                  });
+                                },
+                              );
+                            },
+                            icon: Icon(
+                              Icons.edit,
+                              color: AppColors.brandingPurple,
+                              size: MediaQuery.of(context).size.width < 1000
+                                  ? 30
+                                  : 45,
+                            )),
+                        SizedBox(
+                          width:
+                              MediaQuery.of(context).size.width < 1000 ? 8 : 32,
+                        ),
+                        IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              navBarController.logout();
+                            },
+                            icon: Icon(
+                              Icons.logout,
+                              color: AppColors.brandingPurple,
+                              size: MediaQuery.of(context).size.width < 1000
+                                  ? 30
+                                  : 45,
+                            )),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(
-                height: 16,
+                height: 200,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),

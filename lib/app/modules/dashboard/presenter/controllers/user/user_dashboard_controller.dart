@@ -30,26 +30,82 @@ abstract class _UserDashboardControllerBase with Store {
   String? name = '';
 
   @observable
-  bool isLoading = false;
+  bool? certificateWithSocialName = false;
+
+  @observable
+  String socialNameToChange = '';
+
+  @observable
+  String nameToChange = '';
+
+  @observable
+  bool wantSocialName = false;
+
+  @action
+  Future<void> getCertificateWithSocialName() async {
+    certificateWithSocialName =
+        await secureStorage.getCertificateWithSocialName();
+    wantSocialName = certificateWithSocialName!;
+  }
 
   @action
   Future<void> getUserName() async {
     name = await secureStorage.getName();
+    nameToChange = name ?? '';
   }
 
   @action
   Future<void> getUserSocialName() async {
     socialName = await secureStorage.getSocialName();
+    socialNameToChange = socialName ?? '';
   }
 
   @action
-  Future<void> setIsLoading(bool value) async {
-    isLoading = value;
+  Future<void> setWantSocialName(bool? value) async {
+    wantSocialName = value!;
+    certificateWithSocialName = value;
+    socialNameToChange = '';
   }
 
   @action
   void setName(String value) {
-    name = value;
+    nameToChange = value;
+  }
+
+  @action
+  void setUserSocialName(String value) {
+    socialNameToChange = value;
+  }
+
+  @action
+  void setCertificateWithSocialName(bool value) {
+    certificateWithSocialName = value;
+  }
+
+  @action
+  String? validateName(String? value) {
+    if (value!.isEmpty) {
+      return "         Campo obrigatório";
+    } else if (value.split(' ').length < 2) {
+      return "         Insira seu nome completo";
+    }
+    return null;
+  }
+
+  @action
+  String? validateSocialName(String? value) {
+    if (wantSocialName && value!.isEmpty) {
+      return "         Campo obrigatório";
+    }
+    return null;
+  }
+
+  @observable
+  bool isLoading = false;
+
+  @action
+  Future<void> setIsLoading(bool value) async {
+    isLoading = value;
   }
 
   @observable

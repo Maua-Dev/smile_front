@@ -66,4 +66,15 @@ class SecureStorage implements SecureStorageInterface {
   Future<void> saveSocialName(String socialName) async {
     await storage.put('socialName', socialName);
   }
+
+  @override
+  Future<bool?> getCertificateWithSocialName() async {
+    return await storage.get('certificateWithSocialName') as bool?;
+  }
+
+  @override
+  Future<void> saveCertificateWithSocialName(
+      bool certificateWithSocialName) async {
+    await storage.put('certificateWithSocialName', certificateWithSocialName);
+  }
 }

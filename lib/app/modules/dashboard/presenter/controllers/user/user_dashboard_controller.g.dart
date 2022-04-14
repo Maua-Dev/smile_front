@@ -89,6 +89,71 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
+  final _$certificateWithSocialNameAtom =
+      Atom(name: '_UserDashboardControllerBase.certificateWithSocialName');
+
+  @override
+  bool? get certificateWithSocialName {
+    _$certificateWithSocialNameAtom.reportRead();
+    return super.certificateWithSocialName;
+  }
+
+  @override
+  set certificateWithSocialName(bool? value) {
+    _$certificateWithSocialNameAtom
+        .reportWrite(value, super.certificateWithSocialName, () {
+      super.certificateWithSocialName = value;
+    });
+  }
+
+  final _$socialNameToChangeAtom =
+      Atom(name: '_UserDashboardControllerBase.socialNameToChange');
+
+  @override
+  String get socialNameToChange {
+    _$socialNameToChangeAtom.reportRead();
+    return super.socialNameToChange;
+  }
+
+  @override
+  set socialNameToChange(String value) {
+    _$socialNameToChangeAtom.reportWrite(value, super.socialNameToChange, () {
+      super.socialNameToChange = value;
+    });
+  }
+
+  final _$nameToChangeAtom =
+      Atom(name: '_UserDashboardControllerBase.nameToChange');
+
+  @override
+  String get nameToChange {
+    _$nameToChangeAtom.reportRead();
+    return super.nameToChange;
+  }
+
+  @override
+  set nameToChange(String value) {
+    _$nameToChangeAtom.reportWrite(value, super.nameToChange, () {
+      super.nameToChange = value;
+    });
+  }
+
+  final _$wantSocialNameAtom =
+      Atom(name: '_UserDashboardControllerBase.wantSocialName');
+
+  @override
+  bool get wantSocialName {
+    _$wantSocialNameAtom.reportRead();
+    return super.wantSocialName;
+  }
+
+  @override
+  set wantSocialName(bool value) {
+    _$wantSocialNameAtom.reportWrite(value, super.wantSocialName, () {
+      super.wantSocialName = value;
+    });
+  }
+
   final _$isLoadingAtom = Atom(name: '_UserDashboardControllerBase.isLoading');
 
   @override
@@ -203,6 +268,15 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
+  final _$getCertificateWithSocialNameAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.getCertificateWithSocialName');
+
+  @override
+  Future<void> getCertificateWithSocialName() {
+    return _$getCertificateWithSocialNameAsyncAction
+        .run(() => super.getCertificateWithSocialName());
+  }
+
   final _$getUserNameAsyncAction =
       AsyncAction('_UserDashboardControllerBase.getUserName');
 
@@ -217,6 +291,15 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   @override
   Future<void> getUserSocialName() {
     return _$getUserSocialNameAsyncAction.run(() => super.getUserSocialName());
+  }
+
+  final _$setWantSocialNameAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.setWantSocialName');
+
+  @override
+  Future<void> setWantSocialName(bool? value) {
+    return _$setWantSocialNameAsyncAction
+        .run(() => super.setWantSocialName(value));
   }
 
   final _$setIsLoadingAsyncAction =
@@ -259,6 +342,51 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   }
 
   @override
+  void setUserSocialName(String value) {
+    final _$actionInfo = _$_UserDashboardControllerBaseActionController
+        .startAction(name: '_UserDashboardControllerBase.setUserSocialName');
+    try {
+      return super.setUserSocialName(value);
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCertificateWithSocialName(bool value) {
+    final _$actionInfo =
+        _$_UserDashboardControllerBaseActionController.startAction(
+            name: '_UserDashboardControllerBase.setCertificateWithSocialName');
+    try {
+      return super.setCertificateWithSocialName(value);
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? validateName(String? value) {
+    final _$actionInfo = _$_UserDashboardControllerBaseActionController
+        .startAction(name: '_UserDashboardControllerBase.validateName');
+    try {
+      return super.validateName(value);
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? validateSocialName(String? value) {
+    final _$actionInfo = _$_UserDashboardControllerBaseActionController
+        .startAction(name: '_UserDashboardControllerBase.validateSocialName');
+    try {
+      return super.validateSocialName(value);
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void getNextActivity() {
     final _$actionInfo = _$_UserDashboardControllerBaseActionController
         .startAction(name: '_UserDashboardControllerBase.getNextActivity');
@@ -286,6 +414,10 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     return '''
 socialName: ${socialName},
 name: ${name},
+certificateWithSocialName: ${certificateWithSocialName},
+socialNameToChange: ${socialNameToChange},
+nameToChange: ${nameToChange},
+wantSocialName: ${wantSocialName},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 subscribedActivitiesList: ${subscribedActivitiesList},
