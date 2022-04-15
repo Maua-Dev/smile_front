@@ -55,5 +55,5 @@ jobs:
            run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUD_FRONT_ID}} --paths "/*" --region ${{ secrets.AWS_DEFAULT_REGION }}
            env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
 
