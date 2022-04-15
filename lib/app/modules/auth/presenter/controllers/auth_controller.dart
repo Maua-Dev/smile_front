@@ -1,3 +1,4 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 
@@ -61,5 +62,25 @@ class AuthController {
   Future<void> logout() async {
     await storage.cleanSecureStorage();
     _loggedIn = false;
+  }
+
+  Future<void> verifyIfHaveTokens() async {
+    try {
+      var accessLevel = await storage.getAccessLevel();
+      var accessToken = await storage.getAccessToken();
+      var refreshToken = await storage.getRefreshToken();
+      if (accessToken!.isNotEmpty &&
+          accessLevel!.isNotEmpty &&
+          refreshToken!.isNotEmpty) {
+        _loggedIn = true;
+        _accessLevel = accessLevel;
+      } else {
+        _loggedIn = false;
+        Modular.to.navigate("/login");
+      }
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
+    }
   }
 }
