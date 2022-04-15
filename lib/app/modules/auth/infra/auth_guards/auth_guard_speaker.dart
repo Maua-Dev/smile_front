@@ -8,7 +8,7 @@ class AuthGuardSpeaker implements RouteGuard {
     await Modular.isModuleReady<AppModule>();
     var authController = Modular.get<AuthController>();
     if (!authController.isLogged) {
-      await authController.refreshToken();
+      await authController.verifyIfHaveTokens();
     }
     if (authController.accessLevel == 'SPEAKER') {
       return authController.isLogged;

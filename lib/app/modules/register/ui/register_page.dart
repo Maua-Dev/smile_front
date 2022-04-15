@@ -7,6 +7,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/action_textbutton_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
+import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controllers/register_controller.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -50,10 +51,8 @@ class _RegisterPageState
                           const SizedBox(
                             height: 140,
                           ),
-                          CachedNetworkImage(
-                            width: 300,
-                            fit: BoxFit.cover,
-                            imageUrl: smileLogoUrl,
+                          const Center(
+                            child: SmileLogoWidget(),
                           ),
                           if (controller.successRegistration)
                             Padding(
@@ -101,7 +100,7 @@ class _RegisterPageState
                                           children: [
                                             IconButton(
                                               onPressed: () {
-                                                controller.setError('');
+                                                controller.resetErrors();
                                               },
                                               icon: const Icon(Icons.close),
                                             ),

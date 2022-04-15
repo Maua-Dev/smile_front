@@ -24,6 +24,21 @@ mixin _$RegisterController on _RegisterController, Store {
               name: '_RegisterController.registerInformations'))
           .value;
 
+  final _$errorsListAtom = Atom(name: '_RegisterController.errorsList');
+
+  @override
+  List<String> get errorsList {
+    _$errorsListAtom.reportRead();
+    return super.errorsList;
+  }
+
+  @override
+  set errorsList(List<String> value) {
+    _$errorsListAtom.reportWrite(value, super.errorsList, () {
+      super.errorsList = value;
+    });
+  }
+
   final _$errorsAtom = Atom(name: '_RegisterController.errors');
 
   @override
@@ -289,11 +304,26 @@ mixin _$RegisterController on _RegisterController, Store {
     return _$setAcceptImageAsyncAction.run(() => super.setAcceptImage(value));
   }
 
-  final _$setErrorAsyncAction = AsyncAction('_RegisterController.setError');
+  final _$addErrorAsyncAction = AsyncAction('_RegisterController.addError');
 
   @override
-  Future<void> setError(String value) {
-    return _$setErrorAsyncAction.run(() => super.setError(value));
+  Future<void> addError(String value) {
+    return _$addErrorAsyncAction.run(() => super.addError(value));
+  }
+
+  final _$joinErrorsAsyncAction = AsyncAction('_RegisterController.joinErrors');
+
+  @override
+  Future<void> joinErrors() {
+    return _$joinErrorsAsyncAction.run(() => super.joinErrors());
+  }
+
+  final _$resetErrorsAsyncAction =
+      AsyncAction('_RegisterController.resetErrors');
+
+  @override
+  Future<void> resetErrors() {
+    return _$resetErrorsAsyncAction.run(() => super.resetErrors());
   }
 
   final _$setNameAsyncAction = AsyncAction('_RegisterController.setName');
@@ -503,6 +533,7 @@ mixin _$RegisterController on _RegisterController, Store {
   @override
   String toString() {
     return '''
+errorsList: ${errorsList},
 errors: ${errors},
 isLoading: ${isLoading},
 showPwd: ${showPwd},

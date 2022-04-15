@@ -6,6 +6,10 @@ var faqMock = <Faq>[
       response:
           'Será disponibilizado durante a atividade um Formulário para preenchimento do aluno que validará as suas horas na atividade.'),
   Faq(
+      question: 'Como alterar meu nome/nome social para a certificação?',
+      response:
+          'O nome ou nome social que você se registrou é o que será utilizado por padrão para gerar os certificados. Caso tenha inserido algo errado ou não deseje utilizar seu nome social na certificação, você poderá alterá-lo até dia 23/04. Basta ir até a página de perfil e clicar no icone de lápis ao lado de seu nome.'),
+  Faq(
       question: 'Como emitir o meu Certificado?',
       response:
           'O Certificado ainda não está disponível, aguarde mais informações.'),
@@ -23,7 +27,7 @@ var faqMock = <Faq>[
   Faq(
       question: 'Fiz o meu login e esqueci a senha. O que devo fazer?',
       response:
-          'Existe uma opção na tela de "Login" chamada "Esqueci minha senha", onde você poderá alterá-la seguindo o passo-a-passo apresentado lá.'),
+          'Existe uma opção na tela de "Login" chamada "Esqueci minha senha", onde você poderá alterá-la seguindo um passo-a-passo.'),
   Faq(
       question: 'A partir de quando posso emitir meu certificado?',
       response: 'Novas Informações em breve!'),
@@ -34,5 +38,5 @@ var faqMock = <Faq>[
   Faq(
       question: 'Como cancelar minha inscrição em uma atividade?',
       response:
-          'Ao clicar na atividade que você se inscreveu erroneamente, haverá um botão vermelho "Desinscrever", basta clicar nele e confirmar.'),
+          'Ao clicar na atividade que você se inscreveu erroneamente, haverá um botão vermelho "Desinscrever-se", basta clicar nele e confirmar.'),
 ];

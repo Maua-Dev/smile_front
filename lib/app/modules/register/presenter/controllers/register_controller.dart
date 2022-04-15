@@ -18,6 +18,9 @@ abstract class _RegisterController with Store {
       ra == '' ? null : int.parse(ra.replaceAll('-', '').replaceAll('.', ''));
 
   @observable
+  List<String> errorsList = [];
+
+  @observable
   String errors = '';
 
   @observable
@@ -74,8 +77,26 @@ abstract class _RegisterController with Store {
   }
 
   @action
-  Future<void> setError(String value) async {
-    errors = value;
+  Future<void> addError(String value) async {
+    if (!errorsList.contains(value)) {
+      errorsList.add(value);
+      joinErrors();
+    }
+  }
+
+  @action
+  Future<void> joinErrors() async {
+    if (errorsList.isEmpty) {
+      errors = '';
+    } else {
+      errors = errorsList.join(", \n");
+    }
+  }
+
+  @action
+  Future<void> resetErrors() async {
+    errors = '';
+    errorsList = [];
   }
 
   @action
@@ -86,9 +107,11 @@ abstract class _RegisterController with Store {
   @action
   String? validateName(String value) {
     if (value.isEmpty) {
-      return "         Campo obrigatório";
+      addError("- Campo 'Nome Completo' obrigatório");
+      return "";
     } else if (value.split(' ').length < 2) {
-      return "         Insira seu nome completo";
+      addError('- Insira seu nome completo');
+      return "";
     }
     return null;
   }
@@ -101,7 +124,8 @@ abstract class _RegisterController with Store {
   @action
   String? validateSocialName(String value) {
     if (hasSocialName && value.isEmpty) {
-      return "         Campo obrigatório";
+      addError('- Campo "Nome Social" obrigatório');
+      return "";
     }
     return null;
   }
@@ -118,9 +142,11 @@ abstract class _RegisterController with Store {
     value = value.replaceAll('.', '');
     value = value.replaceAll('-', '');
     if (value.isEmpty) {
-      return "         Campo obrigatório";
+      addError('- Campo "CPF" obrigatório');
+      return "";
     } else if (!CPFValidator.isValid(value)) {
-      return "         CPF inválido";
+      addError('- Campo "CPF" inválido');
+      return "";
     }
     return null;
   }
@@ -133,10 +159,12 @@ abstract class _RegisterController with Store {
   @action
   String? validateEmail(String value) {
     if (value.isEmpty) {
-      return "         Campo obrigatório";
+      addError('- Campo "E-mail" obrigatório');
+      return "";
     }
     if (!value.contains('@')) {
-      return "Email inválido";
+      addError('- Campo "E-mail" inválido');
+      return "";
     }
     return null;
   }
@@ -166,12 +194,14 @@ abstract class _RegisterController with Store {
   String? validateRa(String value) {
     if (isMauaStudent) {
       if (value.isEmpty) {
-        return "         Campo obrigatório";
+        addError('- Campo "RA" obrigatório');
+        return "";
       }
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (value.length != 8) {
-        return "RA inválido";
+        addError('- Campo "RA" inválido');
+        return "";
       }
     }
     return null;
@@ -190,16 +220,18 @@ abstract class _RegisterController with Store {
   @action
   String? validateVerifyPassword(String value) {
     if (value.isEmpty) {
-      return "         Campo obrigatório";
+      addError('- Campo "Confirmar senha" obrigatório');
+      return "";
     }
     if (password != verifyPassword) {
-      return "Digite a mesma senha";
+      addError('- Os campos "Senha" e "Confirmar senha" \ndevem ser iguais');
+      return "";
     }
     String pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
     RegExp regExp = RegExp(pattern);
     if (!regExp.hasMatch(value)) {
-      setError(
+      addError(
           "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais \n - Mínimo de 8 caracteres");
       return '';
     }
@@ -226,11 +258,11 @@ abstract class _RegisterController with Store {
         setIsLoading(false);
         setSuccessRegistration(true);
       } on Failure catch (e) {
-        errors = e.message;
+        addError(e.message);
       }
       setIsLoading(false);
     } else {
-      errors = "Aceite os Termos de Uso para realizar o cadastro";
+      addError("- Aceite os Termos de Uso para realizar o cadastro");
     }
   }
 
