@@ -318,7 +318,8 @@ class Footer extends StatelessWidget {
                       height: 16,
                     ),
                     SizedBox(
-                      width: 300,
+                      width:
+                          MediaQuery.of(context).size.width < 1350 ? 300 : 400,
                       child: RichText(
                         text: TextSpan(
                             text: 'Em caso de dúvidas, enviar um e-mail para ',
@@ -370,7 +371,8 @@ class Footer extends StatelessWidget {
                       height: 4,
                     ),
                     SizedBox(
-                      width: 300,
+                      width:
+                          MediaQuery.of(context).size.width < 1350 ? 300 : 400,
                       child: RichText(
                         text: TextSpan(
                             text:
