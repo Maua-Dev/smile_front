@@ -72,6 +72,16 @@ abstract class _AdmDashboardControllerBase with Store {
       .where((activity) => activity.date!.weekday == 5)
       .toList();
 
+  @computed
+  List<CardActivity> get saturdayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 6)
+      .toList();
+
+  @computed
+  List<CardActivity> get sundayActivitiesList => allActivitiesToCards
+      .where((activity) => activity.date!.weekday == 7)
+      .toList();
+
   @action
   void toggleFloatActionButton() {
     isFloatActionButtonOpen = !isFloatActionButtonOpen;

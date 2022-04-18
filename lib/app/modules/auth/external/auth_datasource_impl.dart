@@ -1,14 +1,17 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dart';
 
 import '../../../shared/models/user_model.dart';
+import '../domain/repositories/secure_storage_interface.dart';
 import '../errors/errors.dart';
 import '../infra/datasource/auth_datasource.dart';
 
 class AuthDatasourceImpl implements AuthDatasource {
   final Dio dioClient;
+  final SecureStorageInterface storage;
 
-  AuthDatasourceImpl({required this.dioClient});
+  AuthDatasourceImpl({required this.dioClient, required this.storage});
   @override
   Future<String> getAccessLevel(cpfRne) async {
     try {
@@ -67,6 +70,10 @@ class AuthDatasourceImpl implements AuthDatasource {
       }
       throw Exception();
     } catch (e) {
+      if (e.toString().contains('400')) {
+        storage.cleanSecureStorage();
+        Modular.to.navigate('/login');
+      }
       rethrow;
     }
   }

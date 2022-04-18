@@ -58,6 +58,117 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
               name: '_UserDashboardControllerBase.saturdayActivitiesList'))
           .value;
 
+  final _$errorAtom = Atom(name: '_UserDashboardControllerBase.error');
+
+  @override
+  String? get error {
+    _$errorAtom.reportRead();
+    return super.error;
+  }
+
+  @override
+  set error(String? value) {
+    _$errorAtom.reportWrite(value, super.error, () {
+      super.error = value;
+    });
+  }
+
+  final _$socialNameAtom =
+      Atom(name: '_UserDashboardControllerBase.socialName');
+
+  @override
+  String? get socialName {
+    _$socialNameAtom.reportRead();
+    return super.socialName;
+  }
+
+  @override
+  set socialName(String? value) {
+    _$socialNameAtom.reportWrite(value, super.socialName, () {
+      super.socialName = value;
+    });
+  }
+
+  final _$nameAtom = Atom(name: '_UserDashboardControllerBase.name');
+
+  @override
+  String? get name {
+    _$nameAtom.reportRead();
+    return super.name;
+  }
+
+  @override
+  set name(String? value) {
+    _$nameAtom.reportWrite(value, super.name, () {
+      super.name = value;
+    });
+  }
+
+  final _$certificateWithSocialNameAtom =
+      Atom(name: '_UserDashboardControllerBase.certificateWithSocialName');
+
+  @override
+  bool get certificateWithSocialName {
+    _$certificateWithSocialNameAtom.reportRead();
+    return super.certificateWithSocialName;
+  }
+
+  @override
+  set certificateWithSocialName(bool value) {
+    _$certificateWithSocialNameAtom
+        .reportWrite(value, super.certificateWithSocialName, () {
+      super.certificateWithSocialName = value;
+    });
+  }
+
+  final _$socialNameToChangeAtom =
+      Atom(name: '_UserDashboardControllerBase.socialNameToChange');
+
+  @override
+  String get socialNameToChange {
+    _$socialNameToChangeAtom.reportRead();
+    return super.socialNameToChange;
+  }
+
+  @override
+  set socialNameToChange(String value) {
+    _$socialNameToChangeAtom.reportWrite(value, super.socialNameToChange, () {
+      super.socialNameToChange = value;
+    });
+  }
+
+  final _$nameToChangeAtom =
+      Atom(name: '_UserDashboardControllerBase.nameToChange');
+
+  @override
+  String get nameToChange {
+    _$nameToChangeAtom.reportRead();
+    return super.nameToChange;
+  }
+
+  @override
+  set nameToChange(String value) {
+    _$nameToChangeAtom.reportWrite(value, super.nameToChange, () {
+      super.nameToChange = value;
+    });
+  }
+
+  final _$wantSocialNameAtom =
+      Atom(name: '_UserDashboardControllerBase.wantSocialName');
+
+  @override
+  bool get wantSocialName {
+    _$wantSocialNameAtom.reportRead();
+    return super.wantSocialName;
+  }
+
+  @override
+  set wantSocialName(bool value) {
+    _$wantSocialNameAtom.reportWrite(value, super.wantSocialName, () {
+      super.wantSocialName = value;
+    });
+  }
+
   final _$isLoadingAtom = Atom(name: '_UserDashboardControllerBase.isLoading');
 
   @override
@@ -155,36 +266,6 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$userAtom = Atom(name: '_UserDashboardControllerBase.user');
-
-  @override
-  UserModel get user {
-    _$userAtom.reportRead();
-    return super.user;
-  }
-
-  @override
-  set user(UserModel value) {
-    _$userAtom.reportWrite(value, super.user, () {
-      super.user = value;
-    });
-  }
-
-  final _$userNameAtom = Atom(name: '_UserDashboardControllerBase.userName');
-
-  @override
-  String get userName {
-    _$userNameAtom.reportRead();
-    return super.userName;
-  }
-
-  @override
-  set userName(String value) {
-    _$userNameAtom.reportWrite(value, super.userName, () {
-      super.userName = value;
-    });
-  }
-
   final _$allActivitiesToCardsAtom =
       Atom(name: '_UserDashboardControllerBase.allActivitiesToCards');
 
@@ -200,6 +281,48 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
         () {
       super.allActivitiesToCards = value;
     });
+  }
+
+  final _$getCertificateWithSocialNameAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.getCertificateWithSocialName');
+
+  @override
+  Future<void> getCertificateWithSocialName() {
+    return _$getCertificateWithSocialNameAsyncAction
+        .run(() => super.getCertificateWithSocialName());
+  }
+
+  final _$getUserNameAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.getUserName');
+
+  @override
+  Future<void> getUserName() {
+    return _$getUserNameAsyncAction.run(() => super.getUserName());
+  }
+
+  final _$getUserSocialNameAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.getUserSocialName');
+
+  @override
+  Future<void> getUserSocialName() {
+    return _$getUserSocialNameAsyncAction.run(() => super.getUserSocialName());
+  }
+
+  final _$setWantSocialNameAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.setWantSocialName');
+
+  @override
+  Future<void> setWantSocialName(bool? value) {
+    return _$setWantSocialNameAsyncAction
+        .run(() => super.setWantSocialName(value));
+  }
+
+  final _$changeDataAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.changeData');
+
+  @override
+  Future<void> changeData() {
+    return _$changeDataAsyncAction.run(() => super.changeData());
   }
 
   final _$setIsLoadingAsyncAction =
@@ -231,22 +354,67 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
       ActionController(name: '_UserDashboardControllerBase');
 
   @override
-  void getNextActivity() {
+  void setName(String value) {
     final _$actionInfo = _$_UserDashboardControllerBaseActionController
-        .startAction(name: '_UserDashboardControllerBase.getNextActivity');
+        .startAction(name: '_UserDashboardControllerBase.setName');
     try {
-      return super.getNextActivity();
+      return super.setName(value);
     } finally {
       _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void getUserFirstName() {
+  void setUserSocialName(String value) {
     final _$actionInfo = _$_UserDashboardControllerBaseActionController
-        .startAction(name: '_UserDashboardControllerBase.getUserFirstName');
+        .startAction(name: '_UserDashboardControllerBase.setUserSocialName');
     try {
-      return super.getUserFirstName();
+      return super.setUserSocialName(value);
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCertificateWithSocialName(bool value) {
+    final _$actionInfo =
+        _$_UserDashboardControllerBaseActionController.startAction(
+            name: '_UserDashboardControllerBase.setCertificateWithSocialName');
+    try {
+      return super.setCertificateWithSocialName(value);
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  bool validateName() {
+    final _$actionInfo = _$_UserDashboardControllerBaseActionController
+        .startAction(name: '_UserDashboardControllerBase.validateName');
+    try {
+      return super.validateName();
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  bool validateSocialName() {
+    final _$actionInfo = _$_UserDashboardControllerBaseActionController
+        .startAction(name: '_UserDashboardControllerBase.validateSocialName');
+    try {
+      return super.validateSocialName();
+    } finally {
+      _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void getNextActivity() {
+    final _$actionInfo = _$_UserDashboardControllerBaseActionController
+        .startAction(name: '_UserDashboardControllerBase.getNextActivity');
+    try {
+      return super.getNextActivity();
     } finally {
       _$_UserDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -267,14 +435,19 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
   @override
   String toString() {
     return '''
+error: ${error},
+socialName: ${socialName},
+name: ${name},
+certificateWithSocialName: ${certificateWithSocialName},
+socialNameToChange: ${socialNameToChange},
+nameToChange: ${nameToChange},
+wantSocialName: ${wantSocialName},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 subscribedActivitiesList: ${subscribedActivitiesList},
 nextActivity: ${nextActivity},
 cardNextActivity: ${cardNextActivity},
 weekActivitiesList: ${weekActivitiesList},
-user: ${user},
-userName: ${userName},
 allActivitiesToCards: ${allActivitiesToCards},
 mondayActivitiesList: ${mondayActivitiesList},
 tuesdayActivitiesList: ${tuesdayActivitiesList},

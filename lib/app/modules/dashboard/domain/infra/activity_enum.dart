@@ -62,7 +62,7 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.COMPETICOES_ACADEMICAS:
         return 'Durante a Smile, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).';
       case ActivityEnum.HACKATHON:
-        return 'Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa sendo uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.';
+        return 'Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa é uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.';
       case ActivityEnum.FEIRA_ESTAGIOS:
         return 'Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes.';
       case ActivityEnum.CAFE_EX_ALUNOS:

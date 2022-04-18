@@ -1,10 +1,11 @@
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
-import '../../../../../shared/models/user_model.dart';
-import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
+import '../../../infra/models/user_change_data_model.dart';
 
 part 'user_dashboard_controller.g.dart';
 
@@ -13,11 +14,122 @@ class UserDashboardController = _UserDashboardControllerBase
 
 abstract class _UserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
-  final AuthController authController;
+  final UserRepositoryInterface userRepository;
+  final SecureStorageInterface secureStorage;
 
-  _UserDashboardControllerBase(
-      {required this.repository, required this.authController}) {
+  _UserDashboardControllerBase({
+    required this.userRepository,
+    required this.secureStorage,
+    required this.repository,
+  }) {
     getUserSubscribedActivities();
+    getUserName();
+    getUserSocialName();
+  }
+
+  @observable
+  String? error;
+
+  @observable
+  String? socialName = '';
+
+  @observable
+  String? name = '';
+
+  @observable
+  bool certificateWithSocialName = false;
+
+  @observable
+  String socialNameToChange = '';
+
+  @observable
+  String nameToChange = '';
+
+  @observable
+  bool wantSocialName = false;
+
+  @action
+  Future<void> getCertificateWithSocialName() async {
+    certificateWithSocialName =
+        (await secureStorage.getCertificateWithSocialName())!;
+  }
+
+  @action
+  Future<void> getUserName() async {
+    name = await secureStorage.getName();
+    setName(name ?? '');
+  }
+
+  @action
+  Future<void> getUserSocialName() async {
+    socialName = await secureStorage.getSocialName();
+    setUserSocialName(socialName ?? '');
+    if (socialName != null && socialName != '') {
+      wantSocialName = true;
+    } else {
+      wantSocialName = false;
+    }
+  }
+
+  @action
+  Future<void> setWantSocialName(bool? value) async {
+    wantSocialName = value!;
+    setCertificateWithSocialName(value);
+    setUserSocialName('');
+  }
+
+  @action
+  void setName(String value) {
+    nameToChange = value;
+  }
+
+  @action
+  void setUserSocialName(String value) {
+    socialNameToChange = value;
+  }
+
+  @action
+  void setCertificateWithSocialName(bool value) {
+    certificateWithSocialName = value;
+  }
+
+  @action
+  Future<void> changeData() async {
+    setIsLoading(true);
+    var userData = UserChangeDataModel(
+        name: nameToChange,
+        socialName: socialNameToChange,
+        certificateWithSocialName: certificateWithSocialName);
+    await userRepository.changeData(userData);
+    await secureStorage.saveName(nameToChange);
+    await secureStorage.saveSocialName(socialNameToChange);
+    await secureStorage
+        .saveCertificateWithSocialName(certificateWithSocialName);
+    getUserName();
+    getUserSocialName();
+    getUserSubscribedActivities();
+    setIsLoading(false);
+  }
+
+  @action
+  bool validateName() {
+    if (nameToChange.isEmpty) {
+      error = 'Campo "Nome" obrigatório!';
+      return false;
+    } else if (nameToChange.split(' ').length < 2) {
+      error = 'Preencha seu nome completo!';
+      return false;
+    }
+    return true;
+  }
+
+  @action
+  bool validateSocialName() {
+    if (wantSocialName && socialNameToChange.isEmpty) {
+      error = 'Campo "Nome Social" obrigatório!';
+      return false;
+    }
+    return true;
   }
 
   @observable
@@ -42,12 +154,6 @@ abstract class _UserDashboardControllerBase with Store {
 
   @observable
   List<CardActivity> weekActivitiesList = List.empty();
-
-  @observable
-  UserModel user = UserModel.newInstance();
-
-  @observable
-  String userName = '';
 
   @observable
   List<CardActivity> allActivitiesToCards = List.empty();
@@ -112,11 +218,6 @@ abstract class _UserDashboardControllerBase with Store {
     } else {
       nextActivity = ActivityModel.newInstance();
     }
-  }
-
-  @action
-  void getUserFirstName() {
-    userName = user.socialName.substring(0, user.socialName.indexOf(' '));
   }
 
   @computed

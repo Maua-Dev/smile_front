@@ -301,13 +301,17 @@ class _CreateActivityPageState
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return ActionConfirmationDialogWidget(
-                                    title: 'Tem certeza que deseja continuar?',
-                                    content:
-                                        'Ao salvar o banco de dados de atividade será alterado.',
-                                    onPressed: () {
-                                      controller.createActivity();
-                                    });
+                                return Observer(builder: (context) {
+                                  return ActionConfirmationDialogWidget(
+                                      isLoading: controller.isLoading,
+                                      title:
+                                          'Tem certeza que deseja continuar?',
+                                      content:
+                                          'Ao salvar o banco de dados de atividade será alterado.',
+                                      onPressed: () {
+                                        controller.createActivity();
+                                      });
+                                });
                               },
                             );
                           } else {

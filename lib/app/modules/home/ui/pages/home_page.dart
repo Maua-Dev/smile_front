@@ -4,7 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/footer/footer.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/speakers_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
-import 'package:smile_front/app/modules/home/ui/pages/widgets/action_textbutton_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/appbar_button_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/video_player/video_player_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                   ListTile(
-                    title: ActionTextButtonWidget(
+                    title: AppbarButtonWidget(
                       title: 'LOGIN',
                       textStyle: AppTextStyles.buttonBold
                           .copyWith(color: Colors.white, fontSize: 16),
@@ -105,14 +105,9 @@ class _HomePageState extends State<HomePage> {
                       widthSize: 160,
                       backgroundColor: AppColors.brandingOrange,
                       onPressed: () async {
-                        await Modular.isModuleReady<AppModule>();
-                        Modular.to.navigate('/login');
+                        widget.redirect();
                       },
                     ),
-                    onTap: () async {
-                      await Modular.isModuleReady<AppModule>();
-                      Modular.to.navigate('/login');
-                    },
                   ),
                 ],
               ),
@@ -144,7 +139,7 @@ class _HomePageState extends State<HomePage> {
           ),
           actions: [
             if (MediaQuery.of(context).size.width > 1024)
-              ActionTextButtonWidget(
+              AppbarButtonWidget(
                 title: 'HOME',
                 paddingHorizontal:
                     MediaQuery.of(context).size.width < 1300 ? 8 : 16,
@@ -154,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             if (MediaQuery.of(context).size.width > 1024)
-              ActionTextButtonWidget(
+              AppbarButtonWidget(
                 title: 'ATIVIDADES',
                 paddingHorizontal:
                     MediaQuery.of(context).size.width < 1300 ? 8 : 16,
@@ -164,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             if (MediaQuery.of(context).size.width > 1024)
-              ActionTextButtonWidget(
+              AppbarButtonWidget(
                 title: 'PATROCINADORES',
                 paddingHorizontal:
                     MediaQuery.of(context).size.width < 1300 ? 8 : 16,
@@ -176,7 +171,7 @@ class _HomePageState extends State<HomePage> {
             if (MediaQuery.of(context).size.width > 1024)
               Padding(
                 padding: const EdgeInsets.only(right: 16),
-                child: ActionTextButtonWidget(
+                child: AppbarButtonWidget(
                   title: 'LOGIN',
                   textStyle: AppTextStyles.buttonBold.copyWith(
                       color: Colors.white,
@@ -193,32 +188,34 @@ class _HomePageState extends State<HomePage> {
                 ),
               )
           ]),
-      body: Center(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width < 2200
-              ? MediaQuery.of(context).size.width
-              : 2200,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(key: homeKey, child: const MainHomePage()),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 24),
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.width < 1024
-                        ? MediaQuery.of(context).size.height * 0.4
-                        : MediaQuery.of(context).size.height * 0.5,
-                    width: MediaQuery.of(context).size.width < 1024
-                        ? MediaQuery.of(context).size.height * 0.6
-                        : MediaQuery.of(context).size.width * 0.5,
-                    child: const VideoPlayerWidget(),
+      body: SafeArea(
+        child: Center(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width < 2200
+                ? MediaQuery.of(context).size.width
+                : 2200,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(key: homeKey, child: const MainHomePage()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 24),
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.width < 1024
+                          ? MediaQuery.of(context).size.height * 0.4
+                          : MediaQuery.of(context).size.height * 0.5,
+                      width: MediaQuery.of(context).size.width < 1024
+                          ? MediaQuery.of(context).size.height * 0.6
+                          : MediaQuery.of(context).size.width * 0.5,
+                      child: const VideoPlayerWidget(),
+                    ),
                   ),
-                ),
-                const SpeakersHomePage(),
-                SizedBox(key: activityKey, child: const ActivitiesHomePage()),
-                SizedBox(key: sponsorsKey, child: const SponsorsHomePage()),
-                const Footer(),
-              ],
+                  const SpeakersHomePage(),
+                  SizedBox(key: activityKey, child: const ActivitiesHomePage()),
+                  SizedBox(key: sponsorsKey, child: const SponsorsHomePage()),
+                  const Footer(),
+                ],
+              ),
             ),
           ),
         ),
