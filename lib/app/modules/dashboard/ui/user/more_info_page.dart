@@ -257,29 +257,36 @@ class _MoreInfoPageState
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return ActionConfirmationDialogWidget(
-                                  title:
-                                      'Tem certeza que deseja se desinscrever?',
-                                  content:
-                                      'Você perderá sua vaga na atividade ao continuar!',
-                                  onPressed: () {
-                                    controller.unsubscribeActivity();
-                                    Modular.to.pop();
-                                  });
+                              return Observer(builder: (context) {
+                                return ActionConfirmationDialogWidget(
+                                    isLoading: controller.isLoading,
+                                    title:
+                                        'Tem certeza que deseja se desinscrever?',
+                                    content:
+                                        'Você perderá sua vaga na atividade ao continuar!',
+                                    onPressed: () {
+                                      controller.unsubscribeActivity();
+                                      Modular.to.pop();
+                                    });
+                              });
                             },
                           );
                         } else {
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return ActionConfirmationDialogWidget(
-                                  title: 'Tem certeza que deseja se inscrever?',
-                                  content:
-                                      'Se atente aos seus horários e atividades que você já se inscreveu!',
-                                  onPressed: () {
-                                    controller.subscribeActivity();
-                                    Modular.to.pop();
-                                  });
+                              return Observer(builder: (context) {
+                                return ActionConfirmationDialogWidget(
+                                    isLoading: controller.isLoading,
+                                    title:
+                                        'Tem certeza que deseja se inscrever?',
+                                    content:
+                                        'Se atente aos seus horários e atividades que você já se inscreveu!',
+                                    onPressed: () {
+                                      controller.subscribeActivity();
+                                      Modular.to.pop();
+                                    });
+                              });
                             },
                           );
                         }

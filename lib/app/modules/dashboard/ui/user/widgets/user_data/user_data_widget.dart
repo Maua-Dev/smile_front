@@ -81,16 +81,19 @@ class UserDataWidget extends StatelessWidget {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) {
-                                        return ActionConfirmationDialogWidget(
-                                            title:
-                                                'Tem certeza que deseja continuar?',
-                                            content:
-                                                'Se atente! A alteração afetará diretamente a sua certificação.',
-                                            onPressed: () {
-                                              controller.changeData();
-                                              Navigator.of(context).pop();
-                                              Navigator.of(context).pop();
-                                            });
+                                        return Observer(builder: (context) {
+                                          return ActionConfirmationDialogWidget(
+                                              isLoading: controller.isLoading,
+                                              title:
+                                                  'Tem certeza que deseja continuar?',
+                                              content:
+                                                  'Se atente! A alteração afetará diretamente a sua certificação.',
+                                              onPressed: () {
+                                                controller.changeData();
+                                                Navigator.of(context).pop();
+                                                Navigator.of(context).pop();
+                                              });
+                                        });
                                       },
                                     );
                                   } else {
@@ -109,6 +112,7 @@ class UserDataWidget extends StatelessWidget {
                                       context: context,
                                       builder: (BuildContext context) {
                                         return ActionConfirmationDialogWidget(
+                                            isLoading: controller.isLoading,
                                             title:
                                                 'Tem certeza que deseja continuar?',
                                             content:
