@@ -56,13 +56,9 @@ abstract class _EditActivityControllerBase with Store {
   @action
   Future editActivity() async {
     setIsLoading(true);
-    print('alterei a variavel para true:');
-    print(isLoading);
     await repository.editActivity(activityToEdit);
     await admDashboardController.getAllActivities();
     setIsLoading(false);
-    print('alterei a variavel para false:');
-    print(isLoading);
     Modular.to.navigate('/adm');
   }
 
