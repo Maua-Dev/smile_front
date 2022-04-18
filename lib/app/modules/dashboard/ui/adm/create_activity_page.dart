@@ -138,7 +138,7 @@ class _CreateActivityPageState
                               horizontal: 114, vertical: 8),
                           child: ScheduleAddWidget(
                             enableSubscription: controller.activityToCreate
-                                .schedule[index].enableSubscription,
+                                .schedule[index].acceptSubscription,
                             onChangedEnableSubscription: (valueBool) {
                               setState(() {
                                 controller.setEnableSubscription(

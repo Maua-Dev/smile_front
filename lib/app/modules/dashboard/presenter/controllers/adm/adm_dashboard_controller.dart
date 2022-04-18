@@ -120,7 +120,7 @@ abstract class _AdmDashboardControllerBase with Store {
             location: time.location,
             link: time.link,
             enrolledUsers: time.enrolledUsers,
-            enableSubscription: time.enableSubscription));
+            enableSubscription: time.acceptSubscription));
       }
     }
   }
@@ -161,7 +161,7 @@ abstract class _AdmDashboardControllerBase with Store {
           totalParticipants: time.totalParticipants,
           location: time.location,
           link: time.link,
-          enableSubscription: time.enableSubscription,
+          enableSubscription: time.acceptSubscription,
         ));
       }
     }

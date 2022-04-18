@@ -8,10 +8,10 @@ class ScheduleActivityModel extends ScheduleActivity {
   String? location;
   String? link;
   final List<String>? enrolledUsers;
-  bool enableSubscription;
+  bool acceptSubscription;
 
   ScheduleActivityModel(
-      {required this.enableSubscription,
+      {required this.acceptSubscription,
       this.location,
       this.link,
       this.duration,
@@ -25,7 +25,7 @@ class ScheduleActivityModel extends ScheduleActivity {
           enrolledUsers: enrolledUsers,
           link: link,
           location: location,
-          enableSubscription: enableSubscription,
+          acceptSubscription: acceptSubscription,
         );
 
   factory ScheduleActivityModel.fromMap(Map<String, dynamic> map) {
@@ -36,7 +36,7 @@ class ScheduleActivityModel extends ScheduleActivity {
       location: map['location'],
       link: map['link'],
       enrolledUsers: (map['enrolledUsers'] as List<dynamic>).cast<String>(),
-      enableSubscription: map['enableSubscription'] ?? false,
+      acceptSubscription: map['enableSubscription'] ?? false,
     );
   }
   static List<ScheduleActivityModel> fromMaps(List array) {
@@ -65,7 +65,7 @@ class ScheduleActivityModel extends ScheduleActivity {
       duration: duration ?? this.duration,
       location: location ?? this.location,
       link: link ?? this.link,
-      enableSubscription: enableSubscription ?? this.enableSubscription,
+      acceptSubscription: enableSubscription ?? this.acceptSubscription,
     );
   }
 
@@ -76,7 +76,7 @@ class ScheduleActivityModel extends ScheduleActivity {
       duration: null,
       location: null,
       link: null,
-      enableSubscription: false,
+      acceptSubscription: false,
     );
   }
 }

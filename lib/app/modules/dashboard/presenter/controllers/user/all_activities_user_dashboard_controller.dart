@@ -125,7 +125,7 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
             location: time.location,
             link: time.link,
             enrolledUsers: time.enrolledUsers,
-            enableSubscription: time.enableSubscription,
+            enableSubscription: time.acceptSubscription,
           ),
         );
       }

@@ -164,7 +164,7 @@ abstract class _EditActivityControllerBase with Store {
 
   @action
   void setEnableSubscription(bool value, int index) {
-    activityToEdit.schedule[index].enableSubscription = value;
+    activityToEdit.schedule[index].acceptSubscription = value;
   }
 
   @action

@@ -31,7 +31,7 @@ void main() {
           date: DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
           totalParticipants: 20,
           location: '',
-          enableSubscription: false,
+          acceptSubscription: false,
         ),
       ],
       speakers: [

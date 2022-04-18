@@ -137,7 +137,7 @@ abstract class _CreateActivityControllerBase with Store {
 
   @action
   void setEnableSubscription(bool value, int index) {
-    activityToCreate.schedule[index].enableSubscription = value;
+    activityToCreate.schedule[index].acceptSubscription = value;
   }
 
   @action

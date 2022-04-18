@@ -139,7 +139,7 @@ class _EditActivityPageState
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
                           enableSubscription: controller.activityToEdit
-                              .schedule[index].enableSubscription,
+                              .schedule[index].acceptSubscription,
                           onChangedEnableSubscription: (valueBool) {
                             setState(() {
                               controller.setEnableSubscription(
