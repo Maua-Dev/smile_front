@@ -277,14 +277,17 @@ class _EditActivityPageState
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return ActionConfirmationDialogWidget(
-                                  title: 'Tem certeza que deseja continuar?',
-                                  content:
-                                      'Ao confirmar todos os dados antigos serão perdidos.',
-                                  onPressed: () {
-                                    controller.deleteActivity(
-                                        controller.activityToEdit.id);
-                                  });
+                              return Observer(builder: (context) {
+                                return ActionConfirmationDialogWidget(
+                                    isLoading: controller.isLoading,
+                                    title: 'Tem certeza que deseja continuar?',
+                                    content:
+                                        'Ao confirmar todos os dados antigos serão perdidos.',
+                                    onPressed: () {
+                                      controller.deleteActivity(
+                                          controller.activityToEdit.id);
+                                    });
+                              });
                             },
                           );
                         },
@@ -314,13 +317,17 @@ class _EditActivityPageState
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return ActionConfirmationDialogWidget(
-                                    title: 'Tem certeza que deseja continuar?',
-                                    content:
-                                        'Ao salvar todos os dados antigos serão perdidos.',
-                                    onPressed: () {
-                                      controller.editActivity();
-                                    });
+                                return Observer(builder: (context) {
+                                  return ActionConfirmationDialogWidget(
+                                      isLoading: controller.isLoading,
+                                      title:
+                                          'Tem certeza que deseja continuar?',
+                                      content:
+                                          'Ao salvar todos os dados antigos serão perdidos.',
+                                      onPressed: () {
+                                        controller.editActivity();
+                                      });
+                                });
                               },
                             );
                           } else {

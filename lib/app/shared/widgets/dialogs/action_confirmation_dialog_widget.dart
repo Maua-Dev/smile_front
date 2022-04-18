@@ -4,12 +4,14 @@ class ActionConfirmationDialogWidget extends StatelessWidget {
   final Function()? onPressed;
   final String title;
   final String? content;
+  final bool isLoading;
 
   const ActionConfirmationDialogWidget({
     Key? key,
     this.onPressed,
     required this.title,
     this.content,
+    required this.isLoading,
   }) : super(key: key);
 
   @override
@@ -25,7 +27,16 @@ class ActionConfirmationDialogWidget extends StatelessWidget {
           },
         ),
         ElevatedButton(
-          child: const Text('Confirmar'),
+          child: isLoading
+              ? const SizedBox(
+                  height: 15,
+                  width: 15,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeWidth: 1,
+                  ),
+                )
+              : const Text('Confirmar'),
           onPressed: onPressed,
         ),
       ],
