@@ -17,34 +17,37 @@ class _HelpPageState extends ModularState<HelpPage, HelpController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 16,
-          ),
-          TextHeader(
-            title: 'Perguntas Frequentes',
-            fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
-            leftPadding: MediaQuery.of(context).size.width < 1000 ? 12 : 24,
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          Expanded(child: Observer(builder: (_) {
-            return ListView.builder(
-              shrinkWrap: true,
-              itemCount: controller.faqAction.length,
-              itemBuilder: (context, index) => FaqCardWidget(
-                titulo: controller.faqAction[index].faq.question,
-                descricao: controller.faqAction[index].faq.response,
-                isOpen: controller.faqAction[index].isOpen,
-                onPressed: () {
-                  controller.swapOpen(index);
-                },
-              ),
-            );
-          })),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 16,
+            ),
+            TextHeader(
+              title: 'Perguntas Frequentes',
+              fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
+              leftPadding: 12,
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Observer(builder: (_) {
+              return ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: controller.faqAction.length,
+                itemBuilder: (context, index) => FaqCardWidget(
+                  titulo: controller.faqAction[index].faq.question,
+                  descricao: controller.faqAction[index].faq.response,
+                  isOpen: controller.faqAction[index].isOpen,
+                  onPressed: () {
+                    controller.swapOpen(index);
+                  },
+                ),
+              );
+            }),
+          ],
+        ),
       ),
     );
   }
