@@ -57,7 +57,7 @@ class ScheduleActivityModel extends ScheduleActivity {
     int? totalParticipants,
     String? location,
     String? link,
-    bool? enableSubscription,
+    bool? acceptSubscription,
   }) {
     return ScheduleActivityModel(
       date: date ?? this.date,
@@ -65,7 +65,7 @@ class ScheduleActivityModel extends ScheduleActivity {
       duration: duration ?? this.duration,
       location: location ?? this.location,
       link: link ?? this.link,
-      acceptSubscription: enableSubscription ?? this.acceptSubscription,
+      acceptSubscription: acceptSubscription ?? this.acceptSubscription,
     );
   }
 
