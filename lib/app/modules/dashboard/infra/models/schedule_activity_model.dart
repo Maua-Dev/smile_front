@@ -7,8 +7,8 @@ class ScheduleActivityModel extends ScheduleActivity {
   final DateTime? duration;
   String? location;
   String? link;
-  final List<String>? enrolledUsers;
   bool acceptSubscription;
+  final int? enrolledUsers;
 
   ScheduleActivityModel(
       {required this.acceptSubscription,
@@ -35,8 +35,8 @@ class ScheduleActivityModel extends ScheduleActivity {
       duration: DateTime.fromMillisecondsSinceEpoch(map['duration']),
       location: map['location'],
       link: map['link'],
-      enrolledUsers: (map['enrolledUsers'] as List<dynamic>).cast<String>(),
       acceptSubscription: map['acceptSubscription'] ?? false,
+      enrolledUsers: map['enrolledUsers'] as int,
     );
   }
   static List<ScheduleActivityModel> fromMaps(List array) {

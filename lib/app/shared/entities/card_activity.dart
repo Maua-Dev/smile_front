@@ -13,8 +13,8 @@ class CardActivity {
   final DateTime? duration;
   final String? location;
   final String? link;
-  final List<String>? enrolledUsers;
   final bool acceptSubscription;
+  final int? enrolledUsers;
 
   CardActivity({
     required this.acceptSubscription,
@@ -35,7 +35,7 @@ class CardActivity {
   factory CardActivity.newInstance() {
     return CardActivity(
       acceptSubscription: false,
-      enrolledUsers: [],
+      enrolledUsers: null,
       activityCode: '',
       description: '',
       id: '',
