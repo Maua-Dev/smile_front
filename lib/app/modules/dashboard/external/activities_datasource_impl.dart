@@ -44,6 +44,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future<List<ActivityModel>> getUserSubscribedActivities() async {
+    await authController.refreshToken();
     var token = await storage.getAccessToken();
     try {
       BaseOptions options = BaseOptions(
@@ -60,18 +61,16 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       }
       throw Exception();
     } on Exception catch (e) {
-      if (e.toString().contains('401')) {
-        authController.refreshToken();
-        getUserSubscribedActivities();
-      }
-      print('Não foi possível se conectar com o Microsserviço, erro: ' +
-          e.toString());
+      print(
+          'Não foi possível se conectar com o Microsserviço na rota /activity/userisenrolled, erro: ' +
+              e.toString());
       rethrow;
     }
   }
 
   @override
   Future postSubscribe(String activityId, DateTime activityDate) async {
+    await authController.refreshToken();
     var token = await storage.getAccessToken();
     var body = SubscriptionActivityModel(
         activityDate: activityDate, activityId: activityId);
@@ -86,10 +85,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/enroll', data: body.toJson());
     } on Exception catch (e) {
-      if (e.toString().contains('401')) {
-        authController.refreshToken();
-        postSubscribe(activityId, activityDate);
-      }
       print(
           'Não foi possível se conectar com o Microsserviço na rota /activity/enroll, erro: ' +
               e.toString());
@@ -98,6 +93,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future putActivity(String id, ActivityModel activity) async {
+    await authController.refreshToken();
     var token = await storage.getAccessToken();
     try {
       BaseOptions options = BaseOptions(
@@ -110,10 +106,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.put('/activity?id=$id', data: activity.toJson());
     } on Exception catch (e) {
-      if (e.toString().contains('401')) {
-        authController.refreshToken();
-        putActivity(id, activity);
-      }
       print(
           'Não foi possível se conectar com o Microsserviço na rota /activity?id=$id, erro: ' +
               e.toString());
@@ -122,6 +114,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future postActivity(ActivityModel activity) async {
+    await authController.refreshToken();
     var token = await storage.getAccessToken();
     try {
       BaseOptions options = BaseOptions(
@@ -134,10 +127,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity', data: activity.toJson());
     } on Exception catch (e) {
-      if (e.toString().contains('401')) {
-        authController.refreshToken();
-        postActivity(activity);
-      }
       print(
           'Não foi possível se conectar com o Microsserviço na rota /activity, erro: ' +
               e.toString());
@@ -146,6 +135,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future removeActivity(String id) async {
+    await authController.refreshToken();
     var token = await storage.getAccessToken();
     try {
       BaseOptions options = BaseOptions(
@@ -158,10 +148,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.delete('/activity?id=$id');
     } on Exception catch (e) {
-      if (e.toString().contains('401')) {
-        authController.refreshToken();
-        removeActivity(id);
-      }
       print(
           'Não foi possível se conectar com o Microsserviçona rota /activity?id=$id, erro: ' +
               e.toString());
@@ -170,6 +156,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future postUnsubscribe(String activityId, DateTime activityDate) async {
+    await authController.refreshToken();
     var token = await storage.getAccessToken();
     var body = SubscriptionActivityModel(
         activityDate: activityDate, activityId: activityId);
@@ -184,10 +171,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/unenroll', data: body.toJson());
     } on Exception catch (e) {
-      if (e.toString().contains('401')) {
-        authController.refreshToken();
-        postUnsubscribe(activityId, activityDate);
-      }
       print(
           'Não foi possível se conectar com o Microsserviço na rota /activity/unenroll, erro: ' +
               e.toString());

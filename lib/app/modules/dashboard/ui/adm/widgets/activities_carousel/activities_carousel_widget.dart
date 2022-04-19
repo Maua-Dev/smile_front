@@ -92,7 +92,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                                           (element) =>
                                               element.id == list[index].id),
                                     );
-                                  } else {}
+                                  }
                                 },
                                 finalTime: finalTime,
                                 activityCode: list[index].activityCode,
