@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../../../../shared/themes/app_colors.dart';
+import '../../../../../../shared/themes/app_text_styles.dart';
 import 'text_field_dialog_widget.dart';
 
 class ScheduleAddWidget extends StatelessWidget {
@@ -10,9 +11,11 @@ class ScheduleAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedDuration;
   final void Function(String value)? onChangedLocation;
   final void Function(String value)? onChangedLink;
+  final void Function(bool? value)? onChangedEnableSubscription;
   final void Function()? onPressedIconDate;
   final void Function()? onPressedIconTime;
   final void Function()? removeSchedule;
+  final bool? enableSubscription;
   final int? totalParticipants;
   final String date;
   final String? hour;
@@ -39,6 +42,8 @@ class ScheduleAddWidget extends StatelessWidget {
     required this.date,
     this.onPressedIconDate,
     this.onPressedIconTime,
+    this.enableSubscription,
+    this.onChangedEnableSubscription,
   }) : super(key: key);
 
   @override
@@ -51,6 +56,7 @@ class ScheduleAddWidget extends StatelessWidget {
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
                     child: TextFieldDialogWidget(
@@ -67,9 +73,6 @@ class ScheduleAddWidget extends StatelessWidget {
                           )
                         ]),
                   ),
-                  const SizedBox(
-                    width: 16,
-                  ),
                   Flexible(
                     child: TextFieldDialogWidget(
                         onPressedIcon: onPressedIconTime,
@@ -85,9 +88,6 @@ class ScheduleAddWidget extends StatelessWidget {
                           )
                         ]),
                   ),
-                  const SizedBox(
-                    width: 16,
-                  ),
                   Flexible(
                     child: TextFieldDialogWidget(
                         labelText: 'Duração',
@@ -101,9 +101,6 @@ class ScheduleAddWidget extends StatelessWidget {
                           )
                         ]),
                   ),
-                  const SizedBox(
-                    width: 16,
-                  ),
                   Flexible(
                     child: TextFieldDialogWidget(
                       labelText: 'Número de Vagas',
@@ -114,6 +111,26 @@ class ScheduleAddWidget extends StatelessWidget {
                       padding: false,
                     ),
                   ),
+                  Flexible(
+                      child: Column(
+                    children: [
+                      Text(
+                        'Aceitar inscrições',
+                        style: AppTextStyles.titleH1.copyWith(
+                            color: AppColors.brandingPurple,
+                            fontSize: MediaQuery.of(context).size.width < 1200
+                                ? 17
+                                : 20),
+                      ),
+                      Checkbox(
+                        value: enableSubscription,
+                        onChanged: onChangedEnableSubscription,
+                        fillColor:
+                            MaterialStateProperty.all(AppColors.brandingPurple),
+                        mouseCursor: SystemMouseCursors.click,
+                      ),
+                    ],
+                  ))
                 ],
               ),
               Padding(

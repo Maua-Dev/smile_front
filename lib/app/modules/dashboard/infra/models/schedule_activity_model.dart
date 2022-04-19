@@ -7,10 +7,12 @@ class ScheduleActivityModel extends ScheduleActivity {
   final DateTime? duration;
   String? location;
   String? link;
+  bool acceptSubscription;
   final int? enrolledUsers;
 
   ScheduleActivityModel(
-      {this.location,
+      {required this.acceptSubscription,
+      this.location,
       this.link,
       this.duration,
       this.date,
@@ -23,6 +25,7 @@ class ScheduleActivityModel extends ScheduleActivity {
           enrolledUsers: enrolledUsers,
           link: link,
           location: location,
+          acceptSubscription: acceptSubscription,
         );
 
   factory ScheduleActivityModel.fromMap(Map<String, dynamic> map) {
@@ -32,6 +35,7 @@ class ScheduleActivityModel extends ScheduleActivity {
       duration: DateTime.fromMillisecondsSinceEpoch(map['duration']),
       location: map['location'],
       link: map['link'],
+      acceptSubscription: map['acceptSubscription'] ?? false,
       enrolledUsers: map['enrolledUsers'] as int,
     );
   }
@@ -44,7 +48,8 @@ class ScheduleActivityModel extends ScheduleActivity {
         'totalParticipants': totalParticipants,
         'duration': duration!.millisecondsSinceEpoch,
         'location': location ?? '',
-        'link': link ?? ''
+        'link': link ?? '',
+        'acceptSubscription': acceptSubscription
       };
 
   ScheduleActivityModel copyWith({
@@ -53,21 +58,26 @@ class ScheduleActivityModel extends ScheduleActivity {
     int? totalParticipants,
     String? location,
     String? link,
+    bool? acceptSubscription,
   }) {
     return ScheduleActivityModel(
-        date: date ?? this.date,
-        totalParticipants: totalParticipants ?? this.totalParticipants,
-        duration: duration ?? this.duration,
-        location: location ?? this.location,
-        link: link ?? this.link);
+      date: date ?? this.date,
+      totalParticipants: totalParticipants ?? this.totalParticipants,
+      duration: duration ?? this.duration,
+      location: location ?? this.location,
+      link: link ?? this.link,
+      acceptSubscription: acceptSubscription ?? this.acceptSubscription,
+    );
   }
 
   factory ScheduleActivityModel.newInstance() {
     return ScheduleActivityModel(
-        date: null,
-        totalParticipants: null,
-        duration: null,
-        location: null,
-        link: null);
+      date: null,
+      totalParticipants: null,
+      duration: null,
+      location: null,
+      link: null,
+      acceptSubscription: false,
+    );
   }
 }

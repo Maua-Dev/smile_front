@@ -163,6 +163,11 @@ abstract class _EditActivityControllerBase with Store {
   }
 
   @action
+  void setEnableSubscription(bool value, int index) {
+    activityToEdit.schedule[index].acceptSubscription = value;
+  }
+
+  @action
   void addSchedule() {
     var list = activityToEdit.schedule;
     list.add(ScheduleActivityModel.newInstance());

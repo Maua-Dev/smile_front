@@ -64,7 +64,10 @@ class _EditActivityPageState
                       width: MediaQuery.of(context).size.width * 0.25,
                       child: DropDownFieldCustom<ActivityEnum>(
                         textStyles: AppTextStyles.body.copyWith(
-                            color: AppColors.brandingPurple, fontSize: 20),
+                            color: AppColors.brandingPurple,
+                            fontSize: MediaQuery.of(context).size.width < 1200
+                                ? 16
+                                : 20),
                         filledColor: Colors.white,
                         titulo: 'Tipo de Atividade',
                         value: controller.activityToEdit.type,
@@ -135,6 +138,14 @@ class _EditActivityPageState
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
+                          enableSubscription: controller.activityToEdit
+                              .schedule[index].acceptSubscription,
+                          onChangedEnableSubscription: (valueBool) {
+                            setState(() {
+                              controller.setEnableSubscription(
+                                  valueBool!, index);
+                            });
+                          },
                           date: date,
                           hour: hour,
                           link: controller.activityToEdit.schedule[index].link,
@@ -217,7 +228,7 @@ class _EditActivityPageState
                   padding:
                       const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
                   child: FormsButtonWidget(
-                      buttonTittle: 'Adicionar novo horário',
+                      buttonTittle: 'Adicionar horário',
                       onPressed: controller.addSchedule,
                       backgroundColor: AppColors.brandingOrange,
                       icon:

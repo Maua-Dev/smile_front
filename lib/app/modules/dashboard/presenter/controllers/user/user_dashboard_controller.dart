@@ -184,6 +184,7 @@ abstract class _UserDashboardControllerBase with Store {
             location: time.location,
             link: time.link,
             enrolledUsers: time.enrolledUsers,
+            acceptSubscription: time.acceptSubscription,
           ));
         }
       }
@@ -211,6 +212,7 @@ abstract class _UserDashboardControllerBase with Store {
           location: time.location,
           link: time.link,
           enrolledUsers: time.enrolledUsers,
+          acceptSubscription: time.acceptSubscription,
         );
       }
     } else {
