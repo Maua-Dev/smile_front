@@ -239,10 +239,13 @@ class _MoreInfoPageState
                 return !controller.activity.acceptSubscription &&
                         !controller.isRegistered
                     ? Text(
-                        'As inscrições para a atividade se encerraram!',
+                        'Inscrição para a atividade indisponível!',
                         textAlign: TextAlign.center,
                         style: AppTextStyles.titleH1.copyWith(
-                            color: AppColors.brandingOrange, fontSize: 32),
+                            color: AppColors.brandingPurple,
+                            fontSize: MediaQuery.of(context).size.width < 1000
+                                ? 24
+                                : 32),
                       )
                     : Center(
                         child: RegisterButtonWidget(
