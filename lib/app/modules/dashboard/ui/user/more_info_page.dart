@@ -241,7 +241,7 @@ class _MoreInfoPageState
                     isRegistered: controller.isRegistered,
                     isLoading: controller.isLoading,
                     onPressed: () {
-                      if (controller.activity.enrolledUsers!.length ==
+                      if (controller.activity.enrolledUsers! ==
                           controller.activity.totalParticipants) {
                         showDialog(
                           context: context,

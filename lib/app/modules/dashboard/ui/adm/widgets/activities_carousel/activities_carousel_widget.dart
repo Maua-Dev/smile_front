@@ -81,8 +81,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                             SizedBox(
                               height: 200,
                               child: ActivityCardWidget(
-                                enrolledUsersLength:
-                                    list[index].enrolledUsers!.length,
+                                enrolledUsersLength: list[index].enrolledUsers!,
                                 onTap: () async {
                                   var accessLevel =
                                       await secureStorage.getAccessLevel();

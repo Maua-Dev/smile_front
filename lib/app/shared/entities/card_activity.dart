@@ -13,7 +13,7 @@ class CardActivity {
   final DateTime? duration;
   final String? location;
   final String? link;
-  final List<String>? enrolledUsers;
+  final int? enrolledUsers;
 
   CardActivity({
     required this.enrolledUsers,
@@ -32,7 +32,7 @@ class CardActivity {
 
   factory CardActivity.newInstance() {
     return CardActivity(
-      enrolledUsers: [],
+      enrolledUsers: null,
       activityCode: '',
       description: '',
       id: '',
