@@ -243,9 +243,11 @@ class _MoreInfoPageState
                         textAlign: TextAlign.center,
                         style: AppTextStyles.titleH1.copyWith(
                             color: AppColors.brandingPurple,
-                            fontSize: MediaQuery.of(context).size.width < 1000
-                                ? 24
-                                : 32),
+                            fontSize: MediaQuery.of(context).size.width < 800
+                                ? 22
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 26
+                                    : 30),
                       )
                     : Center(
                         child: RegisterButtonWidget(
