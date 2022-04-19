@@ -36,7 +36,7 @@ class ScheduleActivityModel extends ScheduleActivity {
       location: map['location'],
       link: map['link'],
       enrolledUsers: (map['enrolledUsers'] as List<dynamic>).cast<String>(),
-      acceptSubscription: map['enableSubscription'] ?? false,
+      acceptSubscription: map['acceptSubscription'] ?? false,
     );
   }
   static List<ScheduleActivityModel> fromMaps(List array) {
@@ -48,7 +48,8 @@ class ScheduleActivityModel extends ScheduleActivity {
         'totalParticipants': totalParticipants,
         'duration': duration!.millisecondsSinceEpoch,
         'location': location ?? '',
-        'link': link ?? ''
+        'link': link ?? '',
+        'acceptSubscription': acceptSubscription
       };
 
   ScheduleActivityModel copyWith({
