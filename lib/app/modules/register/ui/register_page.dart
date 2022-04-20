@@ -226,7 +226,7 @@ class _RegisterPageState
                               ),
                               InputBox(
                                 icon: Icons.person,
-                                placeholder: 'CPF / RNE',
+                                placeholder: 'CPF',
                                 setValue: controller.setCpf,
                                 validation: controller.validateCpf,
                                 isCpfField: true,
