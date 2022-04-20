@@ -109,18 +109,18 @@ abstract class _AdmDashboardControllerBase with Store {
     for (var activity in list) {
       for (var time in activity.schedule) {
         allActivitiesToCards.add(CardActivity(
-          id: activity.id,
-          activityCode: activity.activityCode,
-          type: activity.type,
-          title: activity.title,
-          description: activity.description,
-          date: time.date,
-          duration: time.duration,
-          totalParticipants: time.totalParticipants,
-          location: time.location,
-          link: time.link,
-          enrolledUsers: time.enrolledUsers,
-        ));
+            id: activity.id,
+            activityCode: activity.activityCode,
+            type: activity.type,
+            title: activity.title,
+            description: activity.description,
+            date: time.date,
+            duration: time.duration,
+            totalParticipants: time.totalParticipants,
+            location: time.location,
+            link: time.link,
+            enrolledUsers: time.enrolledUsers,
+            acceptSubscription: time.acceptSubscription));
       }
     }
   }
@@ -161,6 +161,7 @@ abstract class _AdmDashboardControllerBase with Store {
           totalParticipants: time.totalParticipants,
           location: time.location,
           link: time.link,
+          acceptSubscription: time.acceptSubscription,
         ));
       }
     }

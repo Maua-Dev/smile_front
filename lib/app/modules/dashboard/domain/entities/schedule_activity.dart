@@ -4,7 +4,8 @@ class ScheduleActivity {
   final DateTime? duration;
   final String? location;
   final String? link;
-  final List<String>? enrolledUsers;
+  final bool acceptSubscription;
+  final int? enrolledUsers;
 
   ScheduleActivity({
     this.enrolledUsers,
@@ -13,5 +14,6 @@ class ScheduleActivity {
     this.duration,
     this.date,
     this.totalParticipants,
+    required this.acceptSubscription,
   });
 }

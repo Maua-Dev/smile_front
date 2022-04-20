@@ -181,6 +181,18 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
   }
 
   @override
+  void setEnableSubscription(bool value, int index) {
+    final _$actionInfo =
+        _$_CreateActivityControllerBaseActionController.startAction(
+            name: '_CreateActivityControllerBase.setEnableSubscription');
+    try {
+      return super.setEnableSubscription(value, index);
+    } finally {
+      _$_CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSpeakerName(String value, int index) {
     final _$actionInfo = _$_CreateActivityControllerBaseActionController
         .startAction(name: '_CreateActivityControllerBase.setSpeakerName');

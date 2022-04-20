@@ -28,10 +28,11 @@ void main() {
       description: '12345',
       schedule: [
         ScheduleActivityModel(
-            date:
-                DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
-            totalParticipants: 20,
-            location: ''),
+          date: DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
+          totalParticipants: 20,
+          location: '',
+          acceptSubscription: false,
+        ),
       ],
       speakers: [
         SpeakerActivityModel(

@@ -60,10 +60,13 @@ class _CreateActivityPageState
                 child: Row(
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.2,
+                      width: MediaQuery.of(context).size.width * 0.25,
                       child: DropDownFieldCustom<ActivityEnum>(
                         textStyles: AppTextStyles.body.copyWith(
-                            color: AppColors.brandingPurple, fontSize: 20),
+                            color: AppColors.brandingPurple,
+                            fontSize: MediaQuery.of(context).size.width < 1200
+                                ? 16
+                                : 20),
                         filledColor: Colors.white,
                         titulo: 'Tipo de Atividade',
                         value: controller.activityToCreate.type,
@@ -134,6 +137,14 @@ class _CreateActivityPageState
                           padding: const EdgeInsets.symmetric(
                               horizontal: 114, vertical: 8),
                           child: ScheduleAddWidget(
+                            enableSubscription: controller.activityToCreate
+                                .schedule[index].acceptSubscription,
+                            onChangedEnableSubscription: (valueBool) {
+                              setState(() {
+                                controller.setEnableSubscription(
+                                    valueBool!, index);
+                              });
+                            },
                             date: date,
                             hour: hour,
                             link: controller
@@ -218,7 +229,7 @@ class _CreateActivityPageState
                   padding:
                       const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
                   child: FormsButtonWidget(
-                    buttonTittle: 'Adicionar novo horário',
+                    buttonTittle: 'Adicionar horário',
                     onPressed: controller.addSchedule,
                     backgroundColor: AppColors.brandingOrange,
                     icon: const Icon(Icons.add, color: Colors.white, size: 22),
@@ -290,13 +301,17 @@ class _CreateActivityPageState
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return ActionConfirmationDialogWidget(
-                                    title: 'Tem certeza que deseja continuar?',
-                                    content:
-                                        'Ao salvar o banco de dados de atividade será alterado.',
-                                    onPressed: () {
-                                      controller.createActivity();
-                                    });
+                                return Observer(builder: (context) {
+                                  return ActionConfirmationDialogWidget(
+                                      isLoading: controller.isLoading,
+                                      title:
+                                          'Tem certeza que deseja continuar?',
+                                      content:
+                                          'Ao salvar o banco de dados de atividade será alterado.',
+                                      onPressed: () {
+                                        controller.createActivity();
+                                      });
+                                });
                               },
                             );
                           } else {

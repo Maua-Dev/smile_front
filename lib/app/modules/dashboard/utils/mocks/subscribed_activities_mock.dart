@@ -32,18 +32,20 @@ var subscribedActivities = <ActivityModel>[
     ],
     schedule: <ScheduleActivityModel>[
       ScheduleActivityModel(
-        date: DateTime.parse('2022-05-16 13:00'),
-        totalParticipants: 20,
-        duration: DateFormat('HH:mm').parse('01:00'),
-        location: 'H244',
-        link: 'https://www.google.com.br',
-      ),
-      ScheduleActivityModel(
-          date: DateTime.parse('2022-05-17 13:00'),
-          totalParticipants: 30,
+          date: DateTime.parse('2022-05-16 13:00'),
+          totalParticipants: 20,
           duration: DateFormat('HH:mm').parse('01:00'),
           location: 'H244',
-          link: 'https://'),
+          link: 'https://www.google.com.br',
+          acceptSubscription: false),
+      ScheduleActivityModel(
+        date: DateTime.parse('2022-05-17 13:00'),
+        totalParticipants: 30,
+        duration: DateFormat('HH:mm').parse('01:00'),
+        location: 'H244',
+        link: 'https://',
+        acceptSubscription: false,
+      ),
     ],
   ),
 ];

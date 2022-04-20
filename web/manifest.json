@@ -1,39 +1,14 @@
 {
-    "name": "smile_front",
-    "short_name": "smile_front",
+    "name": "Semana Mauá de Inovação, Liderança e Empreendedorismo",
+    "short_name": "Smile",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A Smile é um evento integrador entre as áreas de Administração, Engenharia, Ciência da Computação, Design e Sistemas de Informação, que tem como objetivo apresentar novas tendências, tecnologias e conteúdos com a finalidade de incentivar o intercâmbio e a atualização de conhecimentos entre profissionais e estudantes.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
-        {
-            "src": "icons/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "icons/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        },
-        {
-            "src": "apple-touch-icon.png",
-            "sizes": "180x180",
-            "type": "image/png"
-        },
-        {
-            "src": "icons/favicon-16x16.png",
-            "sizes": "16x16",
-            "type": "image/png"
-        },
-        {
-            "src": "icons/favicon-32x32.png",
-            "sizes": "32x32",
-            "type": "image/png"
-        },
         {
             "src": "icons/favicon.ico",
             "sizes": "16x16",

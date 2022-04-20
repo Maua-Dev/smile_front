@@ -222,6 +222,17 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
   }
 
   @override
+  void setEnableSubscription(bool value, int index) {
+    final _$actionInfo = _$_EditActivityControllerBaseActionController
+        .startAction(name: '_EditActivityControllerBase.setEnableSubscription');
+    try {
+      return super.setEnableSubscription(value, index);
+    } finally {
+      _$_EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void addSchedule() {
     final _$actionInfo = _$_EditActivityControllerBaseActionController
         .startAction(name: '_EditActivityControllerBase.addSchedule');

@@ -6,6 +6,9 @@ import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
+final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
+final ScaffoldMessengerState scaffold = scaffoldKey.currentState!;
+
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
   @override
@@ -13,6 +16,7 @@ class AppWidget extends StatelessWidget {
     Intl.defaultLocale = 'pt_BR';
 
     return MaterialApp(
+      scaffoldMessengerKey: scaffoldKey,
       supportedLocales: const [Locale('pt', 'BR')],
       debugShowCheckedModeBanner: false,
       initialRoute: '/home',

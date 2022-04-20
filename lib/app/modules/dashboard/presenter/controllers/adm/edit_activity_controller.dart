@@ -64,8 +64,10 @@ abstract class _EditActivityControllerBase with Store {
 
   @action
   Future deleteActivity(String id) async {
+    setIsLoading(true);
     await repository.removeActivity(id);
     await admDashboardController.getAllActivities();
+    setIsLoading(false);
     Modular.to.navigate('/adm');
   }
 
@@ -160,6 +162,11 @@ abstract class _EditActivityControllerBase with Store {
   @action
   void setSpeakerCompany(String value, int index) {
     activityToEdit.speakers[index].company = value;
+  }
+
+  @action
+  void setEnableSubscription(bool value, int index) {
+    activityToEdit.schedule[index].acceptSubscription = value;
   }
 
   @action

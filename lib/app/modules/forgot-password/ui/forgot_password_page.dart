@@ -91,14 +91,30 @@ class _ForgotPasswordPageState
                       ),
                       Observer(builder: (context) {
                         if (controller.emailSent) {
-                          return const Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(42.0),
-                              child: Text(
-                                "O email foi enviado com sucesso! Acesse o link para alterar sua senha.",
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(color: Colors.white),
-                              ),
+                          return Center(
+                            child: Column(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.all(42.0),
+                                  child: Text(
+                                    "Você receberá um e-mail com um link para alterar sua senha! Verifique a caixa de spam.",
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                                CustomElevatedButtonWidget(
+                                  title: 'Retornar ao login',
+                                  widthSize: MediaQuery.of(context).size.width <
+                                          650
+                                      ? MediaQuery.of(context).size.width * 0.85
+                                      : 600,
+                                  heightSize: 50,
+                                  backgroundColor: AppColors.brandingOrange,
+                                  onPressed: () {
+                                    Modular.to.navigate('/login');
+                                  },
+                                ),
+                              ],
                             ),
                           );
                         } else {
