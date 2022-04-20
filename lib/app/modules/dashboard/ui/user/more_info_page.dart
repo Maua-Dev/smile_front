@@ -266,18 +266,7 @@ class _MoreInfoPageState
                                   },
                                 );
                               } else {
-                                if (controller.isRegistered) {
-                                  showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return ActionConfirmationDialogWidget(
-                                          isLoading: controller.isLoading,
-                                          title:
-                                              'Parece que o número de vagas da atividade se esgotou :(',
-                                        );
-                                      });
-                                } else if (!controller
-                                        .activity.acceptSubscription &&
+                                if (!controller.activity.acceptSubscription &&
                                     controller.isRegistered) {
                                   showDialog(
                                     context: context,
