@@ -5,6 +5,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/subscription_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import '../../../shared/error/dio_exceptions.dart';
+import '../../../shared/error/error_dialog.dart';
 import '../../../shared/services/enviroment/enviroment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
 import '../../auth/presenter/controllers/auth_controller.dart';
@@ -12,7 +14,6 @@ import '../../auth/presenter/controllers/auth_controller.dart';
 class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   final SecureStorageInterface storage;
   var authController = Modular.get<AuthController>();
-
   ActivitiesDatasourceImpl({
     required this.storage,
   });
@@ -34,10 +35,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         return ActivityModel.fromMaps(res.data);
       }
       throw Exception();
-    } on Exception catch (e) {
-      print(
-          'Não foi possível se conectar com o Microsserviço na rota /activity/getAll, erro: ' +
-              e.toString());
+    } on DioError catch (e) {
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage);
+      print('/activity/getAll, error: ' + errorMessage);
       rethrow;
     }
   }
@@ -60,10 +61,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         return ActivityModel.fromMaps(res.data);
       }
       throw Exception();
-    } on Exception catch (e) {
-      print(
-          'Não foi possível se conectar com o Microsserviço na rota /activity/userisenrolled, erro: ' +
-              e.toString());
+    } on DioError catch (e) {
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage);
+      print('/activity/userisenrolled, error: ' + errorMessage);
       rethrow;
     }
   }
@@ -84,10 +85,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/enroll', data: body.toJson());
-    } on Exception catch (e) {
-      print(
-          'Não foi possível se conectar com o Microsserviço na rota /activity/enroll, erro: ' +
-              e.toString());
+    } on DioError catch (e) {
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage);
+      print('/activity/enroll, error: ' + errorMessage);
     }
   }
 
@@ -105,10 +106,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.put('/activity?id=$id', data: activity.toJson());
-    } on Exception catch (e) {
-      print(
-          'Não foi possível se conectar com o Microsserviço na rota /activity?id=$id, erro: ' +
-              e.toString());
+    } on DioError catch (e) {
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage);
+      print('/activity?id=$id, error: ' + errorMessage);
     }
   }
 
@@ -126,10 +127,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity', data: activity.toJson());
-    } on Exception catch (e) {
-      print(
-          'Não foi possível se conectar com o Microsserviço na rota /activity, erro: ' +
-              e.toString());
+    } on DioError catch (e) {
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage);
+      print('/activity, error: ' + errorMessage);
     }
   }
 
@@ -147,10 +148,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.delete('/activity?id=$id');
-    } on Exception catch (e) {
-      print(
-          'Não foi possível se conectar com o Microsserviçona rota /activity?id=$id, erro: ' +
-              e.toString());
+    } on DioError catch (e) {
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage);
+      print('/activity?id=$id, error: ' + errorMessage);
     }
   }
 
@@ -170,10 +171,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/unenroll', data: body.toJson());
-    } on Exception catch (e) {
-      print(
-          'Não foi possível se conectar com o Microsserviço na rota /activity/unenroll, erro: ' +
-              e.toString());
+    } on DioError catch (e) {
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage);
+      print('/activity/unenroll, error: ' + errorMessage);
     }
   }
 }
