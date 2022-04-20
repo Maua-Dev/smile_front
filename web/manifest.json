@@ -1,11 +1,11 @@
 {
-    "name": "Smile",
+    "name": "Semana Mauá de Inovação, Liderança e Empreendedorismo",
     "short_name": "Smile",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Semana Mauá de Inovação, Liderança e Empreendedorismo.",
+    "description": "A Smile é um evento integrador entre as áreas de Administração, Engenharia, Ciência da Computação, Design e Sistemas de Informação, que tem como objetivo apresentar novas tendências, tecnologias e conteúdos com a finalidade de incentivar o intercâmbio e a atualização de conhecimentos entre profissionais e estudantes.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
