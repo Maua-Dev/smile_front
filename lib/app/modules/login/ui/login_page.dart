@@ -90,7 +90,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       ),
                       InputBox(
                         icon: Icons.person,
-                        placeholder: 'CPF / RNE ou E-mail',
+                        placeholder: 'CPF ou E-mail',
                         setValue: controller.setUsername,
                         validation: controller.validateCpf,
                       ),
