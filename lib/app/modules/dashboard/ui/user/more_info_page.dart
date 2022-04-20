@@ -317,8 +317,23 @@ class _MoreInfoPageState
                                               content:
                                                   'Se atente aos seus horários e atividades que você já se inscreveu!',
                                               onPressed: () {
-                                                controller.subscribeActivity();
-                                                Modular.to.pop();
+                                                if (controller
+                                                    .checkIsOkForSubscribe()) {
+                                                  controller
+                                                      .subscribeActivity();
+                                                  Modular.to.pop();
+                                                } else {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return const CustomAlertDialogWidget(
+                                                        title:
+                                                            'Parece que você já se inscreveu em uma atividade no mesmo horário.',
+                                                      );
+                                                    },
+                                                  );
+                                                }
                                               });
                                         });
                                       },
