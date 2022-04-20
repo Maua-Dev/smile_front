@@ -239,10 +239,15 @@ class _MoreInfoPageState
                 return !controller.activity.acceptSubscription &&
                         !controller.isRegistered
                     ? Text(
-                        'As inscrições para a atividade se encerraram!',
+                        'Inscrição para a atividade indisponível!',
                         textAlign: TextAlign.center,
                         style: AppTextStyles.titleH1.copyWith(
-                            color: AppColors.brandingOrange, fontSize: 32),
+                            color: AppColors.brandingPurple,
+                            fontSize: MediaQuery.of(context).size.width < 800
+                                ? 22
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 26
+                                    : 30),
                       )
                     : Center(
                         child: RegisterButtonWidget(
@@ -261,18 +266,7 @@ class _MoreInfoPageState
                                   },
                                 );
                               } else {
-                                if (controller.isRegistered) {
-                                  showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return ActionConfirmationDialogWidget(
-                                          isLoading: controller.isLoading,
-                                          title:
-                                              'Parece que o número de vagas da atividade se esgotou :(',
-                                        );
-                                      });
-                                } else if (!controller
-                                        .activity.acceptSubscription &&
+                                if (!controller.activity.acceptSubscription &&
                                     controller.isRegistered) {
                                   showDialog(
                                     context: context,

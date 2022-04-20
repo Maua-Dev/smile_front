@@ -154,14 +154,12 @@ class _UserDashboardPageState
               const SizedBox(
                 height: 16,
               ),
-              Observer(builder: (_) {
-                return UserDataWidget(
-                  logout: () {
-                    navBarController.logout();
-                  },
-                  controller: controller,
-                );
-              }),
+              UserDataWidget(
+                logout: () {
+                  navBarController.logout();
+                },
+                controller: controller,
+              ),
               const SizedBox(
                 height: 200,
               ),
