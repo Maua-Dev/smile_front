@@ -18,7 +18,7 @@ var faqMock = <Faq>[
       response:
           'Ao clicar na atividade em que você se inscreveu, você poderá ver todas as informações disponíveis sobre aquela atividade, inclusive a sala.'),
   Faq(
-      question: 'Nas visitas técnicas posso estar vestido de bermuda?',
+      question: 'Nas visitas técnicas posso estar de bermuda?',
       response:
           'As Visitas Técnicas tem algumas orientações importantes! Assim ANTES de você fazer a sua inscrição LEIA com ATENÇÃO as informações necessárias que estão no site da SMILE. A recomendação padrão para você participar de uma visita é estar vestido de calça comprida e sapato de couro. Bermudas não serão permitidas.'),
   Faq(
@@ -31,17 +31,13 @@ var faqMock = <Faq>[
       response:
           'Ao clicar na atividade que você quer cancelar haverá um botão vermelho "Desinscrever-se", basta clicar nele e confirmar.'),
   Faq(
-      question: 'Como realizo acesso ao Zoom para assistir à palestra?',
+      question: 'Como realizo acesso ao Zoom para assistir a palestra?',
       response:
           'Ao clicar na atividade em que você se inscreveu haverá um campo "Link" sublinhado e clicável de "Zoom" que irá te redirecionar para a reunião.'),
   Faq(
       question: 'Inseri meu e-mail errado. Como pedir alteração?',
       response:
           'Envie um e-mail para smile@maua.br ou dev@maua.br ou ligue para 4239-3169.'),
-  Faq(
-      question: 'Como emitir o meu Certificado?',
-      response:
-          'O Certificado será emitido por você acessando o site da SMILE.'),
   Faq(
       question: 'Como emitir o meu Certificado?',
       response:
