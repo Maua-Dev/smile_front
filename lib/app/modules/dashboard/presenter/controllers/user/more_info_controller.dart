@@ -49,9 +49,9 @@ abstract class _MoreInfoControllerBase with Store {
               subscribedActivities[i].duration!));
       if ((subscribedActivities[i].date!.day != activity.date!.day)) {
       } else if (((!activity.date!.isBefore(subscribedActivities[i].date!) &&
-              !activity.date!.isBefore(finalTime)) ||
-          (!activity.date!.isAfter(subscribedActivities[i].date!) &&
-              !activity.date!.isAfter(finalTime)))) {
+              !activity.date!.isAfter(subscribedActivities[i].date!)) ||
+          (!activity.date!.isBefore(finalTime)) &&
+              !activity.date!.isAfter(finalTime))) {
         return false;
       }
     }
