@@ -372,7 +372,7 @@ class _RegisterPageState
                                 return CheckBoxWidget(
                                   check: controller.acceptImage,
                                   text:
-                                      'Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile',
+                                      'Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile.',
                                   onChanged: (bool? value) {
                                     controller.setAcceptImage(value);
                                   },
@@ -384,7 +384,7 @@ class _RegisterPageState
                               Observer(builder: (_) {
                                 return CheckBoxWidget(
                                   check: controller.acceptTermsOfUse,
-                                  text: 'Li e Aceito os Termos de Uso',
+                                  text: 'Li e Aceito os Termos de Uso.',
                                   link:
                                       'https://www.maua.br/a-maua/politica-de-privacidade',
                                   onChanged: (bool? value) {
@@ -399,7 +399,7 @@ class _RegisterPageState
                                 return CheckBoxWidget(
                                   check: controller.canSendEmails,
                                   text:
-                                      'Autorizo o envio de notificação por email, para fins de divulgação da Smile',
+                                      'Autorizo o envio de notificação por email, para fins de divulgação da Smile.',
                                   onChanged: (bool? value) {
                                     controller.setCanSendEmails(value);
                                   },
