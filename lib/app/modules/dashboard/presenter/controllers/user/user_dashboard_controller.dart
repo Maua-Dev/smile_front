@@ -167,8 +167,8 @@ abstract class _UserDashboardControllerBase with Store {
   Future getUserSubscribedActivities() async {
     setIsLoading(true);
     subscribedActivitiesList = await repository.getUserSubscribedActivities();
+    allActivitiesToCards = [];
     if (subscribedActivitiesList.isNotEmpty) {
-      allActivitiesToCards = [];
       for (var activity in subscribedActivitiesList) {
         for (var time in activity.schedule) {
           allActivitiesToCards.add(CardActivity(
