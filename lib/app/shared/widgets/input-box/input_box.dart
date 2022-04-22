@@ -15,6 +15,7 @@ class InputBox extends StatelessWidget {
   final void Function(bool)? onToggleVisibilityPwd;
   final bool? showPwd;
   final bool? isCpfField;
+  final bool? isRAField;
   final bool? isValidated;
 
   const InputBox({
@@ -31,6 +32,7 @@ class InputBox extends StatelessWidget {
     this.onToggleVisibilityPwd,
     this.showPwd,
     this.isCpfField,
+    this.isRAField,
     this.isValidated,
   }) : super(key: key);
 
@@ -38,6 +40,8 @@ class InputBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final maskCpf = MaskTextInputFormatter(
         mask: "###.###.###-##", filter: {"#": RegExp(r'[0-9]')});
+    final maskRA = MaskTextInputFormatter(
+        mask: "##.#####-#", filter: {"#": RegExp(r'[0-9]')});
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -72,7 +76,11 @@ class InputBox extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 10.0, left: 10),
           child: TextFormField(
-            inputFormatters: isCpfField != null ? [maskCpf] : null,
+            inputFormatters: isCpfField != null
+                ? [maskCpf]
+                : isRAField != null
+                    ? [maskRA]
+                    : null,
             textAlignVertical: TextAlignVertical.center,
             validator: (value) {
               if (validation != null) {
