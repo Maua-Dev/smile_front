@@ -172,18 +172,7 @@ class _MoreInfoPageState
                     if (controller.activity.link != null &&
                         controller.isRegistered)
                       Column(
-                        children: [
-                          Text(
-                            'Zoom',
-                            style: AppTextStyles.buttonBold.copyWith(
-                                fontSize: MediaQuery.of(context).size.width <
-                                        800
-                                    ? 10
-                                    : MediaQuery.of(context).size.width < 1000
-                                        ? 14
-                                        : 18,
-                                color: AppColors.brandingPurple),
-                          ),
+                        children: [                        
                           MouseRegion(
                             cursor: SystemMouseCursors.click,
                             child: Row(
