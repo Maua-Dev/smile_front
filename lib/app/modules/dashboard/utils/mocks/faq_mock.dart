@@ -54,7 +54,7 @@ var faqMock = <Faq>[
   Faq(
       question: 'A partir de quando posso emitir meu certificado?',
       response:
-          'Os Certificados estarão disponíveis para download no site a partir de 30 de abril de 2022.'),
+          'Os Certificados estarão disponíveis para download no site a partir de 30 de maio de 2022.'),
   Faq(
       question:
           'Quais são os links nas redes sociais para compartilhar o evento com amigos?',
