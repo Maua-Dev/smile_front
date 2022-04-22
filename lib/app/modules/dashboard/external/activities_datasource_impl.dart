@@ -36,6 +36,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       }
       throw Exception();
     } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken();
+        await getAllActivities();
+      }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage);
       print('/activity/getAll, error: ' + errorMessage);
@@ -45,7 +49,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future<List<ActivityModel>> getUserSubscribedActivities() async {
-    await authController.refreshToken();
     var token = await storage.getAccessToken();
     try {
       BaseOptions options = BaseOptions(
@@ -62,6 +65,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       }
       throw Exception();
     } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken();
+        await getUserSubscribedActivities();
+      }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage);
       print('/activity/userisenrolled, error: ' + errorMessage);
@@ -71,7 +78,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future postSubscribe(String activityId, DateTime activityDate) async {
-    await authController.refreshToken();
     var token = await storage.getAccessToken();
     var body = SubscriptionActivityModel(
         activityDate: activityDate, activityId: activityId);
@@ -86,6 +92,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/enroll', data: body.toJson());
     } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken();
+        await postSubscribe(activityId, activityDate);
+      }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage);
       print('/activity/enroll, error: ' + errorMessage);
@@ -94,7 +104,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future putActivity(String id, ActivityModel activity) async {
-    await authController.refreshToken();
     var token = await storage.getAccessToken();
     try {
       BaseOptions options = BaseOptions(
@@ -107,6 +116,12 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.put('/activity?id=$id', data: activity.toJson());
     } on DioError catch (e) {
+      print(e.message.toString());
+      print(e.response.toString());
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken();
+        await putActivity(id, activity);
+      }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage);
       print('/activity?id=$id, error: ' + errorMessage);
@@ -115,7 +130,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future postActivity(ActivityModel activity) async {
-    await authController.refreshToken();
     var token = await storage.getAccessToken();
     try {
       BaseOptions options = BaseOptions(
@@ -128,6 +142,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity', data: activity.toJson());
     } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken();
+        await postActivity(activity);
+      }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage);
       print('/activity, error: ' + errorMessage);
@@ -136,7 +154,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future removeActivity(String id) async {
-    await authController.refreshToken();
     var token = await storage.getAccessToken();
     try {
       BaseOptions options = BaseOptions(
@@ -149,6 +166,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.delete('/activity?id=$id');
     } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken();
+        await removeActivity(id);
+      }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage);
       print('/activity?id=$id, error: ' + errorMessage);
@@ -157,7 +178,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future postUnsubscribe(String activityId, DateTime activityDate) async {
-    await authController.refreshToken();
     var token = await storage.getAccessToken();
     var body = SubscriptionActivityModel(
         activityDate: activityDate, activityId: activityId);
@@ -172,6 +192,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/unenroll', data: body.toJson());
     } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken();
+        await postUnsubscribe(activityId, activityDate);
+      }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage);
       print('/activity/unenroll, error: ' + errorMessage);
