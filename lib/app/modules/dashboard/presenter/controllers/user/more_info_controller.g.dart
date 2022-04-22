@@ -55,20 +55,6 @@ mixin _$MoreInfoController on _MoreInfoControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  final _$_MoreInfoControllerBaseActionController =
-      ActionController(name: '_MoreInfoControllerBase');
-
-  @override
-  bool checkIsOkForSubscribe() {
-    final _$actionInfo = _$_MoreInfoControllerBaseActionController.startAction(
-        name: '_MoreInfoControllerBase.checkIsOkForSubscribe');
-    try {
-      return super.checkIsOkForSubscribe();
-    } finally {
-      _$_MoreInfoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''
