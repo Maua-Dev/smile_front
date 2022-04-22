@@ -3,16 +3,31 @@
     "short_name": "Smile",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
+    "background_color": "#2b2446",
+    "theme_color": "#2b2446",
     "description": "A Smile é um evento integrador entre as áreas de Administração, Engenharia, Ciência da Computação, Design e Sistemas de Informação, que tem como objetivo apresentar novas tendências, tecnologias e conteúdos com a finalidade de incentivar o intercâmbio e a atualização de conhecimentos entre profissionais e estudantes.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "icons/favicon.ico",
-            "sizes": "16x16",
-            "type": "image/ico"
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
         }
     ]
 }
