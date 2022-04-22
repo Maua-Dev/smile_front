@@ -460,7 +460,7 @@ mixin _$RegisterController on _RegisterController, Store {
       ActionController(name: '_RegisterController');
 
   @override
-  String? validateName(String value) {
+  bool validateName(String value) {
     final _$actionInfo = _$_RegisterControllerActionController.startAction(
         name: '_RegisterController.validateName');
     try {
@@ -471,7 +471,7 @@ mixin _$RegisterController on _RegisterController, Store {
   }
 
   @override
-  String? validateSocialName(String value) {
+  bool validateSocialName(String value) {
     final _$actionInfo = _$_RegisterControllerActionController.startAction(
         name: '_RegisterController.validateSocialName');
     try {
@@ -482,7 +482,7 @@ mixin _$RegisterController on _RegisterController, Store {
   }
 
   @override
-  String? validateCpf(String value) {
+  bool validateCpf(String value) {
     final _$actionInfo = _$_RegisterControllerActionController.startAction(
         name: '_RegisterController.validateCpf');
     try {
@@ -493,7 +493,7 @@ mixin _$RegisterController on _RegisterController, Store {
   }
 
   @override
-  String? validateEmail(String value) {
+  bool validateEmail(String value) {
     final _$actionInfo = _$_RegisterControllerActionController.startAction(
         name: '_RegisterController.validateEmail');
     try {
@@ -504,7 +504,7 @@ mixin _$RegisterController on _RegisterController, Store {
   }
 
   @override
-  String? validateRa(String value) {
+  bool validateRa(String value) {
     final _$actionInfo = _$_RegisterControllerActionController.startAction(
         name: '_RegisterController.validateRa');
     try {
@@ -515,7 +515,7 @@ mixin _$RegisterController on _RegisterController, Store {
   }
 
   @override
-  String? validateVerifyPassword(String value) {
+  bool validateVerifyPassword(String value) {
     final _$actionInfo = _$_RegisterControllerActionController.startAction(
         name: '_RegisterController.validateVerifyPassword');
     try {
@@ -553,6 +553,17 @@ mixin _$RegisterController on _RegisterController, Store {
         name: '_RegisterController.setShowDialogToConfirmEmail');
     try {
       return super.setShowDialogToConfirmEmail(value);
+    } finally {
+      _$_RegisterControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  bool validateForm() {
+    final _$actionInfo = _$_RegisterControllerActionController.startAction(
+        name: '_RegisterController.validateForm');
+    try {
+      return super.validateForm();
     } finally {
       _$_RegisterControllerActionController.endAction(_$actionInfo);
     }
