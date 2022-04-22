@@ -133,7 +133,7 @@ class _ForgotPasswordPageState
                               ),
                               InputBox(
                                 icon: Icons.person,
-                                placeholder: 'CPF ou Email',
+                                placeholder: 'Email',
                                 setValue: controller.setUsername,
                                 validation: controller.validateUsername,
                                 onFieldSubmitted: (value) async {
