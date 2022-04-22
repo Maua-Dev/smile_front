@@ -14,8 +14,10 @@ abstract class _RegisterController with Store {
   _RegisterController({required this.registerUserRepository});
 
   @computed
-  int? get raInt =>
-      ra == '' ? null : int.parse(ra.replaceAll('-', '').replaceAll('.', ''));
+  int? get raInt => ra == ''
+      ? null
+      : int.parse(
+          ra.replaceAll('-', '').replaceAll('.', '').replaceAll(' ', ''));
 
   @observable
   List<String> errorsList = [];
@@ -25,6 +27,9 @@ abstract class _RegisterController with Store {
 
   @observable
   bool isLoading = false;
+
+  @observable
+  bool showDialogToConfirmEmail = false;
 
   @observable
   bool showPwd = false;
@@ -153,8 +158,19 @@ abstract class _RegisterController with Store {
 
   @action
   Future<void> setEmail(String value) async {
-    email = value;
+    email = value.replaceAll(' ', '');
   }
+
+  List<String> emailProviders = [
+    'gmail',
+    'hotmail',
+    'terra',
+    'uol',
+    'outlook',
+    'yahoo',
+    'icloud',
+    'maua'
+  ];
 
   @action
   String? validateEmail(String value) {
@@ -166,6 +182,8 @@ abstract class _RegisterController with Store {
       addError('- Campo "E-mail" inválido');
       return "";
     }
+    var provider = value.split('@')[1].split('.')[0];
+    showDialogToConfirmEmail = !emailProviders.contains(provider);
     return null;
   }
 
@@ -294,5 +312,10 @@ abstract class _RegisterController with Store {
   @action
   void toggleVisibilityConfirmPwd(bool value) {
     showConfirmPwd = !value;
+  }
+
+  @action
+  void setShowDialogToConfirmEmail(bool value) {
+    showDialogToConfirmEmail = value;
   }
 }

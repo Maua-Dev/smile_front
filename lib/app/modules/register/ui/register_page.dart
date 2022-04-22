@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dar
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/action_textbutton_widget.dart';
+import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controllers/register_controller.dart';
@@ -423,7 +424,34 @@ class _RegisterPageState
                                       ? () async {
                                           if (_formKey.currentState!
                                               .validate()) {
-                                            await controller.register();
+                                            if (controller
+                                                .showDialogToConfirmEmail) {
+                                              showDialog(
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return ActionConfirmationDialogWidget(
+                                                    title:
+                                                        'Tem certeza que seu e-mail (${controller.email}) está correto?',
+                                                    content:
+                                                        'Será necessário acessar sua caixa de entrada para validar seu cadastro.',
+                                                    onPressed: () async {
+                                                      controller
+                                                          .setShowDialogToConfirmEmail(
+                                                              false);
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                      await controller
+                                                          .register();
+                                                    },
+                                                    isLoading:
+                                                        controller.isLoading,
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await controller.register();
+                                            }
                                           }
                                         }
                                       : null,
