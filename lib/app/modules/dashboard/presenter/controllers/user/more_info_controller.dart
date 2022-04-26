@@ -2,10 +2,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
+import 'package:smile_front/app/shared/models/activity_model.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/utils/utils.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
+import '../../../infra/models/schedule_activity_model.dart';
 
 part 'more_info_controller.g.dart';
 
@@ -60,7 +62,26 @@ abstract class _MoreInfoControllerBase with Store {
 
   Future<void> subscribeActivity() async {
     setIsLoading(true);
-    await repository.subscribeActivity(activity.id, activity.date!);
+    var cardToModel = ActivityModel(
+      id: activity.id,
+      activityCode: activity.activityCode,
+      type: activity.type,
+      title: activity.title,
+      description: activity.description,
+      schedule: [
+        ScheduleActivityModel(
+            date: activity.date,
+            acceptSubscription: activity.acceptSubscription,
+            duration: activity.duration,
+            enrolledUsers: activity.enrolledUsers,
+            link: activity.link,
+            location: activity.location,
+            totalParticipants: activity.totalParticipants)
+      ],
+      speakers: activity.speakers!,
+    );
+    await repository.subscribeActivity(
+        cardToModel, activity.id, activity.date!);
     await userDashboardController.getUserSubscribedActivities();
     userDashboardController.getNextActivity();
     setIsRegistered(true);
