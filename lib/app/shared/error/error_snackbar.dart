@@ -5,7 +5,7 @@ import '../../app_widget.dart';
 
 void showErrorSnackBar(String errorMessage) {
   scaffold.showSnackBar(SnackBar(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 8),
       width: MediaQuery.of(scaffold.context).size.width < 700 ? 300 : 500,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(5))),

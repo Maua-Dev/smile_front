@@ -50,7 +50,7 @@ abstract class _MoreInfoControllerBase with Store {
           Utils.getActivityFullFinalTime(subscribedActivities[i].date!,
               subscribedActivities[i].duration!));
       if ((subscribedActivities[i].date!.day != activity.date!.day) ||
-          activity.date! == subscribedActivities[i].date!) {
+          activity.date! == finalTime) {
       } else if (((!activity.date!.isBefore(subscribedActivities[i].date!) &&
               !activity.date!.isAfter(subscribedActivities[i].date!)) ||
           (!activity.date!.isBefore(finalTime)) &&
@@ -81,20 +81,25 @@ abstract class _MoreInfoControllerBase with Store {
       ],
       speakers: activity.speakers!,
     );
-    await repository.subscribeActivity(
+    var requestDone = await repository.subscribeActivity(
         cardToModel, activity.id, activity.date!);
-    await userDashboardController.getUserSubscribedActivities();
-    userDashboardController.getNextActivity();
-    setIsRegistered(true);
+    if (requestDone) {
+      await userDashboardController.getUserSubscribedActivities();
+      userDashboardController.getNextActivity();
+      setIsRegistered(true);
+    }
     setIsLoading(false);
   }
 
   Future<void> unsubscribeActivity() async {
     setIsLoading(true);
-    await repository.unsubscribeActivity(activity.id, activity.date!);
-    await userDashboardController.getUserSubscribedActivities();
-    userDashboardController.getNextActivity();
+    var requestDone =
+        await repository.unsubscribeActivity(activity.id, activity.date!);
+    if (requestDone) {
+      await userDashboardController.getUserSubscribedActivities();
+      userDashboardController.getNextActivity();
+      setIsRegistered(false);
+    }
     setIsLoading(false);
-    setIsRegistered(false);
   }
 }
