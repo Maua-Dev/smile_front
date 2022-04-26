@@ -53,14 +53,13 @@ class InputBox extends StatelessWidget {
           ),
         ],
       ),
-      // ignore: prefer_if_null_operators
-      width: widthSize != null
-          ? widthSize
-          : MediaQuery.of(context).size.width < 650
+      width: widthSize ??
+          (MediaQuery.of(context).size.width < 650
               ? MediaQuery.of(context).size.width * 0.85
-              : 600,
+              : 600),
       height: heightSize ?? 60,
       child: Container(
+        alignment: Alignment.center,
         decoration: BoxDecoration(
             color: disable != null
                 ? disable!
@@ -73,15 +72,14 @@ class InputBox extends StatelessWidget {
                     ? Border.all(color: Colors.red)
                     : null
                 : null),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 10.0, left: 10),
+        child: Center(
           child: TextFormField(
             inputFormatters: isCpfField != null
                 ? [maskCpf]
                 : isRAField != null
                     ? [maskRA]
                     : null,
-            textAlignVertical: TextAlignVertical.center,
+            textAlignVertical: TextAlignVertical.bottom,
             validator: (value) {
               if (validation != null) {
                 return validation!(value!);
@@ -93,7 +91,6 @@ class InputBox extends StatelessWidget {
             obscureText: showPwd != null ? !showPwd! : false,
             enabled: disable != null ? !disable! : true,
             decoration: InputDecoration(
-                contentPadding: const EdgeInsets.only(top: 10),
                 border: InputBorder.none,
                 hintText: placeholder,
                 fillColor: Colors.white,
@@ -104,7 +101,10 @@ class InputBox extends StatelessWidget {
                   fontSize: 16,
                   height: 0.08,
                 ),
-                prefixIcon: Icon(icon, size: 24),
+                prefixIcon: Icon(
+                  icon,
+                  size: 24,
+                ),
                 suffixIcon: onToggleVisibilityPwd != null
                     ? Padding(
                         padding: const EdgeInsets.only(right: 16.0),
