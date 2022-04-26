@@ -14,21 +14,23 @@ import '../../auth/presenter/controllers/auth_controller.dart';
 class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   final SecureStorageInterface storage;
   var authController = Modular.get<AuthController>();
+  BaseOptions options = BaseOptions(
+    baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
+    responseType: ResponseType.json,
+    connectTimeout: 30000,
+    receiveTimeout: 30000,
+  );
+  Dio dio = Dio();
   ActivitiesDatasourceImpl({
     required this.storage,
-  });
+  }) {
+    dio = Dio(options);
+  }
 
   @override
   Future<List<ActivityModel>> getAllActivities() async {
     var token = await storage.getAccessToken();
     try {
-      BaseOptions options = BaseOptions(
-        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
-        responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
-      );
-      Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       final res = await dio.get('/activity/getAll');
       if (res.statusCode == 200) {
@@ -51,13 +53,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   Future<List<ActivityModel>> getUserSubscribedActivities() async {
     var token = await storage.getAccessToken();
     try {
-      BaseOptions options = BaseOptions(
-        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
-        responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
-      );
-      Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       final res = await dio.get('/activity/userisenrolled');
       if (res.statusCode == 200) {
@@ -82,13 +77,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     var body = SubscriptionActivityModel(
         activityDate: activityDate, activityId: activityId);
     try {
-      BaseOptions options = BaseOptions(
-        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
-        responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
-      );
-      Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/enroll', data: body.toJson());
     } on DioError catch (e) {
@@ -106,13 +94,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   Future putActivity(String id, ActivityModel activity) async {
     var token = await storage.getAccessToken();
     try {
-      BaseOptions options = BaseOptions(
-        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
-        responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
-      );
-      Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.put('/activity?id=$id', data: activity.toJson());
     } on DioError catch (e) {
@@ -130,13 +111,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   Future postActivity(ActivityModel activity) async {
     var token = await storage.getAccessToken();
     try {
-      BaseOptions options = BaseOptions(
-        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
-        responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
-      );
-      Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity', data: activity.toJson());
     } on DioError catch (e) {
@@ -154,13 +128,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   Future removeActivity(String id) async {
     var token = await storage.getAccessToken();
     try {
-      BaseOptions options = BaseOptions(
-        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
-        responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
-      );
-      Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.delete('/activity?id=$id');
     } on DioError catch (e) {
@@ -180,13 +147,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     var body = SubscriptionActivityModel(
         activityDate: activityDate, activityId: activityId);
     try {
-      BaseOptions options = BaseOptions(
-        baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
-        responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
-      );
-      Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/unenroll', data: body.toJson());
     } on DioError catch (e) {
