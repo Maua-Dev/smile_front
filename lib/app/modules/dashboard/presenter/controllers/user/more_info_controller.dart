@@ -2,10 +2,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
+import 'package:smile_front/app/shared/models/activity_model.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/utils/utils.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
+import '../../../infra/models/schedule_activity_model.dart';
 
 part 'more_info_controller.g.dart';
 
@@ -47,7 +49,8 @@ abstract class _MoreInfoControllerBase with Store {
       var finalTime = DateFormat("yyyy-MM-dd hh:mm").parse(
           Utils.getActivityFullFinalTime(subscribedActivities[i].date!,
               subscribedActivities[i].duration!));
-      if ((subscribedActivities[i].date!.day != activity.date!.day)) {
+      if ((subscribedActivities[i].date!.day != activity.date!.day) ||
+          activity.date! == finalTime) {
       } else if (((!activity.date!.isBefore(subscribedActivities[i].date!) &&
               !activity.date!.isAfter(subscribedActivities[i].date!)) ||
           (!activity.date!.isBefore(finalTime)) &&
@@ -60,19 +63,43 @@ abstract class _MoreInfoControllerBase with Store {
 
   Future<void> subscribeActivity() async {
     setIsLoading(true);
-    await repository.subscribeActivity(activity.id, activity.date!);
-    await userDashboardController.getUserSubscribedActivities();
-    userDashboardController.getNextActivity();
-    setIsRegistered(true);
+    var cardToModel = ActivityModel(
+      id: activity.id,
+      activityCode: activity.activityCode,
+      type: activity.type,
+      title: activity.title,
+      description: activity.description,
+      schedule: [
+        ScheduleActivityModel(
+            date: activity.date,
+            acceptSubscription: activity.acceptSubscription,
+            duration: activity.duration,
+            enrolledUsers: activity.enrolledUsers,
+            link: activity.link,
+            location: activity.location,
+            totalParticipants: activity.totalParticipants)
+      ],
+      speakers: activity.speakers!,
+    );
+    var requestDone = await repository.subscribeActivity(
+        cardToModel, activity.id, activity.date!);
+    if (requestDone) {
+      await userDashboardController.getUserSubscribedActivities();
+      userDashboardController.getNextActivity();
+      setIsRegistered(true);
+    }
     setIsLoading(false);
   }
 
   Future<void> unsubscribeActivity() async {
     setIsLoading(true);
-    await repository.unsubscribeActivity(activity.id, activity.date!);
-    await userDashboardController.getUserSubscribedActivities();
-    userDashboardController.getNextActivity();
+    var requestDone =
+        await repository.unsubscribeActivity(activity.id, activity.date!);
+    if (requestDone) {
+      await userDashboardController.getUserSubscribedActivities();
+      userDashboardController.getNextActivity();
+      setIsRegistered(false);
+    }
     setIsLoading(false);
-    setIsRegistered(false);
   }
 }

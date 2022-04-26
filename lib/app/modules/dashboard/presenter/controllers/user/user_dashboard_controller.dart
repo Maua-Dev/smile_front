@@ -188,6 +188,9 @@ abstract class _UserDashboardControllerBase with Store {
           ));
         }
       }
+      allActivitiesToCards.sort(
+        (a, b) => a.date!.compareTo(b.date!),
+      );
       toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
       getNextActivity();
     }

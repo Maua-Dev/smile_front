@@ -7,10 +7,24 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   ActivitiesRepositoryImpl({required this.datasource});
 
+  List<ActivityModel> activitiesList = List.empty();
+
+  List<ActivityModel> subscribedActivities = List.empty();
+
   @override
   Future<List<ActivityModel>> getAllActivities() async {
-    final result = await datasource.getAllActivities();
-    return Future.value(result);
+    if (activitiesList.isEmpty) {
+      activitiesList = await datasource.getAllActivities();
+    }
+    return Future.value(activitiesList);
+  }
+
+  @override
+  Future<List<ActivityModel>> getUserSubscribedActivities() async {
+    if (subscribedActivities.isEmpty) {
+      subscribedActivities = await datasource.getUserSubscribedActivities();
+    }
+    return Future.value(subscribedActivities);
   }
 
   @override
@@ -29,18 +43,19 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future<List<ActivityModel>> getUserSubscribedActivities() async {
-    final result = await datasource.getUserSubscribedActivities();
-    return result;
+  Future<bool> subscribeActivity(
+      ActivityModel activity, String activityId, DateTime activityDate) async {
+    subscribedActivities.add(activity);
+    var requestDone = await datasource.postSubscribe(activityId, activityDate);
+    return requestDone;
   }
 
   @override
-  Future subscribeActivity(String activityId, DateTime activityDate) async {
-    await datasource.postSubscribe(activityId, activityDate);
-  }
-
-  @override
-  Future unsubscribeActivity(String activityId, DateTime activityDate) async {
-    await datasource.postUnsubscribe(activityId, activityDate);
+  Future<bool> unsubscribeActivity(
+      String activityId, DateTime activityDate) async {
+    subscribedActivities.removeWhere((element) => element.id == activityId);
+    var requestDone =
+        await datasource.postUnsubscribe(activityId, activityDate);
+    return requestDone;
   }
 }

@@ -6,7 +6,7 @@ import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_d
 import 'package:smile_front/app/modules/dashboard/infra/models/subscription_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../shared/error/dio_exceptions.dart';
-import '../../../shared/error/error_dialog.dart';
+import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/services/enviroment/enviroment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
 import '../../auth/presenter/controllers/auth_controller.dart';
@@ -72,13 +72,14 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future postSubscribe(String activityId, DateTime activityDate) async {
+  Future<bool> postSubscribe(String activityId, DateTime activityDate) async {
     var token = await storage.getAccessToken();
     var body = SubscriptionActivityModel(
         activityDate: activityDate, activityId: activityId);
     try {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/enroll', data: body.toJson());
+      return true;
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken();
@@ -87,6 +88,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage);
       print('/activity/enroll, error: ' + errorMessage);
+      return false;
     }
   }
 
@@ -142,13 +144,14 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future postUnsubscribe(String activityId, DateTime activityDate) async {
+  Future<bool> postUnsubscribe(String activityId, DateTime activityDate) async {
     var token = await storage.getAccessToken();
     var body = SubscriptionActivityModel(
         activityDate: activityDate, activityId: activityId);
     try {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/unenroll', data: body.toJson());
+      return true;
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken();
@@ -157,6 +160,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage);
       print('/activity/unenroll, error: ' + errorMessage);
+      return false;
     }
   }
 }

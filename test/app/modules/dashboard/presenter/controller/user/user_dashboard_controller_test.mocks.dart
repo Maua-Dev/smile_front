@@ -60,17 +60,18 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
       (super.noSuchMethod(Invocation.method(#removeActivity, [id]),
           returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
   @override
-  _i3.Future<dynamic> subscribeActivity(
+  _i3.Future<bool> subscribeActivity(_i4.ActivityModel? activity,
           String? activityId, DateTime? activityDate) =>
       (super.noSuchMethod(
-          Invocation.method(#subscribeActivity, [activityId, activityDate]),
-          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
+          Invocation.method(
+              #subscribeActivity, [activity, activityId, activityDate]),
+          returnValue: Future<bool>.value(false)) as _i3.Future<bool>);
   @override
-  _i3.Future<dynamic> unsubscribeActivity(
+  _i3.Future<bool> unsubscribeActivity(
           String? activityId, DateTime? activityDate) =>
       (super.noSuchMethod(
           Invocation.method(#unsubscribeActivity, [activityId, activityDate]),
-          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
+          returnValue: Future<bool>.value(false)) as _i3.Future<bool>);
 }
 
 /// A class which mocks [SecureStorageInterface].

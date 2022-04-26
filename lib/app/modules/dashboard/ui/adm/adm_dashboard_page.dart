@@ -179,6 +179,9 @@ class _AdmDashboardPageState
                 );
               }
             }),
+            const SizedBox(
+              height: 150,
+            ),
           ],
         ),
       ),
