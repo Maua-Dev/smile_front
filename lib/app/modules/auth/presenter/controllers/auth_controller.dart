@@ -56,6 +56,7 @@ class AuthController {
       _accessLevel = accessLevel!;
     } catch (e) {
       _loggedIn = false;
+      Modular.to.navigate("/login");
     }
   }
 

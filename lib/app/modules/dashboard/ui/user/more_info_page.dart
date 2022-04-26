@@ -172,7 +172,7 @@ class _MoreInfoPageState
                     if (controller.activity.link != null &&
                         controller.isRegistered)
                       Column(
-                        children: [                        
+                        children: [
                           MouseRegion(
                             cursor: SystemMouseCursors.click,
                             child: Row(

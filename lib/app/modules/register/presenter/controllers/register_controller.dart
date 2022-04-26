@@ -14,8 +14,10 @@ abstract class _RegisterController with Store {
   _RegisterController({required this.registerUserRepository});
 
   @computed
-  int? get raInt =>
-      ra == '' ? null : int.parse(ra.replaceAll('-', '').replaceAll('.', ''));
+  int? get raInt => ra == ''
+      ? null
+      : int.parse(
+          ra.replaceAll('-', '').replaceAll('.', '').replaceAll(' ', ''));
 
   @observable
   List<String> errorsList = [];
@@ -25,6 +27,9 @@ abstract class _RegisterController with Store {
 
   @observable
   bool isLoading = false;
+
+  @observable
+  bool showDialogToConfirmEmail = false;
 
   @observable
   bool showPwd = false;
@@ -105,15 +110,15 @@ abstract class _RegisterController with Store {
   }
 
   @action
-  String? validateName(String value) {
+  bool validateName(String value) {
     if (value.isEmpty) {
       addError("- Campo 'Nome Completo' obrigatório");
-      return "";
+      return false;
     } else if (value.split(' ').length < 2) {
       addError('- Insira seu nome completo');
-      return "";
+      return false;
     }
-    return null;
+    return true;
   }
 
   @action
@@ -122,12 +127,12 @@ abstract class _RegisterController with Store {
   }
 
   @action
-  String? validateSocialName(String value) {
+  bool validateSocialName(String value) {
     if (hasSocialName && value.isEmpty) {
       addError('- Campo "Nome Social" obrigatório');
-      return "";
+      return false;
     }
-    return null;
+    return true;
   }
 
   @action
@@ -138,35 +143,48 @@ abstract class _RegisterController with Store {
   }
 
   @action
-  String? validateCpf(String value) {
+  bool validateCpf(String value) {
     value = value.replaceAll('.', '');
     value = value.replaceAll('-', '');
     if (value.isEmpty) {
       addError('- Campo "CPF" obrigatório');
-      return "";
+      return false;
     } else if (!CPFValidator.isValid(value)) {
       addError('- Campo "CPF" inválido');
-      return "";
+      return false;
     }
-    return null;
+    return true;
   }
 
   @action
   Future<void> setEmail(String value) async {
-    email = value;
+    email = value.replaceAll(' ', '');
   }
 
+  List<String> emailProviders = [
+    'gmail',
+    'hotmail',
+    'terra',
+    'uol',
+    'outlook',
+    'yahoo',
+    'icloud',
+    'maua'
+  ];
+
   @action
-  String? validateEmail(String value) {
+  bool validateEmail(String value) {
     if (value.isEmpty) {
       addError('- Campo "E-mail" obrigatório');
-      return "";
+      return false;
     }
     if (!value.contains('@')) {
       addError('- Campo "E-mail" inválido');
-      return "";
+      return false;
     }
-    return null;
+    var provider = value.split('@')[1].split('.')[0];
+    showDialogToConfirmEmail = !emailProviders.contains(provider);
+    return true;
   }
 
   @action
@@ -191,20 +209,20 @@ abstract class _RegisterController with Store {
   }
 
   @action
-  String? validateRa(String value) {
+  bool validateRa(String value) {
     if (isMauaStudent) {
       if (value.isEmpty) {
         addError('- Campo "RA" obrigatório');
-        return "";
+        return false;
       }
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (value.length != 8) {
         addError('- Campo "RA" inválido');
-        return "";
+        return false;
       }
     }
-    return null;
+    return true;
   }
 
   @action
@@ -218,14 +236,14 @@ abstract class _RegisterController with Store {
   }
 
   @action
-  String? validateVerifyPassword(String value) {
+  bool validateVerifyPassword(String value) {
     if (value.isEmpty) {
-      addError('- Campo "Confirmar senha" obrigatório');
-      return "";
+      addError('- Campo "Confirme sua senha" obrigatório');
+      return false;
     }
     if (password != verifyPassword) {
-      addError('- Os campos "Senha" e "Confirmar senha" \ndevem ser iguais');
-      return "";
+      addError('- Os campos "Senha" e "Confirme sua senha" \ndevem ser iguais');
+      return false;
     }
     String pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
@@ -233,9 +251,9 @@ abstract class _RegisterController with Store {
     if (!regExp.hasMatch(value)) {
       addError(
           "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais \n - Mínimo de 8 caracteres");
-      return '';
+      return false;
     }
-    return null;
+    return true;
   }
 
   @computed
@@ -294,5 +312,23 @@ abstract class _RegisterController with Store {
   @action
   void toggleVisibilityConfirmPwd(bool value) {
     showConfirmPwd = !value;
+  }
+
+  @action
+  void setShowDialogToConfirmEmail(bool value) {
+    showDialogToConfirmEmail = value;
+  }
+
+  @action
+  bool validateForm() {
+    resetErrors();
+    validateName(name);
+    validateSocialName(socialName);
+    validateCpf(cpf);
+    validateEmail(email);
+    validateRa(ra);
+    validateVerifyPassword(verifyPassword);
+
+    return errorsList.isEmpty;
   }
 }
