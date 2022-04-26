@@ -46,9 +46,6 @@ class NextActivityCardWidget extends StatelessWidget {
         onTap: onTap,
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.width < 1000
-              ? MediaQuery.of(context).size.height * 0.3
-              : MediaQuery.of(context).size.height * 0.25,
           decoration: BoxDecoration(
             color: AppColors.brandingOrange,
             borderRadius: BorderRadius.circular(20),
@@ -83,16 +80,12 @@ class NextActivityCardWidget extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                Flexible(
-                  child: Text(
-                    description,
-                    maxLines: 5,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTextStyles.button.copyWith(
-                      fontSize:
-                          MediaQuery.of(context).size.width < 1000 ? 14 : 16,
-                      color: Colors.white,
-                    ),
+                Text(
+                  description,
+                  style: AppTextStyles.button.copyWith(
+                    fontSize:
+                        MediaQuery.of(context).size.width < 1000 ? 14 : 16,
+                    color: Colors.white,
                   ),
                 ),
                 Padding(
