@@ -49,7 +49,8 @@ abstract class _MoreInfoControllerBase with Store {
       var finalTime = DateFormat("yyyy-MM-dd hh:mm").parse(
           Utils.getActivityFullFinalTime(subscribedActivities[i].date!,
               subscribedActivities[i].duration!));
-      if ((subscribedActivities[i].date!.day != activity.date!.day)) {
+      if ((subscribedActivities[i].date!.day != activity.date!.day) ||
+          activity.date! == subscribedActivities[i].date!) {
       } else if (((!activity.date!.isBefore(subscribedActivities[i].date!) &&
               !activity.date!.isAfter(subscribedActivities[i].date!)) ||
           (!activity.date!.isBefore(finalTime)) &&
