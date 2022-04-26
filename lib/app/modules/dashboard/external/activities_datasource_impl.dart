@@ -116,8 +116,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.put('/activity?id=$id', data: activity.toJson());
     } on DioError catch (e) {
-      print(e.message.toString());
-      print(e.response.toString());
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken();
         await putActivity(id, activity);
