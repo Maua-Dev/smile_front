@@ -53,12 +53,10 @@ class InputBox extends StatelessWidget {
           ),
         ],
       ),
-      // ignore: prefer_if_null_operators
-      width: widthSize != null
-          ? widthSize
-          : MediaQuery.of(context).size.width < 650
+      width: widthSize ??
+          (MediaQuery.of(context).size.width < 650
               ? MediaQuery.of(context).size.width * 0.85
-              : 600,
+              : 600),
       height: heightSize ?? 60,
       child: Container(
         decoration: BoxDecoration(
@@ -93,7 +91,7 @@ class InputBox extends StatelessWidget {
             obscureText: showPwd != null ? !showPwd! : false,
             enabled: disable != null ? !disable! : true,
             decoration: InputDecoration(
-                contentPadding: const EdgeInsets.only(top: 10),
+                contentPadding: const EdgeInsets.only(bottom: 30),
                 border: InputBorder.none,
                 hintText: placeholder,
                 fillColor: Colors.white,
