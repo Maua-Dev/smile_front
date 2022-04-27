@@ -1,7 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 
 import '../../../../../shared/models/activity_model.dart';
 import '../../../domain/infra/activity_enum.dart';
@@ -16,7 +15,6 @@ class CreateActivityController = _CreateActivityControllerBase
 
 abstract class _CreateActivityControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
-  final admDashboardController = Modular.get<AdmDashboardController>();
 
   _CreateActivityControllerBase({
     required this.repository,
@@ -52,7 +50,6 @@ abstract class _CreateActivityControllerBase with Store {
   Future createActivity() async {
     setIsLoading(true);
     await repository.createActivity(activityToCreate);
-    await admDashboardController.getAllActivities();
     setIsLoading(false);
     Modular.to.navigate('/adm');
   }

@@ -165,6 +165,9 @@ abstract class _AdmDashboardControllerBase with Store {
         ));
       }
     }
+    allActivitiesToCards.sort(
+      (a, b) => a.date!.compareTo(b.date!),
+    );
     setIsLoading(false);
   }
 }
