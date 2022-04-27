@@ -4,7 +4,6 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
 
@@ -16,7 +15,6 @@ class EditActivityController = _EditActivityControllerBase
 abstract class _EditActivityControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final ActivityModel activityModel;
-  final admDashboardController = Modular.get<AdmDashboardController>();
 
   _EditActivityControllerBase({
     required this.repository,
@@ -57,7 +55,6 @@ abstract class _EditActivityControllerBase with Store {
   Future editActivity() async {
     setIsLoading(true);
     await repository.editActivity(activityToEdit);
-    await admDashboardController.getAllActivities();
     setIsLoading(false);
     Modular.to.navigate('/adm');
   }
@@ -66,7 +63,6 @@ abstract class _EditActivityControllerBase with Store {
   Future deleteActivity(String id) async {
     setIsLoading(true);
     await repository.removeActivity(id);
-    await admDashboardController.getAllActivities();
     setIsLoading(false);
     Modular.to.navigate('/adm');
   }

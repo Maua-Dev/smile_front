@@ -29,16 +29,22 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   @override
   Future editActivity(ActivityModel activityToEdit) async {
+    var index =
+        activitiesList.indexWhere((element) => element.id == activityToEdit.id);
+    activitiesList.removeAt(index);
+    activitiesList.insert(index, activityToEdit);
     await datasource.putActivity(activityToEdit.id, activityToEdit);
   }
 
   @override
   Future removeActivity(String id) async {
+    activitiesList.removeWhere((element) => element.id == id);
     await datasource.removeActivity(id);
   }
 
   @override
   Future createActivity(ActivityModel activityToCreate) async {
+    activitiesList.add(activityToCreate);
     await datasource.postActivity(activityToCreate);
   }
 
