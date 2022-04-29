@@ -63,5 +63,5 @@ var faqMock = <Faq>[
   Faq(
       question: 'Em caso de dúvidas, como faço para entrar em contato?',
       response:
-          'Enviar um e-mail para smile@maua.br ou gti.central@maua.br ou dev@maua.br. Caso queira falar consoco, entre em contato nos números: 4239-3002, 4239-3014, 4239-3441, 4239-3442 ou 4239-3411.'),
+          'Enviar um e-mail para smile@maua.br ou gti.central@maua.br ou dev@maua.br. Caso queira falar conosco, entre em contato nos números: 4239-3002, 4239-3014, 4239-3441, 4239-3442 ou 4239-3411.'),
 ];
