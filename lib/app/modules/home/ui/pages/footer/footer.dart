@@ -159,7 +159,7 @@ class Footer extends StatelessWidget {
                   textAlign: TextAlign.center,
                   text: TextSpan(
                       text:
-                          'Caso queira falar consoco, entre em contato nos números: ',
+                          'Caso queira falar conosco, entre em contato nos números: ',
                       style: AppTextStyles.body.copyWith(
                         color: Colors.white,
                         fontSize: 12,
@@ -376,7 +376,7 @@ class Footer extends StatelessWidget {
                       child: RichText(
                         text: TextSpan(
                             text:
-                                'Caso queira falar consoco, entre em contato nos números: ',
+                                'Caso queira falar conosco, entre em contato nos números: ',
                             style: AppTextStyles.body.copyWith(
                               color: Colors.white,
                               fontSize: 12,
