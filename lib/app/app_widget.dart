@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -11,10 +12,17 @@ final ScaffoldMessengerState scaffold = scaffoldKey.currentState!;
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Intl.defaultLocale = 'pt_BR';
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
 
+// use the returned token to send messages to users from your custom server
+    messaging.getToken(
+      vapidKey:
+          "BB5e9nofVnXHBpbJrmtucXNjOnphCRbn20Lj2AV-SlZUYfS1fEx4Mfz7YyMVXnbFEJphRTJKZQAXMlhUZ-Cy908",
+    );
     return MaterialApp(
       scaffoldMessengerKey: scaffoldKey,
       supportedLocales: const [Locale('pt', 'BR')],
