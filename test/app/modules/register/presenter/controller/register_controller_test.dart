@@ -5,6 +5,7 @@ import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 import 'package:smile_front/app/modules/register/presenter/controllers/register_controller.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
+import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import 'register_controller_test.mocks.dart';
 
@@ -12,10 +13,12 @@ import 'register_controller_test.mocks.dart';
 void main() {
   initModules([AppModule(), RegisterModule()]);
   RegisterRepositoryInterface repository = MockRegisterRepositoryInterface();
+  FirebaseAnalyticsService analytics = FirebaseAnalyticsService();
   late RegisterController controller;
 
   setUpAll(() async {
-    controller = RegisterController(registerUserRepository: repository);
+    controller = RegisterController(
+        registerUserRepository: repository, analytics: analytics);
   });
 
   test('isLoading', () {

@@ -2,6 +2,7 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 
 import '../../../../shared/entities/user_registration.dart';
+import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../external/errors/errors.dart';
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
 part 'register_controller.g.dart';
@@ -10,8 +11,10 @@ class RegisterController = _RegisterController with _$RegisterController;
 
 abstract class _RegisterController with Store {
   final RegisterRepositoryInterface registerUserRepository;
+  final FirebaseAnalyticsService analytics;
 
-  _RegisterController({required this.registerUserRepository});
+  _RegisterController(
+      {required this.analytics, required this.registerUserRepository});
 
   @computed
   int? get raInt => ra == ''
@@ -275,6 +278,7 @@ abstract class _RegisterController with Store {
         await registerUserRepository.registerUser(registerInformations);
         setIsLoading(false);
         setSuccessRegistration(true);
+        analytics.logSignUp();
       } on Failure catch (e) {
         addError(e.message);
       }

@@ -10,6 +10,7 @@ import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
@@ -23,6 +24,7 @@ void main() {
 
   AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
+  FirebaseAnalyticsService analytics = FirebaseAnalyticsService();
   late AuthController authController;
 
   final mockActivities = <ActivityModel>[
@@ -140,8 +142,10 @@ void main() {
 
   setUpAll(() {
     when(repository.getAllActivities()).thenAnswer((_) async => mockActivities);
-    authController =
-        AuthController(authRepository: authRepository, storage: secureStorage);
+    authController = AuthController(
+        authRepository: authRepository,
+        storage: secureStorage,
+        analytics: analytics);
     controller = AdmDashboardController(
       repository: repository,
       authController: authController,

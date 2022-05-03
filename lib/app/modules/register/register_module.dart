@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/register/ui/register_page.dart';
 import 'package:smile_front/app/modules/register/ui/success_register_page.dart';
 
 import '../../shared/services/dio/smile_login_options.dart';
+import '../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import 'domain/repositories/register_informations_repository_interface.dart';
 import 'external/register_datasource_impl.dart';
 import 'infra/datasources/register_datasource.dart';
@@ -16,6 +17,7 @@ class RegisterModule extends Module {
     Bind.lazySingleton<RegisterController>(
         (i) => RegisterController(
               registerUserRepository: i<RegisterRepositoryInterface>(),
+              analytics: i<FirebaseAnalyticsService>(),
             ),
         export: true),
     Bind.lazySingleton<RegisterDatasource>(

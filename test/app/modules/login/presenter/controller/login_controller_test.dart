@@ -10,20 +10,23 @@ import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controll
 
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
+import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 
 @GenerateMocks([ActivitiesRepositoryInterface])
 void main() {
   AuthRepositoryInterface repository = AuthRepositoryMock();
   SecureStorageInterface storage = MockSecureStorageInterface();
+  FirebaseAnalyticsService analytics = FirebaseAnalyticsService();
 
   late LoginController controller;
   late AuthController authController;
 
   setUpAll(() {
-    authController =
-        AuthController(authRepository: repository, storage: storage);
-    controller = LoginController(authController: authController);
+    authController = AuthController(
+        authRepository: repository, storage: storage, analytics: analytics);
+    controller =
+        LoginController(authController: authController, analytics: analytics);
   });
 
   test('isLoading', () {

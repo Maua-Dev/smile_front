@@ -4,6 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
+import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import 'auth_controller_test.mocks.dart';
 
@@ -11,6 +12,8 @@ import 'auth_controller_test.mocks.dart';
 void main() {
   AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
   SecureStorageInterface storage = MockSecureStorageInterface();
+  FirebaseAnalyticsService analytics = FirebaseAnalyticsService();
+
   late AuthController controller;
 
   var loginWithCpfRne = {
@@ -22,8 +25,8 @@ void main() {
   setUpAll(() {
     when(authRepository.login('adm', 'teste'))
         .thenAnswer((_) async => loginWithCpfRne);
-    controller =
-        AuthController(authRepository: authRepository, storage: storage);
+    controller = AuthController(
+        authRepository: authRepository, storage: storage, analytics: analytics);
   });
 
   test('loginWithCpfRne', () async {
