@@ -1,6 +1,7 @@
 import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dart';
 
-var csvUrl = Uri.parse("https://flutter.dev");
+var csvUrl = Uri.parse(
+    "https://support.staffbase.com/hc/en-us/article_attachments/360009197031/username.csv");
 
 var s3AssetsBaseUrl = EnvironmentConfig.S3_BASE_URL;
 
