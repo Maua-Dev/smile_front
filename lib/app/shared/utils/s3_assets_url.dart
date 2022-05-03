@@ -1,5 +1,7 @@
 import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dart';
 
+var csvUrl = Uri.parse("https://flutter.dev");
+
 var s3AssetsBaseUrl = EnvironmentConfig.S3_BASE_URL;
 
 var previousEditionsBaseUrl = '${s3AssetsBaseUrl}edicoes-anteriores/';

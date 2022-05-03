@@ -4,7 +4,9 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../shared/utils/s3_assets_url.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 
 part 'adm_dashboard_controller.g.dart';
@@ -19,6 +21,15 @@ abstract class _AdmDashboardControllerBase with Store {
   _AdmDashboardControllerBase(
       {required this.repository, required this.authController}) {
     getAllActivities();
+  }
+
+  Future<void> downloadCsv() async {
+    if (!await launchUrl(
+      csvUrl,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw 'Could not launch $csvUrl';
+    }
   }
 
   @observable

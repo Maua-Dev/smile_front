@@ -76,8 +76,11 @@ class Footer extends StatelessWidget {
                                   RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ))),
-                          onPressed: () =>
-                              launch('https://g.page/IMT-instituto-maua?share'),
+                          onPressed: () => launchUrl(
+                            Uri.parse(
+                                'https://g.page/IMT-instituto-maua?share'),
+                            mode: LaunchMode.externalApplication,
+                          ),
                           icon: const Icon(
                             Icons.location_on,
                             color: Colors.white,
@@ -296,8 +299,10 @@ class Footer extends StatelessWidget {
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ))),
-                        onPressed: () =>
-                            launch('https://g.page/IMT-instituto-maua?share'),
+                        onPressed: () => launchUrl(
+                          Uri.parse('https://g.page/IMT-instituto-maua?share'),
+                          mode: LaunchMode.externalApplication,
+                        ),
                         icon: const Icon(
                           Icons.location_on,
                           color: Colors.white,
