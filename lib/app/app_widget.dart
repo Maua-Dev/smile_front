@@ -1,10 +1,9 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
@@ -13,9 +12,6 @@ final ScaffoldMessengerState scaffold = scaffoldKey.currentState!;
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
-  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-  static FirebaseAnalyticsObserver observer =
-      FirebaseAnalyticsObserver(analytics: analytics);
   @override
   Widget build(BuildContext context) {
     Intl.defaultLocale = 'pt_BR';
@@ -29,7 +25,7 @@ class AppWidget extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      navigatorObservers: [observer],
+      navigatorObservers: [FirebaseAnalyticsService().getAnalyticsObserver()],
       scrollBehavior: AppScrollBehavior(),
       title: 'Semana Mauá de Inovação, Liderança e Empreendedorismo',
       theme: ThemeData(
