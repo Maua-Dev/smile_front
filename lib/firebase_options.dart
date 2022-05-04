@@ -60,7 +60,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '272148621093',
     projectId: 'smile-front',
     storageBucket: 'smile-front.appspot.com',
-    iosClientId: '272148621093-81eisinrmcia6sntu65hfv7g9dgn5et1.apps.googleusercontent.com',
+    iosClientId:
+        '272148621093-81eisinrmcia6sntu65hfv7g9dgn5et1.apps.googleusercontent.com',
     iosBundleId: 'com.example.smileFront',
   );
 }
