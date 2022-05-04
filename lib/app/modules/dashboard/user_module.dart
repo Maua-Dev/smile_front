@@ -14,6 +14,7 @@ import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.da
 import 'package:smile_front/app/shared/entities/card_activity.dart';
 
 import '../../shared/services/dio/smile_activities_options.dart';
+import '../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../auth/domain/repositories/auth_repository_interface.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
@@ -66,6 +67,7 @@ class UserModule extends Module {
         (i) => AuthController(
               authRepository: i<AuthRepositoryInterface>(),
               storage: i<SecureStorageInterface>(),
+              analytics: i<FirebaseAnalyticsService>(),
             ),
         export: true),
   ];

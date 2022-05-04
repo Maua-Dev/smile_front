@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/login/presenter/controllers/login_contro
 import 'package:smile_front/app/modules/login/ui/login_page.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
 import '../../shared/services/dio/smile_login_options.dart';
+import '../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../auth/domain/repositories/auth_repository_interface.dart';
 import '../auth/external/auth_datasource_impl.dart';
 import '../auth/infra/datasource/auth_datasource.dart';
@@ -16,6 +17,7 @@ class LoginModule extends Module {
     Bind.lazySingleton(
         (i) => LoginController(
               authController: i(),
+              analytics: i<FirebaseAnalyticsService>(),
             ),
         export: true),
     Bind.lazySingleton<AuthDatasource>(

@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
 
+import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../auth/presenter/controllers/auth_controller.dart';
 
 part 'login_controller.g.dart';
@@ -11,8 +12,9 @@ class LoginController = _LoginController with _$LoginController;
 
 abstract class _LoginController with Store {
   final AuthController authController;
+  final FirebaseAnalyticsService analytics;
 
-  _LoginController({required this.authController});
+  _LoginController({required this.analytics, required this.authController});
 
   @observable
   bool isLoading = false;
@@ -55,6 +57,7 @@ abstract class _LoginController with Store {
               arguments: [cpfRne, authController.accessLevel]);
         }
       }
+      analytics.logLogin();
     } on Failure catch (e) {
       errors = e.message;
     }
