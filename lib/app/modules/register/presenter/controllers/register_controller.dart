@@ -205,7 +205,8 @@ abstract class _RegisterController with Store {
       return false;
     }
     if (value != email) {
-      addError('- Os campos "E-mail" e "Confirme seu e-mail" \ndevem ser iguais');
+      addError(
+          '- Os campos "E-mail" e "Confirme seu e-mail" \ndevem ser iguais');
       return false;
     }
     return true;
