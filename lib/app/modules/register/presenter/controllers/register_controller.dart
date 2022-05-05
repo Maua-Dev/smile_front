@@ -283,7 +283,7 @@ abstract class _RegisterController with Store {
   @computed
   UserRegistration get registerInformations => UserRegistration(
       name: name,
-      socialName: socialName == '' ? null : socialName,
+      socialName: socialName == "" ? null : socialName,
       email: email,
       cpfRne: cpf,
       ra: raInt,
