@@ -195,8 +195,10 @@ class _MoreInfoPageState
                                   ),
                                 ),
                                 GestureDetector(
-                                  onTap: () =>
-                                      launch(controller.activity.link!),
+                                  onTap: () => launchUrl(
+                                    Uri.parse(controller.activity.link!),
+                                    mode: LaunchMode.externalApplication,
+                                  ),
                                   child: Text('Link',
                                       style: AppTextStyles.buttonBold.copyWith(
                                           decoration: TextDecoration.underline,
