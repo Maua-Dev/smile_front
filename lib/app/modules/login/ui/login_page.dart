@@ -133,7 +133,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         );
                       }),
                       const SizedBox(
-                        height: 20,
+                        height: 16,
                       ),
                       CustomElevatedButtonWidget(
                         title: 'Não tenho cadastro',
@@ -147,7 +147,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         },
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 16,
                       ),
                       TextButton(
                         style: ElevatedButton.styleFrom(
@@ -166,7 +166,26 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               decoration: TextDecoration.underline,
                               color: Colors.white),
                         ),
-                      )
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Container(
+                        width: (MediaQuery.of(context).size.width < 650
+                            ? MediaQuery.of(context).size.width * 0.85
+                            : 600),
+                        decoration: BoxDecoration(
+                            color: AppColors.gray,
+                            borderRadius: BorderRadius.circular(8)),
+                        child: const Padding(
+                          padding: EdgeInsets.all(4.0),
+                          child: Text(
+                            'Em caso de erro ao se logar, envie e-mail para: dev@maua.br',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ],
