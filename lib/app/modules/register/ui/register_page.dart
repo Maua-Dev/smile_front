@@ -46,11 +46,16 @@ class _RegisterPageState
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SizedBox(
-                          height: 140,
+                        SizedBox(
+                          height: MediaQuery.of(context).size.width < 650
+                              ? 40
+                              : 140,
                         ),
                         const Center(
                           child: SmileLogoWidget(),
+                        ),
+                        const SizedBox(
+                          height: 24,
                         ),
                         if (controller.successRegistration)
                           Padding(
@@ -168,17 +173,24 @@ class _RegisterPageState
                                               MainAxisAlignment.center,
                                           children: [
                                             Observer(builder: (_) {
-                                              return Checkbox(
-                                                activeColor:
-                                                    AppColors.brandingPurple,
-                                                value: controller.hasSocialName,
-                                                onChanged: (bool? value) {
-                                                  controller
-                                                      .setHasSocialName(value);
-                                                },
+                                              return SizedBox(
+                                                height: 24,
+                                                width: 24,
+                                                child: Checkbox(
+                                                  activeColor:
+                                                      AppColors.brandingPurple,
+                                                  value:
+                                                      controller.hasSocialName,
+                                                  onChanged: (bool? value) {
+                                                    controller.setHasSocialName(
+                                                        value);
+                                                  },
+                                                ),
                                               );
                                             }),
-                                            const SizedBox(width: 5),
+                                            const SizedBox(
+                                              height: 4,
+                                            ),
                                             const Flexible(
                                               child: Text(
                                                 'Nome Social',
@@ -283,17 +295,24 @@ class _RegisterPageState
                                               MainAxisAlignment.center,
                                           children: [
                                             Observer(builder: (_) {
-                                              return Checkbox(
-                                                activeColor:
-                                                    AppColors.brandingPurple,
-                                                value: controller.isMauaStudent,
-                                                onChanged: (bool? value) {
-                                                  controller
-                                                      .setIsMauaStudent(value);
-                                                },
+                                              return SizedBox(
+                                                height: 24,
+                                                width: 24,
+                                                child: Checkbox(
+                                                  activeColor:
+                                                      AppColors.brandingPurple,
+                                                  value:
+                                                      controller.isMauaStudent,
+                                                  onChanged: (bool? value) {
+                                                    controller.setIsMauaStudent(
+                                                        value);
+                                                  },
+                                                ),
                                               );
                                             }),
-                                            const SizedBox(width: 5),
+                                            const SizedBox(
+                                              height: 4,
+                                            ),
                                             const Flexible(
                                               child: Text(
                                                 'Aluno Mauá',
