@@ -59,6 +59,9 @@ abstract class _RegisterController with Store {
   String email = '';
 
   @observable
+  String verifyEmail = '';
+
+  @observable
   bool isMauaStudent = false;
 
   @observable
@@ -115,7 +118,7 @@ abstract class _RegisterController with Store {
   @action
   bool validateName(String value) {
     if (value.isEmpty) {
-      addError("- Campo 'Nome Completo' obrigatório");
+      addError('- Campo "Nome Completo" obrigatório');
       return false;
     } else if (value.split(' ').length < 2) {
       addError('- Insira seu nome completo');
@@ -164,6 +167,11 @@ abstract class _RegisterController with Store {
     email = value.replaceAll(' ', '');
   }
 
+  @action
+  Future<void> setVerifyEmail(String value) async {
+    verifyEmail = value.replaceAll(' ', '');
+  }
+
   List<String> emailProviders = [
     'gmail',
     'hotmail',
@@ -187,6 +195,20 @@ abstract class _RegisterController with Store {
     }
     var provider = value.split('@')[1].split('.')[0];
     showDialogToConfirmEmail = !emailProviders.contains(provider);
+    return true;
+  }
+
+  @action
+  bool validateVerifyEmail(String value) {
+    if (value.isEmpty) {
+      addError('- Campo "Confirme seu e-mail" obrigatório');
+      return false;
+    }
+    if (value != email) {
+      addError(
+          '- Os campos "E-mail" e "Confirme seu e-mail" \ndevem ser iguais');
+      return false;
+    }
     return true;
   }
 
@@ -262,7 +284,7 @@ abstract class _RegisterController with Store {
   @computed
   UserRegistration get registerInformations => UserRegistration(
       name: name,
-      socialName: socialName == '' ? null : socialName,
+      socialName: socialName == "" ? null : socialName,
       email: email,
       cpfRne: cpf,
       ra: raInt,
@@ -330,6 +352,7 @@ abstract class _RegisterController with Store {
     validateSocialName(socialName);
     validateCpf(cpf);
     validateEmail(email);
+    validateVerifyEmail(verifyEmail);
     validateRa(ra);
     validateVerifyPassword(verifyPassword);
 

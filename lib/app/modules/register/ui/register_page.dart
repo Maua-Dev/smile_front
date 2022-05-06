@@ -230,6 +230,14 @@ class _RegisterPageState
                             const SizedBox(
                               height: 20,
                             ),
+                            InputBox(
+                              icon: Icons.email_rounded,
+                              placeholder: 'Confirme seu e-mail',
+                              setValue: controller.setVerifyEmail,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
