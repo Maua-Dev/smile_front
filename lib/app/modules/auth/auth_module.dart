@@ -3,7 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
 
 import '../../shared/services/dio/smile_login_options.dart';
-import '../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import 'external/auth_datasource_impl.dart';
 import 'domain/repositories/auth_repository_interface.dart';
 import 'infra/datasource/auth_datasource.dart';
@@ -18,7 +17,6 @@ class AuthModule extends Module {
         (i) => AuthController(
               authRepository: i<AuthRepositoryInterface>(),
               storage: i<SecureStorageInterface>(),
-              analytics: i<FirebaseAnalyticsService>(),
             ),
         export: true),
     Bind.lazySingleton<AuthDatasource>(
