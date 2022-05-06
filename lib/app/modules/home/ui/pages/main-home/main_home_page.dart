@@ -6,7 +6,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/utils/s3_assets_url.dart';
 import '../../../utils/text_utils.dart';
-import '../../../../../shared/widgets/action_textbutton_widget.dart';
+import '../../../../../shared/widgets/custom_elevated_button_widget.dart';
 
 class MainHomePage extends StatefulWidget {
   const MainHomePage({Key? key}) : super(key: key);
