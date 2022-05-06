@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/utils/s3_assets_url.dart';
-import '../../../shared/widgets/action_textbutton_widget.dart';
+import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
@@ -46,34 +46,25 @@ class _RegisterPageState
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SizedBox(
-                          height: 140,
+                        SizedBox(
+                          height: MediaQuery.of(context).size.width < 650
+                              ? 40
+                              : 140,
                         ),
                         const Center(
                           child: SmileLogoWidget(),
                         ),
+                        const SizedBox(
+                          height: 24,
+                        ),
                         if (controller.successRegistration)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 32.0, horizontal: 72),
-                            child: Center(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    child: const Center(
-                                      child: Text(
-                                        'Enviamos um email para você, por favor acesse sua caixa de entrada e clique no link de confirmação para validar seu cadastro.',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  )
-                                ],
+                          const Center(
+                            child: Text(
+                              'Enviamos um email para você, por favor, verifique sua caixa de entrada ou caixa de spam e clique no link de confirmação para validar seu cadastro.',
+                              style: TextStyle(
+                                color: Colors.white,
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           )
                         else
@@ -168,17 +159,24 @@ class _RegisterPageState
                                               MainAxisAlignment.center,
                                           children: [
                                             Observer(builder: (_) {
-                                              return Checkbox(
-                                                activeColor:
-                                                    AppColors.brandingPurple,
-                                                value: controller.hasSocialName,
-                                                onChanged: (bool? value) {
-                                                  controller
-                                                      .setHasSocialName(value);
-                                                },
+                                              return SizedBox(
+                                                height: 24,
+                                                width: 24,
+                                                child: Checkbox(
+                                                  activeColor:
+                                                      AppColors.brandingPurple,
+                                                  value:
+                                                      controller.hasSocialName,
+                                                  onChanged: (bool? value) {
+                                                    controller.setHasSocialName(
+                                                        value);
+                                                  },
+                                                ),
                                               );
                                             }),
-                                            const SizedBox(width: 5),
+                                            const SizedBox(
+                                              height: 4,
+                                            ),
                                             const Flexible(
                                               child: Text(
                                                 'Nome Social',
@@ -230,6 +228,14 @@ class _RegisterPageState
                             const SizedBox(
                               height: 20,
                             ),
+                            InputBox(
+                              icon: Icons.email_rounded,
+                              placeholder: 'Confirme seu e-mail',
+                              setValue: controller.setVerifyEmail,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -275,17 +281,24 @@ class _RegisterPageState
                                               MainAxisAlignment.center,
                                           children: [
                                             Observer(builder: (_) {
-                                              return Checkbox(
-                                                activeColor:
-                                                    AppColors.brandingPurple,
-                                                value: controller.isMauaStudent,
-                                                onChanged: (bool? value) {
-                                                  controller
-                                                      .setIsMauaStudent(value);
-                                                },
+                                              return SizedBox(
+                                                height: 24,
+                                                width: 24,
+                                                child: Checkbox(
+                                                  activeColor:
+                                                      AppColors.brandingPurple,
+                                                  value:
+                                                      controller.isMauaStudent,
+                                                  onChanged: (bool? value) {
+                                                    controller.setIsMauaStudent(
+                                                        value);
+                                                  },
+                                                ),
                                               );
                                             }),
-                                            const SizedBox(width: 5),
+                                            const SizedBox(
+                                              height: 4,
+                                            ),
                                             const Flexible(
                                               child: Text(
                                                 'Aluno Mauá',
