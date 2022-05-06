@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/utils/s3_assets_url.dart';
-import '../../../shared/widgets/action_textbutton_widget.dart';
+import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
@@ -58,27 +58,13 @@ class _RegisterPageState
                           height: 24,
                         ),
                         if (controller.successRegistration)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 32.0, horizontal: 72),
-                            child: Center(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    child: const Center(
-                                      child: Text(
-                                        'Enviamos um email para você, por favor acesse sua caixa de entrada e clique no link de confirmação para validar seu cadastro.',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  )
-                                ],
+                          const Center(
+                            child: Text(
+                              'Enviamos um email para você, por favor acesse sua caixa de entrada e clique no link de confirmação para validar seu cadastro.',
+                              style: TextStyle(
+                                color: Colors.white,
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           )
                         else
