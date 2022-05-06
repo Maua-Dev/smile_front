@@ -1,5 +1,4 @@
 // ignore_for_file: avoid_print
-
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
@@ -148,6 +147,9 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     var token = await storage.getAccessToken();
     var body = SubscriptionActivityModel(
         activityDate: activityDate, activityId: activityId);
+    print(activityDate.millisecondsSinceEpoch);
+    print(activityId);
+    print(token);
     try {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/unenroll', data: body.toJson());
@@ -161,6 +163,28 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       showErrorSnackBar(errorMessage);
       print('/activity/unenroll, error: ' + errorMessage);
       return false;
+    }
+  }
+
+  @override
+  Future<String> getLinkCsv() async {
+    var token = await storage.getAccessToken();
+    try {
+      dio.options.headers["authorization"] = "Bearer $token";
+      final res = await dio.get('/activity/download');
+      if (res.statusCode == 200) {
+        return res.data;
+      }
+      throw Exception();
+    } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken();
+        await getUserSubscribedActivities();
+      }
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage);
+      print('/activity/download, error: ' + errorMessage);
+      rethrow;
     }
   }
 }
