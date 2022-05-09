@@ -50,6 +50,9 @@ class AuthDatasourceImpl implements AuthDatasource {
     } on DioError catch (e) {
       if (e.response.toString().contains('User is not confirmed')) {
         Modular.to.navigate('/login/reenviar-email');
+      } else if (e.response.toString().contains('User not found')) {
+        throw LoginInvalid(
+            'Não foi possível realizar o login. \n- Tente fazer o login novamente \n utilizando seu CPF\n- Realize seu cadastro clicando \n no botão "Não tenho cadastro"');
       }
       throw LoginInvalid('Login ou Senha inválida');
     }
