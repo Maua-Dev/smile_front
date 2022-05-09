@@ -221,7 +221,10 @@ class NextActivityCardWidget extends StatelessWidget {
                               ),
                             ),
                             GestureDetector(
-                              onTap: () => launch(link!),
+                              onTap: () => launchUrl(
+                                Uri.parse(link!),
+                                mode: LaunchMode.externalApplication,
+                              ),
                               child: Text('Link',
                                   style: AppTextStyles.button.copyWith(
                                     fontSize:

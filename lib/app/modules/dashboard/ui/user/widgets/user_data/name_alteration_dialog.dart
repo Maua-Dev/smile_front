@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../../shared/widgets/action_textbutton_widget.dart';
+import '../../../../../../shared/widgets/custom_elevated_button_widget.dart';
 
 class NameAlterationDialog extends StatelessWidget {
   final String name;

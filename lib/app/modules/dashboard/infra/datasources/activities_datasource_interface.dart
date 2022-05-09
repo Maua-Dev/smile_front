@@ -8,4 +8,5 @@ abstract class ActivitiesDatasourceInterface {
   Future putActivity(String id, ActivityModel activity);
   Future postActivity(ActivityModel activity);
   Future removeActivity(String id);
+  Future<String> getLinkCsv();
 }

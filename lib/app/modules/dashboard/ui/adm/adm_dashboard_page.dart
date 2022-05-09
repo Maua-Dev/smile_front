@@ -203,7 +203,9 @@ class _AdmDashboardPageState
                           size: 35,
                           color: Colors.white,
                         ),
-                        onPressed: () {}),
+                        onPressed: () {
+                          controller.downloadCsv();
+                        }),
                   ),
                 ),
               ),
