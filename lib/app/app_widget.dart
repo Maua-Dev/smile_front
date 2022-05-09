@@ -13,14 +13,10 @@ final ScaffoldMessengerState scaffold = scaffoldKey.currentState!;
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
-  static FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   @override
   Widget build(BuildContext context) {
     Intl.defaultLocale = 'pt_BR';
-    messaging
-        .requestPermission()
-        .then((value) => print(value.authorizationStatus));
     return MaterialApp(
       scaffoldMessengerKey: scaffoldKey,
       supportedLocales: const [Locale('pt', 'BR')],
