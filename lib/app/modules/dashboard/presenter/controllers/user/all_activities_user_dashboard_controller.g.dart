@@ -65,8 +65,9 @@ mixin _$AllActivitiesUserDashboardController
                   '_AllActivitiesUserDashboardControllerBase.saturdayActivitiesList'))
           .value;
 
-  final _$isLoadingAtom =
-      Atom(name: '_AllActivitiesUserDashboardControllerBase.isLoading');
+  late final _$isLoadingAtom = Atom(
+      name: '_AllActivitiesUserDashboardControllerBase.isLoading',
+      context: context);
 
   @override
   bool get isLoading {
@@ -81,9 +82,10 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
-  final _$filterActivityChipIndexSelectedAtom = Atom(
+  late final _$filterActivityChipIndexSelectedAtom = Atom(
       name:
-          '_AllActivitiesUserDashboardControllerBase.filterActivityChipIndexSelected');
+          '_AllActivitiesUserDashboardControllerBase.filterActivityChipIndexSelected',
+      context: context);
 
   @override
   int get filterActivityChipIndexSelected {
@@ -99,8 +101,9 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
-  final _$weekActivitiesListAtom = Atom(
-      name: '_AllActivitiesUserDashboardControllerBase.weekActivitiesList');
+  late final _$weekActivitiesListAtom = Atom(
+      name: '_AllActivitiesUserDashboardControllerBase.weekActivitiesList',
+      context: context);
 
   @override
   List<CardActivity> get weekActivitiesList {
@@ -115,8 +118,9 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
-  final _$activitiesListAtom =
-      Atom(name: '_AllActivitiesUserDashboardControllerBase.activitiesList');
+  late final _$activitiesListAtom = Atom(
+      name: '_AllActivitiesUserDashboardControllerBase.activitiesList',
+      context: context);
 
   @override
   List<ActivityModel> get activitiesList {
@@ -131,8 +135,9 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
-  final _$allActivitiesToCardsAtom = Atom(
-      name: '_AllActivitiesUserDashboardControllerBase.allActivitiesToCards');
+  late final _$allActivitiesToCardsAtom = Atom(
+      name: '_AllActivitiesUserDashboardControllerBase.allActivitiesToCards',
+      context: context);
 
   @override
   List<CardActivity> get allActivitiesToCards {
@@ -148,8 +153,9 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
-  final _$activityTypeAtom =
-      Atom(name: '_AllActivitiesUserDashboardControllerBase.activityType');
+  late final _$activityTypeAtom = Atom(
+      name: '_AllActivitiesUserDashboardControllerBase.activityType',
+      context: context);
 
   @override
   ActivityEnum? get activityType {
@@ -164,24 +170,27 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
-  final _$setIsLoadingAsyncAction =
-      AsyncAction('_AllActivitiesUserDashboardControllerBase.setIsLoading');
+  late final _$setIsLoadingAsyncAction = AsyncAction(
+      '_AllActivitiesUserDashboardControllerBase.setIsLoading',
+      context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  final _$getAllActivitiesAsyncAction =
-      AsyncAction('_AllActivitiesUserDashboardControllerBase.getAllActivities');
+  late final _$getAllActivitiesAsyncAction = AsyncAction(
+      '_AllActivitiesUserDashboardControllerBase.getAllActivities',
+      context: context);
 
   @override
   Future<dynamic> getAllActivities() {
     return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
   }
 
-  final _$getActivitiesByTypeAsyncAction = AsyncAction(
-      '_AllActivitiesUserDashboardControllerBase.getActivitiesByType');
+  late final _$getActivitiesByTypeAsyncAction = AsyncAction(
+      '_AllActivitiesUserDashboardControllerBase.getActivitiesByType',
+      context: context);
 
   @override
   Future<dynamic> getActivitiesByType(ActivityEnum? typeActivity) {
@@ -189,16 +198,18 @@ mixin _$AllActivitiesUserDashboardController
         .run(() => super.getActivitiesByType(typeActivity));
   }
 
-  final _$logoutAsyncAction =
-      AsyncAction('_AllActivitiesUserDashboardControllerBase.logout');
+  late final _$logoutAsyncAction = AsyncAction(
+      '_AllActivitiesUserDashboardControllerBase.logout',
+      context: context);
 
   @override
   Future<void> logout() {
     return _$logoutAsyncAction.run(() => super.logout());
   }
 
-  final _$_AllActivitiesUserDashboardControllerBaseActionController =
-      ActionController(name: '_AllActivitiesUserDashboardControllerBase');
+  late final _$_AllActivitiesUserDashboardControllerBaseActionController =
+      ActionController(
+          name: '_AllActivitiesUserDashboardControllerBase', context: context);
 
   @override
   void toggleFilterActivityChipIndex(dynamic index) {

@@ -24,7 +24,8 @@ mixin _$RegisterController on _RegisterController, Store {
               name: '_RegisterController.registerInformations'))
           .value;
 
-  final _$errorsListAtom = Atom(name: '_RegisterController.errorsList');
+  late final _$errorsListAtom =
+      Atom(name: '_RegisterController.errorsList', context: context);
 
   @override
   List<String> get errorsList {
@@ -39,7 +40,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$errorsAtom = Atom(name: '_RegisterController.errors');
+  late final _$errorsAtom =
+      Atom(name: '_RegisterController.errors', context: context);
 
   @override
   String get errors {
@@ -54,7 +56,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$isLoadingAtom = Atom(name: '_RegisterController.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_RegisterController.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -69,8 +72,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$showDialogToConfirmEmailAtom =
-      Atom(name: '_RegisterController.showDialogToConfirmEmail');
+  late final _$showDialogToConfirmEmailAtom = Atom(
+      name: '_RegisterController.showDialogToConfirmEmail', context: context);
 
   @override
   bool get showDialogToConfirmEmail {
@@ -86,7 +89,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$showPwdAtom = Atom(name: '_RegisterController.showPwd');
+  late final _$showPwdAtom =
+      Atom(name: '_RegisterController.showPwd', context: context);
 
   @override
   bool get showPwd {
@@ -101,7 +105,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$showConfirmPwdAtom = Atom(name: '_RegisterController.showConfirmPwd');
+  late final _$showConfirmPwdAtom =
+      Atom(name: '_RegisterController.showConfirmPwd', context: context);
 
   @override
   bool get showConfirmPwd {
@@ -116,8 +121,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$successRegistrationAtom =
-      Atom(name: '_RegisterController.successRegistration');
+  late final _$successRegistrationAtom =
+      Atom(name: '_RegisterController.successRegistration', context: context);
 
   @override
   bool get successRegistration {
@@ -132,7 +137,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$nameAtom = Atom(name: '_RegisterController.name');
+  late final _$nameAtom =
+      Atom(name: '_RegisterController.name', context: context);
 
   @override
   String get name {
@@ -147,7 +153,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$socialNameAtom = Atom(name: '_RegisterController.socialName');
+  late final _$socialNameAtom =
+      Atom(name: '_RegisterController.socialName', context: context);
 
   @override
   String get socialName {
@@ -162,7 +169,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$hasSocialNameAtom = Atom(name: '_RegisterController.hasSocialName');
+  late final _$hasSocialNameAtom =
+      Atom(name: '_RegisterController.hasSocialName', context: context);
 
   @override
   bool get hasSocialName {
@@ -177,7 +185,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$cpfAtom = Atom(name: '_RegisterController.cpf');
+  late final _$cpfAtom =
+      Atom(name: '_RegisterController.cpf', context: context);
 
   @override
   String get cpf {
@@ -192,7 +201,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$emailAtom = Atom(name: '_RegisterController.email');
+  late final _$emailAtom =
+      Atom(name: '_RegisterController.email', context: context);
 
   @override
   String get email {
@@ -207,7 +217,24 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$isMauaStudentAtom = Atom(name: '_RegisterController.isMauaStudent');
+  late final _$verifyEmailAtom =
+      Atom(name: '_RegisterController.verifyEmail', context: context);
+
+  @override
+  String get verifyEmail {
+    _$verifyEmailAtom.reportRead();
+    return super.verifyEmail;
+  }
+
+  @override
+  set verifyEmail(String value) {
+    _$verifyEmailAtom.reportWrite(value, super.verifyEmail, () {
+      super.verifyEmail = value;
+    });
+  }
+
+  late final _$isMauaStudentAtom =
+      Atom(name: '_RegisterController.isMauaStudent', context: context);
 
   @override
   bool get isMauaStudent {
@@ -222,7 +249,7 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$raAtom = Atom(name: '_RegisterController.ra');
+  late final _$raAtom = Atom(name: '_RegisterController.ra', context: context);
 
   @override
   String get ra {
@@ -237,7 +264,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$passwordAtom = Atom(name: '_RegisterController.password');
+  late final _$passwordAtom =
+      Atom(name: '_RegisterController.password', context: context);
 
   @override
   String get password {
@@ -252,7 +280,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$verifyPasswordAtom = Atom(name: '_RegisterController.verifyPassword');
+  late final _$verifyPasswordAtom =
+      Atom(name: '_RegisterController.verifyPassword', context: context);
 
   @override
   String get verifyPassword {
@@ -267,7 +296,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$canSendEmailsAtom = Atom(name: '_RegisterController.canSendEmails');
+  late final _$canSendEmailsAtom =
+      Atom(name: '_RegisterController.canSendEmails', context: context);
 
   @override
   bool get canSendEmails {
@@ -282,8 +312,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$acceptTermsOfUseAtom =
-      Atom(name: '_RegisterController.acceptTermsOfUse');
+  late final _$acceptTermsOfUseAtom =
+      Atom(name: '_RegisterController.acceptTermsOfUse', context: context);
 
   @override
   bool get acceptTermsOfUse {
@@ -298,7 +328,8 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$acceptImageAtom = Atom(name: '_RegisterController.acceptImage');
+  late final _$acceptImageAtom =
+      Atom(name: '_RegisterController.acceptImage', context: context);
 
   @override
   bool get acceptImage {
@@ -313,67 +344,80 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
-  final _$setAcceptImageAsyncAction =
-      AsyncAction('_RegisterController.setAcceptImage');
+  late final _$setAcceptImageAsyncAction =
+      AsyncAction('_RegisterController.setAcceptImage', context: context);
 
   @override
   Future<void> setAcceptImage(bool? value) {
     return _$setAcceptImageAsyncAction.run(() => super.setAcceptImage(value));
   }
 
-  final _$addErrorAsyncAction = AsyncAction('_RegisterController.addError');
+  late final _$addErrorAsyncAction =
+      AsyncAction('_RegisterController.addError', context: context);
 
   @override
   Future<void> addError(String value) {
     return _$addErrorAsyncAction.run(() => super.addError(value));
   }
 
-  final _$joinErrorsAsyncAction = AsyncAction('_RegisterController.joinErrors');
+  late final _$joinErrorsAsyncAction =
+      AsyncAction('_RegisterController.joinErrors', context: context);
 
   @override
   Future<void> joinErrors() {
     return _$joinErrorsAsyncAction.run(() => super.joinErrors());
   }
 
-  final _$resetErrorsAsyncAction =
-      AsyncAction('_RegisterController.resetErrors');
+  late final _$resetErrorsAsyncAction =
+      AsyncAction('_RegisterController.resetErrors', context: context);
 
   @override
   Future<void> resetErrors() {
     return _$resetErrorsAsyncAction.run(() => super.resetErrors());
   }
 
-  final _$setNameAsyncAction = AsyncAction('_RegisterController.setName');
+  late final _$setNameAsyncAction =
+      AsyncAction('_RegisterController.setName', context: context);
 
   @override
   Future<void> setName(String value) {
     return _$setNameAsyncAction.run(() => super.setName(value));
   }
 
-  final _$setSocialNameAsyncAction =
-      AsyncAction('_RegisterController.setSocialName');
+  late final _$setSocialNameAsyncAction =
+      AsyncAction('_RegisterController.setSocialName', context: context);
 
   @override
   Future<void> setSocialName(String value) {
     return _$setSocialNameAsyncAction.run(() => super.setSocialName(value));
   }
 
-  final _$setCpfAsyncAction = AsyncAction('_RegisterController.setCpf');
+  late final _$setCpfAsyncAction =
+      AsyncAction('_RegisterController.setCpf', context: context);
 
   @override
   Future<void> setCpf(String value) {
     return _$setCpfAsyncAction.run(() => super.setCpf(value));
   }
 
-  final _$setEmailAsyncAction = AsyncAction('_RegisterController.setEmail');
+  late final _$setEmailAsyncAction =
+      AsyncAction('_RegisterController.setEmail', context: context);
 
   @override
   Future<void> setEmail(String value) {
     return _$setEmailAsyncAction.run(() => super.setEmail(value));
   }
 
-  final _$setIsMauaStudentAsyncAction =
-      AsyncAction('_RegisterController.setIsMauaStudent');
+  late final _$setVerifyEmailAsyncAction =
+      AsyncAction('_RegisterController.setVerifyEmail', context: context);
+
+  @override
+  Future<void> setVerifyEmail(String value) {
+    return _$setVerifyEmailAsyncAction.run(() => super.setVerifyEmail(value));
+  }
+
+  late final _$setIsMauaStudentAsyncAction =
+      AsyncAction('_RegisterController.setIsMauaStudent', context: context);
 
   @override
   Future<void> setIsMauaStudent(bool? value) {
@@ -381,8 +425,8 @@ mixin _$RegisterController on _RegisterController, Store {
         .run(() => super.setIsMauaStudent(value));
   }
 
-  final _$setHasSocialNameAsyncAction =
-      AsyncAction('_RegisterController.setHasSocialName');
+  late final _$setHasSocialNameAsyncAction =
+      AsyncAction('_RegisterController.setHasSocialName', context: context);
 
   @override
   Future<void> setHasSocialName(bool? value) {
@@ -390,23 +434,24 @@ mixin _$RegisterController on _RegisterController, Store {
         .run(() => super.setHasSocialName(value));
   }
 
-  final _$setRaAsyncAction = AsyncAction('_RegisterController.setRa');
+  late final _$setRaAsyncAction =
+      AsyncAction('_RegisterController.setRa', context: context);
 
   @override
   Future<void> setRa(String value) {
     return _$setRaAsyncAction.run(() => super.setRa(value));
   }
 
-  final _$setPasswordAsyncAction =
-      AsyncAction('_RegisterController.setPassword');
+  late final _$setPasswordAsyncAction =
+      AsyncAction('_RegisterController.setPassword', context: context);
 
   @override
   Future<void> setPassword(String value) {
     return _$setPasswordAsyncAction.run(() => super.setPassword(value));
   }
 
-  final _$setVerifyPasswordAsyncAction =
-      AsyncAction('_RegisterController.setVerifyPassword');
+  late final _$setVerifyPasswordAsyncAction =
+      AsyncAction('_RegisterController.setVerifyPassword', context: context);
 
   @override
   Future<void> setVerifyPassword(String value) {
@@ -414,23 +459,25 @@ mixin _$RegisterController on _RegisterController, Store {
         .run(() => super.setVerifyPassword(value));
   }
 
-  final _$registerAsyncAction = AsyncAction('_RegisterController.register');
+  late final _$registerAsyncAction =
+      AsyncAction('_RegisterController.register', context: context);
 
   @override
   Future<void> register() {
     return _$registerAsyncAction.run(() => super.register());
   }
 
-  final _$setIsLoadingAsyncAction =
-      AsyncAction('_RegisterController.setIsLoading');
+  late final _$setIsLoadingAsyncAction =
+      AsyncAction('_RegisterController.setIsLoading', context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  final _$setSuccessRegistrationAsyncAction =
-      AsyncAction('_RegisterController.setSuccessRegistration');
+  late final _$setSuccessRegistrationAsyncAction = AsyncAction(
+      '_RegisterController.setSuccessRegistration',
+      context: context);
 
   @override
   Future<void> setSuccessRegistration(bool value) {
@@ -438,8 +485,8 @@ mixin _$RegisterController on _RegisterController, Store {
         .run(() => super.setSuccessRegistration(value));
   }
 
-  final _$setCanSendEmailsAsyncAction =
-      AsyncAction('_RegisterController.setCanSendEmails');
+  late final _$setCanSendEmailsAsyncAction =
+      AsyncAction('_RegisterController.setCanSendEmails', context: context);
 
   @override
   Future<void> setCanSendEmails(bool? value) {
@@ -447,8 +494,8 @@ mixin _$RegisterController on _RegisterController, Store {
         .run(() => super.setCanSendEmails(value));
   }
 
-  final _$setAcceptTermsOfUseAsyncAction =
-      AsyncAction('_RegisterController.setAcceptTermsOfUse');
+  late final _$setAcceptTermsOfUseAsyncAction =
+      AsyncAction('_RegisterController.setAcceptTermsOfUse', context: context);
 
   @override
   Future<void> setAcceptTermsOfUse(bool? value) {
@@ -456,8 +503,8 @@ mixin _$RegisterController on _RegisterController, Store {
         .run(() => super.setAcceptTermsOfUse(value));
   }
 
-  final _$_RegisterControllerActionController =
-      ActionController(name: '_RegisterController');
+  late final _$_RegisterControllerActionController =
+      ActionController(name: '_RegisterController', context: context);
 
   @override
   bool validateName(String value) {
@@ -498,6 +545,17 @@ mixin _$RegisterController on _RegisterController, Store {
         name: '_RegisterController.validateEmail');
     try {
       return super.validateEmail(value);
+    } finally {
+      _$_RegisterControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  bool validateVerifyEmail(String value) {
+    final _$actionInfo = _$_RegisterControllerActionController.startAction(
+        name: '_RegisterController.validateVerifyEmail');
+    try {
+      return super.validateVerifyEmail(value);
     } finally {
       _$_RegisterControllerActionController.endAction(_$actionInfo);
     }
@@ -584,6 +642,7 @@ socialName: ${socialName},
 hasSocialName: ${hasSocialName},
 cpf: ${cpf},
 email: ${email},
+verifyEmail: ${verifyEmail},
 isMauaStudent: ${isMauaStudent},
 ra: ${ra},
 password: ${password},

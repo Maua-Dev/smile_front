@@ -47,7 +47,10 @@ class AuthDatasourceImpl implements AuthDatasource {
         return response;
       }
       throw Exception();
-    } catch (e) {
+    } on DioError catch (e) {
+      if (e.response.toString().contains('User is not confirmed')) {
+        Modular.to.navigate('/login/reenviar-email');
+      }
       throw LoginInvalid('Login ou Senha inválida');
     }
   }

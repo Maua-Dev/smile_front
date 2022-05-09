@@ -9,8 +9,8 @@ part of 'create_activity_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
-  final _$activityToCreateAtom =
-      Atom(name: '_CreateActivityControllerBase.activityToCreate');
+  late final _$activityToCreateAtom = Atom(
+      name: '_CreateActivityControllerBase.activityToCreate', context: context);
 
   @override
   ActivityModel get activityToCreate {
@@ -25,7 +25,8 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
     });
   }
 
-  final _$isLoadingAtom = Atom(name: '_CreateActivityControllerBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_CreateActivityControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -40,24 +41,26 @@ mixin _$CreateActivityController on _CreateActivityControllerBase, Store {
     });
   }
 
-  final _$setIsLoadingAsyncAction =
-      AsyncAction('_CreateActivityControllerBase.setIsLoading');
+  late final _$setIsLoadingAsyncAction = AsyncAction(
+      '_CreateActivityControllerBase.setIsLoading',
+      context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  final _$createActivityAsyncAction =
-      AsyncAction('_CreateActivityControllerBase.createActivity');
+  late final _$createActivityAsyncAction = AsyncAction(
+      '_CreateActivityControllerBase.createActivity',
+      context: context);
 
   @override
   Future<dynamic> createActivity() {
     return _$createActivityAsyncAction.run(() => super.createActivity());
   }
 
-  final _$_CreateActivityControllerBaseActionController =
-      ActionController(name: '_CreateActivityControllerBase');
+  late final _$_CreateActivityControllerBaseActionController =
+      ActionController(name: '_CreateActivityControllerBase', context: context);
 
   @override
   bool isFilled() {

@@ -9,7 +9,8 @@ part of 'speakers_home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$SpeakersHomeController on _SpeakersHomeControllerBase, Store {
-  final _$isLoadingAtom = Atom(name: '_SpeakersHomeControllerBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_SpeakersHomeControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -24,8 +25,8 @@ mixin _$SpeakersHomeController on _SpeakersHomeControllerBase, Store {
     });
   }
 
-  final _$listSpeakersAtom =
-      Atom(name: '_SpeakersHomeControllerBase.listSpeakers');
+  late final _$listSpeakersAtom =
+      Atom(name: '_SpeakersHomeControllerBase.listSpeakers', context: context);
 
   @override
   List<HomeSpeakerModel> get listSpeakers {
@@ -40,8 +41,8 @@ mixin _$SpeakersHomeController on _SpeakersHomeControllerBase, Store {
     });
   }
 
-  final _$indexToShowAtom =
-      Atom(name: '_SpeakersHomeControllerBase.indexToShow');
+  late final _$indexToShowAtom =
+      Atom(name: '_SpeakersHomeControllerBase.indexToShow', context: context);
 
   @override
   int get indexToShow {
@@ -56,24 +57,24 @@ mixin _$SpeakersHomeController on _SpeakersHomeControllerBase, Store {
     });
   }
 
-  final _$setIsLoadingAsyncAction =
-      AsyncAction('_SpeakersHomeControllerBase.setIsLoading');
+  late final _$setIsLoadingAsyncAction =
+      AsyncAction('_SpeakersHomeControllerBase.setIsLoading', context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  final _$getSpeakersAsyncAction =
-      AsyncAction('_SpeakersHomeControllerBase.getSpeakers');
+  late final _$getSpeakersAsyncAction =
+      AsyncAction('_SpeakersHomeControllerBase.getSpeakers', context: context);
 
   @override
   Future<dynamic> getSpeakers() {
     return _$getSpeakersAsyncAction.run(() => super.getSpeakers());
   }
 
-  final _$toggleIndexAsyncAction =
-      AsyncAction('_SpeakersHomeControllerBase.toggleIndex');
+  late final _$toggleIndexAsyncAction =
+      AsyncAction('_SpeakersHomeControllerBase.toggleIndex', context: context);
 
   @override
   Future<void> toggleIndex(dynamic index) {

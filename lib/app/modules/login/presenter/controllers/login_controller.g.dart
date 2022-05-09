@@ -9,7 +9,8 @@ part of 'login_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginController on _LoginController, Store {
-  final _$isLoadingAtom = Atom(name: '_LoginController.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_LoginController.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -24,7 +25,8 @@ mixin _$LoginController on _LoginController, Store {
     });
   }
 
-  final _$showPwdAtom = Atom(name: '_LoginController.showPwd');
+  late final _$showPwdAtom =
+      Atom(name: '_LoginController.showPwd', context: context);
 
   @override
   bool get showPwd {
@@ -39,7 +41,8 @@ mixin _$LoginController on _LoginController, Store {
     });
   }
 
-  final _$cpfRneAtom = Atom(name: '_LoginController.cpfRne');
+  late final _$cpfRneAtom =
+      Atom(name: '_LoginController.cpfRne', context: context);
 
   @override
   String get cpfRne {
@@ -54,7 +57,8 @@ mixin _$LoginController on _LoginController, Store {
     });
   }
 
-  final _$passwordAtom = Atom(name: '_LoginController.password');
+  late final _$passwordAtom =
+      Atom(name: '_LoginController.password', context: context);
 
   @override
   String get password {
@@ -69,7 +73,8 @@ mixin _$LoginController on _LoginController, Store {
     });
   }
 
-  final _$errorsAtom = Atom(name: '_LoginController.errors');
+  late final _$errorsAtom =
+      Atom(name: '_LoginController.errors', context: context);
 
   @override
   String get errors {
@@ -84,44 +89,48 @@ mixin _$LoginController on _LoginController, Store {
     });
   }
 
-  final _$setUsernameAsyncAction = AsyncAction('_LoginController.setUsername');
+  late final _$setUsernameAsyncAction =
+      AsyncAction('_LoginController.setUsername', context: context);
 
   @override
   Future<void> setUsername(String value) {
     return _$setUsernameAsyncAction.run(() => super.setUsername(value));
   }
 
-  final _$setPasswordAsyncAction = AsyncAction('_LoginController.setPassword');
+  late final _$setPasswordAsyncAction =
+      AsyncAction('_LoginController.setPassword', context: context);
 
   @override
   Future<void> setPassword(String value) {
     return _$setPasswordAsyncAction.run(() => super.setPassword(value));
   }
 
-  final _$loginAsyncAction = AsyncAction('_LoginController.login');
+  late final _$loginAsyncAction =
+      AsyncAction('_LoginController.login', context: context);
 
   @override
   Future<void> login() {
     return _$loginAsyncAction.run(() => super.login());
   }
 
-  final _$setErrorAsyncAction = AsyncAction('_LoginController.setError');
+  late final _$setErrorAsyncAction =
+      AsyncAction('_LoginController.setError', context: context);
 
   @override
   Future<void> setError(String value) {
     return _$setErrorAsyncAction.run(() => super.setError(value));
   }
 
-  final _$setIsLoadingAsyncAction =
-      AsyncAction('_LoginController.setIsLoading');
+  late final _$setIsLoadingAsyncAction =
+      AsyncAction('_LoginController.setIsLoading', context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  final _$_LoginControllerActionController =
-      ActionController(name: '_LoginController');
+  late final _$_LoginControllerActionController =
+      ActionController(name: '_LoginController', context: context);
 
   @override
   String? validateCpf(String value) {
