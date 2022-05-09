@@ -47,7 +47,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.width<600?60:80,
+                          height:
+                              MediaQuery.of(context).size.width < 600 ? 60 : 80,
                         ),
                         const Center(
                           child: SmileLogoWidget(),
@@ -115,7 +116,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             },
                             validation: controller.validateField,
                             showPwd: controller.showPwd,
-                            onToggleVisibilityPwd: controller.toggleVisibilityPwd,
+                            onToggleVisibilityPwd:
+                                controller.toggleVisibilityPwd,
                           );
                         }),
                         const SizedBox(
@@ -186,7 +188,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             padding: EdgeInsets.all(4.0),
                             child: Text(
                               'Em caso de erro ao se logar, envie um e-mail para: dev@maua.br',
-                              style: TextStyle(color: Colors.white, fontSize: 16),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 16),
                               textAlign: TextAlign.center,
                             ),
                           ),
