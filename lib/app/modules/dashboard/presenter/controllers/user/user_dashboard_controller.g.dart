@@ -58,7 +58,8 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
               name: '_UserDashboardControllerBase.saturdayActivitiesList'))
           .value;
 
-  final _$errorAtom = Atom(name: '_UserDashboardControllerBase.error');
+  late final _$errorAtom =
+      Atom(name: '_UserDashboardControllerBase.error', context: context);
 
   @override
   String? get error {
@@ -73,8 +74,8 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$socialNameAtom =
-      Atom(name: '_UserDashboardControllerBase.socialName');
+  late final _$socialNameAtom =
+      Atom(name: '_UserDashboardControllerBase.socialName', context: context);
 
   @override
   String? get socialName {
@@ -89,7 +90,8 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$nameAtom = Atom(name: '_UserDashboardControllerBase.name');
+  late final _$nameAtom =
+      Atom(name: '_UserDashboardControllerBase.name', context: context);
 
   @override
   String? get name {
@@ -104,8 +106,9 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$certificateWithSocialNameAtom =
-      Atom(name: '_UserDashboardControllerBase.certificateWithSocialName');
+  late final _$certificateWithSocialNameAtom = Atom(
+      name: '_UserDashboardControllerBase.certificateWithSocialName',
+      context: context);
 
   @override
   bool get certificateWithSocialName {
@@ -121,8 +124,9 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$socialNameToChangeAtom =
-      Atom(name: '_UserDashboardControllerBase.socialNameToChange');
+  late final _$socialNameToChangeAtom = Atom(
+      name: '_UserDashboardControllerBase.socialNameToChange',
+      context: context);
 
   @override
   String get socialNameToChange {
@@ -137,8 +141,8 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$nameToChangeAtom =
-      Atom(name: '_UserDashboardControllerBase.nameToChange');
+  late final _$nameToChangeAtom =
+      Atom(name: '_UserDashboardControllerBase.nameToChange', context: context);
 
   @override
   String get nameToChange {
@@ -153,8 +157,8 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$wantSocialNameAtom =
-      Atom(name: '_UserDashboardControllerBase.wantSocialName');
+  late final _$wantSocialNameAtom = Atom(
+      name: '_UserDashboardControllerBase.wantSocialName', context: context);
 
   @override
   bool get wantSocialName {
@@ -169,7 +173,8 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$isLoadingAtom = Atom(name: '_UserDashboardControllerBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_UserDashboardControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -184,8 +189,9 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$filterActivityChipIndexSelectedAtom = Atom(
-      name: '_UserDashboardControllerBase.filterActivityChipIndexSelected');
+  late final _$filterActivityChipIndexSelectedAtom = Atom(
+      name: '_UserDashboardControllerBase.filterActivityChipIndexSelected',
+      context: context);
 
   @override
   int get filterActivityChipIndexSelected {
@@ -201,8 +207,9 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$subscribedActivitiesListAtom =
-      Atom(name: '_UserDashboardControllerBase.subscribedActivitiesList');
+  late final _$subscribedActivitiesListAtom = Atom(
+      name: '_UserDashboardControllerBase.subscribedActivitiesList',
+      context: context);
 
   @override
   List<ActivityModel> get subscribedActivitiesList {
@@ -218,8 +225,8 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$nextActivityAtom =
-      Atom(name: '_UserDashboardControllerBase.nextActivity');
+  late final _$nextActivityAtom =
+      Atom(name: '_UserDashboardControllerBase.nextActivity', context: context);
 
   @override
   ActivityModel get nextActivity {
@@ -234,8 +241,8 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$cardNextActivityAtom =
-      Atom(name: '_UserDashboardControllerBase.cardNextActivity');
+  late final _$cardNextActivityAtom = Atom(
+      name: '_UserDashboardControllerBase.cardNextActivity', context: context);
 
   @override
   CardActivity get cardNextActivity {
@@ -250,8 +257,9 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$weekActivitiesListAtom =
-      Atom(name: '_UserDashboardControllerBase.weekActivitiesList');
+  late final _$weekActivitiesListAtom = Atom(
+      name: '_UserDashboardControllerBase.weekActivitiesList',
+      context: context);
 
   @override
   List<CardActivity> get weekActivitiesList {
@@ -266,8 +274,9 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$allActivitiesToCardsAtom =
-      Atom(name: '_UserDashboardControllerBase.allActivitiesToCards');
+  late final _$allActivitiesToCardsAtom = Atom(
+      name: '_UserDashboardControllerBase.allActivitiesToCards',
+      context: context);
 
   @override
   List<CardActivity> get allActivitiesToCards {
@@ -283,8 +292,9 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
     });
   }
 
-  final _$getCertificateWithSocialNameAsyncAction =
-      AsyncAction('_UserDashboardControllerBase.getCertificateWithSocialName');
+  late final _$getCertificateWithSocialNameAsyncAction = AsyncAction(
+      '_UserDashboardControllerBase.getCertificateWithSocialName',
+      context: context);
 
   @override
   Future<void> getCertificateWithSocialName() {
@@ -292,24 +302,26 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
         .run(() => super.getCertificateWithSocialName());
   }
 
-  final _$getUserNameAsyncAction =
-      AsyncAction('_UserDashboardControllerBase.getUserName');
+  late final _$getUserNameAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.getUserName', context: context);
 
   @override
   Future<void> getUserName() {
     return _$getUserNameAsyncAction.run(() => super.getUserName());
   }
 
-  final _$getUserSocialNameAsyncAction =
-      AsyncAction('_UserDashboardControllerBase.getUserSocialName');
+  late final _$getUserSocialNameAsyncAction = AsyncAction(
+      '_UserDashboardControllerBase.getUserSocialName',
+      context: context);
 
   @override
   Future<void> getUserSocialName() {
     return _$getUserSocialNameAsyncAction.run(() => super.getUserSocialName());
   }
 
-  final _$setWantSocialNameAsyncAction =
-      AsyncAction('_UserDashboardControllerBase.setWantSocialName');
+  late final _$setWantSocialNameAsyncAction = AsyncAction(
+      '_UserDashboardControllerBase.setWantSocialName',
+      context: context);
 
   @override
   Future<void> setWantSocialName(bool? value) {
@@ -317,32 +329,35 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
         .run(() => super.setWantSocialName(value));
   }
 
-  final _$changeDataAsyncAction =
-      AsyncAction('_UserDashboardControllerBase.changeData');
+  late final _$changeDataAsyncAction =
+      AsyncAction('_UserDashboardControllerBase.changeData', context: context);
 
   @override
   Future<void> changeData() {
     return _$changeDataAsyncAction.run(() => super.changeData());
   }
 
-  final _$setIsLoadingAsyncAction =
-      AsyncAction('_UserDashboardControllerBase.setIsLoading');
+  late final _$setIsLoadingAsyncAction = AsyncAction(
+      '_UserDashboardControllerBase.setIsLoading',
+      context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  final _$getActivitiesAsyncAction =
-      AsyncAction('_UserDashboardControllerBase.getActivities');
+  late final _$getActivitiesAsyncAction = AsyncAction(
+      '_UserDashboardControllerBase.getActivities',
+      context: context);
 
   @override
   Future<dynamic> getActivities() {
     return _$getActivitiesAsyncAction.run(() => super.getActivities());
   }
 
-  final _$getUserSubscribedActivitiesAsyncAction =
-      AsyncAction('_UserDashboardControllerBase.getUserSubscribedActivities');
+  late final _$getUserSubscribedActivitiesAsyncAction = AsyncAction(
+      '_UserDashboardControllerBase.getUserSubscribedActivities',
+      context: context);
 
   @override
   Future<dynamic> getUserSubscribedActivities() {
@@ -350,8 +365,8 @@ mixin _$UserDashboardController on _UserDashboardControllerBase, Store {
         .run(() => super.getUserSubscribedActivities());
   }
 
-  final _$_UserDashboardControllerBaseActionController =
-      ActionController(name: '_UserDashboardControllerBase');
+  late final _$_UserDashboardControllerBaseActionController =
+      ActionController(name: '_UserDashboardControllerBase', context: context);
 
   @override
   void setName(String value) {

@@ -4,6 +4,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/use
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
+import '../../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/infra/activity_enum.dart';
 import '../../../domain/repositories/activities_repository_interface.dart';
@@ -17,6 +18,8 @@ abstract class _AllActivitiesUserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final AuthController authController;
   final controller = Modular.get<UserDashboardController>();
+  final FirebaseAnalyticsService analytics =
+      Modular.get<FirebaseAnalyticsService>();
 
   _AllActivitiesUserDashboardControllerBase({
     required this.repository,

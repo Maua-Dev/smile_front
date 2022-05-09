@@ -64,4 +64,10 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         await datasource.postUnsubscribe(activityId, activityDate);
     return requestDone;
   }
+
+  @override
+  Future<String> getDownloadLinkCsv() async {
+    var url = await datasource.getLinkCsv();
+    return url;
+  }
 }

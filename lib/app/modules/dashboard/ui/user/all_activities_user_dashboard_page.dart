@@ -102,6 +102,8 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                           isRegistered
                         ],
                       );
+                      controller.analytics.logViewActivity(
+                          controller.weekActivitiesList[index].activityCode);
                     },
                   );
                 },

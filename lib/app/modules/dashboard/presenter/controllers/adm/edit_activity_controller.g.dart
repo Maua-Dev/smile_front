@@ -9,8 +9,8 @@ part of 'edit_activity_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$EditActivityController on _EditActivityControllerBase, Store {
-  final _$activityToEditAtom =
-      Atom(name: '_EditActivityControllerBase.activityToEdit');
+  late final _$activityToEditAtom = Atom(
+      name: '_EditActivityControllerBase.activityToEdit', context: context);
 
   @override
   ActivityModel get activityToEdit {
@@ -25,7 +25,8 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
     });
   }
 
-  final _$isLoadingAtom = Atom(name: '_EditActivityControllerBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_EditActivityControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -40,32 +41,33 @@ mixin _$EditActivityController on _EditActivityControllerBase, Store {
     });
   }
 
-  final _$setIsLoadingAsyncAction =
-      AsyncAction('_EditActivityControllerBase.setIsLoading');
+  late final _$setIsLoadingAsyncAction =
+      AsyncAction('_EditActivityControllerBase.setIsLoading', context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  final _$editActivityAsyncAction =
-      AsyncAction('_EditActivityControllerBase.editActivity');
+  late final _$editActivityAsyncAction =
+      AsyncAction('_EditActivityControllerBase.editActivity', context: context);
 
   @override
   Future<dynamic> editActivity() {
     return _$editActivityAsyncAction.run(() => super.editActivity());
   }
 
-  final _$deleteActivityAsyncAction =
-      AsyncAction('_EditActivityControllerBase.deleteActivity');
+  late final _$deleteActivityAsyncAction = AsyncAction(
+      '_EditActivityControllerBase.deleteActivity',
+      context: context);
 
   @override
   Future<dynamic> deleteActivity(String id) {
     return _$deleteActivityAsyncAction.run(() => super.deleteActivity(id));
   }
 
-  final _$_EditActivityControllerBaseActionController =
-      ActionController(name: '_EditActivityControllerBase');
+  late final _$_EditActivityControllerBaseActionController =
+      ActionController(name: '_EditActivityControllerBase', context: context);
 
   @override
   bool isFilled() {

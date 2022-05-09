@@ -47,7 +47,12 @@ class CheckBoxWidget extends StatelessWidget {
               : MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
-                    onTap: () => {launch(link!)},
+                    onTap: () => {
+                      launchUrl(
+                        Uri.parse(link!),
+                        mode: LaunchMode.externalApplication,
+                      ),
+                    },
                     child: Text(
                       text,
                       style: AppTextStyles.titleH1.copyWith(
