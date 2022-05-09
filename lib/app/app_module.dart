@@ -6,12 +6,18 @@ import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/landing_module.dart';
 import 'package:smile_front/app/modules/login/login_module.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
+import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import 'modules/auth/auth_module.dart';
 import 'modules/home/home_module.dart';
 
 class AppModule extends Module {
   @override
   final List<Module> imports = [AuthModule(), RegisterModule()];
+
+  @override
+  final List<Bind> binds = [
+    Bind.lazySingleton((i) => FirebaseAnalyticsService()),
+  ];
 
   @override
   final List<ModularRoute> routes = [
