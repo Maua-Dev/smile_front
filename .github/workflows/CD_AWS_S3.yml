@@ -36,8 +36,8 @@ jobs:
            run: flutter pub get
            
          - name: rename sw file
-           if: ${{ github.ref_name }} == prod
-           run: mv firebase-messaging-sw-prod.js firebase-messaging-sw.js
+           if: github.ref == 'prod'
+           run: mv web/firebase-messaging-sw-prod.js web/firebase-messaging-sw.js
 
          - run: flutter build web -t lib/${{secrets.MAIN_FLAVOR}}.dart --dart-define=MSS_USER_BASE_URL=${{secrets.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{secrets.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=https://dgdeg32eu6sux.cloudfront.net/
 
