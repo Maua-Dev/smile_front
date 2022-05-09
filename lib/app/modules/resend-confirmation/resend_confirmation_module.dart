@@ -13,7 +13,8 @@ class ResendConfirmationModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<ResendConfirmationController>(
         (i) => ResendConfirmationController(
-              resendConfirmationRepository: i<ResendConfirmationRepositoryInterface>(),
+              resendConfirmationRepository:
+                  i<ResendConfirmationRepositoryInterface>(),
             ),
         export: true),
     Bind.lazySingleton<ResendConfirmationDatasource>(

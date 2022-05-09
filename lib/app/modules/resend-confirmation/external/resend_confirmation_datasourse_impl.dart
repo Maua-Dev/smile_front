@@ -27,8 +27,8 @@ class ResendConfirmationDatasourceImpl implements ResendConfirmationDatasource {
       }
       throw Exception();
     } catch (e) {
-      throw ResendConfirmationInvalid('Falha ao enviar o e-mail de confirmação, tente novamente.');
+      throw ResendConfirmationInvalid(
+          'Falha ao enviar o e-mail de confirmação, tente novamente.');
     }
   }
-
 }

@@ -108,10 +108,13 @@ class _ResendConfirmationPageState
                                   ),
                                   CustomElevatedButtonWidget(
                                     title: 'Retornar ao login',
-                                    widthSize: MediaQuery.of(context).size.width <
-                                            650
-                                        ? MediaQuery.of(context).size.width * 0.85
-                                        : 600,
+                                    widthSize:
+                                        MediaQuery.of(context).size.width < 650
+                                            ? MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.85
+                                            : 600,
                                     heightSize: 50,
                                     backgroundColor: AppColors.brandingOrange,
                                     onPressed: () {
@@ -125,7 +128,8 @@ class _ResendConfirmationPageState
                             return Column(
                               children: [
                                 const Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.0),
                                   child: SizedBox(
                                     width: 600,
                                     child: Text(
@@ -156,10 +160,13 @@ class _ResendConfirmationPageState
                                   return CustomElevatedButtonWidget(
                                     isLoading: controller.isLoading,
                                     title: 'Enviar',
-                                    widthSize: MediaQuery.of(context).size.width <
-                                            650
-                                        ? MediaQuery.of(context).size.width * 0.85
-                                        : 600,
+                                    widthSize:
+                                        MediaQuery.of(context).size.width < 650
+                                            ? MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.85
+                                            : 600,
                                     heightSize: 50,
                                     backgroundColor: AppColors.brandingOrange,
                                     onPressed: () async {

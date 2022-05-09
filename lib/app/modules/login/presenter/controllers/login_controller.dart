@@ -31,9 +31,9 @@ abstract class _LoginController with Store {
 
   @action
   Future<void> setUsername(String value) async {
-    if(value.contains("@")){
+    if (value.contains("@")) {
       value = value.toLowerCase();
-    }else{
+    } else {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
     }
