@@ -77,6 +77,8 @@ class _UserDashboardPageState
                         controller.cardNextActivity,
                         isRegistered
                       ]);
+                      controller.analytics.logViewActivity(
+                          controller.cardNextActivity.activityCode);
                     },
                     name: controller.nextActivity.title,
                     description: controller.nextActivity.description,
@@ -138,6 +140,8 @@ class _UserDashboardPageState
                                 controller.weekActivitiesList[index],
                                 isRegistered
                               ]);
+                          controller.analytics.logViewActivity(controller
+                              .weekActivitiesList[index].activityCode);
                         },
                       );
                     },

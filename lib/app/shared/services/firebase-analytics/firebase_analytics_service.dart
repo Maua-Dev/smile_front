@@ -17,4 +17,9 @@ class FirebaseAnalyticsService {
   Future logSignUp() async {
     await analytics.logSignUp(signUpMethod: 'email');
   }
+
+  Future logViewActivity(String activityCode) async {
+    await analytics.logEvent(
+        name: 'view_activity', parameters: {'activity_code': activityCode});
+  }
 }
