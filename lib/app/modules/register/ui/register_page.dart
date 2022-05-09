@@ -60,7 +60,7 @@ class _RegisterPageState
                         if (controller.successRegistration)
                           const Center(
                             child: Text(
-                              'Enviamos um email para você, por favor, verifique sua caixa de entrada ou caixa de spam e clique no link de confirmação para validar seu cadastro.',
+                              'Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro.',
                               style: TextStyle(
                                 color: Colors.white,
                               ),

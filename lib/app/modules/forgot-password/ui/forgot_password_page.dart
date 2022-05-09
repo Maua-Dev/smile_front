@@ -97,7 +97,7 @@ class _ForgotPasswordPageState
                                 const Padding(
                                   padding: EdgeInsets.all(42.0),
                                   child: Text(
-                                    "Você receberá um e-mail com um link para alterar sua senha! Verifique a caixa de spam.",
+                                    'Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.',
                                     textAlign: TextAlign.justify,
                                     style: TextStyle(color: Colors.white),
                                   ),
