@@ -12,7 +12,6 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import '../../../../app_module.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
 import '../../../auth/presenter/controllers/auth_controller.dart';
-import '../../../login/ui/widgets/smile_logo_widget.dart';
 import 'activities-home/activities_home_page.dart';
 import 'main-home/main_home_page.dart';
 
