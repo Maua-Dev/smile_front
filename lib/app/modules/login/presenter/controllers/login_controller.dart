@@ -31,6 +31,12 @@ abstract class _LoginController with Store {
 
   @action
   Future<void> setUsername(String value) async {
+    if(value.contains("@")){
+      value = value.toLowerCase();
+    }else{
+      value = value.replaceAll('.', '');
+      value = value.replaceAll('-', '');
+    }
     cpfRne = value;
   }
 

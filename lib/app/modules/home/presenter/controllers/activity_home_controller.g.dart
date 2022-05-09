@@ -9,7 +9,8 @@ part of 'activity_home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ActivityHomeController on ActivityHomeControllerBase, Store {
-  final _$speakersAtom = Atom(name: 'ActivityHomeControllerBase.speakers');
+  late final _$speakersAtom =
+      Atom(name: 'ActivityHomeControllerBase.speakers', context: context);
 
   @override
   List<HomeSpeakerModel> get speakers {
@@ -24,8 +25,8 @@ mixin _$ActivityHomeController on ActivityHomeControllerBase, Store {
     });
   }
 
-  final _$getSpeakersAsyncAction =
-      AsyncAction('ActivityHomeControllerBase.getSpeakers');
+  late final _$getSpeakersAsyncAction =
+      AsyncAction('ActivityHomeControllerBase.getSpeakers', context: context);
 
   @override
   Future<void> getSpeakers() {

@@ -66,7 +66,8 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
               name: '_AdmDashboardControllerBase.sundayActivitiesList'))
           .value;
 
-  final _$isLoadingAtom = Atom(name: '_AdmDashboardControllerBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_AdmDashboardControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -81,8 +82,9 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
-  final _$isFloatActionButtonOpenAtom =
-      Atom(name: '_AdmDashboardControllerBase.isFloatActionButtonOpen');
+  late final _$isFloatActionButtonOpenAtom = Atom(
+      name: '_AdmDashboardControllerBase.isFloatActionButtonOpen',
+      context: context);
 
   @override
   bool get isFloatActionButtonOpen {
@@ -98,8 +100,9 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
-  final _$filterActivityChipIndexSelectedAtom =
-      Atom(name: '_AdmDashboardControllerBase.filterActivityChipIndexSelected');
+  late final _$filterActivityChipIndexSelectedAtom = Atom(
+      name: '_AdmDashboardControllerBase.filterActivityChipIndexSelected',
+      context: context);
 
   @override
   int? get filterActivityChipIndexSelected {
@@ -115,8 +118,8 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
-  final _$activitiesListAtom =
-      Atom(name: '_AdmDashboardControllerBase.activitiesList');
+  late final _$activitiesListAtom = Atom(
+      name: '_AdmDashboardControllerBase.activitiesList', context: context);
 
   @override
   List<ActivityModel> get activitiesList {
@@ -131,8 +134,8 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
-  final _$saveActivitiesListAtom =
-      Atom(name: '_AdmDashboardControllerBase.saveActivitiesList');
+  late final _$saveActivitiesListAtom = Atom(
+      name: '_AdmDashboardControllerBase.saveActivitiesList', context: context);
 
   @override
   List<ActivityModel> get saveActivitiesList {
@@ -147,8 +150,9 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
-  final _$allActivitiesToCardsAtom =
-      Atom(name: '_AdmDashboardControllerBase.allActivitiesToCards');
+  late final _$allActivitiesToCardsAtom = Atom(
+      name: '_AdmDashboardControllerBase.allActivitiesToCards',
+      context: context);
 
   @override
   List<CardActivity> get allActivitiesToCards {
@@ -164,8 +168,8 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
-  final _$nextActivitiesListAtom =
-      Atom(name: '_AdmDashboardControllerBase.nextActivitiesList');
+  late final _$nextActivitiesListAtom = Atom(
+      name: '_AdmDashboardControllerBase.nextActivitiesList', context: context);
 
   @override
   List<CardActivity> get nextActivitiesList {
@@ -180,16 +184,17 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
-  final _$setIsLoadingAsyncAction =
-      AsyncAction('_AdmDashboardControllerBase.setIsLoading');
+  late final _$setIsLoadingAsyncAction =
+      AsyncAction('_AdmDashboardControllerBase.setIsLoading', context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  final _$getActivitiesByTypeAsyncAction =
-      AsyncAction('_AdmDashboardControllerBase.getActivitiesByType');
+  late final _$getActivitiesByTypeAsyncAction = AsyncAction(
+      '_AdmDashboardControllerBase.getActivitiesByType',
+      context: context);
 
   @override
   Future<dynamic> getActivitiesByType(dynamic index) {
@@ -197,23 +202,25 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
         .run(() => super.getActivitiesByType(index));
   }
 
-  final _$getAllActivitiesAsyncAction =
-      AsyncAction('_AdmDashboardControllerBase.getAllActivities');
+  late final _$getAllActivitiesAsyncAction = AsyncAction(
+      '_AdmDashboardControllerBase.getAllActivities',
+      context: context);
 
   @override
   Future<dynamic> getAllActivities() {
     return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
   }
 
-  final _$logoutAsyncAction = AsyncAction('_AdmDashboardControllerBase.logout');
+  late final _$logoutAsyncAction =
+      AsyncAction('_AdmDashboardControllerBase.logout', context: context);
 
   @override
   Future<void> logout() {
     return _$logoutAsyncAction.run(() => super.logout());
   }
 
-  final _$_AdmDashboardControllerBaseActionController =
-      ActionController(name: '_AdmDashboardControllerBase');
+  late final _$_AdmDashboardControllerBaseActionController =
+      ActionController(name: '_AdmDashboardControllerBase', context: context);
 
   @override
   void toggleFloatActionButton() {

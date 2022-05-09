@@ -9,6 +9,7 @@ import '../auth/domain/repositories/auth_repository_interface.dart';
 import '../auth/external/auth_datasource_impl.dart';
 import '../auth/infra/datasource/auth_datasource.dart';
 import '../auth/infra/repositories/auth_repository_impl.dart';
+import '../resend-confirmation/resend_confirmation_module.dart';
 
 class LoginModule extends Module {
   @override
@@ -31,5 +32,6 @@ class LoginModule extends Module {
     ChildRoute(Modular.initialRoute, child: (_, args) => const LoginPage()),
     ModuleRoute('/cadastro', module: RegisterModule()),
     ModuleRoute('/esqueci-minha-senha', module: ForgotPasswordModule()),
+    ModuleRoute('/reenviar-email', module: ResendConfirmationModule()),
   ];
 }
