@@ -21,7 +21,6 @@ class _SpeakersHomePageState
     var scrollController = ScrollController();
 
     final double width = MediaQuery.of(context).size.width;
-    final double height = MediaQuery.of(context).size.height;
     return Column(
       children: [
         Padding(
@@ -63,7 +62,7 @@ class _SpeakersHomePageState
                     ),
                   if (width < 1000)
                     SizedBox(
-                      height: width < 500 ? height * 0.2 : height * 0.27,
+                      height: width < 500 ? 110 : 160,
                       child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
@@ -86,13 +85,11 @@ class _SpeakersHomePageState
                     )
                   else
                     SizedBox(
-                      height: height < 752
-                          ? 220
-                          : width < 1380
-                              ? height * 0.25
-                              : width < 1750
-                                  ? height * 0.3
-                                  : height * 0.35,
+                      height: width < 1380
+                          ? 190
+                          : width < 1750
+                              ? 210
+                              : 250,
                       child: Center(
                         child: ListView.builder(
                           shrinkWrap: true,
