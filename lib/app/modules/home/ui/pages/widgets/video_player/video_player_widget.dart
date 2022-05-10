@@ -55,10 +55,10 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                 child: VideoProgressIndicator(
                   _videoPlayerController,
                   allowScrubbing: true,
-                  colors: const VideoProgressColors(
-                      backgroundColor: Colors.blueGrey,
-                      bufferedColor: Colors.blueGrey,
-                      playedColor: Colors.blueAccent),
+                  colors: VideoProgressColors(
+                      backgroundColor: AppColors.gray,
+                      bufferedColor: AppColors.gray,
+                      playedColor: AppColors.brandingOrange),
                 ))
           ],
         ),
