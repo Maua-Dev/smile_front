@@ -66,6 +66,22 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
               name: '_AdmDashboardControllerBase.sundayActivitiesList'))
           .value;
 
+  late final _$isLoadingCsvAtom =
+      Atom(name: '_AdmDashboardControllerBase.isLoadingCsv', context: context);
+
+  @override
+  bool get isLoadingCsv {
+    _$isLoadingCsvAtom.reportRead();
+    return super.isLoadingCsv;
+  }
+
+  @override
+  set isLoadingCsv(bool value) {
+    _$isLoadingCsvAtom.reportWrite(value, super.isLoadingCsv, () {
+      super.isLoadingCsv = value;
+    });
+  }
+
   late final _$isLoadingAtom =
       Atom(name: '_AdmDashboardControllerBase.isLoading', context: context);
 
@@ -184,6 +200,15 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
+  late final _$setIsLoadingCsvAsyncAction = AsyncAction(
+      '_AdmDashboardControllerBase.setIsLoadingCsv',
+      context: context);
+
+  @override
+  Future<void> setIsLoadingCsv(bool value) {
+    return _$setIsLoadingCsvAsyncAction.run(() => super.setIsLoadingCsv(value));
+  }
+
   late final _$setIsLoadingAsyncAction =
       AsyncAction('_AdmDashboardControllerBase.setIsLoading', context: context);
 
@@ -260,6 +285,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   @override
   String toString() {
     return '''
+isLoadingCsv: ${isLoadingCsv},
 isLoading: ${isLoading},
 isFloatActionButtonOpen: ${isFloatActionButtonOpen},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},

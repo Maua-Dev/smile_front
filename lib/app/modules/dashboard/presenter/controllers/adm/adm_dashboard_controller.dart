@@ -22,6 +22,7 @@ abstract class _AdmDashboardControllerBase with Store {
   }
 
   Future<void> downloadCsv() async {
+    setIsLoadingCsv(true);
     var url = await repository.getDownloadLinkCsv();
     var csvUrl = Uri.parse(url);
     if (!await launchUrl(
@@ -30,6 +31,15 @@ abstract class _AdmDashboardControllerBase with Store {
     )) {
       throw 'Could not launch $csvUrl';
     }
+    setIsLoadingCsv(false);
+  }
+
+  @observable
+  bool isLoadingCsv = false;
+
+  @action
+  Future<void> setIsLoadingCsv(bool value) async {
+    isLoadingCsv = value;
   }
 
   @observable
