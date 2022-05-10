@@ -1,6 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/video_controller.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:video_player/video_player.dart';
 
@@ -14,102 +14,176 @@ class VideoPlayerWidget extends StatefulWidget {
 }
 
 class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
-  late VideoPlayerController _controller;
-  late Future<void> _initializeVideoPlayerFuture;
-  bool isClicked = false;
+  late VideoPlayerController _videoPlayerController;
+  var controller = VideoController();
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(
+    _videoPlayerController = VideoPlayerController.network(
       '${EnvironmentConfig.S3_BASE_URL}video_smile1280x720.mp4',
-    );
+    )..initialize().then((_) {
+        setState(() {
+          _videoPlayerController.setVolume(controller.val);
+        });
+      });
 
-    _initializeVideoPlayerFuture = _controller.initialize();
-
-    _controller.setLooping(false);
+    _videoPlayerController.setLooping(false);
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _videoPlayerController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _initializeVideoPlayerFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return MouseRegion(
-            onEnter: (pointerEnterEvent) async {
-              if (mounted) {
-                setState(() {
-                  isClicked = false;
-                });
-              }
-            },
-            onExit: (pointerEnterEvent) async {
-              await Future.delayed(const Duration(seconds: 2));
-              if (mounted) {
-                setState(() {
-                  isClicked = true;
-                });
-              }
-            },
-            child: GestureDetector(
-              onTap: () {
-                setState(() {
-                  isClicked = true;
-                  if (_controller.value.isPlaying) {
-                    _controller.pause();
-                  } else {
-                    _controller.play();
-                  }
-                });
-              },
-              child: Stack(
-                children: [
-                  VideoPlayer(_controller),
-                  Center(
-                    child: AnimatedOpacity(
-                      opacity: isClicked ? 0.0 : 1.0,
-                      duration: const Duration(milliseconds: 1000),
-                      child: Icon(
-                        _controller.value.isPlaying
-                            ? Icons.pause
-                            : Icons.play_arrow,
-                        color: AppColors.brandingOrange,
-                        size:
-                            MediaQuery.of(context).size.width < 1024 ? 50 : 100,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      height: 12,
-                      child: VideoProgressIndicator(
-                        _controller,
-                        allowScrubbing: true,
-                        padding: const EdgeInsets.all(3),
-                        colors: VideoProgressColors(
-                            playedColor: AppColors.brandingOrange),
-                      ),
-                    ),
-                  ),
-                ],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Stack(
+          children: [
+            _videoPlayerController.value.isInitialized
+                ? AspectRatio(
+                    aspectRatio: _videoPlayerController.value.aspectRatio,
+                    child: VideoPlayer(_videoPlayerController))
+                : const CircularProgressIndicator(),
+            Positioned(
+                bottom: 0,
+                width: MediaQuery.of(context).size.width < 1024 ? 400 : 800,
+                child: VideoProgressIndicator(
+                  _videoPlayerController,
+                  allowScrubbing: true,
+                  colors: const VideoProgressColors(
+                      backgroundColor: Colors.blueGrey,
+                      bufferedColor: Colors.blueGrey,
+                      playedColor: Colors.blueAccent),
+                ))
+          ],
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.width < 600 ? 8 : 16,
+        ),
+        Observer(builder: (_) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all(const Size(48, 32)),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)))),
+                onPressed: () {
+                  _videoPlayerController.seekTo(Duration(
+                      seconds: _videoPlayerController.value.position.inSeconds -
+                          10));
+                },
+                child: const Icon(Icons.fast_rewind),
               ),
-            ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width < 600 ? 4 : 16,
+              ),
+              ElevatedButton(
+                style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all(const Size(48, 32)),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)))),
+                onPressed: () {
+                  if (controller.isPlaying) {
+                    _videoPlayerController.pause();
+                    controller.setIsPlaying();
+                  } else {
+                    _videoPlayerController.play();
+                    controller.setIsPlaying();
+                  }
+                },
+                child:
+                    Icon(controller.isPlaying ? Icons.pause : Icons.play_arrow),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width < 600 ? 4 : 16,
+              ),
+              ElevatedButton(
+                style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all(const Size(48, 32)),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)))),
+                onPressed: () {
+                  _videoPlayerController.seekTo(Duration(
+                      seconds: _videoPlayerController.value.position.inSeconds +
+                          10));
+                },
+                child: const Icon(Icons.fast_forward),
+              ),
+              MediaQuery.of(context).size.width >= 1024
+                  ? Observer(builder: (_) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width: 32,
+                          ),
+                          Icon(
+                            controller.val == 0.0
+                                ? Icons.volume_off
+                                : controller.val <= 0.5
+                                    ? Icons.volume_down
+                                    : Icons.volume_up,
+                            color: AppColors.brandingPurple,
+                            size: 28,
+                          ),
+                          Slider(
+                              value: controller.val,
+                              min: 0.0,
+                              max: 1.0,
+                              onChanged: (value) {
+                                setState(() {
+                                  controller.setVal(value);
+                                  _videoPlayerController
+                                      .setVolume(controller.val);
+                                });
+                              }),
+                        ],
+                      );
+                    })
+                  : const SizedBox.shrink(),
+            ],
           );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
+        }),
+        MediaQuery.of(context).size.width < 1024
+            ? const SizedBox(
+                height: 4,
+              )
+            : const SizedBox.shrink(),
+        MediaQuery.of(context).size.width < 1024
+            ? Observer(builder: (_) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      controller.val == 0.0
+                          ? Icons.volume_off
+                          : controller.val <= 0.5
+                              ? Icons.volume_down
+                              : Icons.volume_up,
+                      color: AppColors.brandingPurple,
+                    ),
+                    Slider(
+                        value: controller.val,
+                        min: 0.0,
+                        max: 1.0,
+                        onChanged: (value) {
+                          setState(() {
+                            controller.setVal(value);
+                            _videoPlayerController.setVolume(controller.val);
+                          });
+                        }),
+                  ],
+                );
+              })
+            : const SizedBox.shrink(),
+      ],
     );
   }
 }

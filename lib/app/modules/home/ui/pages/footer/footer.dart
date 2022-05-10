@@ -460,7 +460,7 @@ class Footer extends StatelessWidget {
           RichText(
             textAlign: TextAlign.center,
             text: TextSpan(
-                text: 'Desenvolvido por ',
+                text: 'Criado e desenvolvido por ',
                 style: AppTextStyles.body.copyWith(
                     color: Colors.white,
                     fontSize: MediaQuery.of(context).size.width < 800
