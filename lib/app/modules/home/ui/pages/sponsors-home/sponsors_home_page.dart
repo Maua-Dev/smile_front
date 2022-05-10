@@ -165,19 +165,6 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
                 ),
               ),
             ),
-          const SizedBox(
-            height: 24,
-          ),
-          Center(
-            child: Text(
-              'Criado e desenvolvido por Dev. Community',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: AppColors.brandingPurple,
-                  fontSize: MediaQuery.of(context).size.width < 530 ? 16 : 28,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
           if (MediaQuery.of(context).size.width > 900)
             Padding(
               padding:

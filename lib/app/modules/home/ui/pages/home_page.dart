@@ -212,14 +212,18 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             SizedBox(key: homeKey, child: const MainHomePage()),
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 24),
+                              padding: EdgeInsets.symmetric(
+                                  vertical:
+                                      MediaQuery.of(context).size.width < 1024
+                                          ? 4
+                                          : 24),
                               child: SizedBox(
                                 height: MediaQuery.of(context).size.width < 1024
-                                    ? MediaQuery.of(context).size.height * 0.4
-                                    : MediaQuery.of(context).size.height * 0.5,
+                                    ? 330
+                                    : 520,
                                 width: MediaQuery.of(context).size.width < 1024
-                                    ? MediaQuery.of(context).size.height * 0.6
-                                    : MediaQuery.of(context).size.width * 0.5,
+                                    ? 400
+                                    : 800,
                                 child: const VideoPlayerWidget(),
                               ),
                             ),
