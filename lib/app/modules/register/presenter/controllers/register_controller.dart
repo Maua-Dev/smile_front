@@ -277,7 +277,7 @@ abstract class _RegisterController with Store {
     RegExp regExp = RegExp(pattern);
     if (!regExp.hasMatch(value)) {
       addError(
-          "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais (#, ?, !, @, \$, %, ^, &, *, -)  \n - Mínimo de 8 caracteres");
+          "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -)  \n - Mínimo de 8 caracteres");
       return false;
     }
     return true;

@@ -137,7 +137,7 @@ abstract class _ForgotPasswordController with Store {
     if (!regExp.hasMatch(value)) {
       showErrorSnackBar(
           errorMessage:
-              "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais (#, ?, !, @, \$, %, ^, &, *, -) \n - Mínimo de 8 caracteres",
+              "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Mínimo de 8 caracteres",
           color: AppColors.redButton);
       return '';
     }
