@@ -151,8 +151,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             Modular.to.navigate('/login/cadastro');
                           },
                         ),
-                        const SizedBox(
-                          height: 26,
+                        SizedBox(
+                          height:
+                              MediaQuery.of(context).size.width < 650 ? 8 : 16,
                         ),
                         TextButton(
                           style: ElevatedButton.styleFrom(
