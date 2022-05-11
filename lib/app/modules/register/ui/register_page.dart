@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
@@ -69,45 +70,6 @@ class _RegisterPageState
                           )
                         else
                           Column(children: [
-                            Observer(builder: (_) {
-                              if (controller.errors != '') {
-                                return Padding(
-                                  padding: const EdgeInsets.only(bottom: 20.0),
-                                  child: Container(
-                                    width: 400,
-                                    decoration: BoxDecoration(
-                                        color: Colors.red[100],
-                                        border: Border.all(color: Colors.red),
-                                        borderRadius: BorderRadius.circular(8)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          IconButton(
-                                            onPressed: () {
-                                              controller.resetErrors();
-                                            },
-                                            icon: const Icon(Icons.close),
-                                          ),
-                                          Text(
-                                            controller.errors,
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16),
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }
-                              return Container();
-                            }),
                             InputBox(
                               icon: Icons.person,
                               placeholder: 'Nome Completo',
@@ -402,17 +364,6 @@ class _RegisterPageState
                             const SizedBox(
                               height: 40,
                             ),
-                            if (controller.errorsList.isNotEmpty)
-                              const Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 16.0, vertical: 8),
-                                child: Text(
-                                  'Ops... Alguns campos não foram preenchidos corretamente, altere e tente novamente.',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
-                                ),
-                              ),
                             Observer(builder: (_) {
                               return CustomElevatedButtonWidget(
                                 isLoading: controller.isLoading,
@@ -452,6 +403,10 @@ class _RegisterPageState
                                           } else {
                                             await controller.register();
                                           }
+                                        } else {
+                                          showErrorSnackBar(
+                                              errorMessage: controller.errors,
+                                              color: AppColors.redButton);
                                         }
                                       }
                                     : null,

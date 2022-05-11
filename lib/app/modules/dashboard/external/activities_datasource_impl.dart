@@ -42,7 +42,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         await getAllActivities();
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage);
+      showErrorSnackBar(errorMessage: errorMessage);
       print('/activity/getAll, error: ' + errorMessage);
       rethrow;
     }
@@ -64,7 +64,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         await getUserSubscribedActivities();
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage);
+      showErrorSnackBar(errorMessage: errorMessage);
       print('/activity/userisenrolled, error: ' + errorMessage);
       rethrow;
     }
@@ -85,7 +85,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         await postSubscribe(activityId, activityDate);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage);
+      showErrorSnackBar(errorMessage: errorMessage);
       print('/activity/enroll, error: ' + errorMessage);
       return false;
     }
@@ -103,7 +103,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         await putActivity(id, activity);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage);
+      showErrorSnackBar(errorMessage: errorMessage);
       print('/activity?id=$id, error: ' + errorMessage);
     }
   }
@@ -120,7 +120,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         await postActivity(activity);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage);
+      showErrorSnackBar(errorMessage: errorMessage);
       print('/activity, error: ' + errorMessage);
     }
   }
@@ -137,7 +137,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         await removeActivity(id);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage);
+      showErrorSnackBar(errorMessage: errorMessage);
       print('/activity?id=$id, error: ' + errorMessage);
     }
   }
@@ -160,7 +160,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         await postUnsubscribe(activityId, activityDate);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage);
+      showErrorSnackBar(errorMessage: errorMessage);
       print('/activity/unenroll, error: ' + errorMessage);
       return false;
     }
@@ -182,7 +182,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         await getUserSubscribedActivities();
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage);
+      showErrorSnackBar(errorMessage: errorMessage);
       print('/activity/download, error: ' + errorMessage);
       rethrow;
     }

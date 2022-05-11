@@ -57,22 +57,6 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
     });
   }
 
-  late final _$errorsAtom =
-      Atom(name: '_ResendConfirmationController.errors', context: context);
-
-  @override
-  String get errors {
-    _$errorsAtom.reportRead();
-    return super.errors;
-  }
-
-  @override
-  set errors(String value) {
-    _$errorsAtom.reportWrite(value, super.errors, () {
-      super.errors = value;
-    });
-  }
-
   late final _$successRegistrationAtom = Atom(
       name: '_ResendConfirmationController.successRegistration',
       context: context);
@@ -88,14 +72,6 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
     _$successRegistrationAtom.reportWrite(value, super.successRegistration, () {
       super.successRegistration = value;
     });
-  }
-
-  late final _$setErrorAsyncAction =
-      AsyncAction('_ResendConfirmationController.setError', context: context);
-
-  @override
-  Future<void> setError(String value) {
-    return _$setErrorAsyncAction.run(() => super.setError(value));
   }
 
   late final _$setCpfAsyncAction =
@@ -166,7 +142,6 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
 isLoading: ${isLoading},
 emailSent: ${emailSent},
 cpf: ${cpf},
-errors: ${errors},
 successRegistration: ${successRegistration}
     ''';
   }

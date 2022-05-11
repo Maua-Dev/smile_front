@@ -41,11 +41,6 @@ void main() {
     expect(test, '');
   });
 
-  test('isLoading', () {
-    var test = controller.errors;
-    expect(test, '');
-  });
-
   test('setUsername', () {
     var str = '57647604023';
     controller.setUsername(str);
@@ -56,12 +51,6 @@ void main() {
     var str = 'senhaMuitoForte123';
     controller.setPassword(str);
     expect(controller.password, str);
-  });
-
-  test('setError', () {
-    var str = 'Senha inválida';
-    controller.setError(str);
-    expect(controller.errors, str);
   });
 
   test('setIsLoading', () {

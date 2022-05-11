@@ -73,22 +73,6 @@ mixin _$LoginController on _LoginController, Store {
     });
   }
 
-  late final _$errorsAtom =
-      Atom(name: '_LoginController.errors', context: context);
-
-  @override
-  String get errors {
-    _$errorsAtom.reportRead();
-    return super.errors;
-  }
-
-  @override
-  set errors(String value) {
-    _$errorsAtom.reportWrite(value, super.errors, () {
-      super.errors = value;
-    });
-  }
-
   late final _$setUsernameAsyncAction =
       AsyncAction('_LoginController.setUsername', context: context);
 
@@ -111,14 +95,6 @@ mixin _$LoginController on _LoginController, Store {
   @override
   Future<void> login() {
     return _$loginAsyncAction.run(() => super.login());
-  }
-
-  late final _$setErrorAsyncAction =
-      AsyncAction('_LoginController.setError', context: context);
-
-  @override
-  Future<void> setError(String value) {
-    return _$setErrorAsyncAction.run(() => super.setError(value));
   }
 
   late final _$setIsLoadingAsyncAction =
@@ -171,8 +147,7 @@ mixin _$LoginController on _LoginController, Store {
 isLoading: ${isLoading},
 showPwd: ${showPwd},
 cpfRne: ${cpfRne},
-password: ${password},
-errors: ${errors}
+password: ${password}
     ''';
   }
 }

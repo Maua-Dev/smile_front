@@ -2,7 +2,9 @@ import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
+import 'package:smile_front/app/shared/themes/app_colors.dart';
 
+import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../auth/presenter/controllers/auth_controller.dart';
 
@@ -28,9 +30,6 @@ abstract class _LoginController with Store {
 
   @observable
   String password = '';
-
-  @observable
-  String errors = '';
 
   @action
   Future<void> setUsername(String value) async {
@@ -66,14 +65,9 @@ abstract class _LoginController with Store {
       }
       analytics.logLogin();
     } on Failure catch (e) {
-      errors = e.message;
+      showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
     }
     setIsLoading(false);
-  }
-
-  @action
-  Future<void> setError(String value) async {
-    errors = value;
   }
 
   @action

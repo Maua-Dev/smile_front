@@ -137,22 +137,6 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
     });
   }
 
-  late final _$errorsAtom =
-      Atom(name: '_ForgotPasswordController.errors', context: context);
-
-  @override
-  String get errors {
-    _$errorsAtom.reportRead();
-    return super.errors;
-  }
-
-  @override
-  set errors(String value) {
-    _$errorsAtom.reportWrite(value, super.errors, () {
-      super.errors = value;
-    });
-  }
-
   late final _$successRegistrationAtom = Atom(
       name: '_ForgotPasswordController.successRegistration', context: context);
 
@@ -169,14 +153,6 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
     });
   }
 
-  late final _$setErrorAsyncAction =
-      AsyncAction('_ForgotPasswordController.setError', context: context);
-
-  @override
-  Future<void> setError(String value) {
-    return _$setErrorAsyncAction.run(() => super.setError(value));
-  }
-
   late final _$setCodeAsyncAction =
       AsyncAction('_ForgotPasswordController.setCode', context: context);
 
@@ -185,12 +161,12 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
     return _$setCodeAsyncAction.run(() => super.setCode(value));
   }
 
-  late final _$setUsernameAsyncAction =
-      AsyncAction('_ForgotPasswordController.setUsername', context: context);
+  late final _$setEmailAsyncAction =
+      AsyncAction('_ForgotPasswordController.setEmail', context: context);
 
   @override
-  Future<void> setUsername(String value) {
-    return _$setUsernameAsyncAction.run(() => super.setUsername(value));
+  Future<void> setEmail(String value) {
+    return _$setEmailAsyncAction.run(() => super.setEmail(value));
   }
 
   late final _$setIsLoadingAsyncAction =
@@ -249,11 +225,11 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
       ActionController(name: '_ForgotPasswordController', context: context);
 
   @override
-  String? validateUsername(String value) {
+  String? validateEmail(String value) {
     final _$actionInfo = _$_ForgotPasswordControllerActionController
-        .startAction(name: '_ForgotPasswordController.validateUsername');
+        .startAction(name: '_ForgotPasswordController.validateEmail');
     try {
-      return super.validateUsername(value);
+      return super.validateEmail(value);
     } finally {
       _$_ForgotPasswordControllerActionController.endAction(_$actionInfo);
     }
@@ -304,7 +280,6 @@ username: ${username},
 password: ${password},
 verifyPassword: ${verifyPassword},
 code: ${code},
-errors: ${errors},
 successRegistration: ${successRegistration}
     ''';
   }

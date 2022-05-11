@@ -72,42 +72,9 @@ class _ChangePasswordPageState
                               ),
                             ),
                           );
-                        } else if (controller.errors != '') {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 20.0),
-                            child: Container(
-                              width: 450,
-                              decoration: BoxDecoration(
-                                  color: Colors.red[100],
-                                  border: Border.all(color: Colors.red),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {
-                                        controller.setError('');
-                                      },
-                                      icon: const Icon(Icons.close),
-                                    ),
-                                    Text(
-                                      controller.errors,
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 16),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
+                        } else {
+                          return const SizedBox.shrink();
                         }
-                        return Container();
                       }),
                       const Text(
                         'Insira sua nova senha e o codigo enviado para o seu e-mail:',

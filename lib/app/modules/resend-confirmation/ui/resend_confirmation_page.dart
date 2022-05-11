@@ -53,44 +53,6 @@ class _ResendConfirmationPageState
                           child: SmileLogoWidget(),
                         ),
                         const SizedBox(
-                          height: 10,
-                        ),
-                        Observer(builder: (_) {
-                          if (controller.errors != '') {
-                            return Container(
-                              width: 300,
-                              decoration: BoxDecoration(
-                                  color: Colors.red[100],
-                                  border: Border.all(color: Colors.red),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {
-                                        controller.setError('');
-                                      },
-                                      icon: const Icon(Icons.close),
-                                    ),
-                                    Text(
-                                      controller.errors,
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 16),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          }
-                          return Container();
-                        }),
-                        const SizedBox(
                           height: 20,
                         ),
                         Observer(builder: (context) {
@@ -133,7 +95,7 @@ class _ResendConfirmationPageState
                                   child: SizedBox(
                                     width: 600,
                                     child: Text(
-                                      'Seu cadastro não foi confirmado ainda, para isso deve-se clicar no link enviado por e-mail. Caso não encontrou o e-mail (no-reply@verificationemail.com) em sua caixa de entrada, verifique a caixa de spam ou promocional ou reenvie o código inserindo seu CPF no campo abaixo:',
+                                      'Seu cadastro pode não ter sido confirmado, para isso você deve clicar no link enviado por e-mail.\nCaso não tenha encontrado o e-mail (no-reply@verificationemail.com) em sua caixa de entrada, verifique a caixa de spam ou promocional ou reenvie o código inserindo seu CPF no campo abaixo:',
                                       style: TextStyle(color: Colors.white),
                                       textAlign: TextAlign.justify,
                                     ),
