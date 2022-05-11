@@ -3,7 +3,9 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 
 import '../../../../shared/entities/user_registration.dart';
+import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
+import '../../../../shared/themes/app_colors.dart';
 import '../../external/errors/errors.dart';
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
 part 'register_controller.g.dart';
@@ -101,7 +103,7 @@ abstract class _RegisterController with Store {
     if (errorsList.isEmpty) {
       errors = '';
     } else {
-      errors = errorsList.join(", \n");
+      errors = errorsList.join("\n");
     }
   }
 
@@ -119,10 +121,10 @@ abstract class _RegisterController with Store {
   @action
   bool validateName(String value) {
     if (value.isEmpty) {
-      addError('- Campo "Nome Completo" obrigatório');
+      addError('Campo "Nome Completo" obrigatório');
       return false;
     } else if (value.split(' ').length < 2) {
-      addError('- Insira seu nome completo');
+      addError('Insira seu nome completo');
       return false;
     }
     return true;
@@ -136,7 +138,7 @@ abstract class _RegisterController with Store {
   @action
   bool validateSocialName(String value) {
     if (hasSocialName && value.isEmpty) {
-      addError('- Campo "Nome Social" obrigatório');
+      addError('Campo "Nome Social" obrigatório');
       return false;
     }
     return true;
@@ -154,10 +156,10 @@ abstract class _RegisterController with Store {
     value = value.replaceAll('.', '');
     value = value.replaceAll('-', '');
     if (value.isEmpty) {
-      addError('- Campo "CPF" obrigatório');
+      addError('Campo "CPF" obrigatório');
       return false;
     } else if (!CPFValidator.isValid(value)) {
-      addError('- Campo "CPF" inválido');
+      addError('Campo "CPF" inválido');
       return false;
     }
     return true;
@@ -187,11 +189,11 @@ abstract class _RegisterController with Store {
   @action
   bool validateEmail(String value) {
     if (value.isEmpty) {
-      addError('- Campo "E-mail" obrigatório');
+      addError('Campo "E-mail" obrigatório');
       return false;
     }
     if (!value.contains('@')) {
-      addError('- Campo "E-mail" inválido');
+      addError('Campo "E-mail" inválido');
       return false;
     }
     var provider = value.split('@')[1].split('.')[0];
@@ -202,12 +204,11 @@ abstract class _RegisterController with Store {
   @action
   bool validateVerifyEmail(String value) {
     if (value.isEmpty) {
-      addError('- Campo "Confirme seu e-mail" obrigatório');
+      addError('Campo "Confirme seu e-mail" obrigatório');
       return false;
     }
     if (value != email) {
-      addError(
-          '- Os campos "E-mail" e "Confirme seu e-mail" \ndevem ser iguais');
+      addError('Os campos "E-mail" e "Confirme seu e-mail" \ndevem ser iguais');
       return false;
     }
     return true;
@@ -238,13 +239,13 @@ abstract class _RegisterController with Store {
   bool validateRa(String value) {
     if (isMauaStudent) {
       if (value.isEmpty) {
-        addError('- Campo "RA" obrigatório');
+        addError('Campo "RA" obrigatório');
         return false;
       }
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (value.length != 8) {
-        addError('- Campo "RA" inválido');
+        addError('Campo "RA" inválido');
         return false;
       }
     }
@@ -264,11 +265,11 @@ abstract class _RegisterController with Store {
   @action
   bool validateVerifyPassword(String value) {
     if (value.isEmpty) {
-      addError('- Campo "Confirme sua senha" obrigatório');
+      addError('Campo "Confirme sua senha" obrigatório');
       return false;
     }
     if (password != verifyPassword) {
-      addError('- Os campos "Senha" e "Confirme sua senha" \ndevem ser iguais');
+      addError('Os campos "Senha" e "Confirme sua senha" \ndevem ser iguais');
       return false;
     }
     String pattern =
@@ -276,7 +277,7 @@ abstract class _RegisterController with Store {
     RegExp regExp = RegExp(pattern);
     if (!regExp.hasMatch(value)) {
       addError(
-          "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais \n - Mínimo de 8 caracteres");
+          "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais (#, ?, !, @, \$, %, ^, &, *, -)  \n - Mínimo de 8 caracteres");
       return false;
     }
     return true;
@@ -303,11 +304,9 @@ abstract class _RegisterController with Store {
         setSuccessRegistration(true);
         analytics.logSignUp();
       } on Failure catch (e) {
-        addError(e.message);
+        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
       }
       setIsLoading(false);
-    } else {
-      addError("- Aceite os Termos de Uso para realizar o cadastro");
     }
   }
 

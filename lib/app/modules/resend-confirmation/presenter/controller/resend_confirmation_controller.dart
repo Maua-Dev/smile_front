@@ -1,6 +1,8 @@
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/shared/themes/app_colors.dart';
 
+import '../../../../shared/error/error_snackbar.dart';
 import '../../domain/repository/resend_confirmation_datasource_interface.dart';
 import '../../external/errors.dart';
 
@@ -24,15 +26,7 @@ abstract class _ResendConfirmationController with Store {
   String cpf = '';
 
   @observable
-  String errors = '';
-
-  @observable
   bool successRegistration = false;
-
-  @action
-  Future<void> setError(String value) async {
-    errors = value;
-  }
 
   @action
   Future<void> setCpf(String value) async {
@@ -51,7 +45,7 @@ abstract class _ResendConfirmationController with Store {
       await resendConfirmationRepository.resendConfirmation(cpf);
       emailSent = true;
     } on Failure catch (e) {
-      errors = e.message;
+      showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
     }
     setIsLoading(false);
   }
@@ -66,10 +60,13 @@ abstract class _ResendConfirmationController with Store {
     value = value.replaceAll('.', '');
     value = value.replaceAll('-', '');
     if (value.isEmpty) {
-      setError('- Campo "CPF" obrigatório');
+      showErrorSnackBar(
+          errorMessage: 'Campo "CPF" obrigatório', color: AppColors.redButton);
+
       return false;
     } else if (!CPFValidator.isValid(value)) {
-      setError('- Campo "CPF" inválido');
+      showErrorSnackBar(
+          errorMessage: 'Campo "CPF" inválido', color: AppColors.redButton);
       return false;
     }
     return true;

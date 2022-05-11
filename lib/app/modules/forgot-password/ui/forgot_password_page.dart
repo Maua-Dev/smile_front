@@ -49,44 +49,6 @@ class _ForgotPasswordPageState
                         child: SmileLogoWidget(),
                       ),
                       const SizedBox(
-                        height: 10,
-                      ),
-                      Observer(builder: (_) {
-                        if (controller.errors != '') {
-                          return Container(
-                            width: 500,
-                            decoration: BoxDecoration(
-                                color: Colors.red[100],
-                                border: Border.all(color: Colors.red),
-                                borderRadius: BorderRadius.circular(8)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      controller.setError('');
-                                    },
-                                    icon: const Icon(Icons.close),
-                                  ),
-                                  Text(
-                                    controller.errors,
-                                    style: const TextStyle(
-                                        color: Colors.black, fontSize: 16),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  )
-                                ],
-                              ),
-                            ),
-                          );
-                        }
-                        return Container();
-                      }),
-                      const SizedBox(
                         height: 20,
                       ),
                       Observer(builder: (context) {
@@ -134,8 +96,8 @@ class _ForgotPasswordPageState
                               InputBox(
                                 icon: Icons.person,
                                 placeholder: 'Email',
-                                setValue: controller.setUsername,
-                                validation: controller.validateUsername,
+                                setValue: controller.setEmail,
+                                validation: controller.validateEmail,
                                 onFieldSubmitted: (value) async {
                                   if (_formKey.currentState!.validate()) {
                                     await controller.forgotPassword();

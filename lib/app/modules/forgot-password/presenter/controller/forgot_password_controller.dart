@@ -2,6 +2,8 @@ import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../../../shared/error/error_snackbar.dart';
+import '../../../../shared/themes/app_colors.dart';
 import '../../domain/repository/forgot_password_datasource_interface.dart';
 import '../../external/errors.dart';
 
@@ -40,15 +42,7 @@ abstract class _ForgotPasswordController with Store {
   String code = '';
 
   @observable
-  String errors = '';
-
-  @observable
   bool successRegistration = false;
-
-  @action
-  Future<void> setError(String value) async {
-    errors = value;
-  }
 
   @action
   Future<void> setCode(String value) async {
@@ -56,7 +50,7 @@ abstract class _ForgotPasswordController with Store {
   }
 
   @action
-  Future<void> setUsername(String value) async {
+  Future<void> setEmail(String value) async {
     username = value;
     if (!value.contains('@')) {
       username = username.replaceAll('.', '').replaceAll('-', '');
@@ -64,18 +58,14 @@ abstract class _ForgotPasswordController with Store {
   }
 
   @action
-  String? validateUsername(String value) {
+  String? validateEmail(String value) {
     if (!value.contains('@')) {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (value.isEmpty) {
         return "         Campo obrigatório";
-      } else if (!CPFValidator.isValid(value)) {
-        return "         CPF inválido";
-      }
-    } else {
-      if (value.isEmpty) {
-        return "         Campo obrigatório";
+      } else if (!CPFValidator.isValid(value) || value.isEmpty) {
+        return "         E-mail inválido";
       }
     }
     return null;
@@ -93,7 +83,7 @@ abstract class _ForgotPasswordController with Store {
       await forgotPasswordRepository.forgotPassword(username);
       emailSent = true;
     } on Failure catch (e) {
-      errors = e.message;
+      showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
     }
     setIsLoading(false);
   }
@@ -113,7 +103,7 @@ abstract class _ForgotPasswordController with Store {
       await Future.delayed(const Duration(seconds: 5));
       Modular.to.navigate('/login');
     } on Failure catch (e) {
-      errors = e.message;
+      showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
     }
     setIsLoading(false);
   }
@@ -139,14 +129,16 @@ abstract class _ForgotPasswordController with Store {
       return "         Campo obrigatório";
     }
     if (password != verifyPassword) {
-      return "Digite a mesma senha";
+      return "         Digite a mesma senha";
     }
     String pattern =
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$';
     RegExp regExp = RegExp(pattern);
     if (!regExp.hasMatch(value)) {
-      setError(
-          "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais \n - Mínimo de 8 caracteres");
+      showErrorSnackBar(
+          errorMessage:
+              "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais (#, ?, !, @, \$, %, ^, &, *, -) \n - Mínimo de 8 caracteres",
+          color: AppColors.redButton);
       return '';
     }
     return null;
