@@ -196,16 +196,20 @@ class _AdmDashboardPageState
                 child: SizedBox(
                   width: 70,
                   child: FittedBox(
-                    child: FloatingActionButton(
-                        backgroundColor: AppColors.brandingOrange,
-                        child: const Icon(
-                          Icons.insert_chart_rounded,
-                          size: 35,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          controller.downloadCsv();
-                        }),
+                    child: Observer(builder: (_) {
+                      return FloatingActionButton(
+                          backgroundColor: AppColors.brandingOrange,
+                          child: controller.isLoadingCsv
+                              ? const CircularProgressIndicator()
+                              : const Icon(
+                                  Icons.insert_chart_rounded,
+                                  size: 35,
+                                  color: Colors.white,
+                                ),
+                          onPressed: () {
+                            controller.downloadCsv();
+                          });
+                    }),
                   ),
                 ),
               ),

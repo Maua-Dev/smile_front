@@ -101,7 +101,7 @@ class _ResendConfirmationPageState
                                   const Padding(
                                     padding: EdgeInsets.all(42.0),
                                     child: Text(
-                                      "Você receberá um e-mail com um link para confirmar sua conta! Verifique a caixa de spam.",
+                                      "Você receberá um e-mail (no-reply@verificationemail.com) com um link para confirmar sua conta! Verifique a caixa de spam ou promocional.",
                                       textAlign: TextAlign.justify,
                                       style: TextStyle(color: Colors.white),
                                     ),
@@ -133,7 +133,7 @@ class _ResendConfirmationPageState
                                   child: SizedBox(
                                     width: 600,
                                     child: Text(
-                                      'Seu cadastro não foi confirmado ainda, para isso deve-se clicar no link enviado por e-mail. Caso não encontrou o e-mail em sua caixa de entrada, verifique no spam ou reenvie o código inserindo seu CPF no campo abaixo:',
+                                      'Seu cadastro não foi confirmado ainda, para isso deve-se clicar no link enviado por e-mail. Caso não encontrou o e-mail (no-reply@verificationemail.com) em sua caixa de entrada, verifique a caixa de spam ou promocional ou reenvie o código inserindo seu CPF no campo abaixo:',
                                       style: TextStyle(color: Colors.white),
                                       textAlign: TextAlign.justify,
                                     ),

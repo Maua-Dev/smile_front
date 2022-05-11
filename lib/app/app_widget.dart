@@ -12,6 +12,7 @@ final ScaffoldMessengerState scaffold = scaffoldKey.currentState!;
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Intl.defaultLocale = 'pt_BR';
