@@ -51,7 +51,11 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                 : const CircularProgressIndicator(),
             Positioned(
                 bottom: 0,
-                width: MediaQuery.of(context).size.width < 1024 ? 400 : 800,
+                width: MediaQuery.of(context).size.width < 400
+                    ? MediaQuery.of(context).size.width
+                    : MediaQuery.of(context).size.width < 1024
+                        ? 400
+                        : 800,
                 child: VideoProgressIndicator(
                   _videoPlayerController,
                   allowScrubbing: true,
@@ -62,127 +66,111 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                 ))
           ],
         ),
-        SizedBox(
-          height: MediaQuery.of(context).size.width < 600 ? 8 : 16,
-        ),
         Observer(builder: (_) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all(const Size(48, 32)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)))),
-                onPressed: () {
-                  _videoPlayerController.seekTo(Duration(
-                      seconds: _videoPlayerController.value.position.inSeconds -
-                          10));
-                },
-                child: const Icon(Icons.fast_rewind),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width < 600 ? 4 : 16,
-              ),
-              ElevatedButton(
-                style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all(const Size(48, 32)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)))),
-                onPressed: () {
-                  if (controller.isPlaying) {
-                    _videoPlayerController.pause();
-                    controller.setIsPlaying();
-                  } else {
-                    _videoPlayerController.play();
-                    controller.setIsPlaying();
-                  }
-                },
-                child:
-                    Icon(controller.isPlaying ? Icons.pause : Icons.play_arrow),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width < 600 ? 4 : 16,
-              ),
-              ElevatedButton(
-                style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all(const Size(48, 32)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)))),
-                onPressed: () {
-                  _videoPlayerController.seekTo(Duration(
-                      seconds: _videoPlayerController.value.position.inSeconds +
-                          10));
-                },
-                child: const Icon(Icons.fast_forward),
-              ),
-              MediaQuery.of(context).size.width >= 1024
-                  ? Observer(builder: (_) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 32,
-                          ),
-                          Icon(
-                            controller.val == 0.0
-                                ? Icons.volume_off
-                                : controller.val <= 0.5
-                                    ? Icons.volume_down
-                                    : Icons.volume_up,
-                            color: AppColors.brandingPurple,
-                            size: 28,
-                          ),
-                          Slider(
-                              value: controller.val,
-                              min: 0.0,
-                              max: 1.0,
-                              onChanged: (value) {
-                                setState(() {
-                                  controller.setVal(value);
-                                  _videoPlayerController
-                                      .setVolume(controller.val);
-                                });
-                              }),
-                        ],
-                      );
-                    })
-                  : const SizedBox.shrink(),
-            ],
+          return Container(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            decoration: BoxDecoration(color: AppColors.brandingPurple),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width < 600 ? 4 : 16,
+                ),
+                TextButton(
+                  onPressed: () {
+                    if (controller.isPlaying) {
+                      _videoPlayerController.pause();
+                      controller.setIsPlaying();
+                    } else {
+                      _videoPlayerController.play();
+                      controller.setIsPlaying();
+                    }
+                  },
+                  child: Icon(
+                    controller.isPlaying ? Icons.pause : Icons.play_arrow,
+                    size: MediaQuery.of(context).size.width < 1024 ? 24 : 32,
+                    color: AppColors.white,
+                  ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width < 600 ? 4 : 16,
+                ),
+                TextButton(
+                  onPressed: () {
+                    _videoPlayerController.seekTo(Duration(
+                        seconds:
+                            _videoPlayerController.value.position.inSeconds +
+                                10));
+                  },
+                  child: Icon(
+                    Icons.fast_forward,
+                    size: MediaQuery.of(context).size.width < 1024 ? 24 : 32,
+                    color: AppColors.white,
+                  ),
+                ),
+                Observer(builder: (_) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width:
+                            MediaQuery.of(context).size.width < 600 ? 14 : 32,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          if (controller.val > 0.0) {
+                            controller.setVal(0.0);
+                          } else {
+                            controller.setVal(1.0);
+                          }
+                        },
+                        child: Icon(
+                          controller.val == 0.0
+                              ? Icons.volume_off
+                              : controller.val <= 0.5
+                                  ? Icons.volume_down
+                                  : Icons.volume_up,
+                          color: AppColors.white,
+                          size: MediaQuery.of(context).size.width < 1024
+                              ? 20
+                              : 28,
+                        ),
+                      ),
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          activeTrackColor: AppColors.white,
+                          inactiveTrackColor: AppColors.gray,
+                          trackHeight:
+                              MediaQuery.of(context).size.width < 1024 ? 1 : 3,
+                          thumbColor: AppColors.white,
+                          overlayColor: AppColors.placeholder,
+                          overlayShape:
+                              const RoundSliderOverlayShape(overlayRadius: 20),
+                          thumbShape: RoundSliderThumbShape(
+                              enabledThumbRadius:
+                                  MediaQuery.of(context).size.width < 1024
+                                      ? 8
+                                      : 10),
+                        ),
+                        child: Slider(
+                            value: controller.val,
+                            min: 0.0,
+                            max: 1.0,
+                            onChanged: (value) {
+                              setState(() {
+                                controller.setVal(value);
+                                _videoPlayerController
+                                    .setVolume(controller.val);
+                              });
+                            }),
+                      ),
+                    ],
+                  );
+                })
+              ],
+            ),
           );
-        }),
-        MediaQuery.of(context).size.width < 1024
-            ? const SizedBox(
-                height: 4,
-              )
-            : const SizedBox.shrink(),
-        MediaQuery.of(context).size.width < 1024
-            ? Observer(builder: (_) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      controller.val == 0.0
-                          ? Icons.volume_off
-                          : controller.val <= 0.5
-                              ? Icons.volume_down
-                              : Icons.volume_up,
-                      color: AppColors.brandingPurple,
-                    ),
-                    Slider(
-                        value: controller.val,
-                        min: 0.0,
-                        max: 1.0,
-                        onChanged: (value) {
-                          setState(() {
-                            controller.setVal(value);
-                            _videoPlayerController.setVolume(controller.val);
-                          });
-                        }),
-                  ],
-                );
-              })
-            : const SizedBox.shrink(),
+        })
       ],
     );
   }
