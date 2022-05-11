@@ -186,6 +186,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           },
                           child: const Text(
                             'Reenviar e-mail de confirmação',
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 color: Colors.white),
