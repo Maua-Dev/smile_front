@@ -47,7 +47,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.1),
+                            height: MediaQuery.of(context).size.width < 800
+                                ? 80
+                                : 150),
                         const Center(
                           child: SmileLogoWidget(),
                         ),
@@ -168,9 +170,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           },
                           child: const Text(
                             'Esqueci minha senha',
+                            textAlign: TextAlign.center,
                             style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: Colors.white),
+                              decoration: TextDecoration.underline,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         TextButton(
