@@ -47,7 +47,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.1),
+                            height: MediaQuery.of(context).size.width < 1024
+                                ? 100
+                                : 200),
                         const Center(
                           child: SmileLogoWidget(),
                         ),
