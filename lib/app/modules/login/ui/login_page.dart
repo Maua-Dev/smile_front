@@ -47,10 +47,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.width < 650
-                              ? 40
-                              : 140,
-                        ),
+                            height: MediaQuery.of(context).size.height * 0.1),
                         const Center(
                           child: SmileLogoWidget(),
                         ),
@@ -154,8 +151,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             Modular.to.navigate('/login/cadastro');
                           },
                         ),
-                        const SizedBox(
-                          height: 16,
+                        SizedBox(
+                          height:
+                              MediaQuery.of(context).size.width < 650 ? 8 : 16,
                         ),
                         TextButton(
                           style: ElevatedButton.styleFrom(
@@ -170,6 +168,25 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           },
                           child: const Text(
                             'Esqueci minha senha',
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Colors.white),
+                          ),
+                        ),
+                        TextButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.white.withOpacity(0),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 50, vertical: 10),
+                              textStyle: const TextStyle(
+                                fontSize: 20,
+                              )),
+                          onPressed: () {
+                            Modular.to.navigate('/login/reenviar-email');
+                          },
+                          child: const Text(
+                            'Reenviar e-mail de confirmação',
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 color: Colors.white),

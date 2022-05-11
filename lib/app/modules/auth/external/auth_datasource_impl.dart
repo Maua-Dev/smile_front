@@ -52,7 +52,7 @@ class AuthDatasourceImpl implements AuthDatasource {
         Modular.to.navigate('/login/reenviar-email');
       } else if (e.response.toString().contains('User not found')) {
         throw LoginInvalid(
-            'Não foi possível realizar o login. \n- Tente fazer o login novamente \n utilizando seu CPF\n- Realize seu cadastro clicando \n no botão "Não tenho cadastro"');
+            'Não foi possível realizar o login. \n- Realize seu cadastro clicando \n no botão "Não tenho cadastro"\n- Seu e-mail pode não ter sido\nconfirmado, clique em "Reenviar\ne-mail de confirmação"');
       }
       throw LoginInvalid('Login ou Senha inválida');
     }
