@@ -120,7 +120,7 @@ class _ResendConfirmationPageState
                                   child: SizedBox(
                                     width: 600,
                                     child: Text(
-                                      'Seu cadastro pode não ter sido confirmado, para isso você deve clicar no link enviado por e-mail.\n\nCaso não tenha encontrado o e-mail (no-reply@verificationemail.com) em sua caixa de entrada, verifique a caixa de spam ou promocional ou reenvie o código inserindo seu CPF no campo abaixo:\n',
+                                      'Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n',
                                       style: TextStyle(color: Colors.white),
                                       textAlign: TextAlign.justify,
                                     ),
