@@ -200,7 +200,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               color: AppColors.gray,
                               borderRadius: BorderRadius.circular(10)),
                           child: Padding(
-                            padding: EdgeInsets.all(4.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: RichText(
                                 textAlign: TextAlign.center,
                                 text: const TextSpan(
