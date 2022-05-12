@@ -283,8 +283,8 @@ class _MoreInfoPageState
                                       });
                                     },
                                   );
-                                } else if (controller.activity.enrolledUsers! ==
-                                    controller.activity.totalParticipants) {
+                                } else if (controller.activity.enrolledUsers! >=
+                                    controller.activity.totalParticipants!) {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
