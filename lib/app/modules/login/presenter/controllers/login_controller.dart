@@ -4,6 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
+import '../../../../app_widget.dart';
 import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../auth/presenter/controllers/auth_controller.dart';
@@ -30,6 +31,9 @@ abstract class _LoginController with Store {
 
   @observable
   String password = '';
+
+  @observable
+  String errors = '';
 
   @action
   Future<void> setUsername(String value) async {
@@ -65,7 +69,11 @@ abstract class _LoginController with Store {
       }
       analytics.logLogin();
     } on Failure catch (e) {
-      showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+      if (scaffold.context.size!.width <= 1024) {
+        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+      } else {
+        errors = e.message;
+      }
     }
     setIsLoading(false);
   }

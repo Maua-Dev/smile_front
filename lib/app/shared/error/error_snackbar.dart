@@ -5,10 +5,10 @@ import '../../app_widget.dart';
 
 void showErrorSnackBar({required String errorMessage, Color? color}) {
   scaffold.showSnackBar(SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 5),
       width: MediaQuery.of(scaffold.context).size.width < 700 ? 300 : 500,
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5))),
+          borderRadius: BorderRadius.all(Radius.circular(10))),
       behavior: SnackBarBehavior.floating,
       elevation: 10,
       backgroundColor: color ?? Colors.black.withOpacity(0.7),

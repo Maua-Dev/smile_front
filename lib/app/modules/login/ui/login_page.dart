@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/smile_logo_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../presenter/controllers/login_controller.dart';
@@ -53,9 +54,39 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         const Center(
                           child: SmileLogoWidget(),
                         ),
-                        const SizedBox(
-                          height: 20,
-                        ),
+                        if (MediaQuery.of(context).size.width > 1024)
+                          Observer(builder: (_) {
+                            if (controller.errors != '') {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8),
+                                child: Container(
+                                  width:
+                                      controller.errors.length > 40 ? 500 : 300,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.lightRedButton,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 16.0, horizontal: 4),
+                                    child: Text(
+                                      controller.errors,
+                                      style: AppTextStyles.body.copyWith(
+                                        fontSize: 18,
+                                        color: Colors.white,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            return const SizedBox.shrink();
+                          }),
+                        if (controller.errors == '')
+                          const SizedBox(
+                            height: 8,
+                          ),
                         InputBox(
                           icon: Icons.person,
                           placeholder: 'CPF ou E-mail',
@@ -167,7 +198,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               : 600),
                           decoration: BoxDecoration(
                               color: AppColors.gray,
-                              borderRadius: BorderRadius.circular(8)),
+                              borderRadius: BorderRadius.circular(10)),
                           child: const Padding(
                             padding: EdgeInsets.all(4.0),
                             child: Text(
