@@ -130,18 +130,6 @@ class Footer extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: 'gti.central@maua.br',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
-                        ),
-                        TextSpan(
-                          text: ' ou ',
-                          style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                        TextSpan(
                           text: 'dev@maua.br',
                           style: AppTextStyles.titleH1
                               .copyWith(color: Colors.white, fontSize: 12),
@@ -335,18 +323,6 @@ class Footer extends StatelessWidget {
                             children: [
                               TextSpan(
                                 text: 'smile@maua.br',
-                                style: AppTextStyles.titleH1.copyWith(
-                                    color: Colors.white, fontSize: 12),
-                              ),
-                              TextSpan(
-                                text: ' ou ',
-                                style: AppTextStyles.body.copyWith(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'gti.central@maua.br',
                                 style: AppTextStyles.titleH1.copyWith(
                                     color: Colors.white, fontSize: 12),
                               ),
