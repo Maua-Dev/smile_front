@@ -50,6 +50,7 @@ abstract class _ResendConfirmationController with Store {
   @action
   Future<void> resendConfirmation() async {
     setIsLoading(true);
+    errors = '';
     try {
       await resendConfirmationRepository.resendConfirmation(cpf);
       emailSent = true;

@@ -199,14 +199,24 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           decoration: BoxDecoration(
                               color: AppColors.gray,
                               borderRadius: BorderRadius.circular(10)),
-                          child: const Padding(
+                          child: Padding(
                             padding: EdgeInsets.all(4.0),
-                            child: Text(
-                              'Em caso de erro ao se logar, envie um e-mail para: dev@maua.br',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
-                              textAlign: TextAlign.center,
-                            ),
+                            child: RichText(
+                                textAlign: TextAlign.center,
+                                text: const TextSpan(
+                                    text:
+                                        'Em caso de erro ao se logar, envie um e-mail para: ',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 16),
+                                    children: [
+                                      TextSpan(
+                                        text: 'dev@maua.br',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ])),
                           ),
                         ),
                         const SizedBox(
