@@ -25,6 +25,22 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
     });
   }
 
+  late final _$errorsAtom =
+      Atom(name: '_ForgotPasswordController.errors', context: context);
+
+  @override
+  String get errors {
+    _$errorsAtom.reportRead();
+    return super.errors;
+  }
+
+  @override
+  set errors(String value) {
+    _$errorsAtom.reportWrite(value, super.errors, () {
+      super.errors = value;
+    });
+  }
+
   late final _$emailSentAtom =
       Atom(name: '_ForgotPasswordController.emailSent', context: context);
 
@@ -153,6 +169,14 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
     });
   }
 
+  late final _$setErrorAsyncAction =
+      AsyncAction('_ForgotPasswordController.setError', context: context);
+
+  @override
+  Future<void> setError(String value) {
+    return _$setErrorAsyncAction.run(() => super.setError(value));
+  }
+
   late final _$setCodeAsyncAction =
       AsyncAction('_ForgotPasswordController.setCode', context: context);
 
@@ -273,6 +297,7 @@ mixin _$ForgotPasswordController on _ForgotPasswordController, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
+errors: ${errors},
 emailSent: ${emailSent},
 showPwd: ${showPwd},
 showConfirmPwd: ${showConfirmPwd},

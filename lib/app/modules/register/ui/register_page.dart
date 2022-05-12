@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/error/error_snackbar.dart';
+import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
@@ -70,6 +71,34 @@ class _RegisterPageState
                           )
                         else
                           Column(children: [
+                            if (MediaQuery.of(context).size.width > 1024)
+                              Observer(builder: (_) {
+                                if (controller.errors != '') {
+                                  return Container(
+                                    width: 500,
+                                    decoration: BoxDecoration(
+                                        color: AppColors.lightRedButton,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 16.0),
+                                      child: Text(
+                                        controller.errors,
+                                        style: AppTextStyles.body.copyWith(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  );
+                                }
+                                return const SizedBox.shrink();
+                              }),
+                            const SizedBox(
+                              height: 24,
+                            ),
                             InputBox(
                               icon: Icons.person,
                               placeholder: 'Nome Completo',
@@ -403,7 +432,10 @@ class _RegisterPageState
                                           } else {
                                             await controller.register();
                                           }
-                                        } else {
+                                        } else if (MediaQuery.of(context)
+                                                .size
+                                                .width <=
+                                            1024) {
                                           showErrorSnackBar(
                                               errorMessage: controller.errors,
                                               color: AppColors.redButton);

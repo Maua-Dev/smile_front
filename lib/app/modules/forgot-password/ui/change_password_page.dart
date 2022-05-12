@@ -60,7 +60,7 @@ class _ChangePasswordPageState
                               decoration: BoxDecoration(
                                   color: Colors.green[100],
                                   border: Border.all(color: Colors.green),
-                                  borderRadius: BorderRadius.circular(8)),
+                                  borderRadius: BorderRadius.circular(10)),
                               child: const Padding(
                                 padding: EdgeInsets.all(4.0),
                                 child: Text(
@@ -68,6 +68,41 @@ class _ChangePasswordPageState
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 16),
+                                ),
+                              ),
+                            ),
+                          );
+                        } else if (controller.errors != '') {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 20.0),
+                            child: Container(
+                              width: 450,
+                              decoration: BoxDecoration(
+                                  color: Colors.red[100],
+                                  border: Border.all(
+                                      color: AppColors.lightRedButton),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        controller.setError('');
+                                      },
+                                      icon: const Icon(Icons.close),
+                                    ),
+                                    Text(
+                                      controller.errors,
+                                      style: const TextStyle(
+                                          color: Colors.black, fontSize: 16),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    )
+                                  ],
                                 ),
                               ),
                             ),

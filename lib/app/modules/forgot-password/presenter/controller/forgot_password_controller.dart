@@ -1,6 +1,7 @@
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/app_widget.dart';
 
 import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/themes/app_colors.dart';
@@ -19,6 +20,9 @@ abstract class _ForgotPasswordController with Store {
 
   @observable
   bool isLoading = false;
+
+  @observable
+  String errors = '';
 
   @observable
   bool emailSent = false;
@@ -43,6 +47,11 @@ abstract class _ForgotPasswordController with Store {
 
   @observable
   bool successRegistration = false;
+
+  @action
+  Future<void> setError(String value) async {
+    errors = value;
+  }
 
   @action
   Future<void> setCode(String value) async {
@@ -83,7 +92,11 @@ abstract class _ForgotPasswordController with Store {
       await forgotPasswordRepository.forgotPassword(username);
       emailSent = true;
     } on Failure catch (e) {
-      showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+      if (scaffold.context.size!.width <= 1024) {
+        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+      } else {
+        errors = e.message;
+      }
     }
     setIsLoading(false);
   }
@@ -103,7 +116,11 @@ abstract class _ForgotPasswordController with Store {
       await Future.delayed(const Duration(seconds: 5));
       Modular.to.navigate('/login');
     } on Failure catch (e) {
-      showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+      if (scaffold.context.size!.width <= 1024) {
+        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+      } else {
+        errors = e.message;
+      }
     }
     setIsLoading(false);
   }

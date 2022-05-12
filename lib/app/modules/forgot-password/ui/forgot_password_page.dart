@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
@@ -48,16 +49,38 @@ class _ForgotPasswordPageState
                       const Center(
                         child: SmileLogoWidget(),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      if (MediaQuery.of(context).size.width > 1024)
+                        Observer(builder: (_) {
+                          if (controller.errors != '') {
+                            return Container(
+                              width: 500,
+                              decoration: BoxDecoration(
+                                  color: AppColors.lightRedButton,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 16.0),
+                                child: Text(
+                                  controller.errors,
+                                  style: AppTextStyles.body.copyWith(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            );
+                          }
+                          return const SizedBox.shrink();
+                        }),
                       Observer(builder: (context) {
                         if (controller.emailSent) {
                           return Center(
                             child: Column(
                               children: [
                                 const Padding(
-                                  padding: EdgeInsets.all(42.0),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 40, vertical: 32),
                                   child: Text(
                                     'Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.',
                                     textAlign: TextAlign.justify,
@@ -83,15 +106,13 @@ class _ForgotPasswordPageState
                           return Column(
                             children: [
                               const Padding(
-                                padding: EdgeInsets.all(42.0),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 40, vertical: 32),
                                 child: Text(
-                                  'Um código será enviado no email cadastrado',
+                                  'Um código será enviado no email cadastrado:',
                                   style: TextStyle(color: Colors.white),
                                   textAlign: TextAlign.justify,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 20,
                               ),
                               InputBox(
                                 icon: Icons.person,
