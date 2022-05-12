@@ -84,8 +84,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             return const SizedBox.shrink();
                           }),
                         if (controller.errors == '')
-                          const SizedBox(
-                            height: 8,
+                          SizedBox(
+                            height: MediaQuery.of(context).size.width < 800
+                                ? 16
+                                : 32,
                           ),
                         InputBox(
                           icon: Icons.person,
