@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
@@ -52,46 +53,32 @@ class _ResendConfirmationPageState
                         const Center(
                           child: SmileLogoWidget(),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Observer(builder: (_) {
-                          if (controller.errors != '') {
-                            return Container(
-                              width: 300,
-                              decoration: BoxDecoration(
-                                  color: Colors.red[100],
-                                  border: Border.all(color: Colors.red),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {
-                                        controller.setError('');
-                                      },
-                                      icon: const Icon(Icons.close),
+                        if (MediaQuery.of(context).size.width > 1024)
+                          Observer(builder: (_) {
+                            if (controller.errors != '') {
+                              return Container(
+                                width: 300,
+                                decoration: BoxDecoration(
+                                    color: AppColors.lightRedButton,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 16.0),
+                                  child: Text(
+                                    controller.errors,
+                                    style: AppTextStyles.body.copyWith(
+                                      fontSize: 18,
+                                      color: Colors.white,
                                     ),
-                                    Text(
-                                      controller.errors,
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 16),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    )
-                                  ],
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
-                              ),
-                            );
-                          }
-                          return Container();
-                        }),
+                              );
+                            }
+                            return const SizedBox.shrink();
+                          }),
                         const SizedBox(
-                          height: 20,
+                          height: 24,
                         ),
                         Observer(builder: (context) {
                           if (controller.emailSent) {
@@ -133,14 +120,11 @@ class _ResendConfirmationPageState
                                   child: SizedBox(
                                     width: 600,
                                     child: Text(
-                                      'Seu cadastro não foi confirmado ainda, para isso deve-se clicar no link enviado por e-mail. Caso não encontrou o e-mail (no-reply@verificationemail.com) em sua caixa de entrada, verifique a caixa de spam ou promocional ou reenvie o código inserindo seu CPF no campo abaixo:',
+                                      'Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n',
                                       style: TextStyle(color: Colors.white),
                                       textAlign: TextAlign.justify,
                                     ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
                                 ),
                                 InputBox(
                                   icon: Icons.person,

@@ -1,6 +1,9 @@
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/shared/themes/app_colors.dart';
 
+import '../../../../app_widget.dart';
+import '../../../../shared/error/error_snackbar.dart';
 import '../../domain/repository/resend_confirmation_datasource_interface.dart';
 import '../../external/errors.dart';
 
@@ -21,10 +24,10 @@ abstract class _ResendConfirmationController with Store {
   bool emailSent = false;
 
   @observable
-  String cpf = '';
+  String errors = '';
 
   @observable
-  String errors = '';
+  String cpf = '';
 
   @observable
   bool successRegistration = false;
@@ -47,11 +50,16 @@ abstract class _ResendConfirmationController with Store {
   @action
   Future<void> resendConfirmation() async {
     setIsLoading(true);
+    errors = '';
     try {
       await resendConfirmationRepository.resendConfirmation(cpf);
       emailSent = true;
     } on Failure catch (e) {
-      errors = e.message;
+      if (scaffold.context.size!.width <= 1024) {
+        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+      } else {
+        errors = e.message;
+      }
     }
     setIsLoading(false);
   }
@@ -66,10 +74,21 @@ abstract class _ResendConfirmationController with Store {
     value = value.replaceAll('.', '');
     value = value.replaceAll('-', '');
     if (value.isEmpty) {
-      setError('- Campo "CPF" obrigatório');
+      if (scaffold.context.size!.width <= 1024) {
+        showErrorSnackBar(
+            errorMessage: 'Campo "CPF" obrigatório',
+            color: AppColors.redButton);
+      } else {
+        errors = 'Campo "CPF" obrigatório';
+      }
       return false;
     } else if (!CPFValidator.isValid(value)) {
-      setError('- Campo "CPF" inválido');
+      if (scaffold.context.size!.width <= 1024) {
+        showErrorSnackBar(
+            errorMessage: 'Campo "CPF" inválido', color: AppColors.redButton);
+      } else {
+        errors = 'Campo "CPF" inválido';
+      }
       return false;
     }
     return true;

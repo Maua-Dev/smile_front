@@ -113,14 +113,6 @@ mixin _$LoginController on _LoginController, Store {
     return _$loginAsyncAction.run(() => super.login());
   }
 
-  late final _$setErrorAsyncAction =
-      AsyncAction('_LoginController.setError', context: context);
-
-  @override
-  Future<void> setError(String value) {
-    return _$setErrorAsyncAction.run(() => super.setError(value));
-  }
-
   late final _$setIsLoadingAsyncAction =
       AsyncAction('_LoginController.setIsLoading', context: context);
 

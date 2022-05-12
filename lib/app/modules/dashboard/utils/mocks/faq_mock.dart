@@ -25,7 +25,7 @@ var faqMock = <Faq>[
       question:
           'As gravações das atividades on-line estarão disponíveis? Onde e quando?',
       response:
-          'As gravações estarão disponíveis a partir do dia 30.05. Se você for do IMT poderá fazer o download no ambiente Open LMS da SMILE e caso você seja um participante externo poderá solicitar pelo e-mail smile@maua.br'),
+          'As gravações estarão disponíveis a partir do dia 30.05. Se você for do IMT poderá fazer o download no ambiente Open LMS da SMILE e caso você seja um participante externo poderá solicitar pelo e-mail dev@maua.br'),
   Faq(
       question: 'Como cancelar minha inscrição em uma atividade?',
       response:
@@ -36,8 +36,7 @@ var faqMock = <Faq>[
           'Ao clicar na atividade em que você se inscreveu haverá um campo "Link" sublinhado e clicável de "Zoom" que irá te redirecionar para a reunião.'),
   Faq(
       question: 'Inseri meu e-mail errado. Como pedir alteração?',
-      response:
-          'Envie um e-mail para smile@maua.br ou dev@maua.br ou ligue para 4239-3169.'),
+      response: 'Envie um e-mail para dev@maua.br ou ligue para 4239-3169.'),
   Faq(
       question: 'Como emitir o meu Certificado?',
       response:
@@ -63,5 +62,5 @@ var faqMock = <Faq>[
   Faq(
       question: 'Em caso de dúvidas, como faço para entrar em contato?',
       response:
-          'Enviar um e-mail para smile@maua.br ou gti.central@maua.br ou dev@maua.br. Caso queira falar conosco, entre em contato nos números: 4239-3002, 4239-3014, 4239-3441, 4239-3442 ou 4239-3411.'),
+          'Envie um e-mail para dev@maua.br. Caso queira falar conosco, entre em contato nos números: 4239-3002, 4239-3014, 4239-3441, 4239-3442 ou 4239-3411.'),
 ];

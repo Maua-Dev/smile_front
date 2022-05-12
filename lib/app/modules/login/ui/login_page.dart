@@ -4,6 +4,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/smile_logo_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../presenter/controllers/login_controller.dart';
@@ -53,47 +55,41 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         const Center(
                           child: SmileLogoWidget(),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Observer(builder: (_) {
-                          if (controller.errors != '') {
-                            return Container(
-                              width: 300,
-                              decoration: BoxDecoration(
-                                  color: Colors.red[100],
-                                  border: Border.all(color: Colors.red),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {
-                                        controller.setError('');
-                                      },
-                                      icon: const Icon(Icons.close),
-                                    ),
-                                    Text(
+                        if (MediaQuery.of(context).size.width > 1024)
+                          Observer(builder: (_) {
+                            if (controller.errors != '') {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8),
+                                child: Container(
+                                  width:
+                                      controller.errors.length > 40 ? 500 : 300,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.lightRedButton,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 16.0, horizontal: 4),
+                                    child: Text(
                                       controller.errors,
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 16),
+                                      style: AppTextStyles.body.copyWith(
+                                        fontSize: 18,
+                                        color: Colors.white,
+                                      ),
+                                      textAlign: TextAlign.center,
                                     ),
-                                    const SizedBox(
-                                      width: 10,
-                                    )
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          }
-                          return Container();
-                        }),
-                        const SizedBox(
-                          height: 20,
-                        ),
+                              );
+                            }
+                            return const SizedBox.shrink();
+                          }),
+                        if (controller.errors == '')
+                          SizedBox(
+                            height: MediaQuery.of(context).size.width < 800
+                                ? 16
+                                : 32,
+                          ),
                         InputBox(
                           icon: Icons.person,
                           placeholder: 'CPF ou E-mail',
@@ -133,6 +129,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             heightSize: 50,
                             backgroundColor: AppColors.brandingOrange,
                             onPressed: () async {
+                              FocusScopeNode currentFocus =
+                                  FocusScope.of(context);
+                              if (!currentFocus.hasPrimaryFocus) {
+                                currentFocus.unfocus();
+                              }
                               if (_formKey.currentState!.validate()) {
                                 await controller.login();
                               }
@@ -205,14 +206,35 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               : 600),
                           decoration: BoxDecoration(
                               color: AppColors.gray,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: const Padding(
-                            padding: EdgeInsets.all(4.0),
-                            child: Text(
-                              'Em caso de erro ao se logar, envie um e-mail para: dev@maua.br',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
-                              textAlign: TextAlign.center,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: () {
+                                  launchUrl(
+                                    Uri.parse('mailto:dev@maua.br'),
+                                    mode: LaunchMode.externalApplication,
+                                  );
+                                },
+                                child: RichText(
+                                    textAlign: TextAlign.center,
+                                    text: const TextSpan(
+                                        text:
+                                            'Em caso de erro ao se logar, envie um e-mail para: ',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 16),
+                                        children: [
+                                          TextSpan(
+                                            text: 'dev@maua.br',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold),
+                                          )
+                                        ])),
+                              ),
                             ),
                           ),
                         ),

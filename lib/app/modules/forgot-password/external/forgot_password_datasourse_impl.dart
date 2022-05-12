@@ -28,7 +28,7 @@ class ForgotPasswordDatasourceImpl implements ForgotPasswordDatasource {
       throw Exception();
     } catch (e) {
       throw ForgotPasswordInvalid(
-          'Falha ao enviar o código, e-mail não\ncadastrado ou não confirmado.');
+          'Falha ao enviar o código, e-mail não cadastrado ou não confirmado.');
     }
   }
 

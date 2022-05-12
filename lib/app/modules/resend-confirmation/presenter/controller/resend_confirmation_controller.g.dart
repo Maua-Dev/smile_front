@@ -41,22 +41,6 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
     });
   }
 
-  late final _$cpfAtom =
-      Atom(name: '_ResendConfirmationController.cpf', context: context);
-
-  @override
-  String get cpf {
-    _$cpfAtom.reportRead();
-    return super.cpf;
-  }
-
-  @override
-  set cpf(String value) {
-    _$cpfAtom.reportWrite(value, super.cpf, () {
-      super.cpf = value;
-    });
-  }
-
   late final _$errorsAtom =
       Atom(name: '_ResendConfirmationController.errors', context: context);
 
@@ -70,6 +54,22 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
   set errors(String value) {
     _$errorsAtom.reportWrite(value, super.errors, () {
       super.errors = value;
+    });
+  }
+
+  late final _$cpfAtom =
+      Atom(name: '_ResendConfirmationController.cpf', context: context);
+
+  @override
+  String get cpf {
+    _$cpfAtom.reportRead();
+    return super.cpf;
+  }
+
+  @override
+  set cpf(String value) {
+    _$cpfAtom.reportWrite(value, super.cpf, () {
+      super.cpf = value;
     });
   }
 
@@ -165,8 +165,8 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
     return '''
 isLoading: ${isLoading},
 emailSent: ${emailSent},
-cpf: ${cpf},
 errors: ${errors},
+cpf: ${cpf},
 successRegistration: ${successRegistration}
     ''';
   }

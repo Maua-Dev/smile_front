@@ -74,7 +74,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width < 600 ? 4 : 16,
+                  width: MediaQuery.of(context).size.width < 1024 ? 4 : 16,
                 ),
                 TextButton(
                   onPressed: () {
@@ -93,7 +93,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width < 600 ? 4 : 16,
+                  width: MediaQuery.of(context).size.width < 1024 ? 4 : 16,
                 ),
                 TextButton(
                   onPressed: () {
@@ -114,7 +114,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                     children: [
                       SizedBox(
                         width:
-                            MediaQuery.of(context).size.width < 600 ? 14 : 32,
+                            MediaQuery.of(context).size.width < 1024 ? 14 : 32,
                       ),
                       TextButton(
                         onPressed: () {

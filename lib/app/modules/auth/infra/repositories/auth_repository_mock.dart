@@ -12,9 +12,9 @@ class AuthRepositoryMock implements AuthRepositoryInterface {
   @override
   Future<Map<String, dynamic>> login(String cpfRne, String password) async {
     if (password != _pw && password != _pwAdm) {
-      throw LoginInvalid('Login ou Senha inválida');
+      throw LoginInvalid('Login e/ou senha inválidos');
     } else if (cpfRne != _cpfRne && cpfRne != _cpfRneAdm) {
-      throw LoginInvalid('Login ou Senha inválido');
+      throw LoginInvalid('Login e/ou senha inválidos');
     } else {
       if (cpfRne == _cpfRneAdm && password == _pwAdm) {
         return {'token': 'token12354', 'accessLevel': 'ADMIN'};

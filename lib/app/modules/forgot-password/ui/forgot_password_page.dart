@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
@@ -48,54 +49,38 @@ class _ForgotPasswordPageState
                       const Center(
                         child: SmileLogoWidget(),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Observer(builder: (_) {
-                        if (controller.errors != '') {
-                          return Container(
-                            width: 500,
-                            decoration: BoxDecoration(
-                                color: Colors.red[100],
-                                border: Border.all(color: Colors.red),
-                                borderRadius: BorderRadius.circular(8)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      controller.setError('');
-                                    },
-                                    icon: const Icon(Icons.close),
+                      if (MediaQuery.of(context).size.width > 1024)
+                        Observer(builder: (_) {
+                          if (controller.errors != '') {
+                            return Container(
+                              width: 500,
+                              decoration: BoxDecoration(
+                                  color: AppColors.lightRedButton,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 16.0),
+                                child: Text(
+                                  controller.errors,
+                                  style: AppTextStyles.body.copyWith(
+                                    fontSize: 18,
+                                    color: Colors.white,
                                   ),
-                                  Text(
-                                    controller.errors,
-                                    style: const TextStyle(
-                                        color: Colors.black, fontSize: 16),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  )
-                                ],
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
-                            ),
-                          );
-                        }
-                        return Container();
-                      }),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                            );
+                          }
+                          return const SizedBox.shrink();
+                        }),
                       Observer(builder: (context) {
                         if (controller.emailSent) {
                           return Center(
                             child: Column(
                               children: [
                                 const Padding(
-                                  padding: EdgeInsets.all(42.0),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 40, vertical: 32),
                                   child: Text(
                                     'Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.',
                                     textAlign: TextAlign.justify,
@@ -121,21 +106,19 @@ class _ForgotPasswordPageState
                           return Column(
                             children: [
                               const Padding(
-                                padding: EdgeInsets.all(42.0),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 40, vertical: 32),
                                 child: Text(
-                                  'Um código será enviado no email cadastrado',
+                                  'Um código será enviado no email cadastrado:',
                                   style: TextStyle(color: Colors.white),
                                   textAlign: TextAlign.justify,
                                 ),
                               ),
-                              const SizedBox(
-                                height: 20,
-                              ),
                               InputBox(
                                 icon: Icons.person,
                                 placeholder: 'Email',
-                                setValue: controller.setUsername,
-                                validation: controller.validateUsername,
+                                setValue: controller.setEmail,
+                                validation: controller.validateEmail,
                                 onFieldSubmitted: (value) async {
                                   if (_formKey.currentState!.validate()) {
                                     await controller.forgotPassword();

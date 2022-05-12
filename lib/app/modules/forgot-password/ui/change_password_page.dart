@@ -60,7 +60,7 @@ class _ChangePasswordPageState
                               decoration: BoxDecoration(
                                   color: Colors.green[100],
                                   border: Border.all(color: Colors.green),
-                                  borderRadius: BorderRadius.circular(8)),
+                                  borderRadius: BorderRadius.circular(10)),
                               child: const Padding(
                                 padding: EdgeInsets.all(4.0),
                                 child: Text(
@@ -79,8 +79,9 @@ class _ChangePasswordPageState
                               width: 450,
                               decoration: BoxDecoration(
                                   color: Colors.red[100],
-                                  border: Border.all(color: Colors.red),
-                                  borderRadius: BorderRadius.circular(8)),
+                                  border: Border.all(
+                                      color: AppColors.lightRedButton),
+                                  borderRadius: BorderRadius.circular(10)),
                               child: Padding(
                                 padding: const EdgeInsets.all(4.0),
                                 child: Row(
@@ -106,8 +107,9 @@ class _ChangePasswordPageState
                               ),
                             ),
                           );
+                        } else {
+                          return const SizedBox.shrink();
                         }
-                        return Container();
                       }),
                       const Text(
                         'Insira sua nova senha e o codigo enviado para o seu e-mail:',
