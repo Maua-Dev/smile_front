@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/smile_logo_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
@@ -208,22 +209,33 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               borderRadius: BorderRadius.circular(10)),
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
-                            child: RichText(
-                                textAlign: TextAlign.center,
-                                text: const TextSpan(
-                                    text:
-                                        'Em caso de erro ao se logar, envie um e-mail para: ',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 16),
-                                    children: [
-                                      TextSpan(
-                                        text: 'dev@maua.br',
+                            child: MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: () {
+                                  launchUrl(
+                                    Uri.parse('mailto:dev@maua.br'),
+                                    mode: LaunchMode.externalApplication,
+                                  );
+                                },
+                                child: RichText(
+                                    textAlign: TextAlign.center,
+                                    text: const TextSpan(
+                                        text:
+                                            'Em caso de erro ao se logar, envie um e-mail para: ',
                                         style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ])),
+                                            color: Colors.white, fontSize: 16),
+                                        children: [
+                                          TextSpan(
+                                            text: 'dev@maua.br',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold),
+                                          )
+                                        ])),
+                              ),
+                            ),
                           ),
                         ),
                         const SizedBox(
