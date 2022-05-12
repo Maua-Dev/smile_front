@@ -128,6 +128,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             heightSize: 50,
                             backgroundColor: AppColors.brandingOrange,
                             onPressed: () async {
+                              FocusScopeNode currentFocus =
+                                  FocusScope.of(context);
+                              if (!currentFocus.hasPrimaryFocus) {
+                                currentFocus.unfocus();
+                              }
                               if (_formKey.currentState!.validate()) {
                                 await controller.login();
                               }
