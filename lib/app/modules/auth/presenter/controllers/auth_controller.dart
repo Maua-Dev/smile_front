@@ -12,6 +12,7 @@ class AuthController {
   String _accessLevel = '';
   String _name = '';
   String? _socialname = '';
+  String? _id = '';
   bool? _certificateWithSocialName = false;
 
   AuthController({
@@ -24,6 +25,7 @@ class AuthController {
   String get accessLevel => _accessLevel;
   String get name => _name;
   String get socialname => _socialname ?? '';
+  String get id => _id ?? '';
   bool get certificateWithSocialName => _certificateWithSocialName ?? false;
 
   Future<void> loginWithCpfRne(String cpfRne, String password) async {
@@ -32,15 +34,17 @@ class AuthController {
     _name = loginResponse['name'];
     _socialname = loginResponse['social_name'];
     _certificateWithSocialName = loginResponse['certificate_with_social_name'];
+    _id = loginResponse['id'];
 
     await storage.saveAccessToken(loginResponse['access_token']);
     await storage.saveRefreshToken(loginResponse['refresh_token']);
     await storage.saveAccessLevel(_accessLevel);
     await storage.saveName(_name);
     await storage.saveSocialName(_socialname ?? '');
+    await storage.saveId(_id ?? '');
     await storage
         .saveCertificateWithSocialName(_certificateWithSocialName ?? false);
-    await analytics.setUserProperties(loginResponse['id']);
+    await analytics.setUserProperties(await storage.getId() ?? '');
 
     _loggedIn = true;
   }
