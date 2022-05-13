@@ -64,11 +64,4 @@ void main() {
     expect(controller.isLogged, true);
     expect(controller.accessLevel, loginWithCpfRne['access_level']);
   });
-
-  test('verifyIfHaveTokens when not logged', () async {
-    when(storage.getRefreshToken()).thenAnswer((_) async => null);
-    await storage.cleanSecureStorage();
-    await controller.verifyIfHaveTokens();
-    expect(controller.isLogged, false);
-  });
 }
