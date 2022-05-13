@@ -34,6 +34,7 @@ class UserModule extends Module {
         (i) => AllActivitiesUserDashboardController(
               repository: i(),
               authController: i(),
+              controller: i(),
             ),
         export: true),
     Bind.lazySingleton<ActivitiesDatasourceInterface>(
@@ -59,13 +60,15 @@ class UserModule extends Module {
       (i) => MoreInfoController(
           repository: i(),
           activity: i.args!.data[0] as CardActivity,
-          registered: i.args!.data[1] as bool),
+          registered: i.args!.data[1] as bool,
+          userDashboardController: i()),
     ),
     Bind.lazySingleton((i) => Dio(smileOption)),
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(
               authRepository: i<AuthRepositoryInterface>(),
               storage: i<SecureStorageInterface>(),
+              analytics: i(),
             ),
         export: true),
   ];

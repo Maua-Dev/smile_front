@@ -10,9 +10,10 @@ import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
-import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
+import 'adm_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([ActivitiesRepositoryInterface])
 void main() {
@@ -23,6 +24,7 @@ void main() {
 
   AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
+  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
   late AuthController authController;
 
   final mockActivities = <ActivityModel>[
@@ -140,12 +142,25 @@ void main() {
 
   setUpAll(() {
     when(repository.getAllActivities()).thenAnswer((_) async => mockActivities);
-    authController =
-        AuthController(authRepository: authRepository, storage: secureStorage);
+    when(repository.getDownloadLinkCsv()).thenAnswer((_) async => '');
+    authController = AuthController(
+        authRepository: authRepository,
+        storage: secureStorage,
+        analytics: analytics);
     controller = AdmDashboardController(
       repository: repository,
       authController: authController,
     );
+  });
+
+  test('setIsLoadingCsv', () {
+    controller.setIsLoadingCsv(true);
+    expect(controller.isLoadingCsv, true);
+  });
+
+  test('setIsLoading', () {
+    controller.setIsLoading(true);
+    expect(controller.isLoading, true);
   });
 
   test('toggleFloatActionButton', () {
@@ -153,9 +168,17 @@ void main() {
     expect(controller.isFloatActionButtonOpen, true);
   });
 
-  test('toggleFilterActivityChipIndex', () {
+  test(
+      'toggleFilterActivityChipIndex if index == filterActivityChipIndexSelected',
+      () {
     controller.toggleFilterActivityChipIndex(0);
-    expect(controller.isFloatActionButtonOpen, true);
+    expect(controller.activitiesList, controller.saveActivitiesList);
+  });
+
+  test('toggleFilterActivityChipIndex else', () {
+    controller.filterActivityChipIndexSelected = 0;
+    controller.toggleFilterActivityChipIndex(1);
+    expect(controller.filterActivityChipIndexSelected, 1);
   });
 
   test('getAllActivities', () {
@@ -187,6 +210,14 @@ void main() {
 
   test('fridayActivitiesList', () {
     expect(controller.fridayActivitiesList.isNotEmpty, true);
+  });
+
+  test('saturdayActivitiesList', () {
+    expect(controller.saturdayActivitiesList.isNotEmpty, false);
+  });
+
+  test('sundayActivitiesList', () {
+    expect(controller.sundayActivitiesList.isNotEmpty, false);
   });
 
   test('logout', () {
