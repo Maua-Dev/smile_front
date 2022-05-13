@@ -7,8 +7,7 @@ import '../../../../shared/services/firebase-analytics/firebase_analytics_servic
 class AuthController {
   final AuthRepositoryInterface authRepository;
   final SecureStorageInterface storage;
-  final FirebaseAnalyticsService analytics =
-      Modular.get<FirebaseAnalyticsService>();
+  final FirebaseAnalyticsService analytics;
   bool _loggedIn = false;
   String _accessLevel = '';
   String _name = '';
@@ -16,6 +15,7 @@ class AuthController {
   bool? _certificateWithSocialName = false;
 
   AuthController({
+    required this.analytics,
     required this.authRepository,
     required this.storage,
   });
