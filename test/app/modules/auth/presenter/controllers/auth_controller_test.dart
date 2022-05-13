@@ -34,6 +34,11 @@ void main() {
     when(authRepository.login('adm', 'teste'))
         .thenAnswer((_) async => loginWithCpfRne);
     when(analytics.setUserProperties('')).thenAnswer((_) async => null);
+    when(storage.getAccessLevel()).thenAnswer((_) async => 'ADMIN');
+    when(storage.getId()).thenAnswer((_) async => '');
+    when(storage.getAccessToken()).thenAnswer((_) async => 'token12354');
+    when(storage.getRefreshToken())
+        .thenAnswer((_) async => 'refreshToken342315');
     controller = AuthController(
         authRepository: authRepository, storage: storage, analytics: analytics);
   });
@@ -44,10 +49,26 @@ void main() {
     expect(controller.accessLevel, loginWithCpfRne['access_level']);
     expect(controller.name, loginWithCpfRne['name']);
     expect(controller.socialname, loginWithCpfRne['social_name']);
+    expect(controller.id, loginWithCpfRne['id']);
+    expect(controller.certificateWithSocialName,
+        loginWithCpfRne['certificate_with_social_name']);
   });
 
   test('logout', () async {
     await controller.logout();
+    expect(controller.isLogged, false);
+  });
+
+  test('verifyIfHaveTokens when logged', () async {
+    await controller.verifyIfHaveTokens();
+    expect(controller.isLogged, true);
+    expect(controller.accessLevel, loginWithCpfRne['access_level']);
+  });
+
+  test('verifyIfHaveTokens when not logged', () async {
+    when(storage.getRefreshToken()).thenAnswer((_) async => null);
+    await storage.cleanSecureStorage();
+    await controller.verifyIfHaveTokens();
     expect(controller.isLogged, false);
   });
 }

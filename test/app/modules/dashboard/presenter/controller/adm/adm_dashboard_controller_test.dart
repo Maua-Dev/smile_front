@@ -142,6 +142,7 @@ void main() {
 
   setUpAll(() {
     when(repository.getAllActivities()).thenAnswer((_) async => mockActivities);
+    when(repository.getDownloadLinkCsv()).thenAnswer((_) async => '');
     authController = AuthController(
         authRepository: authRepository,
         storage: secureStorage,
@@ -152,14 +153,32 @@ void main() {
     );
   });
 
+  test('setIsLoadingCsv', () {
+    controller.setIsLoadingCsv(true);
+    expect(controller.isLoadingCsv, true);
+  });
+
+  test('setIsLoading', () {
+    controller.setIsLoading(true);
+    expect(controller.isLoading, true);
+  });
+
   test('toggleFloatActionButton', () {
     controller.toggleFloatActionButton();
     expect(controller.isFloatActionButtonOpen, true);
   });
 
-  test('toggleFilterActivityChipIndex', () {
+  test(
+      'toggleFilterActivityChipIndex if index == filterActivityChipIndexSelected',
+      () {
     controller.toggleFilterActivityChipIndex(0);
-    expect(controller.isFloatActionButtonOpen, true);
+    expect(controller.activitiesList, controller.saveActivitiesList);
+  });
+
+  test('toggleFilterActivityChipIndex else', () {
+    controller.filterActivityChipIndexSelected = 0;
+    controller.toggleFilterActivityChipIndex(1);
+    expect(controller.filterActivityChipIndexSelected, 1);
   });
 
   test('getAllActivities', () {
@@ -191,6 +210,14 @@ void main() {
 
   test('fridayActivitiesList', () {
     expect(controller.fridayActivitiesList.isNotEmpty, true);
+  });
+
+  test('saturdayActivitiesList', () {
+    expect(controller.saturdayActivitiesList.isNotEmpty, false);
+  });
+
+  test('sundayActivitiesList', () {
+    expect(controller.sundayActivitiesList.isNotEmpty, false);
   });
 
   test('logout', () {

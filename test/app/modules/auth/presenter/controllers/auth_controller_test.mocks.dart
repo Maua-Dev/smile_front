@@ -89,6 +89,11 @@ class MockSecureStorageInterface extends _i1.Mock
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
   @override
+  _i4.Future<void> saveId(String? id) =>
+      (super.noSuchMethod(Invocation.method(#saveId, [id]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+  @override
   _i4.Future<void> saveName(String? name) =>
       (super.noSuchMethod(Invocation.method(#saveName, [name]),
           returnValue: Future<void>.value(),
@@ -109,6 +114,10 @@ class MockSecureStorageInterface extends _i1.Mock
   @override
   _i4.Future<String?> getAccessLevel() =>
       (super.noSuchMethod(Invocation.method(#getAccessLevel, []),
+          returnValue: Future<String?>.value()) as _i4.Future<String?>);
+  @override
+  _i4.Future<String?> getId() =>
+      (super.noSuchMethod(Invocation.method(#getId, []),
           returnValue: Future<String?>.value()) as _i4.Future<String?>);
   @override
   _i4.Future<String?> getName() =>
