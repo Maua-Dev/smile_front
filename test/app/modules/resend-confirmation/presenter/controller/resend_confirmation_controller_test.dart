@@ -2,7 +2,6 @@ import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:smile_front/app/app_widget.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
 import 'package:smile_front/app/modules/resend-confirmation/domain/repository/resend_confirmation_datasource_interface.dart';
 import 'package:smile_front/app/modules/resend-confirmation/presenter/controller/resend_confirmation_controller.dart';
