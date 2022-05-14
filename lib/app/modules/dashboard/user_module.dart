@@ -34,6 +34,8 @@ class UserModule extends Module {
         (i) => AllActivitiesUserDashboardController(
               repository: i(),
               authController: i(),
+              controller: i(),
+              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<ActivitiesDatasourceInterface>(
@@ -43,7 +45,10 @@ class UserModule extends Module {
     Bind.lazySingleton<UserDatasourceInterface>((i) => UserDatasourceImpl(
           storage: i<SecureStorageInterface>(),
         )),
-    Bind.lazySingleton<HelpController>((i) => HelpController(i())),
+    Bind.lazySingleton<HelpController>((i) => HelpController(
+          repository: i(),
+          analytics: i(),
+        )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<UserRepositoryInterface>(
@@ -53,19 +58,25 @@ class UserModule extends Module {
         (i) => FaqRepositoryImpl(datasource: i())),
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
-          repository: i(), secureStorage: i(), userRepository: i()),
+        repository: i(),
+        secureStorage: i(),
+        userRepository: i(),
+        analytics: i(),
+      ),
     ),
     Bind.lazySingleton<MoreInfoController>(
       (i) => MoreInfoController(
           repository: i(),
           activity: i.args!.data[0] as CardActivity,
-          registered: i.args!.data[1] as bool),
+          registered: i.args!.data[1] as bool,
+          userDashboardController: i()),
     ),
     Bind.lazySingleton((i) => Dio(smileOption)),
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(
               authRepository: i<AuthRepositoryInterface>(),
               storage: i<SecureStorageInterface>(),
+              analytics: i(),
             ),
         export: true),
   ];

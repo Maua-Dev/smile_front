@@ -14,6 +14,7 @@ class ForgotPasswordModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<ForgotPasswordController>(
         (i) => ForgotPasswordController(
+              analytics: i(),
               forgotPasswordRepository: i<ForgotPasswordRepositoryInterface>(),
             ),
         export: true),

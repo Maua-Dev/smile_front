@@ -14,7 +14,6 @@ class HomeModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton((i) => ActivityHomeController(i())),
     Bind.lazySingleton<SpeakersRepositoryImpl>((i) => SpeakersRepositoryImpl()),
-    Bind.lazySingleton((i) => ActivityHomeController(i())),
     Bind.lazySingleton((i) => SpeakersHomeController(repository: i())),
     Bind.lazySingleton<SpeakersDatasourceInterface>(
         (i) => SpeakersDatasourceImpl()),
