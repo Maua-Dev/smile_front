@@ -115,4 +115,12 @@ class MockFirebaseAnalyticsService extends _i1.Mock
   _i4.Future<dynamic> logViewActivity(String? activityCode) =>
       (super.noSuchMethod(Invocation.method(#logViewActivity, [activityCode]),
           returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
+  @override
+  _i4.Future<dynamic> logChangePassword() =>
+      (super.noSuchMethod(Invocation.method(#logChangePassword, []),
+          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
+  @override
+  _i4.Future<dynamic> logFaq(int? id) =>
+      (super.noSuchMethod(Invocation.method(#logFaq, [id]),
+          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
 }

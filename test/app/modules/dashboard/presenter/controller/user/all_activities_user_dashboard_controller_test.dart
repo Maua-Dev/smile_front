@@ -160,6 +160,7 @@ void main() {
       repository: repository,
       authController: authController,
       controller: userDashboardController,
+      analytics: analytics,
     );
   });
 

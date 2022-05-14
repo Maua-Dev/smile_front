@@ -17,6 +17,7 @@ class LoginModule extends Module {
     Bind.lazySingleton(
         (i) => LoginController(
               authController: i(),
+              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<AuthDatasourceInterface>(

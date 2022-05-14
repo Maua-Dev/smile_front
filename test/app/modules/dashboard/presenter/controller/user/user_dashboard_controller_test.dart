@@ -12,22 +12,23 @@ import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../../../setup_firebase_mocks.dart';
 import 'user_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([
   ActivitiesRepositoryInterface,
   SecureStorageInterface,
-  UserRepositoryInterface
+  UserRepositoryInterface,
+  FirebaseAnalyticsService
 ])
 void main() {
   initModule(AppModule());
   setupCloudFirestoreMocks();
   ActivitiesRepositoryInterface repository =
       MockActivitiesRepositoryInterface();
-
   UserRepositoryInterface userRepository = MockUserRepositoryInterface();
-
+  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
 
   late UserDashboardController controller;
@@ -160,7 +161,8 @@ void main() {
     controller = UserDashboardController(
         repository: repository,
         secureStorage: secureStorage,
-        userRepository: userRepository);
+        userRepository: userRepository,
+        analytics: analytics);
   });
 
   test('getCertificateWithSocialName', () {

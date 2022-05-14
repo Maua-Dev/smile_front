@@ -15,10 +15,12 @@ class LoginController = _LoginController with _$LoginController;
 
 abstract class _LoginController with Store {
   final AuthController authController;
-  final FirebaseAnalyticsService analytics =
-      Modular.get<FirebaseAnalyticsService>();
+  final FirebaseAnalyticsService analytics;
 
-  _LoginController({required this.authController});
+  _LoginController({
+    required this.authController,
+    required this.analytics,
+  });
 
   @observable
   bool isLoading = false;
