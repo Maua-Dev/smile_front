@@ -43,6 +43,10 @@ class _HelpPageState extends ModularState<HelpPage, HelpController> {
                   onPressed: () {
                     controller.swapOpen(index);
                   },
+                  analyticsLogPress: () {
+                    controller.analytics
+                        .logFaq(controller.faqAction[index].faq.id);
+                  },
                 ),
               );
             }),

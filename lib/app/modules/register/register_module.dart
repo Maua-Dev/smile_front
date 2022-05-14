@@ -16,6 +16,7 @@ class RegisterModule extends Module {
     Bind.lazySingleton<RegisterController>(
         (i) => RegisterController(
               registerUserRepository: i<RegisterRepositoryInterface>(),
+              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<RegisterDatasourceInterface>(

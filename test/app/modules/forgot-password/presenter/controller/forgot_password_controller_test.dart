@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -5,19 +6,26 @@ import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/forgot-password/domain/repository/forgot_password_datasource_interface.dart';
 import 'package:smile_front/app/modules/forgot-password/forgot_password_module.dart';
 import 'package:smile_front/app/modules/forgot-password/presenter/controller/forgot_password_controller.dart';
+import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
+import '../../../../../setup_firebase_mocks.dart';
 import 'forgot_password_controller_test.mocks.dart';
 
-@GenerateMocks([ForgotPasswordRepositoryInterface])
+@GenerateMocks([ForgotPasswordRepositoryInterface, FirebaseAnalyticsService])
 void main() {
+  setupCloudFirestoreMocks();
+
   initModules([ForgotPasswordModule()]);
   ForgotPasswordRepositoryInterface repository =
       MockForgotPasswordRepositoryInterface();
+  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
   late ForgotPasswordController controller;
 
   setUpAll(() async {
+    await Firebase.initializeApp();
     when(repository.forgotPassword('')).thenAnswer((_) async => '');
-    controller = ForgotPasswordController(forgotPasswordRepository: repository);
+    controller = ForgotPasswordController(
+        forgotPasswordRepository: repository, analytics: analytics);
   });
 
   test('setError', () {
