@@ -32,7 +32,8 @@ void main() {
     await Firebase.initializeApp();
     authController = AuthController(
         authRepository: repository, storage: storage, analytics: analytics);
-    controller = LoginController(authController: authController);
+    controller =
+        LoginController(authController: authController, analytics: analytics);
   });
 
   test('setUsername if contains @ and Upper Case : email', () {

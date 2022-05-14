@@ -2,6 +2,7 @@ import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/app_widget.dart';
+import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/themes/app_colors.dart';
@@ -15,8 +16,10 @@ class ForgotPasswordController = _ForgotPasswordController
 
 abstract class _ForgotPasswordController with Store {
   final ForgotPasswordRepositoryInterface forgotPasswordRepository;
+  final FirebaseAnalyticsService analytics;
 
-  _ForgotPasswordController({required this.forgotPasswordRepository});
+  _ForgotPasswordController(
+      {required this.analytics, required this.forgotPasswordRepository});
 
   @observable
   bool isLoading = false;
