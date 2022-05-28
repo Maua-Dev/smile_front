@@ -1,13 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/repositories/certificate_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
+import 'package:smile_front/app/modules/dashboard/external/certificate_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
+import 'package:smile_front/app/modules/dashboard/infra/datasources/certificate_datasource_interface.dart';
+import 'package:smile_front/app/modules/dashboard/infra/repository/certificates_repository_impl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/certificate_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_dashboard_page.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
@@ -79,6 +85,12 @@ class UserModule extends Module {
               analytics: i(),
             ),
         export: true),
+    Bind.lazySingleton<CertificateRepositoryInterface>(
+        (i) => CertificateRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<CertificateDatasourceInterface>(
+        (i) => CertificateDatasourceImpl(storage: i())),
+    Bind.lazySingleton<CertificateController>(
+        (i) => CertificateController(repository: i())),
   ];
 
   @override
@@ -89,5 +101,6 @@ class UserModule extends Module {
         child: (_, args) => const AllActivitiesUserDashboardPage()),
     ChildRoute('/more-info', child: (_, args) => const MoreInfoPage()),
     ChildRoute('/help', child: (_, args) => const HelpPage()),
+    ChildRoute('/certificate', child: (_, args) => const CertificatePage()),
   ];
 }

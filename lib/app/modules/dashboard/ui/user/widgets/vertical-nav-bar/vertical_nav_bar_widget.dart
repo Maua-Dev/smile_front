@@ -5,7 +5,6 @@ import 'package:smile_front/app/modules/dashboard/ui/user/widgets/vertical-nav-b
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 import '../../../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
-import '../../../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 
 class VerticalNavBarWidget extends StatelessWidget {
   final String? accessLevel;
@@ -66,14 +65,8 @@ class VerticalNavBarWidget extends StatelessWidget {
               indexToShow: controller.indexToShow,
               myIndex: 3,
               onPressed: () async {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return const CustomAlertDialogWidget(
-                        title: 'Página de certificados ainda não disponível.',
-                        content: 'Aguarde novas informações!',
-                      );
-                    });
+                await controller.toggleIndex(3);
+                Modular.to.navigate('/user/home/certificate');
               },
               icon: Icons.assignment,
             ),
