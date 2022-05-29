@@ -48,7 +48,9 @@ class CertificateWidget extends StatelessWidget {
           ],
         ),
         style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+            padding: EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: MediaQuery.of(context).size.width < 1000 ? 24 : 32),
             primary: AppColors.lilac,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),

@@ -5,6 +5,8 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/cer
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/certificates/certificate_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../shared/themes/app_colors.dart';
+import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 
 class CertificatePage extends StatefulWidget {
@@ -33,6 +35,32 @@ class _CertificatePageState
                   title: 'Certificados',
                   fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
                   leftPadding: 12,
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                Center(
+                  child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                          text:
+                              'Em caso de algum problema com o certificado, você tem até dia XX/XX para enviar para ',
+                          style: AppTextStyles.body.copyWith(
+                              fontSize: MediaQuery.of(context).size.width < 1000
+                                  ? 18
+                                  : 22,
+                              color: Colors.black),
+                          children: [
+                            TextSpan(
+                              text: 'dev@maua.br',
+                              style: AppTextStyles.titleH1.copyWith(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 1000
+                                          ? 18
+                                          : 22,
+                                  color: Colors.black),
+                            )
+                          ])),
                 ),
                 const SizedBox(
                   height: 16,
