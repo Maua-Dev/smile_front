@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/certificate_datasource_interface.dart';
+import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dart';
 
 import '../../../shared/error/dio_exceptions.dart';
 import '../../../shared/error/error_snackbar.dart';
@@ -12,8 +13,7 @@ class CertificateDatasourceImpl implements CertificateDatasourceInterface {
   final SecureStorageInterface storage;
   var authController = Modular.get<AuthController>();
   BaseOptions options = BaseOptions(
-    baseUrl:
-        'https://lqtdp4le7zlr5bhel4jamjszcy0dhrft.lambda-url.sa-east-1.on.aws/',
+    baseUrl: EnvironmentConfig.MSS_CERTIFICATE_BASE_URL,
     responseType: ResponseType.json,
     connectTimeout: 30000,
     receiveTimeout: 30000,
@@ -25,7 +25,6 @@ class CertificateDatasourceImpl implements CertificateDatasourceInterface {
   @override
   Future<List<CertificateModel>> getListDownloads() async {
     var token = await storage.getAccessToken();
-    print(token);
     try {
       dio.options.headers["authorization"] = "Bearer $token";
       final res = await dio.get(

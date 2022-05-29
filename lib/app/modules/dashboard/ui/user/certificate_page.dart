@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/certificate_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/certificates/certificate_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../shared/widgets/text-header/text_header.dart';
 
@@ -41,15 +42,20 @@ class _CertificatePageState
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: controller.certificateList.length,
                     itemBuilder: (context, index) => Padding(
-                          padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).size.width < 1000
-                                  ? 8
-                                  : 16),
+                          padding: const EdgeInsets.only(bottom: 16),
                           child: CertificateWidget(
                             certificateName:
                                 controller.certificateList[index].name,
-                            certificateUrl:
-                                controller.certificateList[index].url,
+                            isLoading: controller.isLoading,
+                            onPressed: () async {
+                              controller.setIsLoading(true);
+                              await launchUrl(
+                                Uri.parse(
+                                    controller.certificateList[index].url),
+                                mode: LaunchMode.externalApplication,
+                              );
+                              controller.setIsLoading(false);
+                            },
                           ),
                         ))
               ],

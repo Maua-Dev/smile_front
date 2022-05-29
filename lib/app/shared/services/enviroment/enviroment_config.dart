@@ -10,4 +10,7 @@ class EnvironmentConfig {
   static const S3_BASE_URL = String.fromEnvironment(
     'S3_BASE_URL',
   );
+  static const MSS_CERTIFICATE_BASE_URL = String.fromEnvironment(
+    'MSS_CERTIFICATE_BASE_URL',
+  );
 }

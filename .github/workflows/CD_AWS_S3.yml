@@ -39,7 +39,7 @@ jobs:
            if: github.ref == 'refs/heads/prod'
            run: mv web/firebase-messaging-sw-prod.js web/firebase-messaging-sw.js
 
-         - run: flutter build web -t lib/${{secrets.MAIN_FLAVOR}}.dart --dart-define=MSS_USER_BASE_URL=${{secrets.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{secrets.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=https://dgdeg32eu6sux.cloudfront.net/
+         - run: flutter build web -t lib/${{secrets.MAIN_FLAVOR}}.dart --dart-define=MSS_USER_BASE_URL=${{secrets.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{secrets.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=https://dgdeg32eu6sux.cloudfront.net/ --dart-define=MSS_CERTIFICATE_BASE_URL=https://gywf2oepfesleyuhgpwj5humz40bguxi.lambda-url.sa-east-1.on.aws/
 
          - name: Upload to S3
            uses: shallwefootball/s3-upload-action@master

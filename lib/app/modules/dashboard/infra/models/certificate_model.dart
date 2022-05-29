@@ -6,7 +6,6 @@ class CertificateModel extends Certificate {
 
   static List<CertificateModel> fromMaps(List array) {
     List<CertificateModel> list = [];
-    print(array);
     for (var e in array) {
       e.forEach(
         (key, value) =>
