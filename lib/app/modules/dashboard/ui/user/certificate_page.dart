@@ -4,8 +4,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/certificate_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/certificates/certificate_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 
