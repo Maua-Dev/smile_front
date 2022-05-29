@@ -37,28 +37,60 @@ class _CertificatePageState
                 const SizedBox(
                   height: 16,
                 ),
-                Center(
-                  child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                          text:
-                              'Em caso de algum problema com o certificado, você tem até dia XX/XX para enviar para ',
-                          style: AppTextStyles.body.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 1000
-                                  ? 18
-                                  : 22,
-                              color: Colors.black),
-                          children: [
-                            TextSpan(
-                              text: 'dev@maua.br',
-                              style: AppTextStyles.titleH1.copyWith(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1000
-                                          ? 18
-                                          : 22,
-                                  color: Colors.black),
-                            )
-                          ])),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Center(
+                    child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                            text:
+                                'Data limite para alterações no seu certificado: ',
+                            style: AppTextStyles.body.copyWith(
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1000
+                                        ? 18
+                                        : 22,
+                                color: Colors.black),
+                            children: [
+                              TextSpan(
+                                text: '10/06/2022',
+                                style: AppTextStyles.titleH1.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1000
+                                            ? 18
+                                            : 22,
+                                    color: Colors.black),
+                              ),
+                              TextSpan(
+                                text: ' .Basta enviar um e-mail para ',
+                                style: AppTextStyles.body.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1000
+                                            ? 18
+                                            : 22,
+                                    color: Colors.black),
+                              ),
+                              TextSpan(
+                                text: 'dev@maua.br',
+                                style: AppTextStyles.titleH1.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1000
+                                            ? 18
+                                            : 22,
+                                    color: Colors.black),
+                              ),
+                              TextSpan(
+                                text:
+                                    ' com nome completo e CPF relatando o problema.',
+                                style: AppTextStyles.body.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1000
+                                            ? 18
+                                            : 22,
+                                    color: Colors.black),
+                              ),
+                            ])),
+                  ),
                 ),
                 const SizedBox(
                   height: 16,
