@@ -118,26 +118,46 @@ class _CertificatePageState
                 const SizedBox(
                   height: 16,
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: controller.certificateList.length,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: CertificateWidget(
-                      certificateName: controller.certificateList[index].name,
-                      isLoading: controller.isLoading,
-                      onPressed: () async {
-                        controller.setIsLoading(true);
-                        await launchUrl(
-                          Uri.parse(controller.certificateList[index].url),
-                          mode: LaunchMode.externalApplication,
-                        );
-                        controller.setIsLoading(false);
-                      },
-                    ),
-                  ),
-                ),
+                controller.certificateList.isEmpty
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Parece que você não tem nenhum certificado.',
+                              textAlign: TextAlign.center,
+                              style: AppTextStyles.titleH1.copyWith(
+                                  color: AppColors.brandingOrange,
+                                  fontSize: 32),
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                          ],
+                        ),
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: controller.certificateList.length,
+                        itemBuilder: (context, index) => Padding(
+                          padding: const EdgeInsets.only(bottom: 16),
+                          child: CertificateWidget(
+                            certificateName:
+                                controller.certificateList[index].name,
+                            isLoading: controller.isLoading,
+                            onPressed: () async {
+                              controller.setIsLoading(true);
+                              await launchUrl(
+                                Uri.parse(
+                                    controller.certificateList[index].url),
+                                mode: LaunchMode.externalApplication,
+                              );
+                              controller.setIsLoading(false);
+                            },
+                          ),
+                        ),
+                      ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Center(
