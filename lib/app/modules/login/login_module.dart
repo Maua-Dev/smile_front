@@ -7,7 +7,7 @@ import 'package:smile_front/app/modules/register/register_module.dart';
 import '../../shared/services/dio/smile_login_options.dart';
 import '../auth/domain/repositories/auth_repository_interface.dart';
 import '../auth/external/auth_datasource_impl.dart';
-import '../auth/infra/datasource/auth_datasource_interface.dart';
+import '../auth/infra/datasource/auth_datasource.dart';
 import '../auth/infra/repositories/auth_repository_impl.dart';
 import '../resend-confirmation/resend_confirmation_module.dart';
 
@@ -17,10 +17,9 @@ class LoginModule extends Module {
     Bind.lazySingleton(
         (i) => LoginController(
               authController: i(),
-              analytics: i(),
             ),
         export: true),
-    Bind.lazySingleton<AuthDatasourceInterface>(
+    Bind.lazySingleton<AuthDatasource>(
         (i) => AuthDatasourceImpl(dioClient: i(), storage: i())),
     Bind.lazySingleton<AuthRepositoryInterface>(
         (i) => AuthRepositoryImpl(datasource: i()),

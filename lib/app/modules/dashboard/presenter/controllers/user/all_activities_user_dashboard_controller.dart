@@ -17,12 +17,11 @@ class AllActivitiesUserDashboardController = _AllActivitiesUserDashboardControll
 abstract class _AllActivitiesUserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final AuthController authController;
-  final UserDashboardController controller;
-  final FirebaseAnalyticsService analytics;
+  final controller = Modular.get<UserDashboardController>();
+  final FirebaseAnalyticsService analytics =
+      Modular.get<FirebaseAnalyticsService>();
 
   _AllActivitiesUserDashboardControllerBase({
-    required this.analytics,
-    required this.controller,
     required this.repository,
     required this.authController,
   }) {

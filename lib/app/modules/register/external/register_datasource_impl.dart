@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:smile_front/app/shared/entities/user_registration.dart';
 import '../../../shared/services/enviroment/enviroment_config.dart';
-import '../infra/datasources/register_datasource_interface.dart';
+import '../infra/datasources/register_datasource.dart';
 import 'errors/errors.dart';
 
-class RegisterDatasourceImpl implements RegisterDatasourceInterface {
+class RegisterDatasourceImpl implements RegisterDatasource {
   final Dio dioClient;
 
   RegisterDatasourceImpl({required this.dioClient});

@@ -2,7 +2,6 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/entities/faq.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/faq_repository_interface.dart';
 
-import '../../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../infra/models/faq_panel_model.dart';
 
 part 'help_controller.g.dart';
@@ -11,8 +10,7 @@ class HelpController = _HelpControllerBase with _$HelpController;
 
 abstract class _HelpControllerBase with Store {
   final FaqRepositoryInterface repository;
-  final FirebaseAnalyticsService analytics;
-  _HelpControllerBase({required this.repository, required this.analytics}) {
+  _HelpControllerBase(this.repository) {
     getFaqInformation();
   }
 

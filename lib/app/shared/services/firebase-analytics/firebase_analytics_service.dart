@@ -22,12 +22,4 @@ class FirebaseAnalyticsService {
     await analytics.logEvent(
         name: 'view_activity', parameters: {'activity_code': activityCode});
   }
-
-  Future logChangePassword() async {
-    await analytics.logEvent(name: 'change_password');
-  }
-
-  Future logFaq(int id) async {
-    await analytics.logEvent(name: 'faq_open', parameters: {'faq_id': id});
-  }
 }

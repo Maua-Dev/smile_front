@@ -1,3 +1,4 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
@@ -16,11 +17,10 @@ abstract class _MoreInfoControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final CardActivity activity;
   final bool registered;
-  final UserDashboardController userDashboardController;
+  final userDashboardController = Modular.get<UserDashboardController>();
 
   _MoreInfoControllerBase(
-      {required this.userDashboardController,
-      required this.registered,
+      {required this.registered,
       required this.activity,
       required this.repository}) {
     isRegistered = registered;

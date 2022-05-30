@@ -1,9 +1,6 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
@@ -12,26 +9,17 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/activities
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
-import '../../../../../../setup_firebase_mocks.dart';
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
-import 'all_activities_user_dashboard_controller_test.mocks.dart';
+import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
 
-@GenerateMocks([ActivitiesRepositoryInterface, UserDashboardController])
+@GenerateMocks([ActivitiesRepositoryInterface])
 void main() {
-  initModule(AppModule());
-  setupCloudFirestoreMocks();
   ActivitiesRepositoryInterface repository =
       MockActivitiesRepositoryInterface();
   AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
-  UserDashboardController userDashboardController =
-      MockUserDashboardController();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
-
   late AllActivitiesUserDashboardController controller;
   late AuthController authController;
 
@@ -148,25 +136,15 @@ void main() {
     ),
   ];
 
-  setUpAll(() async {
-    await Firebase.initializeApp();
+  setUpAll(() {
     when(repository.getAllActivities()).thenAnswer((_) async => mockActivities);
-    authController = AuthController(
-        authRepository: authRepository,
-        storage: secureStorage,
-        analytics: analytics);
+    authController =
+        AuthController(authRepository: authRepository, storage: secureStorage);
 
     controller = AllActivitiesUserDashboardController(
       repository: repository,
       authController: authController,
-      controller: userDashboardController,
-      analytics: analytics,
     );
-  });
-
-  test('setIsLoading', () {
-    controller.setIsLoading(true);
-    expect(controller.isLoading, true);
   });
 
   test('getAllActivities', () {
@@ -192,20 +170,6 @@ void main() {
 
   test('fridayActivitiesList', () {
     expect(controller.fridayActivitiesList.isNotEmpty, true);
-  });
-
-  test('saturdayActivitiesList', () {
-    expect(controller.saturdayActivitiesList.isNotEmpty, false);
-  });
-
-  test('toggleFilterActivityChipIndex', () {
-    controller.toggleFilterActivityChipIndex(0);
-    expect(controller.weekActivitiesList, controller.mondayActivitiesList);
-  });
-
-  test('getActivitiesByType', () {
-    controller.getActivitiesByType(ActivityEnum.CURSOS);
-    expect(controller.activitiesList.length, 5);
   });
 
   test('logout', () {

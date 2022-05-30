@@ -1,3 +1,4 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
@@ -17,10 +18,10 @@ abstract class _UserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final UserRepositoryInterface userRepository;
   final SecureStorageInterface secureStorage;
-  final FirebaseAnalyticsService analytics;
+  final FirebaseAnalyticsService analytics =
+      Modular.get<FirebaseAnalyticsService>();
 
   _UserDashboardControllerBase({
-    required this.analytics,
     required this.userRepository,
     required this.secureStorage,
     required this.repository,

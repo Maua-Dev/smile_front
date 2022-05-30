@@ -2,21 +2,18 @@
 // in smile_front/test/app/modules/dashboard/presenter/controller/user/user_dashboard_controller_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i4;
+import 'dart:async' as _i3;
 
-import 'package:firebase_analytics/firebase_analytics.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
-    as _i6;
+    as _i5;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
-    as _i3;
+    as _i2;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart'
-    as _i7;
+    as _i6;
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart'
-    as _i8;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
-    as _i9;
+    as _i7;
+import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -28,203 +25,144 @@ import 'package:smile_front/app/shared/services/firebase-analytics/firebase_anal
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeFirebaseAnalytics_0 extends _i1.Fake
-    implements _i2.FirebaseAnalytics {}
-
-class _FakeFirebaseAnalyticsObserver_1 extends _i1.Fake
-    implements _i2.FirebaseAnalyticsObserver {}
-
 /// A class which mocks [ActivitiesRepositoryInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockActivitiesRepositoryInterface extends _i1.Mock
-    implements _i3.ActivitiesRepositoryInterface {
+    implements _i2.ActivitiesRepositoryInterface {
   MockActivitiesRepositoryInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<List<_i5.ActivityModel>> getAllActivities() =>
+  _i3.Future<List<_i4.ActivityModel>> getAllActivities() =>
       (super.noSuchMethod(Invocation.method(#getAllActivities, []),
               returnValue:
-                  Future<List<_i5.ActivityModel>>.value(<_i5.ActivityModel>[]))
-          as _i4.Future<List<_i5.ActivityModel>>);
+                  Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]))
+          as _i3.Future<List<_i4.ActivityModel>>);
   @override
-  _i4.Future<List<_i5.ActivityModel>> getUserSubscribedActivities() =>
+  _i3.Future<List<_i4.ActivityModel>> getUserSubscribedActivities() =>
       (super.noSuchMethod(Invocation.method(#getUserSubscribedActivities, []),
               returnValue:
-                  Future<List<_i5.ActivityModel>>.value(<_i5.ActivityModel>[]))
-          as _i4.Future<List<_i5.ActivityModel>>);
+                  Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]))
+          as _i3.Future<List<_i4.ActivityModel>>);
   @override
-  _i4.Future<String> getDownloadLinkCsv() =>
+  _i3.Future<String> getDownloadLinkCsv() =>
       (super.noSuchMethod(Invocation.method(#getDownloadLinkCsv, []),
-          returnValue: Future<String>.value('')) as _i4.Future<String>);
+          returnValue: Future<String>.value('')) as _i3.Future<String>);
   @override
-  _i4.Future<dynamic> createActivity(_i5.ActivityModel? activityToCreate) =>
+  _i3.Future<dynamic> createActivity(_i4.ActivityModel? activityToCreate) =>
       (super.noSuchMethod(
           Invocation.method(#createActivity, [activityToCreate]),
-          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
+          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
   @override
-  _i4.Future<dynamic> editActivity(_i5.ActivityModel? activityToEdit) =>
+  _i3.Future<dynamic> editActivity(_i4.ActivityModel? activityToEdit) =>
       (super.noSuchMethod(Invocation.method(#editActivity, [activityToEdit]),
-          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
+          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
   @override
-  _i4.Future<dynamic> removeActivity(String? id) =>
+  _i3.Future<dynamic> removeActivity(String? id) =>
       (super.noSuchMethod(Invocation.method(#removeActivity, [id]),
-          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
+          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
   @override
-  _i4.Future<bool> subscribeActivity(_i5.ActivityModel? activity,
+  _i3.Future<bool> subscribeActivity(_i4.ActivityModel? activity,
           String? activityId, DateTime? activityDate) =>
       (super.noSuchMethod(
           Invocation.method(
               #subscribeActivity, [activity, activityId, activityDate]),
-          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
+          returnValue: Future<bool>.value(false)) as _i3.Future<bool>);
   @override
-  _i4.Future<bool> unsubscribeActivity(
+  _i3.Future<bool> unsubscribeActivity(
           String? activityId, DateTime? activityDate) =>
       (super.noSuchMethod(
           Invocation.method(#unsubscribeActivity, [activityId, activityDate]),
-          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
+          returnValue: Future<bool>.value(false)) as _i3.Future<bool>);
 }
 
 /// A class which mocks [SecureStorageInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSecureStorageInterface extends _i1.Mock
-    implements _i6.SecureStorageInterface {
+    implements _i5.SecureStorageInterface {
   MockSecureStorageInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<void> saveAccessToken(String? token) =>
+  _i3.Future<void> saveAccessToken(String? token) =>
       (super.noSuchMethod(Invocation.method(#saveAccessToken, [token]),
           returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
   @override
-  _i4.Future<void> saveRefreshToken(String? token) =>
+  _i3.Future<void> saveRefreshToken(String? token) =>
       (super.noSuchMethod(Invocation.method(#saveRefreshToken, [token]),
           returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
   @override
-  _i4.Future<String?> getAccessToken() =>
+  _i3.Future<String?> getAccessToken() =>
       (super.noSuchMethod(Invocation.method(#getAccessToken, []),
-          returnValue: Future<String?>.value()) as _i4.Future<String?>);
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
   @override
-  _i4.Future<String?> getRefreshToken() =>
+  _i3.Future<String?> getRefreshToken() =>
       (super.noSuchMethod(Invocation.method(#getRefreshToken, []),
-          returnValue: Future<String?>.value()) as _i4.Future<String?>);
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
   @override
-  _i4.Future<void> saveAccessLevel(String? accessLevel) =>
+  _i3.Future<void> saveAccessLevel(String? accessLevel) =>
       (super.noSuchMethod(Invocation.method(#saveAccessLevel, [accessLevel]),
           returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
   @override
-  _i4.Future<void> saveId(String? id) =>
-      (super.noSuchMethod(Invocation.method(#saveId, [id]),
-          returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
-  @override
-  _i4.Future<void> saveName(String? name) =>
+  _i3.Future<void> saveName(String? name) =>
       (super.noSuchMethod(Invocation.method(#saveName, [name]),
           returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
   @override
-  _i4.Future<void> saveSocialName(String? socialName) =>
+  _i3.Future<void> saveSocialName(String? socialName) =>
       (super.noSuchMethod(Invocation.method(#saveSocialName, [socialName]),
           returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
   @override
-  _i4.Future<void> saveCertificateWithSocialName(
+  _i3.Future<void> saveCertificateWithSocialName(
           bool? certificateWithSocialName) =>
       (super.noSuchMethod(
           Invocation.method(
               #saveCertificateWithSocialName, [certificateWithSocialName]),
           returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
   @override
-  _i4.Future<String?> getAccessLevel() =>
+  _i3.Future<String?> getAccessLevel() =>
       (super.noSuchMethod(Invocation.method(#getAccessLevel, []),
-          returnValue: Future<String?>.value()) as _i4.Future<String?>);
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
   @override
-  _i4.Future<String?> getId() =>
-      (super.noSuchMethod(Invocation.method(#getId, []),
-          returnValue: Future<String?>.value()) as _i4.Future<String?>);
-  @override
-  _i4.Future<String?> getName() =>
+  _i3.Future<String?> getName() =>
       (super.noSuchMethod(Invocation.method(#getName, []),
-          returnValue: Future<String?>.value()) as _i4.Future<String?>);
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
   @override
-  _i4.Future<String?> getSocialName() =>
+  _i3.Future<String?> getSocialName() =>
       (super.noSuchMethod(Invocation.method(#getSocialName, []),
-          returnValue: Future<String?>.value()) as _i4.Future<String?>);
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
   @override
-  _i4.Future<bool?> getCertificateWithSocialName() =>
+  _i3.Future<bool?> getCertificateWithSocialName() =>
       (super.noSuchMethod(Invocation.method(#getCertificateWithSocialName, []),
-          returnValue: Future<bool?>.value()) as _i4.Future<bool?>);
+          returnValue: Future<bool?>.value()) as _i3.Future<bool?>);
   @override
-  _i4.Future<void> cleanSecureStorage() =>
+  _i3.Future<void> cleanSecureStorage() =>
       (super.noSuchMethod(Invocation.method(#cleanSecureStorage, []),
           returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
 }
 
 /// A class which mocks [UserRepositoryInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUserRepositoryInterface extends _i1.Mock
-    implements _i7.UserRepositoryInterface {
+    implements _i6.UserRepositoryInterface {
   MockUserRepositoryInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<dynamic> changeData(
-          _i8.UserChangeDataModel? userChangeDataModel) =>
+  _i3.Future<dynamic> changeData(
+          _i7.UserChangeDataModel? userChangeDataModel) =>
       (super.noSuchMethod(Invocation.method(#changeData, [userChangeDataModel]),
-          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
-}
-
-/// A class which mocks [FirebaseAnalyticsService].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockFirebaseAnalyticsService extends _i1.Mock
-    implements _i9.FirebaseAnalyticsService {
-  MockFirebaseAnalyticsService() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i2.FirebaseAnalytics get analytics =>
-      (super.noSuchMethod(Invocation.getter(#analytics),
-          returnValue: _FakeFirebaseAnalytics_0()) as _i2.FirebaseAnalytics);
-  @override
-  _i2.FirebaseAnalyticsObserver getAnalyticsObserver() =>
-      (super.noSuchMethod(Invocation.method(#getAnalyticsObserver, []),
-              returnValue: _FakeFirebaseAnalyticsObserver_1())
-          as _i2.FirebaseAnalyticsObserver);
-  @override
-  _i4.Future<dynamic> setUserProperties(String? userId) =>
-      (super.noSuchMethod(Invocation.method(#setUserProperties, [userId]),
-          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> logLogin() =>
-      (super.noSuchMethod(Invocation.method(#logLogin, []),
-          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> logSignUp() =>
-      (super.noSuchMethod(Invocation.method(#logSignUp, []),
-          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> logViewActivity(String? activityCode) =>
-      (super.noSuchMethod(Invocation.method(#logViewActivity, [activityCode]),
-          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> logChangePassword() =>
-      (super.noSuchMethod(Invocation.method(#logChangePassword, []),
-          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> logFaq(int? id) =>
-      (super.noSuchMethod(Invocation.method(#logFaq, [id]),
-          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
+          returnValue: Future<dynamic>.value()) as _i3.Future<dynamic>);
 }

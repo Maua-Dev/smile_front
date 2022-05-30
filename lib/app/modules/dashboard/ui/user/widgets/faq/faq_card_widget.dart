@@ -6,14 +6,12 @@ class FaqCardWidget extends StatelessWidget {
   final String descricao;
   final bool isOpen;
   final Function()? onPressed;
-  final Function()? analyticsLogPress;
   const FaqCardWidget(
       {Key? key,
       required this.titulo,
       required this.descricao,
       required this.isOpen,
-      this.onPressed,
-      this.analyticsLogPress})
+      this.onPressed})
       : super(key: key);
 
   @override
@@ -62,9 +60,6 @@ class FaqCardWidget extends StatelessWidget {
         ],
         expansionCallback: (i, isExpanded) {
           onPressed!();
-          if (!isExpanded) {
-            analyticsLogPress!();
-          }
         },
       ),
     );

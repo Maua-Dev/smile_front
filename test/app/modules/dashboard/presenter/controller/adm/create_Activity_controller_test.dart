@@ -10,6 +10,7 @@ import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
+
 import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
 
 @GenerateMocks([ActivitiesRepositoryInterface])
@@ -25,11 +26,6 @@ void main() {
     controller = CreateActivityController(repository: repository);
   });
 
-  test('setIsLoading', () {
-    controller.setIsLoading(true);
-    expect(controller.isLoading, true);
-  });
-
   test('isFilled', () {
     var test = controller.isFilled();
     expect(test, false);
@@ -39,12 +35,6 @@ void main() {
     var str = ActivityEnum.CAFE_EX_ALUNOS;
     controller.setType(str);
     expect(controller.activityToCreate.type, str);
-  });
-
-  test('setActivityCode', () {
-    var str = '123';
-    controller.setActivityCode(str);
-    expect(controller.activityToCreate.activityCode, str);
   });
 
   test('setTitle', () {
@@ -98,11 +88,6 @@ void main() {
     expect(controller.activityToCreate.schedule[0].totalParticipants, str);
   });
 
-  test('setEnableSubscription', () {
-    controller.setEnableSubscription(true, 0);
-    expect(controller.activityToCreate.schedule[0].acceptSubscription, true);
-  });
-
   test('setSpeakerName', () {
     var str = 'teste';
     controller.setSpeakerName(str, 0);
@@ -129,15 +114,5 @@ void main() {
   test('addSchedule', () {
     controller.addSchedule();
     expect(controller.activityToCreate.schedule.length, 1);
-  });
-
-  test('removeSpeaker', () {
-    controller.removeSpeaker(0);
-    expect(controller.activityToCreate.speakers.length, 0);
-  });
-
-  test('addSpeaker', () {
-    controller.addSpeaker();
-    expect(controller.activityToCreate.speakers.length, 1);
   });
 }
