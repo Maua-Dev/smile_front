@@ -5,7 +5,7 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:smile_front/app/modules/register/infra/datasources/register_datasource.dart'
+import 'package:smile_front/app/modules/register/infra/datasources/register_datasource_interface.dart'
     as _i2;
 import 'package:smile_front/app/shared/entities/user_registration.dart' as _i4;
 
@@ -19,12 +19,12 @@ import 'package:smile_front/app/shared/entities/user_registration.dart' as _i4;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-/// A class which mocks [RegisterDatasource].
+/// A class which mocks [RegisterDatasourceInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRegisterDatasource extends _i1.Mock
-    implements _i2.RegisterDatasource {
-  MockRegisterDatasource() {
+class MockRegisterDatasourceInterface extends _i1.Mock
+    implements _i2.RegisterDatasourceInterface {
+  MockRegisterDatasourceInterface() {
     _i1.throwOnMissingStub(this);
   }
 

@@ -1,8 +1,8 @@
 import '../../domain/repositories/auth_repository_interface.dart';
-import '../datasource/auth_datasource.dart';
+import '../datasource/auth_datasource_interface.dart';
 
 class AuthRepositoryImpl extends AuthRepositoryInterface {
-  final AuthDatasource datasource;
+  final AuthDatasourceInterface datasource;
 
   AuthRepositoryImpl({required this.datasource});
 

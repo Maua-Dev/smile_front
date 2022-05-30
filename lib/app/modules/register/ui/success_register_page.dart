@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/utils/s3_assets_url.dart';
-
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
-import '../presenter/controllers/register_controller.dart';
 
 class SuccessRegisterPage extends StatefulWidget {
   const SuccessRegisterPage({Key? key}) : super(key: key);
@@ -15,8 +13,7 @@ class SuccessRegisterPage extends StatefulWidget {
   _SuccessRegisterPageState createState() => _SuccessRegisterPageState();
 }
 
-class _SuccessRegisterPageState
-    extends ModularState<SuccessRegisterPage, RegisterController> {
+class _SuccessRegisterPageState extends State<SuccessRegisterPage> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

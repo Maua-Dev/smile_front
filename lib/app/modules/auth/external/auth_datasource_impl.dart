@@ -5,9 +5,9 @@ import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dar
 import '../../../shared/models/user_model.dart';
 import '../domain/repositories/secure_storage_interface.dart';
 import '../errors/errors.dart';
-import '../infra/datasource/auth_datasource.dart';
+import '../infra/datasource/auth_datasource_interface.dart';
 
-class AuthDatasourceImpl implements AuthDatasource {
+class AuthDatasourceImpl implements AuthDatasourceInterface {
   final Dio dioClient;
   final SecureStorageInterface storage;
 

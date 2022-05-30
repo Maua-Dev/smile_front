@@ -50,6 +50,11 @@ void main() {
     );
   });
 
+  test('setIsLoading', () {
+    controller.setIsLoading(true);
+    expect(controller.isLoading, true);
+  });
+
   test('isFilled', () {
     var test = controller.isFilled();
     expect(test, false);
@@ -59,6 +64,12 @@ void main() {
     var str = ActivityEnum.CAFE_EX_ALUNOS;
     controller.setType(str);
     expect(controller.activityToEdit.type, str);
+  });
+
+  test('setActivityCode', () {
+    var str = '123';
+    controller.setActivityCode(str);
+    expect(controller.activityToEdit.activityCode, str);
   });
 
   test('setTitle', () {
@@ -107,6 +118,11 @@ void main() {
     var str = 1;
     controller.setParticipants(str, 0);
     expect(controller.activityToEdit.schedule[0].totalParticipants, str);
+  });
+
+  test('setEnableSubscription', () {
+    controller.setEnableSubscription(true, 0);
+    expect(controller.activityToEdit.schedule[0].acceptSubscription, true);
   });
 
   test('setSpeakerName', () {
