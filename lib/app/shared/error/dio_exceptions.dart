@@ -6,27 +6,28 @@ class DioExceptions implements Exception {
   DioExceptions.fromDioError(DioError dioError) {
     switch (dioError.type) {
       case DioErrorType.cancel:
-        message = "Request to API server was cancelled";
+        message = "Requisição para o servidor foi cancelada";
         break;
       case DioErrorType.connectTimeout:
-        message = "Connection timeout with API server";
+        message = "Tempo de conexão com o servidor API expirou";
         break;
       case DioErrorType.other:
-        message = "Connection to API server failed due to internet connection";
+        message =
+            "Conexão com o servidor falhou por falta de conexão com a internet";
         break;
       case DioErrorType.receiveTimeout:
-        message = "Receive timeout in connection with API server";
+        message = "Tempo de resposta de conexão com o servidor expirou";
         break;
       case DioErrorType.response:
         message = dioError.response != null
             ? _handleError(dioError.response!.statusCode!)!
-            : 'URL response error';
+            : 'Erro de resposta da URL';
         break;
       case DioErrorType.sendTimeout:
-        message = "Send timeout in connection with API server";
+        message = "Tempo de envio de requisição servidor expirou";
         break;
       default:
-        message = "Something went wrong";
+        message = "Algo deu errado";
         break;
     }
   }
@@ -40,9 +41,9 @@ class DioExceptions implements Exception {
       case 500:
         return '500: Internal server error';
       case null:
-        return 'Oops something went wrong';
+        return 'Ops algo deu errado';
       default:
-        return 'Oops something went wrong';
+        return 'Ops algo deu errado';
     }
   }
 

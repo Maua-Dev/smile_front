@@ -147,9 +147,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     var token = await storage.getAccessToken();
     var body = SubscriptionActivityModel(
         activityDate: activityDate, activityId: activityId);
-    print(activityDate.millisecondsSinceEpoch);
-    print(activityId);
-    print(token);
     try {
       dio.options.headers["authorization"] = "Bearer $token";
       await dio.post('/activity/unenroll', data: body.toJson());
