@@ -27,8 +27,7 @@ class CertificateDatasourceImpl implements CertificateDatasourceInterface {
     var token = await storage.getAccessToken();
     try {
       dio.options.headers["authorization"] = "Bearer $token";
-      final res = await dio.get(
-          'https://lqtdp4le7zlr5bhel4jamjszcy0dhrft.lambda-url.sa-east-1.on.aws/');
+      final res = await dio.get('');
       if (res.statusCode == 200) {
         return CertificateModel.fromMaps(res.data);
       }
