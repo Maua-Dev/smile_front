@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/certificate_repository_interface.dart';
@@ -18,8 +17,6 @@ import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
-
-import '../../shared/services/dio/smile_activities_options.dart';
 import '../auth/domain/repositories/auth_repository_interface.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
@@ -77,7 +74,6 @@ class UserModule extends Module {
           registered: i.args!.data[1] as bool,
           userDashboardController: i()),
     ),
-    Bind.lazySingleton((i) => Dio(smileOption)),
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(
               authRepository: i<AuthRepositoryInterface>(),
