@@ -121,11 +121,19 @@ class _CertificatePageState
                 controller.certificateList.isEmpty
                     ? Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          'Parece que você não tem nenhum certificado.',
-                          textAlign: TextAlign.center,
-                          style: AppTextStyles.titleH1.copyWith(
-                              color: AppColors.brandingOrange, fontSize: 32),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Parece que você não tem nenhum certificado.',
+                              textAlign: TextAlign.center,
+                              style: AppTextStyles.titleH1.copyWith(
+                                  color: AppColors.brandingOrange,
+                                  fontSize: 32),
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                          ],
                         ),
                       )
                     : ListView.builder(
