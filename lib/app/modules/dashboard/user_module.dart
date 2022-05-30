@@ -18,8 +18,6 @@ import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
-
-import '../../shared/services/dio/smile_activities_options.dart';
 import '../auth/domain/repositories/auth_repository_interface.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
