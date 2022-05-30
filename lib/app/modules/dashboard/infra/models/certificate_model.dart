@@ -12,7 +12,6 @@ class CertificateModel extends Certificate {
             list.add(CertificateModel(name: value['name'], url: value['link'])),
       );
     }
-
     return list;
   }
 
