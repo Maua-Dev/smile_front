@@ -27,7 +27,7 @@ class CertificateDatasourceImpl implements CertificateDatasourceInterface {
     var token = await storage.getAccessToken();
     try {
       dio.options.headers["authorization"] = "Bearer $token";
-      final res = await dio.get('');
+      final res = await dio.get(EnvironmentConfig.MSS_CERTIFICATE_BASE_URL);
       if (res.statusCode == 200) {
         return CertificateModel.fromMaps(res.data);
       }
