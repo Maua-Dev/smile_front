@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/certificate_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/certificates/certificate_widget.dart';
+import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
@@ -36,6 +37,106 @@ class _CertificatePageState
                 ),
                 const SizedBox(
                   height: 16,
+                ),
+                MediaQuery.of(context).size.width < 1000
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Ajude a aprimorar a Smile! Responda a ',
+                              style: AppTextStyles.body.copyWith(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 1000
+                                          ? 18
+                                          : 22,
+                                  color: Colors.black),
+                            ),
+                            TextButton(
+                              onPressed: () async {
+                                await launchUrl(
+                                  Uri.parse(
+                                      'https://docs.google.com/forms/d/e/1FAIpQLSfha2inJigLKY70Pb8Kqc2ea6DDItLF4k3hoALm_CbN6EOxfg/viewform'),
+                                  mode: LaunchMode.externalApplication,
+                                );
+                              },
+                              child: Text(
+                                'pesquisa de satisfação',
+                                style: AppTextStyles.titleH1.copyWith(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 1000
+                                          ? 18
+                                          : 22,
+                                  decoration: TextDecoration.underline,
+                                  color: AppColors.brandingPurple,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Ajude a aprimorar a Smile! Responda a ',
+                              style: AppTextStyles.body.copyWith(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 1000
+                                          ? 18
+                                          : 22,
+                                  color: Colors.black),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                launchUrl(
+                                  Uri.parse(
+                                      'https://docs.google.com/forms/d/e/1FAIpQLSfha2inJigLKY70Pb8Kqc2ea6DDItLF4k3hoALm_CbN6EOxfg/viewform'),
+                                  mode: LaunchMode.externalApplication,
+                                );
+                              },
+                              child: Text(
+                                'pesquisa de satisfação.',
+                                style: AppTextStyles.titleH1.copyWith(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 1000
+                                          ? 18
+                                          : 22,
+                                  decoration: TextDecoration.underline,
+                                  color: AppColors.brandingPurple,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                const SizedBox(
+                  height: 16,
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: controller.certificateList.length,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: CertificateWidget(
+                      certificateName: controller.certificateList[index].name,
+                      isLoading: controller.isLoading,
+                      onPressed: () async {
+                        controller.setIsLoading(true);
+                        await launchUrl(
+                          Uri.parse(controller.certificateList[index].url),
+                          mode: LaunchMode.externalApplication,
+                        );
+                        controller.setIsLoading(false);
+                      },
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -92,30 +193,6 @@ class _CertificatePageState
                             ])),
                   ),
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
-                ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.certificateList.length,
-                    itemBuilder: (context, index) => Padding(
-                          padding: const EdgeInsets.only(bottom: 16),
-                          child: CertificateWidget(
-                            certificateName:
-                                controller.certificateList[index].name,
-                            isLoading: controller.isLoading,
-                            onPressed: () async {
-                              controller.setIsLoading(true);
-                              await launchUrl(
-                                Uri.parse(
-                                    controller.certificateList[index].url),
-                                mode: LaunchMode.externalApplication,
-                              );
-                              controller.setIsLoading(false);
-                            },
-                          ),
-                        ))
               ],
             ),
           ),
