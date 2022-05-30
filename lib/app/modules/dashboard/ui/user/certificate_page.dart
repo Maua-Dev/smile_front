@@ -163,7 +163,7 @@ class _CertificatePageState
                                     color: Colors.black),
                               ),
                               TextSpan(
-                                text: '. Basta enviar um e-mail para ',
+                                text: ' .Basta enviar um e-mail para ',
                                 style: AppTextStyles.body.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width < 1000
