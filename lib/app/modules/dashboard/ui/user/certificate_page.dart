@@ -84,7 +84,7 @@ class _CertificatePageState
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              'Ajude a aprimorar a Smile! Responda a ',
+                              'Ajude a aprimorar a Smile! Responda a',
                               style: AppTextStyles.body.copyWith(
                                   fontSize:
                                       MediaQuery.of(context).size.width < 1000
