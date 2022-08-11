@@ -17,4 +17,4 @@ const String secondParagraph =
 const String thirdParagraph =
     'Organizado pelo Instituto Mauá de Tecnologia - IMT e aberto ao público, on-line/presencial (Híbrido).';
 
-const String smileDate = 'Data: 16 a 21 de maio de 2022.';
+const String smileDate = 'Data: 24 a 26 de maio de 2023.';

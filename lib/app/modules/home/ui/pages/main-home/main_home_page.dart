@@ -99,7 +99,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         Radius.circular(20)),
                                   ),
                                   child: Text(
-                                    '16 a 21 de Maio',
+                                    '24 a 26 de Maio',
                                     textAlign: TextAlign.center,
                                     style: AppTextStyles.buttonBold.copyWith(
                                         fontSize:
@@ -184,7 +184,7 @@ class _MainHomePageState extends State<MainHomePage> {
               borderRadius: const BorderRadius.all(Radius.circular(20)),
             ),
             child: Text(
-              '16 a 21 de Maio',
+              '24 a 26 de Maio',
               textAlign: TextAlign.center,
               style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
             ),
