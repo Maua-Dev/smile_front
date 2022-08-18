@@ -33,8 +33,7 @@ class Footer extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                            '${s3AssetsBaseUrl}full_logo_smile.png'),
+                        image: CachedNetworkImageProvider(smileeeLogoUrl),
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -221,8 +220,7 @@ class Footer extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                            '${s3AssetsBaseUrl}full_logo_smile.png'),
+                        image: CachedNetworkImageProvider(smileeeLogoUrl),
                         fit: BoxFit.contain,
                       ),
                     ),
