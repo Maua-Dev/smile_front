@@ -26,7 +26,7 @@ class _SpeakersHomePageState
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 24.0),
           child: TextHeader(
-            title: 'Principais Palestrantes',
+            title: 'Principais Palestrantes - 2022',
             leftPadding: 32,
             color: AppColors.brandingOrange,
             fontSize: width < 530 ? 28 : null,

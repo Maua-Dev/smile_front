@@ -51,7 +51,7 @@ class CertificateWidget extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 horizontal: 16,
                 vertical: MediaQuery.of(context).size.width < 1000 ? 24 : 32),
-            primary: AppColors.lilac,
+            backgroundColor: AppColors.lilac,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             )),
