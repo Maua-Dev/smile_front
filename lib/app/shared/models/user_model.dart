@@ -2,8 +2,6 @@
 
 import 'package:smile_front/app/shared/entities/user.dart';
 
-import '../entities/user.dart';
-
 class UserModel extends User {
   final String socialName;
   final String email;

@@ -43,7 +43,7 @@ class UserWeekdayIconWidget extends StatelessWidget {
       ),
       style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          primary: indexToShow == myIndex
+          backgroundColor: indexToShow == myIndex
               ? AppColors.brandingPurple
               : AppColors.lilac,
           shape: RoundedRectangleBorder(
