@@ -9,14 +9,14 @@ import '../../../../auth/presenter/controllers/auth_controller.dart';
 
 part 'adm_dashboard_controller.g.dart';
 
-class AdmDashboardController = _AdmDashboardControllerBase
+class AdmDashboardController = AdmDashboardControllerBase
     with _$AdmDashboardController;
 
-abstract class _AdmDashboardControllerBase with Store {
+abstract class AdmDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final AuthController authController;
 
-  _AdmDashboardControllerBase(
+  AdmDashboardControllerBase(
       {required this.repository, required this.authController}) {
     getAllActivities();
   }

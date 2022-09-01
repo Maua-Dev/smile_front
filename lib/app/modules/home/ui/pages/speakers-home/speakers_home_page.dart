@@ -11,7 +11,7 @@ class SpeakersHomePage extends StatefulWidget {
   const SpeakersHomePage({Key? key}) : super(key: key);
 
   @override
-  _SpeakersHomePageState createState() => _SpeakersHomePageState();
+  State<SpeakersHomePage> createState() => _SpeakersHomePageState();
 }
 
 class _SpeakersHomePageState

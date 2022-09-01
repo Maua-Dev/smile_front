@@ -17,7 +17,7 @@ class UserDashboardPage extends StatefulWidget {
   const UserDashboardPage({Key? key}) : super(key: key);
 
   @override
-  _UserDashboardPageState createState() => _UserDashboardPageState();
+  State<UserDashboardPage> createState() => _UserDashboardPageState();
 }
 
 class _UserDashboardPageState
@@ -188,6 +188,15 @@ class _UserDashboardPageState
                       await navBarController.toggleIndex(2);
                       Modular.to.navigate('/user/home/all-activities');
                     },
+                    style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(20),
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.brandingOrange),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40)),
+                      ),
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -208,15 +217,6 @@ class _UserDashboardPageState
                           ),
                         ),
                       ],
-                    ),
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(20),
-                      backgroundColor:
-                          MaterialStateProperty.all(AppColors.brandingOrange),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(40)),
-                      ),
                     ),
                   ),
                 ),

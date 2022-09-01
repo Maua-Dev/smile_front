@@ -21,6 +21,14 @@ class UserWeekdayIconWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          backgroundColor: indexToShow == myIndex
+              ? AppColors.brandingPurple
+              : AppColors.lilac,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+          )),
       child: Column(
         children: [
           Text(
@@ -41,14 +49,6 @@ class UserWeekdayIconWidget extends StatelessWidget {
           ),
         ],
       ),
-      style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          backgroundColor: indexToShow == myIndex
-              ? AppColors.brandingPurple
-              : AppColors.lilac,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
-          )),
     );
   }
 }

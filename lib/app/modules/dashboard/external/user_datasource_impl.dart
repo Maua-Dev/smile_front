@@ -27,8 +27,7 @@ class UserDatasourceImpl extends UserDatasourceInterface {
       await dio.put('/user', data: userChangeDataModel.toJson());
     } on Exception catch (e) {
       print(
-          'Não foi possível se conectar com o Microsserviço na rota /user, erro: ' +
-              e.toString());
+          'Não foi possível se conectar com o Microsserviço na rota /user, erro: $e');
     }
   }
 }

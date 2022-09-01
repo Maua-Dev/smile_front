@@ -7,12 +7,12 @@ import '../../../infra/models/faq_panel_model.dart';
 
 part 'help_controller.g.dart';
 
-class HelpController = _HelpControllerBase with _$HelpController;
+class HelpController = HelpControllerBase with _$HelpController;
 
-abstract class _HelpControllerBase with Store {
+abstract class HelpControllerBase with Store {
   final FaqRepositoryInterface repository;
   final FirebaseAnalyticsService analytics;
-  _HelpControllerBase({required this.repository, required this.analytics}) {
+  HelpControllerBase({required this.repository, required this.analytics}) {
     getFaqInformation();
   }
 

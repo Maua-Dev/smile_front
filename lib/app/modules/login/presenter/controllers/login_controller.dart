@@ -11,13 +11,13 @@ import '../../../auth/presenter/controllers/auth_controller.dart';
 
 part 'login_controller.g.dart';
 
-class LoginController = _LoginController with _$LoginController;
+class LoginController = LoginControllerBase with _$LoginController;
 
-abstract class _LoginController with Store {
+abstract class LoginControllerBase with Store {
   final AuthController authController;
   final FirebaseAnalyticsService analytics;
 
-  _LoginController({
+  LoginControllerBase({
     required this.authController,
     required this.analytics,
   });

@@ -20,6 +20,14 @@ class CertificateWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: ElevatedButton(
         onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: MediaQuery.of(context).size.width < 1000 ? 24 : 32),
+            backgroundColor: AppColors.lilac,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            )),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -47,14 +55,6 @@ class CertificateWidget extends StatelessWidget {
                   )
           ],
         ),
-        style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: MediaQuery.of(context).size.width < 1000 ? 24 : 32),
-            backgroundColor: AppColors.lilac,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            )),
       ),
     );
   }

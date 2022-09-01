@@ -10,16 +10,16 @@ import '../../../infra/models/user_change_data_model.dart';
 
 part 'user_dashboard_controller.g.dart';
 
-class UserDashboardController = _UserDashboardControllerBase
+class UserDashboardController = UserDashboardControllerBase
     with _$UserDashboardController;
 
-abstract class _UserDashboardControllerBase with Store {
+abstract class UserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final UserRepositoryInterface userRepository;
   final SecureStorageInterface secureStorage;
   final FirebaseAnalyticsService analytics;
 
-  _UserDashboardControllerBase({
+  UserDashboardControllerBase({
     required this.analytics,
     required this.userRepository,
     required this.secureStorage,

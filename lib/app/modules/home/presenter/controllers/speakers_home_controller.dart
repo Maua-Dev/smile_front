@@ -5,13 +5,13 @@ import '../../infra/models/home_speaker_model.dart';
 
 part 'speakers_home_controller.g.dart';
 
-class SpeakersHomeController = _SpeakersHomeControllerBase
+class SpeakersHomeController = SpeakersHomeControllerBase
     with _$SpeakersHomeController;
 
-abstract class _SpeakersHomeControllerBase with Store {
+abstract class SpeakersHomeControllerBase with Store {
   final SpeakersRepositoryInterface repository;
 
-  _SpeakersHomeControllerBase({required this.repository}) {
+  SpeakersHomeControllerBase({required this.repository}) {
     getSpeakers();
   }
 

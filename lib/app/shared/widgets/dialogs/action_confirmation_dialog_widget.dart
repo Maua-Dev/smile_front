@@ -27,6 +27,7 @@ class ActionConfirmationDialogWidget extends StatelessWidget {
           },
         ),
         ElevatedButton(
+          onPressed: onPressed,
           child: isLoading
               ? const SizedBox(
                   height: 15,
@@ -37,7 +38,6 @@ class ActionConfirmationDialogWidget extends StatelessWidget {
                   ),
                 )
               : const Text('Confirmar'),
-          onPressed: onPressed,
         ),
       ],
     );

@@ -8,13 +8,13 @@ import '../../external/errors/errors.dart';
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
 part 'register_controller.g.dart';
 
-class RegisterController = _RegisterController with _$RegisterController;
+class RegisterController = RegisterControllerBase with _$RegisterController;
 
-abstract class _RegisterController with Store {
+abstract class RegisterControllerBase with Store {
   final RegisterRepositoryInterface registerUserRepository;
   final FirebaseAnalyticsService analytics;
 
-  _RegisterController(
+  RegisterControllerBase(
       {required this.analytics, required this.registerUserRepository});
 
   @computed
