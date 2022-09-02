@@ -16,6 +16,12 @@ class LogoutButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
+      style: ButtonStyle(
+          elevation: MaterialStateProperty.all(20),
+          backgroundColor: MaterialStateProperty.all(backgroundColor),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          )),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Text(
@@ -23,12 +29,6 @@ class LogoutButtonWidget extends StatelessWidget {
           style: AppTextStyles.button.copyWith(fontSize: 20),
         ),
       ),
-      style: ButtonStyle(
-          elevation: MaterialStateProperty.all(20),
-          backgroundColor: MaterialStateProperty.all(backgroundColor),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          )),
     );
   }
 }

@@ -14,7 +14,7 @@ class ResendConfirmationPage extends StatefulWidget {
   const ResendConfirmationPage({Key? key}) : super(key: key);
 
   @override
-  _ResendConfirmationPageState createState() => _ResendConfirmationPageState();
+  State<ResendConfirmationPage> createState() => _ResendConfirmationPageState();
 }
 
 class _ResendConfirmationPageState

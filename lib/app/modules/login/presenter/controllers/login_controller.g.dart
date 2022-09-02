@@ -6,11 +6,11 @@ part of 'login_controller.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$LoginController on _LoginController, Store {
+mixin _$LoginController on LoginControllerBase, Store {
   late final _$isLoadingAtom =
-      Atom(name: '_LoginController.isLoading', context: context);
+      Atom(name: 'LoginControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -26,7 +26,7 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   late final _$showPwdAtom =
-      Atom(name: '_LoginController.showPwd', context: context);
+      Atom(name: 'LoginControllerBase.showPwd', context: context);
 
   @override
   bool get showPwd {
@@ -42,7 +42,7 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   late final _$cpfRneAtom =
-      Atom(name: '_LoginController.cpfRne', context: context);
+      Atom(name: 'LoginControllerBase.cpfRne', context: context);
 
   @override
   String get cpfRne {
@@ -58,7 +58,7 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   late final _$passwordAtom =
-      Atom(name: '_LoginController.password', context: context);
+      Atom(name: 'LoginControllerBase.password', context: context);
 
   @override
   String get password {
@@ -74,7 +74,7 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   late final _$errorsAtom =
-      Atom(name: '_LoginController.errors', context: context);
+      Atom(name: 'LoginControllerBase.errors', context: context);
 
   @override
   String get errors {
@@ -90,7 +90,7 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   late final _$setUsernameAsyncAction =
-      AsyncAction('_LoginController.setUsername', context: context);
+      AsyncAction('LoginControllerBase.setUsername', context: context);
 
   @override
   Future<void> setUsername(String value) {
@@ -98,7 +98,7 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   late final _$setPasswordAsyncAction =
-      AsyncAction('_LoginController.setPassword', context: context);
+      AsyncAction('LoginControllerBase.setPassword', context: context);
 
   @override
   Future<void> setPassword(String value) {
@@ -106,7 +106,7 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   late final _$loginAsyncAction =
-      AsyncAction('_LoginController.login', context: context);
+      AsyncAction('LoginControllerBase.login', context: context);
 
   @override
   Future<void> login() {
@@ -114,46 +114,46 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   late final _$setIsLoadingAsyncAction =
-      AsyncAction('_LoginController.setIsLoading', context: context);
+      AsyncAction('LoginControllerBase.setIsLoading', context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$_LoginControllerActionController =
-      ActionController(name: '_LoginController', context: context);
+  late final _$LoginControllerBaseActionController =
+      ActionController(name: 'LoginControllerBase', context: context);
 
   @override
   String? validateCpf(String value) {
-    final _$actionInfo = _$_LoginControllerActionController.startAction(
-        name: '_LoginController.validateCpf');
+    final _$actionInfo = _$LoginControllerBaseActionController.startAction(
+        name: 'LoginControllerBase.validateCpf');
     try {
       return super.validateCpf(value);
     } finally {
-      _$_LoginControllerActionController.endAction(_$actionInfo);
+      _$LoginControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   String? validateField(String value) {
-    final _$actionInfo = _$_LoginControllerActionController.startAction(
-        name: '_LoginController.validateField');
+    final _$actionInfo = _$LoginControllerBaseActionController.startAction(
+        name: 'LoginControllerBase.validateField');
     try {
       return super.validateField(value);
     } finally {
-      _$_LoginControllerActionController.endAction(_$actionInfo);
+      _$LoginControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void toggleVisibilityPwd(bool value) {
-    final _$actionInfo = _$_LoginControllerActionController.startAction(
-        name: '_LoginController.toggleVisibilityPwd');
+    final _$actionInfo = _$LoginControllerBaseActionController.startAction(
+        name: 'LoginControllerBase.toggleVisibilityPwd');
     try {
       return super.toggleVisibilityPwd(value);
     } finally {
-      _$_LoginControllerActionController.endAction(_$actionInfo);
+      _$LoginControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 

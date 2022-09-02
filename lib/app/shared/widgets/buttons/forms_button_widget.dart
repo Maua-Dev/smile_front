@@ -21,6 +21,12 @@ class FormsButtonWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.04,
       child: ElevatedButton(
         onPressed: onPressed,
+        style: ButtonStyle(
+            elevation: MaterialStateProperty.all(20),
+            backgroundColor: MaterialStateProperty.all(backgroundColor),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+            )),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,12 +42,6 @@ class FormsButtonWidget extends StatelessWidget {
             ),
           ],
         ),
-        style: ButtonStyle(
-            elevation: MaterialStateProperty.all(20),
-            backgroundColor: MaterialStateProperty.all(backgroundColor),
-            shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-            )),
       ),
     );
   }

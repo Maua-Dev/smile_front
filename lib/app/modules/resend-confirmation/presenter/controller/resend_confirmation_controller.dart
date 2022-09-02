@@ -9,13 +9,14 @@ import '../../external/errors.dart';
 
 part 'resend_confirmation_controller.g.dart';
 
-class ResendConfirmationController = _ResendConfirmationController
+class ResendConfirmationController = ResendConfirmationControllerBase
     with _$ResendConfirmationController;
 
-abstract class _ResendConfirmationController with Store {
+abstract class ResendConfirmationControllerBase with Store {
   final ResendConfirmationRepositoryInterface resendConfirmationRepository;
 
-  _ResendConfirmationController({required this.resendConfirmationRepository});
+  ResendConfirmationControllerBase(
+      {required this.resendConfirmationRepository});
 
   @observable
   bool isLoading = false;

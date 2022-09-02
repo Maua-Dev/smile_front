@@ -11,16 +11,16 @@ import '../../../domain/repositories/activities_repository_interface.dart';
 
 part 'all_activities_user_dashboard_controller.g.dart';
 
-class AllActivitiesUserDashboardController = _AllActivitiesUserDashboardControllerBase
+class AllActivitiesUserDashboardController = AllActivitiesUserDashboardControllerBase
     with _$AllActivitiesUserDashboardController;
 
-abstract class _AllActivitiesUserDashboardControllerBase with Store {
+abstract class AllActivitiesUserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final AuthController authController;
   final UserDashboardController controller;
   final FirebaseAnalyticsService analytics;
 
-  _AllActivitiesUserDashboardControllerBase({
+  AllActivitiesUserDashboardControllerBase({
     required this.analytics,
     required this.controller,
     required this.repository,

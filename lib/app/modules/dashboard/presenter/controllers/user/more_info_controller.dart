@@ -10,15 +10,15 @@ import '../../../infra/models/schedule_activity_model.dart';
 
 part 'more_info_controller.g.dart';
 
-class MoreInfoController = _MoreInfoControllerBase with _$MoreInfoController;
+class MoreInfoController = MoreInfoControllerBase with _$MoreInfoController;
 
-abstract class _MoreInfoControllerBase with Store {
+abstract class MoreInfoControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final CardActivity activity;
   final bool registered;
   final UserDashboardController userDashboardController;
 
-  _MoreInfoControllerBase(
+  MoreInfoControllerBase(
       {required this.userDashboardController,
       required this.registered,
       required this.activity,

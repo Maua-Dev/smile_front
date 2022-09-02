@@ -6,10 +6,10 @@ part of 'all_activities_user_dashboard_controller.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$AllActivitiesUserDashboardController
-    on _AllActivitiesUserDashboardControllerBase, Store {
+    on AllActivitiesUserDashboardControllerBase, Store {
   Computed<List<CardActivity>>? _$mondayActivitiesListComputed;
 
   @override
@@ -17,7 +17,7 @@ mixin _$AllActivitiesUserDashboardController
       (_$mondayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.mondayActivitiesList,
               name:
-                  '_AllActivitiesUserDashboardControllerBase.mondayActivitiesList'))
+                  'AllActivitiesUserDashboardControllerBase.mondayActivitiesList'))
           .value;
   Computed<List<CardActivity>>? _$tuesdayActivitiesListComputed;
 
@@ -26,7 +26,7 @@ mixin _$AllActivitiesUserDashboardController
       (_$tuesdayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.tuesdayActivitiesList,
               name:
-                  '_AllActivitiesUserDashboardControllerBase.tuesdayActivitiesList'))
+                  'AllActivitiesUserDashboardControllerBase.tuesdayActivitiesList'))
           .value;
   Computed<List<CardActivity>>? _$wednesdayActivitiesListComputed;
 
@@ -35,7 +35,7 @@ mixin _$AllActivitiesUserDashboardController
       (_$wednesdayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.wednesdayActivitiesList,
               name:
-                  '_AllActivitiesUserDashboardControllerBase.wednesdayActivitiesList'))
+                  'AllActivitiesUserDashboardControllerBase.wednesdayActivitiesList'))
           .value;
   Computed<List<CardActivity>>? _$thursdayActivitiesListComputed;
 
@@ -44,7 +44,7 @@ mixin _$AllActivitiesUserDashboardController
       (_$thursdayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.thursdayActivitiesList,
               name:
-                  '_AllActivitiesUserDashboardControllerBase.thursdayActivitiesList'))
+                  'AllActivitiesUserDashboardControllerBase.thursdayActivitiesList'))
           .value;
   Computed<List<CardActivity>>? _$fridayActivitiesListComputed;
 
@@ -53,7 +53,7 @@ mixin _$AllActivitiesUserDashboardController
       (_$fridayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.fridayActivitiesList,
               name:
-                  '_AllActivitiesUserDashboardControllerBase.fridayActivitiesList'))
+                  'AllActivitiesUserDashboardControllerBase.fridayActivitiesList'))
           .value;
   Computed<List<CardActivity>>? _$saturdayActivitiesListComputed;
 
@@ -62,11 +62,11 @@ mixin _$AllActivitiesUserDashboardController
       (_$saturdayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.saturdayActivitiesList,
               name:
-                  '_AllActivitiesUserDashboardControllerBase.saturdayActivitiesList'))
+                  'AllActivitiesUserDashboardControllerBase.saturdayActivitiesList'))
           .value;
 
   late final _$isLoadingAtom = Atom(
-      name: '_AllActivitiesUserDashboardControllerBase.isLoading',
+      name: 'AllActivitiesUserDashboardControllerBase.isLoading',
       context: context);
 
   @override
@@ -84,7 +84,7 @@ mixin _$AllActivitiesUserDashboardController
 
   late final _$filterActivityChipIndexSelectedAtom = Atom(
       name:
-          '_AllActivitiesUserDashboardControllerBase.filterActivityChipIndexSelected',
+          'AllActivitiesUserDashboardControllerBase.filterActivityChipIndexSelected',
       context: context);
 
   @override
@@ -102,7 +102,7 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   late final _$weekActivitiesListAtom = Atom(
-      name: '_AllActivitiesUserDashboardControllerBase.weekActivitiesList',
+      name: 'AllActivitiesUserDashboardControllerBase.weekActivitiesList',
       context: context);
 
   @override
@@ -119,7 +119,7 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   late final _$activitiesListAtom = Atom(
-      name: '_AllActivitiesUserDashboardControllerBase.activitiesList',
+      name: 'AllActivitiesUserDashboardControllerBase.activitiesList',
       context: context);
 
   @override
@@ -136,7 +136,7 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   late final _$allActivitiesToCardsAtom = Atom(
-      name: '_AllActivitiesUserDashboardControllerBase.allActivitiesToCards',
+      name: 'AllActivitiesUserDashboardControllerBase.allActivitiesToCards',
       context: context);
 
   @override
@@ -154,7 +154,7 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   late final _$activityTypeAtom = Atom(
-      name: '_AllActivitiesUserDashboardControllerBase.activityType',
+      name: 'AllActivitiesUserDashboardControllerBase.activityType',
       context: context);
 
   @override
@@ -171,7 +171,7 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   late final _$setIsLoadingAsyncAction = AsyncAction(
-      '_AllActivitiesUserDashboardControllerBase.setIsLoading',
+      'AllActivitiesUserDashboardControllerBase.setIsLoading',
       context: context);
 
   @override
@@ -180,7 +180,7 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   late final _$getAllActivitiesAsyncAction = AsyncAction(
-      '_AllActivitiesUserDashboardControllerBase.getAllActivities',
+      'AllActivitiesUserDashboardControllerBase.getAllActivities',
       context: context);
 
   @override
@@ -189,7 +189,7 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   late final _$getActivitiesByTypeAsyncAction = AsyncAction(
-      '_AllActivitiesUserDashboardControllerBase.getActivitiesByType',
+      'AllActivitiesUserDashboardControllerBase.getActivitiesByType',
       context: context);
 
   @override
@@ -199,7 +199,7 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   late final _$logoutAsyncAction = AsyncAction(
-      '_AllActivitiesUserDashboardControllerBase.logout',
+      'AllActivitiesUserDashboardControllerBase.logout',
       context: context);
 
   @override
@@ -207,20 +207,20 @@ mixin _$AllActivitiesUserDashboardController
     return _$logoutAsyncAction.run(() => super.logout());
   }
 
-  late final _$_AllActivitiesUserDashboardControllerBaseActionController =
+  late final _$AllActivitiesUserDashboardControllerBaseActionController =
       ActionController(
-          name: '_AllActivitiesUserDashboardControllerBase', context: context);
+          name: 'AllActivitiesUserDashboardControllerBase', context: context);
 
   @override
   void toggleFilterActivityChipIndex(dynamic index) {
     final _$actionInfo =
-        _$_AllActivitiesUserDashboardControllerBaseActionController.startAction(
+        _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
             name:
-                '_AllActivitiesUserDashboardControllerBase.toggleFilterActivityChipIndex');
+                'AllActivitiesUserDashboardControllerBase.toggleFilterActivityChipIndex');
     try {
       return super.toggleFilterActivityChipIndex(index);
     } finally {
-      _$_AllActivitiesUserDashboardControllerBaseActionController
+      _$AllActivitiesUserDashboardControllerBaseActionController
           .endAction(_$actionInfo);
     }
   }

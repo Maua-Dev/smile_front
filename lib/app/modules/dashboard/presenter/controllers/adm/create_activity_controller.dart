@@ -10,13 +10,13 @@ import '../../../infra/models/speaker_activity_model.dart';
 
 part 'create_activity_controller.g.dart';
 
-class CreateActivityController = _CreateActivityControllerBase
+class CreateActivityController = CreateActivityControllerBase
     with _$CreateActivityController;
 
-abstract class _CreateActivityControllerBase with Store {
+abstract class CreateActivityControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
 
-  _CreateActivityControllerBase({
+  CreateActivityControllerBase({
     required this.repository,
   });
 

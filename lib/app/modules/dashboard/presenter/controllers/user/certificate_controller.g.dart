@@ -6,11 +6,11 @@ part of 'certificate_controller.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$CertificateController on _CertificateControllerBase, Store {
+mixin _$CertificateController on CertificateControllerBase, Store {
   late final _$isLoadingAtom =
-      Atom(name: '_CertificateControllerBase.isLoading', context: context);
+      Atom(name: 'CertificateControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -25,8 +25,8 @@ mixin _$CertificateController on _CertificateControllerBase, Store {
     });
   }
 
-  late final _$certificateListAtom = Atom(
-      name: '_CertificateControllerBase.certificateList', context: context);
+  late final _$certificateListAtom =
+      Atom(name: 'CertificateControllerBase.certificateList', context: context);
 
   @override
   List<CertificateModel> get certificateList {
@@ -42,7 +42,7 @@ mixin _$CertificateController on _CertificateControllerBase, Store {
   }
 
   late final _$setIsLoadingAsyncAction =
-      AsyncAction('_CertificateControllerBase.setIsLoading', context: context);
+      AsyncAction('CertificateControllerBase.setIsLoading', context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
@@ -50,7 +50,7 @@ mixin _$CertificateController on _CertificateControllerBase, Store {
   }
 
   late final _$getUserCertificatesAsyncAction = AsyncAction(
-      '_CertificateControllerBase.getUserCertificates',
+      'CertificateControllerBase.getUserCertificates',
       context: context);
 
   @override

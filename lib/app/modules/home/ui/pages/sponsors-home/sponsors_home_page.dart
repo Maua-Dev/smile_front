@@ -11,7 +11,7 @@ class SponsorsHomePage extends StatefulWidget {
   const SponsorsHomePage({Key? key}) : super(key: key);
 
   @override
-  _SponsorsHomePageState createState() => _SponsorsHomePageState();
+  State<SponsorsHomePage> createState() => _SponsorsHomePageState();
 }
 
 class _SponsorsHomePageState extends State<SponsorsHomePage> {

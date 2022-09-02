@@ -11,14 +11,14 @@ import '../../external/errors.dart';
 
 part 'forgot_password_controller.g.dart';
 
-class ForgotPasswordController = _ForgotPasswordController
+class ForgotPasswordController = ForgotPasswordControllerBase
     with _$ForgotPasswordController;
 
-abstract class _ForgotPasswordController with Store {
+abstract class ForgotPasswordControllerBase with Store {
   final ForgotPasswordRepositoryInterface forgotPasswordRepository;
   final FirebaseAnalyticsService analytics;
 
-  _ForgotPasswordController(
+  ForgotPasswordControllerBase(
       {required this.analytics, required this.forgotPasswordRepository});
 
   @observable
@@ -113,7 +113,7 @@ abstract class _ForgotPasswordController with Store {
       var code = params.split("&")[0].split('=')[1];
       var email = params.split("&")[1].split('=')[1];
       var emailProvider = params.split("&")[2].split('=')[1];
-      var finalEmail = email + "@" + emailProvider;
+      var finalEmail = "$email@$emailProvider";
       await forgotPasswordRepository.changePassword(finalEmail, password, code);
       setSuccessRegistration(true);
       await Future.delayed(const Duration(seconds: 5));

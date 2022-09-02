@@ -6,16 +6,16 @@ part of 'adm_dashboard_controller.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
+mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
   Computed<List<CardActivity>>? _$mondayActivitiesListComputed;
 
   @override
   List<CardActivity> get mondayActivitiesList =>
       (_$mondayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.mondayActivitiesList,
-              name: '_AdmDashboardControllerBase.mondayActivitiesList'))
+              name: 'AdmDashboardControllerBase.mondayActivitiesList'))
           .value;
   Computed<List<CardActivity>>? _$tuesdayActivitiesListComputed;
 
@@ -23,7 +23,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   List<CardActivity> get tuesdayActivitiesList =>
       (_$tuesdayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.tuesdayActivitiesList,
-              name: '_AdmDashboardControllerBase.tuesdayActivitiesList'))
+              name: 'AdmDashboardControllerBase.tuesdayActivitiesList'))
           .value;
   Computed<List<CardActivity>>? _$wednesdayActivitiesListComputed;
 
@@ -31,7 +31,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   List<CardActivity> get wednesdayActivitiesList =>
       (_$wednesdayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.wednesdayActivitiesList,
-              name: '_AdmDashboardControllerBase.wednesdayActivitiesList'))
+              name: 'AdmDashboardControllerBase.wednesdayActivitiesList'))
           .value;
   Computed<List<CardActivity>>? _$thursdayActivitiesListComputed;
 
@@ -39,7 +39,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   List<CardActivity> get thursdayActivitiesList =>
       (_$thursdayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.thursdayActivitiesList,
-              name: '_AdmDashboardControllerBase.thursdayActivitiesList'))
+              name: 'AdmDashboardControllerBase.thursdayActivitiesList'))
           .value;
   Computed<List<CardActivity>>? _$fridayActivitiesListComputed;
 
@@ -47,7 +47,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   List<CardActivity> get fridayActivitiesList =>
       (_$fridayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.fridayActivitiesList,
-              name: '_AdmDashboardControllerBase.fridayActivitiesList'))
+              name: 'AdmDashboardControllerBase.fridayActivitiesList'))
           .value;
   Computed<List<CardActivity>>? _$saturdayActivitiesListComputed;
 
@@ -55,7 +55,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   List<CardActivity> get saturdayActivitiesList =>
       (_$saturdayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.saturdayActivitiesList,
-              name: '_AdmDashboardControllerBase.saturdayActivitiesList'))
+              name: 'AdmDashboardControllerBase.saturdayActivitiesList'))
           .value;
   Computed<List<CardActivity>>? _$sundayActivitiesListComputed;
 
@@ -63,11 +63,11 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   List<CardActivity> get sundayActivitiesList =>
       (_$sundayActivitiesListComputed ??= Computed<List<CardActivity>>(
               () => super.sundayActivitiesList,
-              name: '_AdmDashboardControllerBase.sundayActivitiesList'))
+              name: 'AdmDashboardControllerBase.sundayActivitiesList'))
           .value;
 
   late final _$isLoadingCsvAtom =
-      Atom(name: '_AdmDashboardControllerBase.isLoadingCsv', context: context);
+      Atom(name: 'AdmDashboardControllerBase.isLoadingCsv', context: context);
 
   @override
   bool get isLoadingCsv {
@@ -83,7 +83,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   late final _$isLoadingAtom =
-      Atom(name: '_AdmDashboardControllerBase.isLoading', context: context);
+      Atom(name: 'AdmDashboardControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -99,7 +99,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   late final _$isFloatActionButtonOpenAtom = Atom(
-      name: '_AdmDashboardControllerBase.isFloatActionButtonOpen',
+      name: 'AdmDashboardControllerBase.isFloatActionButtonOpen',
       context: context);
 
   @override
@@ -117,7 +117,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   late final _$filterActivityChipIndexSelectedAtom = Atom(
-      name: '_AdmDashboardControllerBase.filterActivityChipIndexSelected',
+      name: 'AdmDashboardControllerBase.filterActivityChipIndexSelected',
       context: context);
 
   @override
@@ -134,8 +134,8 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
     });
   }
 
-  late final _$activitiesListAtom = Atom(
-      name: '_AdmDashboardControllerBase.activitiesList', context: context);
+  late final _$activitiesListAtom =
+      Atom(name: 'AdmDashboardControllerBase.activitiesList', context: context);
 
   @override
   List<ActivityModel> get activitiesList {
@@ -151,7 +151,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   late final _$saveActivitiesListAtom = Atom(
-      name: '_AdmDashboardControllerBase.saveActivitiesList', context: context);
+      name: 'AdmDashboardControllerBase.saveActivitiesList', context: context);
 
   @override
   List<ActivityModel> get saveActivitiesList {
@@ -167,7 +167,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   late final _$allActivitiesToCardsAtom = Atom(
-      name: '_AdmDashboardControllerBase.allActivitiesToCards',
+      name: 'AdmDashboardControllerBase.allActivitiesToCards',
       context: context);
 
   @override
@@ -185,7 +185,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   late final _$nextActivitiesListAtom = Atom(
-      name: '_AdmDashboardControllerBase.nextActivitiesList', context: context);
+      name: 'AdmDashboardControllerBase.nextActivitiesList', context: context);
 
   @override
   List<CardActivity> get nextActivitiesList {
@@ -201,7 +201,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   late final _$setIsLoadingCsvAsyncAction = AsyncAction(
-      '_AdmDashboardControllerBase.setIsLoadingCsv',
+      'AdmDashboardControllerBase.setIsLoadingCsv',
       context: context);
 
   @override
@@ -210,7 +210,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   late final _$setIsLoadingAsyncAction =
-      AsyncAction('_AdmDashboardControllerBase.setIsLoading', context: context);
+      AsyncAction('AdmDashboardControllerBase.setIsLoading', context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
@@ -218,7 +218,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   late final _$getActivitiesByTypeAsyncAction = AsyncAction(
-      '_AdmDashboardControllerBase.getActivitiesByType',
+      'AdmDashboardControllerBase.getActivitiesByType',
       context: context);
 
   @override
@@ -228,7 +228,7 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   late final _$getAllActivitiesAsyncAction = AsyncAction(
-      '_AdmDashboardControllerBase.getAllActivities',
+      'AdmDashboardControllerBase.getAllActivities',
       context: context);
 
   @override
@@ -237,48 +237,48 @@ mixin _$AdmDashboardController on _AdmDashboardControllerBase, Store {
   }
 
   late final _$logoutAsyncAction =
-      AsyncAction('_AdmDashboardControllerBase.logout', context: context);
+      AsyncAction('AdmDashboardControllerBase.logout', context: context);
 
   @override
   Future<void> logout() {
     return _$logoutAsyncAction.run(() => super.logout());
   }
 
-  late final _$_AdmDashboardControllerBaseActionController =
-      ActionController(name: '_AdmDashboardControllerBase', context: context);
+  late final _$AdmDashboardControllerBaseActionController =
+      ActionController(name: 'AdmDashboardControllerBase', context: context);
 
   @override
   void toggleFloatActionButton() {
     final _$actionInfo =
-        _$_AdmDashboardControllerBaseActionController.startAction(
-            name: '_AdmDashboardControllerBase.toggleFloatActionButton');
+        _$AdmDashboardControllerBaseActionController.startAction(
+            name: 'AdmDashboardControllerBase.toggleFloatActionButton');
     try {
       return super.toggleFloatActionButton();
     } finally {
-      _$_AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void toggleFilterActivityChipIndex(dynamic index) {
     final _$actionInfo =
-        _$_AdmDashboardControllerBaseActionController.startAction(
-            name: '_AdmDashboardControllerBase.toggleFilterActivityChipIndex');
+        _$AdmDashboardControllerBaseActionController.startAction(
+            name: 'AdmDashboardControllerBase.toggleFilterActivityChipIndex');
     try {
       return super.toggleFilterActivityChipIndex(index);
     } finally {
-      _$_AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void changeFormatToCards() {
-    final _$actionInfo = _$_AdmDashboardControllerBaseActionController
-        .startAction(name: '_AdmDashboardControllerBase.changeFormatToCards');
+    final _$actionInfo = _$AdmDashboardControllerBaseActionController
+        .startAction(name: 'AdmDashboardControllerBase.changeFormatToCards');
     try {
       return super.changeFormatToCards();
     } finally {
-      _$_AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
