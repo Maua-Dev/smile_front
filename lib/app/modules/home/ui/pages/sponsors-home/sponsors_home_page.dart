@@ -369,18 +369,20 @@ class CardDiscount extends StatelessWidget {
           color: Color(0xFFD36D49),
           border: Border.all(color: AppColors.brandingPurple, width: 2),
           borderRadius: BorderRadius.circular(8)),
-      child:
-          Text.rich(TextSpan(style: TextStyle(color: Colors.white), children: [
-        TextSpan(text: month),
-        WidgetSpan(
-            alignment: PlaceholderAlignment.middle,
-            child: Icon(
-              Icons.arrow_circle_right_rounded,
-              color: Colors.white,
-              size: 24,
-            )),
-        TextSpan(text: discount)
-      ])),
+      child: Text.rich(
+        TextSpan(style: TextStyle(color: Colors.white), children: [
+          TextSpan(text: month),
+          WidgetSpan(
+              alignment: PlaceholderAlignment.middle,
+              child: Icon(
+                Icons.arrow_circle_right_rounded,
+                color: Colors.white,
+                size: 24,
+              )),
+          TextSpan(text: discount)
+        ]),
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }

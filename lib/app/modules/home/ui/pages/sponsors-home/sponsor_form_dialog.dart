@@ -134,188 +134,243 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         }),
       ),
     ];
-    return Container(
-      constraints: BoxConstraints(maxHeight: 600, maxWidth: 350),
-      child: AlertDialog(
-        content: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                Text(
-                  'Cadastro do Patrocinador',
-                  style: TextStyle(
-                      fontSize:
-                          MediaQuery.of(context).size.width < 530 ? 28 : 35,
-                      fontWeight: FontWeight.w900),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                TextFormCustom(
-                  label: 'Nome da Empresa',
-                  onSaved: (value) => formSponsorModel =
-                      formSponsorModel.copyWith(companyName: value),
-                  validator: fieldIsEmpty,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: TextFormCustom(
-                        label: 'Nome do Colaborador(a)',
-                        onSaved: (value) => formSponsorModel =
-                            formSponsorModel.copyWith(colabName: value),
-                        validator: fieldIsEmpty,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Expanded(
-                      child: TextFormCustom(
-                        label: 'Email para Contato',
-                        onSaved: (value) => formSponsorModel =
-                            formSponsorModel.copyWith(email: value),
-                        validator: (text) {
-                          var res = fieldIsEmpty(text);
-                          if (res != null) {
-                            return res;
-                          }
-                          if (!isEmail(text!)) {
-                            return 'Email precisa ser valido';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: TextFormCustom(
-                          label: 'Telefone',
+    return AlertDialog(
+      content: Form(
+        key: formKey,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Text(
+                'Cadastro do Patrocinador',
+                style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width < 530 ? 28 : 35,
+                    fontWeight: FontWeight.w900),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              TextFormCustom(
+                label: 'Nome da Empresa',
+                onSaved: (value) => formSponsorModel =
+                    formSponsorModel.copyWith(companyName: value),
+                validator: fieldIsEmpty,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              MediaQuery.of(context).size.width < 530
+                  ? Column(
+                      children: [
+                        TextFormCustom(
+                          label: 'Nome do Colaborador(a)',
                           onSaved: (value) => formSponsorModel =
-                              formSponsorModel.copyWith(number: value),
+                              formSponsorModel.copyWith(colabName: value),
                           validator: fieldIsEmpty,
-                          inputFormatters: [maskFormatterPhone]),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        TextFormCustom(
+                          label: 'Email para Contato',
+                          onSaved: (value) => formSponsorModel =
+                              formSponsorModel.copyWith(email: value),
+                          validator: (text) {
+                            var res = fieldIsEmpty(text);
+                            if (res != null) {
+                              return res;
+                            }
+                            if (!isEmail(text!)) {
+                              return 'Email precisa ser valido';
+                            }
+                            return null;
+                          },
+                        )
+                      ],
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: TextFormCustom(
+                            label: 'Nome do Colaborador(a)',
+                            onSaved: (value) => formSponsorModel =
+                                formSponsorModel.copyWith(colabName: value),
+                            validator: fieldIsEmpty,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        Expanded(
+                          child: TextFormCustom(
+                            label: 'Email para Contato',
+                            onSaved: (value) => formSponsorModel =
+                                formSponsorModel.copyWith(email: value),
+                            validator: (text) {
+                              var res = fieldIsEmpty(text);
+                              if (res != null) {
+                                return res;
+                              }
+                              if (!isEmail(text!)) {
+                                return 'Email precisa ser valido';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Expanded(
-                      child: TextFormCustom(
-                        label: 'CNPJ da Empresa',
-                        onSaved: (value) => formSponsorModel =
-                            formSponsorModel.copyWith(cnpj: value),
-                        inputFormatters: [maskFormatterCPNJ],
-                        validator: (text) {
-                          var res = fieldIsEmpty(text);
+              const SizedBox(
+                height: 8,
+              ),
+              MediaQuery.of(context).size.width < 530
+                  ? Column(
+                      children: [
+                        TextFormCustom(
+                            label: 'Telefone',
+                            onSaved: (value) => formSponsorModel =
+                                formSponsorModel.copyWith(number: value),
+                            validator: fieldIsEmpty,
+                            inputFormatters: [maskFormatterPhone]),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        TextFormCustom(
+                          label: 'CNPJ da Empresa',
+                          onSaved: (value) => formSponsorModel =
+                              formSponsorModel.copyWith(cnpj: value),
+                          inputFormatters: [maskFormatterCPNJ],
+                          validator: (text) {
+                            var res = fieldIsEmpty(text);
 
-                          if (res != null) {
-                            return res;
-                          }
-                          if (!isLength(text!, 18)) {
-                            return 'CNPJ precisa ser valido';
-                          }
-                          return null;
-                        },
-                      ),
+                            if (res != null) {
+                              return res;
+                            }
+                            if (!isLength(text!, 18)) {
+                              return 'CNPJ precisa ser valido';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: TextFormCustom(
+                              label: 'Telefone',
+                              onSaved: (value) => formSponsorModel =
+                                  formSponsorModel.copyWith(number: value),
+                              validator: fieldIsEmpty,
+                              inputFormatters: [maskFormatterPhone]),
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        Expanded(
+                          child: TextFormCustom(
+                            label: 'CNPJ da Empresa',
+                            onSaved: (value) => formSponsorModel =
+                                formSponsorModel.copyWith(cnpj: value),
+                            inputFormatters: [maskFormatterCPNJ],
+                            validator: (text) {
+                              var res = fieldIsEmpty(text);
+
+                              if (res != null) {
+                                return res;
+                              }
+                              if (!isLength(text!, 18)) {
+                                return 'CNPJ precisa ser valido';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const Text('Escolha a cota de patrocínio'),
-                const SizedBox(
-                  height: 16,
-                ),
-                MediaQuery.of(context).size.width < 530
-                    ? ListView.builder(
-                        itemBuilder: (context, index) =>
-                            optionsSponsorType[index],
-                        shrinkWrap: true,
-                      )
-                    : Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Expanded(child: optionsSponsorType[0]),
-                              Expanded(child: optionsSponsorType[2])
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(child: optionsSponsorType[1]),
-                              Expanded(child: optionsSponsorType[3])
-                            ],
-                          )
-                        ],
-                      ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const Text('Deseja Realizar o fechamento do patrocínio em'),
-                const SizedBox(
-                  height: 16,
-                ),
-                MediaQuery.of(context).size.width < 530
-                    ? ListView.builder(
-                        itemBuilder: (context, index) =>
-                            optionsClosureDate[index],
-                        shrinkWrap: true,
-                      )
-                    : Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Expanded(child: optionsClosureDate[0]),
-                              Expanded(child: optionsClosureDate[3])
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(child: optionsClosureDate[1]),
-                              Expanded(child: optionsClosureDate[4])
-                            ],
-                          ),
-                          optionsClosureDate[2]
-                        ],
-                      ),
-              ],
-            )),
-        backgroundColor: Colors.white,
-        actionsAlignment: MainAxisAlignment.spaceAround,
-        actions: [
-          OutlinedButton(
-              onPressed: () => Modular.to.pop(), child: const Text('CANCELAR')),
-          Builder(builder: (context) {
-            return ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFD36D49)),
-              onPressed: sendForm,
-              child: _loading
-                  ? const CircularProgressIndicator()
-                  : const Text(
-                      'ENVIAR FORMULÁRIO',
-                      style: TextStyle(color: Colors.white),
+              const SizedBox(
+                height: 16,
+              ),
+              const Text('Escolha a cota de patrocínio'),
+              const SizedBox(
+                height: 16,
+              ),
+              MediaQuery.of(context).size.width < 530
+                  ? Column(
+                      children: optionsSponsorType,
+                    )
+                  : Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Expanded(child: optionsSponsorType[0]),
+                            Expanded(child: optionsSponsorType[2])
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(child: optionsSponsorType[1]),
+                            Expanded(child: optionsSponsorType[3])
+                          ],
+                        )
+                      ],
                     ),
-            );
-          })
-        ],
+              const SizedBox(
+                height: 16,
+              ),
+              const Text('Deseja Realizar o fechamento do patrocínio em'),
+              const SizedBox(
+                height: 16,
+              ),
+              MediaQuery.of(context).size.width < 530
+                  ? Column(
+                      children: optionsClosureDate,
+                    )
+                  : Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Expanded(child: optionsClosureDate[0]),
+                            Expanded(child: optionsClosureDate[3])
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(child: optionsClosureDate[1]),
+                            Expanded(child: optionsClosureDate[4])
+                          ],
+                        ),
+                        optionsClosureDate[2]
+                      ],
+                    ),
+            ],
+          ),
+        ),
       ),
+      backgroundColor: Colors.white,
+      actionsAlignment: MainAxisAlignment.spaceAround,
+      actions: [
+        OutlinedButton(
+            onPressed: () => Modular.to.pop(), child: const Text('CANCELAR')),
+        Builder(builder: (context) {
+          return ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFD36D49)),
+            onPressed: sendForm,
+            child: _loading
+                ? const CircularProgressIndicator()
+                : const Text(
+                    'ENVIAR FORMULÁRIO',
+                    style: TextStyle(color: Colors.white),
+                  ),
+          );
+        })
+      ],
     );
   }
 }
