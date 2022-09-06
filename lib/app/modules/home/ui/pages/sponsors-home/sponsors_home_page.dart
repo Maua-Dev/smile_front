@@ -362,17 +362,17 @@ class CardDiscount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: 250),
-      padding: EdgeInsets.all(8),
+      constraints: const BoxConstraints(maxWidth: 250),
+      padding: const EdgeInsets.all(8),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          color: Color(0xFFD36D49),
+          color: const Color(0xFFD36D49),
           border: Border.all(color: AppColors.brandingPurple, width: 2),
           borderRadius: BorderRadius.circular(8)),
       child: Text.rich(
-        TextSpan(style: TextStyle(color: Colors.white), children: [
+        TextSpan(style: const TextStyle(color: Colors.white), children: [
           TextSpan(text: month),
-          WidgetSpan(
+          const WidgetSpan(
               alignment: PlaceholderAlignment.middle,
               child: Icon(
                 Icons.arrow_circle_right_rounded,
