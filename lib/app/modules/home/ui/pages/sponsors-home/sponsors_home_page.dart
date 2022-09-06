@@ -113,6 +113,124 @@ class BeSponsor extends StatelessWidget {
       padding: const EdgeInsets.all(32.0),
       child: Column(
         children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            constraints: const BoxConstraints(maxWidth: 700),
+            decoration: BoxDecoration(
+                border: Border.all(color: AppColors.brandingPurple, width: 4),
+                borderRadius: BorderRadius.circular(18)),
+            child: Column(
+              children: [
+                const Text(
+                  'DESCONTOS',
+                  style: TextStyle(fontSize: 24),
+                ),
+                MediaQuery.of(context).size.width < 530
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            children: const [
+                              Text('2022'),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              CardDiscount(
+                                month: 'Outubro',
+                                discount: '50% Off',
+                              ),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              CardDiscount(
+                                month: 'Novembro',
+                                discount: '40% Off',
+                              ),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              CardDiscount(
+                                month: 'Dezembro',
+                                discount: '30% Off',
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: const [
+                              Text('2023'),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              CardDiscount(
+                                month: 'Janeiro',
+                                discount: '10% Off',
+                              ),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              CardDiscount(
+                                month: 'Fevereiro',
+                                discount: '0% Off',
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            children: const [
+                              Text('2022'),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              CardDiscount(
+                                month: 'Outubro',
+                                discount: '50% Off',
+                              ),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              CardDiscount(
+                                month: 'Novembro',
+                                discount: '40% Off',
+                              ),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              CardDiscount(
+                                month: 'Dezembro',
+                                discount: '30% Off',
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: const [
+                              Text('2023'),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              CardDiscount(
+                                month: 'Janeiro',
+                                discount: '10% Off',
+                              ),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              CardDiscount(
+                                month: 'Fevereiro',
+                                discount: '0% Off',
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+              ],
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -170,32 +288,99 @@ class BeSponsor extends StatelessWidget {
                 ),
           Container(
             // constraints: BoxConstraints(maxWidth: 700),
-            padding: const EdgeInsets.all(32),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  width: 300,
-                  child: Text(
-                    'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16),
+            padding: EdgeInsets.all(
+                MediaQuery.of(context).size.width < 530 ? 24 : 32),
+            child: MediaQuery.of(context).size.width < 530
+                ? Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 300,
+                        child: Text(
+                          'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        constraints: BoxConstraints(
+                            minWidth: double.infinity,
+                            minHeight:
+                                MediaQuery.of(context).size.height * 0.09),
+                        child: FormsButtonWidget(
+                          buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                          backgroundColor: const Color(0xFFD36D49),
+                          onPressed: () => showDialog(
+                            context: context,
+                            builder: (context) => const SponsorFormDialog(),
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                : Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 300,
+                        child: Text(
+                          'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                      FormsButtonWidget(
+                        buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                        backgroundColor: const Color(0xFFD36D49),
+                        onPressed: () => showDialog(
+                          context: context,
+                          builder: (context) => const SponsorFormDialog(),
+                        ),
+                      )
+                    ],
                   ),
-                ),
-                FormsButtonWidget(
-                  buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
-                  backgroundColor: const Color(0xFFD36D49),
-                  onPressed: () => showDialog(
-                    context: context,
-                    builder: (context) => const SponsorFormDialog(),
-                  ),
-                )
-              ],
-            ),
           )
         ],
       ),
+    );
+  }
+}
+
+class CardDiscount extends StatelessWidget {
+  const CardDiscount({
+    Key? key,
+    required this.month,
+    required this.discount,
+  }) : super(key: key);
+  final String month;
+  final String discount;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: BoxConstraints(maxWidth: 250),
+      padding: EdgeInsets.all(8),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+          color: Color(0xFFD36D49),
+          border: Border.all(color: AppColors.brandingPurple, width: 2),
+          borderRadius: BorderRadius.circular(8)),
+      child:
+          Text.rich(TextSpan(style: TextStyle(color: Colors.white), children: [
+        TextSpan(text: month),
+        WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: Icon(
+              Icons.arrow_circle_right_rounded,
+              color: Colors.white,
+              size: 24,
+            )),
+        TextSpan(text: discount)
+      ])),
     );
   }
 }
