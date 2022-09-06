@@ -308,7 +308,19 @@ class Footer extends StatelessWidget {
                             ),
                             children: [
                               TextSpan(
-                                text: 'dev@maua.br',
+                                text: 'smile.patrocinio@maua.br',
+                                style: AppTextStyles.titleH1.copyWith(
+                                    color: Colors.white, fontSize: 12),
+                              ),
+                              TextSpan(
+                                text: ' ou ',
+                                style: AppTextStyles.body.copyWith(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'smile@maua.br',
                                 style: AppTextStyles.titleH1.copyWith(
                                     color: Colors.white, fontSize: 12),
                               ),
@@ -338,7 +350,7 @@ class Footer extends StatelessWidget {
                             ),
                             children: [
                               TextSpan(
-                                text: '4239-3002',
+                                text: '4239-3563',
                                 style: AppTextStyles.titleH1.copyWith(
                                     color: Colors.white, fontSize: 12),
                               ),
@@ -350,48 +362,12 @@ class Footer extends StatelessWidget {
                                 ),
                               ),
                               TextSpan(
-                                text: '4239-3014',
+                                text: '4239-3059',
                                 style: AppTextStyles.titleH1.copyWith(
                                     color: Colors.white, fontSize: 12),
                               ),
                               TextSpan(
                                 text: ', ',
-                                style: AppTextStyles.body.copyWith(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              TextSpan(
-                                text: '4239-3441',
-                                style: AppTextStyles.titleH1.copyWith(
-                                    color: Colors.white, fontSize: 12),
-                              ),
-                              TextSpan(
-                                text: ', ',
-                                style: AppTextStyles.body.copyWith(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              TextSpan(
-                                text: '4239-3442',
-                                style: AppTextStyles.titleH1.copyWith(
-                                    color: Colors.white, fontSize: 12),
-                              ),
-                              TextSpan(
-                                text: ' ou ',
-                                style: AppTextStyles.body.copyWith(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              TextSpan(
-                                text: '4239-3411',
-                                style: AppTextStyles.titleH1.copyWith(
-                                    color: Colors.white, fontSize: 12),
-                              ),
-                              TextSpan(
-                                text: '.',
                                 style: AppTextStyles.body.copyWith(
                                   color: Colors.white,
                                   fontSize: 12,
