@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
+import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
@@ -165,7 +166,22 @@ class BeSponsor extends StatelessWidget {
               : Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: plansWidgets,
-                )
+                ),
+          Container(
+            // constraints: BoxConstraints(maxWidth: 700),
+            padding: const EdgeInsets.all(32),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                    'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. '),
+                FormsButtonWidget(
+                    buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                    backgroundColor: Color(0xFFD36D49))
+              ],
+            ),
+          )
         ],
       ),
     );
