@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 
@@ -30,7 +31,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
           ),
           const CompanySponsor(),
           Column(
-            children: [const BeSponsor()],
+            children: const [BeSponsor()],
           )
         ],
       ),
@@ -173,12 +174,23 @@ class BeSponsor extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                    'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. '),
+              children: [
+                const SizedBox(
+                  width: 300,
+                  child: Text(
+                    'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
                 FormsButtonWidget(
-                    buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
-                    backgroundColor: Color(0xFFD36D49))
+                  buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                  backgroundColor: const Color(0xFFD36D49),
+                  onPressed: () => showDialog(
+                    context: context,
+                    builder: (context) => const SponsorFormDialog(),
+                  ),
+                )
               ],
             ),
           )
