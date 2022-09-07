@@ -418,7 +418,11 @@ class PlanWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset('Estrela_${planName.toLowerCase()}.png', width: 30),
+                Image(
+                  width: 30,
+                  image: CachedNetworkImageProvider(
+                      '${s3AssetsBaseUrl}Estrela_${planName.toLowerCase()}.png'),
+                ),
                 Text(
                   planName,
                   textAlign: TextAlign.center,
