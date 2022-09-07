@@ -187,7 +187,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                               return res;
                             }
                             if (!isEmail(text!)) {
-                              return 'Email precisa ser valido';
+                              return 'Email precisa ser válido';
                             }
                             return null;
                           },
@@ -219,7 +219,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                                 return res;
                               }
                               if (!isEmail(text!)) {
-                                return 'Email precisa ser valido';
+                                return 'Email precisa ser válido';
                               }
                               return null;
                             },
@@ -254,7 +254,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                               return res;
                             }
                             if (!isLength(text!, 18)) {
-                              return 'CNPJ precisa ser valido';
+                              return 'CNPJ precisa ser válido';
                             }
                             return null;
                           },
@@ -288,7 +288,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                                 return res;
                               }
                               if (!isLength(text!, 18)) {
-                                return 'CNPJ precisa ser valido';
+                                return 'CNPJ precisa ser válido';
                               }
                               return null;
                             },
