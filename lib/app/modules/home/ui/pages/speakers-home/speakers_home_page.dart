@@ -29,7 +29,7 @@ class _SpeakersHomePageState
             title: 'Principais Palestrantes - 2022',
             leftPadding: 32,
             color: AppColors.brandingOrange,
-            fontSize: width < 530 ? 28 : null,
+            fontSize: width < 530 ? 24 : null,
           ),
         ),
         Observer(builder: (_) {
