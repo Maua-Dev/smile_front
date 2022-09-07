@@ -113,6 +113,49 @@ class BeSponsor extends StatelessWidget {
       padding: const EdgeInsets.all(32.0),
       child: Column(
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: MediaQuery.of(context).size.width > 530
+                    ? Container(
+                        alignment: Alignment.center,
+                        height: 2,
+                        color: AppColors.brandingPurple,
+                      )
+                    : Container(),
+              ),
+              Center(
+                  child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Seja Nosso Patrocinador',
+                  style: TextStyle(
+                      fontSize:
+                          MediaQuery.of(context).size.width < 530 ? 28 : 35,
+                      fontWeight: FontWeight.w900),
+                ),
+              )),
+              Expanded(
+                child: MediaQuery.of(context).size.width > 530
+                    ? Container(
+                        alignment: Alignment.center,
+                        height: 2,
+                        color: AppColors.brandingPurple,
+                      )
+                    : Container(),
+              )
+            ],
+          ),
+          const Text(
+            'A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir.',
+            style: TextStyle(fontSize: 16),
+            textAlign: TextAlign.justify,
+          ),
+          const SizedBox(
+            height: 24,
+          ),
           Container(
             padding: const EdgeInsets.all(16),
             constraints: const BoxConstraints(maxWidth: 700),
@@ -231,48 +274,8 @@ class BeSponsor extends StatelessWidget {
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: MediaQuery.of(context).size.width > 530
-                    ? Container(
-                        alignment: Alignment.center,
-                        height: 2,
-                        color: AppColors.brandingPurple,
-                      )
-                    : Container(),
-              ),
-              Center(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Seja Nosso Patrocinador',
-                  style: TextStyle(
-                      fontSize:
-                          MediaQuery.of(context).size.width < 530 ? 28 : 35,
-                      fontWeight: FontWeight.w900),
-                ),
-              )),
-              Expanded(
-                child: MediaQuery.of(context).size.width > 530
-                    ? Container(
-                        alignment: Alignment.center,
-                        height: 2,
-                        color: AppColors.brandingPurple,
-                      )
-                    : Container(),
-              )
-            ],
-          ),
-          const Text(
-            'A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir.',
-            style: TextStyle(fontSize: 16),
-            textAlign: TextAlign.justify,
-          ),
           const SizedBox(
-            height: 24,
+            height: 16,
           ),
           MediaQuery.of(context).size.width < 530
               ? ListView.separated(

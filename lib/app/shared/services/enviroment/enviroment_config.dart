@@ -13,4 +13,7 @@ class EnvironmentConfig {
   static const MSS_CERTIFICATE_BASE_URL = String.fromEnvironment(
     'MSS_CERTIFICATE_BASE_URL',
   );
+  static const SPONSOR_FORM_REQUEST_URL = String.fromEnvironment(
+    'SPONSOR_FORM_REQUEST_URL',
+  );
 }
