@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_email_model.dart';
+import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:string_validator/string_validator.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
+import '../../../../../shared/services/enviroment/enviroment_config.dart';
 
 class SponsorFormDialog extends StatefulWidget {
   const SponsorFormDialog({super.key});
@@ -28,11 +31,15 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       var dio = Dio(BaseOptions(
-          baseUrl:
-              'https://zvv2w3aywop2ld4mphc3rpdfie0bfhty.lambda-url.sa-east-1.on.aws/'));
-      await dio.post('', data: formSponsorModel.toJson());
+        baseUrl: EnvironmentConfig.SPONSOR_FORM_REQUEST_URL,
+        responseType: ResponseType.json,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+      ));
+
       setLoading();
       try {
+        await dio.post('', data: formSponsorModel.toJson());
         setLoading();
         Modular.to.pop();
       } catch (e) {
@@ -361,9 +368,17 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
           return ElevatedButton(
             style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFD36D49)),
-            onPressed: sendForm,
+            onPressed: _loading ? null : sendForm,
             child: _loading
-                ? const CircularProgressIndicator()
+                ? Container(
+                    width: 24,
+                    height: 24,
+                    padding: const EdgeInsets.all(2.0),
+                    child: CircularProgressIndicator(
+                      color: AppColors.brandingPurple,
+                      strokeWidth: 3,
+                    ),
+                  )
                 : const Text(
                     'ENVIAR FORMULÁRIO',
                     style: TextStyle(color: Colors.white),
