@@ -180,13 +180,13 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                         TextFormCustom(
                           label: 'Email para Contato',
                           onSaved: (value) => formSponsorModel =
-                              formSponsorModel.copyWith(email: value),
+                              formSponsorModel.copyWith(email: value?.trim()),
                           validator: (text) {
                             var res = fieldIsEmpty(text);
                             if (res != null) {
                               return res;
                             }
-                            if (!isEmail(text!)) {
+                            if (!isEmail(text!.trim())) {
                               return 'Email precisa ser válido';
                             }
                             return null;
@@ -212,13 +212,13 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                           child: TextFormCustom(
                             label: 'Email para Contato',
                             onSaved: (value) => formSponsorModel =
-                                formSponsorModel.copyWith(email: value),
+                                formSponsorModel.copyWith(email: value?.trim()),
                             validator: (text) {
                               var res = fieldIsEmpty(text);
                               if (res != null) {
                                 return res;
                               }
-                              if (!isEmail(text!)) {
+                              if (!isEmail(text!.trim())) {
                                 return 'Email precisa ser válido';
                               }
                               return null;
