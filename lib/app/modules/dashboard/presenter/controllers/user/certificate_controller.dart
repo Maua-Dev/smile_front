@@ -5,13 +5,13 @@ import '../../../infra/models/certificate_model.dart';
 
 part 'certificate_controller.g.dart';
 
-class CertificateController = _CertificateControllerBase
+class CertificateController = CertificateControllerBase
     with _$CertificateController;
 
-abstract class _CertificateControllerBase with Store {
+abstract class CertificateControllerBase with Store {
   final CertificateRepositoryInterface repository;
 
-  _CertificateControllerBase({required this.repository}) {
+  CertificateControllerBase({required this.repository}) {
     getUserCertificates();
   }
 

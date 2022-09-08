@@ -11,7 +11,7 @@ class SpeakersHomePage extends StatefulWidget {
   const SpeakersHomePage({Key? key}) : super(key: key);
 
   @override
-  _SpeakersHomePageState createState() => _SpeakersHomePageState();
+  State<SpeakersHomePage> createState() => _SpeakersHomePageState();
 }
 
 class _SpeakersHomePageState
@@ -26,10 +26,10 @@ class _SpeakersHomePageState
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 24.0),
           child: TextHeader(
-            title: 'Principais Palestrantes',
+            title: 'Principais Palestrantes - 2022',
             leftPadding: 32,
             color: AppColors.brandingOrange,
-            fontSize: width < 530 ? 28 : null,
+            fontSize: width < 530 ? 24 : null,
           ),
         ),
         Observer(builder: (_) {

@@ -9,14 +9,14 @@ import '../../../domain/repositories/activities_repository_interface.dart';
 
 part 'edit_activity_controller.g.dart';
 
-class EditActivityController = _EditActivityControllerBase
+class EditActivityController = EditActivityControllerBase
     with _$EditActivityController;
 
-abstract class _EditActivityControllerBase with Store {
+abstract class EditActivityControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final ActivityModel activityModel;
 
-  _EditActivityControllerBase({
+  EditActivityControllerBase({
     required this.repository,
     required this.activityModel,
   }) {

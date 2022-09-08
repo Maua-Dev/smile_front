@@ -6,11 +6,12 @@ part of 'resend_confirmation_controller.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
-  late final _$isLoadingAtom =
-      Atom(name: '_ResendConfirmationController.isLoading', context: context);
+mixin _$ResendConfirmationController
+    on ResendConfirmationControllerBase, Store {
+  late final _$isLoadingAtom = Atom(
+      name: 'ResendConfirmationControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -25,8 +26,8 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
     });
   }
 
-  late final _$emailSentAtom =
-      Atom(name: '_ResendConfirmationController.emailSent', context: context);
+  late final _$emailSentAtom = Atom(
+      name: 'ResendConfirmationControllerBase.emailSent', context: context);
 
   @override
   bool get emailSent {
@@ -42,7 +43,7 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
   }
 
   late final _$errorsAtom =
-      Atom(name: '_ResendConfirmationController.errors', context: context);
+      Atom(name: 'ResendConfirmationControllerBase.errors', context: context);
 
   @override
   String get errors {
@@ -58,7 +59,7 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
   }
 
   late final _$cpfAtom =
-      Atom(name: '_ResendConfirmationController.cpf', context: context);
+      Atom(name: 'ResendConfirmationControllerBase.cpf', context: context);
 
   @override
   String get cpf {
@@ -74,7 +75,7 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
   }
 
   late final _$successRegistrationAtom = Atom(
-      name: '_ResendConfirmationController.successRegistration',
+      name: 'ResendConfirmationControllerBase.successRegistration',
       context: context);
 
   @override
@@ -90,8 +91,9 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
     });
   }
 
-  late final _$setErrorAsyncAction =
-      AsyncAction('_ResendConfirmationController.setError', context: context);
+  late final _$setErrorAsyncAction = AsyncAction(
+      'ResendConfirmationControllerBase.setError',
+      context: context);
 
   @override
   Future<void> setError(String value) {
@@ -99,7 +101,7 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
   }
 
   late final _$setCpfAsyncAction =
-      AsyncAction('_ResendConfirmationController.setCpf', context: context);
+      AsyncAction('ResendConfirmationControllerBase.setCpf', context: context);
 
   @override
   Future<void> setCpf(String value) {
@@ -107,7 +109,7 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
   }
 
   late final _$setIsLoadingAsyncAction = AsyncAction(
-      '_ResendConfirmationController.setIsLoading',
+      'ResendConfirmationControllerBase.setIsLoading',
       context: context);
 
   @override
@@ -116,7 +118,7 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
   }
 
   late final _$resendConfirmationAsyncAction = AsyncAction(
-      '_ResendConfirmationController.resendConfirmation',
+      'ResendConfirmationControllerBase.resendConfirmation',
       context: context);
 
   @override
@@ -126,7 +128,7 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
   }
 
   late final _$setSuccessRegistrationAsyncAction = AsyncAction(
-      '_ResendConfirmationController.setSuccessRegistration',
+      'ResendConfirmationControllerBase.setSuccessRegistration',
       context: context);
 
   @override
@@ -135,28 +137,31 @@ mixin _$ResendConfirmationController on _ResendConfirmationController, Store {
         .run(() => super.setSuccessRegistration(value));
   }
 
-  late final _$_ResendConfirmationControllerActionController =
-      ActionController(name: '_ResendConfirmationController', context: context);
+  late final _$ResendConfirmationControllerBaseActionController =
+      ActionController(
+          name: 'ResendConfirmationControllerBase', context: context);
 
   @override
   bool validateCpf(String value) {
-    final _$actionInfo = _$_ResendConfirmationControllerActionController
-        .startAction(name: '_ResendConfirmationController.validateCpf');
+    final _$actionInfo = _$ResendConfirmationControllerBaseActionController
+        .startAction(name: 'ResendConfirmationControllerBase.validateCpf');
     try {
       return super.validateCpf(value);
     } finally {
-      _$_ResendConfirmationControllerActionController.endAction(_$actionInfo);
+      _$ResendConfirmationControllerBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   bool validateForm() {
-    final _$actionInfo = _$_ResendConfirmationControllerActionController
-        .startAction(name: '_ResendConfirmationController.validateForm');
+    final _$actionInfo = _$ResendConfirmationControllerBaseActionController
+        .startAction(name: 'ResendConfirmationControllerBase.validateForm');
     try {
       return super.validateForm();
     } finally {
-      _$_ResendConfirmationControllerActionController.endAction(_$actionInfo);
+      _$ResendConfirmationControllerBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

@@ -6,11 +6,11 @@ part of 'more_info_controller.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$MoreInfoController on _MoreInfoControllerBase, Store {
+mixin _$MoreInfoController on MoreInfoControllerBase, Store {
   late final _$isRegisteredAtom =
-      Atom(name: '_MoreInfoControllerBase.isRegistered', context: context);
+      Atom(name: 'MoreInfoControllerBase.isRegistered', context: context);
 
   @override
   bool get isRegistered {
@@ -26,7 +26,7 @@ mixin _$MoreInfoController on _MoreInfoControllerBase, Store {
   }
 
   late final _$isLoadingAtom =
-      Atom(name: '_MoreInfoControllerBase.isLoading', context: context);
+      Atom(name: 'MoreInfoControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -42,7 +42,7 @@ mixin _$MoreInfoController on _MoreInfoControllerBase, Store {
   }
 
   late final _$setIsRegisteredAsyncAction =
-      AsyncAction('_MoreInfoControllerBase.setIsRegistered', context: context);
+      AsyncAction('MoreInfoControllerBase.setIsRegistered', context: context);
 
   @override
   Future<void> setIsRegistered(bool value) {
@@ -50,24 +50,24 @@ mixin _$MoreInfoController on _MoreInfoControllerBase, Store {
   }
 
   late final _$setIsLoadingAsyncAction =
-      AsyncAction('_MoreInfoControllerBase.setIsLoading', context: context);
+      AsyncAction('MoreInfoControllerBase.setIsLoading', context: context);
 
   @override
   Future<void> setIsLoading(bool value) {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$_MoreInfoControllerBaseActionController =
-      ActionController(name: '_MoreInfoControllerBase', context: context);
+  late final _$MoreInfoControllerBaseActionController =
+      ActionController(name: 'MoreInfoControllerBase', context: context);
 
   @override
   bool checkIsOkForSubscribe() {
-    final _$actionInfo = _$_MoreInfoControllerBaseActionController.startAction(
-        name: '_MoreInfoControllerBase.checkIsOkForSubscribe');
+    final _$actionInfo = _$MoreInfoControllerBaseActionController.startAction(
+        name: 'MoreInfoControllerBase.checkIsOkForSubscribe');
     try {
       return super.checkIsOkForSubscribe();
     } finally {
-      _$_MoreInfoControllerBaseActionController.endAction(_$actionInfo);
+      _$MoreInfoControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 

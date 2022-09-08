@@ -99,7 +99,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         Radius.circular(20)),
                                   ),
                                   child: Text(
-                                    '22 a 27 de Maio',
+                                    '22 a 27 de Maio de 2023',
                                     textAlign: TextAlign.center,
                                     style: AppTextStyles.buttonBold.copyWith(
                                         fontSize:

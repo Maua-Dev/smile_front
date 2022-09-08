@@ -10,7 +10,7 @@ class SuccessRegisterPage extends StatefulWidget {
   const SuccessRegisterPage({Key? key}) : super(key: key);
 
   @override
-  _SuccessRegisterPageState createState() => _SuccessRegisterPageState();
+  State<SuccessRegisterPage> createState() => _SuccessRegisterPageState();
 }
 
 class _SuccessRegisterPageState extends State<SuccessRegisterPage> {

@@ -15,7 +15,7 @@ class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends ModularState<LoginPage, LoginController> {
@@ -160,7 +160,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         ),
                         TextButton(
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.white.withOpacity(0),
+                              backgroundColor: Colors.white.withOpacity(0),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 50, vertical: 20),
                               textStyle: const TextStyle(
@@ -180,7 +180,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         ),
                         TextButton(
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.white.withOpacity(0),
+                              backgroundColor: Colors.white.withOpacity(0),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 50, vertical: 10),
                               textStyle: const TextStyle(

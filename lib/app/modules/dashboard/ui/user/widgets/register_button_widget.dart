@@ -26,6 +26,7 @@ class RegisterButtonWidget extends StatelessWidget {
             shape: MaterialStateProperty.all(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
             )),
+        onPressed: onPressed,
         child: isLoading
             ? const Center(
                 child: CircularProgressIndicator(
@@ -38,7 +39,6 @@ class RegisterButtonWidget extends StatelessWidget {
                         : MediaQuery.of(context).size.width < 1000
                             ? 24
                             : 28,
-                    color: Colors.white)),
-        onPressed: onPressed);
+                    color: Colors.white)));
   }
 }

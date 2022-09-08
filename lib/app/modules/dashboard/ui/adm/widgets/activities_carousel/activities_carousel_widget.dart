@@ -30,14 +30,14 @@ class ActivitiesCarouselWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var secureStorage = Modular.get<SecureStorage>();
-    final ScrollController _controller = ScrollController();
-    void _scrollRight(length) {
-      _controller.animateTo(_controller.position.pixels + 400,
+    final ScrollController controller = ScrollController();
+    void scrollRight(length) {
+      controller.animateTo(controller.position.pixels + 400,
           duration: const Duration(seconds: 1), curve: Curves.ease);
     }
 
-    void _scrollLeft(length) {
-      _controller.animateTo(_controller.position.pixels - 400,
+    void scrollLeft(length) {
+      controller.animateTo(controller.position.pixels - 400,
           duration: const Duration(seconds: 1), curve: Curves.ease);
     }
 
@@ -62,7 +62,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
               SizedBox(
                   height: 250,
                   child: ListView.builder(
-                      controller: _controller,
+                      controller: controller,
                       scrollDirection: Axis.horizontal,
                       itemCount: list.length,
                       itemBuilder: (BuildContext ctx, index) {
@@ -119,7 +119,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                 top: 90,
                 left: 40,
                 child: GestureDetector(
-                  onTap: () => _scrollLeft(list.length),
+                  onTap: () => scrollLeft(list.length),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
@@ -151,7 +151,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                 top: 90,
                 left: MediaQuery.of(context).size.width - 120,
                 child: GestureDetector(
-                  onTap: () => _scrollRight(list.length),
+                  onTap: () => scrollRight(list.length),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),

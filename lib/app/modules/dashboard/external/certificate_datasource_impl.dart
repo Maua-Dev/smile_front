@@ -40,8 +40,6 @@ class CertificateDatasourceImpl implements CertificateDatasourceInterface {
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage: errorMessage);
-      // ignore: avoid_print
-      print('get certificate, error: ' + errorMessage);
       rethrow;
     }
   }
