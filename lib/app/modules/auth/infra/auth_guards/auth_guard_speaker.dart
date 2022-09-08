@@ -2,9 +2,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../../../app_module.dart';
 import '../../presenter/controllers/auth_controller.dart';
 
-class AuthGuardSpeaker implements RouteGuard {
+class AuthGuardSpeaker extends RouteGuard {
+  AuthGuardSpeaker() : super(redirectTo: '/login');
   @override
-  Future<bool> canActivate(String path, ModularRoute router) async {
+  Future<bool> canActivate(String path, ModularRoute route) async {
     await Modular.isModuleReady<AppModule>();
     var authController = Modular.get<AuthController>();
     if (!authController.isLogged) {
@@ -15,7 +16,4 @@ class AuthGuardSpeaker implements RouteGuard {
     }
     return false;
   }
-
-  @override
-  String? get guardedRoute => '/login';
 }

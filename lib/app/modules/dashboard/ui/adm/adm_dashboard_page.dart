@@ -16,8 +16,8 @@ class AdmDashboardPage extends StatefulWidget {
   State<AdmDashboardPage> createState() => _AdmDashboardPageState();
 }
 
-class _AdmDashboardPageState
-    extends ModularState<AdmDashboardPage, AdmDashboardController> {
+class _AdmDashboardPageState extends State<AdmDashboardPage> {
+  var controller = Modular.get<AdmDashboardController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

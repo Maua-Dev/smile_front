@@ -31,7 +31,7 @@ class ForgotPasswordModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute,
         child: (_, args) => const ForgotPasswordPage()),
-    ChildRoute('escolher-senha',
+    ChildRoute('/escolher-senha',
         child: (_, args) => const ChangePasswordPage()),
   ];
 }

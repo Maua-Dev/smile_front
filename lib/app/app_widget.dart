@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
@@ -16,12 +15,13 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Intl.defaultLocale = 'pt_BR';
-    return MaterialApp(
+    Modular.setInitialRoute('/home/');
+    return MaterialApp.router(
       scaffoldMessengerKey: scaffoldKey,
       supportedLocales: const [Locale('pt', 'BR')],
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
-      navigatorObservers: [FirebaseAnalyticsService().getAnalyticsObserver()],
+      routeInformationParser: Modular.routeInformationParser,
+      routerDelegate: Modular.routerDelegate,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -43,7 +43,7 @@ class AppWidget extends StatelessWidget {
             color: AppColors.brandingPurple,
           ),
           scaffoldBackgroundColor: AppColors.backgroudColor),
-    ).modular();
+    );
   }
 }
 

@@ -71,8 +71,8 @@ class UserModule extends Module {
     Bind.lazySingleton<MoreInfoController>(
       (i) => MoreInfoController(
           repository: i(),
-          activity: i.args!.data[0] as CardActivity,
-          registered: i.args!.data[1] as bool,
+          activity: i.args.data[0] as CardActivity,
+          registered: i.args.data[1] as bool,
           userDashboardController: i()),
     ),
     Bind.lazySingleton((i) => Dio()),
