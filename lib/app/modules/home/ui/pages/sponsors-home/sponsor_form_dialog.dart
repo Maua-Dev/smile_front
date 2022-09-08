@@ -27,6 +27,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
       mask: '###.###.###/####-##',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
+  String? erroMsg;
   Future<void> sendForm() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
@@ -39,11 +40,19 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
 
       setLoading();
       try {
-        await dio.post('', data: formSponsorModel.toJson());
+        var res = await dio.post('', data: formSponsorModel.toJson());
         setLoading();
-        Modular.to.pop();
+        if (res.statusCode == 200) {
+          Modular.to.pop(true);
+        } else {
+          erroMsg =
+              'Erro ao enviar formulario! Entre em contato com dev@maua.br';
+          setState(() {});
+        }
       } catch (e) {
         setLoading();
+        erroMsg = 'Erro ao enviar formulario! Entre em contato com dev@maua.br';
+        setState(() {});
       }
     }
   }
@@ -365,6 +374,12 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         OutlinedButton(
             onPressed: () => Modular.to.pop(), child: const Text('CANCELAR')),
         Builder(builder: (context) {
+          if (erroMsg != null) {
+            return Text(
+              erroMsg!,
+              style: const TextStyle(color: Colors.red, fontSize: 14),
+            );
+          }
           return ElevatedButton(
             style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFD36D49)),

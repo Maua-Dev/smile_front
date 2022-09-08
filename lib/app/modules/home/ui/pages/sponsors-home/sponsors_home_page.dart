@@ -109,6 +109,21 @@ class BeSponsor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> openForms() async {
+      var res = await showDialog<bool?>(
+        context: context,
+        builder: (context) => const SponsorFormDialog(),
+      );
+      if (res != null && res) {
+        showDialog(
+            context: context,
+            builder: (context) => const AlertDialog(
+                  content: Text(
+                      'Enviado com sucesso!! Nossa equipe entrará em contato em breve.'),
+                ));
+      }
+    }
+
     return Padding(
       padding: const EdgeInsets.all(32.0),
       child: Column(
@@ -279,6 +294,7 @@ class BeSponsor extends StatelessWidget {
           ),
           MediaQuery.of(context).size.width < 530
               ? ListView.separated(
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index) => plansWidgets[index],
                   separatorBuilder: (context, index) => const SizedBox(
@@ -292,7 +308,7 @@ class BeSponsor extends StatelessWidget {
           Container(
             // constraints: BoxConstraints(maxWidth: 700),
             padding: EdgeInsets.all(
-                MediaQuery.of(context).size.width < 530 ? 24 : 32),
+                MediaQuery.of(context).size.width < 530 ? 18 : 32),
             child: MediaQuery.of(context).size.width < 530
                 ? Column(
                     mainAxisSize: MainAxisSize.min,
@@ -315,13 +331,9 @@ class BeSponsor extends StatelessWidget {
                             minHeight:
                                 MediaQuery.of(context).size.height * 0.09),
                         child: FormsButtonWidget(
-                          buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
-                          backgroundColor: const Color(0xFFD36D49),
-                          onPressed: () => showDialog(
-                            context: context,
-                            builder: (context) => const SponsorFormDialog(),
-                          ),
-                        ),
+                            buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                            backgroundColor: const Color(0xFFD36D49),
+                            onPressed: openForms),
                       )
                     ],
                   )
@@ -338,13 +350,9 @@ class BeSponsor extends StatelessWidget {
                         ),
                       ),
                       FormsButtonWidget(
-                        buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
-                        backgroundColor: const Color(0xFFD36D49),
-                        onPressed: () => showDialog(
-                          context: context,
-                          builder: (context) => const SponsorFormDialog(),
-                        ),
-                      )
+                          buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                          backgroundColor: const Color(0xFFD36D49),
+                          onPressed: openForms)
                     ],
                   ),
           )
