@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/social_media_icons_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
@@ -212,6 +213,9 @@ class Footer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const Padding(
+                    padding: EdgeInsets.only(right: 16.0),
+                    child: SocialMediaWidget()),
                 SizedBox(
                   width: MediaQuery.of(context).size.width < 700
                       ? MediaQuery.of(context).size.width * 0.45
