@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
+import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocialMediaWidget extends StatelessWidget {
@@ -52,7 +53,6 @@ class SocialMediaWidget extends StatelessWidget {
 class SocialMediaIconsWidget extends StatelessWidget {
   SocialMediaIconsWidget({super.key, required this.icon, required this.url});
 
-  late int index;
   late Widget icon;
   late String url;
 
@@ -65,7 +65,7 @@ class SocialMediaIconsWidget extends StatelessWidget {
       ),
       child: CircleAvatar(
         radius: 15,
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: AppColors.brandingOrange,
         child: icon,
       ),
     );
