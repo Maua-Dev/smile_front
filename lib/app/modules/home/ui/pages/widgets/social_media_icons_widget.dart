@@ -20,13 +20,13 @@ class SocialMediaWidget extends StatelessWidget {
     'https://www.facebook.com/InstitutoMaua',
   ];
   final myIcons = const <Widget>[
-    Icon(FontAwesome5.blogger_b, size: 17),
-    Icon(FontAwesome.youtube_play, size: 17),
-    Icon(FontAwesome5.instagram, size: 17),
-    Icon(FontAwesome5.linkedin_in, size: 17),
-    Icon(Entypo.flickr, size: 17),
-    Icon(FontAwesome5.twitter, size: 17),
-    Icon(FontAwesome5.facebook_f, size: 17),
+    Icon(FontAwesome5.blogger_b, size: 20),
+    Icon(FontAwesome.youtube_play, size: 20),
+    Icon(FontAwesome5.instagram, size: 20),
+    Icon(FontAwesome5.linkedin_in, size: 20),
+    Icon(Entypo.flickr, size: 20),
+    Icon(FontAwesome5.twitter, size: 20),
+    Icon(FontAwesome5.facebook_f, size: 20),
   ];
 
   @override
