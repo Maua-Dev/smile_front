@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 import '../../../../../shared/themes/app_text_styles.dart';
@@ -44,22 +45,24 @@ class _MainHomePageState extends State<MainHomePage> {
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text('Semana Mauá de Inovação,',
-                                    style: AppTextStyles.titleH1.copyWith(
-                                        color: Colors.white,
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1500
-                                                ? 40
-                                                : 55)),
-                                Text('Liderança e Empreendedorismo',
-                                    style: AppTextStyles.titleH1.copyWith(
-                                        color: Colors.white,
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1500
-                                                ? 40
-                                                : 55)),
+                                TextRenderer(
+                                  child: Text('Semana Mauá de Inovação,',
+                                      style: AppTextStyles.titleH1.copyWith(
+                                          color: Colors.white,
+                                          fontSize:
+                                              MediaQuery.of(context).size.width <
+                                                      1500
+                                                  ? 40
+                                                  : 55)),),
+                                TextRenderer(
+                                  child: Text('Liderança e Empreendedorismo',
+                                      style: AppTextStyles.titleH1.copyWith(
+                                          color: Colors.white,
+                                          fontSize:
+                                              MediaQuery.of(context).size.width <
+                                                      1500
+                                                  ? 40
+                                                  : 55)),),
                                 const SizedBox(
                                   height: 16,
                                 ),
@@ -70,22 +73,23 @@ class _MainHomePageState extends State<MainHomePage> {
                                       : MediaQuery.of(context).size.width < 1500
                                           ? 700
                                           : 820,
-                                  child: Text(
-                                    apresentationText,
-                                    style: AppTextStyles.body.copyWith(
-                                        color: Colors.white,
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1500
-                                                ? 19
-                                                : MediaQuery.of(context)
-                                                            .size
-                                                            .width <
-                                                        1500
-                                                    ? 22
-                                                    : 25),
-                                    textAlign: TextAlign.justify,
-                                  ),
+                                  child: TextRenderer(
+                                    child: Text(
+                                      apresentationText,
+                                      style: AppTextStyles.body.copyWith(
+                                          color: Colors.white,
+                                          fontSize:
+                                              MediaQuery.of(context).size.width <
+                                                      1500
+                                                  ? 19
+                                                  : MediaQuery.of(context)
+                                                              .size
+                                                              .width <
+                                                          1500
+                                                      ? 22
+                                                      : 25),
+                                      textAlign: TextAlign.justify,
+                                    ),)
                                 ),
                                 const SizedBox(
                                   height: 16,
@@ -98,21 +102,22 @@ class _MainHomePageState extends State<MainHomePage> {
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(20)),
                                   ),
-                                  child: Text(
-                                    '22 a 27 de Maio de 2023',
-                                    textAlign: TextAlign.center,
-                                    style: AppTextStyles.buttonBold.copyWith(
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1500
-                                                ? 40
-                                                : MediaQuery.of(context)
-                                                            .size
-                                                            .width <
-                                                        1500
-                                                    ? 48
-                                                    : 55),
-                                  ),
+                                  child: TextRenderer(
+                                    child: Text(
+                                      '22 a 27 de Maio de 2023',
+                                      textAlign: TextAlign.center,
+                                      style: AppTextStyles.buttonBold.copyWith(
+                                          fontSize:
+                                              MediaQuery.of(context).size.width <
+                                                      1500
+                                                  ? 40
+                                                  : MediaQuery.of(context)
+                                                              .size
+                                                              .width <
+                                                          1500
+                                                      ? 48
+                                                      : 55),
+                                    ),),
                                 ),
                                 const SizedBox(
                                   height: 24,
@@ -155,22 +160,24 @@ class _MainHomePageState extends State<MainHomePage> {
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8),
             child: Center(
-              child: Text(
-                'Semana Mauá de Inovação, Liderança e Empreendedorismo',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              child: TextRenderer(
+                child: Text(
+                  'Semana Mauá de Inovação, Liderança e Empreendedorismo',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),),
             ),
           ),
           const Padding(
             padding: EdgeInsets.only(left: 32, right: 32),
-            child: Text(
-              apresentationText,
-              style: TextStyle(fontSize: 12),
-              textAlign: TextAlign.justify,
-            ),
+            child: TextRenderer(
+              child: Text(
+                apresentationText,
+                style: TextStyle(fontSize: 12),
+                textAlign: TextAlign.justify,
+              ),),
           ),
           const SizedBox(
             height: 8,
@@ -183,11 +190,12 @@ class _MainHomePageState extends State<MainHomePage> {
               color: AppColors.brandingOrange,
               borderRadius: const BorderRadius.all(Radius.circular(20)),
             ),
-            child: Text(
-              '22 a 27 de Maio',
-              textAlign: TextAlign.center,
-              style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
-            ),
+            child: TextRenderer(
+              child: Text(
+                '22 a 27 de Maio',
+                textAlign: TextAlign.center,
+                style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
+              ),),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -205,11 +213,12 @@ class _MainHomePageState extends State<MainHomePage> {
                     color: AppColors.brandingPurple,
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                   ),
-                  child: Text(
-                    'SAIBA MAIS >>>',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
-                  ),
+                  child: TextRenderer(
+                    child: Text(
+                      'SAIBA MAIS >>>',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
+                    ),),
                 ),
               ),
             ),

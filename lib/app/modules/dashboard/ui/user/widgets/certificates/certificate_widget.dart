@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
@@ -32,7 +33,8 @@ class CertificateWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              child: Text(
+              child: TextRenderer(
+                child: Text(
                 certificateName,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -41,7 +43,7 @@ class CertificateWidget extends StatelessWidget {
                         MediaQuery.of(context).size.width < 1000 ? 18 : 22,
                     color: AppColors.brandingPurple),
                 textAlign: TextAlign.left,
-              ),
+              ),),
             ),
             const SizedBox(
               width: 8,

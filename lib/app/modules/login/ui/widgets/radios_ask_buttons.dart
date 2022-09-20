@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 
@@ -40,10 +41,11 @@ class RadioAskButtons extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            TextRenderer(
+              child: Text(
               question,
               style: const TextStyle(fontSize: 15),
-            ),
+            ),),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -64,10 +66,11 @@ class RadioAskButtons extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Text(
+                const TextRenderer(
+                  child: Text(
                   'Sim',
                   style: TextStyle(fontSize: 15),
-                ),
+                ),),
                 const SizedBox(width: 20),
                 SizedBox(
                   width: 40,
@@ -86,10 +89,11 @@ class RadioAskButtons extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Text(
+                const TextRenderer(
+                  child: Text(
                   'Não',
                   style: TextStyle(fontSize: 15),
-                ),
+                ),),
               ],
             ),
           ],
@@ -147,10 +151,11 @@ class RadioAskButtons extends StatelessWidget {
 //         child: Row(
 //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //           children: [
-//             Text(
+//           TextRenderer(
+//             child: Text(
 //               widget.question,
 //               style: const TextStyle(fontSize: 15),
-//             ),
+//             ),),
 //             Row(
 //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //               children: [

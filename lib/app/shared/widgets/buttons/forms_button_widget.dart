@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class FormsButtonWidget extends StatelessWidget {
@@ -35,11 +36,12 @@ class FormsButtonWidget extends StatelessWidget {
               padding: const EdgeInsets.only(right: 4),
               child: icon ?? const SizedBox.shrink(),
             ),
-            Text(
-              buttonTittle,
-              style: AppTextStyles.button.copyWith(
-                  fontSize: MediaQuery.of(context).size.width < 1630 ? 15 : 20),
-            ),
+            TextRenderer(
+              child: Text(
+                buttonTittle,
+                style: AppTextStyles.button.copyWith(
+                    fontSize: MediaQuery.of(context).size.width < 1630 ? 15 : 20),
+              ),),
           ],
         ),
       ),

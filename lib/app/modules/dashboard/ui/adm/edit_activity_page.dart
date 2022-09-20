@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:intl/intl.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../../../shared/themes/app_colors.dart';
@@ -76,7 +77,7 @@ class _EditActivityPageState
                             .map((ActivityEnum value) {
                           return DropdownMenuItem<ActivityEnum>(
                             value: value,
-                            child: Text(value.name),
+                            child: TextRenderer(child: Text(value.name)),
                           );
                         }).toList(),
                         onChanged: controller.setType,

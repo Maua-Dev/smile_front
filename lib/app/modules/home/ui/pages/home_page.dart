@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/home/ui/pages/footer/footer.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/speakers_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
@@ -72,33 +73,36 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.zero,
                     children: [
                       ListTile(
-                        title: Text(
+                        title: TextRenderer(
+                          child: Text(
                           'HOME',
                           style:
                               AppTextStyles.buttonBold.copyWith(fontSize: 16),
-                        ),
+                        ),),
                         onTap: () {
                           Navigator.pop(context);
                           scrollToHome();
                         },
                       ),
                       ListTile(
-                        title: Text(
+                        title: TextRenderer(
+                          child: Text(
                           'ATIVIDADES',
                           style:
                               AppTextStyles.buttonBold.copyWith(fontSize: 16),
-                        ),
+                        ),),
                         onTap: () {
                           Navigator.pop(context);
                           scrollToActivity();
                         },
                       ),
                       ListTile(
-                        title: Text(
+                        title: TextRenderer(
+                          child: Text(
                           'PATROCINADORES',
                           style:
                               AppTextStyles.buttonBold.copyWith(fontSize: 16),
-                        ),
+                        ),),
                         onTap: () {
                           Navigator.pop(context);
                           scrollToSponsors();

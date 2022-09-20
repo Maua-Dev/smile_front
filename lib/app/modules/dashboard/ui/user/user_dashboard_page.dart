@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_data_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -169,12 +170,13 @@ class _UserDashboardPageState
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text(
-                  'Parece que você ainda não se inscreveu em nenhuma atividade :(',
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.titleH1
-                      .copyWith(color: AppColors.brandingOrange, fontSize: 32),
-                ),
+                child: TextRenderer(
+                  child: Text(
+                    'Parece que você ainda não se inscreveu em nenhuma atividade :(',
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.titleH1
+                        .copyWith(color: AppColors.brandingOrange, fontSize: 32),
+                  ),),
               ),
               const SizedBox(
                 height: 48,

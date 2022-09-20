@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/weekdays_enum.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
@@ -49,11 +50,12 @@ class ActivitiesCarouselWidget extends StatelessWidget {
               padding: const EdgeInsets.only(left: 72.0),
               child: Row(
                 children: [
-                  Text(
-                    weekday != null ? WeekdaysEnum.values[weekday!].name : '',
-                    style: AppTextStyles.titleH1.copyWith(
-                        fontSize: 32, color: AppColors.brandingPurple),
-                  ),
+                  TextRenderer(
+                    child:Text(
+                      weekday != null ? WeekdaysEnum.values[weekday!].name : '',
+                      style: AppTextStyles.titleH1.copyWith(
+                          fontSize: 32, color: AppColors.brandingPurple),
+                    ),),
                 ],
               ),
             ),

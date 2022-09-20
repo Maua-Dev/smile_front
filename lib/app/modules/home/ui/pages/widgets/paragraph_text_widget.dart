@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 
 import '../../../../../shared/themes/app_text_styles.dart';
 
@@ -14,17 +15,18 @@ class ParagraphTextWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width < 800 ? 16 : 108),
-      child: Text(
-        paragraph,
-        style: AppTextStyles.body.copyWith(
-            fontSize: MediaQuery.of(context).size.width < 800
-                ? 12
-                : MediaQuery.of(context).size.width < 1300
-                    ? 24
-                    : 28,
-            fontWeight: isBold ? FontWeight.bold : null),
-        textAlign: TextAlign.justify,
-      ),
+      child: TextRenderer(
+        child: Text(
+          paragraph,
+          style: AppTextStyles.body.copyWith(
+              fontSize: MediaQuery.of(context).size.width < 800
+                  ? 12
+                  : MediaQuery.of(context).size.width < 1300
+                      ? 24
+                      : 28,
+              fontWeight: isBold ? FontWeight.bold : null),
+          textAlign: TextAlign.justify,
+        ),),
     );
   }
 }

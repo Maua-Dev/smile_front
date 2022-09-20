@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
@@ -37,16 +38,17 @@ class UserActivityCardWidget extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      hour,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.buttonBold.copyWith(
-                          fontSize: MediaQuery.of(context).size.width < 1000
-                              ? 18
-                              : 24,
-                          color: AppColors.brandingPurple),
-                    ),
+                    TextRenderer(
+                      child: Text(
+                        hour,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.buttonBold.copyWith(
+                            fontSize: MediaQuery.of(context).size.width < 1000
+                                ? 18
+                                : 24,
+                            color: AppColors.brandingPurple),
+                      ),),
                     SizedBox(
                       width: MediaQuery.of(context).size.width < 1000 ? 8 : 16,
                     ),
@@ -56,37 +58,40 @@ class UserActivityCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           if (activityCode != '' && title != '')
-                            Text(
-                              '$title ($activityCode)',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: AppTextStyles.buttonBold.copyWith(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1000
-                                          ? 16
-                                          : 24,
-                                  color: Colors.black),
-                            ),
+                            TextRenderer(
+                              child:Text(
+                                '$title ($activityCode)',
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: AppTextStyles.buttonBold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1000
+                                            ? 16
+                                            : 24,
+                                    color: Colors.black),
+                              ),),
                           if (location != null && location != '')
-                            Text(
-                              'Término: $finalTime',
-                              style: AppTextStyles.buttonBold.copyWith(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1000
-                                          ? 14
-                                          : 16,
-                                  color: AppColors.gray),
-                            ),
+                            TextRenderer(
+                              child: Text(
+                                'Término: $finalTime',
+                                style: AppTextStyles.buttonBold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1000
+                                            ? 14
+                                            : 16,
+                                    color: AppColors.gray),
+                              ),),
                           if (location != null && location != '')
-                            Text(
-                              'Local: $location',
-                              style: AppTextStyles.buttonBold.copyWith(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1000
-                                          ? 14
-                                          : 16,
-                                  color: AppColors.gray),
-                            ),
+                            TextRenderer(
+                              child: Text(
+                                'Local: $location',
+                                style: AppTextStyles.buttonBold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1000
+                                            ? 14
+                                            : 16,
+                                    color: AppColors.gray),
+                              ),)
                         ],
                       ),
                     ),

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/smile_logo_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -70,14 +71,15 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 16.0, horizontal: 4),
-                                    child: Text(
-                                      controller.errors,
-                                      style: AppTextStyles.body.copyWith(
-                                        fontSize: 18,
-                                        color: Colors.white,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
+                                    child: TextRenderer(
+                                      child: Text(
+                                        controller.errors,
+                                        style: AppTextStyles.body.copyWith(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),),
                                   ),
                                 ),
                               );
@@ -169,14 +171,15 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           onPressed: () {
                             Modular.to.navigate('/login/esqueci-minha-senha');
                           },
-                          child: const Text(
+                          child: const TextRenderer(
+                            child: Text(
                             'Esqueci minha senha',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               decoration: TextDecoration.underline,
                               color: Colors.white,
                             ),
-                          ),
+                          ),),
                         ),
                         TextButton(
                           style: ElevatedButton.styleFrom(
@@ -189,13 +192,14 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           onPressed: () {
                             Modular.to.navigate('/login/reenviar-email');
                           },
-                          child: const Text(
+                          child: const TextRenderer(
+                            child: Text(
                             'Reenviar e-mail de confirmação',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 color: Colors.white),
-                          ),
+                          ),),
                         ),
                         const SizedBox(
                           height: 16,
@@ -218,22 +222,23 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                     mode: LaunchMode.externalApplication,
                                   );
                                 },
-                                child: RichText(
-                                    textAlign: TextAlign.center,
-                                    text: const TextSpan(
-                                        text:
-                                            'Em caso de erro ao se logar, envie um e-mail para: ',
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 16),
-                                        children: [
-                                          TextSpan(
-                                            text: 'dev@maua.br',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold),
-                                          )
-                                        ])),
+                                child: TextRenderer(
+                                  child: RichText(
+                                      textAlign: TextAlign.center,
+                                      text: const TextSpan(
+                                          text:
+                                              'Em caso de erro ao se logar, envie um e-mail para: ',
+                                          style: TextStyle(
+                                              color: Colors.white, fontSize: 16),
+                                          children: [
+                                            TextSpan(
+                                              text: 'dev@maua.br',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                          ])),),
                               ),
                             ),
                           ),

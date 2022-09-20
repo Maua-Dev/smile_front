@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'dart:math' as math;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -53,18 +54,19 @@ class _MoreInfoPageState
                     borderRadius: BorderRadius.circular(40),
                     color: AppColors.lilac),
                 child: Center(
-                  child: Text(
-                    controller.activity.type!.name,
-                    textAlign: TextAlign.justify,
-                    style: AppTextStyles.buttonBold.copyWith(
-                      fontSize: MediaQuery.of(context).size.width < 800
-                          ? 18
-                          : MediaQuery.of(context).size.width < 1000
-                              ? 22
-                              : 28,
-                      color: AppColors.brandingPurple,
-                    ),
-                  ),
+                  child: TextRenderer(
+                    child: Text(
+                      controller.activity.type!.name,
+                      textAlign: TextAlign.justify,
+                      style: AppTextStyles.buttonBold.copyWith(
+                        fontSize: MediaQuery.of(context).size.width < 800
+                            ? 18
+                            : MediaQuery.of(context).size.width < 1000
+                                ? 22
+                                : 28,
+                        color: AppColors.brandingPurple,
+                      ),
+                    ),)
                 ),
               ),
               const SizedBox(
@@ -72,17 +74,18 @@ class _MoreInfoPageState
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  '${controller.activity.activityCode} - ${controller.activity.title}',
-                  textAlign: TextAlign.justify,
-                  style: AppTextStyles.buttonBold.copyWith(
-                      fontSize: MediaQuery.of(context).size.width < 800
-                          ? 20
-                          : MediaQuery.of(context).size.width < 1000
-                              ? 24
-                              : 28,
-                      color: Colors.black),
-                ),
+                child: TextRenderer(
+                  child: Text(
+                    '${controller.activity.activityCode} - ${controller.activity.title}',
+                    textAlign: TextAlign.justify,
+                    style: AppTextStyles.buttonBold.copyWith(
+                        fontSize: MediaQuery.of(context).size.width < 800
+                            ? 20
+                            : MediaQuery.of(context).size.width < 1000
+                                ? 24
+                                : 28,
+                        color: Colors.black),
+                  ),)
               ),
               const SizedBox(
                 height: 16,
@@ -106,67 +109,72 @@ class _MoreInfoPageState
                                       : 18,
                               color: AppColors.brandingPurple),
                         ),
-                        Text(
-                          weekday,
-                          style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 14
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 20
-                                      : 24,
-                              color: AppColors.brandingPurple),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          'Horário',
-                          style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 10
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 14
-                                      : 18,
-                              color: AppColors.brandingPurple),
-                        ),
-                        Text(
-                          '$timeString - $finalTime',
-                          style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 14
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 20
-                                      : 24,
-                              color: AppColors.brandingPurple),
-                        ),
-                      ],
-                    ),
-                    if (controller.activity.location != null)
-                      Column(
-                        children: [
-                          Text(
-                            'Local',
+                        TextRenderer(
+                          child: Text(
+                            weekday,
                             style: AppTextStyles.buttonBold.copyWith(
-                                fontSize: MediaQuery.of(context).size.width <
-                                        800
-                                    ? 10
-                                    : MediaQuery.of(context).size.width < 1000
-                                        ? 14
-                                        : 18,
-                                color: AppColors.brandingPurple),
-                          ),
-                          Text(
-                            controller.activity.location!,
-                            style: AppTextStyles.buttonBold.copyWith(
-                                fontSize: MediaQuery.of(context).size.width <
-                                        800
+                                fontSize: MediaQuery.of(context).size.width < 800
                                     ? 14
                                     : MediaQuery.of(context).size.width < 1000
                                         ? 20
                                         : 24,
                                 color: AppColors.brandingPurple),
-                          ),
+                          ),),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        TextRenderer(
+                          child: Text(
+                            'Horário',
+                            style: AppTextStyles.buttonBold.copyWith(
+                                fontSize: MediaQuery.of(context).size.width < 800
+                                    ? 10
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 14
+                                        : 18,
+                                color: AppColors.brandingPurple),
+                          ),),
+                        TextRenderer(
+                          child: Text(
+                            '$timeString - $finalTime',
+                            style: AppTextStyles.buttonBold.copyWith(
+                                fontSize: MediaQuery.of(context).size.width < 800
+                                    ? 14
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 20
+                                        : 24,
+                                color: AppColors.brandingPurple),
+                          ),),
+                      ],
+                    ),
+                    if (controller.activity.location != null)
+                      Column(
+                        children: [
+                          TextRenderer(
+                            child: Text(
+                              'Local',
+                              style: AppTextStyles.buttonBold.copyWith(
+                                  fontSize: MediaQuery.of(context).size.width <
+                                          800
+                                      ? 10
+                                      : MediaQuery.of(context).size.width < 1000
+                                          ? 14
+                                          : 18,
+                                  color: AppColors.brandingPurple),
+                            ),),
+                          TextRenderer(
+                            child: Text(
+                              controller.activity.location!,
+                              style: AppTextStyles.buttonBold.copyWith(
+                                  fontSize: MediaQuery.of(context).size.width <
+                                          800
+                                      ? 14
+                                      : MediaQuery.of(context).size.width < 1000
+                                          ? 20
+                                          : 24,
+                                  color: AppColors.brandingPurple),
+                            ),),
                         ],
                       ),
                     if (controller.activity.link != null &&
@@ -229,17 +237,19 @@ class _MoreInfoPageState
               Observer(builder: (_) {
                 return !controller.activity.acceptSubscription &&
                         !controller.isRegistered
-                    ? Text(
-                        'Inscrição para a atividade indisponível!',
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.titleH1.copyWith(
-                            color: AppColors.brandingPurple,
-                            fontSize: MediaQuery.of(context).size.width < 800
-                                ? 22
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 26
-                                    : 30),
-                      )
+                    ? 
+                    TextRenderer(
+                      child: Text(
+                          'Inscrição para a atividade indisponível!',
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.titleH1.copyWith(
+                              color: AppColors.brandingPurple,
+                              fontSize: MediaQuery.of(context).size.width < 800
+                                  ? 22
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 26
+                                      : 30),
+                        ))
                     : Center(
                         child: RegisterButtonWidget(
                             isRegistered: controller.isRegistered,
@@ -335,7 +345,8 @@ class _MoreInfoPageState
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text('Descrição',
+                child: TextRenderer(
+                  child: Text('Descrição',
                     style: AppTextStyles.buttonBold.copyWith(
                         fontSize: MediaQuery.of(context).size.width < 800
                             ? 20
@@ -343,13 +354,14 @@ class _MoreInfoPageState
                                 ? 24
                                 : 28,
                         color: AppColors.brandingPurple)),
-              ),
+              ),),
               const SizedBox(
                 height: 8,
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(controller.activity.description,
+                child: TextRenderer(
+                    child: Text(controller.activity.description,
                     textAlign: TextAlign.justify,
                     style: AppTextStyles.body.copyWith(
                         fontSize: MediaQuery.of(context).size.width < 800
@@ -357,7 +369,7 @@ class _MoreInfoPageState
                             : MediaQuery.of(context).size.width < 1000
                                 ? 18
                                 : 22,
-                        color: Colors.black)),
+                        color: Colors.black)),),
               ),
               const SizedBox(
                 height: 16,
@@ -390,42 +402,44 @@ class _MoreInfoPageState
                                       null &&
                                   controller.activity.speakers![index].name !=
                                       '')
-                                Text(
-                                  controller.activity.speakers![index].name!,
-                                  textAlign: TextAlign.justify,
-                                  style: AppTextStyles.buttonBold.copyWith(
-                                      fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width <
-                                              800
-                                          ? 18
-                                          : MediaQuery.of(context).size.width <
-                                                  1000
-                                              ? 22
-                                              : 28,
-                                      color: Colors.black),
-                                ),
+                                TextRenderer(
+                                  child: Text(
+                                    controller.activity.speakers![index].name!,
+                                    textAlign: TextAlign.justify,
+                                    style: AppTextStyles.buttonBold.copyWith(
+                                        fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .width <
+                                                800
+                                            ? 18
+                                            : MediaQuery.of(context).size.width <
+                                                    1000
+                                                ? 22
+                                                : 28,
+                                        color: Colors.black),
+                                  ),),
                               if (controller
                                           .activity.speakers![index].company !=
                                       null &&
                                   controller
                                           .activity.speakers![index].company !=
                                       '')
-                                Text(
-                                  'Empresa: ${controller.activity.speakers![index].company}',
-                                  textAlign: TextAlign.justify,
-                                  style: AppTextStyles.buttonBold.copyWith(
-                                      fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width <
-                                              800
-                                          ? 12
-                                          : MediaQuery.of(context).size.width <
-                                                  1000
-                                              ? 14
-                                              : 20,
-                                      color: AppColors.brandingPurple),
-                                ),
+                                TextRenderer(
+                                  child: Text(
+                                    'Empresa: ${controller.activity.speakers![index].company}',
+                                    textAlign: TextAlign.justify,
+                                    style: AppTextStyles.buttonBold.copyWith(
+                                        fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .width <
+                                                800
+                                            ? 12
+                                            : MediaQuery.of(context).size.width <
+                                                    1000
+                                                ? 14
+                                                : 20,
+                                        color: AppColors.brandingPurple),
+                                  ),),
                             ],
                           ),
                         ),
@@ -438,7 +452,8 @@ class _MoreInfoPageState
                         controller.activity.speakers![index].bio != '')
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(controller.activity.speakers![index].bio!,
+                        child: TextRenderer(
+                          child: Text(controller.activity.speakers![index].bio!,
                             textAlign: TextAlign.justify,
                             style: AppTextStyles.body.copyWith(
                                 fontSize: MediaQuery.of(context).size.width <
@@ -447,7 +462,7 @@ class _MoreInfoPageState
                                     : MediaQuery.of(context).size.width < 1000
                                         ? 18
                                         : 22,
-                                color: Colors.black)),
+                                color: Colors.black)),),
                       ),
                     const SizedBox(
                       height: 8,

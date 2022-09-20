@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 
 class CustomAlertDialogWidget extends StatelessWidget {
   final String title;
@@ -13,8 +14,8 @@ class CustomAlertDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(title),
-      content: content != null ? Text(content!) : null,
+      title: TextRenderer(child: Text(title)),
+      content: content != null ? TextRenderer(child: Text(content!)) : null,
       actions: [
         ElevatedButton(
           child: const Text('Fechar'),

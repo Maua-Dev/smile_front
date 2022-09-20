@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_email_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:string_validator/string_validator.dart';
@@ -76,7 +77,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
   Widget build(BuildContext context) {
     var optionsSponsorType = [
       RadioListTile<String>(
-        title: const Text('Patrocínio Diamante'),
+        title: const TextRenderer(child: Text('Patrocínio Diamante')),
         value: 'Patrocínio Diamante',
         groupValue: formSponsorModel.sponsorType,
         onChanged: (value) => setState(() {
@@ -84,7 +85,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         }),
       ),
       RadioListTile<String>(
-        title: const Text('Patrocínio Ouro'),
+        title: const TextRenderer(child: Text('Patrocínio Ouro')),
         value: 'Patrocínio Ouro',
         groupValue: formSponsorModel.sponsorType,
         onChanged: (value) => setState(() {
@@ -92,7 +93,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         }),
       ),
       RadioListTile<String>(
-        title: const Text('Patrocínio Prata'),
+        title: const TextRenderer(child: Text('Patrocínio Prata')),
         value: 'Patrocínio Prata',
         groupValue: formSponsorModel.sponsorType,
         onChanged: (value) => setState(() {
@@ -100,7 +101,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         }),
       ),
       RadioListTile<String>(
-        title: const Text('Patrocínio Bronze'),
+        title: const TextRenderer(child: Text('Patrocínio Bronze')),
         value: 'Patrocínio Bronze',
         groupValue: formSponsorModel.sponsorType,
         onChanged: (value) => setState(() {
@@ -110,7 +111,8 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
     ];
     var optionsClosureDate = [
       RadioListTile<String>(
-        title: const Text('Outubro de 2022 (50% de desconto)'),
+        title: const TextRenderer(
+            child: Text('Outubro de 2022 (50% de desconto)')),
         value: 'Patrocínio Diamante',
         groupValue: formSponsorModel.closureDate,
         onChanged: (value) => setState(() {
@@ -118,7 +120,8 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         }),
       ),
       RadioListTile<String>(
-        title: const Text('Novembro de 2022 (40% de desconto)'),
+        title: const TextRenderer(
+            child: Text('Novembro de 2022 (40% de desconto)')),
         value: 'Novembro de 2022 (40% de desconto)',
         groupValue: formSponsorModel.closureDate,
         onChanged: (value) => setState(() {
@@ -126,7 +129,8 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         }),
       ),
       RadioListTile<String>(
-        title: const Text('Dezembro de 2022 (30% de desconto)'),
+        title: const TextRenderer(
+            child: Text('Dezembro de 2022 (30% de desconto)')),
         value: 'Dezembro de 2022 (30% de desconto)',
         groupValue: formSponsorModel.closureDate,
         onChanged: (value) => setState(() {
@@ -134,7 +138,8 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         }),
       ),
       RadioListTile<String>(
-        title: const Text('Janeiro de 2023 (10% de desconto)'),
+        title: const TextRenderer(
+            child: Text('Janeiro de 2023 (10% de desconto)')),
         value: 'Janeiro de 2023 (10% de desconto)',
         groupValue: formSponsorModel.closureDate,
         onChanged: (value) => setState(() {
@@ -142,7 +147,8 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         }),
       ),
       RadioListTile<String>(
-        title: const Text('Fevereiro de 2023 (Valor integral)'),
+        title: const TextRenderer(
+            child: Text('Fevereiro de 2023 (Valor integral)')),
         value: 'Fevereiro de 2023 (Valor integral)',
         groupValue: formSponsorModel.closureDate,
         onChanged: (value) => setState(() {
@@ -156,11 +162,14 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text(
-                'Cadastro do Patrocinador',
-                style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width < 530 ? 28 : 35,
-                    fontWeight: FontWeight.w900),
+              TextRenderer(
+                child: Text(
+                  'Cadastro do Patrocinador',
+                  style: TextStyle(
+                      fontSize:
+                          MediaQuery.of(context).size.width < 530 ? 28 : 35,
+                      fontWeight: FontWeight.w900),
+                ),
               ),
               const SizedBox(
                 height: 16,
@@ -308,7 +317,9 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
               const SizedBox(
                 height: 16,
               ),
-              const Text('Escolha a cota de patrocínio'),
+              const TextRenderer(
+                child: Text('Escolha a cota de patrocínio'),
+              ),
               const SizedBox(
                 height: 16,
               ),
@@ -337,7 +348,9 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
               const SizedBox(
                 height: 16,
               ),
-              const Text('Deseja Realizar o fechamento do patrocínio em'),
+              const TextRenderer(
+                child: Text('Deseja Realizar o fechamento do patrocínio em'),
+              ),
               const SizedBox(
                 height: 16,
               ),
@@ -375,10 +388,11 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
             onPressed: () => Modular.to.pop(), child: const Text('CANCELAR')),
         Builder(builder: (context) {
           if (erroMsg != null) {
-            return Text(
+            return TextRenderer(
+                child: Text(
               erroMsg!,
               style: const TextStyle(color: Colors.red, fontSize: 14),
-            );
+            ));
           }
           return ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -394,9 +408,11 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                       strokeWidth: 3,
                     ),
                   )
-                : const Text(
-                    'ENVIAR FORMULÁRIO',
-                    style: TextStyle(color: Colors.white),
+                : const TextRenderer(
+                    child: Text(
+                      'ENVIAR FORMULÁRIO',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
           );
         })

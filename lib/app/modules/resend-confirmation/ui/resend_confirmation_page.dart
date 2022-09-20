@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
@@ -64,14 +65,15 @@ class _ResendConfirmationPageState
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 16.0),
-                                  child: Text(
-                                    controller.errors,
-                                    style: AppTextStyles.body.copyWith(
-                                      fontSize: 18,
-                                      color: Colors.white,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
+                                  child: TextRenderer(
+                                    child: Text(
+                                      controller.errors,
+                                      style: AppTextStyles.body.copyWith(
+                                        fontSize: 18,
+                                        color: Colors.white,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),),
                                 ),
                               );
                             }
@@ -87,11 +89,12 @@ class _ResendConfirmationPageState
                                 children: [
                                   const Padding(
                                     padding: EdgeInsets.all(42.0),
-                                    child: Text(
-                                      "Você receberá um e-mail (no-reply@verificationemail.com) com um link para confirmar sua conta! Verifique a caixa de spam ou promocional.",
-                                      textAlign: TextAlign.justify,
-                                      style: TextStyle(color: Colors.white),
-                                    ),
+                                    child: TextRenderer(
+                                      child: Text(
+                                        "Você receberá um e-mail (no-reply@verificationemail.com) com um link para confirmar sua conta! Verifique a caixa de spam ou promocional.",
+                                        textAlign: TextAlign.justify,
+                                        style: TextStyle(color: Colors.white),
+                                      ),),
                                   ),
                                   CustomElevatedButtonWidget(
                                     title: 'Retornar ao login',
@@ -119,11 +122,12 @@ class _ResendConfirmationPageState
                                       EdgeInsets.symmetric(horizontal: 16.0),
                                   child: SizedBox(
                                     width: 600,
-                                    child: Text(
+                                    child: TextRenderer(
+                                      child: Text(
                                       'Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n',
                                       style: TextStyle(color: Colors.white),
                                       textAlign: TextAlign.justify,
-                                    ),
+                                    ),),
                                   ),
                                 ),
                                 InputBox(

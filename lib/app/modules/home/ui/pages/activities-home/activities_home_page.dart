@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/activities-home/pages/next_home_page.dart';
 
@@ -91,11 +92,12 @@ class ActivityHomeState
             padding: EdgeInsets.symmetric(
                 horizontal:
                     MediaQuery.of(context).size.width < 800 ? 16.0 : 32),
-            child: Text(
-              ActivityEnum.values[_current].description,
-              style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width < 800 ? 14 : 18),
-            ),
+            child: TextRenderer(
+              child: Text(
+                ActivityEnum.values[_current].description,
+                style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width < 800 ? 14 : 18),
+              ),),
           )
       ],
     );
