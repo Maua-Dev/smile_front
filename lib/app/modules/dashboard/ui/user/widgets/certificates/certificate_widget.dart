@@ -35,15 +35,16 @@ class CertificateWidget extends StatelessWidget {
             Expanded(
               child: TextRenderer(
                 child: Text(
-                certificateName,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: AppTextStyles.body.copyWith(
-                    fontSize:
-                        MediaQuery.of(context).size.width < 1000 ? 18 : 22,
-                    color: AppColors.brandingPurple),
-                textAlign: TextAlign.left,
-              ),),
+                  certificateName,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.body.copyWith(
+                      fontSize:
+                          MediaQuery.of(context).size.width < 1000 ? 18 : 22,
+                      color: AppColors.brandingPurple),
+                  textAlign: TextAlign.left,
+                ),
+              ),
             ),
             const SizedBox(
               width: 8,

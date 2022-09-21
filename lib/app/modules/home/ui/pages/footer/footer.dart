@@ -53,7 +53,8 @@ class Footer extends StatelessWidget {
                           localizationTitle,
                           style: AppTextStyles.titleH1
                               .copyWith(color: Colors.white, fontSize: 12),
-                        ),),
+                        ),
+                      ),
                     ),
                     Center(
                       child: TextRenderer(
@@ -61,7 +62,8 @@ class Footer extends StatelessWidget {
                           localization,
                           style: AppTextStyles.body
                               .copyWith(color: Colors.white, fontSize: 12),
-                        ),),
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 8,
@@ -90,10 +92,11 @@ class Footer extends StatelessWidget {
                           ),
                           label: TextRenderer(
                             child: Text(
-                            'COMO CHEGAR',
-                            style: AppTextStyles.body
-                                .copyWith(color: Colors.white, fontSize: 12),
-                          ),),
+                              'COMO CHEGAR',
+                              style: AppTextStyles.body
+                                  .copyWith(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -112,105 +115,107 @@ class Footer extends StatelessWidget {
                   height: 8,
                 ),
                 TextRenderer(
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                      text: 'Em caso de dúvidas, enviar um e-mail para ',
-                      style: AppTextStyles.body.copyWith(
-                        color: Colors.white,
-                        fontSize: 12,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: 'dev@maua.br',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                        text: 'Em caso de dúvidas, enviar um e-mail para ',
+                        style: AppTextStyles.body.copyWith(
+                          color: Colors.white,
+                          fontSize: 12,
                         ),
-                        TextSpan(
-                          text: '.',
-                          style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: 12,
+                        children: [
+                          TextSpan(
+                            text: 'dev@maua.br',
+                            style: AppTextStyles.titleH1
+                                .copyWith(color: Colors.white, fontSize: 12),
                           ),
-                        ),
-                      ]),
-                ),),
+                          TextSpan(
+                            text: '.',
+                            style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ]),
+                  ),
+                ),
                 const SizedBox(
                   height: 2,
                 ),
                 TextRenderer(
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                      text:
-                          'Caso queira falar conosco, entre em contato nos números: ',
-                      style: AppTextStyles.body.copyWith(
-                        color: Colors.white,
-                        fontSize: 12,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: '4239-3002',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                        text:
+                            'Caso queira falar conosco, entre em contato nos números: ',
+                        style: AppTextStyles.body.copyWith(
+                          color: Colors.white,
+                          fontSize: 12,
                         ),
-                        TextSpan(
-                          text: ', ',
-                          style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: 12,
+                        children: [
+                          TextSpan(
+                            text: '4239-3002',
+                            style: AppTextStyles.titleH1
+                                .copyWith(color: Colors.white, fontSize: 12),
                           ),
-                        ),
-                        TextSpan(
-                          text: '4239-3014',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
-                        ),
-                        TextSpan(
-                          text: ', ',
-                          style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: 12,
+                          TextSpan(
+                            text: ', ',
+                            style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
                           ),
-                        ),
-                        TextSpan(
-                          text: '4239-3441',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
-                        ),
-                        TextSpan(
-                          text: ', ',
-                          style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: 12,
+                          TextSpan(
+                            text: '4239-3014',
+                            style: AppTextStyles.titleH1
+                                .copyWith(color: Colors.white, fontSize: 12),
                           ),
-                        ),
-                        TextSpan(
-                          text: '4239-3442',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
-                        ),
-                        TextSpan(
-                          text: ' ou ',
-                          style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: 12,
+                          TextSpan(
+                            text: ', ',
+                            style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
                           ),
-                        ),
-                        TextSpan(
-                          text: '4239-3411',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
-                        ),
-                        TextSpan(
-                          text: '.',
-                          style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: 12,
+                          TextSpan(
+                            text: '4239-3441',
+                            style: AppTextStyles.titleH1
+                                .copyWith(color: Colors.white, fontSize: 12),
                           ),
-                        ),
-                      ]),
-                ),),
+                          TextSpan(
+                            text: ', ',
+                            style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                          ),
+                          TextSpan(
+                            text: '4239-3442',
+                            style: AppTextStyles.titleH1
+                                .copyWith(color: Colors.white, fontSize: 12),
+                          ),
+                          TextSpan(
+                            text: ' ou ',
+                            style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                          ),
+                          TextSpan(
+                            text: '4239-3411',
+                            style: AppTextStyles.titleH1
+                                .copyWith(color: Colors.white, fontSize: 12),
+                          ),
+                          TextSpan(
+                            text: '.',
+                            style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ]),
+                  ),
+                ),
               ],
             )
           else
@@ -250,7 +255,8 @@ class Footer extends StatelessWidget {
                                   : MediaQuery.of(context).size.width < 1350
                                       ? 16
                                       : 20),
-                        ),),
+                        ),
+                      ),
                     ),
                     Center(
                       child: TextRenderer(
@@ -263,7 +269,8 @@ class Footer extends StatelessWidget {
                                   : MediaQuery.of(context).size.width < 1350
                                       ? 16
                                       : 20),
-                        ),),
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -271,79 +278,84 @@ class Footer extends StatelessWidget {
                     MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: ElevatedButton.icon(
-                        style: ButtonStyle(
-                            padding: MaterialStateProperty.all<EdgeInsets>(
-                                const EdgeInsets.symmetric(
-                                    vertical: 16, horizontal: 16)),
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColors.brandingOrange),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ))),
-                        onPressed: () => launchUrl(
-                          Uri.parse('https://g.page/IMT-instituto-maua?share'),
-                          mode: LaunchMode.externalApplication,
-                        ),
-                        icon: const Icon(
-                          Icons.location_on,
-                          color: Colors.white,
-                        ),
-                        label: TextRenderer(
+                          style: ButtonStyle(
+                              padding: MaterialStateProperty.all<EdgeInsets>(
+                                  const EdgeInsets.symmetric(
+                                      vertical: 16, horizontal: 16)),
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  AppColors.brandingOrange),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ))),
+                          onPressed: () => launchUrl(
+                                Uri.parse(
+                                    'https://g.page/IMT-instituto-maua?share'),
+                                mode: LaunchMode.externalApplication,
+                              ),
+                          icon: const Icon(
+                            Icons.location_on,
+                            color: Colors.white,
+                          ),
+                          label: TextRenderer(
                             child: Text(
-                            'COMO CHEGAR',
-                            style: AppTextStyles.body.copyWith(
-                                color: Colors.white,
-                                fontSize: MediaQuery.of(context).size.width < 900
-                                    ? 14
-                                    : MediaQuery.of(context).size.width < 1350
-                                        ? 16
-                                        : 20),
-                          ),)
-                      ),
+                              'COMO CHEGAR',
+                              style: AppTextStyles.body.copyWith(
+                                  color: Colors.white,
+                                  fontSize: MediaQuery.of(context).size.width <
+                                          900
+                                      ? 14
+                                      : MediaQuery.of(context).size.width < 1350
+                                          ? 16
+                                          : 20),
+                            ),
+                          )),
                     ),
                     const SizedBox(
                       height: 16,
                     ),
                     SizedBox(
-                      width:
-                          MediaQuery.of(context).size.width < 1350 ? 300 : 400,
-                      child: TextRenderer(
-                        child: RichText(
-                          text: TextSpan(
-                              text: 'Em caso de dúvidas, enviar um e-mail para ',
-                              style: AppTextStyles.body.copyWith(
-                                color: Colors.white,
-                                fontSize: 12,
-                              ),
-                              children: [
-                                TextSpan(
-                                  text: 'smile.patrocinio@maua.br',
-                                  style: AppTextStyles.titleH1.copyWith(
-                                      color: Colors.white, fontSize: 12),
+                        width: MediaQuery.of(context).size.width < 1350
+                            ? 300
+                            : 400,
+                        child: TextRenderer(
+                          child: RichText(
+                            text: TextSpan(
+                                text:
+                                    'Em caso de dúvidas, enviar um e-mail para ',
+                                style: AppTextStyles.body.copyWith(
+                                  color: Colors.white,
+                                  fontSize: 12,
                                 ),
-                                TextSpan(
-                                  text: ' ou ',
-                                  style: AppTextStyles.body.copyWith(
-                                    color: Colors.white,
-                                    fontSize: 12,
+                                children: [
+                                  TextSpan(
+                                    text: 'smile.patrocinio@maua.br',
+                                    style: AppTextStyles.titleH1.copyWith(
+                                        color: Colors.white, fontSize: 12),
                                   ),
-                                ),
-                                TextSpan(
-                                  text: 'smile@maua.br',
-                                  style: AppTextStyles.titleH1.copyWith(
-                                      color: Colors.white, fontSize: 12),
-                                ),
-                                TextSpan(
-                                  text: '.',
-                                  style: AppTextStyles.body.copyWith(
-                                    color: Colors.white,
-                                    fontSize: 12,
+                                  TextSpan(
+                                    text: ' ou ',
+                                    style: AppTextStyles.body.copyWith(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                    ),
                                   ),
-                                ),
-                              ]),
-                        ),)
-                    ),
+                                  TextSpan(
+                                    text: 'smile@maua.br',
+                                    style: AppTextStyles.titleH1.copyWith(
+                                        color: Colors.white, fontSize: 12),
+                                  ),
+                                  TextSpan(
+                                    text: '.',
+                                    style: AppTextStyles.body.copyWith(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ]),
+                          ),
+                        )),
                     const SizedBox(
                       height: 4,
                     ),
@@ -385,7 +397,8 @@ class Footer extends StatelessWidget {
                                   ),
                                 ),
                               ]),
-                        ),),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -395,30 +408,31 @@ class Footer extends StatelessWidget {
             height: 16,
           ),
           TextRenderer(
-          child: RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(
-                text: 'Criado e desenvolvido por ',
-                style: AppTextStyles.body.copyWith(
-                    color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width < 800
-                        ? 16
-                        : MediaQuery.of(context).size.width < 1350
-                            ? 24
-                            : 28),
-                children: [
-                  TextSpan(
-                    text: 'Dev. Community Mauá',
-                    style: AppTextStyles.titleH1.copyWith(
-                        color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.width < 800
-                            ? 16
-                            : MediaQuery.of(context).size.width < 1350
-                                ? 24
-                                : 28),
-                  )
-                ]),
-          ),),
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                  text: 'Criado e desenvolvido por ',
+                  style: AppTextStyles.body.copyWith(
+                      color: Colors.white,
+                      fontSize: MediaQuery.of(context).size.width < 800
+                          ? 16
+                          : MediaQuery.of(context).size.width < 1350
+                              ? 24
+                              : 28),
+                  children: [
+                    TextSpan(
+                      text: 'Dev. Community Mauá',
+                      style: AppTextStyles.titleH1.copyWith(
+                          color: Colors.white,
+                          fontSize: MediaQuery.of(context).size.width < 800
+                              ? 16
+                              : MediaQuery.of(context).size.width < 1350
+                                  ? 24
+                                  : 28),
+                    )
+                  ]),
+            ),
+          ),
           const SizedBox(
             height: 16,
           ),

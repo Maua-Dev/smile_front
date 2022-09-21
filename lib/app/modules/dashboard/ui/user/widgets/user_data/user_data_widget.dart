@@ -30,16 +30,16 @@ class UserDataWidget extends StatelessWidget {
         children: [
           if (controller.socialName == '' || controller.socialName == null)
             TextRenderer(
-              child: Text(
-                'Olá, ${controller.name!.split(' ').first}',
-                style: AppTextStyles.titleH1.copyWith(
-                    fontSize: MediaQuery.of(context).size.width < 500
-                        ? 35
-                        : MediaQuery.of(context).size.width < 1000
-                            ? 40
-                            : 45,
-                    color: AppColors.brandingPurple),
-              ))
+                child: Text(
+              'Olá, ${controller.name!.split(' ').first}',
+              style: AppTextStyles.titleH1.copyWith(
+                  fontSize: MediaQuery.of(context).size.width < 500
+                      ? 35
+                      : MediaQuery.of(context).size.width < 1000
+                          ? 40
+                          : 45,
+                  color: AppColors.brandingPurple),
+            ))
           else
             TextRenderer(
               child: Text(
@@ -51,7 +51,8 @@ class UserDataWidget extends StatelessWidget {
                             ? 40
                             : 45,
                     color: AppColors.brandingPurple),
-              ),),
+              ),
+            ),
           Row(
             children: [
               IconButton(

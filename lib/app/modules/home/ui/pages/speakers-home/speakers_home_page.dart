@@ -59,7 +59,8 @@ class _SpeakersHomePageState
                             'DESLIZE PARA VER MAIS >>>',
                             style: AppTextStyles.titleH1.copyWith(
                                 fontSize: 18, color: AppColors.brandingOrange),
-                          ),),
+                          ),
+                        ),
                       ),
                     ),
                   if (width < 1000)
@@ -124,7 +125,8 @@ class _SpeakersHomePageState
                               fontSize: width < 1000 ? 22 : 32,
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
-                        ),),
+                        ),
+                      ),
                     ),
                   ),
                   Flexible(
@@ -139,7 +141,8 @@ class _SpeakersHomePageState
                                     ? 16
                                     : 18,
                             color: Colors.white),
-                      ),),
+                      ),
+                    ),
                   )
                 ],
               ),

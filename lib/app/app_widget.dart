@@ -19,7 +19,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Intl.defaultLocale = 'pt_BR';
     return RobotDetector(
-      child: MaterialApp(
+        child: MaterialApp(
       scaffoldMessengerKey: scaffoldKey,
       supportedLocales: const [Locale('pt', 'BR')],
       debugShowCheckedModeBanner: false,

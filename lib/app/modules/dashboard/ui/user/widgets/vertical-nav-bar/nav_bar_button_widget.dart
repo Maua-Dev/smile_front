@@ -31,14 +31,14 @@ class VerticalNavBarButtonWidget extends StatelessWidget {
             size: 55,
           ),
           TextRenderer(
-            child: Text(
-              buttonText,
-              style: TextStyle(
-                  color: indexToShow == myIndex
-                      ? AppColors.brandingOrange
-                      : Colors.white,
-                  fontSize: 14),
-            ))
+              child: Text(
+            buttonText,
+            style: TextStyle(
+                color: indexToShow == myIndex
+                    ? AppColors.brandingOrange
+                    : Colors.white,
+                fontSize: 14),
+          ))
         ],
       ),
     );

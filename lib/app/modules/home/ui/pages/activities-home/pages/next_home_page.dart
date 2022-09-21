@@ -40,7 +40,8 @@ class NextHomePage extends StatelessWidget {
                                   ? 38
                                   : MediaQuery.of(context).size.width < 1400
                                       ? 48
-                                      : 55)),),
+                                      : 55)),
+                    ),
                     const SizedBox(
                       height: 16,
                     ),
@@ -54,11 +55,13 @@ class NextHomePage extends StatelessWidget {
                             description,
                             style: AppTextStyles.body.copyWith(
                                 color: Colors.white,
-                                fontSize: MediaQuery.of(context).size.width < 1400
-                                    ? 19
-                                    : 22),
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1400
+                                        ? 19
+                                        : 22),
                             textAlign: TextAlign.justify,
-                          ),),
+                          ),
+                        ),
                       ),
                   ]),
             ),

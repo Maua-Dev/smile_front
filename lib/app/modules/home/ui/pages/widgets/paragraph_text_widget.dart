@@ -26,7 +26,8 @@ class ParagraphTextWidget extends StatelessWidget {
                       : 28,
               fontWeight: isBold ? FontWeight.bold : null),
           textAlign: TextAlign.justify,
-        ),),
+        ),
+      ),
     );
   }
 }

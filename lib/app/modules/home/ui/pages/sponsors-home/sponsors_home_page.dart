@@ -152,7 +152,8 @@ class BeSponsor extends StatelessWidget {
                         fontSize:
                             MediaQuery.of(context).size.width < 530 ? 28 : 35,
                         fontWeight: FontWeight.w900),
-                  ),),
+                  ),
+                ),
               )),
               Expanded(
                 child: MediaQuery.of(context).size.width > 530
@@ -167,10 +168,11 @@ class BeSponsor extends StatelessWidget {
           ),
           const TextRenderer(
             child: Text(
-            'A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir.',
-            style: TextStyle(fontSize: 16),
-            textAlign: TextAlign.justify,
-          ),),
+              'A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir.',
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.justify,
+            ),
+          ),
           const SizedBox(
             height: 24,
           ),
@@ -184,9 +186,10 @@ class BeSponsor extends StatelessWidget {
               children: [
                 const TextRenderer(
                   child: Text(
-                  'DESCONTOS',
-                  style: TextStyle(fontSize: 24),
-                ),),
+                    'DESCONTOS',
+                    style: TextStyle(fontSize: 24),
+                  ),
+                ),
                 MediaQuery.of(context).size.width < 530
                     ? Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -195,10 +198,11 @@ class BeSponsor extends StatelessWidget {
                           Column(
                             children: const [
                               TextRenderer(
-                                child: Text('2022'),),
-                                SizedBox(
-                                  height: 8,
-                                ),
+                                child: Text('2022'),
+                              ),
+                              SizedBox(
+                                height: 8,
+                              ),
                               CardDiscount(
                                 month: 'Outubro',
                                 discount: '50% Off',
@@ -222,7 +226,8 @@ class BeSponsor extends StatelessWidget {
                           Column(
                             children: const [
                               TextRenderer(
-                                child: Text('2023'),),
+                                child: Text('2023'),
+                              ),
                               SizedBox(
                                 height: 8,
                               ),
@@ -248,7 +253,8 @@ class BeSponsor extends StatelessWidget {
                           Column(
                             children: const [
                               TextRenderer(
-                                child: Text('2022'),),
+                                child: Text('2022'),
+                              ),
                               SizedBox(
                                 height: 8,
                               ),
@@ -275,7 +281,8 @@ class BeSponsor extends StatelessWidget {
                           Column(
                             children: const [
                               TextRenderer(
-                              child: Text('2023'),),
+                                child: Text('2023'),
+                              ),
                               SizedBox(
                                 height: 8,
                               ),
@@ -323,14 +330,14 @@ class BeSponsor extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(
-                        width: 300,
-                        child: TextRenderer(
-                          child: Text(
-                            'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16),
-                          ),)
-                      ),
+                          width: 300,
+                          child: TextRenderer(
+                            child: Text(
+                              'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          )),
                       const SizedBox(
                         height: 8,
                       ),
@@ -351,14 +358,14 @@ class BeSponsor extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(
-                        width: 300,
-                        child: TextRenderer(
-                          child: Text(
-                            'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16),
-                          ),)
-                      ),
+                          width: 300,
+                          child: TextRenderer(
+                            child: Text(
+                              'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          )),
                       FormsButtonWidget(
                           buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
                           backgroundColor: const Color(0xFFD36D49),
@@ -404,7 +411,8 @@ class CardDiscount extends StatelessWidget {
             TextSpan(text: discount)
           ]),
           textAlign: TextAlign.center,
-        ),),
+        ),
+      ),
     );
   }
 }
@@ -443,13 +451,13 @@ class PlanWidget extends StatelessWidget {
                       '${s3AssetsBaseUrl}Estrela_${planName.toLowerCase()}.png'),
                 ),
                 TextRenderer(
-                  child: Text(
-                    planName,
-                    textAlign: TextAlign.center,
-                    style: planTextStyle.copyWith(
-                      color: colorsPlan[level],
-                    ),
-                  )),
+                    child: Text(
+                  planName,
+                  textAlign: TextAlign.center,
+                  style: planTextStyle.copyWith(
+                    color: colorsPlan[level],
+                  ),
+                )),
               ],
             ),
           ),
@@ -460,10 +468,11 @@ class PlanWidget extends StatelessWidget {
                         : Icons.check_box_outline_blank_outlined,
                     color: (e['level'] as int) <= level ? Colors.green : null),
                 title: TextRenderer(
-                    child: Text(
+                  child: Text(
                     '${e['description']}',
                     style: const TextStyle(fontSize: 14),
-                  ),),
+                  ),
+                ),
               )),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -474,7 +483,7 @@ class PlanWidget extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(18),
             child: TextRenderer(
-                child: Text.rich(
+              child: Text.rich(
                 TextSpan(
                     text: 'R\$ ',
                     style: const TextStyle(color: Colors.green),
@@ -485,7 +494,8 @@ class PlanWidget extends StatelessWidget {
                       )
                     ]),
                 style: const TextStyle(fontSize: 28),
-              ),),
+              ),
+            ),
           )
         ],
       ),
@@ -522,17 +532,18 @@ class CompanySponsor extends StatelessWidget {
                   width: 16,
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: TextRenderer(   
-                    child: Text(
-                      devPresentation,
-                      textAlign: TextAlign.justify,
-                      style: AppTextStyles.body.copyWith(
-                          color: Colors.black,
-                          fontSize:
-                              MediaQuery.of(context).size.width < 1200 ? 16 : 18),
-                    ),)
-                ),
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: TextRenderer(
+                      child: Text(
+                        devPresentation,
+                        textAlign: TextAlign.justify,
+                        style: AppTextStyles.body.copyWith(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width < 1200
+                                ? 16
+                                : 18),
+                      ),
+                    )),
               ],
             ),
           )
@@ -561,14 +572,16 @@ class CompanySponsor extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: TextRenderer(
-                      child: Text(
+                    child: Text(
                       devPresentation,
                       textAlign: TextAlign.justify,
                       style: AppTextStyles.body.copyWith(
                           color: Colors.black,
-                          fontSize:
-                              MediaQuery.of(context).size.width < 1200 ? 16 : 18),
-                    ),),
+                          fontSize: MediaQuery.of(context).size.width < 1200
+                              ? 16
+                              : 18),
+                    ),
+                  ),
                 ),
               ],
             ),

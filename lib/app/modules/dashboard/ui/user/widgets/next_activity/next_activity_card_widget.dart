@@ -77,19 +77,21 @@ class NextActivityCardWidget extends StatelessWidget {
                         fontSize:
                             MediaQuery.of(context).size.width < 1000 ? 20 : 22,
                         color: Colors.white),
-                  ),),
+                  ),
+                ),
                 const SizedBox(
                   height: 8,
                 ),
                 TextRenderer(
                   child: Text(
-                  description,
-                  style: AppTextStyles.button.copyWith(
-                    fontSize:
-                        MediaQuery.of(context).size.width < 1000 ? 14 : 16,
-                    color: Colors.white,
+                    description,
+                    style: AppTextStyles.button.copyWith(
+                      fontSize:
+                          MediaQuery.of(context).size.width < 1000 ? 14 : 16,
+                      color: Colors.white,
+                    ),
                   ),
-                ),),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 8,
@@ -113,14 +115,15 @@ class NextActivityCardWidget extends StatelessWidget {
                           ),
                           isUser
                               ? TextRenderer(
-                                child: Text(weekday,
-                                  style: AppTextStyles.button.copyWith(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width <
+                                  child: Text(weekday,
+                                      style: AppTextStyles.button.copyWith(
+                                          fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width <
                                                   500
                                               ? 12
                                               : 18,
-                                      color: Colors.white)))
+                                          color: Colors.white)))
                               : const SizedBox.shrink(),
                         ],
                       ),
@@ -139,13 +142,14 @@ class NextActivityCardWidget extends StatelessWidget {
                             ),
                           ),
                           TextRenderer(
-                            child: Text('$timeString - $finalTime',
-                              style: AppTextStyles.button.copyWith(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 500
-                                          ? 12
-                                          : 18,
-                                  color: Colors.white)))
+                              child: Text('$timeString - $finalTime',
+                                  style: AppTextStyles.button.copyWith(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  500
+                                              ? 12
+                                              : 18,
+                                      color: Colors.white)))
                         ],
                       ),
                       if (!isUser)
@@ -163,9 +167,9 @@ class NextActivityCardWidget extends StatelessWidget {
                                         : 26,
                               ),
                             ),
-                          TextRenderer(
-                          child: RichText(
-                                text: TextSpan(children: [
+                            TextRenderer(
+                                child: RichText(
+                                    text: TextSpan(children: [
                               TextSpan(
                                   text: '0/',
                                   style: AppTextStyles.button.copyWith(
@@ -199,13 +203,14 @@ class NextActivityCardWidget extends StatelessWidget {
                               ),
                             ),
                             TextRenderer(
-                              child: Text(location!,
-                                  style: AppTextStyles.button.copyWith(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width < 500
-                                              ? 12
-                                              : 18,
-                                      color: Colors.white)))
+                                child: Text(location!,
+                                    style: AppTextStyles.button.copyWith(
+                                        fontSize:
+                                            MediaQuery.of(context).size.width <
+                                                    500
+                                                ? 12
+                                                : 18,
+                                        color: Colors.white)))
                           ],
                         ),
                       if (isUser && link != null)
@@ -227,21 +232,22 @@ class NextActivityCardWidget extends StatelessWidget {
                               ),
                             ),
                             GestureDetector(
-                              onTap: () => launchUrl(
-                                Uri.parse(link!),
-                                mode: LaunchMode.externalApplication,
-                              ),
-                              child: TextRenderer(
-                                child: Text('Link',
-                                    style: AppTextStyles.button.copyWith(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width < 500
-                                              ? 12
-                                              : 18,
-                                      color: Colors.white,
-                                      decoration: TextDecoration.underline,
-                                    )),)
-                            )
+                                onTap: () => launchUrl(
+                                      Uri.parse(link!),
+                                      mode: LaunchMode.externalApplication,
+                                    ),
+                                child: TextRenderer(
+                                  child: Text('Link',
+                                      style: AppTextStyles.button.copyWith(
+                                        fontSize:
+                                            MediaQuery.of(context).size.width <
+                                                    500
+                                                ? 12
+                                                : 18,
+                                        color: Colors.white,
+                                        decoration: TextDecoration.underline,
+                                      )),
+                                ))
                           ],
                         ),
                     ],

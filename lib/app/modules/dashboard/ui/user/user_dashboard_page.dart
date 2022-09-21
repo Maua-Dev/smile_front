@@ -174,9 +174,10 @@ class _UserDashboardPageState
                   child: Text(
                     'Parece que você ainda não se inscreveu em nenhuma atividade :(',
                     textAlign: TextAlign.center,
-                    style: AppTextStyles.titleH1
-                        .copyWith(color: AppColors.brandingOrange, fontSize: 32),
-                  ),),
+                    style: AppTextStyles.titleH1.copyWith(
+                        color: AppColors.brandingOrange, fontSize: 32),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 48,

@@ -79,7 +79,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                           color: Colors.white,
                                         ),
                                         textAlign: TextAlign.center,
-                                      ),),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               );
@@ -173,13 +174,14 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           },
                           child: const TextRenderer(
                             child: Text(
-                            'Esqueci minha senha',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Colors.white,
+                              'Esqueci minha senha',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),),
+                          ),
                         ),
                         TextButton(
                           style: ElevatedButton.styleFrom(
@@ -194,12 +196,13 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           },
                           child: const TextRenderer(
                             child: Text(
-                            'Reenviar e-mail de confirmação',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: Colors.white),
-                          ),),
+                              'Reenviar e-mail de confirmação',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.white),
+                            ),
+                          ),
                         ),
                         const SizedBox(
                           height: 16,
@@ -229,7 +232,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                           text:
                                               'Em caso de erro ao se logar, envie um e-mail para: ',
                                           style: TextStyle(
-                                              color: Colors.white, fontSize: 16),
+                                              color: Colors.white,
+                                              fontSize: 16),
                                           children: [
                                             TextSpan(
                                               text: 'dev@maua.br',
@@ -238,7 +242,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.bold),
                                             )
-                                          ])),),
+                                          ])),
+                                ),
                               ),
                             ),
                           ),

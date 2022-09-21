@@ -73,7 +73,8 @@ class _ResendConfirmationPageState
                                         color: Colors.white,
                                       ),
                                       textAlign: TextAlign.center,
-                                    ),),
+                                    ),
+                                  ),
                                 ),
                               );
                             }
@@ -94,7 +95,8 @@ class _ResendConfirmationPageState
                                         "Você receberá um e-mail (no-reply@verificationemail.com) com um link para confirmar sua conta! Verifique a caixa de spam ou promocional.",
                                         textAlign: TextAlign.justify,
                                         style: TextStyle(color: Colors.white),
-                                      ),),
+                                      ),
+                                    ),
                                   ),
                                   CustomElevatedButtonWidget(
                                     title: 'Retornar ao login',
@@ -124,10 +126,11 @@ class _ResendConfirmationPageState
                                     width: 600,
                                     child: TextRenderer(
                                       child: Text(
-                                      'Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n',
-                                      style: TextStyle(color: Colors.white),
-                                      textAlign: TextAlign.justify,
-                                    ),),
+                                        'Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n',
+                                        style: TextStyle(color: Colors.white),
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 InputBox(

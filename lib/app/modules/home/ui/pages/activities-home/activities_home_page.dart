@@ -96,8 +96,10 @@ class ActivityHomeState
               child: Text(
                 ActivityEnum.values[_current].description,
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width < 800 ? 14 : 18),
-              ),),
+                    fontSize:
+                        MediaQuery.of(context).size.width < 800 ? 14 : 18),
+              ),
+            ),
           )
       ],
     );

@@ -61,13 +61,14 @@ class _SuccessRegisterPageState extends State<SuccessRegisterPage> {
                           height: 20,
                         ),
                         const TextRenderer(
-                            child: Text(
+                          child: Text(
                             'Seu cadastro foi confirmado com sucesso!',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
                             ),
-                          ),),
+                          ),
+                        ),
                         const SizedBox(
                           height: 20,
                         ),

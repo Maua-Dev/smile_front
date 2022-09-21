@@ -49,48 +49,54 @@ class _MainHomePageState extends State<MainHomePage> {
                                   child: Text('Semana Mauá de Inovação,',
                                       style: AppTextStyles.titleH1.copyWith(
                                           color: Colors.white,
-                                          fontSize:
-                                              MediaQuery.of(context).size.width <
-                                                      1500
-                                                  ? 40
-                                                  : 55)),),
+                                          fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  1500
+                                              ? 40
+                                              : 55)),
+                                ),
                                 TextRenderer(
                                   child: Text('Liderança e Empreendedorismo',
                                       style: AppTextStyles.titleH1.copyWith(
                                           color: Colors.white,
-                                          fontSize:
-                                              MediaQuery.of(context).size.width <
-                                                      1500
-                                                  ? 40
-                                                  : 55)),),
+                                          fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  1500
+                                              ? 40
+                                              : 55)),
+                                ),
                                 const SizedBox(
                                   height: 16,
                                 ),
                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width <
-                                          1500
-                                      ? 580
-                                      : MediaQuery.of(context).size.width < 1500
-                                          ? 700
-                                          : 820,
-                                  child: TextRenderer(
-                                    child: Text(
-                                      apresentationText,
-                                      style: AppTextStyles.body.copyWith(
-                                          color: Colors.white,
-                                          fontSize:
-                                              MediaQuery.of(context).size.width <
-                                                      1500
-                                                  ? 19
-                                                  : MediaQuery.of(context)
-                                                              .size
-                                                              .width <
-                                                          1500
-                                                      ? 22
-                                                      : 25),
-                                      textAlign: TextAlign.justify,
-                                    ),)
-                                ),
+                                    width: MediaQuery.of(context).size.width <
+                                            1500
+                                        ? 580
+                                        : MediaQuery.of(context).size.width <
+                                                1500
+                                            ? 700
+                                            : 820,
+                                    child: TextRenderer(
+                                      child: Text(
+                                        apresentationText,
+                                        style: AppTextStyles.body.copyWith(
+                                            color: Colors.white,
+                                            fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1500
+                                                ? 19
+                                                : MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        1500
+                                                    ? 22
+                                                    : 25),
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                    )),
                                 const SizedBox(
                                   height: 16,
                                 ),
@@ -107,17 +113,19 @@ class _MainHomePageState extends State<MainHomePage> {
                                       '22 a 27 de Maio de 2023',
                                       textAlign: TextAlign.center,
                                       style: AppTextStyles.buttonBold.copyWith(
-                                          fontSize:
-                                              MediaQuery.of(context).size.width <
+                                          fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  1500
+                                              ? 40
+                                              : MediaQuery.of(context)
+                                                          .size
+                                                          .width <
                                                       1500
-                                                  ? 40
-                                                  : MediaQuery.of(context)
-                                                              .size
-                                                              .width <
-                                                          1500
-                                                      ? 48
-                                                      : 55),
-                                    ),),
+                                                  ? 48
+                                                  : 55),
+                                    ),
+                                  ),
                                 ),
                                 const SizedBox(
                                   height: 24,
@@ -167,7 +175,8 @@ class _MainHomePageState extends State<MainHomePage> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
-                ),),
+                ),
+              ),
             ),
           ),
           const Padding(
@@ -177,7 +186,8 @@ class _MainHomePageState extends State<MainHomePage> {
                 apresentationText,
                 style: TextStyle(fontSize: 12),
                 textAlign: TextAlign.justify,
-              ),),
+              ),
+            ),
           ),
           const SizedBox(
             height: 8,
@@ -195,7 +205,8 @@ class _MainHomePageState extends State<MainHomePage> {
                 '22 a 27 de Maio',
                 textAlign: TextAlign.center,
                 style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
-              ),),
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -218,7 +229,8 @@ class _MainHomePageState extends State<MainHomePage> {
                       'SAIBA MAIS >>>',
                       textAlign: TextAlign.center,
                       style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
-                    ),),
+                    ),
+                  ),
                 ),
               ),
             ),

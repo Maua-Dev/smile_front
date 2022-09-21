@@ -75,10 +75,11 @@ class _HomePageState extends State<HomePage> {
                       ListTile(
                         title: TextRenderer(
                           child: Text(
-                          'HOME',
-                          style:
-                              AppTextStyles.buttonBold.copyWith(fontSize: 16),
-                        ),),
+                            'HOME',
+                            style:
+                                AppTextStyles.buttonBold.copyWith(fontSize: 16),
+                          ),
+                        ),
                         onTap: () {
                           Navigator.pop(context);
                           scrollToHome();
@@ -87,10 +88,11 @@ class _HomePageState extends State<HomePage> {
                       ListTile(
                         title: TextRenderer(
                           child: Text(
-                          'ATIVIDADES',
-                          style:
-                              AppTextStyles.buttonBold.copyWith(fontSize: 16),
-                        ),),
+                            'ATIVIDADES',
+                            style:
+                                AppTextStyles.buttonBold.copyWith(fontSize: 16),
+                          ),
+                        ),
                         onTap: () {
                           Navigator.pop(context);
                           scrollToActivity();
@@ -99,10 +101,11 @@ class _HomePageState extends State<HomePage> {
                       ListTile(
                         title: TextRenderer(
                           child: Text(
-                          'PATROCINADORES',
-                          style:
-                              AppTextStyles.buttonBold.copyWith(fontSize: 16),
-                        ),),
+                            'PATROCINADORES',
+                            style:
+                                AppTextStyles.buttonBold.copyWith(fontSize: 16),
+                          ),
+                        ),
                         onTap: () {
                           Navigator.pop(context);
                           scrollToSponsors();

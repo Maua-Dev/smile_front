@@ -51,11 +51,12 @@ class ActivitiesCarouselWidget extends StatelessWidget {
               child: Row(
                 children: [
                   TextRenderer(
-                    child:Text(
+                    child: Text(
                       weekday != null ? WeekdaysEnum.values[weekday!].name : '',
                       style: AppTextStyles.titleH1.copyWith(
                           fontSize: 32, color: AppColors.brandingPurple),
-                    ),),
+                    ),
+                  ),
                 ],
               ),
             ),

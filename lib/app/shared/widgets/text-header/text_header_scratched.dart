@@ -25,12 +25,14 @@ class TextHeaderScratched extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: TextRenderer(
-                child: Text(
+              child: Text(
                 title,
                 style: AppTextStyles.titleH1.copyWith(
-                    fontSize: MediaQuery.of(context).size.width < 1300 ? 38 : 45,
+                    fontSize:
+                        MediaQuery.of(context).size.width < 1300 ? 38 : 45,
                     color: color ?? AppColors.brandingPurple),
-              ),),
+              ),
+            ),
           ),
           Expanded(
             child: Divider(

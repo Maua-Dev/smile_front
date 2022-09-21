@@ -40,7 +40,8 @@ class UserWeekdayIconWidget extends StatelessWidget {
                   color: indexToShow == myIndex
                       ? Colors.white
                       : AppColors.brandingPurple),
-            ),),
+            ),
+          ),
           TextRenderer(
             child: Text(
               weekday != null ? WeekdaysEnum.values[weekday!].date : '',
@@ -49,7 +50,8 @@ class UserWeekdayIconWidget extends StatelessWidget {
                   color: indexToShow == myIndex
                       ? Colors.white
                       : AppColors.brandingPurple),
-            ),)
+            ),
+          )
         ],
       ),
     );

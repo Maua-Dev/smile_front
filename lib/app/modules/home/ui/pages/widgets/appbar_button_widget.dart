@@ -37,25 +37,26 @@ class AppbarButtonWidget extends StatelessWidget {
         width: widthSize,
         height: heightSize,
         child: TextButton(
-          onPressed: onPressed,
-          style: TextButton.styleFrom(
-            backgroundColor: backgroundColor,
-            alignment: Alignment.center,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(borderRadius ?? 15)),
-          ),
-          child: isLoading != null && isLoading!
-              ? const CircularProgressIndicator()
-              : TextRenderer(
-                  child: Text(title ?? '',
-                  textAlign: TextAlign.center,
-                  style: textStyle ??
-                      AppTextStyles.body.copyWith(
-                          color: Colors.white,
-                          fontSize: MediaQuery.of(context).size.width < 1300
-                              ? 20
-                              : 24)),)
-        ),
+            onPressed: onPressed,
+            style: TextButton.styleFrom(
+              backgroundColor: backgroundColor,
+              alignment: Alignment.center,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(borderRadius ?? 15)),
+            ),
+            child: isLoading != null && isLoading!
+                ? const CircularProgressIndicator()
+                : TextRenderer(
+                    child: Text(title ?? '',
+                        textAlign: TextAlign.center,
+                        style: textStyle ??
+                            AppTextStyles.body.copyWith(
+                                color: Colors.white,
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1300
+                                        ? 20
+                                        : 24)),
+                  )),
       ),
     );
   }

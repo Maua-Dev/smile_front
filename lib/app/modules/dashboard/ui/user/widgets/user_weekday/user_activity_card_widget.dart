@@ -48,7 +48,8 @@ class UserActivityCardWidget extends StatelessWidget {
                                 ? 18
                                 : 24,
                             color: AppColors.brandingPurple),
-                      ),),
+                      ),
+                    ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width < 1000 ? 8 : 16,
                     ),
@@ -59,7 +60,7 @@ class UserActivityCardWidget extends StatelessWidget {
                         children: [
                           if (activityCode != '' && title != '')
                             TextRenderer(
-                              child:Text(
+                              child: Text(
                                 '$title ($activityCode)',
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
@@ -69,7 +70,8 @@ class UserActivityCardWidget extends StatelessWidget {
                                             ? 16
                                             : 24,
                                     color: Colors.black),
-                              ),),
+                              ),
+                            ),
                           if (location != null && location != '')
                             TextRenderer(
                               child: Text(
@@ -80,7 +82,8 @@ class UserActivityCardWidget extends StatelessWidget {
                                             ? 14
                                             : 16,
                                     color: AppColors.gray),
-                              ),),
+                              ),
+                            ),
                           if (location != null && location != '')
                             TextRenderer(
                               child: Text(
@@ -91,7 +94,8 @@ class UserActivityCardWidget extends StatelessWidget {
                                             ? 14
                                             : 16,
                                     color: AppColors.gray),
-                              ),)
+                              ),
+                            )
                         ],
                       ),
                     ),

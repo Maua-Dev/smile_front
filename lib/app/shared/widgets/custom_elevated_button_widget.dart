@@ -38,33 +38,34 @@ class CustomElevatedButtonWidget extends StatelessWidget {
         width: widthSize,
         height: heightSize,
         child: ElevatedButton(
-          onPressed: onPressed,
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                (Set<MaterialState> states) {
-              if (states.contains(MaterialState.pressed)) {
+            onPressed: onPressed,
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                  (Set<MaterialState> states) {
+                if (states.contains(MaterialState.pressed)) {
+                  return backgroundColor!;
+                } else if (states.contains(MaterialState.disabled)) {
+                  return AppColors.gray;
+                }
                 return backgroundColor!;
-              } else if (states.contains(MaterialState.disabled)) {
-                return AppColors.gray;
-              }
-              return backgroundColor!;
-            }),
-            alignment: Alignment.center,
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(borderRadius ?? 15))),
-          ),
-          child: isLoading != null && isLoading!
-              ? const CircularProgressIndicator()
-              : TextRenderer(
-                  child: Text(title ?? '',
-                    textAlign: TextAlign.center,
-                    style: textStyle ??
-                        AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 1300
-                                ? 20
-                                : 24)),)
-        ),
+              }),
+              alignment: Alignment.center,
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(borderRadius ?? 15))),
+            ),
+            child: isLoading != null && isLoading!
+                ? const CircularProgressIndicator()
+                : TextRenderer(
+                    child: Text(title ?? '',
+                        textAlign: TextAlign.center,
+                        style: textStyle ??
+                            AppTextStyles.body.copyWith(
+                                color: Colors.white,
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1300
+                                        ? 20
+                                        : 24)),
+                  )),
       ),
     );
   }

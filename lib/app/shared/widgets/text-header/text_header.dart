@@ -32,7 +32,8 @@ class TextHeader extends StatelessWidget {
                 style: AppTextStyles.titleH1.copyWith(
                     fontSize: fontSize ?? 45,
                     color: color ?? AppColors.brandingPurple),
-              ),),
+              ),
+            ),
           ),
         ],
       ),

@@ -123,7 +123,8 @@ class ScheduleAddWidget extends StatelessWidget {
                               fontSize: MediaQuery.of(context).size.width < 1200
                                   ? 17
                                   : 20),
-                        ),),
+                        ),
+                      ),
                       Checkbox(
                         value: enableSubscription,
                         onChanged: onChangedEnableSubscription,

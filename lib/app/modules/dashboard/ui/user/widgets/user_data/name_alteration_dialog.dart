@@ -47,7 +47,7 @@ class NameAlterationDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextRenderer(
-                    child:Text(
+                    child: Text(
                       'Alteração de dados',
                       style: AppTextStyles.titleH1.copyWith(
                           fontSize: MediaQuery.of(context).size.width < 500
@@ -56,7 +56,8 @@ class NameAlterationDialog extends StatelessWidget {
                                   ? 30
                                   : 36,
                           color: AppColors.brandingPurple),
-                    ),),
+                    ),
+                  ),
                   IconButton(
                     padding: EdgeInsets.zero,
                     onPressed: () {
@@ -87,7 +88,8 @@ class NameAlterationDialog extends StatelessWidget {
                               : MediaQuery.of(context).size.width < 1000
                                   ? 20
                                   : 24),
-                    ),),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -138,7 +140,8 @@ class NameAlterationDialog extends StatelessWidget {
                                 : MediaQuery.of(context).size.width < 1000
                                     ? 20
                                     : 24),
-                      ),),
+                      ),
+                    ),
                     CupertinoSwitch(
                       value: wantSocialName,
                       onChanged: onChangedWantSocialName,
@@ -166,7 +169,8 @@ class NameAlterationDialog extends StatelessWidget {
                               : MediaQuery.of(context).size.width < 1000
                                   ? 20
                                   : 24),
-                    ),),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -228,7 +232,8 @@ class NameAlterationDialog extends StatelessWidget {
                                       ? 20
                                       : 24),
                           textAlign: TextAlign.center,
-                        ),),
+                        ),
+                      ),
                       CupertinoSwitch(
                         value: certificateWithSocialName,
                         onChanged: onChangedCertificateWithSocialName,
@@ -243,42 +248,43 @@ class NameAlterationDialog extends StatelessWidget {
                 height: 32,
               ),
               TextRenderer(
-              child: RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                    text:
-                        '* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia ',
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize: MediaQuery.of(context).size.width < 500
-                            ? 12
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 14
-                                : 16),
-                    children: [
-                      TextSpan(
-                        text: '25/05/2023',
-                        style: AppTextStyles.titleH1.copyWith(
-                            color: Colors.black,
-                            fontSize: MediaQuery.of(context).size.width < 500
-                                ? 12
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 14
-                                    : 16),
-                      ),
-                      TextSpan(
-                        text:
-                            ', sob pena do certificado ser emitido com os dados aqui fornecidos.',
-                        style: AppTextStyles.body.copyWith(
-                            color: Colors.black,
-                            fontSize: MediaQuery.of(context).size.width < 500
-                                ? 12
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 14
-                                    : 16),
-                      ),
-                    ]),
-              ),),
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                      text:
+                          '* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia ',
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.width < 500
+                              ? 12
+                              : MediaQuery.of(context).size.width < 1000
+                                  ? 14
+                                  : 16),
+                      children: [
+                        TextSpan(
+                          text: '25/05/2023',
+                          style: AppTextStyles.titleH1.copyWith(
+                              color: Colors.black,
+                              fontSize: MediaQuery.of(context).size.width < 500
+                                  ? 12
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 14
+                                      : 16),
+                        ),
+                        TextSpan(
+                          text:
+                              ', sob pena do certificado ser emitido com os dados aqui fornecidos.',
+                          style: AppTextStyles.body.copyWith(
+                              color: Colors.black,
+                              fontSize: MediaQuery.of(context).size.width < 500
+                                  ? 12
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 14
+                                      : 16),
+                        ),
+                      ]),
+                ),
+              ),
               const SizedBox(
                 height: 8,
               ),

@@ -49,8 +49,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
             items: ActivityEnum.values.map((ActivityEnum value) {
               return DropdownMenuItem<ActivityEnum>(
                 value: value,
-                child: TextRenderer(
-                  child: Text(value.name)),
+                child: TextRenderer(child: Text(value.name)),
               );
             }).toList(),
             onChanged: controller.getActivitiesByType,

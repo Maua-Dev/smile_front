@@ -43,9 +43,10 @@ class RadioAskButtons extends StatelessWidget {
           children: [
             TextRenderer(
               child: Text(
-              question,
-              style: const TextStyle(fontSize: 15),
-            ),),
+                question,
+                style: const TextStyle(fontSize: 15),
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -68,9 +69,10 @@ class RadioAskButtons extends StatelessWidget {
                 ),
                 const TextRenderer(
                   child: Text(
-                  'Sim',
-                  style: TextStyle(fontSize: 15),
-                ),),
+                    'Sim',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
                 const SizedBox(width: 20),
                 SizedBox(
                   width: 40,
@@ -91,9 +93,10 @@ class RadioAskButtons extends StatelessWidget {
                 ),
                 const TextRenderer(
                   child: Text(
-                  'Não',
-                  style: TextStyle(fontSize: 15),
-                ),),
+                    'Não',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
               ],
             ),
           ],

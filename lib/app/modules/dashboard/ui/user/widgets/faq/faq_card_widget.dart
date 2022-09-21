@@ -36,14 +36,16 @@ class FaqCardWidget extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: TextRenderer(
                           child: Text(
-                          titulo,
-                          textAlign: TextAlign.justify,
-                          style: AppTextStyles.titleH1.copyWith(
-                              color: Colors.black,
-                              fontSize: MediaQuery.of(context).size.width < 1000
-                                  ? 14
-                                  : 24),
-                        ),),
+                            titulo,
+                            textAlign: TextAlign.justify,
+                            style: AppTextStyles.titleH1.copyWith(
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1000
+                                        ? 14
+                                        : 24),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -53,13 +55,13 @@ class FaqCardWidget extends StatelessWidget {
                   padding:
                       const EdgeInsets.only(right: 8.0, left: 8, bottom: 8),
                   child: TextRenderer(
-                    child: Text(descricao,
-                      textAlign: TextAlign.justify,
-                      style: AppTextStyles.body.copyWith(
-                          color: Colors.black,
-                          fontSize: MediaQuery.of(context).size.width < 1000
-                              ? 14
-                              : 24))),
+                      child: Text(descricao,
+                          textAlign: TextAlign.justify,
+                          style: AppTextStyles.body.copyWith(
+                              color: Colors.black,
+                              fontSize: MediaQuery.of(context).size.width < 1000
+                                  ? 14
+                                  : 24))),
                 ),
               )),
         ],

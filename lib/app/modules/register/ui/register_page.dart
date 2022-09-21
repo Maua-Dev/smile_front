@@ -63,13 +63,14 @@ class _RegisterPageState
                         if (controller.successRegistration)
                           const Center(
                             child: TextRenderer(
-                            child: Text(
-                              'Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro.',
-                              style: TextStyle(
-                                color: Colors.white,
+                              child: Text(
+                                'Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro.',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                              textAlign: TextAlign.center,
-                            ),),
+                            ),
                           )
                         else
                           Column(children: [
@@ -93,7 +94,8 @@ class _RegisterPageState
                                             color: Colors.white,
                                           ),
                                           textAlign: TextAlign.center,
-                                        ),),
+                                        ),
+                                      ),
                                     ),
                                   );
                                 }
@@ -142,11 +144,11 @@ class _RegisterPageState
                                             const SizedBox(width: 5),
                                             const TextRenderer(
                                                 child: Text(
-                                                'Nome Social',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14),
-                                              )),
+                                              'Nome Social',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 14),
+                                            )),
                                           ],
                                         )
                                       : Column(
@@ -179,7 +181,8 @@ class _RegisterPageState
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 14),
-                                                ),),
+                                                ),
+                                              ),
                                             )
                                           ],
                                         ),
@@ -269,7 +272,8 @@ class _RegisterPageState
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 14),
-                                                ),),
+                                                ),
+                                              ),
                                             )
                                           ],
                                         )
@@ -303,7 +307,8 @@ class _RegisterPageState
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 14),
-                                                ),),
+                                                ),
+                                              ),
                                             )
                                           ],
                                         ),
