@@ -18,26 +18,28 @@ class SocialMediaWidget extends StatelessWidget {
     'http://www.flickr.com/photos/infomaua',
     'https://twitter.com/InfoMaua',
     'https://www.facebook.com/InstitutoMaua',
+    'https://open.spotify.com/user/institutomauadetecnologia'
   ];
   final myIcons = const <Widget>[
-    Icon(FontAwesome5.blogger_b, size: 20),
-    Icon(FontAwesome.youtube_play, size: 20),
-    Icon(FontAwesome5.instagram, size: 20),
-    Icon(FontAwesome5.linkedin_in, size: 20),
-    Icon(Entypo.flickr, size: 20),
-    Icon(FontAwesome5.twitter, size: 20),
-    Icon(FontAwesome5.facebook_f, size: 20),
+    Icon(FontAwesome5.blogger_b, size: 24),
+    Icon(FontAwesome.youtube_play, size: 24),
+    Icon(FontAwesome5.instagram, size: 24),
+    Icon(FontAwesome5.linkedin_in, size: 24),
+    Icon(Entypo.flickr, size: 24),
+    Icon(FontAwesome5.twitter, size: 24),
+    Icon(FontAwesome5.facebook_f, size: 24),
+    Icon(FontAwesome5.spotify, size: 24)
   ];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: SizedBox(
-      width: 300,
-      height: 30,
+      width: 360,
+      height: 50,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 7,
+          itemCount: 8,
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: const EdgeInsets.only(left: 8),
@@ -64,7 +66,7 @@ class SocialMediaIconsWidget extends StatelessWidget {
         mode: LaunchMode.externalApplication,
       ),
       child: CircleAvatar(
-        radius: 15,
+        radius: 18,
         backgroundColor: AppColors.brandingOrange,
         child: icon,
       ),

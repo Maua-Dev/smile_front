@@ -213,9 +213,23 @@ class Footer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Padding(
-                    padding: EdgeInsets.only(right: 16.0),
-                    child: SocialMediaWidget()),
+                Padding(
+                    padding: const EdgeInsets.only(right: 16.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Clique aqui para acessar as nossas redes sociais',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: SocialMediaWidget(),
+                        ),
+                      ],
+                    )),
                 SizedBox(
                   width: MediaQuery.of(context).size.width < 700
                       ? MediaQuery.of(context).size.width * 0.45
