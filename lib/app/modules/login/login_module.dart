@@ -4,6 +4,7 @@ import 'package:smile_front/app/modules/forgot-password/forgot_password_module.d
 import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
 import 'package:smile_front/app/modules/login/ui/login_page.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
+import 'package:smile_front/app/shared/error/error_page.dart';
 import '../../shared/services/dio/smile_login_options.dart';
 import '../auth/domain/repositories/auth_repository_interface.dart';
 import '../auth/external/auth_datasource_impl.dart';
@@ -34,5 +35,6 @@ class LoginModule extends Module {
     ModuleRoute('/cadastro', module: RegisterModule()),
     ModuleRoute('/esqueci-minha-senha', module: ForgotPasswordModule()),
     ModuleRoute('/reenviar-email', module: ResendConfirmationModule()),
+    WildcardRoute(child: (context, args) => const ErrorPage()),
   ];
 }
