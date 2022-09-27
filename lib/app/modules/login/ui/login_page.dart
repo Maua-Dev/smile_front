@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/smile_logo_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -160,7 +161,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         ),
                         TextButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white.withOpacity(0),
+                              primary: Colors.white.withOpacity(0),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 50, vertical: 20),
                               textStyle: const TextStyle(
@@ -180,7 +181,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         ),
                         TextButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white.withOpacity(0),
+                              primary: Colors.white.withOpacity(0),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 50, vertical: 10),
                               textStyle: const TextStyle(
@@ -242,6 +243,51 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           height: 60,
                         ),
                       ],
+                    ),
+                  ),
+                  AlertDialog(
+                    content: SizedBox(
+                      height: 400,
+                      width: 500,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 32.0),
+                            child: Icon(FontAwesome5.exclamation,
+                                size: 80, color: AppColors.brandingOrange),
+                          ),
+                          const Text(
+                            "O serviço de login esta em manutenção",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 24),
+                          ),
+                          const Text(
+                            "Agradecemos a paciência",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          const SizedBox(
+                            height: 100,
+                          ),
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () => Modular.to.navigate('/home'),
+                              child: Container(
+                                color: AppColors.brandingOrange,
+                                width: 500,
+                                height: 50,
+                                child: Center(
+                                    child: Text(
+                                  "Clique aqui para voltar",
+                                  style: TextStyle(
+                                      color: AppColors.white, fontSize: 20),
+                                )),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
