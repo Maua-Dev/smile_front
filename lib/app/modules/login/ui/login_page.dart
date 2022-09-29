@@ -259,15 +259,17 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           ),
                           const Text(
                             "O serviço de login esta em manutenção",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 24),
                           ),
                           const Text(
                             "Agradecemos a paciência",
+                            textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 20),
                           ),
                           const SizedBox(
-                            height: 100,
+                            height: 20,
                           ),
                           MouseRegion(
                             cursor: SystemMouseCursors.click,
