@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:fluttericon/entypo_icons.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:fluttericon/font_awesome_icons.dart';
 
-enum SocialMediasEnum { blog, youtube, instagram }
+enum SocialMediasEnum {
+  blog,
+  youtube,
+  instagram,
+  linkedin,
+  flickr,
+  twitter,
+  facebook,
+  spotify
+}
 
 extension SocialMediasEnumExtension on SocialMediasEnum {
   String get url {
@@ -13,14 +25,49 @@ extension SocialMediasEnumExtension on SocialMediasEnum {
 
       case SocialMediasEnum.instagram:
         return 'https://www.instagram.com/infomaua/';
+
+      case SocialMediasEnum.linkedin:
+        return 'https://www.linkedin.com/school/479773/admin/updates';
+
+      case SocialMediasEnum.flickr:
+        return 'http://www.flickr.com/photos/infomaua';
+
+      case SocialMediasEnum.twitter:
+        return 'https://twitter.com/InfoMaua';
+
+      case SocialMediasEnum.facebook:
+        return 'https://www.facebook.com/InstitutoMaua';
+
+      case SocialMediasEnum.spotify:
+        return 'https://open.spotify.com/user/institutomauadetecnologia';
+    }
+  }
+
+  Widget get icons {
+    switch (this) {
+      case SocialMediasEnum.blog:
+        return const Icon(FontAwesome5.blogger_b, size: 24);
+
+      case SocialMediasEnum.youtube:
+        return const Icon(FontAwesome.youtube_play, size: 24);
+
+      case SocialMediasEnum.instagram:
+        return const Icon(FontAwesome5.instagram, size: 24);
+
+      case SocialMediasEnum.linkedin:
+        return const Icon(FontAwesome5.linkedin_in, size: 24);
+
+      case SocialMediasEnum.flickr:
+        return const Icon(Entypo.flickr, size: 24);
+
+      case SocialMediasEnum.twitter:
+        return const Icon(FontAwesome5.twitter, size: 24);
+
+      case SocialMediasEnum.facebook:
+        return const Icon(FontAwesome5.facebook_f, size: 24);
+
+      case SocialMediasEnum.spotify:
+        return const Icon(FontAwesome5.spotify, size: 24);
     }
   }
 }
-// Icon(FontAwesome5.blogger_b, size: 24),
-//     Icon(FontAwesome.youtube_play, size: 24),
-//     Icon(FontAwesome5.instagram, size: 24),
-//     Icon(FontAwesome5.linkedin_in, size: 24),
-//     Icon(Entypo.flickr, size: 24),
-//     Icon(FontAwesome5.twitter, size: 24),
-//     Icon(FontAwesome5.facebook_f, size: 24),
-//     Icon(FontAwesome5.spotify, size: 24)

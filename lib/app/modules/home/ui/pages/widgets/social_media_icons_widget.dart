@@ -11,21 +11,21 @@ class SocialMediaWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: SizedBox(
-            width: 360,
+            width: MediaQuery.of(context).size.width < 700 ? 100 : 350,
             height: 50,
             child: Wrap(
+                spacing: 8,
                 children: SocialMediasEnum.values
                     .map(
-                      (e) => SocialMediaIconsWidget(
-                          url: e.url, icon: Icon(Icons.abc)),
+                      (e) => SocialMediaIconsWidget(url: e.url, icon: e.icons),
                     )
                     .toList())));
   }
 }
 
-
 class SocialMediaIconsWidget extends StatefulWidget {
-  const SocialMediaIconsWidget({super.key, required this.icon, required this.url});
+  const SocialMediaIconsWidget(
+      {super.key, required this.icon, required this.url});
 
   final Widget icon;
   final String url;
