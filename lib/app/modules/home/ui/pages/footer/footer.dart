@@ -216,7 +216,7 @@ class Footer extends StatelessWidget {
                 Padding(
                     padding: const EdgeInsets.only(right: 16.0),
                     child: Column(
-                      children: [
+                      children: const [
                         Text(
                           'Clique aqui para acessar as nossas redes sociais',
                           style: TextStyle(
@@ -225,7 +225,7 @@ class Footer extends StatelessWidget {
                               fontWeight: FontWeight.bold),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
+                          padding: EdgeInsets.only(top: 8.0),
                           child: SocialMediaWidget(),
                         ),
                       ],

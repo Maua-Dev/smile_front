@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
@@ -51,24 +49,29 @@ class SocialMediaWidget extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
-class SocialMediaIconsWidget extends StatelessWidget {
-  SocialMediaIconsWidget({super.key, required this.icon, required this.url});
 
-  late Widget icon;
-  late String url;
+class SocialMediaIconsWidget extends StatefulWidget {
+  const SocialMediaIconsWidget({super.key, required this.icon, required this.url});
 
+  final Widget icon;
+  final String url;
+
+  @override
+  State<SocialMediaIconsWidget> createState() => _SocialMediaIconsWidgetState();
+}
+
+class _SocialMediaIconsWidgetState extends State<SocialMediaIconsWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => launchUrl(
-        Uri.parse(url),
+        Uri.parse(widget.url),
         mode: LaunchMode.externalApplication,
       ),
       child: CircleAvatar(
         radius: 18,
         backgroundColor: AppColors.brandingOrange,
-        child: icon,
+        child: widget.icon,
       ),
     );
   }
