@@ -15,6 +15,7 @@ class InputBox extends StatelessWidget {
   final bool? showPwd;
   final bool? isCpfField;
   final bool? isRAField;
+  final bool? isPhoneField;
   final bool? isValidated;
 
   const InputBox({
@@ -31,6 +32,7 @@ class InputBox extends StatelessWidget {
     this.showPwd,
     this.isCpfField,
     this.isRAField,
+    this.isPhoneField,
     this.isValidated,
   }) : super(key: key);
 
@@ -40,6 +42,8 @@ class InputBox extends StatelessWidget {
         mask: "###.###.###-##", filter: {"#": RegExp(r'[0-9]')});
     final maskRA = MaskTextInputFormatter(
         mask: "##.#####-#", filter: {"#": RegExp(r'[0-9]')});
+    final maskPhone = MaskTextInputFormatter(
+        mask: "(##) #####-####", filter: {"#": RegExp(r'[0-9]')});
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -77,7 +81,9 @@ class InputBox extends StatelessWidget {
                 ? [maskCpf]
                 : isRAField != null
                     ? [maskRA]
-                    : null,
+                    : isPhoneField != null
+                        ? [maskPhone]
+                        : null,
             validator: (value) {
               if (validation != null) {
                 return validation!(value!);

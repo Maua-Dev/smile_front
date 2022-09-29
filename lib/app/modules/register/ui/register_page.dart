@@ -227,6 +227,15 @@ class _RegisterPageState
                             const SizedBox(
                               height: 20,
                             ),
+                                InputBox(
+                                  icon: Icons.phone_rounded,
+                                  placeholder: 'Telefone celular',
+                                  setValue: controller.setVerifyEmail,
+                                  isPhoneField: true,
+                                ),
+                            const SizedBox(
+                              height: 20,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
