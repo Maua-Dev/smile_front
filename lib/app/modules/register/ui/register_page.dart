@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/error/error_snackbar.dart';
@@ -465,6 +466,7 @@ class _RegisterPageState
                       ],
                     ),
                   ),
+                  const MainstenanceAlert()
                 ],
               ));
         }),
