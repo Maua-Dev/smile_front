@@ -35,13 +35,14 @@ class _MainHomePageState extends State<MainHomePage> {
                     ),
                     child: Padding(
                         padding: EdgeInsets.only(
-                            right: MediaQuery.of(context).size.width < 1500
-                                ? 0
-                                : 128,
-                            bottom: 64),
+                          right: MediaQuery.of(context).size.width < 1500
+                              ? 24
+                              : 64,
+                        ),
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
@@ -50,7 +51,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(10))),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(16.0),
+                                    padding: const EdgeInsets.all(24),
                                     child: Column(
                                       children: [
                                         Text('Semana Mauá de Inovação,',
@@ -84,12 +85,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                                       .width <
                                                   1500
                                               ? 580
-                                              : MediaQuery.of(context)
-                                                          .size
-                                                          .width <
-                                                      1500
-                                                  ? 700
-                                                  : 820,
+                                              : 820,
                                           child: Text(
                                             apresentationText,
                                             style: AppTextStyles.body.copyWith(
@@ -99,12 +95,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                                             .width <
                                                         1500
                                                     ? 19
-                                                    : MediaQuery.of(context)
-                                                                .size
-                                                                .width <
-                                                            1500
-                                                        ? 22
-                                                        : 25),
+                                                    : 25),
                                             textAlign: TextAlign.justify,
                                           ),
                                         ),
@@ -116,54 +107,36 @@ class _MainHomePageState extends State<MainHomePage> {
                                   height: 16,
                                 ),
                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width <
-                                          1500
-                                      ? 700
-                                      : MediaQuery.of(context).size.width < 1500
-                                          ? 900
-                                          : 900,
+                                  width:
+                                      MediaQuery.of(context).size.width < 1500
+                                          ? 628
+                                          : 868,
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width <
-                                                    1500
-                                                ? 300
-                                                : MediaQuery.of(context)
+                                      CustomElevatedButtonWidget(
+                                        title: '22 a 27 de Maio de 2023',
+                                        textStyle: AppTextStyles.buttonBold
+                                            .copyWith(
+                                                color: Colors.white,
+                                                fontSize: MediaQuery.of(context)
                                                             .size
                                                             .width <
                                                         1500
-                                                    ? 450
-                                                    : 500,
-                                        height: 50,
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                          color: AppColors.brandingPurple,
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(20)),
-                                        ),
-                                        child: Text(
-                                          '22 a 27 de Maio de 2023',
-                                          textAlign: TextAlign.center,
-                                          style: AppTextStyles.buttonBold
-                                              .copyWith(
-                                                  fontSize: MediaQuery.of(
-                                                                  context)
-                                                              .size
-                                                              .width <
-                                                          1500
-                                                      ? 24
-                                                      : MediaQuery.of(context)
-                                                                  .size
-                                                                  .width <
-                                                              1500
-                                                          ? 48
-                                                          : 40),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 40,
+                                                    ? 24
+                                                    : 40),
+                                        widthSize:
+                                            MediaQuery.of(context).size.width <
+                                                    1500
+                                                ? 320
+                                                : 500,
+                                        heightSize: 66,
+                                        borderRadius: 40,
+                                        backgroundColor:
+                                            AppColors.brandingPurple,
+                                        isClickable: false,
+                                        onPressed: null,
                                       ),
                                       CustomElevatedButtonWidget(
                                         title: 'SAIBA MAIS >>>',
@@ -175,25 +148,14 @@ class _MainHomePageState extends State<MainHomePage> {
                                                             .width <
                                                         1500
                                                     ? 24
-                                                    : 32),
-                                        paddingHorizontal:
-                                            MediaQuery.of(context).size.width <
-                                                    1300
-                                                ? 8
-                                                : 16,
-                                        paddingVertical: 8,
+                                                    : 40),
                                         widthSize:
                                             MediaQuery.of(context).size.width <
                                                     1500
                                                 ? 240
-                                                : MediaQuery.of(context)
-                                                            .size
-                                                            .width <
-                                                        1500
-                                                    ? 300
-                                                    : 300,
-                                        heightSize: 50,
-                                        borderRadius: 20,
+                                                : 340,
+                                        heightSize: 66,
+                                        borderRadius: 40,
                                         backgroundColor:
                                             AppColors.brandingOrange,
                                         onPressed: () {
