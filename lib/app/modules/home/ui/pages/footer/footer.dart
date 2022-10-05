@@ -309,7 +309,7 @@ class Footer extends StatelessWidget {
                             children: [
                               TextSpan(
                                 text: 'smile.patrocinio@maua.br',
-                                style: AppTextStyles.titleH1.copyWith(
+                                style: AppTextStyles.body.copyWith(
                                     color: Colors.white, fontSize: 12),
                               ),
                               TextSpan(
@@ -321,7 +321,7 @@ class Footer extends StatelessWidget {
                               ),
                               TextSpan(
                                 text: 'smile@maua.br',
-                                style: AppTextStyles.titleH1.copyWith(
+                                style: AppTextStyles.body.copyWith(
                                     color: Colors.white, fontSize: 12),
                               ),
                               TextSpan(
@@ -351,7 +351,7 @@ class Footer extends StatelessWidget {
                             children: [
                               TextSpan(
                                 text: '4239-3563',
-                                style: AppTextStyles.titleH1.copyWith(
+                                style: AppTextStyles.body.copyWith(
                                     color: Colors.white, fontSize: 12),
                               ),
                               TextSpan(
@@ -363,11 +363,11 @@ class Footer extends StatelessWidget {
                               ),
                               TextSpan(
                                 text: '4239-3059',
-                                style: AppTextStyles.titleH1.copyWith(
+                                style: AppTextStyles.body.copyWith(
                                     color: Colors.white, fontSize: 12),
                               ),
                               TextSpan(
-                                text: ', ',
+                                text: '. ',
                                 style: AppTextStyles.body.copyWith(
                                   color: Colors.white,
                                   fontSize: 12,
