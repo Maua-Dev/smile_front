@@ -228,11 +228,11 @@ class _RegisterPageState
                               height: 20,
                             ),
                             InputBox(
-                                icon: Icons.phone_rounded,
-                                placeholder: 'Telefone celular',
-                                setValue: controller.setPhone,
-                                isPhoneField: true,
-                              ),
+                              icon: Icons.phone_rounded,
+                              placeholder: 'Telefone celular',
+                              setValue: controller.setPhone,
+                              isPhoneField: true,
+                            ),
                             const SizedBox(
                               height: 20,
                             ),

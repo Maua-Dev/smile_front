@@ -199,13 +199,12 @@ abstract class RegisterControllerBase with Store {
 
   @action
   bool validatePhone(String value) {
-    value = value.replaceAll(' ', '');
-    value = value.replaceAll('-', '');
-    value = value.replaceAll('~', '');
-    value = value.replaceAll(')', '');
-    value = value.replaceAll('(', '');
     if (value.isEmpty) {
       addError('Campo "Telefone Celular" obrigatório');
+      return false;
+    }
+    if (value.length < 11) {
+      addError('Campo "Telefone Celular" incorreto');
       return false;
     }
     return true;
@@ -310,14 +309,16 @@ abstract class RegisterControllerBase with Store {
 
   @computed
   UserRegistration get registerInformations => UserRegistration(
-      name: name,
-      socialName: socialName == "" ? null : socialName,
-      email: email,
-      cpfRne: cpf,
-      ra: raInt,
-      password: password,
-      acceptEmails: canSendEmails,
-      acceptTerms: acceptTermsOfUse);
+        name: name,
+        socialName: socialName == "" ? null : socialName,
+        email: email,
+        cpfRne: cpf,
+        ra: raInt,
+        password: password,
+        acceptEmails: canSendEmails,
+        acceptTerms: acceptTermsOfUse,
+        phoneNumber: phone,
+      );
 
   @action
   Future<void> register() async {
@@ -377,10 +378,10 @@ abstract class RegisterControllerBase with Store {
     validateSocialName(socialName);
     validateCpf(cpf);
     validateEmail(email);
+    validatePhone(phone);
     validateVerifyEmail(verifyEmail);
     validateRa(ra);
     validateVerifyPassword(verifyPassword);
-    validateCpf(phone);
 
     return errorsList.isEmpty;
   }

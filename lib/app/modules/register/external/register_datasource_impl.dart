@@ -29,7 +29,9 @@ class RegisterDatasourceImpl implements RegisterDatasourceInterface {
         "role": "STUDENT",
         "accepted_notifications": userRegistration.acceptEmails,
         "social_name": userRegistration.socialName,
-        "accepted_terms": userRegistration.acceptTerms
+        "accepted_terms": userRegistration.acceptTerms,
+        // Aguardando back
+        // "phone_number": userRegistration.phoneNumber,
       });
       if (res.statusCode == 200) {
         return 'Usuário criado com sucesso!';

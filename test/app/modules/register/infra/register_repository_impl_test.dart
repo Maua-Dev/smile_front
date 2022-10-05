@@ -17,6 +17,7 @@ void main() {
     password: 'Teste123!',
     acceptEmails: true,
     acceptTerms: true,
+    phoneNumber: '11991273092',
   );
   var res = 'User Caio Toledo created.';
 

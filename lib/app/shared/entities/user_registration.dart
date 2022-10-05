@@ -7,8 +7,10 @@ class UserRegistration {
   final String password;
   final bool acceptEmails;
   final bool acceptTerms;
+  final String phoneNumber;
 
   UserRegistration({
+    required this.phoneNumber,
     required this.name,
     this.socialName,
     required this.email,
@@ -21,13 +23,15 @@ class UserRegistration {
 
   factory UserRegistration.newInstance() {
     return UserRegistration(
-        name: '',
-        socialName: '',
-        email: '',
-        cpfRne: '',
-        ra: null,
-        password: '',
-        acceptEmails: true,
-        acceptTerms: true);
+      name: '',
+      socialName: '',
+      email: '',
+      cpfRne: '',
+      ra: null,
+      password: '',
+      acceptEmails: true,
+      acceptTerms: true,
+      phoneNumber: '',
+    );
   }
 }
