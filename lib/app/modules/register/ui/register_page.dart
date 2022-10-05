@@ -227,12 +227,12 @@ class _RegisterPageState
                             const SizedBox(
                               height: 20,
                             ),
-                                InputBox(
-                                  icon: Icons.phone_rounded,
-                                  placeholder: 'Telefone celular',
-                                  setValue: controller.setVerifyEmail,
-                                  isPhoneField: true,
-                                ),
+                            InputBox(
+                                icon: Icons.phone_rounded,
+                                placeholder: 'Telefone celular',
+                                setValue: controller.setPhone,
+                                isPhoneField: true,
+                              ),
                             const SizedBox(
                               height: 20,
                             ),

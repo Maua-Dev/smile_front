@@ -63,6 +63,9 @@ abstract class RegisterControllerBase with Store {
   String verifyEmail = '';
 
   @observable
+  String phone = '';
+
+  @observable
   bool isMauaStudent = false;
 
   @observable
@@ -183,6 +186,30 @@ abstract class RegisterControllerBase with Store {
     'icloud',
     'maua'
   ];
+
+  @action
+  Future<void> setPhone(String value) async {
+    value = value.replaceAll(' ', '');
+    value = value.replaceAll('-', '');
+    value = value.replaceAll('~', '');
+    value = value.replaceAll(')', '');
+    value = value.replaceAll('(', '');
+    phone = value;
+  }
+
+  @action
+  bool validatePhone(String value) {
+    value = value.replaceAll(' ', '');
+    value = value.replaceAll('-', '');
+    value = value.replaceAll('~', '');
+    value = value.replaceAll(')', '');
+    value = value.replaceAll('(', '');
+    if (value.isEmpty) {
+      addError('Campo "Telefone Celular" obrigatório');
+      return false;
+    }
+    return true;
+  }
 
   @action
   bool validateEmail(String value) {
@@ -353,6 +380,7 @@ abstract class RegisterControllerBase with Store {
     validateVerifyEmail(verifyEmail);
     validateRa(ra);
     validateVerifyPassword(verifyPassword);
+    validateCpf(phone);
 
     return errorsList.isEmpty;
   }
