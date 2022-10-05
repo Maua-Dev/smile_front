@@ -37,15 +37,29 @@ class _MainHomePageState extends State<MainHomePage> {
                         padding: EdgeInsets.only(
                           right: MediaQuery.of(context).size.width < 1500
                               ? 24
-                              : 64,
+                              : 32,
                         ),
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.width < 900
+                                          ? 480
+                                          : 0,
+                                ),
                                 Container(
+                                  width: MediaQuery.of(context).size.width < 900
+                                      ? 650
+                                      : MediaQuery.of(context).size.width *
+                                                  0.5 <
+                                              700
+                                          ? MediaQuery.of(context).size.width *
+                                              0.5
+                                          : 650,
                                   decoration: BoxDecoration(
                                       color: AppColors.brandingPurple,
                                       borderRadius: const BorderRadius.all(
@@ -63,8 +77,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                                                     .size
                                                                     .width <
                                                                 1500
-                                                            ? 40
-                                                            : 55)),
+                                                            ? 32
+                                                            : 32)),
                                         Text('Liderança e Empreendedorismo',
                                             style: AppTextStyles.titleH1
                                                 .copyWith(
@@ -74,8 +88,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                                                     .size
                                                                     .width <
                                                                 1500
-                                                            ? 40
-                                                            : 55)),
+                                                            ? 31
+                                                            : 32)),
                                         const SizedBox(
                                           height: 16,
                                         ),
@@ -94,7 +108,12 @@ class _MainHomePageState extends State<MainHomePage> {
                                                             .size
                                                             .width <
                                                         1500
-                                                    ? 19
+                                                    ? MediaQuery.of(context)
+                                                                .size
+                                                                .width <
+                                                            900
+                                                        ? 16
+                                                        : 20
                                                     : 25),
                                             textAlign: TextAlign.justify,
                                           ),
@@ -106,66 +125,66 @@ class _MainHomePageState extends State<MainHomePage> {
                                 const SizedBox(
                                   height: 16,
                                 ),
-                                SizedBox(
-                                  width:
+                                CustomElevatedButtonWidget(
+                                  title: '22 a 27 de Maio de 2023',
+                                  textStyle: AppTextStyles.buttonBold.copyWith(
+                                      color: Colors.white,
+                                      fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width <
+                                              1500
+                                          ? MediaQuery.of(context).size.width <
+                                                  900
+                                              ? 20
+                                              : 24
+                                          : 40),
+                                  widthSize:
                                       MediaQuery.of(context).size.width < 1500
-                                          ? 628
-                                          : 868,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      CustomElevatedButtonWidget(
-                                        title: '22 a 27 de Maio de 2023',
-                                        textStyle: AppTextStyles.buttonBold
-                                            .copyWith(
-                                                color: Colors.white,
-                                                fontSize: MediaQuery.of(context)
-                                                            .size
-                                                            .width <
-                                                        1500
-                                                    ? 24
-                                                    : 40),
-                                        widthSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1500
-                                                ? 320
-                                                : 500,
-                                        heightSize: 66,
-                                        borderRadius: 40,
-                                        backgroundColor:
-                                            AppColors.brandingPurple,
-                                        isClickable: false,
-                                        onPressed: null,
-                                      ),
-                                      CustomElevatedButtonWidget(
-                                        title: 'SAIBA MAIS >>>',
-                                        textStyle: AppTextStyles.buttonBold
-                                            .copyWith(
-                                                color: Colors.white,
-                                                fontSize: MediaQuery.of(context)
-                                                            .size
-                                                            .width <
-                                                        1500
-                                                    ? 24
-                                                    : 40),
-                                        widthSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1500
-                                                ? 240
-                                                : 340,
-                                        heightSize: 66,
-                                        borderRadius: 40,
-                                        backgroundColor:
-                                            AppColors.brandingOrange,
-                                        onPressed: () {
-                                          Modular.to
-                                              .navigate('/home/home-more-info');
-                                        },
-                                      )
-                                    ],
-                                  ),
+                                          ? 320
+                                          : 500,
+                                  heightSize:
+                                      MediaQuery.of(context).size.width < 900
+                                          ? 40
+                                          : 50,
+                                  borderRadius: 40,
+                                  backgroundColor: AppColors.brandingPurple,
+                                  isClickable: false,
+                                  onPressed: null,
                                 ),
+                                SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.width < 900
+                                            ? 8
+                                            : 16),
+                                CustomElevatedButtonWidget(
+                                  title: 'SAIBA MAIS >>>',
+                                  textStyle: AppTextStyles.buttonBold.copyWith(
+                                      color: Colors.white,
+                                      fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width <
+                                              1500
+                                          ? MediaQuery.of(context).size.width <
+                                                  900
+                                              ? 20
+                                              : 24
+                                          : 40),
+                                  widthSize: MediaQuery.of(context).size.width <
+                                          1500
+                                      ? MediaQuery.of(context).size.width < 900
+                                          ? 200
+                                          : 240
+                                      : 340,
+                                  heightSize:
+                                      MediaQuery.of(context).size.width < 900
+                                          ? 40
+                                          : 50,
+                                  borderRadius: 40,
+                                  backgroundColor: AppColors.brandingOrange,
+                                  onPressed: () {
+                                    Modular.to.navigate('/home/home-more-info');
+                                  },
+                                )
                               ]),
                         ))))
           ],
