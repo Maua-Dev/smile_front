@@ -2,6 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/landing_user_page.dart';
 import 'package:smile_front/app/modules/dashboard/user_module.dart';
 
+import '../../shared/error/error_page.dart';
 import '../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 
 class LandingModule extends Module {
@@ -18,5 +19,6 @@ class LandingModule extends Module {
         children: [
           ModuleRoute('/home', module: UserModule()),
         ]),
+    WildcardRoute(child: (context, args) => const ErrorPage()),
   ];
 }
