@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/error/error_snackbar.dart';
@@ -22,6 +23,22 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState
     extends ModularState<RegisterPage, RegisterController> {
+  @override
+  void initState() {
+    super.initState();
+    _showDialog();
+  }
+
+  _showDialog() async {
+    await Future.delayed(const Duration(milliseconds: 50));
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return const MainstenanceAlert();
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -465,6 +482,7 @@ class _RegisterPageState
                       ],
                     ),
                   ),
+                  const MainstenanceAlert()
                 ],
               ));
         }),
