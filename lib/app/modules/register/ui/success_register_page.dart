@@ -16,6 +16,7 @@ class SuccessRegisterPage extends StatefulWidget {
 
 class _SuccessRegisterPageState extends State<SuccessRegisterPage> {
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

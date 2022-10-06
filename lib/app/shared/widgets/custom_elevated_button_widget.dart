@@ -13,6 +13,7 @@ class CustomElevatedButtonWidget extends StatelessWidget {
   final double? paddingHorizontal;
   final double? paddingVertical;
   final double? borderRadius;
+  final bool? isClickable;
   final Function()? onPressed;
 
   const CustomElevatedButtonWidget({
@@ -27,6 +28,7 @@ class CustomElevatedButtonWidget extends StatelessWidget {
     this.isLoading,
     this.textStyle,
     this.borderRadius,
+    this.isClickable = true,
   }) : super(key: key);
 
   @override
@@ -38,15 +40,13 @@ class CustomElevatedButtonWidget extends StatelessWidget {
         width: widthSize,
         height: heightSize,
         child: ElevatedButton(
-            onPressed: onPressed,
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                  (Set<MaterialState> states) {
-                if (states.contains(MaterialState.pressed)) {
-                  return backgroundColor!;
-                } else if (states.contains(MaterialState.disabled)) {
-                  return AppColors.gray;
-                }
+          onPressed: onPressed,
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
+              if (!isClickable!) {
+                return backgroundColor!;
+              } else if (states.contains(MaterialState.pressed)) {
                 return backgroundColor!;
               }),
               alignment: Alignment.center,

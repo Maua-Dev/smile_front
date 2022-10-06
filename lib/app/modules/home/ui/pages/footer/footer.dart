@@ -275,24 +275,21 @@ class Footer extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: ElevatedButton.icon(
-                          style: ButtonStyle(
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                  const EdgeInsets.symmetric(
-                                      vertical: 16, horizontal: 16)),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  AppColors.brandingOrange),
-                              shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ))),
-                          onPressed: () => launchUrl(
-                                Uri.parse(
-                                    'https://g.page/IMT-instituto-maua?share'),
-                                mode: LaunchMode.externalApplication,
+                    SizedBox(
+                      width:
+                          MediaQuery.of(context).size.width < 1350 ? 300 : 400,
+                      child: RichText(
+                        text: TextSpan(
+                            text: 'Em caso de dúvidas, enviar um e-mail para ',
+                            style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: 'smile.patrocinio@maua.br',
+                                style: AppTextStyles.body.copyWith(
+                                    color: Colors.white, fontSize: 12),
                               ),
                           icon: const Icon(
                             Icons.location_on,
@@ -303,27 +300,16 @@ class Footer extends StatelessWidget {
                               'COMO CHEGAR',
                               style: AppTextStyles.body.copyWith(
                                   color: Colors.white,
-                                  fontSize: MediaQuery.of(context).size.width <
-                                          900
-                                      ? 14
-                                      : MediaQuery.of(context).size.width < 1350
-                                          ? 16
-                                          : 20),
-                            ),
-                          )),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width < 1350
-                            ? 300
-                            : 400,
-                        child: TextRenderer(
-                          child: RichText(
-                            text: TextSpan(
-                                text:
-                                    'Em caso de dúvidas, enviar um e-mail para ',
+                                  fontSize: 12,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'smile@maua.br',
+                                style: AppTextStyles.body.copyWith(
+                                    color: Colors.white, fontSize: 12),
+                              ),
+                              TextSpan(
+                                text: '.',
                                 style: AppTextStyles.body.copyWith(
                                   color: Colors.white,
                                   fontSize: 12,
@@ -362,14 +348,19 @@ class Footer extends StatelessWidget {
                     SizedBox(
                       width:
                           MediaQuery.of(context).size.width < 1350 ? 300 : 400,
-                      child: TextRenderer(
-                        child: RichText(
-                          text: TextSpan(
-                              text:
-                                  'Caso queira falar conosco, entre em contato nos números: ',
-                              style: AppTextStyles.body.copyWith(
-                                color: Colors.white,
-                                fontSize: 12,
+                      child: RichText(
+                        text: TextSpan(
+                            text:
+                                'Caso queira falar conosco, entre em contato nos números: ',
+                            style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: '4239-3563',
+                                style: AppTextStyles.body.copyWith(
+                                    color: Colors.white, fontSize: 12),
                               ),
                               children: [
                                 TextSpan(
@@ -377,12 +368,17 @@ class Footer extends StatelessWidget {
                                   style: AppTextStyles.titleH1.copyWith(
                                       color: Colors.white, fontSize: 12),
                                 ),
-                                TextSpan(
-                                  text: ', ',
-                                  style: AppTextStyles.body.copyWith(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                  ),
+                              ),
+                              TextSpan(
+                                text: '4239-3059',
+                                style: AppTextStyles.body.copyWith(
+                                    color: Colors.white, fontSize: 12),
+                              ),
+                              TextSpan(
+                                text: '. ',
+                                style: AppTextStyles.body.copyWith(
+                                  color: Colors.white,
+                                  fontSize: 12,
                                 ),
                                 TextSpan(
                                   text: '4239-3059',
