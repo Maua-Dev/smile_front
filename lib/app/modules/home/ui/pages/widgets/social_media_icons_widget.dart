@@ -11,10 +11,11 @@ class SocialMediaWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: SizedBox(
-            width: MediaQuery.of(context).size.width < 700 ? 100 : 350,
-            height: 50,
+            width: MediaQuery.of(context).size.width < 1100 ? 168 : 350,
+            height: MediaQuery.of(context).size.width < 1100 ? 70 : 50,
             child: Wrap(
                 spacing: 8,
+                runSpacing: 4,
                 children: SocialMediasEnum.values
                     .map(
                       (e) => SocialMediaIconsWidget(url: e.url, icon: e.icons),

@@ -23,7 +23,7 @@ class Footer extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.width < 500 ? null : 16,
           ),
-          if (MediaQuery.of(context).size.width < 700)
+          if (MediaQuery.of(context).size.width < 760)
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -65,33 +65,44 @@ class Footer extends StatelessWidget {
                       height: 8,
                     ),
                     Center(
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: ElevatedButton.icon(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  AppColors.brandingOrange),
-                              shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ))),
-                          onPressed: () => launchUrl(
-                            Uri.parse(
-                                'https://g.page/IMT-instituto-maua?share'),
-                            mode: LaunchMode.externalApplication,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const SocialMediaWidget(),
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: ElevatedButton.icon(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          AppColors.brandingOrange),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ))),
+                              onPressed: () => launchUrl(
+                                Uri.parse(
+                                    'https://g.page/IMT-instituto-maua?share'),
+                                mode: LaunchMode.externalApplication,
+                              ),
+                              icon: const Icon(
+                                Icons.location_on,
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                              label: Text(
+                                'COMO CHEGAR',
+                                style: AppTextStyles.body.copyWith(
+                                    color: Colors.white,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 760
+                                            ? 12
+                                            : 24),
+                              ),
+                            ),
                           ),
-                          icon: const Icon(
-                            Icons.location_on,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                          label: Text(
-                            'COMO CHEGAR',
-                            style: AppTextStyles.body
-                                .copyWith(color: Colors.white, fontSize: 12),
-                          ),
-                        ),
+                        ],
                       ),
                     ),
                   ],
@@ -214,17 +225,30 @@ class Footer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                    padding: const EdgeInsets.only(right: 16.0),
+                    padding: const EdgeInsets.only(right: 0.0),
                     child: Column(
-                      children: const [
-                        Text(
-                          'Clique aqui para acessar as nossas redes sociais',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width < 1100
+                              ? 168
+                              : 350,
+                          child: Text(
+                            'Clique aqui para acessar as nossas redes sociais:',
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.body.copyWith(
+                                color: Colors.white,
+                                fontSize: MediaQuery.of(context).size.width <
+                                        900
+                                    ? 14
+                                    : MediaQuery.of(context).size.width < 1350
+                                        ? 16
+                                        : 20),
+                          ),
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(top: 8.0),
                           child: SocialMediaWidget(),
                         ),
@@ -245,7 +269,7 @@ class Footer extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  width: 16,
+                  width: 0,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
