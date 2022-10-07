@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home
 import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/more_info_home_page.dart';
+import 'package:smile_front/app/shared/error/error_page.dart';
 import '../../shared/services/dio/smile_login_options.dart';
 import 'external/speakers_datasource_impl.dart';
 import 'infra/datasources/speakers_datasource_interface.dart';
@@ -23,6 +24,7 @@ class HomeModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute, child: (_, args) => const HomePage()),
-    ChildRoute('/home-more-info', child: (_, args) => const MoreInfoHomePage())
+    ChildRoute('/home-more-info', child: (_, args) => const MoreInfoHomePage()),
+    WildcardRoute(child: (context, args) => const ErrorPage()),
   ];
 }
