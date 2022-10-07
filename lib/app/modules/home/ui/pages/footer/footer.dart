@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/social_media_icons_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
@@ -22,7 +23,7 @@ class Footer extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.width < 500 ? null : 16,
           ),
-          if (MediaQuery.of(context).size.width < 700)
+          if (MediaQuery.of(context).size.width < 760)
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -64,33 +65,44 @@ class Footer extends StatelessWidget {
                       height: 8,
                     ),
                     Center(
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: ElevatedButton.icon(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  AppColors.brandingOrange),
-                              shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ))),
-                          onPressed: () => launchUrl(
-                            Uri.parse(
-                                'https://g.page/IMT-instituto-maua?share'),
-                            mode: LaunchMode.externalApplication,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const SocialMediaWidget(),
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: ElevatedButton.icon(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          AppColors.brandingOrange),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ))),
+                              onPressed: () => launchUrl(
+                                Uri.parse(
+                                    'https://g.page/IMT-instituto-maua?share'),
+                                mode: LaunchMode.externalApplication,
+                              ),
+                              icon: const Icon(
+                                Icons.location_on,
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                              label: Text(
+                                'COMO CHEGAR',
+                                style: AppTextStyles.body.copyWith(
+                                    color: Colors.white,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 760
+                                            ? 12
+                                            : 24),
+                              ),
+                            ),
                           ),
-                          icon: const Icon(
-                            Icons.location_on,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                          label: Text(
-                            'COMO CHEGAR',
-                            style: AppTextStyles.body
-                                .copyWith(color: Colors.white, fontSize: 12),
-                          ),
-                        ),
+                        ],
                       ),
                     ),
                   ],
@@ -212,6 +224,36 @@ class Footer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Padding(
+                    padding: const EdgeInsets.only(right: 0.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width < 1100
+                              ? 168
+                              : 350,
+                          child: Text(
+                            'Clique aqui para acessar as nossas redes sociais:',
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.body.copyWith(
+                                color: Colors.white,
+                                fontSize: MediaQuery.of(context).size.width <
+                                        900
+                                    ? 14
+                                    : MediaQuery.of(context).size.width < 1350
+                                        ? 16
+                                        : 20),
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 8.0),
+                          child: SocialMediaWidget(),
+                        ),
+                      ],
+                    )),
                 SizedBox(
                   width: MediaQuery.of(context).size.width < 700
                       ? MediaQuery.of(context).size.width * 0.45
@@ -227,7 +269,7 @@ class Footer extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  width: 16,
+                  width: 0,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,

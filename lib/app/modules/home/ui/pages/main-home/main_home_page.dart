@@ -38,6 +38,7 @@ class _MainHomePageState extends State<MainHomePage> {
                           right: MediaQuery.of(context).size.width < 1500
                               ? 24
                               : 32,
+                          bottom: 55,
                         ),
                         child: Align(
                           alignment: Alignment.centerRight,
@@ -45,20 +46,14 @@ class _MainHomePageState extends State<MainHomePage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.width < 900
-                                          ? 480
-                                          : 0,
-                                ),
                                 Container(
                                   width: MediaQuery.of(context).size.width < 900
-                                      ? 650
+                                      ? 350
                                       : MediaQuery.of(context).size.width *
                                                   0.5 <
                                               700
                                           ? MediaQuery.of(context).size.width *
-                                              0.5
+                                              0.45
                                           : 650,
                                   decoration: BoxDecoration(
                                       color: AppColors.brandingPurple,
@@ -77,7 +72,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                                                     .size
                                                                     .width <
                                                                 1500
-                                                            ? 32
+                                                            ? 24
                                                             : 32)),
                                         Text('Liderança e Empreendedorismo',
                                             style: AppTextStyles.titleH1
@@ -88,7 +83,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                                                     .size
                                                                     .width <
                                                                 1500
-                                                            ? 31
+                                                            ? 24
                                                             : 32)),
                                         const SizedBox(
                                           height: 16,
@@ -98,8 +93,14 @@ class _MainHomePageState extends State<MainHomePage> {
                                                       .size
                                                       .width <
                                                   1500
-                                              ? 580
+                                              ? MediaQuery.of(context)
+                                                          .size
+                                                          .width <
+                                                      900
+                                                  ? 300
+                                                  : 580
                                               : 820,
+                                          //580 e 820
                                           child: Text(
                                             apresentationText,
                                             style: AppTextStyles.body.copyWith(
@@ -113,7 +114,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                                                 .width <
                                                             900
                                                         ? 16
-                                                        : 20
+                                                        : 18
                                                     : 25),
                                             textAlign: TextAlign.justify,
                                           ),
