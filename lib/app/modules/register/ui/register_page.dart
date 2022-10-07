@@ -26,6 +26,7 @@ class _RegisterPageState
   @override
   void initState() {
     super.initState();
+
     _showDialog();
   }
 
@@ -240,6 +241,15 @@ class _RegisterPageState
                               icon: Icons.email_rounded,
                               placeholder: 'Confirme seu e-mail',
                               setValue: controller.setVerifyEmail,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            InputBox(
+                              icon: Icons.phone_rounded,
+                              placeholder: 'Telefone celular',
+                              setValue: controller.setPhone,
+                              isPhoneField: true,
                             ),
                             const SizedBox(
                               height: 20,
