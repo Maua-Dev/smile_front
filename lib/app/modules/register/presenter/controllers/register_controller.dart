@@ -190,12 +190,24 @@ abstract class RegisterControllerBase with Store {
   @action
   Future<void> setPhone(String value) async {
     value = value.replaceAll('+', '');
+    phone = value;
   }
 
   @action
   bool validatePhone(String value) {
     if (value.isEmpty) {
-      addError('Campo "Telefone Celular" obrigatório');
+      addError('Campo "Telefone celular" obrigatório');
+      return false;
+    }
+    if (value[0] == "5" && value[1] == "5" && value.length == 11) {
+      addError('Inserir DDD no campo "Telefone celular"');
+      return false;
+    }
+    if (value[0] == "5" &&
+        value[1] == "5" &&
+        value.length != 11 &&
+        value.length != 13) {
+      addError('Campo "Telefone celular" inválido');
       return false;
     }
     return true;

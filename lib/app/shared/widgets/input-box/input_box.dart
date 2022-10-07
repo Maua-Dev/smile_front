@@ -90,6 +90,8 @@ class InputBox extends StatelessWidget {
                       useEmoji: true,
                       selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
                     ),
+                    keyboardType: const TextInputType.numberWithOptions(
+                        signed: true, decimal: true),
                     ignoreBlank: true,
                     initialValue: number,
                     searchBoxDecoration: InputDecoration(
