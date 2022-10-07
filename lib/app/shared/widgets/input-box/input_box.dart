@@ -78,8 +78,8 @@ class InputBox extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(
               top: MediaQuery.of(context).size.width < 650 ? 5 : 10, left: 10),
-          child: isPhoneField ?
-               Padding(
+          child: isPhoneField
+              ? Padding(
                   padding: const EdgeInsets.fromLTRB(10, 0, 0, 12),
                   child: InternationalPhoneNumberInput(
                     onFieldSubmitted: onFieldSubmitted,
