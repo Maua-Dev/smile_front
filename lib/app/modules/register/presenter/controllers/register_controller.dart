@@ -189,22 +189,13 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
-    value = value.replaceAll(' ', '');
-    value = value.replaceAll('-', '');
-    value = value.replaceAll('~', '');
-    value = value.replaceAll(')', '');
-    value = value.replaceAll('(', '');
-    phone = value;
+    value = value.replaceAll('+', '');
   }
 
   @action
   bool validatePhone(String value) {
     if (value.isEmpty) {
       addError('Campo "Telefone Celular" obrigatório');
-      return false;
-    }
-    if (value.length < 11) {
-      addError('Campo "Telefone Celular" incorreto');
       return false;
     }
     return true;
