@@ -17,7 +17,7 @@ class InputBox extends StatelessWidget {
   final bool? showPwd;
   final bool? isCpfField;
   final bool? isRAField;
-  final bool? isPhoneField;
+  final bool isPhoneField;
   final bool? isValidated;
   final PhoneNumber number = PhoneNumber(isoCode: 'BR');
 
@@ -35,7 +35,7 @@ class InputBox extends StatelessWidget {
     this.showPwd,
     this.isCpfField,
     this.isRAField,
-    this.isPhoneField,
+    this.isPhoneField = false,
     this.isValidated,
   }) : super(key: key);
 
@@ -78,7 +78,7 @@ class InputBox extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(
               top: MediaQuery.of(context).size.width < 650 ? 5 : 10, left: 10),
-          child: isPhoneField == true
+          child: isPhoneField
               ? Padding(
                   padding: const EdgeInsets.fromLTRB(10, 0, 0, 12),
                   child: InternationalPhoneNumberInput(
@@ -93,6 +93,7 @@ class InputBox extends StatelessWidget {
                     keyboardType: const TextInputType.numberWithOptions(
                         signed: true, decimal: true),
                     ignoreBlank: true,
+                    maxLength: 20,
                     initialValue: number,
                     searchBoxDecoration: InputDecoration(
                       fillColor: AppColors.brandingPurple,
@@ -103,6 +104,7 @@ class InputBox extends StatelessWidget {
                       color: AppColors.placeholder,
                       fontSize: 16,
                     ),
+                    formatInput: true,
                     textStyle: TextStyle(color: AppColors.white),
                     spaceBetweenSelectorAndTextField: 0,
                     inputDecoration: InputDecoration(
