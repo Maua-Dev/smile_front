@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/utils/s3_assets_url.dart';
@@ -81,11 +82,13 @@ class _ChangePasswordPageState
                                 borderRadius: BorderRadius.circular(10)),
                             child: const Padding(
                               padding: EdgeInsets.all(4.0),
-                              child: Text(
-                                'Senha alterada com sucesso! \n Redirecionando para o login...',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 16),
+                              child: TextRenderer(
+                                child: Text(
+                                  'Senha alterada com sucesso! \n Redirecionando para o login...',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 16),
+                                ),
                               ),
                             ),
                           ),
@@ -112,10 +115,12 @@ class _ChangePasswordPageState
                                     },
                                     icon: const Icon(Icons.close),
                                   ),
-                                  Text(
-                                    controller.errors,
-                                    style: const TextStyle(
-                                        color: Colors.black, fontSize: 16),
+                                  TextRenderer(
+                                    child: Text(
+                                      controller.errors,
+                                      style: const TextStyle(
+                                          color: Colors.black, fontSize: 16),
+                                    ),
                                   ),
                                   const SizedBox(
                                     width: 10,
@@ -129,10 +134,12 @@ class _ChangePasswordPageState
                         return const SizedBox.shrink();
                       }
                     }),
-                    const Text(
-                      'Insira sua nova senha e o codigo enviado para o seu e-mail:',
-                      style: TextStyle(color: Colors.white),
-                      textAlign: TextAlign.center,
+                    const TextRenderer(
+                      child: Text(
+                        'Insira sua nova senha e o codigo enviado para o seu e-mail:',
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                     const SizedBox(
                       height: 20,

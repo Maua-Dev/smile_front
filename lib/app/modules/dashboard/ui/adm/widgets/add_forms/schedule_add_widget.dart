@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import 'text_field_dialog_widget.dart';
@@ -114,13 +115,15 @@ class ScheduleAddWidget extends StatelessWidget {
                   Flexible(
                       child: Column(
                     children: [
-                      Text(
-                        'Aceitar inscrições',
-                        style: AppTextStyles.titleH1.copyWith(
-                            color: AppColors.brandingPurple,
-                            fontSize: MediaQuery.of(context).size.width < 1200
-                                ? 17
-                                : 20),
+                      TextRenderer(
+                        child: Text(
+                          'Aceitar inscrições',
+                          style: AppTextStyles.titleH1.copyWith(
+                              color: AppColors.brandingPurple,
+                              fontSize: MediaQuery.of(context).size.width < 1200
+                                  ? 17
+                                  : 20),
+                        ),
                       ),
                       Checkbox(
                         value: enableSubscription,

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
@@ -118,8 +119,10 @@ class BeSponsor extends StatelessWidget {
         showDialog(
             context: context,
             builder: (context) => const AlertDialog(
-                  content: Text(
-                      'Enviado com sucesso!! Nossa equipe entrará em contato em breve.'),
+                  content: TextRenderer(
+                    child: Text(
+                        'Enviado com sucesso!! Nossa equipe entrará em contato em breve.'),
+                  ),
                 ));
       }
     }
@@ -144,12 +147,14 @@ class BeSponsor extends StatelessWidget {
               Center(
                   child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Seja nosso Patrocinador',
-                  style: TextStyle(
-                      fontSize:
-                          MediaQuery.of(context).size.width < 530 ? 28 : 35,
-                      fontWeight: FontWeight.w900),
+                child: TextRenderer(
+                  child: Text(
+                    'Seja nosso Patrocinador',
+                    style: TextStyle(
+                        fontSize:
+                            MediaQuery.of(context).size.width < 530 ? 28 : 35,
+                        fontWeight: FontWeight.w900),
+                  ),
                 ),
               )),
               Expanded(
@@ -163,10 +168,12 @@ class BeSponsor extends StatelessWidget {
               )
             ],
           ),
-          const Text(
-            'A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir.',
-            style: TextStyle(fontSize: 16),
-            textAlign: TextAlign.justify,
+          const TextRenderer(
+            child: Text(
+              'A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir.',
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.justify,
+            ),
           ),
           const SizedBox(
             height: 24,
@@ -179,9 +186,11 @@ class BeSponsor extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18)),
             child: Column(
               children: [
-                const Text(
-                  'DESCONTOS',
-                  style: TextStyle(fontSize: 24),
+                const TextRenderer(
+                  child: Text(
+                    'DESCONTOS',
+                    style: TextStyle(fontSize: 24),
+                  ),
                 ),
                 MediaQuery.of(context).size.width < 530
                     ? Column(
@@ -190,7 +199,9 @@ class BeSponsor extends StatelessWidget {
                         children: [
                           Column(
                             children: const [
-                              Text('2022'),
+                              TextRenderer(
+                                child: Text('2022'),
+                              ),
                               SizedBox(
                                 height: 8,
                               ),
@@ -216,7 +227,9 @@ class BeSponsor extends StatelessWidget {
                           ),
                           Column(
                             children: const [
-                              Text('2023'),
+                              TextRenderer(
+                                child: Text('2023'),
+                              ),
                               SizedBox(
                                 height: 8,
                               ),
@@ -241,7 +254,9 @@ class BeSponsor extends StatelessWidget {
                         children: [
                           Column(
                             children: const [
-                              Text('2022'),
+                              TextRenderer(
+                                child: Text('2022'),
+                              ),
                               SizedBox(
                                 height: 8,
                               ),
@@ -267,7 +282,9 @@ class BeSponsor extends StatelessWidget {
                           ),
                           Column(
                             children: const [
-                              Text('2023'),
+                              TextRenderer(
+                                child: Text('2023'),
+                              ),
                               SizedBox(
                                 height: 8,
                               ),
@@ -316,10 +333,12 @@ class BeSponsor extends StatelessWidget {
                     children: [
                       const SizedBox(
                         width: 300,
-                        child: Text(
-                          'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
+                        child: TextRenderer(
+                          child: Text(
+                            'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 16),
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -343,10 +362,12 @@ class BeSponsor extends StatelessWidget {
                     children: [
                       const SizedBox(
                         width: 300,
-                        child: Text(
-                          'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
+                        child: TextRenderer(
+                          child: Text(
+                            'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 16),
+                          ),
                         ),
                       ),
                       FormsButtonWidget(
@@ -431,13 +452,14 @@ class PlanWidget extends StatelessWidget {
                   image: CachedNetworkImageProvider(
                       '${s3AssetsBaseUrl}Estrela_${planName.toLowerCase()}.png'),
                 ),
-                Text(
+                TextRenderer(
+                    child: Text(
                   planName,
                   textAlign: TextAlign.center,
                   style: planTextStyle.copyWith(
                     color: colorsPlan[level],
                   ),
-                )
+                )),
               ],
             ),
           ),
@@ -447,9 +469,11 @@ class PlanWidget extends StatelessWidget {
                         ? Icons.check_box_outlined
                         : Icons.check_box_outline_blank_outlined,
                     color: (e['level'] as int) <= level ? Colors.green : null),
-                title: Text(
-                  '${e['description']}',
-                  style: const TextStyle(fontSize: 14),
+                title: TextRenderer(
+                  child: Text(
+                    '${e['description']}',
+                    style: const TextStyle(fontSize: 14),
+                  ),
                 ),
               )),
           Padding(
@@ -509,13 +533,16 @@ class CompanySponsor extends StatelessWidget {
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
-                  child: Text(
-                    devPresentation,
-                    textAlign: TextAlign.justify,
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize:
-                            MediaQuery.of(context).size.width < 1200 ? 16 : 18),
+                  child: TextRenderer(
+                    child: Text(
+                      devPresentation,
+                      textAlign: TextAlign.justify,
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.width < 1200
+                              ? 16
+                              : 18),
+                    ),
                   ),
                 ),
               ],
@@ -545,13 +572,16 @@ class CompanySponsor extends StatelessWidget {
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,
-                  child: Text(
-                    devPresentation,
-                    textAlign: TextAlign.justify,
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize:
-                            MediaQuery.of(context).size.width < 1200 ? 16 : 18),
+                  child: TextRenderer(
+                    child: Text(
+                      devPresentation,
+                      textAlign: TextAlign.justify,
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.width < 1200
+                              ? 16
+                              : 18),
+                    ),
                   ),
                 ),
               ],

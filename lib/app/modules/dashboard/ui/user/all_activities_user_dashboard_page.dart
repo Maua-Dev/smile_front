@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/dropdown-field/dropdown_field_widget.dart';
@@ -48,7 +49,9 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
             items: ActivityEnum.values.map((ActivityEnum value) {
               return DropdownMenuItem<ActivityEnum>(
                 value: value,
-                child: Text(value.name),
+                child: TextRenderer(
+                  child: Text(value.name),
+                ),
               );
             }).toList(),
             onChanged: controller.getActivitiesByType,

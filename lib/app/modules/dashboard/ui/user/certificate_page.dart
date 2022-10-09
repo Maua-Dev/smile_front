@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/certificate_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/certificates/certificate_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -45,14 +46,16 @@ class _CertificatePageState
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              'Ajude a aprimorar a Smile! Responda a ',
-                              style: AppTextStyles.body.copyWith(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1000
-                                          ? 18
-                                          : 22,
-                                  color: Colors.black),
+                            TextRenderer(
+                              child: Text(
+                                'Ajude a aprimorar a Smile! Responda a ',
+                                style: AppTextStyles.body.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1000
+                                            ? 18
+                                            : 22,
+                                    color: Colors.black),
+                              ),
                             ),
                             TextButton(
                               onPressed: () async {
@@ -62,15 +65,17 @@ class _CertificatePageState
                                   mode: LaunchMode.externalApplication,
                                 );
                               },
-                              child: Text(
-                                'pesquisa de satisfação',
-                                style: AppTextStyles.titleH1.copyWith(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1000
-                                          ? 18
-                                          : 22,
-                                  decoration: TextDecoration.underline,
-                                  color: AppColors.brandingPurple,
+                              child: TextRenderer(
+                                child: Text(
+                                  'pesquisa de satisfação',
+                                  style: AppTextStyles.titleH1.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1000
+                                            ? 18
+                                            : 22,
+                                    decoration: TextDecoration.underline,
+                                    color: AppColors.brandingPurple,
+                                  ),
                                 ),
                               ),
                             )
@@ -83,14 +88,16 @@ class _CertificatePageState
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              'Ajude a aprimorar a Smile! Responda a',
-                              style: AppTextStyles.body.copyWith(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1000
-                                          ? 18
-                                          : 22,
-                                  color: Colors.black),
+                            TextRenderer(
+                              child: Text(
+                                'Ajude a aprimorar a Smile! Responda a',
+                                style: AppTextStyles.body.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1000
+                                            ? 18
+                                            : 22,
+                                    color: Colors.black),
+                              ),
                             ),
                             TextButton(
                               onPressed: () {
@@ -100,15 +107,17 @@ class _CertificatePageState
                                   mode: LaunchMode.externalApplication,
                                 );
                               },
-                              child: Text(
-                                'pesquisa de satisfação.',
-                                style: AppTextStyles.titleH1.copyWith(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1000
-                                          ? 18
-                                          : 22,
-                                  decoration: TextDecoration.underline,
-                                  color: AppColors.brandingPurple,
+                              child: TextRenderer(
+                                child: Text(
+                                  'pesquisa de satisfação.',
+                                  style: AppTextStyles.titleH1.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1000
+                                            ? 18
+                                            : 22,
+                                    decoration: TextDecoration.underline,
+                                    color: AppColors.brandingPurple,
+                                  ),
                                 ),
                               ),
                             )
@@ -123,13 +132,14 @@ class _CertificatePageState
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Column(
                           children: [
-                            Text(
+                            TextRenderer(
+                                child: Text(
                               'Parece que você não tem nenhum certificado.',
                               textAlign: TextAlign.center,
                               style: AppTextStyles.titleH1.copyWith(
                                   color: AppColors.brandingOrange,
                                   fontSize: 32),
-                            ),
+                            )),
                             const SizedBox(
                               height: 16,
                             ),
@@ -161,57 +171,63 @@ class _CertificatePageState
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Center(
-                    child: RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                            text:
-                                'Data limite para alterações no seu certificado: ',
-                            style: AppTextStyles.body.copyWith(
-                                fontSize:
-                                    MediaQuery.of(context).size.width < 1000
-                                        ? 18
-                                        : 22,
-                                color: Colors.black),
-                            children: [
-                              TextSpan(
-                                text: '10/06/2022',
-                                style: AppTextStyles.titleH1.copyWith(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width < 1000
-                                            ? 18
-                                            : 22,
-                                    color: Colors.black),
-                              ),
-                              TextSpan(
-                                text:
-                                    '.\nPara isso, basta enviar um e-mail para ',
-                                style: AppTextStyles.body.copyWith(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width < 1000
-                                            ? 18
-                                            : 22,
-                                    color: Colors.black),
-                              ),
-                              TextSpan(
-                                text: 'dev@maua.br',
-                                style: AppTextStyles.titleH1.copyWith(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width < 1000
-                                            ? 18
-                                            : 22,
-                                    color: Colors.black),
-                              ),
-                              TextSpan(
-                                text:
-                                    ' com nome completo e CPF relatando o problema.',
-                                style: AppTextStyles.body.copyWith(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width < 1000
-                                            ? 18
-                                            : 22,
-                                    color: Colors.black),
-                              ),
-                            ])),
+                    child: TextRenderer(
+                      child: RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              text:
+                                  'Data limite para alterações no seu certificado: ',
+                              style: AppTextStyles.body.copyWith(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width < 1000
+                                          ? 18
+                                          : 22,
+                                  color: Colors.black),
+                              children: [
+                                TextSpan(
+                                  text: '10/06/2022',
+                                  style: AppTextStyles.titleH1.copyWith(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  1000
+                                              ? 18
+                                              : 22,
+                                      color: Colors.black),
+                                ),
+                                TextSpan(
+                                  text:
+                                      '.\nPara isso, basta enviar um e-mail para ',
+                                  style: AppTextStyles.body.copyWith(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  1000
+                                              ? 18
+                                              : 22,
+                                      color: Colors.black),
+                                ),
+                                TextSpan(
+                                  text: 'dev@maua.br',
+                                  style: AppTextStyles.titleH1.copyWith(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  1000
+                                              ? 18
+                                              : 22,
+                                      color: Colors.black),
+                                ),
+                                TextSpan(
+                                  text:
+                                      ' com nome completo e CPF relatando o problema.',
+                                  style: AppTextStyles.body.copyWith(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  1000
+                                              ? 18
+                                              : 22,
+                                      color: Colors.black),
+                                ),
+                              ])),
+                    ),
                   ),
                 ),
               ],

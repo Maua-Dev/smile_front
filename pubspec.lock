@@ -742,6 +742,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.27.5"
+  seo_renderer:
+    dependency: "direct main"
+    description:
+      name: seo_renderer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.0"
   shelf:
     dependency: transitive
     description:

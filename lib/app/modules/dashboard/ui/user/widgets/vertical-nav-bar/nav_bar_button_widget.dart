@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 class VerticalNavBarButtonWidget extends StatelessWidget {
@@ -29,14 +30,15 @@ class VerticalNavBarButtonWidget extends StatelessWidget {
                 : Colors.white,
             size: 55,
           ),
-          Text(
+          TextRenderer(
+              child: Text(
             buttonText,
             style: TextStyle(
                 color: indexToShow == myIndex
                     ? AppColors.brandingOrange
                     : Colors.white,
                 fontSize: 14),
-          )
+          ))
         ],
       ),
     );

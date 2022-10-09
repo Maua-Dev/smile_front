@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
@@ -59,12 +60,14 @@ class ActivityCardWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  '$activityCode - $name',
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.buttonBold
-                      .copyWith(fontSize: 22, color: textColor ?? Colors.black),
+                TextRenderer(
+                  child: Text(
+                    '$activityCode - $name',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.buttonBold.copyWith(
+                        fontSize: 22, color: textColor ?? Colors.black),
+                  ),
                 ),
                 Flexible(
                   child: Text(
@@ -94,10 +97,12 @@ class ActivityCardWidget extends StatelessWidget {
                               size: 20,
                             ),
                           ),
-                          Text(date,
-                              style: AppTextStyles.button.copyWith(
-                                  fontSize: 16,
-                                  color: textColor ?? AppColors.brandingPurple))
+                          TextRenderer(
+                              child: Text(date,
+                                  style: AppTextStyles.button.copyWith(
+                                      fontSize: 16,
+                                      color: textColor ??
+                                          AppColors.brandingPurple)))
                         ],
                       ),
                       Row(
@@ -110,10 +115,12 @@ class ActivityCardWidget extends StatelessWidget {
                               size: 20,
                             ),
                           ),
-                          Text('$time - $finalTime',
-                              style: AppTextStyles.button.copyWith(
-                                  fontSize: 16,
-                                  color: textColor ?? AppColors.brandingPurple))
+                          TextRenderer(
+                              child: Text('$time - $finalTime',
+                                  style: AppTextStyles.button.copyWith(
+                                      fontSize: 16,
+                                      color: textColor ??
+                                          AppColors.brandingPurple)))
                         ],
                       ),
                       Row(
@@ -126,24 +133,26 @@ class ActivityCardWidget extends StatelessWidget {
                               size: 20,
                             ),
                           ),
-                          RichText(
-                              text: TextSpan(children: [
-                            TextSpan(
-                                text: '$enrolledUsersLength/',
-                                style: AppTextStyles.button.copyWith(
-                                    fontSize: 16,
-                                    color:
-                                        textColor ?? AppColors.brandingPurple)),
-                            TextSpan(
-                                text: totalParticipants == -1
-                                    ? '∞'
-                                    : totalParticipants.toString(),
-                                style: AppTextStyles.button.copyWith(
-                                    fontSize: 16,
-                                    color:
-                                        textColor ?? AppColors.brandingPurple,
-                                    fontWeight: FontWeight.bold)),
-                          ])),
+                          TextRenderer(
+                            child: RichText(
+                                text: TextSpan(children: [
+                              TextSpan(
+                                  text: '$enrolledUsersLength/',
+                                  style: AppTextStyles.button.copyWith(
+                                      fontSize: 16,
+                                      color: textColor ??
+                                          AppColors.brandingPurple)),
+                              TextSpan(
+                                  text: totalParticipants == -1
+                                      ? '∞'
+                                      : totalParticipants.toString(),
+                                  style: AppTextStyles.button.copyWith(
+                                      fontSize: 16,
+                                      color:
+                                          textColor ?? AppColors.brandingPurple,
+                                      fontWeight: FontWeight.bold)),
+                            ])),
+                          )
                         ],
                       ),
                     ],

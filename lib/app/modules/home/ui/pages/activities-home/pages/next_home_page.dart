@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 
 import '../../../../../../shared/themes/app_text_styles.dart';
 
@@ -31,14 +32,16 @@ class NextHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title,
-                        style: AppTextStyles.titleH1.copyWith(
-                            color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 900
-                                ? 38
-                                : MediaQuery.of(context).size.width < 1400
-                                    ? 48
-                                    : 55)),
+                    TextRenderer(
+                      child: Text(title,
+                          style: AppTextStyles.titleH1.copyWith(
+                              color: Colors.white,
+                              fontSize: MediaQuery.of(context).size.width < 900
+                                  ? 38
+                                  : MediaQuery.of(context).size.width < 1400
+                                      ? 48
+                                      : 55)),
+                    ),
                     const SizedBox(
                       height: 16,
                     ),
@@ -47,14 +50,17 @@ class NextHomePage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width < 1400
                             ? 1000
                             : 1200,
-                        child: Text(
-                          description,
-                          style: AppTextStyles.body.copyWith(
-                              color: Colors.white,
-                              fontSize: MediaQuery.of(context).size.width < 1400
-                                  ? 19
-                                  : 22),
-                          textAlign: TextAlign.justify,
+                        child: TextRenderer(
+                          child: Text(
+                            description,
+                            style: AppTextStyles.body.copyWith(
+                                color: Colors.white,
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1400
+                                        ? 19
+                                        : 22),
+                            textAlign: TextAlign.justify,
+                          ),
                         ),
                       ),
                   ]),

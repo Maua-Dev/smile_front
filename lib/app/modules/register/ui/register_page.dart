@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -79,12 +80,14 @@ class _RegisterPageState
                         ),
                         if (controller.successRegistration)
                           const Center(
-                            child: Text(
-                              'Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro.',
-                              style: TextStyle(
-                                color: Colors.white,
+                            child: TextRenderer(
+                              child: Text(
+                                'Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro.',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                              textAlign: TextAlign.center,
                             ),
                           )
                         else
@@ -101,13 +104,15 @@ class _RegisterPageState
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 16.0),
-                                      child: Text(
-                                        controller.errors,
-                                        style: AppTextStyles.body.copyWith(
-                                          fontSize: 18,
-                                          color: Colors.white,
+                                      child: TextRenderer(
+                                        child: Text(
+                                          controller.errors,
+                                          style: AppTextStyles.body.copyWith(
+                                            fontSize: 18,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
                                         ),
-                                        textAlign: TextAlign.center,
                                       ),
                                     ),
                                   );
@@ -155,12 +160,13 @@ class _RegisterPageState
                                               );
                                             }),
                                             const SizedBox(width: 5),
-                                            const Text(
+                                            const TextRenderer(
+                                                child: Text(
                                               'Nome Social',
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 14),
-                                            )
+                                            ))
                                           ],
                                         )
                                       : Column(
@@ -187,11 +193,13 @@ class _RegisterPageState
                                               height: 4,
                                             ),
                                             const Flexible(
-                                              child: Text(
-                                                'Nome Social',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14),
+                                              child: TextRenderer(
+                                                child: Text(
+                                                  'Nome Social',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 14),
+                                                ),
                                               ),
                                             )
                                           ],
@@ -285,11 +293,13 @@ class _RegisterPageState
                                             }),
                                             const SizedBox(width: 5),
                                             const Flexible(
-                                              child: Text(
-                                                'Aluno Mauá',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14),
+                                              child: TextRenderer(
+                                                child: Text(
+                                                  'Aluno Mauá',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 14),
+                                                ),
                                               ),
                                             )
                                           ],
@@ -318,11 +328,13 @@ class _RegisterPageState
                                               height: 4,
                                             ),
                                             const Flexible(
-                                              child: Text(
-                                                'Aluno Mauá',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14),
+                                              child: TextRenderer(
+                                                child: Text(
+                                                  'Aluno Mauá',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 14),
+                                                ),
                                               ),
                                             )
                                           ],

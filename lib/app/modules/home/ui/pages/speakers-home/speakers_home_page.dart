@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/widgets/speakers_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -53,10 +54,12 @@ class _SpeakersHomePageState
                     Padding(
                       padding: const EdgeInsets.only(bottom: 16),
                       child: Center(
-                        child: Text(
-                          'DESLIZE PARA VER MAIS >>>',
-                          style: AppTextStyles.titleH1.copyWith(
-                              fontSize: 18, color: AppColors.brandingOrange),
+                        child: TextRenderer(
+                          child: Text(
+                            'DESLIZE PARA VER MAIS >>>',
+                            style: AppTextStyles.titleH1.copyWith(
+                                fontSize: 18, color: AppColors.brandingOrange),
+                          ),
                         ),
                       ),
                     ),
@@ -115,26 +118,30 @@ class _SpeakersHomePageState
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Text(
-                        controller.listSpeakers[controller.indexToShow].name,
-                        style: AppTextStyles.button.copyWith(
-                            fontSize: width < 1000 ? 22 : 32,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
+                      child: TextRenderer(
+                        child: Text(
+                          controller.listSpeakers[controller.indexToShow].name,
+                          style: AppTextStyles.button.copyWith(
+                              fontSize: width < 1000 ? 22 : 32,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),
                   Flexible(
-                    child: Text(
-                      controller.listSpeakers[controller.indexToShow].bio,
-                      textAlign: TextAlign.justify,
-                      style: AppTextStyles.button.copyWith(
-                          fontSize: width < 1000
-                              ? 14
-                              : width < 1500
-                                  ? 16
-                                  : 18,
-                          color: Colors.white),
+                    child: TextRenderer(
+                      child: Text(
+                        controller.listSpeakers[controller.indexToShow].bio,
+                        textAlign: TextAlign.justify,
+                        style: AppTextStyles.button.copyWith(
+                            fontSize: width < 1000
+                                ? 14
+                                : width < 1500
+                                    ? 16
+                                    : 18,
+                            color: Colors.white),
+                      ),
                     ),
                   )
                 ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 
@@ -21,15 +22,19 @@ class MainstenanceAlert extends StatelessWidget {
               child: Icon(FontAwesome5.exclamation,
                   size: 80, color: AppColors.brandingOrange),
             ),
-            const Text(
-              "O serviço de login esta em manutenção",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            const TextRenderer(
+              child: Text(
+                "O serviço de login esta em manutenção",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              ),
             ),
-            const Text(
-              "Agradecemos a paciência",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
+            const TextRenderer(
+              child: Text(
+                "Agradecemos a paciência",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20),
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -43,10 +48,12 @@ class MainstenanceAlert extends StatelessWidget {
                   width: 500,
                   height: 50,
                   child: Center(
-                      child: Text(
-                    "Clique aqui para voltar",
-                    style: TextStyle(color: AppColors.white, fontSize: 20),
-                  )),
+                    child: TextRenderer(
+                        child: Text(
+                      "Clique aqui para voltar",
+                      style: TextStyle(color: AppColors.white, fontSize: 20),
+                    )),
+                  ),
                 ),
               ),
             ),

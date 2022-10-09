@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class FaqCardWidget extends StatelessWidget {
@@ -33,14 +34,17 @@ class FaqCardWidget extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          titulo,
-                          textAlign: TextAlign.justify,
-                          style: AppTextStyles.titleH1.copyWith(
-                              color: Colors.black,
-                              fontSize: MediaQuery.of(context).size.width < 1000
-                                  ? 14
-                                  : 24),
+                        child: TextRenderer(
+                          child: Text(
+                            titulo,
+                            textAlign: TextAlign.justify,
+                            style: AppTextStyles.titleH1.copyWith(
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1000
+                                        ? 14
+                                        : 24),
+                          ),
                         ),
                       ),
                     ],
@@ -50,13 +54,15 @@ class FaqCardWidget extends StatelessWidget {
                 child: Padding(
                   padding:
                       const EdgeInsets.only(right: 8.0, left: 8, bottom: 8),
-                  child: Text(descricao,
-                      textAlign: TextAlign.justify,
-                      style: AppTextStyles.body.copyWith(
-                          color: Colors.black,
-                          fontSize: MediaQuery.of(context).size.width < 1000
-                              ? 14
-                              : 24)),
+                  child: TextRenderer(
+                    child: Text(descricao,
+                        textAlign: TextAlign.justify,
+                        style: AppTextStyles.body.copyWith(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width < 1000
+                                ? 14
+                                : 24)),
+                  ),
                 ),
               )),
         ],

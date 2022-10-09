@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/weekdays_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -31,21 +32,25 @@ class UserWeekdayIconWidget extends StatelessWidget {
           )),
       child: Column(
         children: [
-          Text(
-            weekday != null ? WeekdaysEnum.values[weekday!].abreviation : '',
-            style: AppTextStyles.titleH1.copyWith(
-                fontSize: MediaQuery.of(context).size.width < 800 ? 24 : 32,
-                color: indexToShow == myIndex
-                    ? Colors.white
-                    : AppColors.brandingPurple),
+          TextRenderer(
+            child: Text(
+              weekday != null ? WeekdaysEnum.values[weekday!].abreviation : '',
+              style: AppTextStyles.titleH1.copyWith(
+                  fontSize: MediaQuery.of(context).size.width < 800 ? 24 : 32,
+                  color: indexToShow == myIndex
+                      ? Colors.white
+                      : AppColors.brandingPurple),
+            ),
           ),
-          Text(
-            weekday != null ? WeekdaysEnum.values[weekday!].date : '',
-            style: AppTextStyles.button.copyWith(
-                fontSize: MediaQuery.of(context).size.width < 800 ? 16 : 24,
-                color: indexToShow == myIndex
-                    ? Colors.white
-                    : AppColors.brandingPurple),
+          TextRenderer(
+            child: Text(
+              weekday != null ? WeekdaysEnum.values[weekday!].date : '',
+              style: AppTextStyles.button.copyWith(
+                  fontSize: MediaQuery.of(context).size.width < 800 ? 16 : 24,
+                  color: indexToShow == myIndex
+                      ? Colors.white
+                      : AppColors.brandingPurple),
+            ),
           ),
         ],
       ),

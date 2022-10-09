@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
@@ -60,11 +61,13 @@ class _SuccessRegisterPageState extends State<SuccessRegisterPage> {
                         const SizedBox(
                           height: 20,
                         ),
-                        const Text(
-                          'Seu cadastro foi confirmado com sucesso!',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
+                        const TextRenderer(
+                          child: Text(
+                            'Seu cadastro foi confirmado com sucesso!',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         const SizedBox(

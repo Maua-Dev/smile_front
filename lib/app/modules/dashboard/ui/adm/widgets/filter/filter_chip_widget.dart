@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -27,12 +28,14 @@ class FilterChipWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(45)),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Text(
-                activityType.name,
-                textAlign: TextAlign.center,
-                style: AppTextStyles.body.copyWith(
-                  color: selected ? Colors.white : AppColors.brandingPurple,
-                  fontSize: 20,
+              child: TextRenderer(
+                child: Text(
+                  activityType.name,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.body.copyWith(
+                    color: selected ? Colors.white : AppColors.brandingPurple,
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ),

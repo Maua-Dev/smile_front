@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
@@ -45,15 +46,17 @@ class NameAlterationDialog extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Alteração de dados',
-                    style: AppTextStyles.titleH1.copyWith(
-                        fontSize: MediaQuery.of(context).size.width < 500
-                            ? 24
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 30
-                                : 36,
-                        color: AppColors.brandingPurple),
+                  TextRenderer(
+                    child: Text(
+                      'Alteração de dados',
+                      style: AppTextStyles.titleH1.copyWith(
+                          fontSize: MediaQuery.of(context).size.width < 500
+                              ? 24
+                              : MediaQuery.of(context).size.width < 1000
+                                  ? 30
+                                  : 36,
+                          color: AppColors.brandingPurple),
+                    ),
                   ),
                   IconButton(
                     padding: EdgeInsets.zero,
@@ -75,15 +78,17 @@ class NameAlterationDialog extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 4),
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Nome:',
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize: MediaQuery.of(context).size.width < 500
-                            ? 16
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 20
-                                : 24),
+                  child: TextRenderer(
+                    child: Text(
+                      'Nome:',
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.width < 500
+                              ? 16
+                              : MediaQuery.of(context).size.width < 1000
+                                  ? 20
+                                  : 24),
+                    ),
                   ),
                 ),
               ),
@@ -125,15 +130,17 @@ class NameAlterationDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Deseja nome social?',
-                      style: AppTextStyles.body.copyWith(
-                          color: Colors.black,
-                          fontSize: MediaQuery.of(context).size.width < 500
-                              ? 16
-                              : MediaQuery.of(context).size.width < 1000
-                                  ? 20
-                                  : 24),
+                    TextRenderer(
+                      child: Text(
+                        'Deseja nome social?',
+                        style: AppTextStyles.body.copyWith(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width < 500
+                                ? 16
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 20
+                                    : 24),
+                      ),
                     ),
                     CupertinoSwitch(
                       value: wantSocialName,
@@ -152,15 +159,17 @@ class NameAlterationDialog extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 4),
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Nome social:',
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize: MediaQuery.of(context).size.width < 500
-                            ? 16
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 20
-                                : 24),
+                  child: TextRenderer(
+                    child: Text(
+                      'Nome social:',
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.width < 500
+                              ? 16
+                              : MediaQuery.of(context).size.width < 1000
+                                  ? 20
+                                  : 24),
+                    ),
                   ),
                 ),
               ),
@@ -210,18 +219,20 @@ class NameAlterationDialog extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        MediaQuery.of(context).size.width < 410
-                            ? 'Usar nome social\nno certificado?'
-                            : 'Usar nome social no certificado?',
-                        style: AppTextStyles.body.copyWith(
-                            color: Colors.black,
-                            fontSize: MediaQuery.of(context).size.width < 500
-                                ? 16
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 20
-                                    : 24),
-                        textAlign: TextAlign.center,
+                      TextRenderer(
+                        child: Text(
+                          MediaQuery.of(context).size.width < 410
+                              ? 'Usar nome social\nno certificado?'
+                              : 'Usar nome social no certificado?',
+                          style: AppTextStyles.body.copyWith(
+                              color: Colors.black,
+                              fontSize: MediaQuery.of(context).size.width < 500
+                                  ? 16
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 20
+                                      : 24),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                       CupertinoSwitch(
                         value: certificateWithSocialName,
@@ -236,41 +247,43 @@ class NameAlterationDialog extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                    text:
-                        '* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia ',
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize: MediaQuery.of(context).size.width < 500
-                            ? 12
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 14
-                                : 16),
-                    children: [
-                      TextSpan(
-                        text: '25/05/2023',
-                        style: AppTextStyles.titleH1.copyWith(
-                            color: Colors.black,
-                            fontSize: MediaQuery.of(context).size.width < 500
-                                ? 12
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 14
-                                    : 16),
-                      ),
-                      TextSpan(
-                        text:
-                            ', sob pena do certificado ser emitido com os dados aqui fornecidos.',
-                        style: AppTextStyles.body.copyWith(
-                            color: Colors.black,
-                            fontSize: MediaQuery.of(context).size.width < 500
-                                ? 12
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 14
-                                    : 16),
-                      ),
-                    ]),
+              TextRenderer(
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                      text:
+                          '* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia ',
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.width < 500
+                              ? 12
+                              : MediaQuery.of(context).size.width < 1000
+                                  ? 14
+                                  : 16),
+                      children: [
+                        TextSpan(
+                          text: '25/05/2023',
+                          style: AppTextStyles.titleH1.copyWith(
+                              color: Colors.black,
+                              fontSize: MediaQuery.of(context).size.width < 500
+                                  ? 12
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 14
+                                      : 16),
+                        ),
+                        TextSpan(
+                          text:
+                              ', sob pena do certificado ser emitido com os dados aqui fornecidos.',
+                          style: AppTextStyles.body.copyWith(
+                              color: Colors.black,
+                              fontSize: MediaQuery.of(context).size.width < 500
+                                  ? 12
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 14
+                                      : 16),
+                        ),
+                      ]),
+                ),
               ),
               const SizedBox(
                 height: 8,

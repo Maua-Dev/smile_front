@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 
@@ -40,9 +41,11 @@ class RadioAskButtons extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              question,
-              style: const TextStyle(fontSize: 15),
+            TextRenderer(
+              child: Text(
+                question,
+                style: const TextStyle(fontSize: 15),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,9 +67,11 @@ class RadioAskButtons extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Text(
-                  'Sim',
-                  style: TextStyle(fontSize: 15),
+                const TextRenderer(
+                  child: Text(
+                    'Sim',
+                    style: TextStyle(fontSize: 15),
+                  ),
                 ),
                 const SizedBox(width: 20),
                 SizedBox(
@@ -86,9 +91,11 @@ class RadioAskButtons extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Text(
-                  'Não',
-                  style: TextStyle(fontSize: 15),
+                const TextRenderer(
+                  child: Text(
+                    'Não',
+                    style: TextStyle(fontSize: 15),
+                  ),
                 ),
               ],
             ),
@@ -147,10 +154,10 @@ class RadioAskButtons extends StatelessWidget {
 //         child: Row(
 //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //           children: [
-//             Text(
+//             TextRenderer(child: Text(
 //               widget.question,
 //               style: const TextStyle(fontSize: 15),
-//             ),
+//             ),),
 //             Row(
 //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //               children: [
@@ -168,10 +175,10 @@ class RadioAskButtons extends StatelessWidget {
 //                   ),
 //                 ),
 //                 const SizedBox(width: 6),
-//                 const Text(
+//                 const TextRenderer(child: Text(
 //                   'Sim',
 //                   style: TextStyle(fontSize: 15),
-//                 ),
+//                 ),),
 //                 const SizedBox(width: 20),
 //                 TextButton(
 //                   onPressed: () {
@@ -189,10 +196,10 @@ class RadioAskButtons extends StatelessWidget {
 //                   ),
 //                 ),
 //                 const SizedBox(width: 6),
-//                 const Text(
+//                 const TextRenderer(child: Text(
 //                   'Não',
 //                   style: TextStyle(fontSize: 15),
-//                 ),
+//                 ),),
 //               ],
 //             ),
 //           ],

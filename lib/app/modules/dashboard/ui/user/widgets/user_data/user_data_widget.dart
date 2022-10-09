@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 import '../../../../../../shared/themes/app_text_styles.dart';
@@ -28,7 +29,8 @@ class UserDataWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           if (controller.socialName == '' || controller.socialName == null)
-            Text(
+            TextRenderer(
+                child: Text(
               'Olá, ${controller.name!.split(' ').first}',
               style: AppTextStyles.titleH1.copyWith(
                   fontSize: MediaQuery.of(context).size.width < 500
@@ -37,17 +39,19 @@ class UserDataWidget extends StatelessWidget {
                           ? 40
                           : 45,
                   color: AppColors.brandingPurple),
-            )
+            ))
           else
-            Text(
-              'Olá, ${controller.socialName!.split(' ').first}',
-              style: AppTextStyles.titleH1.copyWith(
-                  fontSize: MediaQuery.of(context).size.width < 500
-                      ? 35
-                      : MediaQuery.of(context).size.width < 1000
-                          ? 40
-                          : 45,
-                  color: AppColors.brandingPurple),
+            TextRenderer(
+              child: Text(
+                'Olá, ${controller.socialName!.split(' ').first}',
+                style: AppTextStyles.titleH1.copyWith(
+                    fontSize: MediaQuery.of(context).size.width < 500
+                        ? 35
+                        : MediaQuery.of(context).size.width < 1000
+                            ? 40
+                            : 45,
+                    color: AppColors.brandingPurple),
+              ),
             ),
           Row(
             children: [

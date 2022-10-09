@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 import '../../app_widget.dart';
@@ -12,12 +13,13 @@ void showErrorSnackBar({required String errorMessage, Color? color}) {
       behavior: SnackBarBehavior.floating,
       elevation: 10,
       backgroundColor: color ?? Colors.black.withOpacity(0.7),
-      content: Text(
+      content: TextRenderer(
+          child: Text(
         errorMessage,
         style: AppTextStyles.body.copyWith(
           fontSize: 18,
           color: Colors.white,
         ),
         textAlign: TextAlign.center,
-      )));
+      ))));
 }

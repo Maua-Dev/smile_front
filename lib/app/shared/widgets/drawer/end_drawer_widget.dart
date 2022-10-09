@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import '../../../modules/home/ui/pages/widgets/appbar_button_widget.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_text_styles.dart';
@@ -25,9 +26,11 @@ class EndDrawerWidget extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           ListTile(
-            title: Text(
-              'HOME',
-              style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+            title: TextRenderer(
+              child: Text(
+                'HOME',
+                style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+              ),
             ),
             onTap: () {
               Navigator.pop(context);
@@ -35,9 +38,11 @@ class EndDrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text(
-              'ATIVIDADES',
-              style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+            title: TextRenderer(
+              child: Text(
+                'ATIVIDADES',
+                style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+              ),
             ),
             onTap: () {
               Navigator.pop(context);
@@ -45,9 +50,11 @@ class EndDrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text(
-              'PATROCINADORES',
-              style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+            title: TextRenderer(
+              child: Text(
+                'PATROCINADORES',
+                style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+              ),
             ),
             onTap: () {
               Navigator.pop(context);

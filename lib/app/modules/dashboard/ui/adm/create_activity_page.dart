@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/add_forms/speaker_add_widget.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
@@ -74,9 +75,10 @@ class _CreateActivityPageState
                             .toList()
                             .map((ActivityEnum value) {
                           return DropdownMenuItem<ActivityEnum>(
-                            value: value,
-                            child: Text(value.name),
-                          );
+                              value: value,
+                              child: TextRenderer(
+                                child: Text(value.name),
+                              ));
                         }).toList(),
                         onChanged: controller.setType,
                       ),

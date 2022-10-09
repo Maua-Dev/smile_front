@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_web.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -39,9 +40,11 @@ class CheckBoxWidget extends StatelessWidget {
           const SizedBox(width: 5),
           link == null
               ? Flexible(
-                  child: Text(
-                    text,
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
+                  child: TextRenderer(
+                    child: Text(
+                      text,
+                      style: const TextStyle(color: Colors.white, fontSize: 14),
+                    ),
                   ),
                 )
               : MouseRegion(
@@ -53,12 +56,14 @@ class CheckBoxWidget extends StatelessWidget {
                         mode: LaunchMode.externalApplication,
                       ),
                     },
-                    child: Text(
-                      text,
-                      style: AppTextStyles.titleH1.copyWith(
-                          color: Colors.white,
-                          fontSize: 14,
-                          decoration: TextDecoration.underline),
+                    child: TextRenderer(
+                      child: Text(
+                        text,
+                        style: AppTextStyles.titleH1.copyWith(
+                            color: Colors.white,
+                            fontSize: 14,
+                            decoration: TextDecoration.underline),
+                      ),
                     ),
                   ),
                 )
