@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
+import 'package:smile_front/app/modules/register/ui/widgets/switch_toggle_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/themes/app_text_styles.dart';
@@ -13,6 +14,7 @@ import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controllers/register_controller.dart';
+import 'package:getwidget/getwidget.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -23,22 +25,22 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState
     extends ModularState<RegisterPage, RegisterController> {
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    _showDialog();
-  }
+  //   _showDialog();
+  // }
 
-  _showDialog() async {
-    await Future.delayed(const Duration(milliseconds: 50));
-    showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return const MainstenanceAlert();
-        });
-  }
+  // _showDialog() async {
+  //   await Future.delayed(const Duration(milliseconds: 50));
+  //   showDialog(
+  //       barrierDismissible: false,
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return const MainstenanceAlert();
+  //       });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -418,7 +420,49 @@ class _RegisterPageState
                               );
                             }),
                             const SizedBox(
-                              height: 40,
+                              height: 20,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width < 650
+                                  ? MediaQuery.of(context).size.width * 0.85
+                                  : 550,
+                              height: 30,
+                              child: Text(
+                                'Meios de notificação sobre as atividades:',
+                                style: AppTextStyles.body.copyWith(
+                                  color: AppColors.white,
+                                  fontSize: 20,
+                                ),
+                                textAlign: TextAlign.start,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Observer(builder: (_) {
+                              return const SwitchToggle_Widget(tipo: 'email');
+                            }),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Observer(builder: (_) {
+                              return const SwitchToggle_Widget(tipo: 'sms');
+                            }),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Observer(builder: (_) {
+                              return const SwitchToggle_Widget(
+                                  tipo: 'wathsapp');
+                            }),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Observer(builder: (_) {
+                              return const SwitchToggle_Widget(tipo: 'app/web');
+                            }),
+                            const SizedBox(
+                              height: 30,
                             ),
                             Observer(builder: (_) {
                               return CustomElevatedButtonWidget(
@@ -492,7 +536,6 @@ class _RegisterPageState
                       ],
                     ),
                   ),
-                  const MainstenanceAlert()
                 ],
               ));
         }),
