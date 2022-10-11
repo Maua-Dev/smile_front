@@ -22,21 +22,21 @@ class _ForgotPasswordPageState
     extends ModularState<ForgotPasswordPage, ForgotPasswordController> {
   final _formKey = GlobalKey<FormState>();
 
-  @override
-  void initState() {
-    super.initState();
-    _showDialog();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _showDialog();
+  // }
 
-  _showDialog() async {
-    await Future.delayed(const Duration(milliseconds: 50));
-    showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return const MainstenanceAlert();
-        });
-  }
+  // _showDialog() async {
+  //   await Future.delayed(const Duration(milliseconds: 50));
+  //   showDialog(
+  //       barrierDismissible: false,
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return const MainstenanceAlert();
+  //       });
+  // }
 
   @override
   Widget build(BuildContext context) {
