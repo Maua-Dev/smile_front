@@ -301,9 +301,19 @@ class BeSponsor extends StatelessWidget {
                         height: 50,
                       ),
                   itemCount: plansWidgets.length)
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: plansWidgets,
+              : Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width < 1200
+                        ? 0.9 * MediaQuery.of(context).size.width
+                        : MediaQuery.of(context).size.width,
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing:
+                          MediaQuery.of(context).size.width < 1200 ? 64 : 80,
+                      runSpacing: 32,
+                      children: plansWidgets,
+                    ),
+                  ),
                 ),
           Container(
             // constraints: BoxConstraints(maxWidth: 700),
