@@ -23,22 +23,22 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState
     extends ModularState<RegisterPage, RegisterController> {
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    _showDialog();
-  }
+  //   _showDialog();
+  // }
 
-  _showDialog() async {
-    await Future.delayed(const Duration(milliseconds: 50));
-    showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return const MainstenanceAlert();
-        });
-  }
+  // _showDialog() async {
+  //   await Future.delayed(const Duration(milliseconds: 50));
+  //   showDialog(
+  //       barrierDismissible: false,
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return const MainstenanceAlert();
+  //       });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -492,7 +492,6 @@ class _RegisterPageState
                       ],
                     ),
                   ),
-                  const MainstenanceAlert()
                 ],
               ));
         }),
