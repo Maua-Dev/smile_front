@@ -319,7 +319,7 @@ class BeSponsor extends StatelessWidget {
             // constraints: BoxConstraints(maxWidth: 700),
             padding: EdgeInsets.all(
                 MediaQuery.of(context).size.width < 530 ? 18 : 32),
-            child: MediaQuery.of(context).size.width < 530
+            child: MediaQuery.of(context).size.width < 710
                 ? Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -337,9 +337,9 @@ class BeSponsor extends StatelessWidget {
                       ),
                       Container(
                         constraints: BoxConstraints(
-                            minWidth: double.infinity,
-                            minHeight:
-                                MediaQuery.of(context).size.height * 0.09),
+                            maxWidth: MediaQuery.of(context).size.width < 500
+                                ? 0.7 * MediaQuery.of(context).size.width
+                                : MediaQuery.of(context).size.width * 0.6),
                         child: FormsButtonWidget(
                             buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
                             backgroundColor: const Color(0xFFD36D49),
