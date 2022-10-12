@@ -24,7 +24,7 @@ extension SocialMediasEnumExtension on SocialMediasEnum {
         return 'http://www.youtube.com/infomaua';
 
       case SocialMediasEnum.instagram:
-        return 'https://www.instagram.com/infomaua/';
+        return 'https://www.instagram.com/smilemaua/';
 
       case SocialMediasEnum.linkedin:
         return 'https://www.linkedin.com/school/479773/admin/updates';
