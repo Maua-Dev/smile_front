@@ -15,3 +15,5 @@ var mauaCampusUrl = '${s3AssetsBaseUrl}maua_campus.png';
 var mauaCampusBlurUrl = '${s3AssetsBaseUrl}maua_campus_blur.png';
 
 var speakersLogoUrl = '${s3AssetsBaseUrl}activities/palestra-de-alto-impacto/';
+
+var mauaLogoUrl = '${s3AssetsBaseUrl}logo_maua_branco.png';

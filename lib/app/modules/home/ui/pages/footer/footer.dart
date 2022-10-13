@@ -28,16 +28,33 @@ class Footer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  height: MediaQuery.of(context).size.height * 0.08,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: CachedNetworkImageProvider(smileeeLogoUrl),
-                        fit: BoxFit.contain,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        height: MediaQuery.of(context).size.height * 0.08,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: CachedNetworkImageProvider(smileeeLogoUrl),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.45,
+                          height: MediaQuery.of(context).size.height * 0.08,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                              image: CachedNetworkImageProvider(mauaLogoUrl),
+                              fit: BoxFit.contain,
+                            )),
+                          )),
+                    ],
                   ),
                 ),
                 const SizedBox(
@@ -256,14 +273,34 @@ class Footer extends StatelessWidget {
                     )),
                 SizedBox(
                   width: MediaQuery.of(context).size.width < 700
-                      ? MediaQuery.of(context).size.width * 0.45
-                      : MediaQuery.of(context).size.width * 0.35,
-                  height: MediaQuery.of(context).size.height * 0.12,
+                      ? MediaQuery.of(context).size.width * 0.40
+                      : MediaQuery.of(context).size.width * 0.20,
+                  height: MediaQuery.of(context).size.width * 0.08,
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: CachedNetworkImageProvider(smileeeLogoUrl),
                         fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width < 700
+                        ? MediaQuery.of(context).size.width * 0.40
+                        : MediaQuery.of(context).size.width * 0.20,
+                    height: MediaQuery.of(context).size.width * 0.08,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(mauaLogoUrl),
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                   ),
