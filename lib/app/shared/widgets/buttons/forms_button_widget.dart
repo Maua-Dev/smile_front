@@ -37,7 +37,11 @@ class FormsButtonWidget extends StatelessWidget {
             Text(
               buttonTittle,
               style: AppTextStyles.button.copyWith(
-                  fontSize: MediaQuery.of(context).size.width < 1630 ? 15 : 20),
+                  fontSize: MediaQuery.of(context).size.width < 1630
+                      ? MediaQuery.of(context).size.width < 530
+                          ? 13
+                          : 15
+                      : 20),
             ),
           ],
         ),
