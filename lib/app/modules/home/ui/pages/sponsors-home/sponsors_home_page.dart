@@ -144,8 +144,8 @@ class BeSponsor extends StatelessWidget {
               Center(
                   child: Padding(
                 padding: MediaQuery.of(context).size.width > 530
-                    ? EdgeInsets.all(8.0)
-                    : EdgeInsets.all(0.0),
+                    ? const EdgeInsets.all(8.0)
+                    : const EdgeInsets.all(0.0),
                 child: Text(
                   'Seja nosso Patrocinador',
                   style: TextStyle(
