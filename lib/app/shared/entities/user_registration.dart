@@ -7,6 +7,10 @@ class UserRegistration {
   final String password;
   final bool acceptEmails;
   final bool acceptTerms;
+  final bool acceptEmailNotifications;
+  final bool acceptSMSNotifications;
+  final bool acceptWPPNotifications;
+  final bool acceptAPPWEBNotifications;
   final String phoneNumber;
 
   UserRegistration({
@@ -19,6 +23,10 @@ class UserRegistration {
     required this.password,
     required this.acceptEmails,
     required this.acceptTerms,
+    required this.acceptEmailNotifications,
+    required this.acceptSMSNotifications,
+    required this.acceptWPPNotifications,
+    required this.acceptAPPWEBNotifications,
   });
 
   factory UserRegistration.newInstance() {
@@ -32,6 +40,10 @@ class UserRegistration {
       acceptEmails: true,
       acceptTerms: true,
       phoneNumber: '',
+      acceptEmailNotifications : false,
+      acceptSMSNotifications : false,
+      acceptWPPNotifications : false,
+      acceptAPPWEBNotifications : false,
     );
   }
 }

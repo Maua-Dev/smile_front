@@ -15,7 +15,6 @@ import '../../../shared/widgets/input-box/input_box.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controllers/register_controller.dart';
 import 'package:getwidget/getwidget.dart';
-
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
@@ -440,26 +439,37 @@ class _RegisterPageState
                               height: 5,
                             ),
                             Observer(builder: (_) {
-                              return const SwitchToggle_Widget(tipo: 'email');
+                              return SwitchToggle_Widget(
+                                tipo: 'email',
+                                onChanged: (bool? value) {
+                                  controller.setEmailNotifications(value);
+                                },
+                              );
                             }),
                             const SizedBox(
                               height: 10,
                             ),
                             Observer(builder: (_) {
-                              return const SwitchToggle_Widget(tipo: 'sms');
+                              return  SwitchToggle_Widget(tipo: 'sms', onChanged: (bool? value) {
+                                  controller.setSMSNotifications(value);
+                                });
                             }),
                             const SizedBox(
                               height: 10,
                             ),
                             Observer(builder: (_) {
-                              return const SwitchToggle_Widget(
-                                  tipo: 'wathsapp');
+                              return SwitchToggle_Widget(
+                                  tipo: 'wathsapp', onChanged: (bool? value) {
+                                  controller.setWPPNotifications(value);
+                                });
                             }),
                             const SizedBox(
                               height: 10,
                             ),
                             Observer(builder: (_) {
-                              return const SwitchToggle_Widget(tipo: 'app/web');
+                              return  SwitchToggle_Widget(tipo: 'app/web', onChanged: (bool? value) {
+                                  controller.setAPPWEBNotifications(value);
+                                });
                             }),
                             const SizedBox(
                               height: 30,

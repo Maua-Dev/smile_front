@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:getwidget/getwidget.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 
+// ignore: camel_case_types
 class SwitchToggle_Widget extends StatelessWidget {
-  const SwitchToggle_Widget({super.key, required this.tipo});
+  const SwitchToggle_Widget(
+      {super.key, required this.tipo, required this.onChanged});
 
   final String tipo;
+  final Function(bool?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,9 @@ class SwitchToggle_Widget extends StatelessWidget {
                   ])),
             ),
             GFToggle(
-              onChanged: (val) {},
+              onChanged: (val) {
+                onChanged;
+              },
               enabledTrackColor: AppColors.brandingOrange,
               duration: const Duration(milliseconds: 60),
               value: false,
