@@ -7,7 +7,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:string_validator/string_validator.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import '../../../../../shared/services/enviroment/enviroment_config.dart';
+import '../../../../../shared/services/environment/environment_config.dart';
 
 class SponsorFormDialog extends StatefulWidget {
   const SponsorFormDialog({super.key});
