@@ -55,6 +55,18 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
+                        left:
+                            MediaQuery.of(context).size.width < 1024 ? 83 : 86),
+                    child: SizedBox(
+                      height: 40,
+                      child: VerticalDivider(
+                        color: (AppColors.brandingOrange),
+                        thickness: 2,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
                         left: MediaQuery.of(context).size.width < 1024
                             ? 100
                             : 108),
