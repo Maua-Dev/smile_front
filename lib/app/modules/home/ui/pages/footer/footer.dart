@@ -25,36 +25,19 @@ class Footer extends StatelessWidget {
           ),
           if (MediaQuery.of(context).size.width < 760)
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.38,
-                        height: MediaQuery.of(context).size.height * 0.07,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: CachedNetworkImageProvider(smileeeLogoUrl),
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  height: MediaQuery.of(context).size.height * 0.08,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: CachedNetworkImageProvider(smileeeLogoUrl),
+                        fit: BoxFit.contain,
                       ),
-                      SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.40,
-                          height: MediaQuery.of(context).size.height * 0.07,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                              image: CachedNetworkImageProvider(mauaLogoUrl),
-                              fit: BoxFit.contain,
-                            )),
-                          )),
-                    ],
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -64,6 +47,20 @@ class Footer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Center(
+                      child: Text(
+                        localizationTitle,
+                        style: AppTextStyles.titleH1
+                            .copyWith(color: Colors.white, fontSize: 12),
+                      ),
+                    ),
+                    Center(
+                      child: Text(
+                        localization,
+                        style: AppTextStyles.body
+                            .copyWith(color: Colors.white, fontSize: 12),
+                      ),
+                    ),
                     const SizedBox(
                       height: 8,
                     ),
@@ -72,63 +69,38 @@ class Footer extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           const SocialMediaWidget(),
-                          Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(3, 0, 0, 0),
-                                child: Center(
-                                  child: Text(
-                                    localization,
-                                    style: AppTextStyles.body.copyWith(
-                                        color: Colors.white, fontSize: 11),
-                                  ),
-                                ),
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: ElevatedButton.icon(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          AppColors.brandingOrange),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ))),
+                              onPressed: () => launchUrl(
+                                Uri.parse(
+                                    'https://g.page/IMT-instituto-maua?share'),
+                                mode: LaunchMode.externalApplication,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(3, 0, 0, 8),
-                                child: Center(
-                                  child: Text(
-                                    localizationTitle,
-                                    style: AppTextStyles.titleH1.copyWith(
-                                        color: Colors.white, fontSize: 11),
-                                  ),
-                                ),
+                              icon: const Icon(
+                                Icons.location_on,
+                                color: Colors.white,
+                                size: 15,
                               ),
-                              MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: ElevatedButton.icon(
-                                  style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              AppColors.brandingOrange),
-                                      shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                          RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ))),
-                                  onPressed: () => launchUrl(
-                                    Uri.parse(
-                                        'https://g.page/IMT-instituto-maua?share'),
-                                    mode: LaunchMode.externalApplication,
-                                  ),
-                                  icon: const Icon(
-                                    Icons.location_on,
+                              label: Text(
+                                'COMO CHEGAR',
+                                style: AppTextStyles.body.copyWith(
                                     color: Colors.white,
-                                    size: 15,
-                                  ),
-                                  label: Text(
-                                    'COMO CHEGAR',
-                                    style: AppTextStyles.body.copyWith(
-                                        color: Colors.white,
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    760
-                                                ? 12
-                                                : 24),
-                                  ),
-                                ),
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 760
+                                            ? 12
+                                            : 24),
                               ),
-                            ],
+                            ),
                           ),
                         ],
                       ),
@@ -252,62 +224,46 @@ class Footer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SizedBox(
-                      width:
-                          MediaQuery.of(context).size.width < 1100 ? 168 : 350,
-                      child: Text(
-                        'Clique aqui para acessar as nossas redes sociais:',
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 900
-                                ? 14
-                                : MediaQuery.of(context).size.width < 1350
-                                    ? 16
-                                    : 20),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 8.0),
-                      child: SocialMediaWidget(),
-                    ),
-                  ],
-                ),
+                Padding(
+                    padding: const EdgeInsets.only(right: 0.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width < 1100
+                              ? 168
+                              : 350,
+                          child: Text(
+                            'Clique aqui para acessar as nossas redes sociais:',
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.body.copyWith(
+                                color: Colors.white,
+                                fontSize: MediaQuery.of(context).size.width <
+                                        900
+                                    ? 14
+                                    : MediaQuery.of(context).size.width < 1350
+                                        ? 16
+                                        : 20),
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 8.0),
+                          child: SocialMediaWidget(),
+                        ),
+                      ],
+                    )),
                 SizedBox(
                   width: MediaQuery.of(context).size.width < 700
-                      ? MediaQuery.of(context).size.width * 0.40
-                      : MediaQuery.of(context).size.width * 0.16,
-                  height: MediaQuery.of(context).size.width * 0.07,
+                      ? MediaQuery.of(context).size.width * 0.45
+                      : MediaQuery.of(context).size.width * 0.35,
+                  height: MediaQuery.of(context).size.height * 0.12,
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: CachedNetworkImageProvider(smileeeLogoUrl),
                         fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width < 700
-                        ? MediaQuery.of(context).size.width * 0.40
-                        : MediaQuery.of(context).size.width * 0.16,
-                    height: MediaQuery.of(context).size.width * 0.07,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: CachedNetworkImageProvider(mauaLogoUrl),
-                          fit: BoxFit.contain,
-                        ),
                       ),
                     ),
                   ),

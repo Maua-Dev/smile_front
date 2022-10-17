@@ -13,7 +13,6 @@ class InputBox extends StatelessWidget {
   final Function(String value) setValue;
   final void Function(String?)? onFieldSubmitted;
   final void Function(bool)? onToggleVisibilityPwd;
-  //final void Function(String) setPhone;
   final bool? showPwd;
   final bool? isCpfField;
   final bool? isRAField;
