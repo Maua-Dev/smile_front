@@ -11,8 +11,10 @@ import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
+import '../../login/ui/widgets/maintenance_alert_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controllers/register_controller.dart';
+import '../../../shared/services/environment/environment_config.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -23,22 +25,21 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState
     extends ModularState<RegisterPage, RegisterController> {
-  // @override
-  // void initState() {
-  //   super.initState();
+  @override
+  void initState() {
+    super.initState();
+    EnvironmentConfig.getConfig() ? null : _showDialog();
+  }
 
-  //   _showDialog();
-  // }
-
-  // _showDialog() async {
-  //   await Future.delayed(const Duration(milliseconds: 50));
-  //   showDialog(
-  //       barrierDismissible: false,
-  //       context: context,
-  //       builder: (BuildContext context) {
-  //         return const MainstenanceAlert();
-  //       });
-  // }
+  _showDialog() async {
+    await Future.delayed(const Duration(milliseconds: 50));
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return const MainstenanceAlert();
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
