@@ -459,7 +459,7 @@ class _RegisterPageState
                             ),
                             Observer(builder: (_) {
                               return SwitchToggle_Widget(
-                                  tipo: 'wathsapp', onChanged: (bool? value) {
+                                  tipo: 'whatsapp', onChanged: (bool? value) {
                                   controller.setWPPNotifications(value);
                                 });
                             }),

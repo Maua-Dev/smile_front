@@ -110,12 +110,12 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setWPPNotifications(bool? value) async {
-    acceptSMSNotifications = value!;
+    acceptWPPNotifications = value!;
   }
 
   @action
   Future<void> setAPPWEBNotifications(bool? value) async {
-    acceptSMSNotifications = value!;
+    acceptAPPWEBNotifications = value!;
   }
 
   @action
