@@ -46,28 +46,33 @@ extension SocialMediasEnumExtension on SocialMediasEnum {
   Widget get icons {
     switch (this) {
       case SocialMediasEnum.blog:
-        return const Icon(FontAwesome5.blogger_b, size: 22);
+        return const Icon(FontAwesome5.blogger_b,
+            size: 22, color: Colors.white);
 
       case SocialMediasEnum.youtube:
-        return const Icon(FontAwesome.youtube_play, size: 22);
+        return const Icon(FontAwesome.youtube_play,
+            size: 22, color: Colors.white);
 
       case SocialMediasEnum.instagram:
-        return const Icon(FontAwesome5.instagram, size: 22);
+        return const Icon(FontAwesome5.instagram,
+            size: 22, color: Colors.white);
 
       case SocialMediasEnum.linkedin:
-        return const Icon(FontAwesome5.linkedin_in, size: 22);
+        return const Icon(FontAwesome5.linkedin_in,
+            size: 22, color: Colors.white);
 
       case SocialMediasEnum.flickr:
-        return const Icon(Entypo.flickr, size: 22);
+        return const Icon(Entypo.flickr, size: 22, color: Colors.white);
 
       case SocialMediasEnum.twitter:
-        return const Icon(FontAwesome5.twitter, size: 22);
+        return const Icon(FontAwesome5.twitter, size: 22, color: Colors.white);
 
       case SocialMediasEnum.facebook:
-        return const Icon(FontAwesome5.facebook_f, size: 22);
+        return const Icon(FontAwesome5.facebook_f,
+            size: 22, color: Colors.white);
 
       case SocialMediasEnum.spotify:
-        return const Icon(FontAwesome5.spotify, size: 22);
+        return const Icon(FontAwesome5.spotify, size: 22, color: Colors.white);
     }
   }
 }

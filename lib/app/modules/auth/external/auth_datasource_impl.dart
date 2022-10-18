@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dart';
+import 'package:smile_front/app/shared/services/environment/environment_config.dart';
 
 import '../../../shared/models/user_model.dart';
 import '../domain/repositories/secure_storage_interface.dart';
