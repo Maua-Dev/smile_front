@@ -20,7 +20,7 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
   @override
   Widget build(BuildContext context) {
-    if (Screen.width(context) > 750) {
+    if (Screen.width(context) > cellphoneSize) {
       return SizedBox(
         height: Screen.height(context),
         child: Column(
@@ -49,7 +49,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                 Container(
                                   width: Screen.width(context) < cellphoneSize
                                       ? 350
-                                      : Screen.width(context) * 0.5 < 700
+                                      : Screen.width(context) * 0.5 < cellphoneSize
                                           ? Screen.width(context) * 0.45
                                           : 650,
                                   decoration: BoxDecoration(
@@ -109,8 +109,10 @@ class _MainHomePageState extends State<MainHomePage> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 16,
+                                SizedBox(
+                                  height: Screen.width(context) < tabletSize
+                                      ? 8
+                                      : 16,
                                 ),
                                 CustomElevatedButtonWidget(
                                   title: '22 a 27 de Maio de 2023',
@@ -136,10 +138,9 @@ class _MainHomePageState extends State<MainHomePage> {
                                   onPressed: null,
                                 ),
                                 SizedBox(
-                                    height:
-                                        Screen.width(context) < cellphoneSize
-                                            ? 8
-                                            : 16),
+                                    height: Screen.width(context) < tabletSize
+                                        ? 8
+                                        : 16),
                                 CustomElevatedButtonWidget(
                                   title: 'SAIBA MAIS >>>',
                                   textStyle: AppTextStyles.buttonBold.copyWith(
