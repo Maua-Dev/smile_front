@@ -111,7 +111,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                 ),
                                 SizedBox(
                                   height: Screen.width(context) < tabletSize
-                                      ? 8
+                                      ? 9
                                       : 16,
                                 ),
                                 CustomElevatedButtonWidget(
@@ -139,7 +139,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                 ),
                                 SizedBox(
                                     height: Screen.width(context) < tabletSize
-                                        ? 8
+                                        ? 9
                                         : 16),
                                 CustomElevatedButtonWidget(
                                   title: 'SAIBA MAIS >>>',
