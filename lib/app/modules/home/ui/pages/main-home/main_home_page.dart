@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-
 import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/utils/s3_assets_url.dart';
 import '../../../../../shared/utils/screen_helper.dart';
@@ -49,7 +48,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                 Container(
                                   width: Screen.width(context) < cellphoneSize
                                       ? 350
-                                      : Screen.width(context) * 0.5 < cellphoneSize
+                                      : Screen.width(context) * 0.5 <
+                                              cellphoneSize
                                           ? Screen.width(context) * 0.45
                                           : 650,
                                   decoration: BoxDecoration(
