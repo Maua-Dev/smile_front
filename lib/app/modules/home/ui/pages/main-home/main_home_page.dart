@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 import '../../../../../shared/themes/app_text_styles.dart';
@@ -35,7 +36,7 @@ class _MainHomePageState extends State<MainHomePage> {
                     ),
                     child: Padding(
                         padding: EdgeInsets.only(
-                          right: MediaQuery.of(context).size.width < 1500
+                          right: MediaQuery.of(context).size.width < tabletSize
                               ? 24
                               : 32,
                           bottom: 55,
@@ -47,7 +48,7 @@ class _MainHomePageState extends State<MainHomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width < 900
+                                  width: MediaQuery.of(context).size.width < cellphoneSize
                                       ? 350
                                       : MediaQuery.of(context).size.width *
                                                   0.5 <
@@ -71,7 +72,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                                         MediaQuery.of(context)
                                                                     .size
                                                                     .width <
-                                                                1500
+                                                                tabletSize
                                                             ? 24
                                                             : 32)),
                                         Text('Liderança e Empreendedorismo',
@@ -82,7 +83,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                                         MediaQuery.of(context)
                                                                     .size
                                                                     .width <
-                                                                1500
+                                                                tabletSize
                                                             ? 24
                                                             : 32)),
                                         const SizedBox(
@@ -92,11 +93,11 @@ class _MainHomePageState extends State<MainHomePage> {
                                           width: MediaQuery.of(context)
                                                       .size
                                                       .width <
-                                                  1500
+                                                  tabletSize
                                               ? MediaQuery.of(context)
                                                           .size
                                                           .width <
-                                                      900
+                                                      cellphoneSize
                                                   ? 300
                                                   : 580
                                               : 820,
@@ -108,11 +109,11 @@ class _MainHomePageState extends State<MainHomePage> {
                                                 fontSize: MediaQuery.of(context)
                                                             .size
                                                             .width <
-                                                        1500
+                                                        tabletSize
                                                     ? MediaQuery.of(context)
                                                                 .size
                                                                 .width <
-                                                            900
+                                                            cellphoneSize
                                                         ? 16
                                                         : 18
                                                     : 25),
@@ -133,18 +134,18 @@ class _MainHomePageState extends State<MainHomePage> {
                                       fontSize: MediaQuery.of(context)
                                                   .size
                                                   .width <
-                                              1500
+                                              tabletSize
                                           ? MediaQuery.of(context).size.width <
-                                                  900
+                                                  cellphoneSize
                                               ? 20
                                               : 24
                                           : 40),
                                   widthSize:
-                                      MediaQuery.of(context).size.width < 1500
+                                      MediaQuery.of(context).size.width < tabletSize
                                           ? 320
                                           : 500,
                                   heightSize:
-                                      MediaQuery.of(context).size.width < 900
+                                      MediaQuery.of(context).size.width < cellphoneSize
                                           ? 40
                                           : 50,
                                   borderRadius: 40,
@@ -154,7 +155,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                 ),
                                 SizedBox(
                                     height:
-                                        MediaQuery.of(context).size.width < 900
+                                        MediaQuery.of(context).size.width < cellphoneSize
                                             ? 8
                                             : 16),
                                 CustomElevatedButtonWidget(
@@ -164,20 +165,20 @@ class _MainHomePageState extends State<MainHomePage> {
                                       fontSize: MediaQuery.of(context)
                                                   .size
                                                   .width <
-                                              1500
+                                              tabletSize
                                           ? MediaQuery.of(context).size.width <
-                                                  900
+                                                  cellphoneSize
                                               ? 20
                                               : 24
                                           : 40),
                                   widthSize: MediaQuery.of(context).size.width <
-                                          1500
-                                      ? MediaQuery.of(context).size.width < 900
+                                          tabletSize
+                                      ? MediaQuery.of(context).size.width < cellphoneSize
                                           ? 200
                                           : 240
                                       : 340,
                                   heightSize:
-                                      MediaQuery.of(context).size.width < 900
+                                      MediaQuery.of(context).size.width < cellphoneSize
                                           ? 40
                                           : 50,
                                   borderRadius: 40,
