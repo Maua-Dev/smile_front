@@ -13,7 +13,6 @@ import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
-import '../../login/ui/widgets/maintenance_alert_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controllers/register_controller.dart';
 import '../../../shared/services/environment/environment_config.dart';
@@ -33,16 +32,15 @@ class _RegisterPageState
     EnvironmentConfig.getConfig() ? null : _showDialog();
   }
 
-
-   _showDialog() async {
-     await Future.delayed(const Duration(milliseconds: 50));
-     showDialog(
-         barrierDismissible: false,
-       context: context,
-       builder: (BuildContext context) {
-           return const MainstenanceAlert();
-         });
-   }
+  _showDialog() async {
+    await Future.delayed(const Duration(milliseconds: 50));
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return const MainstenanceAlert();
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -453,26 +451,31 @@ class _RegisterPageState
                               height: 10,
                             ),
                             Observer(builder: (_) {
-                              return  SwitchToggle_Widget(tipo: 'sms', onChanged: (bool? value) {
-                                  controller.setSMSNotifications(value);
-                                });
+                              return SwitchToggle_Widget(
+                                  tipo: 'sms',
+                                  onChanged: (bool? value) {
+                                    controller.setSMSNotifications(value);
+                                  });
                             }),
                             const SizedBox(
                               height: 10,
                             ),
                             Observer(builder: (_) {
                               return SwitchToggle_Widget(
-                                  tipo: 'whatsapp', onChanged: (bool? value) {
-                                  controller.setWPPNotifications(value);
-                                });
+                                  tipo: 'whatsapp',
+                                  onChanged: (bool? value) {
+                                    controller.setWPPNotifications(value);
+                                  });
                             }),
                             const SizedBox(
                               height: 10,
                             ),
                             Observer(builder: (_) {
-                              return  SwitchToggle_Widget(tipo: 'app/web', onChanged: (bool? value) {
-                                  controller.setAPPWEBNotifications(value);
-                                });
+                              return SwitchToggle_Widget(
+                                  tipo: 'app/web',
+                                  onChanged: (bool? value) {
+                                    controller.setAPPWEBNotifications(value);
+                                  });
                             }),
                             const SizedBox(
                               height: 30,
