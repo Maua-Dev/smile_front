@@ -18,6 +18,10 @@ void main() {
     acceptEmails: true,
     acceptTerms: true,
     phoneNumber: '11991273092',
+    acceptEmailNotifications: true,
+    acceptSMSNotifications: true,
+    acceptWPPNotifications: true,
+    acceptAPPWEBNotifications: true,
   );
   var res = 'User Caio Toledo created.';
 

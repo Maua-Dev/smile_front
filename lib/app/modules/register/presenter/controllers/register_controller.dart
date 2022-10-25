@@ -86,6 +86,38 @@ abstract class RegisterControllerBase with Store {
   @observable
   bool acceptImage = false;
 
+  @observable
+  bool acceptEmailNotifications = false;
+
+  @observable
+  bool acceptSMSNotifications = false;
+
+  @observable
+  bool acceptWPPNotifications = false;
+
+  @observable
+  bool acceptAPPWEBNotifications = false;
+
+  @action
+  Future<void> setEmailNotifications(bool? value) async {
+    acceptEmailNotifications = value!;
+  }
+
+  @action
+  Future<void> setSMSNotifications(bool? value) async {
+    acceptSMSNotifications = value!;
+  }
+
+  @action
+  Future<void> setWPPNotifications(bool? value) async {
+    acceptWPPNotifications = value!;
+  }
+
+  @action
+  Future<void> setAPPWEBNotifications(bool? value) async {
+    acceptAPPWEBNotifications = value!;
+  }
+
   @action
   Future<void> setAcceptImage(bool? value) async {
     acceptImage = value!;
@@ -321,6 +353,10 @@ abstract class RegisterControllerBase with Store {
         acceptEmails: canSendEmails,
         acceptTerms: acceptTermsOfUse,
         phoneNumber: phone,
+        acceptEmailNotifications: acceptEmailNotifications,
+        acceptSMSNotifications: acceptSMSNotifications,
+        acceptWPPNotifications: acceptWPPNotifications,
+        acceptAPPWEBNotifications: acceptAPPWEBNotifications,
       );
 
   @action
