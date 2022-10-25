@@ -34,24 +34,54 @@ class _AppBarWidgetState extends State<AppBarWidget> {
         centerTitle: false,
         leadingWidth: 0,
         title: Padding(
-          padding: const EdgeInsets.only(left: 32.0),
+          padding: EdgeInsets.only(
+              left: MediaQuery.of(context).size.width < 1024 ? 0 : 24),
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
-              onTap: () {
-                Modular.to.navigate('/home/');
-              },
-              child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.contain,
-                        alignment: Alignment.centerLeft,
-                        image: CachedNetworkImageProvider(
-                          smileeeLogoUrl,
-                        ))),
-              ),
-            ),
+                onTap: () {
+                  Modular.to.navigate('/home/');
+                },
+                child: Stack(children: [
+                  Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.contain,
+                            alignment: Alignment.centerLeft,
+                            image: CachedNetworkImageProvider(
+                              smileeeLogoUrl,
+                            ))),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left:
+                            MediaQuery.of(context).size.width < 1024 ? 83 : 86),
+                    child: SizedBox(
+                      height: 40,
+                      child: VerticalDivider(
+                        color: (AppColors.brandingOrange),
+                        thickness: 2,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width < 1024
+                            ? 100
+                            : 108),
+                    child: Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.contain,
+                              alignment: Alignment.centerLeft,
+                              image: CachedNetworkImageProvider(
+                                mauaLogoUrl,
+                              ))),
+                    ),
+                  ),
+                ])),
           ),
         ),
         actions: widget.isErrorPage

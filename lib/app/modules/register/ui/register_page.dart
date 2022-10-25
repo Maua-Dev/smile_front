@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
+
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
+import 'package:smile_front/app/modules/register/ui/widgets/switch_toggle_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/themes/app_text_styles.dart';
@@ -13,6 +15,7 @@ import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controllers/register_controller.dart';
+import '../../../shared/services/environment/environment_config.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -26,7 +29,7 @@ class _RegisterPageState
   @override
   void initState() {
     super.initState();
-    _showDialog();
+    EnvironmentConfig.getConfig() ? null : _showDialog();
   }
 
   _showDialog() async {
@@ -244,6 +247,15 @@ class _RegisterPageState
                             const SizedBox(
                               height: 20,
                             ),
+                            InputBox(
+                              icon: Icons.phone_rounded,
+                              placeholder: 'Telefone celular',
+                              setValue: controller.setPhone,
+                              isPhoneField: true,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -408,7 +420,65 @@ class _RegisterPageState
                               );
                             }),
                             const SizedBox(
-                              height: 40,
+                              height: 20,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width < 650
+                                  ? MediaQuery.of(context).size.width * 0.85
+                                  : 550,
+                              height: 32,
+                              child: Text(
+                                'Meios de notificação sobre as atividades:',
+                                style: AppTextStyles.body.copyWith(
+                                  color: AppColors.white,
+                                  fontSize: 24,
+                                ),
+                                textAlign: TextAlign.start,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Observer(builder: (_) {
+                              return SwitchToggleWidget(
+                                tipo: 'email',
+                                onChanged: (bool? value) {
+                                  controller.setEmailNotifications(value);
+                                },
+                              );
+                            }),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Observer(builder: (_) {
+                              return SwitchToggleWidget(
+                                  tipo: 'sms',
+                                  onChanged: (bool? value) {
+                                    controller.setSMSNotifications(value);
+                                  });
+                            }),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Observer(builder: (_) {
+                              return SwitchToggleWidget(
+                                  tipo: 'whatsapp',
+                                  onChanged: (bool? value) {
+                                    controller.setWPPNotifications(value);
+                                  });
+                            }),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Observer(builder: (_) {
+                              return SwitchToggleWidget(
+                                  tipo: 'app/web',
+                                  onChanged: (bool? value) {
+                                    controller.setAPPWEBNotifications(value);
+                                  });
+                            }),
+                            const SizedBox(
+                              height: 30,
                             ),
                             Observer(builder: (_) {
                               return CustomElevatedButtonWidget(
@@ -482,7 +552,6 @@ class _RegisterPageState
                       ],
                     ),
                   ),
-                  const MainstenanceAlert()
                 ],
               ));
         }),

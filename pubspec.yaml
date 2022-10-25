@@ -1,7 +1,7 @@
 name: smile_front
 description: Smile 2022.
 
-publish_to: 'none' 
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
@@ -35,6 +35,8 @@ dependencies:
   firebase_analytics: ^9.1.6
   url_launcher: ^6.1.5
   string_validator: ^0.3.0
+  intl_phone_number_input: ^0.7.1
+  getwidget: ^2.0.4
 
 dev_dependencies:
   build_runner: ^2.2.0

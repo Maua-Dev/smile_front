@@ -9,6 +9,7 @@ import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controller/forgot_password_controller.dart';
+import '../../../shared/services/environment/environment_config.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _ChangePasswordPageState
   @override
   void initState() {
     super.initState();
-    _showDialog();
+    EnvironmentConfig.getConfig() ? null : _showDialog();
   }
 
   _showDialog() async {

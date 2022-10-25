@@ -143,7 +143,9 @@ class BeSponsor extends StatelessWidget {
               ),
               Center(
                   child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: MediaQuery.of(context).size.width > 530
+                    ? const EdgeInsets.all(8.0)
+                    : const EdgeInsets.all(0.0),
                 child: Text(
                   'Seja nosso Patrocinador',
                   style: TextStyle(
@@ -301,15 +303,25 @@ class BeSponsor extends StatelessWidget {
                         height: 50,
                       ),
                   itemCount: plansWidgets.length)
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: plansWidgets,
+              : Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width < 1200
+                        ? 0.9 * MediaQuery.of(context).size.width
+                        : MediaQuery.of(context).size.width,
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing:
+                          MediaQuery.of(context).size.width < 1200 ? 64 : 80,
+                      runSpacing: 32,
+                      children: plansWidgets,
+                    ),
+                  ),
                 ),
           Container(
             // constraints: BoxConstraints(maxWidth: 700),
             padding: EdgeInsets.all(
                 MediaQuery.of(context).size.width < 530 ? 18 : 32),
-            child: MediaQuery.of(context).size.width < 530
+            child: MediaQuery.of(context).size.width < 710
                 ? Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -327,9 +339,9 @@ class BeSponsor extends StatelessWidget {
                       ),
                       Container(
                         constraints: BoxConstraints(
-                            minWidth: double.infinity,
-                            minHeight:
-                                MediaQuery.of(context).size.height * 0.09),
+                            maxWidth: MediaQuery.of(context).size.width < 500
+                                ? 0.7 * MediaQuery.of(context).size.width
+                                : MediaQuery.of(context).size.width * 0.6),
                         child: FormsButtonWidget(
                             buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
                             backgroundColor: const Color(0xFFD36D49),
