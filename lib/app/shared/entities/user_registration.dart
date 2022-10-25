@@ -40,10 +40,10 @@ class UserRegistration {
       acceptEmails: true,
       acceptTerms: true,
       phoneNumber: '',
-      acceptEmailNotifications : false,
-      acceptSMSNotifications : false,
-      acceptWPPNotifications : false,
-      acceptAPPWEBNotifications : false,
+      acceptEmailNotifications: false,
+      acceptSMSNotifications: false,
+      acceptWPPNotifications: false,
+      acceptAPPWEBNotifications: false,
     );
   }
 }
