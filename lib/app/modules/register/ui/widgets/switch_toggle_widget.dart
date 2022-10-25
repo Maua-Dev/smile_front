@@ -1,22 +1,43 @@
 import 'package:flutter/material.dart';
 
-import 'package:getwidget/getwidget.dart';
-
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 
-// ignore: camel_case_types
-class SwitchToggle_Widget extends StatelessWidget {
-  const SwitchToggle_Widget(
+class SwitchToggleWidget extends StatefulWidget {
+  const SwitchToggleWidget(
       {super.key, required this.tipo, required this.onChanged});
 
   final String tipo;
   final Function(bool?)? onChanged;
 
   @override
+  State<SwitchToggleWidget> createState() =>
+      // ignore: no_logic_in_create_state
+      _SwitchToggleWidgetState(tipo: tipo, onChanged: onChanged);
+}
+
+class _SwitchToggleWidgetState extends State<SwitchToggleWidget> {
+  _SwitchToggleWidgetState({required this.tipo, required this.onChanged});
+  final String tipo;
+  final Function(bool?)? onChanged;
+  late bool isSwitched = false;
+
+  void toggleSwitch(bool value) {
+    if (isSwitched == false) {
+      setState(() {
+        isSwitched = true;
+      });
+    } else {
+      setState(() {
+        isSwitched = false;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
         width: MediaQuery.of(context).size.width < 650
             ? MediaQuery.of(context).size.width * 0.85
             : 600,
@@ -35,7 +56,7 @@ class SwitchToggle_Widget extends StatelessWidget {
                       text: 'Quero receber notificações por ',
                       style: AppTextStyles.body.copyWith(
                         color: Colors.white,
-                        fontSize: 15,
+                        fontSize: 16,
                       ),
                       children: [
                     TextSpan(
@@ -43,19 +64,19 @@ class SwitchToggle_Widget extends StatelessWidget {
                         style: AppTextStyles.body.copyWith(
                           color: AppColors.brandingOrange,
                           fontWeight: FontWeight.bold,
-                          fontSize: 15,
+                          fontSize: 16,
                         ))
                   ])),
             ),
-            GFToggle(
-              onChanged: (val) {
-                onChanged;
-              },
-              enabledTrackColor: AppColors.brandingOrange,
-              duration: const Duration(milliseconds: 60),
-              value: false,
-              type: GFToggleType.ios,
-            ),
+            Switch(
+                splashRadius: 8,
+                activeTrackColor: AppColors.brandingOrange,
+                activeColor: Colors.white,
+                value: isSwitched,
+                onChanged: (value) {
+                  toggleSwitch(value);
+                  onChanged;
+                })
           ],
         ));
   }

@@ -426,21 +426,21 @@ class _RegisterPageState
                               width: MediaQuery.of(context).size.width < 650
                                   ? MediaQuery.of(context).size.width * 0.85
                                   : 550,
-                              height: 30,
+                              height: 32,
                               child: Text(
                                 'Meios de notificação sobre as atividades:',
                                 style: AppTextStyles.body.copyWith(
                                   color: AppColors.white,
-                                  fontSize: 20,
+                                  fontSize: 24,
                                 ),
                                 textAlign: TextAlign.start,
                               ),
                             ),
                             const SizedBox(
-                              height: 5,
+                              height: 8,
                             ),
                             Observer(builder: (_) {
-                              return SwitchToggle_Widget(
+                              return SwitchToggleWidget(
                                 tipo: 'email',
                                 onChanged: (bool? value) {
                                   controller.setEmailNotifications(value);
@@ -448,30 +448,30 @@ class _RegisterPageState
                               );
                             }),
                             const SizedBox(
-                              height: 10,
+                              height: 16,
                             ),
                             Observer(builder: (_) {
-                              return SwitchToggle_Widget(
+                              return SwitchToggleWidget(
                                   tipo: 'sms',
                                   onChanged: (bool? value) {
                                     controller.setSMSNotifications(value);
                                   });
                             }),
                             const SizedBox(
-                              height: 10,
+                              height: 16,
                             ),
                             Observer(builder: (_) {
-                              return SwitchToggle_Widget(
+                              return SwitchToggleWidget(
                                   tipo: 'whatsapp',
                                   onChanged: (bool? value) {
                                     controller.setWPPNotifications(value);
                                   });
                             }),
                             const SizedBox(
-                              height: 10,
+                              height: 16,
                             ),
                             Observer(builder: (_) {
-                              return SwitchToggle_Widget(
+                              return SwitchToggleWidget(
                                   tipo: 'app/web',
                                   onChanged: (bool? value) {
                                     controller.setAPPWEBNotifications(value);
