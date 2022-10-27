@@ -168,7 +168,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               ? MediaQuery.of(context).size.width * 0.85
                               : 600,
                           heightSize: 50,
-                          backgroundColor: AppColors.brandingPurple,
+                          backgroundColor: AppColors.brandingBlue,
                           onPressed: () {
                             Modular.to.navigate('/login/cadastro');
                           },

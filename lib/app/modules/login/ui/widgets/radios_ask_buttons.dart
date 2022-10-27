@@ -57,8 +57,8 @@ class RadioAskButtons extends StatelessWidget {
                       width: 16,
                       height: 16,
                       decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.brandingPurple),
-                        color: awnser ? AppColors.brandingPurple : Colors.white,
+                        border: Border.all(color: AppColors.brandingBlue),
+                        color: awnser ? AppColors.brandingBlue : Colors.white,
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
@@ -79,8 +79,8 @@ class RadioAskButtons extends StatelessWidget {
                       width: 16,
                       height: 16,
                       decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.brandingPurple),
-                        color: awnser ? Colors.white : AppColors.brandingPurple,
+                        border: Border.all(color: AppColors.brandingBlue),
+                        color: awnser ? Colors.white : AppColors.brandingBlue,
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),

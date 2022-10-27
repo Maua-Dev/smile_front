@@ -53,7 +53,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                           ? Screen.width(context) * 0.45
                                           : 650,
                                   decoration: BoxDecoration(
-                                      color: AppColors.brandingPurple,
+                                      color: AppColors.brandingBlue,
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(10))),
                                   child: Padding(
@@ -133,7 +133,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                           ? 40
                                           : 50,
                                   borderRadius: 40,
-                                  backgroundColor: AppColors.brandingPurple,
+                                  backgroundColor: AppColors.brandingBlue,
                                   isClickable: false,
                                   onPressed: null,
                                 ),
@@ -230,7 +230,7 @@ class _MainHomePageState extends State<MainHomePage> {
                   height: 20,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: AppColors.brandingPurple,
+                    color: AppColors.brandingBlue,
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                   ),
                   child: Text(

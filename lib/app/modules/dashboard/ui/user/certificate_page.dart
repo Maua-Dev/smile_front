@@ -70,7 +70,7 @@ class _CertificatePageState
                                           ? 18
                                           : 22,
                                   decoration: TextDecoration.underline,
-                                  color: AppColors.brandingPurple,
+                                  color: AppColors.brandingBlue,
                                 ),
                               ),
                             )
@@ -108,7 +108,7 @@ class _CertificatePageState
                                           ? 18
                                           : 22,
                                   decoration: TextDecoration.underline,
-                                  color: AppColors.brandingPurple,
+                                  color: AppColors.brandingBlue,
                                 ),
                               ),
                             )

@@ -53,7 +53,7 @@ class NameAlterationDialog extends StatelessWidget {
                             : MediaQuery.of(context).size.width < 1000
                                 ? 30
                                 : 36,
-                        color: AppColors.brandingPurple),
+                        color: AppColors.brandingBlue),
                   ),
                   IconButton(
                     padding: EdgeInsets.zero,
@@ -103,17 +103,17 @@ class NameAlterationDialog extends StatelessWidget {
                             : 22),
                 cursorColor: Colors.white,
                 decoration: InputDecoration(
-                  fillColor: AppColors.brandingPurple,
+                  fillColor: AppColors.brandingBlue,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide:
-                        BorderSide(color: AppColors.brandingPurple, width: 0.0),
+                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide:
-                        BorderSide(color: AppColors.brandingPurple, width: 0.0),
+                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
                   ),
                 ),
               ),
@@ -139,7 +139,7 @@ class NameAlterationDialog extends StatelessWidget {
                       value: wantSocialName,
                       onChanged: onChangedWantSocialName,
                       trackColor: AppColors.gray,
-                      thumbColor: AppColors.brandingPurple,
+                      thumbColor: AppColors.brandingBlue,
                       activeColor: AppColors.lightPurple,
                     ),
                   ],
@@ -181,9 +181,8 @@ class NameAlterationDialog extends StatelessWidget {
                             : 20),
                 cursorColor: Colors.white,
                 decoration: InputDecoration(
-                  fillColor: wantSocialName
-                      ? AppColors.brandingPurple
-                      : AppColors.gray,
+                  fillColor:
+                      wantSocialName ? AppColors.brandingBlue : AppColors.gray,
                   filled: true,
                   disabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
@@ -192,12 +191,12 @@ class NameAlterationDialog extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide:
-                        BorderSide(color: AppColors.brandingPurple, width: 0.0),
+                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide:
-                        BorderSide(color: AppColors.brandingPurple, width: 0.0),
+                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
                   ),
                 ),
               ),
@@ -227,7 +226,7 @@ class NameAlterationDialog extends StatelessWidget {
                         value: certificateWithSocialName,
                         onChanged: onChangedCertificateWithSocialName,
                         trackColor: AppColors.gray,
-                        thumbColor: AppColors.brandingPurple,
+                        thumbColor: AppColors.brandingBlue,
                         activeColor: AppColors.lightPurple,
                       ),
                     ],
