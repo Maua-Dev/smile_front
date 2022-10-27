@@ -17,3 +17,23 @@ var mauaCampusBlurUrl = '${s3AssetsBaseUrl}maua_campus_blur.png';
 var speakersLogoUrl = '${s3AssetsBaseUrl}activities/palestra-de-alto-impacto/';
 
 var mauaLogoUrl = '${s3AssetsBaseUrl}logo_maua_branco.png';
+
+var atleticaLogoUrl = '${s3AssetsBaseUrl}atletica.png';
+
+var caLogoUrl = '${s3AssetsBaseUrl}ca.png';
+
+var diversidadeLogoUrl = '${s3AssetsBaseUrl}diversidade.png';
+
+var enactusLogoUrl = '${s3AssetsBaseUrl}enactus.png';
+
+var esportsLogoUrl = '${s3AssetsBaseUrl}esports.png';
+
+var inovaLogoUrl = '${s3AssetsBaseUrl}inova.png';
+
+var mauajrLogoUrl = '${s3AssetsBaseUrl}mauajr.png';
+
+var mauasocialLogoUrl = '${s3AssetsBaseUrl}mauasocial.png';
+
+var mbcLogoUrl = '${s3AssetsBaseUrl}mbc.png';
+
+var naeLogoUrl = '${s3AssetsBaseUrl}nae.png';

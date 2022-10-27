@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 
@@ -30,6 +31,61 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
             fontSize: MediaQuery.of(context).size.width < 530 ? 28 : null,
           ),
           const CompanySponsor(),
+          TextHeader(
+            title: 'Entidades Participantes da SMILE',
+            leftPadding: 32,
+            color: AppColors.brandingOrange,
+            fontSize: MediaQuery.of(context).size.width < 530 ? 28 : null,
+          ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: [
+              EntitiesWidget(
+                logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                text: '@gaspar_maua',
+              ),
+              EntitiesWidget(
+                logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                text: '@camaua',
+              ),
+              EntitiesWidget(
+                logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                text: '@diversidademaua',
+              ),
+              EntitiesWidget(
+                logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                text: '@enactusmaua',
+              ),
+              EntitiesWidget(
+                logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                text: '@esportsmaua',
+              ),
+              EntitiesWidget(
+                logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                text: '@inovamaua',
+              ),
+              EntitiesWidget(
+                logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                text: '@mauajr',
+              ),
+              EntitiesWidget(
+                logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                text: '@mauasocial',
+              ),
+              EntitiesWidget(
+                logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                text: '@mauabusinessclub',
+              ),
+              EntitiesWidget(
+                logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                text: '@naemaua',
+              ),
+              EntitiesWidget(
+                logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                text: '@devcommunitymaua',
+              ),
+            ],
+          ),
           Column(
             children: const [BeSponsor()],
           )
