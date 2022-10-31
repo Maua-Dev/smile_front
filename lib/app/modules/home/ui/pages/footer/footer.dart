@@ -17,7 +17,7 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(right: 8, left: 16),
-      decoration: BoxDecoration(color: AppColors.brandingPurple),
+      decoration: BoxDecoration(color: AppColors.brandingBlue),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,

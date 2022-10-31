@@ -18,7 +18,7 @@ class EndDrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: AppColors.brandingPurple,
+      backgroundColor: AppColors.brandingBlue,
       elevation: 40,
       child: ListView(
         controller: ScrollController(),

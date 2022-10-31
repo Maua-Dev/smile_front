@@ -26,7 +26,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
           TextHeader(
             title: 'Patrocinadores',
             leftPadding: 32,
-            color: AppColors.brandingPurple,
+            color: AppColors.brandingBlue,
             fontSize: MediaQuery.of(context).size.width < 530 ? 28 : null,
           ),
           const CompanySponsor(),
@@ -137,7 +137,7 @@ class BeSponsor extends StatelessWidget {
                     ? Container(
                         alignment: Alignment.center,
                         height: 2,
-                        color: AppColors.brandingPurple,
+                        color: AppColors.brandingBlue,
                       )
                     : Container(),
               ),
@@ -159,7 +159,7 @@ class BeSponsor extends StatelessWidget {
                     ? Container(
                         alignment: Alignment.center,
                         height: 2,
-                        color: AppColors.brandingPurple,
+                        color: AppColors.brandingBlue,
                       )
                     : Container(),
               )
@@ -177,7 +177,7 @@ class BeSponsor extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             constraints: const BoxConstraints(maxWidth: 700),
             decoration: BoxDecoration(
-                border: Border.all(color: AppColors.brandingPurple, width: 4),
+                border: Border.all(color: AppColors.brandingBlue, width: 4),
                 borderRadius: BorderRadius.circular(18)),
             child: Column(
               children: [
@@ -390,7 +390,7 @@ class CardDiscount extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
           color: const Color(0xFFD36D49),
-          border: Border.all(color: AppColors.brandingPurple, width: 2),
+          border: Border.all(color: AppColors.brandingBlue, width: 2),
           borderRadius: BorderRadius.circular(8)),
       child: Text.rich(
         TextSpan(style: const TextStyle(color: Colors.white), children: [
