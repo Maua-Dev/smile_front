@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class EntitiesWidget extends StatelessWidget {
-  final ImageProvider logo;
+  final String logo;
   final String text;
   final String url;
 
@@ -33,13 +32,11 @@ class EntitiesWidget extends StatelessWidget {
                 color: AppColors.white,
                 borderRadius: const BorderRadius.all(Radius.circular(16))),
             child: Container(
-              height: 40,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      fit: BoxFit.contain,
                       image: CachedNetworkImageProvider(
-                        mauajrLogoUrl,
-                      ))),
+                logo,
+              ))),
             ),
           ),
           Stack(
@@ -89,25 +86,3 @@ class EntitiesWidget extends StatelessWidget {
     );
   }
 }
-
-
-//Stack(
- //           alignment: Alignment.centerLeft,
- //           children: [
- //             Container(
- //               width: 50,
- //               height: 70,
-  //              decoration: BoxDecoration(
-  //                  color: AppColors.brandingPurple,
-  //                  shape: BoxShape.circle),
-  //            ),
-  //            Container(
-  //              width: 250,
-  //              height: 40,
- //               decoration: BoxDecoration(
- //                   color: AppColors.brandingPurple,
- //                   borderRadius:
- //                       const BorderRadius.all(Radius.circular(20))),
- //             ),
- //           ],
-  //        )

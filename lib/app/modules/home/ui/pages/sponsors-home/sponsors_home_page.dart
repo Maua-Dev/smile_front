@@ -35,55 +35,63 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
             title: 'Entidades Participantes da SMILE',
             leftPadding: 32,
             color: AppColors.brandingOrange,
-            fontSize: MediaQuery.of(context).size.width < 530 ? 28 : null,
+            fontSize: MediaQuery.of(context).size.width < 530 ? 21 : null,
           ),
           Wrap(
             alignment: WrapAlignment.center,
             children: [
               EntitiesWidget(
-                  logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                  logo: atleticaLogoUrl,
                   text: '@gaspar_maua',
                   url: "https://www.instagram.com/gaspar_maua/"),
               EntitiesWidget(
-                  logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                  logo: caLogoUrl,
                   text: '@camaua',
                   url: "https://www.instagram.com/camaua/"),
               EntitiesWidget(
-                  logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                  logo: diversidadeLogoUrl,
                   text: '@diversidademaua',
                   url: "https://www.instagram.com/diversidademaua/"),
               EntitiesWidget(
-                  logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                  logo: enactusLogoUrl,
                   text: '@enactusmaua',
                   url: "https://www.instagram.com/enactusmaua/"),
               EntitiesWidget(
-                  logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                  logo: esportsLogoUrl,
                   text: '@esportsmaua',
                   url: "https://www.instagram.com/esportsmaua/"),
               EntitiesWidget(
-                  logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                  logo: inovaLogoUrl,
                   text: '@inovamaua',
                   url: "https://www.instagram.com/inovamaua/"),
               EntitiesWidget(
-                  logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                  logo: mauajrLogoUrl,
                   text: '@mauajr',
                   url: "https://www.instagram.com/mauajr/"),
               EntitiesWidget(
-                  logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                  logo: mauasocialLogoUrl,
                   text: '@mauasocial',
                   url: "https://www.instagram.com/mauasocial/"),
               EntitiesWidget(
-                  logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                  logo: mbcLogoUrl,
                   text: '@mauabusinessclub',
                   url: "https://www.instagram.com/mauabusinessclub/"),
               EntitiesWidget(
-                  logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                  logo: naeLogoUrl,
                   text: '@naemaua',
                   url: "https://www.instagram.com/naemaua/"),
               EntitiesWidget(
-                  logo: CachedNetworkImageProvider(atleticaLogoUrl),
+                  logo: devLogoUrl,
                   text: '@devcommunitymaua',
                   url: "https://www.instagram.com/devcommunitymaua/"),
+              EntitiesWidget(
+                  logo: nineLogoUrl,
+                  text: '@nine.maua',
+                  url: "https://www.instagram.com/nine.maua/"),
+              EntitiesWidget(
+                  logo: financeLogoUrl,
+                  text: '@imtfinance',
+                  url: "https://www.instagram.com/imtfinance/"),
             ],
           ),
           Column(
