@@ -38,4 +38,10 @@ var mbcLogoUrl = '${s3AssetsBaseUrl}mbc.png';
 
 var naeLogoUrl = '${s3AssetsBaseUrl}nae.png';
 
-var devLogoUrl = '${s3AssetsBaseUrl}full_logo_dev.png';
+var devLogoUrl = '${s3AssetsBaseUrl}dev.png';
+
+var nineLogoUrl = '${s3AssetsBaseUrl}nine.png';
+
+var financeLogoUrl = '${s3AssetsBaseUrl}finance.png';
+
+var entitiesBackground = '${s3AssetsBaseUrl}fundo_entidades.png';

@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class EntitiesWidget extends StatelessWidget {
-  final ImageProvider logo;
+  final String logo;
   final String text;
   final String url;
 
@@ -17,33 +16,49 @@ class EntitiesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width < 1200 ? 16 : 30,
+          vertical: 8),
       child: Container(
-        width: 336,
-        height: 388,
+        width: MediaQuery.of(context).size.width < 500
+            ? 180
+            : MediaQuery.of(context).size.width < 1200
+                ? 206
+                : 252,
+        height: MediaQuery.of(context).size.width < 500
+            ? 224
+            : MediaQuery.of(context).size.width < 1200
+                ? 256
+                : 313,
         decoration: BoxDecoration(
             color: AppColors.brandingOrange,
             borderRadius: const BorderRadius.all(Radius.circular(16))),
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           Container(
-            width: 288,
-            height: 268,
+            width: MediaQuery.of(context).size.width < 500
+                ? 157
+                : MediaQuery.of(context).size.width < 1200
+                    ? 180
+                    : 220,
+            height: MediaQuery.of(context).size.width < 500
+                ? 157
+                : MediaQuery.of(context).size.width < 1200
+                    ? 180
+                    : 220,
             decoration: BoxDecoration(
                 color: AppColors.white,
-                borderRadius: const BorderRadius.all(Radius.circular(16))),
+                borderRadius: const BorderRadius.all(Radius.circular(15))),
             child: Container(
-              height: 40,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      fit: BoxFit.contain,
                       image: CachedNetworkImageProvider(
-                        mauajrLogoUrl,
-                      ))),
+                logo,
+              ))),
             ),
           ),
           Stack(
-            alignment: Alignment.center,
+            alignment: Alignment.centerLeft,
             children: [
               InkWell(
                 onTap: () => launchUrl(
@@ -52,35 +67,64 @@ class EntitiesWidget extends StatelessWidget {
                 ),
                 child: Container(
                   alignment: Alignment.center,
-                  width: 290,
-                  height: 40,
+                  width: MediaQuery.of(context).size.width < 500
+                      ? 157
+                      : MediaQuery.of(context).size.width < 1200
+                          ? 180
+                          : 220,
+                  height: MediaQuery.of(context).size.width < 500
+                      ? 26
+                      : MediaQuery.of(context).size.width < 1200
+                          ? 30
+                          : 37,
                   decoration: BoxDecoration(
                       color: AppColors.brandingPurple,
                       borderRadius:
-                          const BorderRadius.all(Radius.circular(20))),
+                          const BorderRadius.all(Radius.circular(15))),
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 0, 4),
+                    padding: EdgeInsets.fromLTRB(
+                        MediaQuery.of(context).size.width < 1200 ? 16 : 26,
+                        0,
+                        0,
+                        2),
                     child: Text(text,
-                        style: AppTextStyles.buttonBold.copyWith(fontSize: 20)),
+                        style: AppTextStyles.buttonBold.copyWith(
+                          fontSize: MediaQuery.of(context).size.width < 500
+                              ? 12
+                              : MediaQuery.of(context).size.width < 1200
+                                  ? 14
+                                  : 18,
+                          fontWeight: FontWeight.w700,
+                        )),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 250),
-                child: InkWell(
-                  onTap: () => launchUrl(
-                    Uri.parse("https://www.instagram.com/smilemaua/"),
-                    mode: LaunchMode.externalApplication,
-                  ),
-                  child: Container(
-                      width: 50,
-                      height: 70,
-                      decoration: BoxDecoration(
-                          color: AppColors.brandingPurple,
-                          shape: BoxShape.circle),
-                      child: const Icon(FontAwesome5.instagram,
-                          size: 30, color: Colors.white)),
+              InkWell(
+                onTap: () => launchUrl(
+                  Uri.parse(url),
+                  mode: LaunchMode.externalApplication,
                 ),
+                child: Container(
+                    width: MediaQuery.of(context).size.width < 500
+                        ? 32
+                        : MediaQuery.of(context).size.width < 1200
+                            ? 37
+                            : 45,
+                    height: MediaQuery.of(context).size.width < 500
+                        ? 32
+                        : MediaQuery.of(context).size.width < 1200
+                            ? 37
+                            : 45,
+                    decoration: BoxDecoration(
+                        color: AppColors.brandingPurple,
+                        shape: BoxShape.circle),
+                    child: Icon(FontAwesome5.instagram,
+                        size: MediaQuery.of(context).size.width < 500
+                            ? 22
+                            : MediaQuery.of(context).size.width < 1200
+                                ? 24
+                                : 30,
+                        color: Colors.white)),
               )
             ],
           )
@@ -89,25 +133,3 @@ class EntitiesWidget extends StatelessWidget {
     );
   }
 }
-
-
-//Stack(
- //           alignment: Alignment.centerLeft,
- //           children: [
- //             Container(
- //               width: 50,
- //               height: 70,
-  //              decoration: BoxDecoration(
-  //                  color: AppColors.brandingPurple,
-  //                  shape: BoxShape.circle),
-  //            ),
-  //            Container(
-  //              width: 250,
-  //              height: 40,
- //               decoration: BoxDecoration(
- //                   color: AppColors.brandingPurple,
- //                   borderRadius:
- //                       const BorderRadius.all(Radius.circular(20))),
- //             ),
- //           ],
-  //        )
