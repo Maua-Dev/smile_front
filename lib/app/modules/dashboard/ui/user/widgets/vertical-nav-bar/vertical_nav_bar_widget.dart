@@ -15,7 +15,7 @@ class VerticalNavBarWidget extends StatelessWidget {
     var controller = Modular.get<NavigationBarController>();
     return Observer(builder: (context) {
       return Container(
-        color: AppColors.brandingPurple,
+        color: AppColors.brandingBlue,
         height: MediaQuery.of(context).size.height,
         width: 120,
         child: Padding(

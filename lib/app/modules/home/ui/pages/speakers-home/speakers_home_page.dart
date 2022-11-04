@@ -47,7 +47,7 @@ class _SpeakersHomePageState
               padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 32),
               width: Screen.width(context) * 0.9,
               decoration: BoxDecoration(
-                  color: AppColors.brandingPurple,
+                  color: AppColors.brandingBlue,
                   borderRadius: BorderRadius.circular(40)),
               child: Column(
                 mainAxisSize: MainAxisSize.min,

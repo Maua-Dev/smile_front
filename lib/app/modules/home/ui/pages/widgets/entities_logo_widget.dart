@@ -78,7 +78,7 @@ class EntitiesWidget extends StatelessWidget {
                           ? 30
                           : 37,
                   decoration: BoxDecoration(
-                      color: AppColors.brandingPurple,
+                      color: AppColors.brandingBlue,
                       borderRadius:
                           const BorderRadius.all(Radius.circular(15))),
                   child: Padding(
@@ -116,8 +116,7 @@ class EntitiesWidget extends StatelessWidget {
                             ? 37
                             : 45,
                     decoration: BoxDecoration(
-                        color: AppColors.brandingPurple,
-                        shape: BoxShape.circle),
+                        color: AppColors.brandingBlue, shape: BoxShape.circle),
                     child: Icon(FontAwesome5.instagram,
                         size: MediaQuery.of(context).size.width < 500
                             ? 22

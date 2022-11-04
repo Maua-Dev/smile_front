@@ -22,7 +22,7 @@ class SponsorsWidget extends StatelessWidget {
             height: height,
             width: widht,
             decoration: BoxDecoration(
-                color: AppColors.brandingPurple,
+                color: AppColors.brandingBlue,
                 borderRadius: BorderRadius.circular(16))),
         Container(
             height: height * 0.87,
