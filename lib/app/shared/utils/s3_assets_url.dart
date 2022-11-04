@@ -44,4 +44,8 @@ var nineLogoUrl = '${s3AssetsBaseUrl}nine.png';
 
 var financeLogoUrl = '${s3AssetsBaseUrl}finance.png';
 
+var patrocinadorCSNLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_csn.png';
+
+var mauaAzulLogoUrl = '${s3AssetsBaseUrl}logo_maua_azul.png';
+
 var entitiesBackground = '${s3AssetsBaseUrl}fundo_entidades.png';

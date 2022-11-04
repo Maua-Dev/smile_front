@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 
@@ -593,19 +594,20 @@ class CompanySponsor extends StatelessWidget {
     return MediaQuery.of(context).size.width > 900
         ? Padding(
             padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
-            child: Container(
-              height: 268,
-              width: 288,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: AppColors.brandingPurple),
-              child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                  devLogoUrl,
-                ))),
-              ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SponsorsWidget(link: devLogoUrl, color: Colors.white),
+                const SizedBox(
+                  width: 40,
+                ),
+                SponsorsWidget(link: mauaAzulLogoUrl, color: Colors.black),
+                const SizedBox(
+                  width: 40,
+                ),
+                SponsorsWidget(
+                    link: patrocinadorCSNLogoUrl, color: Colors.white)
+              ],
             ))
         : Padding(
             padding: const EdgeInsets.only(bottom: 16.0, left: 16, right: 16),
