@@ -555,40 +555,20 @@ class CompanySponsor extends StatelessWidget {
     return MediaQuery.of(context).size.width > 900
         ? Padding(
             padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.2,
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
+            child: Container(
+              height: 268,
+              width: 288,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: AppColors.brandingPurple),
+              child: Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
                         image: CachedNetworkImageProvider(
-                            '${s3AssetsBaseUrl}full_logo_dev.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Text(
-                    devPresentation,
-                    textAlign: TextAlign.justify,
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize:
-                            MediaQuery.of(context).size.width < 1200 ? 16 : 18),
-                  ),
-                ),
-              ],
-            ),
-          )
+                  devLogoUrl,
+                ))),
+              ),
+            ))
         : Padding(
             padding: const EdgeInsets.only(bottom: 16.0, left: 16, right: 16),
             child: Column(

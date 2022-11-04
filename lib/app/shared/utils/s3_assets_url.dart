@@ -37,3 +37,5 @@ var mauasocialLogoUrl = '${s3AssetsBaseUrl}mauasocial.png';
 var mbcLogoUrl = '${s3AssetsBaseUrl}mbc.png';
 
 var naeLogoUrl = '${s3AssetsBaseUrl}nae.png';
+
+var devLogoUrl = '${s3AssetsBaseUrl}full_logo_dev.png';
