@@ -47,84 +47,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
                   : null,
             ),
           ),
-          Stack(alignment: Alignment.bottomCenter, children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.width < 500
-                  ? MediaQuery.of(context).size.height * 0.15
-                  : MediaQuery.of(context).size.width < 1000
-                      ? MediaQuery.of(context).size.height * 0.25
-                      : MediaQuery.of(context).size.height * 0.60,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.contain,
-                      image: CachedNetworkImageProvider(
-                        entitiesBackground,
-                      ))),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.width < 500
-                      ? MediaQuery.of(context).size.height / 10
-                      : MediaQuery.of(context).size.width < 1000
-                          ? MediaQuery.of(context).size.height / 6
-                          : MediaQuery.of(context).size.height / 4),
-              child: Wrap(alignment: WrapAlignment.center, children: [
-                EntitiesWidget(
-                    logo: atleticaLogoUrl,
-                    text: '@gaspar_maua',
-                    url: "https://www.instagram.com/gaspar_maua/"),
-                EntitiesWidget(
-                    logo: caLogoUrl,
-                    text: '@camaua',
-                    url: "https://www.instagram.com/camaua/"),
-                EntitiesWidget(
-                    logo: diversidadeLogoUrl,
-                    text: '@diversidademaua',
-                    url: "https://www.instagram.com/diversidademaua/"),
-                EntitiesWidget(
-                    logo: enactusLogoUrl,
-                    text: '@enactusmaua',
-                    url: "https://www.instagram.com/enactusmaua/"),
-                EntitiesWidget(
-                    logo: esportsLogoUrl,
-                    text: '@esportsmaua',
-                    url: "https://www.instagram.com/esportsmaua/"),
-                EntitiesWidget(
-                    logo: inovaLogoUrl,
-                    text: '@inovamaua',
-                    url: "https://www.instagram.com/inovamaua/"),
-                EntitiesWidget(
-                    logo: mauajrLogoUrl,
-                    text: '@mauajr',
-                    url: "https://www.instagram.com/mauajr/"),
-                EntitiesWidget(
-                    logo: mauasocialLogoUrl,
-                    text: '@mauasocial',
-                    url: "https://www.instagram.com/mauasocial/"),
-                EntitiesWidget(
-                    logo: mbcLogoUrl,
-                    text: '@mauabusiness',
-                    url: "https://www.instagram.com/mauabusinessclub/"),
-                EntitiesWidget(
-                    logo: naeLogoUrl,
-                    text: '@naemaua',
-                    url: "https://www.instagram.com/naemaua/"),
-                EntitiesWidget(
-                    logo: devLogoUrl,
-                    text: '@devcommunity',
-                    url: "https://www.instagram.com/devcommunitymaua/"),
-                EntitiesWidget(
-                    logo: nineLogoUrl,
-                    text: '@nine.maua',
-                    url: "https://www.instagram.com/nine.maua/"),
-                EntitiesWidget(
-                    logo: financeLogoUrl,
-                    text: '@imtfinance',
-                    url: "https://www.instagram.com/imtfinance/"),
-              ]),
-            ),
-          ]),
+          const EntitiesStack(),
           Column(
             children: const [BeSponsor()],
           )
@@ -645,5 +568,99 @@ class CompanySponsor extends StatelessWidget {
               ],
             ),
           );
+  }
+}
+
+class EntitiesStack extends StatelessWidget {
+  const EntitiesStack({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(alignment: Alignment.bottomCenter, children: [
+      Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.width < 500
+            ? MediaQuery.of(context).size.height * 0.15
+            : MediaQuery.of(context).size.width < 1000
+                ? MediaQuery.of(context).size.height * 0.25
+                : MediaQuery.of(context).size.height * 0.60,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.contain,
+                image: CachedNetworkImageProvider(
+                  entitiesBackground,
+                ))),
+      ),
+      Padding(
+        padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.width < 500
+                ? MediaQuery.of(context).size.height / 10
+                : MediaQuery.of(context).size.width < 1000
+                    ? MediaQuery.of(context).size.height / 6
+                    : MediaQuery.of(context).size.height / 4),
+        child: Wrap(alignment: WrapAlignment.center, children: [
+          EntitiesWidget(
+              logo: atleticaLogoUrl,
+              text: '@gaspar_maua',
+              url: "https://www.instagram.com/gaspar_maua/"),
+          EntitiesWidget(
+              logo: caLogoUrl,
+              text: '@camaua',
+              url: "https://www.instagram.com/camaua/"),
+          EntitiesWidget(
+              logo: diversidadeLogoUrl,
+              text: '@diversidademaua',
+              url: "https://www.instagram.com/diversidademaua/"),
+          EntitiesWidget(
+              logo: enactusLogoUrl,
+              text: '@enactusmaua',
+              url: "https://www.instagram.com/enactusmaua/"),
+          EntitiesWidget(
+              logo: esportsLogoUrl,
+              text: '@esportsmaua',
+              url: "https://www.instagram.com/esportsmaua/"),
+          EntitiesWidget(
+              logo: inovaLogoUrl,
+              text: '@inovamaua',
+              url: "https://www.instagram.com/inovamaua/"),
+          EntitiesWidget(
+              logo: mauajrLogoUrl,
+              text: '@mauajr',
+              url: "https://www.instagram.com/mauajr/"),
+          EntitiesWidget(
+              logo: mauasocialLogoUrl,
+              text: '@mauasocial',
+              url: "https://www.instagram.com/mauasocial/"),
+          EntitiesWidget(
+              logo: mbcLogoUrl,
+              text: '@mauabusiness',
+              url: "https://www.instagram.com/mauabusinessclub/"),
+          EntitiesWidget(
+              logo: naeLogoUrl,
+              text: '@naemaua',
+              url: "https://www.instagram.com/naemaua/"),
+          EntitiesWidget(
+              logo: devLogoUrl,
+              text: '@devcommunity',
+              url: "https://www.instagram.com/devcommunitymaua/"),
+          EntitiesWidget(
+              logo: nineLogoUrl,
+              text: '@nine.maua',
+              url: "https://www.instagram.com/nine.maua/"),
+          EntitiesWidget(
+              logo: financeLogoUrl,
+              text: '@imtfinance',
+              url: "https://www.instagram.com/imtfinance/"),
+          EntitiesWidget(
+              logo: bajaLogoUrl,
+              text: '@bajamaua',
+              url: "https://www.instagram.com/bajamaua/"),
+          EntitiesWidget(
+              logo: ecomauaLogoUrl,
+              text: '@eco_maua',
+              url: "https://www.instagram.com/eco_maua/"),
+        ]),
+      ),
+    ]);
   }
 }

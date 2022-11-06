@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
 

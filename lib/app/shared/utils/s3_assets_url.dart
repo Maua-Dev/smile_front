@@ -18,31 +18,35 @@ var speakersLogoUrl = '${s3AssetsBaseUrl}activities/palestra-de-alto-impacto/';
 
 var mauaLogoUrl = '${s3AssetsBaseUrl}logo_maua_branco.png';
 
-var atleticaLogoUrl = '${s3AssetsBaseUrl}atletica.png';
+var atleticaLogoUrl = '${s3AssetsBaseUrl}logo_entidades_atletica.png';
 
-var caLogoUrl = '${s3AssetsBaseUrl}ca.png';
+var caLogoUrl = '${s3AssetsBaseUrl}logo_entidades_ca.png';
 
-var diversidadeLogoUrl = '${s3AssetsBaseUrl}diversidade.png';
+var diversidadeLogoUrl = '${s3AssetsBaseUrl}logo_entidades_diversidade.png';
 
-var enactusLogoUrl = '${s3AssetsBaseUrl}enactus.png';
+var enactusLogoUrl = '${s3AssetsBaseUrl}logo_entidades_enactus.png';
 
-var esportsLogoUrl = '${s3AssetsBaseUrl}esports.png';
+var esportsLogoUrl = '${s3AssetsBaseUrl}logo_entidades_esports.png';
 
-var inovaLogoUrl = '${s3AssetsBaseUrl}inova.png';
+var inovaLogoUrl = '${s3AssetsBaseUrl}logo_entidades_inova.png';
 
-var mauajrLogoUrl = '${s3AssetsBaseUrl}mauajr.png';
+var mauajrLogoUrl = '${s3AssetsBaseUrl}logo_entidades_mauajr.png';
 
-var mauasocialLogoUrl = '${s3AssetsBaseUrl}mauasocial.png';
+var mauasocialLogoUrl = '${s3AssetsBaseUrl}logo_entidades_social.png';
 
-var mbcLogoUrl = '${s3AssetsBaseUrl}mbc.png';
+var mbcLogoUrl = '${s3AssetsBaseUrl}logo_entidades_business.png';
 
-var naeLogoUrl = '${s3AssetsBaseUrl}nae.png';
+var naeLogoUrl = '${s3AssetsBaseUrl}logo_entidades_nae.png';
 
-var devLogoUrl = '${s3AssetsBaseUrl}dev.png';
+var devLogoUrl = '${s3AssetsBaseUrl}logo_entidades_dev.png';
 
-var nineLogoUrl = '${s3AssetsBaseUrl}nine.png';
+var nineLogoUrl = '${s3AssetsBaseUrl}logo_entidades_nine.png';
 
-var financeLogoUrl = '${s3AssetsBaseUrl}finance.png';
+var financeLogoUrl = '${s3AssetsBaseUrl}logo_entidades_finance.png';
+
+var bajaLogoUrl = '${s3AssetsBaseUrl}logo_entidades_baja.png';
+
+var ecomauaLogoUrl = '${s3AssetsBaseUrl}logo_entidades_ecomaua.png';
 
 var patrocinadorCSNLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_csn.png';
 
