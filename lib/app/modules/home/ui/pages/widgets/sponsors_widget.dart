@@ -1,7 +1,10 @@
+import 'dart:js';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
+import '../../../../../shared/utils/screen_helper.dart';
 
 class SponsorsWidget extends StatelessWidget {
   const SponsorsWidget({super.key, required this.link, required this.color});
@@ -9,11 +12,19 @@ class SponsorsWidget extends StatelessWidget {
   final String link;
   final Color color;
 
-  static double height = 288;
-  static double widht = 268;
-
   @override
   Widget build(BuildContext context) {
+    double height = Screen.width(context) > 900
+        ? 288
+        : Screen.width(context) > 500
+            ? 288 * (Screen.width(context) / 900)
+            : 180;
+    double widht = Screen.width(context) > 900
+        ? 268
+        : Screen.width(context) > 500
+            ? 268 * (Screen.width(context) / 900)
+            : 160;
+
     return Stack(
       alignment: AlignmentDirectional.center,
       children: [
@@ -29,8 +40,9 @@ class SponsorsWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 color: color,
                 borderRadius: BorderRadiusDirectional.circular(16),
-                image:
-                    DecorationImage(image: CachedNetworkImageProvider(link))))
+                image: DecorationImage(
+                    image: CachedNetworkImageProvider(link),
+                    fit: BoxFit.scaleDown)))
       ],
     );
   }
