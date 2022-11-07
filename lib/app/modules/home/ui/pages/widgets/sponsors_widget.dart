@@ -15,10 +15,10 @@ class SponsorsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = Screen.width(context) > 900
-        ? 288
+        ? 278
         : Screen.width(context) > 500
-            ? 288 * (Screen.width(context) / 900)
-            : 180;
+            ? 278 * (Screen.width(context) / 900)
+            : 170;
     double widht = Screen.width(context) > 900
         ? 268
         : Screen.width(context) > 500
@@ -38,8 +38,13 @@ class SponsorsWidget extends StatelessWidget {
             height: height * 0.87,
             width: widht * 0.87,
             decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadiusDirectional.circular(16),
+              color: color,
+              borderRadius: BorderRadiusDirectional.circular(16),
+            )),
+        Container(
+            height: height * 0.783,
+            width: widht * 0.783,
+            decoration: BoxDecoration(
                 image: DecorationImage(
                     image: CachedNetworkImageProvider(link),
                     fit: BoxFit.scaleDown)))
