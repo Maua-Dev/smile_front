@@ -3,9 +3,11 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/widgets/speakers_card_widget.dart';
+import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/widgets/text-header/text_header.dart';
+import '../../../../../shared/utils/screen_helper.dart';
 
 class SpeakersHomePage extends StatefulWidget {
   const SpeakersHomePage({Key? key}) : super(key: key);
@@ -20,16 +22,19 @@ class _SpeakersHomePageState
   Widget build(BuildContext context) {
     var scrollController = ScrollController();
 
-    final double width = MediaQuery.of(context).size.width;
     return Column(
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 24.0),
           child: TextHeader(
             title: 'Principais Palestrantes - 2022',
-            leftPadding: 32,
+            leftPadding: Screen.width(context) > 530 ? 32 : 24,
             color: AppColors.brandingOrange,
-            fontSize: width < 530 ? 24 : null,
+            fontSize: Screen.width(context) < cellphoneSize
+                ? Screen.width(context) < 530
+                    ? 24
+                    : 32
+                : 48,
           ),
         ),
         Observer(builder: (_) {
@@ -40,7 +45,7 @@ class _SpeakersHomePageState
           } else {
             return Container(
               padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 32),
-              width: width * 0.9,
+              width: Screen.width(context) * 0.9,
               decoration: BoxDecoration(
                   color: AppColors.brandingPurple,
                   borderRadius: BorderRadius.circular(40)),
@@ -49,7 +54,7 @@ class _SpeakersHomePageState
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (width < 1000)
+                  if (Screen.width(context) < tabletSize)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 16),
                       child: Center(
@@ -60,9 +65,9 @@ class _SpeakersHomePageState
                         ),
                       ),
                     ),
-                  if (width < 1000)
+                  if (Screen.width(context) < tabletSize)
                     SizedBox(
-                      height: width < 500 ? 110 : 160,
+                      height: Screen.width(context) < 500 ? 110 : 160,
                       child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
@@ -85,9 +90,9 @@ class _SpeakersHomePageState
                     )
                   else
                     SizedBox(
-                      height: width < 1380
+                      height: Screen.width(context) < tabletSize
                           ? 190
-                          : width < 1750
+                          : Screen.width(context) < 1750
                               ? 210
                               : 250,
                       child: Center(
@@ -118,7 +123,7 @@ class _SpeakersHomePageState
                       child: Text(
                         controller.listSpeakers[controller.indexToShow].name,
                         style: AppTextStyles.button.copyWith(
-                            fontSize: width < 1000 ? 22 : 32,
+                            fontSize: Screen.width(context) < 1000 ? 22 : 32,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
@@ -129,9 +134,9 @@ class _SpeakersHomePageState
                       controller.listSpeakers[controller.indexToShow].bio,
                       textAlign: TextAlign.justify,
                       style: AppTextStyles.button.copyWith(
-                          fontSize: width < 1000
+                          fontSize: Screen.width(context) < 1000
                               ? 14
-                              : width < 1500
+                              : Screen.width(context) < 1500
                                   ? 16
                                   : 18,
                           color: Colors.white),
