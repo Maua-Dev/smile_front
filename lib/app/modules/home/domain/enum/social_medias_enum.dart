@@ -24,7 +24,7 @@ extension SocialMediasEnumExtension on SocialMediasEnum {
         return 'http://www.youtube.com/infomaua';
 
       case SocialMediasEnum.instagram:
-        return 'https://www.instagram.com/smilemaua/';
+        return 'https://www.instagram.com/infomaua/';
 
       case SocialMediasEnum.linkedin:
         return 'https://www.linkedin.com/school/479773/admin/updates';
@@ -46,33 +46,28 @@ extension SocialMediasEnumExtension on SocialMediasEnum {
   Widget get icons {
     switch (this) {
       case SocialMediasEnum.blog:
-        return const Icon(FontAwesome5.blogger_b,
-            size: 22, color: Colors.white);
+        return const Icon(FontAwesome5.blogger_b, size: 22);
 
       case SocialMediasEnum.youtube:
-        return const Icon(FontAwesome.youtube_play,
-            size: 22, color: Colors.white);
+        return const Icon(FontAwesome.youtube_play, size: 22);
 
       case SocialMediasEnum.instagram:
-        return const Icon(FontAwesome5.instagram,
-            size: 22, color: Colors.white);
+        return const Icon(FontAwesome5.instagram, size: 22);
 
       case SocialMediasEnum.linkedin:
-        return const Icon(FontAwesome5.linkedin_in,
-            size: 22, color: Colors.white);
+        return const Icon(FontAwesome5.linkedin_in, size: 22);
 
       case SocialMediasEnum.flickr:
-        return const Icon(Entypo.flickr, size: 22, color: Colors.white);
+        return const Icon(Entypo.flickr, size: 22);
 
       case SocialMediasEnum.twitter:
-        return const Icon(FontAwesome5.twitter, size: 22, color: Colors.white);
+        return const Icon(FontAwesome5.twitter, size: 22);
 
       case SocialMediasEnum.facebook:
-        return const Icon(FontAwesome5.facebook_f,
-            size: 22, color: Colors.white);
+        return const Icon(FontAwesome5.facebook_f, size: 22);
 
       case SocialMediasEnum.spotify:
-        return const Icon(FontAwesome5.spotify, size: 22, color: Colors.white);
+        return const Icon(FontAwesome5.spotify, size: 22);
     }
   }
 }
