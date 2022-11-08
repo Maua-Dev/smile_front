@@ -197,13 +197,6 @@ class BeSponsor extends StatelessWidget {
                                 height: 8,
                               ),
                               CardDiscount(
-                                month: 'Outubro',
-                                discount: '50% Off',
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
                                 month: 'Novembro',
                                 discount: '40% Off',
                               ),
@@ -244,13 +237,6 @@ class BeSponsor extends StatelessWidget {
                           Column(
                             children: const [
                               Text('2022'),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
-                                month: 'Outubro',
-                                discount: '50% Off',
-                              ),
                               SizedBox(
                                 height: 8,
                               ),
