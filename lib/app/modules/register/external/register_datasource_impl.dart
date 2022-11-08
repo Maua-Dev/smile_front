@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:smile_front/app/shared/entities/user_registration.dart';
-import '../../../shared/services/enviroment/enviroment_config.dart';
+import '../../../shared/services/environment/environment_config.dart';
 import '../infra/datasources/register_datasource_interface.dart';
 import 'errors/errors.dart';
 
@@ -29,7 +29,9 @@ class RegisterDatasourceImpl implements RegisterDatasourceInterface {
         "role": "STUDENT",
         "accepted_notifications": userRegistration.acceptEmails,
         "social_name": userRegistration.socialName,
-        "accepted_terms": userRegistration.acceptTerms
+        "accepted_terms": userRegistration.acceptTerms,
+        // Aguardando back
+        // "phone_number": userRegistration.phoneNumber,
       });
       if (res.statusCode == 200) {
         return 'Usuário criado com sucesso!';

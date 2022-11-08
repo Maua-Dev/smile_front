@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
@@ -15,9 +16,11 @@ class InputBox extends StatelessWidget {
   final bool? showPwd;
   final bool? isCpfField;
   final bool? isRAField;
+  final bool isPhoneField;
   final bool? isValidated;
+  final PhoneNumber number = PhoneNumber(isoCode: 'BR');
 
-  const InputBox({
+  InputBox({
     Key? key,
     required this.icon,
     required this.placeholder,
@@ -31,6 +34,7 @@ class InputBox extends StatelessWidget {
     this.showPwd,
     this.isCpfField,
     this.isRAField,
+    this.isPhoneField = false,
     this.isValidated,
   }) : super(key: key);
 
@@ -40,6 +44,7 @@ class InputBox extends StatelessWidget {
         mask: "###.###.###-##", filter: {"#": RegExp(r'[0-9]')});
     final maskRA = MaskTextInputFormatter(
         mask: "##.#####-#", filter: {"#": RegExp(r'[0-9]')});
+
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -72,50 +77,89 @@ class InputBox extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(
               top: MediaQuery.of(context).size.width < 650 ? 5 : 10, left: 10),
-          child: TextFormField(
-            inputFormatters: isCpfField != null
-                ? [maskCpf]
-                : isRAField != null
-                    ? [maskRA]
-                    : null,
-            validator: (value) {
-              if (validation != null) {
-                return validation!(value!);
-              }
-              return null;
-            },
-            onFieldSubmitted: onFieldSubmitted,
-            onChanged: setValue,
-            obscureText: showPwd != null ? !showPwd! : false,
-            enabled: disable != null ? !disable! : true,
-            decoration: InputDecoration(
-                contentPadding: const EdgeInsets.only(top: 15),
-                border: InputBorder.none,
-                hintText: placeholder,
-                fillColor: Colors.white,
-                isDense: true,
-                hintStyle: TextStyle(color: AppColors.placeholder),
-                errorStyle: TextStyle(
-                  color: AppColors.brandingOrange,
-                  fontSize: 16,
-                  height: 0.08,
-                ),
-                prefixIcon: Icon(icon, size: 24),
-                suffixIcon: onToggleVisibilityPwd != null
-                    ? Padding(
-                        padding: const EdgeInsets.only(right: 16.0),
-                        child: InkWell(
-                          onTap: () => onToggleVisibilityPwd!(showPwd!),
-                          child: Icon(
-                            showPwd! ? Icons.visibility : Icons.visibility_off,
-                            color: AppColors.brandingPurple,
-                            size: 20,
-                          ),
-                        ),
-                      )
-                    : null),
-            style: const TextStyle(color: Colors.white),
-          ),
+          child: isPhoneField
+              ? Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 12),
+                  child: InternationalPhoneNumberInput(
+                    onFieldSubmitted: onFieldSubmitted,
+                    onInputChanged: (PhoneNumber number) {
+                      setValue(number.phoneNumber!);
+                    },
+                    selectorConfig: const SelectorConfig(
+                      useEmoji: true,
+                      selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                    ),
+                    keyboardType: const TextInputType.numberWithOptions(
+                        signed: true, decimal: true),
+                    ignoreBlank: true,
+                    maxLength: 20,
+                    initialValue: number,
+                    searchBoxDecoration: InputDecoration(
+                      fillColor: AppColors.brandingPurple,
+                      hintText: 'Pesquisar por país ou DDI',
+                      hintStyle: TextStyle(color: AppColors.brandingPurple),
+                    ),
+                    selectorTextStyle: TextStyle(
+                      color: AppColors.placeholder,
+                      fontSize: 16,
+                    ),
+                    formatInput: true,
+                    textStyle: TextStyle(color: AppColors.white),
+                    spaceBetweenSelectorAndTextField: 0,
+                    inputDecoration: InputDecoration(
+                      prefixIcon: Icon(icon, size: 24),
+                      contentPadding: const EdgeInsets.only(bottom: 6),
+                      border: InputBorder.none,
+                      hintText: 'Telefone Celular',
+                      hintStyle: TextStyle(color: AppColors.placeholder),
+                    ),
+                  ),
+                )
+              : TextFormField(
+                  validator: (value) {
+                    if (validation != null) {
+                      return validation!(value!);
+                    }
+                    return null;
+                  },
+                  onFieldSubmitted: onFieldSubmitted,
+                  onChanged: setValue,
+                  obscureText: showPwd != null ? !showPwd! : false,
+                  enabled: disable != null ? !disable! : true,
+                  decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.only(top: 15),
+                      border: InputBorder.none,
+                      hintText: placeholder,
+                      fillColor: Colors.white,
+                      isDense: true,
+                      hintStyle: TextStyle(color: AppColors.placeholder),
+                      errorStyle: TextStyle(
+                        color: AppColors.brandingOrange,
+                        fontSize: 16,
+                        height: 0.08,
+                      ),
+                      prefixIcon: Icon(icon, size: 24),
+                      suffixIcon: onToggleVisibilityPwd != null
+                          ? Padding(
+                              padding: const EdgeInsets.only(right: 16.0),
+                              child: InkWell(
+                                onTap: () => onToggleVisibilityPwd!(showPwd!),
+                                child: Icon(
+                                  showPwd!
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: AppColors.brandingPurple,
+                                  size: 20,
+                                ),
+                              ),
+                            )
+                          : null),
+                  style: const TextStyle(color: Colors.white),
+                  inputFormatters: isCpfField != null
+                      ? [maskCpf]
+                      : isRAField != null
+                          ? [maskRA]
+                          : null),
         ),
       ),
     );

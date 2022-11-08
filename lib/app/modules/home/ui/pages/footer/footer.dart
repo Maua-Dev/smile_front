@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/social_media_icons_widget.dart';
+import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/utils/s3_assets_url.dart';
+import '../../../../../shared/utils/screen_helper.dart';
 import '../../../utils/text_utils.dart';
 
 class Footer extends StatelessWidget {
@@ -21,16 +23,16 @@ class Footer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.width < 500 ? null : 16,
+            height: Screen.width(context) < 500 ? null : 16,
           ),
-          if (MediaQuery.of(context).size.width < 760)
+          if (Screen.width(context) < cellphoneSize)
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  height: MediaQuery.of(context).size.height * 0.08,
+                  width: Screen.width(context) * 0.45,
+                  height: Screen.height(context) * 0.08,
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
@@ -96,7 +98,7 @@ class Footer extends StatelessWidget {
                                 style: AppTextStyles.body.copyWith(
                                     color: Colors.white,
                                     fontSize:
-                                        MediaQuery.of(context).size.width < 760
+                                        Screen.width(context) < cellphoneSize
                                             ? 12
                                             : 24),
                               ),
@@ -232,18 +234,15 @@ class Footer extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                          width: MediaQuery.of(context).size.width < 1100
-                              ? 168
-                              : 350,
+                          width: Screen.width(context) < tabletSize ? 168 : 350,
                           child: Text(
                             'Clique aqui para acessar as nossas redes sociais:',
                             textAlign: TextAlign.center,
                             style: AppTextStyles.body.copyWith(
                                 color: Colors.white,
-                                fontSize: MediaQuery.of(context).size.width <
-                                        900
+                                fontSize: Screen.width(context) < cellphoneSize
                                     ? 14
-                                    : MediaQuery.of(context).size.width < 1350
+                                    : Screen.width(context) < tabletSize
                                         ? 16
                                         : 20),
                           ),
@@ -255,10 +254,10 @@ class Footer extends StatelessWidget {
                       ],
                     )),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width < 700
-                      ? MediaQuery.of(context).size.width * 0.45
-                      : MediaQuery.of(context).size.width * 0.35,
-                  height: MediaQuery.of(context).size.height * 0.12,
+                  width: Screen.width(context) < cellphoneSize
+                      ? Screen.width(context) * 0.45
+                      : Screen.width(context) * 0.35,
+                  height: Screen.width(context) * 0.12,
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
@@ -280,9 +279,9 @@ class Footer extends StatelessWidget {
                         localizationTitle,
                         style: AppTextStyles.titleH1.copyWith(
                             color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 900
+                            fontSize: Screen.width(context) < cellphoneSize
                                 ? 14
-                                : MediaQuery.of(context).size.width < 1350
+                                : Screen.width(context) < tabletSize
                                     ? 16
                                     : 20),
                       ),
@@ -292,9 +291,9 @@ class Footer extends StatelessWidget {
                         localization,
                         style: AppTextStyles.body.copyWith(
                             color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 900
+                            fontSize: Screen.width(context) < cellphoneSize
                                 ? 14
-                                : MediaQuery.of(context).size.width < 1350
+                                : Screen.width(context) < tabletSize
                                     ? 16
                                     : 20),
                       ),
@@ -327,9 +326,9 @@ class Footer extends StatelessWidget {
                           'COMO CHEGAR',
                           style: AppTextStyles.body.copyWith(
                               color: Colors.white,
-                              fontSize: MediaQuery.of(context).size.width < 900
+                              fontSize: Screen.width(context) < cellphoneSize
                                   ? 14
-                                  : MediaQuery.of(context).size.width < 1350
+                                  : Screen.width(context) < tabletSize
                                       ? 16
                                       : 20),
                         ),
@@ -339,8 +338,7 @@ class Footer extends StatelessWidget {
                       height: 16,
                     ),
                     SizedBox(
-                      width:
-                          MediaQuery.of(context).size.width < 1350 ? 300 : 400,
+                      width: Screen.width(context) < tabletSize ? 300 : 400,
                       child: RichText(
                         text: TextSpan(
                             text: 'Em caso de dúvidas, enviar um e-mail para ',
@@ -380,8 +378,7 @@ class Footer extends StatelessWidget {
                       height: 4,
                     ),
                     SizedBox(
-                      width:
-                          MediaQuery.of(context).size.width < 1350 ? 300 : 400,
+                      width: Screen.width(context) < tabletSize ? 300 : 400,
                       child: RichText(
                         text: TextSpan(
                             text:
@@ -431,9 +428,9 @@ class Footer extends StatelessWidget {
                 text: 'Criado e desenvolvido por ',
                 style: AppTextStyles.body.copyWith(
                     color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width < 800
+                    fontSize: Screen.width(context) < cellphoneSize
                         ? 16
-                        : MediaQuery.of(context).size.width < 1350
+                        : Screen.width(context) < tabletSize
                             ? 24
                             : 28),
                 children: [
@@ -441,9 +438,9 @@ class Footer extends StatelessWidget {
                     text: 'Dev. Community Mauá',
                     style: AppTextStyles.titleH1.copyWith(
                         color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.width < 800
+                        fontSize: Screen.width(context) < cellphoneSize
                             ? 16
-                            : MediaQuery.of(context).size.width < 1350
+                            : Screen.width(context) < tabletSize
                                 ? 24
                                 : 28),
                   )

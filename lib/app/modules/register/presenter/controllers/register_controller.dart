@@ -63,6 +63,9 @@ abstract class RegisterControllerBase with Store {
   String verifyEmail = '';
 
   @observable
+  String phone = '';
+
+  @observable
   bool isMauaStudent = false;
 
   @observable
@@ -82,6 +85,38 @@ abstract class RegisterControllerBase with Store {
 
   @observable
   bool acceptImage = false;
+
+  @observable
+  bool acceptEmailNotifications = false;
+
+  @observable
+  bool acceptSMSNotifications = false;
+
+  @observable
+  bool acceptWPPNotifications = false;
+
+  @observable
+  bool acceptAPPWEBNotifications = false;
+
+  @action
+  Future<void> setEmailNotifications(bool? value) async {
+    acceptEmailNotifications = value!;
+  }
+
+  @action
+  Future<void> setSMSNotifications(bool? value) async {
+    acceptSMSNotifications = value!;
+  }
+
+  @action
+  Future<void> setWPPNotifications(bool? value) async {
+    acceptWPPNotifications = value!;
+  }
+
+  @action
+  Future<void> setAPPWEBNotifications(bool? value) async {
+    acceptAPPWEBNotifications = value!;
+  }
 
   @action
   Future<void> setAcceptImage(bool? value) async {
@@ -185,6 +220,32 @@ abstract class RegisterControllerBase with Store {
   ];
 
   @action
+  Future<void> setPhone(String value) async {
+    value = value.replaceAll('+', '');
+    phone = value;
+  }
+
+  @action
+  bool validatePhone(String value) {
+    if (value.isEmpty) {
+      addError('Campo "Telefone celular" obrigatório');
+      return false;
+    }
+    if (value[0] == "5" && value[1] == "5" && value.length == 11) {
+      addError('Inserir DDD no campo "Telefone celular"');
+      return false;
+    }
+    if (value[0] == "5" &&
+        value[1] == "5" &&
+        value.length != 11 &&
+        value.length != 13) {
+      addError('Campo "Telefone celular" inválido');
+      return false;
+    }
+    return true;
+  }
+
+  @action
   bool validateEmail(String value) {
     if (value.isEmpty) {
       addError('Campo "E-mail" obrigatório');
@@ -283,14 +344,20 @@ abstract class RegisterControllerBase with Store {
 
   @computed
   UserRegistration get registerInformations => UserRegistration(
-      name: name,
-      socialName: socialName == "" ? null : socialName,
-      email: email,
-      cpfRne: cpf,
-      ra: raInt,
-      password: password,
-      acceptEmails: canSendEmails,
-      acceptTerms: acceptTermsOfUse);
+        name: name,
+        socialName: socialName == "" ? null : socialName,
+        email: email,
+        cpfRne: cpf,
+        ra: raInt,
+        password: password,
+        acceptEmails: canSendEmails,
+        acceptTerms: acceptTermsOfUse,
+        phoneNumber: phone,
+        acceptEmailNotifications: acceptEmailNotifications,
+        acceptSMSNotifications: acceptSMSNotifications,
+        acceptWPPNotifications: acceptWPPNotifications,
+        acceptAPPWEBNotifications: acceptAPPWEBNotifications,
+      );
 
   @action
   Future<void> register() async {
@@ -350,6 +417,7 @@ abstract class RegisterControllerBase with Store {
     validateSocialName(socialName);
     validateCpf(cpf);
     validateEmail(email);
+    validatePhone(phone);
     validateVerifyEmail(verifyEmail);
     validateRa(ra);
     validateVerifyPassword(verifyPassword);
