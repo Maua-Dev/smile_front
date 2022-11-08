@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../../shared/services/environment/environment_config.dart';
+import '../../../shared/services/enviroment/enviroment_config.dart';
 import '../infra/datasources/resend_confirmation_datasource.dart';
 import 'errors.dart';
 

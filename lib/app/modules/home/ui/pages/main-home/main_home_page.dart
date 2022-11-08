@@ -1,11 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+
 import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/utils/s3_assets_url.dart';
-import '../../../../../shared/utils/screen_helper.dart';
 import '../../../utils/text_utils.dart';
 import '../../../../../shared/widgets/custom_elevated_button_widget.dart';
 
@@ -19,9 +18,9 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
   @override
   Widget build(BuildContext context) {
-    if (Screen.width(context) > cellphoneSize) {
+    if (MediaQuery.of(context).size.width > 750) {
       return SizedBox(
-        height: Screen.height(context),
+        height: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -36,7 +35,9 @@ class _MainHomePageState extends State<MainHomePage> {
                     ),
                     child: Padding(
                         padding: EdgeInsets.only(
-                          right: Screen.width(context) < tabletSize ? 24 : 32,
+                          right: MediaQuery.of(context).size.width < 1500
+                              ? 24
+                              : 32,
                           bottom: 55,
                         ),
                         child: Align(
@@ -46,11 +47,13 @@ class _MainHomePageState extends State<MainHomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: Screen.width(context) < cellphoneSize
+                                  width: MediaQuery.of(context).size.width < 900
                                       ? 350
-                                      : Screen.width(context) * 0.5 <
-                                              cellphoneSize
-                                          ? Screen.width(context) * 0.45
+                                      : MediaQuery.of(context).size.width *
+                                                  0.5 <
+                                              700
+                                          ? MediaQuery.of(context).size.width *
+                                              0.45
                                           : 650,
                                   decoration: BoxDecoration(
                                       color: AppColors.brandingPurple,
@@ -65,8 +68,10 @@ class _MainHomePageState extends State<MainHomePage> {
                                                 .copyWith(
                                                     color: Colors.white,
                                                     fontSize:
-                                                        Screen.width(context) <
-                                                                tabletSize
+                                                        MediaQuery.of(context)
+                                                                    .size
+                                                                    .width <
+                                                                1500
                                                             ? 24
                                                             : 32)),
                                         Text('Liderança e Empreendedorismo',
@@ -74,31 +79,40 @@ class _MainHomePageState extends State<MainHomePage> {
                                                 .copyWith(
                                                     color: Colors.white,
                                                     fontSize:
-                                                        Screen.width(context) <
-                                                                tabletSize
+                                                        MediaQuery.of(context)
+                                                                    .size
+                                                                    .width <
+                                                                1500
                                                             ? 24
                                                             : 32)),
                                         const SizedBox(
                                           height: 16,
                                         ),
                                         SizedBox(
-                                          width:
-                                              Screen.width(context) < tabletSize
-                                                  ? Screen.width(context) <
-                                                          cellphoneSize
-                                                      ? 300
-                                                      : 580
-                                                  : 820,
+                                          width: MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  1500
+                                              ? MediaQuery.of(context)
+                                                          .size
+                                                          .width <
+                                                      900
+                                                  ? 300
+                                                  : 580
+                                              : 820,
                                           //580 e 820
                                           child: Text(
                                             apresentationText,
                                             style: AppTextStyles.body.copyWith(
                                                 color: Colors.white,
-                                                fontSize: Screen.width(
-                                                            context) <
-                                                        tabletSize
-                                                    ? Screen.width(context) <
-                                                            cellphoneSize
+                                                fontSize: MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        1500
+                                                    ? MediaQuery.of(context)
+                                                                .size
+                                                                .width <
+                                                            900
                                                         ? 16
                                                         : 18
                                                     : 25),
@@ -109,27 +123,28 @@ class _MainHomePageState extends State<MainHomePage> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: Screen.width(context) < tabletSize
-                                      ? 9
-                                      : 16,
+                                const SizedBox(
+                                  height: 16,
                                 ),
                                 CustomElevatedButtonWidget(
                                   title: '22 a 27 de Maio de 2023',
                                   textStyle: AppTextStyles.buttonBold.copyWith(
                                       color: Colors.white,
-                                      fontSize:
-                                          Screen.width(context) < tabletSize
-                                              ? Screen.width(context) <
-                                                      cellphoneSize
-                                                  ? 20
-                                                  : 24
-                                              : 40),
-                                  widthSize: Screen.width(context) < tabletSize
-                                      ? 320
-                                      : 500,
+                                      fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width <
+                                              1500
+                                          ? MediaQuery.of(context).size.width <
+                                                  900
+                                              ? 20
+                                              : 24
+                                          : 40),
+                                  widthSize:
+                                      MediaQuery.of(context).size.width < 1500
+                                          ? 320
+                                          : 500,
                                   heightSize:
-                                      Screen.width(context) < cellphoneSize
+                                      MediaQuery.of(context).size.width < 900
                                           ? 40
                                           : 50,
                                   borderRadius: 40,
@@ -138,27 +153,31 @@ class _MainHomePageState extends State<MainHomePage> {
                                   onPressed: null,
                                 ),
                                 SizedBox(
-                                    height: Screen.width(context) < tabletSize
-                                        ? 9
-                                        : 16),
+                                    height:
+                                        MediaQuery.of(context).size.width < 900
+                                            ? 8
+                                            : 16),
                                 CustomElevatedButtonWidget(
                                   title: 'SAIBA MAIS >>>',
                                   textStyle: AppTextStyles.buttonBold.copyWith(
                                       color: Colors.white,
-                                      fontSize:
-                                          Screen.width(context) < tabletSize
-                                              ? Screen.width(context) <
-                                                      cellphoneSize
-                                                  ? 20
-                                                  : 24
-                                              : 40),
-                                  widthSize: Screen.width(context) < tabletSize
-                                      ? Screen.width(context) < cellphoneSize
+                                      fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width <
+                                              1500
+                                          ? MediaQuery.of(context).size.width <
+                                                  900
+                                              ? 20
+                                              : 24
+                                          : 40),
+                                  widthSize: MediaQuery.of(context).size.width <
+                                          1500
+                                      ? MediaQuery.of(context).size.width < 900
                                           ? 200
                                           : 240
                                       : 340,
                                   heightSize:
-                                      Screen.width(context) < cellphoneSize
+                                      MediaQuery.of(context).size.width < 900
                                           ? 40
                                           : 50,
                                   borderRadius: 40,
