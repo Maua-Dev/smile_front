@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widge
 import 'package:smile_front/app/modules/login/ui/widgets/smile_logo_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../shared/services/environment/environment_config.dart';
 import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
@@ -25,7 +26,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   @override
   void initState() {
     super.initState();
-    _showDialog();
+    EnvironmentConfig.getConfig() ? null : _showDialog();
   }
 
   _showDialog() async {

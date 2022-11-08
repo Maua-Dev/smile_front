@@ -1,4 +1,4 @@
-import 'package:smile_front/app/shared/services/enviroment/enviroment_config.dart';
+import 'package:smile_front/app/shared/services/environment/environment_config.dart';
 
 var s3AssetsBaseUrl = EnvironmentConfig.S3_BASE_URL;
 
@@ -15,3 +15,5 @@ var mauaCampusUrl = '${s3AssetsBaseUrl}maua_campus.png';
 var mauaCampusBlurUrl = '${s3AssetsBaseUrl}maua_campus_blur.png';
 
 var speakersLogoUrl = '${s3AssetsBaseUrl}activities/palestra-de-alto-impacto/';
+
+var mauaLogoUrl = '${s3AssetsBaseUrl}logo_maua_branco.png';
