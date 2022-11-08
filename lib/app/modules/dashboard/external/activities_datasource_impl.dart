@@ -6,7 +6,7 @@ import 'package:smile_front/app/modules/dashboard/infra/models/subscription_acti
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../shared/error/dio_exceptions.dart';
 import '../../../shared/error/error_snackbar.dart';
-import '../../../shared/services/environment/environment_config.dart';
+import '../../../shared/services/enviroment/enviroment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
 import '../../auth/presenter/controllers/auth_controller.dart';
 

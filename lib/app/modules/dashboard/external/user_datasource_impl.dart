@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/user_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart';
 
-import '../../../shared/services/environment/environment_config.dart';
+import '../../../shared/services/enviroment/enviroment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
 
 class UserDatasourceImpl extends UserDatasourceInterface {

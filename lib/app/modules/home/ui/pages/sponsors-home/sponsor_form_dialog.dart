@@ -7,7 +7,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:string_validator/string_validator.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import '../../../../../shared/services/environment/environment_config.dart';
+import '../../../../../shared/services/enviroment/enviroment_config.dart';
 
 class SponsorFormDialog extends StatefulWidget {
   const SponsorFormDialog({super.key});
@@ -371,6 +371,8 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
       backgroundColor: Colors.white,
       actionsAlignment: MainAxisAlignment.spaceAround,
       actions: [
+        OutlinedButton(
+            onPressed: () => Modular.to.pop(), child: const Text('CANCELAR')),
         Builder(builder: (context) {
           if (erroMsg != null) {
             return Text(
@@ -378,36 +380,26 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
               style: const TextStyle(color: Colors.red, fontSize: 14),
             );
           }
-          return Center(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFD36D49)),
-              onPressed: _loading ? null : sendForm,
-              child: _loading
-                  ? Container(
-                      width: 24,
-                      height: 24,
-                      padding: const EdgeInsets.all(2.0),
-                      child: CircularProgressIndicator(
-                        color: AppColors.brandingPurple,
-                        strokeWidth: 3,
-                      ),
-                    )
-                  : const Text(
-                      'ENVIAR FORMULÁRIO',
-                      style: TextStyle(color: Colors.white),
+          return ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFD36D49)),
+            onPressed: _loading ? null : sendForm,
+            child: _loading
+                ? Container(
+                    width: 24,
+                    height: 24,
+                    padding: const EdgeInsets.all(2.0),
+                    child: CircularProgressIndicator(
+                      color: AppColors.brandingPurple,
+                      strokeWidth: 3,
                     ),
-            ),
+                  )
+                : const Text(
+                    'ENVIAR FORMULÁRIO',
+                    style: TextStyle(color: Colors.white),
+                  ),
           );
-        }),
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: Center(
-            child: OutlinedButton(
-                onPressed: () => Modular.to.pop(),
-                child: const Text('CANCELAR')),
-          ),
-        ),
+        })
       ],
     );
   }

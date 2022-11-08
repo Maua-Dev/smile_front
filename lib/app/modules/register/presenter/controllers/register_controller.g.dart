@@ -234,22 +234,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$phoneAtom =
-      Atom(name: 'RegisterControllerBase.phone', context: context);
-
-  @override
-  String get phone {
-    _$phoneAtom.reportRead();
-    return super.phone;
-  }
-
-  @override
-  set phone(String value) {
-    _$phoneAtom.reportWrite(value, super.phone, () {
-      super.phone = value;
-    });
-  }
-
   late final _$isMauaStudentAtom =
       Atom(name: 'RegisterControllerBase.isMauaStudent', context: context);
 
@@ -362,116 +346,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$acceptEmailNotificationsAtom = Atom(
-      name: 'RegisterControllerBase.acceptEmailNotifications',
-      context: context);
-
-  @override
-  bool get acceptEmailNotifications {
-    _$acceptEmailNotificationsAtom.reportRead();
-    return super.acceptEmailNotifications;
-  }
-
-  @override
-  set acceptEmailNotifications(bool value) {
-    _$acceptEmailNotificationsAtom
-        .reportWrite(value, super.acceptEmailNotifications, () {
-      super.acceptEmailNotifications = value;
-    });
-  }
-
-  late final _$acceptSMSNotificationsAtom = Atom(
-      name: 'RegisterControllerBase.acceptSMSNotifications', context: context);
-
-  @override
-  bool get acceptSMSNotifications {
-    _$acceptSMSNotificationsAtom.reportRead();
-    return super.acceptSMSNotifications;
-  }
-
-  @override
-  set acceptSMSNotifications(bool value) {
-    _$acceptSMSNotificationsAtom
-        .reportWrite(value, super.acceptSMSNotifications, () {
-      super.acceptSMSNotifications = value;
-    });
-  }
-
-  late final _$acceptWPPNotificationsAtom = Atom(
-      name: 'RegisterControllerBase.acceptWPPNotifications', context: context);
-
-  @override
-  bool get acceptWPPNotifications {
-    _$acceptWPPNotificationsAtom.reportRead();
-    return super.acceptWPPNotifications;
-  }
-
-  @override
-  set acceptWPPNotifications(bool value) {
-    _$acceptWPPNotificationsAtom
-        .reportWrite(value, super.acceptWPPNotifications, () {
-      super.acceptWPPNotifications = value;
-    });
-  }
-
-  late final _$acceptAPPWEBNotificationsAtom = Atom(
-      name: 'RegisterControllerBase.acceptAPPWEBNotifications',
-      context: context);
-
-  @override
-  bool get acceptAPPWEBNotifications {
-    _$acceptAPPWEBNotificationsAtom.reportRead();
-    return super.acceptAPPWEBNotifications;
-  }
-
-  @override
-  set acceptAPPWEBNotifications(bool value) {
-    _$acceptAPPWEBNotificationsAtom
-        .reportWrite(value, super.acceptAPPWEBNotifications, () {
-      super.acceptAPPWEBNotifications = value;
-    });
-  }
-
-  late final _$setEmailNotificationsAsyncAction = AsyncAction(
-      'RegisterControllerBase.setEmailNotifications',
-      context: context);
-
-  @override
-  Future<void> setEmailNotifications(bool? value) {
-    return _$setEmailNotificationsAsyncAction
-        .run(() => super.setEmailNotifications(value));
-  }
-
-  late final _$setSMSNotificationsAsyncAction = AsyncAction(
-      'RegisterControllerBase.setSMSNotifications',
-      context: context);
-
-  @override
-  Future<void> setSMSNotifications(bool? value) {
-    return _$setSMSNotificationsAsyncAction
-        .run(() => super.setSMSNotifications(value));
-  }
-
-  late final _$setWPPNotificationsAsyncAction = AsyncAction(
-      'RegisterControllerBase.setWPPNotifications',
-      context: context);
-
-  @override
-  Future<void> setWPPNotifications(bool? value) {
-    return _$setWPPNotificationsAsyncAction
-        .run(() => super.setWPPNotifications(value));
-  }
-
-  late final _$setAPPWEBNotificationsAsyncAction = AsyncAction(
-      'RegisterControllerBase.setAPPWEBNotifications',
-      context: context);
-
-  @override
-  Future<void> setAPPWEBNotifications(bool? value) {
-    return _$setAPPWEBNotificationsAsyncAction
-        .run(() => super.setAPPWEBNotifications(value));
-  }
-
   late final _$setAcceptImageAsyncAction =
       AsyncAction('RegisterControllerBase.setAcceptImage', context: context);
 
@@ -542,14 +416,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   @override
   Future<void> setVerifyEmail(String value) {
     return _$setVerifyEmailAsyncAction.run(() => super.setVerifyEmail(value));
-  }
-
-  late final _$setPhoneAsyncAction =
-      AsyncAction('RegisterControllerBase.setPhone', context: context);
-
-  @override
-  Future<void> setPhone(String value) {
-    return _$setPhoneAsyncAction.run(() => super.setPhone(value));
   }
 
   late final _$setIsMauaStudentAsyncAction =
@@ -677,17 +543,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
-  bool validatePhone(String value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.validatePhone');
-    try {
-      return super.validatePhone(value);
-    } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   bool validateEmail(String value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validateEmail');
@@ -791,7 +646,6 @@ hasSocialName: ${hasSocialName},
 cpf: ${cpf},
 email: ${email},
 verifyEmail: ${verifyEmail},
-phone: ${phone},
 isMauaStudent: ${isMauaStudent},
 ra: ${ra},
 password: ${password},
@@ -799,10 +653,6 @@ verifyPassword: ${verifyPassword},
 canSendEmails: ${canSendEmails},
 acceptTermsOfUse: ${acceptTermsOfUse},
 acceptImage: ${acceptImage},
-acceptEmailNotifications: ${acceptEmailNotifications},
-acceptSMSNotifications: ${acceptSMSNotifications},
-acceptWPPNotifications: ${acceptWPPNotifications},
-acceptAPPWEBNotifications: ${acceptAPPWEBNotifications},
 raInt: ${raInt},
 registerInformations: ${registerInformations}
     ''';
