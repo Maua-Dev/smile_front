@@ -109,7 +109,6 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(
                                 key: activityKey,
                                 child: const ActivitiesHomePage()),
-                            
                             SizedBox(
                                 key: sponsorsKey,
                                 child: const SponsorsHomePage()),
