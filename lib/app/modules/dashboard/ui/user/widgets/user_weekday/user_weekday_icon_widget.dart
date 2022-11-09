@@ -23,9 +23,8 @@ class UserWeekdayIconWidget extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          backgroundColor: indexToShow == myIndex
-              ? AppColors.brandingPurple
-              : AppColors.lilac,
+          backgroundColor:
+              indexToShow == myIndex ? AppColors.brandingBlue : AppColors.lilac,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),
           )),
@@ -37,7 +36,7 @@ class UserWeekdayIconWidget extends StatelessWidget {
                 fontSize: MediaQuery.of(context).size.width < 800 ? 24 : 32,
                 color: indexToShow == myIndex
                     ? Colors.white
-                    : AppColors.brandingPurple),
+                    : AppColors.brandingBlue),
           ),
           Text(
             weekday != null ? WeekdaysEnum.values[weekday!].date : '',
@@ -45,7 +44,7 @@ class UserWeekdayIconWidget extends StatelessWidget {
                 fontSize: MediaQuery.of(context).size.width < 800 ? 16 : 24,
                 color: indexToShow == myIndex
                     ? Colors.white
-                    : AppColors.brandingPurple),
+                    : AppColors.brandingBlue),
           ),
         ],
       ),

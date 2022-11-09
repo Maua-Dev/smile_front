@@ -95,9 +95,9 @@ class InputBox extends StatelessWidget {
                     maxLength: 20,
                     initialValue: number,
                     searchBoxDecoration: InputDecoration(
-                      fillColor: AppColors.brandingPurple,
+                      fillColor: AppColors.brandingBlue,
                       hintText: 'Pesquisar por país ou DDI',
-                      hintStyle: TextStyle(color: AppColors.brandingPurple),
+                      hintStyle: TextStyle(color: AppColors.brandingBlue),
                     ),
                     selectorTextStyle: TextStyle(
                       color: AppColors.placeholder,
@@ -148,7 +148,7 @@ class InputBox extends StatelessWidget {
                                   showPwd!
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: AppColors.brandingPurple,
+                                  color: AppColors.brandingBlue,
                                   size: 20,
                                 ),
                               ),

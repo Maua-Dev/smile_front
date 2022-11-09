@@ -90,14 +90,14 @@ class ActivityCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
                               Icons.calendar_today,
-                              color: textColor ?? AppColors.brandingPurple,
+                              color: textColor ?? AppColors.brandingBlue,
                               size: 20,
                             ),
                           ),
                           Text(date,
                               style: AppTextStyles.button.copyWith(
                                   fontSize: 16,
-                                  color: textColor ?? AppColors.brandingPurple))
+                                  color: textColor ?? AppColors.brandingBlue))
                         ],
                       ),
                       Row(
@@ -106,14 +106,14 @@ class ActivityCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
                               Icons.access_time_outlined,
-                              color: textColor ?? AppColors.brandingPurple,
+                              color: textColor ?? AppColors.brandingBlue,
                               size: 20,
                             ),
                           ),
                           Text('$time - $finalTime',
                               style: AppTextStyles.button.copyWith(
                                   fontSize: 16,
-                                  color: textColor ?? AppColors.brandingPurple))
+                                  color: textColor ?? AppColors.brandingBlue))
                         ],
                       ),
                       Row(
@@ -122,7 +122,7 @@ class ActivityCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 4),
                             child: Icon(
                               Icons.person,
-                              color: textColor ?? AppColors.brandingPurple,
+                              color: textColor ?? AppColors.brandingBlue,
                               size: 20,
                             ),
                           ),
@@ -133,15 +133,14 @@ class ActivityCardWidget extends StatelessWidget {
                                 style: AppTextStyles.button.copyWith(
                                     fontSize: 16,
                                     color:
-                                        textColor ?? AppColors.brandingPurple)),
+                                        textColor ?? AppColors.brandingBlue)),
                             TextSpan(
                                 text: totalParticipants == -1
                                     ? '∞'
                                     : totalParticipants.toString(),
                                 style: AppTextStyles.button.copyWith(
                                     fontSize: 16,
-                                    color:
-                                        textColor ?? AppColors.brandingPurple,
+                                    color: textColor ?? AppColors.brandingBlue,
                                     fontWeight: FontWeight.bold)),
                           ])),
                         ],
