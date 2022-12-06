@@ -33,8 +33,8 @@ class _SpeakersHomePageState
             fontSize: Screen.width(context) < cellphoneSize
                 ? Screen.width(context) < 530
                     ? 24
-                    : 32
-                : 48,
+                    : 45
+                : null,
           ),
         ),
         Observer(builder: (_) {
