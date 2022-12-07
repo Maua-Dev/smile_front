@@ -46,7 +46,18 @@ var financeLogoUrl = '${s3AssetsBaseUrl}logo_entidades_finance.png';
 
 var bajaLogoUrl = '${s3AssetsBaseUrl}logo_entidades_baja.png';
 
-var ecomauaLogoUrl = '${s3AssetsBaseUrl}logo_entidades_ecomaua.png';
+var ecomauaLogoUrl = '${s3AssetsBaseUrl}logo_entidades_eco.png';
+
+var mauah2LogoUrl = '${s3AssetsBaseUrl}logo_entidades_mauah2.png';
+
+var racingLogoUrl = '${s3AssetsBaseUrl}logo_entidades_racing.png';
+
+var patrocinadorGCPLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_gcp.png';
+
+var patrocinadorNubeLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_nube.png';
+
+var patrocinadorVendraminiLogoUrl =
+    '${s3AssetsBaseUrl}logo_patrocinador_vendramini.png';
 
 var patrocinadorCSNLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_csn.png';
 
