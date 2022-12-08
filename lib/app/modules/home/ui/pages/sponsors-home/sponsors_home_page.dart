@@ -228,14 +228,14 @@ class BeSponsor extends StatelessWidget {
                               ),
                               CardDiscount(
                                 month: 'Janeiro',
-                                discount: '10% Off',
+                                discount: '20% Off',
                               ),
                               SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
                                 month: 'Fevereiro',
-                                discount: '0% Off',
+                                discount: '10% Off',
                               )
                             ],
                           ),
@@ -265,14 +265,14 @@ class BeSponsor extends StatelessWidget {
                               ),
                               CardDiscount(
                                 month: 'Janeiro',
-                                discount: '10% Off',
+                                discount: '20% Off',
                               ),
                               SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
                                 month: 'Fevereiro',
-                                discount: '0% Off',
+                                discount: '10% Off',
                               )
                             ],
                           ),
