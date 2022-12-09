@@ -40,7 +40,11 @@ class ActivityHomeState
             title: 'Atividades',
             leftPadding: 32,
             color: AppColors.brandingOrange,
-            fontSize: MediaQuery.of(context).size.width < 530 ? 28 : null,
+            fontSize: MediaQuery.of(context).size.width < 900
+                ? MediaQuery.of(context).size.width < 530
+                    ? 24
+                    : 32
+                : 48,
           ),
         ),
         SizedBox(
