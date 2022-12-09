@@ -30,8 +30,8 @@ class _SpeakersHomePageState
             title: 'Principais Palestrantes - 2022',
             leftPadding: Screen.width(context) > 530 ? 32 : 24,
             color: AppColors.brandingOrange,
-            fontSize: Screen.width(context) < cellphoneSize
-                ? Screen.width(context) < 530
+            fontSize: MediaQuery.of(context).size.width < 900
+                ? MediaQuery.of(context).size.width < 530
                     ? 24
                     : 32
                 : 48,

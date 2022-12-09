@@ -135,7 +135,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                   ),
                 if (MediaQuery.of(context).size.width > 1024)
                   Padding(
-                    padding: const EdgeInsets.only(right: 16),
+                    padding: const EdgeInsets.only(right: 24),
                     child: AppbarButtonWidget(
                       title: 'LOGIN',
                       textStyle: AppTextStyles.buttonBold.copyWith(

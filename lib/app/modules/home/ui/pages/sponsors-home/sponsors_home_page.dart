@@ -1,13 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
-
 import '../../../../../shared/themes/app_colors.dart';
-import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/widgets/text-header/text_header.dart';
-import '../../../utils/text_utils.dart';
 
 class SponsorsHomePage extends StatefulWidget {
   const SponsorsHomePage({Key? key}) : super(key: key);
@@ -27,9 +26,27 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
             title: 'Patrocinadores',
             leftPadding: 32,
             color: AppColors.brandingBlue,
-            fontSize: MediaQuery.of(context).size.width < 530 ? 28 : null,
+            fontSize: MediaQuery.of(context).size.width < 900
+                ? MediaQuery.of(context).size.width < 530
+                    ? 24
+                    : 32
+                : 48,
           ),
           const CompanySponsor(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 24),
+            child: TextHeader(
+              title: 'Entidades Participantes da SMILE',
+              leftPadding: 32,
+              color: AppColors.brandingOrange,
+              fontSize: MediaQuery.of(context).size.width < 900
+                  ? MediaQuery.of(context).size.width < 530
+                      ? 24
+                      : 32
+                  : 48,
+            ),
+          ),
+          const EntitiesStack(),
           Column(
             children: const [BeSponsor()],
           )
@@ -471,78 +488,123 @@ class CompanySponsor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.of(context).size.width > 900
-        ? Padding(
-            padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.2,
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                            '${s3AssetsBaseUrl}full_logo_dev.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Text(
-                    devPresentation,
-                    textAlign: TextAlign.justify,
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize:
-                            MediaQuery.of(context).size.width < 1200 ? 16 : 18),
-                  ),
-                ),
-              ],
-            ),
-          )
-        : Padding(
-            padding: const EdgeInsets.only(bottom: 16.0, left: 16, right: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                            '${s3AssetsBaseUrl}full_logo_dev.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Text(
-                    devPresentation,
-                    textAlign: TextAlign.justify,
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize:
-                            MediaQuery.of(context).size.width < 1200 ? 16 : 18),
-                  ),
-                ),
-              ],
-            ),
-          );
+    return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
+        child: Wrap(
+          alignment: WrapAlignment.spaceEvenly,
+          spacing: 48,
+          runSpacing: 16,
+          children: [
+            SponsorsWidget(link: mauaAzulLogoUrl, color: Colors.white),
+            SponsorsWidget(link: devLogoUrl, color: Colors.white),
+            SponsorsWidget(link: patrocinadorGCPLogoUrl, color: Colors.white),
+            SponsorsWidget(link: patrocinadorNubeLogoUrl, color: Colors.white),
+            SponsorsWidget(
+                link: patrocinadorVendraminiLogoUrl, color: Colors.white),
+            SponsorsWidget(link: patrocinadorCSNLogoUrl, color: Colors.white),
+          ],
+        ));
+  }
+}
+
+class EntitiesStack extends StatelessWidget {
+  const EntitiesStack({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(alignment: Alignment.bottomCenter, children: [
+      Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.width < 500
+            ? MediaQuery.of(context).size.height * 0.15
+            : MediaQuery.of(context).size.width < 1000
+                ? MediaQuery.of(context).size.height * 0.25
+                : MediaQuery.of(context).size.height * 0.60,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.contain,
+                image: CachedNetworkImageProvider(
+                  entitiesBackground,
+                ))),
+      ),
+      Padding(
+        padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.width < 500
+                ? MediaQuery.of(context).size.height / 10
+                : MediaQuery.of(context).size.width < 1000
+                    ? MediaQuery.of(context).size.height / 6
+                    : MediaQuery.of(context).size.height / 4),
+        child: Wrap(alignment: WrapAlignment.center, children: [
+          EntitiesWidget(
+              logo: atleticaLogoUrl,
+              text: '@gaspar_maua',
+              url: "https://www.instagram.com/gaspar_maua/"),
+          EntitiesWidget(
+              logo: caLogoUrl,
+              text: '@camaua',
+              url: "https://www.instagram.com/camaua/"),
+          EntitiesWidget(
+              logo: diversidadeLogoUrl,
+              text: '@diversidademaua',
+              url: "https://www.instagram.com/diversidademaua/"),
+          EntitiesWidget(
+              logo: enactusLogoUrl,
+              text: '@enactusmaua',
+              url: "https://www.instagram.com/enactusmaua/"),
+          EntitiesWidget(
+              logo: esportsLogoUrl,
+              text: '@esportsmaua',
+              url: "https://www.instagram.com/esportsmaua/"),
+          EntitiesWidget(
+              logo: inovaLogoUrl,
+              text: '@inovamaua',
+              url: "https://www.instagram.com/inovamaua/"),
+          EntitiesWidget(
+              logo: mauajrLogoUrl,
+              text: '@mauajr',
+              url: "https://www.instagram.com/mauajr/"),
+          EntitiesWidget(
+              logo: mauasocialLogoUrl,
+              text: '@mauasocial',
+              url: "https://www.instagram.com/mauasocial/"),
+          EntitiesWidget(
+              logo: mbcLogoUrl,
+              text: '@mauabusiness',
+              url: "https://www.instagram.com/mauabusinessclub/"),
+          EntitiesWidget(
+              logo: naeLogoUrl,
+              text: '@naemaua',
+              url: "https://www.instagram.com/naemaua/"),
+          EntitiesWidget(
+              logo: devLogoUrl,
+              text: '@devcommunity',
+              url: "https://www.instagram.com/devcommunitymaua/"),
+          EntitiesWidget(
+              logo: nineLogoUrl,
+              text: '@nine.maua',
+              url: "https://www.instagram.com/nine.maua/"),
+          EntitiesWidget(
+              logo: financeLogoUrl,
+              text: '@imtfinance',
+              url: "https://www.instagram.com/imtfinance/"),
+          EntitiesWidget(
+              logo: bajaLogoUrl,
+              text: '@bajamaua',
+              url: "https://www.instagram.com/bajamaua/"),
+          EntitiesWidget(
+              logo: ecomauaLogoUrl,
+              text: '@eco_maua',
+              url: "https://www.instagram.com/eco_maua/"),
+          EntitiesWidget(
+              logo: mauah2LogoUrl,
+              text: '@mauaracingh2',
+              url: "https://www.instagram.com/mauaracingh2/"),
+          EntitiesWidget(
+              logo: racingLogoUrl,
+              text: '@mauaracing',
+              url: "https://www.instagram.com/mauaracing/"),
+        ]),
+      ),
+    ]);
   }
 }
