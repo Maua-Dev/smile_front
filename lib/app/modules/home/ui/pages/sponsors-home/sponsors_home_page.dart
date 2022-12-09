@@ -493,9 +493,13 @@ class CompanySponsor extends StatelessWidget {
           spacing: 48,
           runSpacing: 16,
           children: [
-            SponsorsWidget(link: devLogoUrl, color: Colors.white),
             SponsorsWidget(link: mauaAzulLogoUrl, color: Colors.white),
-            SponsorsWidget(link: patrocinadorCSNLogoUrl, color: Colors.white)
+            SponsorsWidget(link: devLogoUrl, color: Colors.white),
+            SponsorsWidget(link: patrocinadorGCPLogoUrl, color: Colors.white),
+            SponsorsWidget(link: patrocinadorNubeLogoUrl, color: Colors.white),
+            SponsorsWidget(
+                link: patrocinadorVendraminiLogoUrl, color: Colors.white),
+            SponsorsWidget(link: patrocinadorCSNLogoUrl, color: Colors.white),
           ],
         ));
   }
@@ -589,6 +593,14 @@ class EntitiesStack extends StatelessWidget {
               logo: ecomauaLogoUrl,
               text: '@eco_maua',
               url: "https://www.instagram.com/eco_maua/"),
+          EntitiesWidget(
+              logo: mauah2LogoUrl,
+              text: '@mauaracingh2',
+              url: "https://www.instagram.com/mauaracingh2/"),
+          EntitiesWidget(
+              logo: racingLogoUrl,
+              text: '@mauaracing',
+              url: "https://www.instagram.com/mauaracing/"),
         ]),
       ),
     ]);
