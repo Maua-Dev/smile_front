@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.da
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 import '../../../../../shared/themes/app_colors.dart';
+import '../../../../../shared/utils/screen_helper.dart';
 import '../../../../../shared/widgets/text-header/text_header.dart';
 
 class SponsorsHomePage extends StatefulWidget {
@@ -24,7 +25,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
         children: [
           TextHeader(
             title: 'Patrocinadores',
-            leftPadding: 32,
+            leftPadding: Screen.width(context) > 530 ? 32 : 24,
             color: AppColors.brandingBlue,
             fontSize: MediaQuery.of(context).size.width < 900
                 ? MediaQuery.of(context).size.width < 530
@@ -37,13 +38,13 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
             padding: const EdgeInsets.symmetric(vertical: 24),
             child: TextHeader(
               title: 'Entidades Participantes da SMILE',
-              leftPadding: 32,
+              leftPadding: Screen.width(context) > 530 ? 32 : 24,
               color: AppColors.brandingOrange,
-              fontSize: MediaQuery.of(context).size.width < 900
-                  ? MediaQuery.of(context).size.width < 530
-                      ? 24
-                      : 32
-                  : 48,
+              fontSize: MediaQuery.of(context).size.width < 530
+                  ? 22
+                  : MediaQuery.of(context).size.width < 900
+                      ? 32
+                      : 48,
             ),
           ),
           const EntitiesStack(),
