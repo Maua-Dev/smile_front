@@ -6,7 +6,7 @@ var previousEditionsBaseUrl = '${s3AssetsBaseUrl}edicoes-anteriores/';
 
 var rectorsBaseUrl = '${s3AssetsBaseUrl}activities/reitor-e-pro-reitor/';
 
-var smileeeLogoUrl = '${s3AssetsBaseUrl}logo-smile-2023 (1)aaa (1).png';
+var smile2023LogoUrl = '${s3AssetsBaseUrl}logo-footer-smile-2023.png';
 
 var smileLogoUrl = '${s3AssetsBaseUrl}logo_smile.png';
 

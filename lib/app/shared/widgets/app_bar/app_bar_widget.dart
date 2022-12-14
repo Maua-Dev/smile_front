@@ -50,7 +50,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                             fit: BoxFit.contain,
                             alignment: Alignment.centerLeft,
                             image: CachedNetworkImageProvider(
-                              smileeeLogoUrl,
+                              smile2023LogoUrl,
                             ))),
                   ),
                   Padding(
