@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/social_media_icons_widget.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
-import 'package:smile_front/app/shared/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
