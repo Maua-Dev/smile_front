@@ -106,8 +106,6 @@ class _AllActivitiesUserDashboardPageState
                           isRegistered
                         ],
                       );
-                      controller.analytics.logViewActivity(
-                          controller.weekActivitiesList[index].activityCode);
                     },
                   );
                 },

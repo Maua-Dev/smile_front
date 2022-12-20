@@ -1,9 +1,6 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:modular_test/modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
@@ -12,23 +9,19 @@ import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
-import '../../../../../../setup_firebase_mocks.dart';
+
 import 'user_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([
   ActivitiesRepositoryInterface,
   SecureStorageInterface,
-  UserRepositoryInterface,
-  FirebaseAnalyticsService
+  UserRepositoryInterface
 ])
 void main() {
-  initModule(AppModule());
-  setupCloudFirestoreMocks();
   ActivitiesRepositoryInterface repository =
       MockActivitiesRepositoryInterface();
   UserRepositoryInterface userRepository = MockUserRepositoryInterface();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
+
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
 
   late UserDashboardController controller;
@@ -151,7 +144,6 @@ void main() {
   var certificateWithSocialName = true;
 
   setUpAll(() async {
-    await Firebase.initializeApp();
     when(repository.getUserSubscribedActivities())
         .thenAnswer((_) async => mockActivities);
     when(secureStorage.getName()).thenAnswer((_) async => name);
@@ -159,10 +151,10 @@ void main() {
     when(secureStorage.getCertificateWithSocialName())
         .thenAnswer((_) async => certificateWithSocialName);
     controller = UserDashboardController(
-        repository: repository,
-        secureStorage: secureStorage,
-        userRepository: userRepository,
-        analytics: analytics);
+      repository: repository,
+      secureStorage: secureStorage,
+      userRepository: userRepository,
+    );
   });
 
   test('getCertificateWithSocialName', () {

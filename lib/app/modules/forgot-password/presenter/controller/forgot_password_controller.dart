@@ -1,10 +1,9 @@
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/app_widget.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
+// import 'package:smile_front/app/app_widget.dart';
 
-import '../../../../shared/error/error_snackbar.dart';
+// import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../domain/repository/forgot_password_datasource_interface.dart';
 import '../../external/errors.dart';
@@ -16,10 +15,8 @@ class ForgotPasswordController = ForgotPasswordControllerBase
 
 abstract class ForgotPasswordControllerBase with Store {
   final ForgotPasswordRepositoryInterface forgotPasswordRepository;
-  final FirebaseAnalyticsService analytics;
 
-  ForgotPasswordControllerBase(
-      {required this.analytics, required this.forgotPasswordRepository});
+  ForgotPasswordControllerBase({required this.forgotPasswordRepository});
 
   @observable
   bool isLoading = false;
@@ -95,11 +92,11 @@ abstract class ForgotPasswordControllerBase with Store {
       await forgotPasswordRepository.forgotPassword(username);
       emailSent = true;
     } on Failure catch (e) {
-      if (scaffold.context.size!.width <= 1024) {
-        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
-      } else {
-        errors = e.message;
-      }
+      // if (scaffold.context.size!.width <= 1024) {
+      //   showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+      // } else {
+      //   errors = e.message;
+      // }
     }
     setIsLoading(false);
   }
@@ -119,11 +116,11 @@ abstract class ForgotPasswordControllerBase with Store {
       await Future.delayed(const Duration(seconds: 5));
       Modular.to.navigate('/login');
     } on Failure catch (e) {
-      if (scaffold.context.size!.width <= 1024) {
-        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
-      } else {
-        errors = e.message;
-      }
+      // if (scaffold.context.size!.width <= 1024) {
+      //   showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+      // } else {
+      //   errors = e.message;
+      // }
     }
     setIsLoading(false);
   }
@@ -155,10 +152,10 @@ abstract class ForgotPasswordControllerBase with Store {
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$';
     RegExp regExp = RegExp(pattern);
     if (!regExp.hasMatch(value)) {
-      showErrorSnackBar(
-          errorMessage:
-              "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Mínimo de 8 caracteres",
-          color: AppColors.redButton);
+      // showErrorSnackBar(
+      //     errorMessage:
+      //         "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Mínimo de 8 caracteres",
+      //     color: AppColors.redButton);
       return '';
     }
     return null;

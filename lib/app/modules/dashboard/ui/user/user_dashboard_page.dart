@@ -78,8 +78,6 @@ class _UserDashboardPageState extends State<UserDashboardPage> {
                         controller.cardNextActivity,
                         isRegistered
                       ]);
-                      controller.analytics.logViewActivity(
-                          controller.cardNextActivity.activityCode);
                     },
                     name: controller.nextActivity.title,
                     description: controller.nextActivity.description,
@@ -141,8 +139,6 @@ class _UserDashboardPageState extends State<UserDashboardPage> {
                                 controller.weekActivitiesList[index],
                                 isRegistered
                               ]);
-                          controller.analytics.logViewActivity(controller
-                              .weekActivitiesList[index].activityCode);
                         },
                       );
                     },

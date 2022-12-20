@@ -1,9 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:modular_test/modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:smile_front/app/app_module.dart';
+
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
@@ -14,23 +12,18 @@ import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
-import '../../../../../../setup_firebase_mocks.dart';
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import 'all_activities_user_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([ActivitiesRepositoryInterface, UserDashboardController])
 void main() {
-  initModule(AppModule());
-  setupCloudFirestoreMocks();
   ActivitiesRepositoryInterface repository =
       MockActivitiesRepositoryInterface();
   AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
   UserDashboardController userDashboardController =
       MockUserDashboardController();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
 
   late AllActivitiesUserDashboardController controller;
   late AuthController authController;
@@ -149,18 +142,16 @@ void main() {
   ];
 
   setUpAll(() async {
-    await Firebase.initializeApp();
     when(repository.getAllActivities()).thenAnswer((_) async => mockActivities);
     authController = AuthController(
-        authRepository: authRepository,
-        storage: secureStorage,
-        analytics: analytics);
+      authRepository: authRepository,
+      storage: secureStorage,
+    );
 
     controller = AllActivitiesUserDashboardController(
       repository: repository,
       authController: authController,
       controller: userDashboardController,
-      analytics: analytics,
     );
   });
 

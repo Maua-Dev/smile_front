@@ -6,7 +6,7 @@ import 'package:smile_front/app/modules/auth/infra/repositories/secure_storage.d
 
 import 'secure_storage_test.mocks.dart';
 
-@GenerateMocks([Box])
+@GenerateMocks([Box, SecureStorage])
 void main() {
   late SecureStorage secureStorage;
   Box storage = MockBox();
@@ -19,7 +19,7 @@ void main() {
   var id = '123';
 
   setUpAll(() async {
-    secureStorage = await SecureStorage.instance();
+    secureStorage = MockSecureStorage();
     when(storage.get('accessToken')).thenAnswer((_) async => accessToken);
     when(storage.get('refreshToken')).thenAnswer((_) async => refreshToken);
     when(storage.get('accessLevel')).thenAnswer((_) async => accessLevel);

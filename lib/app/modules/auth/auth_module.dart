@@ -17,7 +17,6 @@ class AuthModule extends Module {
         (i) => AuthController(
               authRepository: i<AuthRepositoryInterface>(),
               storage: i<SecureStorageInterface>(),
-              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<AuthDatasourceInterface>(

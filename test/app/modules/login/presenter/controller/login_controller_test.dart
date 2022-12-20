@@ -1,10 +1,6 @@
-// ignore_for_file: file_names
-
-import 'package:firebase_core/firebase_core.dart';
-import 'package:modular_test/modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
-import 'package:smile_front/app/app_module.dart';
+
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/infra/repositories/auth_repository_mock.dart';
@@ -13,27 +9,23 @@ import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controll
 
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
-import '../../../../../setup_firebase_mocks.dart';
+
 import '../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 
-@GenerateMocks([ActivitiesRepositoryInterface, FirebaseAnalyticsService])
+@GenerateMocks([
+  ActivitiesRepositoryInterface,
+])
 void main() {
-  initModule(AppModule());
-  setupCloudFirestoreMocks();
   AuthRepositoryInterface repository = AuthRepositoryMock();
   SecureStorageInterface storage = MockSecureStorageInterface();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
 
   late LoginController controller;
   late AuthController authController;
 
   setUpAll(() async {
-    await Firebase.initializeApp();
-    authController = AuthController(
-        authRepository: repository, storage: storage, analytics: analytics);
-    controller =
-        LoginController(authController: authController, analytics: analytics);
+    authController =
+        AuthController(authRepository: repository, storage: storage);
+    controller = LoginController(authController: authController);
   });
 
   test('setUsername if contains @ and Upper Case : email', () {

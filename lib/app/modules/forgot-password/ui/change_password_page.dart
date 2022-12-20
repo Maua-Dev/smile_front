@@ -189,7 +189,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
                             await controller.changePassword();
-                            await controller.analytics.logChangePassword();
                           }
                         },
                       );

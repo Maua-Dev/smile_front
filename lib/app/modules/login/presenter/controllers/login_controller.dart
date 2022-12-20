@@ -4,9 +4,9 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
-import '../../../../app_widget.dart';
-import '../../../../shared/error/error_snackbar.dart';
-import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
+// import '../../../../app_widget.dart';
+// import '../../../../shared/error/error_snackbar.dart';
+
 import '../../../auth/presenter/controllers/auth_controller.dart';
 
 part 'login_controller.g.dart';
@@ -15,11 +15,9 @@ class LoginController = LoginControllerBase with _$LoginController;
 
 abstract class LoginControllerBase with Store {
   final AuthController authController;
-  final FirebaseAnalyticsService analytics;
 
   LoginControllerBase({
     required this.authController,
-    required this.analytics,
   });
 
   @observable
@@ -69,13 +67,12 @@ abstract class LoginControllerBase with Store {
               arguments: [cpfRne, authController.accessLevel]);
         }
       }
-      analytics.logLogin();
     } on Failure catch (e) {
-      if (scaffold.context.size!.width <= 1024) {
-        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
-      } else {
-        errors = e.message;
-      }
+      // if (scaffold.context.size!.width <= 1024) {
+      //   showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+      // } else {
+      //   errors = e.message;
+      // }
     }
     setIsLoading(false);
   }

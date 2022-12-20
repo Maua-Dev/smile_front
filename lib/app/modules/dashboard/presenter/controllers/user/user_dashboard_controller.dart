@@ -1,7 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
@@ -17,10 +16,8 @@ abstract class UserDashboardControllerBase with Store {
   final ActivitiesRepositoryInterface repository;
   final UserRepositoryInterface userRepository;
   final SecureStorageInterface secureStorage;
-  final FirebaseAnalyticsService analytics;
 
   UserDashboardControllerBase({
-    required this.analytics,
     required this.userRepository,
     required this.secureStorage,
     required this.repository,

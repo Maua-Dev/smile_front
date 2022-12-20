@@ -1,8 +1,8 @@
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 import '../../../../shared/entities/user_registration.dart';
-import '../../../../shared/error/error_snackbar.dart';
-import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
+// import '../../../../shared/error/error_snackbar.dart';
+
 import '../../../../shared/themes/app_colors.dart';
 import '../../external/errors/errors.dart';
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
@@ -12,10 +12,8 @@ class RegisterController = RegisterControllerBase with _$RegisterController;
 
 abstract class RegisterControllerBase with Store {
   final RegisterRepositoryInterface registerUserRepository;
-  final FirebaseAnalyticsService analytics;
 
-  RegisterControllerBase(
-      {required this.analytics, required this.registerUserRepository});
+  RegisterControllerBase({required this.registerUserRepository});
 
   @computed
   int? get raInt => ra == ''
@@ -331,9 +329,8 @@ abstract class RegisterControllerBase with Store {
         await registerUserRepository.registerUser(registerInformations);
         setIsLoading(false);
         setSuccessRegistration(true);
-        analytics.logSignUp();
       } on Failure catch (e) {
-        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+        // showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
       }
       setIsLoading(false);
     }

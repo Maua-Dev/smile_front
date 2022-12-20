@@ -1,12 +1,8 @@
-// ignore_for_file: file_names
-
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:modular_test/modular_test.dart';
+// ignore: file_names
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
 import 'package:mockito/annotations.dart';
-import 'package:smile_front/app/app_module.dart';
-import 'package:smile_front/app/modules/dashboard/adm_module.dart';
+
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
@@ -18,10 +14,8 @@ void main() {
       MockActivitiesRepositoryInterface();
 
   late CreateActivityController controller;
-  initModules([AppModule(), AdmModule()]);
 
   setUpAll(() async {
-    await Modular.isModuleReady<AppModule>();
     controller = CreateActivityController(repository: repository);
   });
 

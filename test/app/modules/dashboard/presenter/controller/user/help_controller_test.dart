@@ -1,22 +1,16 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/dashboard/domain/entities/faq.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/faq_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
-import '../../../../../../setup_firebase_mocks.dart';
-import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import 'help_controller_test.mocks.dart';
 
 @GenerateMocks([FaqRepositoryInterface])
 void main() {
-  setupCloudFirestoreMocks();
-
   FaqRepositoryInterface repository = MockFaqRepositoryInterface();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
+
   late HelpController controller;
 
   var mockFaqList = <Faq>[
@@ -32,9 +26,8 @@ void main() {
   ];
 
   setUpAll(() async {
-    await Firebase.initializeApp();
     when(repository.getAllFaq()).thenAnswer((_) async => mockFaqList);
-    controller = HelpController(repository: repository, analytics: analytics);
+    controller = HelpController(repository: repository);
   });
 
   test('getFaqInformation && setFaqAction', () {

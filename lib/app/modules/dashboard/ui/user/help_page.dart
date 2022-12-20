@@ -44,10 +44,6 @@ class _HelpPageState extends State<HelpPage> {
                   onPressed: () {
                     controller.swapOpen(index);
                   },
-                  analyticsLogPress: () {
-                    controller.analytics
-                        .logFaq(controller.faqAction[index].faq.id);
-                  },
                 ),
               );
             }),

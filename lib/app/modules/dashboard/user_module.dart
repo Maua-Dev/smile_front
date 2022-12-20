@@ -39,7 +39,6 @@ class UserModule extends Module {
               repository: i(),
               authController: i(),
               controller: i(),
-              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<ActivitiesDatasourceInterface>(
@@ -51,7 +50,6 @@ class UserModule extends Module {
         )),
     Bind.lazySingleton<HelpController>((i) => HelpController(
           repository: i(),
-          analytics: i(),
         )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
@@ -65,7 +63,6 @@ class UserModule extends Module {
         repository: i(),
         secureStorage: i(),
         userRepository: i(),
-        analytics: i(),
       ),
     ),
     Bind.lazySingleton<MoreInfoController>(
@@ -80,7 +77,6 @@ class UserModule extends Module {
         (i) => AuthController(
               authRepository: i<AuthRepositoryInterface>(),
               storage: i<SecureStorageInterface>(),
-              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<CertificateRepositoryInterface>(

@@ -1,29 +1,17 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:modular_test/modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
-import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 import 'package:smile_front/app/modules/register/presenter/controllers/register_controller.dart';
-import 'package:smile_front/app/modules/register/register_module.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
-import '../../../../../setup_firebase_mocks.dart';
-import '../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import 'register_controller_test.mocks.dart';
 
 @GenerateMocks([RegisterRepositoryInterface])
 void main() {
-  initModules([AppModule(), RegisterModule()]);
-  setupCloudFirestoreMocks();
   RegisterRepositoryInterface repository = MockRegisterRepositoryInterface();
   late RegisterController controller;
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
 
   setUpAll(() async {
-    await Firebase.initializeApp();
-    controller = RegisterController(
-        registerUserRepository: repository, analytics: analytics);
+    controller = RegisterController(registerUserRepository: repository);
   });
 
   test('setAcceptImage', () {

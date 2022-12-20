@@ -2,12 +2,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 
-import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
-
 class AuthController {
   final AuthRepositoryInterface authRepository;
   final SecureStorageInterface storage;
-  final FirebaseAnalyticsService analytics;
+
   bool _loggedIn = false;
   String _accessLevel = '';
   String _name = '';
@@ -16,7 +14,6 @@ class AuthController {
   bool? _certificateWithSocialName = false;
 
   AuthController({
-    required this.analytics,
     required this.authRepository,
     required this.storage,
   });
@@ -44,7 +41,6 @@ class AuthController {
     await storage.saveId(_id ?? '');
     await storage
         .saveCertificateWithSocialName(_certificateWithSocialName ?? false);
-    await analytics.setUserProperties(await storage.getId() ?? '');
 
     _loggedIn = true;
   }

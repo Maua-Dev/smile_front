@@ -234,6 +234,22 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
+  late final _$phoneAtom =
+      Atom(name: 'RegisterControllerBase.phone', context: context);
+
+  @override
+  String get phone {
+    _$phoneAtom.reportRead();
+    return super.phone;
+  }
+
+  @override
+  set phone(String value) {
+    _$phoneAtom.reportWrite(value, super.phone, () {
+      super.phone = value;
+    });
+  }
+
   late final _$isMauaStudentAtom =
       Atom(name: 'RegisterControllerBase.isMauaStudent', context: context);
 
@@ -418,6 +434,14 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     return _$setVerifyEmailAsyncAction.run(() => super.setVerifyEmail(value));
   }
 
+  late final _$setPhoneAsyncAction =
+      AsyncAction('RegisterControllerBase.setPhone', context: context);
+
+  @override
+  Future<void> setPhone(String value) {
+    return _$setPhoneAsyncAction.run(() => super.setPhone(value));
+  }
+
   late final _$setIsMauaStudentAsyncAction =
       AsyncAction('RegisterControllerBase.setIsMauaStudent', context: context);
 
@@ -543,6 +567,17 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
+  bool validatePhone(String value) {
+    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
+        name: 'RegisterControllerBase.validatePhone');
+    try {
+      return super.validatePhone(value);
+    } finally {
+      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   bool validateEmail(String value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validateEmail');
@@ -646,6 +681,7 @@ hasSocialName: ${hasSocialName},
 cpf: ${cpf},
 email: ${email},
 verifyEmail: ${verifyEmail},
+phone: ${phone},
 isMauaStudent: ${isMauaStudent},
 ra: ${ra},
 password: ${password},

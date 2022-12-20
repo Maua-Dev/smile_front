@@ -1,22 +1,20 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
-import '../../../../../setup_firebase_mocks.dart';
 import 'auth_controller_test.mocks.dart';
 
-@GenerateMocks(
-    [AuthRepositoryInterface, SecureStorageInterface, FirebaseAnalyticsService])
+@GenerateMocks([
+  AuthRepositoryInterface,
+  SecureStorageInterface,
+])
 void main() {
-  setupCloudFirestoreMocks();
   AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
   SecureStorageInterface storage = MockSecureStorageInterface();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
+
   late AuthController controller;
 
   var loginWithCpfRne = {
@@ -30,17 +28,15 @@ void main() {
   };
 
   setUpAll(() async {
-    await Firebase.initializeApp();
     when(authRepository.login('adm', 'teste'))
         .thenAnswer((_) async => loginWithCpfRne);
-    when(analytics.setUserProperties('')).thenAnswer((_) async => null);
     when(storage.getAccessLevel()).thenAnswer((_) async => 'ADMIN');
     when(storage.getId()).thenAnswer((_) async => '');
     when(storage.getAccessToken()).thenAnswer((_) async => 'token12354');
     when(storage.getRefreshToken())
         .thenAnswer((_) async => 'refreshToken342315');
-    controller = AuthController(
-        authRepository: authRepository, storage: storage, analytics: analytics);
+    controller =
+        AuthController(authRepository: authRepository, storage: storage);
   });
 
   test('loginWithCpfRne', () async {
