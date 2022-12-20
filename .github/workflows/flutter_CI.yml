@@ -34,7 +34,7 @@ jobs:
         run: sudo apt-get install lcov
 
       - name: Flutter Test
-        run: flutter test --platform chrome --coverage
+        run: flutter test --coverage
 
       - name: Create report
         run: genhtml coverage/lcov.info -o coverage/html
