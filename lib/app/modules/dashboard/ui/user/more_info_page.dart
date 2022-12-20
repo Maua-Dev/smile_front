@@ -21,8 +21,8 @@ class MoreInfoPage extends StatefulWidget {
   State<MoreInfoPage> createState() => _MoreInfoPageState();
 }
 
-class _MoreInfoPageState
-    extends ModularState<MoreInfoPage, MoreInfoController> {
+class _MoreInfoPageState extends State<MoreInfoPage> {
+  final controller = Modular.get<MoreInfoController>();
   @override
   Widget build(BuildContext context) {
     var timeString = controller.activity.date == null

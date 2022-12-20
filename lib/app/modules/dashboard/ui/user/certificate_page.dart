@@ -15,8 +15,8 @@ class CertificatePage extends StatefulWidget {
   State<CertificatePage> createState() => _CertificatePageState();
 }
 
-class _CertificatePageState
-    extends ModularState<CertificatePage, CertificateController> {
+class _CertificatePageState extends State<CertificatePage> {
+  final controller = Modular.get<CertificateController>();
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (context) {

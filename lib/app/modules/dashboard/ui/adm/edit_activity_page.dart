@@ -25,8 +25,8 @@ class EditActivityPage extends StatefulWidget {
   State<EditActivityPage> createState() => _EditActivityPageState();
 }
 
-class _EditActivityPageState
-    extends ModularState<EditActivityPage, EditActivityController> {
+class _EditActivityPageState extends State<EditActivityPage> {
+  var controller = Modular.get<EditActivityController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

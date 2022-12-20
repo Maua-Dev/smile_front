@@ -19,8 +19,9 @@ class AllActivitiesUserDashboardPage extends StatefulWidget {
       _AllActivitiesUserDashboardPageState();
 }
 
-class _AllActivitiesUserDashboardPageState extends ModularState<
-    AllActivitiesUserDashboardPage, AllActivitiesUserDashboardController> {
+class _AllActivitiesUserDashboardPageState
+    extends State<AllActivitiesUserDashboardPage> {
+  final controller = Modular.get<AllActivitiesUserDashboardController>();
   final subscribedActivitiesController = Modular.get<UserDashboardController>();
   @override
   Widget build(BuildContext context) {
