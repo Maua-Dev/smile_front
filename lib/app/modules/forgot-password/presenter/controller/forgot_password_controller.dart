@@ -4,7 +4,6 @@ import 'package:mobx/mobx.dart';
 // import 'package:smile_front/app/app_widget.dart';
 
 // import '../../../../shared/error/error_snackbar.dart';
-import '../../../../shared/themes/app_colors.dart';
 import '../../domain/repository/forgot_password_datasource_interface.dart';
 import '../../external/errors.dart';
 
@@ -91,7 +90,7 @@ abstract class ForgotPasswordControllerBase with Store {
     try {
       await forgotPasswordRepository.forgotPassword(username);
       emailSent = true;
-    } on Failure catch (e) {
+    } on Failure {
       // if (scaffold.context.size!.width <= 1024) {
       //   showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
       // } else {
@@ -115,7 +114,7 @@ abstract class ForgotPasswordControllerBase with Store {
       setSuccessRegistration(true);
       await Future.delayed(const Duration(seconds: 5));
       Modular.to.navigate('/login');
-    } on Failure catch (e) {
+    } on Failure {
       // if (scaffold.context.size!.width <= 1024) {
       //   showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
       // } else {

@@ -2,7 +2,6 @@ import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 // import '../../../../app_widget.dart';
 // import '../../../../shared/error/error_snackbar.dart';
@@ -67,7 +66,7 @@ abstract class LoginControllerBase with Store {
               arguments: [cpfRne, authController.accessLevel]);
         }
       }
-    } on Failure catch (e) {
+    } on Failure {
       // if (scaffold.context.size!.width <= 1024) {
       //   showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
       // } else {

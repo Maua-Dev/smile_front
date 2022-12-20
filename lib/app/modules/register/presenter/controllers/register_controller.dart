@@ -3,7 +3,6 @@ import 'package:smile_front/app/modules/register/domain/repositories/register_in
 import '../../../../shared/entities/user_registration.dart';
 // import '../../../../shared/error/error_snackbar.dart';
 
-import '../../../../shared/themes/app_colors.dart';
 import '../../external/errors/errors.dart';
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
 part 'register_controller.g.dart';
@@ -329,7 +328,7 @@ abstract class RegisterControllerBase with Store {
         await registerUserRepository.registerUser(registerInformations);
         setIsLoading(false);
         setSuccessRegistration(true);
-      } on Failure catch (e) {
+      } on Failure {
         // showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
       }
       setIsLoading(false);

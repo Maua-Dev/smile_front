@@ -1,6 +1,5 @@
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 // import '../../../../app_widget.dart';
 // import '../../../../shared/error/error_snackbar.dart';
@@ -55,7 +54,7 @@ abstract class ResendConfirmationControllerBase with Store {
     try {
       await resendConfirmationRepository.resendConfirmation(cpf);
       emailSent = true;
-    } on Failure catch (e) {
+    } on Failure {
       // if (scaffold.context.size!.width <= 1024) {
       //   showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
       // } else {
