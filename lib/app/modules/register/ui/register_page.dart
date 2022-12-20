@@ -22,8 +22,8 @@ class RegisterPage extends StatefulWidget {
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState
-    extends ModularState<RegisterPage, RegisterController> {
+class _RegisterPageState extends State<RegisterPage> {
+  final controller = Modular.get<RegisterController>();
   @override
   void initState() {
     super.initState();

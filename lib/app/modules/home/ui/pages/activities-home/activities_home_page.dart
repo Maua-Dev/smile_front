@@ -16,8 +16,8 @@ class ActivitiesHomePage extends StatefulWidget {
   ActivityHomeState createState() => ActivityHomeState();
 }
 
-class ActivityHomeState
-    extends ModularState<ActivitiesHomePage, ActivityHomeController> {
+class ActivityHomeState extends State<ActivitiesHomePage> {
+  final controller = Modular.get<ActivityHomeController>();
   int _current = 0;
   final CarouselController _controller = CarouselController();
 

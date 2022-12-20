@@ -19,8 +19,8 @@ class ResendConfirmationPage extends StatefulWidget {
   State<ResendConfirmationPage> createState() => _ResendConfirmationPageState();
 }
 
-class _ResendConfirmationPageState
-    extends ModularState<ResendConfirmationPage, ResendConfirmationController> {
+class _ResendConfirmationPageState extends State<ResendConfirmationPage> {
+  final controller = Modular.get<ResendConfirmationController>();
   final _formKey = GlobalKey<FormState>();
 
   @override

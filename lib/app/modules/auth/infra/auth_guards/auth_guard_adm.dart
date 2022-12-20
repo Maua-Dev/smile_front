@@ -2,9 +2,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
 
-class AuthGuardAdm implements RouteGuard {
+class AuthGuardAdm extends RouteGuard {
+  AuthGuardAdm() : super(redirectTo: '/login');
   @override
-  Future<bool> canActivate(String path, ModularRoute router) async {
+  Future<bool> canActivate(String path, ModularRoute route) async {
     await Modular.isModuleReady<AppModule>();
     var authController = Modular.get<AuthController>();
     if (!authController.isLogged) {
@@ -15,7 +16,4 @@ class AuthGuardAdm implements RouteGuard {
     }
     return false;
   }
-
-  @override
-  String? get guardedRoute => '/login';
 }

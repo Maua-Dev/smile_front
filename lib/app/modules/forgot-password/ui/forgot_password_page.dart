@@ -19,8 +19,8 @@ class ForgotPasswordPage extends StatefulWidget {
   State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
 }
 
-class _ForgotPasswordPageState
-    extends ModularState<ForgotPasswordPage, ForgotPasswordController> {
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+  final controller = Modular.get<ForgotPasswordController>();
   final _formKey = GlobalKey<FormState>();
 
   @override

@@ -13,37 +13,35 @@ import 'modules/home/home_module.dart';
 
 class AppModule extends Module {
   @override
-  final List<Module> imports = [AuthModule(), RegisterModule()];
+  List<Module> get imports => [AuthModule(), RegisterModule()];
 
   @override
-  final List<Bind> binds = [
-    Bind.lazySingleton((i) => FirebaseAnalyticsService()),
-  ];
+  List<Bind> get binds => [
+        Bind.lazySingleton((i) => FirebaseAnalyticsService()),
+      ];
 
   @override
-  final List<ModularRoute> routes = [
-    ModuleRoute(
-      '/home',
-      module: HomeModule(),
-      guards: [AppGuard()],
-    ),
-    ModuleRoute(
-      '/login',
-      module: LoginModule(),
-      guards: [AppGuard()],
-    ),
-    ModuleRoute(
-      '/adm',
-      module: AdmModule(),
-      guards: [AuthGuardAdm()],
-      guardedRoute: '/login',
-    ),
-    ModuleRoute(
-      '/user',
-      module: LandingModule(),
-      guards: [AuthGuardUser()],
-      guardedRoute: '/login',
-    ),
-    WildcardRoute(child: (context, args) => const ErrorPage()),
-  ];
+  List<ModularRoute> get routes => [
+        ModuleRoute(
+          '/home',
+          module: HomeModule(),
+          guards: [AppGuard()],
+        ),
+        ModuleRoute(
+          '/login',
+          module: LoginModule(),
+          guards: [AppGuard()],
+        ),
+        ModuleRoute(
+          '/adm',
+          module: AdmModule(),
+          guards: [AuthGuardAdm()],
+        ),
+        ModuleRoute(
+          '/user',
+          module: LandingModule(),
+          guards: [AuthGuardUser()],
+        ),
+        WildcardRoute(child: (context, args) => const ErrorPage()),
+      ];
 }

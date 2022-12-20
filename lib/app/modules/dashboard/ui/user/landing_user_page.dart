@@ -30,7 +30,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
                       width: MediaQuery.of(context).size.width < 1024
                           ? MediaQuery.of(context).size.width
                           : 1024,
-                      child: RouterOutlet()),
+                      child: const RouterOutlet()),
                 ),
               )
             : SafeArea(
@@ -43,7 +43,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
                             width: MediaQuery.of(context).size.width < 1024
                                 ? MediaQuery.of(context).size.width
                                 : 1000,
-                            child: RouterOutlet()),
+                            child: const RouterOutlet()),
                       ),
                     ),
                   ],

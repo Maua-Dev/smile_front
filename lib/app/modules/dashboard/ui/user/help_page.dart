@@ -13,7 +13,8 @@ class HelpPage extends StatefulWidget {
   State<HelpPage> createState() => _HelpPageState();
 }
 
-class _HelpPageState extends ModularState<HelpPage, HelpController> {
+class _HelpPageState extends State<HelpPage> {
+  final controller = Modular.get<HelpController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

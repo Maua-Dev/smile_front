@@ -15,8 +15,8 @@ class SpeakersHomePage extends StatefulWidget {
   State<SpeakersHomePage> createState() => _SpeakersHomePageState();
 }
 
-class _SpeakersHomePageState
-    extends ModularState<SpeakersHomePage, SpeakersHomeController> {
+class _SpeakersHomePageState extends State<SpeakersHomePage> {
+  final controller = Modular.get<SpeakersHomeController>();
   @override
   Widget build(BuildContext context) {
     var scrollController = ScrollController();

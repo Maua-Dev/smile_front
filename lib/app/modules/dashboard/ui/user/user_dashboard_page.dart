@@ -21,8 +21,8 @@ class UserDashboardPage extends StatefulWidget {
   State<UserDashboardPage> createState() => _UserDashboardPageState();
 }
 
-class _UserDashboardPageState
-    extends ModularState<UserDashboardPage, UserDashboardController> {
+class _UserDashboardPageState extends State<UserDashboardPage> {
+  final controller = Modular.get<UserDashboardController>();
   var navBarController = Modular.get<NavigationBarController>();
   @override
   Widget build(BuildContext context) {

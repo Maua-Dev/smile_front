@@ -21,13 +21,12 @@ class AuthModule extends Module {
             ),
         export: true),
     Bind.lazySingleton<AuthDatasourceInterface>(
-        (i) => AuthDatasourceImpl(dioClient: i(), storage: i()),
-        export: true),
+        (i) => AuthDatasourceImpl(dioClient: i(), storage: i())),
     Bind.lazySingleton<AuthRepositoryInterface>(
-        (i) => AuthRepositoryImpl(datasource: i()),
-        export: true),
-    AsyncBind<SecureStorageInterface>((i) => SecureStorage.instance(),
-        export: true),
+        (i) => AuthRepositoryImpl(datasource: i())),
+    AsyncBind<SecureStorageInterface>(
+      (i) => SecureStorage.instance(),
+    ),
     Bind.lazySingleton((i) => Dio(smileLoginOption))
   ];
 }

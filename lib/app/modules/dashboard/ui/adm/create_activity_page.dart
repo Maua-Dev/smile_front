@@ -25,8 +25,8 @@ class CreateActivityPage extends StatefulWidget {
   State<CreateActivityPage> createState() => _CreateActivityPageState();
 }
 
-class _CreateActivityPageState
-    extends ModularState<CreateActivityPage, CreateActivityController> {
+class _CreateActivityPageState extends State<CreateActivityPage> {
+  var controller = Modular.get<CreateActivityController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

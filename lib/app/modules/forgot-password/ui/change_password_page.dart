@@ -18,8 +18,8 @@ class ChangePasswordPage extends StatefulWidget {
   State<ChangePasswordPage> createState() => _ChangePasswordPageState();
 }
 
-class _ChangePasswordPageState
-    extends ModularState<ChangePasswordPage, ForgotPasswordController> {
+class _ChangePasswordPageState extends State<ChangePasswordPage> {
+  final controller = Modular.get<ForgotPasswordController>();
   final _formKey = GlobalKey<FormState>();
 
   @override
