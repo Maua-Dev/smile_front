@@ -32,7 +32,7 @@ class CheckBoxWidget extends StatelessWidget {
       child: Row(
         children: [
           Checkbox(
-            activeColor: AppColors.brandingPurple,
+            activeColor: AppColors.brandingBlue,
             value: check,
             onChanged: onChanged,
           ),

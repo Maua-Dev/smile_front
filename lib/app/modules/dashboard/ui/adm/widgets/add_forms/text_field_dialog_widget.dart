@@ -38,34 +38,32 @@ class TextFieldDialogWidget extends StatelessWidget {
         textAlignVertical: TextAlignVertical.center,
         inputFormatters: inputFormatters,
         style: AppTextStyles.body.copyWith(
-            color: AppColors.brandingPurple,
+            color: AppColors.brandingBlue,
             fontSize: MediaQuery.of(context).size.width < 1200 ? 16 : 20),
         decoration: InputDecoration(
             suffixIcon: suffixIcon != null
                 ? IconButton(
                     icon: Icon(
                       suffixIcon,
-                      color: AppColors.brandingPurple,
+                      color: AppColors.brandingBlue,
                     ),
                     onPressed: onPressedIcon,
                   )
                 : null,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),
-              borderSide:
-                  BorderSide(color: AppColors.brandingPurple, width: 0.0),
+              borderSide: BorderSide(color: AppColors.brandingBlue, width: 0.0),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),
-              borderSide:
-                  BorderSide(color: AppColors.brandingPurple, width: 0.0),
+              borderSide: BorderSide(color: AppColors.brandingBlue, width: 0.0),
             ),
             hintText: hintText,
             labelText: labelText,
             labelStyle: AppTextStyles.titleH1
-                .copyWith(color: AppColors.brandingPurple, fontSize: 22),
+                .copyWith(color: AppColors.brandingBlue, fontSize: 22),
             hintStyle: AppTextStyles.body
-                .copyWith(color: AppColors.brandingPurple, fontSize: 20),
+                .copyWith(color: AppColors.brandingBlue, fontSize: 20),
             contentPadding: suffixIcon != null
                 ? const EdgeInsets.only(left: 16, top: 16, bottom: 16)
                 : const EdgeInsets.symmetric(horizontal: 16, vertical: 16),

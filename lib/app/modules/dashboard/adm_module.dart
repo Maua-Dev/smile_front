@@ -9,6 +9,7 @@ import 'package:smile_front/app/modules/dashboard/ui/adm/edit_activity_page.dart
 import 'package:smile_front/app/modules/dashboard/ui/adm/create_activity_page.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
+import '../../shared/error/error_page.dart';
 import '../../shared/services/dio/smile_activities_options.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
@@ -60,6 +61,7 @@ class AdmModule extends Module {
         child: (_, args) => const AdmDashboardPage()),
     ChildRoute('/create-activity',
         child: (_, args) => const CreateActivityPage()),
-    ChildRoute('/edit-activity', child: (_, args) => const EditActivityPage())
+    ChildRoute('/edit-activity', child: (_, args) => const EditActivityPage()),
+    WildcardRoute(child: (context, args) => const ErrorPage()),
   ];
 }

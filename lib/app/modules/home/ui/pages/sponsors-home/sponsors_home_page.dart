@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
-
 import '../../../../../shared/themes/app_colors.dart';
-import '../../../../../shared/themes/app_text_styles.dart';
+import '../../../../../shared/utils/screen_helper.dart';
 import '../../../../../shared/widgets/text-header/text_header.dart';
-import '../../../utils/text_utils.dart';
 
 class SponsorsHomePage extends StatefulWidget {
   const SponsorsHomePage({Key? key}) : super(key: key);
@@ -25,11 +25,29 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
         children: [
           TextHeader(
             title: 'Patrocinadores',
-            leftPadding: 32,
-            color: AppColors.brandingPurple,
-            fontSize: MediaQuery.of(context).size.width < 530 ? 28 : null,
+            leftPadding: Screen.width(context) > 530 ? 32 : 24,
+            color: AppColors.brandingBlue,
+            fontSize: MediaQuery.of(context).size.width < 900
+                ? MediaQuery.of(context).size.width < 530
+                    ? 24
+                    : 32
+                : 48,
           ),
           const CompanySponsor(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 24),
+            child: TextHeader(
+              title: 'Entidades Participantes da SMILE',
+              leftPadding: Screen.width(context) > 530 ? 32 : 24,
+              color: AppColors.brandingOrange,
+              fontSize: MediaQuery.of(context).size.width < 530
+                  ? 22
+                  : MediaQuery.of(context).size.width < 900
+                      ? 32
+                      : 48,
+            ),
+          ),
+          const EntitiesStack(),
           Column(
             children: const [BeSponsor()],
           )
@@ -109,6 +127,21 @@ class BeSponsor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> openForms() async {
+      var res = await showDialog<bool?>(
+        context: context,
+        builder: (context) => const SponsorFormDialog(),
+      );
+      if (res != null && res) {
+        showDialog(
+            context: context,
+            builder: (context) => const AlertDialog(
+                  content: Text(
+                      'Enviado com sucesso!! Nossa equipe entrará em contato em breve.'),
+                ));
+      }
+    }
+
     return Padding(
       padding: const EdgeInsets.all(32.0),
       child: Column(
@@ -122,15 +155,17 @@ class BeSponsor extends StatelessWidget {
                     ? Container(
                         alignment: Alignment.center,
                         height: 2,
-                        color: AppColors.brandingPurple,
+                        color: AppColors.brandingBlue,
                       )
                     : Container(),
               ),
               Center(
                   child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: MediaQuery.of(context).size.width > 530
+                    ? const EdgeInsets.all(8.0)
+                    : const EdgeInsets.all(0.0),
                 child: Text(
-                  'Seja Nosso Patrocinador',
+                  'Seja nosso Patrocinador',
                   style: TextStyle(
                       fontSize:
                           MediaQuery.of(context).size.width < 530 ? 28 : 35,
@@ -142,7 +177,7 @@ class BeSponsor extends StatelessWidget {
                     ? Container(
                         alignment: Alignment.center,
                         height: 2,
-                        color: AppColors.brandingPurple,
+                        color: AppColors.brandingBlue,
                       )
                     : Container(),
               )
@@ -160,7 +195,7 @@ class BeSponsor extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             constraints: const BoxConstraints(maxWidth: 700),
             decoration: BoxDecoration(
-                border: Border.all(color: AppColors.brandingPurple, width: 4),
+                border: Border.all(color: AppColors.brandingBlue, width: 4),
                 borderRadius: BorderRadius.circular(18)),
             child: Column(
               children: [
@@ -180,22 +215,11 @@ class BeSponsor extends StatelessWidget {
                                 height: 8,
                               ),
                               CardDiscount(
-                                month: 'Outubro',
-                                discount: '50% Off',
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
-                                month: 'Novembro',
-                                discount: '40% Off',
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
                                 month: 'Dezembro',
                                 discount: '30% Off',
+                              ),
+                              SizedBox(
+                                height: 8,
                               ),
                             ],
                           ),
@@ -207,14 +231,14 @@ class BeSponsor extends StatelessWidget {
                               ),
                               CardDiscount(
                                 month: 'Janeiro',
-                                discount: '10% Off',
+                                discount: '20% Off',
                               ),
                               SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
                                 month: 'Fevereiro',
-                                discount: '0% Off',
+                                discount: '10% Off',
                               )
                             ],
                           ),
@@ -231,20 +255,6 @@ class BeSponsor extends StatelessWidget {
                                 height: 8,
                               ),
                               CardDiscount(
-                                month: 'Outubro',
-                                discount: '50% Off',
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
-                                month: 'Novembro',
-                                discount: '40% Off',
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
                                 month: 'Dezembro',
                                 discount: '30% Off',
                               ),
@@ -258,14 +268,14 @@ class BeSponsor extends StatelessWidget {
                               ),
                               CardDiscount(
                                 month: 'Janeiro',
-                                discount: '10% Off',
+                                discount: '20% Off',
                               ),
                               SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
                                 month: 'Fevereiro',
-                                discount: '0% Off',
+                                discount: '10% Off',
                               )
                             ],
                           ),
@@ -279,21 +289,32 @@ class BeSponsor extends StatelessWidget {
           ),
           MediaQuery.of(context).size.width < 530
               ? ListView.separated(
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index) => plansWidgets[index],
                   separatorBuilder: (context, index) => const SizedBox(
                         height: 50,
                       ),
                   itemCount: plansWidgets.length)
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: plansWidgets,
+              : Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width < 1200
+                        ? 0.9 * MediaQuery.of(context).size.width
+                        : MediaQuery.of(context).size.width,
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing:
+                          MediaQuery.of(context).size.width < 1200 ? 64 : 80,
+                      runSpacing: 32,
+                      children: plansWidgets,
+                    ),
+                  ),
                 ),
           Container(
             // constraints: BoxConstraints(maxWidth: 700),
             padding: EdgeInsets.all(
-                MediaQuery.of(context).size.width < 530 ? 24 : 32),
-            child: MediaQuery.of(context).size.width < 530
+                MediaQuery.of(context).size.width < 530 ? 18 : 32),
+            child: MediaQuery.of(context).size.width < 710
                 ? Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -311,17 +332,13 @@ class BeSponsor extends StatelessWidget {
                       ),
                       Container(
                         constraints: BoxConstraints(
-                            minWidth: double.infinity,
-                            minHeight:
-                                MediaQuery.of(context).size.height * 0.09),
+                            maxWidth: MediaQuery.of(context).size.width < 500
+                                ? 0.7 * MediaQuery.of(context).size.width
+                                : MediaQuery.of(context).size.width * 0.6),
                         child: FormsButtonWidget(
-                          buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
-                          backgroundColor: const Color(0xFFD36D49),
-                          onPressed: () => showDialog(
-                            context: context,
-                            builder: (context) => const SponsorFormDialog(),
-                          ),
-                        ),
+                            buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                            backgroundColor: const Color(0xFFD36D49),
+                            onPressed: openForms),
                       )
                     ],
                   )
@@ -338,13 +355,9 @@ class BeSponsor extends StatelessWidget {
                         ),
                       ),
                       FormsButtonWidget(
-                        buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
-                        backgroundColor: const Color(0xFFD36D49),
-                        onPressed: () => showDialog(
-                          context: context,
-                          builder: (context) => const SponsorFormDialog(),
-                        ),
-                      )
+                          buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                          backgroundColor: const Color(0xFFD36D49),
+                          onPressed: openForms)
                     ],
                   ),
           )
@@ -370,7 +383,7 @@ class CardDiscount extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
           color: const Color(0xFFD36D49),
-          border: Border.all(color: AppColors.brandingPurple, width: 2),
+          border: Border.all(color: AppColors.brandingBlue, width: 2),
           borderRadius: BorderRadius.circular(8)),
       child: Text.rich(
         TextSpan(style: const TextStyle(color: Colors.white), children: [
@@ -476,78 +489,123 @@ class CompanySponsor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.of(context).size.width > 900
-        ? Padding(
-            padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.2,
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                            '${s3AssetsBaseUrl}full_logo_dev.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Text(
-                    devPresentation,
-                    textAlign: TextAlign.justify,
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize:
-                            MediaQuery.of(context).size.width < 1200 ? 16 : 18),
-                  ),
-                ),
-              ],
-            ),
-          )
-        : Padding(
-            padding: const EdgeInsets.only(bottom: 16.0, left: 16, right: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                            '${s3AssetsBaseUrl}full_logo_dev.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Text(
-                    devPresentation,
-                    textAlign: TextAlign.justify,
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize:
-                            MediaQuery.of(context).size.width < 1200 ? 16 : 18),
-                  ),
-                ),
-              ],
-            ),
-          );
+    return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
+        child: Wrap(
+          alignment: WrapAlignment.spaceEvenly,
+          spacing: 48,
+          runSpacing: 16,
+          children: [
+            SponsorsWidget(link: mauaAzulLogoUrl, color: Colors.white),
+            SponsorsWidget(link: devLogoUrl, color: Colors.white),
+            SponsorsWidget(link: patrocinadorGCPLogoUrl, color: Colors.white),
+            SponsorsWidget(link: patrocinadorNubeLogoUrl, color: Colors.white),
+            SponsorsWidget(
+                link: patrocinadorVendraminiLogoUrl, color: Colors.white),
+            SponsorsWidget(link: patrocinadorCSNLogoUrl, color: Colors.white),
+          ],
+        ));
+  }
+}
+
+class EntitiesStack extends StatelessWidget {
+  const EntitiesStack({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(alignment: Alignment.bottomCenter, children: [
+      Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.width < 500
+            ? MediaQuery.of(context).size.height * 0.15
+            : MediaQuery.of(context).size.width < 1000
+                ? MediaQuery.of(context).size.height * 0.25
+                : MediaQuery.of(context).size.height * 0.60,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.contain,
+                image: CachedNetworkImageProvider(
+                  entitiesBackground,
+                ))),
+      ),
+      Padding(
+        padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.width < 500
+                ? MediaQuery.of(context).size.height / 10
+                : MediaQuery.of(context).size.width < 1000
+                    ? MediaQuery.of(context).size.height / 6
+                    : MediaQuery.of(context).size.height / 4),
+        child: Wrap(alignment: WrapAlignment.center, children: [
+          EntitiesWidget(
+              logo: atleticaLogoUrl,
+              text: '@gaspar_maua',
+              url: "https://www.instagram.com/gaspar_maua/"),
+          EntitiesWidget(
+              logo: caLogoUrl,
+              text: '@camaua',
+              url: "https://www.instagram.com/camaua/"),
+          EntitiesWidget(
+              logo: diversidadeLogoUrl,
+              text: '@diversidademaua',
+              url: "https://www.instagram.com/diversidademaua/"),
+          EntitiesWidget(
+              logo: enactusLogoUrl,
+              text: '@enactusmaua',
+              url: "https://www.instagram.com/enactusmaua/"),
+          EntitiesWidget(
+              logo: esportsLogoUrl,
+              text: '@esportsmaua',
+              url: "https://www.instagram.com/esportsmaua/"),
+          EntitiesWidget(
+              logo: inovaLogoUrl,
+              text: '@inovamaua',
+              url: "https://www.instagram.com/inovamaua/"),
+          EntitiesWidget(
+              logo: mauajrLogoUrl,
+              text: '@mauajr',
+              url: "https://www.instagram.com/mauajr/"),
+          EntitiesWidget(
+              logo: mauasocialLogoUrl,
+              text: '@mauasocial',
+              url: "https://www.instagram.com/mauasocial/"),
+          EntitiesWidget(
+              logo: mbcLogoUrl,
+              text: '@mauabusiness',
+              url: "https://www.instagram.com/mauabusinessclub/"),
+          EntitiesWidget(
+              logo: naeLogoUrl,
+              text: '@naemaua',
+              url: "https://www.instagram.com/naemaua/"),
+          EntitiesWidget(
+              logo: devLogoUrl,
+              text: '@devcommunity',
+              url: "https://www.instagram.com/devcommunitymaua/"),
+          EntitiesWidget(
+              logo: nineLogoUrl,
+              text: '@nine.maua',
+              url: "https://www.instagram.com/nine.maua/"),
+          EntitiesWidget(
+              logo: financeLogoUrl,
+              text: '@imtfinance',
+              url: "https://www.instagram.com/imtfinance/"),
+          EntitiesWidget(
+              logo: bajaLogoUrl,
+              text: '@bajamaua',
+              url: "https://www.instagram.com/bajamaua/"),
+          EntitiesWidget(
+              logo: ecomauaLogoUrl,
+              text: '@eco_maua',
+              url: "https://www.instagram.com/eco_maua/"),
+          EntitiesWidget(
+              logo: mauah2LogoUrl,
+              text: '@mauaracingh2',
+              url: "https://www.instagram.com/mauaracingh2/"),
+          EntitiesWidget(
+              logo: racingLogoUrl,
+              text: '@mauaracing',
+              url: "https://www.instagram.com/mauaracing/"),
+        ]),
+      ),
+    ]);
   }
 }

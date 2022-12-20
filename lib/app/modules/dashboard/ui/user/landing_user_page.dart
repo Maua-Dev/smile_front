@@ -22,7 +22,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
         appBar: PreferredSize(
             preferredSize:
                 Size.fromHeight(MediaQuery.of(context).size.height * 0.05),
-            child: AppBar(foregroundColor: AppColors.brandingPurple)),
+            child: AppBar(foregroundColor: AppColors.brandingBlue)),
         body: MediaQuery.of(context).size.width < 1024
             ? SafeArea(
                 child: Center(

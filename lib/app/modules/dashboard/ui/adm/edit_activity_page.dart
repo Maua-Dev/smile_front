@@ -64,7 +64,7 @@ class _EditActivityPageState extends State<EditActivityPage> {
                       width: MediaQuery.of(context).size.width * 0.25,
                       child: DropDownFieldCustom<ActivityEnum>(
                         textStyles: AppTextStyles.body.copyWith(
-                            color: AppColors.brandingPurple,
+                            color: AppColors.brandingBlue,
                             fontSize: MediaQuery.of(context).size.width < 1200
                                 ? 16
                                 : 20),
@@ -308,7 +308,7 @@ class _EditActivityPageState extends State<EditActivityPage> {
                         ),
                         padding: EdgeInsets.zero,
                         hoverColor: AppColors.lightPurple,
-                        color: AppColors.brandingPurple),
+                        color: AppColors.brandingBlue),
                     const SizedBox(
                       width: 40,
                     ),

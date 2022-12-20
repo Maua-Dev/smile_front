@@ -45,7 +45,7 @@ class UserActivityCardWidget extends StatelessWidget {
                           fontSize: MediaQuery.of(context).size.width < 1000
                               ? 18
                               : 24,
-                          color: AppColors.brandingPurple),
+                          color: AppColors.brandingBlue),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width < 1000 ? 8 : 16,
@@ -95,7 +95,7 @@ class UserActivityCardWidget extends StatelessWidget {
               ),
             ),
             Divider(
-              color: AppColors.brandingPurple,
+              color: AppColors.brandingBlue,
               thickness: 1,
             ),
           ],

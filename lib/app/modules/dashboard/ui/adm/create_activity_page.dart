@@ -63,7 +63,7 @@ class _CreateActivityPageState extends State<CreateActivityPage> {
                       width: MediaQuery.of(context).size.width * 0.25,
                       child: DropDownFieldCustom<ActivityEnum>(
                         textStyles: AppTextStyles.body.copyWith(
-                            color: AppColors.brandingPurple,
+                            color: AppColors.brandingBlue,
                             fontSize: MediaQuery.of(context).size.width < 1200
                                 ? 16
                                 : 20),

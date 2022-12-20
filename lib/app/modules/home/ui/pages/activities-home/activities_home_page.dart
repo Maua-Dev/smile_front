@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/home/presenter/controllers/activity_home
 import 'package:smile_front/app/modules/home/ui/pages/activities-home/pages/next_home_page.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
+import '../../../../../shared/utils/screen_helper.dart';
 import '../../../../../shared/widgets/text-header/text_header.dart';
 import '../../../../dashboard/domain/infra/activity_enum.dart';
 
@@ -38,9 +39,13 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
           padding: const EdgeInsets.symmetric(vertical: 24.0),
           child: TextHeader(
             title: 'Atividades',
-            leftPadding: 32,
+            leftPadding: Screen.width(context) > 530 ? 32 : 24,
             color: AppColors.brandingOrange,
-            fontSize: MediaQuery.of(context).size.width < 530 ? 28 : null,
+            fontSize: MediaQuery.of(context).size.width < 900
+                ? MediaQuery.of(context).size.width < 530
+                    ? 24
+                    : 32
+                : 48,
           ),
         ),
         SizedBox(
@@ -80,7 +85,7 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
                     shape: BoxShape.circle,
                     color: (Theme.of(context).brightness == Brightness.dark
                             ? AppColors.lightPurple
-                            : AppColors.brandingPurple)
+                            : AppColors.brandingBlue)
                         .withOpacity(_current == entry.key ? 0.9 : 0.4)),
               ),
             );

@@ -7,7 +7,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:string_validator/string_validator.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import '../../../../../shared/services/enviroment/enviroment_config.dart';
+import '../../../../../shared/services/environment/environment_config.dart';
 
 class SponsorFormDialog extends StatefulWidget {
   const SponsorFormDialog({super.key});
@@ -27,6 +27,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
       mask: '###.###.###/####-##',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
+  String? erroMsg;
   Future<void> sendForm() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
@@ -39,11 +40,19 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
 
       setLoading();
       try {
-        await dio.post('', data: formSponsorModel.toJson());
+        var res = await dio.post('', data: formSponsorModel.toJson());
         setLoading();
-        Modular.to.pop();
+        if (res.statusCode == 200) {
+          Modular.to.pop(true);
+        } else {
+          erroMsg =
+              'Erro ao enviar formulario! Entre em contato com dev@maua.br';
+          setState(() {});
+        }
       } catch (e) {
         setLoading();
+        erroMsg = 'Erro ao enviar formulario! Entre em contato com dev@maua.br';
+        setState(() {});
       }
     }
   }
@@ -101,22 +110,6 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
     ];
     var optionsClosureDate = [
       RadioListTile<String>(
-        title: const Text('Outubro de 2022 (50% de desconto)'),
-        value: 'Patrocínio Diamante',
-        groupValue: formSponsorModel.closureDate,
-        onChanged: (value) => setState(() {
-          formSponsorModel = formSponsorModel.copyWith(closureDate: value);
-        }),
-      ),
-      RadioListTile<String>(
-        title: const Text('Novembro de 2022 (40% de desconto)'),
-        value: 'Novembro de 2022 (40% de desconto)',
-        groupValue: formSponsorModel.closureDate,
-        onChanged: (value) => setState(() {
-          formSponsorModel = formSponsorModel.copyWith(closureDate: value);
-        }),
-      ),
-      RadioListTile<String>(
         title: const Text('Dezembro de 2022 (30% de desconto)'),
         value: 'Dezembro de 2022 (30% de desconto)',
         groupValue: formSponsorModel.closureDate,
@@ -125,16 +118,16 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         }),
       ),
       RadioListTile<String>(
-        title: const Text('Janeiro de 2023 (10% de desconto)'),
-        value: 'Janeiro de 2023 (10% de desconto)',
+        title: const Text('Janeiro de 2023 (20% de desconto)'),
+        value: 'Janeiro de 2023 (20% de desconto)',
         groupValue: formSponsorModel.closureDate,
         onChanged: (value) => setState(() {
           formSponsorModel = formSponsorModel.copyWith(closureDate: value);
         }),
       ),
       RadioListTile<String>(
-        title: const Text('Fevereiro de 2023 (Valor integral)'),
-        value: 'Fevereiro de 2023 (Valor integral)',
+        title: const Text('Fevereiro de 2023 (10% de desconto)'),
+        value: 'Fevereiro de 2023 (10% de desconto)',
         groupValue: formSponsorModel.closureDate,
         onChanged: (value) => setState(() {
           formSponsorModel = formSponsorModel.copyWith(closureDate: value);
@@ -180,14 +173,14 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                         TextFormCustom(
                           label: 'Email para Contato',
                           onSaved: (value) => formSponsorModel =
-                              formSponsorModel.copyWith(email: value),
+                              formSponsorModel.copyWith(email: value?.trim()),
                           validator: (text) {
                             var res = fieldIsEmpty(text);
                             if (res != null) {
                               return res;
                             }
-                            if (!isEmail(text!)) {
-                              return 'Email precisa ser valido';
+                            if (!isEmail(text!.trim())) {
+                              return 'Email precisa ser válido';
                             }
                             return null;
                           },
@@ -212,14 +205,14 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                           child: TextFormCustom(
                             label: 'Email para Contato',
                             onSaved: (value) => formSponsorModel =
-                                formSponsorModel.copyWith(email: value),
+                                formSponsorModel.copyWith(email: value?.trim()),
                             validator: (text) {
                               var res = fieldIsEmpty(text);
                               if (res != null) {
                                 return res;
                               }
-                              if (!isEmail(text!)) {
-                                return 'Email precisa ser valido';
+                              if (!isEmail(text!.trim())) {
+                                return 'Email precisa ser válido';
                               }
                               return null;
                             },
@@ -254,7 +247,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                               return res;
                             }
                             if (!isLength(text!, 18)) {
-                              return 'CNPJ precisa ser valido';
+                              return 'CNPJ precisa ser válido';
                             }
                             return null;
                           },
@@ -288,7 +281,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                                 return res;
                               }
                               if (!isLength(text!, 18)) {
-                                return 'CNPJ precisa ser valido';
+                                return 'CNPJ precisa ser válido';
                               }
                               return null;
                             },
@@ -341,18 +334,14 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                       children: [
                         Row(
                           mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Expanded(child: optionsClosureDate[0]),
-                            Expanded(child: optionsClosureDate[3])
-                          ],
+                          children: [Expanded(child: optionsClosureDate[0])],
                         ),
                         Row(
                           children: [
                             Expanded(child: optionsClosureDate[1]),
-                            Expanded(child: optionsClosureDate[4])
+                            Expanded(child: optionsClosureDate[2])
                           ],
                         ),
-                        optionsClosureDate[2]
                       ],
                     ),
             ],
@@ -362,29 +351,43 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
       backgroundColor: Colors.white,
       actionsAlignment: MainAxisAlignment.spaceAround,
       actions: [
-        OutlinedButton(
-            onPressed: () => Modular.to.pop(), child: const Text('CANCELAR')),
         Builder(builder: (context) {
-          return ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFD36D49)),
-            onPressed: _loading ? null : sendForm,
-            child: _loading
-                ? Container(
-                    width: 24,
-                    height: 24,
-                    padding: const EdgeInsets.all(2.0),
-                    child: CircularProgressIndicator(
-                      color: AppColors.brandingPurple,
-                      strokeWidth: 3,
+          if (erroMsg != null) {
+            return Text(
+              erroMsg!,
+              style: const TextStyle(color: Colors.red, fontSize: 14),
+            );
+          }
+          return Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFD36D49)),
+              onPressed: _loading ? null : sendForm,
+              child: _loading
+                  ? Container(
+                      width: 24,
+                      height: 24,
+                      padding: const EdgeInsets.all(2.0),
+                      child: CircularProgressIndicator(
+                        color: AppColors.brandingBlue,
+                        strokeWidth: 3,
+                      ),
+                    )
+                  : const Text(
+                      'ENVIAR FORMULÁRIO',
+                      style: TextStyle(color: Colors.white),
                     ),
-                  )
-                : const Text(
-                    'ENVIAR FORMULÁRIO',
-                    style: TextStyle(color: Colors.white),
-                  ),
+            ),
           );
-        })
+        }),
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Center(
+            child: OutlinedButton(
+                onPressed: () => Modular.to.pop(),
+                child: const Text('CANCELAR')),
+          ),
+        ),
       ],
     );
   }

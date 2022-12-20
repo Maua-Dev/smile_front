@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-
 import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/utils/s3_assets_url.dart';
+import '../../../../../shared/utils/screen_helper.dart';
 import '../../../utils/text_utils.dart';
 import '../../../../../shared/widgets/custom_elevated_button_widget.dart';
 
@@ -18,9 +19,9 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
   @override
   Widget build(BuildContext context) {
-    if (MediaQuery.of(context).size.width > 750) {
+    if (Screen.width(context) > cellphoneSize) {
       return SizedBox(
-        height: MediaQuery.of(context).size.height,
+        height: Screen.height(context),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -35,110 +36,137 @@ class _MainHomePageState extends State<MainHomePage> {
                     ),
                     child: Padding(
                         padding: EdgeInsets.only(
-                            right: MediaQuery.of(context).size.width < 1500
-                                ? 80
-                                : 128,
-                            bottom: 64),
+                          right: Screen.width(context) < tabletSize ? 24 : 32,
+                          bottom: 55,
+                        ),
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text('Semana Mauá de Inovação,',
-                                    style: AppTextStyles.titleH1.copyWith(
-                                        color: Colors.white,
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1500
-                                                ? 40
-                                                : 55)),
-                                Text('Liderança e Empreendedorismo',
-                                    style: AppTextStyles.titleH1.copyWith(
-                                        color: Colors.white,
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1500
-                                                ? 40
-                                                : 55)),
-                                const SizedBox(
-                                  height: 16,
+                                Container(
+                                  width: Screen.width(context) < cellphoneSize
+                                      ? 350
+                                      : Screen.width(context) * 0.5 <
+                                              cellphoneSize
+                                          ? Screen.width(context) * 0.45
+                                          : 650,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.brandingBlue,
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(10))),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(24),
+                                    child: Column(
+                                      children: [
+                                        Text('Semana Mauá de Inovação,',
+                                            style: AppTextStyles.titleH1
+                                                .copyWith(
+                                                    color: Colors.white,
+                                                    fontSize:
+                                                        Screen.width(context) <
+                                                                tabletSize
+                                                            ? 24
+                                                            : 32)),
+                                        Text('Liderança e Empreendedorismo',
+                                            style: AppTextStyles.titleH1
+                                                .copyWith(
+                                                    color: Colors.white,
+                                                    fontSize:
+                                                        Screen.width(context) <
+                                                                tabletSize
+                                                            ? 24
+                                                            : 32)),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        SizedBox(
+                                          width:
+                                              Screen.width(context) < tabletSize
+                                                  ? Screen.width(context) <
+                                                          cellphoneSize
+                                                      ? 300
+                                                      : 580
+                                                  : 820,
+                                          //580 e 820
+                                          child: Text(
+                                            apresentationText,
+                                            style: AppTextStyles.body.copyWith(
+                                                color: Colors.white,
+                                                fontSize: Screen.width(
+                                                            context) <
+                                                        tabletSize
+                                                    ? Screen.width(context) <
+                                                            cellphoneSize
+                                                        ? 16
+                                                        : 18
+                                                    : 25),
+                                            textAlign: TextAlign.justify,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width <
-                                          1500
-                                      ? 580
-                                      : MediaQuery.of(context).size.width < 1500
-                                          ? 700
-                                          : 820,
-                                  child: Text(
-                                    apresentationText,
-                                    style: AppTextStyles.body.copyWith(
-                                        color: Colors.white,
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1500
-                                                ? 19
-                                                : MediaQuery.of(context)
-                                                            .size
-                                                            .width <
-                                                        1500
-                                                    ? 22
-                                                    : 25),
-                                    textAlign: TextAlign.justify,
-                                  ),
+                                  height: Screen.width(context) < tabletSize
+                                      ? 9
+                                      : 16,
                                 ),
-                                const SizedBox(
-                                  height: 16,
+                                CustomElevatedButtonWidget(
+                                  title: '22 a 27 de Maio de 2023',
+                                  textStyle: AppTextStyles.buttonBold.copyWith(
+                                      color: Colors.white,
+                                      fontSize:
+                                          Screen.width(context) < tabletSize
+                                              ? Screen.width(context) <
+                                                      cellphoneSize
+                                                  ? 20
+                                                  : 24
+                                              : 40),
+                                  widthSize: Screen.width(context) < tabletSize
+                                      ? 320
+                                      : 500,
+                                  heightSize:
+                                      Screen.width(context) < cellphoneSize
+                                          ? 40
+                                          : 50,
+                                  borderRadius: 40,
+                                  backgroundColor: AppColors.brandingBlue,
+                                  isClickable: false,
+                                  onPressed: null,
                                 ),
-                                Container(
-                                  width: 500,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.brandingOrange,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
-                                  ),
-                                  child: Text(
-                                    '22 a 27 de Maio de 2023',
-                                    textAlign: TextAlign.center,
-                                    style: AppTextStyles.buttonBold.copyWith(
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1500
-                                                ? 40
-                                                : MediaQuery.of(context)
-                                                            .size
-                                                            .width <
-                                                        1500
-                                                    ? 48
-                                                    : 55),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 24,
-                                ),
+                                SizedBox(
+                                    height: Screen.width(context) < tabletSize
+                                        ? 9
+                                        : 16),
                                 CustomElevatedButtonWidget(
                                   title: 'SAIBA MAIS >>>',
                                   textStyle: AppTextStyles.buttonBold.copyWith(
                                       color: Colors.white,
                                       fontSize:
-                                          MediaQuery.of(context).size.width <
-                                                  1300
-                                              ? 24
-                                              : 30),
-                                  paddingHorizontal:
-                                      MediaQuery.of(context).size.width < 1300
-                                          ? 8
-                                          : 16,
-                                  paddingVertical: 8,
-                                  widthSize: 400,
-                                  heightSize: 50,
-                                  borderRadius: 20,
-                                  backgroundColor: AppColors.brandingPurple,
+                                          Screen.width(context) < tabletSize
+                                              ? Screen.width(context) <
+                                                      cellphoneSize
+                                                  ? 20
+                                                  : 24
+                                              : 40),
+                                  widthSize: Screen.width(context) < tabletSize
+                                      ? Screen.width(context) < cellphoneSize
+                                          ? 200
+                                          : 240
+                                      : 340,
+                                  heightSize:
+                                      Screen.width(context) < cellphoneSize
+                                          ? 40
+                                          : 50,
+                                  borderRadius: 40,
+                                  backgroundColor: AppColors.brandingOrange,
                                   onPressed: () {
                                     Modular.to.navigate('/home/home-more-info');
                                   },
-                                ),
+                                )
                               ]),
                         ))))
           ],
@@ -202,7 +230,7 @@ class _MainHomePageState extends State<MainHomePage> {
                   height: 20,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: AppColors.brandingPurple,
+                    color: AppColors.brandingBlue,
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                   ),
                   child: Text(

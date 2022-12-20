@@ -232,6 +232,26 @@ void main() {
     expect(controller.canSendEmails, true);
   });
 
+  test('setEmailNotifications', () {
+    controller.setEmailNotifications(true);
+    expect(controller.acceptEmailNotifications, true);
+  });
+
+  test('setSMSNotifications', () {
+    controller.setSMSNotifications(true);
+    expect(controller.acceptSMSNotifications, true);
+  });
+
+  test('setWPPNotifications', () {
+    controller.setWPPNotifications(true);
+    expect(controller.acceptWPPNotifications, true);
+  });
+
+  test('setAPPWEBNotifications', () {
+    controller.setAPPWEBNotifications(true);
+    expect(controller.acceptAPPWEBNotifications, true);
+  });
+
   test('setAcceptTermsOfUse', () {
     controller.setAcceptTermsOfUse(true);
     expect(controller.acceptTermsOfUse, true);

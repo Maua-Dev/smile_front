@@ -32,7 +32,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
           fontFamily: 'Roboto',
           colorScheme: const ColorScheme.light().copyWith(
-            primary: AppColors.brandingPurple,
+            primary: AppColors.brandingBlue,
             secondary: AppColors.brandingOrange,
           ),
           textTheme: TextTheme(
@@ -40,7 +40,7 @@ class AppWidget extends StatelessWidget {
             bodyText2: AppTextStyles.body,
           ),
           appBarTheme: AppBarTheme(
-            color: AppColors.brandingPurple,
+            color: AppColors.brandingBlue,
           ),
           scaffoldBackgroundColor: AppColors.backgroudColor),
     );

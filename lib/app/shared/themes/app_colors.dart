@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static Color get brandingPurple => const Color(0xFF2B2446);
-  static Color get brandingOrange => const Color(0xFFD35A30);
+  static Color get brandingBlue => const Color.fromARGB(255, 34, 49, 102);
+  static Color get brandingOrange => const Color.fromARGB(255, 236, 103, 7);
   static Color get lightPurple => const Color(0xFF2B2446).withOpacity(0.33);
   static Color get lightBlue => const Color(0xFFABC2D5);
   static Color get lilac => const Color(0xFFE1DFE8);

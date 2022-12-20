@@ -39,7 +39,7 @@ class CertificateWidget extends StatelessWidget {
                 style: AppTextStyles.body.copyWith(
                     fontSize:
                         MediaQuery.of(context).size.width < 1000 ? 18 : 22,
-                    color: AppColors.brandingPurple),
+                    color: AppColors.brandingBlue),
                 textAlign: TextAlign.left,
               ),
             ),
@@ -50,7 +50,7 @@ class CertificateWidget extends StatelessWidget {
                 ? const CircularProgressIndicator()
                 : Icon(
                     Icons.file_download,
-                    color: AppColors.brandingPurple,
+                    color: AppColors.brandingBlue,
                     size: 40,
                   )
           ],

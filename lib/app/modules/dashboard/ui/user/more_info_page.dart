@@ -62,7 +62,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                           : MediaQuery.of(context).size.width < 1000
                               ? 22
                               : 28,
-                      color: AppColors.brandingPurple,
+                      color: AppColors.brandingBlue,
                     ),
                   ),
                 ),
@@ -104,7 +104,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                   : MediaQuery.of(context).size.width < 1000
                                       ? 14
                                       : 18,
-                              color: AppColors.brandingPurple),
+                              color: AppColors.brandingBlue),
                         ),
                         Text(
                           weekday,
@@ -114,7 +114,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                   : MediaQuery.of(context).size.width < 1000
                                       ? 20
                                       : 24,
-                              color: AppColors.brandingPurple),
+                              color: AppColors.brandingBlue),
                         ),
                       ],
                     ),
@@ -128,7 +128,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                   : MediaQuery.of(context).size.width < 1000
                                       ? 14
                                       : 18,
-                              color: AppColors.brandingPurple),
+                              color: AppColors.brandingBlue),
                         ),
                         Text(
                           '$timeString - $finalTime',
@@ -138,7 +138,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                   : MediaQuery.of(context).size.width < 1000
                                       ? 20
                                       : 24,
-                              color: AppColors.brandingPurple),
+                              color: AppColors.brandingBlue),
                         ),
                       ],
                     ),
@@ -154,7 +154,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                     : MediaQuery.of(context).size.width < 1000
                                         ? 14
                                         : 18,
-                                color: AppColors.brandingPurple),
+                                color: AppColors.brandingBlue),
                           ),
                           Text(
                             controller.activity.location!,
@@ -165,7 +165,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                     : MediaQuery.of(context).size.width < 1000
                                         ? 20
                                         : 24,
-                                color: AppColors.brandingPurple),
+                                color: AppColors.brandingBlue),
                           ),
                         ],
                       ),
@@ -183,7 +183,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                     angle: 135 * math.pi / 180,
                                     child: Icon(
                                       Icons.link,
-                                      color: AppColors.brandingPurple,
+                                      color: AppColors.brandingBlue,
                                       size: MediaQuery.of(context).size.width <
                                               800
                                           ? 14
@@ -213,7 +213,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                                       1000
                                                   ? 20
                                                   : 24,
-                                          color: AppColors.brandingPurple)),
+                                          color: AppColors.brandingBlue)),
                                 ),
                               ],
                             ),
@@ -233,7 +233,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                         'Inscrição para a atividade indisponível!',
                         textAlign: TextAlign.center,
                         style: AppTextStyles.titleH1.copyWith(
-                            color: AppColors.brandingPurple,
+                            color: AppColors.brandingBlue,
                             fontSize: MediaQuery.of(context).size.width < 800
                                 ? 22
                                 : MediaQuery.of(context).size.width < 1000
@@ -342,7 +342,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                             : MediaQuery.of(context).size.width < 1000
                                 ? 24
                                 : 28,
-                        color: AppColors.brandingPurple)),
+                        color: AppColors.brandingBlue)),
               ),
               const SizedBox(
                 height: 8,
@@ -424,7 +424,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                                   1000
                                               ? 14
                                               : 20,
-                                      color: AppColors.brandingPurple),
+                                      color: AppColors.brandingBlue),
                                 ),
                             ],
                           ),

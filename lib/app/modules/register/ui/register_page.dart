@@ -2,7 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
+
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
+import 'package:smile_front/app/modules/register/ui/widgets/switch_toggle_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/themes/app_text_styles.dart';
@@ -12,6 +15,7 @@ import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controllers/register_controller.dart';
+import '../../../shared/services/environment/environment_config.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -22,6 +26,22 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final controller = Modular.get<RegisterController>();
+  @override
+  void initState() {
+    super.initState();
+    EnvironmentConfig.getConfig() ? null : _showDialog();
+  }
+
+  _showDialog() async {
+    await Future.delayed(const Duration(milliseconds: 50));
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return const MainstenanceAlert();
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,7 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                             Observer(builder: (_) {
                                               return Checkbox(
                                                 activeColor:
-                                                    AppColors.brandingPurple,
+                                                    AppColors.brandingBlue,
                                                 value: controller.hasSocialName,
                                                 onChanged: (bool? value) {
                                                   controller
@@ -155,7 +175,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 width: 24,
                                                 child: Checkbox(
                                                   activeColor:
-                                                      AppColors.brandingPurple,
+                                                      AppColors.brandingBlue,
                                                   value:
                                                       controller.hasSocialName,
                                                   onChanged: (bool? value) {
@@ -227,6 +247,15 @@ class _RegisterPageState extends State<RegisterPage> {
                             const SizedBox(
                               height: 20,
                             ),
+                            InputBox(
+                              icon: Icons.phone_rounded,
+                              placeholder: 'Telefone celular',
+                              setValue: controller.setPhone,
+                              isPhoneField: true,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -248,7 +277,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                             Observer(builder: (_) {
                                               return Checkbox(
                                                 activeColor:
-                                                    AppColors.brandingPurple,
+                                                    AppColors.brandingBlue,
                                                 value: controller.isMauaStudent,
                                                 onChanged: (bool? value) {
                                                   controller
@@ -277,7 +306,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 width: 24,
                                                 child: Checkbox(
                                                   activeColor:
-                                                      AppColors.brandingPurple,
+                                                      AppColors.brandingBlue,
                                                   value:
                                                       controller.isMauaStudent,
                                                   onChanged: (bool? value) {
@@ -391,7 +420,65 @@ class _RegisterPageState extends State<RegisterPage> {
                               );
                             }),
                             const SizedBox(
-                              height: 40,
+                              height: 20,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width < 650
+                                  ? MediaQuery.of(context).size.width * 0.85
+                                  : 550,
+                              height: 32,
+                              child: Text(
+                                'Meios de notificação sobre as atividades:',
+                                style: AppTextStyles.body.copyWith(
+                                  color: AppColors.white,
+                                  fontSize: 24,
+                                ),
+                                textAlign: TextAlign.start,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Observer(builder: (_) {
+                              return SwitchToggleWidget(
+                                tipo: 'email',
+                                onChanged: (bool? value) {
+                                  controller.setEmailNotifications(value);
+                                },
+                              );
+                            }),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Observer(builder: (_) {
+                              return SwitchToggleWidget(
+                                  tipo: 'sms',
+                                  onChanged: (bool? value) {
+                                    controller.setSMSNotifications(value);
+                                  });
+                            }),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Observer(builder: (_) {
+                              return SwitchToggleWidget(
+                                  tipo: 'whatsapp',
+                                  onChanged: (bool? value) {
+                                    controller.setWPPNotifications(value);
+                                  });
+                            }),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Observer(builder: (_) {
+                              return SwitchToggleWidget(
+                                  tipo: 'app/web',
+                                  onChanged: (bool? value) {
+                                    controller.setAPPWEBNotifications(value);
+                                  });
+                            }),
+                            const SizedBox(
+                              height: 30,
                             ),
                             Observer(builder: (_) {
                               return CustomElevatedButtonWidget(
@@ -453,7 +540,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   ? MediaQuery.of(context).size.width * 0.85
                                   : 600,
                               heightSize: 50,
-                              backgroundColor: AppColors.brandingPurple,
+                              backgroundColor: AppColors.brandingBlue,
                               onPressed: () {
                                 Modular.to.navigate('/login');
                               },
