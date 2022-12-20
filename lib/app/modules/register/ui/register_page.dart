@@ -151,7 +151,7 @@ class _RegisterPageState
                                             Observer(builder: (_) {
                                               return Checkbox(
                                                 activeColor:
-                                                    AppColors.brandingPurple,
+                                                    AppColors.brandingBlue,
                                                 value: controller.hasSocialName,
                                                 onChanged: (bool? value) {
                                                   controller
@@ -179,7 +179,7 @@ class _RegisterPageState
                                                 width: 24,
                                                 child: Checkbox(
                                                   activeColor:
-                                                      AppColors.brandingPurple,
+                                                      AppColors.brandingBlue,
                                                   value:
                                                       controller.hasSocialName,
                                                   onChanged: (bool? value) {
@@ -283,7 +283,7 @@ class _RegisterPageState
                                             Observer(builder: (_) {
                                               return Checkbox(
                                                 activeColor:
-                                                    AppColors.brandingPurple,
+                                                    AppColors.brandingBlue,
                                                 value: controller.isMauaStudent,
                                                 onChanged: (bool? value) {
                                                   controller
@@ -314,7 +314,7 @@ class _RegisterPageState
                                                 width: 24,
                                                 child: Checkbox(
                                                   activeColor:
-                                                      AppColors.brandingPurple,
+                                                      AppColors.brandingBlue,
                                                   value:
                                                       controller.isMauaStudent,
                                                   onChanged: (bool? value) {
@@ -492,7 +492,7 @@ class _RegisterPageState
                                   ? MediaQuery.of(context).size.width * 0.85
                                   : 600,
                               heightSize: 50,
-                              backgroundColor: AppColors.brandingPurple,
+                              backgroundColor: AppColors.brandingBlue,
                               onPressed: () {
                                 Modular.to.navigate('/login');
                               },

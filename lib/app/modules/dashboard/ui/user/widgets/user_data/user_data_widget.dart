@@ -38,7 +38,7 @@ class UserDataWidget extends StatelessWidget {
                       : MediaQuery.of(context).size.width < 1000
                           ? 40
                           : 45,
-                  color: AppColors.brandingPurple),
+                  color: AppColors.brandingBlue),
             ))
           else
             TextRenderer(
@@ -50,7 +50,7 @@ class UserDataWidget extends StatelessWidget {
                         : MediaQuery.of(context).size.width < 1000
                             ? 40
                             : 45,
-                    color: AppColors.brandingPurple),
+                    color: AppColors.brandingBlue),
               ),
             ),
           Row(
@@ -146,7 +146,7 @@ class UserDataWidget extends StatelessWidget {
                   },
                   icon: Icon(
                     Icons.edit,
-                    color: AppColors.brandingPurple,
+                    color: AppColors.brandingBlue,
                     size: MediaQuery.of(context).size.width < 1000 ? 30 : 45,
                   )),
               SizedBox(
@@ -157,7 +157,7 @@ class UserDataWidget extends StatelessWidget {
                   onPressed: logout,
                   icon: Icon(
                     Icons.logout,
-                    color: AppColors.brandingPurple,
+                    color: AppColors.brandingBlue,
                     size: MediaQuery.of(context).size.width < 1000 ? 30 : 45,
                   )),
             ],

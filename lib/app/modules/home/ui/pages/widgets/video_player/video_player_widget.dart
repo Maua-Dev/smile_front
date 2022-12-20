@@ -69,7 +69,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
         Observer(builder: (_) {
           return Container(
             padding: const EdgeInsets.symmetric(vertical: 4),
-            decoration: BoxDecoration(color: AppColors.brandingPurple),
+            decoration: BoxDecoration(color: AppColors.brandingBlue),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

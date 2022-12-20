@@ -64,7 +64,7 @@ class _MoreInfoPageState
                             : MediaQuery.of(context).size.width < 1000
                                 ? 22
                                 : 28,
-                        color: AppColors.brandingPurple,
+                        color: AppColors.brandingBlue,
                       ),
                     ),
                   ),
@@ -111,7 +111,7 @@ class _MoreInfoPageState
                                     : MediaQuery.of(context).size.width < 1000
                                         ? 14
                                         : 18,
-                                color: AppColors.brandingPurple),
+                                color: AppColors.brandingBlue),
                           ),
                         ),
                         TextRenderer(
@@ -124,7 +124,7 @@ class _MoreInfoPageState
                                     : MediaQuery.of(context).size.width < 1000
                                         ? 20
                                         : 24,
-                                color: AppColors.brandingPurple),
+                                color: AppColors.brandingBlue),
                           ),
                         ),
                       ],
@@ -141,7 +141,7 @@ class _MoreInfoPageState
                                     : MediaQuery.of(context).size.width < 1000
                                         ? 14
                                         : 18,
-                                color: AppColors.brandingPurple),
+                                color: AppColors.brandingBlue),
                           ),
                         ),
                         TextRenderer(
@@ -154,7 +154,7 @@ class _MoreInfoPageState
                                     : MediaQuery.of(context).size.width < 1000
                                         ? 20
                                         : 24,
-                                color: AppColors.brandingPurple),
+                                color: AppColors.brandingBlue),
                           ),
                         ),
                       ],
@@ -172,7 +172,7 @@ class _MoreInfoPageState
                                       : MediaQuery.of(context).size.width < 1000
                                           ? 14
                                           : 18,
-                                  color: AppColors.brandingPurple),
+                                  color: AppColors.brandingBlue),
                             ),
                           ),
                           TextRenderer(
@@ -185,7 +185,7 @@ class _MoreInfoPageState
                                       : MediaQuery.of(context).size.width < 1000
                                           ? 20
                                           : 24,
-                                  color: AppColors.brandingPurple),
+                                  color: AppColors.brandingBlue),
                             ),
                           ),
                         ],
@@ -204,7 +204,7 @@ class _MoreInfoPageState
                                     angle: 135 * math.pi / 180,
                                     child: Icon(
                                       Icons.link,
-                                      color: AppColors.brandingPurple,
+                                      color: AppColors.brandingBlue,
                                       size: MediaQuery.of(context).size.width <
                                               800
                                           ? 14
@@ -237,8 +237,7 @@ class _MoreInfoPageState
                                                             1000
                                                         ? 20
                                                         : 24,
-                                                color:
-                                                    AppColors.brandingPurple)),
+                                                color: AppColors.brandingBlue)),
                                   ),
                                 ),
                               ],
@@ -260,7 +259,7 @@ class _MoreInfoPageState
                         'Inscrição para a atividade indisponível!',
                         textAlign: TextAlign.center,
                         style: AppTextStyles.titleH1.copyWith(
-                            color: AppColors.brandingPurple,
+                            color: AppColors.brandingBlue,
                             fontSize: MediaQuery.of(context).size.width < 800
                                 ? 22
                                 : MediaQuery.of(context).size.width < 1000
@@ -370,7 +369,7 @@ class _MoreInfoPageState
                               : MediaQuery.of(context).size.width < 1000
                                   ? 24
                                   : 28,
-                          color: AppColors.brandingPurple)),
+                          color: AppColors.brandingBlue)),
                 ),
               ),
               const SizedBox(
@@ -460,7 +459,7 @@ class _MoreInfoPageState
                                                         1000
                                                     ? 14
                                                     : 20,
-                                        color: AppColors.brandingPurple),
+                                        color: AppColors.brandingBlue),
                                   ),
                                 )
                             ],

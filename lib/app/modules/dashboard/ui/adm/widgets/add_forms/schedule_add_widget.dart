@@ -119,7 +119,7 @@ class ScheduleAddWidget extends StatelessWidget {
                         child: Text(
                           'Aceitar inscrições',
                           style: AppTextStyles.titleH1.copyWith(
-                              color: AppColors.brandingPurple,
+                              color: AppColors.brandingBlue,
                               fontSize: MediaQuery.of(context).size.width < 1200
                                   ? 17
                                   : 20),
@@ -129,7 +129,7 @@ class ScheduleAddWidget extends StatelessWidget {
                         value: enableSubscription,
                         onChanged: onChangedEnableSubscription,
                         fillColor:
-                            MaterialStateProperty.all(AppColors.brandingPurple),
+                            MaterialStateProperty.all(AppColors.brandingBlue),
                         mouseCursor: SystemMouseCursors.click,
                       ),
                     ],

@@ -23,7 +23,7 @@ class RegisterButtonWidget extends StatelessWidget {
                 const EdgeInsets.symmetric(vertical: 12, horizontal: 64)),
             elevation: MaterialStateProperty.all(20),
             backgroundColor: MaterialStateProperty.all(
-                isRegistered ? AppColors.redButton : AppColors.brandingPurple),
+                isRegistered ? AppColors.redButton : AppColors.brandingBlue),
             shape: MaterialStateProperty.all(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
             )),

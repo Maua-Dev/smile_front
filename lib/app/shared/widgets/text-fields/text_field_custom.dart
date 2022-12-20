@@ -22,17 +22,17 @@ class TextFieldCustom extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         style: AppTextStyles.button
-            .copyWith(fontSize: 24, color: AppColors.brandingPurple),
+            .copyWith(fontSize: 24, color: AppColors.brandingBlue),
         decoration: InputDecoration(
           fillColor: AppColors.lightPurple,
           filled: true,
           hintText: titulo,
           hintStyle: AppTextStyles.button
-              .copyWith(fontSize: 24, color: AppColors.brandingPurple),
+              .copyWith(fontSize: 24, color: AppColors.brandingBlue),
           suffixIcon: Padding(
             padding: const EdgeInsets.only(right: 8),
             child: CircleAvatar(
-              backgroundColor: AppColors.brandingPurple,
+              backgroundColor: AppColors.brandingBlue,
               radius: 25,
               child: const Icon(
                 Icons.search,

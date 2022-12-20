@@ -81,7 +81,7 @@ class ActivityHomeState
                     shape: BoxShape.circle,
                     color: (Theme.of(context).brightness == Brightness.dark
                             ? AppColors.lightPurple
-                            : AppColors.brandingPurple)
+                            : AppColors.brandingBlue)
                         .withOpacity(_current == entry.key ? 0.9 : 0.4)),
               ),
             );

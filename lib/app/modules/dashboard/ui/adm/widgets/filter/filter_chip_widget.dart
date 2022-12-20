@@ -23,8 +23,7 @@ class FilterChipWidget extends StatelessWidget {
           onTap: onTap,
           child: Container(
             decoration: BoxDecoration(
-                color:
-                    selected ? AppColors.brandingPurple : AppColors.lightBlue,
+                color: selected ? AppColors.brandingBlue : AppColors.lightBlue,
                 borderRadius: BorderRadius.circular(45)),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -33,7 +32,7 @@ class FilterChipWidget extends StatelessWidget {
                   activityType.name,
                   textAlign: TextAlign.center,
                   style: AppTextStyles.body.copyWith(
-                    color: selected ? Colors.white : AppColors.brandingPurple,
+                    color: selected ? Colors.white : AppColors.brandingBlue,
                     fontSize: 20,
                   ),
                 ),

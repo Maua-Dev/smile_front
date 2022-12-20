@@ -30,7 +30,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
   Widget build(BuildContext context) {
     return AppBar(
         elevation: 40,
-        backgroundColor: AppColors.brandingPurple,
+        backgroundColor: AppColors.brandingBlue,
         centerTitle: false,
         leadingWidth: 0,
         title: Padding(

@@ -417,7 +417,7 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                     height: 24,
                     padding: const EdgeInsets.all(2.0),
                     child: CircularProgressIndicator(
-                      color: AppColors.brandingPurple,
+                      color: AppColors.brandingBlue,
                       strokeWidth: 3,
                     ),
                   )
