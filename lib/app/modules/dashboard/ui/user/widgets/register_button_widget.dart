@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
@@ -32,7 +33,8 @@ class RegisterButtonWidget extends StatelessWidget {
                 child: CircularProgressIndicator(
                 color: Colors.white,
               ))
-            : Text(isRegistered ? 'Desinscrever-se' : 'Inscreva-se',
+            : Text(
+                isRegistered ? S.of(context).unsubscribe : S.of(context).signUp,
                 style: AppTextStyles.buttonBold.copyWith(
                     fontSize: MediaQuery.of(context).size.width < 500
                         ? 20

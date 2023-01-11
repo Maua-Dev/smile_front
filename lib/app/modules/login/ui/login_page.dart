@@ -112,7 +112,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           ),
                         InputBox(
                           icon: Icons.person,
-                          placeholder: 'CPF ou E-mail',
+                          placeholder: S.of(context).loginUsernamePlaceholder,
                           setValue: controller.setUsername,
                           validation: controller.validateCpf,
                         ),
@@ -122,7 +122,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         Observer(builder: (context) {
                           return InputBox(
                             icon: Icons.lock,
-                            placeholder: 'Senha',
+                            placeholder: S.of(context).loginPasswordPlaceholder,
                             setValue: controller.setPassword,
                             isPassword: true,
                             onFieldSubmitted: (value) async {
@@ -164,7 +164,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           height: 16,
                         ),
                         CustomElevatedButtonWidget(
-                          title: 'Não tenho cadastro',
+                          title: S.of(context).loginWithoutRecordTitle,
                           widthSize: MediaQuery.of(context).size.width < 650
                               ? MediaQuery.of(context).size.width * 0.85
                               : 600,
@@ -189,10 +189,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           onPressed: () {
                             Modular.to.navigate('/login/esqueci-minha-senha');
                           },
-                          child: const Text(
-                            'Esqueci minha senha',
+                          child: Text(
+                            S.of(context).loginForgotPasswordTitle,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               decoration: TextDecoration.underline,
                               color: Colors.white,
                             ),
@@ -209,10 +209,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           onPressed: () {
                             Modular.to.navigate('/login/reenviar-email');
                           },
-                          child: const Text(
-                            'Reenviar e-mail de confirmação',
+                          child: Text(
+                            S.of(context).loginResendConfirmationTitle,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 decoration: TextDecoration.underline,
                                 color: Colors.white),
                           ),
@@ -240,15 +240,18 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                 },
                                 child: RichText(
                                     textAlign: TextAlign.center,
-                                    text: const TextSpan(
-                                        text:
-                                            'Em caso de erro ao se logar, envie um e-mail para: ',
-                                        style: TextStyle(
+                                    text: TextSpan(
+                                        text: S
+                                            .of(context)
+                                            .loginWarningTitle('normalPart'),
+                                        style: const TextStyle(
                                             color: Colors.white, fontSize: 16),
                                         children: [
                                           TextSpan(
-                                            text: 'dev@maua.br',
-                                            style: TextStyle(
+                                            text: S
+                                                .of(context)
+                                                .loginWarningTitle('boldPart'),
+                                            style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold),

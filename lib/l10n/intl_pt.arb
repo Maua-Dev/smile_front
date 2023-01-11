@@ -10,8 +10,8 @@
     "speakersTitle": "Principais Palestrantes - 2022",
     
     "activitiesTitle": "Atividades",
-    "activitiesOfferedName": "{activity, select, CURSOS{Cursos} PALESTRAS{Palestras} PALESTRAS_ALTO_IMPACTO{Palestras de Alto Impacto} VISITAS_TECNICAS{Visitas Técnicas} COMPETICOES_ACADEMICAS{Competições Acadêmicas} hackathon{Hackathon} FEIRA_ESTAGIOS{Feira de Estágios} CAFE_EX_ALUNOS{Café com Ex-aluno(a)} ACADEMIA_DE_PROFESSORES{Academia de Professores} ATIVIDADE_CULTURAL{Atividade Cultura} gcsp{GCSP} ATIVIDADE_ESPORTIVA{Atividade Esportiva} other{Atividades}}",
-    "activitiesOfferedDescription": "{activity, select, CURSOS{Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.} PALESTRAS{As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.} PALESTRAS_ALTO_IMPACTO{As palestras de alto impacto serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!} VISITAS_TECNICAS{Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.} COMPETICOES_ACADEMICAS{Durante a SMILE, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).} hackathon{Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa é uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.} FEIRA_ESTAGIOS{Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes.} CAFE_EX_ALUNOS{A atividade tem como objetivo promover conversas informais entre estudantes do IMT e egressos que ocupam posições de destaque em suas áreas de atuação. Venha participar!} ACADEMIA_DE_PROFESSORES{A Academia de Professores tem como foco a formação continuada, disseminação de estratégias e ferramentas de ensino para professores do IMT e professores do Ensino Médio.} ATIVIDADE_CULTURAL{Você faz parte de uma banda? Canta? Toca algum instrumento? Gosta de poesia, literatura? Faz teatro? Dança? Venha compatilhar seu talento com a gente! Será uma tarde de apresentações, integração e muita alegria no campus.} gcsp{O GCSP - Grand Challenges Scholars Program é um programa que oferece aos alunos de graduação a oportunidade de trabalhar com grandes desafios da humanidade, sendo mentorados por professores.} ATIVIDADE_ESPORTIVA{Os participantes conhecerão duas atividades interessantes: spikeball e flag football. Além disso, também serão oferecidas diversas atividades, tais como, ginástica funcional, meditação energizante e pilates! Todos os participantes poderão interagir com o(a) palestrante e professores(as)! Acompanhe e participe!} other{Atividades}}",
+    "activitiesOfferedName": "{activity, select, CURSOS{Cursos} PALESTRAS{Palestras} PALESTRAS_ALTO_IMPACTO{Palestras de Alto Impacto} VISITAS_TECNICAS{Visitas Técnicas} COMPETICOES_ACADEMICAS{Competições Acadêmicas} HACKATHON{Hackathon} FEIRA_ESTAGIOS{Feira de Estágios} CAFE_EX_ALUNOS{Café com Ex-aluno(a)} ACADEMIA_DE_PROFESSORES{Academia de Professores} ATIVIDADE_CULTURAL{Atividade Cultura} GCSP{GCSP} ATIVIDADE_ESPORTIVA{Atividade Esportiva} other{Atividades}}",
+    "activitiesOfferedDescription": "{activity, select, CURSOS{Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.} PALESTRAS{As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.} PALESTRAS_ALTO_IMPACTO{As palestras de alto impacto serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!} VISITAS_TECNICAS{Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.} COMPETICOES_ACADEMICAS{Durante a SMILE, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).} HACKATHON{Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa é uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.} FEIRA_ESTAGIOS{Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes.} CAFE_EX_ALUNOS{A atividade tem como objetivo promover conversas informais entre estudantes do IMT e egressos que ocupam posições de destaque em suas áreas de atuação. Venha participar!} ACADEMIA_DE_PROFESSORES{A Academia de Professores tem como foco a formação continuada, disseminação de estratégias e ferramentas de ensino para professores do IMT e professores do Ensino Médio.} ATIVIDADE_CULTURAL{Você faz parte de uma banda? Canta? Toca algum instrumento? Gosta de poesia, literatura? Faz teatro? Dança? Venha compatilhar seu talento com a gente! Será uma tarde de apresentações, integração e muita alegria no campus.} GCSP{O GCSP - Grand Challenges Scholars Program é um programa que oferece aos alunos de graduação a oportunidade de trabalhar com grandes desafios da humanidade, sendo mentorados por professores.} ATIVIDADE_ESPORTIVA{Os participantes conhecerão duas atividades interessantes: spikeball e flag football. Além disso, também serão oferecidas diversas atividades, tais como, ginástica funcional, meditação energizante e pilates! Todos os participantes poderão interagir com o(a) palestrante e professores(as)! Acompanhe e participe!} other{Atividades}}",
     
     "sponsorsTitle": "Patrocinadores",
     "mauaEntititesTitle": "Entidades Participantes da Smile",
@@ -25,5 +25,77 @@
     "footerHowToGet": "Como chegar",
     "footerDoubtContact": "{bold, select, normalPart1{Em caso de dúvidas, enviar um e-mail para  } boldPart1{smile.patrocinio@maua.br} normalPart2{ ou } boldPart2{smile@maua.br} normalPart3{.} other{}}",
     "footerContact": "{bold, select, normalPart1{Caso queira falar conosco, entre em contato nos números: } boldPart1{4239-3563} normalPart2{ ou } boldPart2{4239-3059} normalPart3{.} other{}}",
-    "footerDev": "{bold, select, normalPart{Criado e desenvolvido por } boldPart{Dev. Community Mauá} other{Dev. Community Mauá}}"
+    "footerDev": "{bold, select, normalPart{Criado e desenvolvido por } boldPart{Dev. Community Mauá} other{Dev. Community Mauá}}",
+    "footerLocalizationTitle": "Campus São Caetano do Sul",
+    "footerLocalizationDescription": "Praça Mauá 1 São Caetano do Sul - SP",
+
+
+
+
+    "aboutSmileTitle": "Sobre a Smile",
+    "aboutSmileDescription": "{description, select, firstParagraph{A SMILE é um evento integrador entre as áreas de Administração, Engenharia, Ciência da Computação, Design e Sistemas de Informação, que tem como objetivo apresentar novas tendências, tecnologias e conteúdos com a finalidade de incentivar o intercâmbio e a atualização de conhecimentos entre profissionais e estudantes.} secondParagraph{O evento representa uma oportunidade para de renovação e aprendizado contínuo, bem como uma excelente experiência para aprimoramento de rede de contatos, com os profissionais de diversos ramos nos âmbitos nacional e internacional. Isso faz com que eles passem a compartilhar experiências e interagir com o mercado de trabalho.} thirdParagraph{Organizado pelo Instituto Mauá de Tecnologia - IMT e aberto ao público, on-line/presencial (Híbrido).} other{}}",
+    "aboutSmileDate": "Data: 22 a 27 de maio de 2023.",
+    "signUp": "Inscreva-se",
+    "unsubscribe": "Desinscrever-se",
+
+
+
+
+    "maintenanceTitle": "O serviço de login esta em manutenção",
+    "maintenanceDescription": "Agradecemos a paciência",
+    "clickToGoBack": "Clique aqui para voltar",
+
+
+
+
+    "loginUsernamePlaceholder": "CPF ou E-mail",
+    "loginPasswordPlaceholder": "Senha",
+    "loginWithoutRecordTitle": "Não tenho cadastro",
+    "loginForgotPasswordTitle": "Esqueci minha senha",
+    "loginResendConfirmationTitle": "Reenviar e-mail de confirmação",
+    "loginWarningTitle": "{title, select, normalPart{Em caso de erro ao se logar, envie um e-mail para: } boldPart{dev@maua.br} other{}}",
+    
+    
+    
+    
+    "registerFullNamePlaceholder": "Nome Completo",
+    "registerSocialNamePlaceholder": "Nome Social",
+    "registerCPFPlaceholder": "CPF",
+    "registerEmailPlaceholder": "E-mail",
+    "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
+    "registerPhonePlaceholder": "Telefone Celular",
+    "registerStudentMauaPlaceholder": "Aluno Mauá",
+    "registerRAPlaceholder": "RA",
+    "registerConfirmPasswordPlaceholder": "Confirme sua senha",
+    "registerTerms": "{terms, select, one{Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile.} two{Li e Aceito os Termos de Uso.} three{Autorizo o envio de notificação por email, para fins de divulgação da Smile.}}",
+    "notificationsTitle": "Meios de notificação sobre as atividades:",
+    "notificationsSchemaTitle": "Quero receber notificações por ",
+    "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} whatsapp{WHATSAPP} app{APP/WEB} other{}}",
+    "registerTitle": "Cadastrar",
+    "changePasswordTitle": "Trocar senha",
+
+
+
+
+    "codeInEmailTitle": "Um código será enviado no email cadastrado:",
+    "codeInEmailInstructionsTitle": "Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.",
+    "sendTitle": "Enviar",
+    "returnLogin": "Voltar ao login",
+    "errorEmailInstructionsTitle": "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n",
+    
+    
+    
+
+    "successRegister": "Seu cadastro foi confirmado com sucesso!",
+    "successEmailSend": "E-mail enviado com sucesso!",
+
+    "successSendingCode": "Código enviado com sucesso!",
+    "errorSendingCode": "Falha ao enviar o código, e-mail não cadastrado ou não confirmado.",
+
+    "successChangePassword": "Senha alterada com sucesso!",
+    "errorChangePassword": "Falha ao tentar alterar a senha, tente novamente.",
+
+    "errorLoginInvalidConfirmation": "Não foi possível realizar o login.\n\n- Realize seu cadastro clicando no botão \"Não tenho cadastro\"\n- Seu e-mail pode não ter sido confirmado, clique em \"Reenviar e-mail de confirmação\"",
+    "errorLoginInvalidCredential": "Login e/ou senha inválidos",
+    "": ""
 }

@@ -7,6 +7,7 @@ import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widge
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/switch_toggle_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../../generated/l10n.dart';
 import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
@@ -121,7 +122,8 @@ class _RegisterPageState
                             ),
                             InputBox(
                               icon: Icons.person,
-                              placeholder: 'Nome Completo',
+                              placeholder:
+                                  S.of(context).registerFullNamePlaceholder,
                               setValue: controller.setName,
                             ),
                             const SizedBox(
@@ -157,9 +159,11 @@ class _RegisterPageState
                                               );
                                             }),
                                             const SizedBox(width: 5),
-                                            const Text(
-                                              'Nome Social',
-                                              style: TextStyle(
+                                            Text(
+                                              S
+                                                  .of(context)
+                                                  .registerSocialNamePlaceholder,
+                                              style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 14),
                                             )
@@ -188,10 +192,12 @@ class _RegisterPageState
                                             const SizedBox(
                                               height: 4,
                                             ),
-                                            const Flexible(
+                                            Flexible(
                                               child: Text(
-                                                'Nome Social',
-                                                style: TextStyle(
+                                                S
+                                                    .of(context)
+                                                    .registerSocialNamePlaceholder,
+                                                style: const TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 14),
                                               ),
@@ -206,7 +212,9 @@ class _RegisterPageState
                                   return InputBox(
                                     disable: !controller.hasSocialName,
                                     icon: Icons.person,
-                                    placeholder: 'Nome Social',
+                                    placeholder: S
+                                        .of(context)
+                                        .registerSocialNamePlaceholder,
                                     setValue: controller.setSocialName,
                                     widthSize:
                                         MediaQuery.of(context).size.width < 650
@@ -224,7 +232,7 @@ class _RegisterPageState
                             ),
                             InputBox(
                               icon: Icons.person,
-                              placeholder: 'CPF',
+                              placeholder: S.of(context).registerCPFPlaceholder,
                               setValue: controller.setCpf,
                               isCpfField: true,
                             ),
@@ -233,7 +241,8 @@ class _RegisterPageState
                             ),
                             InputBox(
                               icon: Icons.email_rounded,
-                              placeholder: 'E-mail',
+                              placeholder:
+                                  S.of(context).registerEmailPlaceholder,
                               setValue: controller.setEmail,
                             ),
                             const SizedBox(
@@ -241,7 +250,9 @@ class _RegisterPageState
                             ),
                             InputBox(
                               icon: Icons.email_rounded,
-                              placeholder: 'Confirme seu e-mail',
+                              placeholder: S
+                                  .of(context)
+                                  .registerEmailConfirmationPlaceholder,
                               setValue: controller.setVerifyEmail,
                             ),
                             const SizedBox(
@@ -249,7 +260,8 @@ class _RegisterPageState
                             ),
                             InputBox(
                               icon: Icons.phone_rounded,
-                              placeholder: 'Telefone celular',
+                              placeholder:
+                                  S.of(context).registerPhonePlaceholder,
                               setValue: controller.setPhone,
                               isPhoneField: true,
                             ),
@@ -286,10 +298,12 @@ class _RegisterPageState
                                               );
                                             }),
                                             const SizedBox(width: 5),
-                                            const Flexible(
+                                            Flexible(
                                               child: Text(
-                                                'Aluno Mauá',
-                                                style: TextStyle(
+                                                S
+                                                    .of(context)
+                                                    .registerStudentMauaPlaceholder,
+                                                style: const TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 14),
                                               ),
@@ -319,10 +333,12 @@ class _RegisterPageState
                                             const SizedBox(
                                               height: 4,
                                             ),
-                                            const Flexible(
+                                            Flexible(
                                               child: Text(
-                                                'Aluno Mauá',
-                                                style: TextStyle(
+                                                S
+                                                    .of(context)
+                                                    .registerStudentMauaPlaceholder,
+                                                style: const TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 14),
                                               ),
@@ -338,7 +354,8 @@ class _RegisterPageState
                                     isRAField: true,
                                     disable: !controller.isMauaStudent,
                                     icon: Icons.person,
-                                    placeholder: 'RA',
+                                    placeholder:
+                                        S.of(context).registerRAPlaceholder,
                                     setValue: controller.setRa,
                                     widthSize:
                                         MediaQuery.of(context).size.width < 650
@@ -357,7 +374,8 @@ class _RegisterPageState
                             Observer(builder: (context) {
                               return InputBox(
                                 icon: Icons.lock,
-                                placeholder: 'Senha',
+                                placeholder:
+                                    S.of(context).loginPasswordPlaceholder,
                                 setValue: controller.setPassword,
                                 isPassword: true,
                                 showPwd: controller.showPwd,
@@ -371,7 +389,9 @@ class _RegisterPageState
                             Observer(builder: (context) {
                               return InputBox(
                                 icon: Icons.lock,
-                                placeholder: 'Confirme sua senha',
+                                placeholder: S
+                                    .of(context)
+                                    .registerConfirmPasswordPlaceholder,
                                 setValue: controller.setVerifyPassword,
                                 isPassword: true,
                                 showPwd: controller.showConfirmPwd,
@@ -385,8 +405,7 @@ class _RegisterPageState
                             Observer(builder: (_) {
                               return CheckBoxWidget(
                                 check: controller.acceptImage,
-                                text:
-                                    'Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile.',
+                                text: S.of(context).registerTerms('one'),
                                 onChanged: (bool? value) {
                                   controller.setAcceptImage(value);
                                 },
@@ -398,7 +417,7 @@ class _RegisterPageState
                             Observer(builder: (_) {
                               return CheckBoxWidget(
                                 check: controller.acceptTermsOfUse,
-                                text: 'Li e Aceito os Termos de Uso.',
+                                text: S.of(context).registerTerms('two'),
                                 link:
                                     'https://www.maua.br/a-maua/politica-de-privacidade',
                                 onChanged: (bool? value) {
@@ -412,8 +431,7 @@ class _RegisterPageState
                             Observer(builder: (_) {
                               return CheckBoxWidget(
                                 check: controller.canSendEmails,
-                                text:
-                                    'Autorizo o envio de notificação por email, para fins de divulgação da Smile.',
+                                text: S.of(context).registerTerms('three'),
                                 onChanged: (bool? value) {
                                   controller.setCanSendEmails(value);
                                 },
@@ -428,7 +446,7 @@ class _RegisterPageState
                                   : 550,
                               height: 32,
                               child: Text(
-                                'Meios de notificação sobre as atividades:',
+                                S.of(context).notificationsTitle,
                                 style: AppTextStyles.body.copyWith(
                                   color: AppColors.white,
                                   fontSize: 24,
@@ -441,7 +459,8 @@ class _RegisterPageState
                             ),
                             Observer(builder: (_) {
                               return SwitchToggleWidget(
-                                tipo: 'email',
+                                tipo:
+                                    S.of(context).notificationsSchema('email'),
                                 onChanged: (bool? value) {
                                   controller.setEmailNotifications(value);
                                 },
@@ -452,7 +471,8 @@ class _RegisterPageState
                             ),
                             Observer(builder: (_) {
                               return SwitchToggleWidget(
-                                  tipo: 'sms',
+                                  tipo:
+                                      S.of(context).notificationsSchema('sms'),
                                   onChanged: (bool? value) {
                                     controller.setSMSNotifications(value);
                                   });
@@ -462,7 +482,9 @@ class _RegisterPageState
                             ),
                             Observer(builder: (_) {
                               return SwitchToggleWidget(
-                                  tipo: 'whatsapp',
+                                  tipo: S
+                                      .of(context)
+                                      .notificationsSchema('whatsapp'),
                                   onChanged: (bool? value) {
                                     controller.setWPPNotifications(value);
                                   });
@@ -472,7 +494,8 @@ class _RegisterPageState
                             ),
                             Observer(builder: (_) {
                               return SwitchToggleWidget(
-                                  tipo: 'app/web',
+                                  tipo:
+                                      S.of(context).notificationsSchema('app'),
                                   onChanged: (bool? value) {
                                     controller.setAPPWEBNotifications(value);
                                   });
@@ -483,7 +506,7 @@ class _RegisterPageState
                             Observer(builder: (_) {
                               return CustomElevatedButtonWidget(
                                 isLoading: controller.isLoading,
-                                title: 'Cadastrar',
+                                title: S.of(context).registerTitle,
                                 widthSize: MediaQuery.of(context).size.width <
                                         650
                                     ? MediaQuery.of(context).size.width * 0.85

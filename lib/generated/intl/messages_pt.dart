@@ -20,7 +20,17 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pt';
 
-  static String m0(activity) => "${Intl.select(activity, {
+  static String m0(description) => "${Intl.select(description, {
+            'firstParagraph':
+                'A SMILE é um evento integrador entre as áreas de Administração, Engenharia, Ciência da Computação, Design e Sistemas de Informação, que tem como objetivo apresentar novas tendências, tecnologias e conteúdos com a finalidade de incentivar o intercâmbio e a atualização de conhecimentos entre profissionais e estudantes.',
+            'secondParagraph':
+                'O evento representa uma oportunidade para de renovação e aprendizado contínuo, bem como uma excelente experiência para aprimoramento de rede de contatos, com os profissionais de diversos ramos nos âmbitos nacional e internacional. Isso faz com que eles passem a compartilhar experiências e interagir com o mercado de trabalho.',
+            'thirdParagraph':
+                'Organizado pelo Instituto Mauá de Tecnologia - IMT e aberto ao público, on-line/presencial (Híbrido).',
+            'other': '',
+          })}";
+
+  static String m1(activity) => "${Intl.select(activity, {
             'CURSOS':
                 'Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.',
             'PALESTRAS':
@@ -31,7 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.',
             'COMPETICOES_ACADEMICAS':
                 'Durante a SMILE, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).',
-            'hackathon':
+            'HACKATHON':
                 'Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa é uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.',
             'FEIRA_ESTAGIOS':
                 'Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes.',
@@ -41,30 +51,30 @@ class MessageLookup extends MessageLookupByLibrary {
                 'A Academia de Professores tem como foco a formação continuada, disseminação de estratégias e ferramentas de ensino para professores do IMT e professores do Ensino Médio.',
             'ATIVIDADE_CULTURAL':
                 'Você faz parte de uma banda? Canta? Toca algum instrumento? Gosta de poesia, literatura? Faz teatro? Dança? Venha compatilhar seu talento com a gente! Será uma tarde de apresentações, integração e muita alegria no campus.',
-            'gcsp':
+            'GCSP':
                 'O GCSP - Grand Challenges Scholars Program é um programa que oferece aos alunos de graduação a oportunidade de trabalhar com grandes desafios da humanidade, sendo mentorados por professores.',
             'ATIVIDADE_ESPORTIVA':
                 'Os participantes conhecerão duas atividades interessantes: spikeball e flag football. Além disso, também serão oferecidas diversas atividades, tais como, ginástica funcional, meditação energizante e pilates! Todos os participantes poderão interagir com o(a) palestrante e professores(as)! Acompanhe e participe!',
             'other': 'Atividades',
           })}";
 
-  static String m1(activity) => "${Intl.select(activity, {
+  static String m2(activity) => "${Intl.select(activity, {
             'CURSOS': 'Cursos',
             'PALESTRAS': 'Palestras',
             'PALESTRAS_ALTO_IMPACTO': 'Palestras de Alto Impacto',
             'VISITAS_TECNICAS': 'Visitas Técnicas',
             'COMPETICOES_ACADEMICAS': 'Competições Acadêmicas',
-            'hackathon': 'Hackathon',
+            'HACKATHON': 'Hackathon',
             'FEIRA_ESTAGIOS': 'Feira de Estágios',
             'CAFE_EX_ALUNOS': 'Café com Ex-aluno(a)',
             'ACADEMIA_DE_PROFESSORES': 'Academia de Professores',
             'ATIVIDADE_CULTURAL': 'Atividade Cultura',
-            'gcsp': 'GCSP',
+            'GCSP': 'GCSP',
             'ATIVIDADE_ESPORTIVA': 'Atividade Esportiva',
             'other': 'Atividades',
           })}";
 
-  static String m2(bold) => "${Intl.select(bold, {
+  static String m3(bold) => "${Intl.select(bold, {
             'normalPart1':
                 'Caso queira falar conosco, entre em contato nos números: ',
             'boldPart1': '4239-3563',
@@ -74,13 +84,13 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m3(bold) => "${Intl.select(bold, {
+  static String m4(bold) => "${Intl.select(bold, {
             'normalPart': 'Criado e desenvolvido por ',
             'boldPart': 'Dev. Community Mauá',
             'other': 'Dev. Community Mauá',
           })}";
 
-  static String m4(bold) => "${Intl.select(bold, {
+  static String m5(bold) => "${Intl.select(bold, {
             'normalPart1': 'Em caso de dúvidas, enviar um e-mail para  ',
             'boldPart1': 'smile.patrocinio@maua.br',
             'normalPart2': ' ou ',
@@ -89,10 +99,37 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
+  static String m6(title) => "${Intl.select(title, {
+            'normalPart': 'Em caso de erro ao se logar, envie um e-mail para: ',
+            'boldPart': 'dev@maua.br',
+            'other': '',
+          })}";
+
+  static String m7(notification) => "${Intl.select(notification, {
+            'email': 'EMAIL',
+            'sms': 'SMS',
+            'whatsapp': 'WHATSAPP',
+            'app': 'APP/WEB',
+            'other': '',
+          })}";
+
+  static String m8(terms) => "${Intl.select(terms, {
+            'one':
+                'Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile.',
+            'two': 'Li e Aceito os Termos de Uso.',
+            'three':
+                'Autorizo o envio de notificação por email, para fins de divulgação da Smile.',
+          })}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "activitiesOfferedDescription": m0,
-        "activitiesOfferedName": m1,
+        "aboutSmileDate": MessageLookupByLibrary.simpleMessage(
+            "Data: 22 a 27 de maio de 2023."),
+        "aboutSmileDescription": m0,
+        "aboutSmileTitle":
+            MessageLookupByLibrary.simpleMessage("Sobre a Smile"),
+        "activitiesOfferedDescription": m1,
+        "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
             "A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir."),
@@ -103,10 +140,32 @@ class MessageLookup extends MessageLookupByLibrary {
             "INFORMAÇÕES SOBRE PATROCÍNIO"),
         "beSponsorTitle":
             MessageLookupByLibrary.simpleMessage("Seja nosso Patrocinador"),
-        "footerContact": m2,
-        "footerDev": m3,
-        "footerDoubtContact": m4,
+        "changePasswordTitle":
+            MessageLookupByLibrary.simpleMessage("Trocar senha"),
+        "clickToGoBack":
+            MessageLookupByLibrary.simpleMessage("Clique aqui para voltar"),
+        "codeInEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
+            "Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional."),
+        "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
+            "Um código será enviado no email cadastrado:"),
+        "errorChangePassword": MessageLookupByLibrary.simpleMessage(
+            "Falha ao tentar alterar a senha, tente novamente."),
+        "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
+            "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n"),
+        "errorLoginInvalidConfirmation": MessageLookupByLibrary.simpleMessage(
+            "Não foi possível realizar o login.\n\n- Realize seu cadastro clicando no botão \"Não tenho cadastro\"\n- Seu e-mail pode não ter sido confirmado, clique em \"Reenviar e-mail de confirmação\""),
+        "errorLoginInvalidCredential":
+            MessageLookupByLibrary.simpleMessage("Login e/ou senha inválidos"),
+        "errorSendingCode": MessageLookupByLibrary.simpleMessage(
+            "Falha ao enviar o código, e-mail não cadastrado ou não confirmado."),
+        "footerContact": m3,
+        "footerDev": m4,
+        "footerDoubtContact": m5,
         "footerHowToGet": MessageLookupByLibrary.simpleMessage("Como chegar"),
+        "footerLocalizationDescription": MessageLookupByLibrary.simpleMessage(
+            "Praça Mauá 1 São Caetano do Sul - SP"),
+        "footerLocalizationTitle":
+            MessageLookupByLibrary.simpleMessage("Campus São Caetano do Sul"),
         "footerSocialMedia": MessageLookupByLibrary.simpleMessage(
             "Clique aqui para acessar as nossas redes sociais:"),
         "homePageSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -115,14 +174,64 @@ class MessageLookup extends MessageLookupByLibrary {
             "Semana Mauá de Inovação, Liderança e Empreendedorismo"),
         "initTitle": MessageLookupByLibrary.simpleMessage("Início"),
         "knowMore": MessageLookupByLibrary.simpleMessage("SAIBA MAIS >>>"),
+        "loginForgotPasswordTitle":
+            MessageLookupByLibrary.simpleMessage("Esqueci minha senha"),
+        "loginPasswordPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Senha"),
+        "loginResendConfirmationTitle": MessageLookupByLibrary.simpleMessage(
+            "Reenviar e-mail de confirmação"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
+        "loginUsernamePlaceholder":
+            MessageLookupByLibrary.simpleMessage("CPF ou E-mail"),
+        "loginWarningTitle": m6,
+        "loginWithoutRecordTitle":
+            MessageLookupByLibrary.simpleMessage("Não tenho cadastro"),
+        "maintenanceDescription":
+            MessageLookupByLibrary.simpleMessage("Agradecemos a paciência"),
+        "maintenanceTitle": MessageLookupByLibrary.simpleMessage(
+            "O serviço de login esta em manutenção"),
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
             "Entidades Participantes da Smile"),
+        "notificationsSchema": m7,
+        "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
+            "Quero receber notificações por "),
+        "notificationsTitle": MessageLookupByLibrary.simpleMessage(
+            "Meios de notificação sobre as atividades:"),
+        "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
+        "registerConfirmPasswordPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Confirme sua senha"),
+        "registerEmailConfirmationPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Confirme seu e-mail"),
+        "registerEmailPlaceholder":
+            MessageLookupByLibrary.simpleMessage("E-mail"),
+        "registerFullNamePlaceholder":
+            MessageLookupByLibrary.simpleMessage("Nome Completo"),
+        "registerPhonePlaceholder":
+            MessageLookupByLibrary.simpleMessage("Telefone Celular"),
+        "registerRAPlaceholder": MessageLookupByLibrary.simpleMessage("RA"),
+        "registerSocialNamePlaceholder":
+            MessageLookupByLibrary.simpleMessage("Nome Social"),
+        "registerStudentMauaPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Aluno Mauá"),
+        "registerTerms": m8,
+        "registerTitle": MessageLookupByLibrary.simpleMessage("Cadastrar"),
+        "returnLogin": MessageLookupByLibrary.simpleMessage("Voltar ao login"),
+        "sendTitle": MessageLookupByLibrary.simpleMessage("Enviar"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Inscreva-se"),
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("22 a 27 de Maio de 2023"),
         "speakersTitle": MessageLookupByLibrary.simpleMessage(
             "Principais Palestrantes - 2022"),
-        "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Patrocinadores")
+        "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Patrocinadores"),
+        "successChangePassword":
+            MessageLookupByLibrary.simpleMessage("Senha alterada com sucesso!"),
+        "successEmailSend":
+            MessageLookupByLibrary.simpleMessage("E-mail enviado com sucesso!"),
+        "successRegister": MessageLookupByLibrary.simpleMessage(
+            "Seu cadastro foi confirmado com sucesso!"),
+        "successSendingCode":
+            MessageLookupByLibrary.simpleMessage("Código enviado com sucesso!"),
+        "unsubscribe": MessageLookupByLibrary.simpleMessage("Desinscrever-se")
       };
 }

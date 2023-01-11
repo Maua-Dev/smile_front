@@ -9,7 +9,6 @@ import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/utils/s3_assets_url.dart';
 import '../../../../../shared/utils/screen_helper.dart';
-import '../../../utils/text_utils.dart';
 
 class Footer extends StatelessWidget {
   const Footer({Key? key}) : super(key: key);
@@ -47,14 +46,14 @@ class Footer extends StatelessWidget {
                   children: [
                     Center(
                       child: Text(
-                        localizationTitle,
+                        S.of(context).footerLocalizationTitle,
                         style: AppTextStyles.titleH1
                             .copyWith(color: Colors.white, fontSize: 12),
                       ),
                     ),
                     Center(
                       child: Text(
-                        localization,
+                        S.of(context).footerLocalizationDescription,
                         style: AppTextStyles.body
                             .copyWith(color: Colors.white, fontSize: 12),
                       ),
@@ -247,14 +246,14 @@ class Footer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        localizationTitle,
+                        S.of(context).footerLocalizationTitle,
                         style: AppTextStyles.titleH1.copyWith(
                             color: Colors.white,
                             fontSize:
                                 Screen.width(context) < tabletSize ? 16 : 20),
                       ),
                       Text(
-                        localization,
+                        S.of(context).footerLocalizationDescription,
                         style: AppTextStyles.body.copyWith(
                             color: Colors.white,
                             fontSize:

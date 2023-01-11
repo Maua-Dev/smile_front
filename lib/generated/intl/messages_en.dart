@@ -20,7 +20,17 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(activity) => "${Intl.select(activity, {
+  static String m0(description) => "${Intl.select(description, {
+            'firstParagraph':
+                'SMILE is an integrating event between the areas of Administration, Engineering, Computer Science, Design and Information Systems, which aims to present new trends, technologies and contents in order to encourage the exchange and updating of knowledge between professionals and students.',
+            'secondParagraph':
+                'The event represents an opportunity for renewal and continuous learning, as well as an excellent experience for improving the network of contacts, with professionals from different fields at national and international levels. This makes them start to share experiences and interact with the job market.',
+            'thirdParagraph':
+                'Organized by the Mauá Institute of Technology - IMT and open to the public, online/in person (Hybrid).',
+            'other': '',
+          })}";
+
+  static String m1(activity) => "${Intl.select(activity, {
             'CURSOS':
                 'The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.',
             'PALESTRAS':
@@ -31,7 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 'In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.',
             'COMPETICOES_ACADEMICAS':
                 'During SMILE, participants will be able to have fun with Academic Competition activities: League Of Legend Championship (online) and GameDev Mauá - Game Jam (in person).',
-            'hackathon':
+            'HACKATHON':
                 'Hackathons are events that bring together students, software developers, designers and other professionals, with the aim of creating innovative solutions for a specific problem in a short period of time. This is an excellent opportunity to develop your professional side, in addition to discovering new talent. The events promote a great interaction between the participants and offer prizes for the winners at the end.',
             'FEIRA_ESTAGIOS':
                 'Representatives of renowned companies will present Internship and Trainee Programs, in addition to bringing tips on selection processes, interviews, career tips and answering questions from participants.',
@@ -41,30 +51,30 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Academia de Professores focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.',
             'ATIVIDADE_CULTURAL':
                 'Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.',
-            'gcsp':
+            'GCSP':
                 'The GCSP - Grand Challenges Scholars Program is a program that offers undergraduate students the opportunity to work with the great challenges of humanity, being mentored by professors.',
             'ATIVIDADE_ESPORTIVA':
                 'Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!',
             'other': 'Activity',
           })}";
 
-  static String m1(activity) => "${Intl.select(activity, {
+  static String m2(activity) => "${Intl.select(activity, {
             'CURSOS': 'Courses',
             'PALESTRAS': 'Speeches',
             'PALESTRAS_ALTO_IMPACTO': 'High Impact Speeches',
             'VISITAS_TECNICAS': 'Technical Visits',
             'COMPETICOES_ACADEMICAS': 'Academic Competitions',
-            'hackathon': 'Hackathon',
+            'HACKATHON': 'Hackathon',
             'FEIRA_ESTAGIOS': 'Internship Fairs',
             'CAFE_EX_ALUNOS': 'Coffeee with alumni',
             'ACADEMIA_DE_PROFESSORES': 'Teachers Academy',
             'ATIVIDADE_CULTURAL': 'Cultural Activity',
-            'gcsp': 'GCSP',
+            'GCSP': 'GCSP',
             'ATIVIDADE_ESPORTIVA': 'Sport Activity',
             'other': 'Activities',
           })}";
 
-  static String m2(bold) => "${Intl.select(bold, {
+  static String m3(bold) => "${Intl.select(bold, {
             'normalPart1': 'If in doubt, send an email to ',
             'boldPart1': 'smile.patrocinio@maua.br',
             'normalPart2': ' or ',
@@ -73,13 +83,13 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Dev. Community Mauá',
           })}";
 
-  static String m3(bold) => "${Intl.select(bold, {
+  static String m4(bold) => "${Intl.select(bold, {
             'normalPart': 'Created and developed by ',
             'boldPart': 'Dev. Community Mauá',
             'other': 'Dev. Community Mauá',
           })}";
 
-  static String m4(bold) => "${Intl.select(bold, {
+  static String m5(bold) => "${Intl.select(bold, {
             'normalPart1': 'If in doubt, send an email to ',
             'boldPart1': 'smile.patrocinio@maua.br',
             'normalPart2': ' or ',
@@ -88,10 +98,37 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Dev. Community Mauá',
           })}";
 
+  static String m6(title) => "${Intl.select(title, {
+            'normalPart':
+                'In case of error when logging in, send an email to: ',
+            'boldPart': 'dev@maua.br',
+            'other': '',
+          })}";
+
+  static String m7(notification) => "${Intl.select(notification, {
+            'email': 'EMAIL',
+            'sms': 'SMS',
+            'whatsapp': 'WHATSAPP',
+            'app': 'APP/WEB',
+            'other': '',
+          })}";
+
+  static String m8(terms) => "${Intl.select(terms, {
+            'one':
+                'I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.',
+            'two': 'I have read and accept the Terms of Use.',
+            'three':
+                'I authorize the sending of notification by email, for the purposes of promoting Smile.',
+          })}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "activitiesOfferedDescription": m0,
-        "activitiesOfferedName": m1,
+        "aboutSmileDate":
+            MessageLookupByLibrary.simpleMessage("Date: May 22 to 27, 2023."),
+        "aboutSmileDescription": m0,
+        "aboutSmileTitle": MessageLookupByLibrary.simpleMessage("About Smile"),
+        "activitiesOfferedDescription": m1,
+        "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
             "SMILE brings an opportunity for partnership and integration between the labor market and academia. Become an event Sponsor and find out about the benefits and opportunities that SMILE offers. In this edition, 4 types of sponsorship quotas are available: Diamond, Gold, Silver and Bronze. In addition, when closing the sponsorship in advance, there will be a progressive discount on the quotas. Information about quotas and benefits is below."),
@@ -102,10 +139,32 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("SPONSORSHIP INFORMATION"),
         "beSponsorTitle":
             MessageLookupByLibrary.simpleMessage("Be our Sponsor"),
-        "footerContact": m2,
-        "footerDev": m3,
-        "footerDoubtContact": m4,
+        "changePasswordTitle":
+            MessageLookupByLibrary.simpleMessage("Change password"),
+        "clickToGoBack":
+            MessageLookupByLibrary.simpleMessage("Click here to return"),
+        "codeInEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
+            "You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional."),
+        "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
+            "A code will be sent to the registered email address:"),
+        "errorChangePassword": MessageLookupByLibrary.simpleMessage(
+            "Failed to change password, please try again."),
+        "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
+            "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n"),
+        "errorLoginInvalidConfirmation": MessageLookupByLibrary.simpleMessage(
+            "It was not possible to login.\n\n- Register by clicking on the \"I have no account\" button\n- Your e-mail may not have been confirmed, click on \"Resend confirmation e-mail\""),
+        "errorLoginInvalidCredential": MessageLookupByLibrary.simpleMessage(
+            "Invalid login and/or password"),
+        "errorSendingCode": MessageLookupByLibrary.simpleMessage(
+            "Failed to send code, email not registered or not confirmed."),
+        "footerContact": m3,
+        "footerDev": m4,
+        "footerDoubtContact": m5,
         "footerHowToGet": MessageLookupByLibrary.simpleMessage("How to get"),
+        "footerLocalizationDescription": MessageLookupByLibrary.simpleMessage(
+            "Praça Mauá 1 São Caetano do Sul - SP"),
+        "footerLocalizationTitle":
+            MessageLookupByLibrary.simpleMessage("Campus São Caetano do Sul"),
         "footerSocialMedia": MessageLookupByLibrary.simpleMessage(
             "Click here to access our social networks:"),
         "homePageSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -114,14 +173,64 @@ class MessageLookup extends MessageLookupByLibrary {
             "Mauá Week of Innovation, Leadership and Entrepreneurship"),
         "initTitle": MessageLookupByLibrary.simpleMessage("Home"),
         "knowMore": MessageLookupByLibrary.simpleMessage("KNOW MORE >>>"),
+        "loginForgotPasswordTitle":
+            MessageLookupByLibrary.simpleMessage("Forgot my password"),
+        "loginPasswordPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Password"),
+        "loginResendConfirmationTitle":
+            MessageLookupByLibrary.simpleMessage("Resend confirmation email"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
+        "loginUsernamePlaceholder":
+            MessageLookupByLibrary.simpleMessage("CPF or E-mail"),
+        "loginWarningTitle": m6,
+        "loginWithoutRecordTitle":
+            MessageLookupByLibrary.simpleMessage("I don\'t have a record"),
+        "maintenanceDescription":
+            MessageLookupByLibrary.simpleMessage("Thank you for your patience"),
+        "maintenanceTitle": MessageLookupByLibrary.simpleMessage(
+            "The login service is under maintenance"),
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
             "Entities Participating in Smile"),
+        "notificationsSchema": m7,
+        "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
+            "I want to receive notifications by "),
+        "notificationsTitle": MessageLookupByLibrary.simpleMessage(
+            "Means of notification about activities:"),
+        "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
+        "registerConfirmPasswordPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "registerEmailConfirmationPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Confirm your e-mail"),
+        "registerEmailPlaceholder":
+            MessageLookupByLibrary.simpleMessage("E-mail"),
+        "registerFullNamePlaceholder":
+            MessageLookupByLibrary.simpleMessage("Full Name"),
+        "registerPhonePlaceholder":
+            MessageLookupByLibrary.simpleMessage("Phone"),
+        "registerRAPlaceholder": MessageLookupByLibrary.simpleMessage("RA"),
+        "registerSocialNamePlaceholder":
+            MessageLookupByLibrary.simpleMessage("Social Name"),
+        "registerStudentMauaPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Mauá Student"),
+        "registerTerms": m8,
+        "registerTitle": MessageLookupByLibrary.simpleMessage("Cadastrar"),
+        "returnLogin": MessageLookupByLibrary.simpleMessage("Return to login"),
+        "sendTitle": MessageLookupByLibrary.simpleMessage("Send"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "smileDate": MessageLookupByLibrary.simpleMessage("May 22 to 27"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("May 22 to 27, 2023"),
         "speakersTitle":
             MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),
-        "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Sponsors")
+        "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Sponsors"),
+        "successChangePassword": MessageLookupByLibrary.simpleMessage(
+            "Password changed successfully!"),
+        "successEmailSend":
+            MessageLookupByLibrary.simpleMessage("Email successfully sent!"),
+        "successRegister": MessageLookupByLibrary.simpleMessage(
+            "Your registration has been successfully confirmed!"),
+        "successSendingCode":
+            MessageLookupByLibrary.simpleMessage("Code sent successfully!"),
+        "unsubscribe": MessageLookupByLibrary.simpleMessage("Unsubscribe")
       };
 }
