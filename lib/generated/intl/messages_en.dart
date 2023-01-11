@@ -64,6 +64,30 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Activities',
           })}";
 
+  static String m2(bold) => "${Intl.select(bold, {
+            'normalPart1': 'If in doubt, send an email to ',
+            'boldPart1': 'smile.patrocinio@maua.br',
+            'normalPart2': ' or ',
+            'boldPart2': 'smile@maua.br',
+            'normalPart3': '.',
+            'other': 'Dev. Community Mauá',
+          })}";
+
+  static String m3(bold) => "${Intl.select(bold, {
+            'normalPart': 'Created and developed by ',
+            'boldPart': 'Dev. Community Mauá',
+            'other': 'Dev. Community Mauá',
+          })}";
+
+  static String m4(bold) => "${Intl.select(bold, {
+            'normalPart1': 'If in doubt, send an email to ',
+            'boldPart1': 'smile.patrocinio@maua.br',
+            'normalPart2': ' or ',
+            'boldPart2': 'smile@maua.br',
+            'normalPart3': '.',
+            'other': 'Dev. Community Mauá',
+          })}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "activitiesOfferedDescription": m0,
@@ -78,6 +102,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("SPONSORSHIP INFORMATION"),
         "beSponsorTitle":
             MessageLookupByLibrary.simpleMessage("Be our Sponsor"),
+        "footerContact": m2,
+        "footerDev": m3,
+        "footerDoubtContact": m4,
         "footerHowToGet": MessageLookupByLibrary.simpleMessage("How to get"),
         "footerSocialMedia": MessageLookupByLibrary.simpleMessage(
             "Click here to access our social networks:"),

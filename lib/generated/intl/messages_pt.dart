@@ -64,6 +64,31 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Atividades',
           })}";
 
+  static String m2(bold) => "${Intl.select(bold, {
+            'normalPart1':
+                'Caso queira falar conosco, entre em contato nos números: ',
+            'boldPart1': '4239-3563',
+            'normalPart2': ' ou ',
+            'boldPart2': '4239-3059',
+            'normalPart3': '.',
+            'other': '',
+          })}";
+
+  static String m3(bold) => "${Intl.select(bold, {
+            'normalPart': 'Criado e desenvolvido por ',
+            'boldPart': 'Dev. Community Mauá',
+            'other': 'Dev. Community Mauá',
+          })}";
+
+  static String m4(bold) => "${Intl.select(bold, {
+            'normalPart1': 'Em caso de dúvidas, enviar um e-mail para  ',
+            'boldPart1': 'smile.patrocinio@maua.br',
+            'normalPart2': ' ou ',
+            'boldPart2': 'smile@maua.br',
+            'normalPart3': '.',
+            'other': '',
+          })}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "activitiesOfferedDescription": m0,
@@ -78,6 +103,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "INFORMAÇÕES SOBRE PATROCÍNIO"),
         "beSponsorTitle":
             MessageLookupByLibrary.simpleMessage("Seja nosso Patrocinador"),
+        "footerContact": m2,
+        "footerDev": m3,
+        "footerDoubtContact": m4,
         "footerHowToGet": MessageLookupByLibrary.simpleMessage("Como chegar"),
         "footerSocialMedia": MessageLookupByLibrary.simpleMessage(
             "Clique aqui para acessar as nossas redes sociais:"),

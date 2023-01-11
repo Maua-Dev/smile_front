@@ -31,7 +31,7 @@ class AppWidget extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       scrollBehavior: AppScrollBehavior(),
-      title: S.of(context).homePageTitle,
+      title: 'Semana Mauá de Inovação, Liderança e Empreendedorismo',
       theme: ThemeData(
           fontFamily: 'Roboto',
           colorScheme: const ColorScheme.light().copyWith(

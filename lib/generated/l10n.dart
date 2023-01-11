@@ -291,6 +291,57 @@ class S {
       args: [],
     );
   }
+
+  /// `{bold, select, normalPart1{If in doubt, send an email to } boldPart1{smile.patrocinio@maua.br} normalPart2{ or } boldPart2{smile@maua.br} normalPart3{.} other{Dev. Community Mauá}}`
+  String footerDoubtContact(Object bold) {
+    return Intl.select(
+      bold,
+      {
+        'normalPart1': 'If in doubt, send an email to ',
+        'boldPart1': 'smile.patrocinio@maua.br',
+        'normalPart2': ' or ',
+        'boldPart2': 'smile@maua.br',
+        'normalPart3': '.',
+        'other': 'Dev. Community Mauá',
+      },
+      name: 'footerDoubtContact',
+      desc: '',
+      args: [bold],
+    );
+  }
+
+  /// `{bold, select, normalPart1{If in doubt, send an email to } boldPart1{smile.patrocinio@maua.br} normalPart2{ or } boldPart2{smile@maua.br} normalPart3{.} other{Dev. Community Mauá}}`
+  String footerContact(Object bold) {
+    return Intl.select(
+      bold,
+      {
+        'normalPart1': 'If in doubt, send an email to ',
+        'boldPart1': 'smile.patrocinio@maua.br',
+        'normalPart2': ' or ',
+        'boldPart2': 'smile@maua.br',
+        'normalPart3': '.',
+        'other': 'Dev. Community Mauá',
+      },
+      name: 'footerContact',
+      desc: '',
+      args: [bold],
+    );
+  }
+
+  /// `{bold, select, normalPart{Created and developed by } boldPart{Dev. Community Mauá} other{Dev. Community Mauá}}`
+  String footerDev(Object bold) {
+    return Intl.select(
+      bold,
+      {
+        'normalPart': 'Created and developed by ',
+        'boldPart': 'Dev. Community Mauá',
+        'other': 'Dev. Community Mauá',
+      },
+      name: 'footerDev',
+      desc: '',
+      args: [bold],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
