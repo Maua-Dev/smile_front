@@ -21,18 +21,22 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
+      case TargetPlatform.windows:
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
+      case TargetPlatform.linux:
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for linux - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
@@ -50,5 +54,23 @@ class DefaultFirebaseOptions {
     authDomain: 'smile-front.firebaseapp.com',
     storageBucket: 'smile-front.appspot.com',
     measurementId: 'G-7XWJZ0CP9H',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyDir4A5nduA4ynLWDxE2NZ5JC-uiJgw7wQ',
+    appId: '1:272148621093:android:97668e732022ba7ee95ccc',
+    messagingSenderId: '272148621093',
+    projectId: 'smile-front',
+    storageBucket: 'smile-front.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyAjDK91v16je_xBFULO6BCvTEBHzt0bpmw',
+    appId: '1:272148621093:ios:d89e995dbde309a9e95ccc',
+    messagingSenderId: '272148621093',
+    projectId: 'smile-front',
+    storageBucket: 'smile-front.appspot.com',
+    iosClientId: '272148621093-81eisinrmcia6sntu65hfv7g9dgn5et1.apps.googleusercontent.com',
+    iosBundleId: 'com.example.smileFront',
   );
 }

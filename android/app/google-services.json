@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "272148621093",
+    "project_id": "smile-front",
+    "storage_bucket": "smile-front.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272148621093:android:041000cf820928ace95ccc",
+        "android_client_info": {
+          "package_name": "br.dev.smile_front"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272148621093-jdduhsjj34bqhb6d4kpslip33jp90ko0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDir4A5nduA4ynLWDxE2NZ5JC-uiJgw7wQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272148621093-jdduhsjj34bqhb6d4kpslip33jp90ko0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "272148621093-81eisinrmcia6sntu65hfv7g9dgn5et1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.smileFront"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272148621093:android:97668e732022ba7ee95ccc",
+        "android_client_info": {
+          "package_name": "com.example.smile_front"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272148621093-jdduhsjj34bqhb6d4kpslip33jp90ko0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDir4A5nduA4ynLWDxE2NZ5JC-uiJgw7wQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272148621093-jdduhsjj34bqhb6d4kpslip33jp90ko0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "272148621093-81eisinrmcia6sntu65hfv7g9dgn5et1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.smileFront"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
