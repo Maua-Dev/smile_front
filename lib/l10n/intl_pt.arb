@@ -10,6 +10,8 @@
     "knowMore": "SAIBA MAIS >>>",
     "speakersTitle": "Principais Palestrantes - 2022",
     "speakersSwipe": "DESLIZE PARA VER MAIS >>>",
+    "speakersSchemaName": "{speakers, select, nina{Nina Silva} viviane{Viviane Nunes} leila{Leila Ferreira} boris{Bóris Fabris} marco{Marco Antonio Teixeira} willian{Dr. William Schoenell} other{}}",
+    "speakersSchemaDescription": "{speakers, select, nina{Cursou administração na Universidade Federal Fluminense, teve seu primeiro contato com tecnologia no segundo ano da faculdade, em seu primeiro emprego. Foi convidada a integrar o time da empresa que trabalhava com o sistema ERP da SAP. A partir de então, aprofundou seus estudos, tirou a sua certiﬁcação e trilhou seu caminho dentro da tecnologia.} viviane{Viviane Nunes é empresária e diretora da VN Comunicação.  Especialista em relações institucionais, possui especialização em Eficiência Energética e em Gestão de Negócios em Petróleo, Gás e  Biocombustíveis. Em suas palestras são abordados assuntos voltados à estratégias, mulheres no mercado de trabalho e incentivo à formação profissional.} leila{Leila Ferreira é graduada em Jornalismo e Letras, com mestrado em Comunicação pela Universidade de Londres, trabalhou como repórter na Rede Globo Minas e, durante dez anos, apresentou o programa “Leila Entrevista”, na Rede Minas e TV Alterosa/SBT, que produziu 13 histórias internacionais. Ela é autora dos livros “Viver não dói”, “A arte de ser leve”, “Mulheres – Por que será que elas…?” e “Leila Entrevista: Bastidores”.} boris{Designer, Consultor de Design Automotivo, professor e palestrante com experiências de trabalho internacionais nos EUA, Índia, China, Europa e diversos outros países.} marco{Cientista Político, Professor e Pesquisador na área de Gestão e Políticas Públicas. Foi comentarista do programa CBNSP, da Rádio CBN, entre 2012 e 2021, onde tratou de questões ligadas aos problemas da cidade de São Paulo e suas políticas públicas. É um dos editores do Blog \"Gestão, Política & Sociedade\" abrigado no jornal O Estado de São Paulo.} willian{Se formou em Física pela Univerisade Federal de Santa Catarina, com Doutorado em Astronomia pela Universidade de Granada, trabalhou como Bolsista Técnico FAPESP para a construção de um telescópio robótico no Chile e atualmente trabalha como Especialista em Controle de Instrumentos no Observatório Gigante de Magalhães (GMT).} other{}}",
     
     "activitiesTitle": "Atividades",
     "activitiesOfferedName": "{activity, select, CURSOS{Cursos} PALESTRAS{Palestras} PALESTRAS_ALTO_IMPACTO{Palestras de Alto Impacto} VISITAS_TECNICAS{Visitas Técnicas} COMPETICOES_ACADEMICAS{Competições Acadêmicas} HACKATHON{Hackathon} FEIRA_ESTAGIOS{Feira de Estágios} CAFE_EX_ALUNOS{Café com Ex-aluno(a)} ACADEMIA_DE_PROFESSORES{Academia de Professores} ATIVIDADE_CULTURAL{Atividade Cultura} GCSP{GCSP} ATIVIDADE_ESPORTIVA{Atividade Esportiva} other{Atividades}}",
@@ -46,6 +48,8 @@
     "maintenanceTitle": "O serviço de login esta em manutenção",
     "maintenanceDescription": "Agradecemos a paciência",
     "clickToGoBack": "Clique aqui para voltar",
+    "closeTitle": "Fechar",
+    "confirmTitle": "Confirmar",
 
 
 
@@ -66,6 +70,7 @@
     "registerEmailPlaceholder": "E-mail",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
     "registerPhonePlaceholder": "Telefone Celular",
+    "registerCountryPlaceholder": "Pesquisar por país ou DDI",
     "registerStudentMauaPlaceholder": "Aluno Mauá",
     "registerRAPlaceholder": "RA",
     "registerConfirmPasswordPlaceholder": "Confirme sua senha",

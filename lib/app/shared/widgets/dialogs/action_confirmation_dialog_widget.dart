@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../generated/l10n.dart';
+
 class ActionConfirmationDialogWidget extends StatelessWidget {
   final Function()? onPressed;
   final String title;
@@ -21,7 +23,7 @@ class ActionConfirmationDialogWidget extends StatelessWidget {
       content: content != null ? Text(content!) : null,
       actions: [
         ElevatedButton(
-          child: const Text('Fechar'),
+          child: Text(S.of(context).closeTitle),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -37,7 +39,7 @@ class ActionConfirmationDialogWidget extends StatelessWidget {
                     strokeWidth: 1,
                   ),
                 )
-              : const Text('Confirmar'),
+              : Text(S.of(context).confirmTitle),
         ),
       ],
     );

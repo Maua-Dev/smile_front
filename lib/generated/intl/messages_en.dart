@@ -130,6 +130,32 @@ class MessageLookup extends MessageLookupByLibrary {
                 'I authorize the sending of notification by email, for the purposes of promoting Smile.',
           })}";
 
+  static String m11(speakers) => "${Intl.select(speakers, {
+            'nina':
+                'He studied administration at the Fluminense Federal University, had his first contact with technology in the second year of college, in his first job. She was invited to join the company\'s team that worked with the SAP ERP system. From then on, he deepened his studies, took his certification and made his way into technology.',
+            'viviane':
+                'Viviane Nunes is a businesswoman and director of VN Comunicação. Specialist in institutional relations, with specialization in Energy Efficiency and Business Management in Oil, Gas and Biofuels. In her lectures, subjects related to strategies, women in the labor market and incentives for professional training are addressed.',
+            'leila':
+                'Leila Ferreira holds a degree in Journalism and Letters, with a Masters in Communication from the University of London, worked as a reporter at Rede Globo Minas and, for ten years, presented the program “Leila Interview”, on Rede Minas and TV Alterosa/SBT, which produced 13 international stories. She is the author of the books “Living doesn\'t hurt”, “The art of being light”, “Women – Why would they…?” and “Leila Interview: Backstage”.',
+            'boris':
+                'Designer, Automotive Design Consultant, teacher and speaker with international work experiences in the US, India, China, Europe and several other countries.',
+            'marco':
+                'Political Scientist, Professor and Researcher in the area of ​​Management and Public Policy. He was a commentator for the CBNSP program, on Rádio CBN, between 2012 and 2021, where he addressed issues related to the problems of the city of São Paulo and its public policies. He is one of the editors of the Blog \"Gestão, Política & Sociedade\" housed in the newspaper O Estado de São Paulo.',
+            'willian':
+                'He graduated in Physics from the Federal University of Santa Catarina, with a PhD in Astronomy from the University of Granada, worked as a FAPESP Technical Scholarship for the construction of a robotic telescope in Chile and currently works as an Instrument Control Specialist at the Gigante de Magalhães Observatory (GMT ).',
+            'other': '',
+          })}";
+
+  static String m12(speakers) => "${Intl.select(speakers, {
+            'nina': 'Nina Silva',
+            'viviane': 'Viviane Nunes',
+            'leila': 'Leila Ferreira',
+            'boris': 'Bóris Fabris',
+            'marco': 'Marco Antonio Teixeira',
+            'willian': 'Dr. William Schoenell',
+            'other': '',
+          })}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutSmileDate":
@@ -152,6 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change password"),
         "clickToGoBack":
             MessageLookupByLibrary.simpleMessage("Click here to return"),
+        "closeTitle": MessageLookupByLibrary.simpleMessage("Close"),
         "codeInEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional."),
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
@@ -159,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmEmailNotificationSubtitle": MessageLookupByLibrary.simpleMessage(
             "You will need to access your inbox to validate your registration."),
         "confirmEmailNotificationTitle": m3,
+        "confirmTitle": MessageLookupByLibrary.simpleMessage("Confirm"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration."),
         "errorChangePassword": MessageLookupByLibrary.simpleMessage(
@@ -223,6 +251,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "registerCountryPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Search by country or DDI"),
         "registerEmailConfirmationPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirm your e-mail"),
         "registerEmailPlaceholder":
@@ -244,6 +274,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDate": MessageLookupByLibrary.simpleMessage("May 22 to 27"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("May 22 to 27, 2023"),
+        "speakersSchemaDescription": m11,
+        "speakersSchemaName": m12,
         "speakersSwipe":
             MessageLookupByLibrary.simpleMessage("SWIPE TO SEE MORE >>>"),
         "speakersTitle":

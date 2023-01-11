@@ -9,6 +9,7 @@ import 'package:smile_front/generated/l10n.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/widgets/text-header/text_header.dart';
 import '../../../../../shared/utils/screen_helper.dart';
+import '../../../domain/infra/speakers_enum.dart';
 
 class SpeakersHomePage extends StatefulWidget {
   const SpeakersHomePage({Key? key}) : super(key: key);
@@ -72,13 +73,12 @@ class _SpeakersHomePageState
                       child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
-                        itemCount: controller.listSpeakers.length,
+                        itemCount: SpeakersEnum.values.length,
                         controller: scrollController,
                         itemBuilder: (context, index) {
                           return SpeakersCardWidget(
-                            linkPhoto:
-                                controller.listSpeakers[index].linkPhoto!,
-                            name: controller.listSpeakers[index].name,
+                            linkPhoto: SpeakersEnum.values[index].linkPhoto,
+                            name: SpeakersEnum.values[index].name,
                             myIndex: index,
                             indexToShow: controller.indexToShow,
                             onTap: () {
@@ -100,13 +100,12 @@ class _SpeakersHomePageState
                         child: ListView.builder(
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
-                          itemCount: controller.listSpeakers.length,
+                          itemCount: SpeakersEnum.values.length,
                           controller: scrollController,
                           itemBuilder: (context, index) {
                             return SpeakersCardWidget(
-                              linkPhoto:
-                                  controller.listSpeakers[index].linkPhoto!,
-                              name: controller.listSpeakers[index].name,
+                              linkPhoto: SpeakersEnum.values[index].linkPhoto,
+                              name: SpeakersEnum.values[index].name,
                               myIndex: index,
                               indexToShow: controller.indexToShow,
                               onTap: () {
@@ -122,7 +121,7 @@ class _SpeakersHomePageState
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Text(
-                        controller.listSpeakers[controller.indexToShow].name,
+                        SpeakersEnum.values[controller.indexToShow].name,
                         style: AppTextStyles.button.copyWith(
                             fontSize: Screen.width(context) < 1000 ? 22 : 32,
                             color: Colors.white,
@@ -132,7 +131,7 @@ class _SpeakersHomePageState
                   ),
                   Flexible(
                     child: Text(
-                      controller.listSpeakers[controller.indexToShow].bio,
+                      SpeakersEnum.values[controller.indexToShow].description,
                       textAlign: TextAlign.justify,
                       style: AppTextStyles.button.copyWith(
                           fontSize: Screen.width(context) < 1000

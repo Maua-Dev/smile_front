@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 class InputBox extends StatelessWidget {
   final IconData icon;
@@ -96,7 +97,7 @@ class InputBox extends StatelessWidget {
                     initialValue: number,
                     searchBoxDecoration: InputDecoration(
                       fillColor: AppColors.brandingBlue,
-                      hintText: 'Pesquisar por país ou DDI',
+                      hintText: S.of(context).registerCountryPlaceholder,
                       hintStyle: TextStyle(color: AppColors.brandingBlue),
                     ),
                     selectorTextStyle: TextStyle(
@@ -110,7 +111,7 @@ class InputBox extends StatelessWidget {
                       prefixIcon: Icon(icon, size: 24),
                       contentPadding: const EdgeInsets.only(bottom: 6),
                       border: InputBorder.none,
-                      hintText: 'Telefone Celular',
+                      hintText: S.of(context).registerPhonePlaceholder,
                       hintStyle: TextStyle(color: AppColors.placeholder),
                     ),
                   ),

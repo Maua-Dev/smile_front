@@ -130,6 +130,32 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Autorizo o envio de notificação por email, para fins de divulgação da Smile.',
           })}";
 
+  static String m11(speakers) => "${Intl.select(speakers, {
+            'nina':
+                'Cursou administração na Universidade Federal Fluminense, teve seu primeiro contato com tecnologia no segundo ano da faculdade, em seu primeiro emprego. Foi convidada a integrar o time da empresa que trabalhava com o sistema ERP da SAP. A partir de então, aprofundou seus estudos, tirou a sua certiﬁcação e trilhou seu caminho dentro da tecnologia.',
+            'viviane':
+                'Viviane Nunes é empresária e diretora da VN Comunicação.  Especialista em relações institucionais, possui especialização em Eficiência Energética e em Gestão de Negócios em Petróleo, Gás e  Biocombustíveis. Em suas palestras são abordados assuntos voltados à estratégias, mulheres no mercado de trabalho e incentivo à formação profissional.',
+            'leila':
+                'Leila Ferreira é graduada em Jornalismo e Letras, com mestrado em Comunicação pela Universidade de Londres, trabalhou como repórter na Rede Globo Minas e, durante dez anos, apresentou o programa “Leila Entrevista”, na Rede Minas e TV Alterosa/SBT, que produziu 13 histórias internacionais. Ela é autora dos livros “Viver não dói”, “A arte de ser leve”, “Mulheres – Por que será que elas…?” e “Leila Entrevista: Bastidores”.',
+            'boris':
+                'Designer, Consultor de Design Automotivo, professor e palestrante com experiências de trabalho internacionais nos EUA, Índia, China, Europa e diversos outros países.',
+            'marco':
+                'Cientista Político, Professor e Pesquisador na área de Gestão e Políticas Públicas. Foi comentarista do programa CBNSP, da Rádio CBN, entre 2012 e 2021, onde tratou de questões ligadas aos problemas da cidade de São Paulo e suas políticas públicas. É um dos editores do Blog \"Gestão, Política & Sociedade\" abrigado no jornal O Estado de São Paulo.',
+            'willian':
+                'Se formou em Física pela Univerisade Federal de Santa Catarina, com Doutorado em Astronomia pela Universidade de Granada, trabalhou como Bolsista Técnico FAPESP para a construção de um telescópio robótico no Chile e atualmente trabalha como Especialista em Controle de Instrumentos no Observatório Gigante de Magalhães (GMT).',
+            'other': '',
+          })}";
+
+  static String m12(speakers) => "${Intl.select(speakers, {
+            'nina': 'Nina Silva',
+            'viviane': 'Viviane Nunes',
+            'leila': 'Leila Ferreira',
+            'boris': 'Bóris Fabris',
+            'marco': 'Marco Antonio Teixeira',
+            'willian': 'Dr. William Schoenell',
+            'other': '',
+          })}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutSmileDate": MessageLookupByLibrary.simpleMessage(
@@ -153,6 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Trocar senha"),
         "clickToGoBack":
             MessageLookupByLibrary.simpleMessage("Clique aqui para voltar"),
+        "closeTitle": MessageLookupByLibrary.simpleMessage("Fechar"),
         "codeInEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional."),
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
@@ -160,6 +187,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmEmailNotificationSubtitle": MessageLookupByLibrary.simpleMessage(
             "Será necessário acessar sua caixa de entrada para validar seu cadastro."),
         "confirmEmailNotificationTitle": m3,
+        "confirmTitle": MessageLookupByLibrary.simpleMessage("Confirmar"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
         "errorChangePassword": MessageLookupByLibrary.simpleMessage(
@@ -224,6 +252,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme sua senha"),
+        "registerCountryPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Pesquisar por país ou DDI"),
         "registerEmailConfirmationPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme seu e-mail"),
         "registerEmailPlaceholder":
@@ -245,6 +275,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("22 a 27 de Maio de 2023"),
+        "speakersSchemaDescription": m11,
+        "speakersSchemaName": m12,
         "speakersSwipe":
             MessageLookupByLibrary.simpleMessage("DESLIZE PARA VER MAIS >>>"),
         "speakersTitle": MessageLookupByLibrary.simpleMessage(
