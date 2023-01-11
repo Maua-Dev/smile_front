@@ -110,14 +110,6 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
     ];
     var optionsClosureDate = [
       RadioListTile<String>(
-        title: const Text('Dezembro de 2022 (30% de desconto)'),
-        value: 'Dezembro de 2022 (30% de desconto)',
-        groupValue: formSponsorModel.closureDate,
-        onChanged: (value) => setState(() {
-          formSponsorModel = formSponsorModel.copyWith(closureDate: value);
-        }),
-      ),
-      RadioListTile<String>(
         title: const Text('Janeiro de 2023 (20% de desconto)'),
         value: 'Janeiro de 2023 (20% de desconto)',
         groupValue: formSponsorModel.closureDate,
@@ -339,7 +331,6 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                         Row(
                           children: [
                             Expanded(child: optionsClosureDate[1]),
-                            Expanded(child: optionsClosureDate[2])
                           ],
                         ),
                       ],
