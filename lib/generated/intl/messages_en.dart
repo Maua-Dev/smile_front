@@ -114,7 +114,49 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m9(notification) => "${Intl.select(notification, {
+  static String m9(entity) => "${Intl.select(entity, {
+            'atletica': 'https://www.instagram.com/gaspar_maua/',
+            'ca': 'https://www.instagram.com/camaua/',
+            'diversidade': 'https://www.instagram.com/diversidademaua/',
+            'enactus': 'https://www.instagram.com/enactusmaua/',
+            'esports': 'https://www.instagram.com/esportsmaua/',
+            'inova': 'https://www.instagram.com/inovamaua/',
+            'mauajr': 'https://www.instagram.com/mauajr/',
+            'mauasocial': 'https://www.instagram.com/mauasocial/',
+            'mbc': 'https://www.instagram.com/mauabusinessclub/',
+            'nae': 'https://www.instagram.com/naemaua/',
+            'dev': 'https://www.instagram.com/devcommunitymaua/',
+            'nine': 'https://www.instagram.com/nine.maua/',
+            'finance': 'https://www.instagram.com/imtfinance/',
+            'baja': 'https://www.instagram.com/bajamaua/',
+            'ecomaua': 'https://www.instagram.com/eco_maua/',
+            'mauaracing2': 'https://www.instagram.com/mauaracingh2/',
+            'mauaracing': 'https://www.instagram.com/mauaracing/',
+            'other': '',
+          })}";
+
+  static String m10(entity) => "${Intl.select(entity, {
+            'atletica': '@gaspar_maua',
+            'ca': '@camaua',
+            'diversidade': '@diversidademaua',
+            'enactus': '@enactusmaua',
+            'esports': '@esportsmaua',
+            'inova': '@inovamaua',
+            'mauajr': '@mauajr',
+            'mauasocial': '@mauasocial',
+            'mbc': '@mauabusiness',
+            'nae': '@naemaua',
+            'dev': '@devcommunitymaua',
+            'nine': '@nine.maua',
+            'finance': '@imtfinance',
+            'baja': '@bajamaua',
+            'ecomaua': '@eco_maua',
+            'mauaracing2': '@mauaracingh2',
+            'mauaracing': '@mauaracing',
+            'other': '',
+          })}";
+
+  static String m11(notification) => "${Intl.select(notification, {
             'email': 'EMAIL',
             'sms': 'SMS',
             'whatsapp': 'WHATSAPP',
@@ -122,7 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m10(terms) => "${Intl.select(terms, {
+  static String m12(terms) => "${Intl.select(terms, {
             'one':
                 'I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.',
             'two': 'I have read and accept the Terms of Use.',
@@ -130,7 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 'I authorize the sending of notification by email, for the purposes of promoting Smile.',
           })}";
 
-  static String m11(speakers) => "${Intl.select(speakers, {
+  static String m13(speakers) => "${Intl.select(speakers, {
             'nina':
                 'He studied administration at the Fluminense Federal University, had his first contact with technology in the second year of college, in his first job. She was invited to join the company\'s team that worked with the SAP ERP system. From then on, he deepened his studies, took his certification and made his way into technology.',
             'viviane':
@@ -146,7 +188,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m12(speakers) => "${Intl.select(speakers, {
+  static String m14(speakers) => "${Intl.select(speakers, {
             'nina': 'Nina Silva',
             'viviane': 'Viviane Nunes',
             'leila': 'Leila Ferreira',
@@ -240,10 +282,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thank you for your patience"),
         "maintenanceTitle": MessageLookupByLibrary.simpleMessage(
             "The login service is under maintenance"),
+        "mauaEntitiesSchemaInstagramUrl": m9,
+        "mauaEntitiesSchemaSocialMidia": m10,
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
             "Entities Participating in Smile"),
         "noTitle": MessageLookupByLibrary.simpleMessage("No"),
-        "notificationsSchema": m9,
+        "notificationsSchema": m11,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
             "I want to receive notifications by "),
         "notificationsTitle": MessageLookupByLibrary.simpleMessage(
@@ -266,7 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Social Name"),
         "registerStudentMauaPlaceholder":
             MessageLookupByLibrary.simpleMessage("Mauá Student"),
-        "registerTerms": m10,
+        "registerTerms": m12,
         "registerTitle": MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "returnLogin": MessageLookupByLibrary.simpleMessage("Return to login"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Send"),
@@ -274,8 +318,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDate": MessageLookupByLibrary.simpleMessage("May 22 to 27"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("May 22 to 27, 2023"),
-        "speakersSchemaDescription": m11,
-        "speakersSchemaName": m12,
+        "speakersSchemaDescription": m13,
+        "speakersSchemaName": m14,
         "speakersSwipe":
             MessageLookupByLibrary.simpleMessage("SWIPE TO SEE MORE >>>"),
         "speakersTitle":

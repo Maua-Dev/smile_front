@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/modules/home/domain/infra/maua_entities_enum.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
@@ -536,76 +537,13 @@ class EntitiesStack extends StatelessWidget {
                 : MediaQuery.of(context).size.width < 1000
                     ? MediaQuery.of(context).size.height / 6
                     : MediaQuery.of(context).size.height / 4),
-        child: Wrap(alignment: WrapAlignment.center, children: [
-          EntitiesWidget(
-              logo: atleticaLogoUrl,
-              text: '@gaspar_maua',
-              url: "https://www.instagram.com/gaspar_maua/"),
-          EntitiesWidget(
-              logo: caLogoUrl,
-              text: '@camaua',
-              url: "https://www.instagram.com/camaua/"),
-          EntitiesWidget(
-              logo: diversidadeLogoUrl,
-              text: '@diversidademaua',
-              url: "https://www.instagram.com/diversidademaua/"),
-          EntitiesWidget(
-              logo: enactusLogoUrl,
-              text: '@enactusmaua',
-              url: "https://www.instagram.com/enactusmaua/"),
-          EntitiesWidget(
-              logo: esportsLogoUrl,
-              text: '@esportsmaua',
-              url: "https://www.instagram.com/esportsmaua/"),
-          EntitiesWidget(
-              logo: inovaLogoUrl,
-              text: '@inovamaua',
-              url: "https://www.instagram.com/inovamaua/"),
-          EntitiesWidget(
-              logo: mauajrLogoUrl,
-              text: '@mauajr',
-              url: "https://www.instagram.com/mauajr/"),
-          EntitiesWidget(
-              logo: mauasocialLogoUrl,
-              text: '@mauasocial',
-              url: "https://www.instagram.com/mauasocial/"),
-          EntitiesWidget(
-              logo: mbcLogoUrl,
-              text: '@mauabusiness',
-              url: "https://www.instagram.com/mauabusinessclub/"),
-          EntitiesWidget(
-              logo: naeLogoUrl,
-              text: '@naemaua',
-              url: "https://www.instagram.com/naemaua/"),
-          EntitiesWidget(
-              logo: devLogoUrl,
-              text: '@devcommunity',
-              url: "https://www.instagram.com/devcommunitymaua/"),
-          EntitiesWidget(
-              logo: nineLogoUrl,
-              text: '@nine.maua',
-              url: "https://www.instagram.com/nine.maua/"),
-          EntitiesWidget(
-              logo: financeLogoUrl,
-              text: '@imtfinance',
-              url: "https://www.instagram.com/imtfinance/"),
-          EntitiesWidget(
-              logo: bajaLogoUrl,
-              text: '@bajamaua',
-              url: "https://www.instagram.com/bajamaua/"),
-          EntitiesWidget(
-              logo: ecomauaLogoUrl,
-              text: '@eco_maua',
-              url: "https://www.instagram.com/eco_maua/"),
-          EntitiesWidget(
-              logo: mauah2LogoUrl,
-              text: '@mauaracingh2',
-              url: "https://www.instagram.com/mauaracingh2/"),
-          EntitiesWidget(
-              logo: racingLogoUrl,
-              text: '@mauaracing',
-              url: "https://www.instagram.com/mauaracing/"),
-        ]),
+        child: Wrap(
+            alignment: WrapAlignment.center,
+            children: MauaEntitiesEnum.values
+                .map((e) => EntitiesWidget(
+                      entity: e,
+                    ))
+                .toList()),
       ),
     ]);
   }

@@ -23,7 +23,7 @@ class VerticalNavBarWidget extends StatelessWidget {
           padding: const EdgeInsets.only(top: 32.0),
           child: Column(children: [
             VerticalNavBarButtonWidget(
-              buttonText: 'INÍCIO',
+              buttonText: S.of(context).initTitle.toUpperCase(),
               indexToShow: controller.indexToShow,
               icon: Icons.home,
               myIndex: 0,
