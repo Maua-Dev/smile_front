@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/widgets/speakers_card_widget.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/widgets/text-header/text_header.dart';
 import '../../../../../shared/utils/screen_helper.dart';
@@ -27,7 +28,7 @@ class _SpeakersHomePageState
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 24.0),
           child: TextHeader(
-            title: 'Principais Palestrantes - 2022',
+            title: S.of(context).speakersTitle,
             leftPadding: Screen.width(context) > 530 ? 32 : 24,
             color: AppColors.brandingOrange,
             fontSize: MediaQuery.of(context).size.width < 900

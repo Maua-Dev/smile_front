@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../generated/l10n.dart';
 import '../../../modules/home/ui/pages/widgets/appbar_button_widget.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/app_text_styles.dart';
@@ -36,7 +37,7 @@ class EndDrawerWidget extends StatelessWidget {
           ),
           ListTile(
             title: Text(
-              'ATIVIDADES',
+              S.of(context).activitiesTitle,
               style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
             ),
             onTap: () {
@@ -46,7 +47,7 @@ class EndDrawerWidget extends StatelessWidget {
           ),
           ListTile(
             title: Text(
-              'PATROCINADORES',
+              S.of(context).sponsorsTitle.toUpperCase(),
               style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
             ),
             onTap: () {
@@ -56,7 +57,7 @@ class EndDrawerWidget extends StatelessWidget {
           ),
           ListTile(
             title: AppbarButtonWidget(
-              title: 'LOGIN',
+              title: S.of(context).loginTitle.toUpperCase(),
               textStyle: AppTextStyles.buttonBold
                   .copyWith(color: Colors.white, fontSize: 16),
               paddingHorizontal: 8,

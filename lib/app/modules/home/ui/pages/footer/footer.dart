@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/social_media_icons_widget.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
+import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
@@ -89,7 +90,7 @@ class Footer extends StatelessWidget {
                                 size: 15,
                               ),
                               label: Text(
-                                'COMO CHEGAR',
+                                S.of(context).footerHowToGet.toUpperCase(),
                                 style: AppTextStyles.body.copyWith(
                                     color: Colors.white,
                                     fontSize:
@@ -229,7 +230,7 @@ class Footer extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'Clique aqui para acessar as nossas redes sociais:',
+                        S.of(context).footerSocialMedia,
                         textAlign: TextAlign.center,
                         style: AppTextStyles.body.copyWith(
                             color: Colors.white,
@@ -307,7 +308,7 @@ class Footer extends StatelessWidget {
                             color: Colors.white,
                           ),
                           label: Text(
-                            'COMO CHEGAR',
+                            S.of(context).footerHowToGet.toUpperCase(),
                             style: AppTextStyles.body.copyWith(
                                 color: Colors.white,
                                 fontSize: Screen.width(context) < tabletSize

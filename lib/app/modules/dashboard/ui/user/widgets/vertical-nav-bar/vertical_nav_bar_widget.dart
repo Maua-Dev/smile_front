@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/vertical-nav-bar/nav_bar_button_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 
@@ -48,7 +49,7 @@ class VerticalNavBarWidget extends StatelessWidget {
               height: 32,
             ),
             VerticalNavBarButtonWidget(
-              buttonText: 'ATIVIDADES',
+              buttonText: S.of(context).activitiesTitle.toUpperCase(),
               indexToShow: controller.indexToShow,
               myIndex: 2,
               onPressed: () async {

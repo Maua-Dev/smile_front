@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/utils/s3_assets_url.dart';
 import '../../../../../shared/utils/screen_helper.dart';
-import '../../../utils/text_utils.dart';
 import '../../../../../shared/widgets/custom_elevated_button_widget.dart';
 
 class MainHomePage extends StatefulWidget {
@@ -91,7 +91,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                                   : 820,
                                           //580 e 820
                                           child: Text(
-                                            apresentationText,
+                                            S.of(context).homePageSubtitle,
                                             style: AppTextStyles.body.copyWith(
                                                 color: Colors.white,
                                                 fontSize: Screen.width(
@@ -115,7 +115,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                       : 16,
                                 ),
                                 CustomElevatedButtonWidget(
-                                  title: '22 a 27 de Maio de 2023',
+                                  title: S.of(context).smileDateWithYear,
                                   textStyle: AppTextStyles.buttonBold.copyWith(
                                       color: Colors.white,
                                       fontSize:
@@ -142,7 +142,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         ? 9
                                         : 16),
                                 CustomElevatedButtonWidget(
-                                  title: 'SAIBA MAIS >>>',
+                                  title: S.of(context).knowMore,
                                   textStyle: AppTextStyles.buttonBold.copyWith(
                                       color: Colors.white,
                                       fontSize:
@@ -180,23 +180,23 @@ class _MainHomePageState extends State<MainHomePage> {
                 '${previousEditionsBaseUrl}main_home.png'),
             fit: BoxFit.fitWidth,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8),
             child: Center(
               child: Text(
-                'Semana Mauá de Inovação, Liderança e Empreendedorismo',
+                S.of(context).homePageTitle,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 32, right: 32),
+          Padding(
+            padding: const EdgeInsets.only(left: 32, right: 32),
             child: Text(
-              apresentationText,
-              style: TextStyle(fontSize: 12),
+              S.of(context).homePageSubtitle,
+              style: const TextStyle(fontSize: 12),
               textAlign: TextAlign.justify,
             ),
           ),
@@ -212,7 +212,7 @@ class _MainHomePageState extends State<MainHomePage> {
               borderRadius: const BorderRadius.all(Radius.circular(20)),
             ),
             child: Text(
-              '22 a 27 de Maio',
+              S.of(context).smileDate,
               textAlign: TextAlign.center,
               style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
             ),
@@ -234,7 +234,7 @@ class _MainHomePageState extends State<MainHomePage> {
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                   ),
                   child: Text(
-                    'SAIBA MAIS >>>',
+                    S.of(context).knowMore,
                     textAlign: TextAlign.center,
                     style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
                   ),

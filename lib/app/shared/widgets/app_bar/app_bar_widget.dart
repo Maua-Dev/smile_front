@@ -106,7 +106,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
             : [
                 if (MediaQuery.of(context).size.width > 1024)
                   AppbarButtonWidget(
-                    title: S.of(context).homeInit,
+                    title: S.of(context).initTitle.toUpperCase(),
                     paddingHorizontal:
                         MediaQuery.of(context).size.width < 1300 ? 8 : 16,
                     paddingVertical: 8,
@@ -116,7 +116,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                   ),
                 if (MediaQuery.of(context).size.width > 1024)
                   AppbarButtonWidget(
-                    title: 'ATIVIDADES',
+                    title: S.of(context).activitiesTitle.toUpperCase(),
                     paddingHorizontal:
                         MediaQuery.of(context).size.width < 1300 ? 8 : 16,
                     paddingVertical: 8,
@@ -126,7 +126,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                   ),
                 if (MediaQuery.of(context).size.width > 1024)
                   AppbarButtonWidget(
-                    title: 'PATROCINADORES',
+                    title: S.of(context).sponsorsTitle.toUpperCase(),
                     paddingHorizontal:
                         MediaQuery.of(context).size.width < 1300 ? 8 : 16,
                     paddingVertical: 8,
@@ -138,7 +138,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                   Padding(
                     padding: const EdgeInsets.only(right: 24),
                     child: AppbarButtonWidget(
-                      title: 'LOGIN',
+                      title: S.of(context).loginTitle.toUpperCase(),
                       textStyle: AppTextStyles.buttonBold.copyWith(
                           color: Colors.white,
                           fontSize: MediaQuery.of(context).size.width < 1300

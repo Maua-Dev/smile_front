@@ -42,7 +42,7 @@ class _AdmDashboardPageState
                     children: [
                       LogoutButtonWidget(
                         backgroundColor: AppColors.brandingOrange,
-                        buttonTittle: S.of(context).homeInit,
+                        buttonTittle: S.of(context).initTitle.toUpperCase(),
                         onPressed: () {
                           Modular.to.navigate('/home');
                         },

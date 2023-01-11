@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widg
 import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/utils/screen_helper.dart';
 import '../../../../../shared/widgets/text-header/text_header.dart';
@@ -24,7 +25,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
       child: Column(
         children: [
           TextHeader(
-            title: 'Patrocinadores',
+            title: S.of(context).sponsorsTitle,
             leftPadding: Screen.width(context) > 530 ? 32 : 24,
             color: AppColors.brandingBlue,
             fontSize: MediaQuery.of(context).size.width < 900
@@ -37,7 +38,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24),
             child: TextHeader(
-              title: 'Entidades Participantes da SMILE',
+              title: S.of(context).mauaEntititesTitle,
               leftPadding: Screen.width(context) > 530 ? 32 : 24,
               color: AppColors.brandingOrange,
               fontSize: MediaQuery.of(context).size.width < 530
@@ -165,7 +166,7 @@ class BeSponsor extends StatelessWidget {
                     ? const EdgeInsets.all(8.0)
                     : const EdgeInsets.all(0.0),
                 child: Text(
-                  'Seja nosso Patrocinador',
+                  S.of(context).beSponsorTitle,
                   style: TextStyle(
                       fontSize:
                           MediaQuery.of(context).size.width < 530 ? 28 : 35,
@@ -183,9 +184,9 @@ class BeSponsor extends StatelessWidget {
               )
             ],
           ),
-          const Text(
-            'A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir.',
-            style: TextStyle(fontSize: 16),
+          Text(
+            S.of(context).beSponsorDescription,
+            style: const TextStyle(fontSize: 16),
             textAlign: TextAlign.justify,
           ),
           const SizedBox(
@@ -199,9 +200,9 @@ class BeSponsor extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18)),
             child: Column(
               children: [
-                const Text(
-                  'DESCONTOS',
-                  style: TextStyle(fontSize: 24),
+                Text(
+                  S.of(context).beSponsorDiscount,
+                  style: const TextStyle(fontSize: 24),
                 ),
                 MediaQuery.of(context).size.width < 530
                     ? Column(
@@ -319,12 +320,12 @@ class BeSponsor extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         width: 300,
                         child: Text(
-                          'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
+                          S.of(context).beSponsorMoreInfoDescription,
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
+                          style: const TextStyle(fontSize: 16),
                         ),
                       ),
                       const SizedBox(
@@ -336,7 +337,7 @@ class BeSponsor extends StatelessWidget {
                                 ? 0.7 * MediaQuery.of(context).size.width
                                 : MediaQuery.of(context).size.width * 0.6),
                         child: FormsButtonWidget(
-                            buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                            buttonTittle: S.of(context).beSponsorMoreInfoTitle,
                             backgroundColor: const Color(0xFFD36D49),
                             onPressed: openForms),
                       )
@@ -346,16 +347,16 @@ class BeSponsor extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         width: 300,
                         child: Text(
-                          'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
+                          S.of(context).beSponsorMoreInfoDescription,
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
+                          style: const TextStyle(fontSize: 16),
                         ),
                       ),
                       FormsButtonWidget(
-                          buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                          buttonTittle: S.of(context).beSponsorMoreInfoTitle,
                           backgroundColor: const Color(0xFFD36D49),
                           onPressed: openForms)
                     ],
