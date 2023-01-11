@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widg
 import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
+import '../../../../../shared/entities/screen_variables.dart';
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/utils/screen_helper.dart';
 import '../../../../../shared/widgets/text-header/text_header.dart';
@@ -203,26 +204,11 @@ class BeSponsor extends StatelessWidget {
                   'DESCONTOS',
                   style: TextStyle(fontSize: 24),
                 ),
-                MediaQuery.of(context).size.width < 530
+                MediaQuery.of(context).size.width < cellphoneSize
                     ? Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            children: const [
-                              Text('2022'),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
-                                month: 'Dezembro',
-                                discount: '30% Off',
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                            ],
-                          ),
                           Column(
                             children: const [
                               Text('2023'),
@@ -248,18 +234,6 @@ class BeSponsor extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            children: const [
-                              Text('2022'),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
-                                month: 'Dezembro',
-                                discount: '30% Off',
-                              ),
-                            ],
-                          ),
                           Column(
                             children: const [
                               Text('2023'),
