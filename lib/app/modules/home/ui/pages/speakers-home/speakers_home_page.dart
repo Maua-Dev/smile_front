@@ -60,7 +60,7 @@ class _SpeakersHomePageState
                       padding: const EdgeInsets.only(bottom: 16),
                       child: Center(
                         child: Text(
-                          'DESLIZE PARA VER MAIS >>>',
+                          S.of(context).speakersSwipe,
                           style: AppTextStyles.titleH1.copyWith(
                               fontSize: 18, color: AppColors.brandingOrange),
                         ),

@@ -80,6 +80,21 @@ class S {
     );
   }
 
+  /// `{title, select, one{Mauá Week of Innovation,} two{Leadership and Entrepreneurship} other{}}`
+  String homePageTitleSelection(Object title) {
+    return Intl.select(
+      title,
+      {
+        'one': 'Mauá Week of Innovation,',
+        'two': 'Leadership and Entrepreneurship',
+        'other': '',
+      },
+      name: 'homePageTitleSelection',
+      desc: '',
+      args: [title],
+    );
+  }
+
   /// `This fifth edition of SMILE highlights even more the primordial union between the areas of Administration, Engineering, Computer Science, Design and Information Systems, necessary for innovation and generation of added value both for the training of future professionals and for the development of new ideas. The main return expected from this initiative is the expansion of the culture of innovation across the campus, with the participation of students, graduates, professors and the community, showing that the diversity of ideas and the integration of areas are catalysts for the development of skills.`
   String get homePageSubtitle {
     return Intl.message(
@@ -125,6 +140,16 @@ class S {
     return Intl.message(
       'Main Speakers - 2022',
       name: 'speakersTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SWIPE TO SEE MORE >>>`
+  String get speakersSwipe {
+    return Intl.message(
+      'SWIPE TO SEE MORE >>>',
+      name: 'speakersSwipe',
       desc: '',
       args: [],
     );
@@ -671,6 +696,16 @@ class S {
     );
   }
 
+  /// `We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.`
+  String get emailNotificationTitle {
+    return Intl.message(
+      'We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.',
+      name: 'emailNotificationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Change password`
   String get changePasswordTitle {
     return Intl.message(
@@ -681,11 +716,51 @@ class S {
     );
   }
 
+  /// `I already have a registration`
+  String get haveRegistrationTitle {
+    return Intl.message(
+      'I already have a registration',
+      name: 'haveRegistrationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure your email address {firstName} is correct?`
+  String confirmEmailNotificationTitle(Object firstName) {
+    return Intl.message(
+      'Are you sure your email address $firstName is correct?',
+      name: 'confirmEmailNotificationTitle',
+      desc: '',
+      args: [firstName],
+    );
+  }
+
+  /// `You will need to access your inbox to validate your registration.`
+  String get confirmEmailNotificationSubtitle {
+    return Intl.message(
+      'You will need to access your inbox to validate your registration.',
+      name: 'confirmEmailNotificationSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `A code will be sent to the registered email address:`
   String get codeInEmailTitle {
     return Intl.message(
       'A code will be sent to the registered email address:',
       name: 'codeInEmailTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your new password and the code sent to your email:`
+  String get insertPasswordCodeInstructions {
+    return Intl.message(
+      'Enter your new password and the code sent to your email:',
+      name: 'insertPasswordCodeInstructions',
       desc: '',
       args: [],
     );
@@ -736,6 +811,26 @@ class S {
     return Intl.message(
       'Your registration has been successfully confirmed!',
       name: 'successRegister',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to register, please try again.`
+  String get errorRegister {
+    return Intl.message(
+      'Failed to register, please try again.',
+      name: 'errorRegister',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User already exist.`
+  String get errorUserAlreadyExist {
+    return Intl.message(
+      'User already exist.',
+      name: 'errorUserAlreadyExist',
       desc: '',
       args: [],
     );
@@ -806,6 +901,36 @@ class S {
     return Intl.message(
       'Invalid login and/or password',
       name: 'errorLoginInvalidCredential',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password changed successfully! \n Redirecting to login...`
+  String get successChangePasswordRedirect {
+    return Intl.message(
+      'Password changed successfully! \n Redirecting to login...',
+      name: 'successChangePasswordRedirect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yesTitle {
+    return Intl.message(
+      'Yes',
+      name: 'yesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get noTitle {
+    return Intl.message(
+      'No',
+      name: 'noTitle',
       desc: '',
       args: [],
     );

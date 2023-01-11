@@ -81,12 +81,12 @@ class _ChangePasswordPageState
                                 color: Colors.green[100],
                                 border: Border.all(color: Colors.green),
                                 borderRadius: BorderRadius.circular(10)),
-                            child: const Padding(
-                              padding: EdgeInsets.all(4.0),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
                               child: Text(
-                                'Senha alterada com sucesso! \n Redirecionando para o login...',
+                                S.of(context).successChangePasswordRedirect,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.black, fontSize: 16),
                               ),
                             ),
@@ -131,9 +131,9 @@ class _ChangePasswordPageState
                         return const SizedBox.shrink();
                       }
                     }),
-                    const Text(
-                      'Insira sua nova senha e o codigo enviado para o seu e-mail:',
-                      style: TextStyle(color: Colors.white),
+                    Text(
+                      S.of(context).insertPasswordCodeInstructions,
+                      style: const TextStyle(color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(

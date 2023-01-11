@@ -60,7 +60,10 @@ class _MainHomePageState extends State<MainHomePage> {
                                     padding: const EdgeInsets.all(24),
                                     child: Column(
                                       children: [
-                                        Text('Semana Mauá de Inovação,',
+                                        Text(
+                                            S
+                                                .of(context)
+                                                .homePageTitleSelection('one'),
                                             style: AppTextStyles.titleH1
                                                 .copyWith(
                                                     color: Colors.white,
@@ -69,7 +72,10 @@ class _MainHomePageState extends State<MainHomePage> {
                                                                 tabletSize
                                                             ? 24
                                                             : 32)),
-                                        Text('Liderança e Empreendedorismo',
+                                        Text(
+                                            S
+                                                .of(context)
+                                                .homePageTitleSelection('two'),
                                             style: AppTextStyles.titleH1
                                                 .copyWith(
                                                     color: Colors.white,

@@ -2,12 +2,14 @@
     "initTitle": "Home",
     "loginTitle": "Login",
     "homePageTitle": "Mauá Week of Innovation, Leadership and Entrepreneurship",
+    "homePageTitleSelection": "{title, select, one{Mauá Week of Innovation,} two{Leadership and Entrepreneurship} other{}}",
     "homePageSubtitle": "This fifth edition of SMILE highlights even more the primordial union between the areas of Administration, Engineering, Computer Science, Design and Information Systems, necessary for innovation and generation of added value both for the training of future professionals and for the development of new ideas. The main return expected from this initiative is the expansion of the culture of innovation across the campus, with the participation of students, graduates, professors and the community, showing that the diversity of ideas and the integration of areas are catalysts for the development of skills.",
     "smileDate": "May 22 to 27",
     "smileDateWithYear": "May 22 to 27, 2023",
     
     "knowMore": "KNOW MORE >>>",
     "speakersTitle": "Main Speakers - 2022",
+    "speakersSwipe": "SWIPE TO SEE MORE >>>",
     
     "activitiesTitle": "Atividades",
     "activitiesOfferedName": "{activity, select, CURSOS{Courses} PALESTRAS{Speeches} PALESTRAS_ALTO_IMPACTO{High Impact Speeches} VISITAS_TECNICAS{Technical Visits} COMPETICOES_ACADEMICAS{Academic Competitions} HACKATHON{Hackathon} FEIRA_ESTAGIOS{Internship Fairs} CAFE_EX_ALUNOS{Coffeee with alumni} ACADEMIA_DE_PROFESSORES{Teachers Academy} ATIVIDADE_CULTURAL{Cultural Activity} GCSP{GCSP} ATIVIDADE_ESPORTIVA{Sport Activity} other{Activities}}",
@@ -72,12 +74,22 @@
     "notificationsSchemaTitle": "I want to receive notifications by ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} whatsapp{WHATSAPP} app{APP/WEB} other{}}",
     "registerTitle": "Cadastrar",
+    "emailNotificationTitle": "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.",
     "changePasswordTitle": "Change password",
+    "haveRegistrationTitle": "I already have a registration",
+    "confirmEmailNotificationTitle": "Are you sure your email address {firstName} is correct?",
+    "@confirmEmailNotificationTitle" : {
+        "placeholders": {
+            "firstName": {}
+        }
+    },
+    "confirmEmailNotificationSubtitle": "You will need to access your inbox to validate your registration.",
 
 
 
 
     "codeInEmailTitle": "A code will be sent to the registered email address:",
+    "insertPasswordCodeInstructions": "Enter your new password and the code sent to your email:",
     "codeInEmailInstructionsTitle": "You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional.",
     "sendTitle": "Send",
     "returnLogin": "Return to login",
@@ -87,6 +99,9 @@
     
 
     "successRegister": "Your registration has been successfully confirmed!",
+    "errorRegister": "Failed to register, please try again.",
+    "errorUserAlreadyExist": "User already exist.",
+
     "successEmailSend": "Email successfully sent!",
     
     "successSendingCode": "Code sent successfully!",
@@ -97,5 +112,12 @@
 
     "errorLoginInvalidConfirmation": "It was not possible to login.\n\n- Register by clicking on the \"I have no account\" button\n- Your e-mail may not have been confirmed, click on \"Resend confirmation e-mail\"",
     "errorLoginInvalidCredential": "Invalid login and/or password",
+
+    "successChangePasswordRedirect": "Password changed successfully! \n Redirecting to login...",
+
+
+
+    "yesTitle": "Yes",
+    "noTitle": "No",
     "": ""
 }

@@ -74,7 +74,10 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Activities',
           })}";
 
-  static String m3(bold) => "${Intl.select(bold, {
+  static String m3(firstName) =>
+      "Are you sure your email address ${firstName} is correct?";
+
+  static String m4(bold) => "${Intl.select(bold, {
             'normalPart1': 'If in doubt, send an email to ',
             'boldPart1': 'smile.patrocinio@maua.br',
             'normalPart2': ' or ',
@@ -83,13 +86,13 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Dev. Community Mauá',
           })}";
 
-  static String m4(bold) => "${Intl.select(bold, {
+  static String m5(bold) => "${Intl.select(bold, {
             'normalPart': 'Created and developed by ',
             'boldPart': 'Dev. Community Mauá',
             'other': 'Dev. Community Mauá',
           })}";
 
-  static String m5(bold) => "${Intl.select(bold, {
+  static String m6(bold) => "${Intl.select(bold, {
             'normalPart1': 'If in doubt, send an email to ',
             'boldPart1': 'smile.patrocinio@maua.br',
             'normalPart2': ' or ',
@@ -98,14 +101,20 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Dev. Community Mauá',
           })}";
 
-  static String m6(title) => "${Intl.select(title, {
+  static String m7(title) => "${Intl.select(title, {
+            'one': 'Mauá Week of Innovation,',
+            'two': 'Leadership and Entrepreneurship',
+            'other': '',
+          })}";
+
+  static String m8(title) => "${Intl.select(title, {
             'normalPart':
                 'In case of error when logging in, send an email to: ',
             'boldPart': 'dev@maua.br',
             'other': '',
           })}";
 
-  static String m7(notification) => "${Intl.select(notification, {
+  static String m9(notification) => "${Intl.select(notification, {
             'email': 'EMAIL',
             'sms': 'SMS',
             'whatsapp': 'WHATSAPP',
@@ -113,7 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m8(terms) => "${Intl.select(terms, {
+  static String m10(terms) => "${Intl.select(terms, {
             'one':
                 'I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.',
             'two': 'I have read and accept the Terms of Use.',
@@ -147,6 +156,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional."),
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
             "A code will be sent to the registered email address:"),
+        "confirmEmailNotificationSubtitle": MessageLookupByLibrary.simpleMessage(
+            "You will need to access your inbox to validate your registration."),
+        "confirmEmailNotificationTitle": m3,
+        "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
+            "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration."),
         "errorChangePassword": MessageLookupByLibrary.simpleMessage(
             "Failed to change password, please try again."),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
@@ -155,11 +169,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "It was not possible to login.\n\n- Register by clicking on the \"I have no account\" button\n- Your e-mail may not have been confirmed, click on \"Resend confirmation e-mail\""),
         "errorLoginInvalidCredential": MessageLookupByLibrary.simpleMessage(
             "Invalid login and/or password"),
+        "errorRegister": MessageLookupByLibrary.simpleMessage(
+            "Failed to register, please try again."),
         "errorSendingCode": MessageLookupByLibrary.simpleMessage(
             "Failed to send code, email not registered or not confirmed."),
-        "footerContact": m3,
-        "footerDev": m4,
-        "footerDoubtContact": m5,
+        "errorUserAlreadyExist":
+            MessageLookupByLibrary.simpleMessage("User already exist."),
+        "footerContact": m4,
+        "footerDev": m5,
+        "footerDoubtContact": m6,
         "footerHowToGet": MessageLookupByLibrary.simpleMessage("How to get"),
         "footerLocalizationDescription": MessageLookupByLibrary.simpleMessage(
             "Praça Mauá 1 São Caetano do Sul - SP"),
@@ -167,11 +185,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Campus São Caetano do Sul"),
         "footerSocialMedia": MessageLookupByLibrary.simpleMessage(
             "Click here to access our social networks:"),
+        "haveRegistrationTitle": MessageLookupByLibrary.simpleMessage(
+            "I already have a registration"),
         "homePageSubtitle": MessageLookupByLibrary.simpleMessage(
             "This fifth edition of SMILE highlights even more the primordial union between the areas of Administration, Engineering, Computer Science, Design and Information Systems, necessary for innovation and generation of added value both for the training of future professionals and for the development of new ideas. The main return expected from this initiative is the expansion of the culture of innovation across the campus, with the participation of students, graduates, professors and the community, showing that the diversity of ideas and the integration of areas are catalysts for the development of skills."),
         "homePageTitle": MessageLookupByLibrary.simpleMessage(
             "Mauá Week of Innovation, Leadership and Entrepreneurship"),
+        "homePageTitleSelection": m7,
         "initTitle": MessageLookupByLibrary.simpleMessage("Home"),
+        "insertPasswordCodeInstructions": MessageLookupByLibrary.simpleMessage(
+            "Enter your new password and the code sent to your email:"),
         "knowMore": MessageLookupByLibrary.simpleMessage("KNOW MORE >>>"),
         "loginForgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Forgot my password"),
@@ -182,7 +205,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "loginUsernamePlaceholder":
             MessageLookupByLibrary.simpleMessage("CPF or E-mail"),
-        "loginWarningTitle": m6,
+        "loginWarningTitle": m8,
         "loginWithoutRecordTitle":
             MessageLookupByLibrary.simpleMessage("I don\'t have a record"),
         "maintenanceDescription":
@@ -191,7 +214,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "The login service is under maintenance"),
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
             "Entities Participating in Smile"),
-        "notificationsSchema": m7,
+        "noTitle": MessageLookupByLibrary.simpleMessage("No"),
+        "notificationsSchema": m9,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
             "I want to receive notifications by "),
         "notificationsTitle": MessageLookupByLibrary.simpleMessage(
@@ -212,7 +236,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Social Name"),
         "registerStudentMauaPlaceholder":
             MessageLookupByLibrary.simpleMessage("Mauá Student"),
-        "registerTerms": m8,
+        "registerTerms": m10,
         "registerTitle": MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "returnLogin": MessageLookupByLibrary.simpleMessage("Return to login"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Send"),
@@ -220,17 +244,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDate": MessageLookupByLibrary.simpleMessage("May 22 to 27"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("May 22 to 27, 2023"),
+        "speakersSwipe":
+            MessageLookupByLibrary.simpleMessage("SWIPE TO SEE MORE >>>"),
         "speakersTitle":
             MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Sponsors"),
         "successChangePassword": MessageLookupByLibrary.simpleMessage(
             "Password changed successfully!"),
+        "successChangePasswordRedirect": MessageLookupByLibrary.simpleMessage(
+            "Password changed successfully! \n Redirecting to login..."),
         "successEmailSend":
             MessageLookupByLibrary.simpleMessage("Email successfully sent!"),
         "successRegister": MessageLookupByLibrary.simpleMessage(
             "Your registration has been successfully confirmed!"),
         "successSendingCode":
             MessageLookupByLibrary.simpleMessage("Code sent successfully!"),
-        "unsubscribe": MessageLookupByLibrary.simpleMessage("Unsubscribe")
+        "unsubscribe": MessageLookupByLibrary.simpleMessage("Unsubscribe"),
+        "yesTitle": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

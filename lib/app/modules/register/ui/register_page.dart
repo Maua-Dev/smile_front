@@ -81,10 +81,10 @@ class _RegisterPageState
                           height: 24,
                         ),
                         if (controller.successRegistration)
-                          const Center(
+                          Center(
                             child: Text(
-                              'Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro.',
-                              style: TextStyle(
+                              S.of(context).emailNotificationTitle,
+                              style: const TextStyle(
                                 color: Colors.white,
                               ),
                               textAlign: TextAlign.center,
@@ -523,10 +523,13 @@ class _RegisterPageState
                                               context: context,
                                               builder: (BuildContext context) {
                                                 return ActionConfirmationDialogWidget(
-                                                  title:
-                                                      'Tem certeza que seu e-mail (${controller.email}) está correto?',
-                                                  content:
-                                                      'Será necessário acessar sua caixa de entrada para validar seu cadastro.',
+                                                  title: S
+                                                      .of(context)
+                                                      .confirmEmailNotificationTitle(
+                                                          controller.email),
+                                                  content: S
+                                                      .of(context)
+                                                      .confirmEmailNotificationSubtitle,
                                                   onPressed: () async {
                                                     controller
                                                         .setShowDialogToConfirmEmail(
@@ -558,7 +561,7 @@ class _RegisterPageState
                               height: 20,
                             ),
                             CustomElevatedButtonWidget(
-                              title: 'Já tenho um cadastro',
+                              title: S.of(context).haveRegistrationTitle,
                               widthSize: MediaQuery.of(context).size.width < 650
                                   ? MediaQuery.of(context).size.width * 0.85
                                   : 600,
