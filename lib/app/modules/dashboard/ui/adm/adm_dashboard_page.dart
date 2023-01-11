@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_carousel/activities_carousel_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/shared/widgets/logout_button_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'widgets/filter/filter_chip_widget.dart';
@@ -41,7 +42,7 @@ class _AdmDashboardPageState
                     children: [
                       LogoutButtonWidget(
                         backgroundColor: AppColors.brandingOrange,
-                        buttonTittle: 'Home',
+                        buttonTittle: S.of(context).homeInit,
                         onPressed: () {
                           Modular.to.navigate('/home');
                         },

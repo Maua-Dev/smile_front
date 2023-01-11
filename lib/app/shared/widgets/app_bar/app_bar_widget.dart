@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/appbar_button_widget.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../themes/app_colors.dart';
 
 class AppBarWidget extends StatefulWidget {
@@ -105,7 +106,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
             : [
                 if (MediaQuery.of(context).size.width > 1024)
                   AppbarButtonWidget(
-                    title: 'HOME',
+                    title: S.of(context).homeInit,
                     paddingHorizontal:
                         MediaQuery.of(context).size.width < 1300 ? 8 : 16,
                     paddingVertical: 8,
