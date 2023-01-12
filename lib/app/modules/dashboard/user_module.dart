@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/certificate_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_certificates.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/external/certificate_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
@@ -88,7 +89,9 @@ class UserModule extends Module {
     Bind.lazySingleton<CertificateDatasourceInterface>(
         (i) => CertificateDatasourceImpl(storage: i())),
     Bind.lazySingleton<CertificateController>(
-        (i) => CertificateController(repository: i())),
+        (i) => CertificateController(getUserCertificates: i())),
+    Bind.lazySingleton<GetUserCertificatesInterface>(
+        (i) => GetUserCertificates(repository: i())),
   ];
 
   @override
