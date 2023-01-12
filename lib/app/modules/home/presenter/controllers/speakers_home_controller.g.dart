@@ -25,22 +25,6 @@ mixin _$SpeakersHomeController on SpeakersHomeControllerBase, Store {
     });
   }
 
-  late final _$listSpeakersAtom =
-      Atom(name: 'SpeakersHomeControllerBase.listSpeakers', context: context);
-
-  @override
-  List<HomeSpeakerModel> get listSpeakers {
-    _$listSpeakersAtom.reportRead();
-    return super.listSpeakers;
-  }
-
-  @override
-  set listSpeakers(List<HomeSpeakerModel> value) {
-    _$listSpeakersAtom.reportWrite(value, super.listSpeakers, () {
-      super.listSpeakers = value;
-    });
-  }
-
   late final _$indexToShowAtom =
       Atom(name: 'SpeakersHomeControllerBase.indexToShow', context: context);
 
@@ -65,14 +49,6 @@ mixin _$SpeakersHomeController on SpeakersHomeControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$getSpeakersAsyncAction =
-      AsyncAction('SpeakersHomeControllerBase.getSpeakers', context: context);
-
-  @override
-  Future<dynamic> getSpeakers() {
-    return _$getSpeakersAsyncAction.run(() => super.getSpeakers());
-  }
-
   late final _$toggleIndexAsyncAction =
       AsyncAction('SpeakersHomeControllerBase.toggleIndex', context: context);
 
@@ -85,7 +61,6 @@ mixin _$SpeakersHomeController on SpeakersHomeControllerBase, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
-listSpeakers: ${listSpeakers},
 indexToShow: ${indexToShow}
     ''';
   }

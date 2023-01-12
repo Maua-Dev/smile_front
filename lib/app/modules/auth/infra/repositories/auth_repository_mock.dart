@@ -1,5 +1,6 @@
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../domain/repositories/auth_repository_interface.dart';
 
 class AuthRepositoryMock implements AuthRepositoryInterface {
@@ -12,9 +13,9 @@ class AuthRepositoryMock implements AuthRepositoryInterface {
   @override
   Future<Map<String, dynamic>> login(String cpfRne, String password) async {
     if (password != _pw && password != _pwAdm) {
-      throw LoginInvalid('Login e/ou senha inválidos');
+      throw LoginInvalid(S.current.errorLoginInvalidCredential);
     } else if (cpfRne != _cpfRne && cpfRne != _cpfRneAdm) {
-      throw LoginInvalid('Login e/ou senha inválidos');
+      throw LoginInvalid(S.current.errorLoginInvalidCredential);
     } else {
       if (cpfRne == _cpfRneAdm && password == _pwAdm) {
         return {'token': 'token12354', 'accessLevel': 'ADMIN'};

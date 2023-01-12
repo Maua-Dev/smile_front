@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../../generated/l10n.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../shared/widgets/input-box/input_box.dart';
@@ -80,12 +81,12 @@ class _ChangePasswordPageState
                                 color: Colors.green[100],
                                 border: Border.all(color: Colors.green),
                                 borderRadius: BorderRadius.circular(10)),
-                            child: const Padding(
-                              padding: EdgeInsets.all(4.0),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
                               child: Text(
-                                'Senha alterada com sucesso! \n Redirecionando para o login...',
+                                S.of(context).successChangePasswordRedirect,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.black, fontSize: 16),
                               ),
                             ),
@@ -130,9 +131,9 @@ class _ChangePasswordPageState
                         return const SizedBox.shrink();
                       }
                     }),
-                    const Text(
-                      'Insira sua nova senha e o codigo enviado para o seu e-mail:',
-                      style: TextStyle(color: Colors.white),
+                    Text(
+                      S.of(context).insertPasswordCodeInstructions,
+                      style: const TextStyle(color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(
@@ -141,7 +142,7 @@ class _ChangePasswordPageState
                     Observer(builder: (context) {
                       return InputBox(
                         icon: Icons.lock,
-                        placeholder: 'Senha',
+                        placeholder: S.of(context).loginPasswordPlaceholder,
                         setValue: controller.setPassword,
                         isPassword: true,
                         showPwd: controller.showPwd,
@@ -154,7 +155,8 @@ class _ChangePasswordPageState
                     Observer(builder: (context) {
                       return InputBox(
                         icon: Icons.lock,
-                        placeholder: 'Confirme sua senha',
+                        placeholder:
+                            S.of(context).registerConfirmPasswordPlaceholder,
                         setValue: controller.setVerifyPassword,
                         isPassword: true,
                         validation: controller.validateVerifyPassword,
@@ -174,7 +176,7 @@ class _ChangePasswordPageState
                     Observer(builder: (_) {
                       return CustomElevatedButtonWidget(
                         isLoading: controller.isLoading,
-                        title: 'Trocar senha',
+                        title: S.of(context).changePasswordTitle,
                         widthSize: MediaQuery.of(context).size.width < 650
                             ? MediaQuery.of(context).size.width * 0.85
                             : 600,

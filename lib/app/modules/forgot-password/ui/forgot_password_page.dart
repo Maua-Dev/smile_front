@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../../generated/l10n.dart';
 import '../../../shared/services/environment/environment_config.dart';
 import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
@@ -97,17 +98,17 @@ class _ForgotPasswordPageState
                           return Center(
                             child: Column(
                               children: [
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
                                       horizontal: 40, vertical: 32),
                                   child: Text(
-                                    'Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.',
+                                    S.of(context).codeInEmailInstructionsTitle,
                                     textAlign: TextAlign.justify,
-                                    style: TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: Colors.white),
                                   ),
                                 ),
                                 CustomElevatedButtonWidget(
-                                  title: 'Retornar ao login',
+                                  title: S.of(context).returnLogin,
                                   widthSize: MediaQuery.of(context).size.width <
                                           650
                                       ? MediaQuery.of(context).size.width * 0.85
@@ -124,18 +125,19 @@ class _ForgotPasswordPageState
                         } else {
                           return Column(
                             children: [
-                              const Padding(
-                                padding: EdgeInsets.symmetric(
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 40, vertical: 32),
                                 child: Text(
-                                  'Um código será enviado no email cadastrado:',
-                                  style: TextStyle(color: Colors.white),
+                                  S.of(context).codeInEmailTitle,
+                                  style: const TextStyle(color: Colors.white),
                                   textAlign: TextAlign.justify,
                                 ),
                               ),
                               InputBox(
                                 icon: Icons.person,
-                                placeholder: 'Email',
+                                placeholder:
+                                    S.of(context).registerEmailPlaceholder,
                                 setValue: controller.setEmail,
                                 validation: controller.validateEmail,
                                 onFieldSubmitted: (value) async {
@@ -150,7 +152,7 @@ class _ForgotPasswordPageState
                               Observer(builder: (_) {
                                 return CustomElevatedButtonWidget(
                                   isLoading: controller.isLoading,
-                                  title: 'Enviar',
+                                  title: S.of(context).sendTitle,
                                   widthSize: MediaQuery.of(context).size.width <
                                           650
                                       ? MediaQuery.of(context).size.width * 0.85
@@ -168,7 +170,7 @@ class _ForgotPasswordPageState
                                 height: 20,
                               ),
                               CustomElevatedButtonWidget(
-                                title: 'Não tenho cadastro',
+                                title: S.of(context).loginWithoutRecordTitle,
                                 widthSize: MediaQuery.of(context).size.width <
                                         650
                                     ? MediaQuery.of(context).size.width * 0.85

@@ -4,11 +4,10 @@ import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_hom
 import 'package:smile_front/app/shared/widgets/custom_elevated_button_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/paragraph_text_widget.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../app_module.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
-import '../../utils/text_utils.dart';
 import 'footer/footer.dart';
 
 class MoreInfoHomePage extends StatelessWidget {
@@ -45,7 +44,7 @@ class MoreInfoHomePage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width < 800 ? 8 : 16,
                     ),
                     TextHeader(
-                      title: 'Sobre a Smile',
+                      title: S.of(context).aboutSmileTitle,
                       fontSize:
                           MediaQuery.of(context).size.width < 800 ? 24 : 45,
                       leftPadding: 0,
@@ -54,26 +53,29 @@ class MoreInfoHomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              const ParagraphTextWidget(
-                paragraph: firstParagraph,
+              ParagraphTextWidget(
+                paragraph:
+                    S.of(context).aboutSmileDescription('firstParagraph'),
               ),
               const SizedBox(
                 height: 24,
               ),
-              const ParagraphTextWidget(
-                paragraph: secondParagraph,
+              ParagraphTextWidget(
+                paragraph:
+                    S.of(context).aboutSmileDescription('secondParagraph'),
               ),
               const SizedBox(
                 height: 24,
               ),
-              const ParagraphTextWidget(
-                paragraph: thirdParagraph,
+              ParagraphTextWidget(
+                paragraph:
+                    S.of(context).aboutSmileDescription('thirdParagraph'),
               ),
               const SizedBox(
                 height: 24,
               ),
-              const ParagraphTextWidget(
-                paragraph: smileDate,
+              ParagraphTextWidget(
+                paragraph: S.of(context).aboutSmileDate,
                 isBold: true,
               ),
               const SizedBox(
@@ -81,7 +83,7 @@ class MoreInfoHomePage extends StatelessWidget {
               ),
               Center(
                 child: CustomElevatedButtonWidget(
-                  title: 'Inscreva-se',
+                  title: S.of(context).signUp,
                   textStyle: AppTextStyles.buttonBold.copyWith(
                       color: Colors.white,
                       fontSize: MediaQuery.of(context).size.width < 800

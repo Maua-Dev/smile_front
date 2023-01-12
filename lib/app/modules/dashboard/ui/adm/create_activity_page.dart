@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/add_forms/speaker_add_widget.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
@@ -184,7 +185,8 @@ class _CreateActivityPageState
                                 initialDate: DateTime.now(),
                                 firstDate: DateTime(2022),
                                 lastDate: DateTime(2023),
-                                confirmText: 'CONFIRMAR',
+                                confirmText:
+                                    S.of(context).confirmTitle.toUpperCase(),
                                 builder: (BuildContext context, Widget? child) {
                                   return Theme(
                                     data: ThemeData.light().copyWith(
@@ -205,7 +207,8 @@ class _CreateActivityPageState
                               showTimePicker(
                                 context: context,
                                 initialTime: TimeOfDay.now(),
-                                confirmText: 'CONFIRMAR',
+                                confirmText:
+                                    S.of(context).confirmTitle.toUpperCase(),
                                 builder: (BuildContext context, Widget? child) {
                                   return Theme(
                                     data: ThemeData.light().copyWith(
