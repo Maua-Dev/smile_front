@@ -212,21 +212,6 @@ class BeSponsor extends StatelessWidget {
                         children: [
                           Column(
                             children: const [
-                              Text('2022'),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
-                                month: 'Dezembro',
-                                discount: '30% Off',
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                            ],
-                          ),
-                          Column(
-                            children: const [
                               Text('2023'),
                               SizedBox(
                                 height: 8,
@@ -250,18 +235,6 @@ class BeSponsor extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            children: const [
-                              Text('2022'),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
-                                month: 'Dezembro',
-                                discount: '30% Off',
-                              ),
-                            ],
-                          ),
                           Column(
                             children: const [
                               Text('2023'),
