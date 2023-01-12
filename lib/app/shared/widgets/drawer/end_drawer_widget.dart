@@ -27,7 +27,7 @@ class EndDrawerWidget extends StatelessWidget {
         children: [
           ListTile(
             title: Text(
-              'HOME',
+              S.of(context).initTitle.toUpperCase(),
               style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
             ),
             onTap: () {
@@ -37,7 +37,7 @@ class EndDrawerWidget extends StatelessWidget {
           ),
           ListTile(
             title: Text(
-              S.of(context).activitiesTitle,
+              S.of(context).activitiesTitle.toUpperCase(),
               style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
             ),
             onTap: () {

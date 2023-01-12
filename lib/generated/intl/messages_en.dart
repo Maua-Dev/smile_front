@@ -48,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'CAFE_EX_ALUNOS':
                 'The activity aims to promote informal conversations between IMT students and graduates who occupy prominent positions in their areas of expertise. Come join!',
             'ACADEMIA_DE_PROFESSORES':
-                'Academia de Professores focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.',
+                'Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.',
             'ATIVIDADE_CULTURAL':
                 'Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.',
             'GCSP':
@@ -78,10 +78,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Are you sure your email address ${firstName} is correct?";
 
   static String m4(bold) => "${Intl.select(bold, {
-            'normalPart1': 'If in doubt, send an email to ',
-            'boldPart1': 'smile.patrocinio@maua.br',
+            'normalPart1':
+                'If you want to talk to us, contact us on the numbers: ',
+            'boldPart1': '4239-3563',
             'normalPart2': ' or ',
-            'boldPart2': 'smile@maua.br',
+            'boldPart2': '4239-3059',
             'normalPart3': '.',
             'other': 'Dev. Community Mauá',
           })}";
@@ -206,7 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutSmileTitle": MessageLookupByLibrary.simpleMessage("About Smile"),
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
-        "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
+        "activitiesTitle": MessageLookupByLibrary.simpleMessage("Activities"),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
             "SMILE brings an opportunity for partnership and integration between the labor market and academia. Become an event Sponsor and find out about the benefits and opportunities that SMILE offers. In this edition, 4 types of sponsorship quotas are available: Diamond, Gold, Silver and Bronze. In addition, when closing the sponsorship in advance, there will be a progressive discount on the quotas. Information about quotas and benefits is below."),
         "beSponsorDiscount": MessageLookupByLibrary.simpleMessage("Discount"),
@@ -276,8 +277,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginUsernamePlaceholder":
             MessageLookupByLibrary.simpleMessage("CPF or E-mail"),
         "loginWarningTitle": m8,
-        "loginWithoutRecordTitle":
-            MessageLookupByLibrary.simpleMessage("I don\'t have a record"),
+        "loginWithoutRecordTitle": MessageLookupByLibrary.simpleMessage(
+            "I don\'t have a registration"),
         "maintenanceDescription":
             MessageLookupByLibrary.simpleMessage("Thank you for your patience"),
         "maintenanceTitle": MessageLookupByLibrary.simpleMessage(
@@ -311,7 +312,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerStudentMauaPlaceholder":
             MessageLookupByLibrary.simpleMessage("Mauá Student"),
         "registerTerms": m12,
-        "registerTitle": MessageLookupByLibrary.simpleMessage("Cadastrar"),
+        "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "returnLogin": MessageLookupByLibrary.simpleMessage("Return to login"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Send"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),

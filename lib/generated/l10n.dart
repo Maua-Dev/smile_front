@@ -199,10 +199,10 @@ class S {
     );
   }
 
-  /// `Atividades`
+  /// `Activities`
   String get activitiesTitle {
     return Intl.message(
-      'Atividades',
+      'Activities',
       name: 'activitiesTitle',
       desc: '',
       args: [],
@@ -234,7 +234,7 @@ class S {
     );
   }
 
-  /// `{activity, select, CURSOS{The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.} PALESTRAS{The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.} PALESTRAS_ALTO_IMPACTO{The high-impact lectures will be delivered by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!} VISITAS_TECNICAS{In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.} COMPETICOES_ACADEMICAS{During SMILE, participants will be able to have fun with Academic Competition activities: League Of Legend Championship (online) and GameDev Mauá - Game Jam (in person).} HACKATHON{Hackathons are events that bring together students, software developers, designers and other professionals, with the aim of creating innovative solutions for a specific problem in a short period of time. This is an excellent opportunity to develop your professional side, in addition to discovering new talent. The events promote a great interaction between the participants and offer prizes for the winners at the end.} FEIRA_ESTAGIOS{Representatives of renowned companies will present Internship and Trainee Programs, in addition to bringing tips on selection processes, interviews, career tips and answering questions from participants.} CAFE_EX_ALUNOS{The activity aims to promote informal conversations between IMT students and graduates who occupy prominent positions in their areas of expertise. Come join!} ACADEMIA_DE_PROFESSORES{Academia de Professores focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.} ATIVIDADE_CULTURAL{Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.} GCSP{The GCSP - Grand Challenges Scholars Program is a program that offers undergraduate students the opportunity to work with the great challenges of humanity, being mentored by professors.} ATIVIDADE_ESPORTIVA{Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!} other{Activity}}`
+  /// `{activity, select, CURSOS{The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.} PALESTRAS{The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.} PALESTRAS_ALTO_IMPACTO{The high-impact lectures will be delivered by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!} VISITAS_TECNICAS{In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.} COMPETICOES_ACADEMICAS{During SMILE, participants will be able to have fun with Academic Competition activities: League Of Legend Championship (online) and GameDev Mauá - Game Jam (in person).} HACKATHON{Hackathons are events that bring together students, software developers, designers and other professionals, with the aim of creating innovative solutions for a specific problem in a short period of time. This is an excellent opportunity to develop your professional side, in addition to discovering new talent. The events promote a great interaction between the participants and offer prizes for the winners at the end.} FEIRA_ESTAGIOS{Representatives of renowned companies will present Internship and Trainee Programs, in addition to bringing tips on selection processes, interviews, career tips and answering questions from participants.} CAFE_EX_ALUNOS{The activity aims to promote informal conversations between IMT students and graduates who occupy prominent positions in their areas of expertise. Come join!} ACADEMIA_DE_PROFESSORES{Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.} ATIVIDADE_CULTURAL{Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.} GCSP{The GCSP - Grand Challenges Scholars Program is a program that offers undergraduate students the opportunity to work with the great challenges of humanity, being mentored by professors.} ATIVIDADE_ESPORTIVA{Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!} other{Activity}}`
   String activitiesOfferedDescription(Object activity) {
     return Intl.select(
       activity,
@@ -256,7 +256,7 @@ class S {
         'CAFE_EX_ALUNOS':
             'The activity aims to promote informal conversations between IMT students and graduates who occupy prominent positions in their areas of expertise. Come join!',
         'ACADEMIA_DE_PROFESSORES':
-            'Academia de Professores focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.',
+            'Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.',
         'ATIVIDADE_CULTURAL':
             'Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.',
         'GCSP':
@@ -439,15 +439,15 @@ class S {
     );
   }
 
-  /// `{bold, select, normalPart1{If in doubt, send an email to } boldPart1{smile.patrocinio@maua.br} normalPart2{ or } boldPart2{smile@maua.br} normalPart3{.} other{Dev. Community Mauá}}`
+  /// `{bold, select, normalPart1{If you want to talk to us, contact us on the numbers: } boldPart1{4239-3563} normalPart2{ or } boldPart2{4239-3059} normalPart3{.} other{Dev. Community Mauá}}`
   String footerContact(Object bold) {
     return Intl.select(
       bold,
       {
-        'normalPart1': 'If in doubt, send an email to ',
-        'boldPart1': 'smile.patrocinio@maua.br',
+        'normalPart1': 'If you want to talk to us, contact us on the numbers: ',
+        'boldPart1': '4239-3563',
         'normalPart2': ' or ',
-        'boldPart2': 'smile@maua.br',
+        'boldPart2': '4239-3059',
         'normalPart3': '.',
         'other': 'Dev. Community Mauá',
       },
@@ -621,10 +621,10 @@ class S {
     );
   }
 
-  /// `I don't have a record`
+  /// `I don't have a registration`
   String get loginWithoutRecordTitle {
     return Intl.message(
-      'I don\'t have a record',
+      'I don\'t have a registration',
       name: 'loginWithoutRecordTitle',
       desc: '',
       args: [],
@@ -820,10 +820,10 @@ class S {
     );
   }
 
-  /// `Cadastrar`
+  /// `Register`
   String get registerTitle {
     return Intl.message(
-      'Cadastrar',
+      'Register',
       name: 'registerTitle',
       desc: '',
       args: [],
