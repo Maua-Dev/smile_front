@@ -59,37 +59,16 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
   }
 }
 
-const listBenefits = [
-  {
-    'level': 4,
-    'description': 'Video elaborado pelo patrocinador para divulgação no site.'
-  },
-  {
-    'level': 4,
-    'description':
-        'Video teaser do patrocinador para divulgação na palestra de alto impacto.'
-  },
-  {'level': 4, 'description': 'Estande VIP na Feira de estágios.'},
-  {'level': 4, 'description': 'Palestra ou curso a ser ministrado no evento.'},
-  {
-    'level': 3,
-    'description':
-        'Divulgação do logo do patrocinador no site e em e-mails com direcionamento ao site da empresa.'
-  },
-  {'level': 2, 'description': 'Divulgação do logo do patrocinador na sacola.'},
-  {
-    'level': 2,
-    'description': 'Divulgação do patrocinador nas redes sociais do IMT.'
-  },
-  {
-    'level': 2,
-    'description':
-        'Inserção do folder ou brinde do patrocinador na sacola do evento.'
-  },
-  {
-    'level': 1,
-    'description': 'Espaço para divulgação do estande na feira estágios.'
-  },
+var listBenefits = [
+  {'level': 4, 'description': S.current.benefitsSponsorSchema('one')},
+  {'level': 4, 'description': S.current.benefitsSponsorSchema('two')},
+  {'level': 4, 'description': S.current.benefitsSponsorSchema('three')},
+  {'level': 4, 'description': S.current.benefitsSponsorSchema('four')},
+  {'level': 3, 'description': S.current.benefitsSponsorSchema('five')},
+  {'level': 2, 'description': S.current.benefitsSponsorSchema('six')},
+  {'level': 2, 'description': S.current.benefitsSponsorSchema('seven')},
+  {'level': 2, 'description': S.current.benefitsSponsorSchema('eight')},
+  {'level': 1, 'description': S.current.benefitsSponsorSchema('nine')},
 ];
 const colorsPlan = <int, Color>{
   4: Color(0xFF00CDB4),
@@ -98,29 +77,29 @@ const colorsPlan = <int, Color>{
   1: Color(0xFFE0804A),
 };
 const planTextStyle = TextStyle(fontSize: 35, fontWeight: FontWeight.w700);
-const plansWidgets = [
+var plansWidgets = [
   PlanWidget(
       planTextStyle: planTextStyle,
-      planName: 'DIAMANTE',
+      planName: S.current.planSponsorSchema('diamond'),
       level: 4,
-      price: '10.000'),
+      price: S.current.planPriceSponsorSchema('silver')),
   PlanWidget(
     planTextStyle: planTextStyle,
-    planName: 'OURO',
+    planName: S.current.planSponsorSchema('gold'),
     level: 3,
-    price: '5.000',
+    price: S.current.planPriceSponsorSchema('silver'),
   ),
   PlanWidget(
     planTextStyle: planTextStyle,
-    planName: 'PRATA',
+    planName: S.current.planSponsorSchema('silver'),
     level: 2,
-    price: '3.000',
+    price: S.current.planPriceSponsorSchema('silver'),
   ),
   PlanWidget(
     planTextStyle: planTextStyle,
-    planName: 'BRONZE',
+    planName: S.current.planSponsorSchema('bronze'),
     level: 1,
-    price: '1.000',
+    price: S.current.planPriceSponsorSchema('silver'),
   )
 ];
 
@@ -137,9 +116,8 @@ class BeSponsor extends StatelessWidget {
       if (res != null && res) {
         showDialog(
             context: context,
-            builder: (context) => const AlertDialog(
-                  content: Text(
-                      'Enviado com sucesso!! Nossa equipe entrará em contato em breve.'),
+            builder: (context) => AlertDialog(
+                  content: Text(S.of(context).successSendingSponsorEmail),
                 ));
       }
     }
@@ -202,7 +180,7 @@ class BeSponsor extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  S.of(context).beSponsorDiscount,
+                  S.of(context).beSponsorDiscount.toUpperCase(),
                   style: const TextStyle(fontSize: 24),
                 ),
                 MediaQuery.of(context).size.width < 530
@@ -211,21 +189,21 @@ class BeSponsor extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
-                            children: const [
-                              Text('2023'),
-                              SizedBox(
+                            children: [
+                              Text(S.of(context).year2023),
+                              const SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
-                                month: 'Janeiro',
-                                discount: '20% Off',
+                                month: S.of(context).monthJanuary,
+                                discount: S.of(context).discount20,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
-                                month: 'Fevereiro',
-                                discount: '10% Off',
+                                month: S.of(context).monthFebruary,
+                                discount: S.of(context).discount10,
                               )
                             ],
                           ),
@@ -236,21 +214,21 @@ class BeSponsor extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
-                            children: const [
-                              Text('2023'),
-                              SizedBox(
+                            children: [
+                              Text(S.of(context).year2023),
+                              const SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
-                                month: 'Janeiro',
-                                discount: '20% Off',
+                                month: S.of(context).monthJanuary,
+                                discount: S.of(context).discount20,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
-                                month: 'Fevereiro',
-                                discount: '10% Off',
+                                month: S.of(context).monthFebruary,
+                                discount: S.of(context).discount10,
                               )
                             ],
                           ),

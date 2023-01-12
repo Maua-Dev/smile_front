@@ -74,10 +74,26 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Atividades',
           })}";
 
-  static String m3(firstName) =>
+  static String m3(benefit) => "${Intl.select(benefit, {
+            'one': 'Video elaborado pelo patrocinador para divulgação no site.',
+            'two':
+                'Video teaser do patrocinador para divulgação na palestra de alto impacto.',
+            'three': 'Estande VIP na Feira de estágios.',
+            'four': 'Palestra ou curso a ser ministrado no evento.',
+            'five':
+                'Divulgação do logo do patrocinador no site e em e-mails com direcionamento ao site da empresa.',
+            'six': 'Divulgação do logo do patrocinador na sacola.',
+            'seven': 'Divulgação do patrocinador nas redes sociais do IMT.',
+            'eight':
+                'Inserção do folder ou brinde do patrocinador na sacola do evento.',
+            'nine': 'Espaço para divulgação do estande na feira estágios.',
+            'other': '',
+          })}";
+
+  static String m4(firstName) =>
       "Tem certeza que seu e-mail ${firstName} está correto?";
 
-  static String m4(bold) => "${Intl.select(bold, {
+  static String m5(bold) => "${Intl.select(bold, {
             'normalPart1':
                 'Caso queira falar conosco, entre em contato nos números: ',
             'boldPart1': '4239-3563',
@@ -87,13 +103,13 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m5(bold) => "${Intl.select(bold, {
+  static String m6(bold) => "${Intl.select(bold, {
             'normalPart': 'Criado e desenvolvido por ',
             'boldPart': 'Dev. Community Mauá',
             'other': 'Dev. Community Mauá',
           })}";
 
-  static String m6(bold) => "${Intl.select(bold, {
+  static String m7(bold) => "${Intl.select(bold, {
             'normalPart1': 'Em caso de dúvidas, enviar um e-mail para  ',
             'boldPart1': 'smile.patrocinio@maua.br',
             'normalPart2': ' ou ',
@@ -102,19 +118,19 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m7(title) => "${Intl.select(title, {
+  static String m8(title) => "${Intl.select(title, {
             'one': 'Semana Mauá de Inovação,',
             'two': 'Liderança e Empreendedorismo',
             'other': '',
           })}";
 
-  static String m8(title) => "${Intl.select(title, {
+  static String m9(title) => "${Intl.select(title, {
             'normalPart': 'Em caso de erro ao se logar, envie um e-mail para: ',
             'boldPart': 'dev@maua.br',
             'other': '',
           })}";
 
-  static String m9(entity) => "${Intl.select(entity, {
+  static String m10(entity) => "${Intl.select(entity, {
             'atletica': 'https://www.instagram.com/gaspar_maua/',
             'ca': 'https://www.instagram.com/camaua/',
             'diversidade': 'https://www.instagram.com/diversidademaua/',
@@ -135,7 +151,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m10(entity) => "${Intl.select(entity, {
+  static String m11(entity) => "${Intl.select(entity, {
             'atletica': '@gaspar_maua',
             'ca': '@camaua',
             'diversidade': '@diversidademaua',
@@ -156,7 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m11(notification) => "${Intl.select(notification, {
+  static String m12(notification) => "${Intl.select(notification, {
             'email': 'EMAIL',
             'sms': 'SMS',
             'whatsapp': 'WHATSAPP',
@@ -164,7 +180,21 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m12(terms) => "${Intl.select(terms, {
+  static String m13(plan) => "${Intl.select(plan, {
+            'diamond': '10.000',
+            'gold': '5.000',
+            'silver': '3.000',
+            'bronze': '1.000',
+          })}";
+
+  static String m14(plan) => "${Intl.select(plan, {
+            'diamond': 'Diamante',
+            'gold': 'Ouro',
+            'silver': 'Prata',
+            'bronze': 'Bronze',
+          })}";
+
+  static String m15(terms) => "${Intl.select(terms, {
             'one':
                 'Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile.',
             'two': 'Li e Aceito os Termos de Uso.',
@@ -172,7 +202,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Autorizo o envio de notificação por email, para fins de divulgação da Smile.',
           })}";
 
-  static String m13(speakers) => "${Intl.select(speakers, {
+  static String m16(speakers) => "${Intl.select(speakers, {
             'nina':
                 'Cursou administração na Universidade Federal Fluminense, teve seu primeiro contato com tecnologia no segundo ano da faculdade, em seu primeiro emprego. Foi convidada a integrar o time da empresa que trabalhava com o sistema ERP da SAP. A partir de então, aprofundou seus estudos, tirou a sua certiﬁcação e trilhou seu caminho dentro da tecnologia.',
             'viviane':
@@ -188,7 +218,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m14(speakers) => "${Intl.select(speakers, {
+  static String m17(speakers) => "${Intl.select(speakers, {
             'nina': 'Nina Silva',
             'viviane': 'Viviane Nunes',
             'leila': 'Leila Ferreira',
@@ -210,13 +240,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
             "A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir."),
-        "beSponsorDiscount": MessageLookupByLibrary.simpleMessage("Desconto"),
+        "beSponsorDiscount": MessageLookupByLibrary.simpleMessage("Descontos"),
         "beSponsorMoreInfoDescription": MessageLookupByLibrary.simpleMessage(
             "Caso tenha interesse em patrocinar o evento, clique aqui para mais informações."),
         "beSponsorMoreInfoTitle": MessageLookupByLibrary.simpleMessage(
             "INFORMAÇÕES SOBRE PATROCÍNIO"),
         "beSponsorTitle":
             MessageLookupByLibrary.simpleMessage("Seja nosso Patrocinador"),
+        "benefitsSponsorSchema": m3,
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Trocar senha"),
         "clickToGoBack":
@@ -228,8 +259,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Um código será enviado no email cadastrado:"),
         "confirmEmailNotificationSubtitle": MessageLookupByLibrary.simpleMessage(
             "Será necessário acessar sua caixa de entrada para validar seu cadastro."),
-        "confirmEmailNotificationTitle": m3,
+        "confirmEmailNotificationTitle": m4,
         "confirmTitle": MessageLookupByLibrary.simpleMessage("Confirmar"),
+        "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
+        "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
         "errorChangePassword": MessageLookupByLibrary.simpleMessage(
@@ -246,9 +279,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Falha ao enviar o código, e-mail não cadastrado ou não confirmado."),
         "errorUserAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Usuário já existente."),
-        "footerContact": m4,
-        "footerDev": m5,
-        "footerDoubtContact": m6,
+        "footerContact": m5,
+        "footerDev": m6,
+        "footerDoubtContact": m7,
         "footerHowToGet": MessageLookupByLibrary.simpleMessage("Como chegar"),
         "footerLocalizationDescription": MessageLookupByLibrary.simpleMessage(
             "Praça Mauá 1 São Caetano do Sul - SP"),
@@ -262,7 +295,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nesta quinta edição da SMILE destaca-se ainda mais a união primordial entre as áreas de Administração, Engenharia, Ciência da Computação, Design e Sistemas de Informação, necessárias para a inovação e geração de valor agregado tanto para a formação dos futuros profissionais quanto para o desenvolvimento de novas ideias. O principal retorno esperado com essa iniciativa é a ampliação da cultura de inovação pelo campus, com a participação de estudantes, egressos, docentes e comunidade, mostrando que a diversidade de ideias e a integração de áreas são catalisadoras do desenvolvimento de competências."),
         "homePageTitle": MessageLookupByLibrary.simpleMessage(
             "Semana Mauá de Inovação, Liderança e Empreendedorismo"),
-        "homePageTitleSelection": m7,
+        "homePageTitleSelection": m8,
         "initTitle": MessageLookupByLibrary.simpleMessage("Início"),
         "insertPasswordCodeInstructions": MessageLookupByLibrary.simpleMessage(
             "Insira sua nova senha e o codigo enviado para o seu e-mail:"),
@@ -276,23 +309,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "loginUsernamePlaceholder":
             MessageLookupByLibrary.simpleMessage("CPF ou E-mail"),
-        "loginWarningTitle": m8,
+        "loginWarningTitle": m9,
         "loginWithoutRecordTitle":
             MessageLookupByLibrary.simpleMessage("Não tenho cadastro"),
         "maintenanceDescription":
             MessageLookupByLibrary.simpleMessage("Agradecemos a paciência"),
         "maintenanceTitle": MessageLookupByLibrary.simpleMessage(
             "O serviço de login esta em manutenção"),
-        "mauaEntitiesSchemaInstagramUrl": m9,
-        "mauaEntitiesSchemaSocialMidia": m10,
+        "mauaEntitiesSchemaInstagramUrl": m10,
+        "mauaEntitiesSchemaSocialMidia": m11,
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
             "Entidades Participantes da Smile"),
+        "monthFebruary": MessageLookupByLibrary.simpleMessage("Fevereiro"),
+        "monthJanuary": MessageLookupByLibrary.simpleMessage("Janeiro"),
         "noTitle": MessageLookupByLibrary.simpleMessage("Não"),
-        "notificationsSchema": m11,
+        "notificationsSchema": m12,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
             "Quero receber notificações por "),
         "notificationsTitle": MessageLookupByLibrary.simpleMessage(
             "Meios de notificação sobre as atividades:"),
+        "planPriceSponsorSchema": m13,
+        "planSponsorSchema": m14,
         "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme sua senha"),
@@ -311,7 +348,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nome Social"),
         "registerStudentMauaPlaceholder":
             MessageLookupByLibrary.simpleMessage("Aluno Mauá"),
-        "registerTerms": m12,
+        "registerTerms": m15,
         "registerTitle": MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "returnLogin": MessageLookupByLibrary.simpleMessage("Voltar ao login"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Enviar"),
@@ -319,8 +356,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("22 a 27 de Maio de 2023"),
-        "speakersSchemaDescription": m13,
-        "speakersSchemaName": m14,
+        "speakersSchemaDescription": m16,
+        "speakersSchemaName": m17,
         "speakersSwipe":
             MessageLookupByLibrary.simpleMessage("DESLIZE PARA VER MAIS >>>"),
         "speakersTitle": MessageLookupByLibrary.simpleMessage(
@@ -336,7 +373,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Seu cadastro foi confirmado com sucesso!"),
         "successSendingCode":
             MessageLookupByLibrary.simpleMessage("Código enviado com sucesso!"),
+        "successSendingSponsorEmail": MessageLookupByLibrary.simpleMessage(
+            "Enviado com sucesso!! Nossa equipe entrará em contato em breve."),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Desinscrever-se"),
+        "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Sim")
       };
 }

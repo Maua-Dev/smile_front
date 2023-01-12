@@ -74,10 +74,27 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Activities',
           })}";
 
-  static String m3(firstName) =>
+  static String m3(benefit) => "${Intl.select(benefit, {
+            'one':
+                'Video prepared by the sponsor for dissemination on the website.',
+            'two':
+                'Sponsor teaser video for disclosure in the high-impact lecture.',
+            'three': 'VIP booth at the Internships Fair.',
+            'four': 'Lecture or course to be given at the event.',
+            'five':
+                'Disclosure of the sponsor\'s logo on the website and in emails directed to the company\'s website.',
+            'six': 'Disclosure of the sponsor\'s logo on the bag.',
+            'seven': 'Disclosure of the sponsor on the IMT social networks.',
+            'eight':
+                'Insertion of the sponsor\'s folder or gift in the event bag.',
+            'nine': 'Space for publicizing the stand at the internship fair.',
+            'other': '',
+          })}";
+
+  static String m4(firstName) =>
       "Are you sure your email address ${firstName} is correct?";
 
-  static String m4(bold) => "${Intl.select(bold, {
+  static String m5(bold) => "${Intl.select(bold, {
             'normalPart1':
                 'If you want to talk to us, contact us on the numbers: ',
             'boldPart1': '4239-3563',
@@ -87,13 +104,13 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Dev. Community Mauá',
           })}";
 
-  static String m5(bold) => "${Intl.select(bold, {
+  static String m6(bold) => "${Intl.select(bold, {
             'normalPart': 'Created and developed by ',
             'boldPart': 'Dev. Community Mauá',
             'other': 'Dev. Community Mauá',
           })}";
 
-  static String m6(bold) => "${Intl.select(bold, {
+  static String m7(bold) => "${Intl.select(bold, {
             'normalPart1': 'If in doubt, send an email to ',
             'boldPart1': 'smile.patrocinio@maua.br',
             'normalPart2': ' or ',
@@ -102,20 +119,20 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Dev. Community Mauá',
           })}";
 
-  static String m7(title) => "${Intl.select(title, {
+  static String m8(title) => "${Intl.select(title, {
             'one': 'Mauá Week of Innovation,',
             'two': 'Leadership and Entrepreneurship',
             'other': '',
           })}";
 
-  static String m8(title) => "${Intl.select(title, {
+  static String m9(title) => "${Intl.select(title, {
             'normalPart':
                 'In case of error when logging in, send an email to: ',
             'boldPart': 'dev@maua.br',
             'other': '',
           })}";
 
-  static String m9(entity) => "${Intl.select(entity, {
+  static String m10(entity) => "${Intl.select(entity, {
             'atletica': 'https://www.instagram.com/gaspar_maua/',
             'ca': 'https://www.instagram.com/camaua/',
             'diversidade': 'https://www.instagram.com/diversidademaua/',
@@ -136,7 +153,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m10(entity) => "${Intl.select(entity, {
+  static String m11(entity) => "${Intl.select(entity, {
             'atletica': '@gaspar_maua',
             'ca': '@camaua',
             'diversidade': '@diversidademaua',
@@ -157,7 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m11(notification) => "${Intl.select(notification, {
+  static String m12(notification) => "${Intl.select(notification, {
             'email': 'EMAIL',
             'sms': 'SMS',
             'whatsapp': 'WHATSAPP',
@@ -165,7 +182,21 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m12(terms) => "${Intl.select(terms, {
+  static String m13(plan) => "${Intl.select(plan, {
+            'diamond': '10.000',
+            'gold': '5.000',
+            'silver': '3.000',
+            'bronze': '1.000',
+          })}";
+
+  static String m14(plan) => "${Intl.select(plan, {
+            'diamond': 'Diamond',
+            'gold': 'Gold',
+            'silver': 'Silver',
+            'bronze': 'Bronze',
+          })}";
+
+  static String m15(terms) => "${Intl.select(terms, {
             'one':
                 'I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.',
             'two': 'I have read and accept the Terms of Use.',
@@ -173,7 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 'I authorize the sending of notification by email, for the purposes of promoting Smile.',
           })}";
 
-  static String m13(speakers) => "${Intl.select(speakers, {
+  static String m16(speakers) => "${Intl.select(speakers, {
             'nina':
                 'He studied administration at the Fluminense Federal University, had his first contact with technology in the second year of college, in his first job. She was invited to join the company\'s team that worked with the SAP ERP system. From then on, he deepened his studies, took his certification and made his way into technology.',
             'viviane':
@@ -189,7 +220,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m14(speakers) => "${Intl.select(speakers, {
+  static String m17(speakers) => "${Intl.select(speakers, {
             'nina': 'Nina Silva',
             'viviane': 'Viviane Nunes',
             'leila': 'Leila Ferreira',
@@ -217,6 +248,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("SPONSORSHIP INFORMATION"),
         "beSponsorTitle":
             MessageLookupByLibrary.simpleMessage("Be our Sponsor"),
+        "benefitsSponsorSchema": m3,
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Change password"),
         "clickToGoBack":
@@ -228,8 +260,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "A code will be sent to the registered email address:"),
         "confirmEmailNotificationSubtitle": MessageLookupByLibrary.simpleMessage(
             "You will need to access your inbox to validate your registration."),
-        "confirmEmailNotificationTitle": m3,
+        "confirmEmailNotificationTitle": m4,
         "confirmTitle": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
+        "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration."),
         "errorChangePassword": MessageLookupByLibrary.simpleMessage(
@@ -246,9 +280,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Failed to send code, email not registered or not confirmed."),
         "errorUserAlreadyExist":
             MessageLookupByLibrary.simpleMessage("User already exist."),
-        "footerContact": m4,
-        "footerDev": m5,
-        "footerDoubtContact": m6,
+        "footerContact": m5,
+        "footerDev": m6,
+        "footerDoubtContact": m7,
         "footerHowToGet": MessageLookupByLibrary.simpleMessage("How to get"),
         "footerLocalizationDescription": MessageLookupByLibrary.simpleMessage(
             "Praça Mauá 1 São Caetano do Sul - SP"),
@@ -262,7 +296,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "This fifth edition of SMILE highlights even more the primordial union between the areas of Administration, Engineering, Computer Science, Design and Information Systems, necessary for innovation and generation of added value both for the training of future professionals and for the development of new ideas. The main return expected from this initiative is the expansion of the culture of innovation across the campus, with the participation of students, graduates, professors and the community, showing that the diversity of ideas and the integration of areas are catalysts for the development of skills."),
         "homePageTitle": MessageLookupByLibrary.simpleMessage(
             "Mauá Week of Innovation, Leadership and Entrepreneurship"),
-        "homePageTitleSelection": m7,
+        "homePageTitleSelection": m8,
         "initTitle": MessageLookupByLibrary.simpleMessage("Home"),
         "insertPasswordCodeInstructions": MessageLookupByLibrary.simpleMessage(
             "Enter your new password and the code sent to your email:"),
@@ -276,23 +310,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "loginUsernamePlaceholder":
             MessageLookupByLibrary.simpleMessage("CPF or E-mail"),
-        "loginWarningTitle": m8,
+        "loginWarningTitle": m9,
         "loginWithoutRecordTitle": MessageLookupByLibrary.simpleMessage(
             "I don\'t have a registration"),
         "maintenanceDescription":
             MessageLookupByLibrary.simpleMessage("Thank you for your patience"),
         "maintenanceTitle": MessageLookupByLibrary.simpleMessage(
             "The login service is under maintenance"),
-        "mauaEntitiesSchemaInstagramUrl": m9,
-        "mauaEntitiesSchemaSocialMidia": m10,
+        "mauaEntitiesSchemaInstagramUrl": m10,
+        "mauaEntitiesSchemaSocialMidia": m11,
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
             "Entities Participating in Smile"),
+        "monthFebruary": MessageLookupByLibrary.simpleMessage("February"),
+        "monthJanuary": MessageLookupByLibrary.simpleMessage("January"),
         "noTitle": MessageLookupByLibrary.simpleMessage("No"),
-        "notificationsSchema": m11,
+        "notificationsSchema": m12,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
             "I want to receive notifications by "),
         "notificationsTitle": MessageLookupByLibrary.simpleMessage(
             "Means of notification about activities:"),
+        "planPriceSponsorSchema": m13,
+        "planSponsorSchema": m14,
         "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
@@ -311,7 +349,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Social Name"),
         "registerStudentMauaPlaceholder":
             MessageLookupByLibrary.simpleMessage("Mauá Student"),
-        "registerTerms": m12,
+        "registerTerms": m15,
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "returnLogin": MessageLookupByLibrary.simpleMessage("Return to login"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Send"),
@@ -319,8 +357,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDate": MessageLookupByLibrary.simpleMessage("May 22 to 27"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("May 22 to 27, 2023"),
-        "speakersSchemaDescription": m13,
-        "speakersSchemaName": m14,
+        "speakersSchemaDescription": m16,
+        "speakersSchemaName": m17,
         "speakersSwipe":
             MessageLookupByLibrary.simpleMessage("SWIPE TO SEE MORE >>>"),
         "speakersTitle":
@@ -336,7 +374,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Your registration has been successfully confirmed!"),
         "successSendingCode":
             MessageLookupByLibrary.simpleMessage("Code sent successfully!"),
+        "successSendingSponsorEmail": MessageLookupByLibrary.simpleMessage(
+            "Sent with success!! Our team will contact you shortly."),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Unsubscribe"),
+        "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

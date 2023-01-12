@@ -401,6 +401,123 @@ class S {
     );
   }
 
+  /// `2023`
+  String get year2023 {
+    return Intl.message(
+      '2023',
+      name: 'year2023',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `February`
+  String get monthFebruary {
+    return Intl.message(
+      'February',
+      name: 'monthFebruary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `January`
+  String get monthJanuary {
+    return Intl.message(
+      'January',
+      name: 'monthJanuary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `10% Off`
+  String get discount10 {
+    return Intl.message(
+      '10% Off',
+      name: 'discount10',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `20% Off`
+  String get discount20 {
+    return Intl.message(
+      '20% Off',
+      name: 'discount20',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{benefit, select, one{Video prepared by the sponsor for dissemination on the website.} two{Sponsor teaser video for disclosure in the high-impact lecture.} three{VIP booth at the Internships Fair.} four{Lecture or course to be given at the event.} five{Disclosure of the sponsor's logo on the website and in emails directed to the company's website.} six{Disclosure of the sponsor's logo on the bag.} seven{Disclosure of the sponsor on the IMT social networks.} eight{Insertion of the sponsor's folder or gift in the event bag.} nine{Space for publicizing the stand at the internship fair.} other{}}`
+  String benefitsSponsorSchema(Object benefit) {
+    return Intl.select(
+      benefit,
+      {
+        'one':
+            'Video prepared by the sponsor for dissemination on the website.',
+        'two':
+            'Sponsor teaser video for disclosure in the high-impact lecture.',
+        'three': 'VIP booth at the Internships Fair.',
+        'four': 'Lecture or course to be given at the event.',
+        'five':
+            'Disclosure of the sponsor\'s logo on the website and in emails directed to the company\'s website.',
+        'six': 'Disclosure of the sponsor\'s logo on the bag.',
+        'seven': 'Disclosure of the sponsor on the IMT social networks.',
+        'eight': 'Insertion of the sponsor\'s folder or gift in the event bag.',
+        'nine': 'Space for publicizing the stand at the internship fair.',
+        'other': '',
+      },
+      name: 'benefitsSponsorSchema',
+      desc: '',
+      args: [benefit],
+    );
+  }
+
+  /// `{plan, select, diamond{Diamond} gold{Gold} silver{Silver} bronze{Bronze}}`
+  String planSponsorSchema(Object plan) {
+    return Intl.select(
+      plan,
+      {
+        'diamond': 'Diamond',
+        'gold': 'Gold',
+        'silver': 'Silver',
+        'bronze': 'Bronze',
+      },
+      name: 'planSponsorSchema',
+      desc: '',
+      args: [plan],
+    );
+  }
+
+  /// `{plan, select, diamond{10.000} gold{5.000} silver{3.000} bronze{1.000}}`
+  String planPriceSponsorSchema(Object plan) {
+    return Intl.select(
+      plan,
+      {
+        'diamond': '10.000',
+        'gold': '5.000',
+        'silver': '3.000',
+        'bronze': '1.000',
+      },
+      name: 'planPriceSponsorSchema',
+      desc: '',
+      args: [plan],
+    );
+  }
+
+  /// `Sent with success!! Our team will contact you shortly.`
+  String get successSendingSponsorEmail {
+    return Intl.message(
+      'Sent with success!! Our team will contact you shortly.',
+      name: 'successSendingSponsorEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Click here to access our social networks:`
   String get footerSocialMedia {
     return Intl.message(
