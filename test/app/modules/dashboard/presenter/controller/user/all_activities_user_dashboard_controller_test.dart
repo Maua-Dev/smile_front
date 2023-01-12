@@ -9,6 +9,7 @@ import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
@@ -20,12 +21,18 @@ import '../../../../../../setup_firebase_mocks.dart';
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import 'all_activities_user_dashboard_controller_test.mocks.dart';
 
-@GenerateMocks([ActivitiesRepositoryInterface, UserDashboardController])
+@GenerateMocks([
+  ActivitiesRepositoryInterface,
+  UserDashboardController,
+  GetAllUserActivitiesInterface
+])
 void main() {
   initModule(AppModule());
   setupCloudFirestoreMocks();
   ActivitiesRepositoryInterface repository =
       MockActivitiesRepositoryInterface();
+  GetAllUserActivitiesInterface getAllUserActivitiesInterface =
+      MockGetAllUserActivitiesInterface();
   AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
   UserDashboardController userDashboardController =
@@ -150,14 +157,14 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
-    when(repository.getAllActivities()).thenAnswer((_) async => mockActivities);
+    when(getAllUserActivitiesInterface()).thenAnswer((_) async => mockActivities);
     authController = AuthController(
         authRepository: authRepository,
         storage: secureStorage,
         analytics: analytics);
 
     controller = AllActivitiesUserDashboardController(
-      repository: repository,
+      getAllActivities: getAllUserActivitiesInterface,
       authController: authController,
       controller: userDashboardController,
       analytics: analytics,

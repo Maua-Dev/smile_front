@@ -140,7 +140,7 @@ class _ForgotPasswordPageState
                                 validation: controller.validateEmail,
                                 onFieldSubmitted: (value) async {
                                   if (_formKey.currentState!.validate()) {
-                                    await controller.forgotPassword();
+                                    await controller.forgotUserPassword();
                                   }
                                 },
                               ),
@@ -159,7 +159,7 @@ class _ForgotPasswordPageState
                                   backgroundColor: AppColors.brandingOrange,
                                   onPressed: () async {
                                     if (_formKey.currentState!.validate()) {
-                                      await controller.forgotPassword();
+                                      await controller.forgotUserPassword();
                                     }
                                   },
                                 );

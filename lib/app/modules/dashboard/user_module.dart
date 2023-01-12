@@ -37,7 +37,7 @@ class UserModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<AllActivitiesUserDashboardController>(
         (i) => AllActivitiesUserDashboardController(
-              repository: i(),
+              getAllActivities: i(),
               authController: i(),
               controller: i(),
               analytics: i(),

@@ -1,13 +1,13 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
-
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
 import '../../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/infra/activity_enum.dart';
-import '../../../domain/repositories/activities_repository_interface.dart';
+
 
 part 'all_activities_user_dashboard_controller.g.dart';
 
@@ -15,7 +15,7 @@ class AllActivitiesUserDashboardController = AllActivitiesUserDashboardControlle
     with _$AllActivitiesUserDashboardController;
 
 abstract class AllActivitiesUserDashboardControllerBase with Store {
-  final ActivitiesRepositoryInterface repository;
+  final GetAllUserActivitiesInterface getAllActivities;
   final AuthController authController;
   final UserDashboardController controller;
   final FirebaseAnalyticsService analytics;
@@ -23,10 +23,10 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   AllActivitiesUserDashboardControllerBase({
     required this.analytics,
     required this.controller,
-    required this.repository,
+    required this.getAllActivities,
     required this.authController,
   }) {
-    getAllActivities();
+    getActivities();
   }
 
   @observable
@@ -109,9 +109,9 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   }
 
   @action
-  Future getAllActivities() async {
+  Future getActivities() async {
     setIsLoading(true);
-    activitiesList = await repository.getAllActivities();
+    activitiesList = await getAllActivities();
     allActivitiesToCards = [];
     for (var activity in activitiesList) {
       for (var time in activity.schedule) {

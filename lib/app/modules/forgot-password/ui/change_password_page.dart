@@ -163,7 +163,7 @@ class _ChangePasswordPageState
                             controller.toggleVisibilityConfirmPwd,
                         onFieldSubmitted: (value) async {
                           if (_formKey.currentState!.validate()) {
-                            await controller.changePassword();
+                            await controller.changeUserPassword();
                           }
                         },
                       );
@@ -182,7 +182,7 @@ class _ChangePasswordPageState
                         backgroundColor: AppColors.brandingOrange,
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            await controller.changePassword();
+                            await controller.changeUserPassword();
                             await controller.analytics.logChangePassword();
                           }
                         },
@@ -190,7 +190,6 @@ class _ChangePasswordPageState
                     }),
                   ],
                 ),
-                const MainstenanceAlert()
               ],
             ),
           ),

@@ -13,6 +13,8 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/activities
     as _i2;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart'
     as _i3;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart'
+    as _i11;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart'
     as _i10;
 import 'package:smile_front/app/shared/entities/card_activity.dart' as _i7;
@@ -587,4 +589,24 @@ class MockUserDashboardController extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+}
+
+/// A class which mocks [GetAllUserActivitiesInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetAllUserActivitiesInterface extends _i1.Mock
+    implements _i11.GetAllUserActivitiesInterface {
+  MockGetAllUserActivitiesInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i9.Future<List<_i6.ActivityModel>> call() => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+        ),
+        returnValue:
+            _i9.Future<List<_i6.ActivityModel>>.value(<_i6.ActivityModel>[]),
+      ) as _i9.Future<List<_i6.ActivityModel>>);
 }
