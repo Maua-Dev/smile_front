@@ -29,8 +29,6 @@ import 'all_activities_user_dashboard_controller_test.mocks.dart';
 void main() {
   initModule(AppModule());
   setupCloudFirestoreMocks();
-  ActivitiesRepositoryInterface repository =
-      MockActivitiesRepositoryInterface();
   GetAllUserActivitiesInterface getAllUserActivitiesInterface =
       MockGetAllUserActivitiesInterface();
   AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
@@ -157,7 +155,8 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
-    when(getAllUserActivitiesInterface()).thenAnswer((_) async => mockActivities);
+    when(getAllUserActivitiesInterface())
+        .thenAnswer((_) async => mockActivities);
     authController = AuthController(
         authRepository: authRepository,
         storage: secureStorage,
