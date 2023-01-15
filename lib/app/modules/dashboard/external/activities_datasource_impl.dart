@@ -38,7 +38,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       throw Exception();
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken();
+        await authController.refreshToken(token.toString());
         await getAllActivities();
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
@@ -59,7 +59,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       throw Exception();
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken();
+        await authController.refreshToken(token.toString());
         await getUserSubscribedActivities();
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
@@ -79,7 +79,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       return true;
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken();
+        await authController.refreshToken(token.toString());
         await postSubscribe(activityId, activityDate);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
@@ -96,7 +96,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       await dio.put('/activity?id=$id', data: activity.toJson());
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken();
+        await authController.refreshToken(token.toString());
         await putActivity(id, activity);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
@@ -112,7 +112,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       await dio.post('/activity', data: activity.toJson());
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken();
+        await authController.refreshToken(token.toString());
         await postActivity(activity);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
@@ -128,7 +128,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       await dio.delete('/activity?id=$id');
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken();
+        await authController.refreshToken(token.toString());
         await removeActivity(id);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
@@ -147,7 +147,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       return true;
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken();
+        await authController.refreshToken(token.toString());
         await postUnsubscribe(activityId, activityDate);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
@@ -168,7 +168,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       throw Exception();
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken();
+        await authController.refreshToken(token.toString());
         await getUserSubscribedActivities();
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();

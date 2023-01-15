@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
@@ -13,6 +12,8 @@ import '../../shared/error/error_page.dart';
 import '../../shared/services/dio/smile_activities_options.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
+import '../auth/usecases/login_with_cpf_rne.dart';
+import '../auth/usecases/refresh_token.dart';
 import 'domain/repositories/activities_repository_interface.dart';
 import 'external/activities_datasource_impl.dart';
 import 'infra/datasources/activities_datasource_interface.dart';
@@ -48,7 +49,8 @@ class AdmModule extends Module {
     Bind.lazySingleton((i) => Dio(smileOption)),
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(
-              authRepository: i<AuthRepositoryInterface>(),
+              loginWithCpfRne: i<LoginWithCpfRneInterface>(),
+              refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
               analytics: i(),
             ),

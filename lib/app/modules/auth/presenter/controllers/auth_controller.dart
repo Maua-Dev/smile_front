@@ -1,11 +1,13 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
+import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
 
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
+import '../../usecases/refresh_token.dart';
 
 class AuthController {
-  final AuthRepositoryInterface authRepository;
+  final RefreshTokenInterface refreshToken;
+  final LoginWithCpfRneInterface loginWithCpfRne;
   final SecureStorageInterface storage;
   final FirebaseAnalyticsService analytics;
   bool _loggedIn = false;
@@ -17,8 +19,9 @@ class AuthController {
 
   AuthController({
     required this.analytics,
-    required this.authRepository,
     required this.storage,
+    required this.refreshToken,
+    required this.loginWithCpfRne,
   });
 
   bool get isLogged => _loggedIn;
@@ -28,8 +31,8 @@ class AuthController {
   String get id => _id ?? '';
   bool get certificateWithSocialName => _certificateWithSocialName ?? false;
 
-  Future<void> loginWithCpfRne(String cpfRne, String password) async {
-    var loginResponse = await authRepository.login(cpfRne, password);
+  Future<void> loginWithUserCpfRne(String cpfRne, String password) async {
+    var loginResponse = await loginWithCpfRne(cpfRne,password);
     _accessLevel = loginResponse['access_level'];
     _name = loginResponse['name'];
     _socialname = loginResponse['social_name'];
@@ -49,14 +52,14 @@ class AuthController {
     _loggedIn = true;
   }
 
-  Future<void> refreshToken() async {
+  Future<void> refreshUserToken() async {
     var token = await storage.getRefreshToken();
     if (token == null) {
       _loggedIn = false;
       return;
     }
     try {
-      var tokens = await authRepository.refreshToken(token);
+      var tokens = await refreshToken(token);
       await storage.saveAccessToken(tokens['access_token']);
       await storage.saveRefreshToken(tokens['refresh_token']);
       _loggedIn = true;

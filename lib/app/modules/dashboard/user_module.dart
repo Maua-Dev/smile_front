@@ -20,9 +20,10 @@ import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
-import '../auth/domain/repositories/auth_repository_interface.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
+import '../auth/usecases/login_with_cpf_rne.dart';
+import '../auth/usecases/refresh_token.dart';
 import 'domain/repositories/faq_repository_interface.dart';
 import 'domain/repositories/user_repository_interface.dart';
 import 'external/faq_datasource_impl.dart';
@@ -83,7 +84,8 @@ class UserModule extends Module {
     Bind.lazySingleton((i) => Dio()),
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(
-              authRepository: i<AuthRepositoryInterface>(),
+              loginWithCpfRne: i<LoginWithCpfRneInterface>(),
+              refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
               analytics: i(),
             ),

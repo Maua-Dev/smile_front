@@ -9,6 +9,10 @@ import 'package:mobx/mobx.dart' as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
     as _i4;
+import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart'
+    as _i13;
+import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart'
+    as _i12;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i2;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart'
@@ -609,4 +613,51 @@ class MockGetAllUserActivitiesInterface extends _i1.Mock
         returnValue:
             _i9.Future<List<_i6.ActivityModel>>.value(<_i6.ActivityModel>[]),
       ) as _i9.Future<List<_i6.ActivityModel>>);
+}
+
+/// A class which mocks [RefreshTokenInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockRefreshTokenInterface extends _i1.Mock
+    implements _i12.RefreshTokenInterface {
+  MockRefreshTokenInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i9.Future<Map<String, dynamic>> call(String? token) => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [token],
+        ),
+        returnValue:
+            _i9.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i9.Future<Map<String, dynamic>>);
+}
+
+/// A class which mocks [LoginWithCpfRneInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLoginWithCpfRneInterface extends _i1.Mock
+    implements _i13.LoginWithCpfRneInterface {
+  MockLoginWithCpfRneInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i9.Future<Map<String, dynamic>> call(
+    String? user,
+    String? password,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [
+            user,
+            password,
+          ],
+        ),
+        returnValue:
+            _i9.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i9.Future<Map<String, dynamic>>);
 }

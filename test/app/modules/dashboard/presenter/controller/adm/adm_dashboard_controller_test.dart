@@ -1,9 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
+import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
+import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
@@ -15,16 +16,22 @@ import 'package:smile_front/app/shared/services/firebase-analytics/firebase_anal
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import 'adm_dashboard_controller_test.mocks.dart';
 
-@GenerateMocks([ActivitiesRepositoryInterface])
+@GenerateMocks([
+  ActivitiesRepositoryInterface,
+  LoginWithCpfRneInterface,
+  RefreshTokenInterface
+])
 void main() {
   ActivitiesRepositoryInterface repository =
       MockActivitiesRepositoryInterface();
+  LoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
+  RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
 
   late AdmDashboardController controller;
 
-  AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
+
   late AuthController authController;
 
   final mockActivities = <ActivityModel>[
@@ -144,7 +151,8 @@ void main() {
     when(repository.getAllActivities()).thenAnswer((_) async => mockActivities);
     when(repository.getDownloadLinkCsv()).thenAnswer((_) async => '');
     authController = AuthController(
-        authRepository: authRepository,
+        refreshToken: refreshToken,
+        loginWithCpfRne: loginWithCpfRne,
         storage: secureStorage,
         analytics: analytics);
     controller = AdmDashboardController(
