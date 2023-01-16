@@ -28,6 +28,7 @@ import '../auth/usecases/login_with_cpf_rne.dart';
 import '../auth/usecases/refresh_token.dart';
 import 'domain/repositories/faq_repository_interface.dart';
 import 'domain/repositories/user_repository_interface.dart';
+import 'domain/usecases/get_user_subscribed_activities.dart';
 import 'domain/usecases/subscribe_activities.dart';
 import 'external/faq_datasource_impl.dart';
 import 'external/user_datasource_impl.dart';
@@ -64,6 +65,8 @@ class UserModule extends Module {
         )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<GetUserSubscribedActivitiesInterface>(
+        (i) => GetUserSubscribedActivitiesImp(repository: i())),
     Bind.lazySingleton<UnsubscribeActivityInterface>(
         (i) => UnsubscribeActivity(repository: i())),
     Bind.lazySingleton<SubscribeActivityInterface>(
@@ -77,7 +80,7 @@ class UserModule extends Module {
         (i) => FaqRepositoryImpl(datasource: i())),
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
-        repository: i(),
+        getUserActivities: i(),
         secureStorage: i(),
         changeData: i(),
         analytics: i(),

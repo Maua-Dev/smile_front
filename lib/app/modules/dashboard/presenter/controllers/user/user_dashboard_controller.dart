@@ -1,10 +1,11 @@
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
+import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
-import '../../../domain/repositories/activities_repository_interface.dart';
 
 part 'user_dashboard_controller.g.dart';
 
@@ -12,7 +13,7 @@ class UserDashboardController = UserDashboardControllerBase
     with _$UserDashboardController;
 
 abstract class UserDashboardControllerBase with Store {
-  final ActivitiesRepositoryInterface repository;
+  final GetUserSubscribedActivitiesInterface getUserActivities;
   final ChangeDataInterface changeData;
   final SecureStorageInterface secureStorage;
   final FirebaseAnalyticsService analytics;
@@ -21,7 +22,7 @@ abstract class UserDashboardControllerBase with Store {
     required this.analytics,
     required this.changeData,
     required this.secureStorage,
-    required this.repository,
+    required this.getUserActivities,
   }) {
     getUserSubscribedActivities();
     getUserName();
@@ -158,13 +159,13 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   Future getActivities() async {
-    subscribedActivitiesList = await repository.getUserSubscribedActivities();
+    subscribedActivitiesList = await getUserActivities();
   }
 
   @action
   Future getUserSubscribedActivities() async {
     setIsLoading(true);
-    subscribedActivitiesList = await repository.getUserSubscribedActivities();
+    subscribedActivitiesList = await getUserActivities();
     allActivitiesToCards = [];
     if (subscribedActivitiesList.isNotEmpty) {
       for (var activity in subscribedActivitiesList) {

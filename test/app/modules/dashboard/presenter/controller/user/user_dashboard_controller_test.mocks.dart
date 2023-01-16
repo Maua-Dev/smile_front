@@ -9,12 +9,12 @@ import 'package:firebase_analytics/firebase_analytics.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
     as _i6;
-import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
-    as _i3;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart'
     as _i7;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart'
     as _i10;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart'
+    as _i3;
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart'
     as _i8;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
@@ -54,100 +54,24 @@ class _FakeFirebaseAnalyticsObserver_1 extends _i1.SmartFake
         );
 }
 
-/// A class which mocks [ActivitiesRepositoryInterface].
+/// A class which mocks [GetUserSubscribedActivitiesInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockActivitiesRepositoryInterface extends _i1.Mock
-    implements _i3.ActivitiesRepositoryInterface {
-  MockActivitiesRepositoryInterface() {
+class MockGetUserSubscribedActivitiesInterface extends _i1.Mock
+    implements _i3.GetUserSubscribedActivitiesInterface {
+  MockGetUserSubscribedActivitiesInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<List<_i5.ActivityModel>> getAllActivities() => (super.noSuchMethod(
+  _i4.Future<List<_i5.ActivityModel>> call() => (super.noSuchMethod(
         Invocation.method(
-          #getAllActivities,
+          #call,
           [],
         ),
         returnValue:
             _i4.Future<List<_i5.ActivityModel>>.value(<_i5.ActivityModel>[]),
       ) as _i4.Future<List<_i5.ActivityModel>>);
-  @override
-  _i4.Future<List<_i5.ActivityModel>> getUserSubscribedActivities() =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getUserSubscribedActivities,
-          [],
-        ),
-        returnValue:
-            _i4.Future<List<_i5.ActivityModel>>.value(<_i5.ActivityModel>[]),
-      ) as _i4.Future<List<_i5.ActivityModel>>);
-  @override
-  _i4.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
-        Invocation.method(
-          #getDownloadLinkCsv,
-          [],
-        ),
-        returnValue: _i4.Future<String>.value(''),
-      ) as _i4.Future<String>);
-  @override
-  _i4.Future<dynamic> createActivity(_i5.ActivityModel? activityToCreate) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #createActivity,
-          [activityToCreate],
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> editActivity(_i5.ActivityModel? activityToEdit) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #editActivity,
-          [activityToEdit],
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> removeActivity(String? id) => (super.noSuchMethod(
-        Invocation.method(
-          #removeActivity,
-          [id],
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<bool> subscribeActivity(
-    _i5.ActivityModel? activity,
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #subscribeActivity,
-          [
-            activity,
-            activityId,
-            activityDate,
-          ],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
-  @override
-  _i4.Future<bool> unsubscribeActivity(
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #unsubscribeActivity,
-          [
-            activityId,
-            activityDate,
-          ],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
 }
 
 /// A class which mocks [SecureStorageInterface].
