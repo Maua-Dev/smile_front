@@ -156,11 +156,7 @@ class _ResendConfirmationPageState
                                       S.of(context).registerCPFPlaceholder,
                                   setValue: controller.setCpf,
                                   isCpfField: true,
-                                  onFieldSubmitted: (value) async {
-                                    if (controller.validateForm()) {
-                                      await controller.resendConfirmation();
-                                    }
-                                  },
+                                  validation: controller.validateCpf,
                                 ),
                                 const SizedBox(
                                   height: 40,
@@ -179,7 +175,12 @@ class _ResendConfirmationPageState
                                     heightSize: 50,
                                     backgroundColor: AppColors.brandingOrange,
                                     onPressed: () async {
-                                      if (controller.validateForm()) {
+                                      FocusScopeNode currentFocus =
+                                          FocusScope.of(context);
+                                      if (!currentFocus.hasPrimaryFocus) {
+                                        currentFocus.unfocus();
+                                      }
+                                      if (_formKey.currentState!.validate()) {
                                         await controller.resendConfirmation();
                                       }
                                     },

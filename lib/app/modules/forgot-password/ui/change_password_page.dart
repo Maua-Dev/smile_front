@@ -163,11 +163,6 @@ class _ChangePasswordPageState
                         showPwd: controller.showConfirmPwd,
                         onToggleVisibilityPwd:
                             controller.toggleVisibilityConfirmPwd,
-                        onFieldSubmitted: (value) async {
-                          if (_formKey.currentState!.validate()) {
-                            await controller.changePassword();
-                          }
-                        },
                       );
                     }),
                     const SizedBox(
@@ -183,6 +178,10 @@ class _ChangePasswordPageState
                         heightSize: 50,
                         backgroundColor: AppColors.brandingOrange,
                         onPressed: () async {
+                          FocusScopeNode currentFocus = FocusScope.of(context);
+                          if (!currentFocus.hasPrimaryFocus) {
+                            currentFocus.unfocus();
+                          }
                           if (_formKey.currentState!.validate()) {
                             await controller.changePassword();
                             await controller.analytics.logChangePassword();

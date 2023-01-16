@@ -11,7 +11,6 @@ class InputBoxWidget extends StatelessWidget {
   final bool? isPassword;
   final String? Function(String?)? validation;
   final Function(String value) setValue;
-  final void Function(String?)? onFieldSubmitted;
   final void Function(bool)? onToggleVisibilityPwd;
   final bool? showPwd;
   final bool? isCpfField;
@@ -28,7 +27,6 @@ class InputBoxWidget extends StatelessWidget {
     this.isPassword,
     this.validation,
     required this.setValue,
-    this.onFieldSubmitted,
     this.onToggleVisibilityPwd,
     this.showPwd,
     this.isCpfField,
@@ -50,7 +48,6 @@ class InputBoxWidget extends StatelessWidget {
               : 600),
       child: TextFormField(
           validator: validation,
-          onFieldSubmitted: onFieldSubmitted,
           onChanged: setValue,
           obscureText: showPwd != null ? !showPwd! : false,
           enabled: disable != null ? !disable! : true,

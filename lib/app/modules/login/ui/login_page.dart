@@ -125,11 +125,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             placeholder: S.of(context).loginPasswordPlaceholder,
                             setValue: controller.setPassword,
                             isPassword: true,
-                            onFieldSubmitted: (value) async {
-                              if (_formKey.currentState!.validate()) {
-                                await controller.login();
-                              }
-                            },
                             validation: controller.validateField,
                             showPwd: controller.showPwd,
                             onToggleVisibilityPwd:

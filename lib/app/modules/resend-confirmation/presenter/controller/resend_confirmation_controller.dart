@@ -71,32 +71,14 @@ abstract class ResendConfirmationControllerBase with Store {
   }
 
   @action
-  bool validateCpf(String value) {
-    value = value.replaceAll('.', '');
-    value = value.replaceAll('-', '');
-    if (value.isEmpty) {
-      if (scaffold.context.size!.width <= 1024) {
-        showErrorSnackBar(
-            errorMessage: 'Campo "CPF" obrigatório',
-            color: AppColors.redButton);
-      } else {
-        errors = 'Campo "CPF" obrigatório';
-      }
-      return false;
+  String? validateCpf(String? value) {
+    if (value!.isEmpty) {
+      return 'Campo obrigatório';
     } else if (!CPFValidator.isValid(value)) {
-      if (scaffold.context.size!.width <= 1024) {
-        showErrorSnackBar(
-            errorMessage: 'Campo "CPF" inválido', color: AppColors.redButton);
-      } else {
-        errors = 'Campo "CPF" inválido';
-      }
-      return false;
+      value = value.replaceAll('.', '');
+      value = value.replaceAll('-', '');
+      return 'CPF inválido';
     }
-    return true;
-  }
-
-  @action
-  bool validateForm() {
-    return validateCpf(cpf);
+    return null;
   }
 }

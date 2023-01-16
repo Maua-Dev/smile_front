@@ -140,11 +140,6 @@ class _ForgotPasswordPageState
                                     S.of(context).registerEmailPlaceholder,
                                 setValue: controller.setEmail,
                                 validation: controller.validateEmail,
-                                onFieldSubmitted: (value) async {
-                                  if (_formKey.currentState!.validate()) {
-                                    await controller.forgotPassword();
-                                  }
-                                },
                               ),
                               const SizedBox(
                                 height: 40,
@@ -160,6 +155,11 @@ class _ForgotPasswordPageState
                                   heightSize: 50,
                                   backgroundColor: AppColors.brandingOrange,
                                   onPressed: () async {
+                                    FocusScopeNode currentFocus =
+                                        FocusScope.of(context);
+                                    if (!currentFocus.hasPrimaryFocus) {
+                                      currentFocus.unfocus();
+                                    }
                                     if (_formKey.currentState!.validate()) {
                                       await controller.forgotPassword();
                                     }

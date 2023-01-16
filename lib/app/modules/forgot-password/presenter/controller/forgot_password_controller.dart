@@ -75,9 +75,9 @@ abstract class ForgotPasswordControllerBase with Store {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (value.isEmpty) {
-        return "         Campo obrigatório";
+        return "Campo obrigatório";
       } else if (!CPFValidator.isValid(value) || value.isEmpty) {
-        return "         E-mail inválido";
+        return "E-mail inválido";
       }
     }
     return null;
@@ -146,10 +146,10 @@ abstract class ForgotPasswordControllerBase with Store {
   @action
   String? validateVerifyPassword(String? value) {
     if (value!.isEmpty) {
-      return "         Campo obrigatório";
+      return "Campo obrigatório";
     }
     if (password != verifyPassword) {
-      return "         Digite a mesma senha";
+      return "Digite a mesma senha";
     }
     String pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$';
