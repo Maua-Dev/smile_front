@@ -70,8 +70,8 @@ abstract class ForgotPasswordControllerBase with Store {
   }
 
   @action
-  String? validateEmail(String value) {
-    if (!value.contains('@')) {
+  String? validateEmail(String? value) {
+    if (!value!.contains('@')) {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (value.isEmpty) {
@@ -144,8 +144,8 @@ abstract class ForgotPasswordControllerBase with Store {
   }
 
   @action
-  String? validateVerifyPassword(String value) {
-    if (value.isEmpty) {
+  String? validateVerifyPassword(String? value) {
+    if (value!.isEmpty) {
       return "         Campo obrigatório";
     }
     if (password != verifyPassword) {

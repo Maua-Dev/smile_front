@@ -31,49 +31,25 @@ void main() {
     expect(controller.acceptImage, true);
   });
 
-  test('addError', () {
-    var str = 'test';
-    controller.addError(str);
-    expect(controller.errorsList.contains(str), true);
-  });
-
-  test('joinErrors if errors list is empty', () {
-    controller.errorsList = List.empty();
-    controller.joinErrors();
-    expect(controller.errors, '');
-  });
-
-  test('joinErrors if errors list is not empty', () {
-    controller.errorsList = ['error', 'test'];
-    controller.joinErrors();
-    expect(controller.errors, 'error\ntest');
-  });
-
-  test('resetErrors', () {
-    controller.resetErrors();
-    expect(controller.errors, '');
-    expect(controller.errorsList.isEmpty, true);
-  });
-
   test('setName', () {
     var str = 'caio';
     controller.setName(str);
     expect(controller.name, str);
   });
 
-  test('validateName if is empty : false', () {
+  test('validateName if is empty : String Error Message', () {
     var str = '';
-    expect(controller.validateName(str), false);
+    expect(controller.validateName(str), isA<String>());
   });
 
-  test('validateName if is not complete name : false', () {
+  test('validateName if is not complete name : String Error Message', () {
     var str = 'Name';
-    expect(controller.validateName(str), false);
+    expect(controller.validateName(str), isA<String>());
   });
 
-  test('validateName if name is ok : true', () {
+  test('validateName if name is ok : null', () {
     var str = 'Name Complete';
-    expect(controller.validateName(str), true);
+    expect(controller.validateName(str), null);
   });
 
   test('setSocialName', () {
@@ -82,16 +58,18 @@ void main() {
     expect(controller.socialName, str);
   });
 
-  test('validateSocialName if is empty and hasSocialName : false', () {
+  test(
+      'validateSocialName if is empty and hasSocialName : String Error Message',
+      () {
     controller.hasSocialName = true;
     var str = '';
-    expect(controller.validateSocialName(str), false);
+    expect(controller.validateSocialName(str), isA<String>());
   });
 
-  test('validateSocialName if is ok : false', () {
+  test('validateSocialName if is ok : null', () {
     controller.hasSocialName = false;
     var str = 'Name';
-    expect(controller.validateSocialName(str), true);
+    expect(controller.validateSocialName(str), null);
   });
 
   test('setCpf', () {
@@ -100,21 +78,19 @@ void main() {
     expect(controller.cpf, str);
   });
 
-  test('validateCpf if is empty : false', () {
+  test('validateCpf if is empty : String Error Message', () {
     var str = '';
-    expect(controller.validateCpf(str), false);
-    expect(controller.errorsList.contains('Campo "CPF" obrigatório'), true);
+    expect(controller.validateCpf(str), isA<String>());
   });
 
-  test('validateCpf if CPF is not valid : false', () {
+  test('validateCpf if CPF is not valid : String Error Message', () {
     var str = '02020202';
-    expect(controller.validateCpf(str), false);
-    expect(controller.errorsList.contains('Campo "CPF" inválido'), true);
+    expect(controller.validateCpf(str), isA<String>());
   });
 
-  test('validateCpf is ok : true', () {
+  test('validateCpf is ok : null', () {
     var str = '49846129831';
-    expect(controller.validateCpf(str), true);
+    expect(controller.validateCpf(str), null);
   });
 
   test('setEmail', () {
@@ -129,51 +105,45 @@ void main() {
     expect(controller.verifyEmail, 'test@');
   });
 
-  test('validateEmail if is empty', () {
+  test('validateEmail if is empty : String Error Message', () {
     var str = '';
     controller.validateEmail(str);
-    expect(controller.validateEmail(str), false);
-    expect(controller.errorsList.contains('Campo "E-mail" obrigatório'), true);
+    expect(controller.validateEmail(str), isA<String>());
   });
 
-  test('validateEmail if constains @ : false', () {
+  test('validateEmail if constains @ : String Error Message', () {
     var str = 'test';
     controller.validateEmail(str);
-    expect(controller.validateEmail(str), false);
-    expect(controller.errorsList.contains('Campo "E-mail" inválido'), true);
+    expect(controller.validateEmail(str), isA<String>());
   });
 
-  test('validateEmail if constains @ : true', () {
+  test('validateEmail if constains @ : null', () {
     var str = 'test@';
-    expect(controller.validateEmail(str), true);
+    expect(controller.validateEmail(str), null);
   });
 
-  test('validateEmail if constains providers', () {
+  test('validateEmail if constains providers : null', () {
     var str = 'test@gmail.com';
-    expect(controller.validateEmail(str), true);
+    expect(controller.validateEmail(str), null);
   });
 
-  test('validateVerifyEmail if is empty', () {
+  test('validateVerifyEmail if is empty : String Error Message', () {
     var str = '';
     controller.validateVerifyEmail(str);
-    expect(controller.validateVerifyEmail(str), false);
-    expect(
-        controller.errorsList
-            .contains('Campo "Confirme seu e-mail" obrigatório'),
-        true);
+    expect(controller.validateVerifyEmail(str), isA<String>());
   });
 
-  test('validateVerifyEmail if is equal to email : false', () {
+  test('validateVerifyEmail if is equal to email : String Error Message', () {
     controller.email = '@';
     var str = 'g@';
     controller.validateVerifyEmail(str);
-    expect(controller.validateVerifyEmail(str), false);
+    expect(controller.validateVerifyEmail(str), isA<String>());
   });
 
-  test('validateVerifyEmail if is equal to email : true', () {
+  test('validateVerifyEmail if is equal to email : null', () {
     controller.email = 'g@';
     var str = 'g@';
-    expect(controller.validateVerifyEmail(str), true);
+    expect(controller.validateVerifyEmail(str), null);
   });
 
   test('setIsMauaStudent', () {
@@ -195,9 +165,9 @@ void main() {
     expect(controller.ra, str);
   });
 
-  test('validateRa if is empty', () {
+  test('validateRa if is empty : String Error Message', () {
     controller.isMauaStudent = true;
-    expect(controller.validateRa(''), false);
+    expect(controller.validateRa(''), isA<String>());
   });
 
   test('setPassword', () {
@@ -212,9 +182,9 @@ void main() {
     expect(controller.verifyPassword, str);
   });
 
-  test('validateVerifyPassword if is empty', () {
+  test('validateVerifyPassword if is empty : String Error Message', () {
     var str = '';
-    expect(controller.validateVerifyPassword(str), false);
+    expect(controller.validateVerifyPassword(str), isA<String>());
   });
 
   test('setIsLoading', () {

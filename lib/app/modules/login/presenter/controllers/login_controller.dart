@@ -72,7 +72,10 @@ abstract class LoginControllerBase with Store {
       analytics.logLogin();
     } on Failure catch (e) {
       if (scaffold.context.size!.width <= 1024) {
-        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+        showErrorSnackBar(
+          errorMessage: e.message,
+          color: AppColors.redButton,
+        );
       } else {
         errors = e.message;
       }
@@ -86,29 +89,22 @@ abstract class LoginControllerBase with Store {
   }
 
   @action
-  String? validateCpf(String value) {
-    if (!value.contains('@')) {
+  String? validateCpf(String? value) {
+    if (value!.isEmpty) {
+      return "Campo obrigatório";
+    } else if (!value.contains('@')) {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
-      if (value.isEmpty) {
-        return "         Campo obrigatório";
-      } else if (!CPFValidator.isValid(value)) {
-        return "         CPF inválido";
-      }
-    } else {
-      if (value.isEmpty) {
-        return "         Campo obrigatório";
+      if (!CPFValidator.isValid(value)) {
+        return "CPF inválido";
       }
     }
     return null;
   }
 
   @action
-  String? validateField(String value) {
-    if (value.isEmpty) {
-      return "         Campo obrigatório";
-    }
-    return null;
+  String? validateField(String? value) {
+    return value!.isEmpty ? "Campo obrigatório" : null;
   }
 
   @action
