@@ -15,7 +15,7 @@ import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart'
     as _i12;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i2;
-import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart'
+import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart'
     as _i3;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart'
     as _i11;
@@ -48,9 +48,9 @@ class _FakeActivitiesRepositoryInterface_0 extends _i1.SmartFake
         );
 }
 
-class _FakeUserRepositoryInterface_1 extends _i1.SmartFake
-    implements _i3.UserRepositoryInterface {
-  _FakeUserRepositoryInterface_1(
+class _FakeChangeDataInterface_1 extends _i1.SmartFake
+    implements _i3.ChangeDataInterface {
+  _FakeChangeDataInterface_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -226,13 +226,13 @@ class MockUserDashboardController extends _i1.Mock
         ),
       ) as _i2.ActivitiesRepositoryInterface);
   @override
-  _i3.UserRepositoryInterface get userRepository => (super.noSuchMethod(
-        Invocation.getter(#userRepository),
-        returnValue: _FakeUserRepositoryInterface_1(
+  _i3.ChangeDataInterface get changeData => (super.noSuchMethod(
+        Invocation.getter(#changeData),
+        returnValue: _FakeChangeDataInterface_1(
           this,
-          Invocation.getter(#userRepository),
+          Invocation.getter(#changeData),
         ),
-      ) as _i3.UserRepositoryInterface);
+      ) as _i3.ChangeDataInterface);
   @override
   _i4.SecureStorageInterface get secureStorage => (super.noSuchMethod(
         Invocation.getter(#secureStorage),
@@ -528,9 +528,9 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i9.Future<void> changeData() => (super.noSuchMethod(
+  _i9.Future<void> changeUserData() => (super.noSuchMethod(
         Invocation.method(
-          #changeData,
+          #changeUserData,
           [],
         ),
         returnValue: _i9.Future<void>.value(),

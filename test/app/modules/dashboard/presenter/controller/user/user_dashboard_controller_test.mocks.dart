@@ -13,6 +13,8 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/activities
     as _i3;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart'
     as _i7;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart'
+    as _i10;
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart'
     as _i8;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
@@ -387,6 +389,34 @@ class MockFirebaseAnalyticsService extends _i1.Mock
         Invocation.method(
           #logFaq,
           [id],
+        ),
+        returnValue: _i4.Future<dynamic>.value(),
+      ) as _i4.Future<dynamic>);
+}
+
+/// A class which mocks [ChangeDataInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockChangeDataInterface extends _i1.Mock
+    implements _i10.ChangeDataInterface {
+  MockChangeDataInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<dynamic> call(
+    String? nameToChange,
+    String? socialNameToChange,
+    bool? certificateWithSocialName,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [
+            nameToChange,
+            socialNameToChange,
+            certificateWithSocialName,
+          ],
         ),
         returnValue: _i4.Future<dynamic>.value(),
       ) as _i4.Future<dynamic>);
