@@ -258,7 +258,8 @@ class _MoreInfoPageState
                                           content:
                                               'Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!',
                                           onPressed: () {
-                                            controller.unsubscribeActivity();
+                                            controller
+                                                .unsubscribeUserActivity();
                                             Modular.to.pop();
                                           });
                                     });
@@ -277,7 +278,8 @@ class _MoreInfoPageState
                                             content:
                                                 'Você perderá sua vaga na atividade ao continuar!',
                                             onPressed: () {
-                                              controller.unsubscribeActivity();
+                                              controller
+                                                  .unsubscribeUserActivity();
                                               Modular.to.pop();
                                             });
                                       });
@@ -308,7 +310,8 @@ class _MoreInfoPageState
                                             onPressed: () {
                                               if (controller
                                                   .checkIsOkForSubscribe()) {
-                                                controller.subscribeActivity();
+                                                controller
+                                                    .subscribeUserActivity();
                                                 Modular.to.pop();
                                               } else {
                                                 showDialog(

@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/certificat
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_certificates.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/external/certificate_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
@@ -27,6 +28,7 @@ import '../auth/usecases/login_with_cpf_rne.dart';
 import '../auth/usecases/refresh_token.dart';
 import 'domain/repositories/faq_repository_interface.dart';
 import 'domain/repositories/user_repository_interface.dart';
+import 'domain/usecases/subscribe_activities.dart';
 import 'external/faq_datasource_impl.dart';
 import 'external/user_datasource_impl.dart';
 import 'infra/datasources/faq_datasource_interface.dart';
@@ -62,6 +64,10 @@ class UserModule extends Module {
         )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<UnsubscribeActivityInterface>(
+        (i) => UnsubscribeActivity(repository: i())),
+    Bind.lazySingleton<SubscribeActivityInterface>(
+        (i) => SubscribeActivity(repository: i())),
     Bind.lazySingleton<UserRepositoryInterface>(
         (i) => UserRepositoryImpl(datasource: i())),
     Bind.lazySingleton<ChangeDataInterface>(
@@ -79,7 +85,8 @@ class UserModule extends Module {
     ),
     Bind.lazySingleton<MoreInfoController>(
       (i) => MoreInfoController(
-          repository: i(),
+          unsubscribeActivity: i(),
+          subscribeActivity: i(),
           activity: i.args!.data[0] as CardActivity,
           registered: i.args!.data[1] as bool,
           userDashboardController: i()),
