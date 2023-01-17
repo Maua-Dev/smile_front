@@ -55,6 +55,7 @@ abstract class LoginControllerBase with Store {
 
   @action
   Future<void> login() async {
+    errors = '';
     setIsLoading(true);
     try {
       await authController.loginWithCpfRne(cpfRne, password);

@@ -314,6 +314,7 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> register() async {
+    errors = '';
     if (acceptTermsOfUse) {
       setIsLoading(true);
       try {
