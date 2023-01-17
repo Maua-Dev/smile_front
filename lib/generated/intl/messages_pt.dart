@@ -279,6 +279,23 @@ class MessageLookup extends MessageLookupByLibrary {
             "Falha ao enviar o código, e-mail não cadastrado ou não confirmado."),
         "errorUserAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Usuário já existente."),
+        "fieldCpfInvalid": MessageLookupByLibrary.simpleMessage("CPF inválido"),
+        "fieldDDDRequired":
+            MessageLookupByLibrary.simpleMessage("Insira o número com DDD"),
+        "fieldEmailInvalid":
+            MessageLookupByLibrary.simpleMessage("E-mail inválido"),
+        "fieldEmailsEqualsRequired":
+            MessageLookupByLibrary.simpleMessage("Os e-mails devem ser iguais"),
+        "fieldFullNameRequired":
+            MessageLookupByLibrary.simpleMessage("Insira seu nome completo"),
+        "fieldInvalid": MessageLookupByLibrary.simpleMessage("Campo inválido"),
+        "fieldPasswordEqualsRequired": MessageLookupByLibrary.simpleMessage(
+            "Os campos \"Senha\" e \"Confirme sua senha\" devem ser iguais"),
+        "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(
+            "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -)  \n - Mínimo de 8 caracteres"),
+        "fieldRAInvalid": MessageLookupByLibrary.simpleMessage("RA inválido"),
+        "fieldRequired":
+            MessageLookupByLibrary.simpleMessage("Campo obrigatório"),
         "footerContact": m5,
         "footerDev": m6,
         "footerDoubtContact": m7,

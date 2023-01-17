@@ -280,6 +280,22 @@ class MessageLookup extends MessageLookupByLibrary {
             "Failed to send code, email not registered or not confirmed."),
         "errorUserAlreadyExist":
             MessageLookupByLibrary.simpleMessage("User already exist."),
+        "fieldCpfInvalid": MessageLookupByLibrary.simpleMessage("Invalid CPF"),
+        "fieldDDDRequired":
+            MessageLookupByLibrary.simpleMessage("Enter the number with DDD"),
+        "fieldEmailInvalid":
+            MessageLookupByLibrary.simpleMessage("Invalid e-mail"),
+        "fieldEmailsEqualsRequired":
+            MessageLookupByLibrary.simpleMessage("E-mails must be the same"),
+        "fieldFullNameRequired":
+            MessageLookupByLibrary.simpleMessage("Enter your full name"),
+        "fieldInvalid": MessageLookupByLibrary.simpleMessage("Invalid field"),
+        "fieldPasswordEqualsRequired": MessageLookupByLibrary.simpleMessage(
+            "The \"Password\" and \"Confirm your password\" fields must be the same"),
+        "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(
+            "Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters"),
+        "fieldRAInvalid": MessageLookupByLibrary.simpleMessage("Invalid RA"),
+        "fieldRequired": MessageLookupByLibrary.simpleMessage("Required field"),
         "footerContact": m5,
         "footerDev": m6,
         "footerDoubtContact": m7,
