@@ -4,7 +4,6 @@ import 'package:smile_front/app/modules/register/presenter/controllers/register_
 import 'package:smile_front/app/modules/register/ui/register_page.dart';
 import 'package:smile_front/app/modules/register/ui/success_register_page.dart';
 import 'package:smile_front/app/modules/register/usecases/register_user.dart';
-
 import '../../shared/services/dio/smile_login_options.dart';
 import 'domain/repositories/register_informations_repository_interface.dart';
 import 'external/register_datasource_impl.dart';
@@ -27,7 +26,7 @@ class RegisterModule extends Module {
     Bind.lazySingleton<RegisterRepositoryInterface>(
         (i) => RegisterRepositoryImpl(datasource: i()),
         export: true),
-        Bind.lazySingleton<RegisterUserInterface>(
+    Bind.lazySingleton<RegisterUserInterface>(
         (i) => RegisterUser(repository: i()),
         export: true),
     Bind.lazySingleton((i) => Dio(smileLoginOption))
