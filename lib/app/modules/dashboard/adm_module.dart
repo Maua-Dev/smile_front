@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
@@ -43,7 +44,7 @@ class AdmModule extends Module {
     ),
     Bind.lazySingleton<CreateActivityController>(
       (i) => CreateActivityController(
-        repository: i(),
+        createActivity: i(),
       ),
     ),
     Bind.lazySingleton<ActivitiesDatasourceInterface>(
@@ -52,12 +53,16 @@ class AdmModule extends Module {
             )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<CreateActivityInterface>(
+        (i) => CreateActivity(repository: i())),
     Bind.lazySingleton<GetAllUserActivitiesInterface>(
         (i) => GetActivitiesList(repository: i())),
     Bind.lazySingleton<DeleteActivityInterface>(
         (i) => DeleteActivity(repository: i())),
     Bind.lazySingleton<EditActivityInterface>(
         (i) => EditActivity(repository: i())),
+    Bind.lazySingleton<CreateActivityInterface>(
+        (i) => CreateActivity(repository: i())),
     Bind.lazySingleton((i) => Dio(smileOption)),
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(

@@ -309,7 +309,7 @@ class _CreateActivityPageState
                                       content:
                                           'Ao salvar o banco de dados de atividade será alterado.',
                                       onPressed: () {
-                                        controller.createActivity();
+                                        controller.createUserActivity();
                                       });
                                 });
                               },
