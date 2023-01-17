@@ -29,7 +29,9 @@ void main() {
     await Firebase.initializeApp();
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
     controller = RegisterController(
-        registerUserRepository: repository, analytics: analytics, registerUser:registerUser);
+        registerUserRepository: repository,
+        analytics: analytics,
+        registerUser: registerUser);
   });
 
   test('setAcceptImage', () {
