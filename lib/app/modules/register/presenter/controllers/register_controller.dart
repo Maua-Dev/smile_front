@@ -190,7 +190,7 @@ abstract class RegisterControllerBase with Store {
     if (value!.isEmpty) {
       return 'Campo obrigatório';
     }
-    if (value[0] == "5" && value[1] == "5" && value.length == 11) {
+    if (phone[0] == "5" && phone[1] == "5" && phone.length == 11) {
       return 'Insira o número com DDD';
     }
     if (value[0] == "5" &&

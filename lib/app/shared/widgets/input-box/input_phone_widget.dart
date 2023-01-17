@@ -42,7 +42,9 @@ class InputPhoneWidget extends StatelessWidget {
               selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
             ),
             keyboardType: const TextInputType.numberWithOptions(
-                signed: true, decimal: true),
+              signed: true,
+              decimal: true,
+            ),
             ignoreBlank: true,
             maxLength: 20,
             initialValue: number,
