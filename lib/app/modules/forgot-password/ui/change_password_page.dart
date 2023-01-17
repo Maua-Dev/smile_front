@@ -165,7 +165,7 @@ class _ChangePasswordPageState
                             controller.toggleVisibilityConfirmPwd,
                         onFieldSubmitted: (value) async {
                           if (_formKey.currentState!.validate()) {
-                            await controller.changePassword();
+                            await controller.changeUserPassword();
                           }
                         },
                       );

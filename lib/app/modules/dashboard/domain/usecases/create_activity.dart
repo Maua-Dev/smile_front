@@ -1,8 +1,7 @@
-import '../../../../shared/models/activity_model.dart';
 import '../repositories/activities_repository_interface.dart';
 
 abstract class CreateActivityInterface {
-  Future<dynamic> call(ActivityModel activityToCreate);
+  Future call(activityToCreate);
 }
 
 class CreateActivity implements CreateActivityInterface {
@@ -11,7 +10,7 @@ class CreateActivity implements CreateActivityInterface {
   CreateActivity({required this.repository});
 
   @override
-  Future call(ActivityModel activityToCreate) {
+  Future call(activityToCreate) {
     return repository.createActivity(activityToCreate);
   }
 }
