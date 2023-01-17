@@ -1,6 +1,5 @@
 import 'package:mobx/mobx.dart';
-
-import '../../domain/repositories/speakers_repository_interface.dart';
+import 'package:smile_front/app/modules/home/usecases/get_speakers.dart';
 import '../../infra/models/home_speaker_model.dart';
 
 part 'speakers_home_controller.g.dart';
@@ -9,9 +8,9 @@ class SpeakersHomeController = SpeakersHomeControllerBase
     with _$SpeakersHomeController;
 
 abstract class SpeakersHomeControllerBase with Store {
-  final SpeakersRepositoryInterface repository;
+  final GetSpeakersInterface getAllSpeakers;
 
-  SpeakersHomeControllerBase({required this.repository}) {
+  SpeakersHomeControllerBase({required this.getAllSpeakers}) {
     getSpeakers();
   }
 
@@ -32,7 +31,7 @@ abstract class SpeakersHomeControllerBase with Store {
   @action
   Future getSpeakers() async {
     setIsLoading(true);
-    listSpeakers = await repository.getSpeakers();
+    listSpeakers = await getAllSpeakers();
     setIsLoading(false);
   }
 

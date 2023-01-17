@@ -25,12 +25,13 @@ mixin _$ActivityHomeController on ActivityHomeControllerBase, Store {
     });
   }
 
-  late final _$getSpeakersAsyncAction =
-      AsyncAction('ActivityHomeControllerBase.getSpeakers', context: context);
+  late final _$getUserSpeakersAsyncAction = AsyncAction(
+      'ActivityHomeControllerBase.getUserSpeakers',
+      context: context);
 
   @override
-  Future<void> getSpeakers() {
-    return _$getSpeakersAsyncAction.run(() => super.getSpeakers());
+  Future<void> getUserSpeakers() {
+    return _$getUserSpeakersAsyncAction.run(() => super.getUserSpeakers());
   }
 
   @override

@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/home/domain/repositories/speakers_repository_interface.dart';
+import 'package:smile_front/app/modules/home/usecases/get_speakers.dart';
 
 import '../../infra/models/home_speaker_model.dart';
 
@@ -9,17 +9,17 @@ class ActivityHomeController = ActivityHomeControllerBase
     with _$ActivityHomeController;
 
 abstract class ActivityHomeControllerBase with Store {
-  final SpeakersRepositoryInterface repository;
+  final GetSpeakersInterface getSpeakers;
 
-  ActivityHomeControllerBase(this.repository) {
-    getSpeakers();
+  ActivityHomeControllerBase(this.getSpeakers) {
+    getUserSpeakers();
   }
 
   @observable
   List<HomeSpeakerModel> speakers = [];
 
   @action
-  Future<void> getSpeakers() async {
-    speakers = await repository.getSpeakers();
+  Future<void> getUserSpeakers() async {
+    speakers = await getSpeakers();
   }
 }

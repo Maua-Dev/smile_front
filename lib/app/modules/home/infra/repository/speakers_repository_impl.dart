@@ -6,6 +6,6 @@ import '../models/home_speaker_model.dart';
 class SpeakersRepositoryImpl implements SpeakersRepositoryInterface {
   @override
   Future<List<HomeSpeakerModel>> getSpeakers() async {
-    return Future.value(speakersMock);
+    return await Future.value(speakersMock);
   }
 }

@@ -65,12 +65,13 @@ mixin _$SpeakersHomeController on SpeakersHomeControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$getSpeakersAsyncAction =
-      AsyncAction('SpeakersHomeControllerBase.getSpeakers', context: context);
+  late final _$getUserSpeakersAsyncAction = AsyncAction(
+      'SpeakersHomeControllerBase.getUserSpeakers',
+      context: context);
 
   @override
   Future<dynamic> getSpeakers() {
-    return _$getSpeakersAsyncAction.run(() => super.getSpeakers());
+    return _$getUserSpeakersAsyncAction.run(() => super.getAllSpeakers());
   }
 
   late final _$toggleIndexAsyncAction =

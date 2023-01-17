@@ -6,10 +6,9 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:smile_front/app/modules/home/domain/repositories/speakers_repository_interface.dart'
-    as _i2;
 import 'package:smile_front/app/modules/home/infra/models/home_speaker_model.dart'
     as _i4;
+import 'package:smile_front/app/modules/home/usecases/get_speakers.dart' as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -22,19 +21,19 @@ import 'package:smile_front/app/modules/home/infra/models/home_speaker_model.dar
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-/// A class which mocks [SpeakersRepositoryInterface].
+/// A class which mocks [GetSpeakersInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSpeakersRepositoryInterface extends _i1.Mock
-    implements _i2.SpeakersRepositoryInterface {
-  MockSpeakersRepositoryInterface() {
+class MockGetSpeakersInterface extends _i1.Mock
+    implements _i2.GetSpeakersInterface {
+  MockGetSpeakersInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<List<_i4.HomeSpeakerModel>> getSpeakers() => (super.noSuchMethod(
+  _i3.Future<List<_i4.HomeSpeakerModel>> call() => (super.noSuchMethod(
         Invocation.method(
-          #getSpeakers,
+          #call,
           [],
         ),
         returnValue: _i3.Future<List<_i4.HomeSpeakerModel>>.value(
