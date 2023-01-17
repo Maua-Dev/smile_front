@@ -1,7 +1,7 @@
 import '../repositories/activities_repository_interface.dart';
 
 abstract class DeleteActivityInterface {
-  Future call(id);
+  Future call(String id);
 }
 
 class DeleteActivity implements DeleteActivityInterface {
@@ -10,7 +10,7 @@ class DeleteActivity implements DeleteActivityInterface {
   DeleteActivity({required this.repository});
 
   @override
-  Future call(id) {
+  Future call(String id) {
     return repository.removeActivity(id);
   }
 }

@@ -8,6 +8,7 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart'
     as _i2;
+import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -30,7 +31,8 @@ class MockCreateActivityInterface extends _i1.Mock
   }
 
   @override
-  _i3.Future<dynamic> call(dynamic activityToCreate) => (super.noSuchMethod(
+  _i3.Future<dynamic> call(_i4.ActivityModel? activityToCreate) =>
+      (super.noSuchMethod(
         Invocation.method(
           #call,
           [activityToCreate],

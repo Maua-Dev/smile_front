@@ -131,7 +131,8 @@ class MockEditActivityInterface extends _i1.Mock
   }
 
   @override
-  _i3.Future<dynamic> call(dynamic activityToEdit) => (super.noSuchMethod(
+  _i3.Future<dynamic> call(_i4.ActivityModel? activityToEdit) =>
+      (super.noSuchMethod(
         Invocation.method(
           #call,
           [activityToEdit],
@@ -150,7 +151,7 @@ class MockDeleteActivityInterface extends _i1.Mock
   }
 
   @override
-  _i3.Future<dynamic> call(dynamic id) => (super.noSuchMethod(
+  _i3.Future<dynamic> call(String? id) => (super.noSuchMethod(
         Invocation.method(
           #call,
           [id],
