@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:ui';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -14,6 +16,7 @@ import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controll
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../../setup_firebase_mocks.dart';
 import '../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 
@@ -30,6 +33,7 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
+    await S.load(const Locale.fromSubtags(languageCode: 'en'));
     authController = AuthController(
         authRepository: repository, storage: storage, analytics: analytics);
     controller =

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,6 +9,7 @@ import 'package:smile_front/app/modules/register/domain/repositories/register_in
 import 'package:smile_front/app/modules/register/presenter/controllers/register_controller.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../setup_firebase_mocks.dart';
 import '../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
@@ -22,6 +25,7 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
+    await S.load(const Locale.fromSubtags(languageCode: 'en'));
     controller = RegisterController(
         registerUserRepository: repository, analytics: analytics);
   });
