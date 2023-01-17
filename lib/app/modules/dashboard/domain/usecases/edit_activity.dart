@@ -1,7 +1,7 @@
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 
 abstract class EditActivityInterface {
-  Future<dynamic> call(activityToEdit);
+  Future call(activityToEdit);
 }
 
 class EditActivity implements EditActivityInterface {

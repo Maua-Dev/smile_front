@@ -3,7 +3,7 @@ import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_
 import '../repositories/user_repository_interface.dart';
 
 abstract class ChangeDataInterface {
-  Future<dynamic> call(String nameToChange, String socialNameToChange,
+  Future call(String nameToChange, String socialNameToChange,
       bool certificateWithSocialName);
 }
 
@@ -13,7 +13,7 @@ class ChangeData implements ChangeDataInterface {
   ChangeData({required this.userRepository});
 
   @override
-  Future<dynamic> call(String nameToChange, String socialNameToChange,
+  Future call(String nameToChange, String socialNameToChange,
       bool certificateWithSocialName) {
     final userData = UserChangeDataModel(
         name: nameToChange,

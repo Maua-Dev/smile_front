@@ -1,7 +1,7 @@
 import '../repositories/activities_repository_interface.dart';
 
 abstract class DeleteActivityInterface {
-  Future<dynamic> call(id);
+  Future call(id);
 }
 
 class DeleteActivity implements DeleteActivityInterface {
