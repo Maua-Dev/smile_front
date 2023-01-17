@@ -6,7 +6,8 @@ import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controll
 import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
 import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
@@ -14,16 +15,17 @@ import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
+import '../user/all_activities_user_dashboard_controller_test.mocks.dart' as u;
 import 'adm_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([
-  ActivitiesRepositoryInterface,
-  LoginWithCpfRneInterface,
-  RefreshTokenInterface
+  GetDownloadLinkCsvInterface,
 ])
 void main() {
-  ActivitiesRepositoryInterface repository =
-      MockActivitiesRepositoryInterface();
+  GetDownloadLinkCsvInterface getDownloadLinkCsv =
+      MockGetDownloadLinkCsvInterface();
+  GetAllUserActivitiesInterface getAllUserActivities =
+      u.MockGetAllUserActivitiesInterface();
   LoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
 
@@ -148,15 +150,16 @@ void main() {
   ];
 
   setUpAll(() {
-    when(repository.getAllActivities()).thenAnswer((_) async => mockActivities);
-    when(repository.getDownloadLinkCsv()).thenAnswer((_) async => '');
+    when(getAllUserActivities()).thenAnswer((_) async => mockActivities);
+    when(getDownloadLinkCsv()).thenAnswer((_) async => '');
     authController = AuthController(
         refreshToken: refreshToken,
         loginWithCpfRne: loginWithCpfRne,
         storage: secureStorage,
         analytics: analytics);
     controller = AdmDashboardController(
-      repository: repository,
+      getAllUserActivities: getAllUserActivities,
+      getDownloadLinkCsv: getDownloadLinkCsv,
       authController: authController,
     );
   });

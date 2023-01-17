@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
@@ -24,7 +26,8 @@ class AdmModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<AdmDashboardController>(
         (i) => AdmDashboardController(
-              repository: i(),
+              getAllUserActivities: i(),
+              getDownloadLinkCsv: i(),
               authController: i(),
             ),
         export: true),
@@ -46,6 +49,8 @@ class AdmModule extends Module {
             )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<GetAllUserActivitiesInterface>(
+        (i) => GetActivitiesList(repository: i())),
     Bind.lazySingleton((i) => Dio(smileOption)),
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(
@@ -55,6 +60,11 @@ class AdmModule extends Module {
               analytics: i(),
             ),
         export: true),
+    Bind.lazySingleton<GetDownloadLinkCsvInterface>(
+      (i) => GetDownloadLinkCsv(
+        repository: i(),
+      ),
+    )
   ];
 
   @override

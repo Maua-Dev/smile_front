@@ -11,6 +11,10 @@ import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository
     as _i3;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
     as _i5;
+import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart'
+    as _i8;
+import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart'
+    as _i7;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
     as _i6;
 
@@ -313,4 +317,51 @@ class MockFirebaseAnalyticsService extends _i1.Mock
         ),
         returnValue: _i4.Future<dynamic>.value(),
       ) as _i4.Future<dynamic>);
+}
+
+/// A class which mocks [RefreshTokenInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockRefreshTokenInterface extends _i1.Mock
+    implements _i7.RefreshTokenInterface {
+  MockRefreshTokenInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<Map<String, dynamic>> call(String? token) => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [token],
+        ),
+        returnValue:
+            _i4.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i4.Future<Map<String, dynamic>>);
+}
+
+/// A class which mocks [LoginWithCpfRneInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLoginWithCpfRneInterface extends _i1.Mock
+    implements _i8.LoginWithCpfRneInterface {
+  MockLoginWithCpfRneInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<Map<String, dynamic>> call(
+    String? user,
+    String? password,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [
+            user,
+            password,
+          ],
+        ),
+        returnValue:
+            _i4.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i4.Future<Map<String, dynamic>>);
 }

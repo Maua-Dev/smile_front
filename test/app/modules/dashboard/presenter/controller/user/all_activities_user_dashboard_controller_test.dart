@@ -20,7 +20,7 @@ import 'package:smile_front/app/shared/services/firebase-analytics/firebase_anal
 
 import '../../../../../../setup_firebase_mocks.dart';
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
-import 'all_activities_user_dashboard_controller_test.mocks.dart';
+import 'all_activities_user_dashboard_controller_test.mocks.dart' as u;
 
 @GenerateMocks([
   ActivitiesRepositoryInterface,
@@ -33,12 +33,12 @@ void main() {
   initModule(AppModule());
   setupCloudFirestoreMocks();
   GetAllUserActivitiesInterface getAllUserActivitiesInterface =
-      MockGetAllUserActivitiesInterface();
+      u.MockGetAllUserActivitiesInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   LoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
   UserDashboardController userDashboardController =
-      MockUserDashboardController();
+      u.MockUserDashboardController();
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
 
   late AllActivitiesUserDashboardController controller;

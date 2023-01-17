@@ -14,7 +14,6 @@ import 'package:smile_front/app/modules/login/presenter/controllers/login_contro
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../../setup_firebase_mocks.dart';
 import '../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
-import '../../../dashboard/presenter/controller/adm/adm_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([ActivitiesRepositoryInterface, FirebaseAnalyticsService])
 void main() {

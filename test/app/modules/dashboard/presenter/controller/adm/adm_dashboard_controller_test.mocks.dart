@@ -6,13 +6,8 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart'
-    as _i5;
-import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart'
-    as _i6;
-import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart'
     as _i2;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -25,145 +20,21 @@ import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-/// A class which mocks [ActivitiesRepositoryInterface].
+/// A class which mocks [GetDownloadLinkCsvInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockActivitiesRepositoryInterface extends _i1.Mock
-    implements _i2.ActivitiesRepositoryInterface {
-  MockActivitiesRepositoryInterface() {
+class MockGetDownloadLinkCsvInterface extends _i1.Mock
+    implements _i2.GetDownloadLinkCsvInterface {
+  MockGetDownloadLinkCsvInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<List<_i4.ActivityModel>> getAllActivities() => (super.noSuchMethod(
+  _i3.Future<String> call() => (super.noSuchMethod(
         Invocation.method(
-          #getAllActivities,
-          [],
-        ),
-        returnValue:
-            _i3.Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]),
-      ) as _i3.Future<List<_i4.ActivityModel>>);
-  @override
-  _i3.Future<List<_i4.ActivityModel>> getUserSubscribedActivities() =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getUserSubscribedActivities,
-          [],
-        ),
-        returnValue:
-            _i3.Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]),
-      ) as _i3.Future<List<_i4.ActivityModel>>);
-  @override
-  _i3.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
-        Invocation.method(
-          #getDownloadLinkCsv,
+          #call,
           [],
         ),
         returnValue: _i3.Future<String>.value(''),
       ) as _i3.Future<String>);
-  @override
-  _i3.Future<dynamic> createActivity(_i4.ActivityModel? activityToCreate) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #createActivity,
-          [activityToCreate],
-        ),
-        returnValue: _i3.Future<dynamic>.value(),
-      ) as _i3.Future<dynamic>);
-  @override
-  _i3.Future<dynamic> editActivity(_i4.ActivityModel? activityToEdit) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #editActivity,
-          [activityToEdit],
-        ),
-        returnValue: _i3.Future<dynamic>.value(),
-      ) as _i3.Future<dynamic>);
-  @override
-  _i3.Future<dynamic> removeActivity(String? id) => (super.noSuchMethod(
-        Invocation.method(
-          #removeActivity,
-          [id],
-        ),
-        returnValue: _i3.Future<dynamic>.value(),
-      ) as _i3.Future<dynamic>);
-  @override
-  _i3.Future<bool> subscribeActivity(
-    _i4.ActivityModel? activity,
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #subscribeActivity,
-          [
-            activity,
-            activityId,
-            activityDate,
-          ],
-        ),
-        returnValue: _i3.Future<bool>.value(false),
-      ) as _i3.Future<bool>);
-  @override
-  _i3.Future<bool> unsubscribeActivity(
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #unsubscribeActivity,
-          [
-            activityId,
-            activityDate,
-          ],
-        ),
-        returnValue: _i3.Future<bool>.value(false),
-      ) as _i3.Future<bool>);
-}
-
-/// A class which mocks [LoginWithCpfRneInterface].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockLoginWithCpfRneInterface extends _i1.Mock
-    implements _i5.LoginWithCpfRneInterface {
-  MockLoginWithCpfRneInterface() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i3.Future<Map<String, dynamic>> call(
-    String? user,
-    String? password,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [
-            user,
-            password,
-          ],
-        ),
-        returnValue:
-            _i3.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i3.Future<Map<String, dynamic>>);
-}
-
-/// A class which mocks [RefreshTokenInterface].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockRefreshTokenInterface extends _i1.Mock
-    implements _i6.RefreshTokenInterface {
-  MockRefreshTokenInterface() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i3.Future<Map<String, dynamic>> call(String? token) => (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [token],
-        ),
-        returnValue:
-            _i3.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i3.Future<Map<String, dynamic>>);
 }

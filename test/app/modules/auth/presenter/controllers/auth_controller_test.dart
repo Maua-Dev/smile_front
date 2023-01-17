@@ -10,13 +10,14 @@ import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../../setup_firebase_mocks.dart';
-import '../../../dashboard/presenter/controller/adm/adm_dashboard_controller_test.mocks.dart';
 import 'auth_controller_test.mocks.dart';
 
 @GenerateMocks([
   AuthRepositoryInterface,
   SecureStorageInterface,
   FirebaseAnalyticsService,
+  RefreshTokenInterface,
+  LoginWithCpfRneInterface,
 ])
 void main() {
   setupCloudFirestoreMocks();
