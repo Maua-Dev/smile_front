@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
@@ -17,6 +18,7 @@ import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/usecases/login_with_cpf_rne.dart';
 import '../auth/usecases/refresh_token.dart';
 import 'domain/repositories/activities_repository_interface.dart';
+import 'domain/usecases/edit_activity.dart';
 import 'external/activities_datasource_impl.dart';
 import 'infra/datasources/activities_datasource_interface.dart';
 import 'infra/repository/activities_repository_impl.dart';
@@ -33,7 +35,8 @@ class AdmModule extends Module {
         export: true),
     Bind.lazySingleton<EditActivityController>(
       (i) => EditActivityController(
-        repository: i(),
+        editActivity: i(),
+        deleteActivity: i(),
         activityModel:
             i.args!.data as ActivityModel? ?? ActivityModel.newInstance(),
       ),
@@ -51,6 +54,10 @@ class AdmModule extends Module {
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<GetAllUserActivitiesInterface>(
         (i) => GetActivitiesList(repository: i())),
+    Bind.lazySingleton<DeleteActivityInterface>(
+        (i) => DeleteActivity(repository: i())),
+    Bind.lazySingleton<EditActivityInterface>(
+        (i) => EditActivity(repository: i())),
     Bind.lazySingleton((i) => Dio(smileOption)),
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(
