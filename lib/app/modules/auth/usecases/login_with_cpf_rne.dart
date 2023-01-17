@@ -10,7 +10,7 @@ class LoginWithCpfRne implements LoginWithCpfRneInterface {
   LoginWithCpfRne({required this.authRepository});
 
   @override
-  Future<Map<String, dynamic>> call(String user, String password) {
-    return authRepository.login(user, password);
+  Future<Map<String, dynamic>> call(String user, String password) async {
+    return await authRepository.login(user, password);
   }
 }
