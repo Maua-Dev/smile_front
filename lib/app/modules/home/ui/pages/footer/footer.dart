@@ -2,13 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/social_media_icons_widget.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
+import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../shared/utils/s3_assets_url.dart';
 import '../../../../../shared/utils/screen_helper.dart';
-import '../../../utils/text_utils.dart';
 
 class Footer extends StatelessWidget {
   const Footer({Key? key}) : super(key: key);
@@ -46,14 +46,14 @@ class Footer extends StatelessWidget {
                   children: [
                     Center(
                       child: Text(
-                        localizationTitle,
+                        S.of(context).footerLocalizationTitle,
                         style: AppTextStyles.titleH1
                             .copyWith(color: Colors.white, fontSize: 12),
                       ),
                     ),
                     Center(
                       child: Text(
-                        localization,
+                        S.of(context).footerLocalizationDescription,
                         style: AppTextStyles.body
                             .copyWith(color: Colors.white, fontSize: 12),
                       ),
@@ -89,7 +89,7 @@ class Footer extends StatelessWidget {
                                 size: 15,
                               ),
                               label: Text(
-                                'COMO CHEGAR',
+                                S.of(context).footerHowToGet.toUpperCase(),
                                 style: AppTextStyles.body.copyWith(
                                     color: Colors.white,
                                     fontSize:
@@ -119,19 +119,31 @@ class Footer extends StatelessWidget {
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
-                      text: 'Em caso de dúvidas, enviar um e-mail para ',
+                      text: S.of(context).footerDoubtContact('normalPart1'),
                       style: AppTextStyles.body.copyWith(
                         color: Colors.white,
                         fontSize: 12,
                       ),
                       children: [
                         TextSpan(
-                          text: 'dev@maua.br',
-                          style: AppTextStyles.titleH1
+                          text: S.of(context).footerDoubtContact('boldPart1'),
+                          style: AppTextStyles.body
                               .copyWith(color: Colors.white, fontSize: 12),
                         ),
                         TextSpan(
-                          text: '.',
+                          text: S.of(context).footerDoubtContact('normalPart2'),
+                          style: AppTextStyles.body.copyWith(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                        TextSpan(
+                          text: S.of(context).footerDoubtContact('boldPart2'),
+                          style: AppTextStyles.body
+                              .copyWith(color: Colors.white, fontSize: 12),
+                        ),
+                        TextSpan(
+                          text: S.of(context).footerDoubtContact('normalPart3'),
                           style: AppTextStyles.body.copyWith(
                             color: Colors.white,
                             fontSize: 12,
@@ -145,68 +157,35 @@ class Footer extends StatelessWidget {
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
-                      text:
-                          'Caso queira falar conosco, entre em contato nos números: ',
+                      text: S.of(context).footerContact('normalPart1'),
                       style: AppTextStyles.body.copyWith(
                         color: Colors.white,
                         fontSize: 12,
                       ),
                       children: [
                         TextSpan(
-                          text: '4239-3002',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
+                          text: S.of(context).footerContact('boldPart1'),
+                          style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
-                          text: ', ',
+                          text: S.of(context).footerContact('normalPart2'),
                           style: AppTextStyles.body.copyWith(
                             color: Colors.white,
                             fontSize: 12,
                           ),
                         ),
                         TextSpan(
-                          text: '4239-3014',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
-                        ),
-                        TextSpan(
-                          text: ', ',
+                          text: S.of(context).footerContact('boldPart2'),
                           style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
-                          text: '4239-3441',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
-                        ),
-                        TextSpan(
-                          text: ', ',
-                          style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                        TextSpan(
-                          text: '4239-3442',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
-                        ),
-                        TextSpan(
-                          text: ' ou ',
-                          style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                        TextSpan(
-                          text: '4239-3411',
-                          style: AppTextStyles.titleH1
-                              .copyWith(color: Colors.white, fontSize: 12),
-                        ),
-                        TextSpan(
-                          text: '.',
+                          text: S.of(context).footerContact('normalPart3'),
                           style: AppTextStyles.body.copyWith(
                             color: Colors.white,
                             fontSize: 12,
@@ -229,7 +208,7 @@ class Footer extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'Clique aqui para acessar as nossas redes sociais:',
+                        S.of(context).footerSocialMedia,
                         textAlign: TextAlign.center,
                         style: AppTextStyles.body.copyWith(
                             color: Colors.white,
@@ -267,14 +246,14 @@ class Footer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        localizationTitle,
+                        S.of(context).footerLocalizationTitle,
                         style: AppTextStyles.titleH1.copyWith(
                             color: Colors.white,
                             fontSize:
                                 Screen.width(context) < tabletSize ? 16 : 20),
                       ),
                       Text(
-                        localization,
+                        S.of(context).footerLocalizationDescription,
                         style: AppTextStyles.body.copyWith(
                             color: Colors.white,
                             fontSize:
@@ -307,7 +286,7 @@ class Footer extends StatelessWidget {
                             color: Colors.white,
                           ),
                           label: Text(
-                            'COMO CHEGAR',
+                            S.of(context).footerHowToGet.toUpperCase(),
                             style: AppTextStyles.body.copyWith(
                                 color: Colors.white,
                                 fontSize: Screen.width(context) < tabletSize
@@ -321,31 +300,40 @@ class Footer extends StatelessWidget {
                       ),
                       RichText(
                         text: TextSpan(
-                            text: 'Em caso de dúvidas, enviar um e-mail para ',
+                            text:
+                                S.of(context).footerDoubtContact('normalPart1'),
                             style: AppTextStyles.body.copyWith(
                               color: Colors.white,
                               fontSize: 12,
                             ),
                             children: [
                               TextSpan(
-                                text: 'smile.patrocinio@maua.br',
+                                text: S
+                                    .of(context)
+                                    .footerDoubtContact('boldPart1'),
                                 style: AppTextStyles.body.copyWith(
                                     color: Colors.white, fontSize: 12),
                               ),
                               TextSpan(
-                                text: ' ou ',
+                                text: S
+                                    .of(context)
+                                    .footerDoubtContact('normalPart2'),
                                 style: AppTextStyles.body.copyWith(
                                   color: Colors.white,
                                   fontSize: 12,
                                 ),
                               ),
                               TextSpan(
-                                text: 'smile@maua.br',
+                                text: S
+                                    .of(context)
+                                    .footerDoubtContact('boldPart2'),
                                 style: AppTextStyles.body.copyWith(
                                     color: Colors.white, fontSize: 12),
                               ),
                               TextSpan(
-                                text: '.',
+                                text: S
+                                    .of(context)
+                                    .footerDoubtContact('normalPart3'),
                                 style: AppTextStyles.body.copyWith(
                                   color: Colors.white,
                                   fontSize: 12,
@@ -358,32 +346,36 @@ class Footer extends StatelessWidget {
                       ),
                       RichText(
                         text: TextSpan(
-                            text:
-                                'Caso queira falar conosco, entre em contato nos números: ',
+                            text: S.of(context).footerContact('normalPart1'),
                             style: AppTextStyles.body.copyWith(
                               color: Colors.white,
                               fontSize: 12,
                             ),
                             children: [
                               TextSpan(
-                                text: '4239-3563',
+                                text: S.of(context).footerContact('boldPart1'),
                                 style: AppTextStyles.body.copyWith(
-                                    color: Colors.white, fontSize: 12),
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold),
                               ),
                               TextSpan(
-                                text: ', ',
+                                text:
+                                    S.of(context).footerContact('normalPart2'),
                                 style: AppTextStyles.body.copyWith(
                                   color: Colors.white,
                                   fontSize: 12,
                                 ),
                               ),
                               TextSpan(
-                                text: '4239-3059',
+                                text: S.of(context).footerContact('boldPart2'),
                                 style: AppTextStyles.body.copyWith(
-                                    color: Colors.white, fontSize: 12),
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold),
                               ),
                               TextSpan(
-                                text: '. ',
+                                text: '.',
                                 style: AppTextStyles.body.copyWith(
                                   color: Colors.white,
                                   fontSize: 12,
@@ -402,7 +394,7 @@ class Footer extends StatelessWidget {
           RichText(
             textAlign: TextAlign.center,
             text: TextSpan(
-                text: 'Criado e desenvolvido por ',
+                text: S.of(context).footerDev('normalPart'),
                 style: AppTextStyles.body.copyWith(
                     color: Colors.white,
                     fontSize: Screen.width(context) < cellphoneSize
@@ -412,7 +404,7 @@ class Footer extends StatelessWidget {
                             : 28),
                 children: [
                   TextSpan(
-                    text: 'Dev. Community Mauá',
+                    text: S.of(context).footerDev('boldPart'),
                     style: AppTextStyles.titleH1.copyWith(
                         color: Colors.white,
                         fontSize: Screen.width(context) < cellphoneSize

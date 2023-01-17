@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:smile_front/app/shared/entities/user_registration.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../shared/services/environment/environment_config.dart';
 import '../infra/datasources/register_datasource_interface.dart';
 import 'errors/errors.dart';
@@ -39,9 +40,9 @@ class RegisterDatasourceImpl implements RegisterDatasourceInterface {
       throw Exception();
     } catch (e) {
       if (e.toString().contains('400')) {
-        throw RegisterInvalid('Usuário já existente.');
+        throw RegisterInvalid(S.current.errorUserAlreadyExist);
       } else {
-        throw RegisterInvalid('Falha ao realizar o cadastro, tente novamente.');
+        throw RegisterInvalid(S.current.errorRegister);
       }
     }
   }

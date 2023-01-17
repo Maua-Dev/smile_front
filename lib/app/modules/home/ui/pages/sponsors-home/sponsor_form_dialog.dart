@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_email_model.dart';
+import 'package:smile_front/app/modules/home/domain/model/sponsor_email_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:string_validator/string_validator.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -109,14 +109,6 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
       ),
     ];
     var optionsClosureDate = [
-      RadioListTile<String>(
-        title: const Text('Dezembro de 2022 (30% de desconto)'),
-        value: 'Dezembro de 2022 (30% de desconto)',
-        groupValue: formSponsorModel.closureDate,
-        onChanged: (value) => setState(() {
-          formSponsorModel = formSponsorModel.copyWith(closureDate: value);
-        }),
-      ),
       RadioListTile<String>(
         title: const Text('Janeiro de 2023 (20% de desconto)'),
         value: 'Janeiro de 2023 (20% de desconto)',
@@ -339,7 +331,6 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                         Row(
                           children: [
                             Expanded(child: optionsClosureDate[1]),
-                            Expanded(child: optionsClosureDate[2])
                           ],
                         ),
                       ],

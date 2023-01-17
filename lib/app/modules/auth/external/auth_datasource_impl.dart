@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/services/environment/environment_config.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../shared/models/user_model.dart';
 import '../domain/repositories/secure_storage_interface.dart';
@@ -51,10 +52,9 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
       if (e.response.toString().contains('User is not confirmed')) {
         Modular.to.navigate('/login/reenviar-email');
       } else if (e.response.toString().contains('User not found')) {
-        throw LoginInvalid(
-            'Não foi possível realizar o login.\n\n- Realize seu cadastro clicando no botão "Não tenho cadastro"\n- Seu e-mail pode não ter sido confirmado, clique em "Reenviar e-mail de confirmação"');
+        throw LoginInvalid(S.current.errorLoginInvalidConfirmation);
       }
-      throw LoginInvalid('Login e/ou senha inválidos');
+      throw LoginInvalid(S.current.errorLoginInvalidCredential);
     }
   }
 

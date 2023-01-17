@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/infra/repository/speakers_repository_impl.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home_controller.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
+import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/more_info_home_page.dart';
 import 'package:smile_front/app/modules/home/usecases/get_speakers.dart';

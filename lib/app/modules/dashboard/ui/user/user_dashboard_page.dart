@@ -7,6 +7,7 @@ import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/u
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
@@ -209,7 +210,7 @@ class _UserDashboardPageState
                           ),
                         ),
                         Text(
-                          'INSCREVA-SE',
+                          S.of(context).signUp.toUpperCase(),
                           style: AppTextStyles.button.copyWith(
                             fontSize: MediaQuery.of(context).size.width < 1630
                                 ? 20

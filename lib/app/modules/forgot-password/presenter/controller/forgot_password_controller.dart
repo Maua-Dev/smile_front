@@ -4,6 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/app_widget.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../domain/usecases/change_password.dart';
@@ -72,14 +73,14 @@ abstract class ForgotPasswordControllerBase with Store {
   }
 
   @action
-  String? validateEmail(String value) {
-    if (!value.contains('@')) {
+  String? validateEmail(String? value) {
+    if (!value!.contains('@')) {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (value.isEmpty) {
-        return "         Campo obrigatório";
+        return S.current.fieldRequired;
       } else if (!CPFValidator.isValid(value) || value.isEmpty) {
-        return "         E-mail inválido";
+        return "E-mail inválido";
       }
     }
     return null;
@@ -146,22 +147,18 @@ abstract class ForgotPasswordControllerBase with Store {
   }
 
   @action
-  String? validateVerifyPassword(String value) {
-    if (value.isEmpty) {
-      return "         Campo obrigatório";
+  String? validateVerifyPassword(String? value) {
+    if (value!.isEmpty) {
+      return S.current.fieldRequired;
     }
     if (password != verifyPassword) {
-      return "         Digite a mesma senha";
+      return S.current.fieldPasswordEqualsRequired;
     }
     String pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$';
     RegExp regExp = RegExp(pattern);
     if (!regExp.hasMatch(value)) {
-      showErrorSnackBar(
-          errorMessage:
-              "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Mínimo de 8 caracteres",
-          color: AppColors.redButton);
-      return '';
+      return S.current.fieldPasswordRequisits;
     }
     return null;
   }

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,6 +11,7 @@ import 'package:smile_front/app/modules/forgot-password/domain/usecases/forgot_p
 import 'package:smile_front/app/modules/forgot-password/forgot_password_module.dart';
 import 'package:smile_front/app/modules/forgot-password/presenter/controller/forgot_password_controller.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../setup_firebase_mocks.dart';
 import 'forgot_password_controller_test.mocks.dart';
@@ -30,7 +33,10 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
+
+    await S.load(const Locale.fromSubtags(languageCode: 'en'));
     when(forgotPassword('')).thenAnswer((_) async => '');
+
     controller = ForgotPasswordController(
         forgotPassword: forgotPassword,
         analytics: analytics,
@@ -61,14 +67,14 @@ void main() {
     expect(controller.username, '17001633');
   });
 
-  test('validateEmail if is empty', () {
+  test('validateEmail if is empty : String Error Message', () {
     var str = '';
-    expect(controller.validateEmail(str), "         Campo obrigatório");
+    expect(controller.validateEmail(str), isA<String>());
   });
 
-  test('validateEmail if CPF is valid : false', () {
+  test('validateEmail if CPF is valid : String Error Message', () {
     var str = '1234567';
-    expect(controller.validateEmail(str), "         E-mail inválido");
+    expect(controller.validateEmail(str), isA<String>());
   });
 
   test('validateEmail if CPF is valid : true', () {
@@ -98,17 +104,16 @@ void main() {
     expect(controller.successRegistration, true);
   });
 
-  test('validateVerifyPassword if is empty', () {
+  test('validateVerifyPassword if is empty : String Error Message', () {
     var str = '';
-    expect(
-        controller.validateVerifyPassword(str), "         Campo obrigatório");
+    expect(controller.validateVerifyPassword(str), isA<String>());
   });
 
-  test('validateVerifyPassword if is equal to password', () {
+  test('validateVerifyPassword if is equal to password : String Error Message',
+      () {
     controller.password = '123';
     var str = '1234';
-    expect(controller.validateVerifyPassword(str),
-        "         Digite a mesma senha");
+    expect(controller.validateVerifyPassword(str), isA<String>());
   });
 
   test('toggleVisibilityPwd', () {

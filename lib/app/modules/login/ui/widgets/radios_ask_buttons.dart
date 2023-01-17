@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 
@@ -64,9 +65,9 @@ class RadioAskButtons extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Text(
-                  'Sim',
-                  style: TextStyle(fontSize: 15),
+                Text(
+                  S.of(context).yesTitle,
+                  style: const TextStyle(fontSize: 15),
                 ),
                 const SizedBox(width: 20),
                 SizedBox(
@@ -86,9 +87,9 @@ class RadioAskButtons extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Text(
-                  'Não',
-                  style: TextStyle(fontSize: 15),
+                Text(
+                  S.of(context).noTitle,
+                  style: const TextStyle(fontSize: 15),
                 ),
               ],
             ),
