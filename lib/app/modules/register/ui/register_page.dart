@@ -206,12 +206,15 @@ class _RegisterPageState
                           const SizedBox(
                             height: 20,
                           ),
-                          InputPhoneWidget(
-                            icon: Icons.phone_rounded,
-                            placeholder: S.of(context).registerPhonePlaceholder,
-                            setValue: controller.setPhone,
-                            validation: controller.validatePhone,
-                          ),
+                          Observer(builder: (_) {
+                            return InputPhoneWidget(
+                              icon: Icons.phone_rounded,
+                              placeholder:
+                                  S.of(context).registerPhonePlaceholder,
+                              setValue: controller.setPhone,
+                              validation: controller.validatePhone,
+                            );
+                          }),
                           const SizedBox(
                             height: 20,
                           ),
