@@ -7,8 +7,6 @@ abstract class GetAllUserActivitiesInterface {
 }
 
 class GetActivitiesList implements GetAllUserActivitiesInterface {
-
-
   final ActivitiesRepositoryInterface repository;
 
   GetActivitiesList({required this.repository});
@@ -17,5 +15,4 @@ class GetActivitiesList implements GetAllUserActivitiesInterface {
   Future<List<ActivityModel>> call() async {
     return await repository.getAllActivities();
   }
-
 }

@@ -8,7 +8,6 @@ import '../../../../../shared/services/firebase-analytics/firebase_analytics_ser
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/infra/activity_enum.dart';
 
-
 part 'all_activities_user_dashboard_controller.g.dart';
 
 class AllActivitiesUserDashboardController = AllActivitiesUserDashboardControllerBase

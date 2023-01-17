@@ -1,7 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
-
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../usecases/refresh_token.dart';
 
@@ -32,7 +31,7 @@ class AuthController {
   bool get certificateWithSocialName => _certificateWithSocialName ?? false;
 
   Future<void> loginWithUserCpfRne(String cpfRne, String password) async {
-    var loginResponse = await loginWithCpfRne(cpfRne,password);
+    var loginResponse = await loginWithCpfRne(cpfRne, password);
     _accessLevel = loginResponse['access_level'];
     _name = loginResponse['name'];
     _socialname = loginResponse['social_name'];
