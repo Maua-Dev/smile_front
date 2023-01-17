@@ -10,7 +10,7 @@ import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../login/ui/widgets/maintenance_alert_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controller/resend_confirmation_controller.dart';
-import '../../../shared/widgets/input-box/input_box.dart';
+import '../../../shared/widgets/input-box/input_box_widget.dart';
 import '../../../shared/services/environment/environment_config.dart';
 
 class ResendConfirmationPage extends StatefulWidget {
@@ -150,17 +150,13 @@ class _ResendConfirmationPageState
                                     ),
                                   ),
                                 ),
-                                InputBox(
+                                InputBoxWidget(
                                   icon: Icons.person,
                                   placeholder:
                                       S.of(context).registerCPFPlaceholder,
                                   setValue: controller.setCpf,
                                   isCpfField: true,
-                                  onFieldSubmitted: (value) async {
-                                    if (controller.validateForm()) {
-                                      await controller.resendConfirmation();
-                                    }
-                                  },
+                                  validation: controller.validateCpf,
                                 ),
                                 const SizedBox(
                                   height: 40,
@@ -179,7 +175,12 @@ class _ResendConfirmationPageState
                                     heightSize: 50,
                                     backgroundColor: AppColors.brandingOrange,
                                     onPressed: () async {
-                                      if (controller.validateForm()) {
+                                      FocusScopeNode currentFocus =
+                                          FocusScope.of(context);
+                                      if (!currentFocus.hasPrimaryFocus) {
+                                        currentFocus.unfocus();
+                                      }
+                                      if (_formKey.currentState!.validate()) {
                                         await controller.resendConfirmation();
                                       }
                                     },

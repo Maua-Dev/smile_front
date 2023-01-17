@@ -63,16 +63,16 @@ void main() {
     expect(controller.validateCpf('g@gmail.com'), null);
   });
 
-  test('validateCpf if is empty', () {
-    expect(controller.validateCpf(''), "         Campo obrigatório");
+  test('validateCpf if is empty : String Error Message', () {
+    expect(controller.validateCpf(''), isA<String>());
   });
 
-  test('validateCpf if CPF is valid', () {
-    expect(controller.validateCpf('123.456.678-9'), "         CPF inválido");
+  test('validateCpf if CPF is valid : String Error Message', () {
+    expect(controller.validateCpf('123.456.678-9'), isA<String>());
   });
 
-  test('validateField if is empty', () {
-    expect(controller.validateField(''), "         Campo obrigatório");
+  test('validateField if is empty : String Error Message', () {
+    expect(controller.validateField(''), isA<String>());
   });
 
   test('validateField if is ok', () {

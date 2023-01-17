@@ -12,7 +12,7 @@ import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../presenter/controllers/login_controller.dart';
-import '../../../shared/widgets/input-box/input_box.dart';
+import '../../../shared/widgets/input-box/input_box_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -110,7 +110,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                 ? 16
                                 : 32,
                           ),
-                        InputBox(
+                        InputBoxWidget(
                           icon: Icons.person,
                           placeholder: S.of(context).loginUsernamePlaceholder,
                           setValue: controller.setUsername,
@@ -120,16 +120,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           height: 20,
                         ),
                         Observer(builder: (context) {
-                          return InputBox(
+                          return InputBoxWidget(
                             icon: Icons.lock,
                             placeholder: S.of(context).loginPasswordPlaceholder,
                             setValue: controller.setPassword,
                             isPassword: true,
-                            onFieldSubmitted: (value) async {
-                              if (_formKey.currentState!.validate()) {
-                                await controller.login();
-                              }
-                            },
                             validation: controller.validateField,
                             showPwd: controller.showPwd,
                             onToggleVisibilityPwd:

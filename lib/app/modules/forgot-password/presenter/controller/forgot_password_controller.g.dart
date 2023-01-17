@@ -253,7 +253,7 @@ mixin _$ForgotPasswordController on ForgotPasswordControllerBase, Store {
       ActionController(name: 'ForgotPasswordControllerBase', context: context);
 
   @override
-  String? validateEmail(String value) {
+  String? validateEmail(String? value) {
     final _$actionInfo = _$ForgotPasswordControllerBaseActionController
         .startAction(name: 'ForgotPasswordControllerBase.validateEmail');
     try {
@@ -264,7 +264,7 @@ mixin _$ForgotPasswordController on ForgotPasswordControllerBase, Store {
   }
 
   @override
-  String? validateVerifyPassword(String value) {
+  String? validateVerifyPassword(String? value) {
     final _$actionInfo =
         _$ForgotPasswordControllerBaseActionController.startAction(
             name: 'ForgotPasswordControllerBase.validateVerifyPassword');

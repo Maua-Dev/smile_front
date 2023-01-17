@@ -11,7 +11,7 @@ import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controller/forgot_password_controller.dart';
-import '../../../shared/widgets/input-box/input_box.dart';
+import '../../../shared/widgets/input-box/input_box_widget.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
@@ -134,17 +134,12 @@ class _ForgotPasswordPageState
                                   textAlign: TextAlign.justify,
                                 ),
                               ),
-                              InputBox(
+                              InputBoxWidget(
                                 icon: Icons.person,
                                 placeholder:
                                     S.of(context).registerEmailPlaceholder,
                                 setValue: controller.setEmail,
                                 validation: controller.validateEmail,
-                                onFieldSubmitted: (value) async {
-                                  if (_formKey.currentState!.validate()) {
-                                    await controller.forgotPassword();
-                                  }
-                                },
                               ),
                               const SizedBox(
                                 height: 40,
@@ -160,6 +155,11 @@ class _ForgotPasswordPageState
                                   heightSize: 50,
                                   backgroundColor: AppColors.brandingOrange,
                                   onPressed: () async {
+                                    FocusScopeNode currentFocus =
+                                        FocusScope.of(context);
+                                    if (!currentFocus.hasPrimaryFocus) {
+                                      currentFocus.unfocus();
+                                    }
                                     if (_formKey.currentState!.validate()) {
                                       await controller.forgotPassword();
                                     }
