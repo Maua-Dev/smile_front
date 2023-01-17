@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 import '../../../../app_widget.dart';
@@ -178,17 +179,6 @@ abstract class RegisterControllerBase with Store {
     verifyEmail = value.replaceAll(' ', '');
   }
 
-  List<String> emailProviders = [
-    'gmail',
-    'hotmail',
-    'terra',
-    'uol',
-    'outlook',
-    'yahoo',
-    'icloud',
-    'maua'
-  ];
-
   @action
   Future<void> setPhone(String value) async {
     value = value.replaceAll('+', '');
@@ -217,11 +207,9 @@ abstract class RegisterControllerBase with Store {
     if (value!.isEmpty) {
       return 'Campo obrigatório';
     }
-    if (!value.contains('@')) {
+    if (!EmailValidator.validate(email)) {
       return 'E-mail inválido';
     }
-    var provider = value.split('@')[1].split('.')[0];
-    showDialogToConfirmEmail = !emailProviders.contains(provider);
     return null;
   }
 
