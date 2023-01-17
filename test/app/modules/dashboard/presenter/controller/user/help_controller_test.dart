@@ -16,7 +16,6 @@ import 'help_controller_test.mocks.dart';
 void main() {
   setupCloudFirestoreMocks();
 
-  FaqRepositoryInterface repository = MockFaqRepositoryInterface();
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
   GetAllFaqInformationInterface getAllFaqInformation =
       MockGetAllFaqInformationInterface();
@@ -36,7 +35,7 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
-    when(repository.getAllFaq()).thenAnswer((_) async => mockFaqList);
+    when(getAllFaqInformation()).thenAnswer((_) async => mockFaqList);
     controller = HelpController(
         getAllFaqInformation: getAllFaqInformation, analytics: analytics);
   });

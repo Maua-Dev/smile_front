@@ -13,7 +13,6 @@ import '../../../../../setup_firebase_mocks.dart';
 import 'auth_controller_test.mocks.dart';
 
 @GenerateMocks([
-  AuthRepositoryInterface,
   SecureStorageInterface,
   FirebaseAnalyticsService,
   RefreshTokenInterface,
@@ -21,7 +20,6 @@ import 'auth_controller_test.mocks.dart';
 ])
 void main() {
   setupCloudFirestoreMocks();
-  AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
   SecureStorageInterface storage = MockSecureStorageInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   LoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
@@ -40,7 +38,7 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
-    when(authRepository.login('adm', 'teste'))
+    when(loginWithCpfRne('adm', 'teste'))
         .thenAnswer((_) async => loginWithUserCpfRne);
     when(analytics.setUserProperties('')).thenAnswer((_) async => null);
     when(storage.getAccessLevel()).thenAnswer((_) async => 'ADMIN');
