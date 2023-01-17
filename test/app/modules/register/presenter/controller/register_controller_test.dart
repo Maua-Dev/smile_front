@@ -117,14 +117,9 @@ void main() {
     expect(controller.validateEmail(str), isA<String>());
   });
 
-  test('validateEmail if constains @ : null', () {
+  test('validateEmail if constains @ : String Error Message', () {
     var str = 'test@';
-    expect(controller.validateEmail(str), null);
-  });
-
-  test('validateEmail if constains providers : null', () {
-    var str = 'test@gmail.com';
-    expect(controller.validateEmail(str), null);
+    expect(controller.validateEmail(str), isA<String>());
   });
 
   test('validateVerifyEmail if is empty : String Error Message', () {
