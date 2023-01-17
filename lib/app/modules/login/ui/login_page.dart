@@ -129,6 +129,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             showPwd: controller.showPwd,
                             onToggleVisibilityPwd:
                                 controller.toggleVisibilityPwd,
+                            onFieldSubmitted: (p0) async {
+                              if (_formKey.currentState!.validate()) {
+                                await controller.login();
+                              }
+                            },
                           );
                         }),
                         const SizedBox(
