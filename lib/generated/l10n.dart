@@ -997,6 +997,106 @@ class S {
     );
   }
 
+  /// `Required field`
+  String get fieldRequired {
+    return Intl.message(
+      'Required field',
+      name: 'fieldRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid field`
+  String get fieldInvalid {
+    return Intl.message(
+      'Invalid field',
+      name: 'fieldInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your full name`
+  String get fieldFullNameRequired {
+    return Intl.message(
+      'Enter your full name',
+      name: 'fieldFullNameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid e-mail`
+  String get fieldEmailInvalid {
+    return Intl.message(
+      'Invalid e-mail',
+      name: 'fieldEmailInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-mails must be the same`
+  String get fieldEmailsEqualsRequired {
+    return Intl.message(
+      'E-mails must be the same',
+      name: 'fieldEmailsEqualsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The "Password" and "Confirm your password" fields must be the same`
+  String get fieldPasswordEqualsRequired {
+    return Intl.message(
+      'The "Password" and "Confirm your password" fields must be the same',
+      name: 'fieldPasswordEqualsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, $, %, ^, &, *, -) \n - Minimum 8 characters`
+  String get fieldPasswordRequisits {
+    return Intl.message(
+      'Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters',
+      name: 'fieldPasswordRequisits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid CPF`
+  String get fieldCpfInvalid {
+    return Intl.message(
+      'Invalid CPF',
+      name: 'fieldCpfInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the number with DDD`
+  String get fieldDDDRequired {
+    return Intl.message(
+      'Enter the number with DDD',
+      name: 'fieldDDDRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid RA`
+  String get fieldRAInvalid {
+    return Intl.message(
+      'Invalid RA',
+      name: 'fieldRAInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `A code will be sent to the registered email address:`
   String get codeInEmailTitle {
     return Intl.message(

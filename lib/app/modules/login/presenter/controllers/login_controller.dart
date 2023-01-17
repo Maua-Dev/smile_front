@@ -4,6 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
@@ -92,12 +93,12 @@ abstract class LoginControllerBase with Store {
   @action
   String? validateCpf(String? value) {
     if (value!.isEmpty) {
-      return "Campo obrigatório";
+      return S.current.fieldRequired;
     } else if (!value.contains('@')) {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (!CPFValidator.isValid(value)) {
-        return "CPF inválido";
+        return S.current.fieldCpfInvalid;
       }
     }
     return null;
@@ -105,7 +106,7 @@ abstract class LoginControllerBase with Store {
 
   @action
   String? validateField(String? value) {
-    return value!.isEmpty ? "Campo obrigatório" : null;
+    return value!.isEmpty ? S.current.fieldRequired : null;
   }
 
   @action

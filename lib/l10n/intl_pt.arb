@@ -103,6 +103,18 @@
 
 
 
+    "fieldRequired": "Campo obrigatório",
+    "fieldInvalid": "Campo inválido",
+    "fieldFullNameRequired": "Insira seu nome completo",
+    "fieldEmailInvalid": "E-mail inválido",
+    "fieldEmailsEqualsRequired": "Os e-mails devem ser iguais",
+    "fieldPasswordEqualsRequired": "Os campos \"Senha\" e \"Confirme sua senha\" devem ser iguais",
+    "fieldPasswordRequisits": "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, $, %, ^, &, *, -)  \n - Mínimo de 8 caracteres",
+    "fieldCpfInvalid": "CPF inválido",
+    "fieldDDDRequired": "Insira o número com DDD",
+    "fieldRAInvalid": "RA inválido",
+
+
 
     "codeInEmailTitle": "Um código será enviado no email cadastrado:",
     "insertPasswordCodeInstructions": "Insira sua nova senha e o codigo enviado para o seu e-mail:",

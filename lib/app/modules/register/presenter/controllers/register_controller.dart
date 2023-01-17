@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/entities/user_registration.dart';
 import '../../../../shared/error/error_snackbar.dart';
@@ -130,7 +131,7 @@ abstract class RegisterControllerBase with Store {
   @action
   String? validateName(String? value) {
     if (value!.isEmpty) {
-      return 'Campo obrigatório';
+      return S.current.fieldRequired;
     } else if (value.split(' ').length < 2) {
       return 'Insira seu nome completo';
     }
@@ -145,7 +146,7 @@ abstract class RegisterControllerBase with Store {
   @action
   String? validateSocialName(String? value) {
     if (hasSocialName && value!.isEmpty) {
-      return 'Campo obrigatório';
+      return S.current.fieldRequired;
     }
     return null;
   }
@@ -160,11 +161,11 @@ abstract class RegisterControllerBase with Store {
   @action
   String? validateCpf(String? value) {
     if (value!.isEmpty) {
-      return 'Campo obrigatório';
+      return S.current.fieldRequired;
     } else if (!CPFValidator.isValid(value)) {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
-      return 'CPF inválido';
+      return S.current.fieldCpfInvalid;
     }
     return null;
   }
@@ -188,16 +189,16 @@ abstract class RegisterControllerBase with Store {
   @action
   String? validatePhone(String? value) {
     if (value!.isEmpty) {
-      return 'Campo obrigatório';
+      return S.current.fieldRequired;
     }
     if (phone[0] == "5" && phone[1] == "5" && phone.length == 11) {
-      return 'Insira o número com DDD';
+      return S.current.fieldDDDRequired;
     }
     if (value[0] == "5" &&
         value[1] == "5" &&
         value.length != 11 &&
         value.length != 13) {
-      return 'Campo inválido';
+      return S.current.fieldInvalid;
     }
     return null;
   }
@@ -205,10 +206,10 @@ abstract class RegisterControllerBase with Store {
   @action
   String? validateEmail(String? value) {
     if (value!.isEmpty) {
-      return 'Campo obrigatório';
+      return S.current.fieldRequired;
     }
     if (!EmailValidator.validate(email)) {
-      return 'E-mail inválido';
+      return S.current.fieldEmailInvalid;
     }
     return null;
   }
@@ -216,10 +217,10 @@ abstract class RegisterControllerBase with Store {
   @action
   String? validateVerifyEmail(String? value) {
     if (value!.isEmpty) {
-      return 'Campo obrigatório';
+      return S.current.fieldRequired;
     }
     if (value != email) {
-      return 'As senhas devem ser iguais';
+      return S.current.fieldEmailsEqualsRequired;
     }
     return null;
   }
@@ -249,12 +250,12 @@ abstract class RegisterControllerBase with Store {
   String? validateRa(String? value) {
     if (isMauaStudent) {
       if (value!.isEmpty) {
-        return 'Campo obrigatório';
+        return S.current.fieldRequired;
       }
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (value.length != 8) {
-        return 'RA inválido';
+        return S.current.fieldRAInvalid;
       }
     }
     return null;
@@ -273,13 +274,13 @@ abstract class RegisterControllerBase with Store {
   @action
   String? validatePassword(String? value) {
     if (value!.isEmpty) {
-      return 'Campo obrigatório';
+      return S.current.fieldRequired;
     }
     String pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
     RegExp regExp = RegExp(pattern);
     if (!regExp.hasMatch(value)) {
-      return "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -)  \n - Mínimo de 8 caracteres";
+      return S.current.fieldPasswordRequisits;
     }
     return null;
   }
@@ -287,10 +288,10 @@ abstract class RegisterControllerBase with Store {
   @action
   String? validateVerifyPassword(String? value) {
     if (value!.isEmpty) {
-      return 'Campo obrigatório';
+      return S.current.fieldRequired;
     }
     if (password != verifyPassword) {
-      return 'Os campos "Senha" e "Confirme sua senha" devem ser iguais';
+      return S.current.fieldPasswordEqualsRequired;
     }
     return null;
   }

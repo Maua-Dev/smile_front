@@ -2,6 +2,7 @@ import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/error/error_snackbar.dart';
 import '../../domain/repository/resend_confirmation_datasource_interface.dart';
@@ -73,11 +74,11 @@ abstract class ResendConfirmationControllerBase with Store {
   @action
   String? validateCpf(String? value) {
     if (value!.isEmpty) {
-      return 'Campo obrigatório';
+      return S.current.fieldRequired;
     } else if (!CPFValidator.isValid(value)) {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
-      return 'CPF inválido';
+      return S.current.fieldCpfInvalid;
     }
     return null;
   }
