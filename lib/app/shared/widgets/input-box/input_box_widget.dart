@@ -79,7 +79,10 @@ class InputBoxWidget extends StatelessWidget {
                 fontSize: 16,
                 height: 1,
               ),
-              prefixIcon: Icon(icon, size: 24),
+              prefixIcon: Icon(
+                icon,
+                size: 24,
+              ),
               suffixIcon: onToggleVisibilityPwd != null
                   ? InkWell(
                       onTap: () => onToggleVisibilityPwd!(showPwd!),
