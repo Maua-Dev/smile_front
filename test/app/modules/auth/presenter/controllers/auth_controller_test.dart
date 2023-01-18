@@ -55,16 +55,16 @@ void main() {
     );
   });
 
-  // test('loginWithCpfRne', () async {
-  //   await controller.loginWithCpfRne(emailMock, pwMock);
-  //   expect(controller.accessLevel, loginMock['access_level']);
-  //   expect(controller.name, loginMock['name']);
-  //   expect(controller.socialname, loginMock['social_name']);
-  //   expect(controller.id, loginMock['id']);
-  //   expect(controller.certificateWithSocialName,
-  //       loginMock['certificate_with_social_name']);
-  //   expect(controller.isLogged, true);
-  // });
+  test('loginWithCpfRne', () async {
+    await controller.loginWithUserCpfRne(emailMock, pwMock);
+    expect(controller.accessLevel, loginMock['access_level']);
+    expect(controller.name, loginMock['name']);
+    expect(controller.socialname, loginMock['social_name']);
+    expect(controller.id, loginMock['id']);
+    expect(controller.certificateWithSocialName,
+        loginMock['certificate_with_social_name']);
+    expect(controller.isLogged, true);
+  });
 
   test('logout', () async {
     await controller.logout();
