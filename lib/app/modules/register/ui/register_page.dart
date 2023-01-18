@@ -427,6 +427,11 @@ class _RegisterPageState
                                               onPressed: () async {
                                                 Navigator.of(context).pop();
                                                 await controller.register();
+                                                if (controller
+                                                    .successRegistration) {
+                                                  Modular.to.navigate(
+                                                      '/login/cadastro/sucesso');
+                                                }
                                               },
                                               isLoading: controller.isLoading,
                                             );
