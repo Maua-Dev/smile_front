@@ -33,9 +33,6 @@ abstract class RegisterControllerBase with Store {
   bool isLoading = false;
 
   @observable
-  bool showDialogToConfirmEmail = false;
-
-  @observable
   bool showPwd = false;
 
   @observable
@@ -194,10 +191,7 @@ abstract class RegisterControllerBase with Store {
     if (phone[0] == "5" && phone[1] == "5" && phone.length == 11) {
       return S.current.fieldDDDRequired;
     }
-    if (value[0] == "5" &&
-        value[1] == "5" &&
-        value.length != 11 &&
-        value.length != 13) {
+    if (phone[0] == "5" && phone[1] == "5" && phone.length != 13) {
       return S.current.fieldInvalid;
     }
     return null;
@@ -365,10 +359,5 @@ abstract class RegisterControllerBase with Store {
   @action
   void toggleVisibilityConfirmPwd(bool value) {
     showConfirmPwd = !value;
-  }
-
-  @action
-  void setShowDialogToConfirmEmail(bool value) {
-    showDialogToConfirmEmail = value;
   }
 }

@@ -413,33 +413,25 @@ class _RegisterPageState
                                         currentFocus.unfocus();
                                       }
                                       if (_formKey.currentState!.validate()) {
-                                        if (controller
-                                            .showDialogToConfirmEmail) {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return ActionConfirmationDialogWidget(
-                                                title: S
-                                                    .of(context)
-                                                    .confirmEmailNotificationTitle(
-                                                        controller.email),
-                                                content: S
-                                                    .of(context)
-                                                    .confirmEmailNotificationSubtitle,
-                                                onPressed: () async {
-                                                  controller
-                                                      .setShowDialogToConfirmEmail(
-                                                          false);
-                                                  Navigator.of(context).pop();
-                                                  await controller.register();
-                                                },
-                                                isLoading: controller.isLoading,
-                                              );
-                                            },
-                                          );
-                                        } else {
-                                          await controller.register();
-                                        }
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return ActionConfirmationDialogWidget(
+                                              title: S
+                                                  .of(context)
+                                                  .confirmEmailNotificationTitle(
+                                                      controller.email),
+                                              content: S
+                                                  .of(context)
+                                                  .confirmEmailNotificationSubtitle,
+                                              onPressed: () async {
+                                                Navigator.of(context).pop();
+                                                await controller.register();
+                                              },
+                                              isLoading: controller.isLoading,
+                                            );
+                                          },
+                                        );
                                       }
                                     }
                                   : null,
