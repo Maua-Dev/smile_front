@@ -56,24 +56,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$showDialogToConfirmEmailAtom = Atom(
-      name: 'RegisterControllerBase.showDialogToConfirmEmail',
-      context: context);
-
-  @override
-  bool get showDialogToConfirmEmail {
-    _$showDialogToConfirmEmailAtom.reportRead();
-    return super.showDialogToConfirmEmail;
-  }
-
-  @override
-  set showDialogToConfirmEmail(bool value) {
-    _$showDialogToConfirmEmailAtom
-        .reportWrite(value, super.showDialogToConfirmEmail, () {
-      super.showDialogToConfirmEmail = value;
-    });
-  }
-
   late final _$showPwdAtom =
       Atom(name: 'RegisterControllerBase.showPwd', context: context);
 
@@ -725,22 +707,10 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
-  void setShowDialogToConfirmEmail(bool value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.setShowDialogToConfirmEmail');
-    try {
-      return super.setShowDialogToConfirmEmail(value);
-    } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 errors: ${errors},
 isLoading: ${isLoading},
-showDialogToConfirmEmail: ${showDialogToConfirmEmail},
 showPwd: ${showPwd},
 showConfirmPwd: ${showConfirmPwd},
 successRegistration: ${successRegistration},

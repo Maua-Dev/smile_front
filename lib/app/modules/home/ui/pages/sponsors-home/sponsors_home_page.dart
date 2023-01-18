@@ -82,12 +82,12 @@ var plansWidgets = [
       planTextStyle: planTextStyle,
       planName: S.current.planSponsorSchema('diamond'),
       level: 4,
-      price: S.current.planPriceSponsorSchema('silver')),
+      price: S.current.planPriceSponsorSchema('diamond')),
   PlanWidget(
     planTextStyle: planTextStyle,
     planName: S.current.planSponsorSchema('gold'),
     level: 3,
-    price: S.current.planPriceSponsorSchema('silver'),
+    price: S.current.planPriceSponsorSchema('gold'),
   ),
   PlanWidget(
     planTextStyle: planTextStyle,
@@ -99,7 +99,7 @@ var plansWidgets = [
     planTextStyle: planTextStyle,
     planName: S.current.planSponsorSchema('bronze'),
     level: 1,
-    price: S.current.planPriceSponsorSchema('silver'),
+    price: S.current.planPriceSponsorSchema('bronze'),
   )
 ];
 

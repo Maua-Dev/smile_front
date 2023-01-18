@@ -240,11 +240,6 @@ void main() {
     expect(controller.showConfirmPwd, false);
   });
 
-  test('setShowDialogToConfirmEmail', () {
-    controller.setShowDialogToConfirmEmail(true);
-    expect(controller.showDialogToConfirmEmail, true);
-  });
-
   test('setSuccessRegistration', () {
     var str = true;
     controller.setSuccessRegistration(str);
