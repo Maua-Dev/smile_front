@@ -161,7 +161,7 @@ class _ForgotPasswordPageState
                                       currentFocus.unfocus();
                                     }
                                     if (_formKey.currentState!.validate()) {
-                                      await controller.forgotPassword();
+                                      await controller.forgotUserPassword();
                                     }
                                   },
                                 );

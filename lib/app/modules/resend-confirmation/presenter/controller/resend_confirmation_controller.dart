@@ -5,8 +5,8 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/error/error_snackbar.dart';
-import '../../domain/repository/resend_confirmation_datasource_interface.dart';
 import '../../external/errors.dart';
+import '../../usecases/resend_confirmation.dart';
 
 part 'resend_confirmation_controller.g.dart';
 
@@ -14,10 +14,9 @@ class ResendConfirmationController = ResendConfirmationControllerBase
     with _$ResendConfirmationController;
 
 abstract class ResendConfirmationControllerBase with Store {
-  final ResendConfirmationRepositoryInterface resendConfirmationRepository;
+  final ResendConfirmationInterface resendUserConfirmation;
 
-  ResendConfirmationControllerBase(
-      {required this.resendConfirmationRepository});
+  ResendConfirmationControllerBase({required this.resendUserConfirmation});
 
   @observable
   bool isLoading = false;
@@ -54,7 +53,7 @@ abstract class ResendConfirmationControllerBase with Store {
     setIsLoading(true);
     errors = '';
     try {
-      await resendConfirmationRepository.resendConfirmation(cpf);
+      await resendUserConfirmation(cpf);
       emailSent = true;
     } on Failure catch (e) {
       if (scaffold.context.size!.width <= 1024) {

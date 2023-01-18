@@ -298,7 +298,7 @@ class _EditActivityPageState
                                     content:
                                         'Ao confirmar todos os dados antigos serão perdidos.',
                                     onPressed: () {
-                                      controller.deleteActivity(
+                                      controller.deleteUserActivity(
                                           controller.activityToEdit.id);
                                     });
                               });
@@ -339,7 +339,7 @@ class _EditActivityPageState
                                       content:
                                           'Ao salvar todos os dados antigos serão perdidos.',
                                       onPressed: () {
-                                        controller.editActivity();
+                                        controller.editUserActivity();
                                       });
                                 });
                               },

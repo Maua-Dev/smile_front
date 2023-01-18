@@ -1,11 +1,12 @@
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/utils/utils.dart';
-import '../../../domain/repositories/activities_repository_interface.dart';
 import '../../../infra/models/schedule_activity_model.dart';
 
 part 'more_info_controller.g.dart';
@@ -13,16 +14,18 @@ part 'more_info_controller.g.dart';
 class MoreInfoController = MoreInfoControllerBase with _$MoreInfoController;
 
 abstract class MoreInfoControllerBase with Store {
-  final ActivitiesRepositoryInterface repository;
   final CardActivity activity;
   final bool registered;
   final UserDashboardController userDashboardController;
+  final SubscribeActivityInterface subscribeActivity;
+  final UnsubscribeActivityInterface unsubscribeActivity;
 
   MoreInfoControllerBase(
       {required this.userDashboardController,
       required this.registered,
       required this.activity,
-      required this.repository}) {
+      required this.subscribeActivity,
+      required this.unsubscribeActivity}) {
     isRegistered = registered;
   }
 
@@ -61,7 +64,7 @@ abstract class MoreInfoControllerBase with Store {
     return true;
   }
 
-  Future<void> subscribeActivity() async {
+  Future<void> subscribeUserActivity() async {
     setIsLoading(true);
     var cardToModel = ActivityModel(
       id: activity.id,
@@ -81,8 +84,8 @@ abstract class MoreInfoControllerBase with Store {
       ],
       speakers: activity.speakers!,
     );
-    var requestDone = await repository.subscribeActivity(
-        cardToModel, activity.id, activity.date!);
+    var requestDone =
+        await subscribeActivity(cardToModel, activity.id, activity.date!);
     if (requestDone) {
       await userDashboardController.getUserSubscribedActivities();
       userDashboardController.getNextActivity();
@@ -91,10 +94,9 @@ abstract class MoreInfoControllerBase with Store {
     setIsLoading(false);
   }
 
-  Future<void> unsubscribeActivity() async {
+  Future<void> unsubscribeUserActivity() async {
     setIsLoading(true);
-    var requestDone =
-        await repository.unsubscribeActivity(activity.id, activity.date!);
+    var requestDone = await unsubscribeActivity(activity.id, activity.date!);
     if (requestDone) {
       await userDashboardController.getUserSubscribedActivities();
       userDashboardController.getNextActivity();

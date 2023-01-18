@@ -4,6 +4,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/dashboard/domain/entities/faq.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/faq_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_faq_information.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
@@ -11,12 +12,13 @@ import '../../../../../../setup_firebase_mocks.dart';
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import 'help_controller_test.mocks.dart';
 
-@GenerateMocks([FaqRepositoryInterface])
+@GenerateMocks([FaqRepositoryInterface, GetAllFaqInformationInterface])
 void main() {
   setupCloudFirestoreMocks();
 
-  FaqRepositoryInterface repository = MockFaqRepositoryInterface();
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
+  GetAllFaqInformationInterface getAllFaqInformation =
+      MockGetAllFaqInformationInterface();
   late HelpController controller;
 
   var mockFaqList = <Faq>[
@@ -33,8 +35,9 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
-    when(repository.getAllFaq()).thenAnswer((_) async => mockFaqList);
-    controller = HelpController(repository: repository, analytics: analytics);
+    when(getAllFaqInformation()).thenAnswer((_) async => mockFaqList);
+    controller = HelpController(
+        getAllFaqInformation: getAllFaqInformation, analytics: analytics);
   });
 
   test('getFaqInformation && setFaqAction', () {

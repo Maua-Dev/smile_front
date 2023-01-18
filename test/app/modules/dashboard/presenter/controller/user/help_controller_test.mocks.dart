@@ -10,6 +10,8 @@ import 'package:smile_front/app/modules/dashboard/domain/entities/faq.dart'
     as _i4;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/faq_repository_interface.dart'
     as _i2;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_faq_information.dart'
+    as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -35,6 +37,25 @@ class MockFaqRepositoryInterface extends _i1.Mock
   _i3.Future<List<_i4.Faq>> getAllFaq() => (super.noSuchMethod(
         Invocation.method(
           #getAllFaq,
+          [],
+        ),
+        returnValue: _i3.Future<List<_i4.Faq>>.value(<_i4.Faq>[]),
+      ) as _i3.Future<List<_i4.Faq>>);
+}
+
+/// A class which mocks [GetAllFaqInformationInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetAllFaqInformationInterface extends _i1.Mock
+    implements _i5.GetAllFaqInformationInterface {
+  MockGetAllFaqInformationInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<List<_i4.Faq>> call() => (super.noSuchMethod(
+        Invocation.method(
+          #call,
           [],
         ),
         returnValue: _i3.Future<List<_i4.Faq>>.value(<_i4.Faq>[]),

@@ -1,12 +1,11 @@
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
-import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
-import '../../../domain/repositories/activities_repository_interface.dart';
-import '../../../infra/models/user_change_data_model.dart';
 
 part 'user_dashboard_controller.g.dart';
 
@@ -14,16 +13,16 @@ class UserDashboardController = UserDashboardControllerBase
     with _$UserDashboardController;
 
 abstract class UserDashboardControllerBase with Store {
-  final ActivitiesRepositoryInterface repository;
-  final UserRepositoryInterface userRepository;
+  final GetUserSubscribedActivitiesInterface getUserActivities;
+  final ChangeDataInterface changeData;
   final SecureStorageInterface secureStorage;
   final FirebaseAnalyticsService analytics;
 
   UserDashboardControllerBase({
     required this.analytics,
-    required this.userRepository,
+    required this.changeData,
     required this.secureStorage,
-    required this.repository,
+    required this.getUserActivities,
   }) {
     getUserSubscribedActivities();
     getUserName();
@@ -97,13 +96,10 @@ abstract class UserDashboardControllerBase with Store {
   }
 
   @action
-  Future<void> changeData() async {
+  Future<void> changeUserData() async {
     setIsLoading(true);
-    var userData = UserChangeDataModel(
-        name: nameToChange,
-        socialName: socialNameToChange,
-        certificateWithSocialName: certificateWithSocialName);
-    await userRepository.changeData(userData);
+    await changeData(
+        nameToChange, socialNameToChange, certificateWithSocialName);
     await secureStorage.saveName(nameToChange);
     await secureStorage.saveSocialName(socialNameToChange);
     await secureStorage
@@ -163,13 +159,13 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   Future getActivities() async {
-    subscribedActivitiesList = await repository.getUserSubscribedActivities();
+    subscribedActivitiesList = await getUserActivities();
   }
 
   @action
   Future getUserSubscribedActivities() async {
     setIsLoading(true);
-    subscribedActivitiesList = await repository.getUserSubscribedActivities();
+    subscribedActivitiesList = await getUserActivities();
     allActivitiesToCards = [];
     if (subscribedActivitiesList.isNotEmpty) {
       for (var activity in subscribedActivitiesList) {

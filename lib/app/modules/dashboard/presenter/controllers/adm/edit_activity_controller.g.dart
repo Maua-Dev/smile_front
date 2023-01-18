@@ -49,21 +49,23 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$editActivityAsyncAction =
-      AsyncAction('EditActivityControllerBase.editActivity', context: context);
-
-  @override
-  Future<dynamic> editActivity() {
-    return _$editActivityAsyncAction.run(() => super.editActivity());
-  }
-
-  late final _$deleteActivityAsyncAction = AsyncAction(
-      'EditActivityControllerBase.deleteActivity',
+  late final _$editUserActivityAsyncAction = AsyncAction(
+      'EditActivityControllerBase.editUserActivity',
       context: context);
 
   @override
-  Future<dynamic> deleteActivity(String id) {
-    return _$deleteActivityAsyncAction.run(() => super.deleteActivity(id));
+  Future<dynamic> editUserActivity() {
+    return _$editUserActivityAsyncAction.run(() => super.editUserActivity());
+  }
+
+  late final _$deleteUserActivityAsyncAction = AsyncAction(
+      'EditActivityControllerBase.deleteUserActivity',
+      context: context);
+
+  @override
+  Future<dynamic> deleteUserActivity(String id) {
+    return _$deleteUserActivityAsyncAction
+        .run(() => super.deleteUserActivity(id));
   }
 
   late final _$EditActivityControllerBaseActionController =

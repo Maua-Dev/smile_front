@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
+import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
+import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
 
 import '../../shared/services/dio/smile_login_options.dart';
 import 'external/auth_datasource_impl.dart';
@@ -15,10 +17,17 @@ class AuthModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(
-              authRepository: i<AuthRepositoryInterface>(),
+              loginWithCpfRne: i<LoginWithCpfRneInterface>(),
+              refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
               analytics: i(),
             ),
+        export: true),
+    Bind.lazySingleton<LoginWithCpfRneInterface>(
+        (i) => LoginWithCpfRne(authRepository: i()),
+        export: true),
+    Bind.lazySingleton<RefreshTokenInterface>(
+        (i) => RefreshToken(authRepository: i()),
         export: true),
     Bind.lazySingleton<AuthDatasourceInterface>(
         (i) => AuthDatasourceImpl(dioClient: i(), storage: i()),

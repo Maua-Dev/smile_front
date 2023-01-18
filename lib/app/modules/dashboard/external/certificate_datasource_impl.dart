@@ -35,7 +35,7 @@ class CertificateDatasourceImpl implements CertificateDatasourceInterface {
       throw Exception();
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken();
+        await authController.refreshToken(token.toString());
         await getListDownloads();
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();

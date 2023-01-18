@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
+import 'package:smile_front/app/modules/register/usecases/register_user.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/entities/user_registration.dart';
@@ -16,9 +17,12 @@ class RegisterController = RegisterControllerBase with _$RegisterController;
 abstract class RegisterControllerBase with Store {
   final RegisterRepositoryInterface registerUserRepository;
   final FirebaseAnalyticsService analytics;
+  final RegisterUserInterface registerUser;
 
   RegisterControllerBase(
-      {required this.analytics, required this.registerUserRepository});
+      {required this.analytics,
+      required this.registerUserRepository,
+      required this.registerUser});
 
   @computed
   int? get raInt => ra == ''
@@ -319,7 +323,7 @@ abstract class RegisterControllerBase with Store {
     if (acceptTermsOfUse) {
       setIsLoading(true);
       try {
-        await registerUserRepository.registerUser(registerInformations);
+        await registerUser(registerInformations);
         setIsLoading(false);
         setSuccessRegistration(true);
         analytics.logSignUp();

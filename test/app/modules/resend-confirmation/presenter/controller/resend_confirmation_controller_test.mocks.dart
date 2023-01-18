@@ -8,6 +8,8 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/resend-confirmation/domain/repository/resend_confirmation_datasource_interface.dart'
     as _i2;
+import 'package:smile_front/app/modules/resend-confirmation/usecases/resend_confirmation.dart'
+    as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -34,6 +36,25 @@ class MockResendConfirmationRepositoryInterface extends _i1.Mock
       (super.noSuchMethod(
         Invocation.method(
           #resendConfirmation,
+          [username],
+        ),
+        returnValue: _i3.Future<String>.value(''),
+      ) as _i3.Future<String>);
+}
+
+/// A class which mocks [ResendConfirmationInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockResendConfirmationInterface extends _i1.Mock
+    implements _i4.ResendConfirmationInterface {
+  MockResendConfirmationInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<String> call(String? username) => (super.noSuchMethod(
+        Invocation.method(
+          #call,
           [username],
         ),
         returnValue: _i3.Future<String>.value(''),

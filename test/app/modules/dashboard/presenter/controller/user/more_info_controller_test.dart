@@ -3,16 +3,25 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
 
-import 'all_activities_user_dashboard_controller_test.mocks.dart';
+import 'more_info_controller_test.mocks.dart';
 
-@GenerateMocks([ActivitiesRepositoryInterface, UserDashboardController])
+@GenerateMocks([
+  ActivitiesRepositoryInterface,
+  UserDashboardController,
+  UnsubscribeActivityInterface,
+  SubscribeActivityInterface
+])
 void main() {
-  ActivitiesRepositoryInterface repository =
-      MockActivitiesRepositoryInterface();
+  UnsubscribeActivityInterface unsubscribeActivity =
+      MockUnsubscribeActivityInterface();
+  SubscribeActivityInterface subscribeActivity =
+      MockSubscribeActivityInterface();
   UserDashboardController userDashboardController =
       MockUserDashboardController();
   late MoreInfoController controller;
@@ -34,7 +43,8 @@ void main() {
   setUpAll(() async {
     when(userDashboardController.allActivitiesToCards).thenReturn([card]);
     controller = MoreInfoController(
-        repository: repository,
+        unsubscribeActivity: unsubscribeActivity,
+        subscribeActivity: subscribeActivity,
         activity: card,
         registered: false,
         userDashboardController: userDashboardController);

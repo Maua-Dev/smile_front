@@ -6,8 +6,9 @@ import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
@@ -17,17 +18,18 @@ import '../../../../../../setup_firebase_mocks.dart';
 import 'user_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([
-  ActivitiesRepositoryInterface,
+  GetUserSubscribedActivitiesInterface,
   SecureStorageInterface,
   UserRepositoryInterface,
-  FirebaseAnalyticsService
+  FirebaseAnalyticsService,
+  ChangeDataInterface,
 ])
 void main() {
   initModule(AppModule());
   setupCloudFirestoreMocks();
-  ActivitiesRepositoryInterface repository =
-      MockActivitiesRepositoryInterface();
-  UserRepositoryInterface userRepository = MockUserRepositoryInterface();
+  GetUserSubscribedActivitiesInterface getUserActivities =
+      MockGetUserSubscribedActivitiesInterface();
+  ChangeDataInterface changeData = MockChangeDataInterface();
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
 
@@ -152,16 +154,15 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
-    when(repository.getUserSubscribedActivities())
-        .thenAnswer((_) async => mockActivities);
+    when(getUserActivities()).thenAnswer((_) async => mockActivities);
     when(secureStorage.getName()).thenAnswer((_) async => name);
     when(secureStorage.getSocialName()).thenAnswer((_) async => socialName);
     when(secureStorage.getCertificateWithSocialName())
         .thenAnswer((_) async => certificateWithSocialName);
     controller = UserDashboardController(
-        repository: repository,
+        getUserActivities: getUserActivities,
         secureStorage: secureStorage,
-        userRepository: userRepository,
+        changeData: changeData,
         analytics: analytics);
   });
 

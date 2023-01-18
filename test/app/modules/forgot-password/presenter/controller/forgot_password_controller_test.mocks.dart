@@ -9,6 +9,10 @@ import 'package:firebase_analytics/firebase_analytics.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/forgot-password/domain/repository/forgot_password_datasource_interface.dart'
     as _i3;
+import 'package:smile_front/app/modules/forgot-password/domain/usecases/change_password.dart'
+    as _i7;
+import 'package:smile_front/app/modules/forgot-password/domain/usecases/forgot_password.dart'
+    as _i6;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
     as _i5;
 
@@ -161,4 +165,51 @@ class MockFirebaseAnalyticsService extends _i1.Mock
         ),
         returnValue: _i4.Future<dynamic>.value(),
       ) as _i4.Future<dynamic>);
+}
+
+/// A class which mocks [ForgotPasswordInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockForgotPasswordInterface extends _i1.Mock
+    implements _i6.ForgotPasswordInterface {
+  MockForgotPasswordInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<String> call(String? username) => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [username],
+        ),
+        returnValue: _i4.Future<String>.value(''),
+      ) as _i4.Future<String>);
+}
+
+/// A class which mocks [ChangePasswordInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockChangePasswordInterface extends _i1.Mock
+    implements _i7.ChangePasswordInterface {
+  MockChangePasswordInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<String> call(
+    String? username,
+    String? password,
+    String? code,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [
+            username,
+            password,
+            code,
+          ],
+        ),
+        returnValue: _i4.Future<String>.value(''),
+      ) as _i4.Future<String>);
 }
