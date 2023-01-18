@@ -29,6 +29,12 @@ var patrocinadorVendraminiLogoUrl =
 
 var patrocinadorCSNLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_csn.png';
 
+var patrocinadorApplusLogoUrl =
+    '${s3AssetsBaseUrl}logo_patrocinador_applus.png';
+
+var patrocinadorOsborneLogoUrl =
+    '${s3AssetsBaseUrl}logo_patrocinador_osborne.png';
+
 var mauaAzulLogoUrl = '${s3AssetsBaseUrl}logo_maua_azul.png';
 
 var entitiesBackground = '${s3AssetsBaseUrl}fundo_entidades.png';
