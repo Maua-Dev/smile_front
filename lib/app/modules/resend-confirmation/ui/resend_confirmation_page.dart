@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import '../../../../generated/l10n.dart';
 import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../login/ui/widgets/maintenance_alert_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controller/resend_confirmation_controller.dart';
-import '../../../shared/widgets/input-box/input_box.dart';
+import '../../../shared/widgets/input-box/input_box_widget.dart';
 import '../../../shared/services/environment/environment_config.dart';
 
 class ResendConfirmationPage extends StatefulWidget {
@@ -104,16 +105,19 @@ class _ResendConfirmationPageState
                             return Center(
                               child: Column(
                                 children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(42.0),
+                                  Padding(
+                                    padding: const EdgeInsets.all(42.0),
                                     child: Text(
-                                      "Você receberá um e-mail (no-reply@verificationemail.com) com um link para confirmar sua conta! Verifique a caixa de spam ou promocional.",
+                                      S
+                                          .of(context)
+                                          .codeInEmailInstructionsTitle,
                                       textAlign: TextAlign.justify,
-                                      style: TextStyle(color: Colors.white),
+                                      style:
+                                          const TextStyle(color: Colors.white),
                                     ),
                                   ),
                                   CustomElevatedButtonWidget(
-                                    title: 'Retornar ao login',
+                                    title: S.of(context).returnLogin,
                                     widthSize:
                                         MediaQuery.of(context).size.width < 650
                                             ? MediaQuery.of(context)
@@ -133,28 +137,26 @@ class _ResendConfirmationPageState
                           } else {
                             return Column(
                               children: [
-                                const Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 16.0),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16.0),
                                   child: SizedBox(
                                     width: 600,
                                     child: Text(
-                                      'Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n',
-                                      style: TextStyle(color: Colors.white),
+                                      S.of(context).errorEmailInstructionsTitle,
+                                      style:
+                                          const TextStyle(color: Colors.white),
                                       textAlign: TextAlign.justify,
                                     ),
                                   ),
                                 ),
-                                InputBox(
+                                InputBoxWidget(
                                   icon: Icons.person,
-                                  placeholder: 'CPF',
+                                  placeholder:
+                                      S.of(context).registerCPFPlaceholder,
                                   setValue: controller.setCpf,
                                   isCpfField: true,
-                                  onFieldSubmitted: (value) async {
-                                    if (controller.validateForm()) {
-                                      await controller.resendConfirmation();
-                                    }
-                                  },
+                                  validation: controller.validateCpf,
                                 ),
                                 const SizedBox(
                                   height: 40,
@@ -162,7 +164,7 @@ class _ResendConfirmationPageState
                                 Observer(builder: (_) {
                                   return CustomElevatedButtonWidget(
                                     isLoading: controller.isLoading,
-                                    title: 'Enviar',
+                                    title: S.of(context).sendTitle,
                                     widthSize:
                                         MediaQuery.of(context).size.width < 650
                                             ? MediaQuery.of(context)
@@ -173,7 +175,12 @@ class _ResendConfirmationPageState
                                     heightSize: 50,
                                     backgroundColor: AppColors.brandingOrange,
                                     onPressed: () async {
-                                      if (controller.validateForm()) {
+                                      FocusScopeNode currentFocus =
+                                          FocusScope.of(context);
+                                      if (!currentFocus.hasPrimaryFocus) {
+                                        currentFocus.unfocus();
+                                      }
+                                      if (_formKey.currentState!.validate()) {
                                         await controller.resendConfirmation();
                                       }
                                     },
@@ -183,7 +190,7 @@ class _ResendConfirmationPageState
                                   height: 20,
                                 ),
                                 CustomElevatedButtonWidget(
-                                  title: 'Voltar para o Login',
+                                  title: S.of(context).returnLogin,
                                   widthSize: MediaQuery.of(context).size.width <
                                           650
                                       ? MediaQuery.of(context).size.width * 0.85

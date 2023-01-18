@@ -8,19 +8,19 @@ class AuthRepositoryImpl extends AuthRepositoryInterface {
 
   @override
   Future<Map<String, dynamic>> login(String user, String password) async {
-    final response = datasource.login(user, password);
+    final response = await datasource.login(user, password);
     return Future.value(response);
   }
 
   @override
-  Future<Map<String, dynamic>> refreshToken(String token) {
-    final response = datasource.refreshToken(token);
+  Future<Map<String, dynamic>> refreshToken(String token) async {
+    final response = await datasource.refreshToken(token);
     return Future.value(response);
   }
 
   @override
-  Future<String> getAccessLevel(String user) {
-    final response = datasource.getAccessLevel(user);
+  Future<String> getAccessLevel(String user) async {
+    final response = await datasource.getAccessLevel(user);
     return Future.value(response);
   }
 }

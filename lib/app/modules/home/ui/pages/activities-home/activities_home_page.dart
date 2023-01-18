@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/home/presenter/controllers/activity_home_controller.dart';
 import 'package:smile_front/app/modules/home/ui/pages/activities-home/pages/next_home_page.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/utils/screen_helper.dart';
@@ -16,8 +15,7 @@ class ActivitiesHomePage extends StatefulWidget {
   ActivityHomeState createState() => ActivityHomeState();
 }
 
-class ActivityHomeState
-    extends ModularState<ActivitiesHomePage, ActivityHomeController> {
+class ActivityHomeState extends State<ActivitiesHomePage> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
 
@@ -38,7 +36,7 @@ class ActivityHomeState
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 24.0),
           child: TextHeader(
-            title: 'Atividades',
+            title: S.of(context).activitiesTitle,
             leftPadding: Screen.width(context) > 530 ? 32 : 24,
             color: AppColors.brandingOrange,
             fontSize: MediaQuery.of(context).size.width < 900

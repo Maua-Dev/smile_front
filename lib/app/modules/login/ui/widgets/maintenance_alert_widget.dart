@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 
@@ -21,15 +22,15 @@ class MainstenanceAlert extends StatelessWidget {
               child: Icon(FontAwesome5.exclamation,
                   size: 80, color: AppColors.brandingOrange),
             ),
-            const Text(
-              "O serviço de login esta em manutenção",
+            Text(
+              S.of(context).maintenanceTitle,
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
-            const Text(
-              "Agradecemos a paciência",
+            Text(
+              S.of(context).maintenanceDescription,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(
               height: 20,
@@ -44,7 +45,7 @@ class MainstenanceAlert extends StatelessWidget {
                   height: 50,
                   child: Center(
                       child: Text(
-                    "Clique aqui para voltar",
+                    S.of(context).clickToGoBack,
                     style: TextStyle(color: AppColors.white, fontSize: 20),
                   )),
                 ),

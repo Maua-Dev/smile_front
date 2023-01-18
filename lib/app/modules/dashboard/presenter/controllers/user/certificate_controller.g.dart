@@ -49,14 +49,13 @@ mixin _$CertificateController on CertificateControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$getUserCertificatesAsyncAction = AsyncAction(
-      'CertificateControllerBase.getUserCertificates',
+  late final _$getCertificatesAsyncAction = AsyncAction(
+      'CertificateControllerBase.getCertificates',
       context: context);
 
   @override
-  Future<void> getUserCertificates() {
-    return _$getUserCertificatesAsyncAction
-        .run(() => super.getUserCertificates());
+  Future<void> getCertificates() {
+    return _$getCertificatesAsyncAction.run(() => super.getCertificates());
   }
 
   @override

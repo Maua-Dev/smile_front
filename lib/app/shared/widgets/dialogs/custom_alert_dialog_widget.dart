@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 class CustomAlertDialogWidget extends StatelessWidget {
   final String title;
@@ -17,7 +18,7 @@ class CustomAlertDialogWidget extends StatelessWidget {
       content: content != null ? Text(content!) : null,
       actions: [
         ElevatedButton(
-          child: const Text('Fechar'),
+          child: Text(S.of(context).closeTitle),
           onPressed: () {
             Navigator.of(context).pop();
           },

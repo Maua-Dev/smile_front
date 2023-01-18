@@ -142,23 +142,11 @@ mixin _$ResendConfirmationController
           name: 'ResendConfirmationControllerBase', context: context);
 
   @override
-  bool validateCpf(String value) {
+  String? validateCpf(String? value) {
     final _$actionInfo = _$ResendConfirmationControllerBaseActionController
         .startAction(name: 'ResendConfirmationControllerBase.validateCpf');
     try {
       return super.validateCpf(value);
-    } finally {
-      _$ResendConfirmationControllerBaseActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  bool validateForm() {
-    final _$actionInfo = _$ResendConfirmationControllerBaseActionController
-        .startAction(name: 'ResendConfirmationControllerBase.validateForm');
-    try {
-      return super.validateForm();
     } finally {
       _$ResendConfirmationControllerBaseActionController
           .endAction(_$actionInfo);

@@ -5,13 +5,15 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class EntitiesWidget extends StatelessWidget {
-  final String logo;
-  final String text;
-  final String url;
+import '../../../domain/infra/maua_entities_enum.dart';
 
-  const EntitiesWidget(
-      {super.key, required this.logo, required this.text, required this.url});
+class EntitiesWidget extends StatelessWidget {
+  final MauaEntitiesEnum entity;
+
+  const EntitiesWidget({
+    super.key,
+    required this.entity,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class EntitiesWidget extends StatelessWidget {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: CachedNetworkImageProvider(
-                logo,
+                entity.logoUrl,
               ))),
             ),
           ),
@@ -62,7 +64,7 @@ class EntitiesWidget extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () => launchUrl(
-                  Uri.parse(url),
+                  Uri.parse(entity.instagramUrl),
                   mode: LaunchMode.externalApplication,
                 ),
                 child: Container(
@@ -87,7 +89,7 @@ class EntitiesWidget extends StatelessWidget {
                         0,
                         0,
                         2),
-                    child: Text(text,
+                    child: Text(entity.name,
                         style: AppTextStyles.buttonBold.copyWith(
                           fontSize: MediaQuery.of(context).size.width < 500
                               ? 12
@@ -101,7 +103,7 @@ class EntitiesWidget extends StatelessWidget {
               ),
               InkWell(
                 onTap: () => launchUrl(
-                  Uri.parse(url),
+                  Uri.parse(entity.instagramUrl),
                   mode: LaunchMode.externalApplication,
                 ),
                 child: Container(

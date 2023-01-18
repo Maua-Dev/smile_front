@@ -125,7 +125,7 @@ mixin _$LoginController on LoginControllerBase, Store {
       ActionController(name: 'LoginControllerBase', context: context);
 
   @override
-  String? validateCpf(String value) {
+  String? validateCpf(String? value) {
     final _$actionInfo = _$LoginControllerBaseActionController.startAction(
         name: 'LoginControllerBase.validateCpf');
     try {
@@ -136,7 +136,7 @@ mixin _$LoginController on LoginControllerBase, Store {
   }
 
   @override
-  String? validateField(String value) {
+  String? validateField(String? value) {
     final _$actionInfo = _$LoginControllerBaseActionController.startAction(
         name: 'LoginControllerBase.validateField');
     try {

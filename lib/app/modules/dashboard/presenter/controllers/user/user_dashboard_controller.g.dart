@@ -327,12 +327,13 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
         .run(() => super.setWantSocialName(value));
   }
 
-  late final _$changeDataAsyncAction =
-      AsyncAction('UserDashboardControllerBase.changeData', context: context);
+  late final _$changeUserDataAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.changeUserData',
+      context: context);
 
   @override
-  Future<void> changeData() {
-    return _$changeDataAsyncAction.run(() => super.changeData());
+  Future<void> changeUserData() {
+    return _$changeUserDataAsyncAction.run(() => super.changeUserData());
   }
 
   late final _$setIsLoadingAsyncAction =

@@ -7,6 +7,8 @@ import 'package:smile_front/app/shared/services/firebase-analytics/firebase_anal
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
+import '../generated/l10n.dart';
+
 final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
 final ScaffoldMessengerState scaffold = scaffoldKey.currentState!;
 
@@ -18,15 +20,16 @@ class AppWidget extends StatelessWidget {
     Intl.defaultLocale = 'pt_BR';
     return MaterialApp(
       scaffoldMessengerKey: scaffoldKey,
-      supportedLocales: const [Locale('pt', 'BR')],
       debugShowCheckedModeBanner: false,
       initialRoute: '/home',
       navigatorObservers: [FirebaseAnalyticsService().getAnalyticsObserver()],
       localizationsDelegates: const [
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      supportedLocales: S.delegate.supportedLocales,
       scrollBehavior: AppScrollBehavior(),
       title: 'Semana Mauá de Inovação, Liderança e Empreendedorismo',
       theme: ThemeData(

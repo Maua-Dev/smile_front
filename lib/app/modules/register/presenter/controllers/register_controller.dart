@@ -1,5 +1,9 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
+import 'package:smile_front/app/modules/register/usecases/register_user.dart';
+import 'package:smile_front/generated/l10n.dart';
+import '../../../../app_widget.dart';
 import '../../../../shared/entities/user_registration.dart';
 import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
@@ -13,9 +17,12 @@ class RegisterController = RegisterControllerBase with _$RegisterController;
 abstract class RegisterControllerBase with Store {
   final RegisterRepositoryInterface registerUserRepository;
   final FirebaseAnalyticsService analytics;
+  final RegisterUserInterface registerUser;
 
   RegisterControllerBase(
-      {required this.analytics, required this.registerUserRepository});
+      {required this.analytics,
+      required this.registerUserRepository,
+      required this.registerUser});
 
   @computed
   int? get raInt => ra == ''
@@ -24,16 +31,10 @@ abstract class RegisterControllerBase with Store {
           ra.replaceAll('-', '').replaceAll('.', '').replaceAll(' ', ''));
 
   @observable
-  List<String> errorsList = [];
-
-  @observable
   String errors = '';
 
   @observable
   bool isLoading = false;
-
-  @observable
-  bool showDialogToConfirmEmail = false;
 
   @observable
   bool showPwd = false;
@@ -124,43 +125,18 @@ abstract class RegisterControllerBase with Store {
   }
 
   @action
-  Future<void> addError(String value) async {
-    if (!errorsList.contains(value)) {
-      errorsList.add(value);
-      joinErrors();
-    }
-  }
-
-  @action
-  Future<void> joinErrors() async {
-    if (errorsList.isEmpty) {
-      errors = '';
-    } else {
-      errors = errorsList.join("\n");
-    }
-  }
-
-  @action
-  Future<void> resetErrors() async {
-    errors = '';
-    errorsList = [];
-  }
-
-  @action
   Future<void> setName(String value) async {
     name = value;
   }
 
   @action
-  bool validateName(String value) {
-    if (value.isEmpty) {
-      addError('Campo "Nome Completo" obrigatório');
-      return false;
+  String? validateName(String? value) {
+    if (value!.isEmpty) {
+      return S.current.fieldRequired;
     } else if (value.split(' ').length < 2) {
-      addError('Insira seu nome completo');
-      return false;
+      return 'Insira seu nome completo';
     }
-    return true;
+    return null;
   }
 
   @action
@@ -169,12 +145,11 @@ abstract class RegisterControllerBase with Store {
   }
 
   @action
-  bool validateSocialName(String value) {
-    if (hasSocialName && value.isEmpty) {
-      addError('Campo "Nome Social" obrigatório');
-      return false;
+  String? validateSocialName(String? value) {
+    if (hasSocialName && value!.isEmpty) {
+      return S.current.fieldRequired;
     }
-    return true;
+    return null;
   }
 
   @action
@@ -185,17 +160,15 @@ abstract class RegisterControllerBase with Store {
   }
 
   @action
-  bool validateCpf(String value) {
-    value = value.replaceAll('.', '');
-    value = value.replaceAll('-', '');
-    if (value.isEmpty) {
-      addError('Campo "CPF" obrigatório');
-      return false;
+  String? validateCpf(String? value) {
+    if (value!.isEmpty) {
+      return S.current.fieldRequired;
     } else if (!CPFValidator.isValid(value)) {
-      addError('Campo "CPF" inválido');
-      return false;
+      value = value.replaceAll('.', '');
+      value = value.replaceAll('-', '');
+      return S.current.fieldCpfInvalid;
     }
-    return true;
+    return null;
   }
 
   @action
@@ -208,17 +181,6 @@ abstract class RegisterControllerBase with Store {
     verifyEmail = value.replaceAll(' ', '');
   }
 
-  List<String> emailProviders = [
-    'gmail',
-    'hotmail',
-    'terra',
-    'uol',
-    'outlook',
-    'yahoo',
-    'icloud',
-    'maua'
-  ];
-
   @action
   Future<void> setPhone(String value) async {
     value = value.replaceAll('+', '');
@@ -226,51 +188,39 @@ abstract class RegisterControllerBase with Store {
   }
 
   @action
-  bool validatePhone(String value) {
-    if (value.isEmpty) {
-      addError('Campo "Telefone celular" obrigatório');
-      return false;
+  String? validatePhone(String? value) {
+    if (value!.isEmpty) {
+      return S.current.fieldRequired;
     }
-    if (value[0] == "5" && value[1] == "5" && value.length == 11) {
-      addError('Inserir DDD no campo "Telefone celular"');
-      return false;
+    if (phone[0] == "5" && phone[1] == "5" && phone.length == 11) {
+      return S.current.fieldDDDRequired;
     }
-    if (value[0] == "5" &&
-        value[1] == "5" &&
-        value.length != 11 &&
-        value.length != 13) {
-      addError('Campo "Telefone celular" inválido');
-      return false;
+    if (phone[0] == "5" && phone[1] == "5" && phone.length != 13) {
+      return S.current.fieldInvalid;
     }
-    return true;
+    return null;
   }
 
   @action
-  bool validateEmail(String value) {
-    if (value.isEmpty) {
-      addError('Campo "E-mail" obrigatório');
-      return false;
+  String? validateEmail(String? value) {
+    if (value!.isEmpty) {
+      return S.current.fieldRequired;
     }
-    if (!value.contains('@')) {
-      addError('Campo "E-mail" inválido');
-      return false;
+    if (!EmailValidator.validate(email)) {
+      return S.current.fieldEmailInvalid;
     }
-    var provider = value.split('@')[1].split('.')[0];
-    showDialogToConfirmEmail = !emailProviders.contains(provider);
-    return true;
+    return null;
   }
 
   @action
-  bool validateVerifyEmail(String value) {
-    if (value.isEmpty) {
-      addError('Campo "Confirme seu e-mail" obrigatório');
-      return false;
+  String? validateVerifyEmail(String? value) {
+    if (value!.isEmpty) {
+      return S.current.fieldRequired;
     }
     if (value != email) {
-      addError('Os campos "E-mail" e "Confirme seu e-mail" \ndevem ser iguais');
-      return false;
+      return S.current.fieldEmailsEqualsRequired;
     }
-    return true;
+    return null;
   }
 
   @action
@@ -295,20 +245,18 @@ abstract class RegisterControllerBase with Store {
   }
 
   @action
-  bool validateRa(String value) {
+  String? validateRa(String? value) {
     if (isMauaStudent) {
-      if (value.isEmpty) {
-        addError('Campo "RA" obrigatório');
-        return false;
+      if (value!.isEmpty) {
+        return S.current.fieldRequired;
       }
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (value.length != 8) {
-        addError('Campo "RA" inválido');
-        return false;
+        return S.current.fieldRAInvalid;
       }
     }
-    return true;
+    return null;
   }
 
   @action
@@ -322,24 +270,28 @@ abstract class RegisterControllerBase with Store {
   }
 
   @action
-  bool validateVerifyPassword(String value) {
-    if (value.isEmpty) {
-      addError('Campo "Confirme sua senha" obrigatório');
-      return false;
-    }
-    if (password != verifyPassword) {
-      addError('Os campos "Senha" e "Confirme sua senha" \ndevem ser iguais');
-      return false;
+  String? validatePassword(String? value) {
+    if (value!.isEmpty) {
+      return S.current.fieldRequired;
     }
     String pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
     RegExp regExp = RegExp(pattern);
     if (!regExp.hasMatch(value)) {
-      addError(
-          "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -)  \n - Mínimo de 8 caracteres");
-      return false;
+      return S.current.fieldPasswordRequisits;
     }
-    return true;
+    return null;
+  }
+
+  @action
+  String? validateVerifyPassword(String? value) {
+    if (value!.isEmpty) {
+      return S.current.fieldRequired;
+    }
+    if (password != verifyPassword) {
+      return S.current.fieldPasswordEqualsRequired;
+    }
+    return null;
   }
 
   @computed
@@ -361,15 +313,23 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> register() async {
+    errors = '';
     if (acceptTermsOfUse) {
       setIsLoading(true);
       try {
-        await registerUserRepository.registerUser(registerInformations);
+        await registerUser(registerInformations);
         setIsLoading(false);
         setSuccessRegistration(true);
         analytics.logSignUp();
       } on Failure catch (e) {
-        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+        if (scaffold.context.size!.width <= 1024) {
+          showErrorSnackBar(
+            errorMessage: e.message,
+            color: AppColors.redButton,
+          );
+        } else {
+          errors = e.message;
+        }
       }
       setIsLoading(false);
     }
@@ -403,25 +363,5 @@ abstract class RegisterControllerBase with Store {
   @action
   void toggleVisibilityConfirmPwd(bool value) {
     showConfirmPwd = !value;
-  }
-
-  @action
-  void setShowDialogToConfirmEmail(bool value) {
-    showDialogToConfirmEmail = value;
-  }
-
-  @action
-  bool validateForm() {
-    resetErrors();
-    validateName(name);
-    validateSocialName(socialName);
-    validateCpf(cpf);
-    validateEmail(email);
-    validatePhone(phone);
-    validateVerifyEmail(verifyEmail);
-    validateRa(ra);
-    validateVerifyPassword(verifyPassword);
-
-    return errorsList.isEmpty;
   }
 }

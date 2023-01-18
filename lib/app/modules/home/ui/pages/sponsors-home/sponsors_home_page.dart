@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/modules/home/domain/infra/maua_entities_enum.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/utils/screen_helper.dart';
 import '../../../../../shared/widgets/text-header/text_header.dart';
@@ -24,7 +26,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
       child: Column(
         children: [
           TextHeader(
-            title: 'Patrocinadores',
+            title: S.of(context).sponsorsTitle,
             leftPadding: Screen.width(context) > 530 ? 32 : 24,
             color: AppColors.brandingBlue,
             fontSize: MediaQuery.of(context).size.width < 900
@@ -37,7 +39,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24),
             child: TextHeader(
-              title: 'Entidades Participantes da SMILE',
+              title: S.of(context).mauaEntititesTitle,
               leftPadding: Screen.width(context) > 530 ? 32 : 24,
               color: AppColors.brandingOrange,
               fontSize: MediaQuery.of(context).size.width < 530
@@ -57,37 +59,16 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
   }
 }
 
-const listBenefits = [
-  {
-    'level': 4,
-    'description': 'Video elaborado pelo patrocinador para divulgação no site.'
-  },
-  {
-    'level': 4,
-    'description':
-        'Video teaser do patrocinador para divulgação na palestra de alto impacto.'
-  },
-  {'level': 4, 'description': 'Estande VIP na Feira de estágios.'},
-  {'level': 4, 'description': 'Palestra ou curso a ser ministrado no evento.'},
-  {
-    'level': 3,
-    'description':
-        'Divulgação do logo do patrocinador no site e em e-mails com direcionamento ao site da empresa.'
-  },
-  {'level': 2, 'description': 'Divulgação do logo do patrocinador na sacola.'},
-  {
-    'level': 2,
-    'description': 'Divulgação do patrocinador nas redes sociais do IMT.'
-  },
-  {
-    'level': 2,
-    'description':
-        'Inserção do folder ou brinde do patrocinador na sacola do evento.'
-  },
-  {
-    'level': 1,
-    'description': 'Espaço para divulgação do estande na feira estágios.'
-  },
+var listBenefits = [
+  {'level': 4, 'description': S.current.benefitsSponsorSchema('one')},
+  {'level': 4, 'description': S.current.benefitsSponsorSchema('two')},
+  {'level': 4, 'description': S.current.benefitsSponsorSchema('three')},
+  {'level': 4, 'description': S.current.benefitsSponsorSchema('four')},
+  {'level': 3, 'description': S.current.benefitsSponsorSchema('five')},
+  {'level': 2, 'description': S.current.benefitsSponsorSchema('six')},
+  {'level': 2, 'description': S.current.benefitsSponsorSchema('seven')},
+  {'level': 2, 'description': S.current.benefitsSponsorSchema('eight')},
+  {'level': 1, 'description': S.current.benefitsSponsorSchema('nine')},
 ];
 const colorsPlan = <int, Color>{
   4: Color(0xFF00CDB4),
@@ -96,29 +77,29 @@ const colorsPlan = <int, Color>{
   1: Color(0xFFE0804A),
 };
 const planTextStyle = TextStyle(fontSize: 35, fontWeight: FontWeight.w700);
-const plansWidgets = [
+var plansWidgets = [
   PlanWidget(
       planTextStyle: planTextStyle,
-      planName: 'DIAMANTE',
+      planName: S.current.planSponsorSchema('diamond'),
       level: 4,
-      price: '10.000'),
+      price: S.current.planPriceSponsorSchema('diamond')),
   PlanWidget(
     planTextStyle: planTextStyle,
-    planName: 'OURO',
+    planName: S.current.planSponsorSchema('gold'),
     level: 3,
-    price: '5.000',
+    price: S.current.planPriceSponsorSchema('gold'),
   ),
   PlanWidget(
     planTextStyle: planTextStyle,
-    planName: 'PRATA',
+    planName: S.current.planSponsorSchema('silver'),
     level: 2,
-    price: '3.000',
+    price: S.current.planPriceSponsorSchema('silver'),
   ),
   PlanWidget(
     planTextStyle: planTextStyle,
-    planName: 'BRONZE',
+    planName: S.current.planSponsorSchema('bronze'),
     level: 1,
-    price: '1.000',
+    price: S.current.planPriceSponsorSchema('bronze'),
   )
 ];
 
@@ -135,9 +116,8 @@ class BeSponsor extends StatelessWidget {
       if (res != null && res) {
         showDialog(
             context: context,
-            builder: (context) => const AlertDialog(
-                  content: Text(
-                      'Enviado com sucesso!! Nossa equipe entrará em contato em breve.'),
+            builder: (context) => AlertDialog(
+                  content: Text(S.of(context).successSendingSponsorEmail),
                 ));
       }
     }
@@ -165,7 +145,7 @@ class BeSponsor extends StatelessWidget {
                     ? const EdgeInsets.all(8.0)
                     : const EdgeInsets.all(0.0),
                 child: Text(
-                  'Seja nosso Patrocinador',
+                  S.of(context).beSponsorTitle,
                   style: TextStyle(
                       fontSize:
                           MediaQuery.of(context).size.width < 530 ? 28 : 35,
@@ -183,9 +163,9 @@ class BeSponsor extends StatelessWidget {
               )
             ],
           ),
-          const Text(
-            'A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir.',
-            style: TextStyle(fontSize: 16),
+          Text(
+            S.of(context).beSponsorDescription,
+            style: const TextStyle(fontSize: 16),
             textAlign: TextAlign.justify,
           ),
           const SizedBox(
@@ -199,9 +179,9 @@ class BeSponsor extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18)),
             child: Column(
               children: [
-                const Text(
-                  'DESCONTOS',
-                  style: TextStyle(fontSize: 24),
+                Text(
+                  S.of(context).beSponsorDiscount.toUpperCase(),
+                  style: const TextStyle(fontSize: 24),
                 ),
                 MediaQuery.of(context).size.width < 530
                     ? Column(
@@ -209,21 +189,21 @@ class BeSponsor extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
-                            children: const [
-                              Text('2023'),
-                              SizedBox(
+                            children: [
+                              Text(S.of(context).year2023),
+                              const SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
-                                month: 'Janeiro',
-                                discount: '20% Off',
+                                month: S.of(context).monthJanuary,
+                                discount: S.of(context).discount20,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
-                                month: 'Fevereiro',
-                                discount: '10% Off',
+                                month: S.of(context).monthFebruary,
+                                discount: S.of(context).discount10,
                               )
                             ],
                           ),
@@ -234,21 +214,21 @@ class BeSponsor extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
-                            children: const [
-                              Text('2023'),
-                              SizedBox(
+                            children: [
+                              Text(S.of(context).year2023),
+                              const SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
-                                month: 'Janeiro',
-                                discount: '20% Off',
+                                month: S.of(context).monthJanuary,
+                                discount: S.of(context).discount20,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               CardDiscount(
-                                month: 'Fevereiro',
-                                discount: '10% Off',
+                                month: S.of(context).monthFebruary,
+                                discount: S.of(context).discount10,
                               )
                             ],
                           ),
@@ -292,12 +272,12 @@ class BeSponsor extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         width: 300,
                         child: Text(
-                          'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
+                          S.of(context).beSponsorMoreInfoDescription,
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
+                          style: const TextStyle(fontSize: 16),
                         ),
                       ),
                       const SizedBox(
@@ -309,7 +289,7 @@ class BeSponsor extends StatelessWidget {
                                 ? 0.7 * MediaQuery.of(context).size.width
                                 : MediaQuery.of(context).size.width * 0.6),
                         child: FormsButtonWidget(
-                            buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                            buttonTittle: S.of(context).beSponsorMoreInfoTitle,
                             backgroundColor: const Color(0xFFD36D49),
                             onPressed: openForms),
                       )
@@ -319,16 +299,16 @@ class BeSponsor extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         width: 300,
                         child: Text(
-                          'Caso tenha interesse em patrocinar o evento, clique aqui para mais informações. ',
+                          S.of(context).beSponsorMoreInfoDescription,
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
+                          style: const TextStyle(fontSize: 16),
                         ),
                       ),
                       FormsButtonWidget(
-                          buttonTittle: 'INFORMAÇÕES SOBRE PATROCÍNIO',
+                          buttonTittle: S.of(context).beSponsorMoreInfoTitle,
                           backgroundColor: const Color(0xFFD36D49),
                           onPressed: openForms)
                     ],
@@ -465,7 +445,7 @@ class CompanySponsor extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
         child: Wrap(
-          alignment: WrapAlignment.spaceEvenly,
+          alignment: WrapAlignment.center,
           spacing: 48,
           runSpacing: 16,
           children: [
@@ -476,6 +456,10 @@ class CompanySponsor extends StatelessWidget {
             SponsorsWidget(
                 link: patrocinadorVendraminiLogoUrl, color: Colors.white),
             SponsorsWidget(link: patrocinadorCSNLogoUrl, color: Colors.white),
+            SponsorsWidget(
+                link: patrocinadorApplusLogoUrl, color: Colors.white),
+            SponsorsWidget(
+                link: patrocinadorOsborneLogoUrl, color: Colors.white),
           ],
         ));
   }
@@ -508,76 +492,13 @@ class EntitiesStack extends StatelessWidget {
                 : MediaQuery.of(context).size.width < 1000
                     ? MediaQuery.of(context).size.height / 6
                     : MediaQuery.of(context).size.height / 4),
-        child: Wrap(alignment: WrapAlignment.center, children: [
-          EntitiesWidget(
-              logo: atleticaLogoUrl,
-              text: '@gaspar_maua',
-              url: "https://www.instagram.com/gaspar_maua/"),
-          EntitiesWidget(
-              logo: caLogoUrl,
-              text: '@camaua',
-              url: "https://www.instagram.com/camaua/"),
-          EntitiesWidget(
-              logo: diversidadeLogoUrl,
-              text: '@diversidademaua',
-              url: "https://www.instagram.com/diversidademaua/"),
-          EntitiesWidget(
-              logo: enactusLogoUrl,
-              text: '@enactusmaua',
-              url: "https://www.instagram.com/enactusmaua/"),
-          EntitiesWidget(
-              logo: esportsLogoUrl,
-              text: '@esportsmaua',
-              url: "https://www.instagram.com/esportsmaua/"),
-          EntitiesWidget(
-              logo: inovaLogoUrl,
-              text: '@inovamaua',
-              url: "https://www.instagram.com/inovamaua/"),
-          EntitiesWidget(
-              logo: mauajrLogoUrl,
-              text: '@mauajr',
-              url: "https://www.instagram.com/mauajr/"),
-          EntitiesWidget(
-              logo: mauasocialLogoUrl,
-              text: '@mauasocial',
-              url: "https://www.instagram.com/mauasocial/"),
-          EntitiesWidget(
-              logo: mbcLogoUrl,
-              text: '@mauabusiness',
-              url: "https://www.instagram.com/mauabusinessclub/"),
-          EntitiesWidget(
-              logo: naeLogoUrl,
-              text: '@naemaua',
-              url: "https://www.instagram.com/naemaua/"),
-          EntitiesWidget(
-              logo: devLogoUrl,
-              text: '@devcommunity',
-              url: "https://www.instagram.com/devcommunitymaua/"),
-          EntitiesWidget(
-              logo: nineLogoUrl,
-              text: '@nine.maua',
-              url: "https://www.instagram.com/nine.maua/"),
-          EntitiesWidget(
-              logo: financeLogoUrl,
-              text: '@imtfinance',
-              url: "https://www.instagram.com/imtfinance/"),
-          EntitiesWidget(
-              logo: bajaLogoUrl,
-              text: '@bajamaua',
-              url: "https://www.instagram.com/bajamaua/"),
-          EntitiesWidget(
-              logo: ecomauaLogoUrl,
-              text: '@eco_maua',
-              url: "https://www.instagram.com/eco_maua/"),
-          EntitiesWidget(
-              logo: mauah2LogoUrl,
-              text: '@mauaracingh2',
-              url: "https://www.instagram.com/mauaracingh2/"),
-          EntitiesWidget(
-              logo: racingLogoUrl,
-              text: '@mauaracing',
-              url: "https://www.instagram.com/mauaracing/"),
-        ]),
+        child: Wrap(
+            alignment: WrapAlignment.center,
+            children: MauaEntitiesEnum.values
+                .map((e) => EntitiesWidget(
+                      entity: e,
+                    ))
+                .toList()),
       ),
     ]);
   }

@@ -6,6 +6,7 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
@@ -183,7 +184,8 @@ class _EditActivityPageState
                               initialDate: DateTime.now(),
                               firstDate: DateTime(2022),
                               lastDate: DateTime(2023),
-                              confirmText: 'CONFIRMAR',
+                              confirmText:
+                                  S.of(context).confirmTitle.toUpperCase(),
                               builder: (BuildContext context, Widget? child) {
                                 return Theme(
                                   data: ThemeData.light().copyWith(
@@ -204,7 +206,8 @@ class _EditActivityPageState
                             showTimePicker(
                               context: context,
                               initialTime: TimeOfDay.now(),
-                              confirmText: 'CONFIRMAR',
+                              confirmText:
+                                  S.of(context).confirmTitle.toUpperCase(),
                               builder: (BuildContext context, Widget? child) {
                                 return Theme(
                                   data: ThemeData.light().copyWith(
@@ -295,7 +298,7 @@ class _EditActivityPageState
                                     content:
                                         'Ao confirmar todos os dados antigos serão perdidos.',
                                     onPressed: () {
-                                      controller.deleteActivity(
+                                      controller.deleteUserActivity(
                                           controller.activityToEdit.id);
                                     });
                               });
@@ -336,7 +339,7 @@ class _EditActivityPageState
                                       content:
                                           'Ao salvar todos os dados antigos serão perdidos.',
                                       onPressed: () {
-                                        controller.editActivity();
+                                        controller.editUserActivity();
                                       });
                                 });
                               },

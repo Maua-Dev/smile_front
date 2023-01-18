@@ -24,22 +24,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
               name: 'RegisterControllerBase.registerInformations'))
           .value;
 
-  late final _$errorsListAtom =
-      Atom(name: 'RegisterControllerBase.errorsList', context: context);
-
-  @override
-  List<String> get errorsList {
-    _$errorsListAtom.reportRead();
-    return super.errorsList;
-  }
-
-  @override
-  set errorsList(List<String> value) {
-    _$errorsListAtom.reportWrite(value, super.errorsList, () {
-      super.errorsList = value;
-    });
-  }
-
   late final _$errorsAtom =
       Atom(name: 'RegisterControllerBase.errors', context: context);
 
@@ -69,24 +53,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   set isLoading(bool value) {
     _$isLoadingAtom.reportWrite(value, super.isLoading, () {
       super.isLoading = value;
-    });
-  }
-
-  late final _$showDialogToConfirmEmailAtom = Atom(
-      name: 'RegisterControllerBase.showDialogToConfirmEmail',
-      context: context);
-
-  @override
-  bool get showDialogToConfirmEmail {
-    _$showDialogToConfirmEmailAtom.reportRead();
-    return super.showDialogToConfirmEmail;
-  }
-
-  @override
-  set showDialogToConfirmEmail(bool value) {
-    _$showDialogToConfirmEmailAtom
-        .reportWrite(value, super.showDialogToConfirmEmail, () {
-      super.showDialogToConfirmEmail = value;
     });
   }
 
@@ -480,30 +446,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     return _$setAcceptImageAsyncAction.run(() => super.setAcceptImage(value));
   }
 
-  late final _$addErrorAsyncAction =
-      AsyncAction('RegisterControllerBase.addError', context: context);
-
-  @override
-  Future<void> addError(String value) {
-    return _$addErrorAsyncAction.run(() => super.addError(value));
-  }
-
-  late final _$joinErrorsAsyncAction =
-      AsyncAction('RegisterControllerBase.joinErrors', context: context);
-
-  @override
-  Future<void> joinErrors() {
-    return _$joinErrorsAsyncAction.run(() => super.joinErrors());
-  }
-
-  late final _$resetErrorsAsyncAction =
-      AsyncAction('RegisterControllerBase.resetErrors', context: context);
-
-  @override
-  Future<void> resetErrors() {
-    return _$resetErrorsAsyncAction.run(() => super.resetErrors());
-  }
-
   late final _$setNameAsyncAction =
       AsyncAction('RegisterControllerBase.setName', context: context);
 
@@ -644,7 +586,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
       ActionController(name: 'RegisterControllerBase', context: context);
 
   @override
-  bool validateName(String value) {
+  String? validateName(String? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validateName');
     try {
@@ -655,7 +597,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
-  bool validateSocialName(String value) {
+  String? validateSocialName(String? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validateSocialName');
     try {
@@ -666,7 +608,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
-  bool validateCpf(String value) {
+  String? validateCpf(String? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validateCpf');
     try {
@@ -677,7 +619,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
-  bool validatePhone(String value) {
+  String? validatePhone(String? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validatePhone');
     try {
@@ -688,7 +630,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
-  bool validateEmail(String value) {
+  String? validateEmail(String? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validateEmail');
     try {
@@ -699,7 +641,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
-  bool validateVerifyEmail(String value) {
+  String? validateVerifyEmail(String? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validateVerifyEmail');
     try {
@@ -710,7 +652,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
-  bool validateRa(String value) {
+  String? validateRa(String? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validateRa');
     try {
@@ -721,7 +663,18 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
-  bool validateVerifyPassword(String value) {
+  String? validatePassword(String? value) {
+    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
+        name: 'RegisterControllerBase.validatePassword');
+    try {
+      return super.validatePassword(value);
+    } finally {
+      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? validateVerifyPassword(String? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validateVerifyPassword');
     try {
@@ -754,34 +707,10 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
-  void setShowDialogToConfirmEmail(bool value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.setShowDialogToConfirmEmail');
-    try {
-      return super.setShowDialogToConfirmEmail(value);
-    } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  bool validateForm() {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.validateForm');
-    try {
-      return super.validateForm();
-    } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
-errorsList: ${errorsList},
 errors: ${errors},
 isLoading: ${isLoading},
-showDialogToConfirmEmail: ${showDialogToConfirmEmail},
 showPwd: ${showPwd},
 showConfirmPwd: ${showConfirmPwd},
 successRegistration: ${successRegistration},

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
@@ -53,7 +54,7 @@ class _SwitchToggleWidgetState extends State<SwitchToggleWidget> {
               padding: const EdgeInsets.only(left: 8.0),
               child: RichText(
                   text: TextSpan(
-                      text: 'Quero receber notificações por ',
+                      text: S.of(context).notificationsSchemaTitle,
                       style: AppTextStyles.body.copyWith(
                         color: Colors.white,
                         fontSize: 16,

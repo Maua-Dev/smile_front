@@ -3,10 +3,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/app_widget.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
-
+import '../../../../../generated/l10n.dart';
 import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/themes/app_colors.dart';
-import '../../domain/repository/forgot_password_datasource_interface.dart';
+import '../../domain/usecases/change_password.dart';
+import '../../domain/usecases/forgot_password.dart';
 import '../../external/errors.dart';
 
 part 'forgot_password_controller.g.dart';
@@ -15,11 +16,14 @@ class ForgotPasswordController = ForgotPasswordControllerBase
     with _$ForgotPasswordController;
 
 abstract class ForgotPasswordControllerBase with Store {
-  final ForgotPasswordRepositoryInterface forgotPasswordRepository;
+  final ForgotPasswordInterface forgotPassword;
+  final ChangePasswordInterface changePassword;
   final FirebaseAnalyticsService analytics;
 
   ForgotPasswordControllerBase(
-      {required this.analytics, required this.forgotPasswordRepository});
+      {required this.analytics,
+      required this.forgotPassword,
+      required this.changePassword});
 
   @observable
   bool isLoading = false;
@@ -70,14 +74,14 @@ abstract class ForgotPasswordControllerBase with Store {
   }
 
   @action
-  String? validateEmail(String value) {
-    if (!value.contains('@')) {
+  String? validateEmail(String? value) {
+    if (!value!.contains('@')) {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
       if (value.isEmpty) {
-        return "         Campo obrigatório";
+        return S.current.fieldRequired;
       } else if (!CPFValidator.isValid(value) || value.isEmpty) {
-        return "         E-mail inválido";
+        return "E-mail inválido";
       }
     }
     return null;
@@ -89,10 +93,10 @@ abstract class ForgotPasswordControllerBase with Store {
   }
 
   @action
-  Future<void> forgotPassword() async {
+  Future<void> forgotUserPassword() async {
     setIsLoading(true);
     try {
-      await forgotPasswordRepository.forgotPassword(username);
+      await forgotPassword(username);
       emailSent = true;
     } on Failure catch (e) {
       if (scaffold.context.size!.width <= 1024) {
@@ -105,7 +109,7 @@ abstract class ForgotPasswordControllerBase with Store {
   }
 
   @action
-  Future<void> changePassword() async {
+  Future<void> changeUserPassword() async {
     setIsLoading(true);
     try {
       String? myurl = Uri.base.toString();
@@ -114,7 +118,7 @@ abstract class ForgotPasswordControllerBase with Store {
       var email = params.split("&")[1].split('=')[1];
       var emailProvider = params.split("&")[2].split('=')[1];
       var finalEmail = "$email@$emailProvider";
-      await forgotPasswordRepository.changePassword(finalEmail, password, code);
+      await changePassword(finalEmail, password, code);
       setSuccessRegistration(true);
       await Future.delayed(const Duration(seconds: 5));
       Modular.to.navigate('/login');
@@ -144,22 +148,18 @@ abstract class ForgotPasswordControllerBase with Store {
   }
 
   @action
-  String? validateVerifyPassword(String value) {
-    if (value.isEmpty) {
-      return "         Campo obrigatório";
+  String? validateVerifyPassword(String? value) {
+    if (value!.isEmpty) {
+      return S.current.fieldRequired;
     }
     if (password != verifyPassword) {
-      return "         Digite a mesma senha";
+      return S.current.fieldPasswordEqualsRequired;
     }
     String pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$';
     RegExp regExp = RegExp(pattern);
     if (!regExp.hasMatch(value)) {
-      showErrorSnackBar(
-          errorMessage:
-              "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Mínimo de 8 caracteres",
-          color: AppColors.redButton);
-      return '';
+      return S.current.fieldPasswordRequisits;
     }
     return null;
   }

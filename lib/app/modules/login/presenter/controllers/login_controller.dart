@@ -4,6 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
@@ -55,9 +56,10 @@ abstract class LoginControllerBase with Store {
 
   @action
   Future<void> login() async {
+    errors = '';
     setIsLoading(true);
     try {
-      await authController.loginWithCpfRne(cpfRne, password);
+      await authController.loginWithUserCpfRne(cpfRne, password);
       if (authController.isLogged) {
         if (authController.accessLevel == 'ADMIN') {
           Modular.to
@@ -72,7 +74,10 @@ abstract class LoginControllerBase with Store {
       analytics.logLogin();
     } on Failure catch (e) {
       if (scaffold.context.size!.width <= 1024) {
-        showErrorSnackBar(errorMessage: e.message, color: AppColors.redButton);
+        showErrorSnackBar(
+          errorMessage: e.message,
+          color: AppColors.redButton,
+        );
       } else {
         errors = e.message;
       }
@@ -86,29 +91,22 @@ abstract class LoginControllerBase with Store {
   }
 
   @action
-  String? validateCpf(String value) {
-    if (!value.contains('@')) {
+  String? validateCpf(String? value) {
+    if (value!.isEmpty) {
+      return S.current.fieldRequired;
+    } else if (!value.contains('@')) {
       value = value.replaceAll('.', '');
       value = value.replaceAll('-', '');
-      if (value.isEmpty) {
-        return "         Campo obrigatório";
-      } else if (!CPFValidator.isValid(value)) {
-        return "         CPF inválido";
-      }
-    } else {
-      if (value.isEmpty) {
-        return "         Campo obrigatório";
+      if (!CPFValidator.isValid(value)) {
+        return S.current.fieldCpfInvalid;
       }
     }
     return null;
   }
 
   @action
-  String? validateField(String value) {
-    if (value.isEmpty) {
-      return "         Campo obrigatório";
-    }
-    return null;
+  String? validateField(String? value) {
+    return value!.isEmpty ? S.current.fieldRequired : null;
   }
 
   @action

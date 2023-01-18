@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../shared/services/environment/environment_config.dart';
 import '../infra/datasources/resend_confirmation_datasource.dart';
 import 'errors.dart';
@@ -23,12 +24,11 @@ class ResendConfirmationDatasourceImpl implements ResendConfirmationDatasource {
         "cpf_rne": username,
       });
       if (res.statusCode == 200) {
-        return 'E-mail enviado com sucesso!';
+        return S.current.successEmailSend;
       }
       throw Exception();
     } catch (e) {
-      throw ResendConfirmationInvalid(
-          'Falha ao enviar o e-mail de\nconfirmação, tente novamente.');
+      throw ResendConfirmationInvalid(S.current.errorSendingCode);
     }
   }
 }

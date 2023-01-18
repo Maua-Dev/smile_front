@@ -2,10 +2,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
-import '../../../domain/repositories/activities_repository_interface.dart';
 
 part 'edit_activity_controller.g.dart';
 
@@ -13,12 +14,14 @@ class EditActivityController = EditActivityControllerBase
     with _$EditActivityController;
 
 abstract class EditActivityControllerBase with Store {
-  final ActivitiesRepositoryInterface repository;
   final ActivityModel activityModel;
+  final EditActivityInterface editActivity;
+  final DeleteActivityInterface deleteActivity;
 
   EditActivityControllerBase({
-    required this.repository,
     required this.activityModel,
+    required this.editActivity,
+    required this.deleteActivity,
   }) {
     if (activityModel.id.isEmpty) {
       Modular.to.navigate('/adm');
@@ -52,17 +55,17 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  Future editActivity() async {
+  Future editUserActivity() async {
     setIsLoading(true);
-    await repository.editActivity(activityToEdit);
+    await editActivity(activityToEdit);
     setIsLoading(false);
     Modular.to.navigate('/adm');
   }
 
   @action
-  Future deleteActivity(String id) async {
+  Future deleteUserActivity(String id) async {
     setIsLoading(true);
-    await repository.removeActivity(id);
+    await deleteActivity(id);
     setIsLoading(false);
     Modular.to.navigate('/adm');
   }

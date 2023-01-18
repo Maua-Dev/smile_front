@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../shared/services/environment/environment_config.dart';
 import '../infra/datasources/forgot_password_datasource.dart';
@@ -23,12 +24,11 @@ class ForgotPasswordDatasourceImpl implements ForgotPasswordDatasource {
         "login": username,
       });
       if (res.statusCode == 200) {
-        return 'Código enviado com sucesso!';
+        return S.current.successSendingCode;
       }
       throw Exception();
     } catch (e) {
-      throw ForgotPasswordInvalid(
-          'Falha ao enviar o código, e-mail não cadastrado ou não confirmado.');
+      throw ForgotPasswordInvalid(S.current.errorSendingCode);
     }
   }
 
@@ -49,12 +49,11 @@ class ForgotPasswordDatasourceImpl implements ForgotPasswordDatasource {
         "confirmation_code": code
       });
       if (res.statusCode == 200) {
-        return 'Senha alterada com sucesso!';
+        return S.current.successChangePassword;
       }
       throw Exception();
     } catch (e) {
-      throw ForgotPasswordInvalid(
-          'Falha ao tentar alterar a senha, tente novamente.');
+      throw ForgotPasswordInvalid(S.current.errorChangePassword);
     }
   }
 }
