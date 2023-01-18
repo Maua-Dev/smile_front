@@ -445,7 +445,7 @@ class CompanySponsor extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
         child: Wrap(
-          alignment: WrapAlignment.spaceEvenly,
+          alignment: WrapAlignment.center,
           spacing: 48,
           runSpacing: 16,
           children: [
@@ -456,6 +456,10 @@ class CompanySponsor extends StatelessWidget {
             SponsorsWidget(
                 link: patrocinadorVendraminiLogoUrl, color: Colors.white),
             SponsorsWidget(link: patrocinadorCSNLogoUrl, color: Colors.white),
+            SponsorsWidget(
+                link: patrocinadorApplusLogoUrl, color: Colors.white),
+            SponsorsWidget(
+                link: patrocinadorOsborneLogoUrl, color: Colors.white),
           ],
         ));
   }
