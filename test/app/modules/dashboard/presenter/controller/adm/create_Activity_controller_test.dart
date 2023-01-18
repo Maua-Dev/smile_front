@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,7 +11,7 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
 
-import 'create_activity_controller_test.mocks.dart';
+import 'create_Activity_controller_test.mocks.dart';
 
 @GenerateMocks([CreateActivityInterface])
 void main() {
