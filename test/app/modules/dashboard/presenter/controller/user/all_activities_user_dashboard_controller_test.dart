@@ -4,11 +4,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/app_module.dart';
-import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
+import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
+import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
@@ -18,18 +20,25 @@ import 'package:smile_front/app/shared/services/firebase-analytics/firebase_anal
 
 import '../../../../../../setup_firebase_mocks.dart';
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
-import 'all_activities_user_dashboard_controller_test.mocks.dart';
+import 'all_activities_user_dashboard_controller_test.mocks.dart' as u;
 
-@GenerateMocks([ActivitiesRepositoryInterface, UserDashboardController])
+@GenerateMocks([
+  ActivitiesRepositoryInterface,
+  UserDashboardController,
+  GetAllUserActivitiesInterface,
+  RefreshTokenInterface,
+  LoginWithCpfRneInterface,
+])
 void main() {
   initModule(AppModule());
   setupCloudFirestoreMocks();
-  ActivitiesRepositoryInterface repository =
-      MockActivitiesRepositoryInterface();
-  AuthRepositoryInterface authRepository = MockAuthRepositoryInterface();
+  GetAllUserActivitiesInterface getAllUserActivitiesInterface =
+      u.MockGetAllUserActivitiesInterface();
+  RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
+  LoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
   UserDashboardController userDashboardController =
-      MockUserDashboardController();
+      u.MockUserDashboardController();
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
 
   late AllActivitiesUserDashboardController controller;
@@ -150,14 +159,16 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
-    when(repository.getAllActivities()).thenAnswer((_) async => mockActivities);
+    when(getAllUserActivitiesInterface())
+        .thenAnswer((_) async => mockActivities);
     authController = AuthController(
-        authRepository: authRepository,
+        loginWithCpfRne: loginWithCpfRne,
+        refreshToken: refreshToken,
         storage: secureStorage,
         analytics: analytics);
 
     controller = AllActivitiesUserDashboardController(
-      repository: repository,
+      getAllActivities: getAllUserActivitiesInterface,
       authController: authController,
       controller: userDashboardController,
       analytics: analytics,

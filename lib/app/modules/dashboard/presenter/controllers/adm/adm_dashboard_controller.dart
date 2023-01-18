@@ -1,29 +1,32 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
-
 part 'adm_dashboard_controller.g.dart';
 
 class AdmDashboardController = AdmDashboardControllerBase
     with _$AdmDashboardController;
 
 abstract class AdmDashboardControllerBase with Store {
-  final ActivitiesRepositoryInterface repository;
   final AuthController authController;
+  final GetDownloadLinkCsvInterface getDownloadLinkCsv;
+  final GetAllUserActivitiesInterface getAllUserActivities;
 
   AdmDashboardControllerBase(
-      {required this.repository, required this.authController}) {
+      {required this.getDownloadLinkCsv,
+      required this.authController,
+      required this.getAllUserActivities}) {
     getAllActivities();
   }
 
   Future<void> downloadCsv() async {
     setIsLoadingCsv(true);
-    var url = await repository.getDownloadLinkCsv();
+    var url = await getDownloadLinkCsv();
     var csvUrl = Uri.parse(url);
     if (!await launchUrl(
       csvUrl,
@@ -149,7 +152,7 @@ abstract class AdmDashboardControllerBase with Store {
   @action
   Future getAllActivities() async {
     setIsLoading(true);
-    activitiesList = await repository.getAllActivities();
+    activitiesList = await getAllUserActivities();
     saveActivitiesList = activitiesList;
     changeFormatToCards();
     nextActivitiesList = allActivitiesToCards.length >= 5

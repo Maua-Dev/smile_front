@@ -6,7 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
+import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart'
     as _i2;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 
@@ -21,98 +21,22 @@ import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-/// A class which mocks [ActivitiesRepositoryInterface].
+/// A class which mocks [CreateActivityInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockActivitiesRepositoryInterface extends _i1.Mock
-    implements _i2.ActivitiesRepositoryInterface {
-  MockActivitiesRepositoryInterface() {
+class MockCreateActivityInterface extends _i1.Mock
+    implements _i2.CreateActivityInterface {
+  MockCreateActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<List<_i4.ActivityModel>> getAllActivities() => (super.noSuchMethod(
-        Invocation.method(
-          #getAllActivities,
-          [],
-        ),
-        returnValue:
-            _i3.Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]),
-      ) as _i3.Future<List<_i4.ActivityModel>>);
-  @override
-  _i3.Future<List<_i4.ActivityModel>> getUserSubscribedActivities() =>
+  _i3.Future<dynamic> call(_i4.ActivityModel? activityToCreate) =>
       (super.noSuchMethod(
         Invocation.method(
-          #getUserSubscribedActivities,
-          [],
-        ),
-        returnValue:
-            _i3.Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]),
-      ) as _i3.Future<List<_i4.ActivityModel>>);
-  @override
-  _i3.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
-        Invocation.method(
-          #getDownloadLinkCsv,
-          [],
-        ),
-        returnValue: _i3.Future<String>.value(''),
-      ) as _i3.Future<String>);
-  @override
-  _i3.Future<dynamic> createActivity(_i4.ActivityModel? activityToCreate) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #createActivity,
+          #call,
           [activityToCreate],
         ),
         returnValue: _i3.Future<dynamic>.value(),
       ) as _i3.Future<dynamic>);
-  @override
-  _i3.Future<dynamic> editActivity(_i4.ActivityModel? activityToEdit) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #editActivity,
-          [activityToEdit],
-        ),
-        returnValue: _i3.Future<dynamic>.value(),
-      ) as _i3.Future<dynamic>);
-  @override
-  _i3.Future<dynamic> removeActivity(String? id) => (super.noSuchMethod(
-        Invocation.method(
-          #removeActivity,
-          [id],
-        ),
-        returnValue: _i3.Future<dynamic>.value(),
-      ) as _i3.Future<dynamic>);
-  @override
-  _i3.Future<bool> subscribeActivity(
-    _i4.ActivityModel? activity,
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #subscribeActivity,
-          [
-            activity,
-            activityId,
-            activityDate,
-          ],
-        ),
-        returnValue: _i3.Future<bool>.value(false),
-      ) as _i3.Future<bool>);
-  @override
-  _i3.Future<bool> unsubscribeActivity(
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #unsubscribeActivity,
-          [
-            activityId,
-            activityDate,
-          ],
-        ),
-        returnValue: _i3.Future<bool>.value(false),
-      ) as _i3.Future<bool>);
 }

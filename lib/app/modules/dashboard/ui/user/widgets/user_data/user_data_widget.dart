@@ -89,7 +89,7 @@ class UserDataWidget extends StatelessWidget {
                                               content:
                                                   'Se atente! A alteração afetará diretamente a sua certificação.',
                                               onPressed: () {
-                                                controller.changeData();
+                                                controller.changeUserData();
                                                 Navigator.of(context).pop();
                                                 Navigator.of(context).pop();
                                               });
@@ -118,7 +118,7 @@ class UserDataWidget extends StatelessWidget {
                                             content:
                                                 'Se atente! A alteração afetará diretamente a sua certificação.',
                                             onPressed: () {
-                                              controller.changeData();
+                                              controller.changeUserData();
                                               Navigator.of(context).pop();
                                               Navigator.of(context).pop();
                                             });

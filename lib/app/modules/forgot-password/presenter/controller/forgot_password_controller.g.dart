@@ -203,22 +203,24 @@ mixin _$ForgotPasswordController on ForgotPasswordControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$forgotPasswordAsyncAction = AsyncAction(
-      'ForgotPasswordControllerBase.forgotPassword',
+  late final _$forgotUserPasswordAsyncAction = AsyncAction(
+      'ForgotPasswordControllerBase.forgotUserPassword',
       context: context);
 
   @override
-  Future<void> forgotPassword() {
-    return _$forgotPasswordAsyncAction.run(() => super.forgotPassword());
+  Future<void> forgotUserPassword() {
+    return _$forgotUserPasswordAsyncAction
+        .run(() => super.forgotUserPassword());
   }
 
-  late final _$changePasswordAsyncAction = AsyncAction(
-      'ForgotPasswordControllerBase.changePassword',
+  late final _$changeUserPasswordAsyncAction = AsyncAction(
+      'ForgotPasswordControllerBase.changeUserPassword',
       context: context);
 
   @override
-  Future<void> changePassword() {
-    return _$changePasswordAsyncAction.run(() => super.changePassword());
+  Future<void> changeUserPassword() {
+    return _$changeUserPasswordAsyncAction
+        .run(() => super.changeUserPassword());
   }
 
   late final _$setPasswordAsyncAction =

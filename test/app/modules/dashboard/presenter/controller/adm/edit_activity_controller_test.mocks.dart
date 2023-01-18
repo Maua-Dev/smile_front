@@ -8,6 +8,10 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i2;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart'
+    as _i6;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart'
+    as _i5;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 
 // ignore_for_file: type=lint
@@ -115,4 +119,43 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         ),
         returnValue: _i3.Future<bool>.value(false),
       ) as _i3.Future<bool>);
+}
+
+/// A class which mocks [EditActivityInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockEditActivityInterface extends _i1.Mock
+    implements _i5.EditActivityInterface {
+  MockEditActivityInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<dynamic> call(_i4.ActivityModel? activityToEdit) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [activityToEdit],
+        ),
+        returnValue: _i3.Future<dynamic>.value(),
+      ) as _i3.Future<dynamic>);
+}
+
+/// A class which mocks [DeleteActivityInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockDeleteActivityInterface extends _i1.Mock
+    implements _i6.DeleteActivityInterface {
+  MockDeleteActivityInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<dynamic> call(String? id) => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [id],
+        ),
+        returnValue: _i3.Future<dynamic>.value(),
+      ) as _i3.Future<dynamic>);
 }

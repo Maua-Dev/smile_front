@@ -1,10 +1,11 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
 
 import '../../../../../shared/models/activity_model.dart';
 import '../../../domain/infra/activity_enum.dart';
-import '../../../domain/repositories/activities_repository_interface.dart';
+
 import '../../../infra/models/schedule_activity_model.dart';
 import '../../../infra/models/speaker_activity_model.dart';
 
@@ -14,10 +15,10 @@ class CreateActivityController = CreateActivityControllerBase
     with _$CreateActivityController;
 
 abstract class CreateActivityControllerBase with Store {
-  final ActivitiesRepositoryInterface repository;
+  final CreateActivityInterface createActivity;
 
   CreateActivityControllerBase({
-    required this.repository,
+    required this.createActivity,
   });
 
   @observable
@@ -47,9 +48,9 @@ abstract class CreateActivityControllerBase with Store {
   }
 
   @action
-  Future createActivity() async {
+  Future createUserActivity() async {
     setIsLoading(true);
-    await repository.createActivity(activityToCreate);
+    await createActivity(activityToCreate);
     setIsLoading(false);
     Modular.to.navigate('/adm');
   }

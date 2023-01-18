@@ -8,6 +8,8 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart'
     as _i2;
+import 'package:smile_front/app/modules/register/usecases/register_user.dart'
+    as _i5;
 import 'package:smile_front/app/shared/entities/user_registration.dart' as _i4;
 
 // ignore_for_file: type=lint
@@ -36,6 +38,26 @@ class MockRegisterRepositoryInterface extends _i1.Mock
         Invocation.method(
           #registerUser,
           [userRegistration],
+        ),
+        returnValue: _i3.Future<String>.value(''),
+      ) as _i3.Future<String>);
+}
+
+/// A class which mocks [RegisterUserInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockRegisterUserInterface extends _i1.Mock
+    implements _i5.RegisterUserInterface {
+  MockRegisterUserInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<String> call(_i4.UserRegistration? registerInformations) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [registerInformations],
         ),
         returnValue: _i3.Future<String>.value(''),
       ) as _i3.Future<String>);

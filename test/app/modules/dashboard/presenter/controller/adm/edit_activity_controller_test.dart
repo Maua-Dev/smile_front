@@ -7,18 +7,25 @@ import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
-import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
+import 'edit_activity_controller_test.mocks.dart';
 
-@GenerateMocks([ActivitiesRepositoryInterface])
+@GenerateMocks([
+  ActivitiesRepositoryInterface,
+  EditActivityInterface,
+  DeleteActivityInterface
+])
 void main() {
   initModules([AppModule(), AdmModule()]);
-  ActivitiesRepositoryInterface repository =
-      MockActivitiesRepositoryInterface();
+
+  DeleteActivityInterface deleteActivity = MockDeleteActivityInterface();
+  EditActivityInterface editActivity = MockEditActivityInterface();
   late EditActivityController controller;
   final activity = ActivityModel(
       id: '1',
@@ -45,7 +52,8 @@ void main() {
   setUpAll(() async {
     await Modular.isModuleReady<AppModule>();
     controller = EditActivityController(
-      repository: repository,
+      editActivity: editActivity,
+      deleteActivity: deleteActivity,
       activityModel: activity,
     );
   });

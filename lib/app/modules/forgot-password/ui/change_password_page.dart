@@ -163,6 +163,11 @@ class _ChangePasswordPageState
                         showPwd: controller.showConfirmPwd,
                         onToggleVisibilityPwd:
                             controller.toggleVisibilityConfirmPwd,
+                        onFieldSubmitted: (value) async {
+                          if (_formKey.currentState!.validate()) {
+                            await controller.changeUserPassword();
+                          }
+                        },
                       );
                     }),
                     const SizedBox(
@@ -183,7 +188,7 @@ class _ChangePasswordPageState
                             currentFocus.unfocus();
                           }
                           if (_formKey.currentState!.validate()) {
-                            await controller.changePassword();
+                            await controller.changeUserPassword();
                             await controller.analytics.logChangePassword();
                           }
                         },
@@ -191,7 +196,6 @@ class _ChangePasswordPageState
                     }),
                   ],
                 ),
-                const MainstenanceAlert()
               ],
             ),
           ),

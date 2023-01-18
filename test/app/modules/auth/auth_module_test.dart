@@ -5,10 +5,11 @@ import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/auth/auth_module.dart';
-import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/external/auth_datasource_impl.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
+import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
+import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
 import '../../../setup_firebase_mocks.dart';
 
 void main() {
@@ -28,7 +29,8 @@ void main() {
     await Modular.isModuleReady<AppModule>();
     await Modular.isModuleReady<AuthModule>();
     var test = Modular.get<AuthController>();
-    expect(test.authRepository, isInstanceOf<AuthRepositoryInterface>());
+    expect(test.refreshToken, isInstanceOf<RefreshTokenInterface>());
+    expect(test.loginWithCpfRne, isInstanceOf<LoginWithCpfRneInterface>());
   });
 
   test('AuthDatasourceImpl Injection', () async {
