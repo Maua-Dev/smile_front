@@ -9,7 +9,7 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 import '../../../../../../shared/utils/utils.dart';
 import '../../../../../auth/infra/repositories/secure_storage.dart';
-import 'activity_card_widget.dart';
+import 'editing_widget.dart';
 
 class ActivitiesCarouselWidget extends StatelessWidget {
   final int? weekday;
@@ -81,7 +81,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
                               ),
                             SizedBox(
                               height: 200,
-                              child: ActivityCardWidget(
+                              child: EditingWidget(
                                 enrolledUsersLength: list[index].enrolledUsers!,
                                 onTap: () async {
                                   var accessLevel =

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-class ActivityCardWidget extends StatelessWidget {
+class EditingWidget extends StatelessWidget {
   final String name;
   final String activityCode;
   final String description;
@@ -14,7 +14,8 @@ class ActivityCardWidget extends StatelessWidget {
   final Color? cardColor;
   final Color? textColor;
   final Function()? onTap;
-  const ActivityCardWidget({
+  
+  const EditingWidget({
     Key? key,
     required this.name,
     required this.description,
