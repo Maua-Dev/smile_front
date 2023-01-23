@@ -43,7 +43,10 @@ class ActivitiesColumnWidget extends StatelessWidget {
                   enrolledUsersLength: list[index].enrolledUsers!,
                   totalParticipants: list[index].totalParticipants!,
                   name: list[index].title,
-                  onPressed: () async {
+                  time: time,
+                  finalTime: finalTime,
+                  onPressedDelete: () {},
+                  onPressedEdit: () async {
                     var accessLevel = await secureStorage.getAccessLevel();
                     if (accessLevel == 'ADMIN') {
                       Modular.to.navigate(
@@ -53,8 +56,6 @@ class ActivitiesColumnWidget extends StatelessWidget {
                       );
                     }
                   },
-                  time: time,
-                  finalTime: finalTime,
                 )
               ],
             );

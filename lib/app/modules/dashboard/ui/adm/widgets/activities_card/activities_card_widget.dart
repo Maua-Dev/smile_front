@@ -13,7 +13,8 @@ class ActivitiesCardWidget extends StatelessWidget {
   final String finalTime;
   final int enrolledUsersLength;
   final int totalParticipants;
-  final Function() onPressed;
+  final Function() onPressedEdit;
+  final Function() onPressedDelete;
   const ActivitiesCardWidget({
     Key? key,
     required this.name,
@@ -24,7 +25,8 @@ class ActivitiesCardWidget extends StatelessWidget {
     required this.finalTime,
     required this.enrolledUsersLength,
     required this.totalParticipants,
-    required this.onPressed,
+    required this.onPressedEdit,
+    required this.onPressedDelete,
   }) : super(key: key);
 
   @override
@@ -137,11 +139,11 @@ class ActivitiesCardWidget extends StatelessWidget {
                             ],
                           ),
                           IconButton(
-                              onPressed: () => {onPressed},
+                              onPressed: () => {onPressedEdit},
                               icon: Icon(Icons.mode_edit_outline_sharp,
                                   size: 28, color: AppColors.brandingOrange)),
                           IconButton(
-                              onPressed: () => {},
+                              onPressed: () => {onPressedDelete},
                               icon: Icon(Icons.delete,
                                   size: 28, color: AppColors.brandingOrange))
                         ])
