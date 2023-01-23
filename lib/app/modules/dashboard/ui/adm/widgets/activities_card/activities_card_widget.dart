@@ -67,13 +67,25 @@ class ActivitiesCardWidget extends StatelessWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Text('$activityCode - $name',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: AppColors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  overflow: TextOverflow.ellipsis)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 680,
+                                child: Text('$activityCode - $name',
+                                    style: TextStyle(
+                                        color: AppColors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700,
+                                        overflow: TextOverflow.ellipsis)),
+                              ),
+                              Icon(
+                                Icons.star_border_outlined,
+                                size: 33,
+                                color: AppColors.brandingOrange,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Text(description,
