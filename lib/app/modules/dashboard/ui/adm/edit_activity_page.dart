@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -9,11 +8,9 @@ import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widge
 import '../../../../../generated/l10n.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
-import '../../../../shared/utils/s3_assets_url.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
-import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../domain/infra/activity_enum.dart';
 import 'widgets/add_forms/schedule_add_widget.dart';
 import 'widgets/add_forms/speaker_add_widget.dart';
@@ -39,26 +36,20 @@ class _EditActivityPageState
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.15,
+                height: MediaQuery.of(context).size.height * 0.08,
                 child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: CachedNetworkImageProvider(mauaCampusBlurUrl),
-                      fit: BoxFit.cover,
+                  color: AppColors.brandingBlue,
+                  child: Center(
+                    child: Text(
+                      'Editar Atividade',
+                      style: TextStyle(color: AppColors.white, fontSize: 42),
                     ),
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                child: TextHeader(
-                  title: 'Editar Atividade',
-                  leftPadding: 24,
-                ),
-              ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 114, vertical: 8),
+                padding: const EdgeInsets.only(
+                    left: 114, right: 114, top: 64, bottom: 8),
                 child: Row(
                   children: [
                     SizedBox(
@@ -70,7 +61,7 @@ class _EditActivityPageState
                                 ? 16
                                 : 20),
                         filledColor: Colors.white,
-                        titulo: 'Tipo de Atividade',
+                        titulo: 'Atividade',
                         value: controller.activityToEdit.type,
                         items: ActivityEnum.values
                             .toList()
@@ -226,18 +217,6 @@ class _EditActivityPageState
                       );
                     });
               }),
-              Center(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
-                  child: FormsButtonWidget(
-                      buttonTittle: 'Adicionar horário',
-                      onPressed: controller.addSchedule,
-                      backgroundColor: AppColors.brandingOrange,
-                      icon:
-                          const Icon(Icons.add, color: Colors.white, size: 22)),
-                ),
-              ),
               Observer(builder: (_) {
                 return ListView.builder(
                   shrinkWrap: true,

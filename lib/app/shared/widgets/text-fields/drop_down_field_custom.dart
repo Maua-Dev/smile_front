@@ -21,38 +21,48 @@ class DropDownFieldCustom<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonHideUnderline(
-      child: DropdownButtonFormField<T>(
-        value: value,
-        isExpanded: true,
-        onChanged: onChanged,
-        items: items,
-        iconEnabledColor: AppColors.brandingBlue,
-        iconSize: 32,
-        style: textStyles ??
-            AppTextStyles.button
-                .copyWith(fontSize: 24, color: AppColors.brandingBlue),
-        decoration: InputDecoration(
-          hintText: titulo,
-          labelText: titulo,
-          labelStyle: AppTextStyles.titleH1
-              .copyWith(color: AppColors.brandingBlue, fontSize: 24),
-          hintStyle: textStyles ??
-              AppTextStyles.button
-                  .copyWith(fontSize: 20, color: AppColors.brandingBlue),
-          fillColor: filledColor ?? AppColors.lightPurple,
-          filled: true,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25.0),
-            borderSide: BorderSide(color: AppColors.brandingBlue),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25.0),
-            borderSide: BorderSide(color: AppColors.brandingBlue),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 6.0, left: 4),
+          child: Text(
+            titulo.toString(),
+            style: const TextStyle(fontSize: 18),
           ),
         ),
-      ),
+        DropdownButtonHideUnderline(
+          child: DropdownButtonFormField<T>(
+            value: value,
+            isExpanded: true,
+            onChanged: onChanged,
+            items: items,
+            iconEnabledColor: AppColors.brandingBlue,
+            iconSize: 32,
+            style: textStyles ??
+                AppTextStyles.button
+                    .copyWith(fontSize: 24, color: AppColors.brandingBlue),
+            decoration: InputDecoration(
+              labelStyle: AppTextStyles.titleH1
+                  .copyWith(color: AppColors.brandingBlue, fontSize: 24),
+              hintStyle: textStyles ??
+                  AppTextStyles.button
+                      .copyWith(fontSize: 20, color: AppColors.brandingBlue),
+              fillColor: filledColor ?? AppColors.lightPurple,
+              filled: true,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12.0),
+                borderSide: BorderSide(color: AppColors.brandingBlue),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12.0),
+                borderSide: BorderSide(color: AppColors.brandingBlue),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

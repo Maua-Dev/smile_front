@@ -30,45 +30,60 @@ class TextFieldDialogWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: padding ? 114 : 0, vertical: padding ? 8 : 0),
-      child: TextFormField(
-        controller: controller,
-        onChanged: onChanged,
-        keyboardType: TextInputType.multiline,
-        maxLines: null,
-        textAlignVertical: TextAlignVertical.center,
-        inputFormatters: inputFormatters,
-        style: AppTextStyles.body.copyWith(
-            color: AppColors.brandingBlue,
-            fontSize: MediaQuery.of(context).size.width < 1200 ? 16 : 20),
-        decoration: InputDecoration(
-            suffixIcon: suffixIcon != null
-                ? IconButton(
-                    icon: Icon(
-                      suffixIcon,
-                      color: AppColors.brandingBlue,
-                    ),
-                    onPressed: onPressedIcon,
-                  )
-                : null,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(color: AppColors.brandingBlue, width: 0.0),
+      child: SizedBox(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6.0, left: 4),
+              child: Text(
+                labelText,
+                style: const TextStyle(fontSize: 18),
+              ),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(color: AppColors.brandingBlue, width: 0.0),
+            TextFormField(
+              controller: controller,
+              onChanged: onChanged,
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
+              textAlignVertical: TextAlignVertical.center,
+              inputFormatters: inputFormatters,
+              style: AppTextStyles.body.copyWith(
+                  color: AppColors.brandingBlue,
+                  fontSize: MediaQuery.of(context).size.width < 1200 ? 16 : 20),
+              decoration: InputDecoration(
+                  suffixIcon: suffixIcon != null
+                      ? IconButton(
+                          icon: Icon(
+                            suffixIcon,
+                            color: AppColors.brandingBlue,
+                          ),
+                          onPressed: onPressedIcon,
+                        )
+                      : null,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide:
+                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide:
+                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
+                  ),
+                  labelStyle: AppTextStyles.titleH1
+                      .copyWith(color: AppColors.brandingBlue, fontSize: 22),
+                  hintStyle: AppTextStyles.body
+                      .copyWith(color: AppColors.brandingBlue, fontSize: 20),
+                  contentPadding: suffixIcon != null
+                      ? const EdgeInsets.only(left: 16, top: 16, bottom: 16)
+                      : const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 16),
+                  filled: true,
+                  fillColor: Colors.white),
             ),
-            hintText: hintText,
-            labelText: labelText,
-            labelStyle: AppTextStyles.titleH1
-                .copyWith(color: AppColors.brandingBlue, fontSize: 22),
-            hintStyle: AppTextStyles.body
-                .copyWith(color: AppColors.brandingBlue, fontSize: 20),
-            contentPadding: suffixIcon != null
-                ? const EdgeInsets.only(left: 16, top: 16, bottom: 16)
-                : const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            filled: true,
-            fillColor: Colors.white),
+          ],
+        ),
       ),
     );
   }
