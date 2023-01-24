@@ -34,6 +34,8 @@ class FilterCardWidget extends StatelessWidget {
           children: [
             DropdownButtonFormField(
               decoration: InputDecoration(
+                isDense: true,
+                isCollapsed: false,
                 hintText: 'Atividades',
                 fillColor: AppColors.white,
                 constraints: const BoxConstraints(maxHeight: 47, maxWidth: 227),
@@ -52,28 +54,42 @@ class FilterCardWidget extends StatelessWidget {
                 value.toString();
               },
             ),
-            DropdownButtonFormField(
-              decoration: InputDecoration(
-                hintText: 'Dias',
-                fillColor: AppColors.white,
-                constraints: const BoxConstraints(maxHeight: 47, maxWidth: 227),
-                filled: true,
-                hintStyle: AppTextStyles.body.copyWith(fontSize: 30),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+            InkWell(
+              child: Container(
+                width: 227,
+                height: 47,
+                decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 0, 12, 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text('Data',
+                          style: AppTextStyles.body.copyWith(fontSize: 30)),
+                      const Icon(
+                        Icons.arrow_drop_down,
+                        size: 24,
+                        color: Colors.black,
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              items: const [
-                DropdownMenuItem(
-                  value: 'teste',
-                  child: Text('teste'),
-                )
-              ],
-              onChanged: (value) {
-                value.toString();
+              onTap: () {
+                showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2022),
+                    lastDate: DateTime(2222));
               },
             ),
             DropdownButtonFormField(
               decoration: InputDecoration(
+                isDense: true,
+                isCollapsed: false,
                 hintText: 'Horário',
                 fillColor: AppColors.white,
                 constraints: const BoxConstraints(maxHeight: 47, maxWidth: 227),
