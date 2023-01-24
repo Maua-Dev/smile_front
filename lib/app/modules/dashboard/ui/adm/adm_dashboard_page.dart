@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app_bar_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_card/activities_column_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/filter/filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
 import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'widgets/filter/filter_chip_widget.dart';
@@ -29,9 +30,6 @@ class _AdmDashboardPageState
           SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(
-                  height: 32,
-                ),
                 /* Padding(
                   padding: const EdgeInsets.only(right: 72.0),
                   child: Row(
@@ -76,6 +74,10 @@ class _AdmDashboardPageState
                   title: 'Todas Atividades',
                   fontSize: 38,
                 ), */
+                Padding(
+                    padding: const EdgeInsets.only(top: 150),
+                    child:
+                        FilterCardWidget(list: controller.allActivitiesList)),
                 Padding(
                   padding: const EdgeInsets.only(left: 72.0, top: 20),
                   child: SizedBox(
