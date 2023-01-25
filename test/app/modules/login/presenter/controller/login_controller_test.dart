@@ -7,11 +7,9 @@ import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:smile_front/app/app_module.dart';
-import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
-import 'package:smile_front/app/modules/auth/infra/repositories/auth_repository_mock.dart';
-
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
+import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
 
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
@@ -24,7 +22,8 @@ import '../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 void main() {
   initModule(AppModule());
   setupCloudFirestoreMocks();
-  AuthRepositoryInterface repository = AuthRepositoryMock();
+  MockLoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
+  RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   SecureStorageInterface storage = MockSecureStorageInterface();
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
 
@@ -35,7 +34,10 @@ void main() {
     await Firebase.initializeApp();
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
     authController = AuthController(
-        authRepository: repository, storage: storage, analytics: analytics);
+        refreshToken: refreshToken,
+        storage: storage,
+        analytics: analytics,
+        loginWithCpfRne: loginWithCpfRne);
     controller =
         LoginController(authController: authController, analytics: analytics);
   });

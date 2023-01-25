@@ -8,6 +8,7 @@ import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 import 'package:smile_front/app/modules/register/presenter/controllers/register_controller.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
+import 'package:smile_front/app/modules/register/usecases/register_user.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import 'package:smile_front/generated/l10n.dart';
 
@@ -15,19 +16,22 @@ import '../../../../../setup_firebase_mocks.dart';
 import '../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import 'register_controller_test.mocks.dart';
 
-@GenerateMocks([RegisterRepositoryInterface])
+@GenerateMocks([RegisterRepositoryInterface, RegisterUserInterface])
 void main() {
   initModules([AppModule(), RegisterModule()]);
   setupCloudFirestoreMocks();
   RegisterRepositoryInterface repository = MockRegisterRepositoryInterface();
   late RegisterController controller;
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
+  RegisterUserInterface registerUser = MockRegisterUserInterface();
 
   setUpAll(() async {
     await Firebase.initializeApp();
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
     controller = RegisterController(
-        registerUserRepository: repository, analytics: analytics);
+        registerUserRepository: repository,
+        analytics: analytics,
+        registerUser: registerUser);
   });
 
   test('setAcceptImage', () {
@@ -234,11 +238,6 @@ void main() {
   test('toggleVisibilityConfirmPwd', () {
     controller.toggleVisibilityConfirmPwd(true);
     expect(controller.showConfirmPwd, false);
-  });
-
-  test('setShowDialogToConfirmEmail', () {
-    controller.setShowDialogToConfirmEmail(true);
-    expect(controller.showDialogToConfirmEmail, true);
   });
 
   test('setSuccessRegistration', () {

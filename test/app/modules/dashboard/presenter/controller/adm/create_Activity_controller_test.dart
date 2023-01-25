@@ -8,21 +8,21 @@ import 'package:mockito/annotations.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
-import '../../../../login/presenter/controller/login_controller_test.mocks.dart';
 
-@GenerateMocks([ActivitiesRepositoryInterface])
+import 'create_Activity_controller_test.mocks.dart';
+
+@GenerateMocks([CreateActivityInterface])
 void main() {
-  ActivitiesRepositoryInterface repository =
-      MockActivitiesRepositoryInterface();
+  CreateActivityInterface createActivity = MockCreateActivityInterface();
 
   late CreateActivityController controller;
   initModules([AppModule(), AdmModule()]);
 
   setUpAll(() async {
     await Modular.isModuleReady<AppModule>();
-    controller = CreateActivityController(repository: repository);
+    controller = CreateActivityController(createActivity: createActivity);
   });
 
   test('setIsLoading', () {

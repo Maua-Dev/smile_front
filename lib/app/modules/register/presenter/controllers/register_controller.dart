@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
+import 'package:smile_front/app/modules/register/usecases/register_user.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/entities/user_registration.dart';
@@ -16,9 +17,12 @@ class RegisterController = RegisterControllerBase with _$RegisterController;
 abstract class RegisterControllerBase with Store {
   final RegisterRepositoryInterface registerUserRepository;
   final FirebaseAnalyticsService analytics;
+  final RegisterUserInterface registerUser;
 
   RegisterControllerBase(
-      {required this.analytics, required this.registerUserRepository});
+      {required this.analytics,
+      required this.registerUserRepository,
+      required this.registerUser});
 
   @computed
   int? get raInt => ra == ''
@@ -31,9 +35,6 @@ abstract class RegisterControllerBase with Store {
 
   @observable
   bool isLoading = false;
-
-  @observable
-  bool showDialogToConfirmEmail = false;
 
   @observable
   bool showPwd = false;
@@ -194,10 +195,7 @@ abstract class RegisterControllerBase with Store {
     if (phone[0] == "5" && phone[1] == "5" && phone.length == 11) {
       return S.current.fieldDDDRequired;
     }
-    if (value[0] == "5" &&
-        value[1] == "5" &&
-        value.length != 11 &&
-        value.length != 13) {
+    if (phone[0] == "5" && phone[1] == "5" && phone.length != 13) {
       return S.current.fieldInvalid;
     }
     return null;
@@ -319,7 +317,7 @@ abstract class RegisterControllerBase with Store {
     if (acceptTermsOfUse) {
       setIsLoading(true);
       try {
-        await registerUserRepository.registerUser(registerInformations);
+        await registerUser(registerInformations);
         setIsLoading(false);
         setSuccessRegistration(true);
         analytics.logSignUp();
@@ -365,10 +363,5 @@ abstract class RegisterControllerBase with Store {
   @action
   void toggleVisibilityConfirmPwd(bool value) {
     showConfirmPwd = !value;
-  }
-
-  @action
-  void setShowDialogToConfirmEmail(bool value) {
-    showDialogToConfirmEmail = value;
   }
 }

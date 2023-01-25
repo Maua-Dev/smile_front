@@ -179,13 +179,13 @@ mixin _$AllActivitiesUserDashboardController
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$getAllActivitiesAsyncAction = AsyncAction(
-      'AllActivitiesUserDashboardControllerBase.getAllActivities',
+  late final _$getActivitiesAsyncAction = AsyncAction(
+      'AllActivitiesUserDashboardControllerBase.getActivities',
       context: context);
 
   @override
-  Future<dynamic> getAllActivities() {
-    return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
+  Future<dynamic> getActivities() {
+    return _$getActivitiesAsyncAction.run(() => super.getActivities());
   }
 
   late final _$getActivitiesByTypeAsyncAction = AsyncAction(

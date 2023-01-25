@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/dashboard/domain/repositories/certificate_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_certificates.dart';
 
 import '../../../infra/models/certificate_model.dart';
 
@@ -9,10 +9,10 @@ class CertificateController = CertificateControllerBase
     with _$CertificateController;
 
 abstract class CertificateControllerBase with Store {
-  final CertificateRepositoryInterface repository;
+  final GetUserCertificatesInterface getUserCertificates;
 
-  CertificateControllerBase({required this.repository}) {
-    getUserCertificates();
+  CertificateControllerBase({required this.getUserCertificates}) {
+    getCertificates();
   }
 
   @observable
@@ -27,9 +27,9 @@ abstract class CertificateControllerBase with Store {
   List<CertificateModel> certificateList = List.empty();
 
   @action
-  Future<void> getUserCertificates() async {
+  Future<void> getCertificates() async {
     setIsLoading(true);
-    certificateList = await repository.getListDownloads();
+    certificateList = await getUserCertificates();
     setIsLoading(false);
   }
 }

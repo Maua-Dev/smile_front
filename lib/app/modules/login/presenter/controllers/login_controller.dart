@@ -59,7 +59,7 @@ abstract class LoginControllerBase with Store {
     errors = '';
     setIsLoading(true);
     try {
-      await authController.loginWithCpfRne(cpfRne, password);
+      await authController.loginWithUserCpfRne(cpfRne, password);
       if (authController.isLogged) {
         if (authController.accessLevel == 'ADMIN') {
           Modular.to

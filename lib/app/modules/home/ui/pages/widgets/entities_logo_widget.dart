@@ -75,10 +75,10 @@ class EntitiesWidget extends StatelessWidget {
                           ? 180
                           : 220,
                   height: MediaQuery.of(context).size.width < 500
-                      ? 26
+                      ? 24
                       : MediaQuery.of(context).size.width < 1200
-                          ? 30
-                          : 37,
+                          ? 28
+                          : 35,
                   decoration: BoxDecoration(
                       color: AppColors.brandingBlue,
                       borderRadius:
@@ -108,23 +108,23 @@ class EntitiesWidget extends StatelessWidget {
                 ),
                 child: Container(
                     width: MediaQuery.of(context).size.width < 500
-                        ? 32
+                        ? 30
                         : MediaQuery.of(context).size.width < 1200
-                            ? 37
-                            : 45,
+                            ? 34
+                            : 40,
                     height: MediaQuery.of(context).size.width < 500
-                        ? 32
+                        ? 30
                         : MediaQuery.of(context).size.width < 1200
-                            ? 37
-                            : 45,
+                            ? 34
+                            : 40,
                     decoration: BoxDecoration(
                         color: AppColors.brandingBlue, shape: BoxShape.circle),
                     child: Icon(FontAwesome5.instagram,
                         size: MediaQuery.of(context).size.width < 500
-                            ? 22
+                            ? 18
                             : MediaQuery.of(context).size.width < 1200
-                                ? 24
-                                : 30,
+                                ? 20
+                                : 26,
                         color: Colors.white)),
               )
             ],

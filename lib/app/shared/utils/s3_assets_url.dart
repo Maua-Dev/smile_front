@@ -29,6 +29,17 @@ var patrocinadorVendraminiLogoUrl =
 
 var patrocinadorCSNLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_csn.png';
 
+var patrocinadorApplusLogoUrl =
+    '${s3AssetsBaseUrl}logo_patrocinador_applus.png';
+
+var patrocinadorOsborneLogoUrl =
+    '${s3AssetsBaseUrl}logo_patrocinador_osborne.png';
+
+var patrocinadorAlstomLogoUrl =
+    '${s3AssetsBaseUrl}logo_patrocinador_alstom.png';
+
 var mauaAzulLogoUrl = '${s3AssetsBaseUrl}logo_maua_azul.png';
+
+var smileLaranjaLogoUrl = '${s3AssetsBaseUrl}logo_smile_laranja.png';
 
 var entitiesBackground = '${s3AssetsBaseUrl}fundo_entidades.png';

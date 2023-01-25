@@ -82,12 +82,12 @@ var plansWidgets = [
       planTextStyle: planTextStyle,
       planName: S.current.planSponsorSchema('diamond'),
       level: 4,
-      price: S.current.planPriceSponsorSchema('silver')),
+      price: S.current.planPriceSponsorSchema('diamond')),
   PlanWidget(
     planTextStyle: planTextStyle,
     planName: S.current.planSponsorSchema('gold'),
     level: 3,
-    price: S.current.planPriceSponsorSchema('silver'),
+    price: S.current.planPriceSponsorSchema('gold'),
   ),
   PlanWidget(
     planTextStyle: planTextStyle,
@@ -99,7 +99,7 @@ var plansWidgets = [
     planTextStyle: planTextStyle,
     planName: S.current.planSponsorSchema('bronze'),
     level: 1,
-    price: S.current.planPriceSponsorSchema('silver'),
+    price: S.current.planPriceSponsorSchema('bronze'),
   )
 ];
 
@@ -445,7 +445,7 @@ class CompanySponsor extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
         child: Wrap(
-          alignment: WrapAlignment.spaceEvenly,
+          alignment: WrapAlignment.center,
           spacing: 48,
           runSpacing: 16,
           children: [
@@ -456,6 +456,12 @@ class CompanySponsor extends StatelessWidget {
             SponsorsWidget(
                 link: patrocinadorVendraminiLogoUrl, color: Colors.white),
             SponsorsWidget(link: patrocinadorCSNLogoUrl, color: Colors.white),
+            SponsorsWidget(
+                link: patrocinadorApplusLogoUrl, color: Colors.white),
+            SponsorsWidget(
+                link: patrocinadorOsborneLogoUrl, color: Colors.white),
+            SponsorsWidget(
+                link: patrocinadorAlstomLogoUrl, color: Colors.white),
           ],
         ));
   }

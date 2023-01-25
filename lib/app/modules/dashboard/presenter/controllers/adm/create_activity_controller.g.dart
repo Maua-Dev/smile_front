@@ -50,13 +50,14 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$createActivityAsyncAction = AsyncAction(
-      'CreateActivityControllerBase.createActivity',
+  late final _$createUserActivityAsyncAction = AsyncAction(
+      'CreateActivityControllerBase.createUserActivity',
       context: context);
 
   @override
-  Future<dynamic> createActivity() {
-    return _$createActivityAsyncAction.run(() => super.createActivity());
+  Future<dynamic> createUserActivity() {
+    return _$createUserActivityAsyncAction
+        .run(() => super.createUserActivity());
   }
 
   late final _$CreateActivityControllerBaseActionController =
