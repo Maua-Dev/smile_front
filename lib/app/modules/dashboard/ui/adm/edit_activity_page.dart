@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/extensive_activity_button/extensive_activity_button.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../shared/themes/app_colors.dart';
@@ -95,6 +96,7 @@ class _EditActivityPageState
                       onChanged: controller.setTitle,
                       value: controller.activityToEdit.title,
                     )),
+                    ExtensiveActivityCheck(),
                   ],
                 ),
               ),
