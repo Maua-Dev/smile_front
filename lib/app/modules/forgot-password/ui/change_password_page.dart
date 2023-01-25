@@ -31,14 +31,12 @@ class _ChangePasswordPageState
 
   _showDialog() async {
     await Future.delayed(const Duration(milliseconds: 50));
-    if (mounted) {
-      showDialog(
-          barrierDismissible: false,
-          context: context,
-          builder: (BuildContext context) {
-            return const MainstenanceAlert();
-          });
-    }
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return const MainstenanceAlert();
+        });
   }
 
   @override
