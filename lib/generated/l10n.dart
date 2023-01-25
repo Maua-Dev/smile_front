@@ -291,28 +291,28 @@ class S {
     );
   }
 
-  /// `{entity, select, atletica{@gaspar_maua} ca{@camaua} diversidade{@diversidademaua} enactus{@enactusmaua} esports{@esportsmaua} inova{@inovamaua} mauajr{@mauajr} mauasocial{@mauasocial} mbc{@mauabusiness} nae{@naemaua} dev{@devcommunitymaua} nine{@nine.maua} finance{@imtfinance} baja{@bajamaua} ecomaua{@eco_maua} mauaracing2{@mauaracingh2} mauaracing{@mauaracing} other{}}`
+  /// `{entity, select, atletica{gaspar_maua} ca{camaua} diversidade{diversidademaua} enactus{enactusmaua} esports{esportsmaua} inova{inovamaua} mauajr{mauajr} mauasocial{mauasocial} mbc{mauabusiness} nae{naemaua} dev{devcommunitymaua} nine{nine.maua} finance{imtfinance} baja{bajamaua} ecomaua{eco_maua} mauaracing2{mauaracingh2} mauaracing{mauaracing} other{}}`
   String mauaEntitiesSchemaSocialMidia(Object entity) {
     return Intl.select(
       entity,
       {
-        'atletica': '@gaspar_maua',
-        'ca': '@camaua',
-        'diversidade': '@diversidademaua',
-        'enactus': '@enactusmaua',
-        'esports': '@esportsmaua',
-        'inova': '@inovamaua',
-        'mauajr': '@mauajr',
-        'mauasocial': '@mauasocial',
-        'mbc': '@mauabusiness',
-        'nae': '@naemaua',
-        'dev': '@devcommunitymaua',
-        'nine': '@nine.maua',
-        'finance': '@imtfinance',
-        'baja': '@bajamaua',
-        'ecomaua': '@eco_maua',
-        'mauaracing2': '@mauaracingh2',
-        'mauaracing': '@mauaracing',
+        'atletica': 'gaspar_maua',
+        'ca': 'camaua',
+        'diversidade': 'diversidademaua',
+        'enactus': 'enactusmaua',
+        'esports': 'esportsmaua',
+        'inova': 'inovamaua',
+        'mauajr': 'mauajr',
+        'mauasocial': 'mauasocial',
+        'mbc': 'mauabusiness',
+        'nae': 'naemaua',
+        'dev': 'devcommunitymaua',
+        'nine': 'nine.maua',
+        'finance': 'imtfinance',
+        'baja': 'bajamaua',
+        'ecomaua': 'eco_maua',
+        'mauaracing2': 'mauaracingh2',
+        'mauaracing': 'mauaracing',
         'other': '',
       },
       name: 'mauaEntitiesSchemaSocialMidia',
