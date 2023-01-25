@@ -696,7 +696,7 @@ packages:
   path_provider_ios:
     dependency: transitive
     description:
-      name: path_provider_foundation
+      name: path_provider_ios
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.11"
