@@ -41,46 +41,59 @@ class TextFieldDialogWidget extends StatelessWidget {
                 style: const TextStyle(fontSize: 18),
               ),
             ),
-            TextFormField(
-              controller: controller,
-              onChanged: onChanged,
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              textAlignVertical: TextAlignVertical.center,
-              inputFormatters: inputFormatters,
-              style: AppTextStyles.body.copyWith(
-                  color: AppColors.brandingBlue,
-                  fontSize: MediaQuery.of(context).size.width < 1200 ? 16 : 20),
-              decoration: InputDecoration(
-                  suffixIcon: suffixIcon != null
-                      ? IconButton(
-                          icon: Icon(
-                            suffixIcon,
-                            color: AppColors.brandingBlue,
-                          ),
-                          onPressed: onPressedIcon,
-                        )
-                      : null,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                    borderSide:
-                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                    borderSide:
-                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
-                  ),
-                  labelStyle: AppTextStyles.titleH1
-                      .copyWith(color: AppColors.brandingBlue, fontSize: 22),
-                  hintStyle: AppTextStyles.body
-                      .copyWith(color: AppColors.brandingBlue, fontSize: 20),
-                  contentPadding: suffixIcon != null
-                      ? const EdgeInsets.only(left: 16, top: 16, bottom: 16)
-                      : const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 16),
-                  filled: true,
-                  fillColor: Colors.white),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 3,
+                      offset: const Offset(5, 5), // changes position of shadow
+                    ),
+                  ]),
+              child: TextFormField(
+                controller: controller,
+                onChanged: onChanged,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                textAlignVertical: TextAlignVertical.center,
+                inputFormatters: inputFormatters,
+                style: AppTextStyles.body.copyWith(
+                    color: AppColors.brandingBlue,
+                    fontSize:
+                        MediaQuery.of(context).size.width < 1200 ? 16 : 20),
+                decoration: InputDecoration(
+                    suffixIcon: suffixIcon != null
+                        ? IconButton(
+                            icon: Icon(
+                              suffixIcon,
+                              color: AppColors.brandingBlue,
+                            ),
+                            onPressed: onPressedIcon,
+                          )
+                        : null,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide:
+                          BorderSide(color: AppColors.brandingBlue, width: 0.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide:
+                          BorderSide(color: AppColors.brandingBlue, width: 0.0),
+                    ),
+                    labelStyle: AppTextStyles.titleH1
+                        .copyWith(color: AppColors.brandingBlue, fontSize: 22),
+                    hintStyle: AppTextStyles.body
+                        .copyWith(color: AppColors.brandingBlue, fontSize: 20),
+                    contentPadding: suffixIcon != null
+                        ? const EdgeInsets.only(left: 16, top: 16, bottom: 16)
+                        : const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 16),
+                    filled: true,
+                    fillColor: Colors.white),
+              ),
             ),
           ],
         ),

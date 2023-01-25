@@ -31,33 +31,45 @@ class DropDownFieldCustom<T> extends StatelessWidget {
             style: const TextStyle(fontSize: 18),
           ),
         ),
-        DropdownButtonHideUnderline(
-          child: DropdownButtonFormField<T>(
-            value: value,
-            isExpanded: true,
-            onChanged: onChanged,
-            items: items,
-            iconEnabledColor: AppColors.brandingBlue,
-            iconSize: 32,
-            style: textStyles ??
-                AppTextStyles.button
-                    .copyWith(fontSize: 24, color: AppColors.brandingBlue),
-            decoration: InputDecoration(
-              labelStyle: AppTextStyles.titleH1
-                  .copyWith(color: AppColors.brandingBlue, fontSize: 24),
-              hintStyle: textStyles ??
+        Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                  offset: const Offset(5, 5), // changes position of shadow
+                ),
+              ]),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButtonFormField<T>(
+              value: value,
+              isExpanded: true,
+              onChanged: onChanged,
+              items: items,
+              iconEnabledColor: AppColors.brandingBlue,
+              iconSize: 32,
+              style: textStyles ??
                   AppTextStyles.button
-                      .copyWith(fontSize: 20, color: AppColors.brandingBlue),
-              fillColor: filledColor ?? AppColors.lightPurple,
-              filled: true,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12.0),
-                borderSide: BorderSide(color: AppColors.brandingBlue),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12.0),
-                borderSide: BorderSide(color: AppColors.brandingBlue),
+                      .copyWith(fontSize: 24, color: AppColors.brandingBlue),
+              decoration: InputDecoration(
+                labelStyle: AppTextStyles.titleH1
+                    .copyWith(color: AppColors.brandingBlue, fontSize: 24),
+                hintStyle: textStyles ??
+                    AppTextStyles.button
+                        .copyWith(fontSize: 20, color: AppColors.brandingBlue),
+                fillColor: filledColor ?? AppColors.lightPurple,
+                filled: true,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: BorderSide(color: AppColors.brandingBlue),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: BorderSide(color: AppColors.brandingBlue),
+                ),
               ),
             ),
           ),
