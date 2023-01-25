@@ -7,13 +7,13 @@ import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../themes/app_colors.dart';
 
-class AppBarWidget extends StatefulWidget {
+class HomeAppBarWidget extends StatefulWidget {
   final Function()? scrollToHome;
   final Function()? scrollToActivity;
   final Function()? scrollToSponsors;
   final Function()? redirect;
   final bool isErrorPage;
-  const AppBarWidget({
+  const HomeAppBarWidget({
     super.key,
     this.scrollToHome,
     this.scrollToActivity,
@@ -23,10 +23,10 @@ class AppBarWidget extends StatefulWidget {
   });
 
   @override
-  State<AppBarWidget> createState() => _AppBarWidgetState();
+  State<HomeAppBarWidget> createState() => _HomeAppBarWidgetState();
 }
 
-class _AppBarWidgetState extends State<AppBarWidget> {
+class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
   @override
   Widget build(BuildContext context) {
     return AppBar(

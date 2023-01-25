@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/shared/widgets/app_bar/app_bar_widget.dart';
+import 'package:smile_front/app/shared/widgets/app_bar/home_app_bar_widget.dart';
 import '../../modules/home/ui/pages/footer/footer.dart';
 import '../themes/app_text_styles.dart';
 import '../widgets/drawer/end_drawer_widget.dart';
@@ -26,7 +26,7 @@ class _ErrorPageState extends State<ErrorPage> {
             : null,
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(56),
-            child: AppBarWidget(
+            child: HomeAppBarWidget(
               scrollToActivity: (() => Modular.to.navigate('/home/')),
               scrollToHome: (() => Modular.to.navigate('/home/')),
               scrollToSponsors: (() => Modular.to.navigate('/home/')),

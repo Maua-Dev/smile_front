@@ -460,6 +460,8 @@ class CompanySponsor extends StatelessWidget {
                 link: patrocinadorApplusLogoUrl, color: Colors.white),
             SponsorsWidget(
                 link: patrocinadorOsborneLogoUrl, color: Colors.white),
+            SponsorsWidget(
+                link: patrocinadorAlstomLogoUrl, color: Colors.white),
           ],
         ));
   }

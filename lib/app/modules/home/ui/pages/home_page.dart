@@ -5,7 +5,7 @@ import 'package:smile_front/app/modules/home/ui/pages/speakers-home/speakers_hom
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/smile_loading_logo_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/video_player/video_player_widget.dart';
-import 'package:smile_front/app/shared/widgets/app_bar/app_bar_widget.dart';
+import 'package:smile_front/app/shared/widgets/app_bar/home_app_bar_widget.dart';
 import 'package:smile_front/app/shared/widgets/drawer/end_drawer_widget.dart';
 import '../../../../app_module.dart';
 import '../../../auth/presenter/controllers/auth_controller.dart';
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
               : null,
           appBar: PreferredSize(
               preferredSize: const Size.fromHeight(56),
-              child: AppBarWidget(
+              child: HomeAppBarWidget(
                 scrollToActivity: scrollToActivity,
                 scrollToHome: scrollToHome,
                 scrollToSponsors: scrollToSponsors,

@@ -61,6 +61,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
             children: [
               SizedBox(
                   height: 250,
+                  width: MediaQuery.of(context).size.width - 115,
                   child: ListView.builder(
                       controller: controller,
                       scrollDirection: Axis.horizontal,
@@ -149,7 +150,7 @@ class ActivitiesCarouselWidget extends StatelessWidget {
               ),
               Positioned(
                 top: 90,
-                left: MediaQuery.of(context).size.width - 120,
+                left: MediaQuery.of(context).size.width - 240,
                 child: GestureDetector(
                   onTap: () => scrollRight(list.length),
                   child: Container(
