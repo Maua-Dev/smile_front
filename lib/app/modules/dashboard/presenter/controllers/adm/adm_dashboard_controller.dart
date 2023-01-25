@@ -3,7 +3,6 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
-import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
@@ -65,49 +64,40 @@ abstract class AdmDashboardControllerBase with Store {
   @observable
   List<ActivityModel> saveActivitiesList = List.empty();
 
-  @observable
-  List<CardActivity> allActivitiesToCards = List.empty();
+  // @computed
+  // List<CardActivity> get mondayActivitiesList => allActivitiesToCards
+  //     .where((activity) => activity.date!.weekday == 1)
+  //     .toList();
 
-  @observable
-  List<CardActivity> nextActivitiesList = List.empty();
+  // @computed
+  // List<CardActivity> get tuesdayActivitiesList => allActivitiesToCards
+  //     .where((activity) => activity.date!.weekday == 2)
+  //     .toList();
 
-  @computed
-  List<CardActivity> get allActivitiesList => allActivitiesToCards.toList();
+  // @computed
+  // List<CardActivity> get wednesdayActivitiesList => allActivitiesToCards
+  //     .where((activity) => activity.date!.weekday == 3)
+  //     .toList();
 
-  @computed
-  List<CardActivity> get mondayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 1)
-      .toList();
+  // @computed
+  // List<CardActivity> get thursdayActivitiesList => allActivitiesToCards
+  //     .where((activity) => activity.date!.weekday == 4)
+  //     .toList();
 
-  @computed
-  List<CardActivity> get tuesdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 2)
-      .toList();
+  // @computed
+  // List<CardActivity> get fridayActivitiesList => allActivitiesToCards
+  //     .where((activity) => activity.date!.weekday == 5)
+  //     .toList();
 
-  @computed
-  List<CardActivity> get wednesdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 3)
-      .toList();
+  // @computed
+  // List<CardActivity> get saturdayActivitiesList => allActivitiesToCards
+  //     .where((activity) => activity.date!.weekday == 6)
+  //     .toList();
 
-  @computed
-  List<CardActivity> get thursdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 4)
-      .toList();
-
-  @computed
-  List<CardActivity> get fridayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 5)
-      .toList();
-
-  @computed
-  List<CardActivity> get saturdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 6)
-      .toList();
-
-  @computed
-  List<CardActivity> get sundayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 7)
-      .toList();
+  // @computed
+  // List<CardActivity> get sundayActivitiesList => allActivitiesToCards
+  //     .where((activity) => activity.date!.weekday == 7)
+  //     .toList();
 
   @action
   void toggleFloatActionButton() {
@@ -119,7 +109,6 @@ abstract class AdmDashboardControllerBase with Store {
     if (index == filterActivityChipIndexSelected) {
       filterActivityChipIndexSelected = null;
       activitiesList = saveActivitiesList;
-      changeFormatToCards();
     } else {
       filterActivityChipIndexSelected = index;
       getActivitiesByType(index);
@@ -131,25 +120,6 @@ abstract class AdmDashboardControllerBase with Store {
     var list = activitiesList
         .where((element) => element.type == ActivityEnum.values[index])
         .toList();
-
-    allActivitiesToCards = [];
-    for (var activity in list) {
-      for (var time in activity.schedule) {
-        allActivitiesToCards.add(CardActivity(
-            id: activity.id,
-            activityCode: activity.activityCode,
-            type: activity.type,
-            title: activity.title,
-            description: activity.description,
-            date: time.date,
-            duration: time.duration,
-            totalParticipants: time.totalParticipants,
-            location: time.location,
-            link: time.link,
-            enrolledUsers: time.enrolledUsers,
-            acceptSubscription: time.acceptSubscription));
-      }
-    }
   }
 
   @action
@@ -157,44 +127,12 @@ abstract class AdmDashboardControllerBase with Store {
     setIsLoading(true);
     activitiesList = await getAllUserActivities();
     saveActivitiesList = activitiesList;
-    changeFormatToCards();
-    nextActivitiesList = allActivitiesToCards.length >= 5
-        ? allActivitiesToCards.sublist(0, 5)
-        : allActivitiesToCards;
+    setIsLoading(false);
   }
 
   @action
   Future<void> logout() async {
     await authController.logout();
     Modular.to.navigate('/login');
-  }
-
-  @action
-  void changeFormatToCards() {
-    setIsLoading(true);
-    allActivitiesToCards = [];
-    for (var activity in activitiesList) {
-      for (var time in activity.schedule) {
-        allActivitiesToCards.add(CardActivity(
-          enrolledUsers: time.enrolledUsers,
-          id: activity.id,
-          activityCode: activity.activityCode,
-          type: activity.type,
-          title: activity.title,
-          description: activity.description,
-          date: time.date,
-          duration: time.duration,
-          speakers: activity.speakers,
-          totalParticipants: time.totalParticipants,
-          location: time.location,
-          link: time.link,
-          acceptSubscription: time.acceptSubscription,
-        ));
-      }
-    }
-    allActivitiesToCards.sort(
-      (a, b) => a.date!.compareTo(b.date!),
-    );
-    setIsLoading(false);
   }
 }

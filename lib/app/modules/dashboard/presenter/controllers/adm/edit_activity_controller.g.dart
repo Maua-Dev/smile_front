@@ -237,28 +237,6 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
-  void addSchedule() {
-    final _$actionInfo = _$EditActivityControllerBaseActionController
-        .startAction(name: 'EditActivityControllerBase.addSchedule');
-    try {
-      return super.addSchedule();
-    } finally {
-      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void removeSchedule(int index) {
-    final _$actionInfo = _$EditActivityControllerBaseActionController
-        .startAction(name: 'EditActivityControllerBase.removeSchedule');
-    try {
-      return super.removeSchedule(index);
-    } finally {
-      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void addSpeaker() {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.addSpeaker');

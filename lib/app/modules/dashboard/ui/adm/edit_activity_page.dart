@@ -115,32 +115,27 @@ class _EditActivityPageState
               Observer(builder: (_) {
                 return ListView.builder(
                     shrinkWrap: true,
-                    itemCount: controller.activityToEdit.schedule.length,
+                    itemCount: 1,
                     itemBuilder: (context, index) {
-                      var hour = controller
-                                  .activityToEdit.schedule[index].date ==
-                              null
+                      var hour = controller.activityToEdit.schedule.date == null
                           ? ''
-                          : DateFormat('HH:mm').format(
-                              controller.activityToEdit.schedule[index].date!);
-                      var date = controller
-                                  .activityToEdit.schedule[index].date ==
-                              null
+                          : DateFormat('HH:mm')
+                              .format(controller.activityToEdit.schedule.date!);
+                      var date = controller.activityToEdit.schedule.date == null
                           ? ''
-                          : DateFormat('dd-MM-yyyy').format(
-                              controller.activityToEdit.schedule[index].date!);
+                          : DateFormat('dd-MM-yyyy')
+                              .format(controller.activityToEdit.schedule.date!);
                       var duration =
-                          controller.activityToEdit.schedule[index].duration ==
-                                  null
+                          controller.activityToEdit.schedule.duration == null
                               ? ''
-                              : DateFormat('HH:mm').format(controller
-                                  .activityToEdit.schedule[index].duration!);
+                              : DateFormat('HH:mm').format(
+                                  controller.activityToEdit.schedule.duration!);
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
-                          enableSubscription: controller.activityToEdit
-                              .schedule[index].acceptSubscription,
+                          enableSubscription: controller
+                              .activityToEdit.schedule.acceptSubscription,
                           onChangedEnableSubscription: (valueBool) {
                             setState(() {
                               controller.setEnableSubscription(
@@ -149,12 +144,11 @@ class _EditActivityPageState
                           },
                           date: date,
                           hour: hour,
-                          link: controller.activityToEdit.schedule[index].link,
+                          link: controller.activityToEdit.schedule.link,
                           onChangedLink: (value) {
                             controller.setLink(value, index);
                           },
-                          location: controller
-                              .activityToEdit.schedule[index].location,
+                          location: controller.activityToEdit.schedule.location,
                           onChangedLocation: (value) {
                             controller.setLocation(value, index);
                           },
@@ -162,9 +156,9 @@ class _EditActivityPageState
                           onChangedDuration: (value) {
                             controller.setDuration(value, index);
                           },
-                          length: controller.activityToEdit.schedule.length,
+                          length: 1,
                           totalParticipants: controller
-                              .activityToEdit.schedule[index].totalParticipants,
+                              .activityToEdit.schedule.totalParticipants,
                           onChangedDate: (value) {
                             controller.setDate(value, index);
                           },
@@ -174,10 +168,7 @@ class _EditActivityPageState
                           onChangedParticipants: (value) {
                             controller.setParticipants(int.parse(value), index);
                           },
-                          removeSchedule: () {
-                            controller.removeSchedule(index);
-                            setState(() {});
-                          },
+                          removeSchedule: () {},
                           onPressedIconDate: () {
                             showDatePicker(
                               context: context,
@@ -232,7 +223,7 @@ class _EditActivityPageState
                       const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
                   child: FormsButtonWidget(
                       buttonTittle: 'Adicionar horário',
-                      onPressed: controller.addSchedule,
+                      onPressed: () {},
                       backgroundColor: AppColors.brandingOrange,
                       icon:
                           const Icon(Icons.add, color: Colors.white, size: 22)),

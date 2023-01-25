@@ -114,32 +114,30 @@ class _CreateActivityPageState
               Observer(builder: (_) {
                 return ListView.builder(
                     shrinkWrap: true,
-                    itemCount: controller.activityToCreate.schedule.length,
+                    itemCount: 1,
                     itemBuilder: (context, index) {
                       var hour =
-                          controller.activityToCreate.schedule[index].date ==
-                                  null
+                          controller.activityToCreate.schedule.date == null
                               ? ''
-                              : DateFormat('HH:mm').format(controller
-                                  .activityToCreate.schedule[index].date!);
+                              : DateFormat('HH:mm').format(
+                                  controller.activityToCreate.schedule.date!);
                       var date =
-                          controller.activityToCreate.schedule[index].date ==
-                                  null
+                          controller.activityToCreate.schedule.date == null
                               ? ''
-                              : DateFormat('dd-MM-yyyy').format(controller
-                                  .activityToCreate.schedule[index].date!);
+                              : DateFormat('dd-MM-yyyy').format(
+                                  controller.activityToCreate.schedule.date!);
                       var duration = controller
-                                  .activityToCreate.schedule[index].duration ==
+                                  .activityToCreate.schedule.duration ==
                               null
                           ? ''
-                          : DateFormat('HH:mm').format(controller
-                              .activityToCreate.schedule[index].duration!);
+                          : DateFormat('HH:mm').format(
+                              controller.activityToCreate.schedule.duration!);
                       return Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 114, vertical: 8),
                           child: ScheduleAddWidget(
-                            enableSubscription: controller.activityToCreate
-                                .schedule[index].acceptSubscription,
+                            enableSubscription: controller
+                                .activityToCreate.schedule.acceptSubscription,
                             onChangedEnableSubscription: (valueBool) {
                               setState(() {
                                 controller.setEnableSubscription(
@@ -148,13 +146,12 @@ class _CreateActivityPageState
                             },
                             date: date,
                             hour: hour,
-                            link: controller
-                                .activityToCreate.schedule[index].link,
+                            link: controller.activityToCreate.schedule.link,
                             onChangedLink: (value) {
                               controller.setLink(value, index);
                             },
-                            location: controller
-                                .activityToCreate.schedule[index].location,
+                            location:
+                                controller.activityToCreate.schedule.location,
                             onChangedLocation: (value) {
                               controller.setLocation(value, index);
                             },
@@ -162,9 +159,9 @@ class _CreateActivityPageState
                             onChangedDuration: (value) {
                               controller.setDuration(value, index);
                             },
-                            length: controller.activityToCreate.schedule.length,
-                            totalParticipants: controller.activityToCreate
-                                .schedule[index].totalParticipants,
+                            length: 1,
+                            totalParticipants: controller
+                                .activityToCreate.schedule.totalParticipants,
                             onChangedDate: (value) {
                               controller.setDate(value, index);
                             },
@@ -175,10 +172,7 @@ class _CreateActivityPageState
                               controller.setParticipants(
                                   int.parse(value), index);
                             },
-                            removeSchedule: () {
-                              controller.removeSchedule(index);
-                              setState(() {});
-                            },
+                            removeSchedule: () {},
                             onPressedIconDate: () {
                               showDatePicker(
                                 context: context,
@@ -233,7 +227,7 @@ class _CreateActivityPageState
                       const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
                   child: FormsButtonWidget(
                     buttonTittle: 'Adicionar horário',
-                    onPressed: controller.addSchedule,
+                    onPressed: () {},
                     backgroundColor: AppColors.brandingOrange,
                     icon: const Icon(Icons.add, color: Colors.white, size: 22),
                   ),

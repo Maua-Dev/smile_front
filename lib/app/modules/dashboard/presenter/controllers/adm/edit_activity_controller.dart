@@ -4,7 +4,6 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
@@ -41,7 +40,7 @@ abstract class EditActivityControllerBase with Store {
 
   @action
   bool isFilled() {
-    var scheduleFirst = activityToEdit.schedule.first;
+    var scheduleFirst = activityToEdit.schedule;
     if (activityToEdit.title != '' &&
         activityToEdit.description != '' &&
         activityToEdit.type != null &&
@@ -92,12 +91,12 @@ abstract class EditActivityControllerBase with Store {
 
   @action
   void setLocation(String value, int index) {
-    activityToEdit.schedule[index].location = value;
+    activityToEdit.schedule.location = value;
   }
 
   @action
   void setLink(String value, int index) {
-    activityToEdit.schedule[index].link = value;
+    activityToEdit.schedule.link = value;
   }
 
   @action
@@ -107,28 +106,27 @@ abstract class EditActivityControllerBase with Store {
       var month = value.substring(3, 5);
       var day = value.substring(0, 2);
       value = '$year-$month-$day';
-      var hour = activityToEdit.schedule[index].date != null
-          ? DateFormat('HH:mm').format(activityToEdit.schedule[index].date!)
+      var hour = activityToEdit.schedule.date != null
+          ? DateFormat('HH:mm').format(activityToEdit.schedule.date!)
           : '';
       var date =
           hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
-      var list = activityToEdit.schedule;
-      list[index] = activityToEdit.schedule[index].copyWith(date: date);
-      activityToEdit = activityToEdit.copyWith(schedule: list);
+      var schedule = activityToEdit.schedule;
+      schedule = activityToEdit.schedule.copyWith(date: date);
+      activityToEdit = activityToEdit.copyWith(schedule: schedule);
     }
   }
 
   @action
   void setHour(String value, int index) {
     if (value.length > 4) {
-      var date = activityToEdit.schedule[index].date != null
-          ? DateFormat('yyyy-MM-dd')
-              .format(activityToEdit.schedule[index].date!)
+      var date = activityToEdit.schedule.date != null
+          ? DateFormat('yyyy-MM-dd').format(activityToEdit.schedule.date!)
           : '0000-00-00';
       var hour = DateTime.parse("$date $value");
-      var list = activityToEdit.schedule;
-      list[index] = activityToEdit.schedule[index].copyWith(date: hour);
-      activityToEdit = activityToEdit.copyWith(schedule: list);
+      var schedule = activityToEdit.schedule;
+      schedule = activityToEdit.schedule.copyWith(date: hour);
+      activityToEdit = activityToEdit.copyWith(schedule: schedule);
     }
   }
 
@@ -137,15 +135,15 @@ abstract class EditActivityControllerBase with Store {
     if (value.length >= 5) {
       var format = DateFormat('HH:mm');
       var duration = format.parse(value);
-      var list = activityToEdit.schedule;
-      list[index] = activityToEdit.schedule[index].copyWith(duration: duration);
-      activityToEdit = activityToEdit.copyWith(schedule: list);
+      var schedule = activityToEdit.schedule;
+      schedule = activityToEdit.schedule.copyWith(duration: duration);
+      activityToEdit = activityToEdit.copyWith(schedule: schedule);
     }
   }
 
   @action
   void setParticipants(int value, int index) {
-    activityToEdit.schedule[index].totalParticipants = value;
+    activityToEdit.schedule.totalParticipants = value;
   }
 
   @action
@@ -165,21 +163,7 @@ abstract class EditActivityControllerBase with Store {
 
   @action
   void setEnableSubscription(bool value, int index) {
-    activityToEdit.schedule[index].acceptSubscription = value;
-  }
-
-  @action
-  void addSchedule() {
-    var list = activityToEdit.schedule;
-    list.add(ScheduleActivityModel.newInstance());
-    activityToEdit = activityToEdit.copyWith(schedule: list);
-  }
-
-  @action
-  void removeSchedule(int index) {
-    var list = activityToEdit.schedule;
-    list.removeAt(index);
-    activityToEdit = activityToEdit.copyWith(schedule: list);
+    activityToEdit.schedule.acceptSubscription = value;
   }
 
   @action
