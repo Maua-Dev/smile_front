@@ -32,32 +32,32 @@ class _AdmDashboardPageState
       body: Row(
         children: [
           const SideBarWidget(),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 80),
-                    child: FilterCardWidget(
-                      onChangedActivitiesFilter: (type) {
-                        controller.filterActivitiesByType(type!);
-                      },
-                      onChangedDateFilter: (date) {
-                        controller.filterActivitiesByDate(date!);
-                      },
-                      onChangedTimeFilter: (hour) {
-                        controller.filterActivitiesByHour(hour!);
-                      },
-                    )),
-                Observer(builder: (_) {
-                  if (controller.isLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else {
-                    if (controller.activitiesList.isNotEmpty) {
-                      return SizedBox(
-                        width: MediaQuery.of(context).size.width - 115,
-                        child: ColumnBuilder(
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 80),
+                      child: FilterCardWidget(
+                        onChangedActivitiesFilter: (type) {
+                          controller.filterActivitiesByType(type!);
+                        },
+                        onChangedDateFilter: (date) {
+                          controller.filterActivitiesByDate(date!);
+                        },
+                        onChangedTimeFilter: (hour) {
+                          controller.filterActivitiesByHour(hour!);
+                        },
+                      )),
+                  Observer(builder: (_) {
+                    if (controller.isLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else {
+                      if (controller.activitiesList.isNotEmpty) {
+                        return ColumnBuilder(
                           itemCount: controller.activitiesList.length,
                           itemBuilder: (BuildContext context, int index) {
                             String date = DateFormat('dd/MM/yyyy').format(
@@ -69,72 +69,76 @@ class _AdmDashboardPageState
                                 controller.activitiesList[index].schedule.date!,
                                 controller
                                     .activitiesList[index].schedule.duration!);
-                            return ActivitiesCardWidget(
-                              activityCode:
-                                  controller.activitiesList[index].activityCode,
-                              date: date,
-                              description:
-                                  controller.activitiesList[index].description,
-                              enrolledUsersLength: controller
-                                  .activitiesList[index]
-                                  .schedule
-                                  .enrolledUsers!,
-                              totalParticipants: controller
-                                  .activitiesList[index]
-                                  .schedule
-                                  .totalParticipants!,
-                              title: controller.activitiesList[index].title,
-                              time: time,
-                              finalTime: finalTime,
-                              onPressedDelete: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return Observer(builder: (_) {
-                                      return ActionConfirmationDialogWidget(
-                                          isLoading: controller.isLoading,
-                                          title:
-                                              'Tem certeza que deseja continuar?',
-                                          content:
-                                              'Ao confirmar todos os dados antigos serão perdidos.',
-                                          onPressed: () async {
-                                            await controller.deleteUserActivity(
-                                                controller
-                                                    .activitiesList[index].id);
-                                            Modular.to.pop();
-                                          });
-                                    });
-                                  },
-                                );
-                              },
-                              onPressedEdit: () async {
-                                var accessLevel =
-                                    await secureStorage.getAccessLevel();
-                                if (accessLevel == 'ADMIN') {
-                                  Modular.to.navigate(
-                                    '/adm/edit-activity',
-                                    arguments: controller.activitiesList
-                                        .firstWhere((element) =>
-                                            element.id ==
-                                            controller
-                                                .activitiesList[index].id),
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 40),
+                              child: ActivitiesCardWidget(
+                                activityCode: controller
+                                    .activitiesList[index].activityCode,
+                                date: date,
+                                description: controller
+                                    .activitiesList[index].description,
+                                enrolledUsersLength: controller
+                                    .activitiesList[index]
+                                    .schedule
+                                    .enrolledUsers!,
+                                totalParticipants: controller
+                                    .activitiesList[index]
+                                    .schedule
+                                    .totalParticipants!,
+                                title: controller.activitiesList[index].title,
+                                time: time,
+                                finalTime: finalTime,
+                                onPressedDelete: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return Observer(builder: (_) {
+                                        return ActionConfirmationDialogWidget(
+                                            isLoading: controller.isLoading,
+                                            title:
+                                                'Tem certeza que deseja continuar?',
+                                            content:
+                                                'Ao confirmar todos os dados antigos serão perdidos.',
+                                            onPressed: () async {
+                                              await controller
+                                                  .deleteUserActivity(controller
+                                                      .activitiesList[index]
+                                                      .id);
+                                              Modular.to.pop();
+                                            });
+                                      });
+                                    },
                                   );
-                                }
-                              },
+                                },
+                                onPressedEdit: () async {
+                                  var accessLevel =
+                                      await secureStorage.getAccessLevel();
+                                  if (accessLevel == 'ADMIN') {
+                                    Modular.to.navigate(
+                                      '/adm/edit-activity',
+                                      arguments: controller.activitiesList
+                                          .firstWhere((element) =>
+                                              element.id ==
+                                              controller
+                                                  .activitiesList[index].id),
+                                    );
+                                  }
+                                },
+                              ),
                             );
                           },
-                        ),
-                      );
-                    } else {
-                      return Padding(
-                        padding: const EdgeInsets.fromLTRB(760, 0, 760, 700),
-                        child: Text('Atividade não encontrada',
-                            style: AppTextStyles.body),
-                      );
+                        );
+                      } else {
+                        return Padding(
+                          padding: const EdgeInsets.fromLTRB(760, 0, 760, 700),
+                          child: Text('Atividade não encontrada',
+                              style: AppTextStyles.body),
+                        );
+                      }
                     }
-                  }
-                }),
-              ],
+                  }),
+                ],
+              ),
             ),
           ),
         ],
