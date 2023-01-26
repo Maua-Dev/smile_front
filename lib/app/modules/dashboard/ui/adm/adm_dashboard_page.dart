@@ -34,9 +34,19 @@ class _AdmDashboardPageState
           SingleChildScrollView(
             child: Column(
               children: [
-                const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 80),
-                    child: FilterCardWidget()),
+                Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 80),
+                    child: FilterCardWidget(
+                      onChangedActivitiesFilter: (type) {
+                        controller.filterActivitiesByType(type!);
+                      },
+                      onChangedDateFilter: (date) {
+                        controller.filterActivitiesByDate(date!);
+                      },
+                      onChangedTimeFilter: (hour) {
+                        controller.filterActivitiesByHour(hour!);
+                      },
+                    )),
                 Observer(builder: (_) {
                   if (controller.isLoading) {
                     return const Center(

@@ -65,7 +65,7 @@ abstract class AdmDashboardControllerBase with Store {
   List<ActivityModel> activitiesList = List.empty();
 
   @observable
-  List<ActivityModel> saveActivitiesList = List.empty();
+  List<ActivityModel> allActivitiesList = List.empty();
 
   @action
   void toggleFloatActionButton() {
@@ -73,28 +73,49 @@ abstract class AdmDashboardControllerBase with Store {
   }
 
   @action
-  void toggleFilterActivityChipIndex(index) {
-    if (index == filterActivityChipIndexSelected) {
-      filterActivityChipIndexSelected = null;
-      activitiesList = saveActivitiesList;
-    } else {
-      filterActivityChipIndexSelected = index;
-      getActivitiesByType(index);
-    }
+  Future filterActivitiesByType(ActivityEnum type) async {
+    var list = activitiesList.where((element) => element.type == type).toList();
+    activitiesList = list;
   }
 
   @action
-  Future getActivitiesByType(index) async {
+  Future filterActivitiesByDate(DateTime date) async {
     var list = activitiesList
-        .where((element) => element.type == ActivityEnum.values[index])
+        .where((element) => isValidDateFilter(element.schedule.date!, date))
         .toList();
+    activitiesList = list;
+  }
+
+  @action
+  Future filterActivitiesByHour(DateTime date) async {
+    var list = activitiesList
+        .where((element) => isValidHourFilter(element.schedule.date!, date))
+        .toList();
+    activitiesList = list;
+  }
+
+  bool isValidDateFilter(DateTime activityDate, DateTime dateToFilter) {
+    if (activityDate.day == dateToFilter.day &&
+        activityDate.month == dateToFilter.month &&
+        activityDate.year == dateToFilter.year) {
+      return true;
+    }
+    return false;
+  }
+
+  bool isValidHourFilter(DateTime activityDate, DateTime dateToFilter) {
+    if (activityDate.hour == dateToFilter.hour &&
+        activityDate.minute == dateToFilter.minute) {
+      return true;
+    }
+    return false;
   }
 
   @action
   Future getAllActivities() async {
     setIsLoading(true);
     activitiesList = await getAllUserActivities();
-    saveActivitiesList = activitiesList;
+    allActivitiesList = activitiesList;
     setIsLoading(false);
   }
 

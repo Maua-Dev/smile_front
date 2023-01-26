@@ -170,57 +170,11 @@ void main() {
     expect(controller.isFloatActionButtonOpen, true);
   });
 
-  test(
-      'toggleFilterActivityChipIndex if index == filterActivityChipIndexSelected',
-      () {
-    controller.toggleFilterActivityChipIndex(0);
-    expect(controller.activitiesList, controller.saveActivitiesList);
-  });
-
-  test('toggleFilterActivityChipIndex else', () {
-    controller.filterActivityChipIndexSelected = 0;
-    controller.toggleFilterActivityChipIndex(1);
-    expect(controller.filterActivityChipIndexSelected, 1);
-  });
-
   test('getAllActivities', () {
     controller.getAllActivities();
     expect(controller.activitiesList.isNotEmpty, true);
     // expect(controller.nextActivitiesList.isNotEmpty, true);
   });
-
-  test('getActivitiesByType', () {
-    controller.getActivitiesByType(0);
-    expect(controller.activitiesList.length, 5);
-  });
-
-  // test('mondayActivitiesList', () {
-  //   expect(controller.mondayActivitiesList.isNotEmpty, true);
-  // });
-
-  // test('tuesdayActivitiesList', () {
-  //   expect(controller.tuesdayActivitiesList.isNotEmpty, true);
-  // });
-
-  // test('wednesdayActivitiesList', () {
-  //   expect(controller.wednesdayActivitiesList.isNotEmpty, true);
-  // });
-
-  // test('thursdayActivitiesList', () {
-  //   expect(controller.thursdayActivitiesList.isNotEmpty, true);
-  // });
-
-  // test('fridayActivitiesList', () {
-  //   expect(controller.fridayActivitiesList.isNotEmpty, true);
-  // });
-
-  // test('saturdayActivitiesList', () {
-  //   expect(controller.saturdayActivitiesList.isNotEmpty, false);
-  // });
-
-  // test('sundayActivitiesList', () {
-  //   expect(controller.sundayActivitiesList.isNotEmpty, false);
-  // });
 
   test('logout', () {
     controller.logout();

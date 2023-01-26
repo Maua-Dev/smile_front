@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
@@ -6,8 +5,14 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class FilterCardWidget extends StatefulWidget {
+  final Function(ActivityEnum?)? onChangedActivitiesFilter;
+  final Function(DateTime?)? onChangedDateFilter;
+  final Function(DateTime?)? onChangedTimeFilter;
   const FilterCardWidget({
     Key? key,
+    this.onChangedActivitiesFilter,
+    this.onChangedDateFilter,
+    this.onChangedTimeFilter,
   }) : super(key: key);
 
   @override
@@ -61,7 +66,7 @@ class _FilterCardWidgetState extends State<FilterCardWidget> {
                     child: Text(activityEnum.name.toString(),
                         style: AppTextStyles.body.copyWith(fontSize: 20)));
               }).toList(),
-              onChanged: (value) {},
+              onChanged: widget.onChangedActivitiesFilter,
             ),
           ),
           Container(
@@ -93,6 +98,7 @@ class _FilterCardWidgetState extends State<FilterCardWidget> {
                             _dateString =
                                 DateFormat('dd/MM/yyyy').format(date!);
                           });
+                          widget.onChangedDateFilter!(date);
                         });
                       },
                       highlightColor: AppColors.white,
@@ -139,6 +145,10 @@ class _FilterCardWidgetState extends State<FilterCardWidget> {
                         setState(() {
                           _timeString = time!.format(context);
                         });
+                        var now = DateTime.now();
+                        now = DateTime(now.year, now.month, now.day, time!.hour,
+                            time.minute);
+                        widget.onChangedTimeFilter!(now);
                       });
                     },
                     highlightColor: AppColors.white,

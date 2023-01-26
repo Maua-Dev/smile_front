@@ -93,19 +93,19 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
     });
   }
 
-  late final _$saveActivitiesListAtom = Atom(
-      name: 'AdmDashboardControllerBase.saveActivitiesList', context: context);
+  late final _$allActivitiesListAtom = Atom(
+      name: 'AdmDashboardControllerBase.allActivitiesList', context: context);
 
   @override
-  List<ActivityModel> get saveActivitiesList {
-    _$saveActivitiesListAtom.reportRead();
-    return super.saveActivitiesList;
+  List<ActivityModel> get allActivitiesList {
+    _$allActivitiesListAtom.reportRead();
+    return super.allActivitiesList;
   }
 
   @override
-  set saveActivitiesList(List<ActivityModel> value) {
-    _$saveActivitiesListAtom.reportWrite(value, super.saveActivitiesList, () {
-      super.saveActivitiesList = value;
+  set allActivitiesList(List<ActivityModel> value) {
+    _$allActivitiesListAtom.reportWrite(value, super.allActivitiesList, () {
+      super.allActivitiesList = value;
     });
   }
 
@@ -126,14 +126,34 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$getActivitiesByTypeAsyncAction = AsyncAction(
-      'AdmDashboardControllerBase.getActivitiesByType',
+  late final _$filterActivitiesByTypeAsyncAction = AsyncAction(
+      'AdmDashboardControllerBase.filterActivitiesByType',
       context: context);
 
   @override
-  Future<dynamic> getActivitiesByType(dynamic index) {
-    return _$getActivitiesByTypeAsyncAction
-        .run(() => super.getActivitiesByType(index));
+  Future<dynamic> filterActivitiesByType(ActivityEnum type) {
+    return _$filterActivitiesByTypeAsyncAction
+        .run(() => super.filterActivitiesByType(type));
+  }
+
+  late final _$filterActivitiesByDateAsyncAction = AsyncAction(
+      'AdmDashboardControllerBase.filterActivitiesByDate',
+      context: context);
+
+  @override
+  Future<dynamic> filterActivitiesByDate(DateTime date) {
+    return _$filterActivitiesByDateAsyncAction
+        .run(() => super.filterActivitiesByDate(date));
+  }
+
+  late final _$filterActivitiesByHourAsyncAction = AsyncAction(
+      'AdmDashboardControllerBase.filterActivitiesByHour',
+      context: context);
+
+  @override
+  Future<dynamic> filterActivitiesByHour(DateTime date) {
+    return _$filterActivitiesByHourAsyncAction
+        .run(() => super.filterActivitiesByHour(date));
   }
 
   late final _$getAllActivitiesAsyncAction = AsyncAction(
@@ -179,18 +199,6 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
   }
 
   @override
-  void toggleFilterActivityChipIndex(dynamic index) {
-    final _$actionInfo =
-        _$AdmDashboardControllerBaseActionController.startAction(
-            name: 'AdmDashboardControllerBase.toggleFilterActivityChipIndex');
-    try {
-      return super.toggleFilterActivityChipIndex(index);
-    } finally {
-      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 isLoadingCsv: ${isLoadingCsv},
@@ -198,7 +206,7 @@ isLoading: ${isLoading},
 isFloatActionButtonOpen: ${isFloatActionButtonOpen},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 activitiesList: ${activitiesList},
-saveActivitiesList: ${saveActivitiesList}
+allActivitiesList: ${allActivitiesList}
     ''';
   }
 }
