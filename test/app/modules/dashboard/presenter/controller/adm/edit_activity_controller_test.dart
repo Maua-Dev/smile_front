@@ -89,42 +89,42 @@ void main() {
 
   test('setLocation', () {
     var str = 'teste';
-    controller.setLocation(str, 0);
+    controller.setLocation(str);
     expect(controller.activityToEdit.schedule.location, str);
   });
 
   test('setLink', () {
     var str = 'teste';
-    controller.setLink(str, 0);
+    controller.setLink(str);
     expect(controller.activityToEdit.schedule.link, str);
   });
 
   test('setDate', () {
     var str = DateFormat('dd-MM-yyyy').format(DateTime.now());
-    controller.setDate(str, 0);
+    controller.setDate(str);
     expect(controller.activityToEdit.schedule.date!.day, DateTime.now().day);
   });
 
   test('setHour', () {
     var str = '22:00';
-    controller.setHour(str, 0);
+    controller.setHour(str);
     expect(controller.activityToEdit.schedule.date!.hour, 22);
   });
 
   test('setDuration', () {
     var str = '22:00';
-    controller.setDuration(str, 0);
+    controller.setDuration(str);
     expect(controller.activityToEdit.schedule.duration!.hour, 22);
   });
 
   test('setParticipants', () {
     var str = 1;
-    controller.setParticipants(str, 0);
+    controller.setParticipants(str);
     expect(controller.activityToEdit.schedule.totalParticipants, str);
   });
 
   test('setEnableSubscription', () {
-    controller.setEnableSubscription(true, 0);
+    controller.setEnableSubscription(true);
     expect(controller.activityToEdit.schedule.acceptSubscription, true);
   });
 

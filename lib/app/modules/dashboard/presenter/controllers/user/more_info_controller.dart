@@ -73,14 +73,15 @@ abstract class MoreInfoControllerBase with Store {
       title: activity.title,
       description: activity.description,
       schedule: ScheduleActivityModel(
-          date: activity.date,
-          acceptSubscription: activity.acceptSubscription,
-          duration: activity.duration,
-          enrolledUsers: activity.enrolledUsers,
-          link: activity.link,
-          location: activity.location,
-          totalParticipants: activity.totalParticipants,
-          isExtensive: activity.isExtensive),
+        date: activity.date,
+        acceptSubscription: activity.acceptSubscription,
+        duration: activity.duration,
+        enrolledUsers: activity.enrolledUsers,
+        link: activity.link,
+        location: activity.location,
+        totalParticipants: activity.totalParticipants,
+        isExtensive: activity.isExtensive,
+      ),
       speakers: activity.speakers!,
     );
     var requestDone =

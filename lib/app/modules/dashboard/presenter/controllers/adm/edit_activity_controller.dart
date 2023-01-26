@@ -79,17 +79,17 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setLocation(String value, int index) {
+  void setLocation(String value) {
     activityToEdit.schedule.location = value;
   }
 
   @action
-  void setLink(String value, int index) {
+  void setLink(String value) {
     activityToEdit.schedule.link = value;
   }
 
   @action
-  void setDate(String value, int index) {
+  void setDate(String value) {
     if (value.length > 9) {
       var year = value.substring(6, 10);
       var month = value.substring(3, 5);
@@ -107,7 +107,7 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setHour(String value, int index) {
+  void setHour(String value) {
     if (value.length > 4) {
       var date = activityToEdit.schedule.date != null
           ? DateFormat('yyyy-MM-dd').format(activityToEdit.schedule.date!)
@@ -120,7 +120,7 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setDuration(String value, int index) {
+  void setDuration(String value) {
     if (value.length >= 5) {
       var format = DateFormat('HH:mm');
       var duration = format.parse(value);
@@ -131,7 +131,7 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setParticipants(int value, int index) {
+  void setParticipants(int value) {
     activityToEdit.schedule.totalParticipants = value;
   }
 
@@ -151,8 +151,13 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setEnableSubscription(bool value, int index) {
+  void setEnableSubscription(bool value) {
     activityToEdit.schedule.acceptSubscription = value;
+  }
+
+  @action
+  void setIsExtensive() {
+    activityToEdit.schedule.isExtensive = !activityToEdit.schedule.isExtensive;
   }
 
   @action
