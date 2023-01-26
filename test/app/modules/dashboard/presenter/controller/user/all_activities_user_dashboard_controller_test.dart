@@ -58,15 +58,13 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      schedule: <ScheduleActivityModel>[
-        ScheduleActivityModel(
-          date: DateTime.utc(2022, 03, 14, 13),
-          totalParticipants: 20,
-          location: 'H244',
-          acceptSubscription: false,
-          isExtensive: false,
-        ),
-      ],
+      schedule: ScheduleActivityModel(
+        date: DateTime.utc(2022, 03, 14, 13),
+        totalParticipants: 20,
+        location: 'H244',
+        acceptSubscription: false,
+        isExtensive: false,
+      ),
     ),
     ActivityModel(
       id: '0',
@@ -81,15 +79,13 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      schedule: <ScheduleActivityModel>[
-        ScheduleActivityModel(
-          date: DateTime.utc(2022, 03, 15, 13),
-          totalParticipants: 20,
-          location: 'H244',
-          acceptSubscription: false,
-          isExtensive: false,
-        ),
-      ],
+      schedule: ScheduleActivityModel(
+        date: DateTime.utc(2022, 03, 15, 13),
+        totalParticipants: 20,
+        location: 'H244',
+        acceptSubscription: false,
+        isExtensive: false,
+      ),
     ),
     ActivityModel(
       id: '0',
@@ -104,15 +100,13 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      schedule: <ScheduleActivityModel>[
-        ScheduleActivityModel(
-          date: DateTime.utc(2022, 03, 16, 13),
-          totalParticipants: 20,
-          location: 'H244',
-          acceptSubscription: false,
-          isExtensive: false,
-        ),
-      ],
+      schedule: ScheduleActivityModel(
+        date: DateTime.utc(2022, 03, 16, 13),
+        totalParticipants: 20,
+        location: 'H244',
+        acceptSubscription: false,
+        isExtensive: false,
+      ),
     ),
     ActivityModel(
       id: '1',
@@ -127,15 +121,14 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      schedule: <ScheduleActivityModel>[
-        ScheduleActivityModel(
-          date: DateTime.utc(2022, 03, 17, 13),
-          totalParticipants: 20,
-          location: 'H244',
-          acceptSubscription: false,
-          isExtensive: false,
-        ),
-      ],
+      schedule: ScheduleActivityModel(
+        date: DateTime.utc(2022, 03, 17, 13),
+        totalParticipants: 20,
+        location: 'H244',
+        acceptSubscription: false,
+        isExtensive: false,
+       
+      ),
     ),
     ActivityModel(
       id: '2',
@@ -150,15 +143,13 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      schedule: <ScheduleActivityModel>[
-        ScheduleActivityModel(
-          date: DateTime.utc(2022, 03, 18, 13),
-          totalParticipants: 20,
-          location: 'H244',
-          acceptSubscription: false,
-          isExtensive: false,
-        ),
-      ],
+      schedule: ScheduleActivityModel(
+        date: DateTime.utc(2022, 03, 18, 13),
+        totalParticipants: 20,
+        location: 'H244',
+        acceptSubscription: false,
+        isExtensive: false,
+      ),
     ),
   ];
 

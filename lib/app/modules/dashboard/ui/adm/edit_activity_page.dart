@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app_bar_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/extensive_activity_button/extensive_activity_button.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
@@ -16,7 +16,6 @@ import '../../../../shared/widgets/buttons/forms_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import '../../domain/infra/activity_enum.dart';
-import 'app_bar/adm_app_bar_widget.dart';
 import 'widgets/add_forms/schedule_add_widget.dart';
 import 'widgets/add_forms/speaker_add_widget.dart';
 import 'widgets/add_forms/text_field_dialog_widget.dart';
@@ -113,32 +112,32 @@ class _EditActivityPageState
                   Observer(builder: (_) {
                     return ListView.builder(
                         shrinkWrap: true,
-                        itemCount: controller.activityToEdit.schedule.length,
+                        itemCount: 1,
                         itemBuilder: (context, index) {
                           var hour =
-                              controller.activityToEdit.schedule[index].date ==
+                              controller.activityToEdit.schedule.date ==
                                       null
                                   ? ''
                                   : DateFormat('HH:mm').format(controller
-                                      .activityToEdit.schedule[index].date!);
+                                      .activityToEdit.schedule.date!);
                           var date =
-                              controller.activityToEdit.schedule[index].date ==
+                              controller.activityToEdit.schedule.date ==
                                       null
                                   ? ''
                                   : DateFormat('dd-MM-yyyy').format(controller
-                                      .activityToEdit.schedule[index].date!);
+                                      .activityToEdit.schedule.date!);
                           var duration = controller.activityToEdit
-                                      .schedule[index].duration ==
+                                      .schedule.duration ==
                                   null
                               ? ''
                               : DateFormat('HH:mm').format(controller
-                                  .activityToEdit.schedule[index].duration!);
+                                  .activityToEdit.schedule.duration!);
                           return Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 114, vertical: 8),
                             child: ScheduleAddWidget(
                               enableSubscription: controller.activityToEdit
-                                  .schedule[index].acceptSubscription,
+                                  .schedule.acceptSubscription,
                               onChangedEnableSubscription: (valueBool) {
                                 setState(() {
                                   controller.setEnableSubscription(
@@ -148,12 +147,12 @@ class _EditActivityPageState
                               date: date,
                               hour: hour,
                               link: controller
-                                  .activityToEdit.schedule[index].link,
+                                  .activityToEdit.schedule.link,
                               onChangedLink: (value) {
                                 controller.setLink(value, index);
                               },
                               location: controller
-                                  .activityToEdit.schedule[index].location,
+                                  .activityToEdit.schedule.location,
                               onChangedLocation: (value) {
                                 controller.setLocation(value, index);
                               },
@@ -161,9 +160,9 @@ class _EditActivityPageState
                               onChangedDuration: (value) {
                                 controller.setDuration(value, index);
                               },
-                              length: controller.activityToEdit.schedule.length,
+                              length: 1,
                               totalParticipants: controller.activityToEdit
-                                  .schedule[index].totalParticipants,
+                                  .schedule.totalParticipants,
                               onChangedDate: (value) {
                                 controller.setDate(value, index);
                               },
@@ -175,8 +174,7 @@ class _EditActivityPageState
                                     int.parse(value), index);
                               },
                               removeSchedule: () {
-                                controller.removeSchedule(index);
-                                setState(() {});
+                            
                               },
                               onPressedIconDate: () {
                                 showDatePicker(
@@ -277,36 +275,6 @@ class _EditActivityPageState
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        IconButton(
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return Observer(builder: (context) {
-                                    return ActionConfirmationDialogWidget(
-                                        isLoading: controller.isLoading,
-                                        title:
-                                            'Tem certeza que deseja continuar?',
-                                        content:
-                                            'Ao confirmar todos os dados antigos serão perdidos.',
-                                        onPressed: () {
-                                          controller.deleteUserActivity(
-                                              controller.activityToEdit.id);
-                                        });
-                                  });
-                                },
-                              );
-                            },
-                            icon: const Icon(
-                              FontAwesome5.trash,
-                              size: 32,
-                            ),
-                            padding: EdgeInsets.zero,
-                            hoverColor: AppColors.lightPurple,
-                            color: AppColors.brandingBlue),
-                        const SizedBox(
-                          width: 40,
-                        ),
                         FormsButtonWidget(
                             buttonTittle: 'Cancelar',
                             onPressed: () {

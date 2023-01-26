@@ -32,12 +32,12 @@ class AdmModule extends Module {
               getAllUserActivities: i(),
               getDownloadLinkCsv: i(),
               authController: i(),
+              deleteActivity: i(),
             ),
         export: true),
     Bind.lazySingleton<EditActivityController>(
       (i) => EditActivityController(
         editActivity: i(),
-        deleteActivity: i(),
         activityModel:
             i.args!.data as ActivityModel? ?? ActivityModel.newInstance(),
       ),

@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controll
 import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
 import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
@@ -18,9 +19,7 @@ import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import '../user/all_activities_user_dashboard_controller_test.mocks.dart' as u;
 import 'adm_dashboard_controller_test.mocks.dart';
 
-@GenerateMocks([
-  GetDownloadLinkCsvInterface,
-])
+@GenerateMocks([GetDownloadLinkCsvInterface, DeleteActivityInterface])
 void main() {
   GetDownloadLinkCsvInterface getDownloadLinkCsv =
       MockGetDownloadLinkCsvInterface();
@@ -28,6 +27,7 @@ void main() {
       u.MockGetAllUserActivitiesInterface();
   LoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
+  DeleteActivityInterface deleteActivity = MockDeleteActivityInterface();
 
   late AdmDashboardController controller;
 
@@ -50,15 +50,13 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      schedule: <ScheduleActivityModel>[
-        ScheduleActivityModel(
-          date: DateTime.utc(2022, 03, 14, 13),
-          totalParticipants: 20,
-          location: 'H244',
-          acceptSubscription: false,
-          isExtensive: false,
-        ),
-      ],
+      schedule: ScheduleActivityModel(
+        date: DateTime.utc(2022, 03, 14, 13),
+        totalParticipants: 20,
+        location: 'H244',
+        acceptSubscription: false,
+        isExtensive: false,
+      ),
     ),
     ActivityModel(
       id: '0',
@@ -73,15 +71,13 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      schedule: <ScheduleActivityModel>[
-        ScheduleActivityModel(
-          date: DateTime.utc(2022, 03, 15, 13),
-          totalParticipants: 20,
-          location: 'H244',
-          acceptSubscription: false,
-          isExtensive: false,
-        ),
-      ],
+      schedule: ScheduleActivityModel(
+        date: DateTime.utc(2022, 03, 15, 13),
+        totalParticipants: 20,
+        location: 'H244',
+        acceptSubscription: false,
+        isExtensive: false,
+      ),
     ),
     ActivityModel(
       id: '0',
@@ -96,15 +92,13 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      schedule: <ScheduleActivityModel>[
-        ScheduleActivityModel(
-          date: DateTime.utc(2022, 03, 16, 13),
-          totalParticipants: 20,
-          location: 'H244',
-          acceptSubscription: false,
-          isExtensive: false,
-        ),
-      ],
+      schedule: ScheduleActivityModel(
+        date: DateTime.utc(2022, 03, 16, 13),
+        totalParticipants: 20,
+        location: 'H244',
+        acceptSubscription: false,
+        isExtensive: false,
+      ),
     ),
     ActivityModel(
       id: '1',
@@ -119,15 +113,13 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      schedule: <ScheduleActivityModel>[
-        ScheduleActivityModel(
-          date: DateTime.utc(2022, 03, 17, 13),
-          totalParticipants: 20,
-          location: 'H244',
-          acceptSubscription: false,
-          isExtensive: false,
-        ),
-      ],
+      schedule: ScheduleActivityModel(
+        date: DateTime.utc(2022, 03, 17, 13),
+        totalParticipants: 20,
+        location: 'H244',
+        acceptSubscription: false,
+        isExtensive: false,
+      ),
     ),
     ActivityModel(
       id: '2',
@@ -142,15 +134,13 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      schedule: <ScheduleActivityModel>[
-        ScheduleActivityModel(
-          date: DateTime.utc(2022, 03, 18, 13),
-          totalParticipants: 20,
-          location: 'H244',
-          acceptSubscription: false,
-          isExtensive: false,
-        ),
-      ],
+      schedule: ScheduleActivityModel(
+        date: DateTime.utc(2022, 03, 18, 13),
+        totalParticipants: 20,
+        location: 'H244',
+        acceptSubscription: false,
+        isExtensive: false,
+      ),
     ),
   ];
 
@@ -166,6 +156,7 @@ void main() {
       getAllUserActivities: getAllUserActivities,
       getDownloadLinkCsv: getDownloadLinkCsv,
       authController: authController,
+      deleteActivity: deleteActivity,
     );
   });
 
@@ -184,56 +175,10 @@ void main() {
     expect(controller.isFloatActionButtonOpen, true);
   });
 
-  test(
-      'toggleFilterActivityChipIndex if index == filterActivityChipIndexSelected',
-      () {
-    controller.toggleFilterActivityChipIndex(0);
-    expect(controller.activitiesList, controller.saveActivitiesList);
-  });
-
-  test('toggleFilterActivityChipIndex else', () {
-    controller.filterActivityChipIndexSelected = 0;
-    controller.toggleFilterActivityChipIndex(1);
-    expect(controller.filterActivityChipIndexSelected, 1);
-  });
-
   test('getAllActivities', () {
     controller.getAllActivities();
     expect(controller.activitiesList.isNotEmpty, true);
-    expect(controller.nextActivitiesList.isNotEmpty, true);
-  });
-
-  test('getActivitiesByType', () {
-    controller.getActivitiesByType(0);
-    expect(controller.activitiesList.length, 5);
-  });
-
-  test('mondayActivitiesList', () {
-    expect(controller.mondayActivitiesList.isNotEmpty, true);
-  });
-
-  test('tuesdayActivitiesList', () {
-    expect(controller.tuesdayActivitiesList.isNotEmpty, true);
-  });
-
-  test('wednesdayActivitiesList', () {
-    expect(controller.wednesdayActivitiesList.isNotEmpty, true);
-  });
-
-  test('thursdayActivitiesList', () {
-    expect(controller.thursdayActivitiesList.isNotEmpty, true);
-  });
-
-  test('fridayActivitiesList', () {
-    expect(controller.fridayActivitiesList.isNotEmpty, true);
-  });
-
-  test('saturdayActivitiesList', () {
-    expect(controller.saturdayActivitiesList.isNotEmpty, false);
-  });
-
-  test('sundayActivitiesList', () {
-    expect(controller.sundayActivitiesList.isNotEmpty, false);
+    // expect(controller.nextActivitiesList.isNotEmpty, true);
   });
 
   test('logout', () {
