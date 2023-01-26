@@ -151,11 +151,11 @@ class ActivitiesCardWidget extends StatelessWidget {
                             ],
                           ),
                           IconButton(
-                              onPressed: () => {onPressedEdit},
+                              onPressed: onPressedEdit,
                               icon: Icon(Icons.mode_edit_outline_sharp,
                                   size: 28, color: AppColors.brandingOrange)),
                           IconButton(
-                              onPressed: () => {onPressedDelete},
+                              onPressed: onPressedDelete,
                               icon: Icon(Icons.delete,
                                   size: 28, color: AppColors.brandingOrange))
                         ])
