@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_l
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
+import '../../../domain/usecases/delete_activity.dart';
 part 'adm_dashboard_controller.g.dart';
 
 class AdmDashboardController = AdmDashboardControllerBase
@@ -15,11 +16,13 @@ abstract class AdmDashboardControllerBase with Store {
   final AuthController authController;
   final GetDownloadLinkCsvInterface getDownloadLinkCsv;
   final GetAllUserActivitiesInterface getAllUserActivities;
+  final DeleteActivityInterface deleteActivity;
 
   AdmDashboardControllerBase(
       {required this.getDownloadLinkCsv,
       required this.authController,
-      required this.getAllUserActivities}) {
+      required this.getAllUserActivities,
+      required this.deleteActivity}) {
     getAllActivities();
   }
 
@@ -64,41 +67,6 @@ abstract class AdmDashboardControllerBase with Store {
   @observable
   List<ActivityModel> saveActivitiesList = List.empty();
 
-  // @computed
-  // List<CardActivity> get mondayActivitiesList => allActivitiesToCards
-  //     .where((activity) => activity.date!.weekday == 1)
-  //     .toList();
-
-  // @computed
-  // List<CardActivity> get tuesdayActivitiesList => allActivitiesToCards
-  //     .where((activity) => activity.date!.weekday == 2)
-  //     .toList();
-
-  // @computed
-  // List<CardActivity> get wednesdayActivitiesList => allActivitiesToCards
-  //     .where((activity) => activity.date!.weekday == 3)
-  //     .toList();
-
-  // @computed
-  // List<CardActivity> get thursdayActivitiesList => allActivitiesToCards
-  //     .where((activity) => activity.date!.weekday == 4)
-  //     .toList();
-
-  // @computed
-  // List<CardActivity> get fridayActivitiesList => allActivitiesToCards
-  //     .where((activity) => activity.date!.weekday == 5)
-  //     .toList();
-
-  // @computed
-  // List<CardActivity> get saturdayActivitiesList => allActivitiesToCards
-  //     .where((activity) => activity.date!.weekday == 6)
-  //     .toList();
-
-  // @computed
-  // List<CardActivity> get sundayActivitiesList => allActivitiesToCards
-  //     .where((activity) => activity.date!.weekday == 7)
-  //     .toList();
-
   @action
   void toggleFloatActionButton() {
     isFloatActionButtonOpen = !isFloatActionButtonOpen;
@@ -134,5 +102,12 @@ abstract class AdmDashboardControllerBase with Store {
   Future<void> logout() async {
     await authController.logout();
     Modular.to.navigate('/login');
+  }
+
+  @action
+  Future deleteUserActivity(String id) async {
+    setIsLoading(true);
+    await deleteActivity(id);
+    setIsLoading(false);
   }
 }

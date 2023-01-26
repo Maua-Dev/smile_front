@@ -153,6 +153,16 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
     return _$logoutAsyncAction.run(() => super.logout());
   }
 
+  late final _$deleteUserActivityAsyncAction = AsyncAction(
+      'AdmDashboardControllerBase.deleteUserActivity',
+      context: context);
+
+  @override
+  Future<dynamic> deleteUserActivity(String id) {
+    return _$deleteUserActivityAsyncAction
+        .run(() => super.deleteUserActivity(id));
+  }
+
   late final _$AdmDashboardControllerBaseActionController =
       ActionController(name: 'AdmDashboardControllerBase', context: context);
 

@@ -2,7 +2,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
@@ -15,12 +14,10 @@ class EditActivityController = EditActivityControllerBase
 abstract class EditActivityControllerBase with Store {
   final ActivityModel activityModel;
   final EditActivityInterface editActivity;
-  final DeleteActivityInterface deleteActivity;
 
   EditActivityControllerBase({
     required this.activityModel,
     required this.editActivity,
-    required this.deleteActivity,
   }) {
     if (activityModel.id.isEmpty) {
       Modular.to.navigate('/adm');
@@ -57,14 +54,6 @@ abstract class EditActivityControllerBase with Store {
   Future editUserActivity() async {
     setIsLoading(true);
     await editActivity(activityToEdit);
-    setIsLoading(false);
-    Modular.to.navigate('/adm');
-  }
-
-  @action
-  Future deleteUserActivity(String id) async {
-    setIsLoading(true);
-    await deleteActivity(id);
     setIsLoading(false);
     Modular.to.navigate('/adm');
   }

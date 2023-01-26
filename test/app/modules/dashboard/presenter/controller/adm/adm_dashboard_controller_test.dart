@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controll
 import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
 import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
@@ -18,9 +19,7 @@ import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import '../user/all_activities_user_dashboard_controller_test.mocks.dart' as u;
 import 'adm_dashboard_controller_test.mocks.dart';
 
-@GenerateMocks([
-  GetDownloadLinkCsvInterface,
-])
+@GenerateMocks([GetDownloadLinkCsvInterface, DeleteActivityInterface])
 void main() {
   GetDownloadLinkCsvInterface getDownloadLinkCsv =
       MockGetDownloadLinkCsvInterface();
@@ -28,6 +27,7 @@ void main() {
       u.MockGetAllUserActivitiesInterface();
   LoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
+  DeleteActivityInterface deleteActivity = MockDeleteActivityInterface();
 
   late AdmDashboardController controller;
 
@@ -151,6 +151,7 @@ void main() {
       getAllUserActivities: getAllUserActivities,
       getDownloadLinkCsv: getDownloadLinkCsv,
       authController: authController,
+      deleteActivity: deleteActivity,
     );
   });
 

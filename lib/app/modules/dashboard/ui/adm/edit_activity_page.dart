@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
@@ -277,35 +276,6 @@ class _EditActivityPageState
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    IconButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return Observer(builder: (context) {
-                                return ActionConfirmationDialogWidget(
-                                    isLoading: controller.isLoading,
-                                    title: 'Tem certeza que deseja continuar?',
-                                    content:
-                                        'Ao confirmar todos os dados antigos serão perdidos.',
-                                    onPressed: () {
-                                      controller.deleteUserActivity(
-                                          controller.activityToEdit.id);
-                                    });
-                              });
-                            },
-                          );
-                        },
-                        icon: const Icon(
-                          FontAwesome5.trash,
-                          size: 32,
-                        ),
-                        padding: EdgeInsets.zero,
-                        hoverColor: AppColors.lightPurple,
-                        color: AppColors.brandingBlue),
-                    const SizedBox(
-                      width: 40,
-                    ),
                     FormsButtonWidget(
                         buttonTittle: 'Cancelar',
                         onPressed: () {

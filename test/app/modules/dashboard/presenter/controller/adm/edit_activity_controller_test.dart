@@ -7,7 +7,6 @@ import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
@@ -19,12 +18,10 @@ import 'edit_activity_controller_test.mocks.dart';
 @GenerateMocks([
   ActivitiesRepositoryInterface,
   EditActivityInterface,
-  DeleteActivityInterface
 ])
 void main() {
   initModules([AppModule(), AdmModule()]);
 
-  DeleteActivityInterface deleteActivity = MockDeleteActivityInterface();
   EditActivityInterface editActivity = MockEditActivityInterface();
   late EditActivityController controller;
   final activity = ActivityModel(
@@ -51,7 +48,6 @@ void main() {
     await Modular.isModuleReady<AppModule>();
     controller = EditActivityController(
       editActivity: editActivity,
-      deleteActivity: deleteActivity,
       activityModel: activity,
     );
   });

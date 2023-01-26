@@ -58,16 +58,6 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
     return _$editUserActivityAsyncAction.run(() => super.editUserActivity());
   }
 
-  late final _$deleteUserActivityAsyncAction = AsyncAction(
-      'EditActivityControllerBase.deleteUserActivity',
-      context: context);
-
-  @override
-  Future<dynamic> deleteUserActivity(String id) {
-    return _$deleteUserActivityAsyncAction
-        .run(() => super.deleteUserActivity(id));
-  }
-
   late final _$EditActivityControllerBaseActionController =
       ActionController(name: 'EditActivityControllerBase', context: context);
 
