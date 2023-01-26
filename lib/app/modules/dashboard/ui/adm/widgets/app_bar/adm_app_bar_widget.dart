@@ -2,9 +2,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../shared/themes/app_colors.dart';
-import '../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../shared/utils/s3_assets_url.dart';
+import '../../../../../../shared/themes/app_colors.dart';
+import '../../../../../../shared/themes/app_text_styles.dart';
+import '../../../../../../shared/utils/s3_assets_url.dart';
 
 class AdmAppBarWidget extends StatelessWidget {
   final String appBarText;

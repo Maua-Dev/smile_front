@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/app_bar/adm_app_bar_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_carousel/activities_carousel_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app_bar_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_card/activities_column_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/filter/filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/shared/widgets/logout_button_widget.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/generated/l10n.dart';
-import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'widgets/filter/filter_chip_widget.dart';
 
@@ -32,12 +29,8 @@ class _AdmDashboardPageState
           const SideBarWidget(),
           SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 32,
-                ),
-                Padding(
+                /* Padding(
                   padding: const EdgeInsets.only(right: 72.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,8 +55,8 @@ class _AdmDashboardPageState
                       ),
                     ],
                   ),
-                ),
-                Observer(builder: (_) {
+                ), */
+                /* Observer(builder: (_) {
                   if (controller.isLoading) {
                     return const Center(
                       child: CircularProgressIndicator(),
@@ -76,11 +69,15 @@ class _AdmDashboardPageState
                       isNextActivity: true,
                     );
                   }
-                }),
-                const TextHeader(
+                }), */
+                /* const TextHeader(
                   title: 'Todas Atividades',
                   fontSize: 38,
-                ),
+                ), */
+                Padding(
+                    padding: const EdgeInsets.only(top: 150),
+                    child:
+                        FilterCardWidget(list: controller.allActivitiesList)),
                 Padding(
                   padding: const EdgeInsets.only(left: 72.0, top: 20),
                   child: SizedBox(
@@ -142,6 +139,18 @@ class _AdmDashboardPageState
                       child: CircularProgressIndicator(),
                     );
                   } else {
+                    return ActivitiesColumnWidget(
+                      list: controller.allActivitiesList,
+                      listToEdit: controller.activitiesList,
+                    );
+                  }
+                }),
+                /* Observer(builder: (_) {
+                  if (controller.isLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else {
                     return Column(
                       children: [
                         ActivitiesCarouselWidget(
@@ -182,16 +191,13 @@ class _AdmDashboardPageState
                       ],
                     );
                   }
-                }),
-                const SizedBox(
-                  height: 150,
-                ),
+                }), */
               ],
             ),
           ),
         ],
       ),
-      floatingActionButton: Observer(builder: (_) {
+      /* floatingActionButton: Observer(builder: (_) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.end,
@@ -265,7 +271,7 @@ class _AdmDashboardPageState
             ),
           ],
         );
-      }),
+      }), */
     );
   }
 }

@@ -72,6 +72,9 @@ abstract class AdmDashboardControllerBase with Store {
   List<CardActivity> nextActivitiesList = List.empty();
 
   @computed
+  List<CardActivity> get allActivitiesList => allActivitiesToCards.toList();
+
+  @computed
   List<CardActivity> get mondayActivitiesList => allActivitiesToCards
       .where((activity) => activity.date!.weekday == 1)
       .toList();
