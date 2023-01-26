@@ -99,12 +99,15 @@ class _EditActivityPageState
                           onChanged: controller.setTitle,
                           value: controller.activityToEdit.title,
                         )),
-                        Observer(builder: (_) {
-                          return ExtensiveActivityCheck(
-                              onChanged: controller.setIsExtensive,
-                              isExtensive: controller
-                                  .activityToEdit.schedule.isExtensive);
-                        }),
+                        ExtensiveActivityCheck(
+                          onChanged: () {
+                            setState(() {
+                              controller.setIsExtensive();
+                            });
+                          },
+                          isExtensive:
+                              controller.activityToEdit.schedule.isExtensive,
+                        )
                       ],
                     ),
                   ),
