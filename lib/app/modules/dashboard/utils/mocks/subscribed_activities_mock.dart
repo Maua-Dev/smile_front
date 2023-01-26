@@ -37,7 +37,8 @@ var subscribedActivities = <ActivityModel>[
           duration: DateFormat('HH:mm').parse('01:00'),
           location: 'H244',
           link: 'https://www.google.com.br',
-          acceptSubscription: false),
+          acceptSubscription: false,
+          isExtensive: false),
       ScheduleActivityModel(
         date: DateTime.parse('2022-05-17 13:00'),
         totalParticipants: 30,
@@ -45,6 +46,7 @@ var subscribedActivities = <ActivityModel>[
         location: 'H244',
         link: 'https://',
         acceptSubscription: false,
+        isExtensive: false,
       ),
     ],
   ),

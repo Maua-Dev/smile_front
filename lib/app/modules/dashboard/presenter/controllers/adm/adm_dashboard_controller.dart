@@ -144,7 +144,8 @@ abstract class AdmDashboardControllerBase with Store {
             location: time.location,
             link: time.link,
             enrolledUsers: time.enrolledUsers,
-            acceptSubscription: time.acceptSubscription));
+            acceptSubscription: time.acceptSubscription,
+            isExtensive: time.isExtensive));
       }
     }
   }
@@ -186,6 +187,7 @@ abstract class AdmDashboardControllerBase with Store {
           location: time.location,
           link: time.link,
           acceptSubscription: time.acceptSubscription,
+          isExtensive: time.isExtensive
         ));
       }
     }

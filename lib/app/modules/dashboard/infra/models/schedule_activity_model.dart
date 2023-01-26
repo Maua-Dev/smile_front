@@ -8,6 +8,7 @@ class ScheduleActivityModel extends ScheduleActivity {
   String? location;
   String? link;
   bool acceptSubscription;
+  bool isExtensive;
   final int? enrolledUsers;
 
   ScheduleActivityModel(
@@ -17,7 +18,8 @@ class ScheduleActivityModel extends ScheduleActivity {
       this.duration,
       this.date,
       this.totalParticipants,
-      this.enrolledUsers})
+      this.enrolledUsers,
+      required this.isExtensive})
       : super(
           date: date,
           totalParticipants: totalParticipants,
@@ -26,6 +28,7 @@ class ScheduleActivityModel extends ScheduleActivity {
           link: link,
           location: location,
           acceptSubscription: acceptSubscription,
+          isExtensive: isExtensive,
         );
 
   factory ScheduleActivityModel.fromMap(Map<String, dynamic> map) {
@@ -36,6 +39,7 @@ class ScheduleActivityModel extends ScheduleActivity {
       location: map['location'],
       link: map['link'],
       acceptSubscription: map['acceptSubscription'] ?? false,
+      isExtensive: map['isExtensive'] ?? false,
       enrolledUsers: map['enrolledUsers'] as int,
     );
   }
@@ -49,7 +53,8 @@ class ScheduleActivityModel extends ScheduleActivity {
         'duration': duration!.millisecondsSinceEpoch,
         'location': location ?? '',
         'link': link ?? '',
-        'acceptSubscription': acceptSubscription
+        'acceptSubscription': acceptSubscription,
+        'isExtensive': isExtensive,
       };
 
   ScheduleActivityModel copyWith({
@@ -59,6 +64,7 @@ class ScheduleActivityModel extends ScheduleActivity {
     String? location,
     String? link,
     bool? acceptSubscription,
+    bool? isExtensive,
   }) {
     return ScheduleActivityModel(
       date: date ?? this.date,
@@ -67,6 +73,7 @@ class ScheduleActivityModel extends ScheduleActivity {
       location: location ?? this.location,
       link: link ?? this.link,
       acceptSubscription: acceptSubscription ?? this.acceptSubscription,
+      isExtensive: isExtensive ?? this.isExtensive,
     );
   }
 
@@ -78,6 +85,7 @@ class ScheduleActivityModel extends ScheduleActivity {
       location: null,
       link: null,
       acceptSubscription: false,
+      isExtensive: false,
     );
   }
 }

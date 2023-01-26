@@ -39,6 +39,7 @@ void main() {
           totalParticipants: 20,
           location: '',
           acceptSubscription: false,
+          isExtensive: false,
         ),
       ],
       speakers: [

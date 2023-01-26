@@ -184,6 +184,7 @@ abstract class UserDashboardControllerBase with Store {
             link: time.link,
             enrolledUsers: time.enrolledUsers,
             acceptSubscription: time.acceptSubscription,
+            isExtensive: time.isExtensive,
           ));
         }
       }
@@ -215,6 +216,7 @@ abstract class UserDashboardControllerBase with Store {
           link: time.link,
           enrolledUsers: time.enrolledUsers,
           acceptSubscription: time.acceptSubscription,
+          isExtensive: time.isExtensive
         );
       }
     } else {

@@ -15,6 +15,7 @@ class CardActivity {
   final String? link;
   final bool acceptSubscription;
   final int? enrolledUsers;
+  final bool isExtensive;
 
   CardActivity({
     required this.acceptSubscription,
@@ -30,6 +31,7 @@ class CardActivity {
     required this.location,
     this.speakers,
     required this.link,
+    required this.isExtensive,
   }) : super();
 
   factory CardActivity.newInstance() {
@@ -47,6 +49,7 @@ class CardActivity {
       location: '',
       speakers: [],
       totalParticipants: 0,
+      isExtensive: false,
     );
   }
 }

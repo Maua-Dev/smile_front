@@ -80,7 +80,8 @@ abstract class MoreInfoControllerBase with Store {
             enrolledUsers: activity.enrolledUsers,
             link: activity.link,
             location: activity.location,
-            totalParticipants: activity.totalParticipants)
+            totalParticipants: activity.totalParticipants,
+            isExtensive: activity.isExtensive)
       ],
       speakers: activity.speakers!,
     );

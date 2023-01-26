@@ -129,6 +129,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
             link: time.link,
             enrolledUsers: time.enrolledUsers,
             acceptSubscription: time.acceptSubscription,
+            isExtensive: time.isExtensive,
           ),
         );
       }

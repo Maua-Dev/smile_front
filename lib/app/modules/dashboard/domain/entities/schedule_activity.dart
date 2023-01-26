@@ -5,6 +5,7 @@ class ScheduleActivity {
   final String? location;
   final String? link;
   final bool acceptSubscription;
+  final bool isExtensive;
   final int? enrolledUsers;
 
   ScheduleActivity({
@@ -15,5 +16,6 @@ class ScheduleActivity {
     this.date,
     this.totalParticipants,
     required this.acceptSubscription,
+    required this.isExtensive,
   });
 }

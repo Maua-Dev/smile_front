@@ -169,6 +169,11 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
+  void setIsExtensive(bool value, int index) {
+    activityToEdit.schedule[index].isExtensive = value;
+  }
+
+  @action
   void addSchedule() {
     var list = activityToEdit.schedule;
     list.add(ScheduleActivityModel.newInstance());

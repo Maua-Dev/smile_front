@@ -62,8 +62,9 @@ class _EditActivityPageState
                           child: DropDownFieldCustom<ActivityEnum>(
                             textStyles: AppTextStyles.body.copyWith(
                                 color: AppColors.brandingBlue,
-                                fontSize:
-                                    Screen.width(context) < tabletSize ? 16 : 20),
+                                fontSize: Screen.width(context) < tabletSize
+                                    ? 16
+                                    : 20),
                             filledColor: Colors.white,
                             titulo: 'Atividade',
                             value: controller.activityToEdit.type,
@@ -99,7 +100,8 @@ class _EditActivityPageState
                           onChanged: controller.setTitle,
                           value: controller.activityToEdit.title,
                         )),
-                        const ExtensiveActivityCheck(),
+                        const ExtensiveActivityCheck(
+                            onChanged: null, isExtensive: true),
                       ],
                     ),
                   ),
