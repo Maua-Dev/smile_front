@@ -157,7 +157,7 @@ abstract class EditActivityControllerBase with Store {
 
   @action
   void setIsExtensive() {
-    activityToEdit.schedule.isExtensive = !activityToEdit.schedule.isExtensive;
+    activityToEdit.schedule = activityToEdit.schedule.copyWith(isExtensive: );
   }
 
   @action
