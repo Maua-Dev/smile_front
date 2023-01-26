@@ -9,7 +9,7 @@ class Activity {
   final ActivityEnum? type;
   final String title;
   final String description;
-  final List<ScheduleActivityModel> schedule;
+  final ScheduleActivityModel schedule;
   final List<SpeakerActivityModel> speakers;
 
   Activity({
@@ -25,7 +25,7 @@ class Activity {
   factory Activity.newInstance() {
     return Activity(
         activityCode: '',
-        schedule: [],
+        schedule: ScheduleActivityModel.newInstance(),
         description: '',
         id: '',
         title: '',

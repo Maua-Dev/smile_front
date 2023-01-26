@@ -1,16 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
-import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class FilterCardWidget extends StatelessWidget {
-  final List<CardActivity> list;
-
   const FilterCardWidget({
     Key? key,
-    required this.list,
   }) : super(key: key);
 
   @override

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app_bar_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_card/activities_column_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/filter/filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
 import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
-import 'widgets/filter/filter_chip_widget.dart';
 
 class AdmDashboardPage extends StatefulWidget {
   const AdmDashboardPage({Key? key}) : super(key: key);
@@ -74,65 +72,9 @@ class _AdmDashboardPageState
                   title: 'Todas Atividades',
                   fontSize: 38,
                 ), */
-                Padding(
-                    padding: const EdgeInsets.only(top: 150),
-                    child:
-                        FilterCardWidget(list: controller.allActivitiesList)),
-                Padding(
-                  padding: const EdgeInsets.only(left: 72.0, top: 20),
-                  child: SizedBox(
-                      height: 50,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: MediaQuery.of(context).size.width < 1650
-                              ? ActivityEnum.values.length - 6
-                              : ActivityEnum.values.length - 4,
-                          itemBuilder: (BuildContext ctx, index) {
-                            return Observer(builder: (_) {
-                              return FilterChipWidget(
-                                  onTap: () => controller
-                                      .toggleFilterActivityChipIndex(index),
-                                  selected: controller
-                                          .filterActivityChipIndexSelected ==
-                                      index,
-                                  activityType: ActivityEnum.values[index]);
-                            });
-                          })),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 72.0, bottom: 20),
-                  child: SizedBox(
-                      height: 50,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount:
-                              MediaQuery.of(context).size.width < 1650 ? 6 : 4,
-                          itemBuilder: (BuildContext ctx, index) {
-                            return Observer(builder: (_) {
-                              return FilterChipWidget(
-                                  onTap: () =>
-                                      controller.toggleFilterActivityChipIndex(
-                                          MediaQuery.of(context).size.width <
-                                                  1650
-                                              ? index + 6
-                                              : index + 8),
-                                  selected: MediaQuery.of(context).size.width <
-                                          1650
-                                      ? controller
-                                              .filterActivityChipIndexSelected ==
-                                          index + 6
-                                      : controller
-                                              .filterActivityChipIndexSelected ==
-                                          index + 8,
-                                  activityType: ActivityEnum.values[
-                                      MediaQuery.of(context).size.width < 1650
-                                          ? index + 6
-                                          : index + 8]);
-                            });
-                          })),
-                ),
+                const Padding(
+                    padding: EdgeInsets.only(top: 150),
+                    child: FilterCardWidget()),
                 Observer(builder: (_) {
                   if (controller.isLoading) {
                     return const Center(
@@ -140,8 +82,7 @@ class _AdmDashboardPageState
                     );
                   } else {
                     return ActivitiesColumnWidget(
-                      list: controller.allActivitiesList,
-                      listToEdit: controller.activitiesList,
+                      listAllActivities: controller.activitiesList,
                     );
                   }
                 }),

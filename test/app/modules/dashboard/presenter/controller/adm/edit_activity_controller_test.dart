@@ -33,14 +33,12 @@ void main() {
       type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
       title: 'Atividade 1',
       description: '12345',
-      schedule: [
-        ScheduleActivityModel(
-          date: DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
-          totalParticipants: 20,
-          location: '',
-          acceptSubscription: false,
-        ),
-      ],
+      schedule: ScheduleActivityModel(
+        date: DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
+        totalParticipants: 20,
+        location: '',
+        acceptSubscription: false,
+      ),
       speakers: [
         SpeakerActivityModel(
           bio: '',
@@ -95,42 +93,42 @@ void main() {
   test('setLocation', () {
     var str = 'teste';
     controller.setLocation(str, 0);
-    expect(controller.activityToEdit.schedule[0].location, str);
+    expect(controller.activityToEdit.schedule.location, str);
   });
 
   test('setLink', () {
     var str = 'teste';
     controller.setLink(str, 0);
-    expect(controller.activityToEdit.schedule[0].link, str);
+    expect(controller.activityToEdit.schedule.link, str);
   });
 
   test('setDate', () {
     var str = DateFormat('dd-MM-yyyy').format(DateTime.now());
     controller.setDate(str, 0);
-    expect(controller.activityToEdit.schedule[0].date!.day, DateTime.now().day);
+    expect(controller.activityToEdit.schedule.date!.day, DateTime.now().day);
   });
 
   test('setHour', () {
     var str = '22:00';
     controller.setHour(str, 0);
-    expect(controller.activityToEdit.schedule[0].date!.hour, 22);
+    expect(controller.activityToEdit.schedule.date!.hour, 22);
   });
 
   test('setDuration', () {
     var str = '22:00';
     controller.setDuration(str, 0);
-    expect(controller.activityToEdit.schedule[0].duration!.hour, 22);
+    expect(controller.activityToEdit.schedule.duration!.hour, 22);
   });
 
   test('setParticipants', () {
     var str = 1;
     controller.setParticipants(str, 0);
-    expect(controller.activityToEdit.schedule[0].totalParticipants, str);
+    expect(controller.activityToEdit.schedule.totalParticipants, str);
   });
 
   test('setEnableSubscription', () {
     controller.setEnableSubscription(true, 0);
-    expect(controller.activityToEdit.schedule[0].acceptSubscription, true);
+    expect(controller.activityToEdit.schedule.acceptSubscription, true);
   });
 
   test('setSpeakerName', () {
@@ -151,13 +149,13 @@ void main() {
     expect(controller.activityToEdit.speakers[0].company, str);
   });
 
-  test('removeSchedule', () {
-    controller.removeSchedule(0);
-    expect(controller.activityToEdit.schedule.length, 0);
-  });
+  // test('removeSchedule', () {
+  //   controller.removeSchedule(0);
+  //   expect(controller.activityToEdit.schedule.length, 0);
+  // });
 
-  test('addSchedule', () {
-    controller.addSchedule();
-    expect(controller.activityToEdit.schedule.length, 1);
-  });
+  // test('addSchedule', () {
+  //   controller.addSchedule();
+  //   expect(controller.activityToEdit.schedule.length, 1);
+  // });
 }

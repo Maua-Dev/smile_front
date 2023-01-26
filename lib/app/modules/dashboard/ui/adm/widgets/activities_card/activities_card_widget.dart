@@ -5,7 +5,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
 class ActivitiesCardWidget extends StatelessWidget {
-  final String name;
+  final String title;
   final String activityCode;
   final String description;
   final String date;
@@ -17,7 +17,7 @@ class ActivitiesCardWidget extends StatelessWidget {
   final Function() onPressedDelete;
   const ActivitiesCardWidget({
     Key? key,
-    required this.name,
+    required this.title,
     required this.activityCode,
     required this.description,
     required this.date,
@@ -72,7 +72,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                             children: [
                               SizedBox(
                                 width: 680,
-                                child: Text('$activityCode - $name',
+                                child: Text('$activityCode - $title',
                                     style: TextStyle(
                                         color: AppColors.white,
                                         fontSize: 20,
