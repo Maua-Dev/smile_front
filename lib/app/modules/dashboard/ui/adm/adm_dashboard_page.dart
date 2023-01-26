@@ -7,6 +7,7 @@ import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_card
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app_bar_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/filter/filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
+import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../auth/infra/repositories/secure_storage.dart';
@@ -125,7 +126,11 @@ class _AdmDashboardPageState
                         ),
                       );
                     } else {
-                      return const SizedBox.shrink();
+                      return Padding(
+                        padding: const EdgeInsets.fromLTRB(760, 0, 760, 700),
+                        child: Text('Atividade não encontrada',
+                            style: AppTextStyles.body),
+                      );
                     }
                   }
                 }),
