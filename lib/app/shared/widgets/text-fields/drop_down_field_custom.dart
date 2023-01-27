@@ -32,16 +32,15 @@ class DropDownFieldCustom<T> extends StatelessWidget {
           ),
         ),
         Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 3,
-                  offset: const Offset(5, 5), // changes position of shadow
-                ),
-              ]),
+          decoration:
+              BoxDecoration(borderRadius: BorderRadius.circular(8), boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(5, 5), // changes position of shadow
+            ),
+          ]),
           child: DropdownButtonHideUnderline(
             child: DropdownButtonFormField<T>(
               value: value,
@@ -63,11 +62,11 @@ class DropDownFieldCustom<T> extends StatelessWidget {
                 filled: true,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
+                  borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(color: AppColors.brandingBlue),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
+                  borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(color: AppColors.brandingBlue),
                 ),
               ),

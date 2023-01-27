@@ -13,6 +13,7 @@ import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/screen_helper.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
+import '../../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import '../../domain/infra/activity_enum.dart';
@@ -253,70 +254,83 @@ class _EditActivityPageState
                       },
                     );
                   }),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 114, vertical: 32),
+                    child: FormsButtonWidget(
+                        width: 220,
+                        buttonTittle: 'Adicionar palestrante',
+                        onPressed: controller.addSpeaker,
+                        backgroundColor: AppColors.brandingBlue,
+                        icon: const Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 22,
+                        )),
+                  ),
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 114),
-                      child: FormsButtonWidget(
-                          buttonTittle: 'Adicionar palestrante',
-                          onPressed: controller.addSpeaker,
-                          backgroundColor: AppColors.brandingOrange,
-                          icon: const Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 22,
-                          )),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 48),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        FormsButtonWidget(
-                            buttonTittle: 'Cancelar',
-                            onPressed: () {
-                              Modular.to.navigate('/adm');
-                            },
-                            backgroundColor: AppColors.redButton),
-                        const SizedBox(
-                          width: 40,
-                        ),
-                        FormsButtonWidget(
-                            buttonTittle: 'Salvar',
-                            onPressed: () {
-                              if (controller.isFilled()) {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return Observer(builder: (context) {
-                                      return ActionConfirmationDialogWidget(
-                                          isLoading: controller.isLoading,
-                                          title:
-                                              'Tem certeza que deseja continuar?',
-                                          content:
-                                              'Ao salvar todos os dados antigos serão perdidos.',
-                                          onPressed: () {
-                                            controller.editUserActivity();
-                                          });
-                                    });
-                                  },
-                                );
-                              } else {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return const CustomAlertDialogWidget(
-                                      title: 'Preencha todos os campos!',
-                                      content:
-                                          'Confira se todos os campos estão corretamente preenchidos.',
-                                    );
-                                  },
-                                );
-                              }
-                            },
-                            backgroundColor: AppColors.greenButton),
-                      ],
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 48, horizontal: 114),
+                      child: Row(
+                        children: [
+                          CustomElevatedButtonWidget(
+                              borderRadius: 8,
+                              widthSize: Screen.width(context) > tabletSize
+                                  ? Screen.width(context) * 0.35
+                                  : Screen.width(context) * 0.3,
+                              heightSize: 40,
+                              title: 'Cancelar',
+                              onPressed: () {
+                                Modular.to.navigate('/adm');
+                              },
+                              backgroundColor: AppColors.brandingBlue),
+                          SizedBox(
+                            width: Screen.width(context) > tabletSize
+                                ? 50
+                                : Screen.width(context) * 0.015,
+                          ),
+                          CustomElevatedButtonWidget(
+                              borderRadius: 8,
+                              title: 'Salvar',
+                              widthSize: Screen.width(context) > tabletSize
+                                  ? Screen.width(context) * 0.35
+                                  : Screen.width(context) * 0.3,
+                              heightSize: 40,
+                              onPressed: () {
+                                if (controller.isFilled()) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return Observer(builder: (context) {
+                                        return ActionConfirmationDialogWidget(
+                                            isLoading: controller.isLoading,
+                                            title:
+                                                'Tem certeza que deseja continuar?',
+                                            content:
+                                                'Ao salvar todos os dados antigos serão perdidos.',
+                                            onPressed: () {
+                                              controller.editUserActivity();
+                                            });
+                                      });
+                                    },
+                                  );
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return const CustomAlertDialogWidget(
+                                        title: 'Preencha todos os campos!',
+                                        content:
+                                            'Confira se todos os campos estão corretamente preenchidos.',
+                                      );
+                                    },
+                                  );
+                                }
+                              },
+                              backgroundColor: AppColors.brandingBlue),
+                        ],
+                      ),
                     ),
                   ),
                 ],

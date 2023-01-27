@@ -36,7 +36,7 @@ class ExtensiveActivityCheck extends StatelessWidget {
                   ),
                 ],
                 color: AppColors.white,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(8),
                 border: Border.all(width: 1, color: AppColors.brandingBlue)),
             child: MouseRegion(
               cursor: SystemMouseCursors.click,

@@ -43,7 +43,7 @@ class TextFieldDialogWidget extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(8),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.2),
@@ -74,12 +74,12 @@ class TextFieldDialogWidget extends StatelessWidget {
                           )
                         : null,
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
+                      borderRadius: BorderRadius.circular(8),
                       borderSide:
                           BorderSide(color: AppColors.brandingBlue, width: 0.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
+                      borderRadius: BorderRadius.circular(8),
                       borderSide:
                           BorderSide(color: AppColors.brandingBlue, width: 0.0),
                     ),
