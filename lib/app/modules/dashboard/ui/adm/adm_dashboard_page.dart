@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_card/activities_card_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_card/column_builder_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app_bar_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/filter/filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
@@ -139,15 +138,15 @@ class _AdmDashboardPageState
                               }),
                             );
                           },
-                        );
-                      } else {
-                        return Text('Atividade não encontrada',
-                            style: AppTextStyles.body);
-                      }
+                        ),
+                      );
+                    } else {
+                      return Text('Atividade não encontrada',
+                          style: AppTextStyles.body.copyWith(fontSize: 30));
                     }
-                  }),
-                ],
-              ),
+                  }
+                }),
+              ],
             ),
           ),
         ],
