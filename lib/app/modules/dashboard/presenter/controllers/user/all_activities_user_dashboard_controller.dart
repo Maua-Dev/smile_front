@@ -113,25 +113,23 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     activitiesList = await getAllActivities();
     allActivitiesToCards = [];
     for (var activity in activitiesList) {
-      for (var time in activity.schedule) {
-        allActivitiesToCards.add(
-          CardActivity(
-            id: activity.id,
-            activityCode: activity.activityCode,
-            type: activity.type,
-            title: activity.title,
-            description: activity.description,
-            date: time.date,
-            duration: time.duration,
-            totalParticipants: time.totalParticipants,
-            speakers: activity.speakers,
-            location: time.location,
-            link: time.link,
-            enrolledUsers: time.enrolledUsers,
-            acceptSubscription: time.acceptSubscription,
-          ),
-        );
-      }
+      allActivitiesToCards.add(
+        CardActivity(
+          id: activity.id,
+          activityCode: activity.activityCode,
+          type: activity.type,
+          title: activity.title,
+          description: activity.description,
+          date: activity.schedule.date,
+          duration: activity.schedule.duration,
+          totalParticipants: activity.schedule.totalParticipants,
+          speakers: activity.speakers,
+          location: activity.schedule.location,
+          link: activity.schedule.link,
+          enrolledUsers: activity.schedule.enrolledUsers,
+          acceptSubscription: activity.schedule.acceptSubscription,
+        ),
+      );
     }
     toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
     getActivitiesByType(activityType);

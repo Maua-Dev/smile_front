@@ -3,10 +3,10 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
-import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
+import '../../../domain/usecases/delete_activity.dart';
 part 'adm_dashboard_controller.g.dart';
 
 class AdmDashboardController = AdmDashboardControllerBase
@@ -16,11 +16,13 @@ abstract class AdmDashboardControllerBase with Store {
   final AuthController authController;
   final GetDownloadLinkCsvInterface getDownloadLinkCsv;
   final GetAllUserActivitiesInterface getAllUserActivities;
+  final DeleteActivityInterface deleteActivity;
 
   AdmDashboardControllerBase(
       {required this.getDownloadLinkCsv,
       required this.authController,
-      required this.getAllUserActivities}) {
+      required this.getAllUserActivities,
+      required this.deleteActivity}) {
     getAllActivities();
   }
 
@@ -63,101 +65,112 @@ abstract class AdmDashboardControllerBase with Store {
   List<ActivityModel> activitiesList = List.empty();
 
   @observable
-  List<ActivityModel> saveActivitiesList = List.empty();
-
-  @observable
-  List<CardActivity> allActivitiesToCards = List.empty();
-
-  @observable
-  List<CardActivity> nextActivitiesList = List.empty();
-
-  @computed
-  List<CardActivity> get mondayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 1)
-      .toList();
-
-  @computed
-  List<CardActivity> get tuesdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 2)
-      .toList();
-
-  @computed
-  List<CardActivity> get wednesdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 3)
-      .toList();
-
-  @computed
-  List<CardActivity> get thursdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 4)
-      .toList();
-
-  @computed
-  List<CardActivity> get fridayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 5)
-      .toList();
-
-  @computed
-  List<CardActivity> get saturdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 6)
-      .toList();
-
-  @computed
-  List<CardActivity> get sundayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 7)
-      .toList();
+  List<ActivityModel> allActivitiesList = List.empty();
 
   @action
   void toggleFloatActionButton() {
     isFloatActionButtonOpen = !isFloatActionButtonOpen;
   }
 
+  @observable
+  ActivityEnum? typeFilter;
+
   @action
-  void toggleFilterActivityChipIndex(index) {
-    if (index == filterActivityChipIndexSelected) {
-      filterActivityChipIndexSelected = null;
-      activitiesList = saveActivitiesList;
-      changeFormatToCards();
-    } else {
-      filterActivityChipIndexSelected = index;
-      getActivitiesByType(index);
-    }
+  void setTypeFilter(ActivityEnum value) {
+    typeFilter = value;
+    setAllFilters();
+  }
+
+  @observable
+  DateTime? dateFilter;
+
+  @action
+  void setDateFilter(DateTime value) {
+    dateFilter = value;
+    setAllFilters();
+  }
+
+  @observable
+  DateTime? hourFilter;
+
+  @action
+  void setHourFilter(DateTime value) {
+    hourFilter = value;
+    setAllFilters();
   }
 
   @action
-  Future getActivitiesByType(index) async {
-    var list = activitiesList
-        .where((element) => element.type == ActivityEnum.values[index])
-        .toList();
-
-    allActivitiesToCards = [];
-    for (var activity in list) {
-      for (var time in activity.schedule) {
-        allActivitiesToCards.add(CardActivity(
-            id: activity.id,
-            activityCode: activity.activityCode,
-            type: activity.type,
-            title: activity.title,
-            description: activity.description,
-            date: time.date,
-            duration: time.duration,
-            totalParticipants: time.totalParticipants,
-            location: time.location,
-            link: time.link,
-            enrolledUsers: time.enrolledUsers,
-            acceptSubscription: time.acceptSubscription));
-      }
+  void setAllFilters() {
+    var listActivities = allActivitiesList;
+    if (typeFilter != null) {
+      listActivities = filterActivitiesByType(typeFilter!, listActivities);
     }
+    if (dateFilter != null) {
+      listActivities = filterActivitiesByDate(dateFilter!, listActivities);
+    }
+    if (hourFilter != null) {
+      listActivities = filterActivitiesByHour(hourFilter!, listActivities);
+    }
+    activitiesList = listActivities;
+  }
+
+  @action
+  resetFilters() {
+    activitiesList = allActivitiesList;
+    typeFilter = null;
+    dateFilter = null;
+    hourFilter = null;
+  }
+
+  @action
+  List<ActivityModel> filterActivitiesByType(
+      ActivityEnum type, List<ActivityModel> activitiesToFilter) {
+    var list =
+        activitiesToFilter.where((element) => element.type == type).toList();
+    return list;
+  }
+
+  @action
+  List<ActivityModel> filterActivitiesByDate(
+      DateTime date, List<ActivityModel> activitiesToFilter) {
+    var list = activitiesToFilter
+        .where((element) => isValidDateFilter(element.schedule.date!, date))
+        .toList();
+    return list;
+  }
+
+  @action
+  List<ActivityModel> filterActivitiesByHour(
+      DateTime hour, List<ActivityModel> activitiesToFilter) {
+    var list = activitiesToFilter
+        .where((element) => isValidHourFilter(element.schedule.date!, hour))
+        .toList();
+    return list;
+  }
+
+  bool isValidDateFilter(DateTime activityDate, DateTime dateToFilter) {
+    if (activityDate.day == dateToFilter.day &&
+        activityDate.month == dateToFilter.month &&
+        activityDate.year == dateToFilter.year) {
+      return true;
+    }
+    return false;
+  }
+
+  bool isValidHourFilter(DateTime activityDate, DateTime dateToFilter) {
+    if (activityDate.hour == dateToFilter.hour &&
+        activityDate.minute == dateToFilter.minute) {
+      return true;
+    }
+    return false;
   }
 
   @action
   Future getAllActivities() async {
     setIsLoading(true);
     activitiesList = await getAllUserActivities();
-    saveActivitiesList = activitiesList;
-    changeFormatToCards();
-    nextActivitiesList = allActivitiesToCards.length >= 5
-        ? allActivitiesToCards.sublist(0, 5)
-        : allActivitiesToCards;
+    allActivitiesList = activitiesList;
+    setIsLoading(false);
   }
 
   @action
@@ -167,31 +180,9 @@ abstract class AdmDashboardControllerBase with Store {
   }
 
   @action
-  void changeFormatToCards() {
+  Future deleteUserActivity(String id) async {
     setIsLoading(true);
-    allActivitiesToCards = [];
-    for (var activity in activitiesList) {
-      for (var time in activity.schedule) {
-        allActivitiesToCards.add(CardActivity(
-          enrolledUsers: time.enrolledUsers,
-          id: activity.id,
-          activityCode: activity.activityCode,
-          type: activity.type,
-          title: activity.title,
-          description: activity.description,
-          date: time.date,
-          duration: time.duration,
-          speakers: activity.speakers,
-          totalParticipants: time.totalParticipants,
-          location: time.location,
-          link: time.link,
-          acceptSubscription: time.acceptSubscription,
-        ));
-      }
-    }
-    allActivitiesToCards.sort(
-      (a, b) => a.date!.compareTo(b.date!),
-    );
+    await deleteActivity(id);
     setIsLoading(false);
   }
 }

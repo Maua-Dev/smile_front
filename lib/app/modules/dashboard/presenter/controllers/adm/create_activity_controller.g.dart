@@ -230,28 +230,6 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
-  void addSchedule() {
-    final _$actionInfo = _$CreateActivityControllerBaseActionController
-        .startAction(name: 'CreateActivityControllerBase.addSchedule');
-    try {
-      return super.addSchedule();
-    } finally {
-      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void removeSchedule(int index) {
-    final _$actionInfo = _$CreateActivityControllerBaseActionController
-        .startAction(name: 'CreateActivityControllerBase.removeSchedule');
-    try {
-      return super.removeSchedule(index);
-    } finally {
-      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void addSpeaker() {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.addSpeaker');
