@@ -99,7 +99,6 @@ abstract class AdmDashboardControllerBase with Store {
     setAllFilters();
   }
 
-
   @action
   void setAllFilters() {
     var listActivities = allActivitiesList;
