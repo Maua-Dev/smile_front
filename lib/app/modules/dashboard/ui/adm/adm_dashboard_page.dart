@@ -35,19 +35,24 @@ class _AdmDashboardPageState
           Expanded(
             child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
                       padding: const EdgeInsets.symmetric(vertical: 80),
                       child: FilterCardWidget(
                         onChangedActivitiesFilter: (type) {
-                          controller.filterActivitiesByType(type!);
+                          controller.setFilterType(type!);
+                          controller.allFilters();
                         },
                         onChangedDateFilter: (date) {
-                          controller.filterActivitiesByDate(date!);
+                          controller.setFilterDate(date!);
+                          controller.allFilters();
                         },
                         onChangedTimeFilter: (hour) {
-                          controller.filterActivitiesByHour(hour!);
+                          controller.setFilterHour(hour!);
+                          controller.allFilters();
                         },
                       )),
                   Observer(builder: (_) {
@@ -71,69 +76,70 @@ class _AdmDashboardPageState
                                     .activitiesList[index].schedule.duration!);
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 40),
-                              child: ActivitiesCardWidget(
-                                activityCode: controller
-                                    .activitiesList[index].activityCode,
-                                date: date,
-                                description: controller
-                                    .activitiesList[index].description,
-                                enrolledUsersLength: controller
-                                    .activitiesList[index]
-                                    .schedule
-                                    .enrolledUsers!,
-                                totalParticipants: controller
-                                    .activitiesList[index]
-                                    .schedule
-                                    .totalParticipants!,
-                                title: controller.activitiesList[index].title,
-                                time: time,
-                                finalTime: finalTime,
-                                onPressedDelete: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return Observer(builder: (_) {
-                                        return ActionConfirmationDialogWidget(
-                                            isLoading: controller.isLoading,
-                                            title:
-                                                'Tem certeza que deseja continuar?',
-                                            content:
-                                                'Ao confirmar todos os dados antigos serão perdidos.',
-                                            onPressed: () async {
-                                              await controller
-                                                  .deleteUserActivity(controller
-                                                      .activitiesList[index]
-                                                      .id);
-                                              Modular.to.pop();
-                                            });
-                                      });
-                                    },
-                                  );
-                                },
-                                onPressedEdit: () async {
-                                  var accessLevel =
-                                      await secureStorage.getAccessLevel();
-                                  if (accessLevel == 'ADMIN') {
-                                    Modular.to.navigate(
-                                      '/adm/edit-activity',
-                                      arguments: controller.activitiesList
-                                          .firstWhere((element) =>
-                                              element.id ==
-                                              controller
-                                                  .activitiesList[index].id),
+                              child: Observer(builder: (_) {
+                                return ActivitiesCardWidget(
+                                  activityCode: controller
+                                      .activitiesList[index].activityCode,
+                                  date: date,
+                                  description: controller
+                                      .activitiesList[index].description,
+                                  enrolledUsersLength: controller
+                                      .activitiesList[index]
+                                      .schedule
+                                      .enrolledUsers!,
+                                  totalParticipants: controller
+                                      .activitiesList[index]
+                                      .schedule
+                                      .totalParticipants!,
+                                  title: controller.activitiesList[index].title,
+                                  time: time,
+                                  finalTime: finalTime,
+                                  onPressedDelete: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return Observer(builder: (_) {
+                                          return ActionConfirmationDialogWidget(
+                                              isLoading: controller.isLoading,
+                                              title:
+                                                  'Tem certeza que deseja continuar?',
+                                              content:
+                                                  'Ao confirmar todos os dados antigos serão perdidos.',
+                                              onPressed: () async {
+                                                await controller
+                                                    .deleteUserActivity(
+                                                        controller
+                                                            .activitiesList[
+                                                                index]
+                                                            .id);
+                                                Modular.to.pop();
+                                              });
+                                        });
+                                      },
                                     );
-                                  }
-                                },
-                              ),
+                                  },
+                                  onPressedEdit: () async {
+                                    var accessLevel =
+                                        await secureStorage.getAccessLevel();
+                                    if (accessLevel == 'ADMIN') {
+                                      Modular.to.navigate(
+                                        '/adm/edit-activity',
+                                        arguments: controller.activitiesList
+                                            .firstWhere((element) =>
+                                                element.id ==
+                                                controller
+                                                    .activitiesList[index].id),
+                                      );
+                                    }
+                                  },
+                                );
+                              }),
                             );
                           },
                         );
                       } else {
-                        return Padding(
-                          padding: const EdgeInsets.fromLTRB(760, 0, 760, 700),
-                          child: Text('Atividade não encontrada',
-                              style: AppTextStyles.body),
-                        );
+                        return Text('Atividade não encontrada',
+                            style: AppTextStyles.body);
                       }
                     }
                   }),

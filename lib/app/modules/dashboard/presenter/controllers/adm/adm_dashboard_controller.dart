@@ -72,26 +72,69 @@ abstract class AdmDashboardControllerBase with Store {
     isFloatActionButtonOpen = !isFloatActionButtonOpen;
   }
 
+  @observable
+  ActivityEnum? type;
+
   @action
-  Future filterActivitiesByType(ActivityEnum type) async {
-    var list = activitiesList.where((element) => element.type == type).toList();
-    activitiesList = list;
+  void setFilterType(ActivityEnum value) {
+    type = value;
+  }
+
+  @observable
+  DateTime? date;
+
+  @action
+  void setFilterDate(DateTime value) {
+    date = value;
+  }
+
+  @observable
+  DateTime? hour;
+
+  @action
+  void setFilterHour(DateTime value) {
+    hour = value;
   }
 
   @action
-  Future filterActivitiesByDate(DateTime date) async {
-    var list = activitiesList
+  void allFilters() {
+    var listActivities = allActivitiesList;
+    if (type != null) {
+      listActivities = filterActivitiesByType(type!, listActivities);
+    }
+    if (date != null) {
+      listActivities = filterActivitiesByDate(date!, listActivities);
+    }
+    if (hour != null) {
+      listActivities = filterActivitiesByHour(hour!, listActivities);
+    }
+    activitiesList = listActivities;
+  }
+
+  @action
+  List<ActivityModel> filterActivitiesByType(
+      ActivityEnum type, List<ActivityModel> activitiesToFilter) {
+    var list =
+        activitiesToFilter.where((element) => element.type == type).toList();
+    return list;
+  }
+
+  @action
+  List<ActivityModel> filterActivitiesByDate(
+      DateTime date, List<ActivityModel> activitiesToFilter) {
+    var list = activitiesToFilter
         .where((element) => isValidDateFilter(element.schedule.date!, date))
         .toList();
-    activitiesList = list;
+    return list;
   }
 
   @action
-  Future filterActivitiesByHour(DateTime date) async {
-    var list = activitiesList
-        .where((element) => isValidHourFilter(element.schedule.date!, date))
+  List<ActivityModel> filterActivitiesByHour(
+      DateTime hour, List<ActivityModel> activitiesToFilter) {
+    var list = activitiesToFilter
+        .where((element) => isValidHourFilter(element.schedule.date!, hour))
         .toList();
-    activitiesList = list;
+    return list;
   }
 
   bool isValidDateFilter(DateTime activityDate, DateTime dateToFilter) {
