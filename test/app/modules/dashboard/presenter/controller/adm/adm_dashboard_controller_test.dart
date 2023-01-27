@@ -160,6 +160,61 @@ void main() {
     expect(controller.isLoadingCsv, true);
   });
 
+  test('setTypeFilter', () {
+    var value = ActivityEnum.CURSOS;
+    controller.setTypeFilter(value);
+    expect(controller.typeFilter, value);
+  });
+
+  test('setDateFilter', () {
+    var value = DateTime.utc(2022, 03, 18, 13);
+    controller.setDateFilter(value);
+    expect(controller.dateFilter, value);
+  });
+
+  test('setHourFilter', () {
+    var value = DateTime.utc(2022, 03, 18, 13);
+    controller.setHourFilter(value);
+    expect(controller.hourFilter, value);
+  });
+
+  test('setAllFilters', () {
+    controller.setAllFilters();
+    expect(controller.activitiesList, controller.allActivitiesList);
+  });
+
+  test('resetFilters', () {
+    controller.resetFilters();
+    expect(controller.activitiesList, controller.allActivitiesList);
+    expect(controller.typeFilter, null);
+    expect(controller.dateFilter, null);
+    expect(controller.hourFilter, null);
+  });
+
+  test('filterActivitiesByType', () {
+    var type = ActivityEnum.CURSOS;
+    var list = mockActivities.where((element) => element.type == type).toList();
+    expect(list, controller.filterActivitiesByType(type, mockActivities));
+  });
+
+  test('filterActivitiesByDate', () {
+    var date = DateTime.utc(2022, 03, 18, 13);
+    var list = mockActivities
+        .where((element) =>
+            controller.isValidDateFilter(element.schedule.date!, date))
+        .toList();
+    expect(list, controller.filterActivitiesByDate(date, mockActivities));
+  });
+
+  test('filterActivitiesByHour', () {
+    var hour = DateTime.utc(2022, 03, 18, 13);
+    var list = mockActivities
+        .where((element) =>
+            controller.isValidHourFilter(element.schedule.date!, hour))
+        .toList();
+    expect(list, controller.filterActivitiesByHour(hour, mockActivities));
+  });
+
   test('setIsLoading', () {
     controller.setIsLoading(true);
     expect(controller.isLoading, true);
