@@ -6,6 +6,7 @@ import 'package:mockito/annotations.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/modality_activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
@@ -26,6 +27,7 @@ void main() {
   late EditActivityController controller;
   final activity = ActivityModel(
       id: '1',
+      modality: ModalityActivityEnum.online,
       activityCode: 'C01',
       type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
       title: 'Atividade 1',

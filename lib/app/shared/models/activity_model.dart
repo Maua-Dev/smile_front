@@ -1,5 +1,6 @@
 // ignore_for_file: overridden_fields, annotate_overrides, duplicate_ignore
 
+import 'package:smile_front/app/modules/dashboard/domain/infra/modality_activity_enum.dart';
 import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 
@@ -12,6 +13,7 @@ class ActivityModel extends Activity {
   final ActivityEnum? type;
   final String title;
   final String description;
+  final ModalityActivityEnum? modality;
   final ScheduleActivityModel schedule;
   final List<SpeakerActivityModel> speakers;
 
@@ -23,6 +25,7 @@ class ActivityModel extends Activity {
     required this.description,
     required this.schedule,
     required this.speakers,
+    required this.modality,
   }) : super(
           id: id,
           activityCode: activityCode,
@@ -36,6 +39,7 @@ class ActivityModel extends Activity {
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
     return ActivityModel(
       id: map['id'],
+      modality: ModalityActivityEnumExtension.stringToEnumMap(map['modality']),
       activityCode: map['activityCode'],
       type: ActivityEnumExtension.stringToEnumMap(map['type']),
       title: map['title'],
@@ -62,6 +66,7 @@ class ActivityModel extends Activity {
     return ActivityModel(
         schedule: ScheduleActivityModel.newInstance(),
         description: '',
+        modality: null,
         id: '',
         activityCode: '',
         title: '',
@@ -75,6 +80,7 @@ class ActivityModel extends Activity {
     ActivityEnum? type,
     String? title,
     String? description,
+    ModalityActivityEnum? modality,
     ScheduleActivityModel? schedule,
     List<SpeakerActivityModel>? speakers,
   }) {
@@ -86,6 +92,7 @@ class ActivityModel extends Activity {
       description: description ?? this.description,
       schedule: schedule ?? this.schedule,
       speakers: speakers ?? this.speakers,
+      modality: modality ?? this.modality,
     );
   }
 }

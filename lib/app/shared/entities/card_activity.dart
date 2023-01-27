@@ -1,4 +1,5 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/modality_activity_enum.dart';
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
 class CardActivity {
@@ -16,6 +17,7 @@ class CardActivity {
   final bool acceptSubscription;
   final int? enrolledUsers;
   final bool isExtensive;
+  final ModalityActivityEnum? modality;
 
   CardActivity({
     required this.acceptSubscription,
@@ -29,6 +31,7 @@ class CardActivity {
     required this.duration,
     required this.totalParticipants,
     required this.location,
+    required this.modality,
     this.speakers,
     required this.link,
     required this.isExtensive,
@@ -50,6 +53,7 @@ class CardActivity {
       speakers: [],
       totalParticipants: 0,
       isExtensive: false,
+      modality: null,
     );
   }
 }

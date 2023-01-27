@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/modality_activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
@@ -18,6 +19,7 @@ void main() {
   final mockActivities = <ActivityModel>[
     ActivityModel(
       id: '0',
+      modality: ModalityActivityEnum.hibrida,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
@@ -39,6 +41,7 @@ void main() {
     ),
     ActivityModel(
       id: '0',
+      modality: ModalityActivityEnum.presencial,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
@@ -60,6 +63,7 @@ void main() {
     ),
     ActivityModel(
       id: '0',
+      modality: ModalityActivityEnum.online,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
@@ -81,6 +85,7 @@ void main() {
     ),
     ActivityModel(
       id: '1',
+      modality: ModalityActivityEnum.online,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 02',
@@ -103,6 +108,7 @@ void main() {
     ActivityModel(
       id: '2',
       activityCode: 'C01',
+      modality: ModalityActivityEnum.online,
       type: ActivityEnum.CURSOS,
       title: 'Atividade 03',
       description: 'Teste de atividade mock',

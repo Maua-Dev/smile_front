@@ -9,6 +9,7 @@ import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controll
 import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
 import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/modality_activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
@@ -47,6 +48,7 @@ void main() {
   final mockActivities = <ActivityModel>[
     ActivityModel(
       id: '0',
+      modality: ModalityActivityEnum.online,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
@@ -68,6 +70,7 @@ void main() {
     ),
     ActivityModel(
       id: '0',
+      modality: ModalityActivityEnum.online,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
@@ -89,6 +92,7 @@ void main() {
     ),
     ActivityModel(
       id: '0',
+      modality: ModalityActivityEnum.presencial,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
@@ -110,6 +114,7 @@ void main() {
     ),
     ActivityModel(
       id: '1',
+      modality: ModalityActivityEnum.presencial,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 02',
@@ -132,6 +137,7 @@ void main() {
     ),
     ActivityModel(
       id: '2',
+      modality: ModalityActivityEnum.presencial,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 03',

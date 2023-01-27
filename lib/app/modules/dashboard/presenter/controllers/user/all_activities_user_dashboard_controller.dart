@@ -129,6 +129,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
           enrolledUsers: activity.schedule.enrolledUsers,
           acceptSubscription: activity.schedule.acceptSubscription,
           isExtensive: activity.schedule.isExtensive,
+          modality: activity.modality,
         ),
       );
     }

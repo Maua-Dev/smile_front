@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
+import '../../../../../../shared/utils/screen_helper.dart';
+import '../../../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
+import '../../../../domain/infra/modality_activity_enum.dart';
 import 'text_field_dialog_widget.dart';
 
 class ScheduleAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedParticipants;
   final void Function(String)? onChangedDate;
   final void Function(String)? onChangedHour;
+  final void Function(String)? onChangedClosure;
+  final void Function(ModalityActivityEnum?)? onChangedModality;
   final void Function(String value)? onChangedDuration;
   final void Function(String value)? onChangedLocation;
   final void Function(String value)? onChangedLink;
+  final void Function(String value)? onChangedProfessor;
   final void Function(bool? value)? onChangedEnableSubscription;
   final void Function()? onPressedIconDate;
   final void Function()? onPressedIconTime;
   final void Function()? removeSchedule;
+  final ModalityActivityEnum? modality;
   final bool? enableSubscription;
   final int? totalParticipants;
   final String date;
@@ -23,6 +31,8 @@ class ScheduleAddWidget extends StatelessWidget {
   final String? link;
   final String? location;
   final int length;
+  final String? closeInscriptions;
+  final String? professor;
 
   const ScheduleAddWidget({
     Key? key,
@@ -44,6 +54,12 @@ class ScheduleAddWidget extends StatelessWidget {
     this.onPressedIconTime,
     this.enableSubscription,
     this.onChangedEnableSubscription,
+    this.closeInscriptions,
+    this.professor,
+    this.onChangedProfessor,
+    this.onChangedClosure,
+    this.onChangedModality,
+    this.modality,
   }) : super(key: key);
 
   @override
@@ -159,6 +175,63 @@ class ScheduleAddWidget extends StatelessWidget {
                   ],
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: TextFieldDialogWidget(
+                        labelText: 'Professor Responsável',
+                        value: professor,
+                        onChanged: onChangedProfessor,
+                        padding: false,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Flexible(
+                      child: TextFieldDialogWidget(
+                          onPressedIcon: onPressedIconDate,
+                          suffixIcon: Icons.timer,
+                          labelText: 'Fechamento das Inscrições',
+                          hintText: 'DD-MM-AAAA',
+                          onChanged: onChangedClosure,
+                          value: date,
+                          padding: false,
+                          inputFormatters: [
+                            MaskTextInputFormatter(
+                              mask: '##-##-####',
+                            )
+                          ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: SizedBox(
+                        width: Screen.width(context) * 0.25,
+                        child: DropDownFieldCustom<ModalityActivityEnum>(
+                          textStyles: AppTextStyles.body.copyWith(
+                              color: AppColors.brandingBlue,
+                              fontSize:
+                                  Screen.width(context) < tabletSize ? 16 : 20),
+                          filledColor: Colors.white,
+                          titulo: 'Tipo de Atividade',
+                          value: modality,
+                          items: ModalityActivityEnum.values
+                              .toList()
+                              .map((ModalityActivityEnum value) {
+                            return DropdownMenuItem<ModalityActivityEnum>(
+                              value: value,
+                              child: Text(value.name),
+                            );
+                          }).toList(),
+                          onChanged: onChangedModality,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),

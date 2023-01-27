@@ -1,5 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/modality_activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
@@ -7,6 +8,7 @@ import 'package:smile_front/app/shared/models/activity_model.dart';
 var subscribedActivities = <ActivityModel>[
   ActivityModel(
     id: '0',
+    modality: ModalityActivityEnum.presencial,
     activityCode: 'C01',
     type: ActivityEnum.CURSOS,
     title:
@@ -31,12 +33,13 @@ var subscribedActivities = <ActivityModel>[
       ),
     ],
     schedule: ScheduleActivityModel(
-        date: DateTime.parse('2022-05-16 13:00'),
-        totalParticipants: 20,
-        duration: DateFormat('HH:mm').parse('01:00'),
-        location: 'H244',
-        link: 'https://www.google.com.br',
-        acceptSubscription: false,
-        isExtensive: false,),
+      date: DateTime.parse('2022-05-16 13:00'),
+      totalParticipants: 20,
+      duration: DateFormat('HH:mm').parse('01:00'),
+      location: 'H244',
+      link: 'https://www.google.com.br',
+      acceptSubscription: false,
+      isExtensive: false,
+    ),
   ),
 ];

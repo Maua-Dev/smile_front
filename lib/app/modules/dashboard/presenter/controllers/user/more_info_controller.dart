@@ -72,6 +72,7 @@ abstract class MoreInfoControllerBase with Store {
       type: activity.type,
       title: activity.title,
       description: activity.description,
+      modality: activity.modality,
       schedule: ScheduleActivityModel(
         date: activity.date,
         acceptSubscription: activity.acceptSubscription,

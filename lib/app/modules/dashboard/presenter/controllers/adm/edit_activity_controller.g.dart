@@ -84,6 +84,17 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
+  void setModality(ModalityActivityEnum? value) {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.setModality');
+    try {
+      return super.setModality(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setActivityCode(String value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setActivityCode');

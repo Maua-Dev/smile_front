@@ -142,6 +142,8 @@ class _EditActivityPageState
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 114, vertical: 8),
                             child: ScheduleAddWidget(
+                              modality: controller.activityToEdit.modality,
+                              onChangedModality: controller.setModality,
                               enableSubscription: controller
                                   .activityToEdit.schedule.acceptSubscription,
                               onChangedEnableSubscription: (valueBool) {
@@ -218,9 +220,11 @@ class _EditActivityPageState
                                       child: child!,
                                     );
                                   },
-                                ).then((value) {
-                                  controller.setHour(value!.format(context));
-                                });
+                                ).then(
+                                  (value) {
+                                    controller.setHour(value!.format(context));
+                                  },
+                                );
                               },
                             ),
                           );

@@ -6,6 +6,8 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
+import '../../../domain/infra/modality_activity_enum.dart';
+
 part 'edit_activity_controller.g.dart';
 
 class EditActivityController = EditActivityControllerBase
@@ -41,6 +43,7 @@ abstract class EditActivityControllerBase with Store {
     if (activityToEdit.title != '' &&
         activityToEdit.description != '' &&
         activityToEdit.type != null &&
+        activityToEdit.modality != null &&
         activityToEdit.activityCode != '' &&
         scheduleFirst.date != null &&
         scheduleFirst.duration != null &&
@@ -61,6 +64,11 @@ abstract class EditActivityControllerBase with Store {
   @action
   void setType(ActivityEnum? value) {
     activityToEdit = activityToEdit.copyWith(type: value);
+  }
+
+  @action
+  void setModality(ModalityActivityEnum? value) {
+    activityToEdit = activityToEdit.copyWith(modality: value);
   }
 
   @action
