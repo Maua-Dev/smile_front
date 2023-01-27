@@ -99,13 +99,9 @@ abstract class AdmDashboardControllerBase with Store {
     setAllFilters();
   }
 
-  @action
-  resetFilters() {
-    activitiesList = allActivitiesList;
-  }
 
   @action
-  void allFilters() {
+  void setAllFilters() {
     var listActivities = allActivitiesList;
     if (typeFilter != null) {
       listActivities = filterActivitiesByType(typeFilter!, listActivities);

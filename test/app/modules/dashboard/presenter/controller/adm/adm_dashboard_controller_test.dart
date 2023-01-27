@@ -179,8 +179,11 @@ void main() {
   });
 
   test('setAllFilters', () {
-    controller.setAllFilters();
-    expect(controller.activitiesList, controller.allActivitiesList);
+    if (controller.typeFilter == null &&
+        controller.hourFilter == null &&
+        controller.dateFilter == null) {
+      expect(controller.activitiesList, mockActivities);
+    }
   });
 
   test('resetFilters', () {

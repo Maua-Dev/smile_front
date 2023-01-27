@@ -28,7 +28,7 @@ class FilterCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String formattedDate =
-        dateFilter != null ? DateFormat('dd-MM-yyyy').format(dateFilter!) : '';
+        dateFilter != null ? DateFormat('dd/MM/yyyy').format(dateFilter!) : '';
     String formattedHour =
         hourFilter != null ? DateFormat('HH:mm').format(hourFilter!) : '';
     return Column(
