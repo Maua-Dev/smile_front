@@ -41,20 +41,23 @@ class _AdmDashboardPageState
                 children: [
                   Padding(
                       padding: const EdgeInsets.symmetric(vertical: 80),
-                      child: FilterCardWidget(
-                        onChangedActivitiesFilter: (type) {
-                          controller.setFilterType(type!);
-                          controller.allFilters();
-                        },
-                        onChangedDateFilter: (date) {
-                          controller.setFilterDate(date!);
-                          controller.allFilters();
-                        },
-                        onChangedTimeFilter: (hour) {
-                          controller.setFilterHour(hour!);
-                          controller.allFilters();
-                        },
-                      )),
+                      child: Observer(builder: (_) {
+                        return FilterCardWidget(
+                          typeFilter: controller.typeFilter,
+                          dateFilter: controller.dateFilter,
+                          hourFilter: controller.hourFilter,
+                          resetFilters: () => controller.resetFilters(),
+                          onChangedActivitiesFilter: (type) {
+                            controller.setTypeFilter(type!);
+                          },
+                          onChangedDateFilter: (date) {
+                            controller.setDateFilter(date!);
+                          },
+                          onChangedTimeFilter: (hour) {
+                            controller.setHourFilter(hour!);
+                          },
+                        );
+                      })),
                   Observer(builder: (_) {
                     if (controller.isLoading) {
                       return const Center(

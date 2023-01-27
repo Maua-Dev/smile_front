@@ -4,27 +4,31 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-class FilterCardWidget extends StatefulWidget {
+class FilterCardWidget extends StatelessWidget {
   final Function(ActivityEnum?)? onChangedActivitiesFilter;
+  final ActivityEnum? typeFilter;
   final Function(DateTime?)? onChangedDateFilter;
+  final DateTime? dateFilter;
   final Function(DateTime?)? onChangedTimeFilter;
+  final DateTime? hourFilter;
+  final Function()? resetFilters;
   const FilterCardWidget({
     Key? key,
     this.onChangedActivitiesFilter,
     this.onChangedDateFilter,
     this.onChangedTimeFilter,
+    this.typeFilter,
+    this.dateFilter,
+    this.hourFilter,
+    this.resetFilters,
   }) : super(key: key);
 
   @override
-  State<FilterCardWidget> createState() => _FilterCardWidgetState();
-}
-
-class _FilterCardWidgetState extends State<FilterCardWidget> {
-  String _dateString = '';
-  String _timeString = '';
-
-  @override
   Widget build(BuildContext context) {
+    String formattedDate =
+        dateFilter != null ? DateFormat('dd-MM-yyyy').format(dateFilter!) : '';
+    String formattedHour =
+        hourFilter != null ? DateFormat('HH:mm').format(hourFilter!) : '';
     return Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -49,7 +53,8 @@ class _FilterCardWidgetState extends State<FilterCardWidget> {
                 borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(0, 3, 3, 0),
-              child: DropdownButtonFormField(
+              child: DropdownButtonFormField<ActivityEnum>(
+                value: typeFilter,
                 iconSize: 24,
                 isExpanded: true,
                 decoration: InputDecoration(
@@ -66,7 +71,7 @@ class _FilterCardWidgetState extends State<FilterCardWidget> {
                       child: Text(activityEnum.name.toString(),
                           style: AppTextStyles.body.copyWith(fontSize: 15)));
                 }).toList(),
-                onChanged: widget.onChangedActivitiesFilter,
+                onChanged: onChangedActivitiesFilter,
               ),
             ),
           ),
@@ -84,15 +89,15 @@ class _FilterCardWidgetState extends State<FilterCardWidget> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0),
-                    child: Text(_dateString == '' ? 'Data' : _dateString,
+                    child: Text(formattedDate == '' ? 'Data' : formattedDate,
                         style: AppTextStyles.body
-                            .copyWith(fontSize: _dateString == '' ? 25 : 16)),
+                            .copyWith(fontSize: formattedDate == '' ? 25 : 16)),
                   ),
                   IconButton(
                     onPressed: () {
                       showDatePicker(
                           context: context,
-                          initialDate: DateTime.now(),
+                          initialDate: DateTime.utc(2022, 5, 16),
                           firstDate: DateTime(2022),
                           lastDate: DateTime(2024),
                           builder: ((context, child) {
@@ -103,10 +108,8 @@ class _FilterCardWidgetState extends State<FilterCardWidget> {
                               child: child!,
                             );
                           })).then((date) {
-                        setState(() {
-                          _dateString = DateFormat('dd/MM/yyyy').format(date!);
-                        });
-                        widget.onChangedDateFilter!(date);
+                        formattedDate = DateFormat('dd/MM/yyyy').format(date!);
+                        onChangedDateFilter!(date);
                       });
                     },
                     highlightColor: AppColors.white,
@@ -133,9 +136,9 @@ class _FilterCardWidgetState extends State<FilterCardWidget> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0),
-                    child: Text(_timeString == '' ? 'Hora' : _timeString,
+                    child: Text(formattedHour == '' ? 'Hora' : formattedHour,
                         style: AppTextStyles.body
-                            .copyWith(fontSize: _timeString == '' ? 25 : 16)),
+                            .copyWith(fontSize: formattedHour == '' ? 25 : 16)),
                   ),
                   IconButton(
                     onPressed: () {
@@ -152,13 +155,11 @@ class _FilterCardWidgetState extends State<FilterCardWidget> {
                               child: child!,
                             );
                           }).then((time) {
-                        setState(() {
-                          _timeString = time!.format(context);
-                        });
+                        formattedHour = time!.format(context);
                         var now = DateTime.now();
-                        now = DateTime(now.year, now.month, now.day, time!.hour,
+                        now = DateTime(now.year, now.month, now.day, time.hour,
                             time.minute);
-                        widget.onChangedTimeFilter!(now);
+                        onChangedTimeFilter!(now);
                       });
                     },
                     highlightColor: AppColors.white,
@@ -171,6 +172,10 @@ class _FilterCardWidgetState extends State<FilterCardWidget> {
               ),
             ),
           ),
+          ElevatedButton.icon(
+              onPressed: resetFilters,
+              icon: const Icon(Icons.delete),
+              label: const Text('Limpar Filtros')),
         ]));
   }
 }

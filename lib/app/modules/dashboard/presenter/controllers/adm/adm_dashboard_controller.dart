@@ -73,42 +73,53 @@ abstract class AdmDashboardControllerBase with Store {
   }
 
   @observable
-  ActivityEnum? type;
+  ActivityEnum? typeFilter;
 
   @action
-  void setFilterType(ActivityEnum value) {
-    type = value;
+  void setTypeFilter(ActivityEnum value) {
+    typeFilter = value;
+    setAllFilters();
   }
 
   @observable
-  DateTime? date;
+  DateTime? dateFilter;
 
   @action
-  void setFilterDate(DateTime value) {
-    date = value;
+  void setDateFilter(DateTime value) {
+    dateFilter = value;
+    setAllFilters();
   }
 
   @observable
-  DateTime? hour;
+  DateTime? hourFilter;
 
   @action
-  void setFilterHour(DateTime value) {
-    hour = value;
+  void setHourFilter(DateTime value) {
+    hourFilter = value;
+    setAllFilters();
   }
 
   @action
-  void allFilters() {
+  void setAllFilters() {
     var listActivities = allActivitiesList;
-    if (type != null) {
-      listActivities = filterActivitiesByType(type!, listActivities);
+    if (typeFilter != null) {
+      listActivities = filterActivitiesByType(typeFilter!, listActivities);
     }
-    if (date != null) {
-      listActivities = filterActivitiesByDate(date!, listActivities);
+    if (dateFilter != null) {
+      listActivities = filterActivitiesByDate(dateFilter!, listActivities);
     }
-    if (hour != null) {
-      listActivities = filterActivitiesByHour(hour!, listActivities);
+    if (hourFilter != null) {
+      listActivities = filterActivitiesByHour(hourFilter!, listActivities);
     }
     activitiesList = listActivities;
+  }
+
+  @action
+  resetFilters() {
+    activitiesList = allActivitiesList;
+    typeFilter = null;
+    dateFilter = null;
+    hourFilter = null;
   }
 
   @action

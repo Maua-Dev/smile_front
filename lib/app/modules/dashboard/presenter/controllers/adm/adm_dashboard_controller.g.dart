@@ -109,51 +109,51 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
     });
   }
 
-  late final _$typeAtom =
-      Atom(name: 'AdmDashboardControllerBase.type', context: context);
+  late final _$typeFilterAtom =
+      Atom(name: 'AdmDashboardControllerBase.typeFilter', context: context);
 
   @override
-  ActivityEnum? get type {
-    _$typeAtom.reportRead();
-    return super.type;
+  ActivityEnum? get typeFilter {
+    _$typeFilterAtom.reportRead();
+    return super.typeFilter;
   }
 
   @override
-  set type(ActivityEnum? value) {
-    _$typeAtom.reportWrite(value, super.type, () {
-      super.type = value;
+  set typeFilter(ActivityEnum? value) {
+    _$typeFilterAtom.reportWrite(value, super.typeFilter, () {
+      super.typeFilter = value;
     });
   }
 
-  late final _$dateAtom =
-      Atom(name: 'AdmDashboardControllerBase.date', context: context);
+  late final _$dateFilterAtom =
+      Atom(name: 'AdmDashboardControllerBase.dateFilter', context: context);
 
   @override
-  DateTime? get date {
-    _$dateAtom.reportRead();
-    return super.date;
+  DateTime? get dateFilter {
+    _$dateFilterAtom.reportRead();
+    return super.dateFilter;
   }
 
   @override
-  set date(DateTime? value) {
-    _$dateAtom.reportWrite(value, super.date, () {
-      super.date = value;
+  set dateFilter(DateTime? value) {
+    _$dateFilterAtom.reportWrite(value, super.dateFilter, () {
+      super.dateFilter = value;
     });
   }
 
-  late final _$hourAtom =
-      Atom(name: 'AdmDashboardControllerBase.hour', context: context);
+  late final _$hourFilterAtom =
+      Atom(name: 'AdmDashboardControllerBase.hourFilter', context: context);
 
   @override
-  DateTime? get hour {
-    _$hourAtom.reportRead();
-    return super.hour;
+  DateTime? get hourFilter {
+    _$hourFilterAtom.reportRead();
+    return super.hourFilter;
   }
 
   @override
-  set hour(DateTime? value) {
-    _$hourAtom.reportWrite(value, super.hour, () {
-      super.hour = value;
+  set hourFilter(DateTime? value) {
+    _$hourFilterAtom.reportWrite(value, super.hourFilter, () {
+      super.hourFilter = value;
     });
   }
 
@@ -217,44 +217,55 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
   }
 
   @override
-  void setFilterType(ActivityEnum value) {
+  void setTypeFilter(ActivityEnum value) {
     final _$actionInfo = _$AdmDashboardControllerBaseActionController
-        .startAction(name: 'AdmDashboardControllerBase.setFilterType');
+        .startAction(name: 'AdmDashboardControllerBase.setTypeFilter');
     try {
-      return super.setFilterType(value);
+      return super.setTypeFilter(value);
     } finally {
       _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setFilterDate(DateTime value) {
+  void setDateFilter(DateTime value) {
     final _$actionInfo = _$AdmDashboardControllerBaseActionController
-        .startAction(name: 'AdmDashboardControllerBase.setFilterDate');
+        .startAction(name: 'AdmDashboardControllerBase.setDateFilter');
     try {
-      return super.setFilterDate(value);
+      return super.setDateFilter(value);
     } finally {
       _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setFilterHour(DateTime value) {
+  void setHourFilter(DateTime value) {
     final _$actionInfo = _$AdmDashboardControllerBaseActionController
-        .startAction(name: 'AdmDashboardControllerBase.setFilterHour');
+        .startAction(name: 'AdmDashboardControllerBase.setHourFilter');
     try {
-      return super.setFilterHour(value);
+      return super.setHourFilter(value);
     } finally {
       _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void allFilters() {
+  void setAllFilters() {
     final _$actionInfo = _$AdmDashboardControllerBaseActionController
-        .startAction(name: 'AdmDashboardControllerBase.allFilters');
+        .startAction(name: 'AdmDashboardControllerBase.setAllFilters');
     try {
-      return super.allFilters();
+      return super.setAllFilters();
+    } finally {
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic resetFilters() {
+    final _$actionInfo = _$AdmDashboardControllerBaseActionController
+        .startAction(name: 'AdmDashboardControllerBase.resetFilters');
+    try {
+      return super.resetFilters();
     } finally {
       _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -305,9 +316,9 @@ isFloatActionButtonOpen: ${isFloatActionButtonOpen},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 activitiesList: ${activitiesList},
 allActivitiesList: ${allActivitiesList},
-type: ${type},
-date: ${date},
-hour: ${hour}
+typeFilter: ${typeFilter},
+dateFilter: ${dateFilter},
+hourFilter: ${hourFilter}
     ''';
   }
 }
