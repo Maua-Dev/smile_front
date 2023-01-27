@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_card/activities_card_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_card/column_builder_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app_bar_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/filter/filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
@@ -33,36 +32,37 @@ class _AdmDashboardPageState
         children: [
           const SideBarWidget(),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 80),
-                      child: FilterCardWidget(
-                        onChangedActivitiesFilter: (type) {
-                          controller.setFilterType(type!);
-                          controller.allFilters();
-                        },
-                        onChangedDateFilter: (date) {
-                          controller.setFilterDate(date!);
-                          controller.allFilters();
-                        },
-                        onChangedTimeFilter: (hour) {
-                          controller.setFilterHour(hour!);
-                          controller.allFilters();
-                        },
-                      )),
-                  Observer(builder: (_) {
-                    if (controller.isLoading) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    } else {
-                      if (controller.activitiesList.isNotEmpty) {
-                        return ColumnBuilder(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 50),
+                    child: FilterCardWidget(onChangedActivitiesFilter: (type) {
+                      controller.setFilterType(type!);
+                      controller.allFilters();
+                    }, onChangedDateFilter: (date) {
+                      controller.setFilterDate(date!);
+                      controller.allFilters();
+                    }, onChangedTimeFilter: (hour) {
+                      controller.setFilterHour(hour!);
+                      controller.allFilters();
+                    }, resetFilters: () {
+                      controller.resetFilters();
+                    })),
+                Observer(builder: (_) {
+                  if (controller.isLoading) {
+                    return const Expanded(
+                        child: Center(
+                      child: CircularProgressIndicator(),
+                    ));
+                  } else {
+                    if (controller.activitiesList.isNotEmpty) {
+                      return SizedBox(
+                        width: 1165,
+                        height: MediaQuery.of(context).size.height - 260,
+                        child: ListView.builder(
                           itemCount: controller.activitiesList.length,
                           itemBuilder: (BuildContext context, int index) {
                             String date = DateFormat('dd/MM/yyyy').format(
@@ -136,15 +136,15 @@ class _AdmDashboardPageState
                               }),
                             );
                           },
-                        );
-                      } else {
-                        return Text('Atividade não encontrada',
-                            style: AppTextStyles.body);
-                      }
+                        ),
+                      );
+                    } else {
+                      return Text('Atividade não encontrada',
+                          style: AppTextStyles.body.copyWith(fontSize: 30));
                     }
-                  }),
-                ],
-              ),
+                  }
+                }),
+              ],
             ),
           ),
         ],
