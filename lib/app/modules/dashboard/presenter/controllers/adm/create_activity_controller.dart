@@ -4,6 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
 import '../../../domain/infra/activity_enum.dart';
+import '../../../domain/infra/modality_activity_enum.dart';
 import '../../../infra/models/speaker_activity_model.dart';
 
 part 'create_activity_controller.g.dart';
@@ -55,6 +56,17 @@ abstract class CreateActivityControllerBase with Store {
   @action
   void setType(ActivityEnum? value) {
     activityToCreate = activityToCreate.copyWith(type: value);
+  }
+
+  @action
+  void setModality(ModalityActivityEnum? value) {
+    activityToCreate = activityToCreate.copyWith(modality: value);
+  }
+
+  @action
+  void setIsExtensive() {
+    activityToCreate.schedule.isExtensive =
+        !activityToCreate.schedule.isExtensive;
   }
 
   @action
