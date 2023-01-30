@@ -169,23 +169,21 @@ abstract class UserDashboardControllerBase with Store {
     allActivitiesToCards = [];
     if (subscribedActivitiesList.isNotEmpty) {
       for (var activity in subscribedActivitiesList) {
-        for (var time in activity.schedule) {
-          allActivitiesToCards.add(CardActivity(
-            id: activity.id,
-            activityCode: activity.activityCode,
-            type: activity.type,
-            title: activity.title,
-            description: activity.description,
-            date: time.date,
-            duration: time.duration,
-            totalParticipants: time.totalParticipants,
-            speakers: activity.speakers,
-            location: time.location,
-            link: time.link,
-            enrolledUsers: time.enrolledUsers,
-            acceptSubscription: time.acceptSubscription,
-          ));
-        }
+        allActivitiesToCards.add(CardActivity(
+          id: activity.id,
+          activityCode: activity.activityCode,
+          type: activity.type,
+          title: activity.title,
+          description: activity.description,
+          date: activity.schedule.date,
+          duration: activity.schedule.duration,
+          totalParticipants: activity.schedule.totalParticipants,
+          speakers: activity.speakers,
+          location: activity.schedule.location,
+          link: activity.schedule.link,
+          enrolledUsers: activity.schedule.enrolledUsers,
+          acceptSubscription: activity.schedule.acceptSubscription,
+        ));
       }
       allActivitiesToCards.sort(
         (a, b) => a.date!.compareTo(b.date!),
@@ -200,23 +198,21 @@ abstract class UserDashboardControllerBase with Store {
   void getNextActivity() {
     if (subscribedActivitiesList.isNotEmpty) {
       nextActivity = subscribedActivitiesList.first;
-      for (var time in subscribedActivitiesList.first.schedule) {
-        cardNextActivity = CardActivity(
-          id: nextActivity.id,
-          activityCode: nextActivity.activityCode,
-          type: nextActivity.type,
-          title: nextActivity.title,
-          description: nextActivity.description,
-          date: time.date,
-          duration: time.duration,
-          totalParticipants: time.totalParticipants,
-          speakers: nextActivity.speakers,
-          location: time.location,
-          link: time.link,
-          enrolledUsers: time.enrolledUsers,
-          acceptSubscription: time.acceptSubscription,
-        );
-      }
+      cardNextActivity = CardActivity(
+        id: nextActivity.id,
+        activityCode: nextActivity.activityCode,
+        type: nextActivity.type,
+        title: nextActivity.title,
+        description: nextActivity.description,
+        date: nextActivity.schedule.date,
+        duration: nextActivity.schedule.duration,
+        totalParticipants: nextActivity.schedule.totalParticipants,
+        speakers: nextActivity.speakers,
+        location: nextActivity.schedule.location,
+        link: nextActivity.schedule.link,
+        enrolledUsers: nextActivity.schedule.enrolledUsers,
+        acceptSubscription: nextActivity.schedule.acceptSubscription,
+      );
     } else {
       nextActivity = ActivityModel.newInstance();
     }

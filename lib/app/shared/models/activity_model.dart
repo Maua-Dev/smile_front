@@ -12,7 +12,7 @@ class ActivityModel extends Activity {
   final ActivityEnum? type;
   final String title;
   final String description;
-  final List<ScheduleActivityModel> schedule;
+  final ScheduleActivityModel schedule;
   final List<SpeakerActivityModel> speakers;
 
   ActivityModel({
@@ -40,7 +40,7 @@ class ActivityModel extends Activity {
       type: ActivityEnumExtension.stringToEnumMap(map['type']),
       title: map['title'],
       description: map['description'],
-      schedule: ScheduleActivityModel.fromMaps(map['schedule']),
+      schedule: ScheduleActivityModel.fromMaps(map['schedule']).first,
       speakers: SpeakerActivityModel.fromMaps(map['speakers']),
     );
   }
@@ -60,7 +60,7 @@ class ActivityModel extends Activity {
 
   factory ActivityModel.newInstance() {
     return ActivityModel(
-        schedule: [ScheduleActivityModel.newInstance()],
+        schedule: ScheduleActivityModel.newInstance(),
         description: '',
         id: '',
         activityCode: '',
@@ -75,7 +75,7 @@ class ActivityModel extends Activity {
     ActivityEnum? type,
     String? title,
     String? description,
-    List<ScheduleActivityModel>? schedule,
+    ScheduleActivityModel? schedule,
     List<SpeakerActivityModel>? speakers,
   }) {
     return ActivityModel(

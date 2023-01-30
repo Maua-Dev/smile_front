@@ -6,6 +6,8 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart'
+    as _i4;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart'
     as _i2;
 
@@ -37,4 +39,23 @@ class MockGetDownloadLinkCsvInterface extends _i1.Mock
         ),
         returnValue: _i3.Future<String>.value(''),
       ) as _i3.Future<String>);
+}
+
+/// A class which mocks [DeleteActivityInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockDeleteActivityInterface extends _i1.Mock
+    implements _i4.DeleteActivityInterface {
+  MockDeleteActivityInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<dynamic> call(String? id) => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [id],
+        ),
+        returnValue: _i3.Future<dynamic>.value(),
+      ) as _i3.Future<dynamic>);
 }

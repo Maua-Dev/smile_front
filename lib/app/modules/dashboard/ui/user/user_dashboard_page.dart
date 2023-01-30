@@ -62,9 +62,9 @@ class _UserDashboardPageState
                 Observer(builder: (_) {
                   return NextActivityCardWidget(
                     isUser: true,
-                    link: controller.nextActivity.schedule[0].link,
-                    location: controller.nextActivity.schedule[0].location,
-                    duration: controller.nextActivity.schedule[0].duration,
+                    link: controller.nextActivity.schedule.link,
+                    location: controller.nextActivity.schedule.location,
+                    duration: controller.nextActivity.schedule.duration,
                     onTap: () {
                       var isRegistered = false;
                       var list = controller.subscribedActivitiesList
@@ -83,7 +83,7 @@ class _UserDashboardPageState
                     },
                     name: controller.nextActivity.title,
                     description: controller.nextActivity.description,
-                    date: controller.nextActivity.schedule[0].date,
+                    date: controller.nextActivity.schedule.date,
                   );
                 }),
                 TextHeader(

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/app_bar/adm_app_bar_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_carousel/activities_carousel_widget.dart';
+import 'package:intl/intl.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_card/activities_card_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app_bar_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/filter/filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/shared/widgets/logout_button_widget.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/generated/l10n.dart';
-import '../../../../shared/widgets/text-header/text_header.dart';
+import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import '../../../../shared/utils/utils.dart';
+import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
+import '../../../auth/infra/repositories/secure_storage.dart';
 import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
-import 'widgets/filter/filter_chip_widget.dart';
 
 class AdmDashboardPage extends StatefulWidget {
   const AdmDashboardPage({Key? key}) : super(key: key);
@@ -23,6 +23,7 @@ class _AdmDashboardPageState
     extends ModularState<AdmDashboardPage, AdmDashboardController> {
   @override
   Widget build(BuildContext context) {
+    var secureStorage = Modular.get<SecureStorage>();
     return Scaffold(
       appBar: const PreferredSize(
           preferredSize: Size.fromHeight(73),
@@ -30,242 +31,128 @@ class _AdmDashboardPageState
       body: Row(
         children: [
           const SideBarWidget(),
-          SingleChildScrollView(
+          Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
               children: [
-                const SizedBox(
-                  height: 32,
-                ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 72.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const TextHeader(
-                        title: 'Próximas Atividades',
-                        fontSize: 50,
-                      ),
-                      Row(
-                        children: [
-                          LogoutButtonWidget(
-                            backgroundColor: AppColors.brandingOrange,
-                            buttonTittle: S.of(context).initTitle.toUpperCase(),
-                            onPressed: () {
-                              Modular.to.navigate('/home');
-                            },
-                          ),
-                          const SizedBox(
-                            width: 32,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                    padding: const EdgeInsets.symmetric(vertical: 50),
+                    child: Observer(builder: (_) {
+                      return FilterCardWidget(
+                        typeFilter: controller.typeFilter,
+                        dateFilter: controller.dateFilter,
+                        hourFilter: controller.hourFilter,
+                        resetFilters: () => controller.resetFilters(),
+                        onChangedActivitiesFilter: (type) {
+                          controller.setTypeFilter(type!);
+                        },
+                        onChangedDateFilter: (date) {
+                          controller.setDateFilter(date!);
+                        },
+                        onChangedTimeFilter: (hour) {
+                          controller.setHourFilter(hour!);
+                        },
+                      );
+                    })),
                 Observer(builder: (_) {
                   if (controller.isLoading) {
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else {
-                    return ActivitiesCarouselWidget(
-                      cardColor: AppColors.brandingOrange,
-                      list: controller.nextActivitiesList,
-                      listToEdit: controller.activitiesList,
-                      isNextActivity: true,
-                    );
+                    if (controller.activitiesList.isNotEmpty) {
+                      return SizedBox(
+                        width: 1165,
+                        height: MediaQuery.of(context).size.height - 268,
+                        child: ListView.builder(
+                          itemCount: controller.activitiesList.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            String date = DateFormat('dd/MM/yyyy').format(
+                                controller
+                                    .activitiesList[index].schedule.date!);
+                            String time = DateFormat('HH:mm').format(controller
+                                .activitiesList[index].schedule.date!);
+                            String finalTime = Utils.getActivityFinalTime(
+                                controller.activitiesList[index].schedule.date!,
+                                controller
+                                    .activitiesList[index].schedule.duration!);
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 40),
+                              child: Observer(builder: (_) {
+                                return ActivitiesCardWidget(
+                                  activityCode: controller
+                                      .activitiesList[index].activityCode,
+                                  date: date,
+                                  description: controller
+                                      .activitiesList[index].description,
+                                  enrolledUsersLength: controller
+                                      .activitiesList[index]
+                                      .schedule
+                                      .enrolledUsers!,
+                                  totalParticipants: controller
+                                      .activitiesList[index]
+                                      .schedule
+                                      .totalParticipants!,
+                                  title: controller.activitiesList[index].title,
+                                  time: time,
+                                  finalTime: finalTime,
+                                  onPressedDelete: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return Observer(builder: (_) {
+                                          return ActionConfirmationDialogWidget(
+                                              isLoading: controller.isLoading,
+                                              title:
+                                                  'Tem certeza que deseja continuar?',
+                                              content:
+                                                  'Ao confirmar todos os dados antigos serão perdidos.',
+                                              onPressed: () async {
+                                                await controller
+                                                    .deleteUserActivity(
+                                                        controller
+                                                            .activitiesList[
+                                                                index]
+                                                            .id);
+                                                Modular.to.pop();
+                                              });
+                                        });
+                                      },
+                                    );
+                                  },
+                                  onPressedEdit: () async {
+                                    var accessLevel =
+                                        await secureStorage.getAccessLevel();
+                                    if (accessLevel == 'ADMIN') {
+                                      Modular.to.navigate(
+                                        '/adm/edit-activity',
+                                        arguments: controller.activitiesList
+                                            .firstWhere((element) =>
+                                                element.id ==
+                                                controller
+                                                    .activitiesList[index].id),
+                                      );
+                                    }
+                                  },
+                                );
+                              }),
+                            );
+                          },
+                        ),
+                      );
+                    } else {
+                      return Text('Atividade não encontrada',
+                          style: AppTextStyles.body);
+                    }
                   }
                 }),
-                const TextHeader(
-                  title: 'Todas Atividades',
-                  fontSize: 38,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 72.0, top: 20),
-                  child: SizedBox(
-                      height: 50,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: MediaQuery.of(context).size.width < 1650
-                              ? ActivityEnum.values.length - 6
-                              : ActivityEnum.values.length - 4,
-                          itemBuilder: (BuildContext ctx, index) {
-                            return Observer(builder: (_) {
-                              return FilterChipWidget(
-                                  onTap: () => controller
-                                      .toggleFilterActivityChipIndex(index),
-                                  selected: controller
-                                          .filterActivityChipIndexSelected ==
-                                      index,
-                                  activityType: ActivityEnum.values[index]);
-                            });
-                          })),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 72.0, bottom: 20),
-                  child: SizedBox(
-                      height: 50,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount:
-                              MediaQuery.of(context).size.width < 1650 ? 6 : 4,
-                          itemBuilder: (BuildContext ctx, index) {
-                            return Observer(builder: (_) {
-                              return FilterChipWidget(
-                                  onTap: () =>
-                                      controller.toggleFilterActivityChipIndex(
-                                          MediaQuery.of(context).size.width <
-                                                  1650
-                                              ? index + 6
-                                              : index + 8),
-                                  selected: MediaQuery.of(context).size.width <
-                                          1650
-                                      ? controller
-                                              .filterActivityChipIndexSelected ==
-                                          index + 6
-                                      : controller
-                                              .filterActivityChipIndexSelected ==
-                                          index + 8,
-                                  activityType: ActivityEnum.values[
-                                      MediaQuery.of(context).size.width < 1650
-                                          ? index + 6
-                                          : index + 8]);
-                            });
-                          })),
-                ),
-                Observer(builder: (_) {
-                  if (controller.isLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else {
-                    return Column(
-                      children: [
-                        ActivitiesCarouselWidget(
-                          list: controller.mondayActivitiesList,
-                          listToEdit: controller.activitiesList,
-                          weekday: 0,
-                        ),
-                        ActivitiesCarouselWidget(
-                          list: controller.tuesdayActivitiesList,
-                          listToEdit: controller.activitiesList,
-                          weekday: 1,
-                        ),
-                        ActivitiesCarouselWidget(
-                          list: controller.wednesdayActivitiesList,
-                          listToEdit: controller.activitiesList,
-                          weekday: 2,
-                        ),
-                        ActivitiesCarouselWidget(
-                          list: controller.thursdayActivitiesList,
-                          listToEdit: controller.activitiesList,
-                          weekday: 3,
-                        ),
-                        ActivitiesCarouselWidget(
-                          list: controller.fridayActivitiesList,
-                          listToEdit: controller.activitiesList,
-                          weekday: 4,
-                        ),
-                        ActivitiesCarouselWidget(
-                          list: controller.saturdayActivitiesList,
-                          listToEdit: controller.activitiesList,
-                          weekday: 5,
-                        ),
-                        ActivitiesCarouselWidget(
-                          list: controller.sundayActivitiesList,
-                          listToEdit: controller.activitiesList,
-                          weekday: 6,
-                        ),
-                      ],
-                    );
-                  }
-                }),
-                const SizedBox(
-                  height: 150,
-                ),
               ],
             ),
           ),
         ],
       ),
-      floatingActionButton: Observer(builder: (_) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            if (controller.isFloatActionButtonOpen)
-              Padding(
-                padding: const EdgeInsets.only(right: 36.0),
-                child: SizedBox(
-                  width: 70,
-                  child: FittedBox(
-                    child: Observer(builder: (_) {
-                      return FloatingActionButton(
-                          backgroundColor: AppColors.brandingOrange,
-                          child: controller.isLoadingCsv
-                              ? const CircularProgressIndicator()
-                              : const Icon(
-                                  Icons.insert_chart_rounded,
-                                  size: 35,
-                                  color: Colors.white,
-                                ),
-                          onPressed: () {
-                            controller.downloadCsv();
-                          });
-                    }),
-                  ),
-                ),
-              ),
-            const SizedBox(
-              height: 20,
-            ),
-            if (controller.isFloatActionButtonOpen)
-              Padding(
-                padding: const EdgeInsets.only(right: 36.0),
-                child: SizedBox(
-                  width: 70,
-                  child: FittedBox(
-                    child: FloatingActionButton(
-                        backgroundColor: AppColors.brandingOrange,
-                        child: const Icon(
-                          Icons.edit,
-                          size: 35,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          Modular.to.navigate('/adm/create-activity');
-                        }),
-                  ),
-                ),
-              ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 36.0, bottom: 36.0),
-              child: SizedBox(
-                width: 100,
-                child: FittedBox(
-                  child: FloatingActionButton(
-                      backgroundColor: AppColors.brandingOrange,
-                      child: Icon(
-                        controller.isFloatActionButtonOpen
-                            ? Icons.close
-                            : Icons.keyboard_arrow_up_rounded,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        controller.toggleFloatActionButton();
-                      }),
-                ),
-              ),
-            ),
-          ],
-        );
-      }),
     );
   }
 }
