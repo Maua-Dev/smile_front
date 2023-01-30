@@ -116,25 +116,21 @@ class _EditActivityPageState
                     shrinkWrap: true,
                     itemCount: 1,
                     itemBuilder: (context, index) {
-                      var hour = controller.activityToEdit.schedule.date == null
+                      var hour = controller.activityToEdit.startDate == null
                           ? ''
                           : DateFormat('HH:mm')
-                              .format(controller.activityToEdit.schedule.date!);
-                      var date = controller.activityToEdit.schedule.date == null
+                              .format(controller.activityToEdit.startDate!);
+                      var date = controller.activityToEdit.startDate == null
                           ? ''
                           : DateFormat('dd-MM-yyyy')
-                              .format(controller.activityToEdit.schedule.date!);
-                      var duration =
-                          controller.activityToEdit.schedule.duration == null
-                              ? ''
-                              : DateFormat('HH:mm').format(
-                                  controller.activityToEdit.schedule.duration!);
+                              .format(controller.activityToEdit.startDate!);
+
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
-                          enableSubscription: controller
-                              .activityToEdit.schedule.acceptSubscription,
+                          enableSubscription:
+                              controller.activityToEdit.acceptingNewEnrollments,
                           onChangedEnableSubscription: (valueBool) {
                             setState(() {
                               controller.setEnableSubscription(
@@ -143,21 +139,22 @@ class _EditActivityPageState
                           },
                           date: date,
                           hour: hour,
-                          link: controller.activityToEdit.schedule.link,
+                          link: controller.activityToEdit.link,
                           onChangedLink: (value) {
                             controller.setLink(value, index);
                           },
-                          location: controller.activityToEdit.schedule.location,
+                          location: controller.activityToEdit.place,
                           onChangedLocation: (value) {
                             controller.setLocation(value, index);
                           },
-                          duration: duration,
+                          duration:
+                              controller.activityToEdit.duration.toString(),
                           onChangedDuration: (value) {
                             controller.setDuration(value, index);
                           },
                           length: 1,
-                          totalParticipants: controller
-                              .activityToEdit.schedule.totalParticipants,
+                          totalParticipants:
+                              controller.activityToEdit.totalSlots,
                           onChangedDate: (value) {
                             controller.setDate(value, index);
                           },

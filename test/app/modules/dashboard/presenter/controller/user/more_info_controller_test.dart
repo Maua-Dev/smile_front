@@ -34,7 +34,7 @@ void main() {
     title: 'Title',
     description: 'Description',
     date: DateTime.now(),
-    duration: DateTime.now(),
+    duration: 0,
     totalParticipants: 10,
     location: 'location',
     link: 'link',

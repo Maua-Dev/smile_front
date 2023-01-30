@@ -116,28 +116,20 @@ class _CreateActivityPageState
                     shrinkWrap: true,
                     itemCount: 1,
                     itemBuilder: (context, index) {
-                      var hour =
-                          controller.activityToCreate.schedule.date == null
-                              ? ''
-                              : DateFormat('HH:mm').format(
-                                  controller.activityToCreate.schedule.date!);
-                      var date =
-                          controller.activityToCreate.schedule.date == null
-                              ? ''
-                              : DateFormat('dd-MM-yyyy').format(
-                                  controller.activityToCreate.schedule.date!);
-                      var duration = controller
-                                  .activityToCreate.schedule.duration ==
-                              null
+                      var hour = controller.activityToCreate.startDate == null
                           ? ''
-                          : DateFormat('HH:mm').format(
-                              controller.activityToCreate.schedule.duration!);
+                          : DateFormat('HH:mm')
+                              .format(controller.activityToCreate.startDate!);
+                      var date = controller.activityToCreate.startDate == null
+                          ? ''
+                          : DateFormat('dd-MM-yyyy')
+                              .format(controller.activityToCreate.startDate!);
                       return Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 114, vertical: 8),
                           child: ScheduleAddWidget(
                             enableSubscription: controller
-                                .activityToCreate.schedule.acceptSubscription,
+                                .activityToCreate.acceptingNewEnrollments,
                             onChangedEnableSubscription: (valueBool) {
                               setState(() {
                                 controller.setEnableSubscription(
@@ -146,22 +138,22 @@ class _CreateActivityPageState
                             },
                             date: date,
                             hour: hour,
-                            link: controller.activityToCreate.schedule.link,
+                            link: controller.activityToCreate.link,
                             onChangedLink: (value) {
                               controller.setLink(value, index);
                             },
-                            location:
-                                controller.activityToCreate.schedule.location,
+                            location: controller.activityToCreate.place,
                             onChangedLocation: (value) {
                               controller.setLocation(value, index);
                             },
-                            duration: duration,
+                            duration:
+                                controller.activityToCreate.duration.toString(),
                             onChangedDuration: (value) {
                               controller.setDuration(value, index);
                             },
                             length: 1,
-                            totalParticipants: controller
-                                .activityToCreate.schedule.totalParticipants,
+                            totalParticipants:
+                                controller.activityToCreate.totalSlots,
                             onChangedDate: (value) {
                               controller.setDate(value, index);
                             },

@@ -31,14 +31,12 @@ abstract class CreateActivityControllerBase with Store {
 
   @action
   bool isFilled() {
-    var scheduleFirst = activityToCreate.schedule;
     if (activityToCreate.title != '' &&
         activityToCreate.description != '' &&
         activityToCreate.type != null &&
         activityToCreate.activityCode != '' &&
-        scheduleFirst.date != null &&
-        scheduleFirst.duration != null &&
-        scheduleFirst.totalParticipants != null) {
+        activityToCreate.startDate != null &&
+        activityToCreate.totalSlots != 0) {
       return true;
     }
     return false;
@@ -74,12 +72,12 @@ abstract class CreateActivityControllerBase with Store {
 
   @action
   void setLocation(String value, int index) {
-    activityToCreate.schedule.location = value;
+    activityToCreate.place = value;
   }
 
   @action
   void setLink(String value, int index) {
-    activityToCreate.schedule.link = value;
+    activityToCreate.link = value;
   }
 
   @action
@@ -89,63 +87,57 @@ abstract class CreateActivityControllerBase with Store {
       var month = value.substring(3, 5);
       var day = value.substring(0, 2);
       value = '$year-$month-$day';
-      var hour = activityToCreate.schedule.date != null
-          ? DateFormat('HH:mm').format(activityToCreate.schedule.date!)
+      var hour = activityToCreate.startDate != null
+          ? DateFormat('HH:mm').format(activityToCreate.startDate!)
           : '';
       var date =
           hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
-      var schedule = activityToCreate.schedule;
-      schedule = activityToCreate.schedule.copyWith(date: date);
-      activityToCreate = activityToCreate.copyWith(schedule: schedule);
+      activityToCreate = activityToCreate.copyWith(startDate: date);
     }
   }
 
   @action
   void setHour(String value, int index) {
     if (value.length > 4) {
-      var date = activityToCreate.schedule.date != null
-          ? DateFormat('yyyy-MM-dd').format(activityToCreate.schedule.date!)
+      var date = activityToCreate.startDate != null
+          ? DateFormat('yyyy-MM-dd').format(activityToCreate.startDate!)
           : '0000-00-00';
       var hour = DateTime.parse("$date $value");
-      var schedule = activityToCreate.schedule;
-      schedule = activityToCreate.schedule.copyWith(date: hour);
-      activityToCreate = activityToCreate.copyWith(schedule: schedule);
+      activityToCreate = activityToCreate.copyWith(startDate: hour);
     }
   }
 
   @action
   void setDuration(String value, int index) {
     if (value.length >= 5) {
-      var duration = DateFormat('HH:mm').parse(value);
-      var schedule = activityToCreate.schedule;
-      schedule = activityToCreate.schedule.copyWith(duration: duration);
-      activityToCreate = activityToCreate.copyWith(schedule: schedule);
+      var duration = int.parse(value);
+      activityToCreate = activityToCreate.copyWith(duration: duration);
     }
   }
 
   @action
   void setParticipants(int value, int index) {
-    activityToCreate.schedule.totalParticipants = value;
+    activityToCreate.copyWith(totalSlots: value);
   }
 
   @action
   void setEnableSubscription(bool value, int index) {
-    activityToCreate.schedule.acceptSubscription = value;
+    activityToCreate.copyWith(acceptingNewEnrollments: value);
   }
 
   @action
   void setSpeakerName(String value, int index) {
-    activityToCreate.speakers[index].name = value;
+    activityToCreate.speakers[index].copyWith(name: value);
   }
 
   @action
   void setSpeakerBio(String value, int index) {
-    activityToCreate.speakers[index].bio = value;
+    activityToCreate.speakers[index].copyWith(bio: value);
   }
 
   @action
   void setSpeakerCompany(String value, int index) {
-    activityToCreate.speakers[index].company = value;
+    activityToCreate.speakers[index].copyWith(company: value);
   }
 
   @action

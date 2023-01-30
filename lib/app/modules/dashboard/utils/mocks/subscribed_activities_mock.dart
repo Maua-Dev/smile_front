@@ -1,12 +1,9 @@
-import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
 var subscribedActivities = <ActivityModel>[
   ActivityModel(
-    id: '0',
     activityCode: 'C01',
     type: ActivityEnum.CURSOS,
     title:
@@ -30,12 +27,14 @@ var subscribedActivities = <ActivityModel>[
         company: 'Oracle',
       ),
     ],
-    schedule: ScheduleActivityModel(
-        date: DateTime.parse('2022-05-16 13:00'),
-        totalParticipants: 20,
-        duration: DateFormat('HH:mm').parse('01:00'),
-        location: 'H244',
-        link: 'https://www.google.com.br',
-        acceptSubscription: false),
+    startDate: DateTime.parse('2022-05-16 13:00'),
+    totalSlots: 20,
+    duration: 120,
+    place: 'H244',
+    link: 'https://www.google.com.br',
+    acceptingNewEnrollments: false,
+    isExtensive: false,
+    takenSlots: 0,
+    responsibleProfessors: [],
   ),
 ];

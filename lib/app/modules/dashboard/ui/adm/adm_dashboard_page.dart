@@ -70,14 +70,12 @@ class _AdmDashboardPageState
                           itemCount: controller.activitiesList.length,
                           itemBuilder: (BuildContext context, int index) {
                             String date = DateFormat('dd/MM/yyyy').format(
-                                controller
-                                    .activitiesList[index].schedule.date!);
-                            String time = DateFormat('HH:mm').format(controller
-                                .activitiesList[index].schedule.date!);
+                                controller.activitiesList[index].startDate!);
+                            String time = DateFormat('HH:mm').format(
+                                controller.activitiesList[index].startDate!);
                             String finalTime = Utils.getActivityFinalTime(
-                                controller.activitiesList[index].schedule.date!,
-                                controller
-                                    .activitiesList[index].schedule.duration!);
+                                controller.activitiesList[index].startDate!,
+                                controller.activitiesList[index].duration);
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
@@ -88,13 +86,9 @@ class _AdmDashboardPageState
                                   description: controller
                                       .activitiesList[index].description,
                                   enrolledUsersLength: controller
-                                      .activitiesList[index]
-                                      .schedule
-                                      .enrolledUsers!,
+                                      .activitiesList[index].takenSlots,
                                   totalParticipants: controller
-                                      .activitiesList[index]
-                                      .schedule
-                                      .totalParticipants!,
+                                      .activitiesList[index].totalSlots,
                                   title: controller.activitiesList[index].title,
                                   time: time,
                                   finalTime: finalTime,
@@ -115,7 +109,7 @@ class _AdmDashboardPageState
                                                         controller
                                                             .activitiesList[
                                                                 index]
-                                                            .id);
+                                                            .activityCode);
                                                 Modular.to.pop();
                                               });
                                         });
@@ -130,9 +124,9 @@ class _AdmDashboardPageState
                                         '/adm/edit-activity',
                                         arguments: controller.activitiesList
                                             .firstWhere((element) =>
-                                                element.id ==
-                                                controller
-                                                    .activitiesList[index].id),
+                                                element.activityCode ==
+                                                controller.activitiesList[index]
+                                                    .activityCode),
                                       );
                                     }
                                   },

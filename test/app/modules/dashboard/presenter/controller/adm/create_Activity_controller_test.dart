@@ -62,20 +62,20 @@ void main() {
   test('setLocation', () {
     var str = 'teste';
     controller.setLocation(str, 0);
-    expect(controller.activityToCreate.schedule.location, str);
+    expect(controller.activityToCreate.place, str);
   });
 
   test('setLink', () {
     var str = 'teste';
     controller.setLink(str, 0);
-    expect(controller.activityToCreate.schedule.link, str);
+    expect(controller.activityToCreate.link, str);
   });
 
   test('setDate', () {
     var str = DateFormat('dd-MM-yyyy').format(DateTime.now());
     controller.setDate(str, 0);
     expect(
-        controller.activityToCreate.schedule.date!,
+        controller.activityToCreate.startDate!,
         DateTime(
             DateTime.now().year, DateTime.now().month, DateTime.now().day));
   });
@@ -83,24 +83,24 @@ void main() {
   test('setHour', () {
     var str = '22:00';
     controller.setHour(str, 0);
-    expect(controller.activityToCreate.schedule.date!.hour, 22);
+    expect(controller.activityToCreate.startDate!.hour, 22);
   });
 
   test('setDuration', () {
     var str = '22:00';
     controller.setDuration(str, 0);
-    expect(controller.activityToCreate.schedule.duration!.hour, 22);
+    expect(controller.activityToCreate.duration, 22);
   });
 
   test('setParticipants', () {
     var str = 1;
     controller.setParticipants(str, 0);
-    expect(controller.activityToCreate.schedule.totalParticipants, str);
+    expect(controller.activityToCreate.totalSlots, str);
   });
 
   test('setEnableSubscription', () {
     controller.setEnableSubscription(true, 0);
-    expect(controller.activityToCreate.schedule.acceptSubscription, true);
+    expect(controller.activityToCreate.acceptingNewEnrollments, true);
   });
 
   test('setSpeakerName', () {
