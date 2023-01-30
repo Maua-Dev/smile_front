@@ -86,6 +86,28 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
+  void setModality(ModalityActivityEnum? value) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.setModality');
+    try {
+      return super.setModality(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIsExtensive() {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.setIsExtensive');
+    try {
+      return super.setIsExtensive();
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setActivityCode(String value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.setActivityCode');
