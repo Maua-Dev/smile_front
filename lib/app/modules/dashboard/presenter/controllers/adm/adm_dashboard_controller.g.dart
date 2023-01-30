@@ -109,6 +109,54 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
     });
   }
 
+  late final _$typeFilterAtom =
+      Atom(name: 'AdmDashboardControllerBase.typeFilter', context: context);
+
+  @override
+  ActivityEnum? get typeFilter {
+    _$typeFilterAtom.reportRead();
+    return super.typeFilter;
+  }
+
+  @override
+  set typeFilter(ActivityEnum? value) {
+    _$typeFilterAtom.reportWrite(value, super.typeFilter, () {
+      super.typeFilter = value;
+    });
+  }
+
+  late final _$dateFilterAtom =
+      Atom(name: 'AdmDashboardControllerBase.dateFilter', context: context);
+
+  @override
+  DateTime? get dateFilter {
+    _$dateFilterAtom.reportRead();
+    return super.dateFilter;
+  }
+
+  @override
+  set dateFilter(DateTime? value) {
+    _$dateFilterAtom.reportWrite(value, super.dateFilter, () {
+      super.dateFilter = value;
+    });
+  }
+
+  late final _$hourFilterAtom =
+      Atom(name: 'AdmDashboardControllerBase.hourFilter', context: context);
+
+  @override
+  DateTime? get hourFilter {
+    _$hourFilterAtom.reportRead();
+    return super.hourFilter;
+  }
+
+  @override
+  set hourFilter(DateTime? value) {
+    _$hourFilterAtom.reportWrite(value, super.hourFilter, () {
+      super.hourFilter = value;
+    });
+  }
+
   late final _$setIsLoadingCsvAsyncAction = AsyncAction(
       'AdmDashboardControllerBase.setIsLoadingCsv',
       context: context);
@@ -124,36 +172,6 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
   @override
   Future<void> setIsLoading(bool value) {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
-  }
-
-  late final _$filterActivitiesByTypeAsyncAction = AsyncAction(
-      'AdmDashboardControllerBase.filterActivitiesByType',
-      context: context);
-
-  @override
-  Future<dynamic> filterActivitiesByType(ActivityEnum type) {
-    return _$filterActivitiesByTypeAsyncAction
-        .run(() => super.filterActivitiesByType(type));
-  }
-
-  late final _$filterActivitiesByDateAsyncAction = AsyncAction(
-      'AdmDashboardControllerBase.filterActivitiesByDate',
-      context: context);
-
-  @override
-  Future<dynamic> filterActivitiesByDate(DateTime date) {
-    return _$filterActivitiesByDateAsyncAction
-        .run(() => super.filterActivitiesByDate(date));
-  }
-
-  late final _$filterActivitiesByHourAsyncAction = AsyncAction(
-      'AdmDashboardControllerBase.filterActivitiesByHour',
-      context: context);
-
-  @override
-  Future<dynamic> filterActivitiesByHour(DateTime date) {
-    return _$filterActivitiesByHourAsyncAction
-        .run(() => super.filterActivitiesByHour(date));
   }
 
   late final _$getAllActivitiesAsyncAction = AsyncAction(
@@ -199,6 +217,97 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
   }
 
   @override
+  void setTypeFilter(ActivityEnum value) {
+    final _$actionInfo = _$AdmDashboardControllerBaseActionController
+        .startAction(name: 'AdmDashboardControllerBase.setTypeFilter');
+    try {
+      return super.setTypeFilter(value);
+    } finally {
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDateFilter(DateTime value) {
+    final _$actionInfo = _$AdmDashboardControllerBaseActionController
+        .startAction(name: 'AdmDashboardControllerBase.setDateFilter');
+    try {
+      return super.setDateFilter(value);
+    } finally {
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setHourFilter(DateTime value) {
+    final _$actionInfo = _$AdmDashboardControllerBaseActionController
+        .startAction(name: 'AdmDashboardControllerBase.setHourFilter');
+    try {
+      return super.setHourFilter(value);
+    } finally {
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAllFilters() {
+    final _$actionInfo = _$AdmDashboardControllerBaseActionController
+        .startAction(name: 'AdmDashboardControllerBase.setAllFilters');
+    try {
+      return super.setAllFilters();
+    } finally {
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic resetFilters() {
+    final _$actionInfo = _$AdmDashboardControllerBaseActionController
+        .startAction(name: 'AdmDashboardControllerBase.resetFilters');
+    try {
+      return super.resetFilters();
+    } finally {
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<ActivityModel> filterActivitiesByType(
+      ActivityEnum type, List<ActivityModel> activitiesToFilter) {
+    final _$actionInfo = _$AdmDashboardControllerBaseActionController
+        .startAction(name: 'AdmDashboardControllerBase.filterActivitiesByType');
+    try {
+      return super.filterActivitiesByType(type, activitiesToFilter);
+    } finally {
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<ActivityModel> filterActivitiesByDate(
+      DateTime date, List<ActivityModel> activitiesToFilter) {
+    final _$actionInfo = _$AdmDashboardControllerBaseActionController
+        .startAction(name: 'AdmDashboardControllerBase.filterActivitiesByDate');
+    try {
+      return super.filterActivitiesByDate(date, activitiesToFilter);
+    } finally {
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<ActivityModel> filterActivitiesByHour(
+      DateTime hour, List<ActivityModel> activitiesToFilter) {
+    final _$actionInfo = _$AdmDashboardControllerBaseActionController
+        .startAction(name: 'AdmDashboardControllerBase.filterActivitiesByHour');
+    try {
+      return super.filterActivitiesByHour(hour, activitiesToFilter);
+    } finally {
+      _$AdmDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isLoadingCsv: ${isLoadingCsv},
@@ -206,7 +315,10 @@ isLoading: ${isLoading},
 isFloatActionButtonOpen: ${isFloatActionButtonOpen},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 activitiesList: ${activitiesList},
-allActivitiesList: ${allActivitiesList}
+allActivitiesList: ${allActivitiesList},
+typeFilter: ${typeFilter},
+dateFilter: ${dateFilter},
+hourFilter: ${hourFilter}
     ''';
   }
 }

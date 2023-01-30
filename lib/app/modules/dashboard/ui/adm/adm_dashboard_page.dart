@@ -3,10 +3,10 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_card/activities_card_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/activities_card/column_builder_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app_bar_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/filter/filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
+import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../auth/infra/repositories/secure_storage.dart';
@@ -31,22 +31,31 @@ class _AdmDashboardPageState
       body: Row(
         children: [
           const SideBarWidget(),
-          SingleChildScrollView(
+          Expanded(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 80),
-                    child: FilterCardWidget(
-                      onChangedActivitiesFilter: (type) {
-                        controller.filterActivitiesByType(type!);
-                      },
-                      onChangedDateFilter: (date) {
-                        controller.filterActivitiesByDate(date!);
-                      },
-                      onChangedTimeFilter: (hour) {
-                        controller.filterActivitiesByHour(hour!);
-                      },
-                    )),
+                    padding: const EdgeInsets.symmetric(vertical: 50),
+                    child: Observer(builder: (_) {
+                      return FilterCardWidget(
+                        typeFilter: controller.typeFilter,
+                        dateFilter: controller.dateFilter,
+                        hourFilter: controller.hourFilter,
+                        resetFilters: () => controller.resetFilters(),
+                        onChangedActivitiesFilter: (type) {
+                          controller.setTypeFilter(type!);
+                        },
+                        onChangedDateFilter: (date) {
+                          controller.setDateFilter(date!);
+                        },
+                        onChangedTimeFilter: (hour) {
+                          controller.setHourFilter(hour!);
+                        },
+                      );
+                    })),
                 Observer(builder: (_) {
                   if (controller.isLoading) {
                     return const Center(
@@ -55,8 +64,9 @@ class _AdmDashboardPageState
                   } else {
                     if (controller.activitiesList.isNotEmpty) {
                       return SizedBox(
-                        width: MediaQuery.of(context).size.width - 115,
-                        child: ColumnBuilder(
+                        width: 1165,
+                        height: MediaQuery.of(context).size.height - 268,
+                        child: ListView.builder(
                           itemCount: controller.activitiesList.length,
                           itemBuilder: (BuildContext context, int index) {
                             String date = DateFormat('dd/MM/yyyy').format(
@@ -68,64 +78,73 @@ class _AdmDashboardPageState
                                 controller.activitiesList[index].schedule.date!,
                                 controller
                                     .activitiesList[index].schedule.duration!);
-                            return ActivitiesCardWidget(
-                              activityCode:
-                                  controller.activitiesList[index].activityCode,
-                              date: date,
-                              description:
-                                  controller.activitiesList[index].description,
-                              enrolledUsersLength: controller
-                                  .activitiesList[index]
-                                  .schedule
-                                  .enrolledUsers!,
-                              totalParticipants: controller
-                                  .activitiesList[index]
-                                  .schedule
-                                  .totalParticipants!,
-                              title: controller.activitiesList[index].title,
-                              time: time,
-                              finalTime: finalTime,
-                              onPressedDelete: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return Observer(builder: (_) {
-                                      return ActionConfirmationDialogWidget(
-                                          isLoading: controller.isLoading,
-                                          title:
-                                              'Tem certeza que deseja continuar?',
-                                          content:
-                                              'Ao confirmar todos os dados antigos serão perdidos.',
-                                          onPressed: () async {
-                                            await controller.deleteUserActivity(
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 40),
+                              child: Observer(builder: (_) {
+                                return ActivitiesCardWidget(
+                                  activityCode: controller
+                                      .activitiesList[index].activityCode,
+                                  date: date,
+                                  description: controller
+                                      .activitiesList[index].description,
+                                  enrolledUsersLength: controller
+                                      .activitiesList[index]
+                                      .schedule
+                                      .enrolledUsers!,
+                                  totalParticipants: controller
+                                      .activitiesList[index]
+                                      .schedule
+                                      .totalParticipants!,
+                                  title: controller.activitiesList[index].title,
+                                  time: time,
+                                  finalTime: finalTime,
+                                  onPressedDelete: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return Observer(builder: (_) {
+                                          return ActionConfirmationDialogWidget(
+                                              isLoading: controller.isLoading,
+                                              title:
+                                                  'Tem certeza que deseja continuar?',
+                                              content:
+                                                  'Ao confirmar todos os dados antigos serão perdidos.',
+                                              onPressed: () async {
+                                                await controller
+                                                    .deleteUserActivity(
+                                                        controller
+                                                            .activitiesList[
+                                                                index]
+                                                            .id);
+                                                Modular.to.pop();
+                                              });
+                                        });
+                                      },
+                                    );
+                                  },
+                                  onPressedEdit: () async {
+                                    var accessLevel =
+                                        await secureStorage.getAccessLevel();
+                                    if (accessLevel == 'ADMIN') {
+                                      Modular.to.navigate(
+                                        '/adm/edit-activity',
+                                        arguments: controller.activitiesList
+                                            .firstWhere((element) =>
+                                                element.id ==
                                                 controller
-                                                    .activitiesList[index].id);
-                                            Modular.to.pop();
-                                          });
-                                    });
+                                                    .activitiesList[index].id),
+                                      );
+                                    }
                                   },
                                 );
-                              },
-                              onPressedEdit: () async {
-                                var accessLevel =
-                                    await secureStorage.getAccessLevel();
-                                if (accessLevel == 'ADMIN') {
-                                  Modular.to.navigate(
-                                    '/adm/edit-activity',
-                                    arguments: controller.activitiesList
-                                        .firstWhere((element) =>
-                                            element.id ==
-                                            controller
-                                                .activitiesList[index].id),
-                                  );
-                                }
-                              },
+                              }),
                             );
                           },
                         ),
                       );
                     } else {
-                      return const SizedBox.shrink();
+                      return Text('Atividade não encontrada',
+                          style: AppTextStyles.body);
                     }
                   }
                 }),
