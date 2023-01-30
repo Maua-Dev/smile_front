@@ -17,7 +17,7 @@ class CardActivity {
   final bool acceptSubscription;
   final int? enrolledUsers;
   final bool isExtensive;
-  final ModalityActivityEnum? modality;
+  final DeliveryEnum? modality;
 
   CardActivity({
     required this.acceptSubscription,

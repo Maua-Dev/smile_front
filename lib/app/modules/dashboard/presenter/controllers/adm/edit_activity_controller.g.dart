@@ -84,7 +84,7 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
-  void setModality(ModalityActivityEnum? value) {
+  void setModality(DeliveryEnum? value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setModality');
     try {

@@ -13,7 +13,7 @@ class ScheduleAddWidget extends StatelessWidget {
   final void Function(String)? onChangedDate;
   final void Function(String)? onChangedHour;
   final void Function(String)? onChangedClosure;
-  final void Function(ModalityActivityEnum?)? onChangedModality;
+  final void Function(DeliveryEnum?)? onChangedModality;
   final void Function(String value)? onChangedDuration;
   final void Function(String value)? onChangedLocation;
   final void Function(String value)? onChangedLink;
@@ -22,7 +22,7 @@ class ScheduleAddWidget extends StatelessWidget {
   final void Function()? onPressedIconDate;
   final void Function()? onPressedIconTime;
   final void Function()? removeSchedule;
-  final ModalityActivityEnum? modality;
+  final DeliveryEnum? modality;
   final bool? enableSubscription;
   final int? totalParticipants;
   final String date;
@@ -209,7 +209,7 @@ class ScheduleAddWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 16.0),
                       child: SizedBox(
                         width: Screen.width(context) * 0.25,
-                        child: DropDownFieldCustom<ModalityActivityEnum>(
+                        child: DropDownFieldCustom<DeliveryEnum>(
                           textStyles: AppTextStyles.body.copyWith(
                               color: AppColors.brandingBlue,
                               fontSize:
@@ -217,10 +217,10 @@ class ScheduleAddWidget extends StatelessWidget {
                           filledColor: Colors.white,
                           titulo: 'Tipo de Atividade',
                           value: modality,
-                          items: ModalityActivityEnum.values
+                          items: DeliveryEnum.values
                               .toList()
-                              .map((ModalityActivityEnum value) {
-                            return DropdownMenuItem<ModalityActivityEnum>(
+                              .map((DeliveryEnum value) {
+                            return DropdownMenuItem<DeliveryEnum>(
                               value: value,
                               child: Text(value.name),
                             );

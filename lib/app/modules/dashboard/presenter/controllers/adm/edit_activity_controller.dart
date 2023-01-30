@@ -67,7 +67,7 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setModality(ModalityActivityEnum? value) {
+  void setModality(DeliveryEnum? value) {
     activityToEdit = activityToEdit.copyWith(modality: value);
   }
 

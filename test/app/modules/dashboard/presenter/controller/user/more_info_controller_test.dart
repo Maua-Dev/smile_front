@@ -28,7 +28,7 @@ void main() {
   late MoreInfoController controller;
   var card = CardActivity(
     acceptSubscription: true,
-    modality: ModalityActivityEnum.presencial,
+    modality: DeliveryEnum.inperson,
     enrolledUsers: 10,
     id: '123',
     activityCode: 'PA01',

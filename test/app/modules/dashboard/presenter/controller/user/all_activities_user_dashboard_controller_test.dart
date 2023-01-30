@@ -48,7 +48,7 @@ void main() {
   final mockActivities = <ActivityModel>[
     ActivityModel(
       id: '0',
-      modality: ModalityActivityEnum.online,
+      modality: DeliveryEnum.online,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
@@ -70,7 +70,7 @@ void main() {
     ),
     ActivityModel(
       id: '0',
-      modality: ModalityActivityEnum.online,
+      modality: DeliveryEnum.online,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
@@ -92,7 +92,7 @@ void main() {
     ),
     ActivityModel(
       id: '0',
-      modality: ModalityActivityEnum.presencial,
+      modality: DeliveryEnum.inperson,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 01',
@@ -114,7 +114,7 @@ void main() {
     ),
     ActivityModel(
       id: '1',
-      modality: ModalityActivityEnum.presencial,
+      modality: DeliveryEnum.online,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 02',
@@ -132,12 +132,11 @@ void main() {
         location: 'H244',
         acceptSubscription: false,
         isExtensive: false,
-       
       ),
     ),
     ActivityModel(
       id: '2',
-      modality: ModalityActivityEnum.presencial,
+      modality: DeliveryEnum.online,
       activityCode: 'C01',
       type: ActivityEnum.CURSOS,
       title: 'Atividade 03',

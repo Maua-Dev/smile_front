@@ -8,7 +8,7 @@ import 'package:smile_front/app/shared/models/activity_model.dart';
 var subscribedActivities = <ActivityModel>[
   ActivityModel(
     id: '0',
-    modality: ModalityActivityEnum.presencial,
+    modality: DeliveryEnum.inperson,
     activityCode: 'C01',
     type: ActivityEnum.CURSOS,
     title:

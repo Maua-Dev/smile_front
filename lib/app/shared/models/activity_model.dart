@@ -13,7 +13,7 @@ class ActivityModel extends Activity {
   final ActivityEnum? type;
   final String title;
   final String description;
-  final ModalityActivityEnum? modality;
+  final DeliveryEnum? modality;
   final ScheduleActivityModel schedule;
   final List<SpeakerActivityModel> speakers;
 
@@ -39,7 +39,7 @@ class ActivityModel extends Activity {
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
     return ActivityModel(
       id: map['id'],
-      modality: ModalityActivityEnumExtension.stringToEnumMap(map['modality']),
+      modality: DeliveryEnumExtension.stringToEnumMap(map['modality']),
       activityCode: map['activityCode'],
       type: ActivityEnumExtension.stringToEnumMap(map['type']),
       title: map['title'],
@@ -80,7 +80,7 @@ class ActivityModel extends Activity {
     ActivityEnum? type,
     String? title,
     String? description,
-    ModalityActivityEnum? modality,
+    DeliveryEnum? modality,
     ScheduleActivityModel? schedule,
     List<SpeakerActivityModel>? speakers,
   }) {

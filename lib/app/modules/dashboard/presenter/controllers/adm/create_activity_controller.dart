@@ -59,7 +59,7 @@ abstract class CreateActivityControllerBase with Store {
   }
 
   @action
-  void setModality(ModalityActivityEnum? value) {
+  void setModality(DeliveryEnum? value) {
     activityToCreate = activityToCreate.copyWith(modality: value);
   }
 

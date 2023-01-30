@@ -27,7 +27,7 @@ void main() {
   late EditActivityController controller;
   final activity = ActivityModel(
       id: '1',
-      modality: ModalityActivityEnum.online,
+      modality: DeliveryEnum.online,
       activityCode: 'C01',
       type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
       title: 'Atividade 1',

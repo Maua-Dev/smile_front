@@ -1,33 +1,31 @@
 import 'package:enum_to_string/enum_to_string.dart';
 
-enum ModalityActivityEnum {
-  presencial,
+enum DeliveryEnum {
+  inperson,
   online,
-  hibrida,
+  hybrid,
 }
 
-extension ModalityActivityEnumExtension on ModalityActivityEnum {
+extension DeliveryEnumExtension on DeliveryEnum {
   String get name {
     switch (this) {
-      case ModalityActivityEnum.presencial:
+      case DeliveryEnum.inperson:
         return 'Presencial';
-      case ModalityActivityEnum.online:
+      case DeliveryEnum.online:
         return 'Online';
-      case ModalityActivityEnum.hibrida:
+      case DeliveryEnum.hybrid:
         return 'Hibrida';
     }
   }
 
-  static ModalityActivityEnum stringToEnumMap(String toMap) {
-    ModalityActivityEnum modality = ModalityActivityEnum.values.firstWhere(
-        (modality) =>
-            EnumToString.convertToString(modality).toUpperCase() ==
-            toMap.toUpperCase());
+  static DeliveryEnum stringToEnumMap(String toMap) {
+    DeliveryEnum modality = DeliveryEnum.values.firstWhere((modality) =>
+        EnumToString.convertToString(modality).toUpperCase() ==
+        toMap.toUpperCase());
     return modality;
   }
 
-  static String enumToStringMap(ModalityActivityEnum modality) {
+  static String enumToStringMap(DeliveryEnum modality) {
     return EnumToString.convertToString(modality);
   }
 }
-
