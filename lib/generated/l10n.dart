@@ -145,6 +145,16 @@ class S {
     );
   }
 
+  /// `Add Speaker`
+  String get speakersAddTitle {
+    return Intl.message(
+      'Add Speaker',
+      name: 'speakersAddTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `SWIPE TO SEE MORE >>>`
   String get speakersSwipe {
     return Intl.message(
@@ -406,6 +416,16 @@ class S {
     return Intl.message(
       '2023',
       name: 'year2023',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get dateTitle {
+    return Intl.message(
+      'Date',
+      name: 'dateTitle',
       desc: '',
       args: [],
     );
@@ -718,6 +738,36 @@ class S {
     );
   }
 
+  /// `Exit`
+  String get exitTitle {
+    return Intl.message(
+      'Exit',
+      name: 'exitTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancelTitle {
+    return Intl.message(
+      'Cancel',
+      name: 'cancelTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get saveTitle {
+    return Intl.message(
+      'Save',
+      name: 'saveTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `CPF or E-mail`
   String get loginUsernamePlaceholder {
     return Intl.message(
@@ -997,6 +1047,16 @@ class S {
     );
   }
 
+  /// `Check that all fields are filled in correctly.`
+  String get confirmAllFieldsConrrectlyFilled {
+    return Intl.message(
+      'Check that all fields are filled in correctly.',
+      name: 'confirmAllFieldsConrrectlyFilled',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Required field`
   String get fieldRequired {
     return Intl.message(
@@ -1092,6 +1152,16 @@ class S {
     return Intl.message(
       'Invalid RA',
       name: 'fieldRAInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fill in all fields!`
+  String get fieldFillAllRequired {
+    return Intl.message(
+      'Fill in all fields!',
+      name: 'fieldFillAllRequired',
       desc: '',
       args: [],
     );
@@ -1197,6 +1267,26 @@ class S {
     );
   }
 
+  /// `Are you sure you want to continue?`
+  String get confirmToContinue {
+    return Intl.message(
+      'Are you sure you want to continue?',
+      name: 'confirmToContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When saving all old data will be lost.`
+  String get lostOldDataWarn {
+    return Intl.message(
+      'When saving all old data will be lost.',
+      name: 'lostOldDataWarn',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Code sent successfully!`
   String get successSendingCode {
     return Intl.message(
@@ -1262,6 +1352,116 @@ class S {
     return Intl.message(
       'Password changed successfully! \n Redirecting to login...',
       name: 'successChangePasswordRedirect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Administrator Page`
+  String get admDashboardAppBarTitle {
+    return Intl.message(
+      'Administrator Page',
+      name: 'admDashboardAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reports`
+  String get admReportsTitle {
+    return Intl.message(
+      'Reports',
+      name: 'admReportsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clean Filters`
+  String get cleanFiltersTitle {
+    return Intl.message(
+      'Clean Filters',
+      name: 'cleanFiltersTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Activity`
+  String get activityCreateTitle {
+    return Intl.message(
+      'Create Activity',
+      name: 'activityCreateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Activity`
+  String get activityEditTitle {
+    return Intl.message(
+      'Edit Activity',
+      name: 'activityEditTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activity Type`
+  String get activityTypeTitle {
+    return Intl.message(
+      'Activity Type',
+      name: 'activityTypeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activity Title`
+  String get activityNameTitle {
+    return Intl.message(
+      'Activity Title',
+      name: 'activityNameTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get descriptionTitle {
+    return Intl.message(
+      'Description',
+      name: 'descriptionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Schedule`
+  String get scheduleTitle {
+    return Intl.message(
+      'Schedule',
+      name: 'scheduleTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Schedule`
+  String get scheduleAddTitle {
+    return Intl.message(
+      'Add Schedule',
+      name: 'scheduleAddTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Code`
+  String get codeTitle {
+    return Intl.message(
+      'Code',
+      name: 'codeTitle',
       desc: '',
       args: [],
     );

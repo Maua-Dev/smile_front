@@ -7,6 +7,7 @@ import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/filter/filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../auth/infra/repositories/secure_storage.dart';
@@ -25,9 +26,10 @@ class _AdmDashboardPageState
   Widget build(BuildContext context) {
     var secureStorage = Modular.get<SecureStorage>();
     return Scaffold(
-      appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(73),
-          child: AdmAppBarWidget(appBarText: 'Página do Administrador')),
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(73),
+          child: AdmAppBarWidget(
+              appBarText: S.of(context).admDashboardAppBarTitle)),
       body: Row(
         children: [
           const SideBarWidget(),

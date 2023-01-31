@@ -238,6 +238,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
+        "activityCreateTitle":
+            MessageLookupByLibrary.simpleMessage("Criar Atividade"),
+        "activityEditTitle":
+            MessageLookupByLibrary.simpleMessage("Editar Atividade"),
+        "activityNameTitle":
+            MessageLookupByLibrary.simpleMessage("Titulo da Atividade"),
+        "activityTypeTitle":
+            MessageLookupByLibrary.simpleMessage("Tipo de Atividade"),
+        "admDashboardAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Página do Administrador"),
+        "admReportsTitle": MessageLookupByLibrary.simpleMessage("Relatórios"),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
             "A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir."),
         "beSponsorDiscount": MessageLookupByLibrary.simpleMessage("Descontos"),
@@ -248,8 +259,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "beSponsorTitle":
             MessageLookupByLibrary.simpleMessage("Seja nosso Patrocinador"),
         "benefitsSponsorSchema": m3,
+        "cancelTitle": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Trocar senha"),
+        "cleanFiltersTitle":
+            MessageLookupByLibrary.simpleMessage("Limpar Filtros"),
         "clickToGoBack":
             MessageLookupByLibrary.simpleMessage("Clique aqui para voltar"),
         "closeTitle": MessageLookupByLibrary.simpleMessage("Fechar"),
@@ -257,10 +271,18 @@ class MessageLookup extends MessageLookupByLibrary {
             "Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional."),
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
             "Um código será enviado no email cadastrado:"),
+        "codeTitle": MessageLookupByLibrary.simpleMessage("Código"),
+        "confirmAllFieldsConrrectlyFilled":
+            MessageLookupByLibrary.simpleMessage(
+                "Confira se todos os campos estão corretamente preenchidos."),
         "confirmEmailNotificationSubtitle": MessageLookupByLibrary.simpleMessage(
             "Será necessário acessar sua caixa de entrada para validar seu cadastro."),
         "confirmEmailNotificationTitle": m4,
         "confirmTitle": MessageLookupByLibrary.simpleMessage("Confirmar"),
+        "confirmToContinue": MessageLookupByLibrary.simpleMessage(
+            "Tem certeza que deseja continuar?"),
+        "dateTitle": MessageLookupByLibrary.simpleMessage("Data"),
+        "descriptionTitle": MessageLookupByLibrary.simpleMessage("Descrição"),
         "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
         "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
@@ -279,6 +301,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Falha ao enviar o código, e-mail não cadastrado ou não confirmado."),
         "errorUserAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Usuário já existente."),
+        "exitTitle": MessageLookupByLibrary.simpleMessage("Sair"),
         "fieldCpfInvalid": MessageLookupByLibrary.simpleMessage("CPF inválido"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Insira o número com DDD"),
@@ -286,6 +309,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("E-mail inválido"),
         "fieldEmailsEqualsRequired":
             MessageLookupByLibrary.simpleMessage("Os e-mails devem ser iguais"),
+        "fieldFillAllRequired":
+            MessageLookupByLibrary.simpleMessage("Preencha todos os campos!"),
         "fieldFullNameRequired":
             MessageLookupByLibrary.simpleMessage("Insira seu nome completo"),
         "fieldInvalid": MessageLookupByLibrary.simpleMessage("Campo inválido"),
@@ -329,6 +354,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginWarningTitle": m9,
         "loginWithoutRecordTitle":
             MessageLookupByLibrary.simpleMessage("Não tenho cadastro"),
+        "lostOldDataWarn": MessageLookupByLibrary.simpleMessage(
+            "Ao salvar todos os dados antigos serão perdidos."),
         "maintenanceDescription":
             MessageLookupByLibrary.simpleMessage("Agradecemos a paciência"),
         "maintenanceTitle": MessageLookupByLibrary.simpleMessage(
@@ -368,11 +395,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerTerms": m15,
         "registerTitle": MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "returnLogin": MessageLookupByLibrary.simpleMessage("Voltar ao login"),
+        "saveTitle": MessageLookupByLibrary.simpleMessage("Salvar"),
+        "scheduleAddTitle":
+            MessageLookupByLibrary.simpleMessage("Adicionar Horário"),
+        "scheduleTitle": MessageLookupByLibrary.simpleMessage("Hora"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Enviar"),
         "signUp": MessageLookupByLibrary.simpleMessage("Inscreva-se"),
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("22 a 27 de Maio de 2023"),
+        "speakersAddTitle":
+            MessageLookupByLibrary.simpleMessage("Adicionar Palestrante"),
         "speakersSchemaDescription": m16,
         "speakersSchemaName": m17,
         "speakersSwipe":
