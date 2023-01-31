@@ -239,6 +239,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Activities"),
+        "activityCreateTitle":
+            MessageLookupByLibrary.simpleMessage("Create Activity"),
+        "activityEditTitle":
+            MessageLookupByLibrary.simpleMessage("Edit Activity"),
+        "activityNameTitle":
+            MessageLookupByLibrary.simpleMessage("Activity Title"),
+        "activityTypeTitle":
+            MessageLookupByLibrary.simpleMessage("Activity Type"),
+        "admDashboardAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Administrator Page"),
+        "admReportsTitle": MessageLookupByLibrary.simpleMessage("Reports"),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
             "SMILE brings an opportunity for partnership and integration between the labor market and academia. Become an event Sponsor and find out about the benefits and opportunities that SMILE offers. In this edition, 4 types of sponsorship quotas are available: Diamond, Gold, Silver and Bronze. In addition, when closing the sponsorship in advance, there will be a progressive discount on the quotas. Information about quotas and benefits is below."),
         "beSponsorDiscount": MessageLookupByLibrary.simpleMessage("Discount"),
@@ -249,8 +260,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "beSponsorTitle":
             MessageLookupByLibrary.simpleMessage("Be our Sponsor"),
         "benefitsSponsorSchema": m3,
+        "cancelTitle": MessageLookupByLibrary.simpleMessage("Cancel"),
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Change password"),
+        "cleanFiltersTitle":
+            MessageLookupByLibrary.simpleMessage("Clean Filters"),
         "clickToGoBack":
             MessageLookupByLibrary.simpleMessage("Click here to return"),
         "closeTitle": MessageLookupByLibrary.simpleMessage("Close"),
@@ -258,10 +272,18 @@ class MessageLookup extends MessageLookupByLibrary {
             "You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional."),
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
             "A code will be sent to the registered email address:"),
+        "codeTitle": MessageLookupByLibrary.simpleMessage("Code"),
+        "confirmAllFieldsConrrectlyFilled":
+            MessageLookupByLibrary.simpleMessage(
+                "Check that all fields are filled in correctly."),
         "confirmEmailNotificationSubtitle": MessageLookupByLibrary.simpleMessage(
             "You will need to access your inbox to validate your registration."),
         "confirmEmailNotificationTitle": m4,
         "confirmTitle": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmToContinue": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to continue?"),
+        "dateTitle": MessageLookupByLibrary.simpleMessage("Date"),
+        "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
         "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
@@ -280,6 +302,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Failed to send code, email not registered or not confirmed."),
         "errorUserAlreadyExist":
             MessageLookupByLibrary.simpleMessage("User already exist."),
+        "exitTitle": MessageLookupByLibrary.simpleMessage("Exit"),
         "fieldCpfInvalid": MessageLookupByLibrary.simpleMessage("Invalid CPF"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Enter the number with DDD"),
@@ -287,6 +310,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid e-mail"),
         "fieldEmailsEqualsRequired":
             MessageLookupByLibrary.simpleMessage("E-mails must be the same"),
+        "fieldFillAllRequired":
+            MessageLookupByLibrary.simpleMessage("Fill in all fields!"),
         "fieldFullNameRequired":
             MessageLookupByLibrary.simpleMessage("Enter your full name"),
         "fieldInvalid": MessageLookupByLibrary.simpleMessage("Invalid field"),
@@ -329,6 +354,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginWarningTitle": m9,
         "loginWithoutRecordTitle": MessageLookupByLibrary.simpleMessage(
             "I don\'t have a registration"),
+        "lostOldDataWarn": MessageLookupByLibrary.simpleMessage(
+            "When saving all old data will be lost."),
         "maintenanceDescription":
             MessageLookupByLibrary.simpleMessage("Thank you for your patience"),
         "maintenanceTitle": MessageLookupByLibrary.simpleMessage(
@@ -368,11 +395,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerTerms": m15,
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "returnLogin": MessageLookupByLibrary.simpleMessage("Return to login"),
+        "saveTitle": MessageLookupByLibrary.simpleMessage("Save"),
+        "scheduleAddTitle":
+            MessageLookupByLibrary.simpleMessage("Add Schedule"),
+        "scheduleTitle": MessageLookupByLibrary.simpleMessage("Schedule"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Send"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "smileDate": MessageLookupByLibrary.simpleMessage("May 22 to 27"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("May 22 to 27, 2023"),
+        "speakersAddTitle": MessageLookupByLibrary.simpleMessage("Add Speaker"),
         "speakersSchemaDescription": m16,
         "speakersSchemaName": m17,
         "speakersSwipe":

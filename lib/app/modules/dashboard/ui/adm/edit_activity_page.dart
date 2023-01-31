@@ -48,10 +48,11 @@ class _EditActivityPageState
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
                 child: TextHeader(
-                  title: 'Editar Atividade',
+                  title: S.of(context).activityEditTitle,
                   leftPadding: 24,
                 ),
               ),
@@ -69,7 +70,7 @@ class _EditActivityPageState
                                 ? 16
                                 : 20),
                         filledColor: Colors.white,
-                        titulo: 'Tipo de Atividade',
+                        titulo: S.of(context).activityTypeTitle,
                         value: controller.activityToEdit.type,
                         items: ActivityEnum.values
                             .toList()
@@ -88,7 +89,7 @@ class _EditActivityPageState
                     SizedBox(
                         width: MediaQuery.of(context).size.width * 0.1,
                         child: TextFieldDialogWidget(
-                          labelText: 'Código',
+                          labelText: S.of(context).codeTitle,
                           padding: false,
                           onChanged: controller.setActivityCode,
                           value: controller.activityToEdit.activityCode,
@@ -98,7 +99,7 @@ class _EditActivityPageState
                     ),
                     Flexible(
                         child: TextFieldDialogWidget(
-                      labelText: 'Titulo da Atividade',
+                      labelText: S.of(context).activityNameTitle,
                       padding: false,
                       onChanged: controller.setTitle,
                       value: controller.activityToEdit.title,
@@ -107,7 +108,7 @@ class _EditActivityPageState
                 ),
               ),
               TextFieldDialogWidget(
-                labelText: 'Descrição',
+                labelText: S.of(context).descriptionTitle,
                 value: controller.activityToEdit.description,
                 onChanged: controller.setDescription,
               ),
@@ -221,7 +222,7 @@ class _EditActivityPageState
                   padding:
                       const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
                   child: FormsButtonWidget(
-                      buttonTittle: 'Adicionar horário',
+                      buttonTittle: S.of(context).scheduleAddTitle,
                       onPressed: () {},
                       backgroundColor: AppColors.brandingOrange,
                       icon:
@@ -260,7 +261,7 @@ class _EditActivityPageState
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 114),
                   child: FormsButtonWidget(
-                      buttonTittle: 'Adicionar palestrante',
+                      buttonTittle: S.of(context).speakersAddTitle,
                       onPressed: controller.addSpeaker,
                       backgroundColor: AppColors.brandingOrange,
                       icon: const Icon(
@@ -277,7 +278,7 @@ class _EditActivityPageState
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     FormsButtonWidget(
-                        buttonTittle: 'Cancelar',
+                        buttonTittle: S.of(context).cancelTitle,
                         onPressed: () {
                           Modular.to.navigate('/adm');
                         },
@@ -286,7 +287,7 @@ class _EditActivityPageState
                       width: 40,
                     ),
                     FormsButtonWidget(
-                        buttonTittle: 'Salvar',
+                        buttonTittle: S.of(context).saveTitle,
                         onPressed: () {
                           if (controller.isFilled()) {
                             showDialog(
@@ -295,10 +296,8 @@ class _EditActivityPageState
                                 return Observer(builder: (context) {
                                   return ActionConfirmationDialogWidget(
                                       isLoading: controller.isLoading,
-                                      title:
-                                          'Tem certeza que deseja continuar?',
-                                      content:
-                                          'Ao salvar todos os dados antigos serão perdidos.',
+                                      title: S.of(context).confirmToContinue,
+                                      content: S.of(context).lostOldDataWarn,
                                       onPressed: () {
                                         controller.editUserActivity();
                                       });
@@ -309,10 +308,11 @@ class _EditActivityPageState
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return const CustomAlertDialogWidget(
-                                  title: 'Preencha todos os campos!',
-                                  content:
-                                      'Confira se todos os campos estão corretamente preenchidos.',
+                                return CustomAlertDialogWidget(
+                                  title: S.of(context).fieldFillAllRequired,
+                                  content: S
+                                      .of(context)
+                                      .confirmAllFieldsConrrectlyFilled,
                                 );
                               },
                             );
