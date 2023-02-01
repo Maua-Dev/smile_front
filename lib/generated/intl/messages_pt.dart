@@ -398,7 +398,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "saveTitle": MessageLookupByLibrary.simpleMessage("Salvar"),
         "scheduleAddTitle":
             MessageLookupByLibrary.simpleMessage("Adicionar Horário"),
-        "scheduleTitle": MessageLookupByLibrary.simpleMessage("Hora"),
+        "scheduleTitle": MessageLookupByLibrary.simpleMessage("Horário"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Enviar"),
         "signUp": MessageLookupByLibrary.simpleMessage("Inscreva-se"),
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
