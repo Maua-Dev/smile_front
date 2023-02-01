@@ -6,6 +6,8 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/dropdown-field/dropdown_field_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
+import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
@@ -31,9 +33,18 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
           height: 16,
         ),
         TextHeader(
-          title: 'Todas as Atividades',
-          fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
-          leftPadding: MediaQuery.of(context).size.width < 1000 ? 12 : 24,
+          title: MediaQuery.of(context).size.width < breakpointMobile
+              ? 'Atividades'
+              : "Todas as Atividades",
+          color: MediaQuery.of(context).size.width < breakpointMobile
+              ? AppColors.brandingOrange
+              : AppColors.brandingBlue,
+          fontSize: MediaQuery.of(context).size.width < breakpointMobile
+              ? 24
+              : MediaQuery.of(context).size.width > 1000
+                  ? 38
+                  : 30,
+          leftPadding: 32,
         ),
         UserWeekdayFilterWidget(
           onPressed: controller.toggleFilterActivityChipIndex,
