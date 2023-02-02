@@ -8,7 +8,7 @@ class ResponsibleProfessorModel extends ResponsibleProfessor {
 
   factory ResponsibleProfessorModel.fromMap(Map<String, dynamic> map) {
     return ResponsibleProfessorModel(
-        id: map['id'],
+        id: map['user_id'],
         name: map['name'],
         role: UserRolesEnumExtension.stringToEnumMap(map['role']));
   }

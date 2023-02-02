@@ -28,27 +28,30 @@ class ActivityModel extends Activity {
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
     return ActivityModel(
         activityCode: map['code'],
-        type: ActivityEnumExtension.stringToEnumMap(map['activity_type']),
+        type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
         title: map['title'],
         description: map['description'],
-        speakers: SpeakerActivityModel.fromMaps(map['speakers']),
-        duration: map['duration'],
+        speakers: [],
+        duration: map['duration'] ?? 0,
         isExtensive: map['is_extensive'] ?? false,
-        link: map['link'],
-        place: map['place'],
+        link: map['link'] ?? '',
+        place: map['place'] ?? '',
         startDate: DateTime.fromMillisecondsSinceEpoch(map['start_date']),
         deliveryEnum:
             DeliveryEnumExtension.stringToEnumMap(map['delivery_model']),
-        acceptingNewEnrollments: map['accepting_new_enrollments'],
-        responsibleProfessors:
-            ResponsibleProfessorModel.fromMaps(map['responsible_professors']),
-        takenSlots: map['total_slots'],
+        acceptingNewEnrollments: map['accepting_new_enrollments'] ?? false,
+        responsibleProfessors: [],
+        takenSlots: map['taken_slots'],
         totalSlots: map['total_slots'],
-        stopAcceptingNewEnrollmentsBefore: DateTime.fromMillisecondsSinceEpoch(
-            map['stop_accepting_new_enrollments_before']));
+        stopAcceptingNewEnrollmentsBefore:
+            map['stop_accepting_new_enrollments_before'] != null
+                ? DateTime.fromMillisecondsSinceEpoch(
+                    map['stop_accepting_new_enrollments_before'])
+                : DateTime.now());
   }
 
-  static List<ActivityModel> fromMaps(List array) {
+  static List<ActivityModel> fromMaps(Map<String, dynamic> map) {
+    var array = map['all_activities'];
     return array.map((e) => ActivityModel.fromMap(e)).toList();
   }
 
