@@ -9,6 +9,7 @@
     
     "knowMore": "KNOW MORE >>>",
     "speakersTitle": "Main Speakers - 2022",
+    "speakersAddTitle": "Add Speaker",
     "speakersSwipe": "SWIPE TO SEE MORE >>>",
     "speakersSchemaName": "{speakers, select, nina{Nina Silva} viviane{Viviane Nunes} leila{Leila Ferreira} boris{Bóris Fabris} marco{Marco Antonio Teixeira} willian{Dr. William Schoenell} other{}}",
     "speakersSchemaDescription": "{speakers, select, nina{He studied administration at the Fluminense Federal University, had his first contact with technology in the second year of college, in his first job. She was invited to join the company's team that worked with the SAP ERP system. From then on, he deepened his studies, took his certification and made his way into technology.} viviane{Viviane Nunes is a businesswoman and director of VN Comunicação. Specialist in institutional relations, with specialization in Energy Efficiency and Business Management in Oil, Gas and Biofuels. In her lectures, subjects related to strategies, women in the labor market and incentives for professional training are addressed.} leila{Leila Ferreira holds a degree in Journalism and Letters, with a Masters in Communication from the University of London, worked as a reporter at Rede Globo Minas and, for ten years, presented the program “Leila Interview”, on Rede Minas and TV Alterosa/SBT, which produced 13 international stories. She is the author of the books “Living doesn't hurt”, “The art of being light”, “Women – Why would they…?” and “Leila Interview: Backstage”.} boris{Designer, Automotive Design Consultant, teacher and speaker with international work experiences in the US, India, China, Europe and several other countries.} marco{Political Scientist, Professor and Researcher in the area of ​​Management and Public Policy. He was a commentator for the CBNSP program, on Rádio CBN, between 2012 and 2021, where he addressed issues related to the problems of the city of São Paulo and its public policies. He is one of the editors of the Blog \"Gestão, Política & Sociedade\" housed in the newspaper O Estado de São Paulo.} willian{He graduated in Physics from the Federal University of Santa Catarina, with a PhD in Astronomy from the University of Granada, worked as a FAPESP Technical Scholarship for the construction of a robotic telescope in Chile and currently works as an Instrument Control Specialist at the Gigante de Magalhães Observatory (GMT ).} other{}}",
@@ -27,6 +28,7 @@
     "beSponsorMoreInfoTitle": "SPONSORSHIP INFORMATION",
     "beSponsorMoreInfoDescription": "If you are interested in sponsoring the event, click here for more information.",
     "year2023": "2023",
+    "dateTitle": "Date",
     "monthFebruary": "February",
     "monthJanuary": "January",
     "discount10": "10% Off",
@@ -61,6 +63,9 @@
     "clickToGoBack": "Click here to return",
     "closeTitle": "Close",
     "confirmTitle": "Confirm",
+    "exitTitle": "Exit",
+    "cancelTitle": "Cancel",
+    "saveTitle": "Save",
 
 
 
@@ -100,6 +105,7 @@
         }
     },
     "confirmEmailNotificationSubtitle": "You will need to access your inbox to validate your registration.",
+    "confirmAllFieldsConrrectlyFilled": "Check that all fields are filled in correctly.",
 
 
 
@@ -113,6 +119,7 @@
     "fieldCpfInvalid": "Invalid CPF",
     "fieldDDDRequired": "Enter the number with DDD",
     "fieldRAInvalid": "Invalid RA",
+    "fieldFillAllRequired": "Fill in all fields!",
 
 
 
@@ -131,6 +138,9 @@
     "errorUserAlreadyExist": "User already exist.",
 
     "successEmailSend": "Email successfully sent!",
+
+    "confirmToContinue": "Are you sure you want to continue?",
+    "lostOldDataWarn": "When saving all old data will be lost.",
     
     "successSendingCode": "Code sent successfully!",
     "errorSendingCode": "Failed to send code, email not registered or not confirmed.",
@@ -143,6 +153,22 @@
 
     "successChangePasswordRedirect": "Password changed successfully! \n Redirecting to login...",
 
+    "admDashboardAppBarTitle": "Administrator Page",
+    "admReportsTitle": "Reports",
+
+    "cleanFiltersTitle": "Clean Filters",
+
+    "activityCreateTitle": "Create Activity",
+    "activityEditTitle": "Edit Activity",
+    "activityTypeTitle": "Activity Type",
+    "activityNameTitle": "Activity Title",
+
+    "descriptionTitle": "Description",
+
+    "scheduleTitle": "Schedule",
+    "scheduleAddTitle": "Add Schedule",
+
+    "codeTitle": "Code",
 
 
     "yesTitle": "Yes",

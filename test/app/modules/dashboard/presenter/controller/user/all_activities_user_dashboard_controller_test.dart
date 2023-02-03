@@ -9,10 +9,8 @@ import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controll
 import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
 import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/domain/infra/modality_activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
@@ -47,114 +45,276 @@ void main() {
 
   final mockActivities = <ActivityModel>[
     ActivityModel(
-      id: '0',
-      modality: DeliveryEnum.online,
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 01',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 14, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-        isExtensive: false,
-      ),
+      startDate: DateTime.parse('2022-05-16 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
     ),
     ActivityModel(
-      id: '0',
-      modality: DeliveryEnum.online,
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 01',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 15, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-        isExtensive: false,
-      ),
+      startDate: DateTime.parse('2022-05-17 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
     ),
     ActivityModel(
-      id: '0',
-      modality: DeliveryEnum.inperson,
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 01',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 16, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-        isExtensive: false,
-      ),
+      startDate: DateTime.parse('2022-05-18 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
     ),
     ActivityModel(
-      id: '1',
-      modality: DeliveryEnum.online,
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 02',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 17, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-        isExtensive: false,
-      ),
+      startDate: DateTime.parse('2022-05-19 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
     ),
     ActivityModel(
-      id: '2',
-      modality: DeliveryEnum.online,
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 03',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 18, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-        isExtensive: false,
-      ),
+      startDate: DateTime.parse('2022-05-20 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
+    ),
+    ActivityModel(
+      activityCode: 'C01',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+      ],
+      startDate: DateTime.parse('2022-05-21 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
+    ),
+    ActivityModel(
+      activityCode: 'C01',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+      ],
+      startDate: DateTime.parse('2022-05-22 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
+    ),
+    ActivityModel(
+      activityCode: 'C01',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+      ],
+      startDate: DateTime.parse('2022-05-23 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
     ),
   ];
 
@@ -207,7 +367,7 @@ void main() {
   });
 
   test('saturdayActivitiesList', () {
-    expect(controller.saturdayActivitiesList.isNotEmpty, false);
+    expect(controller.saturdayActivitiesList.isNotEmpty, true);
   });
 
   test('toggleFilterActivityChipIndex', () {
@@ -216,8 +376,8 @@ void main() {
   });
 
   test('getActivitiesByType', () {
-    controller.getActivitiesByType(ActivityEnum.CURSOS);
-    expect(controller.activitiesList.length, 5);
+    controller.getActivitiesByType(ActivityEnum.COURSE);
+    expect(controller.activitiesList.length, mockActivities.length);
   });
 
   test('logout', () {

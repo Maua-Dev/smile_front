@@ -141,78 +141,78 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
-  void setLocation(String value, int index) {
+  void setLocation(String value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.setLocation');
     try {
-      return super.setLocation(value, index);
+      return super.setLocation(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setLink(String value, int index) {
+  void setLink(String value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.setLink');
     try {
-      return super.setLink(value, index);
+      return super.setLink(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setDate(String value, int index) {
+  void setDate(String value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.setDate');
     try {
-      return super.setDate(value, index);
+      return super.setDate(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setHour(String value, int index) {
+  void setHour(String value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.setHour');
     try {
-      return super.setHour(value, index);
+      return super.setHour(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setDuration(String value, int index) {
+  void setDuration(String value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.setDuration');
     try {
-      return super.setDuration(value, index);
+      return super.setDuration(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setParticipants(int value, int index) {
+  void setParticipants(int value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.setParticipants');
     try {
-      return super.setParticipants(value, index);
+      return super.setParticipants(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setEnableSubscription(bool value, int index) {
+  void setEnableSubscription(bool value) {
     final _$actionInfo =
         _$CreateActivityControllerBaseActionController.startAction(
             name: 'CreateActivityControllerBase.setEnableSubscription');
     try {
-      return super.setEnableSubscription(value, index);
+      return super.setEnableSubscription(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }

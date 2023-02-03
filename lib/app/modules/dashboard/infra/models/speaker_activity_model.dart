@@ -1,21 +1,11 @@
 import 'package:smile_front/app/shared/entities/speaker.dart';
 
 class SpeakerActivityModel extends Speaker {
-  // ignore: overridden_fields, annotate_overrides
-  String? name;
-  // ignore: overridden_fields, annotate_overrides
-  String? bio;
-  // ignore: overridden_fields, annotate_overrides
-  String? company;
-
   SpeakerActivityModel({
-    required this.name,
-    required this.bio,
-    this.company,
-  }) : super(
-          name: name,
-          bio: bio,
-        );
+    required super.name,
+    required super.bio,
+    super.company,
+  });
 
   Map<String, dynamic> toJson() => {
         'name': name,

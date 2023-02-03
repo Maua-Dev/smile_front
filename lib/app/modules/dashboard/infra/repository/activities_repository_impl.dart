@@ -29,16 +29,16 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   @override
   Future editActivity(ActivityModel activityToEdit) async {
-    var index =
-        activitiesList.indexWhere((element) => element.id == activityToEdit.id);
+    var index = activitiesList.indexWhere(
+        (element) => element.activityCode == activityToEdit.activityCode);
     activitiesList.removeAt(index);
     activitiesList.insert(index, activityToEdit);
-    await datasource.putActivity(activityToEdit.id, activityToEdit);
+    await datasource.putActivity(activityToEdit.activityCode, activityToEdit);
   }
 
   @override
   Future removeActivity(String id) async {
-    activitiesList.removeWhere((element) => element.id == id);
+    activitiesList.removeWhere((element) => element.activityCode == id);
     await datasource.removeActivity(id);
   }
 
@@ -59,7 +59,8 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   @override
   Future<bool> unsubscribeActivity(
       String activityId, DateTime activityDate) async {
-    subscribedActivities.removeWhere((element) => element.id == activityId);
+    subscribedActivities
+        .removeWhere((element) => element.activityCode == activityId);
     var requestDone =
         await datasource.postUnsubscribe(activityId, activityDate);
     return requestDone;

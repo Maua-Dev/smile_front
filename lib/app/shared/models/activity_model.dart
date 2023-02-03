@@ -1,52 +1,56 @@
-// ignore_for_file: overridden_fields, annotate_overrides, duplicate_ignore
-
-import 'package:smile_front/app/modules/dashboard/domain/infra/modality_activity_enum.dart';
 import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 
-import '../../modules/dashboard/infra/models/schedule_activity_model.dart';
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
 class ActivityModel extends Activity {
-  final String id;
-  final String activityCode;
-  final ActivityEnum? type;
-  final String title;
-  final String description;
-  final DeliveryEnum? modality;
-  final ScheduleActivityModel schedule;
-  final List<SpeakerActivityModel> speakers;
-
   ActivityModel({
-    required this.id,
-    required this.activityCode,
-    required this.type,
-    required this.title,
-    required this.description,
-    required this.schedule,
-    required this.speakers,
-    required this.modality,
-  }) : super(
-          id: id,
-          activityCode: activityCode,
-          type: type,
-          title: title,
-          description: description,
-          schedule: schedule,
-          speakers: speakers,
-        );
+    required super.isExtensive,
+    super.deliveryEnum,
+    super.startDate,
+    required super.duration,
+    required super.activityCode,
+    required super.type,
+    required super.title,
+    required super.description,
+    required super.speakers,
+    super.link,
+    super.place,
+    required super.acceptingNewEnrollments,
+    required super.responsibleProfessors,
+    super.stopAcceptingNewEnrollmentsBefore,
+    required super.takenSlots,
+    required super.totalSlots,
+  });
 
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
     return ActivityModel(
-      id: map['id'],
-      modality: DeliveryEnumExtension.stringToEnumMap(map['modality']),
-      activityCode: map['activityCode'],
-      type: ActivityEnumExtension.stringToEnumMap(map['type']),
-      title: map['title'],
-      description: map['description'],
-      schedule: ScheduleActivityModel.fromMaps(map['schedule']).first,
-      speakers: SpeakerActivityModel.fromMaps(map['speakers']),
-    );
+        activityCode: map['code'],
+        type: ActivityEnumExtension.stringToEnumMap(map['activity_type']),
+        title: map['title'],
+        description: map['description'],
+        speakers: SpeakerActivityModel.fromMaps(map['speakers']),
+        duration: map['duration'] ?? 0,
+        isExtensive: map['is_extensive'] ?? false,
+        link: map['link'] ?? '',
+        place: map['place'] ?? '',
+        startDate: DateTime.fromMillisecondsSinceEpoch(map['start_date']),
+        deliveryEnum:
+            DeliveryEnumExtension.stringToEnumMap(map['delivery_model']),
+        acceptingNewEnrollments: map['accepting_new_enrollments'] ?? false,
+        responsibleProfessors: [
+          ResponsibleProfessorModel(id: '', name: '', role: UserRolesEnum.admin)
+        ],
+        takenSlots: map['taken_slots'],
+        totalSlots: map['total_slots'],
+        stopAcceptingNewEnrollmentsBefore:
+            map['stop_accepting_new_enrollments_before'] != null
+                ? DateTime.fromMillisecondsSinceEpoch(
+                    map['stop_accepting_new_enrollments_before'])
+                : DateTime.now());
   }
 
   static List<ActivityModel> fromMaps(List array) {
@@ -58,41 +62,65 @@ class ActivityModel extends Activity {
         'activityCode': activityCode,
         'title': title,
         'description': description,
-        'schedule': schedule,
         'speakers': speakers,
       };
 
   factory ActivityModel.newInstance() {
     return ActivityModel(
-        schedule: ScheduleActivityModel.newInstance(),
-        description: '',
-        modality: null,
-        id: '',
-        activityCode: '',
-        title: '',
-        type: null,
-        speakers: [SpeakerActivityModel.newInstance()]);
+      description: '',
+      activityCode: '',
+      title: '',
+      type: null,
+      speakers: [SpeakerActivityModel.newInstance()],
+      duration: 0,
+      isExtensive: false,
+      startDate: DateTime.now(),
+      deliveryEnum: null,
+      acceptingNewEnrollments: false,
+      responsibleProfessors: [],
+      takenSlots: 0,
+      totalSlots: 0,
+    );
   }
 
-  ActivityModel copyWith({
-    String? id,
-    String? activityCode,
-    ActivityEnum? type,
-    String? title,
-    String? description,
-    DeliveryEnum? modality,
-    ScheduleActivityModel? schedule,
-    List<SpeakerActivityModel>? speakers,
-  }) {
+  ActivityModel copyWith(
+      {String? id,
+      String? activityCode,
+      ActivityEnum? type,
+      String? title,
+      String? description,
+      bool? isExtensive,
+      DeliveryEnum? deliveryEnum,
+      DateTime? startDate,
+      int? duration,
+      String? place,
+      String? link,
+      List<SpeakerActivityModel>? speakers,
+      bool? acceptingNewEnrollments,
+      int? takenSlots,
+      int? totalSlots,
+      DateTime? stopAcceptingNewEnrollmentsBefore,
+      List<ResponsibleProfessorModel>? responsibleProfessors}) {
     return ActivityModel(
-      id: id ?? this.id,
       activityCode: activityCode ?? this.activityCode,
       type: type ?? this.type,
       title: title ?? this.title,
       description: description ?? this.description,
-      schedule: schedule ?? this.schedule,
+      duration: duration ?? this.duration,
       speakers: speakers ?? this.speakers,
-      modality: modality ?? this.modality,
+      isExtensive: isExtensive ?? this.isExtensive,
+      startDate: startDate ?? this.startDate,
+      deliveryEnum: deliveryEnum ?? this.deliveryEnum,
+      acceptingNewEnrollments:
+          acceptingNewEnrollments ?? this.acceptingNewEnrollments,
+      responsibleProfessors:
+          responsibleProfessors ?? this.responsibleProfessors,
+      takenSlots: takenSlots ?? this.takenSlots,
+      totalSlots: totalSlots ?? this.totalSlots,
+      link: link ?? this.link,
+      place: place ?? this.place,
+      stopAcceptingNewEnrollmentsBefore: stopAcceptingNewEnrollmentsBefore ??
+          this.stopAcceptingNewEnrollmentsBefore,
     );
   }
 }

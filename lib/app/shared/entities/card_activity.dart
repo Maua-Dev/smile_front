@@ -11,7 +11,7 @@ class CardActivity {
   final DateTime? date;
   final int? totalParticipants;
   final List<SpeakerActivityModel>? speakers;
-  final DateTime? duration;
+  final int? duration;
   final String? location;
   final String? link;
   final bool acceptSubscription;
@@ -47,7 +47,7 @@ class CardActivity {
       title: '',
       type: null,
       date: DateTime.now(),
-      duration: DateTime.now(),
+      duration: 0,
       link: '',
       location: '',
       speakers: [],

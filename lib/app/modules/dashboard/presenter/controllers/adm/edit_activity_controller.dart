@@ -6,8 +6,6 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
-import '../../../domain/infra/modality_activity_enum.dart';
-
 part 'edit_activity_controller.g.dart';
 
 class EditActivityController = EditActivityControllerBase
@@ -21,7 +19,7 @@ abstract class EditActivityControllerBase with Store {
     required this.activityModel,
     required this.editActivity,
   }) {
-    if (activityModel.id.isEmpty) {
+    if (activityModel.activityCode.isEmpty) {
       Modular.to.navigate('/adm');
     }
   }
@@ -39,15 +37,11 @@ abstract class EditActivityControllerBase with Store {
 
   @action
   bool isFilled() {
-    var scheduleFirst = activityToEdit.schedule;
     if (activityToEdit.title != '' &&
         activityToEdit.description != '' &&
         activityToEdit.type != null &&
-        activityToEdit.modality != null &&
         activityToEdit.activityCode != '' &&
-        scheduleFirst.date != null &&
-        scheduleFirst.duration != null &&
-        scheduleFirst.totalParticipants != null) {
+        activityToEdit.startDate != null) {
       return true;
     }
     return false;
@@ -67,11 +61,6 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setModality(DeliveryEnum? value) {
-    activityToEdit = activityToEdit.copyWith(modality: value);
-  }
-
-  @action
   void setActivityCode(String value) {
     activityToEdit = activityToEdit.copyWith(activityCode: value);
   }
@@ -88,12 +77,12 @@ abstract class EditActivityControllerBase with Store {
 
   @action
   void setLocation(String value) {
-    activityToEdit.schedule.location = value;
+    activityToEdit.place = value;
   }
 
   @action
   void setLink(String value) {
-    activityToEdit.schedule.link = value;
+    activityToEdit.link = value;
   }
 
   @action
@@ -103,44 +92,36 @@ abstract class EditActivityControllerBase with Store {
       var month = value.substring(3, 5);
       var day = value.substring(0, 2);
       value = '$year-$month-$day';
-      var hour = activityToEdit.schedule.date != null
-          ? DateFormat('HH:mm').format(activityToEdit.schedule.date!)
+      var hour = activityToEdit.startDate != null
+          ? DateFormat('HH:mm').format(activityToEdit.startDate!)
           : '';
       var date =
           hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
-      var schedule = activityToEdit.schedule;
-      schedule = activityToEdit.schedule.copyWith(date: date);
-      activityToEdit = activityToEdit.copyWith(schedule: schedule);
+      activityToEdit = activityToEdit.copyWith(startDate: date);
     }
   }
 
   @action
   void setHour(String value) {
     if (value.length > 4) {
-      var date = activityToEdit.schedule.date != null
-          ? DateFormat('yyyy-MM-dd').format(activityToEdit.schedule.date!)
+      var date = activityToEdit.startDate != null
+          ? DateFormat('yyyy-MM-dd').format(activityToEdit.startDate!)
           : '0000-00-00';
       var hour = DateTime.parse("$date $value");
-      var schedule = activityToEdit.schedule;
-      schedule = activityToEdit.schedule.copyWith(date: hour);
-      activityToEdit = activityToEdit.copyWith(schedule: schedule);
+
+      activityToEdit = activityToEdit.copyWith(startDate: hour);
     }
   }
 
   @action
   void setDuration(String value) {
-    if (value.length >= 5) {
-      var format = DateFormat('HH:mm');
-      var duration = format.parse(value);
-      var schedule = activityToEdit.schedule;
-      schedule = activityToEdit.schedule.copyWith(duration: duration);
-      activityToEdit = activityToEdit.copyWith(schedule: schedule);
-    }
+    var format = int.parse(value);
+    activityToEdit = activityToEdit.copyWith(duration: format);
   }
 
   @action
   void setParticipants(int value) {
-    activityToEdit.schedule.totalParticipants = value;
+    activityToEdit = activityToEdit.copyWith(totalSlots: value);
   }
 
   @action
@@ -160,12 +141,7 @@ abstract class EditActivityControllerBase with Store {
 
   @action
   void setEnableSubscription(bool value) {
-    activityToEdit.schedule.acceptSubscription = value;
-  }
-
-  @action
-  void setIsExtensive() {
-    activityToEdit.schedule.isExtensive = !activityToEdit.schedule.isExtensive;
+    activityToEdit = activityToEdit.copyWith(acceptingNewEnrollments: value);
   }
 
   @action

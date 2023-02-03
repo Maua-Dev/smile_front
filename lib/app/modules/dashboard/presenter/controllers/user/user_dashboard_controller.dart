@@ -170,21 +170,19 @@ abstract class UserDashboardControllerBase with Store {
     if (subscribedActivitiesList.isNotEmpty) {
       for (var activity in subscribedActivitiesList) {
         allActivitiesToCards.add(CardActivity(
-          id: activity.id,
+          id: '',
           activityCode: activity.activityCode,
           type: activity.type,
           title: activity.title,
           description: activity.description,
-          date: activity.schedule.date,
-          duration: activity.schedule.duration,
-          totalParticipants: activity.schedule.totalParticipants,
+          date: activity.startDate,
+          duration: 0,
+          totalParticipants: activity.totalSlots,
           speakers: activity.speakers,
-          location: activity.schedule.location,
-          link: activity.schedule.link,
-          enrolledUsers: activity.schedule.enrolledUsers,
-          acceptSubscription: activity.schedule.acceptSubscription,
-          isExtensive: activity.schedule.isExtensive,
-          modality: activity.modality,
+          location: activity.place,
+          link: activity.link,
+          enrolledUsers: activity.takenSlots,
+          acceptSubscription: activity.acceptingNewEnrollments,
         ));
       }
       allActivitiesToCards.sort(
@@ -201,21 +199,19 @@ abstract class UserDashboardControllerBase with Store {
     if (subscribedActivitiesList.isNotEmpty) {
       nextActivity = subscribedActivitiesList.first;
       cardNextActivity = CardActivity(
-        id: nextActivity.id,
+        id: '',
         activityCode: nextActivity.activityCode,
         type: nextActivity.type,
         title: nextActivity.title,
         description: nextActivity.description,
-        date: nextActivity.schedule.date,
-        duration: nextActivity.schedule.duration,
-        totalParticipants: nextActivity.schedule.totalParticipants,
+        date: nextActivity.startDate,
+        duration: 0,
+        totalParticipants: nextActivity.totalSlots,
         speakers: nextActivity.speakers,
-        location: nextActivity.schedule.location,
-        link: nextActivity.schedule.link,
-        enrolledUsers: nextActivity.schedule.enrolledUsers,
-        acceptSubscription: nextActivity.schedule.acceptSubscription,
-        isExtensive: nextActivity.schedule.isExtensive, 
-        modality: nextActivity.modality,
+        location: nextActivity.place,
+        link: nextActivity.link,
+        enrolledUsers: nextActivity.takenSlots,
+        acceptSubscription: nextActivity.acceptingNewEnrollments,
       );
     } else {
       nextActivity = ActivityModel.newInstance();

@@ -7,6 +7,7 @@ import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/filter/filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../auth/infra/repositories/secure_storage.dart';
@@ -25,9 +26,10 @@ class _AdmDashboardPageState
   Widget build(BuildContext context) {
     var secureStorage = Modular.get<SecureStorage>();
     return Scaffold(
-      appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(73),
-          child: AdmAppBarWidget(appBarText: 'Página do Administrador')),
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(73),
+          child: AdmAppBarWidget(
+              appBarText: S.of(context).admDashboardAppBarTitle)),
       body: Row(
         children: [
           const SideBarWidget(),
@@ -70,14 +72,12 @@ class _AdmDashboardPageState
                           itemCount: controller.activitiesList.length,
                           itemBuilder: (BuildContext context, int index) {
                             String date = DateFormat('dd/MM/yyyy').format(
-                                controller
-                                    .activitiesList[index].schedule.date!);
-                            String time = DateFormat('HH:mm').format(controller
-                                .activitiesList[index].schedule.date!);
+                                controller.activitiesList[index].startDate!);
+                            String time = DateFormat('HH:mm').format(
+                                controller.activitiesList[index].startDate!);
                             String finalTime = Utils.getActivityFinalTime(
-                                controller.activitiesList[index].schedule.date!,
-                                controller
-                                    .activitiesList[index].schedule.duration!);
+                                controller.activitiesList[index].startDate!,
+                                controller.activitiesList[index].duration);
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
@@ -88,13 +88,9 @@ class _AdmDashboardPageState
                                   description: controller
                                       .activitiesList[index].description,
                                   enrolledUsersLength: controller
-                                      .activitiesList[index]
-                                      .schedule
-                                      .enrolledUsers!,
+                                      .activitiesList[index].takenSlots,
                                   totalParticipants: controller
-                                      .activitiesList[index]
-                                      .schedule
-                                      .totalParticipants!,
+                                      .activitiesList[index].totalSlots,
                                   title: controller.activitiesList[index].title,
                                   time: time,
                                   finalTime: finalTime,
@@ -115,7 +111,7 @@ class _AdmDashboardPageState
                                                         controller
                                                             .activitiesList[
                                                                 index]
-                                                            .id);
+                                                            .activityCode);
                                                 Modular.to.pop();
                                               });
                                         });
@@ -130,9 +126,9 @@ class _AdmDashboardPageState
                                         '/adm/edit-activity',
                                         arguments: controller.activitiesList
                                             .firstWhere((element) =>
-                                                element.id ==
-                                                controller
-                                                    .activitiesList[index].id),
+                                                element.activityCode ==
+                                                controller.activitiesList[index]
+                                                    .activityCode),
                                       );
                                     }
                                   },

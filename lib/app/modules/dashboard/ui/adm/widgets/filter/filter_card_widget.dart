@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 class FilterCardWidget extends StatelessWidget {
   final Function(ActivityEnum?)? onChangedActivitiesFilter;
@@ -64,7 +65,7 @@ class FilterCardWidget extends StatelessWidget {
                         isExpanded: true,
                         decoration: InputDecoration(
                           isDense: true,
-                          hintText: 'Atividades',
+                          hintText: S.of(context).activitiesTitle,
                           fillColor: AppColors.white,
                           filled: true,
                           hintStyle: AppTextStyles.body.copyWith(fontSize: 25),
@@ -97,7 +98,9 @@ class FilterCardWidget extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 4.0),
                             child: Text(
-                                formattedDate == '' ? 'Data' : formattedDate,
+                                formattedDate == ''
+                                    ? S.of(context).dateTitle
+                                    : formattedDate,
                                 style: AppTextStyles.body.copyWith(
                                     fontSize: formattedDate == '' ? 25 : 16)),
                           ),
@@ -146,7 +149,9 @@ class FilterCardWidget extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 4.0),
                             child: Text(
-                                formattedHour == '' ? 'Hora' : formattedHour,
+                                formattedHour == ''
+                                    ? S.of(context).scheduleTitle
+                                    : formattedHour,
                                 style: AppTextStyles.body.copyWith(
                                     fontSize: formattedHour == '' ? 25 : 16)),
                           ),
@@ -190,7 +195,7 @@ class FilterCardWidget extends StatelessWidget {
         ElevatedButton.icon(
             onPressed: resetFilters,
             icon: const Icon(Icons.delete),
-            label: const Text('Limpar Filtros')),
+            label: Text(S.of(context).cleanFiltersTitle)),
       ],
     );
   }
