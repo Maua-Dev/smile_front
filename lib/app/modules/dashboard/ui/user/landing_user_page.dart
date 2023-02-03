@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/app_widgets/sidebar/app_sidebar_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/vertical-nav-bar/vertical_nav_bar_widget.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../shared/utils/screen_helper.dart';
@@ -18,9 +19,6 @@ class _LandingUserPageState extends State<LandingUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         drawerScrimColor: Colors.transparent,
-        bottomNavigationBar: Screen.width(context) < tabletSize
-            ? const BottomNavigationBarWidget()
-            : null,
         drawer: Screen.width(context) < tabletSize ? NavBarWidget() : null,
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(Screen.height(context) * 0.1),
@@ -59,7 +57,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
             : SafeArea(
                 child: Row(
                   children: [
-                    // const VerticalNavBarWidget(),
+                    const VerticalNavBarWidget(),
                     Flexible(
                       child: Center(
                         child: SizedBox(
