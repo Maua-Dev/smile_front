@@ -134,7 +134,7 @@ abstract class AdmDashboardControllerBase with Store {
   List<ActivityModel> filterActivitiesByDate(
       DateTime date, List<ActivityModel> activitiesToFilter) {
     var list = activitiesToFilter
-        .where((element) => isValidDateFilter(element.schedule.date!, date))
+        .where((element) => isValidDateFilter(element.startDate!, date))
         .toList();
     return list;
   }
@@ -143,7 +143,7 @@ abstract class AdmDashboardControllerBase with Store {
   List<ActivityModel> filterActivitiesByHour(
       DateTime hour, List<ActivityModel> activitiesToFilter) {
     var list = activitiesToFilter
-        .where((element) => isValidHourFilter(element.schedule.date!, hour))
+        .where((element) => isValidHourFilter(element.startDate!, hour))
         .toList();
     return list;
   }

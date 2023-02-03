@@ -1,16 +1,20 @@
 import 'package:intl/intl.dart';
 
 class Utils {
-  static String getActivityFinalTime(DateTime time, DateTime duration) {
+  static String getActivityFinalTime(DateTime time, int duration) {
+    var hour = duration / 60;
+    var minutes = duration - (hour * 60);
     var newDate = DateTime(time.year, time.month, time.day,
-        time.hour + duration.hour, time.minute + duration.minute);
+        time.hour + hour.toInt(), time.minute + minutes.toInt());
 
     return DateFormat('HH:mm').format(newDate);
   }
 
-  static String getActivityFullFinalTime(DateTime time, DateTime duration) {
+  static String getActivityFullFinalTime(DateTime time, int duration) {
+    var hour = duration / 60;
+    var minutes = duration - (hour * 60);
     var newDate = DateTime(time.year, time.month, time.day,
-        time.hour + duration.hour, time.minute + duration.minute);
+        time.hour + hour.toInt(), time.minute + minutes.toInt());
 
     return DateFormat('yyyy-MM-dd hh:mm').format(newDate);
   }

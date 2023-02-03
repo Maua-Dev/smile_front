@@ -31,9 +31,9 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     var token = await storage.getAccessToken();
     try {
       dio.options.headers["authorization"] = "Bearer $token";
-      final res = await dio.get('/activity/getAll');
+      final res = await dio.get('/get-all-activities');
       if (res.statusCode == 200) {
-        return ActivityModel.fromMaps(res.data);
+        return ActivityModel.fromMaps(res.data['all_activities']);
       }
       throw Exception();
     } on DioError catch (e) {

@@ -8,7 +8,6 @@ import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
@@ -25,24 +24,39 @@ void main() {
   EditActivityInterface editActivity = MockEditActivityInterface();
   late EditActivityController controller;
   final activity = ActivityModel(
-      id: '1',
-      activityCode: 'C01',
-      type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
-      title: 'Atividade 1',
-      description: '12345',
-      schedule: ScheduleActivityModel(
-        date: DateTime.fromMillisecondsSinceEpoch(1647216000000, isUtc: true),
-        totalParticipants: 20,
-        location: '',
-        acceptSubscription: false,
+    activityCode: 'C01',
+    type: ActivityEnum.COURSE,
+    title:
+        'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+    description:
+        'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
+    speakers: [
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
       ),
-      speakers: [
-        SpeakerActivityModel(
-          bio: '',
-          company: '',
-          name: '',
-        )
-      ]);
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
+      ),
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
+      ),
+    ],
+    startDate: DateTime.parse('2022-05-16 13:00'),
+    totalSlots: 20,
+    duration: 120,
+    place: 'H244',
+    link: 'https://www.google.com.br',
+    acceptingNewEnrollments: false,
+    isExtensive: false,
+    takenSlots: 0,
+    responsibleProfessors: [],
+  );
 
   setUpAll(() async {
     await Modular.isModuleReady<AppModule>();
@@ -59,11 +73,11 @@ void main() {
 
   test('isFilled', () {
     var test = controller.isFilled();
-    expect(test, false);
+    expect(test, true);
   });
 
   test('setType', () {
-    var str = ActivityEnum.CAFE_EX_ALUNOS;
+    var str = ActivityEnum.ALUMNI_CAFE;
     controller.setType(str);
     expect(controller.activityToEdit.type, str);
   });
@@ -88,43 +102,43 @@ void main() {
 
   test('setLocation', () {
     var str = 'teste';
-    controller.setLocation(str, 0);
-    expect(controller.activityToEdit.schedule.location, str);
+    controller.setLocation(str);
+    expect(controller.activityToEdit.place, str);
   });
 
   test('setLink', () {
     var str = 'teste';
-    controller.setLink(str, 0);
-    expect(controller.activityToEdit.schedule.link, str);
+    controller.setLink(str);
+    expect(controller.activityToEdit.link, str);
   });
 
   test('setDate', () {
     var str = DateFormat('dd-MM-yyyy').format(DateTime.now());
-    controller.setDate(str, 0);
-    expect(controller.activityToEdit.schedule.date!.day, DateTime.now().day);
+    controller.setDate(str);
+    expect(controller.activityToEdit.startDate!.day, DateTime.now().day);
   });
 
   test('setHour', () {
     var str = '22:00';
-    controller.setHour(str, 0);
-    expect(controller.activityToEdit.schedule.date!.hour, 22);
+    controller.setHour(str);
+    expect(controller.activityToEdit.startDate!.hour, 22);
   });
 
   test('setDuration', () {
-    var str = '22:00';
-    controller.setDuration(str, 0);
-    expect(controller.activityToEdit.schedule.duration!.hour, 22);
+    var str = '22';
+    controller.setDuration(str);
+    expect(controller.activityToEdit.duration, int.parse(str));
   });
 
   test('setParticipants', () {
     var str = 1;
-    controller.setParticipants(str, 0);
-    expect(controller.activityToEdit.schedule.totalParticipants, str);
+    controller.setParticipants(str);
+    expect(controller.activityToEdit.totalSlots, str);
   });
 
   test('setEnableSubscription', () {
-    controller.setEnableSubscription(true, 0);
-    expect(controller.activityToEdit.schedule.acceptSubscription, true);
+    controller.setEnableSubscription(true);
+    expect(controller.activityToEdit.acceptingNewEnrollments, true);
   });
 
   test('setSpeakerName', () {
