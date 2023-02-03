@@ -1,6 +1,7 @@
 import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
@@ -28,10 +29,10 @@ class ActivityModel extends Activity {
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
     return ActivityModel(
         activityCode: map['code'],
-        type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
+        type: ActivityEnumExtension.stringToEnumMap(map['activity_type']),
         title: map['title'],
         description: map['description'],
-        speakers: [],
+        speakers: SpeakerActivityModel.fromMaps(map['speakers']),
         duration: map['duration'] ?? 0,
         isExtensive: map['is_extensive'] ?? false,
         link: map['link'] ?? '',
@@ -40,7 +41,9 @@ class ActivityModel extends Activity {
         deliveryEnum:
             DeliveryEnumExtension.stringToEnumMap(map['delivery_model']),
         acceptingNewEnrollments: map['accepting_new_enrollments'] ?? false,
-        responsibleProfessors: [],
+        responsibleProfessors: [
+          ResponsibleProfessorModel(id: '', name: '', role: UserRolesEnum.admin)
+        ],
         takenSlots: map['taken_slots'],
         totalSlots: map['total_slots'],
         stopAcceptingNewEnrollmentsBefore:
@@ -50,8 +53,7 @@ class ActivityModel extends Activity {
                 : DateTime.now());
   }
 
-  static List<ActivityModel> fromMaps(Map<String, dynamic> map) {
-    var array = map['all_activities'];
+  static List<ActivityModel> fromMaps(List array) {
     return array.map((e) => ActivityModel.fromMap(e)).toList();
   }
 

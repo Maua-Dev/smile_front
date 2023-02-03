@@ -17,7 +17,7 @@ void main() {
   final mockActivities = <ActivityModel>[
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
+      type: ActivityEnum.COURSE,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -51,7 +51,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
+      type: ActivityEnum.COURSE,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -85,7 +85,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
+      type: ActivityEnum.COURSE,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:

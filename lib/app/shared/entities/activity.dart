@@ -46,7 +46,7 @@ class Activity {
       deliveryEnum: null,
       description: '',
       title: '',
-      type: ActivityEnum.CAFE_EX_ALUNOS,
+      type: ActivityEnum.ALUMNI_CAFE,
       duration: 0,
       isExtensive: false,
       startDate: null,

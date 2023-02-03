@@ -6,18 +6,18 @@ import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
 
 enum ActivityEnum {
-  CURSOS,
-  PALESTRAS,
-  PALESTRAS_ALTO_IMPACTO,
-  VISITAS_TECNICAS,
-  COMPETICOES_ACADEMICAS,
+  COURSE,
+  LECTURES,
+  HIGH_IMPACT_LECTURES,
+  TECHNICAL_VISITS,
+  ACADEMIC_COMPETITIONS,
   HACKATHON,
-  FEIRA_ESTAGIOS,
-  CAFE_EX_ALUNOS,
-  ACADEMIA_DE_PROFESSORES,
-  ATIVIDADE_CULTURAL,
+  INTERNSHIP_FAIR,
+  ALUMNI_CAFE,
+  PROFESSORS_ACADEMY,
+  CULTURAL_ACTIVITY,
   GCSP,
-  ATIVIDADE_ESPORTIVA
+  SPORTS_ACTIVITY
 }
 
 extension ActivityEnumExtension on ActivityEnum {
@@ -31,29 +31,29 @@ extension ActivityEnumExtension on ActivityEnum {
 
   String get linkPhoto {
     switch (this) {
-      case ActivityEnum.CURSOS:
+      case ActivityEnum.COURSE:
         return '${previousEditionsBaseUrl}cursos.png';
-      case ActivityEnum.PALESTRAS:
+      case ActivityEnum.LECTURES:
         return '${previousEditionsBaseUrl}palestras.png';
-      case ActivityEnum.PALESTRAS_ALTO_IMPACTO:
+      case ActivityEnum.HIGH_IMPACT_LECTURES:
         return '${previousEditionsBaseUrl}palestra_alto_impacto.png';
-      case ActivityEnum.VISITAS_TECNICAS:
+      case ActivityEnum.TECHNICAL_VISITS:
         return '${previousEditionsBaseUrl}visitas_tecnicas.png';
-      case ActivityEnum.COMPETICOES_ACADEMICAS:
+      case ActivityEnum.ACADEMIC_COMPETITIONS:
         return '${previousEditionsBaseUrl}competicao_academica.png';
       case ActivityEnum.HACKATHON:
         return '${previousEditionsBaseUrl}hackathon.png';
-      case ActivityEnum.FEIRA_ESTAGIOS:
+      case ActivityEnum.INTERNSHIP_FAIR:
         return '${previousEditionsBaseUrl}feira_estagios.png';
-      case ActivityEnum.CAFE_EX_ALUNOS:
+      case ActivityEnum.ALUMNI_CAFE:
         return '${previousEditionsBaseUrl}cafe_ex_aluno.png';
-      case ActivityEnum.ACADEMIA_DE_PROFESSORES:
+      case ActivityEnum.PROFESSORS_ACADEMY:
         return '${previousEditionsBaseUrl}academia_professores.png';
-      case ActivityEnum.ATIVIDADE_CULTURAL:
+      case ActivityEnum.CULTURAL_ACTIVITY:
         return '${previousEditionsBaseUrl}atividade_cultural.png';
       case ActivityEnum.GCSP:
         return '${previousEditionsBaseUrl}gcsp.png';
-      case ActivityEnum.ATIVIDADE_ESPORTIVA:
+      case ActivityEnum.SPORTS_ACTIVITY:
         return '${previousEditionsBaseUrl}atividade_esportiva.png';
     }
   }

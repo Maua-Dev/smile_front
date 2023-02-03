@@ -30,7 +30,7 @@ void main() {
     enrolledUsers: 10,
     id: '123',
     activityCode: 'PA01',
-    type: ActivityEnum.ACADEMIA_DE_PROFESSORES,
+    type: ActivityEnum.PROFESSORS_ACADEMY,
     title: 'Title',
     description: 'Description',
     date: DateTime.now(),

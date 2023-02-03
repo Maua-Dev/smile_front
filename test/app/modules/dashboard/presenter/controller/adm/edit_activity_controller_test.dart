@@ -25,7 +25,7 @@ void main() {
   late EditActivityController controller;
   final activity = ActivityModel(
     activityCode: 'C01',
-    type: ActivityEnum.CURSOS,
+    type: ActivityEnum.COURSE,
     title:
         'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
     description:
@@ -77,7 +77,7 @@ void main() {
   });
 
   test('setType', () {
-    var str = ActivityEnum.CAFE_EX_ALUNOS;
+    var str = ActivityEnum.ALUMNI_CAFE;
     controller.setType(str);
     expect(controller.activityToEdit.type, str);
   });
