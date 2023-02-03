@@ -6,6 +6,8 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 
+import '../../../../../shared/entities/infra/delivery_enum.dart';
+
 part 'edit_activity_controller.g.dart';
 
 class EditActivityController = EditActivityControllerBase
@@ -40,6 +42,7 @@ abstract class EditActivityControllerBase with Store {
     if (activityToEdit.title != '' &&
         activityToEdit.description != '' &&
         activityToEdit.type != null &&
+        activityToEdit.deliveryEnum != null &&
         activityToEdit.activityCode != '' &&
         activityToEdit.startDate != null) {
       return true;
@@ -58,6 +61,11 @@ abstract class EditActivityControllerBase with Store {
   @action
   void setType(ActivityEnum? value) {
     activityToEdit = activityToEdit.copyWith(type: value);
+  }
+
+  @action
+  void setModality(DeliveryEnum? value) {
+    activityToEdit = activityToEdit.copyWith(deliveryEnum: value);
   }
 
   @action
@@ -142,6 +150,11 @@ abstract class EditActivityControllerBase with Store {
   @action
   void setEnableSubscription(bool value) {
     activityToEdit = activityToEdit.copyWith(acceptingNewEnrollments: value);
+  }
+
+  @action
+  void setIsExtensive() {
+    activityToEdit.isExtensive = !activityToEdit.isExtensive;
   }
 
   @action

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import '../../../../../../shared/entities/infra/delivery_enum.dart';
 import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/utils/screen_helper.dart';
 import '../../../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
-import '../../../../domain/infra/modality_activity_enum.dart';
 import 'text_field_dialog_widget.dart';
 
 class ScheduleAddWidget extends StatelessWidget {

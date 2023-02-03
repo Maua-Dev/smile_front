@@ -170,6 +170,8 @@ abstract class UserDashboardControllerBase with Store {
     if (subscribedActivitiesList.isNotEmpty) {
       for (var activity in subscribedActivitiesList) {
         allActivitiesToCards.add(CardActivity(
+          delivery: activity.deliveryEnum,
+          isExtensive: activity.isExtensive,
           id: '',
           activityCode: activity.activityCode,
           type: activity.type,
@@ -199,6 +201,8 @@ abstract class UserDashboardControllerBase with Store {
     if (subscribedActivitiesList.isNotEmpty) {
       nextActivity = subscribedActivitiesList.first;
       cardNextActivity = CardActivity(
+        delivery: nextActivity.deliveryEnum,
+        isExtensive: nextActivity.isExtensive,
         id: '',
         activityCode: nextActivity.activityCode,
         type: nextActivity.type,

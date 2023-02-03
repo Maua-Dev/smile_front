@@ -1,12 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
 import '../../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
-import '../../../domain/infra/activity_enum.dart';
 
 part 'all_activities_user_dashboard_controller.g.dart';
 
@@ -129,7 +129,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
           enrolledUsers: activity.takenSlots,
           acceptSubscription: activity.acceptingNewEnrollments,
           isExtensive: activity.isExtensive,
-          modality: activity.modality,
+          delivery: activity.deliveryEnum,
         ),
       );
     }

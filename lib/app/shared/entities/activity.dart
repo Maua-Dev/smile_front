@@ -8,7 +8,7 @@ class Activity {
   final ActivityEnum? type;
   final String title;
   final String description;
-  final bool isExtensive;
+  late final bool isExtensive;
   final DeliveryEnum? deliveryEnum;
   final DateTime? startDate;
   final int duration;

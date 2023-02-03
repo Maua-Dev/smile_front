@@ -2,9 +2,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
+import '../../../../../shared/entities/infra/delivery_enum.dart';
 import '../../../../../shared/models/activity_model.dart';
 import '../../../domain/infra/activity_enum.dart';
-import '../../../domain/infra/modality_activity_enum.dart';
 import '../../../infra/models/speaker_activity_model.dart';
 
 part 'create_activity_controller.g.dart';
@@ -58,13 +58,12 @@ abstract class CreateActivityControllerBase with Store {
 
   @action
   void setModality(DeliveryEnum? value) {
-    activityToCreate = activityToCreate.copyWith(modality: value);
+    activityToCreate = activityToCreate.copyWith(deliveryEnum: value);
   }
 
   @action
   void setIsExtensive() {
-    activityToCreate.schedule.isExtensive =
-        !activityToCreate.schedule.isExtensive;
+    activityToCreate.isExtensive = !activityToCreate.isExtensive;
   }
 
   @action
