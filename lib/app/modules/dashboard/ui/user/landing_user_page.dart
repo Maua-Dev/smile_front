@@ -5,7 +5,6 @@ import 'package:smile_front/app/modules/dashboard/ui/user/widgets/vertical-nav-b
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../shared/utils/screen_helper.dart';
-import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar.dart';
 
 class LandingUserPage extends StatefulWidget {
   const LandingUserPage({Key? key}) : super(key: key);
