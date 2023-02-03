@@ -117,56 +117,52 @@ class _EditActivityPageState
                     shrinkWrap: true,
                     itemCount: 1,
                     itemBuilder: (context, index) {
-                      var hour = controller.activityToEdit.schedule.date == null
+                      var hour = controller.activityToEdit.startDate == null
                           ? ''
                           : DateFormat('HH:mm')
-                              .format(controller.activityToEdit.schedule.date!);
-                      var date = controller.activityToEdit.schedule.date == null
+                              .format(controller.activityToEdit.startDate!);
+                      var date = controller.activityToEdit.startDate == null
                           ? ''
                           : DateFormat('dd-MM-yyyy')
-                              .format(controller.activityToEdit.schedule.date!);
-                      var duration =
-                          controller.activityToEdit.schedule.duration == null
-                              ? ''
-                              : DateFormat('HH:mm').format(
-                                  controller.activityToEdit.schedule.duration!);
+                              .format(controller.activityToEdit.startDate!);
+
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
-                          enableSubscription: controller
-                              .activityToEdit.schedule.acceptSubscription,
+                          enableSubscription:
+                              controller.activityToEdit.acceptingNewEnrollments,
                           onChangedEnableSubscription: (valueBool) {
                             setState(() {
-                              controller.setEnableSubscription(
-                                  valueBool!, index);
+                              controller.setEnableSubscription(valueBool!);
                             });
                           },
                           date: date,
                           hour: hour,
-                          link: controller.activityToEdit.schedule.link,
+                          link: controller.activityToEdit.link,
                           onChangedLink: (value) {
-                            controller.setLink(value, index);
+                            controller.setLink(value);
                           },
-                          location: controller.activityToEdit.schedule.location,
+                          location: controller.activityToEdit.place,
                           onChangedLocation: (value) {
-                            controller.setLocation(value, index);
+                            controller.setLocation(value);
                           },
-                          duration: duration,
+                          duration:
+                              controller.activityToEdit.duration.toString(),
                           onChangedDuration: (value) {
-                            controller.setDuration(value, index);
+                            controller.setDuration(value);
                           },
                           length: 1,
-                          totalParticipants: controller
-                              .activityToEdit.schedule.totalParticipants,
+                          totalParticipants:
+                              controller.activityToEdit.totalSlots,
                           onChangedDate: (value) {
-                            controller.setDate(value, index);
+                            controller.setDate(value);
                           },
                           onChangedHour: (value) {
-                            controller.setHour(value, index);
+                            controller.setHour(value);
                           },
                           onChangedParticipants: (value) {
-                            controller.setParticipants(int.parse(value), index);
+                            controller.setParticipants(int.parse(value));
                           },
                           removeSchedule: () {},
                           onPressedIconDate: () {
@@ -189,8 +185,7 @@ class _EditActivityPageState
                               },
                             ).then((value) {
                               controller.setDate(
-                                  DateFormat('dd-MM-yyyy').format(value!),
-                                  index);
+                                  DateFormat('dd-MM-yyyy').format(value!));
                             });
                           },
                           onPressedIconTime: () {
@@ -210,7 +205,7 @@ class _EditActivityPageState
                                 );
                               },
                             ).then((value) {
-                              controller.setHour(value!.format(context), index);
+                              controller.setHour(value!.format(context));
                             });
                           },
                         ),

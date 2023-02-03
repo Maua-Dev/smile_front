@@ -7,7 +7,6 @@ import 'package:smile_front/app/shared/models/activity_model.dart';
 
 import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/utils/utils.dart';
-import '../../../infra/models/schedule_activity_model.dart';
 
 part 'more_info_controller.g.dart';
 
@@ -67,20 +66,17 @@ abstract class MoreInfoControllerBase with Store {
   Future<void> subscribeUserActivity() async {
     setIsLoading(true);
     var cardToModel = ActivityModel(
-      id: activity.id,
       activityCode: activity.activityCode,
       type: activity.type,
       title: activity.title,
       description: activity.description,
-      schedule: ScheduleActivityModel(
-          date: activity.date,
-          acceptSubscription: activity.acceptSubscription,
-          duration: activity.duration,
-          enrolledUsers: activity.enrolledUsers,
-          link: activity.link,
-          location: activity.location,
-          totalParticipants: activity.totalParticipants),
+      acceptingNewEnrollments: activity.acceptSubscription,
       speakers: activity.speakers!,
+      duration: 120,
+      isExtensive: true,
+      responsibleProfessors: [],
+      takenSlots: 0,
+      totalSlots: 0,
     );
     var requestDone =
         await subscribeActivity(cardToModel, activity.id, activity.date!);

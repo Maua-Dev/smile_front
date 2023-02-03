@@ -89,8 +89,8 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                       var isRegistered = false;
                       var list = controller.controller.subscribedActivitiesList
                           .where((element) =>
-                              element.id ==
-                              controller.weekActivitiesList[index].id)
+                              element.activityCode ==
+                              controller.weekActivitiesList[index].activityCode)
                           .toList();
                       if (list.isNotEmpty) {
                         isRegistered = true;

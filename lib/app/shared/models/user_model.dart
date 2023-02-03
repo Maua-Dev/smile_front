@@ -1,29 +1,14 @@
-// ignore_for_file: overridden_fields, annotate_overrides, duplicate_ignore
-
 import 'package:smile_front/app/shared/entities/user.dart';
 
 class UserModel extends User {
-  final String socialName;
-  final String email;
-  final String cpfRne;
-  final String? registration;
-  final String accessLevel;
-  final String typeRole;
-
-  UserModel(
-      {required this.email,
-      required this.cpfRne,
-      this.registration,
-      required this.accessLevel,
-      required this.typeRole,
-      required this.socialName})
-      : super(
-            socialName: socialName,
-            accessLevel: accessLevel,
-            cpfRne: cpfRne,
-            email: email,
-            typeRole: typeRole,
-            registration: registration);
+  UserModel({
+    required super.email,
+    required super.cpfRne,
+    super.registration,
+    required super.accessLevel,
+    required super.typeRole,
+    required super.socialName,
+  });
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
