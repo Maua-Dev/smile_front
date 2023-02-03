@@ -71,17 +71,17 @@ abstract class CreateActivityControllerBase with Store {
   }
 
   @action
-  void setLocation(String value, int index) {
+  void setLocation(String value) {
     activityToCreate.place = value;
   }
 
   @action
-  void setLink(String value, int index) {
+  void setLink(String value) {
     activityToCreate.link = value;
   }
 
   @action
-  void setDate(String value, int index) {
+  void setDate(String value) {
     if (value.length > 9) {
       var year = value.substring(6, 10);
       var month = value.substring(3, 5);
@@ -97,7 +97,7 @@ abstract class CreateActivityControllerBase with Store {
   }
 
   @action
-  void setHour(String value, int index) {
+  void setHour(String value) {
     if (value.length > 4) {
       var date = activityToCreate.startDate != null
           ? DateFormat('yyyy-MM-dd').format(activityToCreate.startDate!)
@@ -108,36 +108,35 @@ abstract class CreateActivityControllerBase with Store {
   }
 
   @action
-  void setDuration(String value, int index) {
-    if (value.length >= 5) {
-      var duration = int.parse(value);
-      activityToCreate = activityToCreate.copyWith(duration: duration);
-    }
+  void setDuration(String value) {
+    var duration = int.parse(value);
+    activityToCreate = activityToCreate.copyWith(duration: duration);
   }
 
   @action
-  void setParticipants(int value, int index) {
-    activityToCreate.copyWith(totalSlots: value);
+  void setParticipants(int value) {
+    activityToCreate = activityToCreate.copyWith(totalSlots: value);
   }
 
   @action
-  void setEnableSubscription(bool value, int index) {
-    activityToCreate.copyWith(acceptingNewEnrollments: value);
+  void setEnableSubscription(bool value) {
+    activityToCreate =
+        activityToCreate.copyWith(acceptingNewEnrollments: value);
   }
 
   @action
   void setSpeakerName(String value, int index) {
-    activityToCreate.speakers[index].copyWith(name: value);
+    activityToCreate.speakers[index].name = value;
   }
 
   @action
   void setSpeakerBio(String value, int index) {
-    activityToCreate.speakers[index].copyWith(bio: value);
+    activityToCreate.speakers[index].bio = value;
   }
 
   @action
   void setSpeakerCompany(String value, int index) {
-    activityToCreate.speakers[index].copyWith(company: value);
+    activityToCreate.speakers[index].company = value;
   }
 
   @action

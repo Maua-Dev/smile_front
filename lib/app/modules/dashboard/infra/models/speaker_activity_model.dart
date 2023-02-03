@@ -1,12 +1,10 @@
 import 'package:smile_front/app/shared/entities/speaker.dart';
 
 class SpeakerActivityModel extends Speaker {
-  String? company;
-
   SpeakerActivityModel({
     required super.name,
     required super.bio,
-    this.company,
+    super.company,
   });
 
   Map<String, dynamic> toJson() => {

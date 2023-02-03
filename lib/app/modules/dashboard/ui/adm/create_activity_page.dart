@@ -132,37 +132,35 @@ class _CreateActivityPageState
                                 .activityToCreate.acceptingNewEnrollments,
                             onChangedEnableSubscription: (valueBool) {
                               setState(() {
-                                controller.setEnableSubscription(
-                                    valueBool!, index);
+                                controller.setEnableSubscription(valueBool!);
                               });
                             },
                             date: date,
                             hour: hour,
                             link: controller.activityToCreate.link,
                             onChangedLink: (value) {
-                              controller.setLink(value, index);
+                              controller.setLink(value);
                             },
                             location: controller.activityToCreate.place,
                             onChangedLocation: (value) {
-                              controller.setLocation(value, index);
+                              controller.setLocation(value);
                             },
                             duration:
                                 controller.activityToCreate.duration.toString(),
                             onChangedDuration: (value) {
-                              controller.setDuration(value, index);
+                              controller.setDuration(value);
                             },
                             length: 1,
                             totalParticipants:
                                 controller.activityToCreate.totalSlots,
                             onChangedDate: (value) {
-                              controller.setDate(value, index);
+                              controller.setDate(value);
                             },
                             onChangedHour: (value) {
-                              controller.setHour(value, index);
+                              controller.setHour(value);
                             },
                             onChangedParticipants: (value) {
-                              controller.setParticipants(
-                                  int.parse(value), index);
+                              controller.setParticipants(int.parse(value));
                             },
                             removeSchedule: () {},
                             onPressedIconDate: () {
@@ -185,8 +183,7 @@ class _CreateActivityPageState
                                 },
                               ).then((value) {
                                 controller.setDate(
-                                    DateFormat('dd-MM-yyyy').format(value!),
-                                    index);
+                                    DateFormat('dd-MM-yyyy').format(value!));
                               });
                             },
                             onPressedIconTime: () {
@@ -206,8 +203,7 @@ class _CreateActivityPageState
                                   );
                                 },
                               ).then((value) {
-                                controller.setHour(
-                                    value!.format(context), index);
+                                controller.setHour(value!.format(context));
                               });
                             },
                           ));

@@ -61,45 +61,45 @@ void main() {
 
   test('setLocation', () {
     var str = 'teste';
-    controller.setLocation(str, 0);
+    controller.setLocation(str);
     expect(controller.activityToCreate.place, str);
   });
 
   test('setLink', () {
     var str = 'teste';
-    controller.setLink(str, 0);
+    controller.setLink(str);
     expect(controller.activityToCreate.link, str);
   });
 
   test('setDate', () {
     var str = DateFormat('dd-MM-yyyy').format(DateTime.now());
-    controller.setDate(str, 0);
+    controller.setDate(str);
     expect(
         controller.activityToCreate.startDate!,
-        DateTime(
-            DateTime.now().year, DateTime.now().month, DateTime.now().day));
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+            DateTime.now().hour, DateTime.now().minute));
   });
 
   test('setHour', () {
     var str = '22:00';
-    controller.setHour(str, 0);
+    controller.setHour(str);
     expect(controller.activityToCreate.startDate!.hour, 22);
   });
 
   test('setDuration', () {
-    var str = '22:00';
-    controller.setDuration(str, 0);
-    expect(controller.activityToCreate.duration, 22);
+    var str = '22';
+    controller.setDuration(str);
+    expect(controller.activityToCreate.duration, int.parse(str));
   });
 
   test('setParticipants', () {
     var str = 1;
-    controller.setParticipants(str, 0);
+    controller.setParticipants(str);
     expect(controller.activityToCreate.totalSlots, str);
   });
 
   test('setEnableSubscription', () {
-    controller.setEnableSubscription(true, 0);
+    controller.setEnableSubscription(true);
     expect(controller.activityToCreate.acceptingNewEnrollments, true);
   });
 
