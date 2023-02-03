@@ -93,7 +93,7 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      startDate: DateTime.parse('2022-05-16 13:00'),
+      startDate: DateTime.parse('2022-05-17 13:00'),
       totalSlots: 20,
       duration: 120,
       place: 'H244',
@@ -127,7 +127,143 @@ void main() {
           company: 'Oracle',
         ),
       ],
-      startDate: DateTime.parse('2022-05-16 13:00'),
+      startDate: DateTime.parse('2022-05-18 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
+    ),
+    ActivityModel(
+      activityCode: 'C01',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+      ],
+      startDate: DateTime.parse('2022-07-19 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
+    ),
+    ActivityModel(
+      activityCode: 'C01',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+      ],
+      startDate: DateTime.parse('2022-07-20 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
+    ),
+    ActivityModel(
+      activityCode: 'C01',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+      ],
+      startDate: DateTime.parse('2022-07-21 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
+    ),
+    ActivityModel(
+      activityCode: 'C01',
+      type: ActivityEnum.COURSE,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
+      speakers: [
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+      ],
+      startDate: DateTime.parse('2022-07-22 13:00'),
       totalSlots: 20,
       duration: 120,
       place: 'H244',
