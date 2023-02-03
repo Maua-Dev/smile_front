@@ -140,8 +140,8 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setEnableSubscription(bool value, int index) {
-    activityToEdit.copyWith(acceptingNewEnrollments: value);
+  void setEnableSubscription(bool value) {
+    activityToEdit = activityToEdit.copyWith(acceptingNewEnrollments: value);
   }
 
   @action

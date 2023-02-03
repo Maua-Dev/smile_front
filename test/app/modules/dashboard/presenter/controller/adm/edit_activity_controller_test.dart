@@ -137,7 +137,7 @@ void main() {
   });
 
   test('setEnableSubscription', () {
-    controller.setEnableSubscription(true, 0);
+    controller.setEnableSubscription(true);
     expect(controller.activityToEdit.acceptingNewEnrollments, true);
   });
 

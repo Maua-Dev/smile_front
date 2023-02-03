@@ -216,11 +216,11 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
-  void setEnableSubscription(bool value, int index) {
+  void setEnableSubscription(bool value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setEnableSubscription');
     try {
-      return super.setEnableSubscription(value, index);
+      return super.setEnableSubscription(value);
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }

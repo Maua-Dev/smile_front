@@ -133,8 +133,7 @@ class _EditActivityPageState
                               controller.activityToEdit.acceptingNewEnrollments,
                           onChangedEnableSubscription: (valueBool) {
                             setState(() {
-                              controller.setEnableSubscription(
-                                  valueBool!, index);
+                              controller.setEnableSubscription(valueBool!);
                             });
                           },
                           date: date,
