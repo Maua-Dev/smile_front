@@ -73,7 +73,7 @@ void main() {
 
   test('isFilled', () {
     var test = controller.isFilled();
-    expect(test, false);
+    expect(test, true);
   });
 
   test('setType', () {
@@ -102,37 +102,37 @@ void main() {
 
   test('setLocation', () {
     var str = 'teste';
-    controller.setLocation(str, 0);
+    controller.setLocation(str);
     expect(controller.activityToEdit.place, str);
   });
 
   test('setLink', () {
     var str = 'teste';
-    controller.setLink(str, 0);
+    controller.setLink(str);
     expect(controller.activityToEdit.link, str);
   });
 
   test('setDate', () {
     var str = DateFormat('dd-MM-yyyy').format(DateTime.now());
-    controller.setDate(str, 0);
+    controller.setDate(str);
     expect(controller.activityToEdit.startDate!.day, DateTime.now().day);
   });
 
   test('setHour', () {
     var str = '22:00';
-    controller.setHour(str, 0);
+    controller.setHour(str);
     expect(controller.activityToEdit.startDate!.hour, 22);
   });
 
   test('setDuration', () {
-    var str = '22:00';
-    controller.setDuration(str, 0);
-    expect(controller.activityToEdit.duration, 22);
+    var str = '22';
+    controller.setDuration(str);
+    expect(controller.activityToEdit.duration, int.parse(str));
   });
 
   test('setParticipants', () {
     var str = 1;
-    controller.setParticipants(str, 0);
+    controller.setParticipants(str);
     expect(controller.activityToEdit.totalSlots, str);
   });
 

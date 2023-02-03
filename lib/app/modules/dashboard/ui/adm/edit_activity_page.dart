@@ -141,28 +141,28 @@ class _EditActivityPageState
                           hour: hour,
                           link: controller.activityToEdit.link,
                           onChangedLink: (value) {
-                            controller.setLink(value, index);
+                            controller.setLink(value);
                           },
                           location: controller.activityToEdit.place,
                           onChangedLocation: (value) {
-                            controller.setLocation(value, index);
+                            controller.setLocation(value);
                           },
                           duration:
                               controller.activityToEdit.duration.toString(),
                           onChangedDuration: (value) {
-                            controller.setDuration(value, index);
+                            controller.setDuration(value);
                           },
                           length: 1,
                           totalParticipants:
                               controller.activityToEdit.totalSlots,
                           onChangedDate: (value) {
-                            controller.setDate(value, index);
+                            controller.setDate(value);
                           },
                           onChangedHour: (value) {
-                            controller.setHour(value, index);
+                            controller.setHour(value);
                           },
                           onChangedParticipants: (value) {
-                            controller.setParticipants(int.parse(value), index);
+                            controller.setParticipants(int.parse(value));
                           },
                           removeSchedule: () {},
                           onPressedIconDate: () {
@@ -185,8 +185,7 @@ class _EditActivityPageState
                               },
                             ).then((value) {
                               controller.setDate(
-                                  DateFormat('dd-MM-yyyy').format(value!),
-                                  index);
+                                  DateFormat('dd-MM-yyyy').format(value!));
                             });
                           },
                           onPressedIconTime: () {
@@ -206,7 +205,7 @@ class _EditActivityPageState
                                 );
                               },
                             ).then((value) {
-                              controller.setHour(value!.format(context), index);
+                              controller.setHour(value!.format(context));
                             });
                           },
                         ),

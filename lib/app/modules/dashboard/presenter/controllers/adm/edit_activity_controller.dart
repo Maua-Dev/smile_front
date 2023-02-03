@@ -76,17 +76,17 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setLocation(String value, int index) {
+  void setLocation(String value) {
     activityToEdit.place = value;
   }
 
   @action
-  void setLink(String value, int index) {
+  void setLink(String value) {
     activityToEdit.link = value;
   }
 
   @action
-  void setDate(String value, int index) {
+  void setDate(String value) {
     if (value.length > 9) {
       var year = value.substring(6, 10);
       var month = value.substring(3, 5);
@@ -102,7 +102,7 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setHour(String value, int index) {
+  void setHour(String value) {
     if (value.length > 4) {
       var date = activityToEdit.startDate != null
           ? DateFormat('yyyy-MM-dd').format(activityToEdit.startDate!)
@@ -114,31 +114,29 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setDuration(String value, int index) {
-    if (value.length >= 5) {
-      var format = int.parse(value);
-      activityToEdit = activityToEdit.copyWith(duration: format);
-    }
+  void setDuration(String value) {
+    var format = int.parse(value);
+    activityToEdit = activityToEdit.copyWith(duration: format);
   }
 
   @action
-  void setParticipants(int value, int index) {
-    activityToEdit.copyWith(totalSlots: value);
+  void setParticipants(int value) {
+    activityToEdit = activityToEdit.copyWith(totalSlots: value);
   }
 
   @action
   void setSpeakerName(String value, int index) {
-    activityToEdit.speakers[index].copyWith(name: value);
+    activityToEdit.speakers[index].name = value;
   }
 
   @action
   void setSpeakerBio(String value, int index) {
-    activityToEdit.speakers[index].copyWith(bio: value);
+    activityToEdit.speakers[index].bio = value;
   }
 
   @action
   void setSpeakerCompany(String value, int index) {
-    activityToEdit.speakers[index].copyWith(company: value);
+    activityToEdit.speakers[index].company = value;
   }
 
   @action
