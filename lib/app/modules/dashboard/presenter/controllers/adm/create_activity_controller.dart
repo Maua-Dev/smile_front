@@ -25,11 +25,14 @@ abstract class CreateActivityControllerBase with Store {
   @observable
   bool isLoading = false;
 
+  /// Function that helps createUserActivity, by changing the boolean is loading.
   @action
   Future<void> setIsLoading(bool value) async {
     isLoading = value;
   }
 
+  ///A function that checks if all the TITLE,DESCRIPTION,TYPE, ACTIVITY CODE, START DATE
+  ///and TOTAL SLOTS are all filled, if so returns true. Else it returns false.
   @action
   bool isFilled() {
     if (activityToCreate.title != '' &&
@@ -43,6 +46,9 @@ abstract class CreateActivityControllerBase with Store {
     return false;
   }
 
+  ///A function that sets the isLoading to TRUE, awaits a response,
+  ///sets the loading to FALSE
+  ///and then links to the /adm page.
   @action
   Future createUserActivity() async {
     setIsLoading(true);
@@ -51,47 +57,74 @@ abstract class CreateActivityControllerBase with Store {
     Modular.to.navigate('/adm');
   }
 
+  ///Sets the TYPE of a activity,
+  ///it receives the activityEnum with the options:
+  ///* COURSE
+  ///* COURSE,
+  ///* LECTURES,
+  ///* HIGH_IMPACT_LECTURES,
+  ///* TECHNICAL_VISITS,
+  ///* ACADEMIC_COMPETITIONS,
+  ///* HACKATHON,
+  ///* INTERNSHIP_FAIR,
+  ///* ALUMNI_CAFE,
+  ///* PROFESSORS_ACADEMY,
+  ///* CULTURAL_ACTIVITY,
+  ///* GCSP,
+  ///* SPORTS_ACTIVITY
   @action
   void setType(ActivityEnum? value) {
     activityToCreate = activityToCreate.copyWith(type: value);
   }
 
+  /// Sets the MODALITY of the activity,
+  /// it receives a delivery enum with the options:
+  /// * On_Person
+  /// * Online
+  /// * Hybrid
   @action
   void setModality(DeliveryEnum? value) {
     activityToCreate = activityToCreate.copyWith(deliveryEnum: value);
   }
 
+  ///A function that changes the boolean variable isExtensive.
   @action
   void setIsExtensive() {
     activityToCreate =
         activityToCreate.copyWith(isExtensive: !activityToCreate.isExtensive);
   }
 
+  ///Sets the activity CODE.
   @action
   void setActivityCode(String value) {
     activityToCreate = activityToCreate.copyWith(activityCode: value);
   }
 
+  ///Sets the TITLE of the activity.
   @action
   void setTitle(String value) {
     activityToCreate = activityToCreate.copyWith(title: value);
   }
 
+  ///Sets the DESCRIPTION of the activity.
   @action
   void setDescription(String value) {
     activityToCreate = activityToCreate.copyWith(description: value);
   }
 
+  ///Sets the LOCATION in which the activity will occur.
   @action
   void setLocation(String value) {
     activityToCreate.place = value;
   }
 
+  /// Sets the LINK of the activity, in case it's a online delivery.
   @action
   void setLink(String value) {
     activityToCreate.link = value;
   }
 
+  ///Sets the DATE the activity will occur.
   @action
   void setDate(String value) {
     if (value.length > 9) {
@@ -108,6 +141,7 @@ abstract class CreateActivityControllerBase with Store {
     }
   }
 
+  ///It sets the HOUR which the activity will occur.
   @action
   void setHour(String value) {
     if (value.length > 4) {
@@ -119,38 +153,58 @@ abstract class CreateActivityControllerBase with Store {
     }
   }
 
+  ///It sets the hour for the inscriptions to a activity to close.
+  @action
+  void setClosureHour(String value) {
+    if (value.length > 4) {
+      var date = activityToCreate.startDate != null
+          ? DateFormat('yyyy/MM/dd').format(activityToCreate.startDate!)
+          : '0000/00/00';
+      var hour = DateTime.parse("$date $value");
+      activityToCreate = activityToCreate.copyWith(startDate: hour);
+    }
+  }
+
+  ///Sets the event duration, in minutes.
   @action
   void setDuration(String value) {
     var duration = int.parse(value);
     activityToCreate = activityToCreate.copyWith(duration: duration);
   }
 
+  ///Sets the number of participants of the event.
   @action
   void setParticipants(int value) {
     activityToCreate = activityToCreate.copyWith(totalSlots: value);
   }
 
+  ///A function that changes the variable acceptingNewEnrollments,
+  ///which is used to enable subscriptions on a certain activity.
   @action
   void setEnableSubscription(bool value) {
     activityToCreate =
         activityToCreate.copyWith(acceptingNewEnrollments: value);
   }
 
+  /// Sets the name of the speaker of the activity
   @action
   void setSpeakerName(String value, int index) {
     activityToCreate.speakers[index].name = value;
   }
 
+  ///Sets the bio of the speaker
   @action
   void setSpeakerBio(String value, int index) {
     activityToCreate.speakers[index].bio = value;
   }
 
+  /// Sets the working company of the speaker
   @action
   void setSpeakerCompany(String value, int index) {
     activityToCreate.speakers[index].company = value;
   }
 
+  ///Add a new speaker to the speaker list
   @action
   void addSpeaker() {
     var list = activityToCreate.speakers;
@@ -158,6 +212,7 @@ abstract class CreateActivityControllerBase with Store {
     activityToCreate = activityToCreate.copyWith(speakers: list);
   }
 
+  ///Removes a speaker from the speakers list
   @action
   void removeSpeaker(int index) {
     var list = activityToCreate.speakers;

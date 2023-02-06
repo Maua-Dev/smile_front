@@ -238,16 +238,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
+        "activityAcceptSbscriptions":
+            MessageLookupByLibrary.simpleMessage("Aceitar inscrições"),
         "activityCreateTitle":
             MessageLookupByLibrary.simpleMessage("Criar Atividade"),
         "activityDurationTitle":
             MessageLookupByLibrary.simpleMessage("Duração(Minutos)"),
         "activityEditTitle":
             MessageLookupByLibrary.simpleMessage("Editar Atividade"),
+        "activityInscriptionClosure":
+            MessageLookupByLibrary.simpleMessage("Inscription Closure"),
         "activityNameTitle":
             MessageLookupByLibrary.simpleMessage("Titulo da Atividade"),
+        "activityResponsibleTeacher":
+            MessageLookupByLibrary.simpleMessage("Professor Responsável"),
         "activityTypeTitle":
             MessageLookupByLibrary.simpleMessage("Tipo de Atividade"),
+        "activityVacancyNumber":
+            MessageLookupByLibrary.simpleMessage("Número de Vagas"),
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Página do Administrador"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Relatórios"),
