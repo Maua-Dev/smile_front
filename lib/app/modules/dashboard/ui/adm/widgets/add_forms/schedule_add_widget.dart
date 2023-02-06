@@ -106,19 +106,18 @@ class ScheduleAddWidget extends StatelessWidget {
                   Flexible(
                     child: TextFieldDialogWidget(
                         labelText: S.of(context).activityDurationTitle,
-                        hintText: 'HH:MM',
                         onChanged: onChangedDuration,
                         value: duration ?? '',
                         padding: false,
                         inputFormatters: [
                           MaskTextInputFormatter(
-                            mask: '##:##',
+                            mask: '###',
                           )
                         ]),
                   ),
                   Flexible(
                     child: TextFieldDialogWidget(
-                      labelText: 'Número de Vagas',
+                      labelText: S.of(context).activityVacancyNumber,
                       onChanged: onChangedParticipants,
                       value: totalParticipants == null
                           ? ''
@@ -130,7 +129,7 @@ class ScheduleAddWidget extends StatelessWidget {
                       child: Column(
                     children: [
                       Text(
-                        'Aceitar inscrições',
+                        S.of(context).activityAcceptSbscriptions,
                         style: AppTextStyles.titleH1.copyWith(
                             color: AppColors.brandingBlue,
                             fontSize: MediaQuery.of(context).size.width < 1200
@@ -180,7 +179,7 @@ class ScheduleAddWidget extends StatelessWidget {
                   children: [
                     Flexible(
                       child: TextFieldDialogWidget(
-                        labelText: 'Professor Responsável',
+                        labelText: S.of(context).activityResponsibleTeacher,
                         value: professor,
                         onChanged: onChangedProfessor,
                         padding: false,
@@ -192,7 +191,7 @@ class ScheduleAddWidget extends StatelessWidget {
                     Flexible(
                       child: TextFieldDialogWidget(
                           onPressedIcon: onPressedIconDate,
-                          labelText: 'Fechamento das Inscrições',
+                          labelText: S.of(context).activityInscriptionClosure,
                           hintText: 'DD/MM/AAAA',
                           onChanged: onChangedClosure,
                           value: date,
@@ -213,7 +212,7 @@ class ScheduleAddWidget extends StatelessWidget {
                               fontSize:
                                   Screen.width(context) < tabletSize ? 16 : 20),
                           filledColor: Colors.white,
-                          titulo: 'Tipo de Atividade',
+                          titulo: S.of(context).activityTypeTitle,
                           value: modality,
                           items: DeliveryEnum.values
                               .toList()

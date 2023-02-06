@@ -162,7 +162,11 @@
     "activityEditTitle": "Editar Atividade",
     "activityTypeTitle": "Tipo de Atividade",
     "activityNameTitle": "Titulo da Atividade",
-    "activityDurationTitle": "Duração",    
+    "activityDurationTitle": "Duração(Minutos)",  
+    "activityVacancyNumber": "Número de Vagas",  
+    "activityAcceptSbscriptions": "Aceitar inscrições",
+    "activityResponsibleTeacher": "Professor Responsável",
+    "activityInscriptionClosure": "Inscription Closure",
 
     "descriptionTitle": "Descrição",
 

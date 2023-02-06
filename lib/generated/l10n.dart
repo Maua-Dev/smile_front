@@ -1427,11 +1427,51 @@ class S {
     );
   }
 
-  /// `Duration`
+  /// `Duration(Minutes)`
   String get activityDurationTitle {
     return Intl.message(
-      'Duration',
+      'Duration(Minutes)',
       name: 'activityDurationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of Vanacies`
+  String get activityVacancyNumber {
+    return Intl.message(
+      'Number of Vanacies',
+      name: 'activityVacancyNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept Subscriptions`
+  String get activityAcceptSbscriptions {
+    return Intl.message(
+      'Accept Subscriptions',
+      name: 'activityAcceptSbscriptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible Teacher`
+  String get activityResponsibleTeacher {
+    return Intl.message(
+      'Responsible Teacher',
+      name: 'activityResponsibleTeacher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fechamento das Inscrições`
+  String get activityInscriptionClosure {
+    return Intl.message(
+      'Fechamento das Inscrições',
+      name: 'activityInscriptionClosure',
       desc: '',
       args: [],
     );

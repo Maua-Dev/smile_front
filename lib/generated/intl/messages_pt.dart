@@ -241,7 +241,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "activityCreateTitle":
             MessageLookupByLibrary.simpleMessage("Criar Atividade"),
         "activityDurationTitle":
-            MessageLookupByLibrary.simpleMessage("Duração"),
+            MessageLookupByLibrary.simpleMessage("Duração(Minutos)"),
         "activityEditTitle":
             MessageLookupByLibrary.simpleMessage("Editar Atividade"),
         "activityNameTitle":
