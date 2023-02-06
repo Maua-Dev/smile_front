@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/extensive_activity_button/extensive_activity_button.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../shared/themes/app_colors.dart';
@@ -104,6 +105,14 @@ class _EditActivityPageState
                       onChanged: controller.setTitle,
                       value: controller.activityToEdit.title,
                     )),
+                    ExtensiveActivityCheck(
+                      onChanged: (() {
+                        setState(() {
+                          controller.setIsExtensive();
+                        });
+                      }),
+                      isExtensive: controller.activityToEdit.isExtensive,
+                    ),
                   ],
                 ),
               ),
@@ -130,6 +139,10 @@ class _EditActivityPageState
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
+                          modality: controller.activityToEdit.deliveryEnum,
+                          onChangedModality: (value) {
+                            controller.setModality(value);
+                          },
                           enableSubscription:
                               controller.activityToEdit.acceptingNewEnrollments,
                           onChangedEnableSubscription: (valueBool) {
@@ -212,18 +225,6 @@ class _EditActivityPageState
                       );
                     });
               }),
-              Center(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
-                  child: FormsButtonWidget(
-                      buttonTittle: S.of(context).scheduleAddTitle,
-                      onPressed: () {},
-                      backgroundColor: AppColors.brandingOrange,
-                      icon:
-                          const Icon(Icons.add, color: Colors.white, size: 22)),
-                ),
-              ),
               Observer(builder: (_) {
                 return ListView.builder(
                   shrinkWrap: true,

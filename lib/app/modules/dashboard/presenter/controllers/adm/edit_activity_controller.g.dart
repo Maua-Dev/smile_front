@@ -238,6 +238,17 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
+  void setIsExtensive() {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.setIsExtensive');
+    try {
+      return super.setIsExtensive();
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void addSpeaker() {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.addSpeaker');
