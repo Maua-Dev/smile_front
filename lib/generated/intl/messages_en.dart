@@ -31,29 +31,29 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m1(activity) => "${Intl.select(activity, {
-            'CURSOS':
+            'COURSE':
                 'The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.',
-            'PALESTRAS':
+            'LECTURES':
                 'The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.',
-            'PALESTRAS_ALTO_IMPACTO':
+            'HIGH_IMPACT_LECTURES':
                 'The high-impact lectures will be delivered by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!',
-            'VISITAS_TECNICAS':
+            'TECHNICAL_VISITS':
                 'In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.',
-            'COMPETICOES_ACADEMICAS':
+            'ACADEMIC_COMPETITIONS':
                 'During SMILE, participants will be able to have fun with Academic Competition activities: League Of Legend Championship (online) and GameDev Mauá - Game Jam (in person).',
             'HACKATHON':
                 'Hackathons are events that bring together students, software developers, designers and other professionals, with the aim of creating innovative solutions for a specific problem in a short period of time. This is an excellent opportunity to develop your professional side, in addition to discovering new talent. The events promote a great interaction between the participants and offer prizes for the winners at the end.',
-            'FEIRA_ESTAGIOS':
+            'INTERNSHIP_FAIR':
                 'Representatives of renowned companies will present Internship and Trainee Programs, in addition to bringing tips on selection processes, interviews, career tips and answering questions from participants.',
-            'CAFE_EX_ALUNOS':
+            'ALUMNI_CAFE':
                 'The activity aims to promote informal conversations between IMT students and graduates who occupy prominent positions in their areas of expertise. Come join!',
-            'ACADEMIA_DE_PROFESSORES':
+            'PROFESSORS_ACADEMY':
                 'Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.',
-            'ATIVIDADE_CULTURAL':
+            'CULTURAL_ACTIVITY':
                 'Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.',
             'GCSP':
                 'The GCSP - Grand Challenges Scholars Program is a program that offers undergraduate students the opportunity to work with the great challenges of humanity, being mentored by professors.',
-            'ATIVIDADE_ESPORTIVA':
+            'SPORTS_ACTIVITY':
                 'Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!',
             'other': 'Activity',
           })}";
