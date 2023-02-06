@@ -154,7 +154,8 @@ abstract class EditActivityControllerBase with Store {
 
   @action
   void setIsExtensive() {
-    activityToEdit.isExtensive = !activityToEdit.isExtensive;
+    activityToEdit =
+        activityToEdit.copyWith(isExtensive: !activityToEdit.isExtensive);
   }
 
   @action

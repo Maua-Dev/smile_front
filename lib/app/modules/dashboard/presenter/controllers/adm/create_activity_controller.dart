@@ -63,7 +63,8 @@ abstract class CreateActivityControllerBase with Store {
 
   @action
   void setIsExtensive() {
-    activityToCreate.isExtensive = !activityToCreate.isExtensive;
+    activityToCreate =
+        activityToCreate.copyWith(isExtensive: !activityToCreate.isExtensive);
   }
 
   @action

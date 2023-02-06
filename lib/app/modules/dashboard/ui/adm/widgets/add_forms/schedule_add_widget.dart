@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/entities/infra/delivery_enum.dart';
 import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
@@ -78,7 +79,7 @@ class ScheduleAddWidget extends StatelessWidget {
                     child: TextFieldDialogWidget(
                         onPressedIcon: onPressedIconDate,
                         suffixIcon: Icons.timer,
-                        labelText: 'Data',
+                        labelText: S.of(context).dateTitle,
                         hintText: 'DD-MM-AAAA',
                         onChanged: onChangedDate,
                         value: date,
@@ -93,7 +94,7 @@ class ScheduleAddWidget extends StatelessWidget {
                     child: TextFieldDialogWidget(
                         onPressedIcon: onPressedIconTime,
                         suffixIcon: Icons.timer,
-                        labelText: 'Hora',
+                        labelText: S.of(context).scheduleTitle,
                         hintText: 'HH:MM',
                         onChanged: onChangedHour,
                         value: hour ?? '',
@@ -106,7 +107,7 @@ class ScheduleAddWidget extends StatelessWidget {
                   ),
                   Flexible(
                     child: TextFieldDialogWidget(
-                        labelText: 'Duração',
+                        labelText: S.of(context).activityDurationTitle,
                         hintText: 'HH:MM',
                         onChanged: onChangedDuration,
                         value: duration ?? '',

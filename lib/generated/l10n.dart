@@ -1427,6 +1427,16 @@ class S {
     );
   }
 
+  /// `Duration`
+  String get activityDurationTitle {
+    return Intl.message(
+      'Duration',
+      name: 'activityDurationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description`
   String get descriptionTitle {
     return Intl.message(

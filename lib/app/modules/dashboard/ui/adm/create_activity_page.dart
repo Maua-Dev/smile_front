@@ -33,9 +33,10 @@ class _CreateActivityPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(73),
-          child: AdmAppBarWidget(appBarText: 'Criar Atividade')),
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(73),
+          child:
+              AdmAppBarWidget(appBarText: S.of(context).activityCreateTitle)),
       body: Row(
         children: [
           const SideBarWidget(),
@@ -62,7 +63,7 @@ class _CreateActivityPageState
                                           ? 16
                                           : 20),
                               filledColor: Colors.white,
-                              titulo: 'Tipo de Atividade',
+                              titulo: S.of(context).activityTypeTitle,
                               value: controller.activityToCreate.type,
                               items: ActivityEnum.values
                                   .toList()
@@ -81,7 +82,7 @@ class _CreateActivityPageState
                           SizedBox(
                               width: MediaQuery.of(context).size.width * 0.1,
                               child: TextFieldDialogWidget(
-                                labelText: 'Código',
+                                labelText: S.of(context).codeTitle,
                                 padding: false,
                                 onChanged: controller.setActivityCode,
                                 value: controller.activityToCreate.activityCode,
@@ -91,7 +92,7 @@ class _CreateActivityPageState
                           ),
                           Flexible(
                               child: TextFieldDialogWidget(
-                            labelText: 'Titulo da Atividade',
+                            labelText: S.of(context).activityNameTitle,
                             padding: false,
                             onChanged: controller.setTitle,
                             value: controller.activityToCreate.title,
@@ -109,7 +110,7 @@ class _CreateActivityPageState
                       ),
                     ),
                     TextFieldDialogWidget(
-                      labelText: 'Descrição',
+                      labelText: S.of(context).descriptionTitle,
                       value: controller.activityToCreate.description,
                       onChanged: controller.setDescription,
                     ),
@@ -267,7 +268,7 @@ class _CreateActivityPageState
                           horizontal: 114, vertical: 32),
                       child: FormsButtonWidget(
                           width: 220,
-                          buttonTittle: 'Adicionar palestrante',
+                          buttonTittle: S.of(context).speakersAddTitle,
                           onPressed: controller.addSpeaker,
                           backgroundColor: AppColors.brandingBlue,
                           icon: const Icon(
@@ -314,9 +315,9 @@ class _CreateActivityPageState
                                       return ActionConfirmationDialogWidget(
                                           isLoading: controller.isLoading,
                                           title:
-                                              'Tem certeza que deseja continuar?',
+                                              S.of(context).confirmToContinue,
                                           content:
-                                              'Ao salvar o banco de dados de atividade será alterado.',
+                                              S.of(context).lostOldDataWarn,
                                           onPressed: () {
                                             controller.createUserActivity();
                                           });
@@ -327,10 +328,11 @@ class _CreateActivityPageState
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
-                                    return const CustomAlertDialogWidget(
-                                      title: 'Preencha todos os campos!',
-                                      content:
-                                          'Confira se todos os campos estão corretamente preenchidos.',
+                                    return CustomAlertDialogWidget(
+                                      title: S.of(context).fieldFillAllRequired,
+                                      content: S
+                                          .of(context)
+                                          .confirmAllFieldsConrrectlyFilled,
                                     );
                                   },
                                 );
