@@ -9,6 +9,7 @@ import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/services/environment/environment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
 import '../../auth/presenter/controllers/auth_controller.dart';
+import '../utils/mocks/subscribed_activities_mock.dart';
 
 class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   final SecureStorageInterface storage;
@@ -51,12 +52,12 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   Future<List<ActivityModel>> getUserSubscribedActivities() async {
     var token = await storage.getAccessToken();
     try {
-      dio.options.headers["authorization"] = "Bearer $token";
-      final res = await dio.get('/activity/userisenrolled');
-      if (res.statusCode == 200) {
-        return ActivityModel.fromMaps(res.data);
-      }
-      throw Exception();
+      //dio.options.headers["authorization"] = "Bearer $token";
+      //final res = await dio.get('/activity/subscribedActivities');
+      // if (res.statusCode == 200) {
+      //   return ActivityModel.fromMaps(res.data);
+      //}
+      return subscribedActivities;
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken(token.toString());
