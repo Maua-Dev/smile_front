@@ -98,7 +98,7 @@ abstract class CreateActivityControllerBase with Store {
       var year = value.substring(6, 10);
       var month = value.substring(3, 5);
       var day = value.substring(0, 2);
-      value = '$year-$month-$day';
+      value = '$year/$month/$day';
       var hour = activityToCreate.startDate != null
           ? DateFormat('HH:mm').format(activityToCreate.startDate!)
           : '';
@@ -112,8 +112,8 @@ abstract class CreateActivityControllerBase with Store {
   void setHour(String value) {
     if (value.length > 4) {
       var date = activityToCreate.startDate != null
-          ? DateFormat('yyyy-MM-dd').format(activityToCreate.startDate!)
-          : '0000-00-00';
+          ? DateFormat('yyyy/MM/dd').format(activityToCreate.startDate!)
+          : '0000/00/00';
       var hour = DateTime.parse("$date $value");
       activityToCreate = activityToCreate.copyWith(startDate: hour);
     }

@@ -127,7 +127,7 @@ class _CreateActivityPageState
                             var date =
                                 controller.activityToCreate.startDate == null
                                     ? ''
-                                    : DateFormat('dd-MM-yyyy').format(
+                                    : DateFormat('dd/MM/yyyy').format(
                                         controller.activityToCreate.startDate!);
                             return Padding(
                                 padding: const EdgeInsets.symmetric(
@@ -175,61 +175,6 @@ class _CreateActivityPageState
                                         .setParticipants(int.parse(value));
                                   },
                                   removeSchedule: () {},
-                                  onPressedIconDate: () {
-                                    showDatePicker(
-                                      context: context,
-                                      initialDate: DateTime.now(),
-                                      firstDate: DateTime(2022),
-                                      lastDate: DateTime(2023),
-                                      confirmText: S
-                                          .of(context)
-                                          .confirmTitle
-                                          .toUpperCase(),
-                                      builder: (BuildContext context,
-                                          Widget? child) {
-                                        return Theme(
-                                          data: ThemeData.light().copyWith(
-                                            primaryColor:
-                                                AppColors.brandingOrange,
-                                            colorScheme: ColorScheme.light(
-                                                primary:
-                                                    AppColors.brandingOrange),
-                                          ),
-                                          child: child!,
-                                        );
-                                      },
-                                    ).then((value) {
-                                      controller.setDate(
-                                          DateFormat('dd-MM-yyyy')
-                                              .format(value!));
-                                    });
-                                  },
-                                  onPressedIconTime: () {
-                                    showTimePicker(
-                                      context: context,
-                                      initialTime: TimeOfDay.now(),
-                                      confirmText: S
-                                          .of(context)
-                                          .confirmTitle
-                                          .toUpperCase(),
-                                      builder: (BuildContext context,
-                                          Widget? child) {
-                                        return Theme(
-                                          data: ThemeData.light().copyWith(
-                                            primaryColor:
-                                                AppColors.brandingOrange,
-                                            colorScheme: ColorScheme.light(
-                                                primary:
-                                                    AppColors.brandingOrange),
-                                          ),
-                                          child: child!,
-                                        );
-                                      },
-                                    ).then((value) {
-                                      controller
-                                          .setHour(value!.format(context));
-                                    });
-                                  },
                                 ));
                           });
                     }),

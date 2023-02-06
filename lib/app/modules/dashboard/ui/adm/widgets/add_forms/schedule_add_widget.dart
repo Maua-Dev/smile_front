@@ -78,22 +78,20 @@ class ScheduleAddWidget extends StatelessWidget {
                   Flexible(
                     child: TextFieldDialogWidget(
                         onPressedIcon: onPressedIconDate,
-                        suffixIcon: Icons.timer,
                         labelText: S.of(context).dateTitle,
-                        hintText: 'DD-MM-AAAA',
+                        hintText: 'DD/MM/AAAA',
                         onChanged: onChangedDate,
                         value: date,
                         padding: false,
                         inputFormatters: [
                           MaskTextInputFormatter(
-                            mask: '##-##-####',
+                            mask: '##/##/####',
                           )
                         ]),
                   ),
                   Flexible(
                     child: TextFieldDialogWidget(
                         onPressedIcon: onPressedIconTime,
-                        suffixIcon: Icons.timer,
                         labelText: S.of(context).scheduleTitle,
                         hintText: 'HH:MM',
                         onChanged: onChangedHour,
@@ -194,15 +192,14 @@ class ScheduleAddWidget extends StatelessWidget {
                     Flexible(
                       child: TextFieldDialogWidget(
                           onPressedIcon: onPressedIconDate,
-                          suffixIcon: Icons.timer,
                           labelText: 'Fechamento das Inscrições',
-                          hintText: 'DD-MM-AAAA',
+                          hintText: 'DD/MM/AAAA',
                           onChanged: onChangedClosure,
                           value: date,
                           padding: false,
                           inputFormatters: [
                             MaskTextInputFormatter(
-                              mask: '##-##-####',
+                              mask: '##/##/####',
                             )
                           ]),
                     ),
