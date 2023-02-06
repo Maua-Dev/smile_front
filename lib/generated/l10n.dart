@@ -219,23 +219,23 @@ class S {
     );
   }
 
-  /// `{activity, select, CURSOS{Courses} PALESTRAS{Speeches} PALESTRAS_ALTO_IMPACTO{High Impact Speeches} VISITAS_TECNICAS{Technical Visits} COMPETICOES_ACADEMICAS{Academic Competitions} HACKATHON{Hackathon} FEIRA_ESTAGIOS{Internship Fairs} CAFE_EX_ALUNOS{Coffeee with alumni} ACADEMIA_DE_PROFESSORES{Teachers Academy} ATIVIDADE_CULTURAL{Cultural Activity} GCSP{GCSP} ATIVIDADE_ESPORTIVA{Sport Activity} other{Activities}}`
+  /// `{activity, select, COURSE{Courses} LECTURES{Speeches} HIGH_IMPACT_LECTURES{High Impact Speeches} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} GCSP{GCSP} SPORTS_ACTIVITY{Sport Activity} other{Activities}}`
   String activitiesOfferedName(Object activity) {
     return Intl.select(
       activity,
       {
-        'CURSOS': 'Courses',
-        'PALESTRAS': 'Speeches',
-        'PALESTRAS_ALTO_IMPACTO': 'High Impact Speeches',
-        'VISITAS_TECNICAS': 'Technical Visits',
-        'COMPETICOES_ACADEMICAS': 'Academic Competitions',
+        'COURSE': 'Courses',
+        'LECTURES': 'Speeches',
+        'HIGH_IMPACT_LECTURES': 'High Impact Speeches',
+        'TECHNICAL_VISITS': 'Technical Visits',
+        'ACADEMIC_COMPETITIONS': 'Academic Competitions',
         'HACKATHON': 'Hackathon',
-        'FEIRA_ESTAGIOS': 'Internship Fairs',
-        'CAFE_EX_ALUNOS': 'Coffeee with alumni',
-        'ACADEMIA_DE_PROFESSORES': 'Teachers Academy',
-        'ATIVIDADE_CULTURAL': 'Cultural Activity',
+        'INTERNSHIP_FAIR': 'Internship Fairs',
+        'ALUMNI_CAFE': 'Coffeee with alumni',
+        'PROFESSORS_ACADEMY': 'Teachers Academy',
+        'CULTURAL_ACTIVITY': 'Cultural Activity',
         'GCSP': 'GCSP',
-        'ATIVIDADE_ESPORTIVA': 'Sport Activity',
+        'SPORTS_ACTIVITY': 'Sport Activity',
         'other': 'Activities',
       },
       name: 'activitiesOfferedName',

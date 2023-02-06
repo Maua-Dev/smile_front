@@ -59,18 +59,18 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m2(activity) => "${Intl.select(activity, {
-            'CURSOS': 'Cursos',
-            'PALESTRAS': 'Palestras',
-            'PALESTRAS_ALTO_IMPACTO': 'Palestras de Alto Impacto',
-            'VISITAS_TECNICAS': 'Visitas Técnicas',
-            'COMPETICOES_ACADEMICAS': 'Competições Acadêmicas',
+            'COURSE': 'Cursos',
+            'LECTURES': 'Palestras',
+            'HIGH_IMPACT_LECTURES': 'Palestras de Alto Impacto',
+            'TECHNICAL_VISITS': 'Visitas Técnicas',
+            'ACADEMIC_COMPETITIONS': 'Competições Acadêmicas',
             'HACKATHON': 'Hackathon',
-            'FEIRA_ESTAGIOS': 'Feira de Estágios',
-            'CAFE_EX_ALUNOS': 'Café com Ex-aluno(a)',
-            'ACADEMIA_DE_PROFESSORES': 'Academia de Professores',
-            'ATIVIDADE_CULTURAL': 'Atividade Cultura',
+            'INTERNSHIP_FAIR': 'Feira de Estágios',
+            'ALUMNI_CAFE': 'Café com Ex-aluno(a)',
+            'PROFESSORS_ACADEMY': 'Academia de Professores',
+            'CULTURAL_ACTIVITY': 'Atividade Cultura',
             'GCSP': 'GCSP',
-            'ATIVIDADE_ESPORTIVA': 'Atividade Esportiva',
+            'SPORTS_ACTIVITY': 'Atividade Esportiva',
             'other': 'Atividades',
           })}";
 
