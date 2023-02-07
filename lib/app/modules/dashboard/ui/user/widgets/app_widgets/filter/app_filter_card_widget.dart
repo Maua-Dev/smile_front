@@ -7,7 +7,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-class FilterMobileCardWidget extends StatelessWidget {
+class AppFilterCardWidget extends StatelessWidget {
   final Function(ActivityEnum?)? onChangedActivitiesFilter;
   final ActivityEnum? typeFilter;
   final Function(DateTime?)? onChangedDateFilter;
@@ -15,15 +15,15 @@ class FilterMobileCardWidget extends StatelessWidget {
   final Function(DateTime?)? onChangedTimeFilter;
   final DateTime? hourFilter;
   final Function()? resetFilters;
-  const FilterMobileCardWidget({
+  const AppFilterCardWidget({
     Key? key,
-    this.onChangedActivitiesFilter,
-    this.onChangedDateFilter,
-    this.onChangedTimeFilter,
-    this.typeFilter,
-    this.dateFilter,
-    this.hourFilter,
-    this.resetFilters,
+    required this.onChangedActivitiesFilter,
+    required this.onChangedDateFilter,
+    required this.onChangedTimeFilter,
+    required this.typeFilter,
+    required this.dateFilter,
+    required this.hourFilter,
+    required this.resetFilters,
   }) : super(key: key);
 
   @override
@@ -52,18 +52,18 @@ class FilterMobileCardWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
+                    alignment: Alignment.center,
                     width: 126,
                     height: 36,
                     decoration: BoxDecoration(
                         color: AppColors.white,
                         borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 3, 3, 0),
-                      child: DropdownButtonFormField<ActivityEnum>(
+                    child: DropdownButtonFormField<ActivityEnum>(
                         value: typeFilter,
-                        iconSize: 24,
+                        iconSize: 16,
                         isExpanded: true,
                         decoration: InputDecoration(
+                          constraints: const BoxConstraints(maxWidth: 121),
                           isDense: true,
                           hintText: S.of(context).activitiesTitle,
                           fillColor: AppColors.white,
@@ -77,11 +77,9 @@ class FilterMobileCardWidget extends StatelessWidget {
                               value: activityEnum,
                               child: Text(activityEnum.name.toString(),
                                   style: AppTextStyles.body
-                                      .copyWith(fontSize: 15)));
+                                      .copyWith(fontSize: 12)));
                         }).toList(),
-                        onChanged: onChangedActivitiesFilter,
-                      ),
-                    ),
+                        onChanged: onChangedActivitiesFilter),
                   ),
                   Container(
                     width: 84,

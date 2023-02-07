@@ -107,6 +107,99 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     getActivitiesByType(activityType);
   }
 
+  @observable
+  ActivityEnum? typeFilter;
+
+  @action
+  void setTypeFilter(ActivityEnum value) {
+    typeFilter = value;
+    setAllFilters();
+  }
+
+  @observable
+  DateTime? dateFilter;
+
+  @action
+  void setDateFilter(DateTime value) {
+    dateFilter = value;
+    setAllFilters();
+  }
+
+  @observable
+  DateTime? hourFilter;
+
+  @action
+  void setHourFilter(DateTime value) {
+    hourFilter = value;
+    setAllFilters();
+  }
+
+  @action
+  void setAllFilters() {
+    var listActivities = activitiesList;
+    if (typeFilter != null) {
+      listActivities = filterActivitiesByType(typeFilter!, listActivities);
+    }
+    if (dateFilter != null) {
+      listActivities = filterActivitiesByDate(dateFilter!, listActivities);
+    }
+    if (hourFilter != null) {
+      listActivities = filterActivitiesByHour(hourFilter!, listActivities);
+    }
+    activitiesList = listActivities;
+  }
+
+  @action
+  resetFilters() {
+    activitiesList = activitiesList;
+    typeFilter = null;
+    dateFilter = null;
+    hourFilter = null;
+  }
+
+  @action
+  List<ActivityModel> filterActivitiesByType(
+      ActivityEnum type, List<ActivityModel> activitiesToFilter) {
+    var list =
+        activitiesToFilter.where((element) => element.type == type).toList();
+    return list;
+  }
+
+  @action
+  List<ActivityModel> filterActivitiesByDate(
+      DateTime date, List<ActivityModel> activitiesToFilter) {
+    var list = activitiesToFilter
+        .where((element) => isValidDateFilter(element.startDate!, date))
+        .toList();
+    return list;
+  }
+
+  @action
+  List<ActivityModel> filterActivitiesByHour(
+      DateTime hour, List<ActivityModel> activitiesToFilter) {
+    var list = activitiesToFilter
+        .where((element) => isValidHourFilter(element.startDate!, hour))
+        .toList();
+    return list;
+  }
+
+  bool isValidDateFilter(DateTime activityDate, DateTime dateToFilter) {
+    if (activityDate.day == dateToFilter.day &&
+        activityDate.month == dateToFilter.month &&
+        activityDate.year == dateToFilter.year) {
+      return true;
+    }
+    return false;
+  }
+
+  bool isValidHourFilter(DateTime activityDate, DateTime dateToFilter) {
+    if (activityDate.hour == dateToFilter.hour &&
+        activityDate.minute == dateToFilter.minute) {
+      return true;
+    }
+    return false;
+  }
+
   @action
   Future getActivities() async {
     setIsLoading(true);
