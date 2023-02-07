@@ -14,7 +14,7 @@ class NextActivityCardWidget extends StatelessWidget {
   final int? totalParticipants;
   final String? link;
   final String? location;
-  final DateTime? duration;
+  final int? duration;
   final Function()? onTap;
   final bool isUser;
   const NextActivityCardWidget({

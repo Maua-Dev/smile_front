@@ -117,66 +117,66 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
-  void setLocation(String value, int index) {
+  void setLocation(String value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setLocation');
     try {
-      return super.setLocation(value, index);
+      return super.setLocation(value);
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setLink(String value, int index) {
+  void setLink(String value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setLink');
     try {
-      return super.setLink(value, index);
+      return super.setLink(value);
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setDate(String value, int index) {
+  void setDate(String value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setDate');
     try {
-      return super.setDate(value, index);
+      return super.setDate(value);
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setHour(String value, int index) {
+  void setHour(String value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setHour');
     try {
-      return super.setHour(value, index);
+      return super.setHour(value);
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setDuration(String value, int index) {
+  void setDuration(String value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setDuration');
     try {
-      return super.setDuration(value, index);
+      return super.setDuration(value);
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setParticipants(int value, int index) {
+  void setParticipants(int value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setParticipants');
     try {
-      return super.setParticipants(value, index);
+      return super.setParticipants(value);
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -216,11 +216,11 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
-  void setEnableSubscription(bool value, int index) {
+  void setEnableSubscription(bool value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setEnableSubscription');
     try {
-      return super.setEnableSubscription(value, index);
+      return super.setEnableSubscription(value);
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
