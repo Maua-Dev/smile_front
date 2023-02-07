@@ -40,7 +40,8 @@ var patrocinadorAlstomLogoUrl =
 
 var patrocinadorBungeLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_bunge.png';
 
-var patrocinadorCengageLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_cengage.png';
+var patrocinadorCengageLogoUrl =
+    '${s3AssetsBaseUrl}logo_patrocinador_cengage.png';
 
 var mauaAzulLogoUrl = '${s3AssetsBaseUrl}logo_maua_azul.png';
 
