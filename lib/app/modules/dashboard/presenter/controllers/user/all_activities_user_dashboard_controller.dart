@@ -49,6 +49,9 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   List<CardActivity> allActivitiesToCards = List.empty();
 
   @observable
+  List<CardActivity> allActivities = List.empty();
+
+  @observable
   ActivityEnum? activityType;
 
   @computed
@@ -136,7 +139,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
 
   @action
   void setAllFilters() {
-    var listActivities = activitiesList;
+    var listActivities = allActivitiesToCards;
     if (typeFilter != null) {
       listActivities = filterActivitiesByType(typeFilter!, listActivities);
     }
@@ -146,39 +149,39 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     if (hourFilter != null) {
       listActivities = filterActivitiesByHour(hourFilter!, listActivities);
     }
-    activitiesList = listActivities;
+    allActivities = listActivities;
   }
 
   @action
   resetFilters() {
-    activitiesList = activitiesList;
+    allActivities = allActivitiesToCards;
     typeFilter = null;
     dateFilter = null;
     hourFilter = null;
   }
 
   @action
-  List<ActivityModel> filterActivitiesByType(
-      ActivityEnum type, List<ActivityModel> activitiesToFilter) {
+  List<CardActivity> filterActivitiesByType(
+      ActivityEnum type, List<CardActivity> activitiesToFilter) {
     var list =
         activitiesToFilter.where((element) => element.type == type).toList();
     return list;
   }
 
   @action
-  List<ActivityModel> filterActivitiesByDate(
-      DateTime date, List<ActivityModel> activitiesToFilter) {
+  List<CardActivity> filterActivitiesByDate(
+      DateTime date, List<CardActivity> activitiesToFilter) {
     var list = activitiesToFilter
-        .where((element) => isValidDateFilter(element.startDate!, date))
+        .where((element) => isValidDateFilter(element.date!, date))
         .toList();
     return list;
   }
 
   @action
-  List<ActivityModel> filterActivitiesByHour(
-      DateTime hour, List<ActivityModel> activitiesToFilter) {
+  List<CardActivity> filterActivitiesByHour(
+      DateTime hour, List<CardActivity> activitiesToFilter) {
     var list = activitiesToFilter
-        .where((element) => isValidHourFilter(element.startDate!, hour))
+        .where((element) => isValidHourFilter(element.date!, hour))
         .toList();
     return list;
   }
@@ -224,6 +227,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
         ),
       );
     }
+    allActivities = allActivitiesToCards;
     toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
     getActivitiesByType(activityType);
   }

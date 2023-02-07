@@ -84,23 +84,41 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                   child: ListView.builder(
                     itemCount: controller.activitiesList.length,
                     itemBuilder: (context, index) {
-                      var finalTime = controller
-                                      .allActivitiesToCards[index].duration ==
-                                  null ||
-                              controller.allActivitiesToCards[index].date ==
-                                  null
-                          ? ''
-                          : Utils.getActivityFinalTime(
-                              controller.allActivitiesToCards[index].date!,
-                              controller.allActivitiesToCards[index].duration!);
+                      var finalTime =
+                          controller.allActivities[index].duration == null ||
+                                  controller.allActivities[index].date == null
+                              ? ''
+                              : Utils.getActivityFinalTime(
+                                  controller.allActivities[index].date!,
+                                  controller.allActivities[index].duration!);
                       var hour = DateFormat('HH:mm')
-                          .format(controller.allActivitiesToCards[index].date!);
+                          .format(controller.allActivities[index].date!);
                       return AppActivitiesCard(
                         finalTime: finalTime,
-                        location:
-                            controller.allActivitiesToCards[index].location,
-                        title: controller.allActivitiesToCards[index].title,
+                        location: controller.allActivities[index].location,
+                        title: controller.allActivities[index].title,
                         hour: hour,
+                        onTap: () {
+                          var isRegistered = false;
+                          var list = controller
+                              .controller.subscribedActivitiesList
+                              .where((element) =>
+                                  element.activityCode ==
+                                  controller.allActivities[index].activityCode)
+                              .toList();
+                          if (list.isNotEmpty) {
+                            isRegistered = true;
+                          }
+                          Modular.to.navigate(
+                            '/user/home/more-info',
+                            arguments: [
+                              controller.allActivities[index],
+                              isRegistered
+                            ],
+                          );
+                          controller.analytics.logViewActivity(
+                              controller.allActivities[index].activityCode);
+                        },
                       );
                     },
                   ),
