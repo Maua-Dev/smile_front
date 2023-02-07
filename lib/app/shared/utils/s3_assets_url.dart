@@ -38,6 +38,10 @@ var patrocinadorOsborneLogoUrl =
 var patrocinadorAlstomLogoUrl =
     '${s3AssetsBaseUrl}logo_patrocinador_alstom.png';
 
+var patrocinadorBungeLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_bunge.png';
+
+var patrocinadorCengageLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_cengage.png';
+
 var mauaAzulLogoUrl = '${s3AssetsBaseUrl}logo_maua_azul.png';
 
 var smileLaranjaLogoUrl = '${s3AssetsBaseUrl}logo_smile_laranja.png';
