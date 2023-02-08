@@ -122,7 +122,7 @@ void main() {
   setUpAll(() {
     when(datasource.putActivity('', ActivityModel.newInstance()))
         .thenAnswer((_) async => null);
-    when(datasource.removeActivity('')).thenAnswer((_) async => null);
+    when(datasource.deleteActivity('')).thenAnswer((_) async => null);
     when(datasource.postUnsubscribe('', DateTime.now()))
         .thenAnswer((_) async => true);
     when(datasource.postSubscribe('', DateTime.now()))

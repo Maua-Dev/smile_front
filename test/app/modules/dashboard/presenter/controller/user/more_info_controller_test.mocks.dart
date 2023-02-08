@@ -168,10 +168,11 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i10.Future<dynamic>.value(),
       ) as _i10.Future<dynamic>);
   @override
-  _i10.Future<dynamic> removeActivity(String? id) => (super.noSuchMethod(
+  _i10.Future<dynamic> deleteActivity(String? activityCode) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #removeActivity,
-          [id],
+          #deleteActivity,
+          [activityCode],
         ),
         returnValue: _i10.Future<dynamic>.value(),
       ) as _i10.Future<dynamic>);
