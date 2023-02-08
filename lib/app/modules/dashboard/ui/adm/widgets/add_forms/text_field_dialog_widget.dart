@@ -9,12 +9,14 @@ class TextFieldDialogWidget extends StatelessWidget {
   final String? value;
   final bool padding;
   final IconData? suffixIcon;
+  final String? Function(String? value)? validator;
   final void Function(String value)? onChanged;
   final void Function()? onPressedIcon;
   final List<TextInputFormatter>? inputFormatters;
   const TextFieldDialogWidget({
     Key? key,
     this.hintText,
+    this.validator,
     this.value,
     this.padding = true,
     this.inputFormatters,
@@ -53,6 +55,7 @@ class TextFieldDialogWidget extends StatelessWidget {
                     ),
                   ]),
               child: TextFormField(
+                validator: validator,
                 controller: controller,
                 onChanged: onChanged,
                 keyboardType: TextInputType.multiline,
