@@ -15,6 +15,7 @@ import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../../../setup_firebase_mocks.dart';
@@ -76,7 +77,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -110,7 +111,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -144,7 +145,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -178,7 +179,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -212,7 +213,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -246,7 +247,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -280,7 +281,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -314,7 +315,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
   ];
 

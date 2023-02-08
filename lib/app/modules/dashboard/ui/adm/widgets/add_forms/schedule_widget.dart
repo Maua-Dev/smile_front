@@ -35,7 +35,7 @@ class ScheduleWidget extends StatelessWidget {
   final String? location;
   final int length;
   final String? closeInscriptions;
-  final String? professor;
+  final String? professorName;
 
   const ScheduleWidget({
     Key? key,
@@ -59,7 +59,7 @@ class ScheduleWidget extends StatelessWidget {
     this.enableSubscription,
     this.onChangedEnableSubscription,
     this.closeInscriptions,
-    this.professor,
+    this.professorName,
     this.onChangedProfessor,
     this.onChangedClosure,
     this.onChangedModality,
@@ -187,7 +187,7 @@ class ScheduleWidget extends StatelessWidget {
                       child: TextFieldDialogWidget(
                         validator: validateRequiredField,
                         labelText: S.of(context).activityResponsibleTeacher,
-                        value: professor,
+                        value: professorName,
                         onChanged: onChangedProfessor,
                         padding: false,
                       ),

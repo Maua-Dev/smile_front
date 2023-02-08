@@ -185,6 +185,7 @@ abstract class UserDashboardControllerBase with Store {
           link: activity.link,
           enrolledUsers: activity.takenSlots,
           acceptSubscription: activity.acceptingNewEnrollments,
+          responsibleProfessor: activity.responsibleProfessor,
         ));
       }
       allActivitiesToCards.sort(
@@ -216,6 +217,7 @@ abstract class UserDashboardControllerBase with Store {
         link: nextActivity.link,
         enrolledUsers: nextActivity.takenSlots,
         acceptSubscription: nextActivity.acceptingNewEnrollments,
+        responsibleProfessor: nextActivity.responsibleProfessor,
       );
     } else {
       nextActivity = ActivityModel.newInstance();

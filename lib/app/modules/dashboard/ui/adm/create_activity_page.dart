@@ -142,6 +142,8 @@ class _CreateActivityPageState
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 114, vertical: 8),
                             child: ScheduleWidget(
+                              professorName: controller
+                                  .activityToCreate.responsibleProfessor.name,
                               isValidDate: controller.isValidDate,
                               validateRequiredField:
                                   controller.validateRequiredField,

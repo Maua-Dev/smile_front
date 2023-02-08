@@ -18,7 +18,7 @@ class Activity {
   final int takenSlots;
   final bool acceptingNewEnrollments;
   final DateTime? stopAcceptingNewEnrollmentsBefore;
-  final List<ResponsibleProfessorModel> responsibleProfessors;
+  final ResponsibleProfessorModel responsibleProfessor;
   final List<SpeakerActivityModel> speakers;
 
   Activity({
@@ -26,7 +26,7 @@ class Activity {
     required this.takenSlots,
     required this.acceptingNewEnrollments,
     this.stopAcceptingNewEnrollmentsBefore,
-    required this.responsibleProfessors,
+    required this.responsibleProfessor,
     this.place,
     this.link,
     required this.isExtensive,
@@ -39,25 +39,4 @@ class Activity {
     required this.description,
     required this.speakers,
   });
-
-  factory Activity.newInstance() {
-    return Activity(
-      activityCode: '',
-      deliveryEnum: null,
-      description: '',
-      title: '',
-      type: ActivityEnum.ALUMNI_CAFE,
-      duration: 0,
-      isExtensive: false,
-      startDate: null,
-      speakers: [],
-      acceptingNewEnrollments: false,
-      responsibleProfessors: [],
-      takenSlots: 0,
-      totalSlots: 0,
-      link: null,
-      place: null,
-      stopAcceptingNewEnrollmentsBefore: null,
-    );
-  }
 }

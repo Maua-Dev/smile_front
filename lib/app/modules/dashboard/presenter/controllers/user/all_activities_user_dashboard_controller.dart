@@ -130,6 +130,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
           acceptSubscription: activity.acceptingNewEnrollments,
           isExtensive: activity.isExtensive,
           delivery: activity.deliveryEnum,
+          responsibleProfessor: activity.responsibleProfessor,
         ),
       );
     }

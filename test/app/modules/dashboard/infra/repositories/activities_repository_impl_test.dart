@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_d
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/repository/activities_repository_impl.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 
 import 'activities_repository_impl_test.mocks.dart';
 
@@ -47,7 +48,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -81,7 +82,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -115,7 +116,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
   ];
 

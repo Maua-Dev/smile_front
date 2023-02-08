@@ -1,6 +1,7 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 
 var subscribedActivities = <ActivityModel>[
   ActivityModel(
@@ -35,6 +36,6 @@ var subscribedActivities = <ActivityModel>[
     acceptingNewEnrollments: false,
     isExtensive: false,
     takenSlots: 0,
-    responsibleProfessors: [],
+    responsibleProfessor: ResponsibleProfessorModel.newInstance(),
   ),
 ];

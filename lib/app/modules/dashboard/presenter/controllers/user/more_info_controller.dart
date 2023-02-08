@@ -74,7 +74,7 @@ abstract class MoreInfoControllerBase with Store {
       speakers: activity.speakers!,
       duration: 120,
       isExtensive: true,
-      responsibleProfessors: [],
+      responsibleProfessor: activity.responsibleProfessor,
       takenSlots: 0,
       totalSlots: 0,
     );

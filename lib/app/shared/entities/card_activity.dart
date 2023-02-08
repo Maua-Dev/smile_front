@@ -1,4 +1,6 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/shared/entities/responsible_professor.dart';
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'infra/delivery_enum.dart';
 
@@ -18,8 +20,10 @@ class CardActivity {
   final int? enrolledUsers;
   final bool isExtensive;
   final DeliveryEnum? delivery;
+  final ResponsibleProfessorModel responsibleProfessor;
 
   CardActivity({
+    required this.responsibleProfessor,
     required this.acceptSubscription,
     required this.enrolledUsers,
     required this.id,
@@ -54,6 +58,7 @@ class CardActivity {
       totalParticipants: 0,
       isExtensive: false,
       delivery: null,
+      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
     );
   }
 }
