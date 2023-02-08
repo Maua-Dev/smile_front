@@ -17,7 +17,7 @@ import '../../../../shared/widgets/buttons/forms_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import '../../domain/infra/activity_enum.dart';
-import 'widgets/add_forms/schedule_add_widget.dart';
+import 'widgets/add_forms/schedule_widget.dart';
 import 'widgets/add_forms/speaker_add_widget.dart';
 import 'widgets/add_forms/text_field_dialog_widget.dart';
 
@@ -47,65 +47,61 @@ class _EditActivityPageState
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 114, right: 114, top: 64, bottom: 8),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.25,
-                            child: DropDownFieldCustom<ActivityEnum>(
-                              textStyles: AppTextStyles.body.copyWith(
-                                  color: AppColors.brandingBlue,
-                                  fontSize:
-                                      MediaQuery.of(context).size.width < 1200
-                                          ? 16
-                                          : 20),
-                              filledColor: Colors.white,
-                              titulo: S.of(context).activityTypeTitle,
-                              value: controller.activityToEdit.type,
-                              items: ActivityEnum.values
-                                  .toList()
-                                  .map((ActivityEnum value) {
-                                return DropdownMenuItem<ActivityEnum>(
-                                  value: value,
-                                  child: Text(value.name),
-                                );
-                              }).toList(),
-                              onChanged: controller.setType,
-                            ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.25,
+                          child: DropDownFieldCustom<ActivityEnum>(
+                            textStyles: AppTextStyles.body.copyWith(
+                                color: AppColors.brandingBlue,
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1200
+                                        ? 16
+                                        : 20),
+                            filledColor: Colors.white,
+                            titulo: S.of(context).activityTypeTitle,
+                            value: controller.activityToEdit.type,
+                            items: ActivityEnum.values
+                                .toList()
+                                .map((ActivityEnum value) {
+                              return DropdownMenuItem<ActivityEnum>(
+                                value: value,
+                                child: Text(value.name),
+                              );
+                            }).toList(),
+                            onChanged: controller.setType,
                           ),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                          SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.1,
-                              child: TextFieldDialogWidget(
-                                labelText: S.of(context).codeTitle,
-                                padding: false,
-                                onChanged: controller.setActivityCode,
-                                value: controller.activityToEdit.activityCode,
-                              )),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                          Flexible(
-                              child: TextFieldDialogWidget(
-                            labelText: S.of(context).activityNameTitle,
-                            padding: false,
-                            onChanged: controller.setTitle,
-                            value: controller.activityToEdit.title,
-                          )),
-                          ExtensiveActivityCheck(
-                            onChanged: (() {
-                              setState(() {
-                                controller.setIsExtensive();
-                              });
-                            }),
-                            isExtensive: controller.activityToEdit.isExtensive,
-                          ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.1,
+                            child: TextFieldDialogWidget(
+                              labelText: S.of(context).codeTitle,
+                              padding: false,
+                              onChanged: controller.setActivityCode,
+                              value: controller.activityToEdit.activityCode,
+                            )),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        Flexible(
+                            child: TextFieldDialogWidget(
+                          labelText: S.of(context).activityNameTitle,
+                          padding: false,
+                          onChanged: controller.setTitle,
+                          value: controller.activityToEdit.title,
+                        )),
+                        ExtensiveActivityCheck(
+                          onChanged: (() {
+                            setState(() {
+                              controller.setIsExtensive();
+                            });
+                          }),
+                          isExtensive: controller.activityToEdit.isExtensive,
+                        ),
+                      ],
                     ),
                     TextFieldDialogWidget(
                       labelText: S.of(context).descriptionTitle,
@@ -128,105 +124,91 @@ class _EditActivityPageState
                                     : DateFormat('dd-MM-yyyy').format(
                                         controller.activityToEdit.startDate!);
 
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 114, vertical: 8),
-                              child: ScheduleAddWidget(
-                                modality:
-                                    controller.activityToEdit.deliveryEnum,
-                                onChangedModality: (value) {
-                                  controller.setModality(value);
-                                },
-                                enableSubscription: controller
-                                    .activityToEdit.acceptingNewEnrollments,
-                                onChangedEnableSubscription: (valueBool) {
-                                  setState(() {
-                                    controller
-                                        .setEnableSubscription(valueBool!);
-                                  });
-                                },
-                                date: date,
-                                hour: hour,
-                                link: controller.activityToEdit.link,
-                                onChangedLink: (value) {
-                                  controller.setLink(value);
-                                },
-                                location: controller.activityToEdit.place,
-                                onChangedLocation: (value) {
-                                  controller.setLocation(value);
-                                },
-                                duration: controller.activityToEdit.duration
-                                    .toString(),
-                                onChangedDuration: (value) {
-                                  controller.setDuration(value);
-                                },
-                                length: 1,
-                                totalParticipants:
-                                    controller.activityToEdit.totalSlots,
-                                onChangedDate: (value) {
-                                  controller.setDate(value);
-                                },
-                                onChangedHour: (value) {
-                                  controller.setHour(value);
-                                },
-                                onChangedParticipants: (value) {
-                                  controller.setParticipants(int.parse(value));
-                                },
-                                removeSchedule: () {},
-                                onPressedIconDate: () {
-                                  showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime(2022),
-                                    lastDate: DateTime(2023),
-                                    confirmText: S
-                                        .of(context)
-                                        .confirmTitle
-                                        .toUpperCase(),
-                                    builder:
-                                        (BuildContext context, Widget? child) {
-                                      return Theme(
-                                        data: ThemeData.light().copyWith(
-                                          primaryColor:
-                                              AppColors.brandingOrange,
-                                          colorScheme: ColorScheme.light(
-                                              primary:
-                                                  AppColors.brandingOrange),
-                                        ),
-                                        child: child!,
-                                      );
-                                    },
-                                  ).then((value) {
-                                    controller.setDate(DateFormat('dd-MM-yyyy')
-                                        .format(value!));
-                                  });
-                                },
-                                onPressedIconTime: () {
-                                  showTimePicker(
-                                    context: context,
-                                    initialTime: TimeOfDay.now(),
-                                    confirmText: S
-                                        .of(context)
-                                        .confirmTitle
-                                        .toUpperCase(),
-                                    builder:
-                                        (BuildContext context, Widget? child) {
-                                      return Theme(
-                                        data: ThemeData.light().copyWith(
-                                          primaryColor:
-                                              AppColors.brandingOrange,
-                                          colorScheme: ColorScheme.light(
-                                              primary:
-                                                  AppColors.brandingOrange),
-                                        ),
-                                        child: child!,
-                                      );
-                                    },
-                                  ).then((value) {
-                                    controller.setHour(value!.format(context));
-                                  });
-                                },
-                              ),
+                            return ScheduleWidget(
+                              modality: controller.activityToEdit.deliveryEnum,
+                              onChangedModality: (value) {
+                                controller.setModality(value);
+                              },
+                              enableSubscription: controller
+                                  .activityToEdit.acceptingNewEnrollments,
+                              onChangedEnableSubscription: (valueBool) {
+                                setState(() {
+                                  controller.setEnableSubscription(valueBool!);
+                                });
+                              },
+                              date: date,
+                              hour: hour,
+                              link: controller.activityToEdit.link,
+                              onChangedLink: (value) {
+                                controller.setLink(value);
+                              },
+                              location: controller.activityToEdit.place,
+                              onChangedLocation: (value) {
+                                controller.setLocation(value);
+                              },
+                              duration:
+                                  controller.activityToEdit.duration.toString(),
+                              onChangedDuration: (value) {
+                                controller.setDuration(value);
+                              },
+                              length: 1,
+                              totalParticipants:
+                                  controller.activityToEdit.totalSlots,
+                              onChangedDate: (value) {
+                                controller.setDate(value);
+                              },
+                              onChangedHour: (value) {
+                                controller.setHour(value);
+                              },
+                              onChangedParticipants: (value) {
+                                controller.setParticipants(int.parse(value));
+                              },
+                              removeSchedule: () {},
+                              onPressedIconDate: () {
+                                showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2022),
+                                  lastDate: DateTime(2023),
+                                  confirmText:
+                                      S.of(context).confirmTitle.toUpperCase(),
+                                  builder:
+                                      (BuildContext context, Widget? child) {
+                                    return Theme(
+                                      data: ThemeData.light().copyWith(
+                                        primaryColor: AppColors.brandingOrange,
+                                        colorScheme: ColorScheme.light(
+                                            primary: AppColors.brandingOrange),
+                                      ),
+                                      child: child!,
+                                    );
+                                  },
+                                ).then((value) {
+                                  controller.setDate(
+                                      DateFormat('dd-MM-yyyy').format(value!));
+                                });
+                              },
+                              onPressedIconTime: () {
+                                showTimePicker(
+                                  context: context,
+                                  initialTime: TimeOfDay.now(),
+                                  confirmText:
+                                      S.of(context).confirmTitle.toUpperCase(),
+                                  builder:
+                                      (BuildContext context, Widget? child) {
+                                    return Theme(
+                                      data: ThemeData.light().copyWith(
+                                        primaryColor: AppColors.brandingOrange,
+                                        colorScheme: ColorScheme.light(
+                                            primary: AppColors.brandingOrange),
+                                      ),
+                                      child: child!,
+                                    );
+                                  },
+                                ).then((value) {
+                                  controller.setHour(value!.format(context));
+                                });
+                              },
                             );
                           });
                     }),
@@ -259,85 +241,76 @@ class _EditActivityPageState
                         },
                       );
                     }),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 114, vertical: 32),
-                      child: FormsButtonWidget(
-                          width: 220,
-                          buttonTittle: S.of(context).speakersAddTitle,
-                          onPressed: controller.addSpeaker,
-                          backgroundColor: AppColors.brandingBlue,
-                          icon: const Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 22,
-                          )),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 48),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CustomElevatedButtonWidget(
-                              borderRadius: 8,
-                              widthSize: Screen.width(context) > tabletSize
-                                  ? Screen.width(context) * 0.35
-                                  : Screen.width(context) * 0.3,
-                              heightSize: 40,
-                              title: 'Cancelar',
-                              onPressed: () {
-                                Modular.to.navigate('/adm');
-                              },
-                              backgroundColor: AppColors.brandingBlue),
-                          SizedBox(
-                            width: Screen.width(context) > tabletSize
-                                ? 50
-                                : Screen.width(context) * 0.015,
-                          ),
-                          CustomElevatedButtonWidget(
+                    FormsButtonWidget(
+                        width: 220,
+                        buttonTittle: S.of(context).speakersAddTitle,
+                        onPressed: controller.addSpeaker,
+                        backgroundColor: AppColors.brandingBlue,
+                        icon: const Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 22,
+                        )),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        CustomElevatedButtonWidget(
                             borderRadius: 8,
-                            title: 'Salvar',
                             widthSize: Screen.width(context) > tabletSize
                                 ? Screen.width(context) * 0.35
                                 : Screen.width(context) * 0.3,
                             heightSize: 40,
-                            backgroundColor: AppColors.brandingBlue,
+                            title: 'Cancelar',
                             onPressed: () {
-                              if (controller.isFilled()) {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return Observer(builder: (context) {
-                                      return ActionConfirmationDialogWidget(
-                                          isLoading: controller.isLoading,
-                                          title:
-                                              S.of(context).confirmToContinue,
-                                          content:
-                                              S.of(context).lostOldDataWarn,
-                                          onPressed: () {
-                                            controller.editUserActivity();
-                                          });
-                                    });
-                                  },
-                                );
-                              } else {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return CustomAlertDialogWidget(
-                                      title: S.of(context).fieldFillAllRequired,
-                                      content: S
-                                          .of(context)
-                                          .confirmAllFieldsConrrectlyFilled,
-                                    );
-                                  },
-                                );
-                              }
+                              Modular.to.navigate('/adm');
                             },
-                          ),
-                        ],
-                      ),
+                            backgroundColor: AppColors.brandingBlue),
+                        SizedBox(
+                          width: Screen.width(context) > tabletSize
+                              ? 50
+                              : Screen.width(context) * 0.015,
+                        ),
+                        CustomElevatedButtonWidget(
+                          borderRadius: 8,
+                          title: 'Salvar',
+                          widthSize: Screen.width(context) > tabletSize
+                              ? Screen.width(context) * 0.35
+                              : Screen.width(context) * 0.3,
+                          heightSize: 40,
+                          backgroundColor: AppColors.brandingBlue,
+                          onPressed: () {
+                            if (controller.isFilled()) {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return Observer(builder: (context) {
+                                    return ActionConfirmationDialogWidget(
+                                        isLoading: controller.isLoading,
+                                        title: S.of(context).confirmToContinue,
+                                        content: S.of(context).lostOldDataWarn,
+                                        onPressed: () {
+                                          controller.editUserActivity();
+                                        });
+                                  });
+                                },
+                              );
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return CustomAlertDialogWidget(
+                                    title: S.of(context).fieldFillAllRequired,
+                                    content: S
+                                        .of(context)
+                                        .confirmAllFieldsConrrectlyFilled,
+                                  );
+                                },
+                              );
+                            }
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),

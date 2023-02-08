@@ -44,16 +44,10 @@ class TextFieldDialogWidget extends StatelessWidget {
               ),
             ),
             Container(
+              height: 70,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 3,
-                      offset: const Offset(5, 5), // changes position of shadow
-                    ),
-                  ]),
+                borderRadius: BorderRadius.circular(8),
+              ),
               child: TextFormField(
                 validator: validator,
                 controller: controller,
@@ -67,6 +61,7 @@ class TextFieldDialogWidget extends StatelessWidget {
                     fontSize:
                         MediaQuery.of(context).size.width < 1200 ? 16 : 20),
                 decoration: InputDecoration(
+                    isDense: true,
                     suffixIcon: suffixIcon != null
                         ? IconButton(
                             icon: Icon(
@@ -76,6 +71,19 @@ class TextFieldDialogWidget extends StatelessWidget {
                             onPressed: onPressedIcon,
                           )
                         : null,
+                    errorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.brandingOrange),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.brandingOrange),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    errorStyle: TextStyle(
+                      color: AppColors.brandingOrange,
+                      fontSize: 16,
+                      height: 1,
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide:

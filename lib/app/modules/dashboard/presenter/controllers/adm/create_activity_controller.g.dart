@@ -64,11 +64,12 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
       ActionController(name: 'CreateActivityControllerBase', context: context);
 
   @override
-  bool isFilled() {
-    final _$actionInfo = _$CreateActivityControllerBaseActionController
-        .startAction(name: 'CreateActivityControllerBase.isFilled');
+  String? validateRequiredField(String? value) {
+    final _$actionInfo =
+        _$CreateActivityControllerBaseActionController.startAction(
+            name: 'CreateActivityControllerBase.validateRequiredField');
     try {
-      return super.isFilled();
+      return super.validateRequiredField(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }

@@ -30,11 +30,6 @@ void main() {
     expect(controller.isLoading, true);
   });
 
-  test('isFilled', () {
-    var test = controller.isFilled();
-    expect(test, false);
-  });
-
   test('setType', () {
     var str = ActivityEnum.ALUMNI_CAFE;
     controller.setType(str);

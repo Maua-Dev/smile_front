@@ -9,7 +9,7 @@ import '../../../../../../shared/utils/screen_helper.dart';
 import '../../../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import 'text_field_dialog_widget.dart';
 
-class ScheduleAddWidget extends StatelessWidget {
+class ScheduleWidget extends StatelessWidget {
   final void Function(String value)? onChangedParticipants;
   final void Function(String)? onChangedDate;
   final void Function(String)? onChangedHour;
@@ -24,6 +24,7 @@ class ScheduleAddWidget extends StatelessWidget {
   final void Function()? onPressedIconTime;
   final void Function()? removeSchedule;
   final String? Function(String? value)? isValidDate;
+  final String? Function(String? value)? validateRequiredField;
   final DeliveryEnum? modality;
   final bool? enableSubscription;
   final int? totalParticipants;
@@ -36,7 +37,7 @@ class ScheduleAddWidget extends StatelessWidget {
   final String? closeInscriptions;
   final String? professor;
 
-  const ScheduleAddWidget({
+  const ScheduleWidget({
     Key? key,
     this.isValidDate,
     this.onChangedParticipants,
@@ -63,6 +64,7 @@ class ScheduleAddWidget extends StatelessWidget {
     this.onChangedClosure,
     this.onChangedModality,
     this.modality,
+    this.validateRequiredField,
   }) : super(key: key);
 
   @override
@@ -79,6 +81,7 @@ class ScheduleAddWidget extends StatelessWidget {
                 children: [
                   Flexible(
                     child: TextFieldDialogWidget(
+                        validator: validateRequiredField,
                         labelText: S.of(context).dateTitle,
                         hintText: 'DD/MM/AAAA',
                         onChanged: onChangedDate,
@@ -92,6 +95,7 @@ class ScheduleAddWidget extends StatelessWidget {
                   ),
                   Flexible(
                     child: TextFieldDialogWidget(
+                        validator: validateRequiredField,
                         labelText: S.of(context).scheduleTitle,
                         hintText: 'HH:MM',
                         onChanged: onChangedHour,
@@ -105,6 +109,7 @@ class ScheduleAddWidget extends StatelessWidget {
                   ),
                   Flexible(
                     child: TextFieldDialogWidget(
+                        validator: validateRequiredField,
                         labelText: S.of(context).activityDurationTitle,
                         onChanged: onChangedDuration,
                         value: duration ?? '',
@@ -117,6 +122,7 @@ class ScheduleAddWidget extends StatelessWidget {
                   ),
                   Flexible(
                     child: TextFieldDialogWidget(
+                      validator: validateRequiredField,
                       labelText: S.of(context).activityVacancyNumber,
                       onChanged: onChangedParticipants,
                       value: totalParticipants == null
@@ -179,6 +185,7 @@ class ScheduleAddWidget extends StatelessWidget {
                   children: [
                     Flexible(
                       child: TextFieldDialogWidget(
+                        validator: validateRequiredField,
                         labelText: S.of(context).activityResponsibleTeacher,
                         value: professor,
                         onChanged: onChangedProfessor,

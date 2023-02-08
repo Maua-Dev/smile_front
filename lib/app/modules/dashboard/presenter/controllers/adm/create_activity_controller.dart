@@ -2,6 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
+import '../../../../../../generated/l10n.dart';
 import '../../../../../shared/entities/infra/delivery_enum.dart';
 import '../../../../../shared/models/activity_model.dart';
 import '../../../domain/infra/activity_enum.dart';
@@ -34,16 +35,8 @@ abstract class CreateActivityControllerBase with Store {
   ///A function that checks if all the TITLE,DESCRIPTION,TYPE, ACTIVITY CODE, START DATE
   ///and TOTAL SLOTS are all filled, if so returns true. Else it returns false.
   @action
-  bool isFilled() {
-    if (activityToCreate.title != '' &&
-        activityToCreate.description != '' &&
-        activityToCreate.type != null &&
-        activityToCreate.activityCode != '' &&
-        activityToCreate.startDate != null &&
-        activityToCreate.totalSlots != 0) {
-      return true;
-    }
-    return false;
+  String? validateRequiredField(String? value) {
+    return value!.isEmpty ? S.current.fieldRequired : null;
   }
 
   ///A function that verifies if the subscriptionclosure date is before the event date
@@ -54,11 +47,11 @@ abstract class CreateActivityControllerBase with Store {
     var endsubscriptionsDate =
         activityToCreate.stopAcceptingNewEnrollmentsBefore;
 
-    if (startDate!.isAfter(endsubscriptionsDate!)) {
-      return "A data é valida";
-    } else {
-      return "Data inválida";
-    }
+    return value!.isEmpty
+        ? S.current.fieldRequired
+        : startDate!.isAfter(endsubscriptionsDate!)
+            ? "A data é valida"
+            : "Data inválida";
   }
 
   ///A function that sets the isLoading to TRUE, awaits a response,
