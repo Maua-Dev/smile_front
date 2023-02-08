@@ -5,9 +5,10 @@ import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-class AppFilterCardWidget extends StatelessWidget {
+class MobileFilterCardWidget extends StatelessWidget {
   final Function(ActivityEnum?)? onChangedActivitiesFilter;
   final ActivityEnum? typeFilter;
   final Function(DateTime?)? onChangedDateFilter;
@@ -15,7 +16,7 @@ class AppFilterCardWidget extends StatelessWidget {
   final Function(DateTime?)? onChangedTimeFilter;
   final DateTime? hourFilter;
   final Function()? resetFilters;
-  const AppFilterCardWidget({
+  const MobileFilterCardWidget({
     Key? key,
     required this.onChangedActivitiesFilter,
     required this.onChangedDateFilter,
@@ -46,29 +47,52 @@ class AppFilterCardWidget extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: 348,
-            height: 36,
+            width: MediaQuery.of(context).size.width > breakpointMobile
+                ? 787
+                : 380,
+            height:
+                MediaQuery.of(context).size.width > breakpointMobile ? 47 : 36,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    alignment: Alignment.center,
-                    width: 126,
-                    height: 36,
+                    width: MediaQuery.of(context).size.width > breakpointMobile
+                        ? 227
+                        : 160,
+                    height: MediaQuery.of(context).size.width > breakpointMobile
+                        ? 47
+                        : 36,
                     decoration: BoxDecoration(
                         color: AppColors.white,
                         borderRadius: BorderRadius.circular(10)),
-                    child: DropdownButtonFormField<ActivityEnum>(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          0,
+                          MediaQuery.of(context).size.width > breakpointMobile
+                              ? 8
+                              : 2,
+                          3,
+                          8),
+                      child: DropdownButtonFormField<ActivityEnum>(
                         value: typeFilter,
-                        iconSize: 16,
+                        iconSize:
+                            MediaQuery.of(context).size.width > breakpointMobile
+                                ? 24
+                                : 14,
                         isExpanded: true,
                         decoration: InputDecoration(
-                          constraints: const BoxConstraints(maxWidth: 121),
-                          isDense: true,
+                          isDense: MediaQuery.of(context).size.width >
+                                  breakpointMobile
+                              ? true
+                              : false,
                           hintText: S.of(context).activitiesTitle,
                           fillColor: AppColors.white,
                           filled: true,
-                          hintStyle: AppTextStyles.body.copyWith(fontSize: 16),
+                          hintStyle: AppTextStyles.body.copyWith(
+                              fontSize: MediaQuery.of(context).size.width >
+                                      breakpointMobile
+                                  ? 25
+                                  : 16),
                           border: InputBorder.none,
                         ),
                         items: ActivityEnum.values
@@ -76,19 +100,37 @@ class AppFilterCardWidget extends StatelessWidget {
                           return DropdownMenuItem<ActivityEnum>(
                               value: activityEnum,
                               child: Text(activityEnum.name.toString(),
-                                  style: AppTextStyles.body
-                                      .copyWith(fontSize: 12)));
+                                  style: AppTextStyles.body.copyWith(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width >
+                                                  breakpointMobile
+                                              ? 15
+                                              : 10)));
                         }).toList(),
-                        onChanged: onChangedActivitiesFilter),
+                        onChanged: onChangedActivitiesFilter,
+                      ),
+                    ),
                   ),
                   Container(
-                    width: 84,
-                    height: 36,
+                    width: MediaQuery.of(context).size.width > breakpointMobile
+                        ? 227
+                        : 100,
+                    height: MediaQuery.of(context).size.width > breakpointMobile
+                        ? 47
+                        : 36,
                     decoration: BoxDecoration(
                         color: AppColors.white,
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 4, 0, 12),
+                      padding: EdgeInsets.fromLTRB(
+                          MediaQuery.of(context).size.width > breakpointMobile
+                              ? 12
+                              : 6,
+                          4,
+                          MediaQuery.of(context).size.width > breakpointMobile
+                              ? 12
+                              : 0,
+                          10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -100,7 +142,15 @@ class AppFilterCardWidget extends StatelessWidget {
                                     ? S.of(context).dateTitle
                                     : formattedDate,
                                 style: AppTextStyles.body.copyWith(
-                                    fontSize: formattedDate == '' ? 16 : 16)),
+                                    fontSize: formattedDate == ''
+                                        ? MediaQuery.of(context).size.width >
+                                                breakpointMobile
+                                            ? 25
+                                            : 16
+                                        : MediaQuery.of(context).size.width >
+                                                breakpointMobile
+                                            ? 16
+                                            : 10)),
                           ),
                           IconButton(
                             onPressed: () {
@@ -126,20 +176,35 @@ class AppFilterCardWidget extends StatelessWidget {
                             hoverColor: AppColors.white,
                             icon: const Icon(Icons.arrow_drop_down),
                             color: Colors.black,
-                            iconSize: 16,
+                            iconSize: MediaQuery.of(context).size.width >
+                                    breakpointMobile
+                                ? 24
+                                : 14,
                           ),
                         ],
                       ),
                     ),
                   ),
                   Container(
-                    width: 105,
-                    height: 36,
+                    width: MediaQuery.of(context).size.width > breakpointMobile
+                        ? 227
+                        : 105,
+                    height: MediaQuery.of(context).size.width > breakpointMobile
+                        ? 47
+                        : 36,
                     decoration: BoxDecoration(
                         color: AppColors.white,
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 4, 0, 10),
+                      padding: EdgeInsets.fromLTRB(
+                          MediaQuery.of(context).size.width > breakpointMobile
+                              ? 12
+                              : 6,
+                          4,
+                          MediaQuery.of(context).size.width > breakpointMobile
+                              ? 12
+                              : 0,
+                          10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -151,7 +216,15 @@ class AppFilterCardWidget extends StatelessWidget {
                                     ? S.of(context).scheduleTitle
                                     : formattedHour,
                                 style: AppTextStyles.body.copyWith(
-                                    fontSize: formattedHour == '' ? 16 : 16)),
+                                    fontSize: formattedHour == ''
+                                        ? MediaQuery.of(context).size.width >
+                                                breakpointMobile
+                                            ? 25
+                                            : 16
+                                        : MediaQuery.of(context).size.width >
+                                                breakpointMobile
+                                            ? 16
+                                            : 10)),
                           ),
                           IconButton(
                             onPressed: () {
@@ -180,7 +253,10 @@ class AppFilterCardWidget extends StatelessWidget {
                             hoverColor: AppColors.white,
                             icon: const Icon(Icons.arrow_drop_down),
                             color: Colors.black,
-                            iconSize: 16,
+                            iconSize: MediaQuery.of(context).size.width >
+                                    breakpointMobile
+                                ? 24
+                                : 14,
                           ),
                         ],
                       ),
@@ -188,12 +264,16 @@ class AppFilterCardWidget extends StatelessWidget {
                   ),
                 ])),
         const SizedBox(
-          height: 10,
+          height: 20,
         ),
-        ElevatedButton.icon(
-            onPressed: resetFilters,
-            icon: const Icon(Icons.delete),
-            label: Text(S.of(context).cleanFiltersTitle)),
+        SizedBox(
+          width: 150,
+          height: 30,
+          child: ElevatedButton.icon(
+              onPressed: resetFilters,
+              icon: const Icon(Icons.delete),
+              label: Text(S.of(context).cleanFiltersTitle)),
+        ),
       ],
     );
   }

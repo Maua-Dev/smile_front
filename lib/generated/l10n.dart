@@ -688,6 +688,26 @@ class S {
     );
   }
 
+  /// `Termination`
+  String get termination {
+    return Intl.message(
+      'Termination',
+      name: 'termination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local`
+  String get local {
+    return Intl.message(
+      'Local',
+      name: 'local',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The login service is under maintenance`
   String get maintenanceTitle {
     return Intl.message(

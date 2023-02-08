@@ -5,8 +5,8 @@ import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import '../../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../../shared/utils/screen_helper.dart';
 
-class NavBarWidget extends StatelessWidget {
-  NavBarWidget({super.key});
+class MobileNavBarWidget extends StatelessWidget {
+  MobileNavBarWidget({super.key});
 
   final List<String> options = [
     "Perfil",

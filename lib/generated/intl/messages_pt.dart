@@ -342,6 +342,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "insertPasswordCodeInstructions": MessageLookupByLibrary.simpleMessage(
             "Insira sua nova senha e o codigo enviado para o seu e-mail:"),
         "knowMore": MessageLookupByLibrary.simpleMessage("SAIBA MAIS >>>"),
+        "local": MessageLookupByLibrary.simpleMessage("Local"),
         "loginForgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Esqueci minha senha"),
         "loginPasswordPlaceholder":
@@ -425,6 +426,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Código enviado com sucesso!"),
         "successSendingSponsorEmail": MessageLookupByLibrary.simpleMessage(
             "Enviado com sucesso!! Nossa equipe entrará em contato em breve."),
+        "termination": MessageLookupByLibrary.simpleMessage("Término"),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Desinscrever-se"),
         "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Sim")
