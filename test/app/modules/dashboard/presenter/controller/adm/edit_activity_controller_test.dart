@@ -56,7 +56,7 @@ void main() {
     acceptingNewEnrollments: false,
     isExtensive: false,
     takenSlots: 0,
-    responsibleProfessors: ResponsibleProfessorModel.newInstance(),
+    responsibleProfessor: ResponsibleProfessorModel.newInstance(),
   );
 
   setUpAll(() async {

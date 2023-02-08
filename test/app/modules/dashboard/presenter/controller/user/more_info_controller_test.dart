@@ -9,6 +9,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/mor
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
 import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 
 import 'more_info_controller_test.mocks.dart';
 
@@ -41,6 +42,7 @@ void main() {
     location: 'location',
     link: 'link',
     isExtensive: true,
+    responsibleProfessor: ResponsibleProfessorModel.newInstance(),
   );
 
   setUpAll(() async {

@@ -69,7 +69,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -103,7 +103,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -137,7 +137,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
     ),
     ActivityModel(
       activityCode: 'C01',
@@ -171,7 +171,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
     ),
   ];
 
