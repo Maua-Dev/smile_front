@@ -153,6 +153,23 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
+  late final _$allActivitiesAtom = Atom(
+      name: 'AllActivitiesUserDashboardControllerBase.allActivities',
+      context: context);
+
+  @override
+  List<CardActivity> get allActivities {
+    _$allActivitiesAtom.reportRead();
+    return super.allActivities;
+  }
+
+  @override
+  set allActivities(List<CardActivity> value) {
+    _$allActivitiesAtom.reportWrite(value, super.allActivities, () {
+      super.allActivities = value;
+    });
+  }
+
   late final _$activityTypeAtom = Atom(
       name: 'AllActivitiesUserDashboardControllerBase.activityType',
       context: context);
@@ -167,6 +184,57 @@ mixin _$AllActivitiesUserDashboardController
   set activityType(ActivityEnum? value) {
     _$activityTypeAtom.reportWrite(value, super.activityType, () {
       super.activityType = value;
+    });
+  }
+
+  late final _$typeFilterAtom = Atom(
+      name: 'AllActivitiesUserDashboardControllerBase.typeFilter',
+      context: context);
+
+  @override
+  ActivityEnum? get typeFilter {
+    _$typeFilterAtom.reportRead();
+    return super.typeFilter;
+  }
+
+  @override
+  set typeFilter(ActivityEnum? value) {
+    _$typeFilterAtom.reportWrite(value, super.typeFilter, () {
+      super.typeFilter = value;
+    });
+  }
+
+  late final _$dateFilterAtom = Atom(
+      name: 'AllActivitiesUserDashboardControllerBase.dateFilter',
+      context: context);
+
+  @override
+  DateTime? get dateFilter {
+    _$dateFilterAtom.reportRead();
+    return super.dateFilter;
+  }
+
+  @override
+  set dateFilter(DateTime? value) {
+    _$dateFilterAtom.reportWrite(value, super.dateFilter, () {
+      super.dateFilter = value;
+    });
+  }
+
+  late final _$hourFilterAtom = Atom(
+      name: 'AllActivitiesUserDashboardControllerBase.hourFilter',
+      context: context);
+
+  @override
+  DateTime? get hourFilter {
+    _$hourFilterAtom.reportRead();
+    return super.hourFilter;
+  }
+
+  @override
+  set hourFilter(DateTime? value) {
+    _$hourFilterAtom.reportWrite(value, super.hourFilter, () {
+      super.hourFilter = value;
     });
   }
 
@@ -226,6 +294,116 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   @override
+  void setTypeFilter(ActivityEnum value) {
+    final _$actionInfo =
+        _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name: 'AllActivitiesUserDashboardControllerBase.setTypeFilter');
+    try {
+      return super.setTypeFilter(value);
+    } finally {
+      _$AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDateFilter(DateTime value) {
+    final _$actionInfo =
+        _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name: 'AllActivitiesUserDashboardControllerBase.setDateFilter');
+    try {
+      return super.setDateFilter(value);
+    } finally {
+      _$AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setHourFilter(DateTime value) {
+    final _$actionInfo =
+        _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name: 'AllActivitiesUserDashboardControllerBase.setHourFilter');
+    try {
+      return super.setHourFilter(value);
+    } finally {
+      _$AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAllFilters() {
+    final _$actionInfo =
+        _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name: 'AllActivitiesUserDashboardControllerBase.setAllFilters');
+    try {
+      return super.setAllFilters();
+    } finally {
+      _$AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic resetFilters() {
+    final _$actionInfo =
+        _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name: 'AllActivitiesUserDashboardControllerBase.resetFilters');
+    try {
+      return super.resetFilters();
+    } finally {
+      _$AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<CardActivity> filterActivitiesByType(
+      ActivityEnum type, List<CardActivity> activitiesToFilter) {
+    final _$actionInfo =
+        _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name:
+                'AllActivitiesUserDashboardControllerBase.filterActivitiesByType');
+    try {
+      return super.filterActivitiesByType(type, activitiesToFilter);
+    } finally {
+      _$AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<CardActivity> filterActivitiesByDate(
+      DateTime date, List<CardActivity> activitiesToFilter) {
+    final _$actionInfo =
+        _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name:
+                'AllActivitiesUserDashboardControllerBase.filterActivitiesByDate');
+    try {
+      return super.filterActivitiesByDate(date, activitiesToFilter);
+    } finally {
+      _$AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<CardActivity> filterActivitiesByHour(
+      DateTime hour, List<CardActivity> activitiesToFilter) {
+    final _$actionInfo =
+        _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name:
+                'AllActivitiesUserDashboardControllerBase.filterActivitiesByHour');
+    try {
+      return super.filterActivitiesByHour(hour, activitiesToFilter);
+    } finally {
+      _$AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isLoading: ${isLoading},
@@ -233,7 +411,11 @@ filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 weekActivitiesList: ${weekActivitiesList},
 activitiesList: ${activitiesList},
 allActivitiesToCards: ${allActivitiesToCards},
+allActivities: ${allActivities},
 activityType: ${activityType},
+typeFilter: ${typeFilter},
+dateFilter: ${dateFilter},
+hourFilter: ${hourFilter},
 mondayActivitiesList: ${mondayActivitiesList},
 tuesdayActivitiesList: ${tuesdayActivitiesList},
 wednesdayActivitiesList: ${wednesdayActivitiesList},
