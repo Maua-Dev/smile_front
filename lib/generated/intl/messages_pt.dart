@@ -246,8 +246,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Duração(Minutos)"),
         "activityEditTitle":
             MessageLookupByLibrary.simpleMessage("Editar Atividade"),
+        "activityErrorClosureDateAfterStartDate":
+            MessageLookupByLibrary.simpleMessage(
+                "A data de fechamento das inscrições deve ser antes da data da atividade"),
         "activityInscriptionClosure":
-            MessageLookupByLibrary.simpleMessage("Inscription Closure"),
+            MessageLookupByLibrary.simpleMessage("Fechamento das Inscrições"),
         "activityNameTitle":
             MessageLookupByLibrary.simpleMessage("Titulo da Atividade"),
         "activityResponsibleTeacher":
@@ -324,6 +327,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "fieldFullNameRequired":
             MessageLookupByLibrary.simpleMessage("Insira seu nome completo"),
         "fieldInvalid": MessageLookupByLibrary.simpleMessage("Campo inválido"),
+        "fieldInvalidDate":
+            MessageLookupByLibrary.simpleMessage("Data Inválida"),
         "fieldPasswordEqualsRequired": MessageLookupByLibrary.simpleMessage(
             "Os campos \"Senha\" e \"Confirme sua senha\" devem ser iguais"),
         "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(

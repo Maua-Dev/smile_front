@@ -120,6 +120,7 @@
     "fieldDDDRequired": "Insira o número com DDD",
     "fieldRAInvalid": "RA inválido",
     "fieldFillAllRequired": "Preencha todos os campos!",
+    "fieldInvalidDate": "Data Inválida",
 
 
 
@@ -166,7 +167,8 @@
     "activityVacancyNumber": "Número de Vagas",  
     "activityAcceptSbscriptions": "Aceitar inscrições",
     "activityResponsibleTeacher": "Professor Responsável",
-    "activityInscriptionClosure": "Inscription Closure",
+    "activityInscriptionClosure": "Fechamento das Inscrições",
+    "activityErrorClosureDateAfterStartDate": "A data de fechamento das inscrições deve ser antes da data da atividade",
 
     "descriptionTitle": "Descrição",
 

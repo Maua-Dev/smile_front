@@ -119,6 +119,13 @@ class _CreateActivityPageState
                           shrinkWrap: true,
                           itemCount: 1,
                           itemBuilder: (context, index) {
+                            var closureDate = controller.activityToCreate
+                                        .stopAcceptingNewEnrollmentsBefore ==
+                                    null
+                                ? ''
+                                : DateFormat('dd/MM/yyyy').format(controller
+                                    .activityToCreate
+                                    .stopAcceptingNewEnrollmentsBefore!);
                             var hour =
                                 controller.activityToCreate.startDate == null
                                     ? ''
@@ -133,8 +140,15 @@ class _CreateActivityPageState
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 114, vertical: 8),
                                 child: ScheduleAddWidget(
+                                  isValidDate: controller.isValidDate,
                                   modality:
                                       controller.activityToCreate.deliveryEnum,
+                                  //fechamento das INSCRIÇÕES
+                                  onChangedClosure: (value) {
+                                    controller.setClosureDate(value);
+                                  },
+                                  closeInscriptions: closureDate,
+                                  //modality
                                   onChangedModality: (value) {
                                     controller.setModality(value);
                                   },

@@ -75,6 +75,17 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
+  String? isValidDate(String? value) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.isValidDate');
+    try {
+      return super.isValidDate(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setType(ActivityEnum? value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.setType');
@@ -174,11 +185,33 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
+  void setClosureDate(String value) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.setClosureDate');
+    try {
+      return super.setClosureDate(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setHour(String value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.setHour');
     try {
       return super.setHour(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setClosureHour(String value) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.setClosureHour');
+    try {
+      return super.setClosureHour(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }

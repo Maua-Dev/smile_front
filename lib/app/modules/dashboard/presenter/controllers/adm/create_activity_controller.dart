@@ -46,6 +46,21 @@ abstract class CreateActivityControllerBase with Store {
     return false;
   }
 
+  ///A function that verifies if the subscriptionclosure date is before the event date
+  ///return TRUE if the date is valid and FALSE if isnt.
+  @action
+  String? isValidDate(String? value) {
+    var startDate = activityToCreate.startDate;
+    var endsubscriptionsDate =
+        activityToCreate.stopAcceptingNewEnrollmentsBefore;
+
+    if (startDate!.isAfter(endsubscriptionsDate!)) {
+      return "A data é valida";
+    } else {
+      return "Data inválida";
+    }
+  }
+
   ///A function that sets the isLoading to TRUE, awaits a response,
   ///sets the loading to FALSE
   ///and then links to the /adm page.
@@ -138,6 +153,25 @@ abstract class CreateActivityControllerBase with Store {
       var date =
           hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
       activityToCreate = activityToCreate.copyWith(startDate: date);
+    }
+  }
+
+  ///Sets the DATE for the activity to not receive more subscriptions.
+  @action
+  void setClosureDate(String value) {
+    if (value.length > 9) {
+      var year = value.substring(6, 10);
+      var month = value.substring(3, 5);
+      var day = value.substring(0, 2);
+      value = '$year/$month/$day';
+      var hour = activityToCreate.stopAcceptingNewEnrollmentsBefore != null
+          ? DateFormat('HH:mm')
+              .format(activityToCreate.stopAcceptingNewEnrollmentsBefore!)
+          : '';
+      var date =
+          hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
+      activityToCreate =
+          activityToCreate.copyWith(stopAcceptingNewEnrollmentsBefore: date);
     }
   }
 

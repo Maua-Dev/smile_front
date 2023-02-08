@@ -23,6 +23,7 @@ class ScheduleAddWidget extends StatelessWidget {
   final void Function()? onPressedIconDate;
   final void Function()? onPressedIconTime;
   final void Function()? removeSchedule;
+  final String? Function(String? value)? isValidDate;
   final DeliveryEnum? modality;
   final bool? enableSubscription;
   final int? totalParticipants;
@@ -37,6 +38,7 @@ class ScheduleAddWidget extends StatelessWidget {
 
   const ScheduleAddWidget({
     Key? key,
+    this.isValidDate,
     this.onChangedParticipants,
     this.onChangedDate,
     this.onChangedHour,
@@ -77,7 +79,6 @@ class ScheduleAddWidget extends StatelessWidget {
                 children: [
                   Flexible(
                     child: TextFieldDialogWidget(
-                        onPressedIcon: onPressedIconDate,
                         labelText: S.of(context).dateTitle,
                         hintText: 'DD/MM/AAAA',
                         onChanged: onChangedDate,
@@ -91,7 +92,6 @@ class ScheduleAddWidget extends StatelessWidget {
                   ),
                   Flexible(
                     child: TextFieldDialogWidget(
-                        onPressedIcon: onPressedIconTime,
                         labelText: S.of(context).scheduleTitle,
                         hintText: 'HH:MM',
                         onChanged: onChangedHour,
@@ -190,11 +190,11 @@ class ScheduleAddWidget extends StatelessWidget {
                     ),
                     Flexible(
                       child: TextFieldDialogWidget(
-                          onPressedIcon: onPressedIconDate,
+                          validator: isValidDate,
                           labelText: S.of(context).activityInscriptionClosure,
                           hintText: 'DD/MM/AAAA',
                           onChanged: onChangedClosure,
-                          value: date,
+                          value: closeInscriptions ?? '',
                           padding: false,
                           inputFormatters: [
                             MaskTextInputFormatter(

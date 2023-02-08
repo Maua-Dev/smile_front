@@ -1167,6 +1167,16 @@ class S {
     );
   }
 
+  /// `Invalid Date`
+  String get fieldInvalidDate {
+    return Intl.message(
+      'Invalid Date',
+      name: 'fieldInvalidDate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `A code will be sent to the registered email address:`
   String get codeInEmailTitle {
     return Intl.message(
@@ -1467,11 +1477,21 @@ class S {
     );
   }
 
-  /// `Fechamento das Inscrições`
+  /// `Inscription Closure`
   String get activityInscriptionClosure {
     return Intl.message(
-      'Fechamento das Inscrições',
+      'Inscription Closure',
       name: 'activityInscriptionClosure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The inscription closure date must be before the event date`
+  String get activityErrorClosureDateAfterStartDate {
+    return Intl.message(
+      'The inscription closure date must be before the event date',
+      name: 'activityErrorClosureDateAfterStartDate',
       desc: '',
       args: [],
     );
