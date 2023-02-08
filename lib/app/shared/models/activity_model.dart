@@ -11,7 +11,7 @@ class ActivityModel extends Activity {
     required super.isExtensive,
     super.deliveryEnum,
     super.startDate,
-    required super.duration,
+    super.duration,
     required super.activityCode,
     required super.type,
     required super.title,
@@ -23,7 +23,7 @@ class ActivityModel extends Activity {
     required super.responsibleProfessors,
     super.stopAcceptingNewEnrollmentsBefore,
     required super.takenSlots,
-    required super.totalSlots,
+    super.totalSlots,
   });
 
   factory ActivityModel.fromMap(Map<String, dynamic> map) {
@@ -72,14 +72,14 @@ class ActivityModel extends Activity {
       title: '',
       type: null,
       speakers: [SpeakerActivityModel.newInstance()],
-      duration: 0,
+      duration: null,
       isExtensive: false,
-      startDate: DateTime.now(),
+      startDate: null,
       deliveryEnum: null,
       acceptingNewEnrollments: false,
       responsibleProfessors: [],
       takenSlots: 0,
-      totalSlots: 0,
+      totalSlots: null,
     );
   }
 

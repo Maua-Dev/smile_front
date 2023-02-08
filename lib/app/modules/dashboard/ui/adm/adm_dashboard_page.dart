@@ -77,7 +77,7 @@ class _AdmDashboardPageState
                                 controller.activitiesList[index].startDate!);
                             String finalTime = Utils.getActivityFinalTime(
                                 controller.activitiesList[index].startDate!,
-                                controller.activitiesList[index].duration);
+                                controller.activitiesList[index].duration!);
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
@@ -90,7 +90,7 @@ class _AdmDashboardPageState
                                   enrolledUsersLength: controller
                                       .activitiesList[index].takenSlots,
                                   totalParticipants: controller
-                                      .activitiesList[index].totalSlots,
+                                      .activitiesList[index].totalSlots!,
                                   title: controller.activitiesList[index].title,
                                   time: time,
                                   finalTime: finalTime,

@@ -50,7 +50,7 @@ abstract class CreateActivityControllerBase with Store {
     return value!.isEmpty
         ? S.current.fieldRequired
         : startDate!.isAfter(endsubscriptionsDate!)
-            ? "A data é valida"
+            ? null
             : "Data inválida";
   }
 
@@ -156,13 +156,8 @@ abstract class CreateActivityControllerBase with Store {
       var year = value.substring(6, 10);
       var month = value.substring(3, 5);
       var day = value.substring(0, 2);
-      value = '$year/$month/$day';
-      var hour = activityToCreate.stopAcceptingNewEnrollmentsBefore != null
-          ? DateFormat('HH:mm')
-              .format(activityToCreate.stopAcceptingNewEnrollmentsBefore!)
-          : '';
-      var date =
-          hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
+      value = '$year-$month-$day 00:00:00';
+      var date = DateTime.parse(value);
       activityToCreate =
           activityToCreate.copyWith(stopAcceptingNewEnrollmentsBefore: date);
     }

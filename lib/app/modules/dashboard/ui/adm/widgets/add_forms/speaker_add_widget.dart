@@ -7,6 +7,7 @@ class SpeakerAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedName;
   final void Function(String value)? onChangedBio;
   final void Function(String value)? onChangedCompany;
+  final String? Function(String? value)? validateRequiredField;
   final void Function()? removeSpeaker;
   final String? name;
   final String? bio;
@@ -21,7 +22,8 @@ class SpeakerAddWidget extends StatelessWidget {
       this.name,
       this.bio,
       this.company,
-      required this.length})
+      required this.length,
+      this.validateRequiredField})
       : super(key: key);
 
   @override
@@ -41,6 +43,7 @@ class SpeakerAddWidget extends StatelessWidget {
                   children: [
                     Flexible(
                       child: TextFieldDialogWidget(
+                        validator: validateRequiredField,
                         labelText: 'Nome Palestrante',
                         padding: false,
                         onChanged: onChangedName,
@@ -52,6 +55,7 @@ class SpeakerAddWidget extends StatelessWidget {
                     ),
                     Flexible(
                       child: TextFieldDialogWidget(
+                        validator: validateRequiredField,
                         labelText: 'Empresa',
                         onChanged: onChangedCompany,
                         value: company,
@@ -64,6 +68,7 @@ class SpeakerAddWidget extends StatelessWidget {
                   height: 16,
                 ),
                 TextFieldDialogWidget(
+                  validator: validateRequiredField,
                   labelText: 'Bio',
                   value: bio,
                   onChanged: onChangedBio,

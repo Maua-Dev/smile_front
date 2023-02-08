@@ -143,15 +143,13 @@ class _CreateActivityPageState
                                 horizontal: 114, vertical: 8),
                             child: ScheduleWidget(
                               isValidDate: controller.isValidDate,
+                              validateRequiredField:
+                                  controller.validateRequiredField,
                               modality:
                                   controller.activityToCreate.deliveryEnum,
-                              onChangedClosure: (value) {
-                                controller.setClosureDate(value);
-                              },
+                              onChangedClosure: controller.setClosureDate,
                               closeInscriptions: closureDate,
-                              onChangedModality: (value) {
-                                controller.setModality(value);
-                              },
+                              onChangedModality: controller.setModality,
                               enableSubscription: controller
                                   .activityToCreate.acceptingNewEnrollments,
                               onChangedEnableSubscription: (valueBool) {
@@ -169,8 +167,7 @@ class _CreateActivityPageState
                               onChangedLocation: (value) {
                                 controller.setLocation(value);
                               },
-                              duration: controller.activityToCreate.duration
-                                  .toString(),
+                              duration: controller.activityToCreate.duration,
                               onChangedDuration: (value) {
                                 controller.setDuration(value);
                               },
@@ -196,6 +193,8 @@ class _CreateActivityPageState
                               controller.activityToCreate.speakers.length,
                           itemBuilder: (context, index) {
                             return SpeakerAddWidget(
+                              validateRequiredField:
+                                  controller.validateRequiredField,
                               length:
                                   controller.activityToCreate.speakers.length,
                               name: controller

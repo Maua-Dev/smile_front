@@ -146,8 +146,7 @@ class _EditActivityPageState
                               onChangedLocation: (value) {
                                 controller.setLocation(value);
                               },
-                              duration:
-                                  controller.activityToEdit.duration.toString(),
+                              duration: controller.activityToEdit.duration,
                               onChangedDuration: (value) {
                                 controller.setDuration(value);
                               },

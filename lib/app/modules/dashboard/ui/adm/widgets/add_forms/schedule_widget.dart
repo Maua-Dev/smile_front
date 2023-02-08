@@ -30,7 +30,7 @@ class ScheduleWidget extends StatelessWidget {
   final int? totalParticipants;
   final String date;
   final String? hour;
-  final String? duration;
+  final int? duration;
   final String? link;
   final String? location;
   final int length;
@@ -112,7 +112,7 @@ class ScheduleWidget extends StatelessWidget {
                         validator: validateRequiredField,
                         labelText: S.of(context).activityDurationTitle,
                         onChanged: onChangedDuration,
-                        value: duration ?? '',
+                        value: duration == null ? '' : duration.toString(),
                         padding: false,
                         inputFormatters: [
                           MaskTextInputFormatter(

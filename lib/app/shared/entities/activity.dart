@@ -11,10 +11,10 @@ class Activity {
   final bool isExtensive;
   final DeliveryEnum? deliveryEnum;
   final DateTime? startDate;
-  final int duration;
+  final int? duration;
   String? place;
   String? link;
-  final int totalSlots;
+  final int? totalSlots;
   final int takenSlots;
   final bool acceptingNewEnrollments;
   final DateTime? stopAcceptingNewEnrollmentsBefore;
