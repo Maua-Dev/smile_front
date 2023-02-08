@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/mobile_filter_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
@@ -21,7 +22,6 @@ class AllActivitiesUserDashboardPage extends StatefulWidget {
 
 class _AllActivitiesUserDashboardPageState extends ModularState<
     AllActivitiesUserDashboardPage, AllActivitiesUserDashboardController> {
-  final subscribedActivitiesController = Modular.get<UserDashboardController>();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -89,8 +89,8 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                     var hour = DateFormat('HH:mm')
                         .format(controller.allActivities[index].date!);
                     return MobileActivitiesCard(
-                      //isRegistered: controller,
-                      //isLoading: controller.isLoading,
+                      //isRegistered: moreInfoController.isRegistered,
+                      // isLoading: moreInfoController.isLoading,
                       finalTime: finalTime,
                       location: controller.allActivities[index].location,
                       title: controller.allActivities[index].title,

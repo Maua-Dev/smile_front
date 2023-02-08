@@ -72,7 +72,9 @@ class MobileFilterCardWidget extends StatelessWidget {
                               ? 8
                               : 2,
                           3,
-                          8),
+                          MediaQuery.of(context).size.width > breakpointMobile
+                              ? 7
+                              : 8),
                       child: DropdownButtonFormField<ActivityEnum>(
                         value: typeFilter,
                         iconSize:
