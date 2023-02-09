@@ -86,11 +86,11 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   @override
   Future<List<UserEnrolledActivitiesModel>> getEnrollmentByUserId() async {
     var token = await storage.getAccessToken();
-    var userId = await storage.getId();
+    // var userId = await storage.getId();
     try {
       dio.options.headers["authorization"] = "Bearer $token";
-      var response =
-          await dio.get('/get-enrollments-by-user-id?user_id=$userId');
+      var response = await dio.get(
+          '/get-enrollments-by-user-id?user_id=0355573c-a110-11ed-a8fc-0242ac120002');
       if (response.statusCode == 200) {
         return UserEnrolledActivitiesModel.fromMaps(
             response.data['enrollments']);

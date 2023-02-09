@@ -184,11 +184,11 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
       finalList.add(UserEnrolledActivitiesModel(activity: activity));
     }
     for (var activity in finalList) {
-      enrolledActivities.map((element) {
-        if (element.activity.activityCode == activity.activity.activityCode) {
-          activity.copyWith(state: EnrollmentStateEnum.ENROLLED);
-        }
-      });
+      for (var element in enrolledActivities) {
+        element.activity.activityCode == activity.activity.activityCode
+            ? activity.copyWith(state: EnrollmentStateEnum.ENROLLED)
+            : null;
+      }
     }
     allActivitiesFromGet = finalList;
     activitiesOnScreen = allActivitiesFromGet;

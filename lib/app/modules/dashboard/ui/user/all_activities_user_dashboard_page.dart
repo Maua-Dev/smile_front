@@ -89,6 +89,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                     var hour = DateFormat('HH:mm').format(controller
                         .activitiesOnScreen[index].activity.startDate!);
                     return MobileActivitiesCard(
+                      enrollment: controller.activitiesOnScreen[index].state,
                       onPressedSubscribe: () {
                         controller.subscribeUserActivity(controller
                             .activitiesOnScreen[index].activity.activityCode);

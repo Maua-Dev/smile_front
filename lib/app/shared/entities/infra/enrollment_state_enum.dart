@@ -2,7 +2,7 @@
 
 import 'package:enum_to_string/enum_to_string.dart';
 
-enum EnrollmentStateEnum { ENROLLED, IN_QUEUE, DROPPED }
+enum EnrollmentStateEnum { NONE, ENROLLED, IN_QUEUE, DROPPED }
 
 extension EnrollmentStateEnumExtension on EnrollmentStateEnum {
   static EnrollmentStateEnum stringToEnumMap(String toMap) {

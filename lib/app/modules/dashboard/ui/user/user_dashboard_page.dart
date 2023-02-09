@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/user_enrolled_activities_model.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_data_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
@@ -66,17 +68,10 @@ class _UserDashboardPageState
                     location: controller.nextActivity.place,
                     duration: controller.nextActivity.duration,
                     onTap: () {
-                      var isRegistered = false;
-                      var list = controller.subscribedActivitiesList
-                          .where((element) =>
-                              element.activity.activityCode ==
-                              controller.nextActivity.activityCode)
-                          .toList();
-                      if (list.isNotEmpty) {
-                        isRegistered = true;
-                      }
                       Modular.to.navigate('/user/home/more-info',
-                          arguments: controller.nextActivity);
+                          arguments: UserEnrolledActivitiesModel(
+                              activity: controller.nextActivity,
+                              state: EnrollmentStateEnum.ENROLLED));
                       controller.analytics.logViewActivity(
                           controller.nextActivity.activityCode);
                     },
