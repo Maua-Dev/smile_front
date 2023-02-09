@@ -127,7 +127,7 @@ void main() {
         .thenAnswer((_) async => true);
     when(datasource.postSubscribe('', DateTime.now()))
         .thenAnswer((_) async => true);
-    when(datasource.postActivity(ActivityModel.newInstance()))
+    when(datasource.createActivity(ActivityModel.newInstance()))
         .thenAnswer((_) async => null);
     when(datasource.getUserSubscribedActivities())
         .thenAnswer((_) async => mockActivities);

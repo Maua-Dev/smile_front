@@ -95,7 +95,7 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
         returnValue: _i3.Future<dynamic>.value(),
       ) as _i3.Future<dynamic>);
   @override
-  _i3.Future<dynamic> postActivity(_i4.ActivityModel? activity) =>
+  _i3.Future<dynamic> createActivity(_i4.ActivityModel? activity) =>
       (super.noSuchMethod(
         Invocation.method(
           #postActivity,

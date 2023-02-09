@@ -6,7 +6,7 @@ abstract class ActivitiesDatasourceInterface {
   Future<bool> postSubscribe(String activityId, DateTime activityDate);
   Future<bool> postUnsubscribe(String activityId, DateTime activityDate);
   Future putActivity(String id, ActivityModel activity);
-  Future postActivity(ActivityModel activity);
+  Future createActivity(ActivityModel activity);
   Future deleteActivity(String activityCode);
   Future<String> getLinkCsv();
 }
