@@ -87,8 +87,6 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                     var hour = DateFormat('HH:mm')
                         .format(controller.allActivities[index].date!);
                     return MobileActivitiesCard(
-                      //isRegistered: moreInfoController.isRegistered,
-                      // isLoading: moreInfoController.isLoading,
                       finalTime: finalTime,
                       location: controller.allActivities[index].location,
                       title: controller.allActivities[index].title,

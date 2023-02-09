@@ -1,7 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/register_button_widget.dart';
-
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
@@ -13,8 +13,6 @@ class MobileActivitiesCard extends StatelessWidget {
   final String finalTime;
   final String? location;
   final Function() onTap;
-  //final bool isRegistered;
-  //final bool isLoading;
 
   const MobileActivitiesCard({
     Key? key,
@@ -23,15 +21,14 @@ class MobileActivitiesCard extends StatelessWidget {
     required this.onTap,
     required this.finalTime,
     required this.location,
-    //required this.isLoading,
-    // required this.isRegistered
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var subscribeController = Modular.get<MoreInfoController>();
     return GestureDetector(
       onTap: onTap,
-      child: Column(
+      child: Column( 
         children: [
           Container(
             decoration: BoxDecoration(
@@ -144,10 +141,26 @@ class MobileActivitiesCard extends StatelessWidget {
                             MediaQuery.of(context).size.width < breakpointTablet
                                 ? 25
                                 : 50,
-                        //child: RegisterButtonWidget(
-                        // isRegistered: isRegistered,
-                        // isLoading: isLoading,
-                        // ),
+                        child: ElevatedButton(
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                      side: BorderSide(
+                                          color: AppColors.brandingOrange))),
+                              backgroundColor:
+                                  MaterialStateProperty.all(AppColors.white),
+                            ),
+                            onPressed: () {},
+                            child: Text('Inscrever-se',
+                                style: AppTextStyles.bold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width <
+                                                breakpointTablet
+                                            ? 12
+                                            : 24,
+                                    color: AppColors.brandingOrange))),
                       )
                     ])
                   ],
