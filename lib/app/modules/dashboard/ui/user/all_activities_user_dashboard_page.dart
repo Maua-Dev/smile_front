@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/mobile_filter_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
@@ -23,7 +22,6 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
     AllActivitiesUserDashboardPage, AllActivitiesUserDashboardController> {
   @override
   Widget build(BuildContext context) {
-    var controllerSubscription = Modular.get<UserSubscriptionController>();
     return Column(
       children: [
         const SizedBox(
@@ -89,7 +87,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                         controller.activitiesOnScreen[index].startDate!);
                     return MobileActivitiesCard(
                       onPressedSubscribe: () {
-                        controllerSubscription.subscribeUserActivity(
+                        controller.subscribeUserActivity(
                             controller.activitiesOnScreen[index].activityCode);
                       },
                       finalTime: finalTime,
@@ -97,23 +95,9 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                       title: controller.activitiesOnScreen[index].title,
                       hour: hour,
                       onTap: () {
-                        var isRegistered = false;
-                        var list = controller
-                            .controller.subscribedActivitiesList
-                            .where((element) =>
-                                element.activityCode ==
-                                controller
-                                    .activitiesOnScreen[index].activityCode)
-                            .toList();
-                        if (list.isNotEmpty) {
-                          isRegistered = true;
-                        }
                         Modular.to.navigate(
                           '/user/home/more-info',
-                          arguments: [
-                            controller.activitiesOnScreen[index],
-                            isRegistered
-                          ],
+                          arguments: controller.activitiesOnScreen[index],
                         );
                         controller.analytics.logViewActivity(
                             controller.activitiesOnScreen[index].activityCode);

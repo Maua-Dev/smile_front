@@ -1,7 +1,7 @@
 import '../repositories/activities_repository_interface.dart';
 
 abstract class SubscribeActivityInterface {
-  Future<bool> call(String userId, String activityCode);
+  Future<bool> call(String activityCode);
 }
 
 class SubscribeActivity implements SubscribeActivityInterface {
@@ -10,7 +10,7 @@ class SubscribeActivity implements SubscribeActivityInterface {
   SubscribeActivity({required this.repository});
 
   @override
-  Future<bool> call(String userId, String activityCode) {
-    return repository.subscribeActivity(userId, activityCode);
+  Future<bool> call(String activityCode) {
+    return repository.subscribeActivity(activityCode);
   }
 }

@@ -8,6 +8,8 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart'
     as _i2;
+import 'package:smile_front/app/modules/dashboard/infra/models/user_enrolled_activities_model.dart'
+    as _i5;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 
 // ignore_for_file: type=lint
@@ -40,42 +42,28 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
             _i3.Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]),
       ) as _i3.Future<List<_i4.ActivityModel>>);
   @override
-  _i3.Future<List<_i4.ActivityModel>> getUserSubscribedActivities() =>
+  _i3.Future<List<_i5.UserEnrolledActivitiesModel>> getEnrollmentByUserId() =>
       (super.noSuchMethod(
         Invocation.method(
-          #getUserSubscribedActivities,
+          #getEnrollmentByUserId,
           [],
         ),
-        returnValue:
-            _i3.Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]),
-      ) as _i3.Future<List<_i4.ActivityModel>>);
+        returnValue: _i3.Future<List<_i5.UserEnrolledActivitiesModel>>.value(
+            <_i5.UserEnrolledActivitiesModel>[]),
+      ) as _i3.Future<List<_i5.UserEnrolledActivitiesModel>>);
   @override
-  _i3.Future<bool> postSubscribe(
-    String? userId,
-    String? activityCode,
-  ) =>
-      (super.noSuchMethod(
+  _i3.Future<bool> postSubscribe(String? activityCode) => (super.noSuchMethod(
         Invocation.method(
           #postSubscribe,
-          [
-            userId,
-            activityCode,
-          ],
+          [activityCode],
         ),
         returnValue: _i3.Future<bool>.value(false),
       ) as _i3.Future<bool>);
   @override
-  _i3.Future<bool> postUnsubscribe(
-    String? userId,
-    String? activityCode,
-  ) =>
-      (super.noSuchMethod(
+  _i3.Future<bool> postUnsubscribe(String? activityCode) => (super.noSuchMethod(
         Invocation.method(
           #postUnsubscribe,
-          [
-            userId,
-            activityCode,
-          ],
+          [activityCode],
         ),
         returnValue: _i3.Future<bool>.value(false),
       ) as _i3.Future<bool>);

@@ -3,41 +3,48 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'dart:math' as math;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'dart:math' as math;
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../../shared/entities/infra/enrollment_state_enum.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../domain/infra/activity_enum.dart';
-import '../../presenter/controllers/user/user_subscription_controller.dart';
+import '../../infra/models/user_enrolled_activities_model.dart';
 import 'widgets/register_button_widget.dart';
 
-class MoreInfoPage extends StatelessWidget {
-  final ActivityModel activity;
-  MoreInfoPage({Key? key, required this.activity}) : super(key: key);
+class MoreInfoPage extends StatefulWidget {
+  final UserEnrolledActivitiesModel enrolledActivity;
 
-  var subscriptionController = Modular.get<UserSubscriptionController>();
+  const MoreInfoPage({super.key, required this.enrolledActivity});
 
   @override
+  State<MoreInfoPage> createState() => _MoreInfoPageState();
+}
+
+class _MoreInfoPageState
+    extends ModularState<MoreInfoPage, MoreInfoController> {
+  @override
   Widget build(BuildContext context) {
-    var timeString = activity.startDate == null
+    var timeString = widget.enrolledActivity.activity.startDate == null
         ? ''
-        : DateFormat('HH:mm').format(activity.startDate!);
-    var weekday = activity.startDate == null
+        : DateFormat('HH:mm')
+            .format(widget.enrolledActivity.activity.startDate!);
+    var weekday = widget.enrolledActivity.activity.startDate == null
         ? ''
         : DateFormat('EEEE')
-            .format(controller.activity.startDate!)
+            .format(widget.enrolledActivity.activity.startDate!)
             .split('-')
             .first
             .capitalize();
-    var finalTime = controller.activity.startDate == null
+    var finalTime = widget.enrolledActivity.activity.startDate == null
         ? ''
         : Utils.getActivityFinalTime(
-            controller.activity.startDate!, controller.activity.duration);
+            widget.enrolledActivity.activity.startDate!,
+            widget.enrolledActivity.activity.duration);
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -52,7 +59,7 @@ class MoreInfoPage extends StatelessWidget {
                     color: AppColors.lilac),
                 child: Center(
                   child: Text(
-                    controller.activity.type!.name,
+                    widget.enrolledActivity.activity.type!.name,
                     textAlign: TextAlign.justify,
                     style: AppTextStyles.buttonBold.copyWith(
                       fontSize: MediaQuery.of(context).size.width < 800
@@ -71,7 +78,7 @@ class MoreInfoPage extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  '${controller.activity.activityCode} - ${controller.activity.title}',
+                  '${widget.enrolledActivity.activity.activityCode} - ${widget.enrolledActivity.activity.title}',
                   textAlign: TextAlign.justify,
                   style: AppTextStyles.buttonBold.copyWith(
                       fontSize: MediaQuery.of(context).size.width < 800
@@ -92,10 +99,10 @@ class MoreInfoPage extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          controller.activity.startDate == null
+                          widget.enrolledActivity.activity.startDate == null
                               ? ''
-                              : DateFormat('dd/MM')
-                                  .format(controller.activity.startDate!),
+                              : DateFormat('dd/MM').format(
+                                  widget.enrolledActivity.activity.startDate!),
                           style: AppTextStyles.buttonBold.copyWith(
                               fontSize: MediaQuery.of(context).size.width < 800
                                   ? 10
@@ -140,7 +147,7 @@ class MoreInfoPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    if (controller.activity.place != null)
+                    if (widget.enrolledActivity.activity.place != null)
                       Column(
                         children: [
                           Text(
@@ -155,7 +162,7 @@ class MoreInfoPage extends StatelessWidget {
                                 color: AppColors.brandingBlue),
                           ),
                           Text(
-                            controller.activity.place!,
+                            widget.enrolledActivity.activity.place!,
                             style: AppTextStyles.buttonBold.copyWith(
                                 fontSize: MediaQuery.of(context).size.width <
                                         800
@@ -167,8 +174,7 @@ class MoreInfoPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                    if (controller.activity.link != null &&
-                        controller.isRegistered)
+                    if (widget.enrolledActivity.activity.link != null)
                       Column(
                         children: [
                           MouseRegion(
@@ -194,7 +200,8 @@ class MoreInfoPage extends StatelessWidget {
                                 ),
                                 GestureDetector(
                                   onTap: () => launchUrl(
-                                    Uri.parse(controller.activity.link!),
+                                    Uri.parse(
+                                        widget.enrolledActivity.activity.link!),
                                     mode: LaunchMode.externalApplication,
                                   ),
                                   child: Text('Link',
@@ -225,8 +232,7 @@ class MoreInfoPage extends StatelessWidget {
                 height: 16,
               ),
               Observer(builder: (_) {
-                return !controller.activity.acceptingNewEnrollments &&
-                        !controller.isRegistered
+                return !widget.enrolledActivity.activity.acceptingNewEnrollments
                     ? Text(
                         'Inscrição para a atividade indisponível!',
                         textAlign: TextAlign.center,
@@ -240,12 +246,13 @@ class MoreInfoPage extends StatelessWidget {
                       )
                     : Center(
                         child: RegisterButtonWidget(
-                            isRegistered: controller.isRegistered,
+                            isRegistered: widget.enrolledActivity.state,
                             isLoading: controller.isLoading,
                             onPressed: () {
-                              if (!controller
-                                      .activity.acceptingNewEnrollments &&
-                                  controller.isRegistered) {
+                              if (!widget.enrolledActivity.activity
+                                      .acceptingNewEnrollments &&
+                                  widget.enrolledActivity.state ==
+                                      EnrollmentStateEnum.ENROLLED) {
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
@@ -257,39 +264,19 @@ class MoreInfoPage extends StatelessWidget {
                                           content:
                                               'Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!',
                                           onPressed: () {
-                                            subscriptionController
-                                                .unsubscribeUserActivity(
-                                                    controller
-                                                        .activity.activityCode);
+                                            controller.unsubscribeUserActivity(
+                                                widget.enrolledActivity.activity
+                                                    .activityCode);
                                             Modular.to.pop();
                                           });
                                     });
                                   },
                                 );
                               } else {
-                                if (controller.isRegistered) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return Observer(builder: (context) {
-                                        return ActionConfirmationDialogWidget(
-                                            isLoading: controller.isLoading,
-                                            title:
-                                                'Tem certeza que deseja se desinscrever?',
-                                            content:
-                                                'Você perderá sua vaga na atividade ao continuar!',
-                                            onPressed: () {
-                                              subscriptionController
-                                                  .unsubscribeUserActivity(
-                                                      controller.activity
-                                                          .activityCode);
-                                              Modular.to.pop();
-                                            });
-                                      });
-                                    },
-                                  );
-                                } else if (controller.activity.takenSlots >=
-                                    controller.activity.totalSlots) {
+                                if (widget
+                                        .enrolledActivity.activity.takenSlots >=
+                                    widget
+                                        .enrolledActivity.activity.totalSlots) {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -311,10 +298,9 @@ class MoreInfoPage extends StatelessWidget {
                                             content:
                                                 'Se atente aos seus horários e atividades que você já se inscreveu!',
                                             onPressed: () {
-                                              subscriptionController
-                                                  .subscribeUserActivity(
-                                                      controller.activity
-                                                          .activityCode);
+                                              controller.subscribeUserActivity(
+                                                  widget.enrolledActivity
+                                                      .activity.activityCode);
                                               Modular.to.pop();
                                             });
                                       });
@@ -343,7 +329,7 @@ class MoreInfoPage extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(controller.activity.description,
+                child: Text(widget.enrolledActivity.activity.description,
                     textAlign: TextAlign.justify,
                     style: AppTextStyles.body.copyWith(
                         fontSize: MediaQuery.of(context).size.width < 800
@@ -359,33 +345,39 @@ class MoreInfoPage extends StatelessWidget {
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: controller.activity.speakers.length,
+                itemCount: widget.enrolledActivity.activity.speakers.length,
                 itemBuilder: (context, index) => Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (controller.activity.speakers[index].linkPhoto !=
+                        if (widget.enrolledActivity.activity.speakers[index]
+                                .linkPhoto !=
                             null)
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.1,
                             height: MediaQuery.of(context).size.width * 0.1,
                             child: CircleAvatar(
                               radius: 102.0,
-                              backgroundImage: CachedNetworkImageProvider(
-                                  controller.activity.speakers[index]
-                                      .linkPhoto!), // for Network image
+                              backgroundImage: CachedNetworkImageProvider(widget
+                                  .enrolledActivity
+                                  .activity
+                                  .speakers[index]
+                                  .linkPhoto!), // for Network image
                             ),
                           ),
                         Flexible(
                           child: Column(
                             children: [
-                              if (controller.activity.speakers[index].name !=
+                              if (widget.enrolledActivity.activity
+                                          .speakers[index].name !=
                                       null &&
-                                  controller.activity.speakers[index].name !=
+                                  widget.enrolledActivity.activity
+                                          .speakers[index].name !=
                                       '')
                                 Text(
-                                  controller.activity.speakers[index].name!,
+                                  widget.enrolledActivity.activity
+                                      .speakers[index].name!,
                                   textAlign: TextAlign.justify,
                                   style: AppTextStyles.buttonBold.copyWith(
                                       fontSize: MediaQuery.of(context)
@@ -399,12 +391,14 @@ class MoreInfoPage extends StatelessWidget {
                                               : 28,
                                       color: Colors.black),
                                 ),
-                              if (controller.activity.speakers[index].company !=
+                              if (widget.enrolledActivity.activity
+                                          .speakers[index].company !=
                                       null &&
-                                  controller.activity.speakers[index].company !=
+                                  widget.enrolledActivity.activity
+                                          .speakers[index].company !=
                                       '')
                                 Text(
-                                  'Empresa: ${controller.activity.speakers[index].company}',
+                                  'Empresa: ${widget.enrolledActivity.activity.speakers[index].company}',
                                   textAlign: TextAlign.justify,
                                   style: AppTextStyles.buttonBold.copyWith(
                                       fontSize: MediaQuery.of(context)
@@ -426,11 +420,15 @@ class MoreInfoPage extends StatelessWidget {
                     const SizedBox(
                       height: 8,
                     ),
-                    if (controller.activity.speakers[index].bio != null &&
-                        controller.activity.speakers[index].bio != '')
+                    if (widget.enrolledActivity.activity.speakers[index].bio !=
+                            null &&
+                        widget.enrolledActivity.activity.speakers[index].bio !=
+                            '')
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(controller.activity.speakers[index].bio!,
+                        child: Text(
+                            widget
+                                .enrolledActivity.activity.speakers[index].bio!,
                             textAlign: TextAlign.justify,
                             style: AppTextStyles.body.copyWith(
                                 fontSize: MediaQuery.of(context).size.width <

@@ -1,9 +1,10 @@
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../../shared/models/activity_model.dart';
+import '../../../infra/models/user_enrolled_activities_model.dart';
 
 part 'user_dashboard_controller.g.dart';
 
@@ -11,16 +12,16 @@ class UserDashboardController = UserDashboardControllerBase
     with _$UserDashboardController;
 
 abstract class UserDashboardControllerBase with Store {
-  final GetUserSubscribedActivitiesInterface getUserActivities;
+  final UserSubscriptionController subscriptionController;
   final ChangeDataInterface changeData;
   final SecureStorageInterface secureStorage;
   final FirebaseAnalyticsService analytics;
 
   UserDashboardControllerBase({
+    required this.subscriptionController,
     required this.analytics,
     required this.changeData,
     required this.secureStorage,
-    required this.getUserActivities,
   }) {
     getUserSubscribedActivities();
     getUserName();
@@ -141,23 +142,23 @@ abstract class UserDashboardControllerBase with Store {
   int filterActivityChipIndexSelected = 0;
 
   @observable
-  List<ActivityModel> subscribedActivitiesList = List.empty();
+  List<UserEnrolledActivitiesModel> subscribedActivitiesList = List.empty();
 
   @observable
   ActivityModel nextActivity = ActivityModel.newInstance();
 
   @action
   Future getActivities() async {
-    subscribedActivitiesList = await getUserActivities();
+    subscribedActivitiesList = await subscriptionController.getUserActivities();
   }
 
   @action
   Future getUserSubscribedActivities() async {
     setIsLoading(true);
-    subscribedActivitiesList = await getUserActivities();
+    subscribedActivitiesList = await subscriptionController.getUserActivities();
     if (subscribedActivitiesList.isNotEmpty) {
       subscribedActivitiesList.sort(
-        (a, b) => a.startDate!.compareTo(b.startDate!),
+        (a, b) => a.activity.startDate!.compareTo(b.activity.startDate!),
       );
       getNextActivity();
     }
@@ -167,7 +168,7 @@ abstract class UserDashboardControllerBase with Store {
   @action
   void getNextActivity() {
     if (subscribedActivitiesList.isNotEmpty) {
-      nextActivity = subscribedActivitiesList.first;
+      nextActivity = subscribedActivitiesList.first.activity;
     } else {
       nextActivity = ActivityModel.newInstance();
     }

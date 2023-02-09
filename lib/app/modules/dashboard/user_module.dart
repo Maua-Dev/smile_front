@@ -14,6 +14,7 @@ import 'package:smile_front/app/modules/dashboard/infra/repository/certificates_
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/certificate_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_dashboard_page.dart';
@@ -21,7 +22,6 @@ import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart'
 import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/usecases/login_with_cpf_rne.dart';
@@ -35,6 +35,7 @@ import 'external/faq_datasource_impl.dart';
 import 'external/user_datasource_impl.dart';
 import 'infra/datasources/faq_datasource_interface.dart';
 import 'infra/datasources/user_datasource_interface.dart';
+import 'infra/models/user_enrolled_activities_model.dart';
 import 'infra/repository/activities_repository_impl.dart';
 import 'infra/repository/faq_repository_impl.dart';
 import 'infra/repository/user_repository_impl.dart';
@@ -44,10 +45,16 @@ class UserModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<AllActivitiesUserDashboardController>(
         (i) => AllActivitiesUserDashboardController(
-              getAllActivities: i(),
-              authController: i(),
-              controller: i(),
-              analytics: i(),
+            getAllActivities: i(),
+            authController: i(),
+            analytics: i(),
+            subscriptionController: i()),
+        export: true),
+    Bind.lazySingleton<UserSubscriptionController>(
+        (i) => UserSubscriptionController(
+              getUserActivities: i(),
+              subscribeActivity: i(),
+              unsubscribeActivity: i(),
             ),
         export: true),
     Bind.lazySingleton<ActivitiesDatasourceInterface>(
@@ -83,18 +90,10 @@ class UserModule extends Module {
         (i) => GetAllInformation(repository: i())),
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
-        getUserActivities: i(),
         secureStorage: i(),
         changeData: i(),
         analytics: i(),
-      ),
-    ),
-    Bind.lazySingleton<UserSubscriptionController>(
-      (i) => UserSubscriptionController(
-        unsubscribeActivity: i(),
-        subscribeActivity: i(),
-        userDashboardController: i(),
-        secureStorage: i(),
+        subscriptionController: i(),
       ),
     ),
     Bind.lazySingleton((i) => Dio()),
@@ -104,6 +103,11 @@ class UserModule extends Module {
               refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
               analytics: i(),
+            ),
+        export: true),
+    Bind.lazySingleton<MoreInfoController>(
+        (i) => MoreInfoController(
+              subscriptionController: i(),
             ),
         export: true),
     Bind.lazySingleton<CertificateRepositoryInterface>(
@@ -124,7 +128,7 @@ class UserModule extends Module {
         child: (_, args) => const AllActivitiesUserDashboardPage()),
     ChildRoute('/more-info',
         child: (_, args) => MoreInfoPage(
-              activity: args.data as ActivityModel,
+              enrolledActivity: args.data as UserEnrolledActivitiesModel,
             )),
     ChildRoute('/help', child: (_, args) => const HelpPage()),
     ChildRoute('/certificate', child: (_, args) => const CertificatePage()),

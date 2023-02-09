@@ -17,7 +17,8 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subsc
     as _i3;
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart'
     as _i8;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
+import 'package:smile_front/app/modules/dashboard/infra/models/user_enrolled_activities_model.dart'
+    as _i5;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
     as _i9;
 
@@ -64,14 +65,15 @@ class MockGetUserSubscribedActivitiesInterface extends _i1.Mock
   }
 
   @override
-  _i4.Future<List<_i5.ActivityModel>> call() => (super.noSuchMethod(
+  _i4.Future<List<_i5.UserEnrolledActivitiesModel>> call() =>
+      (super.noSuchMethod(
         Invocation.method(
           #call,
           [],
         ),
-        returnValue:
-            _i4.Future<List<_i5.ActivityModel>>.value(<_i5.ActivityModel>[]),
-      ) as _i4.Future<List<_i5.ActivityModel>>);
+        returnValue: _i4.Future<List<_i5.UserEnrolledActivitiesModel>>.value(
+            <_i5.UserEnrolledActivitiesModel>[]),
+      ) as _i4.Future<List<_i5.UserEnrolledActivitiesModel>>);
 }
 
 /// A class which mocks [SecureStorageInterface].

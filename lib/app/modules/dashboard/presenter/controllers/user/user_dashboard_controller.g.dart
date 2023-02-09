@@ -162,13 +162,13 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
       context: context);
 
   @override
-  List<ActivityModel> get subscribedActivitiesList {
+  List<UserEnrolledActivitiesModel> get subscribedActivitiesList {
     _$subscribedActivitiesListAtom.reportRead();
     return super.subscribedActivitiesList;
   }
 
   @override
-  set subscribedActivitiesList(List<ActivityModel> value) {
+  set subscribedActivitiesList(List<UserEnrolledActivitiesModel> value) {
     _$subscribedActivitiesListAtom
         .reportWrite(value, super.subscribedActivitiesList, () {
       super.subscribedActivitiesList = value;

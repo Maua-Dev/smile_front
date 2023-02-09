@@ -1,8 +1,8 @@
-import '../../../../shared/models/activity_model.dart';
+import '../../infra/models/user_enrolled_activities_model.dart';
 import '../repositories/activities_repository_interface.dart';
 
 abstract class GetUserSubscribedActivitiesInterface {
-  Future<List<ActivityModel>> call();
+  Future<List<UserEnrolledActivitiesModel>> call();
 }
 
 class GetUserSubscribedActivitiesImp
@@ -12,7 +12,7 @@ class GetUserSubscribedActivitiesImp
   GetUserSubscribedActivitiesImp({required this.repository});
 
   @override
-  Future<List<ActivityModel>> call() {
+  Future<List<UserEnrolledActivitiesModel>> call() {
     return repository.getUserSubscribedActivities();
   }
 }

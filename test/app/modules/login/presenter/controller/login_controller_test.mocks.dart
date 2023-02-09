@@ -9,9 +9,11 @@ import 'package:firebase_analytics/firebase_analytics.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i3;
+import 'package:smile_front/app/modules/dashboard/infra/models/user_enrolled_activities_model.dart'
+    as _i6;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
-    as _i6;
+    as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -65,15 +67,16 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             _i4.Future<List<_i5.ActivityModel>>.value(<_i5.ActivityModel>[]),
       ) as _i4.Future<List<_i5.ActivityModel>>);
   @override
-  _i4.Future<List<_i5.ActivityModel>> getUserSubscribedActivities() =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getUserSubscribedActivities,
-          [],
-        ),
-        returnValue:
-            _i4.Future<List<_i5.ActivityModel>>.value(<_i5.ActivityModel>[]),
-      ) as _i4.Future<List<_i5.ActivityModel>>);
+  _i4.Future<List<_i6.UserEnrolledActivitiesModel>>
+      getUserSubscribedActivities() => (super.noSuchMethod(
+            Invocation.method(
+              #getUserSubscribedActivities,
+              [],
+            ),
+            returnValue:
+                _i4.Future<List<_i6.UserEnrolledActivitiesModel>>.value(
+                    <_i6.UserEnrolledActivitiesModel>[]),
+          ) as _i4.Future<List<_i6.UserEnrolledActivitiesModel>>);
   @override
   _i4.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
         Invocation.method(
@@ -109,32 +112,20 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i4.Future<dynamic>.value(),
       ) as _i4.Future<dynamic>);
   @override
-  _i4.Future<bool> subscribeActivity(
-    String? userId,
-    String? activityCode,
-  ) =>
+  _i4.Future<bool> subscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #subscribeActivity,
-          [
-            userId,
-            activityCode,
-          ],
+          [activityCode],
         ),
         returnValue: _i4.Future<bool>.value(false),
       ) as _i4.Future<bool>);
   @override
-  _i4.Future<bool> unsubscribeActivity(
-    String? userId,
-    String? activityCode,
-  ) =>
+  _i4.Future<bool> unsubscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #unsubscribeActivity,
-          [
-            userId,
-            activityCode,
-          ],
+          [activityCode],
         ),
         returnValue: _i4.Future<bool>.value(false),
       ) as _i4.Future<bool>);
@@ -144,7 +135,7 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFirebaseAnalyticsService extends _i1.Mock
-    implements _i6.FirebaseAnalyticsService {
+    implements _i7.FirebaseAnalyticsService {
   MockFirebaseAnalyticsService() {
     _i1.throwOnMissingStub(this);
   }

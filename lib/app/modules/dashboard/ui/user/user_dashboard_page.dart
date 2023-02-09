@@ -69,7 +69,7 @@ class _UserDashboardPageState
                       var isRegistered = false;
                       var list = controller.subscribedActivitiesList
                           .where((element) =>
-                              element.activityCode ==
+                              element.activity.activityCode ==
                               controller.nextActivity.activityCode)
                           .toList();
                       if (list.isNotEmpty) {
@@ -101,51 +101,41 @@ class _UserDashboardPageState
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: controller.subscribedActivitiesList.length,
                     itemBuilder: (context, index) {
-                      var finalTime =
-                          controller.subscribedActivitiesList[index].duration ==
-                                      null ||
-                                  controller.subscribedActivitiesList[index]
-                                          .startDate ==
-                                      null
-                              ? ''
-                              : Utils.getActivityFinalTime(
-                                  controller.subscribedActivitiesList[index]
-                                      .startDate!,
-                                  controller.subscribedActivitiesList[index]
-                                      .duration);
+                      var finalTime = controller.subscribedActivitiesList[index]
+                                  .activity.startDate ==
+                              null
+                          ? ''
+                          : Utils.getActivityFinalTime(
+                              controller.subscribedActivitiesList[index]
+                                  .activity.startDate!,
+                              controller.subscribedActivitiesList[index]
+                                  .activity.duration);
                       var hour = DateFormat('HH:mm').format(controller
-                          .subscribedActivitiesList[index].startDate!);
+                          .subscribedActivitiesList[index].activity.startDate!);
                       return UserActivityCardWidget(
                         finalTime: finalTime,
-                        location:
-                            controller.subscribedActivitiesList[index].place,
-                        isOnline:
-                            controller.subscribedActivitiesList[index].link ==
-                                    null
-                                ? false
-                                : true,
-                        title: controller.subscribedActivitiesList[index].title,
+                        location: controller
+                            .subscribedActivitiesList[index].activity.place,
+                        isOnline: controller.subscribedActivitiesList[index]
+                                    .activity.link ==
+                                null
+                            ? false
+                            : true,
+                        title: controller
+                            .subscribedActivitiesList[index].activity.title,
                         hour: hour,
-                        activityCode: controller
-                            .subscribedActivitiesList[index].activityCode,
+                        activityCode: controller.subscribedActivitiesList[index]
+                            .activity.activityCode,
                         onTap: () {
-                          var isRegistered = false;
-                          var list = controller.subscribedActivitiesList
-                              .where((element) =>
-                                  element.activityCode ==
-                                  controller.subscribedActivitiesList[index]
-                                      .activityCode)
-                              .toList();
-                          if (list.isNotEmpty) {
-                            isRegistered = true;
-                          }
                           Modular.to.navigate(
                             '/user/home/more-info',
                             arguments:
                                 controller.subscribedActivitiesList[index],
                           );
                           controller.analytics.logViewActivity(controller
-                              .subscribedActivitiesList[index].activityCode);
+                              .subscribedActivitiesList[index]
+                              .activity
+                              .activityCode);
                         },
                       );
                     },
