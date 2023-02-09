@@ -110,32 +110,30 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
       ) as _i4.Future<dynamic>);
   @override
   _i4.Future<bool> subscribeActivity(
-    _i5.ActivityModel? activity,
-    String? activityId,
-    DateTime? activityDate,
+    String? userId,
+    String? activityCode,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
           #subscribeActivity,
           [
-            activity,
-            activityId,
-            activityDate,
+            userId,
+            activityCode,
           ],
         ),
         returnValue: _i4.Future<bool>.value(false),
       ) as _i4.Future<bool>);
   @override
   _i4.Future<bool> unsubscribeActivity(
-    String? activityId,
-    DateTime? activityDate,
+    String? userId,
+    String? activityCode,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
           #unsubscribeActivity,
           [
-            activityId,
-            activityDate,
+            userId,
+            activityCode,
           ],
         ),
         returnValue: _i4.Future<bool>.value(false),

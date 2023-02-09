@@ -12,6 +12,7 @@ import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../domain/infra/activity_enum.dart';
+import '../../presenter/controllers/user/user_subscription_controller.dart';
 import 'widgets/register_button_widget.dart';
 
 class MoreInfoPage extends StatefulWidget {
@@ -23,23 +24,23 @@ class MoreInfoPage extends StatefulWidget {
 
 class _MoreInfoPageState
     extends ModularState<MoreInfoPage, MoreInfoController> {
+  var subscriptionController = Modular.get<UserSubscriptionController>();
   @override
   Widget build(BuildContext context) {
-    var timeString = controller.activity.date == null
+    var timeString = controller.activity.startDate == null
         ? ''
-        : DateFormat('HH:mm').format(controller.activity.date!);
-    var weekday = controller.activity.date == null
+        : DateFormat('HH:mm').format(controller.activity.startDate!);
+    var weekday = controller.activity.startDate == null
         ? ''
         : DateFormat('EEEE')
-            .format(controller.activity.date!)
+            .format(controller.activity.startDate!)
             .split('-')
             .first
             .capitalize();
-    var finalTime =
-        controller.activity.duration == null || controller.activity.date == null
-            ? ''
-            : Utils.getActivityFinalTime(
-                controller.activity.date!, controller.activity.duration!);
+    var finalTime = controller.activity.startDate == null
+        ? ''
+        : Utils.getActivityFinalTime(
+            controller.activity.startDate!, controller.activity.duration);
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -94,10 +95,10 @@ class _MoreInfoPageState
                     Column(
                       children: [
                         Text(
-                          controller.activity.date == null
+                          controller.activity.startDate == null
                               ? ''
                               : DateFormat('dd/MM')
-                                  .format(controller.activity.date!),
+                                  .format(controller.activity.startDate!),
                           style: AppTextStyles.buttonBold.copyWith(
                               fontSize: MediaQuery.of(context).size.width < 800
                                   ? 10
@@ -142,7 +143,7 @@ class _MoreInfoPageState
                         ),
                       ],
                     ),
-                    if (controller.activity.location != null)
+                    if (controller.activity.place != null)
                       Column(
                         children: [
                           Text(
@@ -157,7 +158,7 @@ class _MoreInfoPageState
                                 color: AppColors.brandingBlue),
                           ),
                           Text(
-                            controller.activity.location!,
+                            controller.activity.place!,
                             style: AppTextStyles.buttonBold.copyWith(
                                 fontSize: MediaQuery.of(context).size.width <
                                         800
@@ -227,7 +228,7 @@ class _MoreInfoPageState
                 height: 16,
               ),
               Observer(builder: (_) {
-                return !controller.activity.acceptSubscription &&
+                return !controller.activity.acceptingNewEnrollments &&
                         !controller.isRegistered
                     ? Text(
                         'Inscrição para a atividade indisponível!',
@@ -245,7 +246,8 @@ class _MoreInfoPageState
                             isRegistered: controller.isRegistered,
                             isLoading: controller.isLoading,
                             onPressed: () {
-                              if (!controller.activity.acceptSubscription &&
+                              if (!controller
+                                      .activity.acceptingNewEnrollments &&
                                   controller.isRegistered) {
                                 showDialog(
                                   context: context,
@@ -258,8 +260,10 @@ class _MoreInfoPageState
                                           content:
                                               'Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!',
                                           onPressed: () {
-                                            controller
-                                                .unsubscribeUserActivity();
+                                            subscriptionController
+                                                .unsubscribeUserActivity(
+                                                    controller
+                                                        .activity.activityCode);
                                             Modular.to.pop();
                                           });
                                     });
@@ -278,15 +282,17 @@ class _MoreInfoPageState
                                             content:
                                                 'Você perderá sua vaga na atividade ao continuar!',
                                             onPressed: () {
-                                              controller
-                                                  .unsubscribeUserActivity();
+                                              subscriptionController
+                                                  .unsubscribeUserActivity(
+                                                      controller.activity
+                                                          .activityCode);
                                               Modular.to.pop();
                                             });
                                       });
                                     },
                                   );
-                                } else if (controller.activity.enrolledUsers! >=
-                                    controller.activity.totalParticipants!) {
+                                } else if (controller.activity.takenSlots >=
+                                    controller.activity.totalSlots) {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -308,23 +314,11 @@ class _MoreInfoPageState
                                             content:
                                                 'Se atente aos seus horários e atividades que você já se inscreveu!',
                                             onPressed: () {
-                                              if (controller
-                                                  .checkIsOkForSubscribe()) {
-                                                controller
-                                                    .subscribeUserActivity();
-                                                Modular.to.pop();
-                                              } else {
-                                                showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (BuildContext context) {
-                                                    return const CustomAlertDialogWidget(
-                                                      title:
-                                                          'Parece que você já se inscreveu em uma atividade no mesmo horário.',
-                                                    );
-                                                  },
-                                                );
-                                              }
+                                              subscriptionController
+                                                  .subscribeUserActivity(
+                                                      controller.activity
+                                                          .activityCode);
+                                              Modular.to.pop();
                                             });
                                       });
                                     },
@@ -368,13 +362,13 @@ class _MoreInfoPageState
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: controller.activity.speakers!.length,
+                itemCount: controller.activity.speakers.length,
                 itemBuilder: (context, index) => Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (controller.activity.speakers![index].linkPhoto !=
+                        if (controller.activity.speakers[index].linkPhoto !=
                             null)
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.1,
@@ -382,19 +376,19 @@ class _MoreInfoPageState
                             child: CircleAvatar(
                               radius: 102.0,
                               backgroundImage: CachedNetworkImageProvider(
-                                  controller.activity.speakers![index]
+                                  controller.activity.speakers[index]
                                       .linkPhoto!), // for Network image
                             ),
                           ),
                         Flexible(
                           child: Column(
                             children: [
-                              if (controller.activity.speakers![index].name !=
+                              if (controller.activity.speakers[index].name !=
                                       null &&
-                                  controller.activity.speakers![index].name !=
+                                  controller.activity.speakers[index].name !=
                                       '')
                                 Text(
-                                  controller.activity.speakers![index].name!,
+                                  controller.activity.speakers[index].name!,
                                   textAlign: TextAlign.justify,
                                   style: AppTextStyles.buttonBold.copyWith(
                                       fontSize: MediaQuery.of(context)
@@ -408,14 +402,12 @@ class _MoreInfoPageState
                                               : 28,
                                       color: Colors.black),
                                 ),
-                              if (controller
-                                          .activity.speakers![index].company !=
+                              if (controller.activity.speakers[index].company !=
                                       null &&
-                                  controller
-                                          .activity.speakers![index].company !=
+                                  controller.activity.speakers[index].company !=
                                       '')
                                 Text(
-                                  'Empresa: ${controller.activity.speakers![index].company}',
+                                  'Empresa: ${controller.activity.speakers[index].company}',
                                   textAlign: TextAlign.justify,
                                   style: AppTextStyles.buttonBold.copyWith(
                                       fontSize: MediaQuery.of(context)
@@ -437,11 +429,11 @@ class _MoreInfoPageState
                     const SizedBox(
                       height: 8,
                     ),
-                    if (controller.activity.speakers![index].bio != null &&
-                        controller.activity.speakers![index].bio != '')
+                    if (controller.activity.speakers[index].bio != null &&
+                        controller.activity.speakers[index].bio != '')
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(controller.activity.speakers![index].bio!,
+                        child: Text(controller.activity.speakers[index].bio!,
                             textAlign: TextAlign.justify,
                             style: AppTextStyles.body.copyWith(
                                 fontSize: MediaQuery.of(context).size.width <

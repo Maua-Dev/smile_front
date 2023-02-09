@@ -70,17 +70,15 @@ class _UserDashboardPageState
                       var list = controller.subscribedActivitiesList
                           .where((element) =>
                               element.activityCode ==
-                              controller.cardNextActivity.activityCode)
+                              controller.nextActivity.activityCode)
                           .toList();
                       if (list.isNotEmpty) {
                         isRegistered = true;
                       }
-                      Modular.to.navigate('/user/home/more-info', arguments: [
-                        controller.cardNextActivity,
-                        isRegistered
-                      ]);
+                      Modular.to.navigate('/user/home/more-info',
+                          arguments: [controller.nextActivity, isRegistered]);
                       controller.analytics.logViewActivity(
-                          controller.cardNextActivity.activityCode);
+                          controller.nextActivity.activityCode);
                     },
                     name: controller.nextActivity.title,
                     description: controller.nextActivity.description,
@@ -97,54 +95,57 @@ class _UserDashboardPageState
                   leftPadding:
                       MediaQuery.of(context).size.width < 1000 ? 12 : 8,
                 ),
-                UserWeekdayFilterWidget(
-                  onPressed: controller.toggleFilterActivityChipIndex,
-                ),
                 Observer(builder: (_) {
                   return ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.weekActivitiesList.length,
+                    itemCount: controller.subscribedActivitiesList.length,
                     itemBuilder: (context, index) {
-                      var finalTime = controller
-                                      .weekActivitiesList[index].duration ==
-                                  null ||
-                              controller.weekActivitiesList[index].date == null
-                          ? ''
-                          : Utils.getActivityFinalTime(
-                              controller.weekActivitiesList[index].date!,
-                              controller.weekActivitiesList[index].duration!);
-                      var hour = DateFormat('HH:mm')
-                          .format(controller.weekActivitiesList[index].date!);
+                      var finalTime =
+                          controller.subscribedActivitiesList[index].duration ==
+                                      null ||
+                                  controller.subscribedActivitiesList[index]
+                                          .startDate ==
+                                      null
+                              ? ''
+                              : Utils.getActivityFinalTime(
+                                  controller.subscribedActivitiesList[index]
+                                      .startDate!,
+                                  controller.subscribedActivitiesList[index]
+                                      .duration);
+                      var hour = DateFormat('HH:mm').format(controller
+                          .subscribedActivitiesList[index].startDate!);
                       return UserActivityCardWidget(
                         finalTime: finalTime,
-                        location: controller.weekActivitiesList[index].location,
+                        location:
+                            controller.subscribedActivitiesList[index].place,
                         isOnline:
-                            controller.weekActivitiesList[index].link == null
+                            controller.subscribedActivitiesList[index].link ==
+                                    null
                                 ? false
                                 : true,
-                        title: controller.weekActivitiesList[index].title,
+                        title: controller.subscribedActivitiesList[index].title,
                         hour: hour,
-                        activityCode:
-                            controller.weekActivitiesList[index].activityCode,
+                        activityCode: controller
+                            .subscribedActivitiesList[index].activityCode,
                         onTap: () {
                           var isRegistered = false;
                           var list = controller.subscribedActivitiesList
                               .where((element) =>
                                   element.activityCode ==
-                                  controller
-                                      .weekActivitiesList[index].activityCode)
+                                  controller.subscribedActivitiesList[index]
+                                      .activityCode)
                               .toList();
                           if (list.isNotEmpty) {
                             isRegistered = true;
                           }
                           Modular.to.navigate('/user/home/more-info',
                               arguments: [
-                                controller.weekActivitiesList[index],
+                                controller.subscribedActivitiesList[index],
                                 isRegistered
                               ]);
                           controller.analytics.logViewActivity(controller
-                              .weekActivitiesList[index].activityCode);
+                              .subscribedActivitiesList[index].activityCode);
                         },
                       );
                     },

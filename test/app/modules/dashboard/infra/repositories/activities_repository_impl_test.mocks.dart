@@ -51,30 +51,30 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
       ) as _i3.Future<List<_i4.ActivityModel>>);
   @override
   _i3.Future<bool> postSubscribe(
-    String? activityId,
-    DateTime? activityDate,
+    String? userId,
+    String? activityCode,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
           #postSubscribe,
           [
-            activityId,
-            activityDate,
+            userId,
+            activityCode,
           ],
         ),
         returnValue: _i3.Future<bool>.value(false),
       ) as _i3.Future<bool>);
   @override
   _i3.Future<bool> postUnsubscribe(
-    String? activityId,
-    DateTime? activityDate,
+    String? userId,
+    String? activityCode,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
           #postUnsubscribe,
           [
-            activityId,
-            activityDate,
+            userId,
+            activityCode,
           ],
         ),
         returnValue: _i3.Future<bool>.value(false),

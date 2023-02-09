@@ -49,20 +49,16 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future<bool> subscribeActivity(
-      ActivityModel activity, String activityId, DateTime activityDate) async {
-    subscribedActivities.add(activity);
-    var requestDone = await datasource.postSubscribe(activityId, activityDate);
+  Future<bool> subscribeActivity(String userId, String activityCode) async {
+    var requestDone = await datasource.postSubscribe(userId, activityCode);
     return requestDone;
   }
 
   @override
-  Future<bool> unsubscribeActivity(
-      String activityId, DateTime activityDate) async {
+  Future<bool> unsubscribeActivity(String userId, String activityCode) async {
     subscribedActivities
-        .removeWhere((element) => element.activityCode == activityId);
-    var requestDone =
-        await datasource.postUnsubscribe(activityId, activityDate);
+        .removeWhere((element) => element.activityCode == activityCode);
+    var requestDone = await datasource.postUnsubscribe(userId, activityCode);
     return requestDone;
   }
 

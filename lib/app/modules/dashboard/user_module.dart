@@ -16,12 +16,13 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/cer
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
-import 'package:smile_front/app/shared/entities/card_activity.dart';
+import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/usecases/login_with_cpf_rne.dart';
@@ -93,9 +94,17 @@ class UserModule extends Module {
       (i) => MoreInfoController(
           unsubscribeActivity: i(),
           subscribeActivity: i(),
-          activity: i.args!.data[0] as CardActivity,
+          activity: i.args!.data[0] as ActivityModel,
           registered: i.args!.data[1] as bool,
           userDashboardController: i()),
+    ),
+    Bind.lazySingleton<UserSubscriptionController>(
+      (i) => UserSubscriptionController(
+        unsubscribeActivity: i(),
+        subscribeActivity: i(),
+        userDashboardController: i(),
+        secureStorage: i(),
+      ),
     ),
     Bind.lazySingleton((i) => Dio()),
     Bind.lazySingleton<AuthController>(

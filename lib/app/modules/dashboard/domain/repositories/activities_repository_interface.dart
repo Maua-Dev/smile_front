@@ -7,7 +7,6 @@ abstract class ActivitiesRepositoryInterface {
   Future createActivity(ActivityModel activityToCreate);
   Future editActivity(ActivityModel activityToEdit);
   Future removeActivity(String id);
-  Future<bool> subscribeActivity(
-      ActivityModel activity, String activityId, DateTime activityDate);
-  Future<bool> unsubscribeActivity(String activityId, DateTime activityDate);
+  Future<bool> subscribeActivity(String userId, String activityCode);
+  Future<bool> unsubscribeActivity(String userId, String activityCode);
 }

@@ -3,8 +3,6 @@ import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
-
-import '../../../../../shared/entities/card_activity.dart';
 import '../../../../../shared/models/activity_model.dart';
 
 part 'user_dashboard_controller.g.dart';
@@ -148,15 +146,6 @@ abstract class UserDashboardControllerBase with Store {
   @observable
   ActivityModel nextActivity = ActivityModel.newInstance();
 
-  @observable
-  CardActivity cardNextActivity = CardActivity.newInstance();
-
-  @observable
-  List<CardActivity> weekActivitiesList = List.empty();
-
-  @observable
-  List<CardActivity> allActivitiesToCards = List.empty();
-
   @action
   Future getActivities() async {
     subscribedActivitiesList = await getUserActivities();
@@ -166,29 +155,10 @@ abstract class UserDashboardControllerBase with Store {
   Future getUserSubscribedActivities() async {
     setIsLoading(true);
     subscribedActivitiesList = await getUserActivities();
-    allActivitiesToCards = [];
     if (subscribedActivitiesList.isNotEmpty) {
-      for (var activity in subscribedActivitiesList) {
-        allActivitiesToCards.add(CardActivity(
-          id: '',
-          activityCode: activity.activityCode,
-          type: activity.type,
-          title: activity.title,
-          description: activity.description,
-          date: activity.startDate,
-          duration: 0,
-          totalParticipants: activity.totalSlots,
-          speakers: activity.speakers,
-          location: activity.place,
-          link: activity.link,
-          enrolledUsers: activity.takenSlots,
-          acceptSubscription: activity.acceptingNewEnrollments,
-        ));
-      }
-      allActivitiesToCards.sort(
-        (a, b) => a.date!.compareTo(b.date!),
+      subscribedActivitiesList.sort(
+        (a, b) => a.startDate!.compareTo(b.startDate!),
       );
-      toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
       getNextActivity();
     }
     setIsLoading(false);
@@ -198,78 +168,8 @@ abstract class UserDashboardControllerBase with Store {
   void getNextActivity() {
     if (subscribedActivitiesList.isNotEmpty) {
       nextActivity = subscribedActivitiesList.first;
-      cardNextActivity = CardActivity(
-        id: '',
-        activityCode: nextActivity.activityCode,
-        type: nextActivity.type,
-        title: nextActivity.title,
-        description: nextActivity.description,
-        date: nextActivity.startDate,
-        duration: 0,
-        totalParticipants: nextActivity.totalSlots,
-        speakers: nextActivity.speakers,
-        location: nextActivity.place,
-        link: nextActivity.link,
-        enrolledUsers: nextActivity.takenSlots,
-        acceptSubscription: nextActivity.acceptingNewEnrollments,
-      );
     } else {
       nextActivity = ActivityModel.newInstance();
-    }
-  }
-
-  @computed
-  List<CardActivity> get mondayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 1)
-      .toList();
-
-  @computed
-  List<CardActivity> get tuesdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 2)
-      .toList();
-
-  @computed
-  List<CardActivity> get wednesdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 3)
-      .toList();
-
-  @computed
-  List<CardActivity> get thursdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 4)
-      .toList();
-
-  @computed
-  List<CardActivity> get fridayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 5)
-      .toList();
-
-  @computed
-  List<CardActivity> get saturdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 6)
-      .toList();
-
-  @action
-  void toggleFilterActivityChipIndex(index) {
-    filterActivityChipIndexSelected = index;
-    switch (filterActivityChipIndexSelected) {
-      case 0:
-        weekActivitiesList = mondayActivitiesList;
-        break;
-      case 1:
-        weekActivitiesList = tuesdayActivitiesList;
-        break;
-      case 2:
-        weekActivitiesList = wednesdayActivitiesList;
-        break;
-      case 3:
-        weekActivitiesList = thursdayActivitiesList;
-        break;
-      case 4:
-        weekActivitiesList = fridayActivitiesList;
-        break;
-      case 5:
-        weekActivitiesList = saturdayActivitiesList;
-        break;
     }
   }
 }

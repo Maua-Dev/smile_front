@@ -9,55 +9,6 @@ part of 'user_dashboard_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$UserDashboardController on UserDashboardControllerBase, Store {
-  Computed<List<CardActivity>>? _$mondayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get mondayActivitiesList =>
-      (_$mondayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.mondayActivitiesList,
-              name: 'UserDashboardControllerBase.mondayActivitiesList'))
-          .value;
-  Computed<List<CardActivity>>? _$tuesdayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get tuesdayActivitiesList =>
-      (_$tuesdayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.tuesdayActivitiesList,
-              name: 'UserDashboardControllerBase.tuesdayActivitiesList'))
-          .value;
-  Computed<List<CardActivity>>? _$wednesdayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get wednesdayActivitiesList =>
-      (_$wednesdayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.wednesdayActivitiesList,
-              name: 'UserDashboardControllerBase.wednesdayActivitiesList'))
-          .value;
-  Computed<List<CardActivity>>? _$thursdayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get thursdayActivitiesList =>
-      (_$thursdayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.thursdayActivitiesList,
-              name: 'UserDashboardControllerBase.thursdayActivitiesList'))
-          .value;
-  Computed<List<CardActivity>>? _$fridayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get fridayActivitiesList =>
-      (_$fridayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.fridayActivitiesList,
-              name: 'UserDashboardControllerBase.fridayActivitiesList'))
-          .value;
-  Computed<List<CardActivity>>? _$saturdayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get saturdayActivitiesList =>
-      (_$saturdayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.saturdayActivitiesList,
-              name: 'UserDashboardControllerBase.saturdayActivitiesList'))
-          .value;
-
   late final _$errorAtom =
       Atom(name: 'UserDashboardControllerBase.error', context: context);
 
@@ -240,56 +191,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
-  late final _$cardNextActivityAtom = Atom(
-      name: 'UserDashboardControllerBase.cardNextActivity', context: context);
-
-  @override
-  CardActivity get cardNextActivity {
-    _$cardNextActivityAtom.reportRead();
-    return super.cardNextActivity;
-  }
-
-  @override
-  set cardNextActivity(CardActivity value) {
-    _$cardNextActivityAtom.reportWrite(value, super.cardNextActivity, () {
-      super.cardNextActivity = value;
-    });
-  }
-
-  late final _$weekActivitiesListAtom = Atom(
-      name: 'UserDashboardControllerBase.weekActivitiesList', context: context);
-
-  @override
-  List<CardActivity> get weekActivitiesList {
-    _$weekActivitiesListAtom.reportRead();
-    return super.weekActivitiesList;
-  }
-
-  @override
-  set weekActivitiesList(List<CardActivity> value) {
-    _$weekActivitiesListAtom.reportWrite(value, super.weekActivitiesList, () {
-      super.weekActivitiesList = value;
-    });
-  }
-
-  late final _$allActivitiesToCardsAtom = Atom(
-      name: 'UserDashboardControllerBase.allActivitiesToCards',
-      context: context);
-
-  @override
-  List<CardActivity> get allActivitiesToCards {
-    _$allActivitiesToCardsAtom.reportRead();
-    return super.allActivitiesToCards;
-  }
-
-  @override
-  set allActivitiesToCards(List<CardActivity> value) {
-    _$allActivitiesToCardsAtom.reportWrite(value, super.allActivitiesToCards,
-        () {
-      super.allActivitiesToCards = value;
-    });
-  }
-
   late final _$getCertificateWithSocialNameAsyncAction = AsyncAction(
       'UserDashboardControllerBase.getCertificateWithSocialName',
       context: context);
@@ -434,18 +335,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   }
 
   @override
-  void toggleFilterActivityChipIndex(dynamic index) {
-    final _$actionInfo =
-        _$UserDashboardControllerBaseActionController.startAction(
-            name: 'UserDashboardControllerBase.toggleFilterActivityChipIndex');
-    try {
-      return super.toggleFilterActivityChipIndex(index);
-    } finally {
-      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 error: ${error},
@@ -458,16 +347,7 @@ wantSocialName: ${wantSocialName},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 subscribedActivitiesList: ${subscribedActivitiesList},
-nextActivity: ${nextActivity},
-cardNextActivity: ${cardNextActivity},
-weekActivitiesList: ${weekActivitiesList},
-allActivitiesToCards: ${allActivitiesToCards},
-mondayActivitiesList: ${mondayActivitiesList},
-tuesdayActivitiesList: ${tuesdayActivitiesList},
-wednesdayActivitiesList: ${wednesdayActivitiesList},
-thursdayActivitiesList: ${thursdayActivitiesList},
-fridayActivitiesList: ${fridayActivitiesList},
-saturdayActivitiesList: ${saturdayActivitiesList}
+nextActivity: ${nextActivity}
     ''';
   }
 }

@@ -2,7 +2,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/subscription_activity_model.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../shared/error/dio_exceptions.dart';
 import '../../../shared/error/error_snackbar.dart';
@@ -70,18 +69,17 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future<bool> postSubscribe(String activityId, DateTime activityDate) async {
+  Future<bool> postSubscribe(String userId, String activityCode) async {
     var token = await storage.getAccessToken();
-    var body = SubscriptionActivityModel(
-        activityDate: activityDate, activityId: activityId);
+    var body = {"user_id": userId, "code": activityCode};
     try {
       dio.options.headers["authorization"] = "Bearer $token";
-      await dio.post('/activity/enroll', data: body.toJson());
+      await dio.post('/enroll-activity', data: body);
       return true;
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken(token.toString());
-        await postSubscribe(activityId, activityDate);
+        await postSubscribe(userId, activityCode);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage: errorMessage);
@@ -138,18 +136,17 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future<bool> postUnsubscribe(String activityId, DateTime activityDate) async {
+  Future<bool> postUnsubscribe(String userId, String activityCode) async {
     var token = await storage.getAccessToken();
-    var body = SubscriptionActivityModel(
-        activityDate: activityDate, activityId: activityId);
+    var body = {"user_id": userId, "code": activityCode};
     try {
       dio.options.headers["authorization"] = "Bearer $token";
-      await dio.post('/activity/unenroll', data: body.toJson());
+      await dio.post('/drop-activity', data: body);
       return true;
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken(token.toString());
-        await postUnsubscribe(activityId, activityDate);
+        await postUnsubscribe(userId, activityCode);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage: errorMessage);
