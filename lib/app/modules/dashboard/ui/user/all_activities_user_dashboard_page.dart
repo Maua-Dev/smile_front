@@ -77,30 +77,35 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                 child: ListView.builder(
                   itemCount: controller.activitiesOnScreen.length,
                   itemBuilder: (context, index) {
-                    var finalTime =
-                        controller.activitiesOnScreen[index].startDate == null
-                            ? ''
-                            : Utils.getActivityFinalTime(
-                                controller.activitiesOnScreen[index].startDate!,
-                                controller.activitiesOnScreen[index].duration);
-                    var hour = DateFormat('HH:mm').format(
-                        controller.activitiesOnScreen[index].startDate!);
+                    var finalTime = controller
+                                .activitiesOnScreen[index].activity.startDate ==
+                            null
+                        ? ''
+                        : Utils.getActivityFinalTime(
+                            controller
+                                .activitiesOnScreen[index].activity.startDate!,
+                            controller
+                                .activitiesOnScreen[index].activity.duration);
+                    var hour = DateFormat('HH:mm').format(controller
+                        .activitiesOnScreen[index].activity.startDate!);
                     return MobileActivitiesCard(
                       onPressedSubscribe: () {
-                        controller.subscribeUserActivity(
-                            controller.activitiesOnScreen[index].activityCode);
+                        controller.subscribeUserActivity(controller
+                            .activitiesOnScreen[index].activity.activityCode);
                       },
                       finalTime: finalTime,
-                      location: controller.activitiesOnScreen[index].place,
-                      title: controller.activitiesOnScreen[index].title,
+                      location:
+                          controller.activitiesOnScreen[index].activity.place,
+                      title:
+                          controller.activitiesOnScreen[index].activity.title,
                       hour: hour,
                       onTap: () {
                         Modular.to.navigate(
                           '/user/home/more-info',
                           arguments: controller.activitiesOnScreen[index],
                         );
-                        controller.analytics.logViewActivity(
-                            controller.activitiesOnScreen[index].activityCode);
+                        controller.analytics.logViewActivity(controller
+                            .activitiesOnScreen[index].activity.activityCode);
                       },
                     );
                   },

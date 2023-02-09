@@ -2,10 +2,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import '../../../../../shared/models/activity_model.dart';
 import '../../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/infra/activity_enum.dart';
+import '../../../infra/models/user_enrolled_activities_model.dart';
 
 part 'all_activities_user_dashboard_controller.g.dart';
 
@@ -53,10 +55,10 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   }
 
   @observable
-  List<ActivityModel> allActivitiesFromGet = List.empty();
+  List<UserEnrolledActivitiesModel> allActivitiesFromGet = List.empty();
 
   @observable
-  List<ActivityModel> activitiesOnScreen = List.empty();
+  List<UserEnrolledActivitiesModel> activitiesOnScreen = List.empty();
 
   @observable
   ActivityEnum? activityType;
@@ -112,29 +114,47 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   }
 
   @action
-  List<ActivityModel> filterActivitiesByType(
-      ActivityEnum type, List<ActivityModel> activitiesToFilter) {
-    var list =
-        activitiesToFilter.where((element) => element.type == type).toList();
-    return list;
+  List<UserEnrolledActivitiesModel> filterActivitiesByType(
+      ActivityEnum type, List<UserEnrolledActivitiesModel> activitiesToFilter) {
+    var list = activitiesToFilter
+        .where((element) => element.activity.type == type)
+        .toList();
+    List<UserEnrolledActivitiesModel> enrolledList = [];
+    for (var enrolledActivity in list) {
+      enrolledList.add(UserEnrolledActivitiesModel(
+          activity: enrolledActivity.activity, state: enrolledActivity.state));
+    }
+    return enrolledList;
   }
 
   @action
-  List<ActivityModel> filterActivitiesByDate(
-      DateTime date, List<ActivityModel> activitiesToFilter) {
+  List<UserEnrolledActivitiesModel> filterActivitiesByDate(
+      DateTime date, List<UserEnrolledActivitiesModel> activitiesToFilter) {
     var list = activitiesToFilter
-        .where((element) => isValidDateFilter(element.startDate!, date))
+        .where(
+            (element) => isValidDateFilter(element.activity.startDate!, date))
         .toList();
-    return list;
+    List<UserEnrolledActivitiesModel> enrolledList = [];
+    for (var enrolledActivity in list) {
+      enrolledList.add(UserEnrolledActivitiesModel(
+          activity: enrolledActivity.activity, state: enrolledActivity.state));
+    }
+    return enrolledList;
   }
 
   @action
-  List<ActivityModel> filterActivitiesByHour(
-      DateTime hour, List<ActivityModel> activitiesToFilter) {
+  List<UserEnrolledActivitiesModel> filterActivitiesByHour(
+      DateTime hour, List<UserEnrolledActivitiesModel> activitiesToFilter) {
     var list = activitiesToFilter
-        .where((element) => isValidHourFilter(element.startDate!, hour))
+        .where(
+            (element) => isValidHourFilter(element.activity.startDate!, hour))
         .toList();
-    return list;
+    List<UserEnrolledActivitiesModel> enrolledList = [];
+    for (var enrolledActivity in list) {
+      enrolledList.add(UserEnrolledActivitiesModel(
+          activity: enrolledActivity.activity, state: enrolledActivity.state));
+    }
+    return enrolledList;
   }
 
   bool isValidDateFilter(DateTime activityDate, DateTime dateToFilter) {
@@ -157,7 +177,20 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   @action
   Future getActivities() async {
     setIsLoading(true);
-    allActivitiesFromGet = await getAllActivities();
+    var allActivities = await getAllActivities();
+    var enrolledActivities = subscriptionController.userEnrolledActivities;
+    List<UserEnrolledActivitiesModel> finalList = [];
+    for (var activity in allActivities) {
+      finalList.add(UserEnrolledActivitiesModel(activity: activity));
+    }
+    for (var activity in finalList) {
+      enrolledActivities.map((element) {
+        if (element.activity.activityCode == activity.activity.activityCode) {
+          activity.copyWith(state: EnrollmentStateEnum.ENROLLED);
+        }
+      });
+    }
+    allActivitiesFromGet = finalList;
     activitiesOnScreen = allActivitiesFromGet;
     setIsLoading(false);
   }

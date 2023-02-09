@@ -25,7 +25,7 @@ abstract class UserSubscriptionControllerBase with Store {
   bool isLoading = false;
 
   @action
-  void setIsLoading() {
+  void setIsLoading(bool value) {
     isLoading = !isLoading;
   }
 
@@ -34,6 +34,8 @@ abstract class UserSubscriptionControllerBase with Store {
 
   @action
   Future getUserEnrolledActivities() async {
+    setIsLoading(true);
     userEnrolledActivities = await getUserActivities();
+    setIsLoading(false);
   }
 }

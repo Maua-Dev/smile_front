@@ -58,11 +58,11 @@ mixin _$UserSubscriptionController on UserSubscriptionControllerBase, Store {
           name: 'UserSubscriptionControllerBase', context: context);
 
   @override
-  void setIsLoading() {
+  void setIsLoading(bool value) {
     final _$actionInfo = _$UserSubscriptionControllerBaseActionController
         .startAction(name: 'UserSubscriptionControllerBase.setIsLoading');
     try {
-      return super.setIsLoading();
+      return super.setIsLoading(value);
     } finally {
       _$UserSubscriptionControllerBaseActionController.endAction(_$actionInfo);
     }

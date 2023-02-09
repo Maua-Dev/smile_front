@@ -6,7 +6,8 @@ class UserEnrolledActivitiesModel {
   final ActivityModel activity;
   final EnrollmentStateEnum state;
 
-  UserEnrolledActivitiesModel({required this.activity, required this.state});
+  UserEnrolledActivitiesModel(
+      {required this.activity, this.state = EnrollmentStateEnum.NONE});
 
   factory UserEnrolledActivitiesModel.fromMap(Map<String, dynamic> map) {
     return UserEnrolledActivitiesModel(
@@ -17,5 +18,15 @@ class UserEnrolledActivitiesModel {
 
   static List<UserEnrolledActivitiesModel> fromMaps(List array) {
     return array.map((e) => UserEnrolledActivitiesModel.fromMap(e)).toList();
+  }
+
+  UserEnrolledActivitiesModel copyWith({
+    ActivityModel? activity,
+    EnrollmentStateEnum? state,
+  }) {
+    return UserEnrolledActivitiesModel(
+      activity: activity ?? this.activity,
+      state: state ?? this.state,
+    );
   }
 }

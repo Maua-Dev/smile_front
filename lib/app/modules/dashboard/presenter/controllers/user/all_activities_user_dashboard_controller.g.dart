@@ -32,13 +32,13 @@ mixin _$AllActivitiesUserDashboardController
       context: context);
 
   @override
-  List<ActivityModel> get allActivitiesFromGet {
+  List<UserEnrolledActivitiesModel> get allActivitiesFromGet {
     _$allActivitiesFromGetAtom.reportRead();
     return super.allActivitiesFromGet;
   }
 
   @override
-  set allActivitiesFromGet(List<ActivityModel> value) {
+  set allActivitiesFromGet(List<UserEnrolledActivitiesModel> value) {
     _$allActivitiesFromGetAtom.reportWrite(value, super.allActivitiesFromGet,
         () {
       super.allActivitiesFromGet = value;
@@ -50,13 +50,13 @@ mixin _$AllActivitiesUserDashboardController
       context: context);
 
   @override
-  List<ActivityModel> get activitiesOnScreen {
+  List<UserEnrolledActivitiesModel> get activitiesOnScreen {
     _$activitiesOnScreenAtom.reportRead();
     return super.activitiesOnScreen;
   }
 
   @override
-  set activitiesOnScreen(List<ActivityModel> value) {
+  set activitiesOnScreen(List<UserEnrolledActivitiesModel> value) {
     _$activitiesOnScreenAtom.reportWrite(value, super.activitiesOnScreen, () {
       super.activitiesOnScreen = value;
     });
@@ -227,8 +227,8 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   @override
-  List<ActivityModel> filterActivitiesByType(
-      ActivityEnum type, List<ActivityModel> activitiesToFilter) {
+  List<UserEnrolledActivitiesModel> filterActivitiesByType(
+      ActivityEnum type, List<UserEnrolledActivitiesModel> activitiesToFilter) {
     final _$actionInfo =
         _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
             name:
@@ -242,8 +242,8 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   @override
-  List<ActivityModel> filterActivitiesByDate(
-      DateTime date, List<ActivityModel> activitiesToFilter) {
+  List<UserEnrolledActivitiesModel> filterActivitiesByDate(
+      DateTime date, List<UserEnrolledActivitiesModel> activitiesToFilter) {
     final _$actionInfo =
         _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
             name:
@@ -257,8 +257,8 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   @override
-  List<ActivityModel> filterActivitiesByHour(
-      DateTime hour, List<ActivityModel> activitiesToFilter) {
+  List<UserEnrolledActivitiesModel> filterActivitiesByHour(
+      DateTime hour, List<UserEnrolledActivitiesModel> activitiesToFilter) {
     final _$actionInfo =
         _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
             name:
