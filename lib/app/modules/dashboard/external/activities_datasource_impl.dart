@@ -90,15 +90,15 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future putActivity(String id, ActivityModel activity) async {
+  Future editActivity(String id, ActivityModel activity) async {
     var token = await storage.getAccessToken();
     try {
       dio.options.headers["authorization"] = "Bearer $token";
-      await dio.put('/activity?id=$id', data: activity.toJson());
+      await dio.put('/update-activity', data: activity.editToJson());
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken(token.toString());
-        await putActivity(id, activity);
+        await editActivity(id, activity);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage: errorMessage);
