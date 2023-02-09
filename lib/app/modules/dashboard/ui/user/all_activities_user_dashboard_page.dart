@@ -3,13 +3,11 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/mobile_filter_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
-import '../../presenter/controllers/user/user_dashboard_controller.dart';
 import 'widgets/mobile_widgets/activities_card/mobile_activities_card_widget.dart';
 
 class AllActivitiesUserDashboardPage extends StatefulWidget {
@@ -30,13 +28,13 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
           height: 16,
         ),
         TextHeader(
-          title: MediaQuery.of(context).size.width < breakpointMobile
+          title: MediaQuery.of(context).size.width < breakpointTablet
               ? 'Atividades'
               : 'Todas as Atividades',
-          color: MediaQuery.of(context).size.width < breakpointMobile
+          color: MediaQuery.of(context).size.width < breakpointTablet
               ? AppColors.brandingOrange
               : AppColors.brandingBlue,
-          fontSize: MediaQuery.of(context).size.width < breakpointMobile
+          fontSize: MediaQuery.of(context).size.width < breakpointTablet
               ? 24
               : MediaQuery.of(context).size.width > 1000
                   ? 38
@@ -73,7 +71,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
               child: ConstrainedBox(
                 constraints: BoxConstraints(
                     maxWidth:
-                        MediaQuery.of(context).size.width < breakpointMobile
+                        MediaQuery.of(context).size.width < breakpointTablet
                             ? 342
                             : 1165),
                 child: ListView.builder(

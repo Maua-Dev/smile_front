@@ -47,19 +47,19 @@ class MobileFilterCardWidget extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width > breakpointMobile
+            width: MediaQuery.of(context).size.width > breakpointTablet
                 ? 787
                 : 380,
             height:
-                MediaQuery.of(context).size.width > breakpointMobile ? 47 : 36,
+                MediaQuery.of(context).size.width > breakpointTablet ? 47 : 36,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width > breakpointMobile
+                    width: MediaQuery.of(context).size.width > breakpointTablet
                         ? 227
                         : 160,
-                    height: MediaQuery.of(context).size.width > breakpointMobile
+                    height: MediaQuery.of(context).size.width > breakpointTablet
                         ? 47
                         : 36,
                     decoration: BoxDecoration(
@@ -68,23 +68,23 @@ class MobileFilterCardWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
                           0,
-                          MediaQuery.of(context).size.width > breakpointMobile
+                          MediaQuery.of(context).size.width > breakpointTablet
                               ? 8
                               : 2,
                           3,
-                          MediaQuery.of(context).size.width > breakpointMobile
+                          MediaQuery.of(context).size.width > breakpointTablet
                               ? 7
                               : 8),
                       child: DropdownButtonFormField<ActivityEnum>(
                         value: typeFilter,
                         iconSize:
-                            MediaQuery.of(context).size.width > breakpointMobile
+                            MediaQuery.of(context).size.width > breakpointTablet
                                 ? 24
                                 : 14,
                         isExpanded: true,
                         decoration: InputDecoration(
                           isDense: MediaQuery.of(context).size.width >
-                                  breakpointMobile
+                                  breakpointTablet
                               ? true
                               : false,
                           hintText: S.of(context).activitiesTitle,
@@ -92,7 +92,7 @@ class MobileFilterCardWidget extends StatelessWidget {
                           filled: true,
                           hintStyle: AppTextStyles.body.copyWith(
                               fontSize: MediaQuery.of(context).size.width >
-                                      breakpointMobile
+                                      breakpointTablet
                                   ? 25
                                   : 16),
                           border: InputBorder.none,
@@ -105,7 +105,7 @@ class MobileFilterCardWidget extends StatelessWidget {
                                   style: AppTextStyles.body.copyWith(
                                       fontSize:
                                           MediaQuery.of(context).size.width >
-                                                  breakpointMobile
+                                                  breakpointTablet
                                               ? 15
                                               : 10)));
                         }).toList(),
@@ -114,10 +114,10 @@ class MobileFilterCardWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width > breakpointMobile
+                    width: MediaQuery.of(context).size.width > breakpointTablet
                         ? 227
                         : 100,
-                    height: MediaQuery.of(context).size.width > breakpointMobile
+                    height: MediaQuery.of(context).size.width > breakpointTablet
                         ? 47
                         : 36,
                     decoration: BoxDecoration(
@@ -125,11 +125,11 @@ class MobileFilterCardWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width > breakpointMobile
+                          MediaQuery.of(context).size.width > breakpointTablet
                               ? 12
                               : 6,
                           4,
-                          MediaQuery.of(context).size.width > breakpointMobile
+                          MediaQuery.of(context).size.width > breakpointTablet
                               ? 12
                               : 0,
                           10),
@@ -146,11 +146,11 @@ class MobileFilterCardWidget extends StatelessWidget {
                                 style: AppTextStyles.body.copyWith(
                                     fontSize: formattedDate == ''
                                         ? MediaQuery.of(context).size.width >
-                                                breakpointMobile
+                                                breakpointTablet
                                             ? 25
                                             : 16
                                         : MediaQuery.of(context).size.width >
-                                                breakpointMobile
+                                                breakpointTablet
                                             ? 16
                                             : 10)),
                           ),
@@ -179,7 +179,7 @@ class MobileFilterCardWidget extends StatelessWidget {
                             icon: const Icon(Icons.arrow_drop_down),
                             color: Colors.black,
                             iconSize: MediaQuery.of(context).size.width >
-                                    breakpointMobile
+                                    breakpointTablet
                                 ? 24
                                 : 14,
                           ),
@@ -188,10 +188,10 @@ class MobileFilterCardWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width > breakpointMobile
+                    width: MediaQuery.of(context).size.width > breakpointTablet
                         ? 227
                         : 105,
-                    height: MediaQuery.of(context).size.width > breakpointMobile
+                    height: MediaQuery.of(context).size.width > breakpointTablet
                         ? 47
                         : 36,
                     decoration: BoxDecoration(
@@ -199,11 +199,11 @@ class MobileFilterCardWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width > breakpointMobile
+                          MediaQuery.of(context).size.width > breakpointTablet
                               ? 12
                               : 6,
                           4,
-                          MediaQuery.of(context).size.width > breakpointMobile
+                          MediaQuery.of(context).size.width > breakpointTablet
                               ? 12
                               : 0,
                           10),
@@ -220,11 +220,11 @@ class MobileFilterCardWidget extends StatelessWidget {
                                 style: AppTextStyles.body.copyWith(
                                     fontSize: formattedHour == ''
                                         ? MediaQuery.of(context).size.width >
-                                                breakpointMobile
+                                                breakpointTablet
                                             ? 25
                                             : 16
                                         : MediaQuery.of(context).size.width >
-                                                breakpointMobile
+                                                breakpointTablet
                                             ? 16
                                             : 10)),
                           ),
@@ -256,7 +256,7 @@ class MobileFilterCardWidget extends StatelessWidget {
                             icon: const Icon(Icons.arrow_drop_down),
                             color: Colors.black,
                             iconSize: MediaQuery.of(context).size.width >
-                                    breakpointMobile
+                                    breakpointTablet
                                 ? 24
                                 : 14,
                           ),

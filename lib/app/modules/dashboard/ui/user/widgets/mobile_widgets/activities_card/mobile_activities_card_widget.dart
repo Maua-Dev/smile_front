@@ -16,17 +16,16 @@ class MobileActivitiesCard extends StatelessWidget {
   //final bool isRegistered;
   //final bool isLoading;
 
-  const MobileActivitiesCard(
-      {Key? key,
-      required this.title,
-      required this.hour,
-      required this.onTap,
-      required this.finalTime,
-      required this.location,
-      //required this.isLoading,
-     // required this.isRegistered
-     })
-      : super(key: key);
+  const MobileActivitiesCard({
+    Key? key,
+    required this.title,
+    required this.hour,
+    required this.onTap,
+    required this.finalTime,
+    required this.location,
+    //required this.isLoading,
+    // required this.isRegistered
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,17 +46,17 @@ class MobileActivitiesCard extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width < breakpointMobile
+            width: MediaQuery.of(context).size.width < breakpointTablet
                 ? 342
                 : 1165,
             height:
-                MediaQuery.of(context).size.width < breakpointMobile ? 76 : 204,
+                MediaQuery.of(context).size.width < breakpointTablet ? 76 : 204,
             child: Row(children: [
               Container(
-                  width: MediaQuery.of(context).size.width < breakpointMobile
+                  width: MediaQuery.of(context).size.width < breakpointTablet
                       ? 70
                       : 190,
-                  height: MediaQuery.of(context).size.width < breakpointMobile
+                  height: MediaQuery.of(context).size.width < breakpointTablet
                       ? 76
                       : 204,
                   decoration: BoxDecoration(
@@ -68,7 +67,7 @@ class MobileActivitiesCard extends StatelessWidget {
                     child: Text(hour,
                         style: AppTextStyles.bold.copyWith(
                             fontSize: MediaQuery.of(context).size.width <
-                                    breakpointMobile
+                                    breakpointTablet
                                 ? 20
                                 : 40)),
                   )),
@@ -83,11 +82,11 @@ class MobileActivitiesCard extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: MediaQuery.of(context).size.width <
-                                    breakpointMobile
+                                    breakpointTablet
                                 ? 215
                                 : 500,
                             height: MediaQuery.of(context).size.width <
-                                    breakpointMobile
+                                    breakpointTablet
                                 ? 34
                                 : 50,
                             child: Text(title,
@@ -95,18 +94,18 @@ class MobileActivitiesCard extends StatelessWidget {
                                 style: AppTextStyles.bold.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width <
-                                                breakpointMobile
+                                                breakpointTablet
                                             ? 16
                                             : 30,
                                     color: AppColors.brandingBlue)),
                           ),
                           if (MediaQuery.of(context).size.width >
-                              breakpointMobile)
+                              breakpointTablet)
                             const SizedBox(width: 200),
                           Icon(Icons.star,
                               color: AppColors.brandingOrange,
                               size: MediaQuery.of(context).size.width <
-                                      breakpointMobile
+                                      breakpointTablet
                                   ? 20
                                   : 40)
                         ]),
@@ -117,14 +116,14 @@ class MobileActivitiesCard extends StatelessWidget {
                           Text('${S.of(context).termination}: $finalTime',
                               style: AppTextStyles.bold.copyWith(
                                   fontSize: MediaQuery.of(context).size.width <
-                                          breakpointMobile
+                                          breakpointTablet
                                       ? 12
                                       : 24,
                                   color: Colors.black)),
                           Text('${S.of(context).local}: $location',
                               style: AppTextStyles.bold.copyWith(
                                   fontSize: MediaQuery.of(context).size.width <
-                                          breakpointMobile
+                                          breakpointTablet
                                       ? 12
                                       : 24,
                                   color: Colors.black)),
@@ -132,23 +131,23 @@ class MobileActivitiesCard extends StatelessWidget {
                       ),
                       SizedBox(
                         width:
-                            MediaQuery.of(context).size.width < breakpointMobile
+                            MediaQuery.of(context).size.width < breakpointTablet
                                 ? 53
                                 : 368,
                       ),
                       SizedBox(
                         width:
-                            MediaQuery.of(context).size.width < breakpointMobile
+                            MediaQuery.of(context).size.width < breakpointTablet
                                 ? 100
                                 : 200,
                         height:
-                            MediaQuery.of(context).size.width < breakpointMobile
+                            MediaQuery.of(context).size.width < breakpointTablet
                                 ? 25
                                 : 50,
                         //child: RegisterButtonWidget(
-                         // isRegistered: isRegistered,
-                         // isLoading: isLoading,
-                       // ),
+                        // isRegistered: isRegistered,
+                        // isLoading: isLoading,
+                        // ),
                       )
                     ])
                   ],
