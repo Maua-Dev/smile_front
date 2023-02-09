@@ -58,11 +58,23 @@ class ActivityModel extends Activity {
   }
 
   Map<String, dynamic> toJson() => {
-        'type': ActivityEnumExtension.enumToStringMap(type!),
-        'activityCode': activityCode,
+        'activity_type': ActivityEnumExtension.enumToStringMap(type!),
+        'code': activityCode,
         'title': title,
         'description': description,
-        'speakers': speakers,
+        'is_extensive': isExtensive,
+        'delivery_model': DeliveryEnumExtension.enumToStringMap(deliveryEnum!),
+        'start_date': startDate!.millisecondsSinceEpoch,
+        'duration': duration,
+        'place': place,
+        'link': link,
+        'total_slots': totalSlots,
+        'taken_slots': takenSlots,
+        'accepting_new_enrollments': acceptingNewEnrollments,
+        'stop_accepting_new_enrollments_before':
+            stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
+        'responsible_professors': [responsibleProfessors[0].id],
+        'speakers': speakers.map((e) => e.toJson()).toList(),
       };
 
   factory ActivityModel.newInstance() {
