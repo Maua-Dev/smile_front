@@ -33,7 +33,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         (element) => element.activityCode == activityToEdit.activityCode);
     activitiesList.removeAt(index);
     activitiesList.insert(index, activityToEdit);
-    await datasource.putActivity(activityToEdit.activityCode, activityToEdit);
+    await datasource.editActivity(activityToEdit.activityCode, activityToEdit);
   }
 
   @override

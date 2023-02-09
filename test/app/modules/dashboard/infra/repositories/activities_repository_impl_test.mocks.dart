@@ -80,7 +80,7 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
         returnValue: _i3.Future<bool>.value(false),
       ) as _i3.Future<bool>);
   @override
-  _i3.Future<dynamic> putActivity(
+  _i3.Future<dynamic> editActivity(
     String? id,
     _i4.ActivityModel? activity,
   ) =>
