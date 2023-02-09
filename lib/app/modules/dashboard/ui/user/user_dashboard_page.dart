@@ -76,7 +76,7 @@ class _UserDashboardPageState
                         isRegistered = true;
                       }
                       Modular.to.navigate('/user/home/more-info',
-                          arguments: [controller.nextActivity, isRegistered]);
+                          arguments: controller.nextActivity);
                       controller.analytics.logViewActivity(
                           controller.nextActivity.activityCode);
                     },
@@ -139,11 +139,11 @@ class _UserDashboardPageState
                           if (list.isNotEmpty) {
                             isRegistered = true;
                           }
-                          Modular.to.navigate('/user/home/more-info',
-                              arguments: [
+                          Modular.to.navigate(
+                            '/user/home/more-info',
+                            arguments:
                                 controller.subscribedActivitiesList[index],
-                                isRegistered
-                              ]);
+                          );
                           controller.analytics.logViewActivity(controller
                               .subscribedActivitiesList[index].activityCode);
                         },

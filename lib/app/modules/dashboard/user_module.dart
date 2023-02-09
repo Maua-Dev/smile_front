@@ -14,7 +14,6 @@ import 'package:smile_front/app/modules/dashboard/infra/repository/certificates_
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/certificate_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_dashboard_page.dart';
@@ -90,14 +89,6 @@ class UserModule extends Module {
         analytics: i(),
       ),
     ),
-    Bind.lazySingleton<MoreInfoController>(
-      (i) => MoreInfoController(
-          unsubscribeActivity: i(),
-          subscribeActivity: i(),
-          activity: i.args!.data[0] as ActivityModel,
-          registered: i.args!.data[1] as bool,
-          userDashboardController: i()),
-    ),
     Bind.lazySingleton<UserSubscriptionController>(
       (i) => UserSubscriptionController(
         unsubscribeActivity: i(),
@@ -131,7 +122,10 @@ class UserModule extends Module {
         child: (_, args) => const UserDashboardPage()),
     ChildRoute('/all-activities',
         child: (_, args) => const AllActivitiesUserDashboardPage()),
-    ChildRoute('/more-info', child: (_, args) => const MoreInfoPage()),
+    ChildRoute('/more-info',
+        child: (_, args) => MoreInfoPage(
+              activity: args.data as ActivityModel,
+            )),
     ChildRoute('/help', child: (_, args) => const HelpPage()),
     ChildRoute('/certificate', child: (_, args) => const CertificatePage()),
   ];

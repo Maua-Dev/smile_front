@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'dart:math' as math;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
+import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
@@ -15,22 +16,18 @@ import '../../domain/infra/activity_enum.dart';
 import '../../presenter/controllers/user/user_subscription_controller.dart';
 import 'widgets/register_button_widget.dart';
 
-class MoreInfoPage extends StatefulWidget {
-  const MoreInfoPage({Key? key}) : super(key: key);
+class MoreInfoPage extends StatelessWidget {
+  final ActivityModel activity;
+  MoreInfoPage({Key? key, required this.activity}) : super(key: key);
 
-  @override
-  State<MoreInfoPage> createState() => _MoreInfoPageState();
-}
-
-class _MoreInfoPageState
-    extends ModularState<MoreInfoPage, MoreInfoController> {
   var subscriptionController = Modular.get<UserSubscriptionController>();
+
   @override
   Widget build(BuildContext context) {
-    var timeString = controller.activity.startDate == null
+    var timeString = activity.startDate == null
         ? ''
-        : DateFormat('HH:mm').format(controller.activity.startDate!);
-    var weekday = controller.activity.startDate == null
+        : DateFormat('HH:mm').format(activity.startDate!);
+    var weekday = activity.startDate == null
         ? ''
         : DateFormat('EEEE')
             .format(controller.activity.startDate!)
