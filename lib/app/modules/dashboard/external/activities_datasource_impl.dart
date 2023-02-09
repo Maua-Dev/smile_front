@@ -104,6 +104,22 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
+  Future getEnrollmentByUserId(String userId) async {
+    var token = await storage.getAccessToken();
+    try {
+      dio.options.headers["authorization"] = "Bearer $token";
+      await dio.get('/get-enrollments-by-user-id?:$userId');
+    } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken(token.toString());
+        await getEnrollmentByUserId(userId);
+      }
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage: errorMessage);
+    }
+  }
+
+  @override
   Future postActivity(ActivityModel activity) async {
     var token = await storage.getAccessToken();
     try {

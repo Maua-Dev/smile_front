@@ -67,4 +67,5 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
     var url = await datasource.getLinkCsv();
     return url;
   }
+
 }
