@@ -8,7 +8,8 @@
     "smileDateWithYear": "22 a 27 de Maio de 2023",
     
     "knowMore": "SAIBA MAIS >>>",
-    "speakersTitle": "Principais Palestrantes - 2022",
+    "speakersTitle": "Palestrantes",
+    "speakersMainTitle": "Principais Palestrantes - 2022",
     "speakersAddTitle": "Adicionar Palestrante",
     "speakersSwipe": "DESLIZE PARA VER MAIS >>>",
     "speakersSchemaName": "{speakers, select, nina{Nina Silva} viviane{Viviane Nunes} leila{Leila Ferreira} boris{Bóris Fabris} marco{Marco Antonio Teixeira} willian{Dr. William Schoenell} other{}}",
@@ -29,6 +30,7 @@
     "beSponsorMoreInfoDescription": "Caso tenha interesse em patrocinar o evento, clique aqui para mais informações.",
     "year2023": "2023",
     "dateTitle": "Data",
+    "dayTitle": "Dia",
     "monthJanuary": "Janeiro",
     "monthFebruary": "Fevereiro",
     "discount10": "10% Off",
@@ -130,7 +132,7 @@
     "returnLogin": "Voltar ao login",
     "errorEmailInstructionsTitle": "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n",
     
-    
+    "presenceValidateTitle": "Validar Presença",
     
 
     "successRegister": "Seu cadastro foi confirmado com sucesso!",
@@ -165,10 +167,13 @@
 
     "descriptionTitle": "Descrição",
 
-    "scheduleTitle": "Hora",
+    "hourTitle": "Hora",
+    "scheduleTitle": "Horário",
     "scheduleAddTitle": "Adicionar Horário",
 
     "codeTitle": "Código",
+
+    "localTitle": "Local",
 
 
     "yesTitle": "Sim",

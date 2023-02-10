@@ -283,6 +283,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmToContinue": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to continue?"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Date"),
+        "dayTitle": MessageLookupByLibrary.simpleMessage("Day"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
         "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
@@ -338,10 +339,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "homePageTitle": MessageLookupByLibrary.simpleMessage(
             "Mauá Week of Innovation, Leadership and Entrepreneurship"),
         "homePageTitleSelection": m8,
+        "hourTitle": MessageLookupByLibrary.simpleMessage("Hora"),
         "initTitle": MessageLookupByLibrary.simpleMessage("Home"),
         "insertPasswordCodeInstructions": MessageLookupByLibrary.simpleMessage(
             "Enter your new password and the code sent to your email:"),
         "knowMore": MessageLookupByLibrary.simpleMessage("KNOW MORE >>>"),
+        "localTitle": MessageLookupByLibrary.simpleMessage("Local"),
         "loginForgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Forgot my password"),
         "loginPasswordPlaceholder":
@@ -374,6 +377,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Means of notification about activities:"),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
+        "presenceValidateTitle":
+            MessageLookupByLibrary.simpleMessage("Presence Validate"),
         "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
@@ -405,12 +410,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("May 22 to 27, 2023"),
         "speakersAddTitle": MessageLookupByLibrary.simpleMessage("Add Speaker"),
+        "speakersMainTitle":
+            MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),
         "speakersSchemaDescription": m16,
         "speakersSchemaName": m17,
         "speakersSwipe":
             MessageLookupByLibrary.simpleMessage("SWIPE TO SEE MORE >>>"),
-        "speakersTitle":
-            MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),
+        "speakersTitle": MessageLookupByLibrary.simpleMessage("Speakers"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Sponsors"),
         "successChangePassword": MessageLookupByLibrary.simpleMessage(
             "Password changed successfully!"),

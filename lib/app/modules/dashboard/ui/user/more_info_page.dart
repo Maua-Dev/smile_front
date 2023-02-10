@@ -6,8 +6,10 @@ import 'package:intl/intl.dart';
 import 'dart:math' as math;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
+import '../../../../shared/themes/breakpoint.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
@@ -40,330 +42,251 @@ class _MoreInfoPageState
             ? ''
             : Utils.getActivityFinalTime(
                 controller.activity.date!, controller.activity.duration!);
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          child: Column(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.05,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: AppColors.lilac),
-                child: Center(
-                  child: Text(
-                    controller.activity.type!.name,
-                    textAlign: TextAlign.justify,
-                    style: AppTextStyles.buttonBold.copyWith(
-                      fontSize: MediaQuery.of(context).size.width < 800
-                          ? 18
-                          : MediaQuery.of(context).size.width < 1000
-                              ? 22
-                              : 28,
-                      color: AppColors.brandingBlue,
+    return MediaQuery.of(context).size.width < breakpointMobile
+        ? SafeArea(
+            child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            child: Column(children: [
+              Text(
+                '${controller.activity.activityCode} - ${controller.activity.title}',
+                style: TextStyle(
+                    color: AppColors.brandingOrange,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 78,
+                      height: 49,
+                      decoration: BoxDecoration(
+                          color: AppColors.brandingBlue,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(S.of(context).dayTitle,
+                                style: AppTextStyles.bold.copyWith(
+                                    color: AppColors.white, fontSize: 12)),
+                            Text(
+                                DateFormat('dd/MM')
+                                    .format(controller.activity.date!),
+                                style: AppTextStyles.bold.copyWith(
+                                    color: AppColors.white, fontSize: 20))
+                          ]),
                     ),
-                  ),
+                    Container(
+                      width: 138,
+                      height: 49,
+                      decoration: BoxDecoration(
+                          color: AppColors.brandingBlue,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(S.of(context).scheduleTitle,
+                                style: AppTextStyles.bold.copyWith(
+                                    color: AppColors.white, fontSize: 12)),
+                            Text('$timeString - $finalTime',
+                                style: AppTextStyles.bold.copyWith(
+                                    color: AppColors.white, fontSize: 20))
+                          ]),
+                    ),
+                    Container(
+                      width: 78,
+                      height: 49,
+                      decoration: BoxDecoration(
+                          color: AppColors.brandingBlue,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(S.of(context).localTitle,
+                                style: AppTextStyles.bold.copyWith(
+                                    color: AppColors.white, fontSize: 12)),
+                            Text(controller.activity.location!,
+                                style: AppTextStyles.bold.copyWith(
+                                    color: AppColors.white, fontSize: 20))
+                          ]),
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(
-                height: 16,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(
+                    width: 50,
+                  ),
+                  Observer(builder: (_) {
+                    return !controller.activity.acceptSubscription &&
+                            !controller.isRegistered
+                        ? Text(
+                            'Inscrição para a atividade indisponível!',
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.titleH1.copyWith(
+                                color: AppColors.brandingBlue,
+                                fontSize: MediaQuery.of(context).size.width <
+                                        800
+                                    ? 22
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 26
+                                        : 30),
+                          )
+                        : Center(
+                            child: SizedBox(
+                            width: 163,
+                            height: 32,
+                            child: RegisterButtonWidget(
+                                isRegistered: controller.isRegistered,
+                                isLoading: controller.isLoading,
+                                onPressed: () {
+                                  if (!controller.activity.acceptSubscription &&
+                                      controller.isRegistered) {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return Observer(builder: (context) {
+                                          return ActionConfirmationDialogWidget(
+                                              isLoading: controller.isLoading,
+                                              title:
+                                                  'Tem certeza que deseja se desinscrever?',
+                                              content:
+                                                  'Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!',
+                                              onPressed: () {
+                                                controller
+                                                    .unsubscribeUserActivity();
+                                                Modular.to.pop();
+                                              });
+                                        });
+                                      },
+                                    );
+                                  } else {
+                                    if (controller.isRegistered) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return Observer(builder: (context) {
+                                            return ActionConfirmationDialogWidget(
+                                                isLoading: controller.isLoading,
+                                                title:
+                                                    'Tem certeza que deseja se desinscrever?',
+                                                content:
+                                                    'Você perderá sua vaga na atividade ao continuar!',
+                                                onPressed: () {
+                                                  controller
+                                                      .unsubscribeUserActivity();
+                                                  Modular.to.pop();
+                                                });
+                                          });
+                                        },
+                                      );
+                                    } else if (controller
+                                            .activity.enrolledUsers! >=
+                                        controller
+                                            .activity.totalParticipants!) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return const CustomAlertDialogWidget(
+                                            title:
+                                                'Parece que o número de vagas da atividade se esgotou :(',
+                                          );
+                                        },
+                                      );
+                                    } else {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return Observer(builder: (context) {
+                                            return ActionConfirmationDialogWidget(
+                                                isLoading: controller.isLoading,
+                                                title:
+                                                    'Tem certeza que deseja se inscrever?',
+                                                content:
+                                                    'Se atente aos seus horários e atividades que você já se inscreveu!',
+                                                onPressed: () {
+                                                  if (controller
+                                                      .checkIsOkForSubscribe()) {
+                                                    controller
+                                                        .subscribeUserActivity();
+                                                    Modular.to.pop();
+                                                  } else {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                          context) {
+                                                        return const CustomAlertDialogWidget(
+                                                          title:
+                                                              'Parece que você já se inscreveu em uma atividade no mesmo horário.',
+                                                        );
+                                                      },
+                                                    );
+                                                  }
+                                                });
+                                          });
+                                        },
+                                      );
+                                    }
+                                  }
+                                }),
+                          ));
+                  }),
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        color: AppColors.white,
+                        border: Border.all(color: AppColors.brandingOrange),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: AppColors.brandingOrange,
+                            size: 28,
+                          ),
+                          Text('Extensionista',
+                              style: AppTextStyles.bold.copyWith(
+                                  fontSize: 7, color: AppColors.brandingOrange))
+                        ]),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    S.of(context).descriptionTitle,
+                    style: AppTextStyles.bold
+                        .copyWith(color: AppColors.brandingBlue),
+                  ),
+                ),
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  '${controller.activity.activityCode} - ${controller.activity.title}',
-                  textAlign: TextAlign.justify,
-                  style: AppTextStyles.buttonBold.copyWith(
-                      fontSize: MediaQuery.of(context).size.width < 800
-                          ? 20
-                          : MediaQuery.of(context).size.width < 1000
-                              ? 24
-                              : 28,
-                      color: Colors.black),
+                  controller.activity.description,
+                  style: AppTextStyles.body
+                      .copyWith(color: Colors.black, fontSize: 16),
                 ),
               ),
-              const SizedBox(
-                height: 16,
-              ),
-              Observer(builder: (_) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          controller.activity.date == null
-                              ? ''
-                              : DateFormat('dd/MM')
-                                  .format(controller.activity.date!),
-                          style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 10
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 14
-                                      : 18,
-                              color: AppColors.brandingBlue),
-                        ),
-                        Text(
-                          weekday,
-                          style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 14
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 20
-                                      : 24,
-                              color: AppColors.brandingBlue),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          'Horário',
-                          style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 10
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 14
-                                      : 18,
-                              color: AppColors.brandingBlue),
-                        ),
-                        Text(
-                          '$timeString - $finalTime',
-                          style: AppTextStyles.buttonBold.copyWith(
-                              fontSize: MediaQuery.of(context).size.width < 800
-                                  ? 14
-                                  : MediaQuery.of(context).size.width < 1000
-                                      ? 20
-                                      : 24,
-                              color: AppColors.brandingBlue),
-                        ),
-                      ],
-                    ),
-                    if (controller.activity.location != null)
-                      Column(
-                        children: [
-                          Text(
-                            'Local',
-                            style: AppTextStyles.buttonBold.copyWith(
-                                fontSize: MediaQuery.of(context).size.width <
-                                        800
-                                    ? 10
-                                    : MediaQuery.of(context).size.width < 1000
-                                        ? 14
-                                        : 18,
-                                color: AppColors.brandingBlue),
-                          ),
-                          Text(
-                            controller.activity.location!,
-                            style: AppTextStyles.buttonBold.copyWith(
-                                fontSize: MediaQuery.of(context).size.width <
-                                        800
-                                    ? 14
-                                    : MediaQuery.of(context).size.width < 1000
-                                        ? 20
-                                        : 24,
-                                color: AppColors.brandingBlue),
-                          ),
-                        ],
-                      ),
-                    if (controller.activity.link != null &&
-                        controller.isRegistered)
-                      Column(
-                        children: [
-                          MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 4),
-                                  child: Transform.rotate(
-                                    angle: 135 * math.pi / 180,
-                                    child: Icon(
-                                      Icons.link,
-                                      color: AppColors.brandingBlue,
-                                      size: MediaQuery.of(context).size.width <
-                                              800
-                                          ? 14
-                                          : MediaQuery.of(context).size.width <
-                                                  1000
-                                              ? 20
-                                              : 24,
-                                    ),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () => launchUrl(
-                                    Uri.parse(controller.activity.link!),
-                                    mode: LaunchMode.externalApplication,
-                                  ),
-                                  child: Text('Link',
-                                      style: AppTextStyles.buttonBold.copyWith(
-                                          decoration: TextDecoration.underline,
-                                          fontSize: MediaQuery.of(context)
-                                                      .size
-                                                      .width <
-                                                  800
-                                              ? 14
-                                              : MediaQuery.of(context)
-                                                          .size
-                                                          .width <
-                                                      1000
-                                                  ? 20
-                                                  : 24,
-                                          color: AppColors.brandingBlue)),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                  ],
-                );
-              }),
-              const SizedBox(
-                height: 16,
-              ),
-              Observer(builder: (_) {
-                return !controller.activity.acceptSubscription &&
-                        !controller.isRegistered
-                    ? Text(
-                        'Inscrição para a atividade indisponível!',
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.titleH1.copyWith(
-                            color: AppColors.brandingBlue,
-                            fontSize: MediaQuery.of(context).size.width < 800
-                                ? 22
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 26
-                                    : 30),
-                      )
-                    : Center(
-                        child: RegisterButtonWidget(
-                            isRegistered: controller.isRegistered,
-                            isLoading: controller.isLoading,
-                            onPressed: () {
-                              if (!controller.activity.acceptSubscription &&
-                                  controller.isRegistered) {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return Observer(builder: (context) {
-                                      return ActionConfirmationDialogWidget(
-                                          isLoading: controller.isLoading,
-                                          title:
-                                              'Tem certeza que deseja se desinscrever?',
-                                          content:
-                                              'Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!',
-                                          onPressed: () {
-                                            controller
-                                                .unsubscribeUserActivity();
-                                            Modular.to.pop();
-                                          });
-                                    });
-                                  },
-                                );
-                              } else {
-                                if (controller.isRegistered) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return Observer(builder: (context) {
-                                        return ActionConfirmationDialogWidget(
-                                            isLoading: controller.isLoading,
-                                            title:
-                                                'Tem certeza que deseja se desinscrever?',
-                                            content:
-                                                'Você perderá sua vaga na atividade ao continuar!',
-                                            onPressed: () {
-                                              controller
-                                                  .unsubscribeUserActivity();
-                                              Modular.to.pop();
-                                            });
-                                      });
-                                    },
-                                  );
-                                } else if (controller.activity.enrolledUsers! >=
-                                    controller.activity.totalParticipants!) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return const CustomAlertDialogWidget(
-                                        title:
-                                            'Parece que o número de vagas da atividade se esgotou :(',
-                                      );
-                                    },
-                                  );
-                                } else {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return Observer(builder: (context) {
-                                        return ActionConfirmationDialogWidget(
-                                            isLoading: controller.isLoading,
-                                            title:
-                                                'Tem certeza que deseja se inscrever?',
-                                            content:
-                                                'Se atente aos seus horários e atividades que você já se inscreveu!',
-                                            onPressed: () {
-                                              if (controller
-                                                  .checkIsOkForSubscribe()) {
-                                                controller
-                                                    .subscribeUserActivity();
-                                                Modular.to.pop();
-                                              } else {
-                                                showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (BuildContext context) {
-                                                    return const CustomAlertDialogWidget(
-                                                      title:
-                                                          'Parece que você já se inscreveu em uma atividade no mesmo horário.',
-                                                    );
-                                                  },
-                                                );
-                                              }
-                                            });
-                                      });
-                                    },
-                                  );
-                                }
-                              }
-                            }));
-              }),
-              const SizedBox(
-                height: 16,
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text('Descrição',
-                    style: AppTextStyles.buttonBold.copyWith(
-                        fontSize: MediaQuery.of(context).size.width < 800
-                            ? 20
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 24
-                                : 28,
-                        color: AppColors.brandingBlue)),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(controller.activity.description,
-                    textAlign: TextAlign.justify,
-                    style: AppTextStyles.body.copyWith(
-                        fontSize: MediaQuery.of(context).size.width < 800
-                            ? 16
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 18
-                                : 22,
-                        color: Colors.black)),
-              ),
-              const SizedBox(
-                height: 16,
+              const SizedBox(height: 12),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    S.of(context).speakersTitle,
+                    style: AppTextStyles.bold
+                        .copyWith(color: AppColors.brandingBlue),
+                  ),
+                ),
               ),
               ListView.builder(
                 shrinkWrap: true,
@@ -372,22 +295,21 @@ class _MoreInfoPageState
                 itemBuilder: (context, index) => Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        if (controller.activity.speakers![index].linkPhoto !=
-                            null)
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.1,
-                            height: MediaQuery.of(context).size.width * 0.1,
-                            child: CircleAvatar(
-                              radius: 102.0,
-                              backgroundImage: CachedNetworkImageProvider(
-                                  controller.activity.speakers![index]
-                                      .linkPhoto!), // for Network image
-                            ),
-                          ),
+                        Container(
+                          width: 64,
+                          height: 64,
+                          decoration: BoxDecoration(
+                              color: AppColors.brandingBlue,
+                              borderRadius: BorderRadius.circular(15)),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         Flexible(
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               if (controller.activity.speakers![index].name !=
                                       null &&
@@ -396,17 +318,8 @@ class _MoreInfoPageState
                                 Text(
                                   controller.activity.speakers![index].name!,
                                   textAlign: TextAlign.justify,
-                                  style: AppTextStyles.buttonBold.copyWith(
-                                      fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width <
-                                              800
-                                          ? 18
-                                          : MediaQuery.of(context).size.width <
-                                                  1000
-                                              ? 22
-                                              : 28,
-                                      color: Colors.black),
+                                  style: AppTextStyles.bold.copyWith(
+                                      fontSize: 24, color: Colors.black),
                                 ),
                               if (controller
                                           .activity.speakers![index].company !=
@@ -415,20 +328,11 @@ class _MoreInfoPageState
                                           .activity.speakers![index].company !=
                                       '')
                                 Text(
-                                  'Empresa: ${controller.activity.speakers![index].company}',
-                                  textAlign: TextAlign.justify,
-                                  style: AppTextStyles.buttonBold.copyWith(
-                                      fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width <
-                                              800
-                                          ? 12
-                                          : MediaQuery.of(context).size.width <
-                                                  1000
-                                              ? 14
-                                              : 20,
-                                      color: AppColors.brandingBlue),
-                                ),
+                                    'Empresa: ${controller.activity.speakers![index].company}',
+                                    textAlign: TextAlign.justify,
+                                    style: AppTextStyles.bold.copyWith(
+                                        fontSize: 13,
+                                        color: AppColors.brandingBlue)),
                             ],
                           ),
                         ),
@@ -457,11 +361,511 @@ class _MoreInfoPageState
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: SizedBox(
+                  width: 150,
+                  height: 33,
+                  child: ElevatedButton(
+                      onPressed: (() {}),
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    side: BorderSide(
+                                        color: AppColors.brandingOrange))),
+                        backgroundColor:
+                            MaterialStateProperty.all(AppColors.white),
+                      ),
+                      child: Text(S.of(context).presenceValidateTitle,
+                          style: AppTextStyles.bold.copyWith(
+                              fontSize: 15, color: AppColors.brandingOrange))),
+                ),
               )
-            ],
-          ),
-        ),
-      ),
-    );
+            ]),
+          ))
+        : SafeArea(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                child: Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                          color: AppColors.lilac),
+                      child: Center(
+                        child: Text(
+                          controller.activity.type!.name,
+                          textAlign: TextAlign.justify,
+                          style: AppTextStyles.buttonBold.copyWith(
+                            fontSize: MediaQuery.of(context).size.width < 800
+                                ? 18
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 22
+                                    : 28,
+                            color: AppColors.brandingBlue,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        '${controller.activity.activityCode} - ${controller.activity.title}',
+                        textAlign: TextAlign.justify,
+                        style: AppTextStyles.buttonBold.copyWith(
+                            fontSize: MediaQuery.of(context).size.width < 800
+                                ? 20
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 24
+                                    : 28,
+                            color: Colors.black),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Observer(builder: (_) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                controller.activity.date == null
+                                    ? ''
+                                    : DateFormat('dd/MM')
+                                        .format(controller.activity.date!),
+                                style: AppTextStyles.buttonBold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 800
+                                            ? 10
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1000
+                                                ? 14
+                                                : 18,
+                                    color: AppColors.brandingBlue),
+                              ),
+                              Text(
+                                weekday,
+                                style: AppTextStyles.buttonBold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 800
+                                            ? 14
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1000
+                                                ? 20
+                                                : 24,
+                                    color: AppColors.brandingBlue),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'Horário',
+                                style: AppTextStyles.buttonBold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 800
+                                            ? 10
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1000
+                                                ? 14
+                                                : 18,
+                                    color: AppColors.brandingBlue),
+                              ),
+                              Text(
+                                '$timeString - $finalTime',
+                                style: AppTextStyles.buttonBold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 800
+                                            ? 14
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1000
+                                                ? 20
+                                                : 24,
+                                    color: AppColors.brandingBlue),
+                              ),
+                            ],
+                          ),
+                          if (controller.activity.location != null)
+                            Column(
+                              children: [
+                                Text(
+                                  'Local',
+                                  style: AppTextStyles.buttonBold.copyWith(
+                                      fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width <
+                                              800
+                                          ? 10
+                                          : MediaQuery.of(context).size.width <
+                                                  1000
+                                              ? 14
+                                              : 18,
+                                      color: AppColors.brandingBlue),
+                                ),
+                                Text(
+                                  controller.activity.location!,
+                                  style: AppTextStyles.buttonBold.copyWith(
+                                      fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width <
+                                              800
+                                          ? 14
+                                          : MediaQuery.of(context).size.width <
+                                                  1000
+                                              ? 20
+                                              : 24,
+                                      color: AppColors.brandingBlue),
+                                ),
+                              ],
+                            ),
+                          if (controller.activity.link != null &&
+                              controller.isRegistered)
+                            Column(
+                              children: [
+                                MouseRegion(
+                                  cursor: SystemMouseCursors.click,
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 4),
+                                        child: Transform.rotate(
+                                          angle: 135 * math.pi / 180,
+                                          child: Icon(
+                                            Icons.link,
+                                            color: AppColors.brandingBlue,
+                                            size: MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    800
+                                                ? 14
+                                                : MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        1000
+                                                    ? 20
+                                                    : 24,
+                                          ),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () => launchUrl(
+                                          Uri.parse(controller.activity.link!),
+                                          mode: LaunchMode.externalApplication,
+                                        ),
+                                        child: Text('Link',
+                                            style: AppTextStyles.buttonBold
+                                                .copyWith(
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                    fontSize: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width <
+                                                            800
+                                                        ? 14
+                                                        : MediaQuery.of(context)
+                                                                    .size
+                                                                    .width <
+                                                                1000
+                                                            ? 20
+                                                            : 24,
+                                                    color: AppColors
+                                                        .brandingBlue)),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                        ],
+                      );
+                    }),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Observer(builder: (_) {
+                      return !controller.activity.acceptSubscription &&
+                              !controller.isRegistered
+                          ? Text(
+                              'Inscrição para a atividade indisponível!',
+                              textAlign: TextAlign.center,
+                              style: AppTextStyles.titleH1.copyWith(
+                                  color: AppColors.brandingBlue,
+                                  fontSize: MediaQuery.of(context).size.width <
+                                          800
+                                      ? 22
+                                      : MediaQuery.of(context).size.width < 1000
+                                          ? 26
+                                          : 30),
+                            )
+                          : Center(
+                              child: RegisterButtonWidget(
+                                  isRegistered: controller.isRegistered,
+                                  isLoading: controller.isLoading,
+                                  onPressed: () {
+                                    if (!controller
+                                            .activity.acceptSubscription &&
+                                        controller.isRegistered) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return Observer(builder: (context) {
+                                            return ActionConfirmationDialogWidget(
+                                                isLoading: controller.isLoading,
+                                                title:
+                                                    'Tem certeza que deseja se desinscrever?',
+                                                content:
+                                                    'Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!',
+                                                onPressed: () {
+                                                  controller
+                                                      .unsubscribeUserActivity();
+                                                  Modular.to.pop();
+                                                });
+                                          });
+                                        },
+                                      );
+                                    } else {
+                                      if (controller.isRegistered) {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return Observer(builder: (context) {
+                                              return ActionConfirmationDialogWidget(
+                                                  isLoading:
+                                                      controller.isLoading,
+                                                  title:
+                                                      'Tem certeza que deseja se desinscrever?',
+                                                  content:
+                                                      'Você perderá sua vaga na atividade ao continuar!',
+                                                  onPressed: () {
+                                                    controller
+                                                        .unsubscribeUserActivity();
+                                                    Modular.to.pop();
+                                                  });
+                                            });
+                                          },
+                                        );
+                                      } else if (controller
+                                              .activity.enrolledUsers! >=
+                                          controller
+                                              .activity.totalParticipants!) {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return const CustomAlertDialogWidget(
+                                              title:
+                                                  'Parece que o número de vagas da atividade se esgotou :(',
+                                            );
+                                          },
+                                        );
+                                      } else {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return Observer(builder: (context) {
+                                              return ActionConfirmationDialogWidget(
+                                                  isLoading:
+                                                      controller.isLoading,
+                                                  title:
+                                                      'Tem certeza que deseja se inscrever?',
+                                                  content:
+                                                      'Se atente aos seus horários e atividades que você já se inscreveu!',
+                                                  onPressed: () {
+                                                    if (controller
+                                                        .checkIsOkForSubscribe()) {
+                                                      controller
+                                                          .subscribeUserActivity();
+                                                      Modular.to.pop();
+                                                    } else {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext
+                                                            context) {
+                                                          return const CustomAlertDialogWidget(
+                                                            title:
+                                                                'Parece que você já se inscreveu em uma atividade no mesmo horário.',
+                                                          );
+                                                        },
+                                                      );
+                                                    }
+                                                  });
+                                            });
+                                          },
+                                        );
+                                      }
+                                    }
+                                  }));
+                    }),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Descrição',
+                          style: AppTextStyles.buttonBold.copyWith(
+                              fontSize: MediaQuery.of(context).size.width < 800
+                                  ? 20
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 24
+                                      : 28,
+                              color: AppColors.brandingBlue)),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(controller.activity.description,
+                          textAlign: TextAlign.justify,
+                          style: AppTextStyles.body.copyWith(
+                              fontSize: MediaQuery.of(context).size.width < 800
+                                  ? 16
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 18
+                                      : 22,
+                              color: Colors.black)),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: controller.activity.speakers!.length,
+                      itemBuilder: (context, index) => Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              if (controller
+                                      .activity.speakers![index].linkPhoto !=
+                                  null)
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.1,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.1,
+                                  child: CircleAvatar(
+                                    radius: 102.0,
+                                    backgroundImage: CachedNetworkImageProvider(
+                                        controller.activity.speakers![index]
+                                            .linkPhoto!), // for Network image
+                                  ),
+                                ),
+                              Flexible(
+                                child: Column(
+                                  children: [
+                                    if (controller.activity.speakers![index]
+                                                .name !=
+                                            null &&
+                                        controller.activity.speakers![index]
+                                                .name !=
+                                            '')
+                                      Text(
+                                        controller
+                                            .activity.speakers![index].name!,
+                                        textAlign: TextAlign.justify,
+                                        style: AppTextStyles.buttonBold
+                                            .copyWith(
+                                                fontSize: MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        800
+                                                    ? 18
+                                                    : MediaQuery.of(context)
+                                                                .size
+                                                                .width <
+                                                            1000
+                                                        ? 22
+                                                        : 28,
+                                                color: Colors.black),
+                                      ),
+                                    if (controller.activity.speakers![index]
+                                                .company !=
+                                            null &&
+                                        controller.activity.speakers![index]
+                                                .company !=
+                                            '')
+                                      Text(
+                                        'Empresa: ${controller.activity.speakers![index].company}',
+                                        textAlign: TextAlign.justify,
+                                        style: AppTextStyles.buttonBold
+                                            .copyWith(
+                                                fontSize: MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        800
+                                                    ? 12
+                                                    : MediaQuery.of(context)
+                                                                .size
+                                                                .width <
+                                                            1000
+                                                        ? 14
+                                                        : 20,
+                                                color: AppColors.brandingBlue),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          if (controller.activity.speakers![index].bio !=
+                                  null &&
+                              controller.activity.speakers![index].bio != '')
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                  controller.activity.speakers![index].bio!,
+                                  textAlign: TextAlign.justify,
+                                  style: AppTextStyles.body.copyWith(
+                                      fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width <
+                                              800
+                                          ? 16
+                                          : MediaQuery.of(context).size.width <
+                                                  1000
+                                              ? 18
+                                              : 22,
+                                      color: Colors.black)),
+                            ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
   }
 }

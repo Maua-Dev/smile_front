@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
@@ -19,8 +20,13 @@ class RegisterButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ButtonStyle(
-            padding: MaterialStateProperty.all(
-                const EdgeInsets.symmetric(vertical: 12, horizontal: 64)),
+            padding: MaterialStateProperty.all(EdgeInsets.symmetric(
+                vertical: MediaQuery.of(context).size.width < breakpointMobile
+                    ? 0
+                    : 12,
+                horizontal: MediaQuery.of(context).size.width < breakpointMobile
+                    ? 0
+                    : 64)),
             elevation: MaterialStateProperty.all(20),
             backgroundColor: MaterialStateProperty.all(
                 isRegistered ? AppColors.redButton : AppColors.brandingBlue),

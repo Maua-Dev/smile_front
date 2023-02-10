@@ -135,11 +135,21 @@ class S {
     );
   }
 
-  /// `Main Speakers - 2022`
+  /// `Speakers`
   String get speakersTitle {
     return Intl.message(
-      'Main Speakers - 2022',
+      'Speakers',
       name: 'speakersTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Main Speakers - 2022`
+  String get speakersMainTitle {
+    return Intl.message(
+      'Main Speakers - 2022',
+      name: 'speakersMainTitle',
       desc: '',
       args: [],
     );
@@ -426,6 +436,16 @@ class S {
     return Intl.message(
       'Date',
       name: 'dateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Day`
+  String get dayTitle {
+    return Intl.message(
+      'Day',
+      name: 'dayTitle',
       desc: '',
       args: [],
     );
@@ -1227,6 +1247,16 @@ class S {
     );
   }
 
+  /// `Presence Validate`
+  String get presenceValidateTitle {
+    return Intl.message(
+      'Presence Validate',
+      name: 'presenceValidateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your registration has been successfully confirmed!`
   String get successRegister {
     return Intl.message(
@@ -1437,6 +1467,16 @@ class S {
     );
   }
 
+  /// `Hora`
+  String get hourTitle {
+    return Intl.message(
+      'Hora',
+      name: 'hourTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Schedule`
   String get scheduleTitle {
     return Intl.message(
@@ -1462,6 +1502,16 @@ class S {
     return Intl.message(
       'Code',
       name: 'codeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local`
+  String get localTitle {
+    return Intl.message(
+      'Local',
+      name: 'localTitle',
       desc: '',
       args: [],
     );

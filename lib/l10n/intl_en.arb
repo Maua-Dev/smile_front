@@ -8,7 +8,8 @@
     "smileDateWithYear": "May 22 to 27, 2023",
     
     "knowMore": "KNOW MORE >>>",
-    "speakersTitle": "Main Speakers - 2022",
+    "speakersTitle": "Speakers",
+    "speakersMainTitle": "Main Speakers - 2022",
     "speakersAddTitle": "Add Speaker",
     "speakersSwipe": "SWIPE TO SEE MORE >>>",
     "speakersSchemaName": "{speakers, select, nina{Nina Silva} viviane{Viviane Nunes} leila{Leila Ferreira} boris{Bóris Fabris} marco{Marco Antonio Teixeira} willian{Dr. William Schoenell} other{}}",
@@ -29,6 +30,7 @@
     "beSponsorMoreInfoDescription": "If you are interested in sponsoring the event, click here for more information.",
     "year2023": "2023",
     "dateTitle": "Date",
+    "dayTitle": "Day",
     "monthFebruary": "February",
     "monthJanuary": "January",
     "discount10": "10% Off",
@@ -130,7 +132,7 @@
     "returnLogin": "Return to login",
     "errorEmailInstructionsTitle": "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n",
     
-    
+    "presenceValidateTitle": "Presence Validate",
     
 
     "successRegister": "Your registration has been successfully confirmed!",
@@ -165,10 +167,13 @@
 
     "descriptionTitle": "Description",
 
+    "hourTitle": "Hora",
     "scheduleTitle": "Schedule",
     "scheduleAddTitle": "Add Schedule",
 
     "codeTitle": "Code",
+
+    "localTitle": "Local",
 
 
     "yesTitle": "Yes",

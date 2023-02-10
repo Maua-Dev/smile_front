@@ -282,6 +282,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmToContinue": MessageLookupByLibrary.simpleMessage(
             "Tem certeza que deseja continuar?"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Data"),
+        "dayTitle": MessageLookupByLibrary.simpleMessage("Dia"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Descrição"),
         "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
         "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
@@ -338,10 +339,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "homePageTitle": MessageLookupByLibrary.simpleMessage(
             "Semana Mauá de Inovação, Liderança e Empreendedorismo"),
         "homePageTitleSelection": m8,
+        "hourTitle": MessageLookupByLibrary.simpleMessage("Hora"),
         "initTitle": MessageLookupByLibrary.simpleMessage("Início"),
         "insertPasswordCodeInstructions": MessageLookupByLibrary.simpleMessage(
             "Insira sua nova senha e o codigo enviado para o seu e-mail:"),
         "knowMore": MessageLookupByLibrary.simpleMessage("SAIBA MAIS >>>"),
+        "localTitle": MessageLookupByLibrary.simpleMessage("Local"),
         "loginForgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Esqueci minha senha"),
         "loginPasswordPlaceholder":
@@ -374,6 +377,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Meios de notificação sobre as atividades:"),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
+        "presenceValidateTitle":
+            MessageLookupByLibrary.simpleMessage("Validar Presença"),
         "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme sua senha"),
@@ -398,7 +403,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "saveTitle": MessageLookupByLibrary.simpleMessage("Salvar"),
         "scheduleAddTitle":
             MessageLookupByLibrary.simpleMessage("Adicionar Horário"),
-        "scheduleTitle": MessageLookupByLibrary.simpleMessage("Hora"),
+        "scheduleTitle": MessageLookupByLibrary.simpleMessage("Horário"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Enviar"),
         "signUp": MessageLookupByLibrary.simpleMessage("Inscreva-se"),
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
@@ -406,12 +411,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("22 a 27 de Maio de 2023"),
         "speakersAddTitle":
             MessageLookupByLibrary.simpleMessage("Adicionar Palestrante"),
+        "speakersMainTitle": MessageLookupByLibrary.simpleMessage(
+            "Principais Palestrantes - 2022"),
         "speakersSchemaDescription": m16,
         "speakersSchemaName": m17,
         "speakersSwipe":
             MessageLookupByLibrary.simpleMessage("DESLIZE PARA VER MAIS >>>"),
-        "speakersTitle": MessageLookupByLibrary.simpleMessage(
-            "Principais Palestrantes - 2022"),
+        "speakersTitle": MessageLookupByLibrary.simpleMessage("Palestrantes"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Patrocinadores"),
         "successChangePassword":
             MessageLookupByLibrary.simpleMessage("Senha alterada com sucesso!"),
