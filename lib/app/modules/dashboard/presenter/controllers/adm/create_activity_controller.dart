@@ -105,31 +105,31 @@ abstract class CreateActivityControllerBase with Store {
   ///Sets the activity CODE.
   @action
   void setActivityCode(String value) {
-    activityToCreate.activityCode = value;
+    activityToCreate = activityToCreate.copyWith(activityCode: value);
   }
 
   ///Sets the TITLE of the activity.
   @action
   void setTitle(String value) {
-    activityToCreate.title = value;
+    activityToCreate = activityToCreate.copyWith(title: value);
   }
 
   ///Sets the DESCRIPTION of the activity.
   @action
   void setDescription(String value) {
-    activityToCreate.description = value;
+    activityToCreate = activityToCreate.copyWith(description: value);
   }
 
   ///Sets the LOCATION in which the activity will occur.
   @action
   void setLocation(String value) {
-    activityToCreate.place = value;
+    activityToCreate = activityToCreate.copyWith(place: value);
   }
 
   /// Sets the LINK of the activity, in case it's a online delivery.
   @action
   void setLink(String value) {
-    activityToCreate.link = value;
+    activityToCreate = activityToCreate.copyWith(link: value);
   }
 
   ///Sets the DATE the activity will occur.
@@ -192,13 +192,13 @@ abstract class CreateActivityControllerBase with Store {
   ///Sets the event duration, in minutes.
   @action
   void setDuration(String value) {
-    activityToCreate.duration = int.parse(value);
+    activityToCreate = activityToCreate.copyWith(duration: int.parse(value));
   }
 
   ///Sets the number of participants of the event.
   @action
   void setParticipants(String value) {
-    activityToCreate.totalSlots = int.parse(value);
+    activityToCreate = activityToCreate.copyWith(totalSlots: int.parse(value));
   }
 
   ///A function that changes the variable acceptingNewEnrollments,
