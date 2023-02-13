@@ -10,7 +10,6 @@ import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../login/ui/widgets/maintenance_alert_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controller/resend_confirmation_controller.dart';
-import '../../../shared/widgets/input-box/input_box_widget.dart';
 import '../../../shared/services/environment/environment_config.dart';
 
 class ResendConfirmationPage extends StatefulWidget {
@@ -149,14 +148,6 @@ class _ResendConfirmationPageState
                                       textAlign: TextAlign.justify,
                                     ),
                                   ),
-                                ),
-                                InputBoxWidget(
-                                  icon: Icons.person,
-                                  placeholder:
-                                      S.of(context).registerCPFPlaceholder,
-                                  setValue: controller.setCpf,
-                                  isCpfField: true,
-                                  validation: controller.validateCpf,
                                 ),
                                 const SizedBox(
                                   height: 40,

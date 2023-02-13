@@ -58,19 +58,19 @@ mixin _$ResendConfirmationController
     });
   }
 
-  late final _$cpfAtom =
-      Atom(name: 'ResendConfirmationControllerBase.cpf', context: context);
+  late final _$emailAtom =
+      Atom(name: 'ResendConfirmationControllerBase.email', context: context);
 
   @override
-  String get cpf {
-    _$cpfAtom.reportRead();
-    return super.cpf;
+  String get email {
+    _$emailAtom.reportRead();
+    return super.email;
   }
 
   @override
-  set cpf(String value) {
-    _$cpfAtom.reportWrite(value, super.cpf, () {
-      super.cpf = value;
+  set email(String value) {
+    _$emailAtom.reportWrite(value, super.email, () {
+      super.email = value;
     });
   }
 
@@ -142,11 +142,11 @@ mixin _$ResendConfirmationController
           name: 'ResendConfirmationControllerBase', context: context);
 
   @override
-  String? validateCpf(String? value) {
+  String? validateEmail(String? value) {
     final _$actionInfo = _$ResendConfirmationControllerBaseActionController
-        .startAction(name: 'ResendConfirmationControllerBase.validateCpf');
+        .startAction(name: 'ResendConfirmationControllerBase.validateEmail');
     try {
-      return super.validateCpf(value);
+      return super.validateEmail(value);
     } finally {
       _$ResendConfirmationControllerBaseActionController
           .endAction(_$actionInfo);
@@ -159,7 +159,7 @@ mixin _$ResendConfirmationController
 isLoading: ${isLoading},
 emailSent: ${emailSent},
 errors: ${errors},
-cpf: ${cpf},
+email: ${email},
 successRegistration: ${successRegistration}
     ''';
   }

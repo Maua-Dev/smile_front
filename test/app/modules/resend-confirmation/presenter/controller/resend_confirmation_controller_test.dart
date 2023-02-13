@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
 import 'package:smile_front/app/modules/resend-confirmation/domain/repository/resend_confirmation_datasource_interface.dart';
 import 'package:smile_front/app/modules/resend-confirmation/presenter/controller/resend_confirmation_controller.dart';
-import 'package:smile_front/app/modules/resend-confirmation/usecases/resend_confirmation.dart';
+import 'package:smile_front/app/modules/resend-confirmation/domain/usecases/resend_confirmation.dart';
 
 import 'resend_confirmation_controller_test.mocks.dart';
 
@@ -36,7 +36,7 @@ void main() {
   test('setCpf', () {
     var str = '1.2-3';
     controller.setCpf(str);
-    expect(controller.cpf, '123');
+    expect(controller.email, '123');
   });
 
   test('setIsLoading', () {

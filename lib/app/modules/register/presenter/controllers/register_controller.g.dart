@@ -152,22 +152,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$cpfAtom =
-      Atom(name: 'RegisterControllerBase.cpf', context: context);
-
-  @override
-  String get cpf {
-    _$cpfAtom.reportRead();
-    return super.cpf;
-  }
-
-  @override
-  set cpf(String value) {
-    _$cpfAtom.reportWrite(value, super.cpf, () {
-      super.cpf = value;
-    });
-  }
-
   late final _$emailAtom =
       Atom(name: 'RegisterControllerBase.email', context: context);
 
@@ -462,14 +446,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     return _$setSocialNameAsyncAction.run(() => super.setSocialName(value));
   }
 
-  late final _$setCpfAsyncAction =
-      AsyncAction('RegisterControllerBase.setCpf', context: context);
-
-  @override
-  Future<void> setCpf(String value) {
-    return _$setCpfAsyncAction.run(() => super.setCpf(value));
-  }
-
   late final _$setEmailAsyncAction =
       AsyncAction('RegisterControllerBase.setEmail', context: context);
 
@@ -608,17 +584,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   }
 
   @override
-  String? validateCpf(String? value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.validateCpf');
-    try {
-      return super.validateCpf(value);
-    } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String? validatePhone(String? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validatePhone');
@@ -717,7 +682,6 @@ successRegistration: ${successRegistration},
 name: ${name},
 socialName: ${socialName},
 hasSocialName: ${hasSocialName},
-cpf: ${cpf},
 email: ${email},
 verifyEmail: ${verifyEmail},
 phone: ${phone},

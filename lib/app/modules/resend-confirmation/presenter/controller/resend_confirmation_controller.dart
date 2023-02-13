@@ -1,4 +1,4 @@
-import 'package:cpf_cnpj_validator/cpf_validator.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
@@ -6,7 +6,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/error/error_snackbar.dart';
 import '../../external/errors.dart';
-import '../../usecases/resend_confirmation.dart';
+import '../../domain/usecases/resend_confirmation.dart';
 
 part 'resend_confirmation_controller.g.dart';
 
@@ -28,7 +28,7 @@ abstract class ResendConfirmationControllerBase with Store {
   String errors = '';
 
   @observable
-  String cpf = '';
+  String email = '';
 
   @observable
   bool successRegistration = false;
@@ -40,7 +40,7 @@ abstract class ResendConfirmationControllerBase with Store {
 
   @action
   Future<void> setCpf(String value) async {
-    cpf = value.replaceAll('.', '').replaceAll('-', '');
+    email = value.replaceAll('.', '').replaceAll('-', '');
   }
 
   @action
@@ -53,7 +53,7 @@ abstract class ResendConfirmationControllerBase with Store {
     setIsLoading(true);
     errors = '';
     try {
-      await resendUserConfirmation(cpf);
+      await resendUserConfirmation(email);
       emailSent = true;
     } on Failure catch (e) {
       if (scaffold.context.size!.width <= 1024) {
@@ -71,13 +71,11 @@ abstract class ResendConfirmationControllerBase with Store {
   }
 
   @action
-  String? validateCpf(String? value) {
+  String? validateEmail(String? value) {
     if (value!.isEmpty) {
       return S.current.fieldRequired;
-    } else if (!CPFValidator.isValid(value)) {
-      value = value.replaceAll('.', '');
-      value = value.replaceAll('-', '');
-      return S.current.fieldCpfInvalid;
+    } else if (!EmailValidator.validate(value)) {
+      return S.current.fieldEmailInvalid;
     }
     return null;
   }

@@ -8,21 +8,28 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
-import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
 
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../setup_firebase_mocks.dart';
-import '../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
+import 'login_controller_test.mocks.dart';
 
-@GenerateMocks([ActivitiesRepositoryInterface, FirebaseAnalyticsService])
+@GenerateMocks([
+  ActivitiesRepositoryInterface,
+  FirebaseAnalyticsService,
+  RefreshTokenInterface,
+  SecureStorageInterface,
+  LoginWithEmailInterface
+])
 void main() {
   initModule(AppModule());
   setupCloudFirestoreMocks();
-  MockLoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
+  LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   SecureStorageInterface storage = MockSecureStorageInterface();
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
@@ -34,10 +41,11 @@ void main() {
     await Firebase.initializeApp();
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
     authController = AuthController(
-        refreshToken: refreshToken,
-        storage: storage,
-        analytics: analytics,
-        loginWithCpfRne: loginWithCpfRne);
+      refreshToken: refreshToken,
+      storage: storage,
+      analytics: analytics,
+      loginWithEmail: loginWithEmail,
+    );
     controller =
         LoginController(authController: authController, analytics: analytics);
   });
@@ -45,13 +53,7 @@ void main() {
   test('setUsername if contains @ and Upper Case : email', () {
     var email = 'G@gmail.com';
     controller.setUsername(email);
-    expect(controller.cpfRne, email.toLowerCase());
-  });
-
-  test('setUsername if contains "." and "-" : cpf', () {
-    var email = '1.2-3';
-    controller.setUsername(email);
-    expect(controller.cpfRne, '123');
+    expect(controller.email, email.toLowerCase());
   });
 
   test('setPassword', () {
@@ -66,15 +68,15 @@ void main() {
   });
 
   test('validateCpf if contains @', () {
-    expect(controller.validateCpf('g@gmail.com'), null);
+    expect(controller.validateEmail('g@gmail.com'), null);
   });
 
   test('validateCpf if is empty : String Error Message', () {
-    expect(controller.validateCpf(''), isA<String>());
+    expect(controller.validateEmail(''), isA<String>());
   });
 
   test('validateCpf if CPF is valid : String Error Message', () {
-    expect(controller.validateCpf('123.456.678-9'), isA<String>());
+    expect(controller.validateEmail('123.456.678-9'), isA<String>());
   });
 
   test('validateField if is empty : String Error Message', () {

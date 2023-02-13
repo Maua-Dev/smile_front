@@ -1,7 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
-import 'package:smile_front/app/modules/register/usecases/register_user.dart';
+import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
 import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/generated/l10n.dart';
@@ -11,7 +11,6 @@ import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../external/errors/errors.dart';
-import 'package:cpf_cnpj_validator/cpf_validator.dart';
 part 'register_controller.g.dart';
 
 class RegisterController = RegisterControllerBase with _$RegisterController;
@@ -54,9 +53,6 @@ abstract class RegisterControllerBase with Store {
 
   @observable
   bool hasSocialName = false;
-
-  @observable
-  String cpf = '';
 
   @observable
   String email = '';
@@ -149,25 +145,6 @@ abstract class RegisterControllerBase with Store {
   String? validateSocialName(String? value) {
     if (hasSocialName && value!.isEmpty) {
       return S.current.fieldRequired;
-    }
-    return null;
-  }
-
-  @action
-  Future<void> setCpf(String value) async {
-    value = value.replaceAll('.', '');
-    value = value.replaceAll('-', '');
-    cpf = value;
-  }
-
-  @action
-  String? validateCpf(String? value) {
-    if (value!.isEmpty) {
-      return S.current.fieldRequired;
-    } else if (!CPFValidator.isValid(value)) {
-      value = value.replaceAll('.', '');
-      value = value.replaceAll('-', '');
-      return S.current.fieldCpfInvalid;
     }
     return null;
   }

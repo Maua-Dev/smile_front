@@ -14,7 +14,6 @@ class InputBoxWidget extends StatelessWidget {
   final Function(String)? onFieldSubmitted;
   final void Function(bool)? onToggleVisibilityPwd;
   final bool? showPwd;
-  final bool? isCpfField;
   final bool? isRAField;
   final bool? isValidated;
   final PhoneNumber number = PhoneNumber(isoCode: 'BR');
@@ -30,7 +29,6 @@ class InputBoxWidget extends StatelessWidget {
     required this.setValue,
     this.onToggleVisibilityPwd,
     this.showPwd,
-    this.isCpfField,
     this.isRAField,
     this.isValidated,
     this.onFieldSubmitted,
@@ -38,8 +36,6 @@ class InputBoxWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final maskCpf = MaskTextInputFormatter(
-        mask: "###.###.###-##", filter: {"#": RegExp(r'[0-9]')});
     final maskRA = MaskTextInputFormatter(
         mask: "##.#####-#", filter: {"#": RegExp(r'[0-9]')});
 
@@ -97,11 +93,7 @@ class InputBoxWidget extends StatelessWidget {
                     )
                   : null),
           style: const TextStyle(color: Colors.white),
-          inputFormatters: isCpfField != null
-              ? [maskCpf]
-              : isRAField != null
-                  ? [maskRA]
-                  : null),
+          inputFormatters: isRAField != null ? [maskRA] : null),
     );
   }
 }

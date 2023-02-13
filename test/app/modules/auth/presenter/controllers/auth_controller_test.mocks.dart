@@ -9,9 +9,9 @@ import 'package:firebase_analytics/firebase_analytics.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
     as _i4;
-import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart'
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart'
     as _i8;
-import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart'
+import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
     as _i7;
 import 'package:smile_front/app/shared/models/user_model.dart' as _i3;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
@@ -303,12 +303,12 @@ class MockRefreshTokenInterface extends _i1.Mock
       ) as _i5.Future<Map<String, dynamic>>);
 }
 
-/// A class which mocks [LoginWithCpfRneInterface].
+/// A class which mocks [LoginWithEmailInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLoginWithCpfRneInterface extends _i1.Mock
-    implements _i8.LoginWithCpfRneInterface {
-  MockLoginWithCpfRneInterface() {
+class MockLoginWithEmailInterface extends _i1.Mock
+    implements _i8.LoginWithEmailInterface {
+  MockLoginWithEmailInterface() {
     _i1.throwOnMissingStub(this);
   }
 

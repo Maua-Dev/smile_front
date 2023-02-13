@@ -19,10 +19,4 @@ class AuthRepositoryImpl extends AuthRepositoryInterface {
     final response = await datasource.refreshToken(token);
     return Future.value(response);
   }
-
-  @override
-  Future<String> getAccessLevel(String user) async {
-    final response = await datasource.getAccessLevel(user);
-    return Future.value(response);
-  }
 }

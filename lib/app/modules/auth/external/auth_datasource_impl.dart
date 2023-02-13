@@ -3,7 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/services/environment/environment_config.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-import '../../../shared/entities/infra/access_level_enum.dart';
 import '../../../shared/models/user_model.dart';
 import '../domain/repositories/secure_storage_interface.dart';
 import '../errors/errors.dart';
@@ -14,24 +13,9 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
   final SecureStorageInterface storage;
 
   AuthDatasourceImpl({required this.dioClient, required this.storage});
-  @override
-  Future<String> getAccessLevel(cpfRne) async {
-    try {
-      final res = await dioClient.get(
-        '/user/$cpfRne',
-      );
-      if (res.statusCode == 200) {
-        var user = UserModel.fromMap(res.data);
-        return AccessLevelEnumExtension.enumToStringMap(user.accessLevel);
-      }
-      throw Exception();
-    } catch (e) {
-      rethrow;
-    }
-  }
 
   @override
-  Future<UserModel> login(cpfRne, password) async {
+  Future<UserModel> login(email, password) async {
     BaseOptions options = BaseOptions(
       baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
       responseType: ResponseType.json,
@@ -41,7 +25,7 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
     Dio dio = Dio(options);
     try {
       final res = await dio.post('/login-user', data: {
-        'login': cpfRne,
+        'login': email,
         'password': password,
       });
       if (res.statusCode == 200) {

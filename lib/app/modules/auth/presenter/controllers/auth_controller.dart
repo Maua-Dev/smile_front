@@ -1,12 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
-import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
-import '../../usecases/refresh_token.dart';
+import '../../domain/usecases/refresh_token.dart';
 
 class AuthController {
   final RefreshTokenInterface refreshToken;
-  final LoginWithCpfRneInterface loginWithCpfRne;
+  final LoginWithEmailInterface loginWithEmail;
   final SecureStorageInterface storage;
   final FirebaseAnalyticsService analytics;
   bool _loggedIn = false;
@@ -20,7 +20,7 @@ class AuthController {
     required this.analytics,
     required this.storage,
     required this.refreshToken,
-    required this.loginWithCpfRne,
+    required this.loginWithEmail,
   });
 
   bool get isLogged => _loggedIn;
@@ -30,8 +30,8 @@ class AuthController {
   String get id => _id ?? '';
   bool get certificateWithSocialName => _certificateWithSocialName ?? false;
 
-  Future<void> loginWithUserCpfRne(String cpfRne, String password) async {
-    var loginResponse = await loginWithCpfRne(cpfRne, password);
+  Future<void> loginWithUserEmail(String email, String password) async {
+    var loginResponse = await loginWithEmail(email, password);
     _accessLevel = loginResponse.accessLevel.name;
     _name = loginResponse.name;
     _socialname = loginResponse.socialName;

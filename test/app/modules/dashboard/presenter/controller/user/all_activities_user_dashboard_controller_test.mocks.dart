@@ -9,9 +9,9 @@ import 'package:mobx/mobx.dart' as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
     as _i4;
-import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart'
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart'
     as _i15;
-import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart'
+import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
     as _i14;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i10;
@@ -651,12 +651,12 @@ class MockRefreshTokenInterface extends _i1.Mock
       ) as _i11.Future<Map<String, dynamic>>);
 }
 
-/// A class which mocks [LoginWithCpfRneInterface].
+/// A class which mocks [LoginWithEmailInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLoginWithCpfRneInterface extends _i1.Mock
-    implements _i15.LoginWithCpfRneInterface {
-  MockLoginWithCpfRneInterface() {
+class MockLoginWithEmailInterface extends _i1.Mock
+    implements _i15.LoginWithEmailInterface {
+  MockLoginWithEmailInterface() {
     _i1.throwOnMissingStub(this);
   }
 

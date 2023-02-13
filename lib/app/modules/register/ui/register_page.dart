@@ -165,16 +165,6 @@ class _RegisterPageState
                           height: 20,
                         ),
                         InputBoxWidget(
-                          icon: Icons.person,
-                          placeholder: S.of(context).registerCPFPlaceholder,
-                          setValue: controller.setCpf,
-                          isCpfField: true,
-                          validation: controller.validateCpf,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        InputBoxWidget(
                           icon: Icons.email_rounded,
                           placeholder: S.of(context).registerEmailPlaceholder,
                           setValue: controller.setEmail,
@@ -338,45 +328,36 @@ class _RegisterPageState
                         const SizedBox(
                           height: 8,
                         ),
-                        Observer(builder: (_) {
-                          return SwitchToggleWidget(
-                            tipo: S.of(context).notificationsSchema('email'),
+                        SwitchToggleWidget(
+                          tipo: S.of(context).notificationsSchema('email'),
+                          onChanged: (bool? value) {
+                            controller.setEmailNotifications(value);
+                          },
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        SwitchToggleWidget(
+                            tipo: S.of(context).notificationsSchema('sms'),
                             onChanged: (bool? value) {
-                              controller.setEmailNotifications(value);
-                            },
-                          );
-                        }),
+                              controller.setSMSNotifications(value);
+                            }),
                         const SizedBox(
                           height: 16,
                         ),
-                        Observer(builder: (_) {
-                          return SwitchToggleWidget(
-                              tipo: S.of(context).notificationsSchema('sms'),
-                              onChanged: (bool? value) {
-                                controller.setSMSNotifications(value);
-                              });
-                        }),
+                        SwitchToggleWidget(
+                            tipo: S.of(context).notificationsSchema('whatsapp'),
+                            onChanged: (bool? value) {
+                              controller.setWPPNotifications(value);
+                            }),
                         const SizedBox(
                           height: 16,
                         ),
-                        Observer(builder: (_) {
-                          return SwitchToggleWidget(
-                              tipo:
-                                  S.of(context).notificationsSchema('whatsapp'),
-                              onChanged: (bool? value) {
-                                controller.setWPPNotifications(value);
-                              });
-                        }),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Observer(builder: (_) {
-                          return SwitchToggleWidget(
-                              tipo: S.of(context).notificationsSchema('app'),
-                              onChanged: (bool? value) {
-                                controller.setAPPWEBNotifications(value);
-                              });
-                        }),
+                        SwitchToggleWidget(
+                            tipo: S.of(context).notificationsSchema('app'),
+                            onChanged: (bool? value) {
+                              controller.setAPPWEBNotifications(value);
+                            }),
                         const SizedBox(
                           height: 30,
                         ),

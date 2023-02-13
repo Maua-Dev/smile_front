@@ -114,7 +114,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           icon: Icons.person,
                           placeholder: S.of(context).loginUsernamePlaceholder,
                           setValue: controller.setUsername,
-                          validation: controller.validateCpf,
+                          validation: controller.validateEmail,
                         ),
                         const SizedBox(
                           height: 20,

@@ -8,7 +8,7 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart'
     as _i2;
-import 'package:smile_front/app/modules/register/usecases/register_user.dart'
+import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart'
     as _i5;
 import 'package:smile_front/app/shared/entities/user_registration.dart' as _i4;
 

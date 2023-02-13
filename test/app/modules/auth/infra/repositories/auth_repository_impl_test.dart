@@ -14,8 +14,6 @@ void main() {
   late AuthRepositoryImpl authRepository;
   AuthDatasourceInterface datasource = MockAuthDatasourceInterface();
 
-  var accessLevel = '';
-
   UserModel userMock = UserModel(
     socialName: '',
     accessLevel: AccessLevelEnum.USER,
@@ -34,7 +32,6 @@ void main() {
   setUpAll(() {
     when(datasource.login('', '')).thenAnswer((_) async => userMock);
     when(datasource.refreshToken('')).thenAnswer((_) async => {});
-    when(datasource.getAccessLevel('')).thenAnswer((_) async => accessLevel);
     authRepository = AuthRepositoryImpl(datasource: datasource);
   });
 
@@ -46,10 +43,5 @@ void main() {
   test('refreshToken', () async {
     var response = await authRepository.refreshToken('');
     expect(response, {});
-  });
-
-  test('getAccessLevel', () async {
-    var response = await authRepository.getAccessLevel('');
-    expect(response, accessLevel);
   });
 }

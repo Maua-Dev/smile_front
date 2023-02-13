@@ -41,14 +41,6 @@ class MockAuthDatasourceInterface extends _i1.Mock
   }
 
   @override
-  _i4.Future<String> getAccessLevel(String? user) => (super.noSuchMethod(
-        Invocation.method(
-          #getAccessLevel,
-          [user],
-        ),
-        returnValue: _i4.Future<String>.value(''),
-      ) as _i4.Future<String>);
-  @override
   _i4.Future<_i2.UserModel> login(
     String? user,
     String? password,

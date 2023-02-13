@@ -4,8 +4,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
-import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
-import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
 import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/models/user_model.dart';
@@ -18,13 +18,13 @@ import 'auth_controller_test.mocks.dart';
   SecureStorageInterface,
   FirebaseAnalyticsService,
   RefreshTokenInterface,
-  LoginWithCpfRneInterface,
+  LoginWithEmailInterface,
 ])
 void main() {
   setupCloudFirestoreMocks();
   SecureStorageInterface storage = MockSecureStorageInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
-  LoginWithCpfRneInterface loginUseCase = MockLoginWithCpfRneInterface();
+  LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
   late AuthController controller;
 
@@ -48,7 +48,7 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
-    when(loginUseCase(emailMock, pwMock)).thenAnswer((_) async => userMock);
+    when(loginWithEmail(emailMock, pwMock)).thenAnswer((_) async => userMock);
     when(analytics.setUserProperties('')).thenAnswer((_) async => null);
     when(storage.getAccessLevel()).thenAnswer((_) async => 'USER');
     when(storage.getId()).thenAnswer((_) async => '');
@@ -59,12 +59,12 @@ void main() {
       refreshToken: refreshToken,
       storage: storage,
       analytics: analytics,
-      loginWithCpfRne: loginUseCase,
+      loginWithEmail: loginWithEmail,
     );
   });
 
   test('loginWithCpfRne', () async {
-    await controller.loginWithUserCpfRne(emailMock, pwMock);
+    await controller.loginWithUserEmail(emailMock, pwMock);
     expect(controller.accessLevel, userMock.accessLevel);
     expect(controller.name, userMock.name);
     expect(controller.socialname, userMock.socialName);

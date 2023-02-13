@@ -1,15 +1,15 @@
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 
-import '../../../shared/models/user_model.dart';
+import '../../../../shared/models/user_model.dart';
 
-abstract class LoginWithCpfRneInterface {
+abstract class LoginWithEmailInterface {
   Future<UserModel> call(String user, String password);
 }
 
-class LoginWithCpfRne implements LoginWithCpfRneInterface {
+class LoginWithEmail implements LoginWithEmailInterface {
   final AuthRepositoryInterface authRepository;
 
-  LoginWithCpfRne({required this.authRepository});
+  LoginWithEmail({required this.authRepository});
 
   @override
   Future<UserModel> call(String user, String password) async {
