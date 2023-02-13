@@ -9,10 +9,10 @@ part of 'register_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$RegisterController on RegisterControllerBase, Store {
-  Computed<int?>? _$raIntComputed;
+  Computed<String?>? _$raIntComputed;
 
   @override
-  int? get raInt => (_$raIntComputed ??= Computed<int?>(() => super.raInt,
+  String? get raInt => (_$raIntComputed ??= Computed<String?>(() => super.raInt,
           name: 'RegisterControllerBase.raInt'))
       .value;
   Computed<UserRegistration>? _$registerInformationsComputed;

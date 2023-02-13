@@ -2,6 +2,8 @@ import 'package:email_validator/email_validator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 import 'package:smile_front/app/modules/register/usecases/register_user.dart';
+import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/entities/user_registration.dart';
@@ -25,10 +27,9 @@ abstract class RegisterControllerBase with Store {
       required this.registerUser});
 
   @computed
-  int? get raInt => ra == ''
+  String? get raInt => ra == ''
       ? null
-      : int.parse(
-          ra.replaceAll('-', '').replaceAll('.', '').replaceAll(' ', ''));
+      : ra.replaceAll('-', '').replaceAll('.', '').replaceAll(' ', '');
 
   @observable
   String errors = '';
@@ -299,16 +300,18 @@ abstract class RegisterControllerBase with Store {
         name: name,
         socialName: socialName == "" ? null : socialName,
         email: email,
-        cpfRne: cpf,
         ra: raInt,
         password: password,
-        acceptEmails: canSendEmails,
         acceptTerms: acceptTermsOfUse,
-        phoneNumber: phone,
+        phone: phone,
         acceptEmailNotifications: acceptEmailNotifications,
         acceptSMSNotifications: acceptSMSNotifications,
         acceptWPPNotifications: acceptWPPNotifications,
         acceptAPPWEBNotifications: acceptAPPWEBNotifications,
+        accessLevel: AccessLevelEnum.USER,
+        certificateWithSocialName: hasSocialName,
+        typeRole:
+            isMauaStudent ? UserRolesEnum.student : UserRolesEnum.external,
       );
 
   @action
