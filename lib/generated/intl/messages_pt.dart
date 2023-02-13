@@ -238,6 +238,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
+        "activity": MessageLookupByLibrary.simpleMessage("Atividade"),
         "activityAcceptSbscriptions":
             MessageLookupByLibrary.simpleMessage("Aceitar inscrições"),
         "activityCreateTitle":
@@ -249,8 +250,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "activityErrorClosureDateAfterStartDate":
             MessageLookupByLibrary.simpleMessage(
                 "A data de fechamento das inscrições deve ser antes da data da atividade"),
-        "activityInscriptionClosure":
-            MessageLookupByLibrary.simpleMessage("Fechamento das Inscrições"),
+        "activityInscriptionClosureDate": MessageLookupByLibrary.simpleMessage(
+            "Fechamento das Inscrições (Data)"),
+        "activityInscriptionClosureHour": MessageLookupByLibrary.simpleMessage(
+            "Fechamento das Inscrições (Hora)"),
         "activityNameTitle":
             MessageLookupByLibrary.simpleMessage("Titulo da Atividade"),
         "activityResponsibleTeacher":

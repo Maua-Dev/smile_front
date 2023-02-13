@@ -13,7 +13,8 @@ class ScheduleWidget extends StatelessWidget {
   final void Function(String value)? onChangedParticipants;
   final void Function(String)? onChangedDate;
   final void Function(String)? onChangedHour;
-  final void Function(String)? onChangedClosure;
+  final void Function(String)? onChangedClosureDate;
+  final void Function(String)? onChangedClosureHour;
   final void Function(DeliveryEnum?)? onChangedModality;
   final void Function(String value)? onChangedDuration;
   final void Function(String value)? onChangedLocation;
@@ -34,7 +35,8 @@ class ScheduleWidget extends StatelessWidget {
   final String? link;
   final String? location;
   final int length;
-  final String? closeInscriptions;
+  final String? closeInscriptionsDate;
+  final String? closeInscriptionsHour;
   final String? professorName;
 
   const ScheduleWidget({
@@ -58,10 +60,12 @@ class ScheduleWidget extends StatelessWidget {
     this.onPressedIconTime,
     this.enableSubscription,
     this.onChangedEnableSubscription,
-    this.closeInscriptions,
+    this.closeInscriptionsDate,
+    this.closeInscriptionsHour,
     this.professorName,
     this.onChangedProfessor,
-    this.onChangedClosure,
+    this.onChangedClosureDate,
+    this.onChangedClosureHour,
     this.onChangedModality,
     this.modality,
     this.validateRequiredField,
@@ -153,31 +157,28 @@ class ScheduleWidget extends StatelessWidget {
                   ))
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: TextFieldDialogWidget(
-                        labelText: 'Link',
-                        value: link,
-                        onChanged: onChangedLink,
-                        padding: false,
-                      ),
+              Row(
+                children: [
+                  Flexible(
+                    child: TextFieldDialogWidget(
+                      labelText: 'Link',
+                      value: link,
+                      onChanged: onChangedLink,
+                      padding: false,
                     ),
-                    const SizedBox(
-                      width: 16,
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Flexible(
+                    child: TextFieldDialogWidget(
+                      labelText: 'Local',
+                      value: location,
+                      onChanged: onChangedLocation,
+                      padding: false,
                     ),
-                    Flexible(
-                      child: TextFieldDialogWidget(
-                        labelText: 'Local',
-                        value: location,
-                        onChanged: onChangedLocation,
-                        padding: false,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -198,10 +199,13 @@ class ScheduleWidget extends StatelessWidget {
                     Flexible(
                       child: TextFieldDialogWidget(
                           validator: isValidDate,
-                          labelText: S.of(context).activityInscriptionClosure,
+                          labelText:
+                              S.of(context).activityInscriptionClosureDate,
                           hintText: 'DD/MM/AAAA',
-                          onChanged: onChangedClosure,
-                          value: closeInscriptions ?? '',
+                          onChanged: (text) {
+                            onChangedClosureDate;
+                          },
+                          value: closeInscriptionsDate ?? '',
                           padding: false,
                           inputFormatters: [
                             MaskTextInputFormatter(
@@ -209,10 +213,28 @@ class ScheduleWidget extends StatelessWidget {
                             )
                           ]),
                     ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Flexible(
+                      child: TextFieldDialogWidget(
+                          validator: isValidDate,
+                          labelText:
+                              S.of(context).activityInscriptionClosureHour,
+                          hintText: 'HH:MM',
+                          onChanged: onChangedClosureHour,
+                          value: closeInscriptionsHour ?? '',
+                          padding: false,
+                          inputFormatters: [
+                            MaskTextInputFormatter(
+                              mask: '##:##',
+                            )
+                          ]),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0),
                       child: SizedBox(
-                        width: Screen.width(context) * 0.25,
+                        width: Screen.width(context) * 0.18,
                         child: DropDownFieldCustom<DeliveryEnum>(
                           textStyles: AppTextStyles.body.copyWith(
                               color: AppColors.brandingBlue,

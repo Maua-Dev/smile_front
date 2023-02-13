@@ -92,7 +92,7 @@ abstract class CreateActivityControllerBase with Store {
   /// * Hybrid
   @action
   void setModality(DeliveryEnum? value) {
-    activityToCreate = activityToCreate.copyWith(deliveryEnum: value);
+    activityToCreate.deliveryEnum = value;
   }
 
   ///A function that changes the boolean variable isExtensive.
@@ -105,19 +105,19 @@ abstract class CreateActivityControllerBase with Store {
   ///Sets the activity CODE.
   @action
   void setActivityCode(String value) {
-    activityToCreate = activityToCreate.copyWith(activityCode: value);
+    activityToCreate.activityCode = value;
   }
 
   ///Sets the TITLE of the activity.
   @action
   void setTitle(String value) {
-    activityToCreate = activityToCreate.copyWith(title: value);
+    activityToCreate.title = value;
   }
 
   ///Sets the DESCRIPTION of the activity.
   @action
   void setDescription(String value) {
-    activityToCreate = activityToCreate.copyWith(description: value);
+    activityToCreate.description = value;
   }
 
   ///Sets the LOCATION in which the activity will occur.
@@ -179,25 +179,26 @@ abstract class CreateActivityControllerBase with Store {
   @action
   void setClosureHour(String value) {
     if (value.length > 4) {
-      var date = activityToCreate.startDate != null
-          ? DateFormat('yyyy/MM/dd').format(activityToCreate.startDate!)
+      var date = activityToCreate.stopAcceptingNewEnrollmentsBefore != null
+          ? DateFormat('yyyy/MM/dd')
+              .format(activityToCreate.stopAcceptingNewEnrollmentsBefore!)
           : '0000/00/00';
       var hour = DateTime.parse("$date $value");
-      activityToCreate = activityToCreate.copyWith(startDate: hour);
+      activityToCreate =
+          activityToCreate.copyWith(stopAcceptingNewEnrollmentsBefore: hour);
     }
   }
 
   ///Sets the event duration, in minutes.
   @action
   void setDuration(String value) {
-    var duration = int.parse(value);
-    activityToCreate = activityToCreate.copyWith(duration: duration);
+    activityToCreate.duration = int.parse(value);
   }
 
   ///Sets the number of participants of the event.
   @action
-  void setParticipants(int value) {
-    activityToCreate = activityToCreate.copyWith(totalSlots: value);
+  void setParticipants(String value) {
+    activityToCreate.totalSlots = int.parse(value);
   }
 
   ///A function that changes the variable acceptingNewEnrollments,

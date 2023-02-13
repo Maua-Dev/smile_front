@@ -88,7 +88,7 @@ void main() {
   });
 
   test('setParticipants', () {
-    var str = 1;
+    var str = "1";
     controller.setParticipants(str);
     expect(controller.activityToCreate.totalSlots, str);
   });

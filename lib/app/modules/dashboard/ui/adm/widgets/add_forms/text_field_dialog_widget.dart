@@ -44,7 +44,7 @@ class TextFieldDialogWidget extends StatelessWidget {
               ),
             ),
             Container(
-              height: 70,
+              height: 72,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
               ),

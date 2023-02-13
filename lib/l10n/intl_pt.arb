@@ -159,6 +159,7 @@
     
     "cleanFiltersTitle": "Limpar Filtros",
 
+    "activity": "Atividade",
     "activityCreateTitle": "Criar Atividade",
     "activityEditTitle": "Editar Atividade",
     "activityTypeTitle": "Tipo de Atividade",
@@ -167,7 +168,8 @@
     "activityVacancyNumber": "Número de Vagas",  
     "activityAcceptSbscriptions": "Aceitar inscrições",
     "activityResponsibleTeacher": "Professor Responsável",
-    "activityInscriptionClosure": "Fechamento das Inscrições",
+    "activityInscriptionClosureDate": "Fechamento das Inscrições (Data)",
+    "activityInscriptionClosureHour": "Fechamento das Inscrições (Hora)",
     "activityErrorClosureDateAfterStartDate": "A data de fechamento das inscrições deve ser antes da data da atividade",
 
     "descriptionTitle": "Descrição",

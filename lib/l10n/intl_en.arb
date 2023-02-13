@@ -159,6 +159,7 @@
 
     "cleanFiltersTitle": "Clean Filters",
 
+    "activity": "Activity",
     "activityCreateTitle": "Create Activity",
     "activityEditTitle": "Edit Activity",
     "activityTypeTitle": "Activity Type",
@@ -167,7 +168,8 @@
     "activityVacancyNumber": "Number of Vanacies",
     "activityAcceptSbscriptions": "Accept Subscriptions",
     "activityResponsibleTeacher": "Responsible Teacher",
-    "activityInscriptionClosure": "Inscription Closure",
+    "activityInscriptionClosureDate": "Inscription Closure (Date)",
+    "activityInscriptionClosureHour": "Inscription Closure (Hour)",
     "activityErrorClosureDateAfterStartDate": "The inscription closure date must be before the event date",
 
     "descriptionTitle": "Description",

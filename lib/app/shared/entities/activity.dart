@@ -4,17 +4,17 @@ import '../models/responsible_professor_model.dart';
 import 'infra/delivery_enum.dart';
 
 class Activity {
-  final String activityCode;
+  late final String activityCode;
   final ActivityEnum? type;
-  final String title;
-  final String description;
-  final bool isExtensive;
-  final DeliveryEnum? deliveryEnum;
+  late final String title;
+  late final String description;
+  late final bool isExtensive;
+  late final DeliveryEnum? deliveryEnum;
   final DateTime? startDate;
-  final int? duration;
+  late final int? duration;
   String? place;
   String? link;
-  final int? totalSlots;
+  late final int? totalSlots;
   final int takenSlots;
   final bool acceptingNewEnrollments;
   final DateTime? stopAcceptingNewEnrollmentsBefore;

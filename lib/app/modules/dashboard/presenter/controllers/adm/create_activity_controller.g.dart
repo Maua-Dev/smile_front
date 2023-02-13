@@ -230,7 +230,7 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
-  void setParticipants(int value) {
+  void setParticipants(String value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.setParticipants');
     try {

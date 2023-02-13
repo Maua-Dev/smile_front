@@ -1397,6 +1397,16 @@ class S {
     );
   }
 
+  /// `Activity`
+  String get activity {
+    return Intl.message(
+      'Activity',
+      name: 'activity',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Create Activity`
   String get activityCreateTitle {
     return Intl.message(
@@ -1477,11 +1487,21 @@ class S {
     );
   }
 
-  /// `Inscription Closure`
-  String get activityInscriptionClosure {
+  /// `Inscription Closure (Date)`
+  String get activityInscriptionClosureDate {
     return Intl.message(
-      'Inscription Closure',
-      name: 'activityInscriptionClosure',
+      'Inscription Closure (Date)',
+      name: 'activityInscriptionClosureDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inscription Closure (Hour)`
+  String get activityInscriptionClosureHour {
+    return Intl.message(
+      'Inscription Closure (Hour)',
+      name: 'activityInscriptionClosureHour',
       desc: '',
       args: [],
     );

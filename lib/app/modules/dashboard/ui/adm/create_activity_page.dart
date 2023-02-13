@@ -66,7 +66,7 @@ class _CreateActivityPageState
                                             ? 16
                                             : 20),
                                 filledColor: Colors.white,
-                                titulo: S.of(context).activityTypeTitle,
+                                titulo: S.of(context).activity,
                                 value: controller.activityToCreate.type,
                                 items: ActivityEnum.values
                                     .toList()
@@ -103,14 +103,17 @@ class _CreateActivityPageState
                               onChanged: controller.setTitle,
                               value: controller.activityToCreate.title,
                             )),
-                            ExtensiveActivityCheck(
-                              onChanged: (() {
-                                setState(() {
-                                  controller.setIsExtensive();
-                                });
-                              }),
-                              isExtensive:
-                                  controller.activityToCreate.isExtensive,
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 24.0),
+                              child: ExtensiveActivityCheck(
+                                onChanged: (() {
+                                  setState(() {
+                                    controller.setIsExtensive();
+                                  });
+                                }),
+                                isExtensive:
+                                    controller.activityToCreate.isExtensive,
+                              ),
                             )
                           ],
                         ),
@@ -129,6 +132,13 @@ class _CreateActivityPageState
                             : DateFormat('dd/MM/yyyy').format(controller
                                 .activityToCreate
                                 .stopAcceptingNewEnrollmentsBefore!);
+                        var closureHour = controller.activityToCreate
+                                    .stopAcceptingNewEnrollmentsBefore ==
+                                null
+                            ? ''
+                            : DateFormat('HH:mm').format(controller
+                                .activityToCreate
+                                .stopAcceptingNewEnrollmentsBefore!);
                         var hour = controller.activityToCreate.startDate == null
                             ? ''
                             : DateFormat('HH:mm')
@@ -139,9 +149,10 @@ class _CreateActivityPageState
                                 .format(controller.activityToCreate.startDate!);
 
                         return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 114, vertical: 8),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 114),
                             child: ScheduleWidget(
+                              closeInscriptionsHour: closureHour,
                               professorName: controller
                                   .activityToCreate.responsibleProfessor.name,
                               isValidDate: controller.isValidDate,
@@ -149,8 +160,9 @@ class _CreateActivityPageState
                                   controller.validateRequiredField,
                               modality:
                                   controller.activityToCreate.deliveryEnum,
-                              onChangedClosure: controller.setClosureDate,
-                              closeInscriptions: closureDate,
+                              onChangedClosureDate: controller.setClosureDate,
+                              onChangedClosureHour: controller.setClosureHour,
+                              closeInscriptionsDate: closureDate,
                               onChangedModality: controller.setModality,
                               enableSubscription: controller
                                   .activityToCreate.acceptingNewEnrollments,
@@ -183,7 +195,7 @@ class _CreateActivityPageState
                                 controller.setHour(value);
                               },
                               onChangedParticipants: (value) {
-                                controller.setParticipants(int.parse(value));
+                                controller.setParticipants(value);
                               },
                               removeSchedule: () {},
                             ));
@@ -223,8 +235,7 @@ class _CreateActivityPageState
                         );
                       }),
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 114, vertical: 32),
+                        padding: const EdgeInsets.symmetric(horizontal: 114),
                         child: FormsButtonWidget(
                             width: 220,
                             buttonTittle: S.of(context).speakersAddTitle,

@@ -27,14 +27,6 @@ class ExtensiveActivityCheck extends StatelessWidget {
             height: 50,
             width: 125,
             decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    spreadRadius: 1,
-                    blurRadius: 3,
-                    offset: const Offset(5, 5), // changes position of shadow
-                  ),
-                ],
                 color: AppColors.white,
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(width: 1, color: AppColors.brandingBlue)),
