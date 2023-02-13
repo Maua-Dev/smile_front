@@ -188,14 +188,12 @@ class _CreateActivityPageState
                               length: 1,
                               totalParticipants:
                                   controller.activityToCreate.totalSlots,
+                              onChangedParticipants: controller.setParticipants,
                               onChangedDate: (value) {
                                 controller.setDate(value);
                               },
                               onChangedHour: (value) {
                                 controller.setHour(value);
-                              },
-                              onChangedParticipants: (value) {
-                                controller.setParticipants(value);
                               },
                               removeSchedule: () {},
                             ));

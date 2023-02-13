@@ -186,22 +186,22 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
-  void setClosureDate(String value) {
+  void setHour(String value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
-        .startAction(name: 'CreateActivityControllerBase.setClosureDate');
+        .startAction(name: 'CreateActivityControllerBase.setHour');
     try {
-      return super.setClosureDate(value);
+      return super.setHour(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setHour(String value) {
+  void setClosureDate(String value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
-        .startAction(name: 'CreateActivityControllerBase.setHour');
+        .startAction(name: 'CreateActivityControllerBase.setClosureDate');
     try {
-      return super.setHour(value);
+      return super.setClosureDate(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }

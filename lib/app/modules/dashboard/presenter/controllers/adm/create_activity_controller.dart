@@ -139,13 +139,26 @@ abstract class CreateActivityControllerBase with Store {
       var year = value.substring(6, 10);
       var month = value.substring(3, 5);
       var day = value.substring(0, 2);
-      value = '$year/$month/$day';
+      var dateFormated = '$year-$month-$day';
       var hour = activityToCreate.startDate != null
           ? DateFormat('HH:mm').format(activityToCreate.startDate!)
           : '';
-      var date =
-          hour == '' ? DateTime.parse(value) : DateTime.parse("$value $hour");
+      var date = hour.isEmpty
+          ? DateTime.parse(dateFormated)
+          : DateTime.parse("$dateFormated $hour");
       activityToCreate = activityToCreate.copyWith(startDate: date);
+    }
+  }
+
+  ///It sets the HOUR which the activity will occur.
+  @action
+  void setHour(String value) {
+    if (value.length > 4) {
+      var date = activityToCreate.startDate != null
+          ? DateFormat('yyyy-MM-dd').format(activityToCreate.startDate!)
+          : '0000-00-00';
+      var hour = DateTime.parse("$date $value");
+      activityToCreate = activityToCreate.copyWith(startDate: hour);
     }
   }
 
@@ -160,18 +173,6 @@ abstract class CreateActivityControllerBase with Store {
       var date = DateTime.parse(value);
       activityToCreate =
           activityToCreate.copyWith(stopAcceptingNewEnrollmentsBefore: date);
-    }
-  }
-
-  ///It sets the HOUR which the activity will occur.
-  @action
-  void setHour(String value) {
-    if (value.length > 4) {
-      var date = activityToCreate.startDate != null
-          ? DateFormat('yyyy/MM/dd').format(activityToCreate.startDate!)
-          : '0000/00/00';
-      var hour = DateTime.parse("$date $value");
-      activityToCreate = activityToCreate.copyWith(startDate: hour);
     }
   }
 
