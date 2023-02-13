@@ -6,7 +6,7 @@ class RegisterUserInformationsModel extends User {
   RegisterUserInformationsModel({
     required super.email,
     required super.accessLevel,
-    required super.typeRole,
+    required super.role,
     required super.socialName,
     required this.password,
     super.ra,

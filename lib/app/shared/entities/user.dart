@@ -6,7 +6,7 @@ class User {
   final String name;
   final String? socialName;
   final String? ra;
-  final UserRolesEnum typeRole;
+  final UserRolesEnum role;
   final AccessLevelEnum accessLevel;
   final bool certificateWithSocialName;
   final String phone;
@@ -18,7 +18,7 @@ class User {
     required this.phone,
     required this.email,
     required this.accessLevel,
-    required this.typeRole,
+    required this.role,
     required this.socialName,
   });
 }

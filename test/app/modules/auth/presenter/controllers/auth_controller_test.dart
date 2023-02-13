@@ -6,6 +6,9 @@ import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
 import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
 import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
+import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/models/user_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../../setup_firebase_mocks.dart';
@@ -25,24 +28,29 @@ void main() {
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
   late AuthController controller;
 
-  var loginMock = {
-    'access_token': 'token12354',
-    'refresh_token': 'refreshToken342315',
-    'access_level': 'ADMIN',
-    'id': '',
-    'name': 'Test',
-    'social_name': 'Test',
-    'certificate_with_social_name': true
-  };
+  UserModel userMock = UserModel(
+    socialName: '',
+    accessLevel: AccessLevelEnum.USER,
+    email: 'email',
+    role: UserRolesEnum.student,
+    name: 'name',
+    accessToken: 'access_token',
+    idToken: 'id_token',
+    phone: 'phone',
+    refreshToken: 'refresh',
+    userId: 'id',
+    ra: 'ra',
+    certificateWithSocialName: true,
+  );
 
   var emailMock = '';
   var pwMock = '';
 
   setUpAll(() async {
     await Firebase.initializeApp();
-    when(loginUseCase(emailMock, pwMock)).thenAnswer((_) async => loginMock);
+    when(loginUseCase(emailMock, pwMock)).thenAnswer((_) async => userMock);
     when(analytics.setUserProperties('')).thenAnswer((_) async => null);
-    when(storage.getAccessLevel()).thenAnswer((_) async => 'ADMIN');
+    when(storage.getAccessLevel()).thenAnswer((_) async => 'USER');
     when(storage.getId()).thenAnswer((_) async => '');
     when(storage.getAccessToken()).thenAnswer((_) async => 'token12354');
     when(storage.getRefreshToken())
@@ -57,12 +65,12 @@ void main() {
 
   test('loginWithCpfRne', () async {
     await controller.loginWithUserCpfRne(emailMock, pwMock);
-    expect(controller.accessLevel, loginMock['access_level']);
-    expect(controller.name, loginMock['name']);
-    expect(controller.socialname, loginMock['social_name']);
-    expect(controller.id, loginMock['id']);
+    expect(controller.accessLevel, userMock.accessLevel);
+    expect(controller.name, userMock.name);
+    expect(controller.socialname, userMock.socialName);
+    expect(controller.id, userMock.idToken);
     expect(controller.certificateWithSocialName,
-        loginMock['certificate_with_social_name']);
+        userMock.certificateWithSocialName);
     expect(controller.isLogged, true);
   });
 
@@ -74,6 +82,6 @@ void main() {
   test('verifyIfHaveTokens when logged', () async {
     await controller.verifyIfHaveTokens();
     expect(controller.isLogged, true);
-    expect(controller.accessLevel, loginMock['access_level']);
+    expect(controller.accessLevel, userMock.accessLevel);
   });
 }

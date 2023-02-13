@@ -1,5 +1,4 @@
 import 'package:hive_flutter/hive_flutter.dart';
-
 import '../../domain/repositories/secure_storage_interface.dart';
 
 class SecureStorage implements SecureStorageInterface {

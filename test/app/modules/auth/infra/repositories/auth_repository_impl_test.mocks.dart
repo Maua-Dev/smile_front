@@ -3,11 +3,12 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/infra/datasource/auth_datasource_interface.dart'
-    as _i2;
+    as _i3;
+import 'package:smile_front/app/shared/models/user_model.dart' as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -20,25 +21,35 @@ import 'package:smile_front/app/modules/auth/infra/datasource/auth_datasource_in
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeUserModel_0 extends _i1.SmartFake implements _i2.UserModel {
+  _FakeUserModel_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [AuthDatasourceInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthDatasourceInterface extends _i1.Mock
-    implements _i2.AuthDatasourceInterface {
+    implements _i3.AuthDatasourceInterface {
   MockAuthDatasourceInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<String> getAccessLevel(String? user) => (super.noSuchMethod(
+  _i4.Future<String> getAccessLevel(String? user) => (super.noSuchMethod(
         Invocation.method(
           #getAccessLevel,
           [user],
         ),
-        returnValue: _i3.Future<String>.value(''),
-      ) as _i3.Future<String>);
+        returnValue: _i4.Future<String>.value(''),
+      ) as _i4.Future<String>);
   @override
-  _i3.Future<Map<String, dynamic>> login(
+  _i4.Future<_i2.UserModel> login(
     String? user,
     String? password,
   ) =>
@@ -50,17 +61,25 @@ class MockAuthDatasourceInterface extends _i1.Mock
             password,
           ],
         ),
-        returnValue:
-            _i3.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i3.Future<Map<String, dynamic>>);
+        returnValue: _i4.Future<_i2.UserModel>.value(_FakeUserModel_0(
+          this,
+          Invocation.method(
+            #login,
+            [
+              user,
+              password,
+            ],
+          ),
+        )),
+      ) as _i4.Future<_i2.UserModel>);
   @override
-  _i3.Future<Map<String, dynamic>> refreshToken(String? token) =>
+  _i4.Future<Map<String, dynamic>> refreshToken(String? token) =>
       (super.noSuchMethod(
         Invocation.method(
           #refreshToken,
           [token],
         ),
         returnValue:
-            _i3.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i3.Future<Map<String, dynamic>>);
+            _i4.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i4.Future<Map<String, dynamic>>);
 }

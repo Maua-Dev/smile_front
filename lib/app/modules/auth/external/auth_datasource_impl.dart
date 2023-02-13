@@ -31,7 +31,7 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
   }
 
   @override
-  Future<Map<String, dynamic>> login(cpfRne, password) async {
+  Future<UserModel> login(cpfRne, password) async {
     BaseOptions options = BaseOptions(
       baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
       responseType: ResponseType.json,
@@ -46,7 +46,7 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
       });
       if (res.statusCode == 200) {
         var response = res.data;
-        return response;
+        return UserModel.fromMap(response['user']);
       }
       throw Exception();
     } on DioError catch (e) {
@@ -70,7 +70,7 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
       );
       Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
-      final res = await dio.get("/refreshToken");
+      final res = await dio.post("/refreshToken");
       if (res.statusCode == 200) {
         var tokens = res.data;
         return tokens;

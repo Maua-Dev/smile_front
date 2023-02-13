@@ -310,8 +310,7 @@ abstract class RegisterControllerBase with Store {
         acceptAPPWEBNotifications: acceptAPPWEBNotifications,
         accessLevel: AccessLevelEnum.USER,
         certificateWithSocialName: hasSocialName,
-        typeRole:
-            isMauaStudent ? UserRolesEnum.student : UserRolesEnum.external,
+        role: isMauaStudent ? UserRolesEnum.student : UserRolesEnum.external,
       );
 
   @action

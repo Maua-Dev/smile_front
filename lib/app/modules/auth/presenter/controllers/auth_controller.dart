@@ -32,14 +32,14 @@ class AuthController {
 
   Future<void> loginWithUserCpfRne(String cpfRne, String password) async {
     var loginResponse = await loginWithCpfRne(cpfRne, password);
-    _accessLevel = loginResponse['access_level'];
-    _name = loginResponse['name'];
-    _socialname = loginResponse['social_name'];
-    _certificateWithSocialName = loginResponse['certificate_with_social_name'];
-    _id = loginResponse['id'];
+    _accessLevel = loginResponse.accessLevel.name;
+    _name = loginResponse.name;
+    _socialname = loginResponse.socialName;
+    _certificateWithSocialName = loginResponse.certificateWithSocialName;
+    _id = loginResponse.userId;
 
-    await storage.saveAccessToken(loginResponse['access_token']);
-    await storage.saveRefreshToken(loginResponse['refresh_token']);
+    await storage.saveAccessToken(loginResponse.accessToken);
+    await storage.saveRefreshToken(loginResponse.refreshToken);
     await storage.saveAccessLevel(_accessLevel);
     await storage.saveName(_name);
     await storage.saveSocialName(_socialname ?? '');

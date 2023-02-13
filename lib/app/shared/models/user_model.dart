@@ -1,3 +1,5 @@
+import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/entities/user.dart';
 
 class UserModel extends User {
@@ -12,7 +14,7 @@ class UserModel extends User {
     required super.name,
     required super.email,
     required super.accessLevel,
-    required super.typeRole,
+    required super.role,
     super.socialName,
     required super.certificateWithSocialName,
     super.ra,
@@ -22,10 +24,11 @@ class UserModel extends User {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      socialName: map['socialName'],
-      accessLevel: map['accessLevel'],
+      socialName: map['social_name'],
+      accessLevel:
+          AccessLevelEnumExtension.stringToEnumMap(map['access_level']),
       email: map['email'],
-      typeRole: map['typeRole'],
+      role: UserRolesEnumExtension.stringToEnumMap(map['role']),
       name: map['name'],
       accessToken: map['access_token'],
       idToken: map['id_token'],

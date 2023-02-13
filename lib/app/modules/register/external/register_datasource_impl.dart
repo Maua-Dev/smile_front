@@ -24,7 +24,7 @@ class RegisterDatasourceImpl implements RegisterDatasourceInterface {
         "email": userRegistration.email,
         "name": userRegistration.name,
         "password": userRegistration.password,
-        "role": userRegistration.typeRole,
+        "role": userRegistration.role,
         "access_level": userRegistration.accessLevel.name,
         "accepted_terms": userRegistration.acceptTerms,
         "ra": userRegistration.ra,
