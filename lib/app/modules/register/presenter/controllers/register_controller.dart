@@ -1,6 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
 import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
@@ -16,14 +15,10 @@ part 'register_controller.g.dart';
 class RegisterController = RegisterControllerBase with _$RegisterController;
 
 abstract class RegisterControllerBase with Store {
-  final RegisterRepositoryInterface registerUserRepository;
   final FirebaseAnalyticsService analytics;
   final RegisterUserInterface registerUser;
 
-  RegisterControllerBase(
-      {required this.analytics,
-      required this.registerUserRepository,
-      required this.registerUser});
+  RegisterControllerBase({required this.analytics, required this.registerUser});
 
   @computed
   String? get raInt => ra == ''
@@ -161,7 +156,6 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
-    value = value.replaceAll('+', '');
     phone = value;
   }
 

@@ -20,7 +20,6 @@ import 'register_controller_test.mocks.dart';
 void main() {
   initModules([AppModule(), RegisterModule()]);
   setupCloudFirestoreMocks();
-  RegisterRepositoryInterface repository = MockRegisterRepositoryInterface();
   late RegisterController controller;
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
   RegisterUserInterface registerUser = MockRegisterUserInterface();
@@ -28,10 +27,8 @@ void main() {
   setUpAll(() async {
     await Firebase.initializeApp();
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
-    controller = RegisterController(
-        registerUserRepository: repository,
-        analytics: analytics,
-        registerUser: registerUser);
+    controller =
+        RegisterController(analytics: analytics, registerUser: registerUser);
   });
 
   test('setAcceptImage', () {
