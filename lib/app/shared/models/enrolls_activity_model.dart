@@ -7,9 +7,9 @@ import '../entities/infra/delivery_enum.dart';
 import '../entities/infra/user_roles_enum.dart';
 import 'enrollments_model.dart';
 
-class LoggedActivityModel extends Activity {
-  final EnrollmentsModel? enrollments;
-  LoggedActivityModel({
+class EnrollsActivityModel extends Activity {
+  final List<EnrollmentsModel>? enrollments;
+  EnrollsActivityModel({
     this.enrollments,
     required super.isExtensive,
     super.deliveryEnum,
@@ -29,8 +29,8 @@ class LoggedActivityModel extends Activity {
     required super.totalSlots,
   });
 
-  factory LoggedActivityModel.fromMap(Map<String, dynamic> map) {
-    return LoggedActivityModel(
+  factory EnrollsActivityModel.fromMap(Map<String, dynamic> map) {
+    return EnrollsActivityModel(
         activityCode: map['activity']['code'],
         type: ActivityEnumExtension.stringToEnumMap(
             map['activity']['activity_type']),
@@ -57,10 +57,10 @@ class LoggedActivityModel extends Activity {
                 ? DateTime.fromMillisecondsSinceEpoch(
                     map['activity']['stop_accepting_new_enrollments_before'])
                 : DateTime.now(),
-        enrollments: EnrollmentsModel.fromMap(map['enrollments']));
+        enrollments: EnrollmentsModel.fromMaps(map['enrollments']));
   }
 
-  static List<LoggedActivityModel> fromMaps(List array) {
-    return array.map((e) => LoggedActivityModel.fromMap(e)).toList();
+  static List<EnrollsActivityModel> fromMaps(List array) {
+    return array.map((e) => EnrollsActivityModel.fromMap(e)).toList();
   }
 }

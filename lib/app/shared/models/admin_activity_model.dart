@@ -8,7 +8,7 @@ import '../entities/infra/user_roles_enum.dart';
 import 'enrollments_model.dart';
 
 class AdminActivityModel extends Activity {
-  final EnrollmentsModel enrollments;
+  final List<EnrollmentsModel> enrollments;
   final String? confirmationCode;
   AdminActivityModel({
     required this.enrollments,
@@ -59,7 +59,7 @@ class AdminActivityModel extends Activity {
                 ? DateTime.fromMillisecondsSinceEpoch(
                     map['activity']['stop_accepting_new_enrollments_before'])
                 : DateTime.now(),
-        enrollments: EnrollmentsModel.fromMap(map['enrollments']));
+        enrollments: EnrollmentsModel.fromMaps(map['enrollments']));
   }
 
   static List<AdminActivityModel> fromMaps(List array) {

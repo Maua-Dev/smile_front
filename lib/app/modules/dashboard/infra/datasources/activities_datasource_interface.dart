@@ -1,11 +1,12 @@
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../../shared/models/admin_activity_model.dart';
-import '../../../../shared/models/logged_activity_model.dart';
+import '../../../../shared/models/enrolls_activity_model.dart';
 
 abstract class ActivitiesDatasourceInterface {
   Future<List<ActivityModel>> getAllActivities();
   Future<List<AdminActivityModel>> getAdminAllActivities();
-  Future<List<LoggedActivityModel>> getAllActivitiesLogged();
+  Future<List<EnrollsActivityModel>> getAllActivitiesLogged();
+  Future<List<EnrollsActivityModel>> getActivityWithEnrollments(String code);
   Future<List<ActivityModel>> getUserSubscribedActivities();
   Future<bool> postSubscribe(String activityId, DateTime activityDate);
   Future<bool> postUnsubscribe(String activityId, DateTime activityDate);
