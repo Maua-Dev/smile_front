@@ -32,7 +32,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   Future<List<ActivityModel>> getAllActivities() async {
     var token = await storage.getAccessToken();
     try {
-      dio.options.headers["authorization"] = "Bearer $token";
       final res = await dio.get('/get-all-activities');
       if (res.statusCode == 200) {
         return ActivityModel.fromMaps(res.data['all_activities']);
@@ -51,10 +50,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future<List<AdminActivityModel>> getAdminAllActivities() async {
-    var token = await storage.getAccessToken();
+    var token = await storage.getIdToken();
     try {
-      dio.options.headers["authorization"] = "Bearer $token";
-      final res = await dio.get('/get-all-activities');
+      dio.options.headers["authorization"] = "$token";
+      final res = await dio.get('/get-all-activities-admin');
       if (res.statusCode == 200) {
         return AdminActivityModel.fromMaps(
             res.data['all_activities_with_enrollments']);

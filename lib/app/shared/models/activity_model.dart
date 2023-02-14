@@ -54,7 +54,7 @@ class ActivityModel extends Activity {
   }
 
   static List<ActivityModel> fromMaps(List array) {
-    return array.map((e) => ActivityModel.fromMap(e)).toList();
+    return array.map((e) => ActivityModel.fromMap(e['activity'])).toList();
   }
 
   Map<String, dynamic> toJson() => {
