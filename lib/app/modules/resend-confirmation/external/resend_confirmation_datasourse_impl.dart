@@ -20,8 +20,8 @@ class ResendConfirmationDatasourceImpl implements ResendConfirmationDatasource {
     );
     Dio dio = Dio(options);
     try {
-      final res = await dio.put('/resendCreationConfirmation', data: {
-        "cpf_rne": username,
+      final res = await dio.post('/resend-creation-confirmation', data: {
+        "email": username,
       });
       if (res.statusCode == 200) {
         return S.current.successEmailSend;

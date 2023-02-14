@@ -33,10 +33,10 @@ void main() {
     expect(controller.errors, str);
   });
 
-  test('setCpf', () {
+  test('setEmail', () {
     var str = '1.2-3';
-    controller.setCpf(str);
-    expect(controller.email, '123');
+    controller.setEmail(str);
+    expect(controller.email, str);
   });
 
   test('setIsLoading', () {

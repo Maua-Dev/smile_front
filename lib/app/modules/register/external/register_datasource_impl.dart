@@ -27,12 +27,14 @@ class RegisterDatasourceImpl implements RegisterDatasourceInterface {
         "role": userRegistration.role.name.toUpperCase(),
         "access_level": userRegistration.accessLevel.name.toUpperCase(),
         "accepted_terms": userRegistration.acceptTerms,
-        "ra": userRegistration.ra,
+        "ra": userRegistration.ra == '' ? null : userRegistration.ra,
         "accepted_notifications": userRegistration.acceptEmailNotifications,
         "certificate_with_social_name":
             userRegistration.certificateWithSocialName,
-        "social_name": userRegistration.socialName,
-        "phone": '+5511991273092',
+        "social_name": userRegistration.socialName == ''
+            ? null
+            : userRegistration.socialName,
+        "phone": userRegistration.phone,
       });
       if (res.statusCode == 201) {
         return 'Usuário criado com sucesso!';

@@ -264,22 +264,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$canSendEmailsAtom =
-      Atom(name: 'RegisterControllerBase.canSendEmails', context: context);
-
-  @override
-  bool get canSendEmails {
-    _$canSendEmailsAtom.reportRead();
-    return super.canSendEmails;
-  }
-
-  @override
-  set canSendEmails(bool value) {
-    _$canSendEmailsAtom.reportWrite(value, super.canSendEmails, () {
-      super.canSendEmails = value;
-    });
-  }
-
   late final _$acceptTermsOfUseAtom =
       Atom(name: 'RegisterControllerBase.acceptTermsOfUse', context: context);
 
@@ -539,13 +523,14 @@ mixin _$RegisterController on RegisterControllerBase, Store {
         .run(() => super.setSuccessRegistration(value));
   }
 
-  late final _$setCanSendEmailsAsyncAction =
-      AsyncAction('RegisterControllerBase.setCanSendEmails', context: context);
+  late final _$setAcceptEmailNotificationsAsyncAction = AsyncAction(
+      'RegisterControllerBase.setAcceptEmailNotifications',
+      context: context);
 
   @override
-  Future<void> setCanSendEmails(bool? value) {
-    return _$setCanSendEmailsAsyncAction
-        .run(() => super.setCanSendEmails(value));
+  Future<void> setAcceptEmailNotifications(bool? value) {
+    return _$setAcceptEmailNotificationsAsyncAction
+        .run(() => super.setAcceptEmailNotifications(value));
   }
 
   late final _$setAcceptTermsOfUseAsyncAction = AsyncAction(
@@ -689,7 +674,6 @@ isMauaStudent: ${isMauaStudent},
 ra: ${ra},
 password: ${password},
 verifyPassword: ${verifyPassword},
-canSendEmails: ${canSendEmails},
 acceptTermsOfUse: ${acceptTermsOfUse},
 acceptImage: ${acceptImage},
 acceptEmailNotifications: ${acceptEmailNotifications},

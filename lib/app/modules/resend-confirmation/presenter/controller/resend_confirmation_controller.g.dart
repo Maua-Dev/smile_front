@@ -100,12 +100,13 @@ mixin _$ResendConfirmationController
     return _$setErrorAsyncAction.run(() => super.setError(value));
   }
 
-  late final _$setCpfAsyncAction =
-      AsyncAction('ResendConfirmationControllerBase.setCpf', context: context);
+  late final _$setEmailAsyncAction = AsyncAction(
+      'ResendConfirmationControllerBase.setEmail',
+      context: context);
 
   @override
-  Future<void> setCpf(String value) {
-    return _$setCpfAsyncAction.run(() => super.setCpf(value));
+  Future<void> setEmail(String value) {
+    return _$setEmailAsyncAction.run(() => super.setEmail(value));
   }
 
   late final _$setIsLoadingAsyncAction = AsyncAction(

@@ -301,10 +301,10 @@ class _RegisterPageState
                         ),
                         Observer(builder: (_) {
                           return CheckBoxWidget(
-                            check: controller.canSendEmails,
+                            check: controller.acceptEmailNotifications,
                             title: S.of(context).registerTerms('three'),
                             onChanged: (bool? value) {
-                              controller.setCanSendEmails(value);
+                              controller.setAcceptEmailNotifications(value);
                             },
                           );
                         }),

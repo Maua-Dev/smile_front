@@ -39,8 +39,8 @@ abstract class ResendConfirmationControllerBase with Store {
   }
 
   @action
-  Future<void> setCpf(String value) async {
-    email = value.replaceAll('.', '').replaceAll('-', '');
+  Future<void> setEmail(String value) async {
+    email = value;
   }
 
   @action

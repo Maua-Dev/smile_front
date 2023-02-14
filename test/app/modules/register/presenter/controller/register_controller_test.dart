@@ -192,8 +192,8 @@ void main() {
   });
 
   test('setCanSendEmails', () {
-    controller.setCanSendEmails(true);
-    expect(controller.canSendEmails, true);
+    controller.setAcceptEmailNotifications(true);
+    expect(controller.acceptEmailNotifications, true);
   });
 
   test('setEmailNotifications', () {

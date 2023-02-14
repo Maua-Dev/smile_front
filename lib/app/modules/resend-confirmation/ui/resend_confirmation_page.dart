@@ -7,6 +7,7 @@ import '../../../../generated/l10n.dart';
 import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/utils/s3_assets_url.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
+import '../../../shared/widgets/input-box/input_box_widget.dart';
 import '../../login/ui/widgets/maintenance_alert_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
 import '../presenter/controller/resend_confirmation_controller.dart';
@@ -148,6 +149,13 @@ class _ResendConfirmationPageState
                                       textAlign: TextAlign.justify,
                                     ),
                                   ),
+                                ),
+                                InputBoxWidget(
+                                  icon: Icons.person,
+                                  placeholder:
+                                      S.of(context).registerEmailPlaceholder,
+                                  setValue: controller.setEmail,
+                                  validation: controller.validateEmail,
                                 ),
                                 const SizedBox(
                                   height: 40,

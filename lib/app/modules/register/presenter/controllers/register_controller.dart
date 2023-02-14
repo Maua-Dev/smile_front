@@ -71,9 +71,6 @@ abstract class RegisterControllerBase with Store {
   String verifyPassword = '';
 
   @observable
-  bool canSendEmails = false;
-
-  @observable
   bool acceptTermsOfUse = false;
 
   @observable
@@ -319,8 +316,8 @@ abstract class RegisterControllerBase with Store {
   }
 
   @action
-  Future<void> setCanSendEmails(bool? value) async {
-    canSendEmails = value!;
+  Future<void> setAcceptEmailNotifications(bool? value) async {
+    acceptEmailNotifications = value!;
   }
 
   @action
