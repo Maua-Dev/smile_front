@@ -7,6 +7,7 @@ import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../shared/error/dio_exceptions.dart';
 import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/models/admin_activity_model.dart';
+import '../../../shared/models/logged_activity_model.dart';
 import '../../../shared/services/environment/environment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
 import '../../auth/presenter/controllers/auth_controller.dart';
@@ -57,6 +58,28 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       if (res.statusCode == 200) {
         return AdminActivityModel.fromMaps(
             res.data['all_activities_with_enrollments']);
+      }
+      throw Exception();
+    } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken(token.toString());
+        await getAllActivities();
+      }
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage: errorMessage);
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<LoggedActivityModel>> getAllActivitiesLogged() async {
+    var token = await storage.getIdToken();
+    try {
+      dio.options.headers["authorization"] = "$token";
+      final res = await dio.get('/get-all-activities-logged');
+      if (res.statusCode == 200) {
+        return LoggedActivityModel.fromMaps(
+            res.data['all_activities_and_user_enrollments']);
       }
       throw Exception();
     } on DioError catch (e) {
