@@ -3,11 +3,10 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
-import '../../../../../shared/models/activity_model.dart';
+import '../../../../../shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/infra/activity_enum.dart';
-import '../../../infra/models/user_enrolled_activities_model.dart';
 
 part 'all_activities_user_dashboard_controller.g.dart';
 
@@ -55,10 +54,10 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   }
 
   @observable
-  List<UserEnrolledActivitiesModel> allActivitiesFromGet = List.empty();
+  List<EnrollsActivityModel> allActivitiesFromGet = List.empty();
 
   @observable
-  List<UserEnrolledActivitiesModel> activitiesOnScreen = List.empty();
+  List<EnrollsActivityModel> activitiesOnScreen = List.empty();
 
   @observable
   ActivityEnum? activityType;
@@ -114,45 +113,96 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   }
 
   @action
-  List<UserEnrolledActivitiesModel> filterActivitiesByType(
-      ActivityEnum type, List<UserEnrolledActivitiesModel> activitiesToFilter) {
-    var list = activitiesToFilter
-        .where((element) => element.activity.type == type)
-        .toList();
-    List<UserEnrolledActivitiesModel> enrolledList = [];
+  List<EnrollsActivityModel> filterActivitiesByType(
+      ActivityEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+    var list =
+        activitiesToFilter.where((element) => element.type == type).toList();
+    List<EnrollsActivityModel> enrolledList = [];
     for (var enrolledActivity in list) {
-      enrolledList.add(UserEnrolledActivitiesModel(
-          activity: enrolledActivity.activity, state: enrolledActivity.state));
+      enrolledList.add(EnrollsActivityModel(
+        acceptingNewEnrollments: enrolledActivity.acceptingNewEnrollments,
+        activityCode: enrolledActivity.activityCode,
+        description: enrolledActivity.description,
+        duration: enrolledActivity.duration,
+        isExtensive: enrolledActivity.isExtensive,
+        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        speakers: enrolledActivity.speakers,
+        takenSlots: enrolledActivity.takenSlots,
+        title: enrolledActivity.title,
+        totalSlots: enrolledActivity.totalSlots,
+        type: enrolledActivity.type,
+        deliveryEnum: enrolledActivity.deliveryEnum,
+        enrollments: enrolledActivity.enrollments,
+        link: enrolledActivity.link,
+        place: enrolledActivity.place,
+        startDate: enrolledActivity.startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            enrolledActivity.stopAcceptingNewEnrollmentsBefore,
+      ));
     }
     return enrolledList;
   }
 
   @action
-  List<UserEnrolledActivitiesModel> filterActivitiesByDate(
-      DateTime date, List<UserEnrolledActivitiesModel> activitiesToFilter) {
+  List<EnrollsActivityModel> filterActivitiesByDate(
+      DateTime date, List<EnrollsActivityModel> activitiesToFilter) {
     var list = activitiesToFilter
-        .where(
-            (element) => isValidDateFilter(element.activity.startDate!, date))
+        .where((element) => isValidDateFilter(element.startDate!, date))
         .toList();
-    List<UserEnrolledActivitiesModel> enrolledList = [];
+    List<EnrollsActivityModel> enrolledList = [];
     for (var enrolledActivity in list) {
-      enrolledList.add(UserEnrolledActivitiesModel(
-          activity: enrolledActivity.activity, state: enrolledActivity.state));
+      enrolledList.add(EnrollsActivityModel(
+        acceptingNewEnrollments: enrolledActivity.acceptingNewEnrollments,
+        activityCode: enrolledActivity.activityCode,
+        description: enrolledActivity.description,
+        duration: enrolledActivity.duration,
+        isExtensive: enrolledActivity.isExtensive,
+        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        speakers: enrolledActivity.speakers,
+        takenSlots: enrolledActivity.takenSlots,
+        title: enrolledActivity.title,
+        totalSlots: enrolledActivity.totalSlots,
+        type: enrolledActivity.type,
+        deliveryEnum: enrolledActivity.deliveryEnum,
+        enrollments: enrolledActivity.enrollments,
+        link: enrolledActivity.link,
+        place: enrolledActivity.place,
+        startDate: enrolledActivity.startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            enrolledActivity.stopAcceptingNewEnrollmentsBefore,
+      ));
     }
     return enrolledList;
   }
 
   @action
-  List<UserEnrolledActivitiesModel> filterActivitiesByHour(
-      DateTime hour, List<UserEnrolledActivitiesModel> activitiesToFilter) {
+  List<EnrollsActivityModel> filterActivitiesByHour(
+      DateTime hour, List<EnrollsActivityModel> activitiesToFilter) {
     var list = activitiesToFilter
-        .where(
-            (element) => isValidHourFilter(element.activity.startDate!, hour))
+        .where((element) => isValidHourFilter(element.startDate!, hour))
         .toList();
-    List<UserEnrolledActivitiesModel> enrolledList = [];
+    List<EnrollsActivityModel> enrolledList = [];
     for (var enrolledActivity in list) {
-      enrolledList.add(UserEnrolledActivitiesModel(
-          activity: enrolledActivity.activity, state: enrolledActivity.state));
+      enrolledList.add(EnrollsActivityModel(
+        acceptingNewEnrollments: enrolledActivity.acceptingNewEnrollments,
+        activityCode: enrolledActivity.activityCode,
+        description: enrolledActivity.description,
+        duration: enrolledActivity.duration,
+        isExtensive: enrolledActivity.isExtensive,
+        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        speakers: enrolledActivity.speakers,
+        takenSlots: enrolledActivity.takenSlots,
+        title: enrolledActivity.title,
+        totalSlots: enrolledActivity.totalSlots,
+        type: enrolledActivity.type,
+        deliveryEnum: enrolledActivity.deliveryEnum,
+        enrollments: enrolledActivity.enrollments,
+        link: enrolledActivity.link,
+        place: enrolledActivity.place,
+        startDate: enrolledActivity.startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            enrolledActivity.stopAcceptingNewEnrollmentsBefore,
+      ));
     }
     return enrolledList;
   }
@@ -179,17 +229,35 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     setIsLoading(true);
     var allActivities = await getAllActivities();
     var enrolledActivities = subscriptionController.userEnrolledActivities;
-    List<UserEnrolledActivitiesModel> finalList = [];
+    List<EnrollsActivityModel> finalList = [];
     for (var activity in allActivities) {
-      finalList.add(UserEnrolledActivitiesModel(activity: activity));
+      finalList.add(EnrollsActivityModel(
+        acceptingNewEnrollments: activity.acceptingNewEnrollments,
+        activityCode: activity.activityCode,
+        description: activity.description,
+        duration: activity.duration,
+        isExtensive: activity.isExtensive,
+        responsibleProfessors: activity.responsibleProfessors,
+        speakers: activity.speakers,
+        takenSlots: activity.takenSlots,
+        title: activity.title,
+        totalSlots: activity.totalSlots,
+        type: activity.type,
+        deliveryEnum: activity.deliveryEnum,
+        link: activity.link,
+        place: activity.place,
+        startDate: activity.startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            activity.stopAcceptingNewEnrollmentsBefore,
+      ));
     }
-    for (var activity in finalList) {
-      for (var element in enrolledActivities) {
-        element.activity.activityCode == activity.activity.activityCode
-            ? activity.copyWith(state: EnrollmentStateEnum.ENROLLED)
-            : null;
-      }
-    }
+    // for (var activity in finalList) {
+    //   for (var element in enrolledActivities) {
+    //     element.activity.activityCode == activity.activityCode
+    //         ? activity.copyWith(state: EnrollmentStateEnum.ENROLLED)
+    //         : null;
+    //   }
+    // }
     allActivitiesFromGet = finalList;
     activitiesOnScreen = allActivitiesFromGet;
     setIsLoading(false);

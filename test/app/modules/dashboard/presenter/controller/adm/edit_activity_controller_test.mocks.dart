@@ -10,9 +10,9 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/activities
     as _i2;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart'
     as _i6;
-import 'package:smile_front/app/modules/dashboard/infra/models/user_enrolled_activities_model.dart'
-    as _i5;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
+    as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -44,16 +44,15 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             _i3.Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]),
       ) as _i3.Future<List<_i4.ActivityModel>>);
   @override
-  _i3.Future<List<_i5.UserEnrolledActivitiesModel>>
-      getUserSubscribedActivities() => (super.noSuchMethod(
-            Invocation.method(
-              #getUserSubscribedActivities,
-              [],
-            ),
-            returnValue:
-                _i3.Future<List<_i5.UserEnrolledActivitiesModel>>.value(
-                    <_i5.UserEnrolledActivitiesModel>[]),
-          ) as _i3.Future<List<_i5.UserEnrolledActivitiesModel>>);
+  _i3.Future<List<_i5.EnrollsActivityModel>> getUserSubscribedActivities() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUserSubscribedActivities,
+          [],
+        ),
+        returnValue: _i3.Future<List<_i5.EnrollsActivityModel>>.value(
+            <_i5.EnrollsActivityModel>[]),
+      ) as _i3.Future<List<_i5.EnrollsActivityModel>>);
   @override
   _i3.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
         Invocation.method(

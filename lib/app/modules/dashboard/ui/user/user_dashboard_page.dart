@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/user_enrolled_activities_model.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_data_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
@@ -14,7 +12,6 @@ import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
 import 'widgets/next_activity/next_activity_card_widget.dart';
-import 'widgets/user_weekday/user_weekday_filter_widget.dart';
 
 class UserDashboardPage extends StatefulWidget {
   const UserDashboardPage({Key? key}) : super(key: key);
@@ -69,9 +66,7 @@ class _UserDashboardPageState
                     duration: controller.nextActivity.duration,
                     onTap: () {
                       Modular.to.navigate('/user/home/more-info',
-                          arguments: UserEnrolledActivitiesModel(
-                              activity: controller.nextActivity,
-                              state: EnrollmentStateEnum.ENROLLED));
+                          arguments: controller.nextActivity);
                       controller.analytics.logViewActivity(
                           controller.nextActivity.activityCode);
                     },
@@ -96,31 +91,30 @@ class _UserDashboardPageState
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: controller.subscribedActivitiesList.length,
                     itemBuilder: (context, index) {
-                      var finalTime = controller.subscribedActivitiesList[index]
-                                  .activity.startDate ==
+                      var finalTime = controller
+                                  .subscribedActivitiesList[index].startDate ==
                               null
                           ? ''
                           : Utils.getActivityFinalTime(
-                              controller.subscribedActivitiesList[index]
-                                  .activity.startDate!,
-                              controller.subscribedActivitiesList[index]
-                                  .activity.duration);
+                              controller
+                                  .subscribedActivitiesList[index].startDate!,
+                              controller
+                                  .subscribedActivitiesList[index].duration);
                       var hour = DateFormat('HH:mm').format(controller
-                          .subscribedActivitiesList[index].activity.startDate!);
+                          .subscribedActivitiesList[index].startDate!);
                       return UserActivityCardWidget(
                         finalTime: finalTime,
-                        location: controller
-                            .subscribedActivitiesList[index].activity.place,
-                        isOnline: controller.subscribedActivitiesList[index]
-                                    .activity.link ==
-                                null
-                            ? false
-                            : true,
-                        title: controller
-                            .subscribedActivitiesList[index].activity.title,
+                        location:
+                            controller.subscribedActivitiesList[index].place,
+                        isOnline:
+                            controller.subscribedActivitiesList[index].link ==
+                                    null
+                                ? false
+                                : true,
+                        title: controller.subscribedActivitiesList[index].title,
                         hour: hour,
-                        activityCode: controller.subscribedActivitiesList[index]
-                            .activity.activityCode,
+                        activityCode: controller
+                            .subscribedActivitiesList[index].activityCode,
                         onTap: () {
                           Modular.to.navigate(
                             '/user/home/more-info',
@@ -128,9 +122,7 @@ class _UserDashboardPageState
                                 controller.subscribedActivitiesList[index],
                           );
                           controller.analytics.logViewActivity(controller
-                              .subscribedActivitiesList[index]
-                              .activity
-                              .activityCode);
+                              .subscribedActivitiesList[index].activityCode);
                         },
                       );
                     },

@@ -3,8 +3,6 @@ import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../../shared/models/admin_activity_model.dart';
 import '../../../../shared/models/enrolls_activity_model.dart';
 
-import '../models/user_enrolled_activities_model.dart';
-
 abstract class ActivitiesDatasourceInterface {
   Future<List<ActivityModel>> getAllActivities();
   Future<List<AdminActivityModel>> getAdminAllActivities();

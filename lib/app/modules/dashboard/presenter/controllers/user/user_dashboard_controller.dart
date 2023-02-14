@@ -2,9 +2,8 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
-import '../../../../../shared/models/activity_model.dart';
-import '../../../infra/models/user_enrolled_activities_model.dart';
 
 part 'user_dashboard_controller.g.dart';
 
@@ -142,10 +141,10 @@ abstract class UserDashboardControllerBase with Store {
   int filterActivityChipIndexSelected = 0;
 
   @observable
-  List<UserEnrolledActivitiesModel> subscribedActivitiesList = List.empty();
+  List<EnrollsActivityModel> subscribedActivitiesList = List.empty();
 
   @observable
-  ActivityModel nextActivity = ActivityModel.newInstance();
+  EnrollsActivityModel nextActivity = EnrollsActivityModel.newInstance();
 
   @action
   Future getActivities() async {
@@ -158,7 +157,7 @@ abstract class UserDashboardControllerBase with Store {
     subscribedActivitiesList = await subscriptionController.getUserActivities();
     if (subscribedActivitiesList.isNotEmpty) {
       subscribedActivitiesList.sort(
-        (a, b) => a.activity.startDate!.compareTo(b.activity.startDate!),
+        (a, b) => a.startDate!.compareTo(b.startDate!),
       );
       getNextActivity();
     }
@@ -168,9 +167,9 @@ abstract class UserDashboardControllerBase with Store {
   @action
   void getNextActivity() {
     if (subscribedActivitiesList.isNotEmpty) {
-      nextActivity = subscribedActivitiesList.first.activity;
+      nextActivity = subscribedActivitiesList.first;
     } else {
-      nextActivity = ActivityModel.newInstance();
+      nextActivity = EnrollsActivityModel.newInstance();
     }
   }
 }

@@ -30,13 +30,13 @@ mixin _$UserSubscriptionController on UserSubscriptionControllerBase, Store {
       context: context);
 
   @override
-  List<UserEnrolledActivitiesModel> get userEnrolledActivities {
+  List<EnrollsActivityModel> get userEnrolledActivities {
     _$userEnrolledActivitiesAtom.reportRead();
     return super.userEnrolledActivities;
   }
 
   @override
-  set userEnrolledActivities(List<UserEnrolledActivitiesModel> value) {
+  set userEnrolledActivities(List<EnrollsActivityModel> value) {
     _$userEnrolledActivitiesAtom
         .reportWrite(value, super.userEnrolledActivities, () {
       super.userEnrolledActivities = value;

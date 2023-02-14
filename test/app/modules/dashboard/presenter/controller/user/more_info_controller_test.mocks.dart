@@ -17,13 +17,13 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_acti
     as _i13;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart'
     as _i12;
-import 'package:smile_front/app/modules/dashboard/infra/models/user_enrolled_activities_model.dart'
-    as _i10;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart'
     as _i11;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart'
     as _i2;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i6;
+import 'package:smile_front/app/shared/models/activity_model.dart' as _i10;
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
+    as _i6;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
     as _i5;
 
@@ -82,8 +82,9 @@ class _FakeFirebaseAnalyticsService_3 extends _i1.SmartFake
         );
 }
 
-class _FakeActivityModel_4 extends _i1.SmartFake implements _i6.ActivityModel {
-  _FakeActivityModel_4(
+class _FakeEnrollsActivityModel_4 extends _i1.SmartFake
+    implements _i6.EnrollsActivityModel {
+  _FakeEnrollsActivityModel_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -113,25 +114,25 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
   }
 
   @override
-  _i9.Future<List<_i6.ActivityModel>> getAllActivities() => (super.noSuchMethod(
+  _i9.Future<List<_i10.ActivityModel>> getAllActivities() =>
+      (super.noSuchMethod(
         Invocation.method(
           #getAllActivities,
           [],
         ),
         returnValue:
-            _i9.Future<List<_i6.ActivityModel>>.value(<_i6.ActivityModel>[]),
-      ) as _i9.Future<List<_i6.ActivityModel>>);
+            _i9.Future<List<_i10.ActivityModel>>.value(<_i10.ActivityModel>[]),
+      ) as _i9.Future<List<_i10.ActivityModel>>);
   @override
-  _i9.Future<List<_i10.UserEnrolledActivitiesModel>>
-      getUserSubscribedActivities() => (super.noSuchMethod(
-            Invocation.method(
-              #getUserSubscribedActivities,
-              [],
-            ),
-            returnValue:
-                _i9.Future<List<_i10.UserEnrolledActivitiesModel>>.value(
-                    <_i10.UserEnrolledActivitiesModel>[]),
-          ) as _i9.Future<List<_i10.UserEnrolledActivitiesModel>>);
+  _i9.Future<List<_i6.EnrollsActivityModel>> getUserSubscribedActivities() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUserSubscribedActivities,
+          [],
+        ),
+        returnValue: _i9.Future<List<_i6.EnrollsActivityModel>>.value(
+            <_i6.EnrollsActivityModel>[]),
+      ) as _i9.Future<List<_i6.EnrollsActivityModel>>);
   @override
   _i9.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
         Invocation.method(
@@ -141,7 +142,7 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i9.Future<String>.value(''),
       ) as _i9.Future<String>);
   @override
-  _i9.Future<dynamic> createActivity(_i6.ActivityModel? activityToCreate) =>
+  _i9.Future<dynamic> createActivity(_i10.ActivityModel? activityToCreate) =>
       (super.noSuchMethod(
         Invocation.method(
           #createActivity,
@@ -150,7 +151,7 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i9.Future<dynamic>.value(),
       ) as _i9.Future<dynamic>);
   @override
-  _i9.Future<dynamic> editActivity(_i6.ActivityModel? activityToEdit) =>
+  _i9.Future<dynamic> editActivity(_i10.ActivityModel? activityToEdit) =>
       (super.noSuchMethod(
         Invocation.method(
           #editActivity,
@@ -168,34 +169,20 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i9.Future<dynamic>.value(),
       ) as _i9.Future<dynamic>);
   @override
-  _i9.Future<bool> subscribeActivity(
-    _i6.ActivityModel? activity,
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
+  _i9.Future<bool> subscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #subscribeActivity,
-          [
-            activity,
-            activityId,
-            activityDate,
-          ],
+          [activityCode],
         ),
         returnValue: _i9.Future<bool>.value(false),
       ) as _i9.Future<bool>);
   @override
-  _i9.Future<bool> unsubscribeActivity(
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
+  _i9.Future<bool> unsubscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #unsubscribeActivity,
-          [
-            activityId,
-            activityDate,
-          ],
+          [activityCode],
         ),
         returnValue: _i9.Future<bool>.value(false),
       ) as _i9.Future<bool>);
@@ -348,14 +335,14 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  List<_i10.UserEnrolledActivitiesModel> get subscribedActivitiesList =>
+  List<_i6.EnrollsActivityModel> get subscribedActivitiesList =>
       (super.noSuchMethod(
         Invocation.getter(#subscribedActivitiesList),
-        returnValue: <_i10.UserEnrolledActivitiesModel>[],
-      ) as List<_i10.UserEnrolledActivitiesModel>);
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
   @override
   set subscribedActivitiesList(
-          List<_i10.UserEnrolledActivitiesModel>? _subscribedActivitiesList) =>
+          List<_i6.EnrollsActivityModel>? _subscribedActivitiesList) =>
       super.noSuchMethod(
         Invocation.setter(
           #subscribedActivitiesList,
@@ -364,15 +351,16 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i6.ActivityModel get nextActivity => (super.noSuchMethod(
+  _i6.EnrollsActivityModel get nextActivity => (super.noSuchMethod(
         Invocation.getter(#nextActivity),
-        returnValue: _FakeActivityModel_4(
+        returnValue: _FakeEnrollsActivityModel_4(
           this,
           Invocation.getter(#nextActivity),
         ),
-      ) as _i6.ActivityModel);
+      ) as _i6.EnrollsActivityModel);
   @override
-  set nextActivity(_i6.ActivityModel? _nextActivity) => super.noSuchMethod(
+  set nextActivity(_i6.EnrollsActivityModel? _nextActivity) =>
+      super.noSuchMethod(
         Invocation.setter(
           #nextActivity,
           _nextActivity,
