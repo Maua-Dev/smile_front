@@ -123,14 +123,12 @@ void main() {
     when(datasource.editActivity('', ActivityModel.newInstance()))
         .thenAnswer((_) async => null);
     when(datasource.deleteActivity('')).thenAnswer((_) async => null);
-    when(datasource.postUnsubscribe('', DateTime.now()))
-        .thenAnswer((_) async => true);
-    when(datasource.postSubscribe('', DateTime.now()))
-        .thenAnswer((_) async => true);
+    when(datasource.postUnsubscribe('')).thenAnswer((_) async => true);
+    when(datasource.postSubscribe('')).thenAnswer((_) async => true);
     when(datasource.createActivity(ActivityModel.newInstance()))
         .thenAnswer((_) async => null);
-    when(datasource.getUserSubscribedActivities())
-        .thenAnswer((_) async => mockActivities);
+    // when(datasource.getAllActivitiesLogged())
+    //     .thenAnswer((_) async => mockActivities);
     when(datasource.getAllActivities()).thenAnswer((_) async => mockActivities);
     repository = ActivitiesRepositoryImpl(datasource: datasource);
   });

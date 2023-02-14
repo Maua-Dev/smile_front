@@ -22,7 +22,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   @override
   Future<List<ActivityModel>> getUserSubscribedActivities() async {
     if (subscribedActivities.isEmpty) {
-      subscribedActivities = await datasource.getUserSubscribedActivities();
+      // subscribedActivities = await datasource.getAllActivitiesLogged();
     }
     return Future.value(subscribedActivities);
   }
@@ -52,7 +52,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   Future<bool> subscribeActivity(
       ActivityModel activity, String activityId, DateTime activityDate) async {
     subscribedActivities.add(activity);
-    var requestDone = await datasource.postSubscribe(activityId, activityDate);
+    var requestDone = await datasource.postSubscribe(activityId);
     return requestDone;
   }
 
@@ -61,8 +61,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
       String activityId, DateTime activityDate) async {
     subscribedActivities
         .removeWhere((element) => element.activityCode == activityId);
-    var requestDone =
-        await datasource.postUnsubscribe(activityId, activityDate);
+    var requestDone = await datasource.postUnsubscribe(activityId);
     return requestDone;
   }
 

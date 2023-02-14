@@ -2,7 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/subscription_activity_model.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../shared/error/dio_exceptions.dart';
 import '../../../shared/error/error_snackbar.dart';
@@ -11,7 +11,6 @@ import '../../../shared/models/enrolls_activity_model.dart';
 import '../../../shared/services/environment/environment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
 import '../../auth/presenter/controllers/auth_controller.dart';
-import '../utils/mocks/subscribed_activities_mock.dart';
 
 class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   final SecureStorageInterface storage;
@@ -63,7 +62,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken(token.toString());
-        await getAllActivities();
+        await getAdminAllActivities();
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage: errorMessage);
@@ -85,7 +84,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken(token.toString());
-        await getAllActivities();
+        await getAllActivitiesLogged();
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage: errorMessage);
@@ -108,52 +107,11 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken(token.toString());
-        await getAllActivities();
+        await getActivityWithEnrollments(code);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage: errorMessage);
       rethrow;
-    }
-  }
-
-  @override
-  Future<List<ActivityModel>> getUserSubscribedActivities() async {
-    var token = await storage.getAccessToken();
-    try {
-      // dio.options.headers["authorization"] = "Bearer $token";
-      // final res = await dio.get('/activity/userisenrolled');
-      // if (res.statusCode == 200) {
-      //   return ActivityModel.fromMaps(res.data);
-      // }
-      return subscribedActivities;
-    } on DioError catch (e) {
-      if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken(token.toString());
-        await getUserSubscribedActivities();
-      }
-      final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage: errorMessage);
-      rethrow;
-    }
-  }
-
-  @override
-  Future<bool> postSubscribe(String activityId, DateTime activityDate) async {
-    var token = await storage.getAccessToken();
-    var body = SubscriptionActivityModel(
-        activityDate: activityDate, activityId: activityId);
-    try {
-      dio.options.headers["authorization"] = "Bearer $token";
-      await dio.post('/activity/enroll', data: body.toJson());
-      return true;
-    } on DioError catch (e) {
-      if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken(token.toString());
-        await postSubscribe(activityId, activityDate);
-      }
-      final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage: errorMessage);
-      return false;
     }
   }
 
@@ -207,18 +165,36 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future<bool> postUnsubscribe(String activityId, DateTime activityDate) async {
-    var token = await storage.getAccessToken();
-    var body = SubscriptionActivityModel(
-        activityDate: activityDate, activityId: activityId);
+  Future<bool> postSubscribe(String activityCode) async {
+    var token = await storage.getIdToken();
+    var body = {'code': activityCode};
     try {
-      dio.options.headers["authorization"] = "Bearer $token";
-      await dio.post('/activity/unenroll', data: body.toJson());
+      dio.options.headers["authorization"] = "$token";
+      await dio.post('/enroll-activity', data: body);
       return true;
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken(token.toString());
-        await postUnsubscribe(activityId, activityDate);
+        await postSubscribe(activityCode);
+      }
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage: errorMessage);
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> postUnsubscribe(String activityCode) async {
+    var token = await storage.getIdToken();
+    var body = {'code': activityCode};
+    try {
+      dio.options.headers["authorization"] = "$token";
+      await dio.post('/drop-activity', data: body);
+      return true;
+    } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken(token.toString());
+        await postUnsubscribe(activityCode);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage: errorMessage);
@@ -239,7 +215,86 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken(token.toString());
-        await getUserSubscribedActivities();
+        await getAllActivitiesLogged();
+      }
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage: errorMessage);
+      rethrow;
+    }
+  }
+
+  @override
+  Future postConfirmAttendance(
+      String activityCode, String confirmationCode) async {
+    var token = await storage.getIdToken();
+    try {
+      dio.options.headers["authorization"] = "$token";
+      await dio.post('/confirm-attendance');
+      throw Exception();
+    } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken(token.toString());
+        await postConfirmAttendance(activityCode, confirmationCode);
+      }
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage: errorMessage);
+    }
+  }
+
+  @override
+  Future postDeleteAttendanceConfirmation(String activityCode) async {
+    var token = await storage.getIdToken();
+    try {
+      dio.options.headers["authorization"] = "$token";
+      await dio.post('/delete-attendance-confirmation');
+      throw Exception();
+    } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken(token.toString());
+        await postDeleteAttendanceConfirmation(activityCode);
+      }
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage: errorMessage);
+    }
+  }
+
+  @override
+  Future<String> postGenerateAttendanceConfirmation(String activityCode) async {
+    var token = await storage.getIdToken();
+    try {
+      dio.options.headers["authorization"] = "$token";
+      var res = await dio.post('/delete-attendance-confirmation');
+      if (res.statusCode == 200) {
+        return res.data['confirmation_code'] as String;
+      }
+      throw Exception();
+    } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken(token.toString());
+        await postGenerateAttendanceConfirmation(activityCode);
+      }
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage: errorMessage);
+      rethrow;
+    }
+  }
+
+  @override
+  Future<EnrollsActivityModel> postManualChangeAttendance(
+      String activityCode, String userId, EnrollmentStateEnum state) async {
+    var token = await storage.getIdToken();
+    try {
+      dio.options.headers["authorization"] = "$token";
+      var res = await dio.post('/delete-attendance-confirmation');
+      if (res.statusCode == 200) {
+        return EnrollsActivityModel.fromMap(
+            res.data['activity_with_enrollments']);
+      }
+      throw Exception();
+    } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken(token.toString());
+        await postGenerateAttendanceConfirmation(activityCode);
       }
       final errorMessage = DioExceptions.fromDioError(e).toString();
       showErrorSnackBar(errorMessage: errorMessage);
