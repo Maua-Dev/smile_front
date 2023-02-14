@@ -8,7 +8,8 @@ abstract class ActivitiesRepositoryInterface {
   Future<String> getDownloadLinkCsv();
   Future createActivity(ActivityModel activityToCreate);
   Future editActivity(ActivityModel activityToEdit);
-  Future removeActivity(String id);
-  Future<bool> subscribeActivity(String activityCode);
-  Future<bool> unsubscribeActivity(String activityCode);
+  Future deleteActivity(String activityCode);
+  Future<bool> subscribeActivity(
+      ActivityModel activity, String activityId, DateTime activityDate);
+  Future<bool> unsubscribeActivity(String activityId, DateTime activityDate);
 }

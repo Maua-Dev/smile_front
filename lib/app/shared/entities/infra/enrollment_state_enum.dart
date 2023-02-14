@@ -2,17 +2,18 @@
 
 import 'package:enum_to_string/enum_to_string.dart';
 
-enum EnrollmentStateEnum { NONE, ENROLLED, IN_QUEUE, DROPPED }
+enum EnrollmentStateEnum { ENROLLED, IN_QUEUE, COMPLETED, DROPPED, REJECTED }
 
 extension EnrollmentStateEnumExtension on EnrollmentStateEnum {
   static EnrollmentStateEnum stringToEnumMap(String toMap) {
-    EnrollmentStateEnum type = EnrollmentStateEnum.values.firstWhere((type) =>
-        EnumToString.convertToString(type).toUpperCase() ==
-        toMap.toUpperCase());
-    return type;
+    EnrollmentStateEnum modality = EnrollmentStateEnum.values.firstWhere(
+        (modality) =>
+            EnumToString.convertToString(modality).toUpperCase() ==
+            toMap.toUpperCase());
+    return modality;
   }
 
-  static String enumToStringMap(EnrollmentStateEnum type) {
-    return EnumToString.convertToString(type);
+  static String enumToStringMap(EnrollmentStateEnum modality) {
+    return EnumToString.convertToString(modality).toUpperCase();
   }
 }

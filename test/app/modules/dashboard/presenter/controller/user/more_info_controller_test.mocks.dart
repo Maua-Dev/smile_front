@@ -159,28 +159,43 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i9.Future<dynamic>.value(),
       ) as _i9.Future<dynamic>);
   @override
-  _i9.Future<dynamic> removeActivity(String? id) => (super.noSuchMethod(
+  _i9.Future<dynamic> deleteActivity(String? activityCode) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #removeActivity,
-          [id],
+          #deleteActivity,
+          [activityCode],
         ),
         returnValue: _i9.Future<dynamic>.value(),
       ) as _i9.Future<dynamic>);
   @override
-  _i9.Future<bool> subscribeActivity(String? activityCode) =>
+  _i9.Future<bool> subscribeActivity(
+    _i6.ActivityModel? activity,
+    String? activityId,
+    DateTime? activityDate,
+  ) =>
       (super.noSuchMethod(
         Invocation.method(
           #subscribeActivity,
-          [activityCode],
+          [
+            activity,
+            activityId,
+            activityDate,
+          ],
         ),
         returnValue: _i9.Future<bool>.value(false),
       ) as _i9.Future<bool>);
   @override
-  _i9.Future<bool> unsubscribeActivity(String? activityCode) =>
+  _i9.Future<bool> unsubscribeActivity(
+    String? activityId,
+    DateTime? activityDate,
+  ) =>
       (super.noSuchMethod(
         Invocation.method(
           #unsubscribeActivity,
-          [activityCode],
+          [
+            activityId,
+            activityDate,
+          ],
         ),
         returnValue: _i9.Future<bool>.value(false),
       ) as _i9.Future<bool>);

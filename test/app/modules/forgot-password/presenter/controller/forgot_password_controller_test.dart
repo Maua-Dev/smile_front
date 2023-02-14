@@ -72,16 +72,6 @@ void main() {
     expect(controller.validateEmail(str), isA<String>());
   });
 
-  test('validateEmail if CPF is valid : String Error Message', () {
-    var str = '1234567';
-    expect(controller.validateEmail(str), isA<String>());
-  });
-
-  test('validateEmail if CPF is valid : true', () {
-    var str = '498.461.298-31';
-    expect(controller.validateEmail(str), null);
-  });
-
   test('setIsLoading', () {
     controller.setIsLoading(true);
     expect(controller.isLoading, true);

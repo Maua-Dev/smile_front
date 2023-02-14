@@ -16,8 +16,8 @@ import '../../shared/error/error_page.dart';
 import '../../shared/services/dio/smile_activities_options.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
-import '../auth/usecases/login_with_cpf_rne.dart';
-import '../auth/usecases/refresh_token.dart';
+import '../auth/domain/usecases/login_with_email.dart';
+import '../auth/domain/usecases/refresh_token.dart';
 import 'domain/repositories/activities_repository_interface.dart';
 import 'domain/usecases/edit_activity.dart';
 import 'external/activities_datasource_impl.dart';
@@ -66,7 +66,7 @@ class AdmModule extends Module {
     Bind.lazySingleton((i) => Dio(smileOption)),
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(
-              loginWithCpfRne: i<LoginWithCpfRneInterface>(),
+              loginWithEmail: i<LoginWithEmailInterface>(),
               refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
               analytics: i(),

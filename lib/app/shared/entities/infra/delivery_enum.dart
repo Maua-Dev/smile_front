@@ -28,6 +28,6 @@ extension DeliveryEnumExtension on DeliveryEnum {
   }
 
   static String enumToStringMap(DeliveryEnum modality) {
-    return EnumToString.convertToString(modality);
+    return EnumToString.convertToString(modality).toUpperCase();
   }
 }

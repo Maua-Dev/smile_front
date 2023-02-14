@@ -8,8 +8,8 @@ import 'package:smile_front/app/modules/auth/auth_module.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/external/auth_datasource_impl.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
-import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
-import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
 import '../../../setup_firebase_mocks.dart';
 
 void main() {
@@ -30,7 +30,7 @@ void main() {
     await Modular.isModuleReady<AuthModule>();
     var test = Modular.get<AuthController>();
     expect(test.refreshToken, isInstanceOf<RefreshTokenInterface>());
-    expect(test.loginWithCpfRne, isInstanceOf<LoginWithCpfRneInterface>());
+    expect(test.loginWithEmail, isInstanceOf<LoginWithEmailInterface>());
   });
 
   test('AuthDatasourceImpl Injection', () async {

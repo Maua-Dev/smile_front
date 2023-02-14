@@ -44,7 +44,7 @@ class _SwitchToggleWidgetState extends State<SwitchToggleWidget> {
             : 600,
         height: 40,
         decoration: BoxDecoration(
-          color: AppColors.gray,
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
@@ -56,7 +56,7 @@ class _SwitchToggleWidgetState extends State<SwitchToggleWidget> {
                   text: TextSpan(
                       text: S.of(context).notificationsSchemaTitle,
                       style: AppTextStyles.body.copyWith(
-                        color: Colors.white,
+                        color: AppColors.gray,
                         fontSize: 16,
                       ),
                       children: [
@@ -72,7 +72,7 @@ class _SwitchToggleWidgetState extends State<SwitchToggleWidget> {
             Switch(
                 splashRadius: 8,
                 activeTrackColor: AppColors.brandingOrange,
-                activeColor: Colors.white,
+                activeColor: AppColors.white,
                 value: isSwitched,
                 onChanged: (value) {
                   toggleSwitch(value);

@@ -1,6 +1,6 @@
 import 'package:smile_front/app/shared/entities/user_registration.dart';
 
-import '../domain/repositories/register_informations_repository_interface.dart';
+import '../repositories/register_informations_repository_interface.dart';
 
 abstract class RegisterUserInterface {
   Future<String> call(UserRegistration registerInformations);

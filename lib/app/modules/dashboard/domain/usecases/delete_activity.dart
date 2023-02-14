@@ -11,6 +11,6 @@ class DeleteActivity implements DeleteActivityInterface {
 
   @override
   Future call(String id) {
-    return repository.removeActivity(id);
+    return repository.deleteActivity(id);
   }
 }
