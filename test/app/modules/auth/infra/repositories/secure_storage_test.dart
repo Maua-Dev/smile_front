@@ -23,7 +23,7 @@ void main() {
     secureStorage = await SecureStorage.instance();
     when(storage.get('accessToken')).thenAnswer((_) async => accessToken);
     when(storage.get('refreshToken')).thenAnswer((_) async => refreshToken);
-    when(storage.get('accessLevel')).thenAnswer((_) async => accessLevel);
+    when(storage.get('accessLevel')).thenAnswer((_) async => accessLevel.name);
     when(storage.get('name')).thenAnswer((_) async => name);
     when(storage.get('socialName')).thenAnswer((_) async => socialName);
     when(storage.get('certificateWithSocialName'))
@@ -46,7 +46,7 @@ void main() {
   test('saveAccessLevel', () async {
     await secureStorage.saveAccessLevel(accessLevel.name);
     String response = await storage.get('accessLevel');
-    expect(response, accessLevel);
+    expect(response, accessLevel.name);
   });
 
   test('saveName', () async {

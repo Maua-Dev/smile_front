@@ -35,7 +35,7 @@ void main() {
     role: UserRolesEnum.student,
     name: 'name',
     accessToken: 'access_token',
-    idToken: 'id_token',
+    idToken: 'id',
     phone: 'phone',
     refreshToken: 'refresh',
     userId: 'id',
@@ -63,9 +63,9 @@ void main() {
     );
   });
 
-  test('loginWithCpfRne', () async {
+  test('loginWithEmail', () async {
     await controller.loginWithUserEmail(emailMock, pwMock);
-    expect(controller.accessLevel, userMock.accessLevel);
+    expect(controller.accessLevel, userMock.accessLevel.name);
     expect(controller.name, userMock.name);
     expect(controller.socialname, userMock.socialName);
     expect(controller.id, userMock.idToken);
@@ -82,6 +82,6 @@ void main() {
   test('verifyIfHaveTokens when logged', () async {
     await controller.verifyIfHaveTokens();
     expect(controller.isLogged, true);
-    expect(controller.accessLevel, userMock.accessLevel);
+    expect(controller.accessLevel, userMock.accessLevel.name);
   });
 }

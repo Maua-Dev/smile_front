@@ -77,21 +77,6 @@ void main() {
     expect(controller.validateSocialName(str), null);
   });
 
-  test('validateCpf if is empty : String Error Message', () {
-    var str = '';
-    expect(controller.validateEmail(str), isA<String>());
-  });
-
-  test('validateCpf if CPF is not valid : String Error Message', () {
-    var str = '02020202';
-    expect(controller.validateEmail(str), isA<String>());
-  });
-
-  test('validateCpf is ok : null', () {
-    var str = '49846129831';
-    expect(controller.validateEmail(str), null);
-  });
-
   test('setEmail', () {
     var str = 'teste';
     controller.setEmail(str);

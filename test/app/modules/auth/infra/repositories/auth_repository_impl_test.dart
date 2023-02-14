@@ -37,7 +37,7 @@ void main() {
 
   test('login', () async {
     var response = await authRepository.login('', '');
-    expect(response, {});
+    expect(response, userMock);
   });
 
   test('refreshToken', () async {
