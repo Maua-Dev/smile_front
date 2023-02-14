@@ -6,18 +6,36 @@ import '../../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../../shared/utils/screen_helper.dart';
 
 class NavBarWidget extends StatelessWidget {
-  NavBarWidget({super.key});
+  NavBarWidget({super.key, required this.isProfessor});
 
-  final List<String> options = [
+  final bool isProfessor;
+
+  final List<String> userOptions = [
     "Perfil",
     "Atividades",
     "Certificados",
-    "Ajuda"
+    "Ajuda",
   ];
 
-  final List<String> routes = [
+  final List<String> userRoutes = [
     '/user/home',
     '/user/home/all-activities',
+    '/user/home/certificate',
+    '/user/home/help'
+  ];
+
+  final List<String> professorOptions = [
+    "Perfil",
+    "Atividades",
+    "Atividades Responsaveis",
+    "Certificados",
+    "Ajuda",
+  ];
+
+  final List<String> professorRoutes = [
+    '/user/home',
+    '/user/home/all-activities',
+    '/user/home/help',
     '/user/home/certificate',
     '/user/home/help'
   ];
@@ -32,11 +50,11 @@ class NavBarWidget extends StatelessWidget {
             : Screen.width(context) * 0.3,
         backgroundColor: AppColors.brandingBlue,
         child: ListView.builder(
-          itemCount: options.length,
+          itemCount: isProfessor ? professorOptions.length : userOptions.length,
           itemBuilder: (BuildContext context, int index) {
             return SideBarContents(
-              title: options[index],
-              route: routes[index],
+              title: isProfessor ? professorOptions[index] : userOptions[index],
+              route: isProfessor ? professorRoutes[index] : userRoutes[index],
             );
           },
         ),
