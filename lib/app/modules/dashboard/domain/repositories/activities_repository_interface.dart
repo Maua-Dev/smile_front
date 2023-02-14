@@ -8,6 +8,6 @@ abstract class ActivitiesRepositoryInterface {
   Future createActivity(ActivityModel activityToCreate);
   Future editActivity(ActivityModel activityToEdit);
   Future deleteActivity(String activityCode);
-  Future<bool> unsubscribeActivity(String activityId, DateTime activityDate);
+  Future<bool> subscribeActivity(String activityCode);
   Future<bool> unsubscribeActivity(String activityCode);
 }
