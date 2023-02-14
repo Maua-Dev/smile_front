@@ -136,6 +136,15 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i4.Future<void>.value(),
       ) as _i4.Future<void>);
   @override
+  _i4.Future<void> saveIdToken(String? idToken) => (super.noSuchMethod(
+        Invocation.method(
+          #saveIdToken,
+          [idToken],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+  @override
   _i4.Future<void> saveName(String? name) => (super.noSuchMethod(
         Invocation.method(
           #saveName,
@@ -176,6 +185,14 @@ class MockSecureStorageInterface extends _i1.Mock
   _i4.Future<String?> getId() => (super.noSuchMethod(
         Invocation.method(
           #getId,
+          [],
+        ),
+        returnValue: _i4.Future<String?>.value(),
+      ) as _i4.Future<String?>);
+  @override
+  _i4.Future<String?> getIdToken() => (super.noSuchMethod(
+        Invocation.method(
+          #getIdToken,
           [],
         ),
         returnValue: _i4.Future<String?>.value(),
