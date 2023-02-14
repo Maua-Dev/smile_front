@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/dashboard/infra/models/subscription_acti
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import '../../../shared/error/dio_exceptions.dart';
 import '../../../shared/error/error_snackbar.dart';
+import '../../../shared/models/admin_activity_model.dart';
 import '../../../shared/services/environment/environment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
 import '../../auth/presenter/controllers/auth_controller.dart';
@@ -35,6 +36,28 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       final res = await dio.get('/get-all-activities');
       if (res.statusCode == 200) {
         return ActivityModel.fromMaps(res.data['all_activities']);
+      }
+      throw Exception();
+    } on DioError catch (e) {
+      if (e.response.toString().contains('Authentication Error')) {
+        await authController.refreshToken(token.toString());
+        await getAllActivities();
+      }
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      showErrorSnackBar(errorMessage: errorMessage);
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<AdminActivityModel>> getAdminAllActivities() async {
+    var token = await storage.getAccessToken();
+    try {
+      dio.options.headers["authorization"] = "Bearer $token";
+      final res = await dio.get('/get-all-activities');
+      if (res.statusCode == 200) {
+        return AdminActivityModel.fromMaps(
+            res.data['all_activities_with_enrollments']);
       }
       throw Exception();
     } on DioError catch (e) {
@@ -91,9 +114,9 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future editActivity(String id, ActivityModel activity) async {
-    var token = await storage.getAccessToken();
+    var token = await storage.getIdToken();
     try {
-      dio.options.headers["authorization"] = "Bearer $token";
+      dio.options.headers["authorization"] = "$token";
       await dio.put('/update-activity', data: activity.editToJson());
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
@@ -107,9 +130,9 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future createActivity(ActivityModel activity) async {
-    var token = await storage.getAccessToken();
+    var token = await storage.getIdToken();
     try {
-      dio.options.headers["authorization"] = "Bearer $token";
+      dio.options.headers["authorization"] = "$token";
       await dio.post('/create-activity', data: activity.toJson());
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
@@ -123,10 +146,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
   @override
   Future deleteActivity(String activityCode) async {
-    var token = await storage.getAccessToken();
+    var token = await storage.getIdToken();
     var body = {"code": activityCode};
     try {
-      dio.options.headers["authorization"] = "Bearer $token";
+      dio.options.headers["authorization"] = "$token";
       await dio.post('/delete-activity', data: body);
     } on DioError catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
