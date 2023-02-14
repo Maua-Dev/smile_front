@@ -9,10 +9,10 @@ part of 'register_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$RegisterController on RegisterControllerBase, Store {
-  Computed<int?>? _$raIntComputed;
+  Computed<String?>? _$raIntComputed;
 
   @override
-  int? get raInt => (_$raIntComputed ??= Computed<int?>(() => super.raInt,
+  String? get raInt => (_$raIntComputed ??= Computed<String?>(() => super.raInt,
           name: 'RegisterControllerBase.raInt'))
       .value;
   Computed<UserRegistration>? _$registerInformationsComputed;
@@ -152,22 +152,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$cpfAtom =
-      Atom(name: 'RegisterControllerBase.cpf', context: context);
-
-  @override
-  String get cpf {
-    _$cpfAtom.reportRead();
-    return super.cpf;
-  }
-
-  @override
-  set cpf(String value) {
-    _$cpfAtom.reportWrite(value, super.cpf, () {
-      super.cpf = value;
-    });
-  }
-
   late final _$emailAtom =
       Atom(name: 'RegisterControllerBase.email', context: context);
 
@@ -277,22 +261,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   set verifyPassword(String value) {
     _$verifyPasswordAtom.reportWrite(value, super.verifyPassword, () {
       super.verifyPassword = value;
-    });
-  }
-
-  late final _$canSendEmailsAtom =
-      Atom(name: 'RegisterControllerBase.canSendEmails', context: context);
-
-  @override
-  bool get canSendEmails {
-    _$canSendEmailsAtom.reportRead();
-    return super.canSendEmails;
-  }
-
-  @override
-  set canSendEmails(bool value) {
-    _$canSendEmailsAtom.reportWrite(value, super.canSendEmails, () {
-      super.canSendEmails = value;
     });
   }
 
@@ -462,14 +430,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     return _$setSocialNameAsyncAction.run(() => super.setSocialName(value));
   }
 
-  late final _$setCpfAsyncAction =
-      AsyncAction('RegisterControllerBase.setCpf', context: context);
-
-  @override
-  Future<void> setCpf(String value) {
-    return _$setCpfAsyncAction.run(() => super.setCpf(value));
-  }
-
   late final _$setEmailAsyncAction =
       AsyncAction('RegisterControllerBase.setEmail', context: context);
 
@@ -563,13 +523,14 @@ mixin _$RegisterController on RegisterControllerBase, Store {
         .run(() => super.setSuccessRegistration(value));
   }
 
-  late final _$setCanSendEmailsAsyncAction =
-      AsyncAction('RegisterControllerBase.setCanSendEmails', context: context);
+  late final _$setAcceptEmailNotificationsAsyncAction = AsyncAction(
+      'RegisterControllerBase.setAcceptEmailNotifications',
+      context: context);
 
   @override
-  Future<void> setCanSendEmails(bool? value) {
-    return _$setCanSendEmailsAsyncAction
-        .run(() => super.setCanSendEmails(value));
+  Future<void> setAcceptEmailNotifications(bool? value) {
+    return _$setAcceptEmailNotificationsAsyncAction
+        .run(() => super.setAcceptEmailNotifications(value));
   }
 
   late final _$setAcceptTermsOfUseAsyncAction = AsyncAction(
@@ -602,17 +563,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
         name: 'RegisterControllerBase.validateSocialName');
     try {
       return super.validateSocialName(value);
-    } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  String? validateCpf(String? value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.validateCpf');
-    try {
-      return super.validateCpf(value);
     } finally {
       _$RegisterControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -717,7 +667,6 @@ successRegistration: ${successRegistration},
 name: ${name},
 socialName: ${socialName},
 hasSocialName: ${hasSocialName},
-cpf: ${cpf},
 email: ${email},
 verifyEmail: ${verifyEmail},
 phone: ${phone},
@@ -725,7 +674,6 @@ isMauaStudent: ${isMauaStudent},
 ra: ${ra},
 password: ${password},
 verifyPassword: ${verifyPassword},
-canSendEmails: ${canSendEmails},
 acceptTermsOfUse: ${acceptTermsOfUse},
 acceptImage: ${acceptImage},
 acceptEmailNotifications: ${acceptEmailNotifications},

@@ -6,8 +6,8 @@ import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
-import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
-import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
@@ -26,7 +26,7 @@ import 'all_activities_user_dashboard_controller_test.mocks.dart' as u;
   UserDashboardController,
   GetAllUserActivitiesInterface,
   RefreshTokenInterface,
-  LoginWithCpfRneInterface,
+  LoginWithEmailInterface,
 ])
 void main() {
   initModule(AppModule());
@@ -34,7 +34,7 @@ void main() {
   GetAllUserActivitiesInterface getAllUserActivitiesInterface =
       u.MockGetAllUserActivitiesInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
-  LoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
+  LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
   UserDashboardController userDashboardController =
       u.MockUserDashboardController();
@@ -323,7 +323,7 @@ void main() {
     when(getAllUserActivitiesInterface())
         .thenAnswer((_) async => mockActivities);
     authController = AuthController(
-        loginWithCpfRne: loginWithCpfRne,
+        loginWithEmail: loginWithEmail,
         refreshToken: refreshToken,
         storage: secureStorage,
         analytics: analytics);

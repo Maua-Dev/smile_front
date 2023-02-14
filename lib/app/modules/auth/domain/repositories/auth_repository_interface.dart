@@ -1,5 +1,6 @@
+import '../../../../shared/models/user_model.dart';
+
 abstract class AuthRepositoryInterface {
-  Future<Map<String, dynamic>> login(String user, String password);
+  Future<UserModel> login(String user, String password);
   Future<Map<String, dynamic>> refreshToken(String token);
-  Future<String> getAccessLevel(String user);
 }

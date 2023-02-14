@@ -86,7 +86,7 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
   ) =>
       (super.noSuchMethod(
         Invocation.method(
-          #putActivity,
+          #editActivity,
           [
             id,
             activity,
@@ -98,7 +98,7 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
   _i3.Future<dynamic> createActivity(_i4.ActivityModel? activity) =>
       (super.noSuchMethod(
         Invocation.method(
-          #postActivity,
+          #createActivity,
           [activity],
         ),
         returnValue: _i3.Future<dynamic>.value(),
