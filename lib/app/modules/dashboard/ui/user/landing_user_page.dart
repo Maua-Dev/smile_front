@@ -18,7 +18,9 @@ class _LandingUserPageState extends State<LandingUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         drawerScrimColor: Colors.transparent,
-        drawer: Screen.width(context) < tabletSize ? NavBarWidget() : null,
+        drawer: Screen.width(context) < tabletSize
+            ? NavBarWidget(isProfessor: false)
+            : null,
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(Screen.height(context) * 0.1),
             child: AppBar(
