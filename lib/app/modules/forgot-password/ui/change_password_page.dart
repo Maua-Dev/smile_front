@@ -48,154 +48,138 @@ class _ChangePasswordPageState
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: CachedNetworkImageProvider(mauaCampusBlurUrl),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Stack(
+            decoration: BoxDecoration(color: AppColors.backgroundLogin),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  color: const Color(0xFF000000).withOpacity(0.6),
+                const Center(
+                  child: SmileLogoWidget(),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Center(
-                      child: SmileLogoWidget(),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Observer(builder: (_) {
-                      if (controller.successRegistration) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
-                          child: Container(
-                            width: 400,
-                            decoration: BoxDecoration(
-                                color: Colors.green[100],
-                                border: Border.all(color: Colors.green),
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Text(
-                                S.of(context).successChangePasswordRedirect,
-                                textAlign: TextAlign.center,
+                const SizedBox(
+                  height: 10,
+                ),
+                Observer(builder: (_) {
+                  if (controller.successRegistration) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: Container(
+                        width: 400,
+                        decoration: BoxDecoration(
+                            color: Colors.green[100],
+                            border: Border.all(color: Colors.green),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text(
+                            S.of(context).successChangePasswordRedirect,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: Colors.black, fontSize: 16),
+                          ),
+                        ),
+                      ),
+                    );
+                  } else if (controller.errors != '') {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: Container(
+                        width: 450,
+                        decoration: BoxDecoration(
+                            color: Colors.red[100],
+                            border: Border.all(color: AppColors.lightRedButton),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  controller.setError('');
+                                },
+                                icon: const Icon(Icons.close),
+                              ),
+                              Text(
+                                controller.errors,
                                 style: const TextStyle(
                                     color: Colors.black, fontSize: 16),
                               ),
-                            ),
+                              const SizedBox(
+                                width: 10,
+                              )
+                            ],
                           ),
-                        );
-                      } else if (controller.errors != '') {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
-                          child: Container(
-                            width: 450,
-                            decoration: BoxDecoration(
-                                color: Colors.red[100],
-                                border:
-                                    Border.all(color: AppColors.lightRedButton),
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      controller.setError('');
-                                    },
-                                    icon: const Icon(Icons.close),
-                                  ),
-                                  Text(
-                                    controller.errors,
-                                    style: const TextStyle(
-                                        color: Colors.black, fontSize: 16),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      } else {
-                        return const SizedBox.shrink();
-                      }
-                    }),
-                    Text(
-                      S.of(context).insertPasswordCodeInstructions,
-                      style: const TextStyle(color: Colors.white),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Observer(builder: (context) {
-                      return InputBoxWidget(
-                        icon: Icons.lock,
-                        placeholder: S.of(context).loginPasswordPlaceholder,
-                        setValue: controller.setPassword,
-                        isPassword: true,
-                        showPwd: controller.showPwd,
-                        onToggleVisibilityPwd: controller.toggleVisibilityPwd,
-                      );
-                    }),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Observer(builder: (context) {
-                      return InputBoxWidget(
-                        icon: Icons.lock,
-                        placeholder:
-                            S.of(context).registerConfirmPasswordPlaceholder,
-                        setValue: controller.setVerifyPassword,
-                        isPassword: true,
-                        validation: controller.validateVerifyPassword,
-                        showPwd: controller.showConfirmPwd,
-                        onToggleVisibilityPwd:
-                            controller.toggleVisibilityConfirmPwd,
-                        onFieldSubmitted: (value) async {
-                          if (_formKey.currentState!.validate()) {
-                            await controller.changeUserPassword();
-                          }
-                        },
-                      );
-                    }),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    Observer(builder: (_) {
-                      return CustomElevatedButtonWidget(
-                        isLoading: controller.isLoading,
-                        title: S.of(context).changePasswordTitle,
-                        widthSize: MediaQuery.of(context).size.width < 650
-                            ? MediaQuery.of(context).size.width * 0.85
-                            : 600,
-                        heightSize: 50,
-                        backgroundColor: AppColors.brandingOrange,
-                        onPressed: () async {
-                          FocusScopeNode currentFocus = FocusScope.of(context);
-                          if (!currentFocus.hasPrimaryFocus) {
-                            currentFocus.unfocus();
-                          }
-                          if (_formKey.currentState!.validate()) {
-                            await controller.changeUserPassword();
-                            await controller.analytics.logChangePassword();
-                          }
-                        },
-                      );
-                    }),
-                  ],
+                        ),
+                      ),
+                    );
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                }),
+                Text(
+                  S.of(context).insertPasswordCodeInstructions,
+                  style: const TextStyle(color: Colors.white),
+                  textAlign: TextAlign.center,
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Observer(builder: (context) {
+                  return InputBoxWidget(
+                    icon: Icons.lock,
+                    placeholder: S.of(context).loginPasswordPlaceholder,
+                    setValue: controller.setPassword,
+                    isPassword: true,
+                    showPwd: controller.showPwd,
+                    onToggleVisibilityPwd: controller.toggleVisibilityPwd,
+                  );
+                }),
+                const SizedBox(
+                  height: 20,
+                ),
+                Observer(builder: (context) {
+                  return InputBoxWidget(
+                    icon: Icons.lock,
+                    placeholder:
+                        S.of(context).registerConfirmPasswordPlaceholder,
+                    setValue: controller.setVerifyPassword,
+                    isPassword: true,
+                    validation: controller.validateVerifyPassword,
+                    showPwd: controller.showConfirmPwd,
+                    onToggleVisibilityPwd:
+                        controller.toggleVisibilityConfirmPwd,
+                    onFieldSubmitted: (value) async {
+                      if (_formKey.currentState!.validate()) {
+                        await controller.changeUserPassword();
+                      }
+                    },
+                  );
+                }),
+                const SizedBox(
+                  height: 40,
+                ),
+                Observer(builder: (_) {
+                  return CustomElevatedButtonWidget(
+                    isLoading: controller.isLoading,
+                    title: S.of(context).changePasswordTitle,
+                    widthSize: MediaQuery.of(context).size.width < 650
+                        ? MediaQuery.of(context).size.width * 0.85
+                        : 600,
+                    heightSize: 50,
+                    backgroundColor: AppColors.brandingOrange,
+                    onPressed: () async {
+                      FocusScopeNode currentFocus = FocusScope.of(context);
+                      if (!currentFocus.hasPrimaryFocus) {
+                        currentFocus.unfocus();
+                      }
+                      if (_formKey.currentState!.validate()) {
+                        await controller.changeUserPassword();
+                        await controller.analytics.logChangePassword();
+                      }
+                    },
+                  );
+                }),
               ],
             ),
           ),

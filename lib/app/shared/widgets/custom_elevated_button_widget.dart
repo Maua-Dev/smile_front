@@ -6,6 +6,7 @@ class CustomElevatedButtonWidget extends StatelessWidget {
   final bool? isLoading;
   final String? title;
   final Color? backgroundColor;
+  final Color? fontColor;
   final TextStyle? textStyle;
   final double? widthSize;
   final double? heightSize;
@@ -28,6 +29,7 @@ class CustomElevatedButtonWidget extends StatelessWidget {
     this.textStyle,
     this.borderRadius,
     this.isClickable = true,
+    this.fontColor,
   }) : super(key: key);
 
   @override
@@ -62,7 +64,7 @@ class CustomElevatedButtonWidget extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: textStyle ??
                       AppTextStyles.body.copyWith(
-                          color: Colors.white,
+                          color: fontColor ?? AppColors.white,
                           fontSize: MediaQuery.of(context).size.width < 1300
                               ? 20
                               : 24)),

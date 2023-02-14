@@ -26,7 +26,7 @@ class CheckBoxWidget extends StatelessWidget {
           : 600,
       height: 60,
       decoration: BoxDecoration(
-        color: AppColors.gray,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: CheckboxListTile(
@@ -36,7 +36,7 @@ class CheckBoxWidget extends StatelessWidget {
         title: link == null
             ? Text(
                 title,
-                style: const TextStyle(color: Colors.white, fontSize: 14),
+                style: TextStyle(color: AppColors.gray, fontSize: 14),
               )
             : MouseRegion(
                 cursor: SystemMouseCursors.click,
@@ -50,7 +50,7 @@ class CheckBoxWidget extends StatelessWidget {
                   child: Text(
                     title,
                     style: AppTextStyles.titleH1.copyWith(
-                        color: Colors.white,
+                        color: AppColors.gray,
                         fontSize: 14,
                         decoration: TextDecoration.underline),
                   ),
