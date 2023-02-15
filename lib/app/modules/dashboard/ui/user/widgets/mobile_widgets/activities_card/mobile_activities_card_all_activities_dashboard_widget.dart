@@ -17,6 +17,7 @@ class MobileActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final Function()? onPressedUnsubscribe;
   final bool isUserSubscribed;
   final bool isLoading;
+  final bool isUserInQueue;
   final bool acceptingNewEnrollments;
   final bool isExtensive;
   final int takenSlots;
@@ -33,6 +34,7 @@ class MobileActivitiesCardAllActivitiesDashboard extends StatelessWidget {
       required this.isLoading,
       required this.acceptingNewEnrollments,
       required this.takenSlots,
+      required this.isUserInQueue,
       required this.isExtensive,
       required this.totalSlots,
       this.onPressedSubscribe,
@@ -114,6 +116,17 @@ class MobileActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                           if (MediaQuery.of(context).size.width >
                               breakpointTablet)
                             const SizedBox(width: 200),
+                          if (isExtensive)
+                            Icon(
+                              Icons.star,
+                              color: AppColors.brandingOrange,
+                              size: MediaQuery.of(context).size.width <
+                                      breakpointTablet
+                                  ? 20
+                                  : 40,
+                            ),
+                            if(isUserInQueue)
+                              const Text('fila funcionando')
                         ]),
                     Row(children: [
                       Column(

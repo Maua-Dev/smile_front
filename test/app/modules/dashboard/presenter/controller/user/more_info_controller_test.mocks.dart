@@ -9,14 +9,16 @@ import 'package:mobx/mobx.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
     as _i4;
+import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart'
+    as _i12;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i8;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart'
     as _i3;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
-    as _i13;
+    as _i14;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart'
-    as _i12;
+    as _i13;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart'
     as _i11;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart'
@@ -308,6 +310,54 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  List<_i6.EnrollsActivityModel> get subscribedActivitiesOnScreen =>
+      (super.noSuchMethod(
+        Invocation.getter(#subscribedActivitiesOnScreen),
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
+  @override
+  set subscribedActivitiesOnScreen(
+          List<_i6.EnrollsActivityModel>? _subscribedActivitiesOnScreen) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #subscribedActivitiesOnScreen,
+          _subscribedActivitiesOnScreen,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set activityType(_i12.ActivityEnum? _activityType) => super.noSuchMethod(
+        Invocation.setter(
+          #activityType,
+          _activityType,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set typeFilter(_i12.ActivityEnum? _typeFilter) => super.noSuchMethod(
+        Invocation.setter(
+          #typeFilter,
+          _typeFilter,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set dateFilter(DateTime? _dateFilter) => super.noSuchMethod(
+        Invocation.setter(
+          #dateFilter,
+          _dateFilter,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set hourFilter(DateTime? _hourFilter) => super.noSuchMethod(
+        Invocation.setter(
+          #hourFilter,
+          _hourFilter,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   bool get isLoading => (super.noSuchMethod(
         Invocation.getter(#isLoading),
         returnValue: false,
@@ -337,16 +387,16 @@ class MockUserDashboardController extends _i1.Mock
   @override
   List<_i6.EnrollsActivityModel> get allSubscribedActivitiesList =>
       (super.noSuchMethod(
-        Invocation.getter(#subscribedActivitiesList),
+        Invocation.getter(#allSubscribedActivitiesList),
         returnValue: <_i6.EnrollsActivityModel>[],
       ) as List<_i6.EnrollsActivityModel>);
   @override
   set allSubscribedActivitiesList(
-          List<_i6.EnrollsActivityModel>? _subscribedActivitiesList) =>
+          List<_i6.EnrollsActivityModel>? _allSubscribedActivitiesList) =>
       super.noSuchMethod(
         Invocation.setter(
-          #subscribedActivitiesList,
-          _subscribedActivitiesList,
+          #allSubscribedActivitiesList,
+          _allSubscribedActivitiesList,
         ),
         returnValueForMissingStub: null,
       );
@@ -375,6 +425,113 @@ class MockUserDashboardController extends _i1.Mock
           Invocation.getter(#context),
         ),
       ) as _i7.ReactiveContext);
+  @override
+  void setTypeFilter(_i12.ActivityEnum? value) => super.noSuchMethod(
+        Invocation.method(
+          #setTypeFilter,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void setDateFilter(DateTime? value) => super.noSuchMethod(
+        Invocation.method(
+          #setDateFilter,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void setHourFilter(DateTime? value) => super.noSuchMethod(
+        Invocation.method(
+          #setHourFilter,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void setAllFilters() => super.noSuchMethod(
+        Invocation.method(
+          #setAllFilters,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  List<_i6.EnrollsActivityModel> filterActivitiesByType(
+    _i12.ActivityEnum? type,
+    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #filterActivitiesByType,
+          [
+            type,
+            activitiesToFilter,
+          ],
+        ),
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
+  @override
+  List<_i6.EnrollsActivityModel> filterActivitiesByDate(
+    DateTime? date,
+    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #filterActivitiesByDate,
+          [
+            date,
+            activitiesToFilter,
+          ],
+        ),
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
+  @override
+  List<_i6.EnrollsActivityModel> filterActivitiesByHour(
+    DateTime? hour,
+    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #filterActivitiesByHour,
+          [
+            hour,
+            activitiesToFilter,
+          ],
+        ),
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
+  @override
+  bool isValidDateFilter(
+    DateTime? activityDate,
+    DateTime? dateToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #isValidDateFilter,
+          [
+            activityDate,
+            dateToFilter,
+          ],
+        ),
+        returnValue: false,
+      ) as bool);
+  @override
+  bool isValidHourFilter(
+    DateTime? activityDate,
+    DateTime? dateToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #isValidHourFilter,
+          [
+            activityDate,
+            dateToFilter,
+          ],
+        ),
+        returnValue: false,
+      ) as bool);
   @override
   _i9.Future<void> getCertificateWithSocialName() => (super.noSuchMethod(
         Invocation.method(
@@ -499,7 +656,7 @@ class MockUserDashboardController extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUnsubscribeActivityInterface extends _i1.Mock
-    implements _i12.UnsubscribeActivityInterface {
+    implements _i13.UnsubscribeActivityInterface {
   MockUnsubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -518,7 +675,7 @@ class MockUnsubscribeActivityInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSubscribeActivityInterface extends _i1.Mock
-    implements _i13.SubscribeActivityInterface {
+    implements _i14.SubscribeActivityInterface {
   MockSubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }

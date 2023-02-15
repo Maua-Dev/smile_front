@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/mobile_filter_card_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/mobile_filter_card_widget.dart';  
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
@@ -90,39 +90,43 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                       var hour = DateFormat('HH:mm').format(
                           controller.activitiesOnScreen[index].startDate!);
                       return MobileActivitiesCardAllActivitiesDashboard(
-                        onPressedSubscribe: () {
-                          controller.subscribeUserActivity(controller
-                              .activitiesOnScreen[index].activityCode);
-                        },
-                        onPressedUnsubscribe: () {
-                          controller.unsubscribeUserActivity(controller
-                              .activitiesOnScreen[index].activityCode);
-                        },
-                        isLoading: controller.isLoading,
-                        finalTime: finalTime,
-                        location: controller.activitiesOnScreen[index].place,
-                        title: controller.activitiesOnScreen[index].title,
-                        hour: hour,
-                        isUserSubscribed:
-                            controller.activitiesOnScreen[index].enrollments !=
-                                null,
-                        acceptingNewEnrollments: controller
-                            .activitiesOnScreen[index].acceptingNewEnrollments,
-                        takenSlots:
-                            controller.activitiesOnScreen[index].takenSlots,
-                        totalSlots:
-                            controller.activitiesOnScreen[index].totalSlots,
-                        onTap: () {
-                          Modular.to.navigate(
-                            '/user/home/more-info',
-                            arguments: controller.activitiesOnScreen[index],
-                          );
-                          controller.analytics.logViewActivity(controller
-                              .activitiesOnScreen[index].activityCode);
-                        },
-                        isExtensive:
-                            controller.activitiesOnScreen[index].isExtensive,
-                      );
+                          onPressedSubscribe: () {
+                            controller.subscribeUserActivity(controller
+                                .activitiesOnScreen[index].activityCode);
+                          },
+                          onPressedUnsubscribe: () {
+                            controller.unsubscribeUserActivity(controller
+                                .activitiesOnScreen[index].activityCode);
+                          },
+                          isLoading: controller.isLoading,
+                          finalTime: finalTime,
+                          location: controller.activitiesOnScreen[index].place,
+                          title: controller.activitiesOnScreen[index].title,
+                          hour: hour,
+                          isUserSubscribed: controller
+                                  .activitiesOnScreen[index].enrollments !=
+                              null,
+                          acceptingNewEnrollments: controller
+                              .activitiesOnScreen[index]
+                              .acceptingNewEnrollments,
+                          takenSlots:
+                              controller.activitiesOnScreen[index].takenSlots,
+                          totalSlots:
+                              controller.activitiesOnScreen[index].totalSlots,
+                          onTap: () {
+                            Modular.to.navigate(
+                              '/user/home/more-info',
+                              arguments: controller.activitiesOnScreen[index],
+                            );
+                            controller.analytics.logViewActivity(controller
+                                .activitiesOnScreen[index].activityCode);
+                          },
+                          isExtensive:
+                              controller.activitiesOnScreen[index].isExtensive,
+                          isUserInQueue: controller
+                                  .activitiesOnScreen[index].enrollments
+                                  .toString() ==
+                              "IN_QUEUE");
                     },
                   ),
                 ),
