@@ -45,13 +45,13 @@ class UserModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<AllActivitiesUserDashboardController>(
         (i) => AllActivitiesUserDashboardController(
-            getAllActivities: i(),
-            authController: i(),
-            analytics: i(),
-            subscriptionController: i()),
+              enrollmentController: i(),
+              authController: i(),
+              analytics: i(),
+            ),
         export: true),
-    Bind.lazySingleton<UserSubscriptionController>(
-        (i) => UserSubscriptionController(
+    Bind.lazySingleton<UserEnrollmentController>(
+        (i) => UserEnrollmentController(
               getUserActivities: i(),
               subscribeActivity: i(),
               unsubscribeActivity: i(),

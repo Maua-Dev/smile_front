@@ -8,9 +8,9 @@ part of 'user_subscription_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$UserSubscriptionController on UserSubscriptionControllerBase, Store {
+mixin _$UserEnrollmentController on UserEnrollmentControllerBase, Store {
   late final _$isLoadingAtom =
-      Atom(name: 'UserSubscriptionControllerBase.isLoading', context: context);
+      Atom(name: 'UserEnrollmentControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -25,46 +25,63 @@ mixin _$UserSubscriptionController on UserSubscriptionControllerBase, Store {
     });
   }
 
-  late final _$userEnrolledActivitiesAtom = Atom(
-      name: 'UserSubscriptionControllerBase.userEnrolledActivities',
+  late final _$subscribedActivitiesAtom = Atom(
+      name: 'UserEnrollmentControllerBase.subscribedActivities',
       context: context);
 
   @override
-  List<EnrollsActivityModel> get userEnrolledActivities {
-    _$userEnrolledActivitiesAtom.reportRead();
-    return super.userEnrolledActivities;
+  List<EnrollsActivityModel> get subscribedActivities {
+    _$subscribedActivitiesAtom.reportRead();
+    return super.subscribedActivities;
   }
 
   @override
-  set userEnrolledActivities(List<EnrollsActivityModel> value) {
-    _$userEnrolledActivitiesAtom
-        .reportWrite(value, super.userEnrolledActivities, () {
-      super.userEnrolledActivities = value;
+  set subscribedActivities(List<EnrollsActivityModel> value) {
+    _$subscribedActivitiesAtom.reportWrite(value, super.subscribedActivities,
+        () {
+      super.subscribedActivities = value;
     });
   }
 
-  late final _$getUserEnrolledActivitiesAsyncAction = AsyncAction(
-      'UserSubscriptionControllerBase.getUserEnrolledActivities',
+  late final _$allActivitiesWithEnrollmentsAtom = Atom(
+      name: 'UserEnrollmentControllerBase.allActivitiesWithEnrollments',
       context: context);
 
   @override
-  Future<dynamic> getUserEnrolledActivities() {
-    return _$getUserEnrolledActivitiesAsyncAction
-        .run(() => super.getUserEnrolledActivities());
+  List<EnrollsActivityModel> get allActivitiesWithEnrollments {
+    _$allActivitiesWithEnrollmentsAtom.reportRead();
+    return super.allActivitiesWithEnrollments;
   }
 
-  late final _$UserSubscriptionControllerBaseActionController =
-      ActionController(
-          name: 'UserSubscriptionControllerBase', context: context);
+  @override
+  set allActivitiesWithEnrollments(List<EnrollsActivityModel> value) {
+    _$allActivitiesWithEnrollmentsAtom
+        .reportWrite(value, super.allActivitiesWithEnrollments, () {
+      super.allActivitiesWithEnrollments = value;
+    });
+  }
+
+  late final _$getUserAllActivitiesWithEnrollmentAsyncAction = AsyncAction(
+      'UserEnrollmentControllerBase.getUserAllActivitiesWithEnrollment',
+      context: context);
+
+  @override
+  Future<dynamic> getUserAllActivitiesWithEnrollment() {
+    return _$getUserAllActivitiesWithEnrollmentAsyncAction
+        .run(() => super.getUserAllActivitiesWithEnrollment());
+  }
+
+  late final _$UserEnrollmentControllerBaseActionController =
+      ActionController(name: 'UserEnrollmentControllerBase', context: context);
 
   @override
   void setIsLoading(bool value) {
-    final _$actionInfo = _$UserSubscriptionControllerBaseActionController
-        .startAction(name: 'UserSubscriptionControllerBase.setIsLoading');
+    final _$actionInfo = _$UserEnrollmentControllerBaseActionController
+        .startAction(name: 'UserEnrollmentControllerBase.setIsLoading');
     try {
       return super.setIsLoading(value);
     } finally {
-      _$UserSubscriptionControllerBaseActionController.endAction(_$actionInfo);
+      _$UserEnrollmentControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
@@ -72,7 +89,8 @@ mixin _$UserSubscriptionController on UserSubscriptionControllerBase, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
-userEnrolledActivities: ${userEnrolledActivities}
+subscribedActivities: ${subscribedActivities},
+allActivitiesWithEnrollments: ${allActivitiesWithEnrollments}
     ''';
   }
 }

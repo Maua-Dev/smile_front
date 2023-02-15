@@ -41,9 +41,9 @@ import 'package:smile_front/app/shared/services/firebase-analytics/firebase_anal
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeUserSubscriptionController_0 extends _i1.SmartFake
-    implements _i2.UserSubscriptionController {
-  _FakeUserSubscriptionController_0(
+class _FakeUserEnrollmentController_0 extends _i1.SmartFake
+    implements _i2.UserEnrollmentController {
+  _FakeUserEnrollmentController_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -211,14 +211,14 @@ class MockUserDashboardController extends _i1.Mock
   }
 
   @override
-  _i2.UserSubscriptionController get subscriptionController =>
+  _i2.UserEnrollmentController get subscriptionController =>
       (super.noSuchMethod(
         Invocation.getter(#subscriptionController),
-        returnValue: _FakeUserSubscriptionController_0(
+        returnValue: _FakeUserEnrollmentController_0(
           this,
           Invocation.getter(#subscriptionController),
         ),
-      ) as _i2.UserSubscriptionController);
+      ) as _i2.UserEnrollmentController);
   @override
   _i3.ChangeDataInterface get changeData => (super.noSuchMethod(
         Invocation.getter(#changeData),

@@ -11,7 +11,7 @@ class UserDashboardController = UserDashboardControllerBase
     with _$UserDashboardController;
 
 abstract class UserDashboardControllerBase with Store {
-  final UserSubscriptionController subscriptionController;
+  final UserEnrollmentController subscriptionController;
   final ChangeDataInterface changeData;
   final SecureStorageInterface secureStorage;
   final FirebaseAnalyticsService analytics;

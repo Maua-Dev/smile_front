@@ -6,7 +6,7 @@ part 'more_info_controller.g.dart';
 class MoreInfoController = MoreInfoControllerBase with _$MoreInfoController;
 
 abstract class MoreInfoControllerBase with Store {
-  final UserSubscriptionController subscriptionController;
+  final UserEnrollmentController subscriptionController;
   MoreInfoControllerBase({required this.subscriptionController});
 
   @observable

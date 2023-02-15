@@ -10,7 +10,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   var activitiesList = List<ActivityModel>.empty();
 
-  var subscribedActivities = List<EnrollsActivityModel>.empty();
+  var allActivitiesWithEnrollments = List<EnrollsActivityModel>.empty();
 
   @override
   Future<List<ActivityModel>> getAllActivities() async {
@@ -22,18 +22,10 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   @override
   Future<List<EnrollsActivityModel>> getUserSubscribedActivities() async {
-    if (subscribedActivities.isEmpty) {
-      var allActivitiesLogged = await datasource.getAllActivitiesLogged();
-      for (var activity in allActivitiesLogged) {
-        if (activity.enrollments != null) {
-          subscribedActivities = <EnrollsActivityModel>[
-            ...subscribedActivities,
-            activity
-          ];
-        }
-      }
+    if (allActivitiesWithEnrollments.isEmpty) {
+      allActivitiesWithEnrollments = await datasource.getAllActivitiesLogged();
     }
-    return Future.value(subscribedActivities);
+    return Future.value(allActivitiesWithEnrollments);
   }
 
   @override

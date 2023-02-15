@@ -6,19 +6,19 @@ import '../../../domain/usecases/unsubscribe_activities.dart';
 
 part 'user_subscription_controller.g.dart';
 
-class UserSubscriptionController = UserSubscriptionControllerBase
-    with _$UserSubscriptionController;
+class UserEnrollmentController = UserEnrollmentControllerBase
+    with _$UserEnrollmentController;
 
-abstract class UserSubscriptionControllerBase with Store {
+abstract class UserEnrollmentControllerBase with Store {
   final SubscribeActivityInterface subscribeActivity;
   final UnsubscribeActivityInterface unsubscribeActivity;
   final GetUserSubscribedActivitiesInterface getUserActivities;
 
-  UserSubscriptionControllerBase(
+  UserEnrollmentControllerBase(
       {required this.getUserActivities,
       required this.subscribeActivity,
       required this.unsubscribeActivity}) {
-    getUserEnrolledActivities();
+    getUserAllActivitiesWithEnrollment();
   }
 
   @observable
@@ -30,12 +30,23 @@ abstract class UserSubscriptionControllerBase with Store {
   }
 
   @observable
-  List<EnrollsActivityModel> userEnrolledActivities = [];
+  var subscribedActivities = List<EnrollsActivityModel>.empty();
+
+  @observable
+  var allActivitiesWithEnrollments = List<EnrollsActivityModel>.empty();
 
   @action
-  Future getUserEnrolledActivities() async {
+  Future getUserAllActivitiesWithEnrollment() async {
     setIsLoading(true);
-    userEnrolledActivities = await getUserActivities();
+    allActivitiesWithEnrollments = await getUserActivities();
+    for (var activity in allActivitiesWithEnrollments) {
+      if (activity.enrollments != null) {
+        subscribedActivities = <EnrollsActivityModel>[
+          ...subscribedActivities,
+          activity
+        ];
+      }
+    }
     setIsLoading(false);
   }
 }

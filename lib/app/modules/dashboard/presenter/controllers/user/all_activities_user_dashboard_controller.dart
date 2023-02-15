@@ -1,6 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import '../../../../../shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
@@ -13,16 +12,14 @@ class AllActivitiesUserDashboardController = AllActivitiesUserDashboardControlle
     with _$AllActivitiesUserDashboardController;
 
 abstract class AllActivitiesUserDashboardControllerBase with Store {
-  final GetAllUserActivitiesInterface getAllActivities;
-  final UserSubscriptionController subscriptionController;
+  final UserEnrollmentController enrollmentController;
   final AuthController authController;
 
   final FirebaseAnalyticsService analytics;
 
   AllActivitiesUserDashboardControllerBase({
-    required this.subscriptionController,
+    required this.enrollmentController,
     required this.analytics,
-    required this.getAllActivities,
     required this.authController,
   }) {
     getActivities();
@@ -39,7 +36,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   Future<void> subscribeUserActivity(String activityCode) async {
     setIsLoading(true);
     var requestDone =
-        await subscriptionController.subscribeActivity(activityCode);
+        await enrollmentController.subscribeActivity(activityCode);
     if (requestDone) {}
     setIsLoading(false);
   }
@@ -47,7 +44,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   Future<void> unsubscribeUserActivity(String activityCode) async {
     setIsLoading(true);
     var requestDone =
-        await subscriptionController.unsubscribeActivity(activityCode);
+        await enrollmentController.unsubscribeActivity(activityCode);
     if (requestDone) {}
     setIsLoading(false);
   }
@@ -226,39 +223,8 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   @action
   Future getActivities() async {
     setIsLoading(true);
-    var allActivities = await getAllActivities();
-    var enrolledActivities = subscriptionController.userEnrolledActivities;
-    List<EnrollsActivityModel> finalList = [];
-    for (var activity in allActivities) {
-      finalList.add(EnrollsActivityModel(
-        acceptingNewEnrollments: activity.acceptingNewEnrollments,
-        activityCode: activity.activityCode,
-        description: activity.description,
-        duration: activity.duration,
-        isExtensive: activity.isExtensive,
-        responsibleProfessors: activity.responsibleProfessors,
-        speakers: activity.speakers,
-        takenSlots: activity.takenSlots,
-        title: activity.title,
-        totalSlots: activity.totalSlots,
-        type: activity.type,
-        deliveryEnum: activity.deliveryEnum,
-        link: activity.link,
-        place: activity.place,
-        startDate: activity.startDate,
-        stopAcceptingNewEnrollmentsBefore:
-            activity.stopAcceptingNewEnrollmentsBefore,
-      ));
-    }
-    // for (var activity in finalList) {
-    //   for (var element in enrolledActivities) {
-    //     element.activity.activityCode == activity.activityCode
-    //         ? activity.copyWith(state: EnrollmentStateEnum.ENROLLED)
-    //         : null;
-    //   }
-    // }
-    allActivitiesFromGet = finalList;
-    activitiesOnScreen = allActivitiesFromGet;
+    allActivitiesFromGet = enrollmentController.allActivitiesWithEnrollments;
+    activitiesOnScreen = enrollmentController.allActivitiesWithEnrollments;
     setIsLoading(false);
   }
 
