@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'dart:math' as math;
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,11 +14,10 @@ import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../domain/infra/activity_enum.dart';
-import '../../infra/models/user_enrolled_activities_model.dart';
 import 'widgets/register_button_widget.dart';
 
 class MoreInfoPage extends StatefulWidget {
-  final UserEnrolledActivitiesModel enrolledActivity;
+  final EnrollsActivityModel enrolledActivity;
 
   const MoreInfoPage({super.key, required this.enrolledActivity});
 
@@ -29,22 +29,20 @@ class _MoreInfoPageState
     extends ModularState<MoreInfoPage, MoreInfoController> {
   @override
   Widget build(BuildContext context) {
-    var timeString = widget.enrolledActivity.activity.startDate == null
+    var timeString = widget.enrolledActivity.startDate == null
         ? ''
-        : DateFormat('HH:mm')
-            .format(widget.enrolledActivity.activity.startDate!);
-    var weekday = widget.enrolledActivity.activity.startDate == null
+        : DateFormat('HH:mm').format(widget.enrolledActivity.startDate!);
+    var weekday = widget.enrolledActivity.startDate == null
         ? ''
         : DateFormat('EEEE')
-            .format(widget.enrolledActivity.activity.startDate!)
+            .format(widget.enrolledActivity.startDate!)
             .split('-')
             .first
             .capitalize();
-    var finalTime = widget.enrolledActivity.activity.startDate == null
+    var finalTime = widget.enrolledActivity.startDate == null
         ? ''
-        : Utils.getActivityFinalTime(
-            widget.enrolledActivity.activity.startDate!,
-            widget.enrolledActivity.activity.duration);
+        : Utils.getActivityFinalTime(widget.enrolledActivity.startDate!,
+            widget.enrolledActivity.duration);
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -59,7 +57,7 @@ class _MoreInfoPageState
                     color: AppColors.lilac),
                 child: Center(
                   child: Text(
-                    widget.enrolledActivity.activity.type!.name,
+                    widget.enrolledActivity.type!.name,
                     textAlign: TextAlign.justify,
                     style: AppTextStyles.buttonBold.copyWith(
                       fontSize: MediaQuery.of(context).size.width < 800
@@ -78,7 +76,7 @@ class _MoreInfoPageState
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  '${widget.enrolledActivity.activity.activityCode} - ${widget.enrolledActivity.activity.title}',
+                  '${widget.enrolledActivity.activityCode} - ${widget.enrolledActivity.title}',
                   textAlign: TextAlign.justify,
                   style: AppTextStyles.buttonBold.copyWith(
                       fontSize: MediaQuery.of(context).size.width < 800
@@ -92,17 +90,17 @@ class _MoreInfoPageState
               const SizedBox(
                 height: 16,
               ),
-              Observer(builder: (_) {
+              /* Observer(builder: (_) {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       children: [
                         Text(
-                          widget.enrolledActivity.activity.startDate == null
+                          widget.enrolledActivity.startDate == null
                               ? ''
                               : DateFormat('dd/MM').format(
-                                  widget.enrolledActivity.activity.startDate!),
+                                  widget.enrolledActivity.startDate!),
                           style: AppTextStyles.buttonBold.copyWith(
                               fontSize: MediaQuery.of(context).size.width < 800
                                   ? 10
@@ -147,7 +145,7 @@ class _MoreInfoPageState
                         ),
                       ],
                     ),
-                    if (widget.enrolledActivity.activity.place != null)
+                    if (widget.enrolledActivity.place != null)
                       Column(
                         children: [
                           Text(
@@ -162,7 +160,7 @@ class _MoreInfoPageState
                                 color: AppColors.brandingBlue),
                           ),
                           Text(
-                            widget.enrolledActivity.activity.place!,
+                            widget.enrolledActivity.place!,
                             style: AppTextStyles.buttonBold.copyWith(
                                 fontSize: MediaQuery.of(context).size.width <
                                         800
@@ -174,7 +172,7 @@ class _MoreInfoPageState
                           ),
                         ],
                       ),
-                    if (widget.enrolledActivity.activity.link != null)
+                    if (widget.enrolledActivity.link != null)
                       Column(
                         children: [
                           MouseRegion(
@@ -201,7 +199,7 @@ class _MoreInfoPageState
                                 GestureDetector(
                                   onTap: () => launchUrl(
                                     Uri.parse(
-                                        widget.enrolledActivity.activity.link!),
+                                        widget.enrolledActivity.link!),
                                     mode: LaunchMode.externalApplication,
                                   ),
                                   child: Text('Link',
@@ -232,7 +230,7 @@ class _MoreInfoPageState
                 height: 16,
               ),
               Observer(builder: (_) {
-                return !widget.enrolledActivity.activity.acceptingNewEnrollments
+                return !widget.enrolledActivity.acceptingNewEnrollments
                     ? Text(
                         'Inscrição para a atividade indisponível!',
                         textAlign: TextAlign.center,
@@ -249,7 +247,7 @@ class _MoreInfoPageState
                             isRegistered: widget.enrolledActivity.state,
                             isLoading: controller.isLoading,
                             onPressed: () {
-                              if (!widget.enrolledActivity.activity
+                              if (!widget.enrolledActivity
                                       .acceptingNewEnrollments &&
                                   widget.enrolledActivity.state ==
                                       EnrollmentStateEnum.ENROLLED) {
@@ -265,7 +263,7 @@ class _MoreInfoPageState
                                               'Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!',
                                           onPressed: () {
                                             controller.unsubscribeUserActivity(
-                                                widget.enrolledActivity.activity
+                                                widget.enrolledActivity
                                                     .activityCode);
                                             Modular.to.pop();
                                           });
@@ -274,9 +272,9 @@ class _MoreInfoPageState
                                 );
                               } else {
                                 if (widget
-                                        .enrolledActivity.activity.takenSlots >=
+                                        .enrolledActivity.takenSlots >=
                                     widget
-                                        .enrolledActivity.activity.totalSlots) {
+                                        .enrolledActivity.totalSlots) {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -300,7 +298,7 @@ class _MoreInfoPageState
                                             onPressed: () {
                                               controller.subscribeUserActivity(
                                                   widget.enrolledActivity
-                                                      .activity.activityCode);
+                                                      .activityCode);
                                               Modular.to.pop();
                                             });
                                       });
@@ -308,8 +306,8 @@ class _MoreInfoPageState
                                   );
                                 }
                               }
-                            }));
-              }),
+                            })); */
+              //}),
               const SizedBox(
                 height: 16,
               ),
@@ -329,7 +327,7 @@ class _MoreInfoPageState
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(widget.enrolledActivity.activity.description,
+                child: Text(widget.enrolledActivity.description,
                     textAlign: TextAlign.justify,
                     style: AppTextStyles.body.copyWith(
                         fontSize: MediaQuery.of(context).size.width < 800
@@ -345,14 +343,13 @@ class _MoreInfoPageState
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: widget.enrolledActivity.activity.speakers.length,
+                itemCount: widget.enrolledActivity.speakers.length,
                 itemBuilder: (context, index) => Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (widget.enrolledActivity.activity.speakers[index]
-                                .linkPhoto !=
+                        if (widget.enrolledActivity.speakers[index].linkPhoto !=
                             null)
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.1,
@@ -361,7 +358,6 @@ class _MoreInfoPageState
                               radius: 102.0,
                               backgroundImage: CachedNetworkImageProvider(widget
                                   .enrolledActivity
-                                  .activity
                                   .speakers[index]
                                   .linkPhoto!), // for Network image
                             ),
@@ -369,15 +365,14 @@ class _MoreInfoPageState
                         Flexible(
                           child: Column(
                             children: [
-                              if (widget.enrolledActivity.activity
-                                          .speakers[index].name !=
+                              if (widget.enrolledActivity.speakers[index]
+                                          .name !=
                                       null &&
-                                  widget.enrolledActivity.activity
-                                          .speakers[index].name !=
+                                  widget.enrolledActivity.speakers[index]
+                                          .name !=
                                       '')
                                 Text(
-                                  widget.enrolledActivity.activity
-                                      .speakers[index].name!,
+                                  widget.enrolledActivity.speakers[index].name!,
                                   textAlign: TextAlign.justify,
                                   style: AppTextStyles.buttonBold.copyWith(
                                       fontSize: MediaQuery.of(context)
@@ -391,14 +386,14 @@ class _MoreInfoPageState
                                               : 28,
                                       color: Colors.black),
                                 ),
-                              if (widget.enrolledActivity.activity
-                                          .speakers[index].company !=
+                              if (widget.enrolledActivity.speakers[index]
+                                          .company !=
                                       null &&
-                                  widget.enrolledActivity.activity
-                                          .speakers[index].company !=
+                                  widget.enrolledActivity.speakers[index]
+                                          .company !=
                                       '')
                                 Text(
-                                  'Empresa: ${widget.enrolledActivity.activity.speakers[index].company}',
+                                  'Empresa: ${widget.enrolledActivity.speakers[index].company}',
                                   textAlign: TextAlign.justify,
                                   style: AppTextStyles.buttonBold.copyWith(
                                       fontSize: MediaQuery.of(context)
@@ -420,15 +415,12 @@ class _MoreInfoPageState
                     const SizedBox(
                       height: 8,
                     ),
-                    if (widget.enrolledActivity.activity.speakers[index].bio !=
-                            null &&
-                        widget.enrolledActivity.activity.speakers[index].bio !=
-                            '')
+                    if (widget.enrolledActivity.speakers[index].bio != null &&
+                        widget.enrolledActivity.speakers[index].bio != '')
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                            widget
-                                .enrolledActivity.activity.speakers[index].bio!,
+                            widget.enrolledActivity.speakers[index].bio!,
                             textAlign: TextAlign.justify,
                             style: AppTextStyles.body.copyWith(
                                 fontSize: MediaQuery.of(context).size.width <

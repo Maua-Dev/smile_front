@@ -4,14 +4,11 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-import '../../../../../../../shared/entities/infra/enrollment_state_enum.dart';
-
 class MobileActivitiesCard extends StatelessWidget {
   final String title;
   final String hour;
   final String finalTime;
   final String? location;
-  final EnrollmentStateEnum enrollment;
   final Function() onTap;
   final Function()? onPressedSubscribe;
 
@@ -23,7 +20,6 @@ class MobileActivitiesCard extends StatelessWidget {
     required this.finalTime,
     required this.location,
     this.onPressedSubscribe,
-    required this.enrollment,
   }) : super(key: key);
 
   @override
@@ -155,10 +151,7 @@ class MobileActivitiesCard extends StatelessWidget {
                                   MaterialStateProperty.all(AppColors.white),
                             ),
                             onPressed: onPressedSubscribe,
-                            child: Text(
-                                enrollment == EnrollmentStateEnum.NONE
-                                    ? 'Inscrever-se'
-                                    : 'Desinscreva-se',
+                            child: Text('Desinscreva-se',
                                 style: AppTextStyles.bold.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width <

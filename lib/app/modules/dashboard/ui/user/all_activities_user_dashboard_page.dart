@@ -78,27 +78,26 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                   itemCount: controller.activitiesOnScreen.length,
                   itemBuilder: (context, index) {
                     var finalTime = controller
-                                .activitiesOnScreen[index].activity.startDate ==
+                                .activitiesOnScreen[index].startDate ==
                             null
                         ? ''
                         : Utils.getActivityFinalTime(
                             controller
-                                .activitiesOnScreen[index].activity.startDate!,
+                                .activitiesOnScreen[index].startDate!,
                             controller
-                                .activitiesOnScreen[index].activity.duration);
+                                .activitiesOnScreen[index].duration);
                     var hour = DateFormat('HH:mm').format(controller
-                        .activitiesOnScreen[index].activity.startDate!);
+                        .activitiesOnScreen[index].startDate!);
                     return MobileActivitiesCard(
-                      enrollment: controller.activitiesOnScreen[index].state,
                       onPressedSubscribe: () {
                         controller.subscribeUserActivity(controller
-                            .activitiesOnScreen[index].activity.activityCode);
+                            .activitiesOnScreen[index].activityCode);
                       },
                       finalTime: finalTime,
                       location:
-                          controller.activitiesOnScreen[index].activity.place,
+                          controller.activitiesOnScreen[index].place,
                       title:
-                          controller.activitiesOnScreen[index].activity.title,
+                          controller.activitiesOnScreen[index].title,
                       hour: hour,
                       onTap: () {
                         Modular.to.navigate(
@@ -106,7 +105,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                           arguments: controller.activitiesOnScreen[index],
                         );
                         controller.analytics.logViewActivity(controller
-                            .activitiesOnScreen[index].activity.activityCode);
+                            .activitiesOnScreen[index].activityCode);
                       },
                     );
                   },

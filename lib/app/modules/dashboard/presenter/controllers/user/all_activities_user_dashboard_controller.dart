@@ -2,7 +2,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import '../../../../../shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
