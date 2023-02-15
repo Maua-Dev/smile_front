@@ -22,7 +22,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   @override
   Future<List<ActivityModel>> getUserSubscribedActivities() async {
     if (subscribedActivities.isEmpty) {
-      subscribedActivities = await datasource.getUserSubscribedActivities();
+      // subscribedActivities = await datasource.getAllActivitiesLogged();
     }
     return Future.value(subscribedActivities);
   }
@@ -33,26 +33,26 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         (element) => element.activityCode == activityToEdit.activityCode);
     activitiesList.removeAt(index);
     activitiesList.insert(index, activityToEdit);
-    await datasource.putActivity(activityToEdit.activityCode, activityToEdit);
+    await datasource.editActivity(activityToEdit.activityCode, activityToEdit);
   }
 
   @override
-  Future removeActivity(String id) async {
-    activitiesList.removeWhere((element) => element.activityCode == id);
-    await datasource.removeActivity(id);
+  Future deleteActivity(String activityCode) async {
+    activitiesList
+        .removeWhere((element) => element.activityCode == activityCode);
+    await datasource.deleteActivity(activityCode);
   }
 
   @override
   Future createActivity(ActivityModel activityToCreate) async {
-    activitiesList.add(activityToCreate);
-    await datasource.postActivity(activityToCreate);
+    await datasource.createActivity(activityToCreate);
   }
 
   @override
   Future<bool> subscribeActivity(
       ActivityModel activity, String activityId, DateTime activityDate) async {
     subscribedActivities.add(activity);
-    var requestDone = await datasource.postSubscribe(activityId, activityDate);
+    var requestDone = await datasource.postSubscribe(activityId);
     return requestDone;
   }
 
@@ -61,8 +61,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
       String activityId, DateTime activityDate) async {
     subscribedActivities
         .removeWhere((element) => element.activityCode == activityId);
-    var requestDone =
-        await datasource.postUnsubscribe(activityId, activityDate);
+    var requestDone = await datasource.postUnsubscribe(activityId);
     return requestDone;
   }
 

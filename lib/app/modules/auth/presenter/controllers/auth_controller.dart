@@ -1,12 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
-import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
-import '../../usecases/refresh_token.dart';
+import '../../domain/usecases/refresh_token.dart';
 
 class AuthController {
   final RefreshTokenInterface refreshToken;
-  final LoginWithCpfRneInterface loginWithCpfRne;
+  final LoginWithEmailInterface loginWithEmail;
   final SecureStorageInterface storage;
   final FirebaseAnalyticsService analytics;
   bool _loggedIn = false;
@@ -20,7 +20,7 @@ class AuthController {
     required this.analytics,
     required this.storage,
     required this.refreshToken,
-    required this.loginWithCpfRne,
+    required this.loginWithEmail,
   });
 
   bool get isLogged => _loggedIn;
@@ -30,16 +30,16 @@ class AuthController {
   String get id => _id ?? '';
   bool get certificateWithSocialName => _certificateWithSocialName ?? false;
 
-  Future<void> loginWithUserCpfRne(String cpfRne, String password) async {
-    var loginResponse = await loginWithCpfRne(cpfRne, password);
-    _accessLevel = loginResponse['access_level'];
-    _name = loginResponse['name'];
-    _socialname = loginResponse['social_name'];
-    _certificateWithSocialName = loginResponse['certificate_with_social_name'];
-    _id = loginResponse['id'];
+  Future<void> loginWithUserEmail(String email, String password) async {
+    var loginResponse = await loginWithEmail(email, password);
+    _accessLevel = loginResponse.accessLevel.name;
+    _name = loginResponse.name;
+    _socialname = loginResponse.socialName;
+    _certificateWithSocialName = loginResponse.certificateWithSocialName;
+    _id = loginResponse.userId;
 
-    await storage.saveAccessToken(loginResponse['access_token']);
-    await storage.saveRefreshToken(loginResponse['refresh_token']);
+    await storage.saveAccessToken(loginResponse.accessToken);
+    await storage.saveRefreshToken(loginResponse.refreshToken);
     await storage.saveAccessLevel(_accessLevel);
     await storage.saveName(_name);
     await storage.saveSocialName(_socialname ?? '');

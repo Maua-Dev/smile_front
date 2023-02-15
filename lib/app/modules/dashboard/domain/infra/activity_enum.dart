@@ -66,6 +66,6 @@ extension ActivityEnumExtension on ActivityEnum {
   }
 
   static String enumToStringMap(ActivityEnum type) {
-    return EnumToString.convertToString(type);
+    return EnumToString.convertToString(type).toUpperCase();
   }
 }
