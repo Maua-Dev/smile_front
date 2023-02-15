@@ -40,3 +40,6 @@ class UserModel extends User {
     );
   }
 }
+
+class GetUserSubscribedActivitiesInterface {
+}

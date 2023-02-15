@@ -135,7 +135,7 @@ void main() {
 
   test('getAllActivities if activitiesList is empty', () async {
     repository.getAllActivities();
-    expect(repository.subscribedActivities.isNotEmpty, false);
+    expect(repository.activitiesList.isNotEmpty, false);
   });
 
   test('getAllActivities', () async {
@@ -147,12 +147,12 @@ void main() {
   test('getUserSubscribedActivities if subscribedActivities is empty',
       () async {
     repository.getUserSubscribedActivities();
-    expect(repository.subscribedActivities.isNotEmpty, false);
+    expect(repository.activitiesList.isNotEmpty, false);
   });
 
   test('getUserSubscribedActivities', () async {
-    repository.subscribedActivities = [ActivityModel.newInstance()];
+    repository.activitiesList = [ActivityModel.newInstance()];
     repository.getUserSubscribedActivities();
-    expect(repository.subscribedActivities.isNotEmpty, true);
+    expect(repository.activitiesList.isNotEmpty, true);
   });
 }

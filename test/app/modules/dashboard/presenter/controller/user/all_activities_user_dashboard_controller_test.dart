@@ -11,15 +11,21 @@ import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../../../setup_firebase_mocks.dart';
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
-import 'all_activities_user_dashboard_controller_test.mocks.dart' as u;
+import 'more_info_controller_test.mocks.dart';
+import 'user_dashboard_controller_test.mocks.dart'
+    hide MockSecureStorageInterface, MockFirebaseAnalyticsService;
 
 @GenerateMocks([
   ActivitiesRepositoryInterface,
@@ -31,20 +37,23 @@ import 'all_activities_user_dashboard_controller_test.mocks.dart' as u;
 void main() {
   initModule(AppModule());
   setupCloudFirestoreMocks();
-  GetAllUserActivitiesInterface getAllUserActivitiesInterface =
-      u.MockGetAllUserActivitiesInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
+  GetUserSubscribedActivitiesInterface getUserActivities =
+      MockGetUserSubscribedActivitiesInterface();
+  SubscribeActivityInterface subscribeActivity =
+      MockSubscribeActivityInterface();
+  UnsubscribeActivityInterface unsubscribeActivity =
+      MockUnsubscribeActivityInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
-  UserDashboardController userDashboardController =
-      u.MockUserDashboardController();
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
 
   late AllActivitiesUserDashboardController controller;
   late AuthController authController;
+  late UserEnrollmentController userEnrollmentController;
 
-  final mockActivities = <ActivityModel>[
-    ActivityModel(
+  final mockActivities = <EnrollsActivityModel>[
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSE,
       title:
@@ -78,7 +87,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSE,
       title:
@@ -112,7 +121,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSE,
       title:
@@ -146,7 +155,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSE,
       title:
@@ -180,7 +189,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSE,
       title:
@@ -214,7 +223,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSE,
       title:
@@ -248,7 +257,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSE,
       title:
@@ -282,7 +291,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSE,
       title:
@@ -320,18 +329,20 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
-    when(getAllUserActivitiesInterface())
-        .thenAnswer((_) async => mockActivities);
+    when(getUserActivities()).thenAnswer((_) async => mockActivities);
     authController = AuthController(
         loginWithEmail: loginWithEmail,
         refreshToken: refreshToken,
         storage: secureStorage,
         analytics: analytics);
+    userEnrollmentController = UserEnrollmentController(
+        getUserActivities: getUserActivities,
+        subscribeActivity: subscribeActivity,
+        unsubscribeActivity: unsubscribeActivity);
 
     controller = AllActivitiesUserDashboardController(
-      getAllActivities: getAllUserActivitiesInterface,
       authController: authController,
-      controller: userDashboardController,
+      enrollmentController: userEnrollmentController,
       analytics: analytics,
     );
   });
@@ -341,43 +352,62 @@ void main() {
     expect(controller.isLoading, true);
   });
 
-  test('getAllActivities', () {
-    controller.getAllActivities();
-    expect(controller.activitiesList.isNotEmpty, true);
+  test('setTypeFilter', () {
+    var value = ActivityEnum.COURSE;
+    controller.setTypeFilter(value);
+    expect(controller.typeFilter, value);
   });
 
-  test('mondayActivitiesList', () {
-    expect(controller.mondayActivitiesList.isNotEmpty, true);
+  test('setDateFilter', () {
+    var value = DateTime.utc(2022, 03, 18, 13);
+    controller.setDateFilter(value);
+    expect(controller.dateFilter, value);
   });
 
-  test('tuesdayActivitiesList', () {
-    expect(controller.tuesdayActivitiesList.isNotEmpty, true);
+  test('setHourFilter', () {
+    var value = DateTime.utc(2022, 03, 18, 13);
+    controller.setHourFilter(value);
+    expect(controller.hourFilter, value);
   });
 
-  test('wednesdayActivitiesList', () {
-    expect(controller.wednesdayActivitiesList.isNotEmpty, true);
+  test('setAllFilters', () {
+    if (controller.typeFilter == null &&
+        controller.hourFilter == null &&
+        controller.dateFilter == null) {
+      expect(controller.activitiesOnScreen, mockActivities);
+    }
   });
 
-  test('thursdayActivitiesList', () {
-    expect(controller.thursdayActivitiesList.isNotEmpty, true);
+  test('resetFilters', () {
+    controller.resetFilters();
+    expect(controller.activitiesOnScreen, controller.allActivitiesFromGet);
+    expect(controller.typeFilter, null);
+    expect(controller.dateFilter, null);
+    expect(controller.hourFilter, null);
   });
 
-  test('fridayActivitiesList', () {
-    expect(controller.fridayActivitiesList.isNotEmpty, true);
+  test('filterActivitiesByType', () {
+    var type = ActivityEnum.COURSE;
+    var list = mockActivities.where((element) => element.type == type).toList();
+    expect(list, controller.filterActivitiesByType(type, mockActivities));
   });
 
-  test('saturdayActivitiesList', () {
-    expect(controller.saturdayActivitiesList.isNotEmpty, true);
+  test('filterActivitiesByDate', () {
+    var date = DateTime.utc(2022, 03, 18, 13);
+    var list = mockActivities
+        .where(
+            (element) => controller.isValidDateFilter(element.startDate!, date))
+        .toList();
+    expect(list, controller.filterActivitiesByDate(date, mockActivities));
   });
 
-  test('toggleFilterActivityChipIndex', () {
-    controller.toggleFilterActivityChipIndex(0);
-    expect(controller.weekActivitiesList, controller.mondayActivitiesList);
-  });
-
-  test('getActivitiesByType', () {
-    controller.getActivitiesByType(ActivityEnum.COURSE);
-    expect(controller.activitiesList.length, mockActivities.length);
+  test('filterActivitiesByHour', () {
+    var hour = DateTime.utc(2022, 03, 18, 13);
+    var list = mockActivities
+        .where(
+            (element) => controller.isValidHourFilter(element.startDate!, hour))
+        .toList();
+    expect(list, controller.filterActivitiesByHour(hour, mockActivities));
   });
 
   test('logout', () {

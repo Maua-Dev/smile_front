@@ -5,7 +5,9 @@ import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/mobile_filter_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 import 'widgets/mobile_widgets/activities_card/mobile_activities_card_widget.dart';
@@ -67,51 +69,72 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
           if (controller.isLoading) {
             return const Center(child: CircularProgressIndicator());
           } else {
-            return Flexible(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                    maxWidth:
-                        MediaQuery.of(context).size.width < breakpointTablet
-                            ? 342
-                            : 1165),
-                child: ListView.builder(
-                  itemCount: controller.activitiesOnScreen.length,
-                  itemBuilder: (context, index) {
-                    var finalTime = controller
-                                .activitiesOnScreen[index].startDate ==
-                            null
-                        ? ''
-                        : Utils.getActivityFinalTime(
-                            controller
-                                .activitiesOnScreen[index].startDate!,
-                            controller
-                                .activitiesOnScreen[index].duration);
-                    var hour = DateFormat('HH:mm').format(controller
-                        .activitiesOnScreen[index].startDate!);
-                    return MobileActivitiesCard(
-                      onPressedSubscribe: () {
-                        controller.subscribeUserActivity(controller
-                            .activitiesOnScreen[index].activityCode);
-                      },
-                      finalTime: finalTime,
-                      location:
-                          controller.activitiesOnScreen[index].place,
-                      title:
-                          controller.activitiesOnScreen[index].title,
-                      hour: hour,
-                      onTap: () {
-                        Modular.to.navigate(
-                          '/user/home/more-info',
-                          arguments: controller.activitiesOnScreen[index],
-                        );
-                        controller.analytics.logViewActivity(controller
-                            .activitiesOnScreen[index].activityCode);
-                      },
-                    );
-                  },
+            if (controller.activitiesOnScreen.isNotEmpty) {
+              return Flexible(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                      maxWidth:
+                          MediaQuery.of(context).size.width < breakpointTablet
+                              ? 342
+                              : 1165),
+                  child: ListView.builder(
+                    itemCount: controller.activitiesOnScreen.length,
+                    itemBuilder: (context, index) {
+                      var finalTime = controller
+                                  .activitiesOnScreen[index].startDate ==
+                              null
+                          ? ''
+                          : Utils.getActivityFinalTime(
+                              controller.activitiesOnScreen[index].startDate!,
+                              controller.activitiesOnScreen[index].duration);
+                      var hour = DateFormat('HH:mm').format(
+                          controller.activitiesOnScreen[index].startDate!);
+                      return MobileActivitiesCard(
+                        onPressedSubscribe: () {
+                          controller.subscribeUserActivity(controller
+                              .activitiesOnScreen[index].activityCode);
+                        },
+                        onPressedUnsubscribe: () {
+                          controller.unsubscribeUserActivity(controller
+                              .activitiesOnScreen[index].activityCode);
+                        },
+                        isLoading: controller.isLoading,
+                        finalTime: finalTime,
+                        location: controller.activitiesOnScreen[index].place,
+                        title: controller.activitiesOnScreen[index].title,
+                        hour: hour,
+                        userSubscribed:
+                            controller.activitiesOnScreen[index].enrollments !=
+                                null,
+                        acceptingNewEnrollments: controller
+                            .activitiesOnScreen[index].acceptingNewEnrollments,
+                        takenSlots:
+                            controller.activitiesOnScreen[index].takenSlots,
+                        totalSlots:
+                            controller.activitiesOnScreen[index].totalSlots,
+                        onTap: () {
+                          Modular.to.navigate(
+                            '/user/home/more-info',
+                            arguments: controller.activitiesOnScreen[index],
+                          );
+                          controller.analytics.logViewActivity(controller
+                              .activitiesOnScreen[index].activityCode);
+                        },
+                        isExtensive:
+                            controller.activitiesOnScreen[index].isExtensive,
+                      );
+                    },
+                  ),
                 ),
-              ),
-            );
+              );
+            } else {
+              return Text(S.of(context).activitiesNotFound,
+                  style: AppTextStyles.body.copyWith(
+                      fontSize:
+                          MediaQuery.of(context).size.width < breakpointTablet
+                              ? 20
+                              : 25));
+            }
           }
         }),
       ],

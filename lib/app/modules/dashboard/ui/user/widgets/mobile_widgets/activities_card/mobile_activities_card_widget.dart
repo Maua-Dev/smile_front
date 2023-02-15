@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
+import 'package:smile_front/app/shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
+import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 class MobileActivitiesCard extends StatelessWidget {
@@ -11,16 +14,30 @@ class MobileActivitiesCard extends StatelessWidget {
   final String? location;
   final Function() onTap;
   final Function()? onPressedSubscribe;
+  final Function()? onPressedUnsubscribe;
+  final bool userSubscribed;
+  final bool isLoading;
+  final bool acceptingNewEnrollments;
+  final bool isExtensive;
+  final int takenSlots;
+  final int totalSlots;
 
-  const MobileActivitiesCard({
-    Key? key,
-    required this.title,
-    required this.hour,
-    required this.onTap,
-    required this.finalTime,
-    required this.location,
-    this.onPressedSubscribe,
-  }) : super(key: key);
+  const MobileActivitiesCard(
+      {Key? key,
+      required this.title,
+      required this.hour,
+      required this.onTap,
+      required this.finalTime,
+      required this.location,
+      required this.userSubscribed,
+      required this.isLoading,
+      required this.acceptingNewEnrollments,
+      required this.takenSlots,
+      required this.isExtensive,
+      required this.totalSlots,
+      this.onPressedSubscribe,
+      this.onPressedUnsubscribe})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +114,8 @@ class MobileActivitiesCard extends StatelessWidget {
                           if (MediaQuery.of(context).size.width >
                               breakpointTablet)
                             const SizedBox(width: 200),
-                          Icon(Icons.star,
+                          if(isExtensive) 
+                            Icon(Icons.star,
                               color: AppColors.brandingOrange,
                               size: MediaQuery.of(context).size.width <
                                       breakpointTablet
@@ -131,35 +149,111 @@ class MobileActivitiesCard extends StatelessWidget {
                                 : 368,
                       ),
                       SizedBox(
-                        width:
-                            MediaQuery.of(context).size.width < breakpointTablet
-                                ? 100
-                                : 200,
-                        height:
-                            MediaQuery.of(context).size.width < breakpointTablet
-                                ? 25
-                                : 50,
-                        child: ElevatedButton(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                      side: BorderSide(
-                                          color: AppColors.brandingOrange))),
-                              backgroundColor:
-                                  MaterialStateProperty.all(AppColors.white),
-                            ),
-                            onPressed: onPressedSubscribe,
-                            child: Text('Desinscreva-se',
-                                style: AppTextStyles.bold.copyWith(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width <
-                                                breakpointTablet
-                                            ? 12
-                                            : 24,
-                                    color: AppColors.brandingOrange))),
-                      )
+                          width: MediaQuery.of(context).size.width < breakpointTablet
+                              ? 100
+                              : 200,
+                          height: MediaQuery.of(context).size.width < breakpointTablet
+                              ? 25
+                              : 50,
+                          child: userSubscribed
+                              ? ElevatedButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                                MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        breakpointTablet
+                                                    ? 15
+                                                    : 20),
+                                            side: BorderSide(
+                                                color:
+                                                    AppColors.brandingOrange))),
+                                    backgroundColor: MaterialStateProperty.all(
+                                        AppColors.brandingOrange),
+                                  ),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return Observer(builder: (context) {
+                                          return ActionConfirmationDialogWidget(
+                                              isLoading: isLoading,
+                                              title: S
+                                                  .of(context)
+                                                  .unsubscribeAlert,
+                                              content: acceptingNewEnrollments
+                                                  ? S
+                                                      .of(context)
+                                                      .unsubscribeAcceptingNewEnrollments
+                                                  : S
+                                                      .of(context)
+                                                      .unsubscribeNotAcceptingNewEnrollments,
+                                              onPressed: onPressedUnsubscribe);
+                                        });
+                                      },
+                                    );
+                                  },
+                                  child: Text(S.of(context).subscribedTitle,
+                                      style: AppTextStyles.bold.copyWith(
+                                          fontSize:
+                                              MediaQuery.of(context).size.width <
+                                                      breakpointTablet
+                                                  ? 12
+                                                  : 24,
+                                          color: AppColors.white)))
+                              : ElevatedButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                                MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        breakpointTablet
+                                                    ? 15
+                                                    : 20),
+                                            side: BorderSide(
+                                                color:
+                                                    AppColors.brandingOrange))),
+                                    backgroundColor: MaterialStateProperty.all(
+                                        AppColors.white),
+                                  ),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return Observer(builder: (context) {
+                                          return takenSlots < totalSlots
+                                              ? ActionConfirmationDialogWidget(
+                                                  isLoading: isLoading,
+                                                  title: S
+                                                      .of(context)
+                                                      .subscribeAlert,
+                                                  content: S
+                                                      .of(context)
+                                                      .subscribeScheduleAtention,
+                                                  onPressed: onPressedSubscribe)
+                                              : CustomAlertDialogWidget(
+                                                  title: S
+                                                      .of(context)
+                                                      .subscribeSlotsSoldOut,
+                                                );
+                                        });
+                                      },
+                                    );
+                                  },
+                                  child: Text(S.of(context).subcribeTitle,
+                                      style: AppTextStyles.bold.copyWith(
+                                          fontSize:
+                                              MediaQuery.of(context).size.width <
+                                                      breakpointTablet
+                                                  ? 12
+                                                  : 24,
+                                          color: AppColors.brandingOrange))))
                     ])
                   ],
                 ),

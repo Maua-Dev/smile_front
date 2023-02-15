@@ -236,6 +236,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Date: May 22 to 27, 2023."),
         "aboutSmileDescription": m0,
         "aboutSmileTitle": MessageLookupByLibrary.simpleMessage("About Smile"),
+        "activitiesNotFound":
+            MessageLookupByLibrary.simpleMessage("Activities not found"),
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Activities"),
@@ -413,6 +415,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "speakersTitle":
             MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Sponsors"),
+        "subcribeTitle": MessageLookupByLibrary.simpleMessage("Subscribe"),
+        "subscribeAlert": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to subscribe?"),
+        "subscribeScheduleAtention": MessageLookupByLibrary.simpleMessage(
+            "Pay attention to your schedules and activities that you have already subscribed for!"),
+        "subscribeSlotsSoldOut": MessageLookupByLibrary.simpleMessage(
+            "It seems that the number of vacancies for the activity has sold out :("),
+        "subscribedTitle": MessageLookupByLibrary.simpleMessage("Subscribed"),
         "successChangePassword": MessageLookupByLibrary.simpleMessage(
             "Password changed successfully!"),
         "successChangePasswordRedirect": MessageLookupByLibrary.simpleMessage(
@@ -427,6 +437,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Sent with success!! Our team will contact you shortly."),
         "termination": MessageLookupByLibrary.simpleMessage("Termination"),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Unsubscribe"),
+        "unsubscribeAcceptingNewEnrollments":
+            MessageLookupByLibrary.simpleMessage(
+                "You will be able to subscribe again"),
+        "unsubscribeAlert": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to unsubscribe?"),
+        "unsubscribeNotAcceptingNewEnrollments":
+            MessageLookupByLibrary.simpleMessage(
+                "Caution: subscriptions for this activity closed, you will not be able to subscribe again"),
         "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Yes")
       };

@@ -235,6 +235,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutSmileDescription": m0,
         "aboutSmileTitle":
             MessageLookupByLibrary.simpleMessage("Sobre a Smile"),
+        "activitiesNotFound":
+            MessageLookupByLibrary.simpleMessage("Atividades não encontradas"),
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
@@ -414,6 +416,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "speakersTitle": MessageLookupByLibrary.simpleMessage(
             "Principais Palestrantes - 2022"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Patrocinadores"),
+        "subcribeTitle": MessageLookupByLibrary.simpleMessage("Inscrever-se"),
+        "subscribeAlert": MessageLookupByLibrary.simpleMessage(
+            "Tem certeza que deseja se inscrever?"),
+        "subscribeScheduleAtention": MessageLookupByLibrary.simpleMessage(
+            "Se atente aos seus horários e atividades que você já se inscreveu!"),
+        "subscribeSlotsSoldOut": MessageLookupByLibrary.simpleMessage(
+            "Parece que o número de vagas da atividade se esgotou :("),
+        "subscribedTitle": MessageLookupByLibrary.simpleMessage("Inscrito"),
         "successChangePassword":
             MessageLookupByLibrary.simpleMessage("Senha alterada com sucesso!"),
         "successChangePasswordRedirect": MessageLookupByLibrary.simpleMessage(
@@ -428,6 +438,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enviado com sucesso!! Nossa equipe entrará em contato em breve."),
         "termination": MessageLookupByLibrary.simpleMessage("Término"),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Desinscrever-se"),
+        "unsubscribeAcceptingNewEnrollments":
+            MessageLookupByLibrary.simpleMessage(
+                "Você conseguirá se inscrever novamente"),
+        "unsubscribeAlert": MessageLookupByLibrary.simpleMessage(
+            "Tem certeza que deseja se desinscrever?"),
+        "unsubscribeNotAcceptingNewEnrollments":
+            MessageLookupByLibrary.simpleMessage(
+                "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente"),
         "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Sim")
       };

@@ -90,7 +90,7 @@ class _MoreInfoPageState
               const SizedBox(
                 height: 16,
               ),
-              /* Observer(builder: (_) {
+              Observer(builder: (_) {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -99,8 +99,8 @@ class _MoreInfoPageState
                         Text(
                           widget.enrolledActivity.startDate == null
                               ? ''
-                              : DateFormat('dd/MM').format(
-                                  widget.enrolledActivity.startDate!),
+                              : DateFormat('dd/MM')
+                                  .format(widget.enrolledActivity.startDate!),
                           style: AppTextStyles.buttonBold.copyWith(
                               fontSize: MediaQuery.of(context).size.width < 800
                                   ? 10
@@ -198,8 +198,7 @@ class _MoreInfoPageState
                                 ),
                                 GestureDetector(
                                   onTap: () => launchUrl(
-                                    Uri.parse(
-                                        widget.enrolledActivity.link!),
+                                    Uri.parse(widget.enrolledActivity.link!),
                                     mode: LaunchMode.externalApplication,
                                   ),
                                   child: Text('Link',
@@ -244,13 +243,15 @@ class _MoreInfoPageState
                       )
                     : Center(
                         child: RegisterButtonWidget(
-                            isRegistered: widget.enrolledActivity.state,
+                            isRegistered:
+                                widget.enrolledActivity.enrollments != null
+                                    ? EnrollmentStateEnum.ENROLLED
+                                    : EnrollmentStateEnum.NONE,
                             isLoading: controller.isLoading,
                             onPressed: () {
                               if (!widget.enrolledActivity
                                       .acceptingNewEnrollments &&
-                                  widget.enrolledActivity.state ==
-                                      EnrollmentStateEnum.ENROLLED) {
+                                  widget.enrolledActivity.enrollments != null) {
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
@@ -271,10 +272,8 @@ class _MoreInfoPageState
                                   },
                                 );
                               } else {
-                                if (widget
-                                        .enrolledActivity.takenSlots >=
-                                    widget
-                                        .enrolledActivity.totalSlots) {
+                                if (widget.enrolledActivity.takenSlots >=
+                                    widget.enrolledActivity.totalSlots) {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -306,8 +305,8 @@ class _MoreInfoPageState
                                   );
                                 }
                               }
-                            })); */
-              //}),
+                            }));
+              }),
               const SizedBox(
                 height: 16,
               ),
