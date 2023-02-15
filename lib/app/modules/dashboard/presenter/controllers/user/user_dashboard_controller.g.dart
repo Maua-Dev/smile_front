@@ -162,16 +162,16 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
       context: context);
 
   @override
-  List<EnrollsActivityModel> get subscribedActivitiesList {
+  List<EnrollsActivityModel> get allSubscribedActivitiesList {
     _$subscribedActivitiesListAtom.reportRead();
-    return super.subscribedActivitiesList;
+    return super.allSubscribedActivitiesList;
   }
 
   @override
-  set subscribedActivitiesList(List<EnrollsActivityModel> value) {
+  set allSubscribedActivitiesList(List<EnrollsActivityModel> value) {
     _$subscribedActivitiesListAtom
-        .reportWrite(value, super.subscribedActivitiesList, () {
-      super.subscribedActivitiesList = value;
+        .reportWrite(value, super.allSubscribedActivitiesList, () {
+      super.allSubscribedActivitiesList = value;
     });
   }
 
@@ -346,7 +346,7 @@ nameToChange: ${nameToChange},
 wantSocialName: ${wantSocialName},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
-subscribedActivitiesList: ${subscribedActivitiesList},
+subscribedActivitiesList: ${allSubscribedActivitiesList},
 nextActivity: ${nextActivity}
     ''';
   }

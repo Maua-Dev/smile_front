@@ -114,13 +114,6 @@ class MobileActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                           if (MediaQuery.of(context).size.width >
                               breakpointTablet)
                             const SizedBox(width: 200),
-                          if (isUserSubscribed)
-                            Icon(Icons.star,
-                                color: AppColors.brandingOrange,
-                                size: MediaQuery.of(context).size.width <
-                                        breakpointTablet
-                                    ? 20
-                                    : 40)
                         ]),
                     Row(children: [
                       Column(

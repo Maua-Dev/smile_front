@@ -84,7 +84,7 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   void setAllFilters() {
-    var listActivities = subscribedActivitiesList;
+    var listActivities = allSubscribedActivitiesList;
     if (typeFilter != null) {
       listActivities = filterActivitiesByType(typeFilter!, listActivities);
     }
@@ -99,7 +99,7 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   resetFilters() {
-    subscribedActivitiesOnScreen = subscribedActivitiesList;
+    subscribedActivitiesOnScreen = allSubscribedActivitiesList;
     typeFilter = null;
     dateFilter = null;
     hourFilter = null;
@@ -310,34 +310,37 @@ abstract class UserDashboardControllerBase with Store {
   int filterActivityChipIndexSelected = 0;
 
   @observable
-  List<EnrollsActivityModel> subscribedActivitiesList = List.empty();
+  List<EnrollsActivityModel> allSubscribedActivitiesList = List.empty();
 
   @observable
   EnrollsActivityModel nextActivity = EnrollsActivityModel.newInstance();
 
   @action
   Future getActivities() async {
-    subscribedActivitiesList = await subscriptionController.getUserActivities();
+    allSubscribedActivitiesList =
+        await subscriptionController.getUserActivities();
   }
 
   @action
   Future getUserSubscribedActivities() async {
     setIsLoading(true);
-    subscribedActivitiesList = await subscriptionController.getUserActivities();
-    if (subscribedActivitiesList.isNotEmpty) {
-      subscribedActivitiesList.sort(
+    allSubscribedActivitiesList =
+        await subscriptionController.getUserActivities();
+    if (allSubscribedActivitiesList.isNotEmpty) {
+      allSubscribedActivitiesList.sort(
         (a, b) => a.startDate!.compareTo(b.startDate!),
       );
+      subscribedActivitiesOnScreen = allSubscribedActivitiesList;
       getNextActivity();
     }
-    subscribedActivitiesOnScreen = subscribedActivitiesList;
+
     setIsLoading(false);
   }
 
   @action
   void getNextActivity() {
-    if (subscribedActivitiesList.isNotEmpty) {
-      nextActivity = subscribedActivitiesList.first;
+    if (allSubscribedActivitiesList.isNotEmpty) {
+      nextActivity = allSubscribedActivitiesList.first;
     } else {
       nextActivity = EnrollsActivityModel.newInstance();
     }

@@ -348,13 +348,13 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  List<_i6.EnrollsActivityModel> get subscribedActivitiesList =>
+  List<_i6.EnrollsActivityModel> get allSubscribedActivitiesList =>
       (super.noSuchMethod(
         Invocation.getter(#subscribedActivitiesList),
         returnValue: <_i6.EnrollsActivityModel>[],
       ) as List<_i6.EnrollsActivityModel>);
   @override
-  set subscribedActivitiesList(
+  set allSubscribedActivitiesList(
           List<_i6.EnrollsActivityModel>? _subscribedActivitiesList) =>
       super.noSuchMethod(
         Invocation.setter(

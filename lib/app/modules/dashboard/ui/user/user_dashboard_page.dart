@@ -31,7 +31,7 @@ class _UserDashboardPageState
       if (controller.isLoading) {
         return const Center(child: CircularProgressIndicator());
       } else {
-        if (controller.subscribedActivitiesList.isNotEmpty &&
+        if (controller.allSubscribedActivitiesList.isNotEmpty &&
             controller.nextActivity.type != null) {
           return Scaffold(
               body: Padding(
@@ -101,51 +101,60 @@ class _UserDashboardPageState
                   }),
                 ),
                 Observer(builder: (_) {
-                  return Flexible(
-                      child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                        maxWidth:
-                            MediaQuery.of(context).size.width < breakpointTablet
-                                ? 342
-                                : 1165),
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: controller.subscribedActivitiesOnScreen.length,
-                      itemBuilder: (context, index) {
-                        var finalTime = controller
-                                    .subscribedActivitiesOnScreen[index]
-                                    .startDate ==
-                                null
-                            ? ''
-                            : Utils.getActivityFinalTime(
-                                controller.subscribedActivitiesOnScreen[index]
-                                    .startDate!,
-                                controller.subscribedActivitiesOnScreen[index]
-                                    .duration);
-                        var hour = DateFormat('HH:mm').format(controller
-                            .subscribedActivitiesOnScreen[index].startDate!);
-                        return MobileActivitiesCardUserDashboard(
-                          isLoading: controller.isLoading,
-                          finalTime: finalTime,
-                          location: controller
-                              .subscribedActivitiesOnScreen[index].place,
-                          title: controller
-                              .subscribedActivitiesOnScreen[index].title,
-                          hour: hour,
-                          onTap: () {
-                            Modular.to.navigate(
-                              '/user/home/more-info',
-                              arguments: controller
-                                  .subscribedActivitiesOnScreen[index],
-                            );
-                            controller.analytics.logViewActivity(controller
-                                .subscribedActivitiesOnScreen[index]
-                                .activityCode);
-                          },
-                        );
-                      },
-                    ),
-                  ));
+                  if (controller.subscribedActivitiesOnScreen.isNotEmpty) {
+                    return Flexible(
+                        child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                          maxWidth: MediaQuery.of(context).size.width <
+                                  breakpointTablet
+                              ? 342
+                              : 1165),
+                      child: ListView.builder(
+                        itemCount:
+                            controller.subscribedActivitiesOnScreen.length,
+                        itemBuilder: (context, index) {
+                          var finalTime = controller
+                                      .subscribedActivitiesOnScreen[index]
+                                      .startDate ==
+                                  null
+                              ? ''
+                              : Utils.getActivityFinalTime(
+                                  controller.subscribedActivitiesOnScreen[index]
+                                      .startDate!,
+                                  controller.subscribedActivitiesOnScreen[index]
+                                      .duration);
+                          var hour = DateFormat('HH:mm').format(controller
+                              .subscribedActivitiesOnScreen[index].startDate!);
+                          return MobileActivitiesCardUserDashboard(
+                            isLoading: controller.isLoading,
+                            finalTime: finalTime,
+                            location: controller
+                                .subscribedActivitiesOnScreen[index].place,
+                            title: controller
+                                .subscribedActivitiesOnScreen[index].title,
+                            hour: hour,
+                            onTap: () {
+                              Modular.to.navigate(
+                                '/user/home/more-info',
+                                arguments: controller
+                                    .subscribedActivitiesOnScreen[index],
+                              );
+                              controller.analytics.logViewActivity(controller
+                                  .subscribedActivitiesOnScreen[index]
+                                  .activityCode);
+                            },
+                          );
+                        },
+                      ),
+                    ));
+                  } else {
+                    return Text(S.of(context).activitiesNotFound,
+                        style: AppTextStyles.body.copyWith(
+                            fontSize: MediaQuery.of(context).size.width <
+                                    breakpointTablet
+                                ? 20
+                                : 25));
+                  }
                 }),
               ],
             ),

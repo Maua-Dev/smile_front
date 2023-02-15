@@ -32,7 +32,7 @@ void main() {
   setupCloudFirestoreMocks();
   SubscribeActivityInterface subscribeActivity =
       MockSubscribeActivityInterface();
-      
+
   UnsubscribeActivityInterface unsubscribeActivity =
       MockUnsubscribeActivityInterface();
   GetUserSubscribedActivitiesInterface getUserActivities =
@@ -383,7 +383,7 @@ void main() {
 
   test('getUserSubscribedActivities', () {
     controller.getUserSubscribedActivities();
-    expect(controller.subscribedActivitiesList.isNotEmpty, true);
+    expect(controller.allSubscribedActivitiesList.isNotEmpty, true);
     expect(controller.nextActivity.activityCode.isNotEmpty, true);
   });
 
