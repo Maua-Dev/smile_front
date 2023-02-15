@@ -7,7 +7,7 @@ import 'package:smile_front/app/shared/widgets/dialogs/action_confirmation_dialo
 import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-class MobileActivitiesCard extends StatelessWidget {
+class MobileActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final String title;
   final String hour;
   final String finalTime;
@@ -15,21 +15,21 @@ class MobileActivitiesCard extends StatelessWidget {
   final Function() onTap;
   final Function()? onPressedSubscribe;
   final Function()? onPressedUnsubscribe;
-  final bool userSubscribed;
+  final bool isUserSubscribed;
   final bool isLoading;
   final bool acceptingNewEnrollments;
   final bool isExtensive;
   final int takenSlots;
   final int totalSlots;
 
-  const MobileActivitiesCard(
+  const MobileActivitiesCardAllActivitiesDashboard(
       {Key? key,
       required this.title,
       required this.hour,
       required this.onTap,
       required this.finalTime,
       required this.location,
-      required this.userSubscribed,
+      required this.isUserSubscribed,
       required this.isLoading,
       required this.acceptingNewEnrollments,
       required this.takenSlots,
@@ -114,13 +114,13 @@ class MobileActivitiesCard extends StatelessWidget {
                           if (MediaQuery.of(context).size.width >
                               breakpointTablet)
                             const SizedBox(width: 200),
-                          if(isExtensive) 
+                          if (isUserSubscribed)
                             Icon(Icons.star,
-                              color: AppColors.brandingOrange,
-                              size: MediaQuery.of(context).size.width <
-                                      breakpointTablet
-                                  ? 20
-                                  : 40)
+                                color: AppColors.brandingOrange,
+                                size: MediaQuery.of(context).size.width <
+                                        breakpointTablet
+                                    ? 20
+                                    : 40)
                         ]),
                     Row(children: [
                       Column(
@@ -155,7 +155,7 @@ class MobileActivitiesCard extends StatelessWidget {
                           height: MediaQuery.of(context).size.width < breakpointTablet
                               ? 25
                               : 50,
-                          child: userSubscribed
+                          child: isUserSubscribed
                               ? ElevatedButton(
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<

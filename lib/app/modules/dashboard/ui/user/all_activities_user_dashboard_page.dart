@@ -10,7 +10,7 @@ import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
-import 'widgets/mobile_widgets/activities_card/mobile_activities_card_widget.dart';
+import 'widgets/mobile_widgets/activities_card/mobile_activities_card_all_activities_dashboard_widget.dart';
 
 class AllActivitiesUserDashboardPage extends StatefulWidget {
   const AllActivitiesUserDashboardPage({Key? key}) : super(key: key);
@@ -89,7 +89,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                               controller.activitiesOnScreen[index].duration);
                       var hour = DateFormat('HH:mm').format(
                           controller.activitiesOnScreen[index].startDate!);
-                      return MobileActivitiesCard(
+                      return MobileActivitiesCardAllActivitiesDashboard(
                         onPressedSubscribe: () {
                           controller.subscribeUserActivity(controller
                               .activitiesOnScreen[index].activityCode);
@@ -103,7 +103,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                         location: controller.activitiesOnScreen[index].place,
                         title: controller.activitiesOnScreen[index].title,
                         hour: hour,
-                        userSubscribed:
+                        isUserSubscribed:
                             controller.activitiesOnScreen[index].enrollments !=
                                 null,
                         acceptingNewEnrollments: controller

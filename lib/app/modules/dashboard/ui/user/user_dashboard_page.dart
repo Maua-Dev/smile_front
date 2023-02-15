@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/activities_card/mobile_activities_card_user_dashboard_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/mobile_filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_data_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/utils.dart';
@@ -32,7 +34,11 @@ class _UserDashboardPageState
         if (controller.subscribedActivitiesList.isNotEmpty &&
             controller.nextActivity.type != null) {
           return Scaffold(
-              body: SingleChildScrollView(
+              body: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width < breakpointTablet
+                    ? 50
+                    : 20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -75,58 +81,71 @@ class _UserDashboardPageState
                     date: controller.nextActivity.startDate,
                   );
                 }),
-                TextHeader(
-                  title: 'Seu Calendário',
-                  fontSize: MediaQuery.of(context).size.width < 500
-                      ? 28
-                      : MediaQuery.of(context).size.width < 1000
-                          ? 30
-                          : 38,
-                  leftPadding:
-                      MediaQuery.of(context).size.width < 1000 ? 12 : 8,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Observer(builder: (_) {
+                    return MobileFilterCardWidget(
+                        typeFilter: controller.typeFilter,
+                        dateFilter: controller.dateFilter,
+                        hourFilter: controller.hourFilter,
+                        resetFilters: () => controller.resetFilters(),
+                        onChangedActivitiesFilter: (type) {
+                          controller.setTypeFilter(type!);
+                        },
+                        onChangedDateFilter: (date) {
+                          controller.setDateFilter(date!);
+                        },
+                        onChangedTimeFilter: (hour) {
+                          controller.setHourFilter(hour!);
+                        });
+                  }),
                 ),
                 Observer(builder: (_) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.subscribedActivitiesList.length,
-                    itemBuilder: (context, index) {
-                      var finalTime = controller
-                                  .subscribedActivitiesList[index].startDate ==
-                              null
-                          ? ''
-                          : Utils.getActivityFinalTime(
-                              controller
-                                  .subscribedActivitiesList[index].startDate!,
-                              controller
-                                  .subscribedActivitiesList[index].duration);
-                      var hour = DateFormat('HH:mm').format(controller
-                          .subscribedActivitiesList[index].startDate!);
-                      return UserActivityCardWidget(
-                        finalTime: finalTime,
-                        location:
-                            controller.subscribedActivitiesList[index].place,
-                        isOnline:
-                            controller.subscribedActivitiesList[index].link ==
-                                    null
-                                ? false
-                                : true,
-                        title: controller.subscribedActivitiesList[index].title,
-                        hour: hour,
-                        activityCode: controller
-                            .subscribedActivitiesList[index].activityCode,
-                        onTap: () {
-                          Modular.to.navigate(
-                            '/user/home/more-info',
-                            arguments:
-                                controller.subscribedActivitiesList[index],
-                          );
-                          controller.analytics.logViewActivity(controller
-                              .subscribedActivitiesList[index].activityCode);
-                        },
-                      );
-                    },
-                  );
+                  return Flexible(
+                      child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                        maxWidth:
+                            MediaQuery.of(context).size.width < breakpointTablet
+                                ? 342
+                                : 1165),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: controller.subscribedActivitiesOnScreen.length,
+                      itemBuilder: (context, index) {
+                        var finalTime = controller
+                                    .subscribedActivitiesOnScreen[index]
+                                    .startDate ==
+                                null
+                            ? ''
+                            : Utils.getActivityFinalTime(
+                                controller.subscribedActivitiesOnScreen[index]
+                                    .startDate!,
+                                controller.subscribedActivitiesOnScreen[index]
+                                    .duration);
+                        var hour = DateFormat('HH:mm').format(controller
+                            .subscribedActivitiesOnScreen[index].startDate!);
+                        return MobileActivitiesCardUserDashboard(
+                          isLoading: controller.isLoading,
+                          finalTime: finalTime,
+                          location: controller
+                              .subscribedActivitiesOnScreen[index].place,
+                          title: controller
+                              .subscribedActivitiesOnScreen[index].title,
+                          hour: hour,
+                          onTap: () {
+                            Modular.to.navigate(
+                              '/user/home/more-info',
+                              arguments: controller
+                                  .subscribedActivitiesOnScreen[index],
+                            );
+                            controller.analytics.logViewActivity(controller
+                                .subscribedActivitiesOnScreen[index]
+                                .activityCode);
+                          },
+                        );
+                      },
+                    ),
+                  ));
                 }),
               ],
             ),
