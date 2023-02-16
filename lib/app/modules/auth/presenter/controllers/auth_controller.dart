@@ -10,7 +10,7 @@ class AuthController {
   final SecureStorageInterface storage;
   final FirebaseAnalyticsService analytics;
   bool _loggedIn = false;
-  String _accessLevel = '';
+  String _role = '';
   String _name = '';
   String? _socialname = '';
   String? _id = '';
@@ -24,7 +24,7 @@ class AuthController {
   });
 
   bool get isLogged => _loggedIn;
-  String get accessLevel => _accessLevel;
+  String get role => _role;
   String get name => _name;
   String get socialname => _socialname ?? '';
   String get id => _id ?? '';
@@ -32,7 +32,7 @@ class AuthController {
 
   Future<void> loginWithUserEmail(String email, String password) async {
     var loginResponse = await loginWithEmail(email, password);
-    _accessLevel = loginResponse.accessLevel.name;
+    _role = loginResponse.role.name.toUpperCase();
     _name = loginResponse.name;
     _socialname = loginResponse.socialName;
     _certificateWithSocialName = loginResponse.certificateWithSocialName;
@@ -40,7 +40,7 @@ class AuthController {
 
     await storage.saveAccessToken(loginResponse.accessToken);
     await storage.saveRefreshToken(loginResponse.refreshToken);
-    await storage.saveAccessLevel(_accessLevel);
+    await storage.saveRole(_role);
     await storage.saveName(_name);
     await storage.saveSocialName(_socialname ?? '');
     await storage.saveId(_id ?? '');
@@ -63,8 +63,8 @@ class AuthController {
       await storage.saveRefreshToken(tokens['refresh_token']);
       _loggedIn = true;
 
-      var accessLevel = await storage.getAccessLevel();
-      _accessLevel = accessLevel!;
+      var role = await storage.getRole();
+      _role = role!;
     } catch (e) {
       _loggedIn = false;
       Modular.to.navigate("/login");
@@ -78,14 +78,14 @@ class AuthController {
 
   Future<void> verifyIfHaveTokens() async {
     try {
-      var accessLevel = await storage.getAccessLevel();
+      var accessLevel = await storage.getRole();
       var accessToken = await storage.getAccessToken();
       var refreshToken = await storage.getRefreshToken();
       if (accessToken!.isNotEmpty &&
           accessLevel!.isNotEmpty &&
           refreshToken!.isNotEmpty) {
         _loggedIn = true;
-        _accessLevel = accessLevel;
+        _role = accessLevel;
       } else {
         _loggedIn = false;
         Modular.to.navigate("/login");

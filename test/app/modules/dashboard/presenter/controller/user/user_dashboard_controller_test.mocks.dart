@@ -118,7 +118,7 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValue: _i4.Future<String?>.value(),
       ) as _i4.Future<String?>);
   @override
-  _i4.Future<void> saveAccessLevel(String? accessLevel) => (super.noSuchMethod(
+  _i4.Future<void> saveRole(String? accessLevel) => (super.noSuchMethod(
         Invocation.method(
           #saveAccessLevel,
           [accessLevel],
@@ -174,7 +174,7 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i4.Future<void>.value(),
       ) as _i4.Future<void>);
   @override
-  _i4.Future<String?> getAccessLevel() => (super.noSuchMethod(
+  _i4.Future<String?> getRole() => (super.noSuchMethod(
         Invocation.method(
           #getAccessLevel,
           [],

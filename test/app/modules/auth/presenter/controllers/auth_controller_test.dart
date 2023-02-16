@@ -32,7 +32,7 @@ void main() {
     socialName: '',
     accessLevel: AccessLevelEnum.USER,
     email: 'email',
-    role: UserRolesEnum.student,
+    role: UserRolesEnum.STUDENT,
     name: 'name',
     accessToken: 'access_token',
     idToken: 'id',
@@ -50,7 +50,7 @@ void main() {
     await Firebase.initializeApp();
     when(loginWithEmail(emailMock, pwMock)).thenAnswer((_) async => userMock);
     when(analytics.setUserProperties('')).thenAnswer((_) async => null);
-    when(storage.getAccessLevel()).thenAnswer((_) async => 'USER');
+    when(storage.getRole()).thenAnswer((_) async => 'STUDENT');
     when(storage.getId()).thenAnswer((_) async => '');
     when(storage.getAccessToken()).thenAnswer((_) async => 'token12354');
     when(storage.getRefreshToken())
@@ -65,7 +65,7 @@ void main() {
 
   test('loginWithEmail', () async {
     await controller.loginWithUserEmail(emailMock, pwMock);
-    expect(controller.accessLevel, userMock.accessLevel.name);
+    expect(controller.role, userMock.role.name);
     expect(controller.name, userMock.name);
     expect(controller.socialname, userMock.socialName);
     expect(controller.id, userMock.idToken);
@@ -82,6 +82,6 @@ void main() {
   test('verifyIfHaveTokens when logged', () async {
     await controller.verifyIfHaveTokens();
     expect(controller.isLogged, true);
-    expect(controller.accessLevel, userMock.accessLevel.name);
+    expect(controller.role, userMock.role.name);
   });
 }

@@ -1,8 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
+
 import '../../../../app_module.dart';
 import '../../presenter/controllers/auth_controller.dart';
 
-class AuthGuardSpeaker implements RouteGuard {
+class AuthGuardProfessor implements RouteGuard {
   @override
   Future<bool> canActivate(String path, ModularRoute router) async {
     await Modular.isModuleReady<AppModule>();
@@ -10,8 +11,8 @@ class AuthGuardSpeaker implements RouteGuard {
     if (!authController.isLogged) {
       await authController.verifyIfHaveTokens();
     }
-    if (authController.accessLevel == 'SPEAKER') {
-      return authController.isLogged;
+    if (authController.role == 'PROFESSOR' && authController.isLogged) {
+      return true;
     }
     return false;
   }

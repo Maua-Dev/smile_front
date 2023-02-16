@@ -11,7 +11,11 @@ class AuthGuardUser implements RouteGuard {
     if (!authController.isLogged) {
       await authController.verifyIfHaveTokens();
     }
-    if (authController.accessLevel == 'USER' && authController.isLogged) {
+    if ((authController.role == 'STUDENT' ||
+            authController.role == 'EXTERNAL' ||
+            authController.role == 'INTERNAL_STUDENT' ||
+            authController.role == 'EMPLOYEE') &&
+        authController.isLogged) {
       return true;
     }
     return false;
