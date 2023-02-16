@@ -47,7 +47,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
           height: 16,
         ),
         Observer(builder: (_) {
-          return MobileFilterCardWidget(
+          return UserFilterCardWidget(
               typeFilter: controller.typeFilter,
               dateFilter: controller.dateFilter,
               hourFilter: controller.hourFilter,
@@ -89,7 +89,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                               controller.activitiesOnScreen[index].duration);
                       var hour = DateFormat('HH:mm').format(
                           controller.activitiesOnScreen[index].startDate!);
-                      return MobileActivitiesCardAllActivitiesDashboard(
+                      return ActivitiesCardAllActivitiesDashboard(
                           onPressedSubscribe: () {
                             controller.subscribeUserActivity(controller
                                 .activitiesOnScreen[index].activityCode);

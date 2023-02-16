@@ -84,7 +84,7 @@ class _UserDashboardPageState
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Observer(builder: (_) {
-                    return MobileFilterCardWidget(
+                    return UserFilterCardWidget(
                         typeFilter: controller.typeFilter,
                         dateFilter: controller.dateFilter,
                         hourFilter: controller.hourFilter,

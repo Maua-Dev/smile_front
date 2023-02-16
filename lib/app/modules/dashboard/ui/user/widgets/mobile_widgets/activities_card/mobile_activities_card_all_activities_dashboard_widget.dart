@@ -7,7 +7,7 @@ import 'package:smile_front/app/shared/widgets/dialogs/action_confirmation_dialo
 import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-class MobileActivitiesCardAllActivitiesDashboard extends StatelessWidget {
+class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final String title;
   final String hour;
   final String finalTime;
@@ -23,7 +23,7 @@ class MobileActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final int takenSlots;
   final int totalSlots;
 
-  const MobileActivitiesCardAllActivitiesDashboard(
+  const ActivitiesCardAllActivitiesDashboard(
       {Key? key,
       required this.title,
       required this.hour,
