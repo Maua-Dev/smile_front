@@ -82,6 +82,8 @@ class _AdmDashboardPageState
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
                                 return ActivitiesCardWidget(
+                                  isExtensive: controller
+                                      .activitiesList[index].isExtensive,
                                   activityCode: controller
                                       .activitiesList[index].activityCode,
                                   date: date,
