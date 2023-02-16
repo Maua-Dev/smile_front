@@ -14,7 +14,8 @@ class AuthGuardUser implements RouteGuard {
     if ((authController.role == 'STUDENT' ||
             authController.role == 'EXTERNAL' ||
             authController.role == 'INTERNAL_STUDENT' ||
-            authController.role == 'EMPLOYEE') &&
+            authController.role == 'EMPLOYEE' ||
+            authController.role == 'PROFESSOR') &&
         authController.isLogged) {
       return true;
     }
