@@ -76,6 +76,7 @@ class SideBarContents extends StatelessWidget {
       child: GestureDetector(
         onTap: () async {
           Modular.to.navigate(route);
+          Scaffold.of(context).closeDrawer();
         },
         child: Container(
           decoration:
