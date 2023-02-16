@@ -42,7 +42,7 @@ class ActivityModel extends Activity {
             DeliveryEnumExtension.stringToEnumMap(map['delivery_model']),
         acceptingNewEnrollments: map['accepting_new_enrollments'] ?? false,
         responsibleProfessors: [
-          ResponsibleProfessorModel(id: '', name: '', role: UserRolesEnum.admin)
+          ResponsibleProfessorModel(id: '', name: '', role: UserRolesEnum.ADMIN)
         ],
         takenSlots: map['taken_slots'],
         totalSlots: map['total_slots'],

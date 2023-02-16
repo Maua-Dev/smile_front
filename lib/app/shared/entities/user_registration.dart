@@ -34,7 +34,7 @@ class UserRegistration extends User {
       email: '',
       socialName: null,
       ra: null,
-      role: UserRolesEnum.student,
+      role: UserRolesEnum.STUDENT,
       accessLevel: AccessLevelEnum.USER,
       certificateWithSocialName: false,
       phone: '',

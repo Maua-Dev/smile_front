@@ -18,7 +18,7 @@ void main() {
     socialName: '',
     accessLevel: AccessLevelEnum.USER,
     email: 'email',
-    role: UserRolesEnum.student,
+    role: UserRolesEnum.STUDENT,
     name: 'name',
     accessToken: 'access_token',
     idToken: 'id_token',

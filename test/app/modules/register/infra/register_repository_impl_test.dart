@@ -26,7 +26,7 @@ void main() {
     acceptAPPWEBNotifications: true,
     accessLevel: AccessLevelEnum.USER,
     certificateWithSocialName: true,
-    role: UserRolesEnum.student,
+    role: UserRolesEnum.STUDENT,
   );
   var res = 'User Caio Toledo created.';
 
