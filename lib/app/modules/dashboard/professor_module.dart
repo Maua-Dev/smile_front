@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/dashboard/ui/professor/professor_page.dart';
+import 'package:smile_front/app/modules/dashboard/ui/professor/professor_home_page.dart';
 
 class ProfessorModule extends Module {
   @override
