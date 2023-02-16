@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/mobile_filter_card_widget.dart';  
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/mobile_filter_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
@@ -103,7 +103,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                           location: controller.activitiesOnScreen[index].place,
                           title: controller.activitiesOnScreen[index].title,
                           hour: hour,
-                          isUserSubscribed: controller
+                          activityEnrollment: controller
                                   .activitiesOnScreen[index].enrollments !=
                               null,
                           acceptingNewEnrollments: controller

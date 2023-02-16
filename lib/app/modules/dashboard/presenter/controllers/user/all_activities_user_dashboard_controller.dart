@@ -38,6 +38,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     var requestDone =
         await enrollmentController.subscribeActivity(activityCode);
     if (requestDone) {}
+    Modular.to.pop();
     setIsLoading(false);
   }
 
@@ -46,6 +47,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     var requestDone =
         await enrollmentController.unsubscribeActivity(activityCode);
     if (requestDone) {}
+    Modular.to.pop();
     setIsLoading(false);
   }
 

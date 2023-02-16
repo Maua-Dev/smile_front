@@ -15,7 +15,7 @@ class MobileActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final Function() onTap;
   final Function()? onPressedSubscribe;
   final Function()? onPressedUnsubscribe;
-  final bool isUserSubscribed;
+  final bool activityEnrollment;
   final bool isLoading;
   final bool isUserInQueue;
   final bool acceptingNewEnrollments;
@@ -30,7 +30,7 @@ class MobileActivitiesCardAllActivitiesDashboard extends StatelessWidget {
       required this.onTap,
       required this.finalTime,
       required this.location,
-      required this.isUserSubscribed,
+      required this.activityEnrollment,
       required this.isLoading,
       required this.acceptingNewEnrollments,
       required this.takenSlots,
@@ -125,8 +125,7 @@ class MobileActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                   ? 20
                                   : 40,
                             ),
-                            if(isUserInQueue)
-                              const Text('fila funcionando')
+                          if (isUserInQueue) const Text('fila funcionando')
                         ]),
                     Row(children: [
                       Column(
@@ -161,7 +160,7 @@ class MobileActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                           height: MediaQuery.of(context).size.width < breakpointTablet
                               ? 25
                               : 50,
-                          child: isUserSubscribed
+                          child: activityEnrollment
                               ? ElevatedButton(
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
