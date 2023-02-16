@@ -60,8 +60,6 @@ abstract class LoginControllerBase with Store {
       if (authController.isLogged) {
         if (authController.role == 'ADMIN') {
           Modular.to.navigate('/adm', arguments: [null, authController.role]);
-        } else if (authController.role == 'PROFESSOR') {
-          Modular.to.navigate('/professor');
         } else {
           Modular.to
               .navigate('/user/home', arguments: [email, authController.role]);

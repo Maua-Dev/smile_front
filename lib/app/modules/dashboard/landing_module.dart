@@ -5,7 +5,7 @@ import 'package:smile_front/app/modules/dashboard/user_module.dart';
 import '../../shared/error/error_page.dart';
 import '../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 
-class LandingUserModule extends Module {
+class LandingModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton<NavigationBarController>(
