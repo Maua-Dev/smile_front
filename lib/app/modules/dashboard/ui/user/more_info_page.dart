@@ -5,11 +5,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'dart:math' as math;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/app_widgets/extensionist_widget.dart';
+import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
-import '../../../../shared/themes/breakpoint.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
@@ -42,7 +43,7 @@ class _MoreInfoPageState
             ? ''
             : Utils.getActivityFinalTime(
                 controller.activity.date!, controller.activity.duration!);
-    return MediaQuery.of(context).size.width < breakpointMobile
+    return MediaQuery.of(context).size.width < tabletSize
         ? SafeArea(
             child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -235,26 +236,7 @@ class _MoreInfoPageState
                                 }),
                           ));
                   }),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        color: AppColors.white,
-                        border: Border.all(color: AppColors.brandingOrange),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.star,
-                            color: AppColors.brandingOrange,
-                            size: 28,
-                          ),
-                          Text('Extensionista',
-                              style: AppTextStyles.bold.copyWith(
-                                  fontSize: 7, color: AppColors.brandingOrange))
-                        ]),
-                  ),
+                  const ExtensionistWidget(isExtensionist: false)
                 ],
               ),
               Padding(
