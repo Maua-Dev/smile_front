@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
 
-class ResponsibleActivitiesPage extends StatelessWidget {
-  const ResponsibleActivitiesPage({super.key});
+class MoreInfoResponsibleActivitiesPage extends StatelessWidget {
+  const MoreInfoResponsibleActivitiesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,20 +13,24 @@ class ResponsibleActivitiesPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 16),
         child: Column(
           children: [
-            Text('ECV707 - Engenharia de Produção',
-                style: AppTextStyles.bold.copyWith(
-                    fontSize: MediaQuery.of(context).size.width < tabletSize
-                        ? 20
-                        : 50)),
+            Align(
+              alignment: Alignment.center,
+              child: Text('ECV707 - Engenharia de Produção',
+                  style: AppTextStyles.bold.copyWith(
+                      fontSize:
+                          MediaQuery.of(context).size.width < breakpointTablet
+                              ? 20
+                              : 50)),
+            ),
             const SizedBox(height: 30),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width < cellphoneSize
+                  width: MediaQuery.of(context).size.width < breakpointTablet
                       ? 78
                       : 183,
-                  height: MediaQuery.of(context).size.width < cellphoneSize
+                  height: MediaQuery.of(context).size.width < breakpointTablet
                       ? 49
                       : 74,
                   decoration: BoxDecoration(
@@ -40,23 +44,23 @@ class ResponsibleActivitiesPage extends StatelessWidget {
                             style: AppTextStyles.bold.copyWith(
                                 color: AppColors.white,
                                 fontSize: MediaQuery.of(context).size.width <
-                                        cellphoneSize
+                                        breakpointTablet
                                     ? 12
                                     : 20)),
                         Text('20/04',
                             style: AppTextStyles.bold.copyWith(
                                 color: AppColors.white,
                                 fontSize: MediaQuery.of(context).size.width <
-                                        cellphoneSize
+                                        breakpointTablet
                                     ? 20
                                     : 40))
                       ]),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width < cellphoneSize
+                  width: MediaQuery.of(context).size.width < breakpointTablet
                       ? 138
                       : 341,
-                  height: MediaQuery.of(context).size.width < cellphoneSize
+                  height: MediaQuery.of(context).size.width < breakpointTablet
                       ? 49
                       : 74,
                   decoration: BoxDecoration(
@@ -69,23 +73,23 @@ class ResponsibleActivitiesPage extends StatelessWidget {
                             style: AppTextStyles.bold.copyWith(
                                 color: AppColors.white,
                                 fontSize: MediaQuery.of(context).size.width <
-                                        cellphoneSize
+                                        breakpointTablet
                                     ? 12
                                     : 20)),
                         Text('14:00 - 14:50',
                             style: AppTextStyles.bold.copyWith(
                                 color: AppColors.white,
                                 fontSize: MediaQuery.of(context).size.width <
-                                        cellphoneSize
+                                        breakpointTablet
                                     ? 20
                                     : 40))
                       ]),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width < cellphoneSize
+                  width: MediaQuery.of(context).size.width < breakpointTablet
                       ? 78
                       : 175,
-                  height: MediaQuery.of(context).size.width < cellphoneSize
+                  height: MediaQuery.of(context).size.width < breakpointTablet
                       ? 49
                       : 74,
                   decoration: BoxDecoration(
@@ -98,14 +102,14 @@ class ResponsibleActivitiesPage extends StatelessWidget {
                             style: AppTextStyles.bold.copyWith(
                                 color: AppColors.white,
                                 fontSize: MediaQuery.of(context).size.width <
-                                        cellphoneSize
+                                        breakpointTablet
                                     ? 12
                                     : 20)),
                         Text('H244',
                             style: AppTextStyles.bold.copyWith(
                                 color: AppColors.white,
                                 fontSize: MediaQuery.of(context).size.width <
-                                        cellphoneSize
+                                        breakpointTablet
                                     ? 20
                                     : 40))
                       ]),
@@ -114,10 +118,11 @@ class ResponsibleActivitiesPage extends StatelessWidget {
             ),
             const SizedBox(height: 60),
             Wrap(
+              runSpacing: 40,
               crossAxisAlignment: WrapCrossAlignment.start,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width < cellphoneSize
+                  width: MediaQuery.of(context).size.width < breakpointTablet
                       ? 339
                       : 484,
                   height: 50,
@@ -140,16 +145,16 @@ class ResponsibleActivitiesPage extends StatelessWidget {
                           )
                       ]),
                 ),
-                if (MediaQuery.of(context).size.width > 1020)
+                if (MediaQuery.of(context).size.width > 720)
                   const SizedBox(
                     width: 20,
                   ),
-                if (MediaQuery.of(context).size.width > 1020)
+                if (MediaQuery.of(context).size.width > 720)
                   Column(
                     children: [
                       const SizedBox(height: 24),
                       SizedBox(
-                        height: 586,
+                        height: MediaQuery.of(context).size.height / 2,
                         child: VerticalDivider(
                           color: AppColors.brandingOrange,
                           thickness: 3,
@@ -157,12 +162,12 @@ class ResponsibleActivitiesPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                if (MediaQuery.of(context).size.width > 1020)
+                if (MediaQuery.of(context).size.width > 700)
                   const SizedBox(
                     width: 20,
                   ),
                 Container(
-                  width: MediaQuery.of(context).size.width < cellphoneSize
+                  width: MediaQuery.of(context).size.width < breakpointTablet
                       ? 339
                       : 484,
                   height: 50,
