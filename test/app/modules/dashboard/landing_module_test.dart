@@ -4,13 +4,13 @@ import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
-import 'package:smile_front/app/modules/dashboard/landing_module.dart';
+import 'package:smile_front/app/modules/dashboard/landing_user_module.dart';
 import 'package:smile_front/app/shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 
 import '../../../setup_firebase_mocks.dart';
 
 void main() {
-  initModules([AppModule(), LandingModule(), AdmModule()]);
+  initModules([AppModule(), LandingUserModule(), AdmModule()]);
 
   setupCloudFirestoreMocks();
 

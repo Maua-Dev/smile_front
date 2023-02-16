@@ -61,8 +61,8 @@ abstract class LoginControllerBase with Store {
         if (authController.accessLevel == 'ADMIN') {
           Modular.to
               .navigate('/adm', arguments: [null, authController.accessLevel]);
-        } else if (authController.accessLevel == 'SPEAKER') {
-          Modular.to.navigate('/speaker-home');
+        } else if (authController.accessLevel == 'PROFESSOR') {
+          Modular.to.navigate('/professor');
         } else {
           Modular.to.navigate('/user/home',
               arguments: [email, authController.accessLevel]);
