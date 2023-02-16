@@ -31,6 +31,7 @@ class VerticalNavBarButtonWidget extends StatelessWidget {
           ),
           Text(
             buttonText,
+            textAlign: TextAlign.center,
             style: TextStyle(
                 color: indexToShow == myIndex
                     ? AppColors.brandingOrange
