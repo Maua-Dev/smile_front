@@ -1,13 +1,14 @@
 // ignore_for_file: constant_identifier_names
+
 import 'package:enum_to_string/enum_to_string.dart';
 
 enum UserRolesEnum {
-  student,
-  external,
-  employee,
-  international_student,
-  professor,
-  admin
+  STUDENT,
+  EXTERNAL,
+  EMPLOYEE,
+  INTERNAL_STUDENT,
+  PROFESSOR,
+  ADMIN
 }
 
 extension UserRolesEnumExtension on UserRolesEnum {

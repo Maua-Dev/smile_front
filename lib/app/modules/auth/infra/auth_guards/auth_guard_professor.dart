@@ -11,7 +11,7 @@ class AuthGuardProfessor implements RouteGuard {
     if (!authController.isLogged) {
       await authController.verifyIfHaveTokens();
     }
-    if (authController.accessLevel == 'PROFESSOR' && authController.isLogged) {
+    if (authController.role == 'PROFESSOR' && authController.isLogged) {
       return true;
     }
     return false;

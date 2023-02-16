@@ -120,7 +120,7 @@ class _AdmDashboardPageState
                                   },
                                   onPressedEdit: () async {
                                     var accessLevel =
-                                        await secureStorage.getAccessLevel();
+                                        await secureStorage.getRole();
                                     if (accessLevel == 'ADMIN') {
                                       Modular.to.navigate(
                                         '/adm/edit-activity',
