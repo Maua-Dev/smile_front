@@ -79,12 +79,12 @@ class ActivitiesCardWidget extends StatelessWidget {
                                     fontWeight: FontWeight.w700,
                                     overflow: TextOverflow.ellipsis)),
                           ),
-                          if(isExtensive)
-                          Icon(
-                            Icons.star_border_outlined,
-                            size: 33,
-                            color: AppColors.brandingOrange,
-                          ),
+                          if (isExtensive)
+                            Icon(
+                              Icons.star_border_outlined,
+                              size: 33,
+                              color: AppColors.brandingOrange,
+                            ),
                         ],
                       ),
                     ),
