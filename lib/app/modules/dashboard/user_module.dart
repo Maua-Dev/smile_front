@@ -20,6 +20,7 @@ import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_da
 import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/responsible_activities_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
@@ -125,5 +126,7 @@ class UserModule extends Module {
     ChildRoute('/more-info', child: (_, args) => const MoreInfoPage()),
     ChildRoute('/help', child: (_, args) => const HelpPage()),
     ChildRoute('/certificate', child: (_, args) => const CertificatePage()),
+    ChildRoute('/responsible-activities',
+        child: (_, args) => const ResponsibleActivitiesPage())
   ];
 }

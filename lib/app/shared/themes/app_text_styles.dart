@@ -31,4 +31,9 @@ class AppTextStyles {
     color: Colors.white,
     fontSize: 25,
   );
+
+  static final TextStyle bold = GoogleFonts.roboto(
+      color: AppColors.brandingOrange,
+      fontSize: 50,
+      fontWeight: FontWeight.w700);
 }
