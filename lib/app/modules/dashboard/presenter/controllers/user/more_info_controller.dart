@@ -29,6 +29,14 @@ abstract class MoreInfoControllerBase with Store {
   }
 
   @observable
+  bool isVisible = false;
+
+  @action
+  void showContainer() {
+    isVisible = true;
+  }
+
+  @observable
   bool isRegistered = false;
 
   @action

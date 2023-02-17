@@ -15,6 +15,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/certificate_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_responsible_activities_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart';
@@ -65,6 +66,7 @@ class UserModule extends Module {
           getAllFaqInformation: i(),
           analytics: i(),
         )),
+    Bind.singleton((i) => MoreInfoResponsibleActivitiesController()),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<GetUserSubscribedActivitiesInterface>(

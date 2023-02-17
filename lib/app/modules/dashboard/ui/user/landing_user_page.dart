@@ -62,7 +62,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
                         child: SizedBox(
                             width: Screen.width(context) < 1024
                                 ? Screen.width(context)
-                                : 1100,
+                                : 1500,
                             child: RouterOutlet()),
                       ),
                     ),
