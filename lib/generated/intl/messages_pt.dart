@@ -277,8 +277,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
             "Um código será enviado no email cadastrado:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Código"),
-        "companyTitle": MessageLookupByLibrary.simpleMessage(
-            "Empresa: \${controller.activity.speakers![index].company}"),
+        "companyTitle": MessageLookupByLibrary.simpleMessage("Empresa:"),
         "confirmAllFieldsConrrectlyFilled":
             MessageLookupByLibrary.simpleMessage(
                 "Confira se todos os campos estão corretamente preenchidos."),

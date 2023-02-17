@@ -1457,10 +1457,10 @@ class S {
     );
   }
 
-  /// `Company: ${controller.activity.speakers![index].company}`
+  /// `Company:`
   String get companyTitle {
     return Intl.message(
-      'Company: \${controller.activity.speakers![index].company}',
+      'Company:',
       name: 'companyTitle',
       desc: '',
       args: [],

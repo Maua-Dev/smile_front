@@ -164,7 +164,7 @@
     "activityEditTitle": "Editar Atividade",
     "activityTypeTitle": "Tipo de Atividade",
     "activityNameTitle": "Titulo da Atividade",
-    "companyTitle": "Empresa: ${controller.activity.speakers![index].company}",
+    "companyTitle": "Empresa:",
 
     "descriptionTitle": "Descrição",
 

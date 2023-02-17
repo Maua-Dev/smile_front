@@ -320,7 +320,8 @@ class _MoreInfoPageState
                                   controller
                                           .activity.speakers![index].company !=
                                       '')
-                                Text(S.of(context).companyTitle,
+                                Text(
+                                    "${S.of(context).companyTitle} ${controller.activity.speakers![index].company}",
                                     textAlign: TextAlign.justify,
                                     style: AppTextStyles.bold.copyWith(
                                         fontSize: 13,
