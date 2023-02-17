@@ -1,4 +1,3 @@
-import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/app_widget.dart';
@@ -80,8 +79,6 @@ abstract class ForgotPasswordControllerBase with Store {
       value = value.replaceAll('-', '');
       if (value.isEmpty) {
         return S.current.fieldRequired;
-      } else if (!CPFValidator.isValid(value) || value.isEmpty) {
-        return "E-mail inválido";
       }
     }
     return null;

@@ -41,19 +41,19 @@ mixin _$LoginController on LoginControllerBase, Store {
     });
   }
 
-  late final _$cpfRneAtom =
-      Atom(name: 'LoginControllerBase.cpfRne', context: context);
+  late final _$emailAtom =
+      Atom(name: 'LoginControllerBase.email', context: context);
 
   @override
-  String get cpfRne {
-    _$cpfRneAtom.reportRead();
-    return super.cpfRne;
+  String get email {
+    _$emailAtom.reportRead();
+    return super.email;
   }
 
   @override
-  set cpfRne(String value) {
-    _$cpfRneAtom.reportWrite(value, super.cpfRne, () {
-      super.cpfRne = value;
+  set email(String value) {
+    _$emailAtom.reportWrite(value, super.email, () {
+      super.email = value;
     });
   }
 
@@ -125,11 +125,11 @@ mixin _$LoginController on LoginControllerBase, Store {
       ActionController(name: 'LoginControllerBase', context: context);
 
   @override
-  String? validateCpf(String? value) {
+  String? validateEmail(String? value) {
     final _$actionInfo = _$LoginControllerBaseActionController.startAction(
-        name: 'LoginControllerBase.validateCpf');
+        name: 'LoginControllerBase.validateEmail');
     try {
-      return super.validateCpf(value);
+      return super.validateEmail(value);
     } finally {
       _$LoginControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -162,7 +162,7 @@ mixin _$LoginController on LoginControllerBase, Store {
     return '''
 isLoading: ${isLoading},
 showPwd: ${showPwd},
-cpfRne: ${cpfRne},
+email: ${email},
 password: ${password},
 errors: ${errors}
     ''';

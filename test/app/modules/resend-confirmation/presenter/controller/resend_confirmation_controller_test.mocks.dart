@@ -8,7 +8,7 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/resend-confirmation/domain/repository/resend_confirmation_datasource_interface.dart'
     as _i2;
-import 'package:smile_front/app/modules/resend-confirmation/usecases/resend_confirmation.dart'
+import 'package:smile_front/app/modules/resend-confirmation/domain/usecases/resend_confirmation.dart'
     as _i4;
 
 // ignore_for_file: type=lint

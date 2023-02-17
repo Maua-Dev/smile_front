@@ -1,4 +1,4 @@
-import 'package:cpf_cnpj_validator/cpf_validator.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/errors/errors.dart';
@@ -30,7 +30,7 @@ abstract class LoginControllerBase with Store {
   bool showPwd = false;
 
   @observable
-  String cpfRne = '';
+  String email = '';
 
   @observable
   String password = '';
@@ -42,11 +42,8 @@ abstract class LoginControllerBase with Store {
   Future<void> setUsername(String value) async {
     if (value.contains("@")) {
       value = value.toLowerCase();
-    } else {
-      value = value.replaceAll('.', '');
-      value = value.replaceAll('-', '');
     }
-    cpfRne = value;
+    email = value;
   }
 
   @action
@@ -59,16 +56,13 @@ abstract class LoginControllerBase with Store {
     errors = '';
     setIsLoading(true);
     try {
-      await authController.loginWithUserCpfRne(cpfRne, password);
+      await authController.loginWithUserEmail(email, password);
       if (authController.isLogged) {
-        if (authController.accessLevel == 'ADMIN') {
-          Modular.to
-              .navigate('/adm', arguments: [null, authController.accessLevel]);
-        } else if (authController.accessLevel == 'SPEAKER') {
-          Modular.to.navigate('/speaker-home');
+        if (authController.role == 'ADMIN') {
+          Modular.to.navigate('/adm', arguments: [null, authController.role]);
         } else {
-          Modular.to.navigate('/user/home',
-              arguments: [cpfRne, authController.accessLevel]);
+          Modular.to
+              .navigate('/user/home', arguments: [email, authController.role]);
         }
       }
       analytics.logLogin();
@@ -91,15 +85,11 @@ abstract class LoginControllerBase with Store {
   }
 
   @action
-  String? validateCpf(String? value) {
+  String? validateEmail(String? value) {
     if (value!.isEmpty) {
       return S.current.fieldRequired;
-    } else if (!value.contains('@')) {
-      value = value.replaceAll('.', '');
-      value = value.replaceAll('-', '');
-      if (!CPFValidator.isValid(value)) {
-        return S.current.fieldCpfInvalid;
-      }
+    } else if (!EmailValidator.validate(value)) {
+      return S.current.fieldEmailInvalid;
     }
     return null;
   }

@@ -42,7 +42,7 @@ class ActivityModel extends Activity {
             DeliveryEnumExtension.stringToEnumMap(map['delivery_model']),
         acceptingNewEnrollments: map['accepting_new_enrollments'] ?? false,
         responsibleProfessor: ResponsibleProfessorModel(
-            id: '', name: '', role: UserRolesEnum.admin),
+            id: '', name: '', role: UserRolesEnum.ADMIN),
         takenSlots: map['taken_slots'],
         totalSlots: map['total_slots'],
         stopAcceptingNewEnrollmentsBefore:
@@ -53,15 +53,48 @@ class ActivityModel extends Activity {
   }
 
   static List<ActivityModel> fromMaps(List array) {
-    return array.map((e) => ActivityModel.fromMap(e)).toList();
+    return array.map((e) => ActivityModel.fromMap(e['activity'])).toList();
   }
 
   Map<String, dynamic> toJson() => {
-        'type': ActivityEnumExtension.enumToStringMap(type!),
-        'activityCode': activityCode,
+        'activity_type': ActivityEnumExtension.enumToStringMap(type!),
+        'code': activityCode,
         'title': title,
         'description': description,
-        'speakers': speakers,
+        'is_extensive': isExtensive,
+        'delivery_model': DeliveryEnumExtension.enumToStringMap(deliveryEnum!),
+        'start_date': startDate!.millisecondsSinceEpoch,
+        'duration': duration,
+        'place': place,
+        'link': link,
+        'total_slots': totalSlots,
+        'taken_slots': takenSlots,
+        'accepting_new_enrollments': acceptingNewEnrollments,
+        'stop_accepting_new_enrollments_before':
+            stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
+        'responsible_professors': [responsibleProfessor.id],
+        'speakers': speakers.map((e) => e.toJson()).toList(),
+      };
+
+  Map<String, dynamic> editToJson() => {
+        'new_activity_type': ActivityEnumExtension.enumToStringMap(type!),
+        'code': activityCode,
+        'new_title  ': title,
+        'new_description': description,
+        'new_is_extensive': isExtensive,
+        'new_delivery_model':
+            DeliveryEnumExtension.enumToStringMap(deliveryEnum!),
+        'new_start_date': startDate!.millisecondsSinceEpoch,
+        'new_duration': duration,
+        'new_place': place,
+        'new_link': link,
+        'new_total_slots': totalSlots,
+        'new_taken_slots': takenSlots,
+        'new_accepting_new_enrollments': acceptingNewEnrollments,
+        'new_stop_accepting_new_enrollments_before':
+            stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
+        'new_responsible_professors': [responsibleProfessor.id],
+        'new_speakers': speakers.map((e) => e.toJson()).toList(),
       };
 
   factory ActivityModel.newInstance() {

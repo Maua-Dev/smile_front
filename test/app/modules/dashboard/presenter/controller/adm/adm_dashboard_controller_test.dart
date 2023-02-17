@@ -3,8 +3,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
-import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
-import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
@@ -25,7 +25,7 @@ void main() {
       MockGetDownloadLinkCsvInterface();
   GetAllUserActivitiesInterface getAllUserActivities =
       u.MockGetAllUserActivitiesInterface();
-  LoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
+  LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   DeleteActivityInterface deleteActivity = MockDeleteActivityInterface();
 
@@ -179,10 +179,11 @@ void main() {
     when(getAllUserActivities()).thenAnswer((_) async => mockActivities);
     when(getDownloadLinkCsv()).thenAnswer((_) async => '');
     authController = AuthController(
-        refreshToken: refreshToken,
-        loginWithCpfRne: loginWithCpfRne,
-        storage: secureStorage,
-        analytics: analytics);
+      refreshToken: refreshToken,
+      loginWithEmail: loginWithEmail,
+      storage: secureStorage,
+      analytics: analytics,
+    );
     controller = AdmDashboardController(
       getAllUserActivities: getAllUserActivities,
       getDownloadLinkCsv: getDownloadLinkCsv,
