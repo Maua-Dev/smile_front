@@ -249,6 +249,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Página do Administrador"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Relatórios"),
+        "alreadySubscribedOnThisPeriodWarning":
+            MessageLookupByLibrary.simpleMessage(
+                "Parece que você já se inscreveu em uma atividade no mesmo horário."),
+        "availabeSpotUnsuficient": MessageLookupByLibrary.simpleMessage(
+            "Parece que o número de vagas da atividade se esgotou :("),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
             "A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir."),
         "beSponsorDiscount": MessageLookupByLibrary.simpleMessage("Descontos"),
@@ -272,6 +277,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
             "Um código será enviado no email cadastrado:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Código"),
+        "companyTitle": MessageLookupByLibrary.simpleMessage(
+            "Empresa: \${controller.activity.speakers![index].company}"),
         "confirmAllFieldsConrrectlyFilled":
             MessageLookupByLibrary.simpleMessage(
                 "Confira se todos os campos estão corretamente preenchidos."),
@@ -401,6 +408,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerTitle": MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "returnLogin": MessageLookupByLibrary.simpleMessage("Voltar ao login"),
         "saveTitle": MessageLookupByLibrary.simpleMessage("Salvar"),
+        "scheduleActivityWarning": MessageLookupByLibrary.simpleMessage(
+            "Se atente aos seus horários e atividades que você já se inscreveu!"),
         "scheduleAddTitle":
             MessageLookupByLibrary.simpleMessage("Adicionar Horário"),
         "scheduleTitle": MessageLookupByLibrary.simpleMessage("Horário"),
@@ -419,6 +428,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("DESLIZE PARA VER MAIS >>>"),
         "speakersTitle": MessageLookupByLibrary.simpleMessage("Palestrantes"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Patrocinadores"),
+        "subscribeVerification": MessageLookupByLibrary.simpleMessage(
+            "Tem certeza que deseja se inscrever?"),
         "successChangePassword":
             MessageLookupByLibrary.simpleMessage("Senha alterada com sucesso!"),
         "successChangePasswordRedirect": MessageLookupByLibrary.simpleMessage(
@@ -431,7 +442,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Código enviado com sucesso!"),
         "successSendingSponsorEmail": MessageLookupByLibrary.simpleMessage(
             "Enviado com sucesso!! Nossa equipe entrará em contato em breve."),
+        "unavailabeActivityRegistration": MessageLookupByLibrary.simpleMessage(
+            "Inscrição para a atividade indisponível!"),
+        "unavailabeSubscribe": MessageLookupByLibrary.simpleMessage(
+            "Inscrição para a atividade indisponível!"),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Desinscrever-se"),
+        "unsubscribeLoseVanacy": MessageLookupByLibrary.simpleMessage(
+            "Você perderá sua vaga na atividade ao continuar!"),
+        "unsubscribeVerification": MessageLookupByLibrary.simpleMessage(
+            "Tem certeza que deseja se desinscrever?"),
+        "unsubscribeVerificationClosedRegistration":
+            MessageLookupByLibrary.simpleMessage(
+                "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!"),
         "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Sim")
       };

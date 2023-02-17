@@ -126,7 +126,7 @@ class _MoreInfoPageState
                     return !controller.activity.acceptSubscription &&
                             !controller.isRegistered
                         ? Text(
-                            'Inscrição para a atividade indisponível!',
+                            S.of(context).unavailabeActivityRegistration,
                             textAlign: TextAlign.center,
                             style: AppTextStyles.titleH1.copyWith(
                                 color: AppColors.brandingBlue,
@@ -153,10 +153,12 @@ class _MoreInfoPageState
                                         return Observer(builder: (context) {
                                           return ActionConfirmationDialogWidget(
                                               isLoading: controller.isLoading,
-                                              title:
-                                                  'Tem certeza que deseja se desinscrever?',
-                                              content:
-                                                  'Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!',
+                                              title: S
+                                                  .of(context)
+                                                  .unsubscribeVerification,
+                                              content: S
+                                                  .of(context)
+                                                  .unsubscribeVerificationClosedRegistration,
                                               onPressed: () {
                                                 controller
                                                     .unsubscribeUserActivity();
@@ -173,10 +175,12 @@ class _MoreInfoPageState
                                           return Observer(builder: (context) {
                                             return ActionConfirmationDialogWidget(
                                                 isLoading: controller.isLoading,
-                                                title:
-                                                    'Tem certeza que deseja se desinscrever?',
-                                                content:
-                                                    'Você perderá sua vaga na atividade ao continuar!',
+                                                title: S
+                                                    .of(context)
+                                                    .unsubscribeVerification,
+                                                content: S
+                                                    .of(context)
+                                                    .unsubscribeLoseVanacy,
                                                 onPressed: () {
                                                   controller
                                                       .unsubscribeUserActivity();
@@ -192,9 +196,10 @@ class _MoreInfoPageState
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
-                                          return const CustomAlertDialogWidget(
-                                            title:
-                                                'Parece que o número de vagas da atividade se esgotou :(',
+                                          return CustomAlertDialogWidget(
+                                            title: S
+                                                .of(context)
+                                                .availabeSpotUnsuficient,
                                           );
                                         },
                                       );
@@ -205,10 +210,12 @@ class _MoreInfoPageState
                                           return Observer(builder: (context) {
                                             return ActionConfirmationDialogWidget(
                                                 isLoading: controller.isLoading,
-                                                title:
-                                                    'Tem certeza que deseja se inscrever?',
-                                                content:
-                                                    'Se atente aos seus horários e atividades que você já se inscreveu!',
+                                                title: S
+                                                    .of(context)
+                                                    .subscribeVerification,
+                                                content: S
+                                                    .of(context)
+                                                    .scheduleActivityWarning,
                                                 onPressed: () {
                                                   if (controller
                                                       .checkIsOkForSubscribe()) {
@@ -220,9 +227,10 @@ class _MoreInfoPageState
                                                       context: context,
                                                       builder: (BuildContext
                                                           context) {
-                                                        return const CustomAlertDialogWidget(
-                                                          title:
-                                                              'Parece que você já se inscreveu em uma atividade no mesmo horário.',
+                                                        return CustomAlertDialogWidget(
+                                                          title: S
+                                                              .of(context)
+                                                              .alreadySubscribedOnThisPeriodWarning,
                                                         );
                                                       },
                                                     );
@@ -312,8 +320,7 @@ class _MoreInfoPageState
                                   controller
                                           .activity.speakers![index].company !=
                                       '')
-                                Text(
-                                    'Empresa: ${controller.activity.speakers![index].company}',
+                                Text(S.of(context).companyTitle,
                                     textAlign: TextAlign.justify,
                                     style: AppTextStyles.bold.copyWith(
                                         fontSize: 13,
@@ -464,7 +471,7 @@ class _MoreInfoPageState
                           Column(
                             children: [
                               Text(
-                                'Horário',
+                                S.of(context).scheduleTitle,
                                 style: AppTextStyles.buttonBold.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width < 800
@@ -497,7 +504,7 @@ class _MoreInfoPageState
                             Column(
                               children: [
                                 Text(
-                                  'Local',
+                                  S.of(context).localTitle,
                                   style: AppTextStyles.buttonBold.copyWith(
                                       fontSize: MediaQuery.of(context)
                                                   .size
@@ -596,7 +603,7 @@ class _MoreInfoPageState
                       return !controller.activity.acceptSubscription &&
                               !controller.isRegistered
                           ? Text(
-                              'Inscrição para a atividade indisponível!',
+                              S.of(context).unavailabeSubscribe,
                               textAlign: TextAlign.center,
                               style: AppTextStyles.titleH1.copyWith(
                                   color: AppColors.brandingBlue,
@@ -621,10 +628,12 @@ class _MoreInfoPageState
                                           return Observer(builder: (context) {
                                             return ActionConfirmationDialogWidget(
                                                 isLoading: controller.isLoading,
-                                                title:
-                                                    'Tem certeza que deseja se desinscrever?',
-                                                content:
-                                                    'Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!',
+                                                title: S
+                                                    .of(context)
+                                                    .unsubscribeVerification,
+                                                content: S
+                                                    .of(context)
+                                                    .unsubscribeVerificationClosedRegistration,
                                                 onPressed: () {
                                                   controller
                                                       .unsubscribeUserActivity();
@@ -642,10 +651,12 @@ class _MoreInfoPageState
                                               return ActionConfirmationDialogWidget(
                                                   isLoading:
                                                       controller.isLoading,
-                                                  title:
-                                                      'Tem certeza que deseja se desinscrever?',
-                                                  content:
-                                                      'Você perderá sua vaga na atividade ao continuar!',
+                                                  title: S
+                                                      .of(context)
+                                                      .unsubscribeVerification,
+                                                  content: S
+                                                      .of(context)
+                                                      .unsubscribeLoseVanacy,
                                                   onPressed: () {
                                                     controller
                                                         .unsubscribeUserActivity();
@@ -661,9 +672,10 @@ class _MoreInfoPageState
                                         showDialog(
                                           context: context,
                                           builder: (BuildContext context) {
-                                            return const CustomAlertDialogWidget(
-                                              title:
-                                                  'Parece que o número de vagas da atividade se esgotou :(',
+                                            return CustomAlertDialogWidget(
+                                              title: S
+                                                  .of(context)
+                                                  .availabeSpotUnsuficient,
                                             );
                                           },
                                         );
@@ -675,10 +687,12 @@ class _MoreInfoPageState
                                               return ActionConfirmationDialogWidget(
                                                   isLoading:
                                                       controller.isLoading,
-                                                  title:
-                                                      'Tem certeza que deseja se inscrever?',
-                                                  content:
-                                                      'Se atente aos seus horários e atividades que você já se inscreveu!',
+                                                  title: S
+                                                      .of(context)
+                                                      .subscribeVerification,
+                                                  content: S
+                                                      .of(context)
+                                                      .scheduleActivityWarning,
                                                   onPressed: () {
                                                     if (controller
                                                         .checkIsOkForSubscribe()) {
@@ -690,9 +704,10 @@ class _MoreInfoPageState
                                                         context: context,
                                                         builder: (BuildContext
                                                             context) {
-                                                          return const CustomAlertDialogWidget(
-                                                            title:
-                                                                'Parece que você já se inscreveu em uma atividade no mesmo horário.',
+                                                          return CustomAlertDialogWidget(
+                                                            title: S
+                                                                .of(context)
+                                                                .alreadySubscribedOnThisPeriodWarning,
                                                           );
                                                         },
                                                       );

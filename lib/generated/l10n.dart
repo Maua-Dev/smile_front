@@ -1457,6 +1457,16 @@ class S {
     );
   }
 
+  /// `Company: ${controller.activity.speakers![index].company}`
+  String get companyTitle {
+    return Intl.message(
+      'Company: \${controller.activity.speakers![index].company}',
+      name: 'companyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description`
   String get descriptionTitle {
     return Intl.message(
@@ -1538,6 +1548,96 @@ class S {
   }
 
   // skipped getter for the '' key
+
+  /// `Registration unavailabe for this activity!`
+  String get unavailabeActivityRegistration {
+    return Intl.message(
+      'Registration unavailabe for this activity!',
+      name: 'unavailabeActivityRegistration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you wanna unsubscribe?`
+  String get unsubscribeVerification {
+    return Intl.message(
+      'Are you sure you wanna unsubscribe?',
+      name: 'unsubscribeVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you wanna subscribe?`
+  String get subscribeVerification {
+    return Intl.message(
+      'Are you sure you wanna subscribe?',
+      name: 'subscribeVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!`
+  String get unsubscribeVerificationClosedRegistration {
+    return Intl.message(
+      'Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!',
+      name: 'unsubscribeVerificationClosedRegistration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will lose your vacancy by continuing!`
+  String get unsubscribeLoseVanacy {
+    return Intl.message(
+      'You will lose your vacancy by continuing!',
+      name: 'unsubscribeLoseVanacy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems that the number of vacancies for this activity has run out :(`
+  String get availabeSpotUnsuficient {
+    return Intl.message(
+      'It seems that the number of vacancies for this activity has run out :(',
+      name: 'availabeSpotUnsuficient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep in mind of your schedules and activities that you have already signed up for!`
+  String get scheduleActivityWarning {
+    return Intl.message(
+      'Keep in mind of your schedules and activities that you have already signed up for!',
+      name: 'scheduleActivityWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems you are already subscribed on another activity at this period.`
+  String get alreadySubscribedOnThisPeriodWarning {
+    return Intl.message(
+      'It seems you are already subscribed on another activity at this period.',
+      name: 'alreadySubscribedOnThisPeriodWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The registration for this activity is unavailabe!`
+  String get unavailabeSubscribe {
+    return Intl.message(
+      'The registration for this activity is unavailabe!',
+      name: 'unavailabeSubscribe',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -41,11 +41,8 @@ class RegisterButtonWidget extends StatelessWidget {
             : Text(
                 isRegistered ? S.of(context).unsubscribe : S.of(context).signUp,
                 style: AppTextStyles.buttonBold.copyWith(
-                    fontSize: MediaQuery.of(context).size.width < 500
-                        ? 20
-                        : MediaQuery.of(context).size.width < 1000
-                            ? 24
-                            : 28,
+                    fontSize:
+                        MediaQuery.of(context).size.width < 1000 ? 20 : 28,
                     color: Colors.white)));
   }
 }

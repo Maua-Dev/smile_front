@@ -164,6 +164,7 @@
     "activityEditTitle": "Editar Atividade",
     "activityTypeTitle": "Tipo de Atividade",
     "activityNameTitle": "Titulo da Atividade",
+    "companyTitle": "Empresa: ${controller.activity.speakers![index].company}",
 
     "descriptionTitle": "Descrição",
 
@@ -178,5 +179,16 @@
 
     "yesTitle": "Sim",
     "noTitle": "Não",
-    "": ""
+    "": "",
+
+
+    "unavailabeActivityRegistration": "Inscrição para a atividade indisponível!",
+    "unsubscribeVerification": "Tem certeza que deseja se desinscrever?",
+    "subscribeVerification": "Tem certeza que deseja se inscrever?",
+    "unsubscribeVerificationClosedRegistration": "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!",
+    "unsubscribeLoseVanacy": "Você perderá sua vaga na atividade ao continuar!",
+    "availabeSpotUnsuficient": "Parece que o número de vagas da atividade se esgotou :(",
+    "scheduleActivityWarning": "Se atente aos seus horários e atividades que você já se inscreveu!",
+    "alreadySubscribedOnThisPeriodWarning": "Parece que você já se inscreveu em uma atividade no mesmo horário.",
+    "unavailabeSubscribe": "Inscrição para a atividade indisponível!"
 }
