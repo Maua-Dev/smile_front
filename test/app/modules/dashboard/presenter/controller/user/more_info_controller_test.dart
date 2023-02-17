@@ -38,6 +38,7 @@ void main() {
     totalParticipants: 10,
     location: 'location',
     link: 'link',
+    isExtensionist: true,
   );
 
   setUpAll(() async {

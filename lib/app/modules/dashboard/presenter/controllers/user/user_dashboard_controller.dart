@@ -183,6 +183,7 @@ abstract class UserDashboardControllerBase with Store {
           link: activity.link,
           enrolledUsers: activity.takenSlots,
           acceptSubscription: activity.acceptingNewEnrollments,
+          isExtensionist: activity.isExtensive,
         ));
       }
       allActivitiesToCards.sort(
@@ -212,6 +213,7 @@ abstract class UserDashboardControllerBase with Store {
         link: nextActivity.link,
         enrolledUsers: nextActivity.takenSlots,
         acceptSubscription: nextActivity.acceptingNewEnrollments,
+        isExtensionist: nextActivity.isExtensive,
       );
     } else {
       nextActivity = ActivityModel.newInstance();

@@ -128,6 +128,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
           link: activity.link,
           enrolledUsers: activity.takenSlots,
           acceptSubscription: activity.acceptingNewEnrollments,
+          isExtensionist: activity.isExtensive,
         ),
       );
     }

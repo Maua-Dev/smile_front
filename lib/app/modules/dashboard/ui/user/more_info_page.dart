@@ -236,7 +236,10 @@ class _MoreInfoPageState
                                 }),
                           ));
                   }),
-                  const ExtensionistWidget(isExtensionist: false)
+                  ExtensionistWidget(
+                      isExtensionist: controller.activity.isExtensionist == null
+                          ? false
+                          : controller.activity.isExtensionist!)
                 ],
               ),
               Padding(
