@@ -37,13 +37,13 @@ class SecureStorage implements SecureStorageInterface {
   }
 
   @override
-  Future<String?> getAccessLevel() async {
-    return await storage.get('accessLevel') as String?;
+  Future<String?> getRole() async {
+    return await storage.get('role') as String?;
   }
 
   @override
-  Future<void> saveAccessLevel(String accessLevel) async {
-    await storage.put('accessLevel', accessLevel);
+  Future<void> saveRole(String role) async {
+    await storage.put('role', role);
   }
 
   @override

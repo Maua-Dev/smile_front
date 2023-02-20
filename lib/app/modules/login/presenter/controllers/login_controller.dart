@@ -58,14 +58,11 @@ abstract class LoginControllerBase with Store {
     try {
       await authController.loginWithUserEmail(email, password);
       if (authController.isLogged) {
-        if (authController.accessLevel == 'ADMIN') {
-          Modular.to
-              .navigate('/adm', arguments: [null, authController.accessLevel]);
-        } else if (authController.accessLevel == 'SPEAKER') {
-          Modular.to.navigate('/speaker-home');
+        if (authController.role == 'ADMIN') {
+          Modular.to.navigate('/adm', arguments: [null, authController.role]);
         } else {
-          Modular.to.navigate('/user/home',
-              arguments: [email, authController.accessLevel]);
+          Modular.to
+              .navigate('/user/home', arguments: [email, authController.role]);
         }
       }
       analytics.logLogin();
