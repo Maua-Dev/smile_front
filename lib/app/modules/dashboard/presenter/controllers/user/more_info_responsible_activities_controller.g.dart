@@ -44,6 +44,23 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
+  late final _$isSwitchedAtom = Atom(
+      name: 'MoreInfoResponsibleActivitiesControllerBase.isSwitched',
+      context: context);
+
+  @override
+  bool get isSwitched {
+    _$isSwitchedAtom.reportRead();
+    return super.isSwitched;
+  }
+
+  @override
+  set isSwitched(bool value) {
+    _$isSwitchedAtom.reportWrite(value, super.isSwitched, () {
+      super.isSwitched = value;
+    });
+  }
+
   late final _$MoreInfoResponsibleActivitiesControllerBaseActionController =
       ActionController(
           name: 'MoreInfoResponsibleActivitiesControllerBase',
@@ -78,10 +95,26 @@ mixin _$MoreInfoResponsibleActivitiesController
   }
 
   @override
+  void toggleSwitch() {
+    final _$actionInfo =
+        _$MoreInfoResponsibleActivitiesControllerBaseActionController
+            .startAction(
+                name:
+                    'MoreInfoResponsibleActivitiesControllerBase.toggleSwitch');
+    try {
+      return super.toggleSwitch();
+    } finally {
+      _$MoreInfoResponsibleActivitiesControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isVisible: ${isVisible},
-isIconSelected: ${isIconSelected}
+isIconSelected: ${isIconSelected},
+isSwitched: ${isSwitched}
     ''';
   }
 }

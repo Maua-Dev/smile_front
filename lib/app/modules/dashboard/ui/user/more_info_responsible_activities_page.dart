@@ -209,10 +209,532 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                       : 570,
                                   height: 485,
                                   decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
                                       border: Border.all(
+                                          width: 4,
                                           color: AppColors.brandingOrange)),
-                                  child: const Center(
-                                    child: Text('Container visível'),
+                                  child: Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          SizedBox(
+                                            width: 180,
+                                            child: Row(
+                                              children: [
+                                                Text("Falta",
+                                                    style: AppTextStyles.bold
+                                                        .copyWith(
+                                                            fontSize: 20,
+                                                            color:
+                                                                Colors.black)),
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Text("Presente",
+                                                    style: AppTextStyles.bold
+                                                        .copyWith(
+                                                            fontSize: 20,
+                                                            color:
+                                                                Colors.black)),
+                                              ],
+                                            ),
+                                          ),
+                                          Text("Nomes",
+                                              style: AppTextStyles.bold
+                                                  .copyWith(
+                                                      fontSize: 20,
+                                                      color: Colors.black))
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: 476,
+                                        child: Divider(
+                                          thickness: 4,
+                                          color: AppColors.brandingOrange,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 570,
+                                        height: 426,
+                                        child: ListView(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Observer(
+                                                      builder: (_) {
+                                                        return Switch(
+                                                          value: controller
+                                                              .isSwitched,
+                                                          onChanged: (value) {
+                                                            controller
+                                                                .toggleSwitch();
+                                                          },
+                                                          activeColor:
+                                                              Colors.green,
+                                                          inactiveThumbColor:
+                                                              Colors.red,
+                                                          inactiveTrackColor:
+                                                              Colors
+                                                                  .red
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                          activeTrackColor:
+                                                              Colors.green
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                        );
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      "Vitor Guirão Soller",
+                                                      style: AppTextStyles.bold
+                                                          .copyWith(
+                                                              fontSize: 30,
+                                                              color:
+                                                                  Colors.black),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  width: 438,
+                                                  child: Divider(
+                                                    thickness: 2,
+                                                    color: AppColors
+                                                        .brandingOrange,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Observer(
+                                                      builder: (_) {
+                                                        return Switch(
+                                                          value: controller
+                                                              .isSwitched,
+                                                          onChanged: (value) {
+                                                            controller
+                                                                .toggleSwitch();
+                                                          },
+                                                          activeColor:
+                                                              Colors.green,
+                                                          inactiveThumbColor:
+                                                              Colors.red,
+                                                          inactiveTrackColor:
+                                                              Colors
+                                                                  .red
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                          activeTrackColor:
+                                                              Colors.green
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                        );
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      "Vitor Guirão Soller",
+                                                      style: AppTextStyles.bold
+                                                          .copyWith(
+                                                              fontSize: 30,
+                                                              color:
+                                                                  Colors.black),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  width: 438,
+                                                  child: Divider(
+                                                    thickness: 2,
+                                                    color: AppColors
+                                                        .brandingOrange,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Observer(
+                                                      builder: (_) {
+                                                        return Switch(
+                                                          value: controller
+                                                              .isSwitched,
+                                                          onChanged: (value) {
+                                                            controller
+                                                                .toggleSwitch();
+                                                          },
+                                                          activeColor:
+                                                              Colors.green,
+                                                          inactiveThumbColor:
+                                                              Colors.red,
+                                                          inactiveTrackColor:
+                                                              Colors
+                                                                  .red
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                          activeTrackColor:
+                                                              Colors.green
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                        );
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      "Vitor Guirão Soller",
+                                                      style: AppTextStyles.bold
+                                                          .copyWith(
+                                                              fontSize: 30,
+                                                              color:
+                                                                  Colors.black),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  width: 438,
+                                                  child: Divider(
+                                                    thickness: 2,
+                                                    color: AppColors
+                                                        .brandingOrange,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Observer(
+                                                      builder: (_) {
+                                                        return Switch(
+                                                          value: controller
+                                                              .isSwitched,
+                                                          onChanged: (value) {
+                                                            controller
+                                                                .toggleSwitch();
+                                                          },
+                                                          activeColor:
+                                                              Colors.green,
+                                                          inactiveThumbColor:
+                                                              Colors.red,
+                                                          inactiveTrackColor:
+                                                              Colors
+                                                                  .red
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                          activeTrackColor:
+                                                              Colors.green
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                        );
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      "Vitor Guirão Soller",
+                                                      style: AppTextStyles.bold
+                                                          .copyWith(
+                                                              fontSize: 30,
+                                                              color:
+                                                                  Colors.black),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  width: 438,
+                                                  child: Divider(
+                                                    thickness: 2,
+                                                    color: AppColors
+                                                        .brandingOrange,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Observer(
+                                                      builder: (_) {
+                                                        return Switch(
+                                                          value: controller
+                                                              .isSwitched,
+                                                          onChanged: (value) {
+                                                            controller
+                                                                .toggleSwitch();
+                                                          },
+                                                          activeColor:
+                                                              Colors.green,
+                                                          inactiveThumbColor:
+                                                              Colors.red,
+                                                          inactiveTrackColor:
+                                                              Colors
+                                                                  .red
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                          activeTrackColor:
+                                                              Colors.green
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                        );
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      "Vitor Guirão Soller",
+                                                      style: AppTextStyles.bold
+                                                          .copyWith(
+                                                              fontSize: 30,
+                                                              color:
+                                                                  Colors.black),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  width: 438,
+                                                  child: Divider(
+                                                    thickness: 2,
+                                                    color: AppColors
+                                                        .brandingOrange,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Observer(
+                                                      builder: (_) {
+                                                        return Switch(
+                                                          value: controller
+                                                              .isSwitched,
+                                                          onChanged: (value) {
+                                                            controller
+                                                                .toggleSwitch();
+                                                          },
+                                                          activeColor:
+                                                              Colors.green,
+                                                          inactiveThumbColor:
+                                                              Colors.red,
+                                                          inactiveTrackColor:
+                                                              Colors
+                                                                  .red
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                          activeTrackColor:
+                                                              Colors.green
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                        );
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      "Vitor Guirão Soller",
+                                                      style: AppTextStyles.bold
+                                                          .copyWith(
+                                                              fontSize: 30,
+                                                              color:
+                                                                  Colors.black),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  width: 438,
+                                                  child: Divider(
+                                                    thickness: 2,
+                                                    color: AppColors
+                                                        .brandingOrange,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Observer(
+                                                      builder: (_) {
+                                                        return Switch(
+                                                          value: controller
+                                                              .isSwitched,
+                                                          onChanged: (value) {
+                                                            controller
+                                                                .toggleSwitch();
+                                                          },
+                                                          activeColor:
+                                                              Colors.green,
+                                                          inactiveThumbColor:
+                                                              Colors.red,
+                                                          inactiveTrackColor:
+                                                              Colors
+                                                                  .red
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                          activeTrackColor:
+                                                              Colors.green
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                        );
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      "Vitor Guirão Soller",
+                                                      style: AppTextStyles.bold
+                                                          .copyWith(
+                                                              fontSize: 30,
+                                                              color:
+                                                                  Colors.black),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  width: 438,
+                                                  child: Divider(
+                                                    thickness: 2,
+                                                    color: AppColors
+                                                        .brandingOrange,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Observer(
+                                                      builder: (_) {
+                                                        return Switch(
+                                                          value: controller
+                                                              .isSwitched,
+                                                          onChanged: (value) {
+                                                            controller
+                                                                .toggleSwitch();
+                                                          },
+                                                          activeColor:
+                                                              Colors.green,
+                                                          inactiveThumbColor:
+                                                              Colors.red,
+                                                          inactiveTrackColor:
+                                                              Colors
+                                                                  .red
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                          activeTrackColor:
+                                                              Colors.green
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                        );
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      "Vitor Guirão Soller",
+                                                      style: AppTextStyles.bold
+                                                          .copyWith(
+                                                              fontSize: 30,
+                                                              color:
+                                                                  Colors.black),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  width: 438,
+                                                  child: Divider(
+                                                    thickness: 2,
+                                                    color: AppColors
+                                                        .brandingOrange,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Observer(
+                                                      builder: (_) {
+                                                        return Switch(
+                                                          value: controller
+                                                              .isSwitched,
+                                                          onChanged: (value) {
+                                                            controller
+                                                                .toggleSwitch();
+                                                          },
+                                                          activeColor:
+                                                              Colors.green,
+                                                          inactiveThumbColor:
+                                                              Colors.red,
+                                                          inactiveTrackColor:
+                                                              Colors
+                                                                  .red
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                          activeTrackColor:
+                                                              Colors.green
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                        );
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      "Vitor Guirão Soller",
+                                                      style: AppTextStyles.bold
+                                                          .copyWith(
+                                                              fontSize: 30,
+                                                              color:
+                                                                  Colors.black),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  width: 438,
+                                                  child: Divider(
+                                                    thickness: 2,
+                                                    color: AppColors
+                                                        .brandingOrange,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
                                   ),
                                 ))),
                       ],
@@ -307,17 +829,30 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                         Observer(
                             builder: (_) => Visibility(
                                 visible: controller.isVisible,
-                                child: Container(
+                                child: SizedBox(
                                   width: MediaQuery.of(context).size.width <
                                           breakpointTablet
                                       ? 400
                                       : 570,
                                   height: 485,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: AppColors.brandingOrange)),
-                                  child: const Center(
-                                    child: Text('Container visível'),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text("Código de Validação",
+                                          style: AppTextStyles.bold.copyWith(
+                                            fontSize: 30,
+                                            color: Colors.black,
+                                          )),
+                                      Container(
+                                        width: 498,
+                                        height: 98,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color:
+                                                    AppColors.brandingOrange)),
+                                      )
+                                    ],
                                   ),
                                 ))),
                       ],

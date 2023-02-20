@@ -21,4 +21,12 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   void toggleIconSelection() {
     isIconSelected = !isIconSelected;
   }
+
+  @observable
+  bool isSwitched = false;
+
+  @action
+  void toggleSwitch() {
+    isSwitched = !isSwitched;
+  }
 }
