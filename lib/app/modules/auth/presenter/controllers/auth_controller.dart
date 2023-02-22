@@ -58,7 +58,7 @@ class AuthController {
       return;
     }
     try {
-      var tokens = await refreshToken(token);
+      var tokens = await refreshToken();
       await storage.saveAccessToken(tokens['access_token']);
       await storage.saveRefreshToken(tokens['refresh_token']);
       _loggedIn = true;

@@ -653,10 +653,10 @@ class MockRefreshTokenInterface extends _i1.Mock
   }
 
   @override
-  _i11.Future<Map<String, dynamic>> call(String? token) => (super.noSuchMethod(
+  _i11.Future<Map<String, dynamic>> call() => (super.noSuchMethod(
         Invocation.method(
           #call,
-          [token],
+          [],
         ),
         returnValue:
             _i11.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
