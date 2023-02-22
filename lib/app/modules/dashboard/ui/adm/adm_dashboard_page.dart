@@ -82,6 +82,8 @@ class _AdmDashboardPageState
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
                                 return ActivitiesCardWidget(
+                                  isExtensive: controller
+                                      .activitiesList[index].isExtensive,
                                   activityCode: controller
                                       .activitiesList[index].activityCode,
                                   date: date,
@@ -120,7 +122,7 @@ class _AdmDashboardPageState
                                   },
                                   onPressedEdit: () async {
                                     var accessLevel =
-                                        await secureStorage.getAccessLevel();
+                                        await secureStorage.getRole();
                                     if (accessLevel == 'ADMIN') {
                                       Modular.to.navigate(
                                         '/adm/edit-activity',

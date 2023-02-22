@@ -21,70 +21,148 @@ class VerticalNavBarWidget extends StatelessWidget {
         width: 120,
         child: Padding(
           padding: const EdgeInsets.only(top: 32.0),
-          child: Column(children: [
-            VerticalNavBarButtonWidget(
-              buttonText: S.of(context).initTitle.toUpperCase(),
-              indexToShow: controller.indexToShow,
-              icon: Icons.home,
-              myIndex: 0,
-              onPressed: () {
-                controller.toggleIndex(0);
-                Modular.to.navigate('/home');
-              },
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            VerticalNavBarButtonWidget(
-              buttonText: 'PERFIL',
-              indexToShow: controller.indexToShow,
-              myIndex: 1,
-              onPressed: () async {
-                await controller.toggleIndex(1);
-                Modular.to.navigate('/user/home');
-              },
-              icon: Icons.person,
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            VerticalNavBarButtonWidget(
-              buttonText: S.of(context).activitiesTitle.toUpperCase(),
-              indexToShow: controller.indexToShow,
-              myIndex: 2,
-              onPressed: () async {
-                await controller.toggleIndex(2);
-                Modular.to.navigate('/user/home/all-activities');
-              },
-              icon: Icons.grid_on,
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            VerticalNavBarButtonWidget(
-              buttonText: 'CERTIFICADOS',
-              indexToShow: controller.indexToShow,
-              myIndex: 3,
-              onPressed: () async {
-                await controller.toggleIndex(3);
-                Modular.to.navigate('/user/home/certificate');
-              },
-              icon: Icons.assignment,
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            VerticalNavBarButtonWidget(
-              buttonText: 'AJUDA',
-              indexToShow: controller.indexToShow,
-              myIndex: 4,
-              onPressed: () async {
-                await controller.toggleIndex(4);
-                Modular.to.navigate('/user/home/help');
-              },
-              icon: Icons.help,
-            ),
-          ]),
+          child: accessLevel == "PROFESSOR"
+              ? Column(children: [
+                  VerticalNavBarButtonWidget(
+                    buttonText: S.of(context).initTitle.toUpperCase(),
+                    indexToShow: controller.indexToShow,
+                    icon: Icons.home,
+                    myIndex: 0,
+                    onPressed: () {
+                      controller.toggleIndex(0);
+                      Modular.to.navigate('/home');
+                    },
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  VerticalNavBarButtonWidget(
+                    buttonText: 'PERFIL',
+                    indexToShow: controller.indexToShow,
+                    myIndex: 1,
+                    onPressed: () async {
+                      await controller.toggleIndex(1);
+                      Modular.to.navigate('/user/home');
+                    },
+                    icon: Icons.person,
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  VerticalNavBarButtonWidget(
+                    buttonText: S.of(context).activitiesTitle.toUpperCase(),
+                    indexToShow: controller.indexToShow,
+                    myIndex: 2,
+                    onPressed: () async {
+                      await controller.toggleIndex(2);
+                      Modular.to.navigate('/user/home/all-activities');
+                    },
+                    icon: Icons.grid_on,
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  VerticalNavBarButtonWidget(
+                    buttonText: 'ATIVIDADES RESPONSÁVEIS',
+                    indexToShow: controller.indexToShow,
+                    myIndex: 3,
+                    onPressed: () async {
+                      await controller.toggleIndex(3);
+                      Modular.to.navigate('/user/home/certificate');
+                    },
+                    icon: Icons.list_alt,
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  VerticalNavBarButtonWidget(
+                    buttonText: 'CERTIFICADOS',
+                    indexToShow: controller.indexToShow,
+                    myIndex: 4,
+                    onPressed: () async {
+                      await controller.toggleIndex(4);
+                      Modular.to.navigate('/user/home/certificate');
+                    },
+                    icon: Icons.assignment,
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  VerticalNavBarButtonWidget(
+                    buttonText: 'AJUDA',
+                    indexToShow: controller.indexToShow,
+                    myIndex: 5,
+                    onPressed: () async {
+                      await controller.toggleIndex(5);
+                      Modular.to.navigate('/user/home/help');
+                    },
+                    icon: Icons.help,
+                  ),
+                ])
+              : Column(children: [
+                  VerticalNavBarButtonWidget(
+                    buttonText: S.of(context).initTitle.toUpperCase(),
+                    indexToShow: controller.indexToShow,
+                    icon: Icons.home,
+                    myIndex: 0,
+                    onPressed: () {
+                      controller.toggleIndex(0);
+                      Modular.to.navigate('/home');
+                    },
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  VerticalNavBarButtonWidget(
+                    buttonText: 'PERFIL',
+                    indexToShow: controller.indexToShow,
+                    myIndex: 1,
+                    onPressed: () async {
+                      await controller.toggleIndex(1);
+                      Modular.to.navigate('/user/home');
+                    },
+                    icon: Icons.person,
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  VerticalNavBarButtonWidget(
+                    buttonText: S.of(context).activitiesTitle.toUpperCase(),
+                    indexToShow: controller.indexToShow,
+                    myIndex: 2,
+                    onPressed: () async {
+                      await controller.toggleIndex(2);
+                      Modular.to.navigate('/user/home/all-activities');
+                    },
+                    icon: Icons.grid_on,
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  VerticalNavBarButtonWidget(
+                    buttonText: 'CERTIFICADOS',
+                    indexToShow: controller.indexToShow,
+                    myIndex: 3,
+                    onPressed: () async {
+                      await controller.toggleIndex(3);
+                      Modular.to.navigate('/user/home/certificate');
+                    },
+                    icon: Icons.assignment,
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  VerticalNavBarButtonWidget(
+                    buttonText: 'AJUDA',
+                    indexToShow: controller.indexToShow,
+                    myIndex: 4,
+                    onPressed: () async {
+                      await controller.toggleIndex(4);
+                      Modular.to.navigate('/user/home/help');
+                    },
+                    icon: Icons.help,
+                  ),
+                ]),
         ),
       );
     });

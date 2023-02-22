@@ -3,13 +3,13 @@ abstract class SecureStorageInterface {
   Future<void> saveRefreshToken(String token);
   Future<String?> getAccessToken();
   Future<String?> getRefreshToken();
-  Future<void> saveAccessLevel(String accessLevel);
+  Future<void> saveRole(String role);
   Future<void> saveId(String id);
   Future<void> saveIdToken(String idToken);
   Future<void> saveName(String name);
   Future<void> saveSocialName(String socialName);
   Future<void> saveCertificateWithSocialName(bool certificateWithSocialName);
-  Future<String?> getAccessLevel();
+  Future<String?> getRole();
   Future<String?> getId();
   Future<String?> getIdToken();
   Future<String?> getName();
