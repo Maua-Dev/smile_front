@@ -110,10 +110,10 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i5.Future<dynamic>.value(),
       ) as _i5.Future<dynamic>);
   @override
-  _i5.Future<List<_i7.AdminActivityModel>> getAdminAllActivities() =>
+  _i5.Future<List<_i7.AdminActivityModel>> getAdminActivities() =>
       (super.noSuchMethod(
         Invocation.method(
-          #getAdminAllActivities,
+          #getAdminActivities,
           [],
         ),
         returnValue: _i5.Future<List<_i7.AdminActivityModel>>.value(

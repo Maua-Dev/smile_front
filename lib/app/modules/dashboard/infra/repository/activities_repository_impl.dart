@@ -75,7 +75,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future<List<AdminActivityModel>> getAdminAllActivities() async {
+  Future<List<AdminActivityModel>> getAdminActivities() async {
     if (admActivitiesList.isEmpty) {
       admActivitiesList = await datasource.getAdminAllActivities();
     }

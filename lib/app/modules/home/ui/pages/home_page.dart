@@ -9,6 +9,7 @@ import 'package:smile_front/app/shared/widgets/drawer/end_drawer_widget.dart';
 import '../../../../app_module.dart';
 import '../../../auth/presenter/controllers/auth_controller.dart';
 import 'activities-home/activities_home_page.dart';
+import 'main-home/main_home_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -88,6 +89,7 @@ class _HomePageState extends State<HomePage> {
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
+                            SizedBox(key: homeKey, child: const MainHomePage()),
                             const SpeakersHomePage(),
                             SizedBox(
                                 key: activityKey,

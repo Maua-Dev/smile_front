@@ -13,6 +13,6 @@ class GetAdminActivitiesImp implements GetAdminActivitiesInterface {
 
   @override
   Future<List<AdminActivityModel>> call() {
-    return repository.getAdminAllActivities();
+    return repository.getAdminActivities();
   }
 }
