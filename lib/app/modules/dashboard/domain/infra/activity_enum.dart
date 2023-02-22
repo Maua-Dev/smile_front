@@ -36,7 +36,7 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.LECTURES:
         return '${previousEditionsBaseUrl}palestras.png';
       case ActivityEnum.HIGH_IMPACT_LECTURES:
-        return '${previousEditionsBaseUrl}palestra_alto_impacto.png';
+        return '${previousEditionsBaseUrl}palestras_alto_impacto.png';
       case ActivityEnum.TECHNICAL_VISITS:
         return '${previousEditionsBaseUrl}visitas_tecnicas.png';
       case ActivityEnum.ACADEMIC_COMPETITIONS:

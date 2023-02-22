@@ -1,6 +1,7 @@
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 
 class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   final ActivitiesDatasourceInterface datasource;
@@ -10,6 +11,8 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   List<ActivityModel> activitiesList = List.empty();
 
   List<ActivityModel> subscribedActivities = List.empty();
+
+  var admActivitiesList = List<AdminActivityModel>.empty();
 
   @override
   Future<List<ActivityModel>> getAllActivities() async {
@@ -69,5 +72,13 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   Future<String> getDownloadLinkCsv() async {
     var url = await datasource.getLinkCsv();
     return url;
+  }
+
+  @override
+  Future<List<AdminActivityModel>> getAdminAllActivities() async {
+    if (admActivitiesList.isEmpty) {
+      admActivitiesList = await datasource.getAdminAllActivities();
+    }
+    return Future.value(admActivitiesList);
   }
 }

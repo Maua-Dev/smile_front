@@ -9,8 +9,9 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i2;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart'
-    as _i5;
+    as _i6;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
+import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -69,6 +70,16 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i3.Future<dynamic>.value(),
       ) as _i3.Future<dynamic>);
   @override
+  _i3.Future<List<_i5.AdminActivityModel>> getAdminAllActivities() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAdminAllActivities,
+          [],
+        ),
+        returnValue: _i3.Future<List<_i5.AdminActivityModel>>.value(
+            <_i5.AdminActivityModel>[]),
+      ) as _i3.Future<List<_i5.AdminActivityModel>>);
+  @override
   _i3.Future<dynamic> editActivity(_i4.ActivityModel? activityToEdit) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -124,7 +135,7 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockEditActivityInterface extends _i1.Mock
-    implements _i5.EditActivityInterface {
+    implements _i6.EditActivityInterface {
   MockEditActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
