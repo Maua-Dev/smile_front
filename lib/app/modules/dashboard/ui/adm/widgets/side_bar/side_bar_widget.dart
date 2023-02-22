@@ -25,7 +25,7 @@ class _SideBarWidgetState
       child: Column(children: [
         const SizedBox(height: 20),
         LogoutButtonWidget(
-          backgroundColor: AppColors.brandingBlue,
+          backgroundColor: const Color.fromARGB(255, 46, 66, 138),
           buttonTittle: S.of(context).exitTitle,
           onPressed: () {
             controller.logout();
@@ -51,7 +51,7 @@ class _SideBarWidgetState
             size: 45,
           ),
           onPressedPath: "",
-          buttonColor: AppColors.brandingBlue,
+          buttonColor: const Color.fromARGB(255, 46, 66, 138),
         ),
         const SizedBox(height: 20),
         Stack(
