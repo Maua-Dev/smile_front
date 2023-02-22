@@ -10,20 +10,39 @@ part of 'more_info_responsible_activities_controller.dart';
 
 mixin _$MoreInfoResponsibleActivitiesController
     on MoreInfoResponsibleActivitiesControllerBase, Store {
-  late final _$isVisibleAtom = Atom(
-      name: 'MoreInfoResponsibleActivitiesControllerBase.isVisible',
+  late final _$isSubscribedListVisibleAtom = Atom(
+      name:
+          'MoreInfoResponsibleActivitiesControllerBase.isSubscribedListVisible',
       context: context);
 
   @override
-  bool get isVisible {
-    _$isVisibleAtom.reportRead();
-    return super.isVisible;
+  bool get isSubscribedListVisible {
+    _$isSubscribedListVisibleAtom.reportRead();
+    return super.isSubscribedListVisible;
   }
 
   @override
-  set isVisible(bool value) {
-    _$isVisibleAtom.reportWrite(value, super.isVisible, () {
-      super.isVisible = value;
+  set isSubscribedListVisible(bool value) {
+    _$isSubscribedListVisibleAtom
+        .reportWrite(value, super.isSubscribedListVisible, () {
+      super.isSubscribedListVisible = value;
+    });
+  }
+
+  late final _$isTokenVisibleAtom = Atom(
+      name: 'MoreInfoResponsibleActivitiesControllerBase.isTokenVisible',
+      context: context);
+
+  @override
+  bool get isTokenVisible {
+    _$isTokenVisibleAtom.reportRead();
+    return super.isTokenVisible;
+  }
+
+  @override
+  set isTokenVisible(bool value) {
+    _$isTokenVisibleAtom.reportWrite(value, super.isTokenVisible, () {
+      super.isTokenVisible = value;
     });
   }
 
@@ -81,6 +100,20 @@ mixin _$MoreInfoResponsibleActivitiesController
   }
 
   @override
+  void showToken() {
+    final _$actionInfo =
+        _$MoreInfoResponsibleActivitiesControllerBaseActionController
+            .startAction(
+                name: 'MoreInfoResponsibleActivitiesControllerBase.showToken');
+    try {
+      return super.showToken();
+    } finally {
+      _$MoreInfoResponsibleActivitiesControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void toggleIconSelection() {
     final _$actionInfo =
         _$MoreInfoResponsibleActivitiesControllerBaseActionController.startAction(
@@ -112,7 +145,8 @@ mixin _$MoreInfoResponsibleActivitiesController
   @override
   String toString() {
     return '''
-isVisible: ${isVisible},
+isSubscribedListVisible: ${isSubscribedListVisible},
+isTokenVisible: ${isTokenVisible},
 isIconSelected: ${isIconSelected},
 isSwitched: ${isSwitched}
     ''';

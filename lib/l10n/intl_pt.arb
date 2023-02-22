@@ -54,6 +54,7 @@
     "aboutSmileDate": "Data: 22 a 27 de maio de 2023.",
     "signUp": "Inscreva-se",
     "unsubscribe": "Desinscrever-se",
+    "subscriberListTitle": "Lista de Inscritos",
 
 
 
@@ -169,6 +170,13 @@
     "scheduleAddTitle": "Adicionar Horário",
 
     "codeTitle": "Código",
+
+    "absenceTitle": "Falta",
+    "presenceTitle": "Presente",
+
+    "namesTitle": "Nomes",
+
+    "validationCodeTitle": "Código de validação",
 
 
     "yesTitle": "Sim",

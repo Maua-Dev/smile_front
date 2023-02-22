@@ -235,6 +235,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutSmileDescription": m0,
         "aboutSmileTitle":
             MessageLookupByLibrary.simpleMessage("Sobre a Smile"),
+        "absenceTitle": MessageLookupByLibrary.simpleMessage("Falta"),
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
@@ -366,6 +367,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Entidades Participantes da Smile"),
         "monthFebruary": MessageLookupByLibrary.simpleMessage("Fevereiro"),
         "monthJanuary": MessageLookupByLibrary.simpleMessage("Janeiro"),
+        "namesTitle": MessageLookupByLibrary.simpleMessage("Nomes"),
         "noTitle": MessageLookupByLibrary.simpleMessage("Não"),
         "notificationsSchema": m12,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
@@ -374,6 +376,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Meios de notificação sobre as atividades:"),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
+        "presenceTitle": MessageLookupByLibrary.simpleMessage("Presente"),
         "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme sua senha"),
@@ -413,6 +416,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "speakersTitle": MessageLookupByLibrary.simpleMessage(
             "Principais Palestrantes - 2022"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Patrocinadores"),
+        "subscriberListTitle":
+            MessageLookupByLibrary.simpleMessage("Lista de Inscritos"),
         "successChangePassword":
             MessageLookupByLibrary.simpleMessage("Senha alterada com sucesso!"),
         "successChangePasswordRedirect": MessageLookupByLibrary.simpleMessage(
@@ -426,6 +431,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "successSendingSponsorEmail": MessageLookupByLibrary.simpleMessage(
             "Enviado com sucesso!! Nossa equipe entrará em contato em breve."),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Desinscrever-se"),
+        "validationCodeTitle":
+            MessageLookupByLibrary.simpleMessage("Código de validação"),
         "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Sim")
       };

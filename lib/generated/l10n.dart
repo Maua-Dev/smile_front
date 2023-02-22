@@ -688,6 +688,16 @@ class S {
     );
   }
 
+  /// `Subscriber List`
+  String get subscriberListTitle {
+    return Intl.message(
+      'Subscriber List',
+      name: 'subscriberListTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The login service is under maintenance`
   String get maintenanceTitle {
     return Intl.message(
@@ -1462,6 +1472,46 @@ class S {
     return Intl.message(
       'Code',
       name: 'codeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Absence`
+  String get absenceTitle {
+    return Intl.message(
+      'Absence',
+      name: 'absenceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Present`
+  String get presenceTitle {
+    return Intl.message(
+      'Present',
+      name: 'presenceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Names`
+  String get namesTitle {
+    return Intl.message(
+      'Names',
+      name: 'namesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Validation Code`
+  String get validationCodeTitle {
+    return Intl.message(
+      'Validation Code',
+      name: 'validationCodeTitle',
       desc: '',
       args: [],
     );

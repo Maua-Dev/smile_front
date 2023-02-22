@@ -66,7 +66,10 @@ class UserModule extends Module {
           getAllFaqInformation: i(),
           analytics: i(),
         )),
-    Bind.singleton((i) => MoreInfoResponsibleActivitiesController()),
+    Bind.lazySingleton<MoreInfoResponsibleActivitiesController>((i) =>
+        MoreInfoResponsibleActivitiesController(
+           // activity: i.args!.data[0] as EnrollsActivityModel
+            )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<GetUserSubscribedActivitiesInterface>(

@@ -236,6 +236,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Date: May 22 to 27, 2023."),
         "aboutSmileDescription": m0,
         "aboutSmileTitle": MessageLookupByLibrary.simpleMessage("About Smile"),
+        "absenceTitle": MessageLookupByLibrary.simpleMessage("Absence"),
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Activities"),
@@ -366,6 +367,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Entities Participating in Smile"),
         "monthFebruary": MessageLookupByLibrary.simpleMessage("February"),
         "monthJanuary": MessageLookupByLibrary.simpleMessage("January"),
+        "namesTitle": MessageLookupByLibrary.simpleMessage("Names"),
         "noTitle": MessageLookupByLibrary.simpleMessage("No"),
         "notificationsSchema": m12,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
@@ -374,6 +376,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Means of notification about activities:"),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
+        "presenceTitle": MessageLookupByLibrary.simpleMessage("Present"),
         "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
@@ -412,6 +415,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "speakersTitle":
             MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Sponsors"),
+        "subscriberListTitle":
+            MessageLookupByLibrary.simpleMessage("Subscriber List"),
         "successChangePassword": MessageLookupByLibrary.simpleMessage(
             "Password changed successfully!"),
         "successChangePasswordRedirect": MessageLookupByLibrary.simpleMessage(
@@ -425,6 +430,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "successSendingSponsorEmail": MessageLookupByLibrary.simpleMessage(
             "Sent with success!! Our team will contact you shortly."),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Unsubscribe"),
+        "validationCodeTitle":
+            MessageLookupByLibrary.simpleMessage("Validation Code"),
         "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Yes")
       };

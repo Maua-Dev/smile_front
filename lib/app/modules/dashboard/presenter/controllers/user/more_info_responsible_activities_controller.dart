@@ -6,12 +6,26 @@ class MoreInfoResponsibleActivitiesController = MoreInfoResponsibleActivitiesCon
     with _$MoreInfoResponsibleActivitiesController;
 
 abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
+  //final EnrollsActivityModel activity;
+
+  //MoreInfoResponsibleActivitiesControllerBase({
+  //required this.activity,
+  // });
+
   @observable
-  bool isVisible = false;
+  bool isSubscribedListVisible = false;
 
   @action
   void showSubscribedList() {
-    isVisible = !isVisible;
+    isSubscribedListVisible = !isSubscribedListVisible;
+  }
+
+  @observable
+  bool isTokenVisible = false;
+
+  @action
+  void showToken() {
+    isTokenVisible = !isTokenVisible;
   }
 
   @observable
