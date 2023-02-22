@@ -40,6 +40,7 @@ class AuthController {
 
     await storage.saveAccessToken(loginResponse.accessToken);
     await storage.saveRefreshToken(loginResponse.refreshToken);
+    await storage.saveIdToken(loginResponse.idToken);
     await storage.saveRole(_role);
     await storage.saveName(_name);
     await storage.saveSocialName(_socialname ?? '');

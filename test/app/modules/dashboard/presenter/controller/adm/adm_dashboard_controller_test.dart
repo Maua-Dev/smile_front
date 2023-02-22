@@ -17,7 +17,11 @@ import 'package:smile_front/app/shared/services/firebase-analytics/firebase_anal
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import 'adm_dashboard_controller_test.mocks.dart';
 
-@GenerateMocks([GetDownloadLinkCsvInterface, DeleteActivityInterface])
+@GenerateMocks([
+  GetDownloadLinkCsvInterface,
+  DeleteActivityInterface,
+  GetAdminActivitiesInterface
+])
 void main() {
   GetDownloadLinkCsvInterface getDownloadLinkCsv =
       MockGetDownloadLinkCsvInterface();
