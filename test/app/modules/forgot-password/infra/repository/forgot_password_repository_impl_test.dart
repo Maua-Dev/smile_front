@@ -6,10 +6,11 @@ import 'package:smile_front/app/modules/forgot-password/infra/repository/forgot_
 
 import 'forgot_password_repository_impl_test.mocks.dart';
 
-@GenerateMocks([ForgotPasswordDatasource])
+@GenerateMocks([ForgotPasswordDatasourceInterface])
 void main() {
   late ForgotPasswordRepositoryImpl repository;
-  ForgotPasswordDatasource datasource = MockForgotPasswordDatasource();
+  ForgotPasswordDatasourceInterface datasource =
+      MockForgotPasswordDatasourceInterface();
 
   var success = 'Success';
 
