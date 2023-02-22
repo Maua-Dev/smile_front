@@ -15,8 +15,8 @@ class AuthRepositoryImpl extends AuthRepositoryInterface {
   }
 
   @override
-  Future<Map<String, dynamic>> refreshToken(String token) async {
-    final response = await datasource.refreshToken(token);
+  Future<Map<String, dynamic>> refreshToken() async {
+    final response = await datasource.refreshToken();
     return Future.value(response);
   }
 }

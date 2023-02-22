@@ -38,7 +38,7 @@ void main() {
   final mockActivities = <ActivityModel>[
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -72,7 +72,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -106,7 +106,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -140,7 +140,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -197,7 +197,7 @@ void main() {
   });
 
   test('setTypeFilter', () {
-    var value = ActivityEnum.COURSE;
+    var value = ActivityEnum.COURSES;
     controller.setTypeFilter(value);
     expect(controller.typeFilter, value);
   });
@@ -231,7 +231,7 @@ void main() {
   });
 
   test('filterActivitiesByType', () {
-    var type = ActivityEnum.COURSE;
+    var type = ActivityEnum.COURSES;
     var list = mockActivities.where((element) => element.type == type).toList();
     expect(list, controller.filterActivitiesByType(type, mockActivities));
   });

@@ -30,7 +30,7 @@ class AuthModule extends Module {
         (i) => RefreshToken(authRepository: i()),
         export: true),
     Bind.lazySingleton<AuthDatasourceInterface>(
-        (i) => AuthDatasourceImpl(dioClient: i(), storage: i()),
+        (i) => AuthDatasourceImpl(storage: i()),
         export: true),
     Bind.lazySingleton<AuthRepositoryInterface>(
         (i) => AuthRepositoryImpl(datasource: i()),

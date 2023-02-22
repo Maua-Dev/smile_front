@@ -46,7 +46,7 @@ void main() {
   final mockActivities = <ActivityModel>[
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -80,7 +80,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -114,7 +114,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -148,7 +148,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -182,7 +182,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -216,7 +216,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -250,7 +250,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -284,7 +284,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -376,7 +376,7 @@ void main() {
   });
 
   test('getActivitiesByType', () {
-    controller.getActivitiesByType(ActivityEnum.COURSE);
+    controller.getActivitiesByType(ActivityEnum.COURSES);
     expect(controller.activitiesList.length, mockActivities.length);
   });
 
