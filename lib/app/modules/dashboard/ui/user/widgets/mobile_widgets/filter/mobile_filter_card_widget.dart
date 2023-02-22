@@ -8,7 +8,7 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-class MobileFilterCardWidget extends StatelessWidget {
+class UserFilterCardWidget extends StatelessWidget {
   final Function(ActivityEnum?)? onChangedActivitiesFilter;
   final ActivityEnum? typeFilter;
   final Function(DateTime?)? onChangedDateFilter;
@@ -16,7 +16,7 @@ class MobileFilterCardWidget extends StatelessWidget {
   final Function(DateTime?)? onChangedTimeFilter;
   final DateTime? hourFilter;
   final Function()? resetFilters;
-  const MobileFilterCardWidget({
+  const UserFilterCardWidget({
     Key? key,
     required this.onChangedActivitiesFilter,
     required this.onChangedDateFilter,
