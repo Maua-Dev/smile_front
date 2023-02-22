@@ -22,7 +22,6 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_admin_acti
 import 'domain/repositories/activities_repository_interface.dart';
 import 'domain/usecases/edit_activity.dart';
 import 'external/activities_datasource_impl.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
 import 'infra/datasources/activities_datasource_interface.dart';
 import 'infra/repository/activities_repository_impl.dart';
 
@@ -66,8 +65,6 @@ class AdmModule extends Module {
     Bind.lazySingleton<CreateActivityInterface>(
         (i) => CreateActivity(repository: i())),
     Bind.lazySingleton((i) => Dio(smileOption)),
-    Bind.lazySingleton<GetUserSubscribedActivitiesInterface>(
-        (i) => GetUserSubscribedActivitiesImp(repository: i())),
     Bind.lazySingleton<GetAdminActivitiesInterface>(
         (i) => GetAdminActivitiesImp(repository: i())),
     Bind.lazySingleton<AuthController>(
