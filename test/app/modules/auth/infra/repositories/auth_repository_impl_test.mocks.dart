@@ -65,11 +65,10 @@ class MockAuthDatasourceInterface extends _i1.Mock
         )),
       ) as _i4.Future<_i2.UserModel>);
   @override
-  _i4.Future<Map<String, dynamic>> refreshToken(String? token) =>
-      (super.noSuchMethod(
+  _i4.Future<Map<String, dynamic>> refreshToken() => (super.noSuchMethod(
         Invocation.method(
           #refreshToken,
-          [token],
+          [],
         ),
         returnValue:
             _i4.Future<Map<String, dynamic>>.value(<String, dynamic>{}),

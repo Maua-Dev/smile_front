@@ -47,7 +47,7 @@ void main() {
   final mockActivities = <EnrollsActivityModel>[
     EnrollsActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -81,7 +81,7 @@ void main() {
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -115,7 +115,7 @@ void main() {
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -149,7 +149,7 @@ void main() {
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -183,7 +183,7 @@ void main() {
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -217,7 +217,7 @@ void main() {
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -251,7 +251,7 @@ void main() {
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:

@@ -32,7 +32,7 @@ class ActivityModel extends Activity {
         type: ActivityEnumExtension.stringToEnumMap(map['activity_type']),
         title: map['title'],
         description: map['description'],
-        speakers: SpeakerActivityModel.fromMaps(map['speakers']),
+        speakers: [],
         duration: map['duration'] ?? 0,
         isExtensive: map['is_extensive'] ?? false,
         link: map['link'] ?? '',

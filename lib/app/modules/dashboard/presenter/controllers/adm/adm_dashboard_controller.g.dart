@@ -81,13 +81,13 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
       Atom(name: 'AdmDashboardControllerBase.activitiesList', context: context);
 
   @override
-  List<ActivityModel> get activitiesList {
+  List<AdminActivityModel> get activitiesList {
     _$activitiesListAtom.reportRead();
     return super.activitiesList;
   }
 
   @override
-  set activitiesList(List<ActivityModel> value) {
+  set activitiesList(List<AdminActivityModel> value) {
     _$activitiesListAtom.reportWrite(value, super.activitiesList, () {
       super.activitiesList = value;
     });
@@ -97,13 +97,13 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
       name: 'AdmDashboardControllerBase.allActivitiesList', context: context);
 
   @override
-  List<ActivityModel> get allActivitiesList {
+  List<AdminActivityModel> get allActivitiesList {
     _$allActivitiesListAtom.reportRead();
     return super.allActivitiesList;
   }
 
   @override
-  set allActivitiesList(List<ActivityModel> value) {
+  set allActivitiesList(List<AdminActivityModel> value) {
     _$allActivitiesListAtom.reportWrite(value, super.allActivitiesList, () {
       super.allActivitiesList = value;
     });
@@ -272,8 +272,8 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
   }
 
   @override
-  List<ActivityModel> filterActivitiesByType(
-      ActivityEnum type, List<ActivityModel> activitiesToFilter) {
+  List<AdminActivityModel> filterActivitiesByType(
+      ActivityEnum type, List<AdminActivityModel> activitiesToFilter) {
     final _$actionInfo = _$AdmDashboardControllerBaseActionController
         .startAction(name: 'AdmDashboardControllerBase.filterActivitiesByType');
     try {
@@ -284,8 +284,8 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
   }
 
   @override
-  List<ActivityModel> filterActivitiesByDate(
-      DateTime date, List<ActivityModel> activitiesToFilter) {
+  List<AdminActivityModel> filterActivitiesByDate(
+      DateTime date, List<AdminActivityModel> activitiesToFilter) {
     final _$actionInfo = _$AdmDashboardControllerBaseActionController
         .startAction(name: 'AdmDashboardControllerBase.filterActivitiesByDate');
     try {
@@ -296,8 +296,8 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
   }
 
   @override
-  List<ActivityModel> filterActivitiesByHour(
-      DateTime hour, List<ActivityModel> activitiesToFilter) {
+  List<AdminActivityModel> filterActivitiesByHour(
+      DateTime hour, List<AdminActivityModel> activitiesToFilter) {
     final _$actionInfo = _$AdmDashboardControllerBaseActionController
         .startAction(name: 'AdmDashboardControllerBase.filterActivitiesByHour');
     try {

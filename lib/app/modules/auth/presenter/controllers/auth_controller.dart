@@ -40,6 +40,7 @@ class AuthController {
 
     await storage.saveAccessToken(loginResponse.accessToken);
     await storage.saveRefreshToken(loginResponse.refreshToken);
+    await storage.saveIdToken(loginResponse.idToken);
     await storage.saveRole(_role);
     await storage.saveName(_name);
     await storage.saveSocialName(_socialname ?? '');
@@ -59,7 +60,7 @@ class AuthController {
       return;
     }
     try {
-      var tokens = await refreshToken(token);
+      var tokens = await refreshToken();
       await storage.saveAccessToken(tokens['access_token']);
       await storage.saveRefreshToken(tokens['refresh_token']);
       _loggedIn = true;
