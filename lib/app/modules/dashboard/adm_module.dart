@@ -16,8 +16,9 @@ import '../../shared/error/error_page.dart';
 import '../../shared/services/dio/smile_activities_options.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
-import '../auth/usecases/login_with_cpf_rne.dart';
-import '../auth/usecases/refresh_token.dart';
+import '../auth/domain/usecases/login_with_email.dart';
+import '../auth/domain/usecases/refresh_token.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_admin_activities_interface.dart';
 import 'domain/repositories/activities_repository_interface.dart';
 import 'domain/usecases/edit_activity.dart';
 import 'external/activities_datasource_impl.dart';
@@ -29,7 +30,7 @@ class AdmModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<AdmDashboardController>(
         (i) => AdmDashboardController(
-              getAllUserActivities: i(),
+              getAdminActivities: i(),
               getDownloadLinkCsv: i(),
               authController: i(),
               deleteActivity: i(),
@@ -64,9 +65,11 @@ class AdmModule extends Module {
     Bind.lazySingleton<CreateActivityInterface>(
         (i) => CreateActivity(repository: i())),
     Bind.lazySingleton((i) => Dio(smileOption)),
+    Bind.lazySingleton<GetAdminActivitiesInterface>(
+        (i) => GetAdminActivitiesImp(repository: i())),
     Bind.lazySingleton<AuthController>(
         (i) => AuthController(
-              loginWithCpfRne: i<LoginWithCpfRneInterface>(),
+              loginWithEmail: i<LoginWithEmailInterface>(),
               refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
               analytics: i(),

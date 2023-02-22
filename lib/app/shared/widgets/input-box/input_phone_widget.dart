@@ -50,8 +50,8 @@ class InputPhoneWidget extends StatelessWidget {
             initialValue: number,
             searchBoxDecoration: InputDecoration(
               hintText: S.of(context).registerCountryPlaceholder,
-              hintStyle: TextStyle(color: AppColors.white),
-              fillColor: AppColors.gray,
+              hintStyle: TextStyle(color: AppColors.gray),
+              fillColor: AppColors.white,
               filled: true,
               errorStyle: TextStyle(
                 color: AppColors.brandingOrange,
@@ -78,7 +78,7 @@ class InputPhoneWidget extends StatelessWidget {
             formatInput: true,
             textStyle: TextStyle(color: AppColors.white),
             inputDecoration: InputDecoration(
-              fillColor: AppColors.gray,
+              fillColor: AppColors.white,
               filled: true,
               errorStyle: TextStyle(
                 color: AppColors.brandingOrange,
@@ -100,7 +100,7 @@ class InputPhoneWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               hintText: S.of(context).registerPhonePlaceholder,
-              hintStyle: TextStyle(color: AppColors.placeholder),
+              hintStyle: TextStyle(color: AppColors.gray),
             ),
           ),
         ));

@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/auth/infra/repositories/secure_storage.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 
 import 'secure_storage_test.mocks.dart';
 
@@ -12,7 +13,7 @@ void main() {
   Box storage = MockBox();
   var accessToken = '123';
   var refreshToken = '123';
-  var accessLevel = 'ADMIN';
+  var role = UserRolesEnum.STUDENT;
   var name = 'Teste';
   var socialName = 'Teste';
   var certificateWithSocialName = true;
@@ -22,7 +23,7 @@ void main() {
     secureStorage = await SecureStorage.instance();
     when(storage.get('accessToken')).thenAnswer((_) async => accessToken);
     when(storage.get('refreshToken')).thenAnswer((_) async => refreshToken);
-    when(storage.get('accessLevel')).thenAnswer((_) async => accessLevel);
+    when(storage.get('accessLevel')).thenAnswer((_) async => role.name);
     when(storage.get('name')).thenAnswer((_) async => name);
     when(storage.get('socialName')).thenAnswer((_) async => socialName);
     when(storage.get('certificateWithSocialName'))
@@ -42,10 +43,10 @@ void main() {
     expect(response, refreshToken);
   });
 
-  test('saveAccessLevel', () async {
-    await secureStorage.saveAccessLevel(accessLevel);
+  test('saveRole', () async {
+    await secureStorage.saveRole(role.name);
     String response = await storage.get('accessLevel');
-    expect(response, accessLevel);
+    expect(response, role.name);
   });
 
   test('saveName', () async {

@@ -1,3 +1,5 @@
+import 'package:smile_front/app/shared/models/user_model.dart';
+
 import '../../domain/repositories/auth_repository_interface.dart';
 import '../datasource/auth_datasource_interface.dart';
 
@@ -7,20 +9,14 @@ class AuthRepositoryImpl extends AuthRepositoryInterface {
   AuthRepositoryImpl({required this.datasource});
 
   @override
-  Future<Map<String, dynamic>> login(String user, String password) async {
+  Future<UserModel> login(String user, String password) async {
     final response = await datasource.login(user, password);
     return Future.value(response);
   }
 
   @override
-  Future<Map<String, dynamic>> refreshToken(String token) async {
-    final response = await datasource.refreshToken(token);
-    return Future.value(response);
-  }
-
-  @override
-  Future<String> getAccessLevel(String user) async {
-    final response = await datasource.getAccessLevel(user);
+  Future<Map<String, dynamic>> refreshToken() async {
+    final response = await datasource.refreshToken();
     return Future.value(response);
   }
 }

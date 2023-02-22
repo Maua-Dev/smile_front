@@ -16,13 +16,15 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.da
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart'
     as _i2;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
-    as _i13;
+    as _i14;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart'
-    as _i12;
+    as _i13;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart'
-    as _i11;
+    as _i12;
 import 'package:smile_front/app/shared/entities/card_activity.dart' as _i7;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i6;
+import 'package:smile_front/app/shared/models/admin_activity_model.dart'
+    as _i11;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
     as _i5;
 
@@ -159,6 +161,16 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i10.Future<dynamic>.value(),
       ) as _i10.Future<dynamic>);
   @override
+  _i10.Future<List<_i11.AdminActivityModel>> getAdminActivities() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAdminActivities,
+          [],
+        ),
+        returnValue: _i10.Future<List<_i11.AdminActivityModel>>.value(
+            <_i11.AdminActivityModel>[]),
+      ) as _i10.Future<List<_i11.AdminActivityModel>>);
+  @override
   _i10.Future<dynamic> editActivity(_i6.ActivityModel? activityToEdit) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -168,10 +180,11 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i10.Future<dynamic>.value(),
       ) as _i10.Future<dynamic>);
   @override
-  _i10.Future<dynamic> removeActivity(String? id) => (super.noSuchMethod(
+  _i10.Future<dynamic> deleteActivity(String? activityCode) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #removeActivity,
-          [id],
+          #deleteActivity,
+          [activityCode],
         ),
         returnValue: _i10.Future<dynamic>.value(),
       ) as _i10.Future<dynamic>);
@@ -213,7 +226,7 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUserDashboardController extends _i1.Mock
-    implements _i11.UserDashboardController {
+    implements _i12.UserDashboardController {
   MockUserDashboardController() {
     _i1.throwOnMissingStub(this);
   }
@@ -601,7 +614,7 @@ class MockUserDashboardController extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUnsubscribeActivityInterface extends _i1.Mock
-    implements _i12.UnsubscribeActivityInterface {
+    implements _i13.UnsubscribeActivityInterface {
   MockUnsubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -627,7 +640,7 @@ class MockUnsubscribeActivityInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSubscribeActivityInterface extends _i1.Mock
-    implements _i13.SubscribeActivityInterface {
+    implements _i14.SubscribeActivityInterface {
   MockSubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }

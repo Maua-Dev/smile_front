@@ -15,4 +15,5 @@ class AppColors {
   static Color get placeholder => const Color(0xFFFFFFFF).withOpacity(0.7);
   static Color get backgroudColor => const Color(0xFFFFFFFF);
   static Color get white => const Color(0xFFFFFFFF);
+  static Color get backgroundLogin => const Color(0xFF253364);
 }

@@ -1,9 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_admin_activities_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/usecases/delete_activity.dart';
@@ -15,13 +15,13 @@ class AdmDashboardController = AdmDashboardControllerBase
 abstract class AdmDashboardControllerBase with Store {
   final AuthController authController;
   final GetDownloadLinkCsvInterface getDownloadLinkCsv;
-  final GetAllUserActivitiesInterface getAllUserActivities;
+  final GetAdminActivitiesInterface getAdminActivities;
   final DeleteActivityInterface deleteActivity;
 
   AdmDashboardControllerBase(
       {required this.getDownloadLinkCsv,
       required this.authController,
-      required this.getAllUserActivities,
+      required this.getAdminActivities,
       required this.deleteActivity}) {
     getAllActivities();
   }
@@ -62,10 +62,10 @@ abstract class AdmDashboardControllerBase with Store {
   int? filterActivityChipIndexSelected;
 
   @observable
-  List<ActivityModel> activitiesList = List.empty();
+  List<AdminActivityModel> activitiesList = List.empty();
 
   @observable
-  List<ActivityModel> allActivitiesList = List.empty();
+  List<AdminActivityModel> allActivitiesList = List.empty();
 
   @action
   void toggleFloatActionButton() {
@@ -123,27 +123,27 @@ abstract class AdmDashboardControllerBase with Store {
   }
 
   @action
-  List<ActivityModel> filterActivitiesByType(
-      ActivityEnum type, List<ActivityModel> activitiesToFilter) {
+  List<AdminActivityModel> filterActivitiesByType(
+      ActivityEnum type, List<AdminActivityModel> activitiesToFilter) {
     var list =
         activitiesToFilter.where((element) => element.type == type).toList();
     return list;
   }
 
   @action
-  List<ActivityModel> filterActivitiesByDate(
-      DateTime date, List<ActivityModel> activitiesToFilter) {
+  List<AdminActivityModel> filterActivitiesByDate(
+      DateTime date, List<AdminActivityModel> activitiesToFilter) {
     var list = activitiesToFilter
-        .where((element) => isValidDateFilter(element.schedule.date!, date))
+        .where((element) => isValidDateFilter(element.startDate!, date))
         .toList();
     return list;
   }
 
   @action
-  List<ActivityModel> filterActivitiesByHour(
-      DateTime hour, List<ActivityModel> activitiesToFilter) {
+  List<AdminActivityModel> filterActivitiesByHour(
+      DateTime hour, List<AdminActivityModel> activitiesToFilter) {
     var list = activitiesToFilter
-        .where((element) => isValidHourFilter(element.schedule.date!, hour))
+        .where((element) => isValidHourFilter(element.startDate!, hour))
         .toList();
     return list;
   }
@@ -168,8 +168,8 @@ abstract class AdmDashboardControllerBase with Store {
   @action
   Future getAllActivities() async {
     setIsLoading(true);
-    activitiesList = await getAllUserActivities();
-    allActivitiesList = activitiesList;
+    activitiesList = await getAdminActivities();
+    allActivitiesList = await getAdminActivities();
     setIsLoading(false);
   }
 

@@ -9,43 +9,29 @@ import '../errors/errors.dart';
 import '../infra/datasource/auth_datasource_interface.dart';
 
 class AuthDatasourceImpl implements AuthDatasourceInterface {
-  final Dio dioClient;
   final SecureStorageInterface storage;
+  BaseOptions options = BaseOptions(
+    baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
+    responseType: ResponseType.json,
+    connectTimeout: 30000,
+    receiveTimeout: 30000,
+  );
+  Dio dio = Dio();
 
-  AuthDatasourceImpl({required this.dioClient, required this.storage});
-  @override
-  Future<String> getAccessLevel(cpfRne) async {
-    try {
-      final res = await dioClient.get(
-        '/user/$cpfRne',
-      );
-      if (res.statusCode == 200) {
-        var user = UserModel.fromMap(res.data);
-        return user.accessLevel;
-      }
-      throw Exception();
-    } catch (e) {
-      rethrow;
-    }
+  AuthDatasourceImpl({required this.storage}) {
+    dio = Dio(options);
   }
 
   @override
-  Future<Map<String, dynamic>> login(cpfRne, password) async {
-    BaseOptions options = BaseOptions(
-      baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
-      responseType: ResponseType.json,
-      connectTimeout: 30000,
-      receiveTimeout: 30000,
-    );
-    Dio dio = Dio(options);
+  Future<UserModel> login(email, password) async {
     try {
-      final res = await dio.post('/login', data: {
-        'login': cpfRne,
+      final res = await dio.post('/login-user', data: {
+        'login': email,
         'password': password,
       });
       if (res.statusCode == 200) {
         var response = res.data;
-        return response;
+        return UserModel.fromMap(response['user']);
       }
       throw Exception();
     } on DioError catch (e) {
@@ -59,17 +45,11 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
   }
 
   @override
-  Future<Map<String, dynamic>> refreshToken(String token) async {
+  Future<Map<String, dynamic>> refreshToken() async {
+    var token = await storage.getAccessToken();
     try {
-      BaseOptions options = BaseOptions(
-        baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
-        responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
-      );
-      Dio dio = Dio(options);
-      dio.options.headers["authorization"] = "Bearer $token";
-      final res = await dio.get("/refreshToken");
+      dio.options.headers["authorization"] = "$token";
+      final res = await dio.post("/refresh-token");
       if (res.statusCode == 200) {
         var tokens = res.data;
         return tokens;

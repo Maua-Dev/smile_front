@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../presenter/controllers/adm/adm_dashboard_controller.dart';
 import '../../../shared/widgets/logout_button_widget.dart';
@@ -24,15 +25,15 @@ class _SideBarWidgetState
       child: Column(children: [
         const SizedBox(height: 20),
         LogoutButtonWidget(
-          backgroundColor: AppColors.brandingBlue,
-          buttonTittle: 'Sair',
+          backgroundColor: const Color.fromARGB(255, 46, 66, 138),
+          buttonTittle: S.of(context).exitTitle,
           onPressed: () {
             controller.logout();
           },
         ),
         const SizedBox(height: 50),
         SideBarButtonWidget(
-          buttonText: 'Atividades',
+          buttonText: S.of(context).activitiesTitle,
           buttonIcon: Icon(
             Icons.view_list_outlined,
             color: AppColors.white,
@@ -43,17 +44,18 @@ class _SideBarWidgetState
         ),
         const SizedBox(height: 12),
         SideBarButtonWidget(
-          buttonText: 'Relatórios',
+          buttonText: S.of(context).admReportsTitle,
           buttonIcon: Icon(
             Icons.person_search,
             color: AppColors.white,
             size: 45,
           ),
           onPressedPath: "",
-          buttonColor: AppColors.brandingBlue,
+          buttonColor: const Color.fromARGB(255, 46, 66, 138),
         ),
         const SizedBox(height: 20),
         Stack(
+          alignment: Alignment.center,
           children: [
             IconButton(
               onPressed: () {
@@ -66,7 +68,7 @@ class _SideBarWidgetState
             Padding(
               padding: const EdgeInsets.only(top: 80),
               child: Text(
-                'Criar Atividade',
+                S.of(context).activityCreateTitle,
                 style: AppTextStyles.body
                     .copyWith(color: AppColors.white, fontSize: 15),
               ),

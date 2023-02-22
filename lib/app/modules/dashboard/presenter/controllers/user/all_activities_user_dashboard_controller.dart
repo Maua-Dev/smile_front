@@ -115,19 +115,19 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     for (var activity in activitiesList) {
       allActivitiesToCards.add(
         CardActivity(
-          id: activity.id,
+          id: '',
           activityCode: activity.activityCode,
           type: activity.type,
           title: activity.title,
           description: activity.description,
-          date: activity.schedule.date,
-          duration: activity.schedule.duration,
-          totalParticipants: activity.schedule.totalParticipants,
+          date: activity.startDate,
+          duration: 0,
+          totalParticipants: activity.totalSlots,
           speakers: activity.speakers,
-          location: activity.schedule.location,
-          link: activity.schedule.link,
-          enrolledUsers: activity.schedule.enrolledUsers,
-          acceptSubscription: activity.schedule.acceptSubscription,
+          location: activity.place,
+          link: activity.link,
+          enrolledUsers: activity.takenSlots,
+          acceptSubscription: activity.acceptingNewEnrollments,
         ),
       );
     }

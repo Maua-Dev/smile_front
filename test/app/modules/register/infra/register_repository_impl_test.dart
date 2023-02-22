@@ -3,6 +3,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/register/infra/datasources/register_datasource_interface.dart';
 import 'package:smile_front/app/modules/register/infra/repository/register_repository_impl.dart';
+import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/entities/user_registration.dart';
 import 'register_repository_impl_test.mocks.dart';
 
@@ -11,17 +13,20 @@ void main() {
   late RegisterRepositoryImpl repository;
   RegisterDatasourceInterface datasource = MockRegisterDatasourceInterface();
   var userInformations = UserRegistration(
-    name: 'Caio Toledo',
-    email: 'caio@caio.com',
-    cpfRne: '63480154085',
-    password: 'Teste123!',
-    acceptEmails: true,
+    name: 'name',
+    socialName: 'socialName',
+    email: 'email',
+    ra: 'ra',
+    password: 'password',
     acceptTerms: true,
-    phoneNumber: '11991273092',
+    phone: 'phone',
     acceptEmailNotifications: true,
     acceptSMSNotifications: true,
     acceptWPPNotifications: true,
     acceptAPPWEBNotifications: true,
+    accessLevel: AccessLevelEnum.USER,
+    certificateWithSocialName: true,
+    role: UserRolesEnum.STUDENT,
   );
   var res = 'User Caio Toledo created.';
 

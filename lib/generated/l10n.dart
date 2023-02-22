@@ -145,6 +145,16 @@ class S {
     );
   }
 
+  /// `Add Speaker`
+  String get speakersAddTitle {
+    return Intl.message(
+      'Add Speaker',
+      name: 'speakersAddTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `SWIPE TO SEE MORE >>>`
   String get speakersSwipe {
     return Intl.message(
@@ -209,23 +219,23 @@ class S {
     );
   }
 
-  /// `{activity, select, CURSOS{Courses} PALESTRAS{Speeches} PALESTRAS_ALTO_IMPACTO{High Impact Speeches} VISITAS_TECNICAS{Technical Visits} COMPETICOES_ACADEMICAS{Academic Competitions} HACKATHON{Hackathon} FEIRA_ESTAGIOS{Internship Fairs} CAFE_EX_ALUNOS{Coffeee with alumni} ACADEMIA_DE_PROFESSORES{Teachers Academy} ATIVIDADE_CULTURAL{Cultural Activity} GCSP{GCSP} ATIVIDADE_ESPORTIVA{Sport Activity} other{Activities}}`
+  /// `{activity, select, COURSE{Courses} LECTURES{Speeches} HIGH_IMPACT_LECTURES{High Impact Speeches} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} GCSP{GCSP} SPORTS_ACTIVITY{Sport Activity} other{Activities}}`
   String activitiesOfferedName(Object activity) {
     return Intl.select(
       activity,
       {
-        'CURSOS': 'Courses',
-        'PALESTRAS': 'Speeches',
-        'PALESTRAS_ALTO_IMPACTO': 'High Impact Speeches',
-        'VISITAS_TECNICAS': 'Technical Visits',
-        'COMPETICOES_ACADEMICAS': 'Academic Competitions',
+        'COURSE': 'Courses',
+        'LECTURES': 'Speeches',
+        'HIGH_IMPACT_LECTURES': 'High Impact Speeches',
+        'TECHNICAL_VISITS': 'Technical Visits',
+        'ACADEMIC_COMPETITIONS': 'Academic Competitions',
         'HACKATHON': 'Hackathon',
-        'FEIRA_ESTAGIOS': 'Internship Fairs',
-        'CAFE_EX_ALUNOS': 'Coffeee with alumni',
-        'ACADEMIA_DE_PROFESSORES': 'Teachers Academy',
-        'ATIVIDADE_CULTURAL': 'Cultural Activity',
+        'INTERNSHIP_FAIR': 'Internship Fairs',
+        'ALUMNI_CAFE': 'Coffeee with alumni',
+        'PROFESSORS_ACADEMY': 'Teachers Academy',
+        'CULTURAL_ACTIVITY': 'Cultural Activity',
         'GCSP': 'GCSP',
-        'ATIVIDADE_ESPORTIVA': 'Sport Activity',
+        'SPORTS_ACTIVITY': 'Sport Activity',
         'other': 'Activities',
       },
       name: 'activitiesOfferedName',
@@ -234,34 +244,34 @@ class S {
     );
   }
 
-  /// `{activity, select, CURSOS{The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.} PALESTRAS{The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.} PALESTRAS_ALTO_IMPACTO{The high-impact lectures will be delivered by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!} VISITAS_TECNICAS{In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.} COMPETICOES_ACADEMICAS{During SMILE, participants will be able to have fun with Academic Competition activities: League Of Legend Championship (online) and GameDev Mauá - Game Jam (in person).} HACKATHON{Hackathons are events that bring together students, software developers, designers and other professionals, with the aim of creating innovative solutions for a specific problem in a short period of time. This is an excellent opportunity to develop your professional side, in addition to discovering new talent. The events promote a great interaction between the participants and offer prizes for the winners at the end.} FEIRA_ESTAGIOS{Representatives of renowned companies will present Internship and Trainee Programs, in addition to bringing tips on selection processes, interviews, career tips and answering questions from participants.} CAFE_EX_ALUNOS{The activity aims to promote informal conversations between IMT students and graduates who occupy prominent positions in their areas of expertise. Come join!} ACADEMIA_DE_PROFESSORES{Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.} ATIVIDADE_CULTURAL{Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.} GCSP{The GCSP - Grand Challenges Scholars Program is a program that offers undergraduate students the opportunity to work with the great challenges of humanity, being mentored by professors.} ATIVIDADE_ESPORTIVA{Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!} other{Activity}}`
+  /// `{activity, select, COURSE{The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.} LECTURES{The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.} HIGH_IMPACT_LECTURES{The high-impact lectures will be delivered by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!} TECHNICAL_VISITS{In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.} ACADEMIC_COMPETITIONS{During SMILE, participants will be able to have fun with Academic Competition activities: League Of Legend Championship (online) and GameDev Mauá - Game Jam (in person).} HACKATHON{Hackathons are events that bring together students, software developers, designers and other professionals, with the aim of creating innovative solutions for a specific problem in a short period of time. This is an excellent opportunity to develop your professional side, in addition to discovering new talent. The events promote a great interaction between the participants and offer prizes for the winners at the end.} INTERNSHIP_FAIR{Representatives of renowned companies will present Internship and Trainee Programs, in addition to bringing tips on selection processes, interviews, career tips and answering questions from participants.} ALUMNI_CAFE{The activity aims to promote informal conversations between IMT students and graduates who occupy prominent positions in their areas of expertise. Come join!} PROFESSORS_ACADEMY{Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.} CULTURAL_ACTIVITY{Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.} GCSP{The GCSP - Grand Challenges Scholars Program is a program that offers undergraduate students the opportunity to work with the great challenges of humanity, being mentored by professors.} SPORTS_ACTIVITY{Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!} other{Activity}}`
   String activitiesOfferedDescription(Object activity) {
     return Intl.select(
       activity,
       {
-        'CURSOS':
+        'COURSE':
             'The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.',
-        'PALESTRAS':
+        'LECTURES':
             'The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.',
-        'PALESTRAS_ALTO_IMPACTO':
+        'HIGH_IMPACT_LECTURES':
             'The high-impact lectures will be delivered by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!',
-        'VISITAS_TECNICAS':
+        'TECHNICAL_VISITS':
             'In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.',
-        'COMPETICOES_ACADEMICAS':
+        'ACADEMIC_COMPETITIONS':
             'During SMILE, participants will be able to have fun with Academic Competition activities: League Of Legend Championship (online) and GameDev Mauá - Game Jam (in person).',
         'HACKATHON':
             'Hackathons are events that bring together students, software developers, designers and other professionals, with the aim of creating innovative solutions for a specific problem in a short period of time. This is an excellent opportunity to develop your professional side, in addition to discovering new talent. The events promote a great interaction between the participants and offer prizes for the winners at the end.',
-        'FEIRA_ESTAGIOS':
+        'INTERNSHIP_FAIR':
             'Representatives of renowned companies will present Internship and Trainee Programs, in addition to bringing tips on selection processes, interviews, career tips and answering questions from participants.',
-        'CAFE_EX_ALUNOS':
+        'ALUMNI_CAFE':
             'The activity aims to promote informal conversations between IMT students and graduates who occupy prominent positions in their areas of expertise. Come join!',
-        'ACADEMIA_DE_PROFESSORES':
+        'PROFESSORS_ACADEMY':
             'Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.',
-        'ATIVIDADE_CULTURAL':
+        'CULTURAL_ACTIVITY':
             'Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.',
         'GCSP':
             'The GCSP - Grand Challenges Scholars Program is a program that offers undergraduate students the opportunity to work with the great challenges of humanity, being mentored by professors.',
-        'ATIVIDADE_ESPORTIVA':
+        'SPORTS_ACTIVITY':
             'Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!',
         'other': 'Activity',
       },
@@ -406,6 +416,16 @@ class S {
     return Intl.message(
       '2023',
       name: 'year2023',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get dateTitle {
+    return Intl.message(
+      'Date',
+      name: 'dateTitle',
       desc: '',
       args: [],
     );
@@ -718,10 +738,40 @@ class S {
     );
   }
 
-  /// `CPF or E-mail`
+  /// `Exit`
+  String get exitTitle {
+    return Intl.message(
+      'Exit',
+      name: 'exitTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancelTitle {
+    return Intl.message(
+      'Cancel',
+      name: 'cancelTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get saveTitle {
+    return Intl.message(
+      'Save',
+      name: 'saveTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-mail`
   String get loginUsernamePlaceholder {
     return Intl.message(
-      'CPF or E-mail',
+      'E-mail',
       name: 'loginUsernamePlaceholder',
       desc: '',
       args: [],
@@ -798,16 +848,6 @@ class S {
     return Intl.message(
       'Social Name',
       name: 'registerSocialNamePlaceholder',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `CPF`
-  String get registerCPFPlaceholder {
-    return Intl.message(
-      'CPF',
-      name: 'registerCPFPlaceholder',
       desc: '',
       args: [],
     );
@@ -997,6 +1037,16 @@ class S {
     );
   }
 
+  /// `Check that all fields are filled in correctly.`
+  String get confirmAllFieldsConrrectlyFilled {
+    return Intl.message(
+      'Check that all fields are filled in correctly.',
+      name: 'confirmAllFieldsConrrectlyFilled',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Required field`
   String get fieldRequired {
     return Intl.message(
@@ -1067,16 +1117,6 @@ class S {
     );
   }
 
-  /// `Invalid CPF`
-  String get fieldCpfInvalid {
-    return Intl.message(
-      'Invalid CPF',
-      name: 'fieldCpfInvalid',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Enter the number with DDD`
   String get fieldDDDRequired {
     return Intl.message(
@@ -1092,6 +1132,16 @@ class S {
     return Intl.message(
       'Invalid RA',
       name: 'fieldRAInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fill in all fields!`
+  String get fieldFillAllRequired {
+    return Intl.message(
+      'Fill in all fields!',
+      name: 'fieldFillAllRequired',
       desc: '',
       args: [],
     );
@@ -1197,6 +1247,26 @@ class S {
     );
   }
 
+  /// `Are you sure you want to continue?`
+  String get confirmToContinue {
+    return Intl.message(
+      'Are you sure you want to continue?',
+      name: 'confirmToContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When saving all old data will be lost.`
+  String get lostOldDataWarn {
+    return Intl.message(
+      'When saving all old data will be lost.',
+      name: 'lostOldDataWarn',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Code sent successfully!`
   String get successSendingCode {
     return Intl.message(
@@ -1262,6 +1332,116 @@ class S {
     return Intl.message(
       'Password changed successfully! \n Redirecting to login...',
       name: 'successChangePasswordRedirect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Administrator Page`
+  String get admDashboardAppBarTitle {
+    return Intl.message(
+      'Administrator Page',
+      name: 'admDashboardAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reports`
+  String get admReportsTitle {
+    return Intl.message(
+      'Reports',
+      name: 'admReportsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clean Filters`
+  String get cleanFiltersTitle {
+    return Intl.message(
+      'Clean Filters',
+      name: 'cleanFiltersTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Activity`
+  String get activityCreateTitle {
+    return Intl.message(
+      'Create Activity',
+      name: 'activityCreateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Activity`
+  String get activityEditTitle {
+    return Intl.message(
+      'Edit Activity',
+      name: 'activityEditTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activity Type`
+  String get activityTypeTitle {
+    return Intl.message(
+      'Activity Type',
+      name: 'activityTypeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activity Title`
+  String get activityNameTitle {
+    return Intl.message(
+      'Activity Title',
+      name: 'activityNameTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get descriptionTitle {
+    return Intl.message(
+      'Description',
+      name: 'descriptionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Schedule`
+  String get scheduleTitle {
+    return Intl.message(
+      'Schedule',
+      name: 'scheduleTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Schedule`
+  String get scheduleAddTitle {
+    return Intl.message(
+      'Add Schedule',
+      name: 'scheduleAddTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Code`
+  String get codeTitle {
+    return Intl.message(
+      'Code',
+      name: 'codeTitle',
       desc: '',
       args: [],
     );

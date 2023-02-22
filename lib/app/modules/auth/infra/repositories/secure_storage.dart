@@ -1,5 +1,4 @@
 import 'package:hive_flutter/hive_flutter.dart';
-
 import '../../domain/repositories/secure_storage_interface.dart';
 
 class SecureStorage implements SecureStorageInterface {
@@ -38,13 +37,13 @@ class SecureStorage implements SecureStorageInterface {
   }
 
   @override
-  Future<String?> getAccessLevel() async {
-    return await storage.get('accessLevel') as String?;
+  Future<String?> getRole() async {
+    return await storage.get('role') as String?;
   }
 
   @override
-  Future<void> saveAccessLevel(String accessLevel) async {
-    await storage.put('accessLevel', accessLevel);
+  Future<void> saveRole(String role) async {
+    await storage.put('role', role);
   }
 
   @override
@@ -86,5 +85,15 @@ class SecureStorage implements SecureStorageInterface {
   @override
   Future<void> saveId(String id) async {
     await storage.put('id', id);
+  }
+
+  @override
+  Future<String?> getIdToken() async {
+    return await storage.get('idToken');
+  }
+
+  @override
+  Future<void> saveIdToken(String idToken) async {
+    await storage.put('idToken', idToken);
   }
 }

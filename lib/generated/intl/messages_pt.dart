@@ -31,46 +31,46 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m1(activity) => "${Intl.select(activity, {
-            'CURSOS':
+            'COURSE':
                 'Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.',
-            'PALESTRAS':
+            'LECTURES':
                 'As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.',
-            'PALESTRAS_ALTO_IMPACTO':
+            'HIGH_IMPACT_LECTURES':
                 'As palestras de alto impacto serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!',
-            'VISITAS_TECNICAS':
+            'TECHNICAL_VISITS':
                 'Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.',
-            'COMPETICOES_ACADEMICAS':
+            'ACADEMIC_COMPETITIONS':
                 'Durante a SMILE, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).',
             'HACKATHON':
                 'Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa é uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.',
-            'FEIRA_ESTAGIOS':
+            'INTERNSHIP_FAIR':
                 'Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes.',
-            'CAFE_EX_ALUNOS':
+            'ALUMNI_CAFE':
                 'A atividade tem como objetivo promover conversas informais entre estudantes do IMT e egressos que ocupam posições de destaque em suas áreas de atuação. Venha participar!',
-            'ACADEMIA_DE_PROFESSORES':
+            'PROFESSORS_ACADEMY':
                 'A Academia de Professores tem como foco a formação continuada, disseminação de estratégias e ferramentas de ensino para professores do IMT e professores do Ensino Médio.',
-            'ATIVIDADE_CULTURAL':
+            'CULTURAL_ACTIVITY':
                 'Você faz parte de uma banda? Canta? Toca algum instrumento? Gosta de poesia, literatura? Faz teatro? Dança? Venha compatilhar seu talento com a gente! Será uma tarde de apresentações, integração e muita alegria no campus.',
             'GCSP':
                 'O GCSP - Grand Challenges Scholars Program é um programa que oferece aos alunos de graduação a oportunidade de trabalhar com grandes desafios da humanidade, sendo mentorados por professores.',
-            'ATIVIDADE_ESPORTIVA':
+            'SPORTS_ACTIVITY':
                 'Os participantes conhecerão duas atividades interessantes: spikeball e flag football. Além disso, também serão oferecidas diversas atividades, tais como, ginástica funcional, meditação energizante e pilates! Todos os participantes poderão interagir com o(a) palestrante e professores(as)! Acompanhe e participe!',
             'other': 'Atividades',
           })}";
 
   static String m2(activity) => "${Intl.select(activity, {
-            'CURSOS': 'Cursos',
-            'PALESTRAS': 'Palestras',
-            'PALESTRAS_ALTO_IMPACTO': 'Palestras de Alto Impacto',
-            'VISITAS_TECNICAS': 'Visitas Técnicas',
-            'COMPETICOES_ACADEMICAS': 'Competições Acadêmicas',
+            'COURSE': 'Cursos',
+            'LECTURES': 'Palestras',
+            'HIGH_IMPACT_LECTURES': 'Palestras de Alto Impacto',
+            'TECHNICAL_VISITS': 'Visitas Técnicas',
+            'ACADEMIC_COMPETITIONS': 'Competições Acadêmicas',
             'HACKATHON': 'Hackathon',
-            'FEIRA_ESTAGIOS': 'Feira de Estágios',
-            'CAFE_EX_ALUNOS': 'Café com Ex-aluno(a)',
-            'ACADEMIA_DE_PROFESSORES': 'Academia de Professores',
-            'ATIVIDADE_CULTURAL': 'Atividade Cultura',
+            'INTERNSHIP_FAIR': 'Feira de Estágios',
+            'ALUMNI_CAFE': 'Café com Ex-aluno(a)',
+            'PROFESSORS_ACADEMY': 'Academia de Professores',
+            'CULTURAL_ACTIVITY': 'Atividade Cultura',
             'GCSP': 'GCSP',
-            'ATIVIDADE_ESPORTIVA': 'Atividade Esportiva',
+            'SPORTS_ACTIVITY': 'Atividade Esportiva',
             'other': 'Atividades',
           })}";
 
@@ -238,6 +238,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
+        "activityCreateTitle":
+            MessageLookupByLibrary.simpleMessage("Criar Atividade"),
+        "activityEditTitle":
+            MessageLookupByLibrary.simpleMessage("Editar Atividade"),
+        "activityNameTitle":
+            MessageLookupByLibrary.simpleMessage("Titulo da Atividade"),
+        "activityTypeTitle":
+            MessageLookupByLibrary.simpleMessage("Tipo de Atividade"),
+        "admDashboardAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Página do Administrador"),
+        "admReportsTitle": MessageLookupByLibrary.simpleMessage("Relatórios"),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
             "A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir."),
         "beSponsorDiscount": MessageLookupByLibrary.simpleMessage("Descontos"),
@@ -248,8 +259,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "beSponsorTitle":
             MessageLookupByLibrary.simpleMessage("Seja nosso Patrocinador"),
         "benefitsSponsorSchema": m3,
+        "cancelTitle": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Trocar senha"),
+        "cleanFiltersTitle":
+            MessageLookupByLibrary.simpleMessage("Limpar Filtros"),
         "clickToGoBack":
             MessageLookupByLibrary.simpleMessage("Clique aqui para voltar"),
         "closeTitle": MessageLookupByLibrary.simpleMessage("Fechar"),
@@ -257,10 +271,18 @@ class MessageLookup extends MessageLookupByLibrary {
             "Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional."),
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
             "Um código será enviado no email cadastrado:"),
+        "codeTitle": MessageLookupByLibrary.simpleMessage("Código"),
+        "confirmAllFieldsConrrectlyFilled":
+            MessageLookupByLibrary.simpleMessage(
+                "Confira se todos os campos estão corretamente preenchidos."),
         "confirmEmailNotificationSubtitle": MessageLookupByLibrary.simpleMessage(
             "Será necessário acessar sua caixa de entrada para validar seu cadastro."),
         "confirmEmailNotificationTitle": m4,
         "confirmTitle": MessageLookupByLibrary.simpleMessage("Confirmar"),
+        "confirmToContinue": MessageLookupByLibrary.simpleMessage(
+            "Tem certeza que deseja continuar?"),
+        "dateTitle": MessageLookupByLibrary.simpleMessage("Data"),
+        "descriptionTitle": MessageLookupByLibrary.simpleMessage("Descrição"),
         "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
         "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
@@ -279,13 +301,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "Falha ao enviar o código, e-mail não cadastrado ou não confirmado."),
         "errorUserAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Usuário já existente."),
-        "fieldCpfInvalid": MessageLookupByLibrary.simpleMessage("CPF inválido"),
+        "exitTitle": MessageLookupByLibrary.simpleMessage("Sair"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Insira o número com DDD"),
         "fieldEmailInvalid":
             MessageLookupByLibrary.simpleMessage("E-mail inválido"),
         "fieldEmailsEqualsRequired":
             MessageLookupByLibrary.simpleMessage("Os e-mails devem ser iguais"),
+        "fieldFillAllRequired":
+            MessageLookupByLibrary.simpleMessage("Preencha todos os campos!"),
         "fieldFullNameRequired":
             MessageLookupByLibrary.simpleMessage("Insira seu nome completo"),
         "fieldInvalid": MessageLookupByLibrary.simpleMessage("Campo inválido"),
@@ -325,10 +349,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Reenviar e-mail de confirmação"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "loginUsernamePlaceholder":
-            MessageLookupByLibrary.simpleMessage("CPF ou E-mail"),
+            MessageLookupByLibrary.simpleMessage("E-mail"),
         "loginWarningTitle": m9,
         "loginWithoutRecordTitle":
             MessageLookupByLibrary.simpleMessage("Não tenho cadastro"),
+        "lostOldDataWarn": MessageLookupByLibrary.simpleMessage(
+            "Ao salvar todos os dados antigos serão perdidos."),
         "maintenanceDescription":
             MessageLookupByLibrary.simpleMessage("Agradecemos a paciência"),
         "maintenanceTitle": MessageLookupByLibrary.simpleMessage(
@@ -347,7 +373,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Meios de notificação sobre as atividades:"),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
-        "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme sua senha"),
         "registerCountryPlaceholder":
@@ -368,11 +393,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerTerms": m15,
         "registerTitle": MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "returnLogin": MessageLookupByLibrary.simpleMessage("Voltar ao login"),
+        "saveTitle": MessageLookupByLibrary.simpleMessage("Salvar"),
+        "scheduleAddTitle":
+            MessageLookupByLibrary.simpleMessage("Adicionar Horário"),
+        "scheduleTitle": MessageLookupByLibrary.simpleMessage("Hora"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Enviar"),
         "signUp": MessageLookupByLibrary.simpleMessage("Inscreva-se"),
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("22 a 27 de Maio de 2023"),
+        "speakersAddTitle":
+            MessageLookupByLibrary.simpleMessage("Adicionar Palestrante"),
         "speakersSchemaDescription": m16,
         "speakersSchemaName": m17,
         "speakersSwipe":

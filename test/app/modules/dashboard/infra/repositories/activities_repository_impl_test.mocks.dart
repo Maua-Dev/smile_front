@@ -3,12 +3,17 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart'
+    as _i3;
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart'
+    as _i7;
+import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
+import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i6;
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
     as _i2;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -21,102 +26,182 @@ import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeEnrollsActivityModel_0 extends _i1.SmartFake
+    implements _i2.EnrollsActivityModel {
+  _FakeEnrollsActivityModel_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ActivitiesDatasourceInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockActivitiesDatasourceInterface extends _i1.Mock
-    implements _i2.ActivitiesDatasourceInterface {
+    implements _i3.ActivitiesDatasourceInterface {
   MockActivitiesDatasourceInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<List<_i4.ActivityModel>> getAllActivities() => (super.noSuchMethod(
+  _i4.Future<List<_i5.ActivityModel>> getAllActivities() => (super.noSuchMethod(
         Invocation.method(
           #getAllActivities,
           [],
         ),
         returnValue:
-            _i3.Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]),
-      ) as _i3.Future<List<_i4.ActivityModel>>);
+            _i4.Future<List<_i5.ActivityModel>>.value(<_i5.ActivityModel>[]),
+      ) as _i4.Future<List<_i5.ActivityModel>>);
   @override
-  _i3.Future<List<_i4.ActivityModel>> getUserSubscribedActivities() =>
+  _i4.Future<List<_i6.AdminActivityModel>> getAdminAllActivities() =>
       (super.noSuchMethod(
         Invocation.method(
-          #getUserSubscribedActivities,
+          #getAdminAllActivities,
           [],
         ),
-        returnValue:
-            _i3.Future<List<_i4.ActivityModel>>.value(<_i4.ActivityModel>[]),
-      ) as _i3.Future<List<_i4.ActivityModel>>);
+        returnValue: _i4.Future<List<_i6.AdminActivityModel>>.value(
+            <_i6.AdminActivityModel>[]),
+      ) as _i4.Future<List<_i6.AdminActivityModel>>);
   @override
-  _i3.Future<bool> postSubscribe(
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
+  _i4.Future<List<_i2.EnrollsActivityModel>> getAllActivitiesLogged() =>
       (super.noSuchMethod(
+        Invocation.method(
+          #getAllActivitiesLogged,
+          [],
+        ),
+        returnValue: _i4.Future<List<_i2.EnrollsActivityModel>>.value(
+            <_i2.EnrollsActivityModel>[]),
+      ) as _i4.Future<List<_i2.EnrollsActivityModel>>);
+  @override
+  _i4.Future<List<_i2.EnrollsActivityModel>> getActivityWithEnrollments(
+          String? code) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getActivityWithEnrollments,
+          [code],
+        ),
+        returnValue: _i4.Future<List<_i2.EnrollsActivityModel>>.value(
+            <_i2.EnrollsActivityModel>[]),
+      ) as _i4.Future<List<_i2.EnrollsActivityModel>>);
+  @override
+  _i4.Future<bool> postSubscribe(String? activityCode) => (super.noSuchMethod(
         Invocation.method(
           #postSubscribe,
-          [
-            activityId,
-            activityDate,
-          ],
+          [activityCode],
         ),
-        returnValue: _i3.Future<bool>.value(false),
-      ) as _i3.Future<bool>);
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
   @override
-  _i3.Future<bool> postUnsubscribe(
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
-      (super.noSuchMethod(
+  _i4.Future<bool> postUnsubscribe(String? activityCode) => (super.noSuchMethod(
         Invocation.method(
           #postUnsubscribe,
-          [
-            activityId,
-            activityDate,
-          ],
+          [activityCode],
         ),
-        returnValue: _i3.Future<bool>.value(false),
-      ) as _i3.Future<bool>);
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
   @override
-  _i3.Future<dynamic> putActivity(
+  _i4.Future<dynamic> editActivity(
     String? id,
-    _i4.ActivityModel? activity,
+    _i5.ActivityModel? activity,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
-          #putActivity,
+          #editActivity,
           [
             id,
             activity,
           ],
         ),
-        returnValue: _i3.Future<dynamic>.value(),
-      ) as _i3.Future<dynamic>);
+        returnValue: _i4.Future<dynamic>.value(),
+      ) as _i4.Future<dynamic>);
   @override
-  _i3.Future<dynamic> postActivity(_i4.ActivityModel? activity) =>
+  _i4.Future<dynamic> createActivity(_i5.ActivityModel? activity) =>
       (super.noSuchMethod(
         Invocation.method(
-          #postActivity,
+          #createActivity,
           [activity],
         ),
-        returnValue: _i3.Future<dynamic>.value(),
-      ) as _i3.Future<dynamic>);
+        returnValue: _i4.Future<dynamic>.value(),
+      ) as _i4.Future<dynamic>);
   @override
-  _i3.Future<dynamic> removeActivity(String? id) => (super.noSuchMethod(
+  _i4.Future<dynamic> deleteActivity(String? activityCode) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #removeActivity,
-          [id],
+          #deleteActivity,
+          [activityCode],
         ),
-        returnValue: _i3.Future<dynamic>.value(),
-      ) as _i3.Future<dynamic>);
+        returnValue: _i4.Future<dynamic>.value(),
+      ) as _i4.Future<dynamic>);
   @override
-  _i3.Future<String> getLinkCsv() => (super.noSuchMethod(
+  _i4.Future<dynamic> postConfirmAttendance(
+    String? activityCode,
+    String? confirmationCode,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #postConfirmAttendance,
+          [
+            activityCode,
+            confirmationCode,
+          ],
+        ),
+        returnValue: _i4.Future<dynamic>.value(),
+      ) as _i4.Future<dynamic>);
+  @override
+  _i4.Future<String> postGenerateAttendanceConfirmation(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #postGenerateAttendanceConfirmation,
+          [activityCode],
+        ),
+        returnValue: _i4.Future<String>.value(''),
+      ) as _i4.Future<String>);
+  @override
+  _i4.Future<dynamic> postDeleteAttendanceConfirmation(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #postDeleteAttendanceConfirmation,
+          [activityCode],
+        ),
+        returnValue: _i4.Future<dynamic>.value(),
+      ) as _i4.Future<dynamic>);
+  @override
+  _i4.Future<_i2.EnrollsActivityModel> postManualChangeAttendance(
+    String? activityCode,
+    String? userId,
+    _i7.EnrollmentStateEnum? state,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #postManualChangeAttendance,
+          [
+            activityCode,
+            userId,
+            state,
+          ],
+        ),
+        returnValue: _i4.Future<_i2.EnrollsActivityModel>.value(
+            _FakeEnrollsActivityModel_0(
+          this,
+          Invocation.method(
+            #postManualChangeAttendance,
+            [
+              activityCode,
+              userId,
+              state,
+            ],
+          ),
+        )),
+      ) as _i4.Future<_i2.EnrollsActivityModel>);
+  @override
+  _i4.Future<String> getLinkCsv() => (super.noSuchMethod(
         Invocation.method(
           #getLinkCsv,
           [],
         ),
-        returnValue: _i3.Future<String>.value(''),
-      ) as _i3.Future<String>);
+        returnValue: _i4.Future<String>.value(''),
+      ) as _i4.Future<String>);
 }

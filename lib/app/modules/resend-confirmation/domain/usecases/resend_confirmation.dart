@@ -1,4 +1,4 @@
-import '../domain/repository/resend_confirmation_datasource_interface.dart';
+import '../repository/resend_confirmation_datasource_interface.dart';
 
 abstract class ResendConfirmationInterface {
   Future<String> call(String username);

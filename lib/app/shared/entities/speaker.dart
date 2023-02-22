@@ -1,13 +1,11 @@
 class Speaker {
-  final String? name;
-  final String? bio;
-  final String? linkPhoto;
+  String? name;
+  String? bio;
+  String? linkPhoto;
+  String? company;
 
-  Speaker({
-    this.linkPhoto,
-    required this.name,
-    required this.bio,
-  });
+  Speaker(
+      {this.linkPhoto, required this.name, required this.bio, this.company});
 
   factory Speaker.newInstance() {
     return Speaker(name: '', bio: '', linkPhoto: '');

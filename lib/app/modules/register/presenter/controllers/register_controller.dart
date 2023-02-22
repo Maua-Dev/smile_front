@@ -1,7 +1,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
-import 'package:smile_front/app/modules/register/usecases/register_user.dart';
+import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
+import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/entities/user_registration.dart';
@@ -9,26 +10,20 @@ import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../external/errors/errors.dart';
-import 'package:cpf_cnpj_validator/cpf_validator.dart';
 part 'register_controller.g.dart';
 
 class RegisterController = RegisterControllerBase with _$RegisterController;
 
 abstract class RegisterControllerBase with Store {
-  final RegisterRepositoryInterface registerUserRepository;
   final FirebaseAnalyticsService analytics;
   final RegisterUserInterface registerUser;
 
-  RegisterControllerBase(
-      {required this.analytics,
-      required this.registerUserRepository,
-      required this.registerUser});
+  RegisterControllerBase({required this.analytics, required this.registerUser});
 
   @computed
-  int? get raInt => ra == ''
+  String? get raInt => ra == ''
       ? null
-      : int.parse(
-          ra.replaceAll('-', '').replaceAll('.', '').replaceAll(' ', ''));
+      : ra.replaceAll('-', '').replaceAll('.', '').replaceAll(' ', '');
 
   @observable
   String errors = '';
@@ -55,9 +50,6 @@ abstract class RegisterControllerBase with Store {
   bool hasSocialName = false;
 
   @observable
-  String cpf = '';
-
-  @observable
   String email = '';
 
   @observable
@@ -77,9 +69,6 @@ abstract class RegisterControllerBase with Store {
 
   @observable
   String verifyPassword = '';
-
-  @observable
-  bool canSendEmails = false;
 
   @observable
   bool acceptTermsOfUse = false;
@@ -153,25 +142,6 @@ abstract class RegisterControllerBase with Store {
   }
 
   @action
-  Future<void> setCpf(String value) async {
-    value = value.replaceAll('.', '');
-    value = value.replaceAll('-', '');
-    cpf = value;
-  }
-
-  @action
-  String? validateCpf(String? value) {
-    if (value!.isEmpty) {
-      return S.current.fieldRequired;
-    } else if (!CPFValidator.isValid(value)) {
-      value = value.replaceAll('.', '');
-      value = value.replaceAll('-', '');
-      return S.current.fieldCpfInvalid;
-    }
-    return null;
-  }
-
-  @action
   Future<void> setEmail(String value) async {
     email = value.replaceAll(' ', '');
   }
@@ -183,7 +153,6 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
-    value = value.replaceAll('+', '');
     phone = value;
   }
 
@@ -299,16 +268,17 @@ abstract class RegisterControllerBase with Store {
         name: name,
         socialName: socialName == "" ? null : socialName,
         email: email,
-        cpfRne: cpf,
         ra: raInt,
         password: password,
-        acceptEmails: canSendEmails,
         acceptTerms: acceptTermsOfUse,
-        phoneNumber: phone,
+        phone: phone,
         acceptEmailNotifications: acceptEmailNotifications,
         acceptSMSNotifications: acceptSMSNotifications,
         acceptWPPNotifications: acceptWPPNotifications,
         acceptAPPWEBNotifications: acceptAPPWEBNotifications,
+        accessLevel: AccessLevelEnum.USER,
+        certificateWithSocialName: hasSocialName,
+        role: isMauaStudent ? UserRolesEnum.STUDENT : UserRolesEnum.EXTERNAL,
       );
 
   @action
@@ -346,8 +316,8 @@ abstract class RegisterControllerBase with Store {
   }
 
   @action
-  Future<void> setCanSendEmails(bool? value) async {
-    canSendEmails = value!;
+  Future<void> setAcceptEmailNotifications(bool? value) async {
+    acceptEmailNotifications = value!;
   }
 
   @action

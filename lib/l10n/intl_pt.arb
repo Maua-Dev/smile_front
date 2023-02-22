@@ -9,14 +9,15 @@
     
     "knowMore": "SAIBA MAIS >>>",
     "speakersTitle": "Principais Palestrantes - 2022",
+    "speakersAddTitle": "Adicionar Palestrante",
     "speakersSwipe": "DESLIZE PARA VER MAIS >>>",
     "speakersSchemaName": "{speakers, select, nina{Nina Silva} viviane{Viviane Nunes} leila{Leila Ferreira} boris{Bóris Fabris} marco{Marco Antonio Teixeira} willian{Dr. William Schoenell} other{}}",
     "speakersSchemaDescription": "{speakers, select, nina{Cursou administração na Universidade Federal Fluminense, teve seu primeiro contato com tecnologia no segundo ano da faculdade, em seu primeiro emprego. Foi convidada a integrar o time da empresa que trabalhava com o sistema ERP da SAP. A partir de então, aprofundou seus estudos, tirou a sua certiﬁcação e trilhou seu caminho dentro da tecnologia.} viviane{Viviane Nunes é empresária e diretora da VN Comunicação.  Especialista em relações institucionais, possui especialização em Eficiência Energética e em Gestão de Negócios em Petróleo, Gás e  Biocombustíveis. Em suas palestras são abordados assuntos voltados à estratégias, mulheres no mercado de trabalho e incentivo à formação profissional.} leila{Leila Ferreira é graduada em Jornalismo e Letras, com mestrado em Comunicação pela Universidade de Londres, trabalhou como repórter na Rede Globo Minas e, durante dez anos, apresentou o programa “Leila Entrevista”, na Rede Minas e TV Alterosa/SBT, que produziu 13 histórias internacionais. Ela é autora dos livros “Viver não dói”, “A arte de ser leve”, “Mulheres – Por que será que elas…?” e “Leila Entrevista: Bastidores”.} boris{Designer, Consultor de Design Automotivo, professor e palestrante com experiências de trabalho internacionais nos EUA, Índia, China, Europa e diversos outros países.} marco{Cientista Político, Professor e Pesquisador na área de Gestão e Políticas Públicas. Foi comentarista do programa CBNSP, da Rádio CBN, entre 2012 e 2021, onde tratou de questões ligadas aos problemas da cidade de São Paulo e suas políticas públicas. É um dos editores do Blog \"Gestão, Política & Sociedade\" abrigado no jornal O Estado de São Paulo.} willian{Se formou em Física pela Univerisade Federal de Santa Catarina, com Doutorado em Astronomia pela Universidade de Granada, trabalhou como Bolsista Técnico FAPESP para a construção de um telescópio robótico no Chile e atualmente trabalha como Especialista em Controle de Instrumentos no Observatório Gigante de Magalhães (GMT).} other{}}",
     
     "activitiesTitle": "Atividades",
-    "activitiesOfferedName": "{activity, select, CURSOS{Cursos} PALESTRAS{Palestras} PALESTRAS_ALTO_IMPACTO{Palestras de Alto Impacto} VISITAS_TECNICAS{Visitas Técnicas} COMPETICOES_ACADEMICAS{Competições Acadêmicas} HACKATHON{Hackathon} FEIRA_ESTAGIOS{Feira de Estágios} CAFE_EX_ALUNOS{Café com Ex-aluno(a)} ACADEMIA_DE_PROFESSORES{Academia de Professores} ATIVIDADE_CULTURAL{Atividade Cultura} GCSP{GCSP} ATIVIDADE_ESPORTIVA{Atividade Esportiva} other{Atividades}}",
-    "activitiesOfferedDescription": "{activity, select, CURSOS{Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.} PALESTRAS{As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.} PALESTRAS_ALTO_IMPACTO{As palestras de alto impacto serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!} VISITAS_TECNICAS{Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.} COMPETICOES_ACADEMICAS{Durante a SMILE, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).} HACKATHON{Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa é uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.} FEIRA_ESTAGIOS{Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes.} CAFE_EX_ALUNOS{A atividade tem como objetivo promover conversas informais entre estudantes do IMT e egressos que ocupam posições de destaque em suas áreas de atuação. Venha participar!} ACADEMIA_DE_PROFESSORES{A Academia de Professores tem como foco a formação continuada, disseminação de estratégias e ferramentas de ensino para professores do IMT e professores do Ensino Médio.} ATIVIDADE_CULTURAL{Você faz parte de uma banda? Canta? Toca algum instrumento? Gosta de poesia, literatura? Faz teatro? Dança? Venha compatilhar seu talento com a gente! Será uma tarde de apresentações, integração e muita alegria no campus.} GCSP{O GCSP - Grand Challenges Scholars Program é um programa que oferece aos alunos de graduação a oportunidade de trabalhar com grandes desafios da humanidade, sendo mentorados por professores.} ATIVIDADE_ESPORTIVA{Os participantes conhecerão duas atividades interessantes: spikeball e flag football. Além disso, também serão oferecidas diversas atividades, tais como, ginástica funcional, meditação energizante e pilates! Todos os participantes poderão interagir com o(a) palestrante e professores(as)! Acompanhe e participe!} other{Atividades}}",
-    
+    "activitiesOfferedName": "{activity, select, COURSE{Cursos} LECTURES{Palestras} HIGH_IMPACT_LECTURES{Palestras de Alto Impacto} TECHNICAL_VISITS{Visitas Técnicas} ACADEMIC_COMPETITIONS{Competições Acadêmicas} HACKATHON{Hackathon} INTERNSHIP_FAIR{Feira de Estágios} ALUMNI_CAFE{Café com Ex-aluno(a)} PROFESSORS_ACADEMY{Academia de Professores} CULTURAL_ACTIVITY{Atividade Cultura} GCSP{GCSP} SPORTS_ACTIVITY{Atividade Esportiva} other{Atividades}}",
+    "activitiesOfferedDescription": "{activity, select, COURSE{Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.} LECTURES{As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.} HIGH_IMPACT_LECTURES{As palestras de alto impacto serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!} TECHNICAL_VISITS{Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.} ACADEMIC_COMPETITIONS{Durante a SMILE, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).} HACKATHON{Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa é uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.} INTERNSHIP_FAIR{Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes.} ALUMNI_CAFE{A atividade tem como objetivo promover conversas informais entre estudantes do IMT e egressos que ocupam posições de destaque em suas áreas de atuação. Venha participar!} PROFESSORS_ACADEMY{A Academia de Professores tem como foco a formação continuada, disseminação de estratégias e ferramentas de ensino para professores do IMT e professores do Ensino Médio.} CULTURAL_ACTIVITY{Você faz parte de uma banda? Canta? Toca algum instrumento? Gosta de poesia, literatura? Faz teatro? Dança? Venha compatilhar seu talento com a gente! Será uma tarde de apresentações, integração e muita alegria no campus.} GCSP{O GCSP - Grand Challenges Scholars Program é um programa que oferece aos alunos de graduação a oportunidade de trabalhar com grandes desafios da humanidade, sendo mentorados por professores.} SPORTS_ACTIVITY{Os participantes conhecerão duas atividades interessantes: spikeball e flag football. Além disso, também serão oferecidas diversas atividades, tais como, ginástica funcional, meditação energizante e pilates! Todos os participantes poderão interagir com o(a) palestrante e professores(as)! Acompanhe e participe!} other{Atividades}}",
+
     "sponsorsTitle": "Patrocinadores",
     "mauaEntititesTitle": "Entidades Participantes da Smile",
     "mauaEntitiesSchemaSocialMidia": "{entity, select, atletica{gaspar_maua} ca{camaua} diversidade{diversidademaua} enactus{enactusmaua} esports{esportsmaua} inova{inovamaua} mauajr{mauajr} mauasocial{mauasocial} mbc{mauabusiness} nae{naemaua} dev{devcommunitymaua} nine{nine.maua} finance{imtfinance} baja{bajamaua} ecomaua{eco_maua} mauaracing2{mauaracingh2} mauaracing{mauaracing} other{}}",
@@ -27,6 +28,7 @@
     "beSponsorMoreInfoTitle": "INFORMAÇÕES SOBRE PATROCÍNIO",
     "beSponsorMoreInfoDescription": "Caso tenha interesse em patrocinar o evento, clique aqui para mais informações.",
     "year2023": "2023",
+    "dateTitle": "Data",
     "monthJanuary": "Janeiro",
     "monthFebruary": "Fevereiro",
     "discount10": "10% Off",
@@ -61,11 +63,14 @@
     "clickToGoBack": "Clique aqui para voltar",
     "closeTitle": "Fechar",
     "confirmTitle": "Confirmar",
+    "exitTitle": "Sair",
+    "cancelTitle": "Cancelar",
+    "saveTitle": "Salvar",
 
 
 
 
-    "loginUsernamePlaceholder": "CPF ou E-mail",
+    "loginUsernamePlaceholder": "E-mail",
     "loginPasswordPlaceholder": "Senha",
     "loginWithoutRecordTitle": "Não tenho cadastro",
     "loginForgotPasswordTitle": "Esqueci minha senha",
@@ -77,7 +82,6 @@
     
     "registerFullNamePlaceholder": "Nome Completo",
     "registerSocialNamePlaceholder": "Nome Social",
-    "registerCPFPlaceholder": "CPF",
     "registerEmailPlaceholder": "E-mail",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
     "registerPhonePlaceholder": "Telefone Celular",
@@ -100,6 +104,7 @@
         }
     },
     "confirmEmailNotificationSubtitle": "Será necessário acessar sua caixa de entrada para validar seu cadastro.",
+    "confirmAllFieldsConrrectlyFilled": "Confira se todos os campos estão corretamente preenchidos.",
 
 
 
@@ -110,9 +115,9 @@
     "fieldEmailsEqualsRequired": "Os e-mails devem ser iguais",
     "fieldPasswordEqualsRequired": "Os campos \"Senha\" e \"Confirme sua senha\" devem ser iguais",
     "fieldPasswordRequisits": "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, $, %, ^, &, *, -)  \n - Mínimo de 8 caracteres",
-    "fieldCpfInvalid": "CPF inválido",
     "fieldDDDRequired": "Insira o número com DDD",
     "fieldRAInvalid": "RA inválido",
+    "fieldFillAllRequired": "Preencha todos os campos!",
 
 
 
@@ -132,6 +137,9 @@
 
     "successEmailSend": "E-mail enviado com sucesso!",
 
+    "confirmToContinue": "Tem certeza que deseja continuar?",
+    "lostOldDataWarn": "Ao salvar todos os dados antigos serão perdidos.",
+
     "successSendingCode": "Código enviado com sucesso!",
     "errorSendingCode": "Falha ao enviar o código, e-mail não cadastrado ou não confirmado.",
 
@@ -143,6 +151,22 @@
 
     "successChangePasswordRedirect": "Senha alterada com sucesso! \n Redirecionando para o login...",
 
+    "admDashboardAppBarTitle": "Página do Administrador",
+    "admReportsTitle": "Relatórios",
+    
+    "cleanFiltersTitle": "Limpar Filtros",
+
+    "activityCreateTitle": "Criar Atividade",
+    "activityEditTitle": "Editar Atividade",
+    "activityTypeTitle": "Tipo de Atividade",
+    "activityNameTitle": "Titulo da Atividade",
+
+    "descriptionTitle": "Descrição",
+
+    "scheduleTitle": "Hora",
+    "scheduleAddTitle": "Adicionar Horário",
+
+    "codeTitle": "Código",
 
 
     "yesTitle": "Sim",

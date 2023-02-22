@@ -4,7 +4,6 @@ import 'package:smile_front/app/modules/home/ui/pages/footer/footer.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/speakers_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/smile_loading_logo_widget.dart';
-import 'package:smile_front/app/modules/home/ui/pages/widgets/video_player/video_player_widget.dart';
 import 'package:smile_front/app/shared/widgets/app_bar/home_app_bar_widget.dart';
 import 'package:smile_front/app/shared/widgets/drawer/end_drawer_widget.dart';
 import '../../../../app_module.dart';
@@ -45,8 +44,10 @@ class _HomePageState extends State<HomePage> {
   void redirect() async {
     await Modular.isModuleReady<AppModule>();
     var authController = Modular.get<AuthController>();
-    if (authController.accessLevel == 'ADMIN') {
+    if (authController.role == 'ADMIN') {
       Modular.to.navigate('/adm');
+    } else if (authController.role == 'PROFESSOR') {
+      Modular.to.navigate('/professor');
     } else {
       Modular.to.navigate('/user/home');
     }
@@ -89,22 +90,6 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           children: [
                             SizedBox(key: homeKey, child: const MainHomePage()),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical:
-                                      MediaQuery.of(context).size.width < 1024
-                                          ? 4
-                                          : 24),
-                              child: SizedBox(
-                                height: MediaQuery.of(context).size.width < 1024
-                                    ? 330
-                                    : 520,
-                                width: MediaQuery.of(context).size.width < 1024
-                                    ? 400
-                                    : 800,
-                                child: const VideoPlayerWidget(),
-                              ),
-                            ),
                             const SpeakersHomePage(),
                             SizedBox(
                                 key: activityKey,

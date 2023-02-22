@@ -10,7 +10,7 @@ class AuthGuardAdm implements RouteGuard {
     if (!authController.isLogged) {
       await authController.verifyIfHaveTokens();
     }
-    if (authController.accessLevel == 'ADMIN' && authController.isLogged) {
+    if (authController.role == 'ADMIN' && authController.isLogged) {
       return true;
     }
     return false;

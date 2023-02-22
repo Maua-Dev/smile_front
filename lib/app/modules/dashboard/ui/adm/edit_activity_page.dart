@@ -48,10 +48,11 @@ class _EditActivityPageState
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
                 child: TextHeader(
-                  title: 'Editar Atividade',
+                  title: S.of(context).activityEditTitle,
                   leftPadding: 24,
                 ),
               ),
@@ -69,7 +70,7 @@ class _EditActivityPageState
                                 ? 16
                                 : 20),
                         filledColor: Colors.white,
-                        titulo: 'Tipo de Atividade',
+                        titulo: S.of(context).activityTypeTitle,
                         value: controller.activityToEdit.type,
                         items: ActivityEnum.values
                             .toList()
@@ -88,7 +89,7 @@ class _EditActivityPageState
                     SizedBox(
                         width: MediaQuery.of(context).size.width * 0.1,
                         child: TextFieldDialogWidget(
-                          labelText: 'Código',
+                          labelText: S.of(context).codeTitle,
                           padding: false,
                           onChanged: controller.setActivityCode,
                           value: controller.activityToEdit.activityCode,
@@ -98,7 +99,7 @@ class _EditActivityPageState
                     ),
                     Flexible(
                         child: TextFieldDialogWidget(
-                      labelText: 'Titulo da Atividade',
+                      labelText: S.of(context).activityNameTitle,
                       padding: false,
                       onChanged: controller.setTitle,
                       value: controller.activityToEdit.title,
@@ -107,7 +108,7 @@ class _EditActivityPageState
                 ),
               ),
               TextFieldDialogWidget(
-                labelText: 'Descrição',
+                labelText: S.of(context).descriptionTitle,
                 value: controller.activityToEdit.description,
                 onChanged: controller.setDescription,
               ),
@@ -116,56 +117,52 @@ class _EditActivityPageState
                     shrinkWrap: true,
                     itemCount: 1,
                     itemBuilder: (context, index) {
-                      var hour = controller.activityToEdit.schedule.date == null
+                      var hour = controller.activityToEdit.startDate == null
                           ? ''
                           : DateFormat('HH:mm')
-                              .format(controller.activityToEdit.schedule.date!);
-                      var date = controller.activityToEdit.schedule.date == null
+                              .format(controller.activityToEdit.startDate!);
+                      var date = controller.activityToEdit.startDate == null
                           ? ''
                           : DateFormat('dd-MM-yyyy')
-                              .format(controller.activityToEdit.schedule.date!);
-                      var duration =
-                          controller.activityToEdit.schedule.duration == null
-                              ? ''
-                              : DateFormat('HH:mm').format(
-                                  controller.activityToEdit.schedule.duration!);
+                              .format(controller.activityToEdit.startDate!);
+
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 114, vertical: 8),
                         child: ScheduleAddWidget(
-                          enableSubscription: controller
-                              .activityToEdit.schedule.acceptSubscription,
+                          enableSubscription:
+                              controller.activityToEdit.acceptingNewEnrollments,
                           onChangedEnableSubscription: (valueBool) {
                             setState(() {
-                              controller.setEnableSubscription(
-                                  valueBool!, index);
+                              controller.setEnableSubscription(valueBool!);
                             });
                           },
                           date: date,
                           hour: hour,
-                          link: controller.activityToEdit.schedule.link,
+                          link: controller.activityToEdit.link,
                           onChangedLink: (value) {
-                            controller.setLink(value, index);
+                            controller.setLink(value);
                           },
-                          location: controller.activityToEdit.schedule.location,
+                          location: controller.activityToEdit.place,
                           onChangedLocation: (value) {
-                            controller.setLocation(value, index);
+                            controller.setLocation(value);
                           },
-                          duration: duration,
+                          duration:
+                              controller.activityToEdit.duration.toString(),
                           onChangedDuration: (value) {
-                            controller.setDuration(value, index);
+                            controller.setDuration(value);
                           },
                           length: 1,
-                          totalParticipants: controller
-                              .activityToEdit.schedule.totalParticipants,
+                          totalParticipants:
+                              controller.activityToEdit.totalSlots,
                           onChangedDate: (value) {
-                            controller.setDate(value, index);
+                            controller.setDate(value);
                           },
                           onChangedHour: (value) {
-                            controller.setHour(value, index);
+                            controller.setHour(value);
                           },
                           onChangedParticipants: (value) {
-                            controller.setParticipants(int.parse(value), index);
+                            controller.setParticipants(int.parse(value));
                           },
                           removeSchedule: () {},
                           onPressedIconDate: () {
@@ -188,8 +185,7 @@ class _EditActivityPageState
                               },
                             ).then((value) {
                               controller.setDate(
-                                  DateFormat('dd-MM-yyyy').format(value!),
-                                  index);
+                                  DateFormat('dd-MM-yyyy').format(value!));
                             });
                           },
                           onPressedIconTime: () {
@@ -209,7 +205,7 @@ class _EditActivityPageState
                                 );
                               },
                             ).then((value) {
-                              controller.setHour(value!.format(context), index);
+                              controller.setHour(value!.format(context));
                             });
                           },
                         ),
@@ -221,7 +217,7 @@ class _EditActivityPageState
                   padding:
                       const EdgeInsets.symmetric(horizontal: 114, vertical: 16),
                   child: FormsButtonWidget(
-                      buttonTittle: 'Adicionar horário',
+                      buttonTittle: S.of(context).scheduleAddTitle,
                       onPressed: () {},
                       backgroundColor: AppColors.brandingOrange,
                       icon:
@@ -260,7 +256,7 @@ class _EditActivityPageState
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 114),
                   child: FormsButtonWidget(
-                      buttonTittle: 'Adicionar palestrante',
+                      buttonTittle: S.of(context).speakersAddTitle,
                       onPressed: controller.addSpeaker,
                       backgroundColor: AppColors.brandingOrange,
                       icon: const Icon(
@@ -277,7 +273,7 @@ class _EditActivityPageState
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     FormsButtonWidget(
-                        buttonTittle: 'Cancelar',
+                        buttonTittle: S.of(context).cancelTitle,
                         onPressed: () {
                           Modular.to.navigate('/adm');
                         },
@@ -286,7 +282,7 @@ class _EditActivityPageState
                       width: 40,
                     ),
                     FormsButtonWidget(
-                        buttonTittle: 'Salvar',
+                        buttonTittle: S.of(context).saveTitle,
                         onPressed: () {
                           if (controller.isFilled()) {
                             showDialog(
@@ -295,10 +291,8 @@ class _EditActivityPageState
                                 return Observer(builder: (context) {
                                   return ActionConfirmationDialogWidget(
                                       isLoading: controller.isLoading,
-                                      title:
-                                          'Tem certeza que deseja continuar?',
-                                      content:
-                                          'Ao salvar todos os dados antigos serão perdidos.',
+                                      title: S.of(context).confirmToContinue,
+                                      content: S.of(context).lostOldDataWarn,
                                       onPressed: () {
                                         controller.editUserActivity();
                                       });
@@ -309,10 +303,11 @@ class _EditActivityPageState
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return const CustomAlertDialogWidget(
-                                  title: 'Preencha todos os campos!',
-                                  content:
-                                      'Confira se todos os campos estão corretamente preenchidos.',
+                                return CustomAlertDialogWidget(
+                                  title: S.of(context).fieldFillAllRequired,
+                                  content: S
+                                      .of(context)
+                                      .confirmAllFieldsConrrectlyFilled,
                                 );
                               },
                             );

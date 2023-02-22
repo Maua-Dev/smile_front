@@ -8,7 +8,7 @@ import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/register/domain/repositories/register_informations_repository_interface.dart';
 import 'package:smile_front/app/modules/register/presenter/controllers/register_controller.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
-import 'package:smile_front/app/modules/register/usecases/register_user.dart';
+import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import 'package:smile_front/generated/l10n.dart';
 
@@ -20,7 +20,6 @@ import 'register_controller_test.mocks.dart';
 void main() {
   initModules([AppModule(), RegisterModule()]);
   setupCloudFirestoreMocks();
-  RegisterRepositoryInterface repository = MockRegisterRepositoryInterface();
   late RegisterController controller;
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
   RegisterUserInterface registerUser = MockRegisterUserInterface();
@@ -28,10 +27,8 @@ void main() {
   setUpAll(() async {
     await Firebase.initializeApp();
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
-    controller = RegisterController(
-        registerUserRepository: repository,
-        analytics: analytics,
-        registerUser: registerUser);
+    controller =
+        RegisterController(analytics: analytics, registerUser: registerUser);
   });
 
   test('setAcceptImage', () {
@@ -78,27 +75,6 @@ void main() {
     controller.hasSocialName = false;
     var str = 'Name';
     expect(controller.validateSocialName(str), null);
-  });
-
-  test('setCpf', () {
-    var str = '11759675059';
-    controller.setCpf(str);
-    expect(controller.cpf, str);
-  });
-
-  test('validateCpf if is empty : String Error Message', () {
-    var str = '';
-    expect(controller.validateCpf(str), isA<String>());
-  });
-
-  test('validateCpf if CPF is not valid : String Error Message', () {
-    var str = '02020202';
-    expect(controller.validateCpf(str), isA<String>());
-  });
-
-  test('validateCpf is ok : null', () {
-    var str = '49846129831';
-    expect(controller.validateCpf(str), null);
   });
 
   test('setEmail', () {
@@ -201,8 +177,8 @@ void main() {
   });
 
   test('setCanSendEmails', () {
-    controller.setCanSendEmails(true);
-    expect(controller.canSendEmails, true);
+    controller.setAcceptEmailNotifications(true);
+    expect(controller.acceptEmailNotifications, true);
   });
 
   test('setEmailNotifications', () {

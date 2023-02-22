@@ -3,29 +3,31 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
-import 'package:smile_front/app/modules/auth/usecases/login_with_cpf_rne.dart';
-import 'package:smile_front/app/modules/auth/usecases/refresh_token.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
+import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_admin_activities_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
-import '../user/all_activities_user_dashboard_controller_test.mocks.dart' as u;
 import 'adm_dashboard_controller_test.mocks.dart';
 
-@GenerateMocks([GetDownloadLinkCsvInterface, DeleteActivityInterface])
+@GenerateMocks([
+  GetDownloadLinkCsvInterface,
+  DeleteActivityInterface,
+  GetAdminActivitiesInterface
+])
 void main() {
   GetDownloadLinkCsvInterface getDownloadLinkCsv =
       MockGetDownloadLinkCsvInterface();
-  GetAllUserActivitiesInterface getAllUserActivities =
-      u.MockGetAllUserActivitiesInterface();
-  LoginWithCpfRneInterface loginWithCpfRne = MockLoginWithCpfRneInterface();
+  GetAdminActivitiesInterface getAdminActivities =
+      MockGetAdminActivitiesInterface();
+  LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   DeleteActivityInterface deleteActivity = MockDeleteActivityInterface();
 
@@ -36,119 +38,160 @@ void main() {
 
   late AuthController authController;
 
-  final mockActivities = <ActivityModel>[
-    ActivityModel(
-      id: '0',
+  final mockActivities = <AdminActivityModel>[
+    AdminActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 01',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSES,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 14, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-      ),
+      startDate: DateTime.parse('2022-05-16 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
+      enrollments: [],
     ),
-    ActivityModel(
-      id: '0',
+    AdminActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 01',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSES,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 15, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-      ),
+      startDate: DateTime.parse('2022-05-16 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
+      enrollments: [],
     ),
-    ActivityModel(
-      id: '0',
+    AdminActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 01',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSES,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 16, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-      ),
+      startDate: DateTime.parse('2022-05-16 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
+      enrollments: [],
     ),
-    ActivityModel(
-      id: '1',
+    AdminActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 02',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSES,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
-      ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 17, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-      ),
-    ),
-    ActivityModel(
-      id: '2',
-      activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 03',
-      description: 'Teste de atividade mock',
-      speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 18, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-      ),
+      startDate: DateTime.parse('2022-05-16 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
+      enrollments: [],
     ),
   ];
 
   setUpAll(() {
-    when(getAllUserActivities()).thenAnswer((_) async => mockActivities);
+    when(getAdminActivities()).thenAnswer((_) async => mockActivities);
     when(getDownloadLinkCsv()).thenAnswer((_) async => '');
     authController = AuthController(
-        refreshToken: refreshToken,
-        loginWithCpfRne: loginWithCpfRne,
-        storage: secureStorage,
-        analytics: analytics);
+      refreshToken: refreshToken,
+      loginWithEmail: loginWithEmail,
+      storage: secureStorage,
+      analytics: analytics,
+    );
     controller = AdmDashboardController(
-      getAllUserActivities: getAllUserActivities,
+      getAdminActivities: getAdminActivities,
       getDownloadLinkCsv: getDownloadLinkCsv,
       authController: authController,
       deleteActivity: deleteActivity,
@@ -161,7 +204,7 @@ void main() {
   });
 
   test('setTypeFilter', () {
-    var value = ActivityEnum.CURSOS;
+    var value = ActivityEnum.COURSES;
     controller.setTypeFilter(value);
     expect(controller.typeFilter, value);
   });
@@ -195,7 +238,7 @@ void main() {
   });
 
   test('filterActivitiesByType', () {
-    var type = ActivityEnum.CURSOS;
+    var type = ActivityEnum.COURSES;
     var list = mockActivities.where((element) => element.type == type).toList();
     expect(list, controller.filterActivitiesByType(type, mockActivities));
   });
@@ -203,8 +246,8 @@ void main() {
   test('filterActivitiesByDate', () {
     var date = DateTime.utc(2022, 03, 18, 13);
     var list = mockActivities
-        .where((element) =>
-            controller.isValidDateFilter(element.schedule.date!, date))
+        .where(
+            (element) => controller.isValidDateFilter(element.startDate!, date))
         .toList();
     expect(list, controller.filterActivitiesByDate(date, mockActivities));
   });
@@ -212,8 +255,8 @@ void main() {
   test('filterActivitiesByHour', () {
     var hour = DateTime.utc(2022, 03, 18, 13);
     var list = mockActivities
-        .where((element) =>
-            controller.isValidHourFilter(element.schedule.date!, hour))
+        .where(
+            (element) => controller.isValidHourFilter(element.startDate!, hour))
         .toList();
     expect(list, controller.filterActivitiesByHour(hour, mockActivities));
   });

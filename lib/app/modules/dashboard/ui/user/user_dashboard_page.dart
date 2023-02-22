@@ -62,14 +62,15 @@ class _UserDashboardPageState
                 Observer(builder: (_) {
                   return NextActivityCardWidget(
                     isUser: true,
-                    link: controller.nextActivity.schedule.link,
-                    location: controller.nextActivity.schedule.location,
-                    duration: controller.nextActivity.schedule.duration,
+                    link: controller.nextActivity.link,
+                    location: controller.nextActivity.place,
+                    duration: controller.nextActivity.duration,
                     onTap: () {
                       var isRegistered = false;
                       var list = controller.subscribedActivitiesList
                           .where((element) =>
-                              element.id == controller.cardNextActivity.id)
+                              element.activityCode ==
+                              controller.cardNextActivity.activityCode)
                           .toList();
                       if (list.isNotEmpty) {
                         isRegistered = true;
@@ -83,7 +84,7 @@ class _UserDashboardPageState
                     },
                     name: controller.nextActivity.title,
                     description: controller.nextActivity.description,
-                    date: controller.nextActivity.schedule.date,
+                    date: controller.nextActivity.startDate,
                   );
                 }),
                 TextHeader(
@@ -130,8 +131,9 @@ class _UserDashboardPageState
                           var isRegistered = false;
                           var list = controller.subscribedActivitiesList
                               .where((element) =>
-                                  element.id ==
-                                  controller.weekActivitiesList[index].id)
+                                  element.activityCode ==
+                                  controller
+                                      .weekActivitiesList[index].activityCode)
                               .toList();
                           if (list.isNotEmpty) {
                             isRegistered = true;

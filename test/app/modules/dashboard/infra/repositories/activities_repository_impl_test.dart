@@ -3,7 +3,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/schedule_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/repository/activities_repository_impl.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
@@ -17,119 +16,119 @@ void main() {
       MockActivitiesDatasourceInterface();
   final mockActivities = <ActivityModel>[
     ActivityModel(
-      id: '0',
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 01',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSES,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 14, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-      ),
+      startDate: DateTime.parse('2022-05-16 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
     ),
     ActivityModel(
-      id: '0',
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 01',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSES,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+          company: 'Oracle',
+        ),
+        SpeakerActivityModel(
+          name: 'Gabriel Godoy',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 15, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-      ),
+      startDate: DateTime.parse('2022-05-16 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
     ),
     ActivityModel(
-      id: '0',
       activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 01',
-      description: 'Teste de atividade mock',
+      type: ActivityEnum.COURSES,
+      title:
+          'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+      description:
+          'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
       speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
-      ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 16, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-      ),
-    ),
-    ActivityModel(
-      id: '1',
-      activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 02',
-      description: 'Teste de atividade mock',
-      speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
-      ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 17, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-      ),
-    ),
-    ActivityModel(
-      id: '2',
-      activityCode: 'C01',
-      type: ActivityEnum.CURSOS,
-      title: 'Atividade 03',
-      description: 'Teste de atividade mock',
-      speakers: [
         SpeakerActivityModel(
           name: 'Gabriel Godoy',
-          bio: 'Qualquer',
+          bio: 'Caros participantes, este é um teste, aproveitem a atividade',
           company: 'Oracle',
         ),
       ],
-      schedule: ScheduleActivityModel(
-        date: DateTime.utc(2022, 03, 18, 13),
-        totalParticipants: 20,
-        location: 'H244',
-        acceptSubscription: false,
-      ),
+      startDate: DateTime.parse('2022-05-16 13:00'),
+      totalSlots: 20,
+      duration: 120,
+      place: 'H244',
+      link: 'https://www.google.com.br',
+      acceptingNewEnrollments: false,
+      isExtensive: false,
+      takenSlots: 0,
+      responsibleProfessors: [],
     ),
   ];
 
   setUpAll(() {
-    when(datasource.putActivity('', ActivityModel.newInstance()))
+    when(datasource.editActivity('', ActivityModel.newInstance()))
         .thenAnswer((_) async => null);
-    when(datasource.removeActivity('')).thenAnswer((_) async => null);
-    when(datasource.postUnsubscribe('', DateTime.now()))
-        .thenAnswer((_) async => true);
-    when(datasource.postSubscribe('', DateTime.now()))
-        .thenAnswer((_) async => true);
-    when(datasource.postActivity(ActivityModel.newInstance()))
+    when(datasource.deleteActivity('')).thenAnswer((_) async => null);
+    when(datasource.postUnsubscribe('')).thenAnswer((_) async => true);
+    when(datasource.postSubscribe('')).thenAnswer((_) async => true);
+    when(datasource.createActivity(ActivityModel.newInstance()))
         .thenAnswer((_) async => null);
-    when(datasource.getUserSubscribedActivities())
-        .thenAnswer((_) async => mockActivities);
+    // when(datasource.getAllActivitiesLogged())
+    //     .thenAnswer((_) async => mockActivities);
     when(datasource.getAllActivities()).thenAnswer((_) async => mockActivities);
     repository = ActivitiesRepositoryImpl(datasource: datasource);
   });

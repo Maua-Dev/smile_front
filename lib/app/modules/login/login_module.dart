@@ -22,7 +22,7 @@ class LoginModule extends Module {
             ),
         export: true),
     Bind.lazySingleton<AuthDatasourceInterface>(
-        (i) => AuthDatasourceImpl(dioClient: i(), storage: i())),
+        (i) => AuthDatasourceImpl(storage: i())),
     Bind.lazySingleton<AuthRepositoryInterface>(
         (i) => AuthRepositoryImpl(datasource: i()),
         export: true),

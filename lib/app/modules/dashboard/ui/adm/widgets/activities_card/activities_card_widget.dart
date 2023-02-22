@@ -13,6 +13,7 @@ class ActivitiesCardWidget extends StatelessWidget {
   final String finalTime;
   final int enrolledUsersLength;
   final int totalParticipants;
+  final bool isExtensive;
   final Function() onPressedEdit;
   final Function() onPressedDelete;
   const ActivitiesCardWidget({
@@ -23,6 +24,7 @@ class ActivitiesCardWidget extends StatelessWidget {
     required this.date,
     required this.time,
     required this.finalTime,
+    required this.isExtensive,
     required this.enrolledUsersLength,
     required this.totalParticipants,
     required this.onPressedEdit,
@@ -77,11 +79,12 @@ class ActivitiesCardWidget extends StatelessWidget {
                                     fontWeight: FontWeight.w700,
                                     overflow: TextOverflow.ellipsis)),
                           ),
-                          Icon(
-                            Icons.star_border_outlined,
-                            size: 33,
-                            color: AppColors.brandingOrange,
-                          ),
+                          if (isExtensive)
+                            Icon(
+                              Icons.star_border_outlined,
+                              size: 33,
+                              color: AppColors.brandingOrange,
+                            ),
                         ],
                       ),
                     ),
