@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/dashboard/ui/user/widgets/vertical-nav-b
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../shared/utils/screen_helper.dart';
+import '../../../auth/presenter/controllers/auth_controller.dart';
 
 class LandingUserPage extends StatefulWidget {
   const LandingUserPage({Key? key}) : super(key: key);
@@ -16,10 +17,13 @@ class LandingUserPage extends StatefulWidget {
 class _LandingUserPageState extends State<LandingUserPage> {
   @override
   Widget build(BuildContext context) {
+    var authController = Modular.get<AuthController>();
     return Scaffold(
         drawerScrimColor: Colors.transparent,
-        drawer:
-            Screen.width(context) < tabletSize ? MobileNavBarWidget() : null,
+        drawer: Screen.width(context) < tabletSize
+            ? DrawerDashboardWidget(
+                isProfessor: authController.role == 'PROFESSOR')
+            : null,
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(Screen.height(context) * 0.1),
             child: AppBar(
@@ -57,7 +61,9 @@ class _LandingUserPageState extends State<LandingUserPage> {
             : SafeArea(
                 child: Row(
                   children: [
-                    const VerticalNavBarWidget(),
+                    VerticalNavBarWidget(
+                      accessLevel: authController.role,
+                    ),
                     Flexible(
                       child: Center(
                         child: SizedBox(

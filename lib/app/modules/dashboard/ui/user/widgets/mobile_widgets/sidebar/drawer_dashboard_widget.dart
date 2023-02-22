@@ -6,10 +6,8 @@ import '../../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../../shared/utils/screen_helper.dart';
 
 
-
 class DrawerDashboardWidget extends StatelessWidget {
   DrawerDashboardWidget({super.key, required this.isProfessor});
-
 
   final bool isProfessor;
 

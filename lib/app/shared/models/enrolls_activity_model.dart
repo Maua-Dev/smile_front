@@ -48,7 +48,7 @@ class EnrollsActivityModel extends Activity {
         acceptingNewEnrollments:
             map['activity']['accepting_new_enrollments'] ?? false,
         responsibleProfessors: [
-          ResponsibleProfessorModel(id: '', name: '', role: UserRolesEnum.admin)
+          ResponsibleProfessorModel(id: '', name: '', role: UserRolesEnum.ADMIN)
         ],
         takenSlots: map['activity']['taken_slots'],
         totalSlots: map['activity']['total_slots'],
