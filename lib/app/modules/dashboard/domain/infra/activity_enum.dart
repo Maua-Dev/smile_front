@@ -6,7 +6,7 @@ import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
 
 enum ActivityEnum {
-  COURSE,
+  COURSES,
   LECTURES,
   HIGH_IMPACT_LECTURES,
   TECHNICAL_VISITS,
@@ -31,12 +31,12 @@ extension ActivityEnumExtension on ActivityEnum {
 
   String get linkPhoto {
     switch (this) {
-      case ActivityEnum.COURSE:
+      case ActivityEnum.COURSES:
         return '${previousEditionsBaseUrl}cursos.png';
       case ActivityEnum.LECTURES:
         return '${previousEditionsBaseUrl}palestras.png';
       case ActivityEnum.HIGH_IMPACT_LECTURES:
-        return '${previousEditionsBaseUrl}palestra_alto_impacto.png';
+        return '${previousEditionsBaseUrl}palestras_alto_impacto.png';
       case ActivityEnum.TECHNICAL_VISITS:
         return '${previousEditionsBaseUrl}visitas_tecnicas.png';
       case ActivityEnum.ACADEMIC_COMPETITIONS:

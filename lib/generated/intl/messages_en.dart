@@ -304,7 +304,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorUserAlreadyExist":
             MessageLookupByLibrary.simpleMessage("User already exist."),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Exit"),
-        "fieldCpfInvalid": MessageLookupByLibrary.simpleMessage("Invalid CPF"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Enter the number with DDD"),
         "fieldEmailInvalid":
@@ -351,7 +350,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Resend confirmation email"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "loginUsernamePlaceholder":
-            MessageLookupByLibrary.simpleMessage("CPF or E-mail"),
+            MessageLookupByLibrary.simpleMessage("E-mail"),
         "loginWarningTitle": m9,
         "loginWithoutRecordTitle": MessageLookupByLibrary.simpleMessage(
             "I don\'t have a registration"),
@@ -376,8 +375,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Means of notification about activities:"),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
-        "presenceTitle": MessageLookupByLibrary.simpleMessage("Present"),
-        "registerCPFPlaceholder": MessageLookupByLibrary.simpleMessage("CPF"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "registerCountryPlaceholder":

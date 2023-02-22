@@ -8,8 +8,11 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart'
     as _i4;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_admin_activities_interface.dart'
+    as _i5;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart'
     as _i2;
+import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -58,4 +61,24 @@ class MockDeleteActivityInterface extends _i1.Mock
         ),
         returnValue: _i3.Future<dynamic>.value(),
       ) as _i3.Future<dynamic>);
+}
+
+/// A class which mocks [GetAdminActivitiesInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetAdminActivitiesInterface extends _i1.Mock
+    implements _i5.GetAdminActivitiesInterface {
+  MockGetAdminActivitiesInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<List<_i6.AdminActivityModel>> call() => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+        ),
+        returnValue: _i3.Future<List<_i6.AdminActivityModel>>.value(
+            <_i6.AdminActivityModel>[]),
+      ) as _i3.Future<List<_i6.AdminActivityModel>>);
 }

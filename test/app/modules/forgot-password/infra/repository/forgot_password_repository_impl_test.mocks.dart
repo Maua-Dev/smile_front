@@ -20,12 +20,12 @@ import 'package:smile_front/app/modules/forgot-password/infra/datasources/forgot
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-/// A class which mocks [ForgotPasswordDatasource].
+/// A class which mocks [ForgotPasswordDatasourceInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockForgotPasswordDatasource extends _i1.Mock
-    implements _i2.ForgotPasswordDatasource {
-  MockForgotPasswordDatasource() {
+class MockForgotPasswordDatasourceInterface extends _i1.Mock
+    implements _i2.ForgotPasswordDatasourceInterface {
+  MockForgotPasswordDatasourceInterface() {
     _i1.throwOnMissingStub(this);
   }
 

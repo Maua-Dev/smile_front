@@ -31,7 +31,7 @@ void main() {
 
   setUpAll(() {
     when(datasource.login('', '')).thenAnswer((_) async => userMock);
-    when(datasource.refreshToken('')).thenAnswer((_) async => {});
+    when(datasource.refreshToken()).thenAnswer((_) async => {});
     authRepository = AuthRepositoryImpl(datasource: datasource);
   });
 
@@ -41,7 +41,7 @@ void main() {
   });
 
   test('refreshToken', () async {
-    var response = await authRepository.refreshToken('');
+    var response = await authRepository.refreshToken();
     expect(response, {});
   });
 }

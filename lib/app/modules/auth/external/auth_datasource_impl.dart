@@ -9,20 +9,21 @@ import '../errors/errors.dart';
 import '../infra/datasource/auth_datasource_interface.dart';
 
 class AuthDatasourceImpl implements AuthDatasourceInterface {
-  final Dio dioClient;
   final SecureStorageInterface storage;
+  BaseOptions options = BaseOptions(
+    baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
+    responseType: ResponseType.json,
+    connectTimeout: 30000,
+    receiveTimeout: 30000,
+  );
+  Dio dio = Dio();
 
-  AuthDatasourceImpl({required this.dioClient, required this.storage});
+  AuthDatasourceImpl({required this.storage}) {
+    dio = Dio(options);
+  }
 
   @override
   Future<UserModel> login(email, password) async {
-    BaseOptions options = BaseOptions(
-      baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
-      responseType: ResponseType.json,
-      connectTimeout: 30000,
-      receiveTimeout: 30000,
-    );
-    Dio dio = Dio(options);
     try {
       final res = await dio.post('/login-user', data: {
         'login': email,
@@ -44,17 +45,11 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
   }
 
   @override
-  Future<Map<String, dynamic>> refreshToken(String token) async {
+  Future<Map<String, dynamic>> refreshToken() async {
+    var token = await storage.getAccessToken();
     try {
-      BaseOptions options = BaseOptions(
-        baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
-        responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
-      );
-      Dio dio = Dio(options);
-      dio.options.headers["authorization"] = "Bearer $token";
-      final res = await dio.post("/refreshToken");
+      dio.options.headers["authorization"] = "$token";
+      final res = await dio.post("/refresh-token");
       if (res.statusCode == 200) {
         var tokens = res.data;
         return tokens;
