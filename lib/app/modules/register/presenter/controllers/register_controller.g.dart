@@ -200,19 +200,19 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$isMauaStudentAtom =
-      Atom(name: 'RegisterControllerBase.isMauaStudent', context: context);
+  late final _$roleAtom =
+      Atom(name: 'RegisterControllerBase.role', context: context);
 
   @override
-  bool get isMauaStudent {
-    _$isMauaStudentAtom.reportRead();
-    return super.isMauaStudent;
+  UserRolesEnum get role {
+    _$roleAtom.reportRead();
+    return super.role;
   }
 
   @override
-  set isMauaStudent(bool value) {
-    _$isMauaStudentAtom.reportWrite(value, super.isMauaStudent, () {
-      super.isMauaStudent = value;
+  set role(UserRolesEnum value) {
+    _$roleAtom.reportWrite(value, super.role, () {
+      super.role = value;
     });
   }
 
@@ -454,13 +454,12 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     return _$setPhoneAsyncAction.run(() => super.setPhone(value));
   }
 
-  late final _$setIsMauaStudentAsyncAction =
-      AsyncAction('RegisterControllerBase.setIsMauaStudent', context: context);
+  late final _$setRoleAsyncAction =
+      AsyncAction('RegisterControllerBase.setRole', context: context);
 
   @override
-  Future<void> setIsMauaStudent(bool? value) {
-    return _$setIsMauaStudentAsyncAction
-        .run(() => super.setIsMauaStudent(value));
+  Future<void> setRole(UserRolesEnum? value) {
+    return _$setRoleAsyncAction.run(() => super.setRole(value));
   }
 
   late final _$setHasSocialNameAsyncAction =
@@ -670,7 +669,7 @@ hasSocialName: ${hasSocialName},
 email: ${email},
 verifyEmail: ${verifyEmail},
 phone: ${phone},
-isMauaStudent: ${isMauaStudent},
+role: ${role},
 ra: ${ra},
 password: ${password},
 verifyPassword: ${verifyPassword},

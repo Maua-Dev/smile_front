@@ -83,6 +83,7 @@
     "registerFullNamePlaceholder": "Nome Completo",
     "registerSocialNamePlaceholder": "Nome Social",
     "registerEmailPlaceholder": "E-mail",
+    "registerEmailProfessorPlaceholder": "Insira seu e-mail da Mauá",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
     "registerPhonePlaceholder": "Telefone Celular",
     "registerCountryPlaceholder": "Pesquisar por país ou DDI",

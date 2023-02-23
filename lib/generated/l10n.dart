@@ -863,6 +863,16 @@ class S {
     );
   }
 
+  /// `Enter your email Mauá`
+  String get registerEmailProfessorPlaceholder {
+    return Intl.message(
+      'Enter your email Mauá',
+      name: 'registerEmailProfessorPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirm your e-mail`
   String get registerEmailConfirmationPlaceholder {
     return Intl.message(

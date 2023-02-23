@@ -59,7 +59,7 @@ abstract class RegisterControllerBase with Store {
   String phone = '';
 
   @observable
-  bool isMauaStudent = false;
+  UserRolesEnum role = UserRolesEnum.EXTERNAL;
 
   @observable
   String ra = '';
@@ -193,11 +193,8 @@ abstract class RegisterControllerBase with Store {
   }
 
   @action
-  Future<void> setIsMauaStudent(bool? value) async {
-    isMauaStudent = value!;
-    if (isMauaStudent == false) {
-      ra = '';
-    }
+  Future<void> setRole(UserRolesEnum? value) async {
+    role = value!;
   }
 
   @action
@@ -215,7 +212,7 @@ abstract class RegisterControllerBase with Store {
 
   @action
   String? validateRa(String? value) {
-    if (isMauaStudent) {
+    if (role == UserRolesEnum.STUDENT) {
       if (value!.isEmpty) {
         return S.current.fieldRequired;
       }
@@ -278,7 +275,7 @@ abstract class RegisterControllerBase with Store {
         acceptAPPWEBNotifications: acceptAPPWEBNotifications,
         accessLevel: AccessLevelEnum.USER,
         certificateWithSocialName: hasSocialName,
-        role: isMauaStudent ? UserRolesEnum.STUDENT : UserRolesEnum.EXTERNAL,
+        role: role,
       );
 
   @action
