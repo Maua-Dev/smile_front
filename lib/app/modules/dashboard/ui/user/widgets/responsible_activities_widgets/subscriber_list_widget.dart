@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:smile_front/app/shared/models/enrollments_model.dart';
 
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -10,9 +11,13 @@ import '../../../../../../shared/themes/breakpoint.dart';
 
 class SubscriberListWidget extends StatelessWidget {
   final bool isSwitched;
+  final List<EnrollmentsModel>? enrollmentsList;
+  final int listViewItemCount;
   final Function()? toggleSwitch;
   const SubscriberListWidget({
     Key? key,
+    required this.enrollmentsList,
+    required this.listViewItemCount,
     required this.isSwitched,
     required this.toggleSwitch,
   }) : super(key: key);
@@ -86,31 +91,45 @@ class SubscriberListWidget extends StatelessWidget {
             height: MediaQuery.of(context).size.width < breakpointTablet
                 ? 242
                 : 360,
-            child: ListView(
-              children: [
-                Column(
+            child: ListView.builder(
+              itemCount: listViewItemCount,
+              itemBuilder: (BuildContext context, int index) {
+                return Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Observer(
                           builder: (_) {
-                            return Switch(
-                              value: isSwitched,
-                              onChanged: (value) {
-                                toggleSwitch!();
-                              },
-                              activeColor: Colors.green,
-                              inactiveThumbColor: Colors.red,
-                              inactiveTrackColor: Colors.red.withOpacity(0.5),
-                              activeTrackColor: Colors.green.withOpacity(0.5),
+                            return SizedBox(
+                              width: MediaQuery.of(context).size.width <
+                                      breakpointTablet
+                                  ? 100
+                                  : 50,
+                              child: Switch(
+                                value: isSwitched,
+                                onChanged: (value) {
+                                  toggleSwitch!();
+                                },
+                                activeColor: Colors.green,
+                                inactiveThumbColor: Colors.red,
+                                inactiveTrackColor: Colors.red.withOpacity(0.5),
+                                activeTrackColor: Colors.green.withOpacity(0.5),
+                              ),
                             );
                           },
                         ),
-                        Text(
-                          "Vitor Guirão Soller",
-                          style: AppTextStyles.bold
-                              .copyWith(fontSize: 30, color: Colors.black),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width <
+                                  breakpointTablet
+                              ? 270
+                              : 230,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            enrollmentsList![index].userEnroll!.name,
+                            style: AppTextStyles.bold
+                                .copyWith(fontSize: 30, color: Colors.black),
+                          ),
                         ),
                       ],
                     ),
@@ -122,288 +141,8 @@ class SubscriberListWidget extends StatelessWidget {
                       ),
                     )
                   ],
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Observer(
-                          builder: (_) {
-                            return Switch(
-                              value: isSwitched,
-                              onChanged: (value) {
-                                toggleSwitch!();
-                              },
-                              activeColor: Colors.green,
-                              inactiveThumbColor: Colors.red,
-                              inactiveTrackColor: Colors.red.withOpacity(0.5),
-                              activeTrackColor: Colors.green.withOpacity(0.5),
-                            );
-                          },
-                        ),
-                        Text(
-                          "Vitor Guirão Soller",
-                          style: AppTextStyles.bold
-                              .copyWith(fontSize: 30, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 438,
-                      child: Divider(
-                        thickness: 2,
-                        color: AppColors.brandingOrange,
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Observer(
-                          builder: (_) {
-                            return Switch(
-                              value: isSwitched,
-                              onChanged: (value) {
-                                toggleSwitch!();
-                              },
-                              activeColor: Colors.green,
-                              inactiveThumbColor: Colors.red,
-                              inactiveTrackColor: Colors.red.withOpacity(0.5),
-                              activeTrackColor: Colors.green.withOpacity(0.5),
-                            );
-                          },
-                        ),
-                        Text(
-                          "Vitor Guirão Soller",
-                          style: AppTextStyles.bold
-                              .copyWith(fontSize: 30, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 438,
-                      child: Divider(
-                        thickness: 2,
-                        color: AppColors.brandingOrange,
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Observer(
-                          builder: (_) {
-                            return Switch(
-                              value: isSwitched,
-                              onChanged: (value) {
-                                toggleSwitch!();
-                              },
-                              activeColor: Colors.green,
-                              inactiveThumbColor: Colors.red,
-                              inactiveTrackColor: Colors.red.withOpacity(0.5),
-                              activeTrackColor: Colors.green.withOpacity(0.5),
-                            );
-                          },
-                        ),
-                        Text(
-                          "Vitor Guirão Soller",
-                          style: AppTextStyles.bold
-                              .copyWith(fontSize: 30, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 438,
-                      child: Divider(
-                        thickness: 2,
-                        color: AppColors.brandingOrange,
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Observer(
-                          builder: (_) {
-                            return Switch(
-                              value: isSwitched,
-                              onChanged: (value) {
-                                toggleSwitch!();
-                              },
-                              activeColor: Colors.green,
-                              inactiveThumbColor: Colors.red,
-                              inactiveTrackColor: Colors.red.withOpacity(0.5),
-                              activeTrackColor: Colors.green.withOpacity(0.5),
-                            );
-                          },
-                        ),
-                        Text(
-                          "Vitor Guirão Soller",
-                          style: AppTextStyles.bold
-                              .copyWith(fontSize: 30, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 438,
-                      child: Divider(
-                        thickness: 2,
-                        color: AppColors.brandingOrange,
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Observer(
-                          builder: (_) {
-                            return Switch(
-                              value: isSwitched,
-                              onChanged: (value) {
-                                toggleSwitch!();
-                              },
-                              activeColor: Colors.green,
-                              inactiveThumbColor: Colors.red,
-                              inactiveTrackColor: Colors.red.withOpacity(0.5),
-                              activeTrackColor: Colors.green.withOpacity(0.5),
-                            );
-                          },
-                        ),
-                        Text(
-                          "Vitor Guirão Soller",
-                          style: AppTextStyles.bold
-                              .copyWith(fontSize: 30, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 438,
-                      child: Divider(
-                        thickness: 2,
-                        color: AppColors.brandingOrange,
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Observer(
-                          builder: (_) {
-                            return Switch(
-                              value: isSwitched,
-                              onChanged: (value) {
-                                toggleSwitch!();
-                              },
-                              activeColor: Colors.green,
-                              inactiveThumbColor: Colors.red,
-                              inactiveTrackColor: Colors.red.withOpacity(0.5),
-                              activeTrackColor: Colors.green.withOpacity(0.5),
-                            );
-                          },
-                        ),
-                        Text(
-                          "Vitor Guirão Soller",
-                          style: AppTextStyles.bold
-                              .copyWith(fontSize: 30, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 438,
-                      child: Divider(
-                        thickness: 2,
-                        color: AppColors.brandingOrange,
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Observer(
-                          builder: (_) {
-                            return Switch(
-                              value: isSwitched,
-                              onChanged: (value) {
-                                toggleSwitch!();
-                              },
-                              activeColor: Colors.green,
-                              inactiveThumbColor: Colors.red,
-                              inactiveTrackColor: Colors.red.withOpacity(0.5),
-                              activeTrackColor: Colors.green.withOpacity(0.5),
-                            );
-                          },
-                        ),
-                        Text(
-                          "Vitor Guirão Soller",
-                          style: AppTextStyles.bold
-                              .copyWith(fontSize: 30, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 438,
-                      child: Divider(
-                        thickness: 2,
-                        color: AppColors.brandingOrange,
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Observer(
-                          builder: (_) {
-                            return Switch(
-                              value: isSwitched,
-                              onChanged: (value) {
-                                toggleSwitch!();
-                              },
-                              activeColor: Colors.green,
-                              inactiveThumbColor: Colors.red,
-                              inactiveTrackColor: Colors.red.withOpacity(0.5),
-                              activeTrackColor: Colors.green.withOpacity(0.5),
-                            );
-                          },
-                        ),
-                        Text(
-                          "Vitor Guirão Soller",
-                          style: AppTextStyles.bold
-                              .copyWith(fontSize: 30, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 438,
-                      child: Divider(
-                        thickness: 2,
-                        color: AppColors.brandingOrange,
-                      ),
-                    )
-                  ],
-                ),
-              ],
+                );
+              },
             ),
           )
         ],

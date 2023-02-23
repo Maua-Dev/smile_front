@@ -5,7 +5,11 @@ import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_data_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_weekday/user_activity_card_widget.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
+import 'package:smile_front/app/shared/models/user_enroll_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
@@ -207,7 +211,19 @@ class _UserDashboardPageState
                                 acceptingNewEnrollments: true,
                                 responsibleProfessors: [],
                                 takenSlots: 1,
-                                totalSlots: 1)
+                                totalSlots: 1,
+                                enrollments: [
+                                  EnrollmentsModel(
+                                      userEnroll: UserEnrollModel(
+                                          name: "Fake Soller",
+                                          role: UserRolesEnum.STUDENT,
+                                          userId:
+                                              "ce51113a-0797-44e1-8a1d-a1cdaefbb82a"),
+                                      state: EnrollmentStateEnum.COMPLETED,
+                                      dateSubscribed:
+                                          DateTime.fromMillisecondsSinceEpoch(
+                                              1676215157717))
+                                ])
                           ]);
                     },
                     style: ButtonStyle(
