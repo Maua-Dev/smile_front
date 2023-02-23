@@ -164,7 +164,8 @@
 
     "descriptionTitle": "Descrição",
 
-    "scheduleTitle": "Hora",
+    "hourTitle": "Hora",
+    "scheduleTitle": "Horário",
     "scheduleAddTitle": "Adicionar Horário",
 
     "codeTitle": "Código",
@@ -175,6 +176,8 @@
     "namesTitle": "Nomes",
 
     "validationCodeTitle": "Código de validação",
+
+    "localTitle": "Local",
 
 
     "yesTitle": "Sim",

@@ -65,8 +65,8 @@ class SubscriberListWidget extends StatelessWidget {
                           .copyWith(fontSize: 20, color: Colors.black)),
                   SizedBox(
                     width: MediaQuery.of(context).size.width < breakpointTablet
-                        ? 90
-                        : 150,
+                        ? 110
+                        : 180,
                   )
                 ],
               )

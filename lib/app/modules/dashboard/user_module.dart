@@ -24,6 +24,7 @@ import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_responsible_activities_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
 import 'package:smile_front/app/shared/entities/card_activity.dart';
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/domain/usecases/login_with_email.dart';
@@ -68,7 +69,7 @@ class UserModule extends Module {
         )),
     Bind.lazySingleton<MoreInfoResponsibleActivitiesController>((i) =>
         MoreInfoResponsibleActivitiesController(
-           // activity: i.args!.data[0] as EnrollsActivityModel
+            activity: i.args!.data[0] as EnrollsActivityModel
             )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),

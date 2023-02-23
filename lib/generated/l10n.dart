@@ -1427,6 +1427,16 @@ class S {
     );
   }
 
+  /// `Hour`
+  String get hourTitle {
+    return Intl.message(
+      'Hour',
+      name: 'hourTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Schedule`
   String get scheduleTitle {
     return Intl.message(
@@ -1492,6 +1502,16 @@ class S {
     return Intl.message(
       'Validation Code',
       name: 'validationCodeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local`
+  String get localTitle {
+    return Intl.message(
+      'Local',
+      name: 'localTitle',
       desc: '',
       args: [],
     );

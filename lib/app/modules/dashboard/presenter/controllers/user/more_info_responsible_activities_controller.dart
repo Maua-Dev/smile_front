@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 
 part 'more_info_responsible_activities_controller.g.dart';
 
@@ -6,11 +7,11 @@ class MoreInfoResponsibleActivitiesController = MoreInfoResponsibleActivitiesCon
     with _$MoreInfoResponsibleActivitiesController;
 
 abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
-  //final EnrollsActivityModel activity;
+  final EnrollsActivityModel activity;
 
-  //MoreInfoResponsibleActivitiesControllerBase({
-  //required this.activity,
-  // });
+  MoreInfoResponsibleActivitiesControllerBase({
+    required this.activity,
+  });
 
   @observable
   bool isSubscribedListVisible = false;

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_responsible_activities_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_activities_widgets/subscriber_list_widget.dart';
 
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
+import 'package:smile_front/app/shared/utils/utils.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 import 'widgets/responsible_activities_widgets/token_generate_widget.dart';
@@ -24,6 +26,10 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
     MoreInfoResponsibleActivitiesController> {
   @override
   Widget build(BuildContext context) {
+    var initialTime =
+        DateFormat('HH:mm').format(controller.activity.startDate!);
+    var finalTime = Utils.getActivityFinalTime(
+        controller.activity.startDate!, controller.activity.duration);
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16),
@@ -32,7 +38,8 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
             children: [
               Align(
                 alignment: Alignment.center,
-                child: Text('ECV707 - Engenharia de Produção',
+                child: Text(
+                    '${controller.activity.activityCode} - ${controller.activity.title}',
                     style: AppTextStyles.bold.copyWith(
                         fontSize:
                             MediaQuery.of(context).size.width < breakpointTablet
@@ -57,14 +64,16 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Dia',
+                          Text(S.of(context).dateTitle,
                               style: AppTextStyles.bold.copyWith(
                                   color: AppColors.white,
                                   fontSize: MediaQuery.of(context).size.width <
                                           breakpointTablet
                                       ? 12
                                       : 20)),
-                          Text('20/04',
+                          Text(
+                              DateFormat('dd/MM')
+                                  .format(controller.activity.startDate!),
                               style: AppTextStyles.bold.copyWith(
                                   color: AppColors.white,
                                   fontSize: MediaQuery.of(context).size.width <
@@ -86,14 +95,14 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Horário',
+                          Text(S.of(context).scheduleTitle,
                               style: AppTextStyles.bold.copyWith(
                                   color: AppColors.white,
                                   fontSize: MediaQuery.of(context).size.width <
                                           breakpointTablet
                                       ? 12
                                       : 20)),
-                          Text('14:00 - 14:50',
+                          Text('$initialTime - $finalTime',
                               style: AppTextStyles.bold.copyWith(
                                   color: AppColors.white,
                                   fontSize: MediaQuery.of(context).size.width <
@@ -115,14 +124,14 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Local',
+                          Text(S.of(context).localTitle,
                               style: AppTextStyles.bold.copyWith(
                                   color: AppColors.white,
                                   fontSize: MediaQuery.of(context).size.width <
                                           breakpointTablet
                                       ? 12
                                       : 20)),
-                          Text('H244',
+                          Text(controller.activity.place!,
                               style: AppTextStyles.bold.copyWith(
                                   color: AppColors.white,
                                   fontSize: MediaQuery.of(context).size.width <
