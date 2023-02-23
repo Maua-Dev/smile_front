@@ -123,7 +123,7 @@ class SubscriberListWidget extends StatelessWidget {
                           width: MediaQuery.of(context).size.width <
                                   breakpointTablet
                               ? 270
-                              : 230,
+                              : 240,
                           child: Text(
                             textAlign: TextAlign.center,
                             enrollmentsList![index].userEnroll!.name,
