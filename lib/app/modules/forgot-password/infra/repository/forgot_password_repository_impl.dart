@@ -2,7 +2,7 @@ import '../../domain/repository/forgot_password_datasource_interface.dart';
 import '../datasources/forgot_password_datasource.dart';
 
 class ForgotPasswordRepositoryImpl extends ForgotPasswordRepositoryInterface {
-  final ForgotPasswordDatasource datasource;
+  final ForgotPasswordDatasourceInterface datasource;
 
   ForgotPasswordRepositoryImpl({required this.datasource});
 

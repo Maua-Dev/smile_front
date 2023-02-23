@@ -72,7 +72,7 @@
 
 
 
-    "loginUsernamePlaceholder": "CPF ou E-mail",
+    "loginUsernamePlaceholder": "E-mail",
     "loginPasswordPlaceholder": "Senha",
     "loginWithoutRecordTitle": "Não tenho cadastro",
     "loginForgotPasswordTitle": "Esqueci minha senha",
@@ -84,7 +84,6 @@
     
     "registerFullNamePlaceholder": "Nome Completo",
     "registerSocialNamePlaceholder": "Nome Social",
-    "registerCPFPlaceholder": "CPF",
     "registerEmailPlaceholder": "E-mail",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
     "registerPhonePlaceholder": "Telefone Celular",
@@ -118,7 +117,6 @@
     "fieldEmailsEqualsRequired": "Os e-mails devem ser iguais",
     "fieldPasswordEqualsRequired": "Os campos \"Senha\" e \"Confirme sua senha\" devem ser iguais",
     "fieldPasswordRequisits": "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, $, %, ^, &, *, -)  \n - Mínimo de 8 caracteres",
-    "fieldCpfInvalid": "CPF inválido",
     "fieldDDDRequired": "Insira o número com DDD",
     "fieldRAInvalid": "RA inválido",
     "fieldFillAllRequired": "Preencha todos os campos!",

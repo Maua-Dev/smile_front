@@ -25,7 +25,7 @@ void main() {
   late EditActivityController controller;
   final activity = ActivityModel(
     activityCode: 'C01',
-    type: ActivityEnum.COURSE,
+    type: ActivityEnum.COURSES,
     title:
         'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
     description:

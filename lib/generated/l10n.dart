@@ -788,10 +788,10 @@ class S {
     );
   }
 
-  /// `CPF or E-mail`
+  /// `E-mail`
   String get loginUsernamePlaceholder {
     return Intl.message(
-      'CPF or E-mail',
+      'E-mail',
       name: 'loginUsernamePlaceholder',
       desc: '',
       args: [],
@@ -868,16 +868,6 @@ class S {
     return Intl.message(
       'Social Name',
       name: 'registerSocialNamePlaceholder',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `CPF`
-  String get registerCPFPlaceholder {
-    return Intl.message(
-      'CPF',
-      name: 'registerCPFPlaceholder',
       desc: '',
       args: [],
     );
@@ -1142,16 +1132,6 @@ class S {
     return Intl.message(
       'Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters',
       name: 'fieldPasswordRequisits',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Invalid CPF`
-  String get fieldCpfInvalid {
-    return Intl.message(
-      'Invalid CPF',
-      name: 'fieldCpfInvalid',
       desc: '',
       args: [],
     );
