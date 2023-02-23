@@ -8,7 +8,7 @@ import '../entities/infra/user_roles_enum.dart';
 import 'enrollments_model.dart';
 
 class EnrollsActivityModel extends Activity {
-  final List<EnrollmentsModel>? enrollments;
+  final EnrollmentsModel? enrollments;
   EnrollsActivityModel({
     this.enrollments,
     required super.isExtensive,
@@ -57,7 +57,7 @@ class EnrollsActivityModel extends Activity {
                 ? DateTime.fromMillisecondsSinceEpoch(
                     map['activity']['stop_accepting_new_enrollments_before'])
                 : DateTime.now(),
-        enrollments: EnrollmentsModel.fromMaps(map['activity']['enrollment']));
+        enrollments: EnrollmentsModel.fromMap(map['enrollment']));
   }
 
   static List<EnrollsActivityModel> fromMaps(List array) {
@@ -79,7 +79,7 @@ class EnrollsActivityModel extends Activity {
         responsibleProfessors: [],
         takenSlots: 0,
         totalSlots: 0,
-        enrollments: []);
+        enrollments: EnrollmentsModel.newInstance());
   }
 
   EnrollsActivityModel copyWith(
@@ -100,7 +100,7 @@ class EnrollsActivityModel extends Activity {
       int? totalSlots,
       DateTime? stopAcceptingNewEnrollmentsBefore,
       List<ResponsibleProfessorModel>? responsibleProfessors,
-      List<EnrollmentsModel>? enrollments}) {
+      EnrollmentsModel? enrollments}) {
     return EnrollsActivityModel(
       activityCode: activityCode ?? this.activityCode,
       type: type ?? this.type,

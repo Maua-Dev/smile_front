@@ -16,7 +16,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final Function() onTap;
   final Function()? onPressedSubscribe;
   final Function()? onPressedUnsubscribe;
-  final List<EnrollmentsModel>? activityEnrollment;
+  final EnrollmentsModel? activityEnrollment;
   final bool isLoading;
   final bool acceptingNewEnrollments;
   final bool isExtensive;

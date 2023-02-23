@@ -16,4 +16,11 @@ class EnrollmentsModel {
   static List<EnrollmentsModel> fromMaps(List array) {
     return array.map((e) => EnrollmentsModel.fromMap(e)).toList();
   }
+
+  factory EnrollmentsModel.newInstance() {
+    return EnrollmentsModel(
+      state: EnrollmentStateEnum.NONE,
+      dateSubscribed: DateTime.now(),
+    );
+  }
 }
