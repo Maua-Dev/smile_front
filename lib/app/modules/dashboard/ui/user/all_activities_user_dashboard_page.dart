@@ -90,43 +90,38 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                       var hour = DateFormat('HH:mm').format(
                           controller.activitiesOnScreen[index].startDate!);
                       return ActivitiesCardAllActivitiesDashboard(
-                          onPressedSubscribe: () {
-                            controller.subscribeUserActivity(controller
-                                .activitiesOnScreen[index].activityCode);
-                          },
-                          onPressedUnsubscribe: () {
-                            controller.unsubscribeUserActivity(controller
-                                .activitiesOnScreen[index].activityCode);
-                          },
-                          isLoading: controller.isLoading,
-                          finalTime: finalTime,
-                          location: controller.activitiesOnScreen[index].place,
-                          title: controller.activitiesOnScreen[index].title,
-                          hour: hour,
-                          activityEnrollment: controller
-                                  .activitiesOnScreen[index].enrollments !=
-                              null,
-                          acceptingNewEnrollments: controller
-                              .activitiesOnScreen[index]
-                              .acceptingNewEnrollments,
-                          takenSlots:
-                              controller.activitiesOnScreen[index].takenSlots,
-                          totalSlots:
-                              controller.activitiesOnScreen[index].totalSlots,
-                          onTap: () {
-                            Modular.to.navigate(
-                              '/user/home/more-info',
-                              arguments: controller.activitiesOnScreen[index],
-                            );
-                            controller.analytics.logViewActivity(controller
-                                .activitiesOnScreen[index].activityCode);
-                          },
-                          isExtensive:
-                              controller.activitiesOnScreen[index].isExtensive,
-                          isUserInQueue: controller
-                                  .activitiesOnScreen[index].enrollments
-                                  .toString() ==
-                              "IN_QUEUE");
+                        onPressedSubscribe: () {
+                          controller.subscribeUserActivity(controller
+                              .activitiesOnScreen[index].activityCode);
+                        },
+                        onPressedUnsubscribe: () {
+                          controller.unsubscribeUserActivity(controller
+                              .activitiesOnScreen[index].activityCode);
+                        },
+                        isLoading: controller.isLoading,
+                        finalTime: finalTime,
+                        location: controller.activitiesOnScreen[index].place,
+                        title: controller.activitiesOnScreen[index].title,
+                        hour: hour,
+                        activityEnrollment:
+                            controller.activitiesOnScreen[index].enrollments,
+                        acceptingNewEnrollments: controller
+                            .activitiesOnScreen[index].acceptingNewEnrollments,
+                        takenSlots:
+                            controller.activitiesOnScreen[index].takenSlots,
+                        totalSlots:
+                            controller.activitiesOnScreen[index].totalSlots,
+                        onTap: () {
+                          Modular.to.navigate(
+                            '/user/home/more-info',
+                            arguments: controller.activitiesOnScreen[index],
+                          );
+                          controller.analytics.logViewActivity(controller
+                              .activitiesOnScreen[index].activityCode);
+                        },
+                        isExtensive:
+                            controller.activitiesOnScreen[index].isExtensive,
+                      );
                     },
                   ),
                 ),

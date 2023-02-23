@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:smile_front/app/shared/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
@@ -15,9 +16,8 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final Function() onTap;
   final Function()? onPressedSubscribe;
   final Function()? onPressedUnsubscribe;
-  final bool activityEnrollment;
+  final List<EnrollmentsModel>? activityEnrollment;
   final bool isLoading;
-  final bool isUserInQueue;
   final bool acceptingNewEnrollments;
   final bool isExtensive;
   final int takenSlots;
@@ -34,7 +34,6 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
       required this.isLoading,
       required this.acceptingNewEnrollments,
       required this.takenSlots,
-      required this.isUserInQueue,
       required this.isExtensive,
       required this.totalSlots,
       this.onPressedSubscribe,
@@ -125,7 +124,15 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                   ? 20
                                   : 40,
                             ),
-                          if (isUserInQueue) const Text('fila funcionando')
+                          if (activityEnrollment == null)
+                            Icon(
+                              Icons.star,
+                              color: AppColors.brandingBlue,
+                              size: MediaQuery.of(context).size.width <
+                                      breakpointTablet
+                                  ? 20
+                                  : 40,
+                            ),
                         ]),
                     Row(children: [
                       Column(
@@ -160,7 +167,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                           height: MediaQuery.of(context).size.width < breakpointTablet
                               ? 25
                               : 50,
-                          child: activityEnrollment
+                          child: activityEnrollment != null
                               ? ElevatedButton(
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<

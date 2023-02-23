@@ -57,7 +57,7 @@ class EnrollsActivityModel extends Activity {
                 ? DateTime.fromMillisecondsSinceEpoch(
                     map['activity']['stop_accepting_new_enrollments_before'])
                 : DateTime.now(),
-        enrollments: []);
+        enrollments: map['activity']['enrollment']);
   }
 
   static List<EnrollsActivityModel> fromMaps(List array) {
@@ -66,20 +66,20 @@ class EnrollsActivityModel extends Activity {
 
   factory EnrollsActivityModel.newInstance() {
     return EnrollsActivityModel(
-      description: '',
-      activityCode: '',
-      title: '',
-      type: null,
-      speakers: [SpeakerActivityModel.newInstance()],
-      duration: 0,
-      isExtensive: false,
-      startDate: DateTime.now(),
-      deliveryEnum: null,
-      acceptingNewEnrollments: false,
-      responsibleProfessors: [],
-      takenSlots: 0,
-      totalSlots: 0,
-    );
+        description: '',
+        activityCode: '',
+        title: '',
+        type: null,
+        speakers: [SpeakerActivityModel.newInstance()],
+        duration: 0,
+        isExtensive: false,
+        startDate: DateTime.now(),
+        deliveryEnum: null,
+        acceptingNewEnrollments: false,
+        responsibleProfessors: [],
+        takenSlots: 0,
+        totalSlots: 0,
+        enrollments: []);
   }
 
   EnrollsActivityModel copyWith(
