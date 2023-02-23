@@ -155,7 +155,8 @@ class _CreateActivityPageState
                               closeInscriptionsHour: closureHour,
                               professorName: controller
                                   .activityToCreate.responsibleProfessor.name,
-                              isValidDate: controller.isValidDate,
+                              isValidSubscriptionclosureDate:
+                                  controller.isValidSubscriptionclosureDate,
                               validateRequiredField:
                                   controller.validateRequiredField,
                               modality:
@@ -235,7 +236,7 @@ class _CreateActivityPageState
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 114),
                         child: FormsButtonWidget(
-                            width: 220,
+                            width: 500,
                             buttonTittle: S.of(context).speakersAddTitle,
                             onPressed: controller.addSpeaker,
                             backgroundColor: AppColors.brandingBlue,
@@ -281,14 +282,14 @@ class _CreateActivityPageState
                                     builder: (BuildContext context) {
                                       return Observer(builder: (context) {
                                         return ActionConfirmationDialogWidget(
-                                            isLoading: controller.isLoading,
-                                            title:
-                                                S.of(context).confirmToContinue,
-                                            content:
-                                                S.of(context).lostOldDataWarn,
-                                            onPressed: () {
-                                              controller.createUserActivity();
-                                            });
+                                          isLoading: controller.isLoading,
+                                          title:
+                                              S.of(context).confirmToContinue,
+                                          content:
+                                              S.of(context).lostOldDataWarn,
+                                          onPressed:
+                                              controller.createUserActivity,
+                                        );
                                       });
                                     },
                                   );

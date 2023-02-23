@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/tooltip/tooltip_widget.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 
@@ -9,10 +10,12 @@ class TextFieldDialogWidget extends StatelessWidget {
   final String? value;
   final bool padding;
   final IconData? suffixIcon;
+  final TooltipWidget? suffixTooltip;
   final String? Function(String? value)? validator;
   final void Function(String value)? onChanged;
   final void Function()? onPressedIcon;
   final List<TextInputFormatter>? inputFormatters;
+  final TextInputType? inputType;
   const TextFieldDialogWidget({
     Key? key,
     this.hintText,
@@ -23,12 +26,16 @@ class TextFieldDialogWidget extends StatelessWidget {
     this.onChanged,
     required this.labelText,
     this.suffixIcon,
+    this.suffixTooltip,
     this.onPressedIcon,
+    this.inputType,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var controller = TextEditingController(text: value);
+    controller.selection = TextSelection.fromPosition(
+        TextPosition(offset: controller.text.length));
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: padding ? 114 : 0, vertical: padding ? 8 : 0),
@@ -49,10 +56,10 @@ class TextFieldDialogWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: TextFormField(
+                keyboardType: inputType ?? TextInputType.multiline,
                 validator: validator,
                 controller: controller,
                 onChanged: onChanged,
-                keyboardType: TextInputType.multiline,
                 maxLines: null,
                 textAlignVertical: TextAlignVertical.center,
                 inputFormatters: inputFormatters,
@@ -70,7 +77,7 @@ class TextFieldDialogWidget extends StatelessWidget {
                             ),
                             onPressed: onPressedIcon,
                           )
-                        : null,
+                        : suffixTooltip,
                     errorBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: AppColors.brandingOrange),
                       borderRadius: BorderRadius.circular(10),

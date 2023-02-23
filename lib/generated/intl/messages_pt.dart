@@ -254,6 +254,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Fechamento das Inscrições (Data)"),
         "activityInscriptionClosureHour": MessageLookupByLibrary.simpleMessage(
             "Fechamento das Inscrições (Hora)"),
+        "activityInscriptionClosureTooltip": MessageLookupByLibrary.simpleMessage(
+            "O sistema encerra automaticamente as inscrições da atividade\nem uma data e hora específica. Se não preencher esse campo, as\ninscrições não se encerrarão sozinhas e um administrador deverá\nfazê-lo manualmente."),
         "activityNameTitle":
             MessageLookupByLibrary.simpleMessage("Titulo da Atividade"),
         "activityResponsibleTeacher":

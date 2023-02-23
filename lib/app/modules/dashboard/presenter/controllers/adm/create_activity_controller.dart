@@ -39,19 +39,24 @@ abstract class CreateActivityControllerBase with Store {
     return value!.isEmpty ? S.current.fieldRequired : null;
   }
 
-  ///A function that verifies if the subscriptionclosure date is before the event date
+  ///A function that verifies if the subscriptionclosure date is before the final event date;
   ///return TRUE if the date is valid and FALSE if isnt.
   @action
-  String? isValidDate(String? value) {
+  String? isValidSubscriptionclosureDate(String? value) {
     var startDate = activityToCreate.startDate;
     var endsubscriptionsDate =
         activityToCreate.stopAcceptingNewEnrollmentsBefore;
+    var finalDate =
+        startDate!.add(Duration(minutes: activityToCreate.duration!));
 
-    return value!.isEmpty
-        ? S.current.fieldRequired
-        : startDate!.isAfter(endsubscriptionsDate!)
-            ? null
-            : "Data inválida";
+    if (endsubscriptionsDate != null) {
+      var isBefore = endsubscriptionsDate.isBefore(finalDate);
+      var isAtSame = endsubscriptionsDate.isAtSameMomentAs(finalDate);
+      var isAtSameOrBefore = isBefore || isAtSame;
+
+      return isAtSameOrBefore ? null : "Data inválida";
+    }
+    return null;
   }
 
   ///A function that sets the isLoading to TRUE, awaits a response,
@@ -181,7 +186,7 @@ abstract class CreateActivityControllerBase with Store {
   void setClosureHour(String value) {
     if (value.length > 4) {
       var date = activityToCreate.stopAcceptingNewEnrollmentsBefore != null
-          ? DateFormat('yyyy/MM/dd')
+          ? DateFormat('yyyy-MM-dd')
               .format(activityToCreate.stopAcceptingNewEnrollmentsBefore!)
           : '0000/00/00';
       var hour = DateTime.parse("$date $value");

@@ -306,10 +306,10 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValue: _i5.Future<String?>.value(),
       ) as _i5.Future<String?>);
   @override
-  _i5.Future<void> saveRole(String? accessLevel) => (super.noSuchMethod(
+  _i5.Future<void> saveRole(String? role) => (super.noSuchMethod(
         Invocation.method(
-          #saveAccessLevel,
-          [accessLevel],
+          #saveRole,
+          [role],
         ),
         returnValue: _i5.Future<void>.value(),
         returnValueForMissingStub: _i5.Future<void>.value(),
@@ -364,7 +364,7 @@ class MockSecureStorageInterface extends _i1.Mock
   @override
   _i5.Future<String?> getRole() => (super.noSuchMethod(
         Invocation.method(
-          #getAccessLevel,
+          #getRole,
           [],
         ),
         returnValue: _i5.Future<String?>.value(),

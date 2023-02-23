@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/tooltip/tooltip_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/entities/infra/delivery_enum.dart';
 import '../../../../../../shared/entities/screen_variables.dart';
@@ -7,6 +8,7 @@ import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/utils/screen_helper.dart';
 import '../../../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
+import '../../../../utils/formatters/NumberTextInputFormatter.dart';
 import 'text_field_dialog_widget.dart';
 
 class ScheduleWidget extends StatelessWidget {
@@ -24,7 +26,7 @@ class ScheduleWidget extends StatelessWidget {
   final void Function()? onPressedIconDate;
   final void Function()? onPressedIconTime;
   final void Function()? removeSchedule;
-  final String? Function(String? value)? isValidDate;
+  final String? Function(String? value)? isValidSubscriptionclosureDate;
   final String? Function(String? value)? validateRequiredField;
   final DeliveryEnum? modality;
   final bool? enableSubscription;
@@ -41,7 +43,7 @@ class ScheduleWidget extends StatelessWidget {
 
   const ScheduleWidget({
     Key? key,
-    this.isValidDate,
+    this.isValidSubscriptionclosureDate,
     this.onChangedParticipants,
     this.onChangedDate,
     this.onChangedHour,
@@ -99,6 +101,7 @@ class ScheduleWidget extends StatelessWidget {
                   ),
                   Flexible(
                     child: TextFieldDialogWidget(
+                        inputType: TextInputType.number,
                         validator: validateRequiredField,
                         labelText: S.of(context).scheduleTitle,
                         hintText: 'HH:MM',
@@ -113,16 +116,14 @@ class ScheduleWidget extends StatelessWidget {
                   ),
                   Flexible(
                     child: TextFieldDialogWidget(
-                        validator: validateRequiredField,
-                        labelText: S.of(context).activityDurationTitle,
-                        onChanged: onChangedDuration,
-                        value: duration == null ? '' : duration.toString(),
-                        padding: false,
-                        inputFormatters: [
-                          MaskTextInputFormatter(
-                            mask: '###',
-                          )
-                        ]),
+                      validator: validateRequiredField,
+                      labelText: S.of(context).activityDurationTitle,
+                      onChanged: onChangedDuration,
+                      value: duration == null ? '' : duration.toString(),
+                      padding: false,
+                      inputFormatters: [NumberTextInputFormatter(maxLength: 3)],
+                      inputType: TextInputType.number,
+                    ),
                   ),
                   Flexible(
                     child: TextFieldDialogWidget(
@@ -198,13 +199,15 @@ class ScheduleWidget extends StatelessWidget {
                     ),
                     Flexible(
                       child: TextFieldDialogWidget(
-                          validator: isValidDate,
+                          suffixTooltip: const TooltipWidget(
+                            message:
+                                """O sistema encerra automaticamente as inscrições da atividade\nem uma data e hora específica. Se não preencher esse campo, as\n inscrições não se encerrarão sozinhas e um administrador deverá\nfazê-lo manualmente.""",
+                          ),
+                          validator: isValidSubscriptionclosureDate,
                           labelText:
                               S.of(context).activityInscriptionClosureDate,
                           hintText: 'DD/MM/AAAA',
-                          onChanged: (text) {
-                            onChangedClosureDate;
-                          },
+                          onChanged: onChangedClosureDate,
                           value: closeInscriptionsDate ?? '',
                           padding: false,
                           inputFormatters: [
@@ -218,7 +221,11 @@ class ScheduleWidget extends StatelessWidget {
                     ),
                     Flexible(
                       child: TextFieldDialogWidget(
-                          validator: isValidDate,
+                          suffixTooltip: const TooltipWidget(
+                            message:
+                                """O sistema encerra automaticamente as inscrições da atividade\nem uma data e hora específica. Se não preencher esse campo, as\n inscrições não se encerrarão sozinhas e um administrador deverá\nfazê-lo manualmente.""",
+                          ),
+                          validator: isValidSubscriptionclosureDate,
                           labelText:
                               S.of(context).activityInscriptionClosureHour,
                           hintText: 'HH:MM',

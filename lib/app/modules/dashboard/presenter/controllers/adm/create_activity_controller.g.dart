@@ -76,11 +76,13 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
-  String? isValidDate(String? value) {
-    final _$actionInfo = _$CreateActivityControllerBaseActionController
-        .startAction(name: 'CreateActivityControllerBase.isValidDate');
+  String? isValidSubscriptionclosureDate(String? value) {
+    final _$actionInfo =
+        _$CreateActivityControllerBaseActionController.startAction(
+            name:
+                'CreateActivityControllerBase.isValidSubscriptionclosureDate');
     try {
-      return super.isValidDate(value);
+      return super.isValidSubscriptionclosureDate(value);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
