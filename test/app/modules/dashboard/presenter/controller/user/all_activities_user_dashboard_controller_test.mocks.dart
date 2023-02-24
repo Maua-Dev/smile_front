@@ -652,14 +652,6 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: _i10.Future<void>.value(),
       ) as _i10.Future<void>);
   @override
-  _i10.Future<dynamic> getActivities() => (super.noSuchMethod(
-        Invocation.method(
-          #getActivities,
-          [],
-        ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
-  @override
   _i10.Future<dynamic> getUserSubscribedActivities() => (super.noSuchMethod(
         Invocation.method(
           #getUserSubscribedActivities,

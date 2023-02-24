@@ -17,9 +17,7 @@ abstract class UserEnrollmentControllerBase with Store {
   UserEnrollmentControllerBase(
       {required this.getUserActivities,
       required this.subscribeActivity,
-      required this.unsubscribeActivity}) {
-    getUserAllActivitiesWithEnrollment();
-  }
+      required this.unsubscribeActivity});
 
   @observable
   bool isLoading = false;
@@ -39,6 +37,7 @@ abstract class UserEnrollmentControllerBase with Store {
   Future getUserAllActivitiesWithEnrollment() async {
     setIsLoading(true);
     allActivitiesWithEnrollments = await getUserActivities();
+    subscribedActivities = List.empty();
     for (var activity in allActivitiesWithEnrollments) {
       if (activity.enrollments != null) {
         subscribedActivities = <EnrollsActivityModel>[

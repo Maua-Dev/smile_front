@@ -316,16 +316,10 @@ abstract class UserDashboardControllerBase with Store {
   EnrollsActivityModel nextActivity = EnrollsActivityModel.newInstance();
 
   @action
-  Future getActivities() async {
-    allSubscribedActivitiesList =
-        await subscriptionController.getUserActivities();
-  }
-
-  @action
   Future getUserSubscribedActivities() async {
     setIsLoading(true);
-    allSubscribedActivitiesList =
-        await subscriptionController.getUserActivities();
+    await subscriptionController.getUserAllActivitiesWithEnrollment();
+    allSubscribedActivitiesList = subscriptionController.subscribedActivities;
     if (allSubscribedActivitiesList.isNotEmpty) {
       allSubscribedActivitiesList.sort(
         (a, b) => a.startDate!.compareTo(b.startDate!),

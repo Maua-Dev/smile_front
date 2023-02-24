@@ -50,7 +50,6 @@ void main() {
 
   late AllActivitiesUserDashboardController controller;
   late AuthController authController;
-  late UserEnrollmentController userEnrollmentController;
 
   final mockActivities = <EnrollsActivityModel>[
     EnrollsActivityModel(
@@ -335,14 +334,9 @@ void main() {
         refreshToken: refreshToken,
         storage: secureStorage,
         analytics: analytics);
-    userEnrollmentController = UserEnrollmentController(
-        getUserActivities: getUserActivities,
-        subscribeActivity: subscribeActivity,
-        unsubscribeActivity: unsubscribeActivity);
 
     controller = AllActivitiesUserDashboardController(
       authController: authController,
-      enrollmentController: userEnrollmentController,
       analytics: analytics,
     );
   });

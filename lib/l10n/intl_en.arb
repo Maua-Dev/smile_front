@@ -8,6 +8,7 @@
     "smileDateWithYear": "May 22 to 27, 2023",
     "userRolesNameSchema": "{schema, select, STUDENT{Mauá Student} EXTERNAL{External} EMPLOYEE{Employee} INTERNAL_STUDENT{International Student} PROFESSOR{Mauá Professor (Responsável)} ADMIN{Admin} other{}}",
     
+    
     "knowMore": "KNOW MORE >>>",
     "speakersTitle": "Main Speakers - 2022",
     "speakersAddTitle": "Add Speaker",

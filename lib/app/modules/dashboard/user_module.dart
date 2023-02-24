@@ -45,7 +45,6 @@ class UserModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<AllActivitiesUserDashboardController>(
         (i) => AllActivitiesUserDashboardController(
-              enrollmentController: i(),
               authController: i(),
               analytics: i(),
             ),
@@ -107,7 +106,7 @@ class UserModule extends Module {
         export: true),
     Bind.lazySingleton<MoreInfoController>(
         (i) => MoreInfoController(
-              subscriptionController: i(),
+              enrollmentController: i(),
             ),
         export: true),
     Bind.lazySingleton<CertificateRepositoryInterface>(

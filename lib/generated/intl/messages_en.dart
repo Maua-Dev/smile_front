@@ -453,6 +453,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Sent with success!! Our team will contact you shortly."),
         "termination": MessageLookupByLibrary.simpleMessage("Termination"),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Unsubscribe"),
+        "unsubscribeAcceptingNewEnrollments":
+            MessageLookupByLibrary.simpleMessage(
+                "You will be able to subscribe again"),
+        "unsubscribeAlert": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to unsubscribe?"),
+        "unsubscribeNotAcceptingNewEnrollments":
+            MessageLookupByLibrary.simpleMessage(
+                "Caution: subscriptions for this activity closed, you will not be able to subscribe again"),
         "userRolesNameSchema": m18,
         "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Yes")

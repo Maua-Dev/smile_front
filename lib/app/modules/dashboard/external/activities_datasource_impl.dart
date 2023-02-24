@@ -121,15 +121,22 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   @override
   Future<bool> postSubscribe(String activityCode) async {
     var body = {'code': activityCode};
-    await middleware(url: '/enroll-activity', data: body, http: 'post');
-    return true;
+    var res =
+        await middleware(url: '/enroll-activity', data: body, http: 'post');
+    if (res.statusCode == 200) {
+      return true;
+    }
+    return false;
   }
 
   @override
   Future<bool> postUnsubscribe(String activityCode) async {
     var body = {'code': activityCode};
-    await middleware(url: '/drop-activity', data: body, http: 'post');
-    return true;
+    var res = await middleware(url: '/drop-activity', data: body, http: 'post');
+    if (res.statusCode == 200) {
+      return true;
+    }
+    return false;
   }
 
   @override

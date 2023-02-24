@@ -33,7 +33,7 @@ void main() {
   setUpAll(() async {
     await Firebase.initializeApp();
     controller =
-        MoreInfoController(subscriptionController: subscriptionController);
+        MoreInfoController(enrollmentController: subscriptionController);
     subscriptionController = UserEnrollmentController(
         getUserActivities: getUserActivities,
         subscribeActivity: subscribeActivity,

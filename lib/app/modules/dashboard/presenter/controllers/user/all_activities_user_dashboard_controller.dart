@@ -12,13 +12,12 @@ class AllActivitiesUserDashboardController = AllActivitiesUserDashboardControlle
     with _$AllActivitiesUserDashboardController;
 
 abstract class AllActivitiesUserDashboardControllerBase with Store {
-  final UserEnrollmentController enrollmentController;
+  var enrollmentController = Modular.get<UserEnrollmentController>();
   final AuthController authController;
 
   final FirebaseAnalyticsService analytics;
 
   AllActivitiesUserDashboardControllerBase({
-    required this.enrollmentController,
     required this.analytics,
     required this.authController,
   }) {
@@ -35,20 +34,16 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
 
   Future<void> subscribeUserActivity(String activityCode) async {
     setIsLoading(true);
-    var requestDone =
-        await enrollmentController.subscribeActivity(activityCode);
-    if (requestDone) {}
-    Modular.to.pop();
+    await enrollmentController.subscribeActivity(activityCode);
     setIsLoading(false);
+    Modular.to.pop();
   }
 
   Future<void> unsubscribeUserActivity(String activityCode) async {
     setIsLoading(true);
-    var requestDone =
-        await enrollmentController.unsubscribeActivity(activityCode);
-    if (requestDone) {}
-    Modular.to.pop();
+    await enrollmentController.unsubscribeActivity(activityCode);
     setIsLoading(false);
+    Modular.to.pop();
   }
 
   @observable
@@ -225,6 +220,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   @action
   Future getActivities() async {
     setIsLoading(true);
+    await enrollmentController.getUserAllActivitiesWithEnrollment();
     allActivitiesFromGet = enrollmentController.allActivitiesWithEnrollments;
     activitiesOnScreen = enrollmentController.allActivitiesWithEnrollments;
     setIsLoading(false);

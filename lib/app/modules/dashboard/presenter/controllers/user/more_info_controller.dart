@@ -6,8 +6,8 @@ part 'more_info_controller.g.dart';
 class MoreInfoController = MoreInfoControllerBase with _$MoreInfoController;
 
 abstract class MoreInfoControllerBase with Store {
-  final UserEnrollmentController subscriptionController;
-  MoreInfoControllerBase({required this.subscriptionController});
+  final UserEnrollmentController enrollmentController;
+  MoreInfoControllerBase({required this.enrollmentController});
 
   @observable
   bool isLoading = false;
@@ -20,7 +20,7 @@ abstract class MoreInfoControllerBase with Store {
   Future<void> subscribeUserActivity(String activityCode) async {
     setIsLoading(true);
     var requestDone =
-        await subscriptionController.subscribeActivity(activityCode);
+        await enrollmentController.subscribeActivity(activityCode);
     if (requestDone) {}
     setIsLoading(false);
   }
@@ -28,7 +28,7 @@ abstract class MoreInfoControllerBase with Store {
   Future<void> unsubscribeUserActivity(String activityCode) async {
     setIsLoading(true);
     var requestDone =
-        await subscriptionController.unsubscribeActivity(activityCode);
+        await enrollmentController.unsubscribeActivity(activityCode);
     if (requestDone) {}
     setIsLoading(false);
   }
