@@ -1,4 +1,5 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
 import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
@@ -82,6 +83,15 @@ abstract class RegisterControllerBase with Store {
 
   @observable
   bool acceptSMSNotifications = false;
+
+  @observable
+  CountryCode? countryCode =
+      CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
+
+  @action
+  void setCountryCode(CountryCode? value) {
+    countryCode = value;
+  }
 
   @action
   Future<void> setEmailNotifications(bool? value) async {

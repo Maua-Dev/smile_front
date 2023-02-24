@@ -1,3 +1,4 @@
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -14,7 +15,6 @@ import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/input-box/input_box_widget.dart';
-import '../../../../shared/widgets/input-box/input_phone_widget.dart';
 import '../../../login/ui/widgets/smile_logo_widget.dart';
 import '../../presenter/controllers/register_controller.dart';
 import '../../../../shared/services/environment/environment_config.dart';
@@ -58,6 +58,8 @@ class _RegisterPageState
 
   @override
   Widget build(BuildContext context) {
+    const countryPicker = FlCountryCodePicker();
+
     return Scaffold(
       body: SafeArea(
           child: Form(
@@ -190,16 +192,72 @@ class _RegisterPageState
                       validation: controller.validateVerifyEmail,
                     ),
                     Observer(builder: (_) {
-                      return InputPhoneWidget(
-                        icon: Icons.phone_rounded,
-                        placeholder: S.of(context).registerPhonePlaceholder,
-                        setValue: controller.setPhone,
-                        validation: controller.validatePhone,
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 20.0),
+                            child: GestureDetector(
+                              onTap: () async {
+                                controller.setCountryCode(await countryPicker
+                                    .showPicker(context: context));
+                              },
+                              child: Container(
+                                height: 60,
+                                width: MediaQuery.of(context).size.width < 650
+                                    ? MediaQuery.of(context).size.width * 0.35
+                                    : 190,
+                                decoration: BoxDecoration(
+                                    color: AppColors.white,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Observer(builder: (_) {
+                                    return SizedBox(
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                              child:
+                                                  controller.countryCode != null
+                                                      ? controller.countryCode!
+                                                          .flagImage
+                                                      : null),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            controller.countryCode != null
+                                                ? controller
+                                                    .countryCode!.dialCode
+                                                : "DDI",
+                                            style: TextStyle(
+                                                color: AppColors.gray,
+                                                fontSize: 14),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          InputBoxWidget(
+                            icon: Icons.phone,
+                            placeholder: S.of(context).registerPhonePlaceholder,
+                            setValue: controller.setSocialName,
+                            widthSize: MediaQuery.of(context).size.width < 650
+                                ? MediaQuery.of(context).size.width * 0.48
+                                : 400,
+                            validation: controller.validateSocialName,
+                          )
+                        ],
                       );
                     }),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     Observer(builder: (_) {
                       if (controller.role == UserRolesEnum.STUDENT) {
                         return InputBoxWidget(

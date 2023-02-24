@@ -331,6 +331,22 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
+  late final _$countryCodeAtom =
+      Atom(name: 'RegisterControllerBase.countryCode', context: context);
+
+  @override
+  CountryCode? get countryCode {
+    _$countryCodeAtom.reportRead();
+    return super.countryCode;
+  }
+
+  @override
+  set countryCode(CountryCode? value) {
+    _$countryCodeAtom.reportWrite(value, super.countryCode, () {
+      super.countryCode = value;
+    });
+  }
+
   late final _$setEmailNotificationsAsyncAction = AsyncAction(
       'RegisterControllerBase.setEmailNotifications',
       context: context);
@@ -491,6 +507,17 @@ mixin _$RegisterController on RegisterControllerBase, Store {
       ActionController(name: 'RegisterControllerBase', context: context);
 
   @override
+  void setCountryCode(CountryCode? value) {
+    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
+        name: 'RegisterControllerBase.setCountryCode');
+    try {
+      return super.setCountryCode(value);
+    } finally {
+      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String? validateName(String? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validateName');
@@ -622,6 +649,7 @@ acceptTermsOfUse: ${acceptTermsOfUse},
 acceptImage: ${acceptImage},
 acceptEmailNotifications: ${acceptEmailNotifications},
 acceptSMSNotifications: ${acceptSMSNotifications},
+countryCode: ${countryCode},
 raInt: ${raInt},
 registerInformations: ${registerInformations}
     ''';
