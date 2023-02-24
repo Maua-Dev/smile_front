@@ -404,13 +404,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "saveTitle": MessageLookupByLibrary.simpleMessage("Salvar"),
         "scheduleAddTitle":
             MessageLookupByLibrary.simpleMessage("Adicionar Horário"),
-<<<<<<< HEAD
-        "scheduleTitle": MessageLookupByLibrary.simpleMessage("Horário"),
-=======
         "scheduleTitle": MessageLookupByLibrary.simpleMessage("Hora"),
         "selectOptionTitle":
             MessageLookupByLibrary.simpleMessage("Selecione uma opção:"),
->>>>>>> develop
         "sendTitle": MessageLookupByLibrary.simpleMessage("Enviar"),
         "signUp": MessageLookupByLibrary.simpleMessage("Inscreva-se"),
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
@@ -447,18 +443,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enviado com sucesso!! Nossa equipe entrará em contato em breve."),
         "termination": MessageLookupByLibrary.simpleMessage("Término"),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Desinscrever-se"),
-<<<<<<< HEAD
-        "unsubscribeAcceptingNewEnrollments":
-            MessageLookupByLibrary.simpleMessage(
-                "Você conseguirá se inscrever novamente"),
-        "unsubscribeAlert": MessageLookupByLibrary.simpleMessage(
-            "Tem certeza que deseja se desinscrever?"),
-        "unsubscribeNotAcceptingNewEnrollments":
-            MessageLookupByLibrary.simpleMessage(
-                "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente"),
-=======
         "userRolesNameSchema": m18,
->>>>>>> develop
         "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Sim")
       };
