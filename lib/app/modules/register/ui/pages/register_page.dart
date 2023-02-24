@@ -328,23 +328,10 @@ class _RegisterPageState
                     const SizedBox(
                       height: 20,
                     ),
-                    Observer(builder: (_) {
-                      return CheckBoxWidget(
-                        check: controller.acceptEmailNotifications,
-                        title: S.of(context).registerTerms('three'),
-                        onChanged: (bool? value) {
-                          controller.setAcceptEmailNotifications(value);
-                        },
-                      );
-                    }),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width < 650
                           ? MediaQuery.of(context).size.width * 0.85
                           : 550,
-                      height: 32,
                       child: Text(
                         S.of(context).notificationsTitle,
                         style: AppTextStyles.body.copyWith(
@@ -359,8 +346,7 @@ class _RegisterPageState
                     ),
                     Observer(builder: (_) {
                       return SwitchToggleWidget(
-                        toggleSwitch: controller.toggleEmailSwitch,
-                        isSwitched: controller.isEmailSwitched,
+                        isSwitched: controller.acceptEmailNotifications,
                         tipo: S.of(context).notificationsSchema('email'),
                         onChanged: (bool? value) {
                           controller.setEmailNotifications(value);
@@ -372,10 +358,7 @@ class _RegisterPageState
                     ),
                     Observer(builder: (_) {
                       return SwitchToggleWidget(
-                          isSmsSwitch: true,
-                          phoneLength: controller.phone.length,
-                          toggleSwitch: controller.toggleSmsSwitch,
-                          isSwitched: controller.isSmsSwitched,
+                          isSwitched: controller.acceptSMSNotifications,
                           tipo: S.of(context).notificationsSchema('sms'),
                           onChanged: (bool? value) {
                             controller.setSMSNotifications(value);

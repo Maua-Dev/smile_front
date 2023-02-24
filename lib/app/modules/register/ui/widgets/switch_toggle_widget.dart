@@ -7,17 +7,11 @@ import '../../../../shared/themes/app_text_styles.dart';
 
 class SwitchToggleWidget extends StatelessWidget {
   final String tipo;
-  final int? phoneLength;
   final bool isSwitched;
-  final bool? isSmsSwitch;
-  final Function() toggleSwitch;
   final Function(bool?)? onChanged;
 
   const SwitchToggleWidget({
     Key? key,
-    this.phoneLength,
-    this.isSmsSwitch,
-    required this.toggleSwitch,
     required this.isSwitched,
     required this.tipo,
     required this.onChanged,
@@ -60,34 +54,12 @@ class SwitchToggleWidget extends StatelessWidget {
             ),
             GestureDetector(
               child: Switch(
-                  splashRadius: 8,
-                  activeTrackColor: AppColors.brandingOrange,
-                  activeColor: AppColors.white,
-                  value: isSwitched,
-                  onChanged: (value) {
-                    if (isSmsSwitch == true) {
-                      if (phoneLength! < 3) {
-                        showDialog(
-                          context: context,
-                          builder: (_) => AlertDialog(
-                            title: Text(S.of(context).phoneNotFilledWarn),
-                            content: Text(S.of(context).phoneFillWarn),
-                            actions: [
-                              TextButton(
-                                child: Text(S.of(context).closeTitle),
-                                onPressed: () => Navigator.pop(context),
-                              ),
-                            ],
-                          ),
-                        );
-                      } else {
-                        toggleSwitch()!;
-                        onChanged;
-                      }
-                    }
-                    toggleSwitch()!;
-                    onChanged;
-                  }),
+                splashRadius: 8,
+                activeTrackColor: AppColors.brandingOrange,
+                activeColor: AppColors.white,
+                value: isSwitched,
+                onChanged: onChanged,
+              ),
             ),
           ],
         ),

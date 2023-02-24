@@ -999,10 +999,10 @@ class S {
     );
   }
 
-  /// `Means of notification about activities:`
+  /// `Activity notifications:`
   String get notificationsTitle {
     return Intl.message(
-      'Means of notification about activities:',
+      'Activity notifications:',
       name: 'notificationsTitle',
       desc: '',
       args: [],

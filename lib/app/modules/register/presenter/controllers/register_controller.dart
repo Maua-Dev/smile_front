@@ -94,24 +94,6 @@ abstract class RegisterControllerBase with Store {
   CountryCode? countryCode =
       const CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
 
-  @observable
-  bool isSmsSwitched = false;
-
-  @action
-  void toggleSmsSwitch() {
-    if (phone.length > 3) {
-      isSmsSwitched = !isSmsSwitched;
-    }
-  }
-
-  @observable
-  bool isEmailSwitched = false;
-
-  @action
-  void toggleEmailSwitch() {
-    isEmailSwitched = !isEmailSwitched;
-  }
-
   @action
   void setBrazilianPhone(CountryCode? value) {
     if (value?.code == "BR") {
@@ -133,7 +115,9 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setSMSNotifications(bool? value) async {
-    acceptSMSNotifications = value!;
+    if (phone.length > 3) {
+      acceptSMSNotifications = value!;
+    }
   }
 
   @action
