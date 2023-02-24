@@ -152,6 +152,13 @@ class _RegisterPageState
                                 onChanged: controller.setHasSocialName,
                                 title:
                                     S.of(context).registerSocialNamePlaceholder,
+                                tooltipButton: Tooltip(
+                                  triggerMode: TooltipTriggerMode.tap,
+                                  message:
+                                      S.of(context).registerSocialNameTooltip,
+                                  child: Icon(Icons.help,
+                                      color: AppColors.brandingOrange),
+                                ),
                               );
                             }),
                           ),

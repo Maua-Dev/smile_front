@@ -902,6 +902,16 @@ class S {
     );
   }
 
+  /// `Social name is the designation used by trans people to identify themselves according to their gender identity. Provided by law in several countries.`
+  String get registerSocialNameTooltip {
+    return Intl.message(
+      'Social name is the designation used by trans people to identify themselves according to their gender identity. Provided by law in several countries.',
+      name: 'registerSocialNameTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-mail`
   String get registerEmailPlaceholder {
     return Intl.message(
@@ -1459,6 +1469,66 @@ class S {
     return Intl.message(
       'Code',
       name: 'codeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get drawerHomeButton {
+    return Intl.message(
+      'Home',
+      name: 'drawerHomeButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activities`
+  String get drawerActivitiesButton {
+    return Intl.message(
+      'Activities',
+      name: 'drawerActivitiesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible Activities`
+  String get drawerResponsibleActivitiesButton {
+    return Intl.message(
+      'Responsible Activities',
+      name: 'drawerResponsibleActivitiesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Certificates`
+  String get drawerCertificatesButton {
+    return Intl.message(
+      'Certificates',
+      name: 'drawerCertificatesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help`
+  String get drawerHelpButton {
+    return Intl.message(
+      'Help',
+      name: 'drawerHelpButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get drawerProfileButton {
+    return Intl.message(
+      'Profile',
+      name: 'drawerProfileButton',
       desc: '',
       args: [],
     );
