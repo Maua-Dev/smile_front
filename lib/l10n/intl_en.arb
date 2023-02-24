@@ -98,6 +98,7 @@
     "selectOptionTitle": "Select an option:",
     "registerFullNamePlaceholder": "Full Name",
     "registerSocialNamePlaceholder": "Social Name",
+    "registerSocialNameTooltip": "Social name is the designation used by trans people to identify themselves according to their gender identity. Provided by law in several countries.",
     "registerEmailPlaceholder": "E-mail",
     "registerEmailProfessorPlaceholder": "Enter your email Mauá",
     "registerEmailConfirmationPlaceholder": "Confirm your e-mail",
@@ -180,6 +181,13 @@
     "scheduleAddTitle": "Add Schedule",
 
     "codeTitle": "Code",
+
+    "drawerHomeButton": "Home",
+    "drawerActivitiesButton": "Activities",
+    "drawerResponsibleActivitiesButton": "Responsible Activities",
+    "drawerCertificatesButton": "Certificates",
+    "drawerHelpButton": "Help",
+    "drawerProfileButton": "Profile",
 
 
     "yesTitle": "Yes",
