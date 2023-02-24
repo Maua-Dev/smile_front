@@ -66,20 +66,20 @@ class EnrollsActivityModel extends Activity {
 
   factory EnrollsActivityModel.newInstance() {
     return EnrollsActivityModel(
-        description: '',
-        activityCode: '',
-        title: '',
-        type: null,
-        speakers: [SpeakerActivityModel.newInstance()],
-        duration: 0,
-        isExtensive: false,
-        startDate: DateTime.now(),
-        deliveryEnum: null,
-        acceptingNewEnrollments: false,
-        responsibleProfessors: [],
-        takenSlots: 0,
-        totalSlots: 0,
-        enrollments: EnrollmentsModel.newInstance());
+      description: '',
+      activityCode: '',
+      title: '',
+      type: null,
+      speakers: [SpeakerActivityModel.newInstance()],
+      duration: 0,
+      isExtensive: false,
+      startDate: DateTime.now(),
+      deliveryEnum: null,
+      acceptingNewEnrollments: false,
+      responsibleProfessors: [],
+      takenSlots: 0,
+      totalSlots: 0,
+    );
   }
 
   EnrollsActivityModel copyWith(
