@@ -70,13 +70,11 @@ class SwitchToggleWidget extends StatelessWidget {
                         showDialog(
                           context: context,
                           builder: (_) => AlertDialog(
-                            title:
-                                const Text('Telefone celular não preenchido.'),
-                            content: const Text(
-                                'Preencha o seu telefone celular para ativar as notificações via SMS!'),
+                            title: Text(S.of(context).phoneNotFilledWarn),
+                            content: Text(S.of(context).phoneFillWarn),
                             actions: [
                               TextButton(
-                                child: const Text('Fechar'),
+                                child: Text(S.of(context).closeTitle),
                                 onPressed: () => Navigator.pop(context),
                               ),
                             ],

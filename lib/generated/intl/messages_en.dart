@@ -371,6 +371,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "I want to receive notifications by "),
         "notificationsTitle": MessageLookupByLibrary.simpleMessage(
             "Means of notification about activities:"),
+        "phoneFillWarn": MessageLookupByLibrary.simpleMessage(
+            "Preencha o seu telefone celular para ativar as notificações via SMS!"),
+        "phoneNotFilledWarn": MessageLookupByLibrary.simpleMessage(
+            "Telefone celular não preenchido."),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
         "registerConfirmPasswordPlaceholder":

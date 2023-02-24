@@ -34,7 +34,9 @@ class _SpeakersHomePageState
             color: AppColors.brandingOrange,
             fontSize: MediaQuery.of(context).size.width < 900
                 ? MediaQuery.of(context).size.width < 530
-                    ? 24
+                    ? MediaQuery.of(context).size.width < 375
+                        ? 18
+                        : 20
                     : 32
                 : 48,
           ),

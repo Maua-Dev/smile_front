@@ -56,6 +56,7 @@
     "signUp": "Sign Up",
     "unsubscribe": "Unsubscribe",
     
+    
 
 
 
@@ -67,6 +68,9 @@
     "exitTitle": "Exit",
     "cancelTitle": "Cancel",
     "saveTitle": "Save",
+
+    "phoneNotFilledWarn": "Telefone celular não preenchido.",
+    "phoneFillWarn": "Preencha o seu telefone celular para ativar as notificações via SMS!",
 
 
 

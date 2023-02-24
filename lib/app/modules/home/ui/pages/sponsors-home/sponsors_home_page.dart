@@ -42,11 +42,13 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
               title: S.of(context).mauaEntititesTitle,
               leftPadding: Screen.width(context) > 530 ? 32 : 24,
               color: AppColors.brandingOrange,
-              fontSize: MediaQuery.of(context).size.width < 530
-                  ? 22
-                  : MediaQuery.of(context).size.width < 900
-                      ? 32
-                      : 48,
+              fontSize: MediaQuery.of(context).size.width < 900
+                  ? MediaQuery.of(context).size.width < 530
+                      ? MediaQuery.of(context).size.width < 375
+                          ? 16
+                          : 22
+                      : 32
+                  : 48,
             ),
           ),
           const EntitiesStack(),
@@ -147,8 +149,11 @@ class BeSponsor extends StatelessWidget {
                 child: Text(
                   S.of(context).beSponsorTitle,
                   style: TextStyle(
-                      fontSize:
-                          MediaQuery.of(context).size.width < 530 ? 28 : 35,
+                      fontSize: MediaQuery.of(context).size.width < 375
+                          ? 20
+                          : MediaQuery.of(context).size.width > 530
+                              ? 35
+                              : 28,
                       fontWeight: FontWeight.w900),
                 ),
               )),

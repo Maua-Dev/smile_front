@@ -787,6 +787,26 @@ class S {
     );
   }
 
+  /// `Telefone celular não preenchido.`
+  String get phoneNotFilledWarn {
+    return Intl.message(
+      'Telefone celular não preenchido.',
+      name: 'phoneNotFilledWarn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preencha o seu telefone celular para ativar as notificações via SMS!`
+  String get phoneFillWarn {
+    return Intl.message(
+      'Preencha o seu telefone celular para ativar as notificações via SMS!',
+      name: 'phoneFillWarn',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-mail`
   String get loginUsernamePlaceholder {
     return Intl.message(
