@@ -1454,6 +1454,56 @@ class S {
     );
   }
 
+  /// `Activities`
+  String get drawerActivitiesButton {
+    return Intl.message(
+      'Activities',
+      name: 'drawerActivitiesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible Activities`
+  String get drawerResponsibleActivitiesButton {
+    return Intl.message(
+      'Responsible Activities',
+      name: 'drawerResponsibleActivitiesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Certificates`
+  String get drawerCertificatesButton {
+    return Intl.message(
+      'Certificates',
+      name: 'drawerCertificatesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help`
+  String get drawerHelpButton {
+    return Intl.message(
+      'Help',
+      name: 'drawerHelpButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get drawerProfileButton {
+    return Intl.message(
+      'Profile',
+      name: 'drawerProfileButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Yes`
   String get yesTitle {
     return Intl.message(

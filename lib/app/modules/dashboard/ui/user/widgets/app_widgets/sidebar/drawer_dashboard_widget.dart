@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../../shared/utils/screen_helper.dart';
@@ -11,6 +12,7 @@ class DrawerDashboardWidget extends StatelessWidget {
   final bool isProfessor;
 
   final List<String> userOptions = [
+    "Home",
     "Perfil",
     "Atividades",
     "Certificados",
@@ -18,6 +20,7 @@ class DrawerDashboardWidget extends StatelessWidget {
   ];
 
   final List<String> userRoutes = [
+    '/home',
     '/user/home',
     '/user/home/all-activities',
     '/user/home/certificate',
@@ -25,6 +28,7 @@ class DrawerDashboardWidget extends StatelessWidget {
   ];
 
   final List<String> professorOptions = [
+    "Home",
     "Perfil",
     "Atividades",
     "Atividades Responsaveis",
@@ -33,6 +37,7 @@ class DrawerDashboardWidget extends StatelessWidget {
   ];
 
   final List<String> professorRoutes = [
+    '/home',
     '/user/home',
     '/user/home/all-activities',
     '/user/home/help',

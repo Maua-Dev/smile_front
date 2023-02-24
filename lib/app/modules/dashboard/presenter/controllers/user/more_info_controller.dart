@@ -72,7 +72,7 @@ abstract class MoreInfoControllerBase with Store {
       description: activity.description,
       acceptingNewEnrollments: activity.acceptSubscription,
       speakers: activity.speakers!,
-      duration: 120,
+      duration: activity.duration!,
       isExtensive: true,
       responsibleProfessors: [],
       takenSlots: 0,

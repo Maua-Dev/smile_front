@@ -168,6 +168,11 @@
 
     "codeTitle": "Código",
 
+    "drawerActivitiesButton": "Atividades",
+    "drawerResponsibleActivitiesButton": "Atividades Responsáveis",
+    "drawerCertificatesButton": "Certificados",
+    "drawerHelpButton": "Ajuda",
+    "drawerProfileButton": "Perfil",
 
     "yesTitle": "Sim",
     "noTitle": "Não",

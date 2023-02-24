@@ -294,6 +294,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
         "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
+        "drawerActivitiesButton":
+            MessageLookupByLibrary.simpleMessage("Activities"),
+        "drawerCertificatesButton":
+            MessageLookupByLibrary.simpleMessage("Certificates"),
+        "drawerHelpButton": MessageLookupByLibrary.simpleMessage("Help"),
+        "drawerProfileButton": MessageLookupByLibrary.simpleMessage("Profile"),
+        "drawerResponsibleActivitiesButton":
+            MessageLookupByLibrary.simpleMessage("Responsible Activities"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration."),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
