@@ -6,7 +6,7 @@ class InputBoxWidget extends StatelessWidget {
   final IconData icon;
   final String placeholder;
   final double? widthSize;
-  final bool isBrazilianPhoneField;
+  final bool? isBrazilianPhoneField;
   final bool? disable;
   final bool? isPassword;
   final String? Function(String?)? validation;
@@ -19,6 +19,7 @@ class InputBoxWidget extends StatelessWidget {
 
   const InputBoxWidget({
     Key? key,
+    this.isBrazilianPhoneField,
     required this.icon,
     required this.placeholder,
     this.widthSize,
