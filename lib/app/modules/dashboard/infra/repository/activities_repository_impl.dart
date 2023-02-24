@@ -6,7 +6,6 @@ import '../../../../shared/models/enrolls_activity_model.dart';
 
 import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 
-
 class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   final ActivitiesDatasourceInterface datasource;
 
