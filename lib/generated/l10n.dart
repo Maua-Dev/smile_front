@@ -882,6 +882,16 @@ class S {
     );
   }
 
+  /// `Social name is the designation used by trans people to identify themselves according to their gender identity. Provided by law in several countries.`
+  String get registerSocialNameTooltip {
+    return Intl.message(
+      'Social name is the designation used by trans people to identify themselves according to their gender identity. Provided by law in several countries.',
+      name: 'registerSocialNameTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-mail`
   String get registerEmailPlaceholder {
     return Intl.message(

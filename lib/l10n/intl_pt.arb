@@ -84,6 +84,7 @@
     "selectOptionTitle": "Selecione uma opção:",
     "registerFullNamePlaceholder": "Nome Completo",
     "registerSocialNamePlaceholder": "Nome Social",
+    "registerSocialNameTooltip": "Nome social é a designação usada por pessoas trans para se identificarem de acordo com sua identidade de gênero. Previsto em lei em diversos países.",
     "registerEmailPlaceholder": "E-mail",
     "registerEmailProfessorPlaceholder": "Insira seu e-mail da Mauá",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
