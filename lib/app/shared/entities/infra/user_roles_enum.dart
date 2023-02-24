@@ -25,7 +25,7 @@ extension UserRolesEnumExtension on UserRolesEnum {
     return EnumToString.convertToString(modality);
   }
 
-  String get name {
+  String get personalizedNamed {
     return S.current.userRolesNameSchema(toString());
   }
 }

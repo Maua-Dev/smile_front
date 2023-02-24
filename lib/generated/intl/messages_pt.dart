@@ -228,7 +228,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m18(schema) => "${Intl.select(schema, {
             'STUDENT': 'Aluno Mauá',
-            'EXTERNAL': 'Externo',
+            'EXTERNAL': 'Visitante',
             'EMPLOYEE': 'Funcionário',
             'INTERNAL_STUDENT': 'Estudante Internacional',
             'PROFESSOR': 'Professor Smile',

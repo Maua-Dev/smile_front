@@ -109,7 +109,7 @@ class _RegisterPageState
                     ),
                     Observer(builder: (_) {
                       return CustomElevatedButtonWidget(
-                        title: controller.role.name.toUpperCase(),
+                        title: controller.role.personalizedNamed.toUpperCase(),
                         backgroundColor: AppColors.brandingOrange,
                         widthSize: MediaQuery.of(context).size.width < 650
                             ? MediaQuery.of(context).size.width * 0.85

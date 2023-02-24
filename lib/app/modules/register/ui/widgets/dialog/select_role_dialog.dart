@@ -25,21 +25,21 @@ class SelectRoleDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SelectRoleButtonWidget(
-            title: UserRolesEnum.STUDENT.name.toUpperCase(),
+            title: UserRolesEnum.STUDENT.personalizedNamed.toUpperCase(),
             onPressed: () {
               controller.setRole(UserRolesEnum.STUDENT);
               Modular.to.pop();
             },
           ),
           SelectRoleButtonWidget(
-            title: UserRolesEnum.PROFESSOR.name.toUpperCase(),
+            title: UserRolesEnum.PROFESSOR.personalizedNamed.toUpperCase(),
             onPressed: () {
               controller.setRole(UserRolesEnum.PROFESSOR);
               Modular.to.pop();
             },
           ),
           SelectRoleButtonWidget(
-            title: UserRolesEnum.EXTERNAL.name.toUpperCase(),
+            title: UserRolesEnum.EXTERNAL.personalizedNamed.toUpperCase(),
             onPressed: () {
               controller.setRole(UserRolesEnum.EXTERNAL);
               Modular.to.pop();
