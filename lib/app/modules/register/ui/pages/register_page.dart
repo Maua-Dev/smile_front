@@ -9,15 +9,15 @@ import 'package:smile_front/app/modules/register/ui/widgets/enable_text_field_ch
 import 'package:smile_front/app/modules/register/ui/widgets/switch_toggle_widget.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import '../../../../generated/l10n.dart';
-import '../../../shared/themes/app_text_styles.dart';
-import '../../../shared/widgets/custom_elevated_button_widget.dart';
-import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
-import '../../../shared/widgets/input-box/input_box_widget.dart';
-import '../../../shared/widgets/input-box/input_phone_widget.dart';
-import '../../login/ui/widgets/smile_logo_widget.dart';
-import '../presenter/controllers/register_controller.dart';
-import '../../../shared/services/environment/environment_config.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../shared/themes/app_text_styles.dart';
+import '../../../../shared/widgets/custom_elevated_button_widget.dart';
+import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
+import '../../../../shared/widgets/input-box/input_box_widget.dart';
+import '../../../../shared/widgets/input-box/input_phone_widget.dart';
+import '../../../login/ui/widgets/smile_logo_widget.dart';
+import '../../presenter/controllers/register_controller.dart';
+import '../../../../shared/services/environment/environment_config.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
