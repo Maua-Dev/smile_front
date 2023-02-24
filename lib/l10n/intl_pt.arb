@@ -133,8 +133,6 @@
     
 
     "successRegister": "Seu cadastro foi confirmado com sucesso!",
-    "errorRegister": "Falha ao realizar o cadastro, tente novamente.",
-    "errorUserAlreadyExist": "Usuário já existente.",
 
     "successEmailSend": "E-mail enviado com sucesso!",
 
@@ -142,12 +140,9 @@
     "lostOldDataWarn": "Ao salvar todos os dados antigos serão perdidos.",
 
     "successSendingCode": "Código enviado com sucesso!",
-    "errorSendingCode": "Falha ao enviar o código, e-mail não cadastrado ou não confirmado.",
 
     "successChangePassword": "Senha alterada com sucesso!",
-    "errorChangePassword": "Falha ao tentar alterar a senha, tente novamente.",
 
-    "errorLoginInvalidConfirmation": "Não foi possível realizar o login.\n\n- Realize seu cadastro clicando no botão \"Não tenho cadastro\"\n- Seu e-mail pode não ter sido confirmado, clique em \"Reenviar e-mail de confirmação\"",
     "errorLoginInvalidCredential": "Login e/ou senha inválidos",
 
     "successChangePasswordRedirect": "Senha alterada com sucesso! \n Redirecionando para o login...",

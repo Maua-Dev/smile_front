@@ -29,8 +29,8 @@ class ForgotPasswordDatasourceImpl
         return S.current.successSendingCode;
       }
       throw Exception();
-    } catch (e) {
-      throw ForgotPasswordInvalid(S.current.errorSendingCode);
+    } on DioError catch (e) {
+      throw ForgotPasswordInvalid(e.response!.data);
     }
   }
 
@@ -47,8 +47,8 @@ class ForgotPasswordDatasourceImpl
         return S.current.successChangePassword;
       }
       throw Exception();
-    } catch (e) {
-      throw ForgotPasswordInvalid(S.current.errorChangePassword);
+    } on DioError catch (e) {
+      throw ForgotPasswordInvalid(e.response!.data);
     }
   }
 }
