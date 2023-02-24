@@ -9,15 +9,15 @@ import 'package:smile_front/app/modules/register/ui/widgets/enable_text_field_ch
 import 'package:smile_front/app/modules/register/ui/widgets/switch_toggle_widget.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import '../../../../generated/l10n.dart';
-import '../../../shared/themes/app_text_styles.dart';
-import '../../../shared/widgets/custom_elevated_button_widget.dart';
-import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
-import '../../../shared/widgets/input-box/input_box_widget.dart';
-import '../../../shared/widgets/input-box/input_phone_widget.dart';
-import '../../login/ui/widgets/smile_logo_widget.dart';
-import '../presenter/controllers/register_controller.dart';
-import '../../../shared/services/environment/environment_config.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../shared/themes/app_text_styles.dart';
+import '../../../../shared/widgets/custom_elevated_button_widget.dart';
+import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
+import '../../../../shared/widgets/input-box/input_box_widget.dart';
+import '../../../../shared/widgets/input-box/input_phone_widget.dart';
+import '../../../login/ui/widgets/smile_logo_widget.dart';
+import '../../presenter/controllers/register_controller.dart';
+import '../../../../shared/services/environment/environment_config.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -106,6 +106,22 @@ class _RegisterPageState
                       }),
                     const SizedBox(
                       height: 24,
+                    ),
+                    Observer(builder: (_) {
+                      return CustomElevatedButtonWidget(
+                        title: controller.role.personalizedNamed.toUpperCase(),
+                        backgroundColor: AppColors.brandingOrange,
+                        widthSize: MediaQuery.of(context).size.width < 650
+                            ? MediaQuery.of(context).size.width * 0.85
+                            : 600,
+                        heightSize: 50,
+                        onPressed: () {
+                          _showSelectRoleDialog();
+                        },
+                      );
+                    }),
+                    const SizedBox(
+                      height: 20,
                     ),
                     InputBoxWidget(
                       icon: Icons.person,
@@ -289,22 +305,6 @@ class _RegisterPageState
                         tipo: S.of(context).notificationsSchema('sms'),
                         onChanged: (bool? value) {
                           controller.setSMSNotifications(value);
-                        }),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    SwitchToggleWidget(
-                        tipo: S.of(context).notificationsSchema('whatsapp'),
-                        onChanged: (bool? value) {
-                          controller.setWPPNotifications(value);
-                        }),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    SwitchToggleWidget(
-                        tipo: S.of(context).notificationsSchema('app'),
-                        onChanged: (bool? value) {
-                          controller.setAPPWEBNotifications(value);
                         }),
                     const SizedBox(
                       height: 30,

@@ -53,7 +53,7 @@ class EnableTextFieldCheckBoxWidget extends StatelessWidget {
               Flexible(
                 child: Text(
                   title,
-                  style: const TextStyle(color: Colors.white, fontSize: 14),
+                  style: TextStyle(color: AppColors.gray, fontSize: 14),
                 ),
               )
             ],

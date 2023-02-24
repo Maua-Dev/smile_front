@@ -6,6 +6,7 @@
     "homePageSubtitle": "This fifth edition of SMILE highlights even more the primordial union between the areas of Administration, Engineering, Computer Science, Design and Information Systems, necessary for innovation and generation of added value both for the training of future professionals and for the development of new ideas. The main return expected from this initiative is the expansion of the culture of innovation across the campus, with the participation of students, graduates, professors and the community, showing that the diversity of ideas and the integration of areas are catalysts for the development of skills.",
     "smileDate": "May 22 to 27",
     "smileDateWithYear": "May 22 to 27, 2023",
+    "userRolesNameSchema": "{schema, select, STUDENT{Mauá Student} EXTERNAL{External} EMPLOYEE{Employee} INTERNAL_STUDENT{International Student} PROFESSOR{Mauá Professor (Responsável)} ADMIN{Admin} other{}}",
     
     "knowMore": "KNOW MORE >>>",
     "speakersTitle": "Main Speakers - 2022",
@@ -80,6 +81,7 @@
     
     
 
+    "selectOptionTitle": "Select an option:",
     "registerFullNamePlaceholder": "Full Name",
     "registerSocialNamePlaceholder": "Social Name",
     "registerEmailPlaceholder": "E-mail",
@@ -93,7 +95,7 @@
     "registerTerms": "{terms, select, one{I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.} two{I have read and accept the Terms of Use.} three{I authorize the sending of notification by email, for the purposes of promoting Smile.}}",
     "notificationsTitle": "Means of notification about activities:",
     "notificationsSchemaTitle": "I want to receive notifications by ",
-    "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} whatsapp{WHATSAPP} app{APP/WEB} other{}}",
+    "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
     "registerTitle": "Register",
     "emailNotificationTitle": "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.",
     "changePasswordTitle": "Change password",
@@ -113,6 +115,7 @@
     "fieldInvalid": "Invalid field",
     "fieldFullNameRequired": "Enter your full name",
     "fieldEmailInvalid": "Invalid e-mail",
+    "fieldProfessorEmailInvalid": "Invalid professor e-mail",
     "fieldEmailsEqualsRequired": "E-mails must be the same",
     "fieldPasswordEqualsRequired": "The \"Password\" and \"Confirm your password\" fields must be the same",
     "fieldPasswordRequisits": "Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, $, %, ^, &, *, -) \n - Minimum 8 characters",

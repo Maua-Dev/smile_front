@@ -125,6 +125,25 @@ class S {
     );
   }
 
+  /// `{schema, select, STUDENT{Mauá Student} EXTERNAL{External} EMPLOYEE{Employee} INTERNAL_STUDENT{International Student} PROFESSOR{Mauá Professor (Responsável)} ADMIN{Admin} other{}}`
+  String userRolesNameSchema(Object schema) {
+    return Intl.select(
+      schema,
+      {
+        'STUDENT': 'Mauá Student',
+        'EXTERNAL': 'External',
+        'EMPLOYEE': 'Employee',
+        'INTERNAL_STUDENT': 'International Student',
+        'PROFESSOR': 'Mauá Professor (Responsável)',
+        'ADMIN': 'Admin',
+        'other': '',
+      },
+      name: 'userRolesNameSchema',
+      desc: '',
+      args: [schema],
+    );
+  }
+
   /// `KNOW MORE >>>`
   String get knowMore {
     return Intl.message(
@@ -833,6 +852,16 @@ class S {
     );
   }
 
+  /// `Select an option:`
+  String get selectOptionTitle {
+    return Intl.message(
+      'Select an option:',
+      name: 'selectOptionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Full Name`
   String get registerFullNamePlaceholder {
     return Intl.message(
@@ -970,15 +999,13 @@ class S {
     );
   }
 
-  /// `{notification, select, email{EMAIL} sms{SMS} whatsapp{WHATSAPP} app{APP/WEB} other{}}`
+  /// `{notification, select, email{EMAIL} sms{SMS} other{}}`
   String notificationsSchema(Object notification) {
     return Intl.select(
       notification,
       {
         'email': 'EMAIL',
         'sms': 'SMS',
-        'whatsapp': 'WHATSAPP',
-        'app': 'APP/WEB',
         'other': '',
       },
       name: 'notificationsSchema',
@@ -1092,6 +1119,16 @@ class S {
     return Intl.message(
       'Invalid e-mail',
       name: 'fieldEmailInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid professor e-mail`
+  String get fieldProfessorEmailInvalid {
+    return Intl.message(
+      'Invalid professor e-mail',
+      name: 'fieldProfessorEmailInvalid',
       desc: '',
       args: [],
     );
