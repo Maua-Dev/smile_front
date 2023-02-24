@@ -16,9 +16,11 @@ class InputBoxWidget extends StatelessWidget {
   final bool? showPwd;
   final bool? isRAField;
   final bool? isValidated;
+  final bool? isPhoneField;
 
   const InputBoxWidget({
     Key? key,
+    this.isPhoneField,
     this.isBrazilianPhoneField,
     required this.icon,
     required this.placeholder,
@@ -38,8 +40,10 @@ class InputBoxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final maskRA = MaskTextInputFormatter(
         mask: "##.#####-#", filter: {"#": RegExp(r'[0-9]')});
+    final maskBrazilianPhone = MaskTextInputFormatter(
+        mask: "(##) #####-####", filter: {"#": RegExp(r'[0-9]')});
     final maskPhone = MaskTextInputFormatter(
-        mask: "(##) ######-####", filter: {"#": RegExp(r'[0-9]')});
+        mask: "###############", filter: {"#": RegExp(r'[0-9]')});
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
@@ -97,7 +101,13 @@ class InputBoxWidget extends StatelessWidget {
                       )
                     : null),
             style: TextStyle(color: AppColors.gray),
-            inputFormatters: isRAField != null ? [maskRA] : null),
+            inputFormatters: isRAField != null
+                ? [maskRA]
+                : isPhoneField == true && isBrazilianPhoneField == true
+                    ? [maskBrazilianPhone]
+                    : isPhoneField == true
+                        ? [maskPhone]
+                        : null),
       ),
     );
   }

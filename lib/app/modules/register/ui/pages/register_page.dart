@@ -200,8 +200,11 @@ class _RegisterPageState
                             padding: const EdgeInsets.only(bottom: 20.0),
                             child: GestureDetector(
                               onTap: () async {
-                                controller.setCountryCode(await countryPicker
-                                    .showPicker(context: context));
+                                final code = await countryPicker.showPicker(
+                                    context: context);
+                                controller.setCountryCode(code);
+                                controller.setBrazilianPhone(code);
+                                controller.setPhone('');
                               },
                               child: Container(
                                 height: 60,
@@ -247,9 +250,11 @@ class _RegisterPageState
                             width: 10,
                           ),
                           InputBoxWidget(
+                            isPhoneField: true,
                             icon: Icons.phone,
+                            isBrazilianPhoneField: controller.isBrazilianPhone,
                             placeholder: S.of(context).registerPhonePlaceholder,
-                            setValue: controller.setSocialName,
+                            setValue: controller.setPhone,
                             widthSize: MediaQuery.of(context).size.width < 650
                                 ? MediaQuery.of(context).size.width * 0.48
                                 : 400,
@@ -359,11 +364,15 @@ class _RegisterPageState
                     const SizedBox(
                       height: 16,
                     ),
-                    SwitchToggleWidget(
-                        tipo: S.of(context).notificationsSchema('sms'),
-                        onChanged: (bool? value) {
-                          controller.setSMSNotifications(value);
-                        }),
+                    Observer(builder: (_) {
+                      return SwitchToggleWidget(
+                          isPhoneFilled: controller.isPhoneFieldFilled,
+                          isSmsSwitch: true,
+                          tipo: S.of(context).notificationsSchema('sms'),
+                          onChanged: (bool? value) {
+                            controller.setSMSNotifications(value);
+                          });
+                    }),
                     const SizedBox(
                       height: 30,
                     ),

@@ -85,8 +85,23 @@ abstract class RegisterControllerBase with Store {
   bool acceptSMSNotifications = false;
 
   @observable
+  bool isBrazilianPhone = true;
+
+  @observable
+  bool isPhoneFieldFilled = false;
+
+  @observable
   CountryCode? countryCode =
-      CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
+      const CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
+
+  @action
+  void setBrazilianPhone(CountryCode? value) {
+    if (value?.code == "BR") {
+      isBrazilianPhone = true;
+    } else {
+      isBrazilianPhone = false;
+    }
+  }
 
   @action
   void setCountryCode(CountryCode? value) {
@@ -148,18 +163,25 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
-    phone = value;
+    phone = '${countryCode?.dialCode}$value';
+    phone = phone.replaceAll('+', '');
+    if (countryCode?.code == "BR") {
+      phone = phone.replaceAll('(', '');
+      phone = phone.replaceAll(')', '');
+      phone = phone.replaceAll(' ', '');
+      phone = phone.replaceAll('-', '');
+    }
+    if (phone.isNotEmpty) {
+      isPhoneFieldFilled = true;
+    }
   }
 
   @action
   String? validatePhone(String? value) {
-    if (value!.isEmpty) {
-      return S.current.fieldRequired;
-    }
-    if (phone[0] == "5" && phone[1] == "5" && phone.length == 11) {
+    if (countryCode?.code == "BR" && phone.length == 11) {
       return S.current.fieldDDDRequired;
     }
-    if (phone[0] == "5" && phone[1] == "5" && phone.length != 13) {
+    if (countryCode?.code == "BR" && phone.length != 13) {
       return S.current.fieldInvalid;
     }
     return null;
