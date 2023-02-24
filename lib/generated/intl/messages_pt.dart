@@ -382,6 +382,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Meios de notificação sobre as atividades:"),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
+        "presenceValidateTitle":
+            MessageLookupByLibrary.simpleMessage("Validar Presença"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme sua senha"),
         "registerCountryPlaceholder":
@@ -410,7 +412,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "scheduleAddTitle":
             MessageLookupByLibrary.simpleMessage("Adicionar Horário"),
         "scheduleTitle": MessageLookupByLibrary.simpleMessage("Horário"),
-        "scheduleTitle": MessageLookupByLibrary.simpleMessage("Hora"),
         "selectOptionTitle":
             MessageLookupByLibrary.simpleMessage("Selecione uma opção:"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Enviar"),

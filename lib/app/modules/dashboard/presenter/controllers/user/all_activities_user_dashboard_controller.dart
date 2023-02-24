@@ -121,7 +121,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
           title: activity.title,
           description: activity.description,
           date: activity.startDate,
-          duration: 0,
+          duration: activity.duration,
           totalParticipants: activity.totalSlots,
           speakers: activity.speakers,
           location: activity.place,

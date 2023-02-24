@@ -382,6 +382,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Means of notification about activities:"),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
+        "presenceValidateTitle":
+            MessageLookupByLibrary.simpleMessage("Presence Validate"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "registerCountryPlaceholder":
