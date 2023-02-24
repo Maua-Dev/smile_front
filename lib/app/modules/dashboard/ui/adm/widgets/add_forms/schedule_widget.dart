@@ -199,9 +199,9 @@ class ScheduleWidget extends StatelessWidget {
                     ),
                     Flexible(
                       child: TextFieldDialogWidget(
-                          suffixTooltip: const TooltipWidget(
+                          suffixTooltip: TooltipWidget(
                             message:
-                                """O sistema encerra automaticamente as inscrições da atividade\nem uma data e hora específica. Se não preencher esse campo, as\n inscrições não se encerrarão sozinhas e um administrador deverá\nfazê-lo manualmente.""",
+                                S.of(context).activityInscriptionClosureTooltip,
                           ),
                           validator: isValidSubscriptionclosureDate,
                           labelText:
@@ -221,9 +221,9 @@ class ScheduleWidget extends StatelessWidget {
                     ),
                     Flexible(
                       child: TextFieldDialogWidget(
-                          suffixTooltip: const TooltipWidget(
+                          suffixTooltip: TooltipWidget(
                             message:
-                                """O sistema encerra automaticamente as inscrições da atividade\nem uma data e hora específica. Se não preencher esse campo, as\n inscrições não se encerrarão sozinhas e um administrador deverá\nfazê-lo manualmente.""",
+                                S.of(context).activityInscriptionClosureTooltip,
                           ),
                           validator: isValidSubscriptionclosureDate,
                           labelText:

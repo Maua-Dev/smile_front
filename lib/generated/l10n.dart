@@ -1507,6 +1507,16 @@ class S {
     );
   }
 
+  /// `The system automatically closes the activity\nsubscriptions at a specific date and time. If this field is not filled in, the\nsubscriptions will not close by themselves and an administrator must\ndo it manually.`
+  String get activityInscriptionClosureTooltip {
+    return Intl.message(
+      'The system automatically closes the activity\nsubscriptions at a specific date and time. If this field is not filled in, the\nsubscriptions will not close by themselves and an administrator must\ndo it manually.',
+      name: 'activityInscriptionClosureTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The inscription closure date must be before the event date`
   String get activityErrorClosureDateAfterStartDate {
     return Intl.message(
