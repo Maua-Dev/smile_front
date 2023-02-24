@@ -354,14 +354,16 @@ class _RegisterPageState
                     const SizedBox(
                       height: 8,
                     ),
-                    SwitchToggleWidget(
-                      toggleSwitch: controller.toggleEmailSwitch,
-                      isSwitched: controller.isEmailSwitched,
-                      tipo: S.of(context).notificationsSchema('email'),
-                      onChanged: (bool? value) {
-                        controller.setEmailNotifications(value);
-                      },
-                    ),
+                    Observer(builder: (_) {
+                      return SwitchToggleWidget(
+                        toggleSwitch: controller.toggleEmailSwitch,
+                        isSwitched: controller.isEmailSwitched,
+                        tipo: S.of(context).notificationsSchema('email'),
+                        onChanged: (bool? value) {
+                          controller.setEmailNotifications(value);
+                        },
+                      );
+                    }),
                     const SizedBox(
                       height: 16,
                     ),
@@ -369,8 +371,6 @@ class _RegisterPageState
                       return SwitchToggleWidget(
                           toggleSwitch: controller.toggleSmsSwitch,
                           isSwitched: controller.isSmsSwitched,
-                          isPhoneFilled: controller.isPhoneFieldFilled,
-                          isSmsSwitch: true,
                           tipo: S.of(context).notificationsSchema('sms'),
                           onChanged: (bool? value) {
                             controller.setSMSNotifications(value);

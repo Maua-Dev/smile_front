@@ -10,8 +10,6 @@ class SwitchToggleWidget extends StatelessWidget {
   final bool isSwitched;
   final Function() toggleSwitch;
   final Function(bool?)? onChanged;
-  final bool? isSmsSwitch;
-  final bool? isPhoneFilled;
 
   const SwitchToggleWidget({
     Key? key,
@@ -19,8 +17,6 @@ class SwitchToggleWidget extends StatelessWidget {
     required this.isSwitched,
     required this.tipo,
     required this.onChanged,
-    this.isSmsSwitch,
-    this.isPhoneFilled,
   }) : super(key: key);
 
   @override
@@ -33,11 +29,7 @@ class SwitchToggleWidget extends StatelessWidget {
             : 600,
         height: 40,
         decoration: BoxDecoration(
-          color: isPhoneFilled == true
-              ? AppColors.white
-              : isSwitched == true
-                  ? AppColors.white
-                  : AppColors.gray,
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
@@ -49,7 +41,7 @@ class SwitchToggleWidget extends StatelessWidget {
                   text: TextSpan(
                       text: S.of(context).notificationsSchemaTitle,
                       style: AppTextStyles.body.copyWith(
-                        color: AppColors.white,
+                        color: AppColors.gray,
                         fontSize: 16,
                       ),
                       children: [
@@ -62,15 +54,17 @@ class SwitchToggleWidget extends StatelessWidget {
                         ))
                   ])),
             ),
-            Switch(
-                splashRadius: 8,
-                activeTrackColor: AppColors.brandingOrange,
-                activeColor: AppColors.white,
-                value: isSwitched,
-                onChanged: (value) {
-                  toggleSwitch(value);
-                  onChanged;
-                })
+            GestureDetector(
+              child: Switch(
+                  splashRadius: 8,
+                  activeTrackColor: AppColors.brandingOrange,
+                  activeColor: AppColors.white,
+                  value: isSwitched,
+                  onChanged: (value) {
+                    toggleSwitch()!;
+                    onChanged;
+                  }),
+            ),
           ],
         ),
       );
