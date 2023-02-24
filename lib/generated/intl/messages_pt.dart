@@ -376,6 +376,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Meios de notificação sobre as atividades:"),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
+        "queueExitAlert": MessageLookupByLibrary.simpleMessage(
+            "Tem certeza que deseja sair da fila?"),
+        "queueTitle": MessageLookupByLibrary.simpleMessage("Na fila"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme sua senha"),
         "registerCountryPlaceholder":

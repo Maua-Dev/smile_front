@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -124,15 +125,6 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                   ? 20
                                   : 40,
                             ),
-                          if (activityEnrollment == null)
-                            Icon(
-                              Icons.star,
-                              color: AppColors.brandingBlue,
-                              size: MediaQuery.of(context).size.width <
-                                      breakpointTablet
-                                  ? 20
-                                  : 40,
-                            ),
                         ]),
                     Row(children: [
                       Column(
@@ -161,30 +153,41 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                 : 368,
                       ),
                       SizedBox(
-                          width: MediaQuery.of(context).size.width < breakpointTablet
-                              ? 100
-                              : 200,
-                          height: MediaQuery.of(context).size.width < breakpointTablet
-                              ? 25
-                              : 50,
+                          width:
+                              MediaQuery.of(context).size.width < breakpointTablet
+                                  ? 100
+                                  : 200,
+                          height:
+                              MediaQuery.of(context).size.width < breakpointTablet
+                                  ? 25
+                                  : 50,
                           child: activityEnrollment != null
                               ? ElevatedButton(
                                   style: ButtonStyle(
-                                    shape: MaterialStateProperty.all<
-                                            RoundedRectangleBorder>(
+                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                         RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
-                                                MediaQuery.of(context)
-                                                            .size
-                                                            .width <
+                                                MediaQuery.of(context).size.width <
                                                         breakpointTablet
                                                     ? 15
                                                     : 20),
                                             side: BorderSide(
-                                                color:
-                                                    AppColors.brandingOrange))),
+                                                color: activityEnrollment!.state ==
+                                                            EnrollmentStateEnum
+                                                                .COMPLETED ||
+                                                        activityEnrollment!.state ==
+                                                            EnrollmentStateEnum
+                                                                .ENROLLED
+                                                    ? AppColors.brandingOrange
+                                                    : Colors.black))),
                                     backgroundColor: MaterialStateProperty.all(
-                                        AppColors.brandingOrange),
+                                        activityEnrollment!.state ==
+                                                    EnrollmentStateEnum
+                                                        .COMPLETED ||
+                                                activityEnrollment!.state ==
+                                                    EnrollmentStateEnum.ENROLLED
+                                            ? AppColors.brandingOrange
+                                            : AppColors.gray),
                                   ),
                                   onPressed: () {
                                     showDialog(
@@ -193,9 +196,20 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                         return Observer(builder: (context) {
                                           return ActionConfirmationDialogWidget(
                                               isLoading: isLoading,
-                                              title: S
-                                                  .of(context)
-                                                  .unsubscribeAlert,
+                                              title: activityEnrollment!
+                                                              .state ==
+                                                          EnrollmentStateEnum
+                                                              .COMPLETED ||
+                                                      activityEnrollment!
+                                                              .state ==
+                                                          EnrollmentStateEnum
+                                                              .ENROLLED
+                                                  ? S
+                                                      .of(context)
+                                                      .unsubscribeAlert
+                                                  : S
+                                                      .of(context)
+                                                      .queueExitAlert,
                                               content: acceptingNewEnrollments
                                                   ? S
                                                       .of(context)
@@ -208,7 +222,12 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                       },
                                     );
                                   },
-                                  child: Text(S.of(context).subscribedTitle,
+                                  child: Text(
+                                      activityEnrollment!.state == EnrollmentStateEnum.COMPLETED ||
+                                              activityEnrollment!.state ==
+                                                  EnrollmentStateEnum.ENROLLED
+                                          ? S.of(context).subscribedTitle
+                                          : S.of(context).queueTitle,
                                       style: AppTextStyles.bold.copyWith(
                                           fontSize:
                                               MediaQuery.of(context).size.width <
@@ -258,14 +277,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                       },
                                     );
                                   },
-                                  child: Text(S.of(context).subcribeTitle,
-                                      style: AppTextStyles.bold.copyWith(
-                                          fontSize:
-                                              MediaQuery.of(context).size.width <
-                                                      breakpointTablet
-                                                  ? 12
-                                                  : 24,
-                                          color: AppColors.brandingOrange))))
+                                  child: Text(S.of(context).subcribeTitle, style: AppTextStyles.bold.copyWith(fontSize: MediaQuery.of(context).size.width < breakpointTablet ? 12 : 24, color: AppColors.brandingOrange))))
                     ])
                   ],
                 ),

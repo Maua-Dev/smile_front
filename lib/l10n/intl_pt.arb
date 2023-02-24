@@ -66,6 +66,8 @@
     "unsubscribeAlert": "Tem certeza que deseja se desinscrever?",
     "unsubscribeAcceptingNewEnrollments" : "Você conseguirá se inscrever novamente",
     "unsubscribeNotAcceptingNewEnrollments" : "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente",
+    "queueTitle": "Na fila",
+    "queueExitAlert": "Tem certeza que deseja sair da fila?",
 
 
 

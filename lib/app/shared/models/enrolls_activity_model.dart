@@ -57,7 +57,9 @@ class EnrollsActivityModel extends Activity {
                 ? DateTime.fromMillisecondsSinceEpoch(
                     map['activity']['stop_accepting_new_enrollments_before'])
                 : DateTime.now(),
-        enrollments: EnrollmentsModel.fromMap(map['enrollment']));
+        enrollments: map.containsKey('enrollment')
+            ? EnrollmentsModel.fromMap(map['enrollment'])
+            : null);
   }
 
   static List<EnrollsActivityModel> fromMaps(List array) {

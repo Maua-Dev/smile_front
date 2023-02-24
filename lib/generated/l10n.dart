@@ -798,6 +798,26 @@ class S {
     );
   }
 
+  /// `Na fila`
+  String get queueTitle {
+    return Intl.message(
+      'Na fila',
+      name: 'queueTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to exit the queue?`
+  String get queueExitAlert {
+    return Intl.message(
+      'Are you sure you want to exit the queue?',
+      name: 'queueExitAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The login service is under maintenance`
   String get maintenanceTitle {
     return Intl.message(
