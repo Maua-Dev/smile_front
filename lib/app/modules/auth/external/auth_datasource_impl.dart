@@ -48,8 +48,8 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
         return tokens;
       }
       throw Exception();
-    } catch (e) {
-      if (e.toString().contains('400')) {
+    } on DioError catch (e) {
+      if (e.response!.statusCode.toString().contains('400')) {
         storage.cleanSecureStorage();
         Modular.to.navigate('/login');
       }
