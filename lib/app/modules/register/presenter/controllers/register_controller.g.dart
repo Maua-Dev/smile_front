@@ -331,41 +331,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$acceptWPPNotificationsAtom = Atom(
-      name: 'RegisterControllerBase.acceptWPPNotifications', context: context);
-
-  @override
-  bool get acceptWPPNotifications {
-    _$acceptWPPNotificationsAtom.reportRead();
-    return super.acceptWPPNotifications;
-  }
-
-  @override
-  set acceptWPPNotifications(bool value) {
-    _$acceptWPPNotificationsAtom
-        .reportWrite(value, super.acceptWPPNotifications, () {
-      super.acceptWPPNotifications = value;
-    });
-  }
-
-  late final _$acceptAPPWEBNotificationsAtom = Atom(
-      name: 'RegisterControllerBase.acceptAPPWEBNotifications',
-      context: context);
-
-  @override
-  bool get acceptAPPWEBNotifications {
-    _$acceptAPPWEBNotificationsAtom.reportRead();
-    return super.acceptAPPWEBNotifications;
-  }
-
-  @override
-  set acceptAPPWEBNotifications(bool value) {
-    _$acceptAPPWEBNotificationsAtom
-        .reportWrite(value, super.acceptAPPWEBNotifications, () {
-      super.acceptAPPWEBNotifications = value;
-    });
-  }
-
   late final _$setEmailNotificationsAsyncAction = AsyncAction(
       'RegisterControllerBase.setEmailNotifications',
       context: context);
@@ -384,26 +349,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   Future<void> setSMSNotifications(bool? value) {
     return _$setSMSNotificationsAsyncAction
         .run(() => super.setSMSNotifications(value));
-  }
-
-  late final _$setWPPNotificationsAsyncAction = AsyncAction(
-      'RegisterControllerBase.setWPPNotifications',
-      context: context);
-
-  @override
-  Future<void> setWPPNotifications(bool? value) {
-    return _$setWPPNotificationsAsyncAction
-        .run(() => super.setWPPNotifications(value));
-  }
-
-  late final _$setAPPWEBNotificationsAsyncAction = AsyncAction(
-      'RegisterControllerBase.setAPPWEBNotifications',
-      context: context);
-
-  @override
-  Future<void> setAPPWEBNotifications(bool? value) {
-    return _$setAPPWEBNotificationsAsyncAction
-        .run(() => super.setAPPWEBNotifications(value));
   }
 
   late final _$setAcceptImageAsyncAction =
@@ -677,8 +622,6 @@ acceptTermsOfUse: ${acceptTermsOfUse},
 acceptImage: ${acceptImage},
 acceptEmailNotifications: ${acceptEmailNotifications},
 acceptSMSNotifications: ${acceptSMSNotifications},
-acceptWPPNotifications: ${acceptWPPNotifications},
-acceptAPPWEBNotifications: ${acceptAPPWEBNotifications},
 raInt: ${raInt},
 registerInformations: ${registerInformations}
     ''';

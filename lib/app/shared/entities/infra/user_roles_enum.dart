@@ -2,6 +2,8 @@
 
 import 'package:enum_to_string/enum_to_string.dart';
 
+import '../../../../generated/l10n.dart';
+
 enum UserRolesEnum {
   STUDENT,
   EXTERNAL,
@@ -21,5 +23,9 @@ extension UserRolesEnumExtension on UserRolesEnum {
 
   static String enumToStringMap(UserRolesEnum modality) {
     return EnumToString.convertToString(modality);
+  }
+
+  String get name {
+    return S.current.userRolesNameSchema(toString());
   }
 }

@@ -8,8 +8,6 @@ class UserRegistration extends User {
   final bool acceptTerms;
   final bool acceptEmailNotifications;
   final bool acceptSMSNotifications;
-  final bool acceptWPPNotifications;
-  final bool acceptAPPWEBNotifications;
 
   UserRegistration({
     required super.name,
@@ -24,8 +22,6 @@ class UserRegistration extends User {
     required this.acceptTerms,
     required this.acceptEmailNotifications,
     required this.acceptSMSNotifications,
-    required this.acceptWPPNotifications,
-    required this.acceptAPPWEBNotifications,
   });
 
   factory UserRegistration.newInstance() {
@@ -42,8 +38,6 @@ class UserRegistration extends User {
       acceptTerms: true,
       acceptEmailNotifications: false,
       acceptSMSNotifications: false,
-      acceptWPPNotifications: false,
-      acceptAPPWEBNotifications: false,
     );
   }
 }

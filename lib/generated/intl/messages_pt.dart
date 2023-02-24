@@ -175,8 +175,6 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m12(notification) => "${Intl.select(notification, {
             'email': 'EMAIL',
             'sms': 'SMS',
-            'whatsapp': 'WHATSAPP',
-            'app': 'APP/WEB',
             'other': '',
           })}";
 
@@ -225,6 +223,16 @@ class MessageLookup extends MessageLookupByLibrary {
             'boris': 'Bóris Fabris',
             'marco': 'Marco Antonio Teixeira',
             'willian': 'Dr. William Schoenell',
+            'other': '',
+          })}";
+
+  static String m18(schema) => "${Intl.select(schema, {
+            'STUDENT': 'Aluno Mauá',
+            'EXTERNAL': 'Externo',
+            'EMPLOYEE': 'Funcionário',
+            'INTERNAL_STUDENT': 'Estudante Internacional',
+            'PROFESSOR': 'Professor Smile',
+            'ADMIN': 'Admin',
             'other': '',
           })}";
 
@@ -317,6 +325,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Os campos \"Senha\" e \"Confirme sua senha\" devem ser iguais"),
         "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(
             "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -)  \n - Mínimo de 8 caracteres"),
+        "fieldProfessorEmailInvalid": MessageLookupByLibrary.simpleMessage(
+            "E-mail de professor inválido"),
         "fieldRAInvalid": MessageLookupByLibrary.simpleMessage("RA inválido"),
         "fieldRequired":
             MessageLookupByLibrary.simpleMessage("Campo obrigatório"),
@@ -399,6 +409,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "scheduleAddTitle":
             MessageLookupByLibrary.simpleMessage("Adicionar Horário"),
         "scheduleTitle": MessageLookupByLibrary.simpleMessage("Hora"),
+        "selectOptionTitle":
+            MessageLookupByLibrary.simpleMessage("Selecione uma opção:"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Enviar"),
         "signUp": MessageLookupByLibrary.simpleMessage("Inscreva-se"),
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
@@ -426,6 +438,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "successSendingSponsorEmail": MessageLookupByLibrary.simpleMessage(
             "Enviado com sucesso!! Nossa equipe entrará em contato em breve."),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Desinscrever-se"),
+        "userRolesNameSchema": m18,
         "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Sim")
       };

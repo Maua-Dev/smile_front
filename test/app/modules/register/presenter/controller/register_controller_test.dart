@@ -193,16 +193,6 @@ void main() {
     expect(controller.acceptSMSNotifications, true);
   });
 
-  test('setWPPNotifications', () {
-    controller.setWPPNotifications(true);
-    expect(controller.acceptWPPNotifications, true);
-  });
-
-  test('setAPPWEBNotifications', () {
-    controller.setAPPWEBNotifications(true);
-    expect(controller.acceptAPPWEBNotifications, true);
-  });
-
   test('setAcceptTermsOfUse', () {
     controller.setAcceptTermsOfUse(true);
     expect(controller.acceptTermsOfUse, true);

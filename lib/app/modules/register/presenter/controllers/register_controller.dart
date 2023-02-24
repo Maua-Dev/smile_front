@@ -4,6 +4,7 @@ import 'package:smile_front/app/modules/register/domain/usecases/register_user.d
 import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/generated/l10n.dart';
+import 'package:string_validator/string_validator.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/entities/user_registration.dart';
 import '../../../../shared/error/error_snackbar.dart';
@@ -59,7 +60,7 @@ abstract class RegisterControllerBase with Store {
   String phone = '';
 
   @observable
-  UserRolesEnum role = UserRolesEnum.EXTERNAL;
+  UserRolesEnum role = UserRolesEnum.STUDENT;
 
   @observable
   String ra = '';
@@ -82,12 +83,6 @@ abstract class RegisterControllerBase with Store {
   @observable
   bool acceptSMSNotifications = false;
 
-  @observable
-  bool acceptWPPNotifications = false;
-
-  @observable
-  bool acceptAPPWEBNotifications = false;
-
   @action
   Future<void> setEmailNotifications(bool? value) async {
     acceptEmailNotifications = value!;
@@ -96,16 +91,6 @@ abstract class RegisterControllerBase with Store {
   @action
   Future<void> setSMSNotifications(bool? value) async {
     acceptSMSNotifications = value!;
-  }
-
-  @action
-  Future<void> setWPPNotifications(bool? value) async {
-    acceptWPPNotifications = value!;
-  }
-
-  @action
-  Future<void> setAPPWEBNotifications(bool? value) async {
-    acceptAPPWEBNotifications = value!;
   }
 
   @action
@@ -175,7 +160,11 @@ abstract class RegisterControllerBase with Store {
     if (value!.isEmpty) {
       return S.current.fieldRequired;
     }
-    if (!EmailValidator.validate(email)) {
+    if (role == UserRolesEnum.PROFESSOR) {
+      if (!email.contains('@maua.br') || isNumeric(email[0])) {
+        return S.current.fieldProfessorEmailInvalid;
+      }
+    } else if (!EmailValidator.validate(email)) {
       return S.current.fieldEmailInvalid;
     }
     return null;
@@ -271,8 +260,6 @@ abstract class RegisterControllerBase with Store {
         phone: phone,
         acceptEmailNotifications: acceptEmailNotifications,
         acceptSMSNotifications: acceptSMSNotifications,
-        acceptWPPNotifications: acceptWPPNotifications,
-        acceptAPPWEBNotifications: acceptAPPWEBNotifications,
         accessLevel: AccessLevelEnum.USER,
         certificateWithSocialName: hasSocialName,
         role: role,

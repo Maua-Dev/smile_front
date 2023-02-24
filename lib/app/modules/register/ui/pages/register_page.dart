@@ -107,6 +107,22 @@ class _RegisterPageState
                     const SizedBox(
                       height: 24,
                     ),
+                    Observer(builder: (_) {
+                      return CustomElevatedButtonWidget(
+                        title: controller.role.name.toUpperCase(),
+                        backgroundColor: AppColors.brandingOrange,
+                        widthSize: MediaQuery.of(context).size.width < 650
+                            ? MediaQuery.of(context).size.width * 0.85
+                            : 600,
+                        heightSize: 50,
+                        onPressed: () {
+                          _showSelectRoleDialog();
+                        },
+                      );
+                    }),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     InputBoxWidget(
                       icon: Icons.person,
                       placeholder: S.of(context).registerFullNamePlaceholder,
@@ -289,22 +305,6 @@ class _RegisterPageState
                         tipo: S.of(context).notificationsSchema('sms'),
                         onChanged: (bool? value) {
                           controller.setSMSNotifications(value);
-                        }),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    SwitchToggleWidget(
-                        tipo: S.of(context).notificationsSchema('whatsapp'),
-                        onChanged: (bool? value) {
-                          controller.setWPPNotifications(value);
-                        }),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    SwitchToggleWidget(
-                        tipo: S.of(context).notificationsSchema('app'),
-                        onChanged: (bool? value) {
-                          controller.setAPPWEBNotifications(value);
                         }),
                     const SizedBox(
                       height: 30,
