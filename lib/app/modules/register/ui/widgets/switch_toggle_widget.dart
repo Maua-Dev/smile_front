@@ -19,51 +19,49 @@ class SwitchToggleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Observer(builder: (_) {
-      return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-        width: MediaQuery.of(context).size.width < 650
-            ? MediaQuery.of(context).size.width * 0.85
-            : 600,
-        height: 40,
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: RichText(
-                  text: TextSpan(
-                      text: S.of(context).notificationsSchemaTitle,
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      width: MediaQuery.of(context).size.width < 650
+          ? MediaQuery.of(context).size.width * 0.85
+          : 600,
+      height: 40,
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: RichText(
+                text: TextSpan(
+                    text: S.of(context).notificationsSchemaTitle,
+                    style: AppTextStyles.body.copyWith(
+                      color: AppColors.gray,
+                      fontSize: 16,
+                    ),
+                    children: [
+                  TextSpan(
+                      text: tipo.toUpperCase(),
                       style: AppTextStyles.body.copyWith(
-                        color: AppColors.gray,
+                        color: AppColors.brandingOrange,
+                        fontWeight: FontWeight.bold,
                         fontSize: 16,
-                      ),
-                      children: [
-                    TextSpan(
-                        text: tipo.toUpperCase(),
-                        style: AppTextStyles.body.copyWith(
-                          color: AppColors.brandingOrange,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ))
-                  ])),
+                      ))
+                ])),
+          ),
+          GestureDetector(
+            child: Switch(
+              splashRadius: 8,
+              activeTrackColor: AppColors.brandingOrange,
+              activeColor: AppColors.white,
+              value: isSwitched,
+              onChanged: onChanged,
             ),
-            GestureDetector(
-              child: Switch(
-                splashRadius: 8,
-                activeTrackColor: AppColors.brandingOrange,
-                activeColor: AppColors.white,
-                value: isSwitched,
-                onChanged: onChanged,
-              ),
-            ),
-          ],
-        ),
-      );
-    });
+          ),
+        ],
+      ),
+    );
   }
 }
