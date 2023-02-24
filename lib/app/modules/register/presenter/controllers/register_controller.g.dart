@@ -571,7 +571,7 @@ mixin _$RegisterController on RegisterControllerBase, Store {
       ActionController(name: 'RegisterControllerBase', context: context);
 
   @override
-  String? toggleSmsSwitch() {
+  void toggleSmsSwitch() {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.toggleSmsSwitch');
     try {

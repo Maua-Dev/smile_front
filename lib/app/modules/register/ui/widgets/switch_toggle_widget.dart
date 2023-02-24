@@ -7,12 +7,16 @@ import '../../../../shared/themes/app_text_styles.dart';
 
 class SwitchToggleWidget extends StatelessWidget {
   final String tipo;
+  final int? phoneLength;
   final bool isSwitched;
+  final bool? isSmsSwitch;
   final Function() toggleSwitch;
   final Function(bool?)? onChanged;
 
   const SwitchToggleWidget({
     Key? key,
+    this.phoneLength,
+    this.isSmsSwitch,
     required this.toggleSwitch,
     required this.isSwitched,
     required this.tipo,
@@ -61,6 +65,28 @@ class SwitchToggleWidget extends StatelessWidget {
                   activeColor: AppColors.white,
                   value: isSwitched,
                   onChanged: (value) {
+                    if (isSmsSwitch == true) {
+                      if (phoneLength! < 3) {
+                        showDialog(
+                          context: context,
+                          builder: (_) => AlertDialog(
+                            title:
+                                const Text('Telefone celular não preenchido.'),
+                            content: const Text(
+                                'Preencha o seu telefone celular para ativar as notificações via SMS!'),
+                            actions: [
+                              TextButton(
+                                child: const Text('Fechar'),
+                                onPressed: () => Navigator.pop(context),
+                              ),
+                            ],
+                          ),
+                        );
+                      } else {
+                        toggleSwitch()!;
+                        onChanged;
+                      }
+                    }
                     toggleSwitch()!;
                     onChanged;
                   }),

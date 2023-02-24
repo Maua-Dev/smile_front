@@ -208,8 +208,8 @@ class _RegisterPageState
                               child: Container(
                                 height: 60,
                                 width: MediaQuery.of(context).size.width < 650
-                                    ? MediaQuery.of(context).size.width * 0.35
-                                    : 190,
+                                    ? MediaQuery.of(context).size.width * 0.30
+                                    : 110,
                                 decoration: BoxDecoration(
                                     color: AppColors.white,
                                     borderRadius: BorderRadius.circular(10)),
@@ -219,6 +219,9 @@ class _RegisterPageState
                                     return SizedBox(
                                       child: Row(
                                         children: [
+                                          const SizedBox(
+                                            width: 20,
+                                          ),
                                           Container(
                                               child:
                                                   controller.countryCode != null
@@ -255,8 +258,8 @@ class _RegisterPageState
                             placeholder: S.of(context).registerPhonePlaceholder,
                             setValue: controller.setPhone,
                             widthSize: MediaQuery.of(context).size.width < 650
-                                ? MediaQuery.of(context).size.width * 0.48
-                                : 400,
+                                ? MediaQuery.of(context).size.width * 0.53
+                                : 480,
                             validation: controller.validatePhone,
                           )
                         ],
@@ -369,6 +372,8 @@ class _RegisterPageState
                     ),
                     Observer(builder: (_) {
                       return SwitchToggleWidget(
+                          isSmsSwitch: true,
+                          phoneLength: controller.phone.length,
                           toggleSwitch: controller.toggleSmsSwitch,
                           isSwitched: controller.isSmsSwitched,
                           tipo: S.of(context).notificationsSchema('sms'),

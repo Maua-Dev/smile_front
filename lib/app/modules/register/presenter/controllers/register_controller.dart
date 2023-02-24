@@ -98,13 +98,10 @@ abstract class RegisterControllerBase with Store {
   bool isSmsSwitched = false;
 
   @action
-  String? toggleSmsSwitch() {
+  void toggleSmsSwitch() {
     if (phone.length > 3) {
       isSmsSwitched = !isSmsSwitched;
-    } else {
-      return 'Preencha seu telefone para ativar notificações via SMS';
     }
-    return '';
   }
 
   @observable
