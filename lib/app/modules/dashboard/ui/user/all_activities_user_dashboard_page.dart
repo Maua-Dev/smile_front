@@ -89,50 +89,55 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                               controller.activitiesOnScreen[index].duration);
                       var hour = DateFormat('HH:mm').format(
                           controller.activitiesOnScreen[index].startDate!);
-                      return ActivitiesCardAllActivitiesDashboard(
-                        onPressedSubscribe: () {
-                          controller.subscribeUserActivity(controller
-                              .activitiesOnScreen[index].activityCode);
-                        },
-                        onPressedUnsubscribe: () {
-                          controller.unsubscribeUserActivity(controller
-                              .activitiesOnScreen[index].activityCode);
-                        },
-                        isLoading: controller.isLoading,
-                        finalTime: finalTime,
-                        location: controller.activitiesOnScreen[index].place,
-                        title: controller.activitiesOnScreen[index].title,
-                        hour: hour,
-                        activityEnrollment:
-                            controller.activitiesOnScreen[index].enrollments,
-                        acceptingNewEnrollments: controller
-                            .activitiesOnScreen[index].acceptingNewEnrollments,
-                        takenSlots:
-                            controller.activitiesOnScreen[index].takenSlots,
-                        totalSlots:
-                            controller.activitiesOnScreen[index].totalSlots,
-                        onTap: () {
-                          Modular.to.navigate(
-                            '/user/home/more-info',
-                            arguments: controller.activitiesOnScreen[index],
-                          );
-                          controller.analytics.logViewActivity(controller
-                              .activitiesOnScreen[index].activityCode);
-                        },
-                        isExtensive:
-                            controller.activitiesOnScreen[index].isExtensive,
-                      );
+                      return Observer(builder: (_) {
+                        return ActivitiesCardAllActivitiesDashboard(
+                          onPressedSubscribe: () {
+                            controller.subscribeUserActivity(controller
+                                .activitiesOnScreen[index].activityCode);
+                          },
+                          onPressedUnsubscribe: () {
+                            controller.unsubscribeUserActivity(controller
+                                .activitiesOnScreen[index].activityCode);
+                          },
+                          isLoading: controller.isLoading,
+                          finalTime: finalTime,
+                          location: controller.activitiesOnScreen[index].place,
+                          title: controller.activitiesOnScreen[index].title,
+                          hour: hour,
+                          activityEnrollment:
+                              controller.activitiesOnScreen[index].enrollments,
+                          acceptingNewEnrollments: controller
+                              .activitiesOnScreen[index]
+                              .acceptingNewEnrollments,
+                          takenSlots:
+                              controller.activitiesOnScreen[index].takenSlots,
+                          totalSlots:
+                              controller.activitiesOnScreen[index].totalSlots,
+                          onTap: () {
+                            Modular.to.navigate(
+                              '/user/home/more-info',
+                              arguments: controller.activitiesOnScreen[index],
+                            );
+                            controller.analytics.logViewActivity(controller
+                                .activitiesOnScreen[index].activityCode);
+                          },
+                          isExtensive:
+                              controller.activitiesOnScreen[index].isExtensive,
+                        );
+                      });
                     },
                   ),
                 ),
               );
             } else {
-              return Text(S.of(context).activitiesNotFound,
-                  style: AppTextStyles.body.copyWith(
-                      fontSize:
-                          MediaQuery.of(context).size.width < breakpointTablet
-                              ? 20
-                              : 25));
+              return Observer(builder: (_) {
+                return Text(S.of(context).activitiesNotFound,
+                    style: AppTextStyles.body.copyWith(
+                        fontSize:
+                            MediaQuery.of(context).size.width < breakpointTablet
+                                ? 20
+                                : 25));
+              });
             }
           }
         }),
