@@ -12,11 +12,11 @@ class DrawerDashboardWidget extends StatelessWidget {
   final bool isProfessor;
 
   final List<String> userOptions = [
-    "Home",
-    "Perfil",
-    "Atividades",
-    "Certificados",
-    "Ajuda",
+    S.current.drawerHomeButton,
+    S.current.drawerProfileButton,
+    S.current.drawerActivitiesButton,
+    S.current.drawerCertificatesButton,
+    S.current.drawerHelpButton,
   ];
 
   final List<String> userRoutes = [
@@ -28,12 +28,12 @@ class DrawerDashboardWidget extends StatelessWidget {
   ];
 
   final List<String> professorOptions = [
-    "Home",
-    "Perfil",
-    "Atividades",
-    "Atividades Responsaveis",
-    "Certificados",
-    "Ajuda",
+    S.current.drawerHomeButton,
+    S.current.drawerProfileButton,
+    S.current.drawerActivitiesButton,
+    S.current.drawerResponsibleActivitiesButton,
+    S.current.drawerCertificatesButton,
+    S.current.drawerHelpButton,
   ];
 
   final List<String> professorRoutes = [
