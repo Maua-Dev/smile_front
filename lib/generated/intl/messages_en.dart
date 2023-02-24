@@ -288,20 +288,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration."),
-        "errorChangePassword": MessageLookupByLibrary.simpleMessage(
-            "Failed to change password, please try again."),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n"),
-        "errorLoginInvalidConfirmation": MessageLookupByLibrary.simpleMessage(
-            "It was not possible to login.\n\n- Register by clicking on the \"I have no account\" button\n- Your e-mail may not have been confirmed, click on \"Resend confirmation e-mail\""),
         "errorLoginInvalidCredential": MessageLookupByLibrary.simpleMessage(
             "Invalid login and/or password"),
-        "errorRegister": MessageLookupByLibrary.simpleMessage(
-            "Failed to register, please try again."),
-        "errorSendingCode": MessageLookupByLibrary.simpleMessage(
-            "Failed to send code, email not registered or not confirmed."),
-        "errorUserAlreadyExist":
-            MessageLookupByLibrary.simpleMessage("User already exist."),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Exit"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Enter the number with DDD"),

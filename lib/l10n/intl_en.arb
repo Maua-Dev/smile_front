@@ -133,8 +133,6 @@
     
 
     "successRegister": "Your registration has been successfully confirmed!",
-    "errorRegister": "Failed to register, please try again.",
-    "errorUserAlreadyExist": "User already exist.",
 
     "successEmailSend": "Email successfully sent!",
 
@@ -142,12 +140,9 @@
     "lostOldDataWarn": "When saving all old data will be lost.",
     
     "successSendingCode": "Code sent successfully!",
-    "errorSendingCode": "Failed to send code, email not registered or not confirmed.",
     
     "successChangePassword": "Password changed successfully!",
-    "errorChangePassword": "Failed to change password, please try again.",
 
-    "errorLoginInvalidConfirmation": "It was not possible to login.\n\n- Register by clicking on the \"I have no account\" button\n- Your e-mail may not have been confirmed, click on \"Resend confirmation e-mail\"",
     "errorLoginInvalidCredential": "Invalid login and/or password",
 
     "successChangePasswordRedirect": "Password changed successfully! \n Redirecting to login...",

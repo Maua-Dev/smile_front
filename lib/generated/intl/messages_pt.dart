@@ -287,20 +287,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
-        "errorChangePassword": MessageLookupByLibrary.simpleMessage(
-            "Falha ao tentar alterar a senha, tente novamente."),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n"),
-        "errorLoginInvalidConfirmation": MessageLookupByLibrary.simpleMessage(
-            "Não foi possível realizar o login.\n\n- Realize seu cadastro clicando no botão \"Não tenho cadastro\"\n- Seu e-mail pode não ter sido confirmado, clique em \"Reenviar e-mail de confirmação\""),
         "errorLoginInvalidCredential":
             MessageLookupByLibrary.simpleMessage("Login e/ou senha inválidos"),
-        "errorRegister": MessageLookupByLibrary.simpleMessage(
-            "Falha ao realizar o cadastro, tente novamente."),
-        "errorSendingCode": MessageLookupByLibrary.simpleMessage(
-            "Falha ao enviar o código, e-mail não cadastrado ou não confirmado."),
-        "errorUserAlreadyExist":
-            MessageLookupByLibrary.simpleMessage("Usuário já existente."),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Sair"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Insira o número com DDD"),

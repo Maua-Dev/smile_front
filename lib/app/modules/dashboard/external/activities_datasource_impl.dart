@@ -53,8 +53,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         var res = await dio.get(url);
         return res.data;
       }
-      final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage: errorMessage);
+      showErrorSnackBar(errorMessage: e.response!.data);
       rethrow;
     }
   }
