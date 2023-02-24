@@ -204,7 +204,6 @@ class _RegisterPageState
                                     context: context);
                                 controller.setCountryCode(code);
                                 controller.setBrazilianPhone(code);
-                                controller.setPhone('');
                               },
                               child: Container(
                                 height: 60,
@@ -258,7 +257,7 @@ class _RegisterPageState
                             widthSize: MediaQuery.of(context).size.width < 650
                                 ? MediaQuery.of(context).size.width * 0.48
                                 : 400,
-                            validation: controller.validateSocialName,
+                            validation: controller.validatePhone,
                           )
                         ],
                       );
@@ -356,6 +355,8 @@ class _RegisterPageState
                       height: 8,
                     ),
                     SwitchToggleWidget(
+                      toggleSwitch: controller.toggleEmailSwitch,
+                      isSwitched: controller.isEmailSwitched,
                       tipo: S.of(context).notificationsSchema('email'),
                       onChanged: (bool? value) {
                         controller.setEmailNotifications(value);
@@ -366,6 +367,8 @@ class _RegisterPageState
                     ),
                     Observer(builder: (_) {
                       return SwitchToggleWidget(
+                          toggleSwitch: controller.toggleSmsSwitch,
+                          isSwitched: controller.isSmsSwitched,
                           isPhoneFilled: controller.isPhoneFieldFilled,
                           isSmsSwitch: true,
                           tipo: S.of(context).notificationsSchema('sms'),

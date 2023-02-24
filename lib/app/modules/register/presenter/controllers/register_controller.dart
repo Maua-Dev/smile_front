@@ -94,6 +94,23 @@ abstract class RegisterControllerBase with Store {
   CountryCode? countryCode =
       const CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
 
+  @observable
+  bool isSmsSwitched = false;
+
+  @action
+  void toggleSmsSwitch() {
+    isSmsSwitched = !isSmsSwitched;
+  }
+
+  @observable
+  bool isEmailSwitched = false;
+
+  @action
+  void toggleEmailSwitch() {
+    isEmailSwitched = !isEmailSwitched;
+    print(isEmailSwitched);
+  }
+
   @action
   void setBrazilianPhone(CountryCode? value) {
     if (value?.code == "BR") {
@@ -164,24 +181,23 @@ abstract class RegisterControllerBase with Store {
   @action
   Future<void> setPhone(String value) async {
     phone = '${countryCode?.dialCode}$value';
-    phone = phone.replaceAll('+', '');
     if (countryCode?.code == "BR") {
       phone = phone.replaceAll('(', '');
       phone = phone.replaceAll(')', '');
       phone = phone.replaceAll(' ', '');
       phone = phone.replaceAll('-', '');
     }
-    if (phone.isNotEmpty) {
+    if (value.isNotEmpty) {
       isPhoneFieldFilled = true;
     }
   }
 
   @action
   String? validatePhone(String? value) {
-    if (countryCode?.code == "BR" && phone.length == 11) {
+    if (countryCode?.code == "BR" && phone.length == 12) {
       return S.current.fieldDDDRequired;
     }
-    if (countryCode?.code == "BR" && phone.length != 13) {
+    if (countryCode?.code == "BR" && phone.length != 14 && phone.length > 3) {
       return S.current.fieldInvalid;
     }
     return null;

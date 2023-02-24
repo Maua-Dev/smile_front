@@ -379,6 +379,38 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
+  late final _$isSmsSwitchedAtom =
+      Atom(name: 'RegisterControllerBase.isSmsSwitched', context: context);
+
+  @override
+  bool get isSmsSwitched {
+    _$isSmsSwitchedAtom.reportRead();
+    return super.isSmsSwitched;
+  }
+
+  @override
+  set isSmsSwitched(bool value) {
+    _$isSmsSwitchedAtom.reportWrite(value, super.isSmsSwitched, () {
+      super.isSmsSwitched = value;
+    });
+  }
+
+  late final _$isEmailSwitchedAtom =
+      Atom(name: 'RegisterControllerBase.isEmailSwitched', context: context);
+
+  @override
+  bool get isEmailSwitched {
+    _$isEmailSwitchedAtom.reportRead();
+    return super.isEmailSwitched;
+  }
+
+  @override
+  set isEmailSwitched(bool value) {
+    _$isEmailSwitchedAtom.reportWrite(value, super.isEmailSwitched, () {
+      super.isEmailSwitched = value;
+    });
+  }
+
   late final _$setEmailNotificationsAsyncAction = AsyncAction(
       'RegisterControllerBase.setEmailNotifications',
       context: context);
@@ -539,6 +571,28 @@ mixin _$RegisterController on RegisterControllerBase, Store {
       ActionController(name: 'RegisterControllerBase', context: context);
 
   @override
+  void toggleSmsSwitch() {
+    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
+        name: 'RegisterControllerBase.toggleSmsSwitch');
+    try {
+      return super.toggleSmsSwitch();
+    } finally {
+      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void toggleEmailSwitch() {
+    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
+        name: 'RegisterControllerBase.toggleEmailSwitch');
+    try {
+      return super.toggleEmailSwitch();
+    } finally {
+      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setBrazilianPhone(CountryCode? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.setBrazilianPhone');
@@ -695,6 +749,8 @@ acceptSMSNotifications: ${acceptSMSNotifications},
 isBrazilianPhone: ${isBrazilianPhone},
 isPhoneFieldFilled: ${isPhoneFieldFilled},
 countryCode: ${countryCode},
+isSmsSwitched: ${isSmsSwitched},
+isEmailSwitched: ${isEmailSwitched},
 raInt: ${raInt},
 registerInformations: ${registerInformations}
     ''';
