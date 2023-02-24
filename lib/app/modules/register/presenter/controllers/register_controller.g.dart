@@ -200,19 +200,19 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$isMauaStudentAtom =
-      Atom(name: 'RegisterControllerBase.isMauaStudent', context: context);
+  late final _$roleAtom =
+      Atom(name: 'RegisterControllerBase.role', context: context);
 
   @override
-  bool get isMauaStudent {
-    _$isMauaStudentAtom.reportRead();
-    return super.isMauaStudent;
+  UserRolesEnum get role {
+    _$roleAtom.reportRead();
+    return super.role;
   }
 
   @override
-  set isMauaStudent(bool value) {
-    _$isMauaStudentAtom.reportWrite(value, super.isMauaStudent, () {
-      super.isMauaStudent = value;
+  set role(UserRolesEnum value) {
+    _$roleAtom.reportWrite(value, super.role, () {
+      super.role = value;
     });
   }
 
@@ -331,41 +331,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$acceptWPPNotificationsAtom = Atom(
-      name: 'RegisterControllerBase.acceptWPPNotifications', context: context);
-
-  @override
-  bool get acceptWPPNotifications {
-    _$acceptWPPNotificationsAtom.reportRead();
-    return super.acceptWPPNotifications;
-  }
-
-  @override
-  set acceptWPPNotifications(bool value) {
-    _$acceptWPPNotificationsAtom
-        .reportWrite(value, super.acceptWPPNotifications, () {
-      super.acceptWPPNotifications = value;
-    });
-  }
-
-  late final _$acceptAPPWEBNotificationsAtom = Atom(
-      name: 'RegisterControllerBase.acceptAPPWEBNotifications',
-      context: context);
-
-  @override
-  bool get acceptAPPWEBNotifications {
-    _$acceptAPPWEBNotificationsAtom.reportRead();
-    return super.acceptAPPWEBNotifications;
-  }
-
-  @override
-  set acceptAPPWEBNotifications(bool value) {
-    _$acceptAPPWEBNotificationsAtom
-        .reportWrite(value, super.acceptAPPWEBNotifications, () {
-      super.acceptAPPWEBNotifications = value;
-    });
-  }
-
   late final _$setEmailNotificationsAsyncAction = AsyncAction(
       'RegisterControllerBase.setEmailNotifications',
       context: context);
@@ -384,26 +349,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   Future<void> setSMSNotifications(bool? value) {
     return _$setSMSNotificationsAsyncAction
         .run(() => super.setSMSNotifications(value));
-  }
-
-  late final _$setWPPNotificationsAsyncAction = AsyncAction(
-      'RegisterControllerBase.setWPPNotifications',
-      context: context);
-
-  @override
-  Future<void> setWPPNotifications(bool? value) {
-    return _$setWPPNotificationsAsyncAction
-        .run(() => super.setWPPNotifications(value));
-  }
-
-  late final _$setAPPWEBNotificationsAsyncAction = AsyncAction(
-      'RegisterControllerBase.setAPPWEBNotifications',
-      context: context);
-
-  @override
-  Future<void> setAPPWEBNotifications(bool? value) {
-    return _$setAPPWEBNotificationsAsyncAction
-        .run(() => super.setAPPWEBNotifications(value));
   }
 
   late final _$setAcceptImageAsyncAction =
@@ -454,13 +399,12 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     return _$setPhoneAsyncAction.run(() => super.setPhone(value));
   }
 
-  late final _$setIsMauaStudentAsyncAction =
-      AsyncAction('RegisterControllerBase.setIsMauaStudent', context: context);
+  late final _$setRoleAsyncAction =
+      AsyncAction('RegisterControllerBase.setRole', context: context);
 
   @override
-  Future<void> setIsMauaStudent(bool? value) {
-    return _$setIsMauaStudentAsyncAction
-        .run(() => super.setIsMauaStudent(value));
+  Future<void> setRole(UserRolesEnum? value) {
+    return _$setRoleAsyncAction.run(() => super.setRole(value));
   }
 
   late final _$setHasSocialNameAsyncAction =
@@ -670,7 +614,7 @@ hasSocialName: ${hasSocialName},
 email: ${email},
 verifyEmail: ${verifyEmail},
 phone: ${phone},
-isMauaStudent: ${isMauaStudent},
+role: ${role},
 ra: ${ra},
 password: ${password},
 verifyPassword: ${verifyPassword},
@@ -678,8 +622,6 @@ acceptTermsOfUse: ${acceptTermsOfUse},
 acceptImage: ${acceptImage},
 acceptEmailNotifications: ${acceptEmailNotifications},
 acceptSMSNotifications: ${acceptSMSNotifications},
-acceptWPPNotifications: ${acceptWPPNotifications},
-acceptAPPWEBNotifications: ${acceptAPPWEBNotifications},
 raInt: ${raInt},
 registerInformations: ${registerInformations}
     ''';

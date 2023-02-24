@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:smile_front/app/shared/entities/user_registration.dart';
-import 'package:smile_front/generated/l10n.dart';
 import '../../../shared/services/environment/environment_config.dart';
 import '../infra/datasources/register_datasource_interface.dart';
 import 'errors/errors.dart';
@@ -40,12 +39,8 @@ class RegisterDatasourceImpl implements RegisterDatasourceInterface {
         return 'Usuário criado com sucesso!';
       }
       throw Exception();
-    } catch (e) {
-      if (e.toString().contains('400')) {
-        throw RegisterInvalid(S.current.errorUserAlreadyExist);
-      } else {
-        throw RegisterInvalid(S.current.errorRegister);
-      }
+    } on DioError catch (e) {
+      throw RegisterInvalid(e.response!.data);
     }
   }
 }

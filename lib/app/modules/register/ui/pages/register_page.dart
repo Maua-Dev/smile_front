@@ -4,18 +4,20 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
 
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
+import 'package:smile_front/app/modules/register/ui/widgets/dialog/select_role_dialog.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/enable_text_field_check_box_widget.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/switch_toggle_widget.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import '../../../../generated/l10n.dart';
-import '../../../shared/themes/app_text_styles.dart';
-import '../../../shared/widgets/custom_elevated_button_widget.dart';
-import '../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
-import '../../../shared/widgets/input-box/input_box_widget.dart';
-import '../../../shared/widgets/input-box/input_phone_widget.dart';
-import '../../login/ui/widgets/smile_logo_widget.dart';
-import '../presenter/controllers/register_controller.dart';
-import '../../../shared/services/environment/environment_config.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../shared/themes/app_text_styles.dart';
+import '../../../../shared/widgets/custom_elevated_button_widget.dart';
+import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
+import '../../../../shared/widgets/input-box/input_box_widget.dart';
+import '../../../../shared/widgets/input-box/input_phone_widget.dart';
+import '../../../login/ui/widgets/smile_logo_widget.dart';
+import '../../presenter/controllers/register_controller.dart';
+import '../../../../shared/services/environment/environment_config.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -31,6 +33,7 @@ class _RegisterPageState
   void initState() {
     super.initState();
     EnvironmentConfig.getConfig() ? null : _showDialog();
+    _showSelectRoleDialog();
   }
 
   _showDialog() async {
@@ -40,6 +43,16 @@ class _RegisterPageState
         context: context,
         builder: (BuildContext context) {
           return const MainstenanceAlert();
+        });
+  }
+
+  _showSelectRoleDialog() async {
+    await Future.delayed(const Duration(milliseconds: 50));
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return const SelectRoleDialog();
         });
   }
 
@@ -94,36 +107,52 @@ class _RegisterPageState
                     const SizedBox(
                       height: 24,
                     ),
+                    Observer(builder: (_) {
+                      return CustomElevatedButtonWidget(
+                        title: controller.role.personalizedNamed.toUpperCase(),
+                        backgroundColor: AppColors.brandingOrange,
+                        widthSize: MediaQuery.of(context).size.width < 650
+                            ? MediaQuery.of(context).size.width * 0.85
+                            : 600,
+                        heightSize: 50,
+                        onPressed: () {
+                          _showSelectRoleDialog();
+                        },
+                      );
+                    }),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     InputBoxWidget(
                       icon: Icons.person,
                       placeholder: S.of(context).registerFullNamePlaceholder,
                       setValue: controller.setName,
                       validation: controller.validateName,
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width < 650
-                              ? MediaQuery.of(context).size.width * 0.35
-                              : 190,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(10),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width < 650
+                                ? MediaQuery.of(context).size.width * 0.35
+                                : 190,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Observer(builder: (_) {
+                              return EnableTextFieldCheckBoxWidget(
+                                check: controller.hasSocialName,
+                                onChanged: controller.setHasSocialName,
+                                title:
+                                    S.of(context).registerSocialNamePlaceholder,
+                              );
+                            }),
                           ),
-                          child: Observer(builder: (_) {
-                            return EnableTextFieldCheckBoxWidget(
-                              check: controller.hasSocialName,
-                              onChanged: controller.setHasSocialName,
-                              title:
-                                  S.of(context).registerSocialNamePlaceholder,
-                            );
-                          }),
                         ),
                         const SizedBox(
                           width: 10,
@@ -143,27 +172,22 @@ class _RegisterPageState
                         }),
                       ],
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    InputBoxWidget(
-                      icon: Icons.email_rounded,
-                      placeholder: S.of(context).registerEmailPlaceholder,
-                      setValue: controller.setEmail,
-                      validation: controller.validateEmail,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    Observer(builder: (_) {
+                      return InputBoxWidget(
+                        icon: Icons.email_rounded,
+                        placeholder: controller.role == UserRolesEnum.PROFESSOR
+                            ? S.of(context).registerEmailProfessorPlaceholder
+                            : S.of(context).registerEmailPlaceholder,
+                        setValue: controller.setEmail,
+                        validation: controller.validateEmail,
+                      );
+                    }),
                     InputBoxWidget(
                       icon: Icons.email_rounded,
                       placeholder:
                           S.of(context).registerEmailConfirmationPlaceholder,
                       setValue: controller.setVerifyEmail,
                       validation: controller.validateVerifyEmail,
-                    ),
-                    const SizedBox(
-                      height: 20,
                     ),
                     Observer(builder: (_) {
                       return InputPhoneWidget(
@@ -176,49 +200,19 @@ class _RegisterPageState
                     const SizedBox(
                       height: 20,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width < 650
-                              ? MediaQuery.of(context).size.width * 0.35
-                              : 190,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Observer(builder: (_) {
-                            return EnableTextFieldCheckBoxWidget(
-                              check: controller.isMauaStudent,
-                              onChanged: controller.setIsMauaStudent,
-                              title:
-                                  S.of(context).registerStudentMauaPlaceholder,
-                            );
-                          }),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Observer(builder: (_) {
-                          return InputBoxWidget(
-                            isRAField: true,
-                            disable: !controller.isMauaStudent,
-                            icon: Icons.person,
-                            placeholder: S.of(context).registerRAPlaceholder,
-                            setValue: controller.setRa,
-                            widthSize: MediaQuery.of(context).size.width < 650
-                                ? MediaQuery.of(context).size.width * 0.48
-                                : 400,
-                            validation: controller.validateRa,
-                          );
-                        }),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    Observer(builder: (_) {
+                      if (controller.role == UserRolesEnum.STUDENT) {
+                        return InputBoxWidget(
+                          isRAField: true,
+                          icon: Icons.person,
+                          placeholder: S.of(context).registerRAPlaceholder,
+                          setValue: controller.setRa,
+                          validation: controller.validateRa,
+                        );
+                      } else {
+                        return const SizedBox.shrink();
+                      }
+                    }),
                     Observer(builder: (context) {
                       return InputBoxWidget(
                         icon: Icons.lock,
@@ -230,9 +224,6 @@ class _RegisterPageState
                         validation: controller.validatePassword,
                       );
                     }),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     Observer(builder: (context) {
                       return InputBoxWidget(
                         icon: Icons.lock,
@@ -246,9 +237,6 @@ class _RegisterPageState
                         validation: controller.validateVerifyPassword,
                       );
                     }),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     Observer(builder: (_) {
                       return CheckBoxWidget(
                         check: controller.acceptImage,
@@ -317,22 +305,6 @@ class _RegisterPageState
                         tipo: S.of(context).notificationsSchema('sms'),
                         onChanged: (bool? value) {
                           controller.setSMSNotifications(value);
-                        }),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    SwitchToggleWidget(
-                        tipo: S.of(context).notificationsSchema('whatsapp'),
-                        onChanged: (bool? value) {
-                          controller.setWPPNotifications(value);
-                        }),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    SwitchToggleWidget(
-                        tipo: S.of(context).notificationsSchema('app'),
-                        onChanged: (bool? value) {
-                          controller.setAPPWEBNotifications(value);
                         }),
                     const SizedBox(
                       height: 30,
