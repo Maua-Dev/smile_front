@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/register/presenter/controllers/register_controller.dart';
-import 'package:smile_front/app/modules/register/ui/register_page.dart';
-import 'package:smile_front/app/modules/register/ui/success_register_page.dart';
-import 'package:smile_front/app/modules/register/ui/verify_email_page.dart';
+import 'package:smile_front/app/modules/register/ui/pages/register_page.dart';
+import 'package:smile_front/app/modules/register/ui/pages/success_register_page.dart';
+import 'package:smile_front/app/modules/register/ui/pages/verify_email_page.dart';
 import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
 import '../../shared/services/dio/smile_login_options.dart';
 import 'domain/repositories/register_informations_repository_interface.dart';

@@ -175,8 +175,6 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m12(notification) => "${Intl.select(notification, {
             'email': 'EMAIL',
             'sms': 'SMS',
-            'whatsapp': 'WHATSAPP',
-            'app': 'APP/WEB',
             'other': '',
           })}";
 
@@ -225,6 +223,16 @@ class MessageLookup extends MessageLookupByLibrary {
             'boris': 'Bóris Fabris',
             'marco': 'Marco Antonio Teixeira',
             'willian': 'Dr. William Schoenell',
+            'other': '',
+          })}";
+
+  static String m18(schema) => "${Intl.select(schema, {
+            'STUDENT': 'Aluno Mauá',
+            'EXTERNAL': 'Visitante',
+            'EMPLOYEE': 'Funcionário',
+            'INTERNAL_STUDENT': 'Estudante Internacional',
+            'PROFESSOR': 'Professor Smile',
+            'ADMIN': 'Admin',
             'other': '',
           })}";
 
@@ -294,20 +302,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
-        "errorChangePassword": MessageLookupByLibrary.simpleMessage(
-            "Falha ao tentar alterar a senha, tente novamente."),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n"),
-        "errorLoginInvalidConfirmation": MessageLookupByLibrary.simpleMessage(
-            "Não foi possível realizar o login.\n\n- Realize seu cadastro clicando no botão \"Não tenho cadastro\"\n- Seu e-mail pode não ter sido confirmado, clique em \"Reenviar e-mail de confirmação\""),
         "errorLoginInvalidCredential":
             MessageLookupByLibrary.simpleMessage("Login e/ou senha inválidos"),
-        "errorRegister": MessageLookupByLibrary.simpleMessage(
-            "Falha ao realizar o cadastro, tente novamente."),
-        "errorSendingCode": MessageLookupByLibrary.simpleMessage(
-            "Falha ao enviar o código, e-mail não cadastrado ou não confirmado."),
-        "errorUserAlreadyExist":
-            MessageLookupByLibrary.simpleMessage("Usuário já existente."),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Sair"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Insira o número com DDD"),
@@ -324,6 +322,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Os campos \"Senha\" e \"Confirme sua senha\" devem ser iguais"),
         "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(
             "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -)  \n - Mínimo de 8 caracteres"),
+        "fieldProfessorEmailInvalid": MessageLookupByLibrary.simpleMessage(
+            "E-mail de professor inválido"),
         "fieldRAInvalid": MessageLookupByLibrary.simpleMessage("RA inválido"),
         "fieldRequired":
             MessageLookupByLibrary.simpleMessage("Campo obrigatório"),
@@ -390,6 +390,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirme seu e-mail"),
         "registerEmailPlaceholder":
             MessageLookupByLibrary.simpleMessage("E-mail"),
+        "registerEmailProfessorPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Insira seu e-mail da Mauá"),
         "registerFullNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Nome Completo"),
         "registerPhonePlaceholder":
@@ -408,6 +410,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "scheduleAddTitle":
             MessageLookupByLibrary.simpleMessage("Adicionar Horário"),
         "scheduleTitle": MessageLookupByLibrary.simpleMessage("Horário"),
+        "scheduleTitle": MessageLookupByLibrary.simpleMessage("Hora"),
+        "selectOptionTitle":
+            MessageLookupByLibrary.simpleMessage("Selecione uma opção:"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Enviar"),
         "signUp": MessageLookupByLibrary.simpleMessage("Inscreva-se"),
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
@@ -449,6 +454,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "unsubscribeVerificationClosedRegistration":
             MessageLookupByLibrary.simpleMessage(
                 "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!"),
+        "userRolesNameSchema": m18,
         "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Sim")
       };
