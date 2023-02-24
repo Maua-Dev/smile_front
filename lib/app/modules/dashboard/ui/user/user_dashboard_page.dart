@@ -222,6 +222,26 @@ class _UserDashboardPageState
                                       state: EnrollmentStateEnum.COMPLETED,
                                       dateSubscribed:
                                           DateTime.fromMillisecondsSinceEpoch(
+                                              1676215157717)),
+                                  EnrollmentsModel(
+                                      userEnroll: UserEnrollModel(
+                                          name: "Enrico Soller",
+                                          role: UserRolesEnum.STUDENT,
+                                          userId:
+                                              "ce51113a-0797-44e1-8a1d-a1cdaefbb82a"),
+                                      state: EnrollmentStateEnum.ENROLLED,
+                                      dateSubscribed:
+                                          DateTime.fromMillisecondsSinceEpoch(
+                                              1676215157717)),
+                                  EnrollmentsModel(
+                                      userEnroll: UserEnrollModel(
+                                          name: "Breno Soller",
+                                          role: UserRolesEnum.STUDENT,
+                                          userId:
+                                              "ce51113a-0797-44e1-8a1d-a1cdaefbb82a"),
+                                      state: EnrollmentStateEnum.IN_QUEUE,
+                                      dateSubscribed:
+                                          DateTime.fromMillisecondsSinceEpoch(
                                               1676215157717))
                                 ])
                           ]);
