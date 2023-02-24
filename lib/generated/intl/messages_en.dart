@@ -404,7 +404,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerSocialNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Social Name"),
         "registerSocialNameTooltip": MessageLookupByLibrary.simpleMessage(
-            "Social name is the designation used by trans people to identify themselves according to their gender identity. Provided by law in several countries."),
+            "Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized."),
         "registerStudentMauaPlaceholder":
             MessageLookupByLibrary.simpleMessage("Mauá Student"),
         "registerTerms": m15,

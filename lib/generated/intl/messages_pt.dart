@@ -405,7 +405,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerSocialNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Nome Social"),
         "registerSocialNameTooltip": MessageLookupByLibrary.simpleMessage(
-            "Nome social é a designação usada por pessoas trans para se identificarem de acordo com sua identidade de gênero. Previsto em lei em diversos países."),
+            "Nome social se refere à designação pela qual a pessoa travesti ou transexual se identifica e é socialmente reconhecida."),
         "registerStudentMauaPlaceholder":
             MessageLookupByLibrary.simpleMessage("Aluno Mauá"),
         "registerTerms": m15,
