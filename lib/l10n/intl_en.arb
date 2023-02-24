@@ -168,6 +168,7 @@
 
     "codeTitle": "Code",
 
+    "drawerHomeButton": "Home",
     "drawerActivitiesButton": "Activities",
     "drawerResponsibleActivitiesButton": "Responsible Activities",
     "drawerCertificatesButton": "Certificates",

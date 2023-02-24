@@ -1454,6 +1454,16 @@ class S {
     );
   }
 
+  /// `Home`
+  String get drawerHomeButton {
+    return Intl.message(
+      'Home',
+      name: 'drawerHomeButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Activities`
   String get drawerActivitiesButton {
     return Intl.message(

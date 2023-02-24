@@ -298,6 +298,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "drawerCertificatesButton":
             MessageLookupByLibrary.simpleMessage("Certificados"),
         "drawerHelpButton": MessageLookupByLibrary.simpleMessage("Ajuda"),
+        "drawerHomeButton":
+            MessageLookupByLibrary.simpleMessage("Página Inicial"),
         "drawerProfileButton": MessageLookupByLibrary.simpleMessage("Perfil"),
         "drawerResponsibleActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Atividades Responsáveis"),
