@@ -60,7 +60,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   @override
   Future<bool> subscribeActivity(String activityCode) async {
     var requestDone = await datasource.postSubscribe(activityCode);
-    if (requestDone) {
+    if (requestDone.state != EnrollmentStateEnum.NONE) {
       var index = allActivitiesWithEnrollments
           .indexWhere((element) => element.activityCode == activityCode);
       var activity = EnrollsActivityModel(
@@ -84,15 +84,16 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         stopAcceptingNewEnrollmentsBefore: allActivitiesWithEnrollments[index]
             .stopAcceptingNewEnrollmentsBefore,
         enrollments: EnrollmentsModel(
-          state: EnrollmentStateEnum.ENROLLED,
-          dateSubscribed: DateTime.now(),
+          state: requestDone.state,
+          dateSubscribed: requestDone.dateSubscribed,
         ),
       );
       allActivitiesWithEnrollments
           .removeWhere((element) => element.activityCode == activityCode);
       allActivitiesWithEnrollments.insert(index, activity);
+      return true;
     }
-    return requestDone;
+    return false;
   }
 
   @override
