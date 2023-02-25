@@ -380,7 +380,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
             "Quero receber notificações por "),
         "notificationsTitle": MessageLookupByLibrary.simpleMessage(
-            "Meios de notificação sobre as atividades:"),
+            "Notificações sobre as atividades:"),
+        "phoneFillWarn": MessageLookupByLibrary.simpleMessage(
+            "Preencha o seu telefone celular para ativar as notificações via SMS!"),
+        "phoneNotFilledWarn": MessageLookupByLibrary.simpleMessage(
+            "Telefone celular não preenchido."),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
         "registerConfirmPasswordPlaceholder":
@@ -401,7 +405,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerSocialNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Nome Social"),
         "registerSocialNameTooltip": MessageLookupByLibrary.simpleMessage(
-            "Nome social é a designação usada por pessoas trans para se identificarem de acordo com sua identidade de gênero. Previsto em lei em diversos países."),
+            "Nome social se refere à designação pela qual a pessoa travesti ou transexual se identifica e é socialmente reconhecida."),
         "registerStudentMauaPlaceholder":
             MessageLookupByLibrary.simpleMessage("Aluno Mauá"),
         "registerTerms": m15,

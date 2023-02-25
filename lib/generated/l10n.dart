@@ -787,6 +787,26 @@ class S {
     );
   }
 
+  /// `Telefone celular não preenchido.`
+  String get phoneNotFilledWarn {
+    return Intl.message(
+      'Telefone celular não preenchido.',
+      name: 'phoneNotFilledWarn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preencha o seu telefone celular para ativar as notificações via SMS!`
+  String get phoneFillWarn {
+    return Intl.message(
+      'Preencha o seu telefone celular para ativar as notificações via SMS!',
+      name: 'phoneFillWarn',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-mail`
   String get loginUsernamePlaceholder {
     return Intl.message(
@@ -882,10 +902,10 @@ class S {
     );
   }
 
-  /// `Social name is the designation used by trans people to identify themselves according to their gender identity. Provided by law in several countries.`
+  /// `Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.`
   String get registerSocialNameTooltip {
     return Intl.message(
-      'Social name is the designation used by trans people to identify themselves according to their gender identity. Provided by law in several countries.',
+      'Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.',
       name: 'registerSocialNameTooltip',
       desc: '',
       args: [],
@@ -989,10 +1009,10 @@ class S {
     );
   }
 
-  /// `Means of notification about activities:`
+  /// `Activity notifications:`
   String get notificationsTitle {
     return Intl.message(
-      'Means of notification about activities:',
+      'Activity notifications:',
       name: 'notificationsTitle',
       desc: '',
       args: [],

@@ -69,6 +69,9 @@
     "cancelTitle": "Cancelar",
     "saveTitle": "Salvar",
 
+    "phoneNotFilledWarn": "Telefone celular não preenchido.",
+    "phoneFillWarn": "Preencha o seu telefone celular para ativar as notificações via SMS!",
+
 
 
 
@@ -84,7 +87,7 @@
     "selectOptionTitle": "Selecione uma opção:",
     "registerFullNamePlaceholder": "Nome Completo",
     "registerSocialNamePlaceholder": "Nome Social",
-    "registerSocialNameTooltip": "Nome social é a designação usada por pessoas trans para se identificarem de acordo com sua identidade de gênero. Previsto em lei em diversos países.",
+    "registerSocialNameTooltip": "Nome social se refere à designação pela qual a pessoa travesti ou transexual se identifica e é socialmente reconhecida.",
     "registerEmailPlaceholder": "E-mail",
     "registerEmailProfessorPlaceholder": "Insira seu e-mail da Mauá",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
@@ -94,7 +97,7 @@
     "registerRAPlaceholder": "RA",
     "registerConfirmPasswordPlaceholder": "Confirme sua senha",
     "registerTerms": "{terms, select, one{Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile.} two{Li e Aceito os Termos de Uso.} three{Autorizo o envio de notificação por email, para fins de divulgação da Smile.}}",
-    "notificationsTitle": "Meios de notificação sobre as atividades:",
+    "notificationsTitle": "Notificações sobre as atividades:",
     "notificationsSchemaTitle": "Quero receber notificações por ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
     "registerTitle": "Cadastrar",

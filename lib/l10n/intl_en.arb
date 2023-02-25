@@ -56,6 +56,7 @@
     "signUp": "Sign Up",
     "unsubscribe": "Unsubscribe",
     
+    
 
 
 
@@ -67,6 +68,9 @@
     "exitTitle": "Exit",
     "cancelTitle": "Cancel",
     "saveTitle": "Save",
+
+    "phoneNotFilledWarn": "Telefone celular não preenchido.",
+    "phoneFillWarn": "Preencha o seu telefone celular para ativar as notificações via SMS!",
 
 
 
@@ -84,7 +88,7 @@
     "selectOptionTitle": "Select an option:",
     "registerFullNamePlaceholder": "Full Name",
     "registerSocialNamePlaceholder": "Social Name",
-    "registerSocialNameTooltip": "Social name is the designation used by trans people to identify themselves according to their gender identity. Provided by law in several countries.",
+    "registerSocialNameTooltip": "Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.",
     "registerEmailPlaceholder": "E-mail",
     "registerEmailProfessorPlaceholder": "Enter your email Mauá",
     "registerEmailConfirmationPlaceholder": "Confirm your e-mail",
@@ -94,7 +98,7 @@
     "registerRAPlaceholder": "RA",
     "registerConfirmPasswordPlaceholder": "Confirm password",
     "registerTerms": "{terms, select, one{I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.} two{I have read and accept the Terms of Use.} three{I authorize the sending of notification by email, for the purposes of promoting Smile.}}",
-    "notificationsTitle": "Means of notification about activities:",
+    "notificationsTitle": "Activity notifications:",
     "notificationsSchemaTitle": "I want to receive notifications by ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
     "registerTitle": "Register",
