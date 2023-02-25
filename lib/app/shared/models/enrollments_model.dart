@@ -12,7 +12,7 @@ class EnrollmentsModel {
 
   factory EnrollmentsModel.fromMap(Map<String, dynamic> map) {
     return EnrollmentsModel(
-        acceptingNewEnrollments: map['accepting_new_enrollments'],
+        acceptingNewEnrollments: map['accepting_new_enrollments'] ?? false,
         state: EnrollmentStateEnumExtension.stringToEnumMap(map['state']),
         dateSubscribed:
             DateTime.fromMillisecondsSinceEpoch(map['date_subscribed']));

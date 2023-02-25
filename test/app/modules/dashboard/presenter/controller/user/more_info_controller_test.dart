@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
+import 'package:smile_front/app/app_module.dart';
 //import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
@@ -11,6 +13,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/mor
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 //import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
+import '../../../../../../setup_firebase_mocks.dart';
 import 'more_info_controller_test.mocks.dart';
 import 'user_dashboard_controller_test.mocks.dart';
 
@@ -21,6 +24,8 @@ import 'user_dashboard_controller_test.mocks.dart';
   SubscribeActivityInterface
 ])
 void main() {
+  initModule(AppModule());
+  setupCloudFirestoreMocks();
   UnsubscribeActivityInterface unsubscribeActivity =
       MockUnsubscribeActivityInterface();
   SubscribeActivityInterface subscribeActivity =
@@ -32,12 +37,12 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
-    controller =
-        MoreInfoController(enrollmentController: subscriptionController);
     subscriptionController = UserEnrollmentController(
         getUserActivities: getUserActivities,
         subscribeActivity: subscribeActivity,
         unsubscribeActivity: unsubscribeActivity);
+    controller =
+        MoreInfoController(enrollmentController: subscriptionController);
   });
 
   test('setIsLoading', () {
