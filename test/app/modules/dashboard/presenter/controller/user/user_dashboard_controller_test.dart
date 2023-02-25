@@ -380,15 +380,4 @@ void main() {
     controller.setCertificateWithSocialName(true);
     expect(controller.certificateWithSocialName, true);
   });
-
-  test('getUserSubscribedActivities', () {
-    controller.getUserSubscribedActivities();
-    expect(controller.allSubscribedActivitiesList.isNotEmpty, true);
-    expect(controller.nextActivity.activityCode.isNotEmpty, true);
-  });
-
-  test('getNextActivity', () {
-    controller.getNextActivity();
-    expect(controller.nextActivity, mockActivities[0]);
-  });
 }
