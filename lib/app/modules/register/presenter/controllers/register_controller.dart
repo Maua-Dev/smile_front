@@ -1,4 +1,5 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
 import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
@@ -83,6 +84,30 @@ abstract class RegisterControllerBase with Store {
   @observable
   bool acceptSMSNotifications = false;
 
+  @observable
+  bool isBrazilianPhone = true;
+
+  @observable
+  bool isPhoneFieldFilled = false;
+
+  @observable
+  CountryCode? countryCode =
+      const CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
+
+  @action
+  void setBrazilianPhone(CountryCode? value) {
+    if (value?.code == "BR") {
+      isBrazilianPhone = true;
+    } else {
+      isBrazilianPhone = false;
+    }
+  }
+
+  @action
+  void setCountryCode(CountryCode? value) {
+    countryCode = value;
+  }
+
   @action
   Future<void> setEmailNotifications(bool? value) async {
     acceptEmailNotifications = value!;
@@ -90,7 +115,9 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setSMSNotifications(bool? value) async {
-    acceptSMSNotifications = value!;
+    if (phone.length > 3) {
+      acceptSMSNotifications = value!;
+    }
   }
 
   @action
@@ -138,18 +165,24 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
-    phone = value;
+    phone = '${countryCode?.dialCode}$value';
+    if (countryCode?.code == "BR") {
+      phone = phone.replaceAll('(', '');
+      phone = phone.replaceAll(')', '');
+      phone = phone.replaceAll(' ', '');
+      phone = phone.replaceAll('-', '');
+    }
+    if (value.isNotEmpty) {
+      isPhoneFieldFilled = true;
+    }
   }
 
   @action
   String? validatePhone(String? value) {
-    if (value!.isEmpty) {
-      return S.current.fieldRequired;
-    }
-    if (phone[0] == "5" && phone[1] == "5" && phone.length == 11) {
+    if (countryCode?.code == "BR" && phone.length == 12) {
       return S.current.fieldDDDRequired;
     }
-    if (phone[0] == "5" && phone[1] == "5" && phone.length != 13) {
+    if (countryCode?.code == "BR" && phone.length != 14 && phone.length > 3) {
       return S.current.fieldInvalid;
     }
     return null;

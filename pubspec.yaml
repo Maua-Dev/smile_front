@@ -34,9 +34,9 @@ dependencies:
   firebase_analytics: ^10.0.7
   url_launcher: ^6.1.5
   string_validator: ^0.3.0
-  intl_phone_number_input: ^0.7.1
   getwidget: ^2.0.4
   email_validator: ^2.1.17
+  fl_country_code_picker: ^0.0.4
   network_image_mock: ^2.1.1
 
 dev_dependencies:

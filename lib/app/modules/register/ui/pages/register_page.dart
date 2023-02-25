@@ -1,3 +1,4 @@
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -14,7 +15,6 @@ import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/input-box/input_box_widget.dart';
-import '../../../../shared/widgets/input-box/input_phone_widget.dart';
 import '../../../login/ui/widgets/smile_logo_widget.dart';
 import '../../presenter/controllers/register_controller.dart';
 import '../../../../shared/services/environment/environment_config.dart';
@@ -58,6 +58,8 @@ class _RegisterPageState
 
   @override
   Widget build(BuildContext context) {
+    const countryPicker = FlCountryCodePicker();
+
     return Scaffold(
       body: SafeArea(
           child: Form(
@@ -150,6 +152,13 @@ class _RegisterPageState
                                 onChanged: controller.setHasSocialName,
                                 title:
                                     S.of(context).registerSocialNamePlaceholder,
+                                tooltipButton: Tooltip(
+                                  triggerMode: TooltipTriggerMode.tap,
+                                  message:
+                                      S.of(context).registerSocialNameTooltip,
+                                  child: Icon(Icons.help,
+                                      color: AppColors.brandingOrange),
+                                ),
                               );
                             }),
                           ),
@@ -190,16 +199,79 @@ class _RegisterPageState
                       validation: controller.validateVerifyEmail,
                     ),
                     Observer(builder: (_) {
-                      return InputPhoneWidget(
-                        icon: Icons.phone_rounded,
-                        placeholder: S.of(context).registerPhonePlaceholder,
-                        setValue: controller.setPhone,
-                        validation: controller.validatePhone,
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 20.0),
+                            child: GestureDetector(
+                              onTap: () async {
+                                final code = await countryPicker.showPicker(
+                                    context: context);
+                                controller.setCountryCode(code);
+                                controller.setBrazilianPhone(code);
+                              },
+                              child: Container(
+                                height: 60,
+                                width: MediaQuery.of(context).size.width < 650
+                                    ? MediaQuery.of(context).size.width * 0.30
+                                    : 110,
+                                decoration: BoxDecoration(
+                                    color: AppColors.white,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Observer(builder: (_) {
+                                    return SizedBox(
+                                      child: Row(
+                                        children: [
+                                          const SizedBox(
+                                            width: 20,
+                                          ),
+                                          Container(
+                                              child:
+                                                  controller.countryCode != null
+                                                      ? controller.countryCode!
+                                                          .flagImage
+                                                      : null),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            controller.countryCode != null
+                                                ? controller
+                                                    .countryCode!.dialCode
+                                                : "DDI",
+                                            style: TextStyle(
+                                                color: AppColors.gray,
+                                                fontSize: 14),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          InputBoxWidget(
+                            isPhoneField: true,
+                            icon: Icons.phone,
+                            isBrazilianPhoneField: controller.isBrazilianPhone,
+                            placeholder: S.of(context).registerPhonePlaceholder,
+                            setValue: controller.setPhone,
+                            widthSize: MediaQuery.of(context).size.width < 650
+                                ? MediaQuery.of(context).size.width * 0.53
+                                : 480,
+                            validation: controller.validatePhone,
+                          )
+                        ],
                       );
                     }),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     Observer(builder: (_) {
                       if (controller.role == UserRolesEnum.STUDENT) {
                         return InputBoxWidget(
@@ -263,23 +335,10 @@ class _RegisterPageState
                     const SizedBox(
                       height: 20,
                     ),
-                    Observer(builder: (_) {
-                      return CheckBoxWidget(
-                        check: controller.acceptEmailNotifications,
-                        title: S.of(context).registerTerms('three'),
-                        onChanged: (bool? value) {
-                          controller.setAcceptEmailNotifications(value);
-                        },
-                      );
-                    }),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width < 650
                           ? MediaQuery.of(context).size.width * 0.85
                           : 550,
-                      height: 32,
                       child: Text(
                         S.of(context).notificationsTitle,
                         style: AppTextStyles.body.copyWith(
@@ -292,20 +351,26 @@ class _RegisterPageState
                     const SizedBox(
                       height: 8,
                     ),
-                    SwitchToggleWidget(
-                      tipo: S.of(context).notificationsSchema('email'),
-                      onChanged: (bool? value) {
-                        controller.setEmailNotifications(value);
-                      },
-                    ),
+                    Observer(builder: (_) {
+                      return SwitchToggleWidget(
+                        isSwitched: controller.acceptEmailNotifications,
+                        tipo: S.of(context).notificationsSchema('email'),
+                        onChanged: (bool? value) {
+                          controller.setEmailNotifications(value);
+                        },
+                      );
+                    }),
                     const SizedBox(
                       height: 16,
                     ),
-                    SwitchToggleWidget(
-                        tipo: S.of(context).notificationsSchema('sms'),
-                        onChanged: (bool? value) {
-                          controller.setSMSNotifications(value);
-                        }),
+                    Observer(builder: (_) {
+                      return SwitchToggleWidget(
+                          isSwitched: controller.acceptSMSNotifications,
+                          tipo: S.of(context).notificationsSchema('sms'),
+                          onChanged: (bool? value) {
+                            controller.setSMSNotifications(value);
+                          });
+                    }),
                     const SizedBox(
                       height: 30,
                     ),
