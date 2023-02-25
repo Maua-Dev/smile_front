@@ -188,7 +188,13 @@ void main() {
     expect(controller.acceptEmailNotifications, true);
   });
 
-  test('setSMSNotifications', () {
+  test('setSMSNotifications: phone <= 3', () {
+    controller.setSMSNotifications(true);
+    expect(controller.acceptSMSNotifications, false);
+  });
+
+  test('setSMSNotifications: phone > 3', () {
+    controller.setPhone('1234');
     controller.setSMSNotifications(true);
     expect(controller.acceptSMSNotifications, true);
   });
