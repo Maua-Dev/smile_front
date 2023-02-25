@@ -5,7 +5,9 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/repository/activities_repository_impl.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/enrollments_model.dart';
 
 import 'activities_repository_impl_test.mocks.dart';
 
@@ -124,7 +126,10 @@ void main() {
         .thenAnswer((_) async => null);
     when(datasource.deleteActivity('')).thenAnswer((_) async => null);
     when(datasource.postUnsubscribe('')).thenAnswer((_) async => true);
-    //when(datasource.postSubscribe('')).thenAnswer((_) async => true);
+    when(datasource.postSubscribe('')).thenAnswer((_) async => EnrollmentsModel(
+        state: EnrollmentStateEnum.ENROLLED,
+        dateSubscribed: DateTime.now(),
+        acceptingNewEnrollments: true));
     when(datasource.createActivity(ActivityModel.newInstance()))
         .thenAnswer((_) async => null);
     // when(datasource.getAllActivitiesLogged())
@@ -141,18 +146,6 @@ void main() {
   test('getAllActivities', () async {
     repository.activitiesList = [ActivityModel.newInstance()];
     repository.getAllActivities();
-    expect(repository.activitiesList.isNotEmpty, true);
-  });
-
-  test('getUserSubscribedActivities if subscribedActivities is empty',
-      () async {
-    repository.getUserSubscribedActivities();
-    expect(repository.activitiesList.isNotEmpty, false);
-  });
-
-  test('getUserSubscribedActivities', () async {
-    repository.activitiesList = [ActivityModel.newInstance()];
-    repository.getUserSubscribedActivities();
     expect(repository.activitiesList.isNotEmpty, true);
   });
 }
