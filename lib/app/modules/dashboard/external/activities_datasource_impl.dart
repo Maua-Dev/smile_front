@@ -126,11 +126,11 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         await middleware(url: '/enroll-activity', data: body, http: 'post');
     if (res.statusCode == 200) {
       return EnrollmentsModel(
-          state:
-              EnrollmentStateEnumExtension.stringToEnumMap(res.data['state']),
-          dateSubscribed:
-              DateTime.fromMillisecondsSinceEpoch(res.data['date_subscribed']),
-          acceptingNewEnrollments: res.data['accepting_new_enrollments']);
+        state: EnrollmentStateEnumExtension.stringToEnumMap(res.data['state']),
+        dateSubscribed:
+            DateTime.fromMillisecondsSinceEpoch(res.data['date_subscribed']),
+        acceptingNewEnrollments: res.data['accepting_new_enrollments'] ?? false,
+      );
     }
     return EnrollmentsModel.newInstance();
   }

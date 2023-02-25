@@ -10,7 +10,7 @@ import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
-import 'widgets/mobile_widgets/activities_card/mobile_activities_card_all_activities_dashboard_widget.dart';
+import 'widgets/mobile_widgets/activities_card/activities_card_all_activities_dashboard.dart';
 
 class AllActivitiesUserDashboardPage extends StatefulWidget {
   const AllActivitiesUserDashboardPage({Key? key}) : super(key: key);
