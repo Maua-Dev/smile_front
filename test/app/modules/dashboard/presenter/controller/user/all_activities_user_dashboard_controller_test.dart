@@ -12,18 +12,14 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../../../setup_firebase_mocks.dart';
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
-import 'more_info_controller_test.mocks.dart';
 import 'user_dashboard_controller_test.mocks.dart'
     hide MockSecureStorageInterface, MockFirebaseAnalyticsService;
 
@@ -41,10 +37,6 @@ void main() {
   LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
   GetUserSubscribedActivitiesInterface getUserActivities =
       MockGetUserSubscribedActivitiesInterface();
-  SubscribeActivityInterface subscribeActivity =
-      MockSubscribeActivityInterface();
-  UnsubscribeActivityInterface unsubscribeActivity =
-      MockUnsubscribeActivityInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
   FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
 

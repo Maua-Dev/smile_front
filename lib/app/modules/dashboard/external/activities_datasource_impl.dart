@@ -129,7 +129,8 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
           state:
               EnrollmentStateEnumExtension.stringToEnumMap(res.data['state']),
           dateSubscribed:
-              DateTime.fromMillisecondsSinceEpoch(res.data['date_subscribed']));
+              DateTime.fromMillisecondsSinceEpoch(res.data['date_subscribed']),
+          acceptingNewEnrollments: res.data['accepting_new_enrollments']);
     }
     return EnrollmentsModel.newInstance();
   }

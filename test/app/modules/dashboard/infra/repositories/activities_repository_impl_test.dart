@@ -124,7 +124,7 @@ void main() {
         .thenAnswer((_) async => null);
     when(datasource.deleteActivity('')).thenAnswer((_) async => null);
     when(datasource.postUnsubscribe('')).thenAnswer((_) async => true);
-    when(datasource.postSubscribe('')).thenAnswer((_) async => true);
+    //when(datasource.postSubscribe('')).thenAnswer((_) async => true);
     when(datasource.createActivity(ActivityModel.newInstance()))
         .thenAnswer((_) async => null);
     // when(datasource.getAllActivitiesLogged())
@@ -144,15 +144,15 @@ void main() {
     expect(repository.activitiesList.isNotEmpty, true);
   });
 
-  /* test('getUserSubscribedActivities if subscribedActivities is empty',
+  test('getUserSubscribedActivities if subscribedActivities is empty',
       () async {
     repository.getUserSubscribedActivities();
-    expect(repository.activitiesList.isNotEmpty, true);
+    expect(repository.activitiesList.isNotEmpty, false);
   });
 
   test('getUserSubscribedActivities', () async {
     repository.activitiesList = [ActivityModel.newInstance()];
     repository.getUserSubscribedActivities();
     expect(repository.activitiesList.isNotEmpty, true);
-  }); */
+  });
 }
