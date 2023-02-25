@@ -12,13 +12,13 @@ class UserDashboardController = UserDashboardControllerBase
     with _$UserDashboardController;
 
 abstract class UserDashboardControllerBase with Store {
-  final UserEnrollmentController subscriptionController;
+  final UserEnrollmentController enrollmentController;
   final ChangeDataInterface changeData;
   final SecureStorageInterface secureStorage;
   final FirebaseAnalyticsService analytics;
 
   UserDashboardControllerBase({
-    required this.subscriptionController,
+    required this.enrollmentController,
     required this.analytics,
     required this.changeData,
     required this.secureStorage,
@@ -318,8 +318,8 @@ abstract class UserDashboardControllerBase with Store {
   @action
   Future getUserSubscribedActivities() async {
     setIsLoading(true);
-    await subscriptionController.getUserAllActivitiesWithEnrollment();
-    allSubscribedActivitiesList = subscriptionController.subscribedActivities;
+    await enrollmentController.getUserAllActivitiesWithEnrollment();
+    allSubscribedActivitiesList = enrollmentController.subscribedActivities;
     if (allSubscribedActivitiesList.isNotEmpty) {
       allSubscribedActivitiesList.sort(
         (a, b) => a.startDate!.compareTo(b.startDate!),

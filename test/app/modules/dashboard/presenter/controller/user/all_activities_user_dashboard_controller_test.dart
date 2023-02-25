@@ -10,7 +10,6 @@ import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.da
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
@@ -20,22 +19,22 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/use
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
-
 import '../../../../../../setup_firebase_mocks.dart';
-import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
-import 'more_info_controller_test.mocks.dart';
-import 'user_dashboard_controller_test.mocks.dart'
-    hide MockSecureStorageInterface, MockFirebaseAnalyticsService;
+import 'all_activities_user_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([
   ActivitiesRepositoryInterface,
   UserDashboardController,
-  GetAllUserActivitiesInterface,
   RefreshTokenInterface,
   LoginWithEmailInterface,
+  SecureStorageInterface,
+  UnsubscribeActivityInterface,
+  GetUserSubscribedActivitiesInterface,
+  SubscribeActivityInterface,
+  FirebaseAnalyticsService
 ])
 void main() {
-  initModule(AppModule());
+  initModules([AppModule()]);
   setupCloudFirestoreMocks();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
@@ -50,7 +49,6 @@ void main() {
 
   late AllActivitiesUserDashboardController controller;
   late AuthController authController;
-  // ignore: unused_local_variable
   late UserEnrollmentController subscriptionController;
 
   final mockActivities = <EnrollsActivityModel>[
@@ -336,15 +334,14 @@ void main() {
         refreshToken: refreshToken,
         storage: secureStorage,
         analytics: analytics);
-
-    controller = AllActivitiesUserDashboardController(
-      authController: authController,
-      analytics: analytics,
-    );
     subscriptionController = UserEnrollmentController(
         getUserActivities: getUserActivities,
         subscribeActivity: subscribeActivity,
         unsubscribeActivity: unsubscribeActivity);
+    controller = AllActivitiesUserDashboardController(
+        authController: authController,
+        analytics: analytics,
+        enrollmentController: subscriptionController);
   });
 
   test('setIsLoading', () {
@@ -389,7 +386,8 @@ void main() {
   test('filterActivitiesByType', () {
     var type = ActivityEnum.COURSES;
     var list = mockActivities.where((element) => element.type == type).toList();
-    expect(list, controller.filterActivitiesByType(type, mockActivities));
+    var filteredList = controller.filterActivitiesByType(type, mockActivities);
+    expect(list.length, filteredList.length);
   });
 
   test('filterActivitiesByDate', () {

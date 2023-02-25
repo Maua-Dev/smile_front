@@ -12,12 +12,13 @@ class AllActivitiesUserDashboardController = AllActivitiesUserDashboardControlle
     with _$AllActivitiesUserDashboardController;
 
 abstract class AllActivitiesUserDashboardControllerBase with Store {
-  var enrollmentController = Modular.get<UserEnrollmentController>();
+  final UserEnrollmentController enrollmentController;
   final AuthController authController;
 
   final FirebaseAnalyticsService analytics;
 
   AllActivitiesUserDashboardControllerBase({
+    required this.enrollmentController,
     required this.analytics,
     required this.authController,
   }) {

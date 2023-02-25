@@ -212,12 +212,11 @@ class MockUserDashboardController extends _i1.Mock
   }
 
   @override
-  _i2.UserEnrollmentController get subscriptionController =>
-      (super.noSuchMethod(
-        Invocation.getter(#subscriptionController),
+  _i2.UserEnrollmentController get enrollmentController => (super.noSuchMethod(
+        Invocation.getter(#enrollmentController),
         returnValue: _FakeUserEnrollmentController_0(
           this,
-          Invocation.getter(#subscriptionController),
+          Invocation.getter(#enrollmentController),
         ),
       ) as _i2.UserEnrollmentController);
   @override

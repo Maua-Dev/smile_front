@@ -304,7 +304,7 @@ void main() {
         secureStorage: secureStorage,
         changeData: changeData,
         analytics: analytics,
-        subscriptionController: subscriptionController);
+        enrollmentController: subscriptionController);
   });
 
   test('getCertificateWithSocialName', () {

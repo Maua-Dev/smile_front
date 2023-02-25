@@ -47,6 +47,7 @@ class UserModule extends Module {
         (i) => AllActivitiesUserDashboardController(
               authController: i(),
               analytics: i(),
+              enrollmentController: i(),
             ),
         export: true),
     Bind.lazySingleton<UserEnrollmentController>(
@@ -92,7 +93,7 @@ class UserModule extends Module {
         secureStorage: i(),
         changeData: i(),
         analytics: i(),
-        subscriptionController: i(),
+        enrollmentController: i(),
       ),
     ),
     Bind.lazySingleton((i) => Dio()),
