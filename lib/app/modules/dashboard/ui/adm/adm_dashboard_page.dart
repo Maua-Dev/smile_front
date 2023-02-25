@@ -141,7 +141,7 @@ class _AdmDashboardPageState
                         ),
                       );
                     } else {
-                      return Text('Atividade não encontrada',
+                      return Text(S.of(context).activitiesNotFound,
                           style: AppTextStyles.body);
                     }
                   }

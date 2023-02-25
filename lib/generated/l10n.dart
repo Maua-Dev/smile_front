@@ -300,6 +300,16 @@ class S {
     );
   }
 
+  /// `Activities not found`
+  String get activitiesNotFound {
+    return Intl.message(
+      'Activities not found',
+      name: 'activitiesNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sponsors`
   String get sponsorsTitle {
     return Intl.message(
@@ -702,6 +712,126 @@ class S {
     return Intl.message(
       'Unsubscribe',
       name: 'unsubscribe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Termination`
+  String get termination {
+    return Intl.message(
+      'Termination',
+      name: 'termination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local`
+  String get local {
+    return Intl.message(
+      'Local',
+      name: 'local',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscribed`
+  String get subscribedTitle {
+    return Intl.message(
+      'Subscribed',
+      name: 'subscribedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscribe`
+  String get subcribeTitle {
+    return Intl.message(
+      'Subscribe',
+      name: 'subcribeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to subscribe?`
+  String get subscribeAlert {
+    return Intl.message(
+      'Are you sure you want to subscribe?',
+      name: 'subscribeAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay attention to your schedules and activities that you have already subscribed for!`
+  String get subscribeScheduleAtention {
+    return Intl.message(
+      'Pay attention to your schedules and activities that you have already subscribed for!',
+      name: 'subscribeScheduleAtention',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems that the number of vacancies for the activity has sold out :(`
+  String get subscribeSlotsSoldOut {
+    return Intl.message(
+      'It seems that the number of vacancies for the activity has sold out :(',
+      name: 'subscribeSlotsSoldOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to unsubscribe?`
+  String get unsubscribeAlert {
+    return Intl.message(
+      'Are you sure you want to unsubscribe?',
+      name: 'unsubscribeAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will be able to subscribe again`
+  String get unsubscribeAcceptingNewEnrollments {
+    return Intl.message(
+      'You will be able to subscribe again',
+      name: 'unsubscribeAcceptingNewEnrollments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Caution: subscriptions for this activity closed, you will not be able to subscribe again`
+  String get unsubscribeNotAcceptingNewEnrollments {
+    return Intl.message(
+      'Caution: subscriptions for this activity closed, you will not be able to subscribe again',
+      name: 'unsubscribeNotAcceptingNewEnrollments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Na fila`
+  String get queueTitle {
+    return Intl.message(
+      'Na fila',
+      name: 'queueTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to exit the queue?`
+  String get queueExitAlert {
+    return Intl.message(
+      'Are you sure you want to exit the queue?',
+      name: 'queueExitAlert',
       desc: '',
       args: [],
     );
