@@ -243,6 +243,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutSmileDescription": m0,
         "aboutSmileTitle":
             MessageLookupByLibrary.simpleMessage("Sobre a Smile"),
+        "activitiesNotFound":
+            MessageLookupByLibrary.simpleMessage("Atividades não encontradas"),
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
@@ -300,16 +302,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Descrição"),
         "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
         "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
-        "drawerActivitiesButton":
-            MessageLookupByLibrary.simpleMessage("Atividades"),
-        "drawerCertificatesButton":
-            MessageLookupByLibrary.simpleMessage("Certificados"),
-        "drawerHelpButton": MessageLookupByLibrary.simpleMessage("Ajuda"),
-        "drawerHomeButton":
-            MessageLookupByLibrary.simpleMessage("Página Inicial"),
-        "drawerProfileButton": MessageLookupByLibrary.simpleMessage("Perfil"),
-        "drawerResponsibleActivitiesButton":
-            MessageLookupByLibrary.simpleMessage("Atividades Responsáveis"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
@@ -359,6 +351,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "insertPasswordCodeInstructions": MessageLookupByLibrary.simpleMessage(
             "Insira sua nova senha e o codigo enviado para o seu e-mail:"),
         "knowMore": MessageLookupByLibrary.simpleMessage("SAIBA MAIS >>>"),
+        "local": MessageLookupByLibrary.simpleMessage("Local"),
         "localTitle": MessageLookupByLibrary.simpleMessage("Local"),
         "loginForgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Esqueci minha senha"),
@@ -389,15 +382,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
             "Quero receber notificações por "),
         "notificationsTitle": MessageLookupByLibrary.simpleMessage(
-            "Notificações sobre as atividades:"),
-        "phoneFillWarn": MessageLookupByLibrary.simpleMessage(
-            "Preencha o seu telefone celular para ativar as notificações via SMS!"),
-        "phoneNotFilledWarn": MessageLookupByLibrary.simpleMessage(
-            "Telefone celular não preenchido."),
+            "Meios de notificação sobre as atividades:"),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
         "presenceValidateTitle":
             MessageLookupByLibrary.simpleMessage("Validar Presença"),
+        "queueExitAlert": MessageLookupByLibrary.simpleMessage(
+            "Tem certeza que deseja sair da fila?"),
+        "queueTitle": MessageLookupByLibrary.simpleMessage("Na fila"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme sua senha"),
         "registerCountryPlaceholder":
@@ -415,8 +407,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerRAPlaceholder": MessageLookupByLibrary.simpleMessage("RA"),
         "registerSocialNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Nome Social"),
-        "registerSocialNameTooltip": MessageLookupByLibrary.simpleMessage(
-            "Nome social se refere à designação pela qual a pessoa travesti ou transexual se identifica e é socialmente reconhecida."),
         "registerStudentMauaPlaceholder":
             MessageLookupByLibrary.simpleMessage("Aluno Mauá"),
         "registerTerms": m15,
@@ -445,8 +435,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("DESLIZE PARA VER MAIS >>>"),
         "speakersTitle": MessageLookupByLibrary.simpleMessage("Palestrantes"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Patrocinadores"),
+        "subcribeTitle": MessageLookupByLibrary.simpleMessage("Inscrever-se"),
+        "subscribeAlert": MessageLookupByLibrary.simpleMessage(
+            "Tem certeza que deseja se inscrever?"),
+        "subscribeScheduleAtention": MessageLookupByLibrary.simpleMessage(
+            "Se atente aos seus horários e atividades que você já se inscreveu!"),
+        "subscribeSlotsSoldOut": MessageLookupByLibrary.simpleMessage(
+            "Parece que o número de vagas da atividade se esgotou :("),
         "subscribeVerification": MessageLookupByLibrary.simpleMessage(
             "Tem certeza que deseja se inscrever?"),
+        "subscribedTitle": MessageLookupByLibrary.simpleMessage("Inscrito"),
         "successChangePassword":
             MessageLookupByLibrary.simpleMessage("Senha alterada com sucesso!"),
         "successChangePasswordRedirect": MessageLookupByLibrary.simpleMessage(
@@ -459,13 +457,22 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Código enviado com sucesso!"),
         "successSendingSponsorEmail": MessageLookupByLibrary.simpleMessage(
             "Enviado com sucesso!! Nossa equipe entrará em contato em breve."),
+        "termination": MessageLookupByLibrary.simpleMessage("Término"),
         "unavailabeActivityRegistration": MessageLookupByLibrary.simpleMessage(
             "Inscrição para a atividade indisponível!"),
         "unavailabeSubscribe": MessageLookupByLibrary.simpleMessage(
             "Inscrição para a atividade indisponível!"),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Desinscrever-se"),
+        "unsubscribeAcceptingNewEnrollments":
+            MessageLookupByLibrary.simpleMessage(
+                "Você conseguirá se inscrever novamente"),
+        "unsubscribeAlert": MessageLookupByLibrary.simpleMessage(
+            "Tem certeza que deseja se desinscrever?"),
         "unsubscribeLoseVanacy": MessageLookupByLibrary.simpleMessage(
             "Você perderá sua vaga na atividade ao continuar!"),
+        "unsubscribeNotAcceptingNewEnrollments":
+            MessageLookupByLibrary.simpleMessage(
+                "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente"),
         "unsubscribeVerification": MessageLookupByLibrary.simpleMessage(
             "Tem certeza que deseja se desinscrever?"),
         "unsubscribeVerificationClosedRegistration":

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:smile_front/app/shared/entities/screen_variables.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
 
 class RegisterButtonWidget extends StatelessWidget {
-  final bool isRegistered;
+  final EnrollmentStateEnum isRegistered;
   final bool isLoading;
   final Function()? onPressed;
   const RegisterButtonWidget(
@@ -20,15 +20,14 @@ class RegisterButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ButtonStyle(
-            padding: MaterialStateProperty.all(EdgeInsets.symmetric(
-                vertical:
-                    MediaQuery.of(context).size.width < cellphoneSize ? 0 : 12,
-                horizontal: MediaQuery.of(context).size.width < cellphoneSize
-                    ? 0
-                    : 64)),
+            padding: MaterialStateProperty.all(
+                const EdgeInsets.symmetric(vertical: 12, horizontal: 64)),
             elevation: MaterialStateProperty.all(20),
             backgroundColor: MaterialStateProperty.all(
-                isRegistered ? AppColors.redButton : AppColors.brandingBlue),
+              isRegistered != EnrollmentStateEnum.ENROLLED
+                  ? AppColors.redButton
+                  : AppColors.brandingBlue,
+            ),
             shape: MaterialStateProperty.all(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
             )),
@@ -39,10 +38,15 @@ class RegisterButtonWidget extends StatelessWidget {
                 color: Colors.white,
               ))
             : Text(
-                isRegistered ? S.of(context).unsubscribe : S.of(context).signUp,
+                isRegistered == EnrollmentStateEnum.ENROLLED
+                    ? S.of(context).unsubscribe
+                    : S.of(context).signUp,
                 style: AppTextStyles.buttonBold.copyWith(
-                    fontSize:
-                        MediaQuery.of(context).size.width < 1000 ? 20 : 28,
+                    fontSize: MediaQuery.of(context).size.width < 500
+                        ? 20
+                        : MediaQuery.of(context).size.width < 1000
+                            ? 24
+                            : 28,
                     color: Colors.white)));
   }
 }

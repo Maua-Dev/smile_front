@@ -8,7 +8,7 @@ import '../entities/infra/user_roles_enum.dart';
 import 'enrollments_model.dart';
 
 class EnrollsActivityModel extends Activity {
-  final List<EnrollmentsModel>? enrollments;
+  final EnrollmentsModel? enrollments;
   EnrollsActivityModel({
     this.enrollments,
     required super.isExtensive,
@@ -57,10 +57,73 @@ class EnrollsActivityModel extends Activity {
                 ? DateTime.fromMillisecondsSinceEpoch(
                     map['activity']['stop_accepting_new_enrollments_before'])
                 : DateTime.now(),
-        enrollments: EnrollmentsModel.fromMaps(map['enrollments']));
+        enrollments: map.containsKey('enrollment')
+            ? EnrollmentsModel.fromMap(map['enrollment'])
+            : null);
   }
 
   static List<EnrollsActivityModel> fromMaps(List array) {
     return array.map((e) => EnrollsActivityModel.fromMap(e)).toList();
+  }
+
+  factory EnrollsActivityModel.newInstance() {
+    return EnrollsActivityModel(
+      description: '',
+      activityCode: '',
+      title: '',
+      type: null,
+      speakers: [SpeakerActivityModel.newInstance()],
+      duration: 0,
+      isExtensive: false,
+      startDate: DateTime.now(),
+      deliveryEnum: null,
+      acceptingNewEnrollments: false,
+      responsibleProfessors: [],
+      takenSlots: 0,
+      totalSlots: 0,
+    );
+  }
+
+  EnrollsActivityModel copyWith(
+      {String? id,
+      String? activityCode,
+      ActivityEnum? type,
+      String? title,
+      String? description,
+      bool? isExtensive,
+      DeliveryEnum? deliveryEnum,
+      DateTime? startDate,
+      int? duration,
+      String? place,
+      String? link,
+      List<SpeakerActivityModel>? speakers,
+      bool? acceptingNewEnrollments,
+      int? takenSlots,
+      int? totalSlots,
+      DateTime? stopAcceptingNewEnrollmentsBefore,
+      List<ResponsibleProfessorModel>? responsibleProfessors,
+      EnrollmentsModel? enrollments}) {
+    return EnrollsActivityModel(
+      activityCode: activityCode ?? this.activityCode,
+      type: type ?? this.type,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      duration: duration ?? this.duration,
+      speakers: speakers ?? this.speakers,
+      isExtensive: isExtensive ?? this.isExtensive,
+      startDate: startDate ?? this.startDate,
+      deliveryEnum: deliveryEnum ?? this.deliveryEnum,
+      acceptingNewEnrollments:
+          acceptingNewEnrollments ?? this.acceptingNewEnrollments,
+      responsibleProfessors:
+          responsibleProfessors ?? this.responsibleProfessors,
+      takenSlots: takenSlots ?? this.takenSlots,
+      totalSlots: totalSlots ?? this.totalSlots,
+      link: link ?? this.link,
+      place: place ?? this.place,
+      stopAcceptingNewEnrollmentsBefore: stopAcceptingNewEnrollmentsBefore ??
+          this.stopAcceptingNewEnrollmentsBefore,
+      enrollments: enrollments ?? this.enrollments,
+    );
   }
 }

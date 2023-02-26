@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/app_widgets/sidebar/drawer_dashboard_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/sidebar/mobile_sidebar_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/vertical-nav-bar/vertical_nav_bar_widget.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
