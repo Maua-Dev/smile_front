@@ -40,9 +40,11 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width < breakpointTablet
-                ? 342
-                : 1165,
+            width: MediaQuery.of(context).size.width < breakpointLMobile
+                ? 280
+                : MediaQuery.of(context).size.width > breakpointTablet
+                    ? 1165
+                    : 342,
             height:
                 MediaQuery.of(context).size.width < breakpointTablet ? 76 : 204,
             child: Row(children: [
@@ -76,9 +78,12 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 215
-                                : 500,
+                                    breakpointLMobile
+                                ? 150
+                                : MediaQuery.of(context).size.width >
+                                        breakpointTablet
+                                    ? 500
+                                    : 215,
                             height: MediaQuery.of(context).size.width <
                                     breakpointTablet
                                 ? 34
