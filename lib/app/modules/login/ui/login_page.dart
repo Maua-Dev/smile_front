@@ -98,9 +98,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       setValue: controller.setUsername,
                       validation: controller.validateEmail,
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     Observer(builder: (context) {
                       return InputBoxWidget(
                         icon: Icons.lock,
@@ -118,7 +115,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       );
                     }),
                     const SizedBox(
-                      height: 40,
+                      height: 20,
                     ),
                     Observer(builder: (_) {
                       return CustomElevatedButtonWidget(

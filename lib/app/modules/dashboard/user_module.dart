@@ -17,14 +17,14 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/hel
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_responsible_activities_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_responsible_activities_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
-import 'package:smile_front/app/shared/entities/card_activity.dart';
-import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
+import '../../shared/models/enrolls_activity_model.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/domain/usecases/login_with_email.dart';
@@ -47,10 +47,16 @@ class UserModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<AllActivitiesUserDashboardController>(
         (i) => AllActivitiesUserDashboardController(
-              getAllActivities: i(),
               authController: i(),
-              controller: i(),
               analytics: i(),
+              enrollmentController: i(),
+            ),
+        export: true),
+    Bind.lazySingleton<UserEnrollmentController>(
+        (i) => UserEnrollmentController(
+              getUserActivities: i(),
+              subscribeActivity: i(),
+              unsubscribeActivity: i(),
             ),
         export: true),
     Bind.lazySingleton<ActivitiesDatasourceInterface>(
@@ -90,19 +96,11 @@ class UserModule extends Module {
         (i) => GetAllInformation(repository: i())),
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
-        getUserActivities: i(),
         secureStorage: i(),
         changeData: i(),
         analytics: i(),
+        enrollmentController: i(),
       ),
-    ),
-    Bind.lazySingleton<MoreInfoController>(
-      (i) => MoreInfoController(
-          unsubscribeActivity: i(),
-          subscribeActivity: i(),
-          activity: i.args!.data[0] as CardActivity,
-          registered: i.args!.data[1] as bool,
-          userDashboardController: i()),
     ),
     Bind.lazySingleton((i) => Dio()),
     Bind.lazySingleton<AuthController>(
@@ -111,6 +109,11 @@ class UserModule extends Module {
               refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
               analytics: i(),
+            ),
+        export: true),
+    Bind.lazySingleton<MoreInfoController>(
+        (i) => MoreInfoController(
+              enrollmentController: i(),
             ),
         export: true),
     Bind.lazySingleton<CertificateRepositoryInterface>(
@@ -129,7 +132,10 @@ class UserModule extends Module {
         child: (_, args) => const UserDashboardPage()),
     ChildRoute('/all-activities',
         child: (_, args) => const AllActivitiesUserDashboardPage()),
-    ChildRoute('/more-info', child: (_, args) => const MoreInfoPage()),
+    ChildRoute('/more-info',
+        child: (_, args) => MoreInfoPage(
+              enrolledActivity: args.data as EnrollsActivityModel,
+            )),
     ChildRoute('/help', child: (_, args) => const HelpPage()),
     ChildRoute('/certificate', child: (_, args) => const CertificatePage()),
     ChildRoute('/responsible-activities',

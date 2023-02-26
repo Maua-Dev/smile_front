@@ -1,9 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
-import '../../../../../shared/entities/card_activity.dart';
-import '../../../../../shared/models/activity_model.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import '../../../../../shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/infra/activity_enum.dart';
@@ -14,15 +12,14 @@ class AllActivitiesUserDashboardController = AllActivitiesUserDashboardControlle
     with _$AllActivitiesUserDashboardController;
 
 abstract class AllActivitiesUserDashboardControllerBase with Store {
-  final GetAllUserActivitiesInterface getAllActivities;
+  final UserEnrollmentController enrollmentController;
   final AuthController authController;
-  final UserDashboardController controller;
+
   final FirebaseAnalyticsService analytics;
 
   AllActivitiesUserDashboardControllerBase({
+    required this.enrollmentController,
     required this.analytics,
-    required this.controller,
-    required this.getAllActivities,
     required this.authController,
   }) {
     getActivities();
@@ -36,134 +33,197 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     isLoading = value;
   }
 
-  @observable
-  int filterActivityChipIndexSelected = 0;
+  Future<void> subscribeUserActivity(String activityCode) async {
+    setIsLoading(true);
+    await enrollmentController.subscribeActivity(activityCode);
+    setIsLoading(false);
+    Modular.to.pop();
+  }
+
+  Future<void> unsubscribeUserActivity(String activityCode) async {
+    setIsLoading(true);
+    await enrollmentController.unsubscribeActivity(activityCode);
+    setIsLoading(false);
+    Modular.to.pop();
+  }
 
   @observable
-  List<CardActivity> weekActivitiesList = List.empty();
+  List<EnrollsActivityModel> allActivitiesFromGet = List.empty();
 
   @observable
-  List<ActivityModel> activitiesList = List.empty();
-
-  @observable
-  List<CardActivity> allActivitiesToCards = List.empty();
+  List<EnrollsActivityModel> activitiesOnScreen = List.empty();
 
   @observable
   ActivityEnum? activityType;
 
-  @computed
-  List<CardActivity> get mondayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 1)
-      .toList();
-
-  @computed
-  List<CardActivity> get tuesdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 2)
-      .toList();
-
-  @computed
-  List<CardActivity> get wednesdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 3)
-      .toList();
-
-  @computed
-  List<CardActivity> get thursdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 4)
-      .toList();
-
-  @computed
-  List<CardActivity> get fridayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 5)
-      .toList();
-
-  @computed
-  List<CardActivity> get saturdayActivitiesList => allActivitiesToCards
-      .where((activity) => activity.date!.weekday == 6)
-      .toList();
+  @observable
+  ActivityEnum? typeFilter;
 
   @action
-  void toggleFilterActivityChipIndex(index) {
-    filterActivityChipIndexSelected = index;
-    switch (filterActivityChipIndexSelected) {
-      case 0:
-        weekActivitiesList = mondayActivitiesList;
-        break;
-      case 1:
-        weekActivitiesList = tuesdayActivitiesList;
-        break;
-      case 2:
-        weekActivitiesList = wednesdayActivitiesList;
-        break;
-      case 3:
-        weekActivitiesList = thursdayActivitiesList;
-        break;
-      case 4:
-        weekActivitiesList = fridayActivitiesList;
-        break;
-      case 5:
-        weekActivitiesList = saturdayActivitiesList;
-        break;
+  void setTypeFilter(ActivityEnum value) {
+    typeFilter = value;
+    setAllFilters();
+  }
+
+  @observable
+  DateTime? dateFilter;
+
+  @action
+  void setDateFilter(DateTime value) {
+    dateFilter = value;
+    setAllFilters();
+  }
+
+  @observable
+  DateTime? hourFilter;
+
+  @action
+  void setHourFilter(DateTime value) {
+    hourFilter = value;
+    setAllFilters();
+  }
+
+  @action
+  void setAllFilters() {
+    var listActivities = allActivitiesFromGet;
+    if (typeFilter != null) {
+      listActivities = filterActivitiesByType(typeFilter!, listActivities);
     }
-    getActivitiesByType(activityType);
+    if (dateFilter != null) {
+      listActivities = filterActivitiesByDate(dateFilter!, listActivities);
+    }
+    if (hourFilter != null) {
+      listActivities = filterActivitiesByHour(hourFilter!, listActivities);
+    }
+    activitiesOnScreen = listActivities;
+  }
+
+  @action
+  resetFilters() {
+    activitiesOnScreen = allActivitiesFromGet;
+    typeFilter = null;
+    dateFilter = null;
+    hourFilter = null;
+  }
+
+  @action
+  List<EnrollsActivityModel> filterActivitiesByType(
+      ActivityEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+    var list =
+        activitiesToFilter.where((element) => element.type == type).toList();
+    List<EnrollsActivityModel> enrolledList = [];
+    for (var enrolledActivity in list) {
+      enrolledList.add(EnrollsActivityModel(
+        acceptingNewEnrollments: enrolledActivity.acceptingNewEnrollments,
+        activityCode: enrolledActivity.activityCode,
+        description: enrolledActivity.description,
+        duration: enrolledActivity.duration,
+        isExtensive: enrolledActivity.isExtensive,
+        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        speakers: enrolledActivity.speakers,
+        takenSlots: enrolledActivity.takenSlots,
+        title: enrolledActivity.title,
+        totalSlots: enrolledActivity.totalSlots,
+        type: enrolledActivity.type,
+        deliveryEnum: enrolledActivity.deliveryEnum,
+        enrollments: enrolledActivity.enrollments,
+        link: enrolledActivity.link,
+        place: enrolledActivity.place,
+        startDate: enrolledActivity.startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            enrolledActivity.stopAcceptingNewEnrollmentsBefore,
+      ));
+    }
+    return enrolledList;
+  }
+
+  @action
+  List<EnrollsActivityModel> filterActivitiesByDate(
+      DateTime date, List<EnrollsActivityModel> activitiesToFilter) {
+    var list = activitiesToFilter
+        .where((element) => isValidDateFilter(element.startDate!, date))
+        .toList();
+    List<EnrollsActivityModel> enrolledList = [];
+    for (var enrolledActivity in list) {
+      enrolledList.add(EnrollsActivityModel(
+        acceptingNewEnrollments: enrolledActivity.acceptingNewEnrollments,
+        activityCode: enrolledActivity.activityCode,
+        description: enrolledActivity.description,
+        duration: enrolledActivity.duration,
+        isExtensive: enrolledActivity.isExtensive,
+        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        speakers: enrolledActivity.speakers,
+        takenSlots: enrolledActivity.takenSlots,
+        title: enrolledActivity.title,
+        totalSlots: enrolledActivity.totalSlots,
+        type: enrolledActivity.type,
+        deliveryEnum: enrolledActivity.deliveryEnum,
+        enrollments: enrolledActivity.enrollments,
+        link: enrolledActivity.link,
+        place: enrolledActivity.place,
+        startDate: enrolledActivity.startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            enrolledActivity.stopAcceptingNewEnrollmentsBefore,
+      ));
+    }
+    return enrolledList;
+  }
+
+  @action
+  List<EnrollsActivityModel> filterActivitiesByHour(
+      DateTime hour, List<EnrollsActivityModel> activitiesToFilter) {
+    var list = activitiesToFilter
+        .where((element) => isValidHourFilter(element.startDate!, hour))
+        .toList();
+    List<EnrollsActivityModel> enrolledList = [];
+    for (var enrolledActivity in list) {
+      enrolledList.add(EnrollsActivityModel(
+        acceptingNewEnrollments: enrolledActivity.acceptingNewEnrollments,
+        activityCode: enrolledActivity.activityCode,
+        description: enrolledActivity.description,
+        duration: enrolledActivity.duration,
+        isExtensive: enrolledActivity.isExtensive,
+        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        speakers: enrolledActivity.speakers,
+        takenSlots: enrolledActivity.takenSlots,
+        title: enrolledActivity.title,
+        totalSlots: enrolledActivity.totalSlots,
+        type: enrolledActivity.type,
+        deliveryEnum: enrolledActivity.deliveryEnum,
+        enrollments: enrolledActivity.enrollments,
+        link: enrolledActivity.link,
+        place: enrolledActivity.place,
+        startDate: enrolledActivity.startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            enrolledActivity.stopAcceptingNewEnrollmentsBefore,
+      ));
+    }
+    return enrolledList;
+  }
+
+  bool isValidDateFilter(DateTime activityDate, DateTime dateToFilter) {
+    if (activityDate.day == dateToFilter.day &&
+        activityDate.month == dateToFilter.month &&
+        activityDate.year == dateToFilter.year) {
+      return true;
+    }
+    return false;
+  }
+
+  bool isValidHourFilter(DateTime activityDate, DateTime dateToFilter) {
+    if (activityDate.hour == dateToFilter.hour &&
+        activityDate.minute == dateToFilter.minute) {
+      return true;
+    }
+    return false;
   }
 
   @action
   Future getActivities() async {
     setIsLoading(true);
-    activitiesList = await getAllActivities();
-    allActivitiesToCards = [];
-    for (var activity in activitiesList) {
-      allActivitiesToCards.add(
-        CardActivity(
-          id: '',
-          activityCode: activity.activityCode,
-          type: activity.type,
-          title: activity.title,
-          description: activity.description,
-          date: activity.startDate,
-          duration: 0,
-          totalParticipants: activity.totalSlots,
-          speakers: activity.speakers,
-          location: activity.place,
-          link: activity.link,
-          enrolledUsers: activity.takenSlots,
-          acceptSubscription: activity.acceptingNewEnrollments,
-        ),
-      );
-    }
-    toggleFilterActivityChipIndex(filterActivityChipIndexSelected);
-    getActivitiesByType(activityType);
-  }
-
-  @action
-  Future getActivitiesByType(ActivityEnum? typeActivity) async {
-    setIsLoading(true);
-    if (typeActivity != null) {
-      switch (filterActivityChipIndexSelected) {
-        case 0:
-          weekActivitiesList = mondayActivitiesList;
-          break;
-        case 1:
-          weekActivitiesList = tuesdayActivitiesList;
-          break;
-        case 2:
-          weekActivitiesList = wednesdayActivitiesList;
-          break;
-        case 3:
-          weekActivitiesList = thursdayActivitiesList;
-          break;
-        case 4:
-          weekActivitiesList = fridayActivitiesList;
-          break;
-        case 5:
-          weekActivitiesList = saturdayActivitiesList;
-          break;
-      }
-      activityType = typeActivity;
-      weekActivitiesList = weekActivitiesList
-          .where((element) => element.type == activityType)
-          .toList();
-    }
+    await enrollmentController.getUserAllActivitiesWithEnrollment();
+    allActivitiesFromGet = enrollmentController.allActivitiesWithEnrollments;
+    activitiesOnScreen = enrollmentController.allActivitiesWithEnrollments;
     setIsLoading(false);
   }
 

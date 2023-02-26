@@ -125,6 +125,25 @@ class S {
     );
   }
 
+  /// `{schema, select, STUDENT{Mauá Student} EXTERNAL{External} EMPLOYEE{Employee} INTERNAL_STUDENT{International Student} PROFESSOR{Mauá Professor (Responsável)} ADMIN{Admin} other{}}`
+  String userRolesNameSchema(Object schema) {
+    return Intl.select(
+      schema,
+      {
+        'STUDENT': 'Mauá Student',
+        'EXTERNAL': 'External',
+        'EMPLOYEE': 'Employee',
+        'INTERNAL_STUDENT': 'International Student',
+        'PROFESSOR': 'Mauá Professor (Responsável)',
+        'ADMIN': 'Admin',
+        'other': '',
+      },
+      name: 'userRolesNameSchema',
+      desc: '',
+      args: [schema],
+    );
+  }
+
   /// `KNOW MORE >>>`
   String get knowMore {
     return Intl.message(
@@ -278,6 +297,16 @@ class S {
       name: 'activitiesOfferedDescription',
       desc: '',
       args: [activity],
+    );
+  }
+
+  /// `Activities not found`
+  String get activitiesNotFound {
+    return Intl.message(
+      'Activities not found',
+      name: 'activitiesNotFound',
+      desc: '',
+      args: [],
     );
   }
 
@@ -688,11 +717,129 @@ class S {
     );
   }
 
+<<<<<<< HEAD
   /// `Subscriber List`
   String get subscriberListTitle {
     return Intl.message(
       'Subscriber List',
       name: 'subscriberListTitle',
+=======
+  /// `Termination`
+  String get termination {
+    return Intl.message(
+      'Termination',
+      name: 'termination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local`
+  String get local {
+    return Intl.message(
+      'Local',
+      name: 'local',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscribed`
+  String get subscribedTitle {
+    return Intl.message(
+      'Subscribed',
+      name: 'subscribedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscribe`
+  String get subcribeTitle {
+    return Intl.message(
+      'Subscribe',
+      name: 'subcribeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to subscribe?`
+  String get subscribeAlert {
+    return Intl.message(
+      'Are you sure you want to subscribe?',
+      name: 'subscribeAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay attention to your schedules and activities that you have already subscribed for!`
+  String get subscribeScheduleAtention {
+    return Intl.message(
+      'Pay attention to your schedules and activities that you have already subscribed for!',
+      name: 'subscribeScheduleAtention',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems that the number of vacancies for the activity has sold out :(`
+  String get subscribeSlotsSoldOut {
+    return Intl.message(
+      'It seems that the number of vacancies for the activity has sold out :(',
+      name: 'subscribeSlotsSoldOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to unsubscribe?`
+  String get unsubscribeAlert {
+    return Intl.message(
+      'Are you sure you want to unsubscribe?',
+      name: 'unsubscribeAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will be able to subscribe again`
+  String get unsubscribeAcceptingNewEnrollments {
+    return Intl.message(
+      'You will be able to subscribe again',
+      name: 'unsubscribeAcceptingNewEnrollments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Caution: subscriptions for this activity closed, you will not be able to subscribe again`
+  String get unsubscribeNotAcceptingNewEnrollments {
+    return Intl.message(
+      'Caution: subscriptions for this activity closed, you will not be able to subscribe again',
+      name: 'unsubscribeNotAcceptingNewEnrollments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Na fila`
+  String get queueTitle {
+    return Intl.message(
+      'Na fila',
+      name: 'queueTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to exit the queue?`
+  String get queueExitAlert {
+    return Intl.message(
+      'Are you sure you want to exit the queue?',
+      name: 'queueExitAlert',
+>>>>>>> develop
       desc: '',
       args: [],
     );
@@ -778,6 +925,26 @@ class S {
     );
   }
 
+  /// `Telefone celular não preenchido.`
+  String get phoneNotFilledWarn {
+    return Intl.message(
+      'Telefone celular não preenchido.',
+      name: 'phoneNotFilledWarn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preencha o seu telefone celular para ativar as notificações via SMS!`
+  String get phoneFillWarn {
+    return Intl.message(
+      'Preencha o seu telefone celular para ativar as notificações via SMS!',
+      name: 'phoneFillWarn',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-mail`
   String get loginUsernamePlaceholder {
     return Intl.message(
@@ -843,6 +1010,16 @@ class S {
     );
   }
 
+  /// `Select an option:`
+  String get selectOptionTitle {
+    return Intl.message(
+      'Select an option:',
+      name: 'selectOptionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Full Name`
   String get registerFullNamePlaceholder {
     return Intl.message(
@@ -863,11 +1040,31 @@ class S {
     );
   }
 
+  /// `Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.`
+  String get registerSocialNameTooltip {
+    return Intl.message(
+      'Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.',
+      name: 'registerSocialNameTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-mail`
   String get registerEmailPlaceholder {
     return Intl.message(
       'E-mail',
       name: 'registerEmailPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email Mauá`
+  String get registerEmailProfessorPlaceholder {
+    return Intl.message(
+      'Enter your email Mauá',
+      name: 'registerEmailProfessorPlaceholder',
       desc: '',
       args: [],
     );
@@ -950,10 +1147,10 @@ class S {
     );
   }
 
-  /// `Means of notification about activities:`
+  /// `Activity notifications:`
   String get notificationsTitle {
     return Intl.message(
-      'Means of notification about activities:',
+      'Activity notifications:',
       name: 'notificationsTitle',
       desc: '',
       args: [],
@@ -970,15 +1167,13 @@ class S {
     );
   }
 
-  /// `{notification, select, email{EMAIL} sms{SMS} whatsapp{WHATSAPP} app{APP/WEB} other{}}`
+  /// `{notification, select, email{EMAIL} sms{SMS} other{}}`
   String notificationsSchema(Object notification) {
     return Intl.select(
       notification,
       {
         'email': 'EMAIL',
         'sms': 'SMS',
-        'whatsapp': 'WHATSAPP',
-        'app': 'APP/WEB',
         'other': '',
       },
       name: 'notificationsSchema',
@@ -1092,6 +1287,16 @@ class S {
     return Intl.message(
       'Invalid e-mail',
       name: 'fieldEmailInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid professor e-mail`
+  String get fieldProfessorEmailInvalid {
+    return Intl.message(
+      'Invalid professor e-mail',
+      name: 'fieldProfessorEmailInvalid',
       desc: '',
       args: [],
     );
@@ -1227,26 +1432,6 @@ class S {
     );
   }
 
-  /// `Failed to register, please try again.`
-  String get errorRegister {
-    return Intl.message(
-      'Failed to register, please try again.',
-      name: 'errorRegister',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `User already exist.`
-  String get errorUserAlreadyExist {
-    return Intl.message(
-      'User already exist.',
-      name: 'errorUserAlreadyExist',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Email successfully sent!`
   String get successEmailSend {
     return Intl.message(
@@ -1287,41 +1472,11 @@ class S {
     );
   }
 
-  /// `Failed to send code, email not registered or not confirmed.`
-  String get errorSendingCode {
-    return Intl.message(
-      'Failed to send code, email not registered or not confirmed.',
-      name: 'errorSendingCode',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Password changed successfully!`
   String get successChangePassword {
     return Intl.message(
       'Password changed successfully!',
       name: 'successChangePassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Failed to change password, please try again.`
-  String get errorChangePassword {
-    return Intl.message(
-      'Failed to change password, please try again.',
-      name: 'errorChangePassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `It was not possible to login.\n\n- Register by clicking on the "I have no account" button\n- Your e-mail may not have been confirmed, click on "Resend confirmation e-mail"`
-  String get errorLoginInvalidConfirmation {
-    return Intl.message(
-      'It was not possible to login.\n\n- Register by clicking on the "I have no account" button\n- Your e-mail may not have been confirmed, click on "Resend confirmation e-mail"',
-      name: 'errorLoginInvalidConfirmation',
       desc: '',
       args: [],
     );
@@ -1467,51 +1622,101 @@ class S {
     );
   }
 
+<<<<<<< HEAD
   /// `Absence`
   String get absenceTitle {
     return Intl.message(
       'Absence',
       name: 'absenceTitle',
+=======
+  /// `Home`
+  String get drawerHomeButton {
+    return Intl.message(
+      'Home',
+      name: 'drawerHomeButton',
+>>>>>>> develop
       desc: '',
       args: [],
     );
   }
 
+<<<<<<< HEAD
   /// `Present`
   String get presenceTitle {
     return Intl.message(
       'Present',
       name: 'presenceTitle',
+=======
+  /// `Activities`
+  String get drawerActivitiesButton {
+    return Intl.message(
+      'Activities',
+      name: 'drawerActivitiesButton',
+>>>>>>> develop
       desc: '',
       args: [],
     );
   }
 
+<<<<<<< HEAD
   /// `Names`
   String get namesTitle {
     return Intl.message(
       'Names',
       name: 'namesTitle',
+=======
+  /// `Responsible Activities`
+  String get drawerResponsibleActivitiesButton {
+    return Intl.message(
+      'Responsible Activities',
+      name: 'drawerResponsibleActivitiesButton',
+>>>>>>> develop
       desc: '',
       args: [],
     );
   }
 
+<<<<<<< HEAD
   /// `Validation Code`
   String get validationCodeTitle {
     return Intl.message(
       'Validation Code',
       name: 'validationCodeTitle',
+=======
+  /// `Certificates`
+  String get drawerCertificatesButton {
+    return Intl.message(
+      'Certificates',
+      name: 'drawerCertificatesButton',
+>>>>>>> develop
       desc: '',
       args: [],
     );
   }
 
+<<<<<<< HEAD
   /// `Local`
   String get localTitle {
     return Intl.message(
       'Local',
       name: 'localTitle',
+=======
+  /// `Help`
+  String get drawerHelpButton {
+    return Intl.message(
+      'Help',
+      name: 'drawerHelpButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get drawerProfileButton {
+    return Intl.message(
+      'Profile',
+      name: 'drawerProfileButton',
+>>>>>>> develop
       desc: '',
       args: [],
     );

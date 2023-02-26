@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../shared/widgets/custom_elevated_button_widget.dart';
-import '../../login/ui/widgets/smile_logo_widget.dart';
+import '../../../../shared/widgets/custom_elevated_button_widget.dart';
+import '../../../login/ui/widgets/smile_logo_widget.dart';
 
 class VerifyEmailPage extends StatefulWidget {
   const VerifyEmailPage({Key? key}) : super(key: key);

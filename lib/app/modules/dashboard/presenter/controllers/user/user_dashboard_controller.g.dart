@@ -9,55 +9,6 @@ part of 'user_dashboard_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$UserDashboardController on UserDashboardControllerBase, Store {
-  Computed<List<CardActivity>>? _$mondayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get mondayActivitiesList =>
-      (_$mondayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.mondayActivitiesList,
-              name: 'UserDashboardControllerBase.mondayActivitiesList'))
-          .value;
-  Computed<List<CardActivity>>? _$tuesdayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get tuesdayActivitiesList =>
-      (_$tuesdayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.tuesdayActivitiesList,
-              name: 'UserDashboardControllerBase.tuesdayActivitiesList'))
-          .value;
-  Computed<List<CardActivity>>? _$wednesdayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get wednesdayActivitiesList =>
-      (_$wednesdayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.wednesdayActivitiesList,
-              name: 'UserDashboardControllerBase.wednesdayActivitiesList'))
-          .value;
-  Computed<List<CardActivity>>? _$thursdayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get thursdayActivitiesList =>
-      (_$thursdayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.thursdayActivitiesList,
-              name: 'UserDashboardControllerBase.thursdayActivitiesList'))
-          .value;
-  Computed<List<CardActivity>>? _$fridayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get fridayActivitiesList =>
-      (_$fridayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.fridayActivitiesList,
-              name: 'UserDashboardControllerBase.fridayActivitiesList'))
-          .value;
-  Computed<List<CardActivity>>? _$saturdayActivitiesListComputed;
-
-  @override
-  List<CardActivity> get saturdayActivitiesList =>
-      (_$saturdayActivitiesListComputed ??= Computed<List<CardActivity>>(
-              () => super.saturdayActivitiesList,
-              name: 'UserDashboardControllerBase.saturdayActivitiesList'))
-          .value;
-
   late final _$errorAtom =
       Atom(name: 'UserDashboardControllerBase.error', context: context);
 
@@ -172,6 +123,88 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
+  late final _$subscribedActivitiesOnScreenAtom = Atom(
+      name: 'UserDashboardControllerBase.subscribedActivitiesOnScreen',
+      context: context);
+
+  @override
+  List<EnrollsActivityModel> get subscribedActivitiesOnScreen {
+    _$subscribedActivitiesOnScreenAtom.reportRead();
+    return super.subscribedActivitiesOnScreen;
+  }
+
+  @override
+  set subscribedActivitiesOnScreen(List<EnrollsActivityModel> value) {
+    _$subscribedActivitiesOnScreenAtom
+        .reportWrite(value, super.subscribedActivitiesOnScreen, () {
+      super.subscribedActivitiesOnScreen = value;
+    });
+  }
+
+  late final _$activityTypeAtom =
+      Atom(name: 'UserDashboardControllerBase.activityType', context: context);
+
+  @override
+  ActivityEnum? get activityType {
+    _$activityTypeAtom.reportRead();
+    return super.activityType;
+  }
+
+  @override
+  set activityType(ActivityEnum? value) {
+    _$activityTypeAtom.reportWrite(value, super.activityType, () {
+      super.activityType = value;
+    });
+  }
+
+  late final _$typeFilterAtom =
+      Atom(name: 'UserDashboardControllerBase.typeFilter', context: context);
+
+  @override
+  ActivityEnum? get typeFilter {
+    _$typeFilterAtom.reportRead();
+    return super.typeFilter;
+  }
+
+  @override
+  set typeFilter(ActivityEnum? value) {
+    _$typeFilterAtom.reportWrite(value, super.typeFilter, () {
+      super.typeFilter = value;
+    });
+  }
+
+  late final _$dateFilterAtom =
+      Atom(name: 'UserDashboardControllerBase.dateFilter', context: context);
+
+  @override
+  DateTime? get dateFilter {
+    _$dateFilterAtom.reportRead();
+    return super.dateFilter;
+  }
+
+  @override
+  set dateFilter(DateTime? value) {
+    _$dateFilterAtom.reportWrite(value, super.dateFilter, () {
+      super.dateFilter = value;
+    });
+  }
+
+  late final _$hourFilterAtom =
+      Atom(name: 'UserDashboardControllerBase.hourFilter', context: context);
+
+  @override
+  DateTime? get hourFilter {
+    _$hourFilterAtom.reportRead();
+    return super.hourFilter;
+  }
+
+  @override
+  set hourFilter(DateTime? value) {
+    _$hourFilterAtom.reportWrite(value, super.hourFilter, () {
+      super.hourFilter = value;
+    });
+  }
+
   late final _$isLoadingAtom =
       Atom(name: 'UserDashboardControllerBase.isLoading', context: context);
 
@@ -206,21 +239,21 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
-  late final _$subscribedActivitiesListAtom = Atom(
-      name: 'UserDashboardControllerBase.subscribedActivitiesList',
+  late final _$allSubscribedActivitiesListAtom = Atom(
+      name: 'UserDashboardControllerBase.allSubscribedActivitiesList',
       context: context);
 
   @override
-  List<ActivityModel> get subscribedActivitiesList {
-    _$subscribedActivitiesListAtom.reportRead();
-    return super.subscribedActivitiesList;
+  List<EnrollsActivityModel> get allSubscribedActivitiesList {
+    _$allSubscribedActivitiesListAtom.reportRead();
+    return super.allSubscribedActivitiesList;
   }
 
   @override
-  set subscribedActivitiesList(List<ActivityModel> value) {
-    _$subscribedActivitiesListAtom
-        .reportWrite(value, super.subscribedActivitiesList, () {
-      super.subscribedActivitiesList = value;
+  set allSubscribedActivitiesList(List<EnrollsActivityModel> value) {
+    _$allSubscribedActivitiesListAtom
+        .reportWrite(value, super.allSubscribedActivitiesList, () {
+      super.allSubscribedActivitiesList = value;
     });
   }
 
@@ -228,65 +261,15 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
       Atom(name: 'UserDashboardControllerBase.nextActivity', context: context);
 
   @override
-  ActivityModel get nextActivity {
+  EnrollsActivityModel get nextActivity {
     _$nextActivityAtom.reportRead();
     return super.nextActivity;
   }
 
   @override
-  set nextActivity(ActivityModel value) {
+  set nextActivity(EnrollsActivityModel value) {
     _$nextActivityAtom.reportWrite(value, super.nextActivity, () {
       super.nextActivity = value;
-    });
-  }
-
-  late final _$cardNextActivityAtom = Atom(
-      name: 'UserDashboardControllerBase.cardNextActivity', context: context);
-
-  @override
-  CardActivity get cardNextActivity {
-    _$cardNextActivityAtom.reportRead();
-    return super.cardNextActivity;
-  }
-
-  @override
-  set cardNextActivity(CardActivity value) {
-    _$cardNextActivityAtom.reportWrite(value, super.cardNextActivity, () {
-      super.cardNextActivity = value;
-    });
-  }
-
-  late final _$weekActivitiesListAtom = Atom(
-      name: 'UserDashboardControllerBase.weekActivitiesList', context: context);
-
-  @override
-  List<CardActivity> get weekActivitiesList {
-    _$weekActivitiesListAtom.reportRead();
-    return super.weekActivitiesList;
-  }
-
-  @override
-  set weekActivitiesList(List<CardActivity> value) {
-    _$weekActivitiesListAtom.reportWrite(value, super.weekActivitiesList, () {
-      super.weekActivitiesList = value;
-    });
-  }
-
-  late final _$allActivitiesToCardsAtom = Atom(
-      name: 'UserDashboardControllerBase.allActivitiesToCards',
-      context: context);
-
-  @override
-  List<CardActivity> get allActivitiesToCards {
-    _$allActivitiesToCardsAtom.reportRead();
-    return super.allActivitiesToCards;
-  }
-
-  @override
-  set allActivitiesToCards(List<CardActivity> value) {
-    _$allActivitiesToCardsAtom.reportWrite(value, super.allActivitiesToCards,
-        () {
-      super.allActivitiesToCards = value;
     });
   }
 
@@ -344,15 +327,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$getActivitiesAsyncAction = AsyncAction(
-      'UserDashboardControllerBase.getActivities',
-      context: context);
-
-  @override
-  Future<dynamic> getActivities() {
-    return _$getActivitiesAsyncAction.run(() => super.getActivities());
-  }
-
   late final _$getUserSubscribedActivitiesAsyncAction = AsyncAction(
       'UserDashboardControllerBase.getUserSubscribedActivities',
       context: context);
@@ -365,6 +339,100 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
 
   late final _$UserDashboardControllerBaseActionController =
       ActionController(name: 'UserDashboardControllerBase', context: context);
+
+  @override
+  void setTypeFilter(ActivityEnum value) {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.setTypeFilter');
+    try {
+      return super.setTypeFilter(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDateFilter(DateTime value) {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.setDateFilter');
+    try {
+      return super.setDateFilter(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setHourFilter(DateTime value) {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.setHourFilter');
+    try {
+      return super.setHourFilter(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAllFilters() {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.setAllFilters');
+    try {
+      return super.setAllFilters();
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic resetFilters() {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.resetFilters');
+    try {
+      return super.resetFilters();
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<EnrollsActivityModel> filterActivitiesByType(
+      ActivityEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+    final _$actionInfo =
+        _$UserDashboardControllerBaseActionController.startAction(
+            name: 'UserDashboardControllerBase.filterActivitiesByType');
+    try {
+      return super.filterActivitiesByType(type, activitiesToFilter);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<EnrollsActivityModel> filterActivitiesByDate(
+      DateTime date, List<EnrollsActivityModel> activitiesToFilter) {
+    final _$actionInfo =
+        _$UserDashboardControllerBaseActionController.startAction(
+            name: 'UserDashboardControllerBase.filterActivitiesByDate');
+    try {
+      return super.filterActivitiesByDate(date, activitiesToFilter);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<EnrollsActivityModel> filterActivitiesByHour(
+      DateTime hour, List<EnrollsActivityModel> activitiesToFilter) {
+    final _$actionInfo =
+        _$UserDashboardControllerBaseActionController.startAction(
+            name: 'UserDashboardControllerBase.filterActivitiesByHour');
+    try {
+      return super.filterActivitiesByHour(hour, activitiesToFilter);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setName(String value) {
@@ -434,18 +502,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   }
 
   @override
-  void toggleFilterActivityChipIndex(dynamic index) {
-    final _$actionInfo =
-        _$UserDashboardControllerBaseActionController.startAction(
-            name: 'UserDashboardControllerBase.toggleFilterActivityChipIndex');
-    try {
-      return super.toggleFilterActivityChipIndex(index);
-    } finally {
-      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 error: ${error},
@@ -455,19 +511,15 @@ certificateWithSocialName: ${certificateWithSocialName},
 socialNameToChange: ${socialNameToChange},
 nameToChange: ${nameToChange},
 wantSocialName: ${wantSocialName},
+subscribedActivitiesOnScreen: ${subscribedActivitiesOnScreen},
+activityType: ${activityType},
+typeFilter: ${typeFilter},
+dateFilter: ${dateFilter},
+hourFilter: ${hourFilter},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
-subscribedActivitiesList: ${subscribedActivitiesList},
-nextActivity: ${nextActivity},
-cardNextActivity: ${cardNextActivity},
-weekActivitiesList: ${weekActivitiesList},
-allActivitiesToCards: ${allActivitiesToCards},
-mondayActivitiesList: ${mondayActivitiesList},
-tuesdayActivitiesList: ${tuesdayActivitiesList},
-wednesdayActivitiesList: ${wednesdayActivitiesList},
-thursdayActivitiesList: ${thursdayActivitiesList},
-fridayActivitiesList: ${fridayActivitiesList},
-saturdayActivitiesList: ${saturdayActivitiesList}
+allSubscribedActivitiesList: ${allSubscribedActivitiesList},
+nextActivity: ${nextActivity}
     ''';
   }
 }

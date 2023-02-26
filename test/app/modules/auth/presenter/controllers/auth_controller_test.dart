@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -10,6 +12,7 @@ import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/models/user_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../setup_firebase_mocks.dart';
 import 'auth_controller_test.mocks.dart';
@@ -48,6 +51,7 @@ void main() {
 
   setUpAll(() async {
     await Firebase.initializeApp();
+    await S.load(const Locale.fromSubtags(languageCode: 'en'));
     when(loginWithEmail(emailMock, pwMock)).thenAnswer((_) async => userMock);
     when(analytics.setUserProperties('')).thenAnswer((_) async => null);
     when(storage.getRole()).thenAnswer((_) async => 'STUDENT');
