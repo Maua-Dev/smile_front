@@ -218,7 +218,8 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                             builder: (_) => Visibility(
                                 visible: controller.isSubscribedListVisible,
                                 child: SubscriberListWidget(
-                                  enrollmentsList: controller.activity.enrollments,
+                                  enrollmentsList:
+                                      controller.activity.enrollments,
                                   isSwitched: controller.isSwitched,
                                   toggleSwitch: controller.toggleSwitch,
                                   listViewItemCount:

@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_activities_widgets/list_item.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/enrollments_model.dart';
 
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -39,14 +41,14 @@ class SubscriberListWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: 204,
+                width: 224,
                 child: Row(
                   children: [
                     SizedBox(
                       width:
                           MediaQuery.of(context).size.width < breakpointTablet
                               ? 5
-                              : 58,
+                              : 78,
                     ),
                     Text(S.of(context).absenceTitle,
                         style: AppTextStyles.bold
@@ -70,7 +72,7 @@ class SubscriberListWidget extends StatelessWidget {
                           .copyWith(fontSize: 20, color: Colors.black)),
                   SizedBox(
                     width: MediaQuery.of(context).size.width < breakpointTablet
-                        ? 110
+                        ? 104
                         : 180,
                   )
                 ],
@@ -94,44 +96,88 @@ class SubscriberListWidget extends StatelessWidget {
             child: ListView.builder(
               itemCount: listViewItemCount,
               itemBuilder: (BuildContext context, int index) {
+                List<ListItem> list = enrollmentsList!
+                    .map(
+                      (e) => ListItem(
+                          name: e.userEnroll!.name,
+                          state: e.state,
+                          isSwitched: e.state == EnrollmentStateEnum.COMPLETED
+                              ? true
+                              : false),
+                    )
+                    .toList();
                 return Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Observer(
-                          builder: (_) {
-                            return SizedBox(
-                              width: MediaQuery.of(context).size.width <
-                                      breakpointTablet
-                                  ? 100
-                                  : 50,
-                              child: Switch(
-                                value: isSwitched,
-                                onChanged: (value) {
-                                  toggleSwitch!();
-                                },
-                                activeColor: Colors.green,
-                                inactiveThumbColor: Colors.red,
-                                inactiveTrackColor: Colors.red.withOpacity(0.5),
-                                activeTrackColor: Colors.green.withOpacity(0.5),
-                              ),
-                            );
-                          },
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width <
-                                  breakpointTablet
-                              ? 270
-                              : 240,
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            enrollmentsList![index].userEnroll!.name,
-                            style: AppTextStyles.bold
-                                .copyWith(fontSize: 30, color: Colors.black),
+                    Container(
+                      width:
+                          MediaQuery.of(context).size.width < breakpointTablet
+                              ? 400
+                              : 440,
+                      decoration: BoxDecoration(
+                        color: list[index].state != EnrollmentStateEnum.IN_QUEUE
+                            ? AppColors.white
+                            : AppColors.gray.withOpacity(0.5),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Observer(
+                            builder: (_) {
+                              return SizedBox(
+                                  width: MediaQuery.of(context).size.width <
+                                          breakpointTablet
+                                      ? 100
+                                      : 50,
+                                  child: list[index].state !=
+                                          EnrollmentStateEnum.IN_QUEUE
+                                      ? Switch(
+                                          value: list[index].isSwitched,
+                                          onChanged: (value) {
+                                            if (list[index].state !=
+                                                EnrollmentStateEnum.IN_QUEUE) {
+                                              toggleSwitch!();
+                                            } else {
+                                              null;
+                                            }
+                                          },
+                                          activeColor: Colors.green,
+                                          inactiveThumbColor: Colors.red,
+                                          inactiveTrackColor:
+                                              Colors.red.withOpacity(0.5),
+                                          activeTrackColor:
+                                              Colors.green.withOpacity(0.5),
+                                        )
+                                      : Padding(
+                                          padding: EdgeInsets.only(
+                                              left: MediaQuery.of(context)
+                                                          .size
+                                                          .width <
+                                                      breakpointTablet
+                                                  ? 26
+                                                  : 2),
+                                          child: Text("Na fila",
+                                              style: AppTextStyles.bold
+                                                  .copyWith(
+                                                      color: AppColors
+                                                          .brandingOrange,
+                                                      fontSize: 16)),
+                                        ));
+                            },
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width <
+                                    breakpointTablet
+                                ? 270
+                                : 240,
+                            child: Text(
+                              textAlign: TextAlign.center,
+                              list[index].name,
+                              style: AppTextStyles.bold
+                                  .copyWith(fontSize: 30, color: Colors.black),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       width: 438,
