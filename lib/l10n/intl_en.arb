@@ -97,11 +97,11 @@
     
     
     
-
     "selectOptionTitle": "Select an option:",
     "registerFullNamePlaceholder": "Full Name",
     "registerSocialNamePlaceholder": "Social Name",
     "registerEmailPlaceholder": "E-mail",
+    "registerSocialNameTooltip": "Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.",
     "registerEmailProfessorPlaceholder": "Enter your email Mauá",
     "registerEmailConfirmationPlaceholder": "Confirm your e-mail",
     "registerPhonePlaceholder": "Phone",
@@ -193,7 +193,7 @@
     "noTitle": "No",
     "": "",
 
-
+    
     "unavailabeActivityRegistration": "Registration unavailabe for this activity!",
     "unsubscribeVerification": "Are you sure you wanna unsubscribe?",
     "subscribeVerification": "Are you sure you wanna subscribe?",
@@ -202,5 +202,12 @@
     "availabeSpotUnsuficient": "It seems that the number of vacancies for this activity has run out :(",
     "scheduleActivityWarning": "Keep in mind of your schedules and activities that you have already signed up for!",
     "alreadySubscribedOnThisPeriodWarning": "It seems you are already subscribed on another activity at this period.",
-    "unavailabeSubscribe": "The registration for this activity is unavailabe!"
+    "unavailabeSubscribe": "The registration for this activity is unavailabe!",
+
+    "drawerActivitiesButton": "Activities",
+    "drawerCertificatesButton": "Certificates",
+    "drawerHelpButton": "Help",
+    "drawerHomeButton": "Home",
+    "drawerProfileButton": "Profile",
+    "drawerResponsibleActivitiesButton": "Responsible Activities"
 }

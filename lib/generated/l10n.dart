@@ -1042,6 +1042,16 @@ class S {
     );
   }
 
+  /// `Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.`
+  String get registerSocialNameTooltip {
+    return Intl.message(
+      'Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.',
+      name: 'registerSocialNameTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter your email Mauá`
   String get registerEmailProfessorPlaceholder {
     return Intl.message(
@@ -1741,6 +1751,66 @@ class S {
     return Intl.message(
       'The registration for this activity is unavailabe!',
       name: 'unavailabeSubscribe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activities`
+  String get drawerActivitiesButton {
+    return Intl.message(
+      'Activities',
+      name: 'drawerActivitiesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Certificates`
+  String get drawerCertificatesButton {
+    return Intl.message(
+      'Certificates',
+      name: 'drawerCertificatesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help`
+  String get drawerHelpButton {
+    return Intl.message(
+      'Help',
+      name: 'drawerHelpButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get drawerHomeButton {
+    return Intl.message(
+      'Home',
+      name: 'drawerHomeButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get drawerProfileButton {
+    return Intl.message(
+      'Profile',
+      name: 'drawerProfileButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible Activities`
+  String get drawerResponsibleActivitiesButton {
+    return Intl.message(
+      'Responsible Activities',
+      name: 'drawerResponsibleActivitiesButton',
       desc: '',
       args: [],
     );

@@ -101,6 +101,7 @@
     "registerFullNamePlaceholder": "Nome Completo",
     "registerSocialNamePlaceholder": "Nome Social",
     "registerEmailPlaceholder": "E-mail",
+    "registerSocialNameTooltip": "Nome social se refere à designação pela qual a pessoa travesti ou transexual se identifica e é socialmente reconhecida.",
     "registerEmailProfessorPlaceholder": "Insira seu e-mail da Mauá",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
     "registerPhonePlaceholder": "Telefone Celular",
@@ -201,5 +202,12 @@
     "availabeSpotUnsuficient": "Parece que o número de vagas da atividade se esgotou :(",
     "scheduleActivityWarning": "Se atente aos seus horários e atividades que você já se inscreveu!",
     "alreadySubscribedOnThisPeriodWarning": "Parece que você já se inscreveu em uma atividade no mesmo horário.",
-    "unavailabeSubscribe": "Inscrição para a atividade indisponível!"
+    "unavailabeSubscribe": "Inscrição para a atividade indisponível!",
+
+    "drawerActivitiesButton": "Atividades",
+    "drawerCertificatesButton": "Certificados",
+    "drawerHelpButton": "Ajuda",
+    "drawerHomeButton": "Página Inicial",
+    "drawerProfileButton": "Perfil",
+    "drawerResponsibleActivitiesButton": "Atividades Responsáveis"
 }

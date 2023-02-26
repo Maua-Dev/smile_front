@@ -302,6 +302,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Descrição"),
         "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
         "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
+        "drawerActivitiesButton":
+            MessageLookupByLibrary.simpleMessage("Atividades"),
+        "drawerCertificatesButton":
+            MessageLookupByLibrary.simpleMessage("Certificados"),
+        "drawerHelpButton": MessageLookupByLibrary.simpleMessage("Ajuda"),
+        "drawerHomeButton":
+            MessageLookupByLibrary.simpleMessage("Página Inicial"),
+        "drawerProfileButton": MessageLookupByLibrary.simpleMessage("Perfil"),
+        "drawerResponsibleActivitiesButton":
+            MessageLookupByLibrary.simpleMessage("Atividades Responsáveis"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
@@ -407,6 +417,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerRAPlaceholder": MessageLookupByLibrary.simpleMessage("RA"),
         "registerSocialNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Nome Social"),
+        "registerSocialNameTooltip": MessageLookupByLibrary.simpleMessage(
+            "Nome social se refere à designação pela qual a pessoa travesti ou transexual se identifica e é socialmente reconhecida."),
         "registerStudentMauaPlaceholder":
             MessageLookupByLibrary.simpleMessage("Aluno Mauá"),
         "registerTerms": m15,

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
+import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 class UserFilterCardWidget extends StatelessWidget {
@@ -47,19 +47,16 @@ class UserFilterCardWidget extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width > breakpointTablet
-                ? 787
-                : 380,
-            height:
-                MediaQuery.of(context).size.width > breakpointTablet ? 47 : 36,
+            width: MediaQuery.of(context).size.width > tabletSize ? 787 : 380,
+            height: MediaQuery.of(context).size.width > tabletSize ? 47 : 36,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width > breakpointTablet
+                    width: MediaQuery.of(context).size.width > tabletSize
                         ? 227
                         : 160,
-                    height: MediaQuery.of(context).size.width > breakpointTablet
+                    height: MediaQuery.of(context).size.width > tabletSize
                         ? 47
                         : 36,
                     decoration: BoxDecoration(
@@ -68,33 +65,32 @@ class UserFilterCardWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
                           0,
-                          MediaQuery.of(context).size.width > breakpointTablet
+                          MediaQuery.of(context).size.width > tabletSize
                               ? 8
                               : 2,
                           3,
-                          MediaQuery.of(context).size.width > breakpointTablet
+                          MediaQuery.of(context).size.width > tabletSize
                               ? 7
                               : 8),
                       child: DropdownButtonFormField<ActivityEnum>(
                         value: typeFilter,
-                        iconSize:
-                            MediaQuery.of(context).size.width > breakpointTablet
-                                ? 24
-                                : 14,
+                        iconSize: MediaQuery.of(context).size.width > tabletSize
+                            ? 24
+                            : 14,
                         isExpanded: true,
                         decoration: InputDecoration(
-                          isDense: MediaQuery.of(context).size.width >
-                                  breakpointTablet
-                              ? true
-                              : false,
+                          isDense:
+                              MediaQuery.of(context).size.width > tabletSize
+                                  ? true
+                                  : false,
                           hintText: S.of(context).activitiesTitle,
                           fillColor: AppColors.white,
                           filled: true,
                           hintStyle: AppTextStyles.body.copyWith(
-                              fontSize: MediaQuery.of(context).size.width >
-                                      breakpointTablet
-                                  ? 25
-                                  : 16),
+                              fontSize:
+                                  MediaQuery.of(context).size.width > tabletSize
+                                      ? 25
+                                      : 16),
                           border: InputBorder.none,
                         ),
                         items: ActivityEnum.values
@@ -105,7 +101,7 @@ class UserFilterCardWidget extends StatelessWidget {
                                   style: AppTextStyles.body.copyWith(
                                       fontSize:
                                           MediaQuery.of(context).size.width >
-                                                  breakpointTablet
+                                                  tabletSize
                                               ? 15
                                               : 10)));
                         }).toList(),
@@ -114,10 +110,10 @@ class UserFilterCardWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width > breakpointTablet
+                    width: MediaQuery.of(context).size.width > tabletSize
                         ? 227
                         : 100,
-                    height: MediaQuery.of(context).size.width > breakpointTablet
+                    height: MediaQuery.of(context).size.width > tabletSize
                         ? 47
                         : 36,
                     decoration: BoxDecoration(
@@ -125,11 +121,11 @@ class UserFilterCardWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width > breakpointTablet
+                          MediaQuery.of(context).size.width > tabletSize
                               ? 12
                               : 6,
                           4,
-                          MediaQuery.of(context).size.width > breakpointTablet
+                          MediaQuery.of(context).size.width > tabletSize
                               ? 12
                               : 0,
                           10),
@@ -146,11 +142,11 @@ class UserFilterCardWidget extends StatelessWidget {
                                 style: AppTextStyles.body.copyWith(
                                     fontSize: formattedDate == ''
                                         ? MediaQuery.of(context).size.width >
-                                                breakpointTablet
+                                                tabletSize
                                             ? 25
                                             : 16
                                         : MediaQuery.of(context).size.width >
-                                                breakpointTablet
+                                                tabletSize
                                             ? 16
                                             : 10)),
                           ),
@@ -178,20 +174,20 @@ class UserFilterCardWidget extends StatelessWidget {
                             hoverColor: AppColors.white,
                             icon: const Icon(Icons.arrow_drop_down),
                             color: Colors.black,
-                            iconSize: MediaQuery.of(context).size.width >
-                                    breakpointTablet
-                                ? 24
-                                : 14,
+                            iconSize:
+                                MediaQuery.of(context).size.width > tabletSize
+                                    ? 24
+                                    : 14,
                           ),
                         ],
                       ),
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width > breakpointTablet
+                    width: MediaQuery.of(context).size.width > tabletSize
                         ? 227
                         : 105,
-                    height: MediaQuery.of(context).size.width > breakpointTablet
+                    height: MediaQuery.of(context).size.width > tabletSize
                         ? 47
                         : 36,
                     decoration: BoxDecoration(
@@ -199,11 +195,11 @@ class UserFilterCardWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width > breakpointTablet
+                          MediaQuery.of(context).size.width > tabletSize
                               ? 12
                               : 6,
                           4,
-                          MediaQuery.of(context).size.width > breakpointTablet
+                          MediaQuery.of(context).size.width > tabletSize
                               ? 12
                               : 0,
                           10),
@@ -220,11 +216,11 @@ class UserFilterCardWidget extends StatelessWidget {
                                 style: AppTextStyles.body.copyWith(
                                     fontSize: formattedHour == ''
                                         ? MediaQuery.of(context).size.width >
-                                                breakpointTablet
+                                                tabletSize
                                             ? 25
                                             : 16
                                         : MediaQuery.of(context).size.width >
-                                                breakpointTablet
+                                                tabletSize
                                             ? 16
                                             : 10)),
                           ),
@@ -255,10 +251,10 @@ class UserFilterCardWidget extends StatelessWidget {
                             hoverColor: AppColors.white,
                             icon: const Icon(Icons.arrow_drop_down),
                             color: Colors.black,
-                            iconSize: MediaQuery.of(context).size.width >
-                                    breakpointTablet
-                                ? 24
-                                : 14,
+                            iconSize:
+                                MediaQuery.of(context).size.width > tabletSize
+                                    ? 24
+                                    : 14,
                           ),
                         ],
                       ),

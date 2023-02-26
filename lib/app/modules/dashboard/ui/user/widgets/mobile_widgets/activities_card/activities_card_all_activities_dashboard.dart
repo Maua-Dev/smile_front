@@ -3,10 +3,11 @@ import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart
 import 'package:smile_front/app/shared/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
+
+import '../../../../../../../shared/entities/screen_variables.dart';
 
 class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final String title;
@@ -59,19 +60,14 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width < breakpointTablet
-                ? 342
-                : 1165,
-            height:
-                MediaQuery.of(context).size.width < breakpointTablet ? 76 : 204,
+            width: MediaQuery.of(context).size.width < tabletSize ? 342 : 1165,
+            height: MediaQuery.of(context).size.width < tabletSize ? 76 : 204,
             child: Row(children: [
               Container(
-                  width: MediaQuery.of(context).size.width < breakpointTablet
-                      ? 70
-                      : 190,
-                  height: MediaQuery.of(context).size.width < breakpointTablet
-                      ? 76
-                      : 204,
+                  width:
+                      MediaQuery.of(context).size.width < tabletSize ? 70 : 190,
+                  height:
+                      MediaQuery.of(context).size.width < tabletSize ? 76 : 204,
                   decoration: BoxDecoration(
                       color: AppColors.brandingBlue,
                       borderRadius: BorderRadius.circular(15)),
@@ -79,10 +75,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(hour,
                         style: AppTextStyles.bold.copyWith(
-                            fontSize: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 20
-                                : 40)),
+                            fontSize:
+                                MediaQuery.of(context).size.width < tabletSize
+                                    ? 20
+                                    : 40)),
                   )),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 0, 2),
@@ -94,35 +90,34 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 215
-                                : 500,
-                            height: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 34
-                                : 50,
+                            width:
+                                MediaQuery.of(context).size.width < tabletSize
+                                    ? 215
+                                    : 500,
+                            height:
+                                MediaQuery.of(context).size.width < tabletSize
+                                    ? 34
+                                    : 50,
                             child: Text(title,
                                 maxLines: 2,
                                 style: AppTextStyles.bold.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width <
-                                                breakpointTablet
+                                                tabletSize
                                             ? 16
                                             : 30,
                                     color: AppColors.brandingBlue)),
                           ),
-                          if (MediaQuery.of(context).size.width >
-                              breakpointTablet)
+                          if (MediaQuery.of(context).size.width > tabletSize)
                             const SizedBox(width: 200),
                           if (isExtensive)
                             Icon(
                               Icons.star,
                               color: AppColors.brandingOrange,
-                              size: MediaQuery.of(context).size.width <
-                                      breakpointTablet
-                                  ? 20
-                                  : 40,
+                              size:
+                                  MediaQuery.of(context).size.width < tabletSize
+                                      ? 20
+                                      : 40,
                             ),
                         ]),
                     Row(children: [
@@ -132,34 +127,31 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                           Text('${S.of(context).termination}: $finalTime',
                               style: AppTextStyles.bold.copyWith(
                                   fontSize: MediaQuery.of(context).size.width <
-                                          breakpointTablet
+                                          tabletSize
                                       ? 12
                                       : 24,
                                   color: Colors.black)),
                           Text('${S.of(context).local}: $location',
                               style: AppTextStyles.bold.copyWith(
                                   fontSize: MediaQuery.of(context).size.width <
-                                          breakpointTablet
+                                          tabletSize
                                       ? 12
                                       : 24,
                                   color: Colors.black)),
                         ],
                       ),
                       SizedBox(
-                        width:
-                            MediaQuery.of(context).size.width < breakpointTablet
-                                ? 53
-                                : 368,
+                        width: MediaQuery.of(context).size.width < tabletSize
+                            ? 53
+                            : 368,
                       ),
                       SizedBox(
-                          width:
-                              MediaQuery.of(context).size.width < breakpointTablet
-                                  ? 100
-                                  : 200,
-                          height:
-                              MediaQuery.of(context).size.width < breakpointTablet
-                                  ? 25
-                                  : 50,
+                          width: MediaQuery.of(context).size.width < tabletSize
+                              ? 100
+                              : 200,
+                          height: MediaQuery.of(context).size.width < tabletSize
+                              ? 25
+                              : 50,
                           child: activityEnrollment != null
                               ? ElevatedButton(
                                   style: ButtonStyle(
@@ -167,7 +159,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                         RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
                                                 MediaQuery.of(context).size.width <
-                                                        breakpointTablet
+                                                        tabletSize
                                                     ? 15
                                                     : 20),
                                             side: BorderSide(
@@ -214,15 +206,13 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                     );
                                   },
                                   child: Text(
-                                      activityEnrollment!.state == EnrollmentStateEnum.COMPLETED ||
-                                              activityEnrollment!.state ==
-                                                  EnrollmentStateEnum.ENROLLED
+                                      activityEnrollment!.state == EnrollmentStateEnum.COMPLETED || activityEnrollment!.state == EnrollmentStateEnum.ENROLLED
                                           ? S.of(context).subscribedTitle
                                           : S.of(context).queueTitle,
                                       style: AppTextStyles.bold.copyWith(
                                           fontSize:
                                               MediaQuery.of(context).size.width <
-                                                      breakpointTablet
+                                                      tabletSize
                                                   ? 12
                                                   : 24,
                                           color: AppColors.white)))
@@ -235,7 +225,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                 MediaQuery.of(context)
                                                             .size
                                                             .width <
-                                                        breakpointTablet
+                                                        tabletSize
                                                     ? 15
                                                     : 20),
                                             side: BorderSide(
@@ -266,7 +256,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                       },
                                     );
                                   },
-                                  child: Text(S.of(context).subcribeTitle, style: AppTextStyles.bold.copyWith(fontSize: MediaQuery.of(context).size.width < breakpointTablet ? 12 : 24, color: AppColors.brandingOrange))))
+                                  child: Text(S.of(context).subcribeTitle,
+                                      style: AppTextStyles.bold.copyWith(
+                                          fontSize: MediaQuery.of(context).size.width < tabletSize ? 12 : 24,
+                                          color: AppColors.brandingOrange))))
                     ])
                   ],
                 ),

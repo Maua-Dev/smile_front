@@ -5,9 +5,9 @@ import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/activities_card/mobile_activities_card_user_dashboard_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/mobile_filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_data_widget.dart';
+import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/utils.dart';
@@ -36,9 +36,8 @@ class _UserDashboardPageState
           return Scaffold(
               body: Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width < breakpointTablet
-                    ? 50
-                    : 20),
+                horizontal:
+                    MediaQuery.of(context).size.width < tabletSize ? 50 : 20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -105,10 +104,10 @@ class _UserDashboardPageState
                     return Flexible(
                         child: ConstrainedBox(
                       constraints: BoxConstraints(
-                          maxWidth: MediaQuery.of(context).size.width <
-                                  breakpointTablet
-                              ? 342
-                              : 1165),
+                          maxWidth:
+                              MediaQuery.of(context).size.width < tabletSize
+                                  ? 342
+                                  : 1165),
                       child: ListView.builder(
                         itemCount:
                             controller.subscribedActivitiesOnScreen.length,
@@ -150,10 +149,10 @@ class _UserDashboardPageState
                   } else {
                     return Text(S.of(context).activitiesNotFound,
                         style: AppTextStyles.body.copyWith(
-                            fontSize: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 20
-                                : 25));
+                            fontSize:
+                                MediaQuery.of(context).size.width < tabletSize
+                                    ? 20
+                                    : 25));
                   }
                 }),
               ],

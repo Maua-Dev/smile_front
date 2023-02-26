@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 class MobileActivitiesCardUserDashboard extends StatelessWidget {
@@ -40,19 +40,14 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width < breakpointTablet
-                ? 342
-                : 1165,
-            height:
-                MediaQuery.of(context).size.width < breakpointTablet ? 76 : 204,
+            width: MediaQuery.of(context).size.width < tabletSize ? 342 : 1165,
+            height: MediaQuery.of(context).size.width < tabletSize ? 76 : 204,
             child: Row(children: [
               Container(
-                  width: MediaQuery.of(context).size.width < breakpointTablet
-                      ? 70
-                      : 190,
-                  height: MediaQuery.of(context).size.width < breakpointTablet
-                      ? 76
-                      : 204,
+                  width:
+                      MediaQuery.of(context).size.width < tabletSize ? 70 : 190,
+                  height:
+                      MediaQuery.of(context).size.width < tabletSize ? 76 : 204,
                   decoration: BoxDecoration(
                       color: AppColors.brandingBlue,
                       borderRadius: BorderRadius.circular(15)),
@@ -60,10 +55,10 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(hour,
                         style: AppTextStyles.bold.copyWith(
-                            fontSize: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 20
-                                : 40)),
+                            fontSize:
+                                MediaQuery.of(context).size.width < tabletSize
+                                    ? 20
+                                    : 40)),
                   )),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 0, 2),
@@ -75,26 +70,25 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 215
-                                : 500,
-                            height: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 34
-                                : 50,
+                            width:
+                                MediaQuery.of(context).size.width < tabletSize
+                                    ? 215
+                                    : 500,
+                            height:
+                                MediaQuery.of(context).size.width < tabletSize
+                                    ? 34
+                                    : 50,
                             child: Text(title,
                                 maxLines: 2,
                                 style: AppTextStyles.bold.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width <
-                                                breakpointTablet
+                                                tabletSize
                                             ? 16
                                             : 30,
                                     color: AppColors.brandingBlue)),
                           ),
-                          if (MediaQuery.of(context).size.width >
-                              breakpointTablet)
+                          if (MediaQuery.of(context).size.width > tabletSize)
                             const SizedBox(width: 200),
                         ]),
                     Row(children: [
@@ -104,33 +98,31 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                           Text('${S.of(context).termination}: $finalTime',
                               style: AppTextStyles.bold.copyWith(
                                   fontSize: MediaQuery.of(context).size.width <
-                                          breakpointTablet
+                                          tabletSize
                                       ? 12
                                       : 24,
                                   color: Colors.black)),
                           Text('${S.of(context).local}: $location',
                               style: AppTextStyles.bold.copyWith(
                                   fontSize: MediaQuery.of(context).size.width <
-                                          breakpointTablet
+                                          tabletSize
                                       ? 12
                                       : 24,
                                   color: Colors.black)),
                         ],
                       ),
                       SizedBox(
-                        width:
-                            MediaQuery.of(context).size.width < breakpointTablet
-                                ? 53
-                                : 368,
+                        width: MediaQuery.of(context).size.width < tabletSize
+                            ? 53
+                            : 368,
                       ),
                     ])
                   ],
                 ),
               ),
               Icon(Icons.arrow_forward_ios_sharp,
-                  size: MediaQuery.of(context).size.width < breakpointTablet
-                      ? 20
-                      : 40)
+                  size:
+                      MediaQuery.of(context).size.width < tabletSize ? 20 : 40)
             ]),
           ),
           const SizedBox(
