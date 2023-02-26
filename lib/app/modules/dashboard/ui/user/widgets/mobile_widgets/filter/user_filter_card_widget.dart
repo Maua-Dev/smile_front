@@ -47,18 +47,22 @@ class UserFilterCardWidget extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width > breakpointTablet
-                ? 787
-                : 380,
+            width: MediaQuery.of(context).size.width < breakpointLMobile
+                ? 310
+                : MediaQuery.of(context).size.width > breakpointTablet
+                    ? 787
+                    : 380,
             height:
                 MediaQuery.of(context).size.width > breakpointTablet ? 47 : 36,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width > breakpointTablet
-                        ? 227
-                        : 160,
+                    width: MediaQuery.of(context).size.width < breakpointLMobile
+                        ? 120
+                        : MediaQuery.of(context).size.width > breakpointTablet
+                            ? 227
+                            : 160,
                     height: MediaQuery.of(context).size.width > breakpointTablet
                         ? 47
                         : 36,
@@ -114,9 +118,11 @@ class UserFilterCardWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width > breakpointTablet
-                        ? 227
-                        : 100,
+                    width: MediaQuery.of(context).size.width < breakpointLMobile
+                        ? 80
+                        : MediaQuery.of(context).size.width > breakpointTablet
+                            ? 227
+                            : 100,
                     height: MediaQuery.of(context).size.width > breakpointTablet
                         ? 47
                         : 36,
@@ -188,9 +194,11 @@ class UserFilterCardWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width > breakpointTablet
-                        ? 227
-                        : 105,
+                    width: MediaQuery.of(context).size.width < breakpointLMobile
+                        ? 99
+                        : MediaQuery.of(context).size.width > breakpointTablet
+                            ? 227
+                            : 105,
                     height: MediaQuery.of(context).size.width > breakpointTablet
                         ? 47
                         : 36,
