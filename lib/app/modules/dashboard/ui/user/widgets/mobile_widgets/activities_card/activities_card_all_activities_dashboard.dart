@@ -59,7 +59,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width < breakpointTablet
+            width: MediaQuery.of(context).size.width < breakpointLMobile
                 ? 300
                 : MediaQuery.of(context).size.width > breakpointTablet
                     ? 1165
@@ -98,10 +98,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width <
                                     breakpointLMobile
-                                ? 150
+                                ? 180
                                 : MediaQuery.of(context).size.width >
                                         breakpointTablet
-                                    ? 500
+                                    ? 520
                                     : 215,
                             height: MediaQuery.of(context).size.width <
                                     breakpointTablet
@@ -156,8 +156,8 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                             ? 20
                             : MediaQuery.of(context).size.width >
                                     breakpointTablet
-                                ? 368
-                                : 53,
+                                ? 390
+                                : 50,
                       ),
                       SizedBox(
                           width:
