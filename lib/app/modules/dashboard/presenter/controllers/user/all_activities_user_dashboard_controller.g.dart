@@ -130,6 +130,23 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
+  late final _$requisitionErrorAtom = Atom(
+      name: 'AllActivitiesUserDashboardControllerBase.requisitionError',
+      context: context);
+
+  @override
+  String? get requisitionError {
+    _$requisitionErrorAtom.reportRead();
+    return super.requisitionError;
+  }
+
+  @override
+  set requisitionError(String? value) {
+    _$requisitionErrorAtom.reportWrite(value, super.requisitionError, () {
+      super.requisitionError = value;
+    });
+  }
+
   late final _$setIsLoadingAsyncAction = AsyncAction(
       'AllActivitiesUserDashboardControllerBase.setIsLoading',
       context: context);
@@ -280,7 +297,8 @@ activitiesOnScreen: ${activitiesOnScreen},
 activityType: ${activityType},
 typeFilter: ${typeFilter},
 dateFilter: ${dateFilter},
-hourFilter: ${hourFilter}
+hourFilter: ${hourFilter},
+requisitionError: ${requisitionError}
     ''';
   }
 }

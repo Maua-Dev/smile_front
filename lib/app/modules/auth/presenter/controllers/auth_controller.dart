@@ -46,6 +46,7 @@ class AuthController {
     await storage.saveSocialName(loginResponse.socialName ?? '');
     await storage.saveId(loginResponse.userId);
     await storage.saveIdToken(loginResponse.idToken);
+    await storage.savePhone(loginResponse.phone);
     await storage
         .saveCertificateWithSocialName(_certificateWithSocialName ?? false);
     await analytics.setUserProperties(await storage.getId() ?? '');

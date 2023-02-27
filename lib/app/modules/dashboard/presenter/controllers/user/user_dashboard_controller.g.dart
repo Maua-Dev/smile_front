@@ -107,6 +107,22 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
+  late final _$phoneToChangeAtom =
+      Atom(name: 'UserDashboardControllerBase.phoneToChange', context: context);
+
+  @override
+  String get phoneToChange {
+    _$phoneToChangeAtom.reportRead();
+    return super.phoneToChange;
+  }
+
+  @override
+  set phoneToChange(String value) {
+    _$phoneToChangeAtom.reportWrite(value, super.phoneToChange, () {
+      super.phoneToChange = value;
+    });
+  }
+
   late final _$wantSocialNameAtom = Atom(
       name: 'UserDashboardControllerBase.wantSocialName', context: context);
 
@@ -273,6 +289,86 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
+  late final _$requisitionErrorAtom = Atom(
+      name: 'UserDashboardControllerBase.requisitionError', context: context);
+
+  @override
+  String? get requisitionError {
+    _$requisitionErrorAtom.reportRead();
+    return super.requisitionError;
+  }
+
+  @override
+  set requisitionError(String? value) {
+    _$requisitionErrorAtom.reportWrite(value, super.requisitionError, () {
+      super.requisitionError = value;
+    });
+  }
+
+  late final _$phoneAtom =
+      Atom(name: 'UserDashboardControllerBase.phone', context: context);
+
+  @override
+  String? get phone {
+    _$phoneAtom.reportRead();
+    return super.phone;
+  }
+
+  @override
+  set phone(String? value) {
+    _$phoneAtom.reportWrite(value, super.phone, () {
+      super.phone = value;
+    });
+  }
+
+  late final _$isBrazilianPhoneAtom = Atom(
+      name: 'UserDashboardControllerBase.isBrazilianPhone', context: context);
+
+  @override
+  bool get isBrazilianPhone {
+    _$isBrazilianPhoneAtom.reportRead();
+    return super.isBrazilianPhone;
+  }
+
+  @override
+  set isBrazilianPhone(bool value) {
+    _$isBrazilianPhoneAtom.reportWrite(value, super.isBrazilianPhone, () {
+      super.isBrazilianPhone = value;
+    });
+  }
+
+  late final _$isPhoneFieldFilledAtom = Atom(
+      name: 'UserDashboardControllerBase.isPhoneFieldFilled', context: context);
+
+  @override
+  bool get isPhoneFieldFilled {
+    _$isPhoneFieldFilledAtom.reportRead();
+    return super.isPhoneFieldFilled;
+  }
+
+  @override
+  set isPhoneFieldFilled(bool value) {
+    _$isPhoneFieldFilledAtom.reportWrite(value, super.isPhoneFieldFilled, () {
+      super.isPhoneFieldFilled = value;
+    });
+  }
+
+  late final _$countryCodeAtom =
+      Atom(name: 'UserDashboardControllerBase.countryCode', context: context);
+
+  @override
+  CountryCode? get countryCode {
+    _$countryCodeAtom.reportRead();
+    return super.countryCode;
+  }
+
+  @override
+  set countryCode(CountryCode? value) {
+    _$countryCodeAtom.reportWrite(value, super.countryCode, () {
+      super.countryCode = value;
+    });
+  }
+
   late final _$getCertificateWithSocialNameAsyncAction = AsyncAction(
       'UserDashboardControllerBase.getCertificateWithSocialName',
       context: context);
@@ -289,6 +385,14 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   @override
   Future<void> getUserName() {
     return _$getUserNameAsyncAction.run(() => super.getUserName());
+  }
+
+  late final _$getPhoneAsyncAction =
+      AsyncAction('UserDashboardControllerBase.getPhone', context: context);
+
+  @override
+  Future<void> getPhone() {
+    return _$getPhoneAsyncAction.run(() => super.getPhone());
   }
 
   late final _$getUserSocialNameAsyncAction = AsyncAction(
@@ -335,6 +439,14 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   Future<dynamic> getUserSubscribedActivities() {
     return _$getUserSubscribedActivitiesAsyncAction
         .run(() => super.getUserSubscribedActivities());
+  }
+
+  late final _$setPhoneAsyncAction =
+      AsyncAction('UserDashboardControllerBase.setPhone', context: context);
+
+  @override
+  Future<void> setPhone(String value) {
+    return _$setPhoneAsyncAction.run(() => super.setPhone(value));
   }
 
   late final _$UserDashboardControllerBaseActionController =
@@ -502,6 +614,39 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   }
 
   @override
+  void setBrazilianPhone(CountryCode? value) {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.setBrazilianPhone');
+    try {
+      return super.setBrazilianPhone(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCountryCode(CountryCode? value) {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.setCountryCode');
+    try {
+      return super.setCountryCode(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? validatePhone(String? value) {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.validatePhone');
+    try {
+      return super.validatePhone(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 error: ${error},
@@ -510,6 +655,7 @@ name: ${name},
 certificateWithSocialName: ${certificateWithSocialName},
 socialNameToChange: ${socialNameToChange},
 nameToChange: ${nameToChange},
+phoneToChange: ${phoneToChange},
 wantSocialName: ${wantSocialName},
 subscribedActivitiesOnScreen: ${subscribedActivitiesOnScreen},
 activityType: ${activityType},
@@ -519,7 +665,12 @@ hourFilter: ${hourFilter},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 allSubscribedActivitiesList: ${allSubscribedActivitiesList},
-nextActivity: ${nextActivity}
+nextActivity: ${nextActivity},
+requisitionError: ${requisitionError},
+phone: ${phone},
+isBrazilianPhone: ${isBrazilianPhone},
+isPhoneFieldFilled: ${isPhoneFieldFilled},
+countryCode: ${countryCode}
     ''';
   }
 }

@@ -61,6 +61,23 @@ mixin _$ResponsibleActivitiesController
     });
   }
 
+  late final _$requisitionErrorAtom = Atom(
+      name: 'ResponsibleActivitiesControllerBase.requisitionError',
+      context: context);
+
+  @override
+  String? get requisitionError {
+    _$requisitionErrorAtom.reportRead();
+    return super.requisitionError;
+  }
+
+  @override
+  set requisitionError(String? value) {
+    _$requisitionErrorAtom.reportWrite(value, super.requisitionError, () {
+      super.requisitionError = value;
+    });
+  }
+
   late final _$activityTypeAtom = Atom(
       name: 'ResponsibleActivitiesControllerBase.activityType',
       context: context);
@@ -257,6 +274,7 @@ mixin _$ResponsibleActivitiesController
 isLoading: ${isLoading},
 allResponsibleActivities: ${allResponsibleActivities},
 activitiesToShow: ${activitiesToShow},
+requisitionError: ${requisitionError},
 activityType: ${activityType},
 typeFilter: ${typeFilter},
 dateFilter: ${dateFilter},
