@@ -9,7 +9,7 @@ import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/utils/screen_helper.dart';
 import '../../../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
-import '../../../../utils/formatters/NumberTextInputFormatter.dart';
+import '../../../../utils/formatters/number_text_input_formatter.dart';
 import '../autocomplete_textfield/autocomplete_textfield_widget.dart';
 import 'text_field_dialog_widget.dart';
 
