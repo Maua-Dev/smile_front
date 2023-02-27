@@ -292,6 +292,7 @@ abstract class UserDashboardControllerBase with Store {
     getUserName();
     getUserSocialName();
     getUserSubscribedActivities();
+    getPhone();
     setIsLoading(false);
   }
 
