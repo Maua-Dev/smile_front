@@ -127,7 +127,7 @@ class InputBoxWidget extends StatelessWidget {
                                   ]
                                 : [
                                     FilteringTextInputFormatter.allow(
-                                        RegExp("[a-zA-Z]")),
+                                        RegExp("[a-zA-Z\\s]")),
                                   ],
           ),
         ));
