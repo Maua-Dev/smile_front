@@ -44,6 +44,23 @@ mixin _$ResponsibleActivitiesController
     });
   }
 
+  late final _$activitiesToShowAtom = Atom(
+      name: 'ResponsibleActivitiesControllerBase.activitiesToShow',
+      context: context);
+
+  @override
+  List<EnrollsActivityModel> get activitiesToShow {
+    _$activitiesToShowAtom.reportRead();
+    return super.activitiesToShow;
+  }
+
+  @override
+  set activitiesToShow(List<EnrollsActivityModel> value) {
+    _$activitiesToShowAtom.reportWrite(value, super.activitiesToShow, () {
+      super.activitiesToShow = value;
+    });
+  }
+
   late final _$activityTypeAtom = Atom(
       name: 'ResponsibleActivitiesControllerBase.activityType',
       context: context);
@@ -239,6 +256,7 @@ mixin _$ResponsibleActivitiesController
     return '''
 isLoading: ${isLoading},
 allResponsibleActivities: ${allResponsibleActivities},
+activitiesToShow: ${activitiesToShow},
 activityType: ${activityType},
 typeFilter: ${typeFilter},
 dateFilter: ${dateFilter},

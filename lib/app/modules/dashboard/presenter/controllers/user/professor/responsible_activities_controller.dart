@@ -1,7 +1,6 @@
 import 'package:mobx/mobx.dart';
-
 import '../../../../../../shared/models/enrolls_activity_model.dart';
-import '../../../../../auth/presenter/controllers/auth_controller.dart';
+import '../../../../../auth/domain/repositories/secure_storage_interface.dart';
 import '../../../../domain/infra/activity_enum.dart';
 import '../../../../domain/usecases/get_user_subscribed_activities.dart';
 
@@ -12,11 +11,10 @@ class ResponsibleActivitiesController = ResponsibleActivitiesControllerBase
 
 abstract class ResponsibleActivitiesControllerBase with Store {
   final GetUserSubscribedActivitiesInterface getUserSubscribedActivities;
-  final AuthController authController;
+  final SecureStorageInterface storage;
 
   ResponsibleActivitiesControllerBase(
-      {required this.authController,
-      required this.getUserSubscribedActivities}) {
+      {required this.storage, required this.getUserSubscribedActivities}) {
     getFiltredActivities();
   }
 
@@ -31,18 +29,20 @@ abstract class ResponsibleActivitiesControllerBase with Store {
   @observable
   List<EnrollsActivityModel> allResponsibleActivities = [];
 
+  @observable
+  List<EnrollsActivityModel> activitiesToShow = [];
+
   @action
   Future<void> getFiltredActivities() async {
     setIsLoading(true);
     var allActivities = await getUserSubscribedActivities();
-    var userId = authController.id;
+    var userId = await storage.getId();
     for (var activity in allActivities) {
-      for (var professor in activity.responsibleProfessors) {
-        if (professor.id == userId) {
-          allResponsibleActivities.add(activity);
-        }
+      if (activity.responsibleProfessors[0].id == userId) {
+        allResponsibleActivities.add(activity);
       }
     }
+    activitiesToShow = allResponsibleActivities;
     setIsLoading(false);
   }
 
@@ -88,11 +88,12 @@ abstract class ResponsibleActivitiesControllerBase with Store {
     if (hourFilter != null) {
       listActivities = filterActivitiesByHour(hourFilter!, listActivities);
     }
-    allResponsibleActivities = listActivities;
+    activitiesToShow = listActivities;
   }
 
   @action
   resetFilters() {
+    activitiesToShow = allResponsibleActivities;
     typeFilter = null;
     dateFilter = null;
     hourFilter = null;

@@ -68,7 +68,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
                 }),
               ),
               Observer(builder: (_) {
-                if (controller.allResponsibleActivities.isNotEmpty) {
+                if (controller.activitiesToShow.isNotEmpty) {
                   return Flexible(
                       child: ConstrainedBox(
                     constraints: BoxConstraints(
@@ -77,34 +77,28 @@ class _ResponsibleActivitiesPageState extends ModularState<
                                 ? 342
                                 : 1165),
                     child: ListView.builder(
-                      itemCount: controller.allResponsibleActivities.length,
+                      itemCount: controller.activitiesToShow.length,
                       itemBuilder: (context, index) {
                         var finalTime = controller
-                                    .allResponsibleActivities[index]
-                                    .startDate ==
+                                    .activitiesToShow[index].startDate ==
                                 null
                             ? ''
                             : Utils.getActivityFinalTime(
-                                controller
-                                    .allResponsibleActivities[index].startDate!,
-                                controller
-                                    .allResponsibleActivities[index].duration);
+                                controller.activitiesToShow[index].startDate!,
+                                controller.activitiesToShow[index].duration);
                         var hour = DateFormat('HH:mm').format(controller
                             .allResponsibleActivities[index].startDate!);
                         return MobileActivitiesCardUserDashboard(
                           mainColor: AppColors.brandingOrange,
                           isLoading: controller.isLoading,
                           finalTime: finalTime,
-                          location:
-                              controller.allResponsibleActivities[index].place,
-                          title:
-                              controller.allResponsibleActivities[index].title,
+                          location: controller.activitiesToShow[index].place,
+                          title: controller.activitiesToShow[index].title,
                           hour: hour,
                           onTap: () {
                             Modular.to.navigate(
                               '/user/home/more-info',
-                              arguments:
-                                  controller.allResponsibleActivities[index],
+                              arguments: controller.activitiesToShow[index],
                             );
                           },
                         );
@@ -112,12 +106,15 @@ class _ResponsibleActivitiesPageState extends ModularState<
                     ),
                   ));
                 } else {
-                  return Text(S.of(context).activitiesNotFound,
-                      style: AppTextStyles.body.copyWith(
-                          fontSize: MediaQuery.of(context).size.width <
-                                  breakpointTablet
-                              ? 20
-                              : 25));
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 24),
+                    child: Text(S.of(context).activitiesNotFound,
+                        style: AppTextStyles.body.copyWith(
+                            fontSize: MediaQuery.of(context).size.width <
+                                    breakpointTablet
+                                ? 20
+                                : 25)),
+                  );
                 }
               }),
             ],
@@ -146,51 +143,6 @@ class _ResponsibleActivitiesPageState extends ModularState<
                   textAlign: TextAlign.center,
                   style: AppTextStyles.titleH1
                       .copyWith(color: AppColors.brandingOrange, fontSize: 32),
-                ),
-              ),
-              const SizedBox(
-                height: 48,
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      await navBarController.toggleIndex(2);
-                      Modular.to.navigate('/user/home/all-activities');
-                    },
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(20),
-                      backgroundColor:
-                          MaterialStateProperty.all(AppColors.brandingOrange),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(40)),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(right: 16),
-                          child: Icon(
-                            Icons.check,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          S.of(context).signUp.toUpperCase(),
-                          style: AppTextStyles.button.copyWith(
-                            fontSize: MediaQuery.of(context).size.width < 1630
-                                ? 20
-                                : 24,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                 ),
               ),
             ],

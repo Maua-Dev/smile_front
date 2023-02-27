@@ -43,8 +43,8 @@ class AuthController {
     await storage.saveIdToken(loginResponse.idToken);
     await storage.saveRole(_role);
     await storage.saveName(_name);
-    await storage.saveSocialName(_socialname ?? '');
-    await storage.saveId(_id ?? '');
+    await storage.saveSocialName(loginResponse.socialName ?? '');
+    await storage.saveId(loginResponse.userId);
     await storage.saveIdToken(loginResponse.idToken);
     await storage
         .saveCertificateWithSocialName(_certificateWithSocialName ?? false);

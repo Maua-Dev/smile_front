@@ -7,7 +7,7 @@ class ProfessorModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<ResponsibleActivitiesController>(
         (i) => ResponsibleActivitiesController(
-              authController: i(),
+              storage: i(),
               getUserSubscribedActivities: i(),
             ),
         export: true),
