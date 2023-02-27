@@ -142,8 +142,10 @@ class _MoreInfoPageState
                             height: 32,
                             child: RegisterButtonWidget(
                                 isLoading: controller.isLoading,
-                                isRegistered:
-                                    controller.activity.enrollments!.state,
+                                isRegistered: controller.activity.enrollments ==
+                                        null
+                                    ? EnrollmentStateEnum.NONE
+                                    : controller.activity.enrollments!.state,
                                 onPressed: () {
                                   if (!controller
                                       .activity.acceptingNewEnrollments) {
@@ -616,7 +618,10 @@ class _MoreInfoPageState
                           : Center(
                               child: RegisterButtonWidget(
                                   isRegistered:
-                                      controller.activity.enrollments!.state,
+                                      controller.activity.enrollments == null
+                                          ? EnrollmentStateEnum.NONE
+                                          : controller
+                                              .activity.enrollments!.state,
                                   isLoading: controller.isLoading,
                                   onPressed: () {
                                     if (!controller
