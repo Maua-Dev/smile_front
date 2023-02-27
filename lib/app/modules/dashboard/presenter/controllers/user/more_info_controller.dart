@@ -1,7 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
-import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/utils/utils.dart';
 
