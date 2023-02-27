@@ -119,6 +119,7 @@ class _ForgotPasswordPageState
                             ),
                           ),
                           InputBoxWidget(
+                            isEmail: true,
                             icon: Icons.person,
                             placeholder: S.of(context).registerEmailPlaceholder,
                             setValue: controller.setEmail,

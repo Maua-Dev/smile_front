@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
@@ -17,6 +18,7 @@ class InputBoxWidget extends StatelessWidget {
   final bool? isRAField;
   final bool? isValidated;
   final bool? isPhoneField;
+  final bool? isEmail;
 
   const InputBoxWidget({
     Key? key,
@@ -34,6 +36,7 @@ class InputBoxWidget extends StatelessWidget {
     this.isRAField,
     this.isValidated,
     this.onFieldSubmitted,
+    this.isEmail,
   }) : super(key: key);
 
   @override
@@ -46,13 +49,13 @@ class InputBoxWidget extends StatelessWidget {
         mask: "###############", filter: {"#": RegExp(r'[0-9]')});
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: SizedBox(
-        width: widthSize ??
-            (MediaQuery.of(context).size.width < 650
-                ? MediaQuery.of(context).size.width * 0.85
-                : 600),
-        child: TextFormField(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: SizedBox(
+          width: widthSize ??
+              (MediaQuery.of(context).size.width < 650
+                  ? MediaQuery.of(context).size.width * 0.85
+                  : 600),
+          child: TextFormField(
             validator: validation,
             onChanged: setValue,
             onFieldSubmitted: onFieldSubmitted,
@@ -107,8 +110,18 @@ class InputBoxWidget extends StatelessWidget {
                     ? [maskBrazilianPhone]
                     : isPhoneField == true
                         ? [maskPhone]
-                        : null),
-      ),
-    );
+                        : isPassword != null
+                            ? null
+                            : isEmail != null
+                                ? [
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp("[a-zA-Z0-9.@]")),
+                                  ]
+                                : [
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp("[a-zA-Z]")),
+                                  ],
+          ),
+        ));
   }
 }
