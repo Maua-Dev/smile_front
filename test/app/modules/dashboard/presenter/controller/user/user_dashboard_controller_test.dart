@@ -294,6 +294,7 @@ void main() {
     when(getUserActivities()).thenAnswer((_) async => mockActivities);
     when(secureStorage.getName()).thenAnswer((_) async => name);
     when(secureStorage.getSocialName()).thenAnswer((_) async => socialName);
+    when(secureStorage.getPhone()).thenAnswer((_) async => '+5511991273092');
     when(secureStorage.getCertificateWithSocialName())
         .thenAnswer((_) async => certificateWithSocialName);
     subscriptionController = UserEnrollmentController(
