@@ -1494,6 +1494,16 @@ class S {
     );
   }
 
+  /// `There was an error loading activities :(`
+  String get errorGenericGetActivities {
+    return Intl.message(
+      'There was an error loading activities :(',
+      name: 'errorGenericGetActivities',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Administrator Page`
   String get admDashboardAppBarTitle {
     return Intl.message(

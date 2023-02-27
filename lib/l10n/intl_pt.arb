@@ -170,6 +170,8 @@
 
     "successChangePasswordRedirect": "Senha alterada com sucesso! \n Redirecionando para o login...",
 
+    "errorGenericGetActivities": "Ocorreu algum erro ao carregar as atividades :(",
+
     "admDashboardAppBarTitle": "Página do Administrador",
     "admReportsTitle": "Relatórios",
     

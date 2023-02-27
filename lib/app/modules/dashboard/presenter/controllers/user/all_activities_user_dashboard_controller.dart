@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
@@ -218,12 +219,21 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     return false;
   }
 
+  @observable
+  String? requisitionError;
+
   @action
   Future getActivities() async {
     setIsLoading(true);
-    await enrollmentController.getUserAllActivitiesWithEnrollment();
-    allActivitiesFromGet = enrollmentController.allActivitiesWithEnrollments;
-    activitiesOnScreen = enrollmentController.allActivitiesWithEnrollments;
+    try {
+      await enrollmentController.getUserAllActivitiesWithEnrollment();
+      allActivitiesFromGet = enrollmentController.allActivitiesWithEnrollments;
+      activitiesOnScreen = enrollmentController.allActivitiesWithEnrollments;
+    } on DioError catch (e) {
+      requisitionError = e.message;
+    } catch (e) {
+      requisitionError = 'Ocorreu algum erro ao carregar as atividades :(';
+    }
     setIsLoading(false);
   }
 

@@ -68,6 +68,24 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
         Observer(builder: (_) {
           if (controller.isLoading) {
             return const Center(child: CircularProgressIndicator());
+          } else if (controller.requisitionError != null) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 200,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    controller.requisitionError!,
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.titleH1.copyWith(
+                        color: AppColors.brandingOrange, fontSize: 32),
+                  ),
+                ),
+              ],
+            );
           } else {
             if (controller.activitiesOnScreen.isNotEmpty) {
               return Flexible(

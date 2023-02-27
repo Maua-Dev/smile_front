@@ -309,6 +309,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n"),
+        "errorGenericGetActivities": MessageLookupByLibrary.simpleMessage(
+            "Ocorreu algum erro ao carregar as atividades :("),
         "errorLoginInvalidCredential":
             MessageLookupByLibrary.simpleMessage("Login e/ou senha inválidos"),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Sair"),

@@ -170,6 +170,8 @@
 
     "successChangePasswordRedirect": "Password changed successfully! \n Redirecting to login...",
 
+    "errorGenericGetActivities": "There was an error loading activities :(",
+
     "admDashboardAppBarTitle": "Administrator Page",
     "admReportsTitle": "Reports",
 

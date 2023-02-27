@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:mobx/mobx.dart';
 import '../../../../../../shared/models/enrolls_activity_model.dart';
 import '../../../../../auth/domain/repositories/secure_storage_interface.dart';
@@ -32,17 +33,26 @@ abstract class ResponsibleActivitiesControllerBase with Store {
   @observable
   List<EnrollsActivityModel> activitiesToShow = [];
 
+  @observable
+  String? requisitionError;
+
   @action
   Future<void> getFiltredActivities() async {
     setIsLoading(true);
-    var allActivities = await getUserSubscribedActivities();
-    var userId = await storage.getId();
-    for (var activity in allActivities) {
-      if (activity.responsibleProfessors[0].id == userId) {
-        allResponsibleActivities.add(activity);
+    try {
+      var allActivities = await getUserSubscribedActivities();
+      var userId = await storage.getId();
+      for (var activity in allActivities) {
+        if (activity.responsibleProfessors[0].id == userId) {
+          allResponsibleActivities.add(activity);
+        }
       }
+      activitiesToShow = allResponsibleActivities;
+    } on DioError catch (e) {
+      requisitionError = e.message;
+    } catch (e) {
+      requisitionError = 'Ocorreu algum erro ao carregar as atividades :(';
     }
-    activitiesToShow = allResponsibleActivities;
     setIsLoading(false);
   }
 
