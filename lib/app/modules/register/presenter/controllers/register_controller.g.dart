@@ -200,19 +200,19 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$isMauaStudentAtom =
-      Atom(name: 'RegisterControllerBase.isMauaStudent', context: context);
+  late final _$roleAtom =
+      Atom(name: 'RegisterControllerBase.role', context: context);
 
   @override
-  bool get isMauaStudent {
-    _$isMauaStudentAtom.reportRead();
-    return super.isMauaStudent;
+  UserRolesEnum get role {
+    _$roleAtom.reportRead();
+    return super.role;
   }
 
   @override
-  set isMauaStudent(bool value) {
-    _$isMauaStudentAtom.reportWrite(value, super.isMauaStudent, () {
-      super.isMauaStudent = value;
+  set role(UserRolesEnum value) {
+    _$roleAtom.reportWrite(value, super.role, () {
+      super.role = value;
     });
   }
 
@@ -331,38 +331,51 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$acceptWPPNotificationsAtom = Atom(
-      name: 'RegisterControllerBase.acceptWPPNotifications', context: context);
+  late final _$isBrazilianPhoneAtom =
+      Atom(name: 'RegisterControllerBase.isBrazilianPhone', context: context);
 
   @override
-  bool get acceptWPPNotifications {
-    _$acceptWPPNotificationsAtom.reportRead();
-    return super.acceptWPPNotifications;
+  bool get isBrazilianPhone {
+    _$isBrazilianPhoneAtom.reportRead();
+    return super.isBrazilianPhone;
   }
 
   @override
-  set acceptWPPNotifications(bool value) {
-    _$acceptWPPNotificationsAtom
-        .reportWrite(value, super.acceptWPPNotifications, () {
-      super.acceptWPPNotifications = value;
+  set isBrazilianPhone(bool value) {
+    _$isBrazilianPhoneAtom.reportWrite(value, super.isBrazilianPhone, () {
+      super.isBrazilianPhone = value;
     });
   }
 
-  late final _$acceptAPPWEBNotificationsAtom = Atom(
-      name: 'RegisterControllerBase.acceptAPPWEBNotifications',
-      context: context);
+  late final _$isPhoneFieldFilledAtom =
+      Atom(name: 'RegisterControllerBase.isPhoneFieldFilled', context: context);
 
   @override
-  bool get acceptAPPWEBNotifications {
-    _$acceptAPPWEBNotificationsAtom.reportRead();
-    return super.acceptAPPWEBNotifications;
+  bool get isPhoneFieldFilled {
+    _$isPhoneFieldFilledAtom.reportRead();
+    return super.isPhoneFieldFilled;
   }
 
   @override
-  set acceptAPPWEBNotifications(bool value) {
-    _$acceptAPPWEBNotificationsAtom
-        .reportWrite(value, super.acceptAPPWEBNotifications, () {
-      super.acceptAPPWEBNotifications = value;
+  set isPhoneFieldFilled(bool value) {
+    _$isPhoneFieldFilledAtom.reportWrite(value, super.isPhoneFieldFilled, () {
+      super.isPhoneFieldFilled = value;
+    });
+  }
+
+  late final _$countryCodeAtom =
+      Atom(name: 'RegisterControllerBase.countryCode', context: context);
+
+  @override
+  CountryCode? get countryCode {
+    _$countryCodeAtom.reportRead();
+    return super.countryCode;
+  }
+
+  @override
+  set countryCode(CountryCode? value) {
+    _$countryCodeAtom.reportWrite(value, super.countryCode, () {
+      super.countryCode = value;
     });
   }
 
@@ -384,26 +397,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   Future<void> setSMSNotifications(bool? value) {
     return _$setSMSNotificationsAsyncAction
         .run(() => super.setSMSNotifications(value));
-  }
-
-  late final _$setWPPNotificationsAsyncAction = AsyncAction(
-      'RegisterControllerBase.setWPPNotifications',
-      context: context);
-
-  @override
-  Future<void> setWPPNotifications(bool? value) {
-    return _$setWPPNotificationsAsyncAction
-        .run(() => super.setWPPNotifications(value));
-  }
-
-  late final _$setAPPWEBNotificationsAsyncAction = AsyncAction(
-      'RegisterControllerBase.setAPPWEBNotifications',
-      context: context);
-
-  @override
-  Future<void> setAPPWEBNotifications(bool? value) {
-    return _$setAPPWEBNotificationsAsyncAction
-        .run(() => super.setAPPWEBNotifications(value));
   }
 
   late final _$setAcceptImageAsyncAction =
@@ -454,13 +447,12 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     return _$setPhoneAsyncAction.run(() => super.setPhone(value));
   }
 
-  late final _$setIsMauaStudentAsyncAction =
-      AsyncAction('RegisterControllerBase.setIsMauaStudent', context: context);
+  late final _$setRoleAsyncAction =
+      AsyncAction('RegisterControllerBase.setRole', context: context);
 
   @override
-  Future<void> setIsMauaStudent(bool? value) {
-    return _$setIsMauaStudentAsyncAction
-        .run(() => super.setIsMauaStudent(value));
+  Future<void> setRole(UserRolesEnum? value) {
+    return _$setRoleAsyncAction.run(() => super.setRole(value));
   }
 
   late final _$setHasSocialNameAsyncAction =
@@ -545,6 +537,28 @@ mixin _$RegisterController on RegisterControllerBase, Store {
 
   late final _$RegisterControllerBaseActionController =
       ActionController(name: 'RegisterControllerBase', context: context);
+
+  @override
+  void setBrazilianPhone(CountryCode? value) {
+    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
+        name: 'RegisterControllerBase.setBrazilianPhone');
+    try {
+      return super.setBrazilianPhone(value);
+    } finally {
+      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCountryCode(CountryCode? value) {
+    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
+        name: 'RegisterControllerBase.setCountryCode');
+    try {
+      return super.setCountryCode(value);
+    } finally {
+      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   String? validateName(String? value) {
@@ -670,7 +684,7 @@ hasSocialName: ${hasSocialName},
 email: ${email},
 verifyEmail: ${verifyEmail},
 phone: ${phone},
-isMauaStudent: ${isMauaStudent},
+role: ${role},
 ra: ${ra},
 password: ${password},
 verifyPassword: ${verifyPassword},
@@ -678,8 +692,9 @@ acceptTermsOfUse: ${acceptTermsOfUse},
 acceptImage: ${acceptImage},
 acceptEmailNotifications: ${acceptEmailNotifications},
 acceptSMSNotifications: ${acceptSMSNotifications},
-acceptWPPNotifications: ${acceptWPPNotifications},
-acceptAPPWEBNotifications: ${acceptAPPWEBNotifications},
+isBrazilianPhone: ${isBrazilianPhone},
+isPhoneFieldFilled: ${isPhoneFieldFilled},
+countryCode: ${countryCode},
 raInt: ${raInt},
 registerInformations: ${registerInformations}
     ''';

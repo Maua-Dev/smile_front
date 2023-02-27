@@ -9,11 +9,15 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../../../setup_firebase_mocks.dart';
+import 'more_info_controller_test.mocks.dart';
 import 'user_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([
@@ -26,6 +30,11 @@ import 'user_dashboard_controller_test.mocks.dart';
 void main() {
   initModule(AppModule());
   setupCloudFirestoreMocks();
+  SubscribeActivityInterface subscribeActivity =
+      MockSubscribeActivityInterface();
+
+  UnsubscribeActivityInterface unsubscribeActivity =
+      MockUnsubscribeActivityInterface();
   GetUserSubscribedActivitiesInterface getUserActivities =
       MockGetUserSubscribedActivitiesInterface();
   ChangeDataInterface changeData = MockChangeDataInterface();
@@ -33,9 +42,10 @@ void main() {
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
 
   late UserDashboardController controller;
+  late UserEnrollmentController subscriptionController;
 
-  final mockActivities = <ActivityModel>[
-    ActivityModel(
+  final mockActivities = <EnrollsActivityModel>[
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSES,
       title:
@@ -69,7 +79,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSES,
       title:
@@ -103,7 +113,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSES,
       title:
@@ -137,7 +147,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSES,
       title:
@@ -171,7 +181,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSES,
       title:
@@ -205,7 +215,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSES,
       title:
@@ -239,7 +249,7 @@ void main() {
       takenSlots: 0,
       responsibleProfessors: [],
     ),
-    ActivityModel(
+    EnrollsActivityModel(
       activityCode: 'C01',
       type: ActivityEnum.COURSES,
       title:
@@ -286,11 +296,15 @@ void main() {
     when(secureStorage.getSocialName()).thenAnswer((_) async => socialName);
     when(secureStorage.getCertificateWithSocialName())
         .thenAnswer((_) async => certificateWithSocialName);
-    controller = UserDashboardController(
+    subscriptionController = UserEnrollmentController(
         getUserActivities: getUserActivities,
+        subscribeActivity: subscribeActivity,
+        unsubscribeActivity: unsubscribeActivity);
+    controller = UserDashboardController(
         secureStorage: secureStorage,
         changeData: changeData,
-        analytics: analytics);
+        analytics: analytics,
+        enrollmentController: subscriptionController);
   });
 
   test('getCertificateWithSocialName', () {
@@ -365,45 +379,5 @@ void main() {
   test('setCertificateWithSocialName', () {
     controller.setCertificateWithSocialName(true);
     expect(controller.certificateWithSocialName, true);
-  });
-
-  test('getUserSubscribedActivities', () {
-    controller.getUserSubscribedActivities();
-    expect(controller.subscribedActivitiesList.isNotEmpty, true);
-    expect(controller.nextActivity.activityCode.isNotEmpty, true);
-  });
-
-  test('getNextActivity', () {
-    controller.getNextActivity();
-    expect(controller.nextActivity, mockActivities[0]);
-  });
-
-  test('mondayActivitiesList', () {
-    expect(controller.mondayActivitiesList.isNotEmpty, true);
-  });
-
-  test('tuesdayActivitiesList', () {
-    expect(controller.tuesdayActivitiesList.isNotEmpty, true);
-  });
-
-  test('wednesdayActivitiesList', () {
-    expect(controller.wednesdayActivitiesList.isNotEmpty, true);
-  });
-
-  test('thursdayActivitiesList', () {
-    expect(controller.thursdayActivitiesList.isNotEmpty, true);
-  });
-
-  test('fridayActivitiesList', () {
-    expect(controller.fridayActivitiesList.isNotEmpty, true);
-  });
-
-  test('saturdayActivitiesList', () {
-    expect(controller.saturdayActivitiesList.isNotEmpty, false);
-  });
-
-  test('toggleFilterActivityChipIndex', () {
-    controller.toggleFilterActivityChipIndex(1);
-    expect(controller.weekActivitiesList, controller.tuesdayActivitiesList);
   });
 }

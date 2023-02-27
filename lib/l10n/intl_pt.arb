@@ -6,6 +6,8 @@
     "homePageSubtitle": "Nesta quinta edição da SMILE destaca-se ainda mais a união primordial entre as áreas de Administração, Engenharia, Ciência da Computação, Design e Sistemas de Informação, necessárias para a inovação e geração de valor agregado tanto para a formação dos futuros profissionais quanto para o desenvolvimento de novas ideias. O principal retorno esperado com essa iniciativa é a ampliação da cultura de inovação pelo campus, com a participação de estudantes, egressos, docentes e comunidade, mostrando que a diversidade de ideias e a integração de áreas são catalisadoras do desenvolvimento de competências.",
     "smileDate": "22 a 27 de Maio",
     "smileDateWithYear": "22 a 27 de Maio de 2023",
+    "userRolesNameSchema": "{schema, select, STUDENT{Aluno Mauá} EXTERNAL{Visitante} EMPLOYEE{Funcionário} INTERNAL_STUDENT{Estudante Internacional} PROFESSOR{Professor Smile} ADMIN{Admin} other{}}",
+
     
     "knowMore": "SAIBA MAIS >>>",
     "speakersTitle": "Principais Palestrantes - 2022",
@@ -17,6 +19,7 @@
     "activitiesTitle": "Atividades",
     "activitiesOfferedName": "{activity, select, COURSE{Cursos} LECTURES{Palestras} HIGH_IMPACT_LECTURES{Palestras de Alto Impacto} TECHNICAL_VISITS{Visitas Técnicas} ACADEMIC_COMPETITIONS{Competições Acadêmicas} HACKATHON{Hackathon} INTERNSHIP_FAIR{Feira de Estágios} ALUMNI_CAFE{Café com Ex-aluno(a)} PROFESSORS_ACADEMY{Academia de Professores} CULTURAL_ACTIVITY{Atividade Cultura} GCSP{GCSP} SPORTS_ACTIVITY{Atividade Esportiva} other{Atividades}}",
     "activitiesOfferedDescription": "{activity, select, COURSE{Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.} LECTURES{As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.} HIGH_IMPACT_LECTURES{As palestras de alto impacto serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!} TECHNICAL_VISITS{Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.} ACADEMIC_COMPETITIONS{Durante a SMILE, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).} HACKATHON{Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa é uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.} INTERNSHIP_FAIR{Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes.} ALUMNI_CAFE{A atividade tem como objetivo promover conversas informais entre estudantes do IMT e egressos que ocupam posições de destaque em suas áreas de atuação. Venha participar!} PROFESSORS_ACADEMY{A Academia de Professores tem como foco a formação continuada, disseminação de estratégias e ferramentas de ensino para professores do IMT e professores do Ensino Médio.} CULTURAL_ACTIVITY{Você faz parte de uma banda? Canta? Toca algum instrumento? Gosta de poesia, literatura? Faz teatro? Dança? Venha compatilhar seu talento com a gente! Será uma tarde de apresentações, integração e muita alegria no campus.} GCSP{O GCSP - Grand Challenges Scholars Program é um programa que oferece aos alunos de graduação a oportunidade de trabalhar com grandes desafios da humanidade, sendo mentorados por professores.} SPORTS_ACTIVITY{Os participantes conhecerão duas atividades interessantes: spikeball e flag football. Além disso, também serão oferecidas diversas atividades, tais como, ginástica funcional, meditação energizante e pilates! Todos os participantes poderão interagir com o(a) palestrante e professores(as)! Acompanhe e participe!} other{Atividades}}",
+    "activitiesNotFound": "Atividades não encontradas",
 
     "sponsorsTitle": "Patrocinadores",
     "mauaEntititesTitle": "Entidades Participantes da Smile",
@@ -54,7 +57,23 @@
     "aboutSmileDate": "Data: 22 a 27 de maio de 2023.",
     "signUp": "Inscreva-se",
     "unsubscribe": "Desinscrever-se",
+<<<<<<< HEAD
     "subscriberListTitle": "Lista de Inscritos",
+=======
+    "termination": "Término",
+    "local": "Local",
+
+    "subscribedTitle": "Inscrito",
+    "subcribeTitle": "Inscrever-se",
+    "subscribeAlert": "Tem certeza que deseja se inscrever?",
+    "subscribeScheduleAtention": "Se atente aos seus horários e atividades que você já se inscreveu!",
+    "subscribeSlotsSoldOut": "Parece que o número de vagas da atividade se esgotou :(",
+    "unsubscribeAlert": "Tem certeza que deseja se desinscrever?",
+    "unsubscribeAcceptingNewEnrollments" : "Você conseguirá se inscrever novamente",
+    "unsubscribeNotAcceptingNewEnrollments" : "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente",
+    "queueTitle": "Na fila",
+    "queueExitAlert": "Tem certeza que deseja sair da fila?",
+>>>>>>> develop
 
 
 
@@ -68,6 +87,9 @@
     "cancelTitle": "Cancelar",
     "saveTitle": "Salvar",
 
+    "phoneNotFilledWarn": "Telefone celular não preenchido.",
+    "phoneFillWarn": "Preencha o seu telefone celular para ativar as notificações via SMS!",
+
 
 
 
@@ -80,10 +102,12 @@
     
     
     
-    
+    "selectOptionTitle": "Selecione uma opção:",
     "registerFullNamePlaceholder": "Nome Completo",
     "registerSocialNamePlaceholder": "Nome Social",
+    "registerSocialNameTooltip": "Nome social se refere à designação pela qual a pessoa travesti ou transexual se identifica e é socialmente reconhecida.",
     "registerEmailPlaceholder": "E-mail",
+    "registerEmailProfessorPlaceholder": "Insira seu e-mail da Mauá",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
     "registerPhonePlaceholder": "Telefone Celular",
     "registerCountryPlaceholder": "Pesquisar por país ou DDI",
@@ -91,9 +115,9 @@
     "registerRAPlaceholder": "RA",
     "registerConfirmPasswordPlaceholder": "Confirme sua senha",
     "registerTerms": "{terms, select, one{Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile.} two{Li e Aceito os Termos de Uso.} three{Autorizo o envio de notificação por email, para fins de divulgação da Smile.}}",
-    "notificationsTitle": "Meios de notificação sobre as atividades:",
+    "notificationsTitle": "Notificações sobre as atividades:",
     "notificationsSchemaTitle": "Quero receber notificações por ",
-    "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} whatsapp{WHATSAPP} app{APP/WEB} other{}}",
+    "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
     "registerTitle": "Cadastrar",
     "emailNotificationTitle": "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro.",
     "changePasswordTitle": "Trocar senha",
@@ -113,6 +137,7 @@
     "fieldInvalid": "Campo inválido",
     "fieldFullNameRequired": "Insira seu nome completo",
     "fieldEmailInvalid": "E-mail inválido",
+    "fieldProfessorEmailInvalid": "E-mail de professor inválido",
     "fieldEmailsEqualsRequired": "Os e-mails devem ser iguais",
     "fieldPasswordEqualsRequired": "Os campos \"Senha\" e \"Confirme sua senha\" devem ser iguais",
     "fieldPasswordRequisits": "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, $, %, ^, &, *, -)  \n - Mínimo de 8 caracteres",
@@ -133,8 +158,6 @@
     
 
     "successRegister": "Seu cadastro foi confirmado com sucesso!",
-    "errorRegister": "Falha ao realizar o cadastro, tente novamente.",
-    "errorUserAlreadyExist": "Usuário já existente.",
 
     "successEmailSend": "E-mail enviado com sucesso!",
 
@@ -142,12 +165,9 @@
     "lostOldDataWarn": "Ao salvar todos os dados antigos serão perdidos.",
 
     "successSendingCode": "Código enviado com sucesso!",
-    "errorSendingCode": "Falha ao enviar o código, e-mail não cadastrado ou não confirmado.",
 
     "successChangePassword": "Senha alterada com sucesso!",
-    "errorChangePassword": "Falha ao tentar alterar a senha, tente novamente.",
 
-    "errorLoginInvalidConfirmation": "Não foi possível realizar o login.\n\n- Realize seu cadastro clicando no botão \"Não tenho cadastro\"\n- Seu e-mail pode não ter sido confirmado, clique em \"Reenviar e-mail de confirmação\"",
     "errorLoginInvalidCredential": "Login e/ou senha inválidos",
 
     "successChangePasswordRedirect": "Senha alterada com sucesso! \n Redirecionando para o login...",
@@ -164,12 +184,16 @@
 
     "descriptionTitle": "Descrição",
 
+<<<<<<< HEAD
     "hourTitle": "Hora",
+=======
+>>>>>>> develop
     "scheduleTitle": "Horário",
     "scheduleAddTitle": "Adicionar Horário",
 
     "codeTitle": "Código",
 
+<<<<<<< HEAD
     "absenceTitle": "Falta",
     "presenceTitle": "Presente",
 
@@ -179,6 +203,14 @@
 
     "localTitle": "Local",
 
+=======
+    "drawerHomeButton": "Página Inicial",
+    "drawerActivitiesButton": "Atividades",
+    "drawerResponsibleActivitiesButton": "Atividades Responsáveis",
+    "drawerCertificatesButton": "Certificados",
+    "drawerHelpButton": "Ajuda",
+    "drawerProfileButton": "Perfil",
+>>>>>>> develop
 
     "yesTitle": "Sim",
     "noTitle": "Não",
