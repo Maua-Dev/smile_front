@@ -210,9 +210,7 @@ class _UserDashboardPageState
                   child: ElevatedButton(
                     onPressed: () async {
                       await navBarController.toggleIndex(2);
-                      Modular.to.navigate(
-                        '/all-activities',
-                      );
+                      Modular.to.navigate('/user/home/all-activities');
                     },
                     style: ButtonStyle(
                       elevation: MaterialStateProperty.all(20),
