@@ -1,9 +1,8 @@
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
-import '../../../../../shared/entities/card_activity.dart';
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/utils/utils.dart';
 
 part 'more_info_controller.g.dart';
@@ -12,13 +11,11 @@ class MoreInfoController = MoreInfoControllerBase with _$MoreInfoController;
 
 abstract class MoreInfoControllerBase with Store {
   final UserEnrollmentController enrollmentController;
-  final CardActivity activity;
+  final EnrollsActivityModel activity;
   final EnrollmentStateEnum registered;
-  final UserDashboardController userDashboardController;
 
   MoreInfoControllerBase({
     required this.enrollmentController,
-    required this.userDashboardController,
     required this.registered,
     required this.activity,
   }) {
@@ -43,19 +40,19 @@ abstract class MoreInfoControllerBase with Store {
 
   @action
   bool checkIsOkForSubscribe() {
-    var subscribedActivities =
-        userDashboardController.enrollmentController.subscribedActivities;
+    var subscribedActivities = enrollmentController.subscribedActivities;
     for (var i = 0; i < subscribedActivities.length; i++) {
       var finalTime = DateFormat("yyyy-MM-dd hh:mm").parse(
           Utils.getActivityFullFinalTime(subscribedActivities[i].startDate!,
               subscribedActivities[i].duration));
-      if ((subscribedActivities[i].startDate!.day != activity.date!.day) ||
-          activity.date! == finalTime) {
-      } else if (((!activity.date!
+      if ((subscribedActivities[i].startDate!.day != activity.startDate!.day) ||
+          activity.startDate! == finalTime) {
+      } else if (((!activity.startDate!
                   .isBefore(subscribedActivities[i].startDate!) &&
-              !activity.date!.isAfter(subscribedActivities[i].startDate!)) ||
-          (!activity.date!.isBefore(finalTime)) &&
-              !activity.date!.isAfter(finalTime))) {
+              !activity.startDate!
+                  .isAfter(subscribedActivities[i].startDate!)) ||
+          (!activity.startDate!.isBefore(finalTime)) &&
+              !activity.startDate!.isAfter(finalTime))) {
         return false;
       }
     }
@@ -67,8 +64,7 @@ abstract class MoreInfoControllerBase with Store {
     var requestDone =
         await enrollmentController.subscribeActivity(activity.activityCode);
     if (requestDone) {
-      await userDashboardController.getUserSubscribedActivities();
-      userDashboardController.getNextActivity();
+      await enrollmentController.getUserAllActivitiesWithEnrollment();
       setIsRegistered(EnrollmentStateEnum.ENROLLED);
     }
     setIsLoading(false);
@@ -79,8 +75,7 @@ abstract class MoreInfoControllerBase with Store {
     var requestDone =
         await enrollmentController.unsubscribeActivity(activity.activityCode);
     if (requestDone) {
-      await userDashboardController.getUserSubscribedActivities();
-      userDashboardController.getNextActivity();
+      await enrollmentController.getUserAllActivitiesWithEnrollment();
       setIsRegistered(EnrollmentStateEnum.DROPPED);
     }
     setIsLoading(false);

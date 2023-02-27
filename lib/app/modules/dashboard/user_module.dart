@@ -111,7 +111,6 @@ class UserModule extends Module {
               enrollmentController: i(),
               registered: i(),
               activity: i(),
-              userDashboardController: i(),
             ),
         export: true),
     Bind.lazySingleton<CertificateRepositoryInterface>(

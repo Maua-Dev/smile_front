@@ -6,7 +6,9 @@ import 'package:intl/intl.dart';
 import 'dart:math' as math;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/extensionist_widget.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,7 +20,8 @@ import '../../domain/infra/activity_enum.dart';
 import 'widgets/register_button_widget.dart';
 
 class MoreInfoPage extends StatefulWidget {
-  const MoreInfoPage({Key? key}) : super(key: key);
+  const MoreInfoPage({Key? key, required EnrollsActivityModel enrolledActivity})
+      : super(key: key);
 
   @override
   State<MoreInfoPage> createState() => _MoreInfoPageState();
@@ -28,21 +31,20 @@ class _MoreInfoPageState
     extends ModularState<MoreInfoPage, MoreInfoController> {
   @override
   Widget build(BuildContext context) {
-    var timeString = controller.activity.date == null
+    var timeString = controller.activity.startDate == null
         ? ''
-        : DateFormat('HH:mm').format(controller.activity.date!);
-    var weekday = controller.activity.date == null
+        : DateFormat('HH:mm').format(controller.activity.startDate!);
+    var weekday = controller.activity.startDate == null
         ? ''
         : DateFormat('EEEE')
-            .format(controller.activity.date!)
+            .format(controller.activity.startDate!)
             .split('-')
             .first
             .capitalize();
-    var finalTime =
-        controller.activity.duration == null || controller.activity.date == null
-            ? ''
-            : Utils.getActivityFinalTime(
-                controller.activity.date!, controller.activity.duration!);
+    var finalTime = controller.activity.startDate == null
+        ? ''
+        : Utils.getActivityFinalTime(
+            controller.activity.startDate!, controller.activity.duration);
     return MediaQuery.of(context).size.width < tabletSize
         ? SafeArea(
             child: Padding(
@@ -74,7 +76,7 @@ class _MoreInfoPageState
                                     color: AppColors.white, fontSize: 12)),
                             Text(
                                 DateFormat('dd/MM')
-                                    .format(controller.activity.date!),
+                                    .format(controller.activity.startDate!),
                                 style: AppTextStyles.bold.copyWith(
                                     color: AppColors.white, fontSize: 20))
                           ]),
@@ -108,7 +110,7 @@ class _MoreInfoPageState
                             Text(S.of(context).localTitle,
                                 style: AppTextStyles.bold.copyWith(
                                     color: AppColors.white, fontSize: 12)),
-                            Text(controller.activity.location!,
+                            Text(controller.activity.place!,
                                 style: AppTextStyles.bold.copyWith(
                                     color: AppColors.white, fontSize: 20))
                           ]),
@@ -123,8 +125,9 @@ class _MoreInfoPageState
                     width: 50,
                   ),
                   Observer(builder: (_) {
-                    return !controller.activity.acceptSubscription &&
-                            !controller.isRegistered
+                    return !controller.activity.acceptingNewEnrollments &&
+                            !(controller.isRegistered ==
+                                EnrollmentStateEnum.ENROLLED)
                         ? Text(
                             S.of(context).unavailabeActivityRegistration,
                             textAlign: TextAlign.center,
@@ -145,8 +148,10 @@ class _MoreInfoPageState
                                 isRegistered: controller.isRegistered,
                                 isLoading: controller.isLoading,
                                 onPressed: () {
-                                  if (!controller.activity.acceptSubscription &&
-                                      controller.isRegistered) {
+                                  if (!controller
+                                          .activity.acceptingNewEnrollments &&
+                                      (controller.isRegistered ==
+                                          EnrollmentStateEnum.ENROLLED)) {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) {
@@ -168,7 +173,8 @@ class _MoreInfoPageState
                                       },
                                     );
                                   } else {
-                                    if (controller.isRegistered) {
+                                    if (controller.isRegistered ==
+                                        EnrollmentStateEnum.ENROLLED) {
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
@@ -189,10 +195,8 @@ class _MoreInfoPageState
                                           });
                                         },
                                       );
-                                    } else if (controller
-                                            .activity.enrolledUsers! >=
-                                        controller
-                                            .activity.totalParticipants!) {
+                                    } else if (controller.activity.takenSlots >=
+                                        controller.activity.totalSlots) {
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
@@ -245,9 +249,7 @@ class _MoreInfoPageState
                           ));
                   }),
                   ExtensionistWidget(
-                      isExtensionist: controller.activity.isExtensionist == null
-                          ? false
-                          : controller.activity.isExtensionist!)
+                      isExtensionist: controller.activity.isExtensive)
                 ],
               ),
               Padding(
@@ -284,7 +286,7 @@ class _MoreInfoPageState
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: controller.activity.speakers!.length,
+                itemCount: controller.activity.speakers.length,
                 itemBuilder: (context, index) => Column(
                   children: [
                     Row(
@@ -304,24 +306,22 @@ class _MoreInfoPageState
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              if (controller.activity.speakers![index].name !=
+                              if (controller.activity.speakers[index].name !=
                                       null &&
-                                  controller.activity.speakers![index].name !=
+                                  controller.activity.speakers[index].name !=
                                       '')
                                 Text(
-                                  controller.activity.speakers![index].name!,
+                                  controller.activity.speakers[index].name!,
                                   textAlign: TextAlign.justify,
                                   style: AppTextStyles.bold.copyWith(
                                       fontSize: 24, color: Colors.black),
                                 ),
-                              if (controller
-                                          .activity.speakers![index].company !=
+                              if (controller.activity.speakers[index].company !=
                                       null &&
-                                  controller
-                                          .activity.speakers![index].company !=
+                                  controller.activity.speakers[index].company !=
                                       '')
                                 Text(
-                                    "${S.of(context).companyTitle} ${controller.activity.speakers![index].company}",
+                                    "${S.of(context).companyTitle} ${controller.activity.speakers[index].company}",
                                     textAlign: TextAlign.justify,
                                     style: AppTextStyles.bold.copyWith(
                                         fontSize: 13,
@@ -334,11 +334,11 @@ class _MoreInfoPageState
                     const SizedBox(
                       height: 8,
                     ),
-                    if (controller.activity.speakers![index].bio != null &&
-                        controller.activity.speakers![index].bio != '')
+                    if (controller.activity.speakers[index].bio != null &&
+                        controller.activity.speakers[index].bio != '')
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(controller.activity.speakers![index].bio!,
+                        child: Text(controller.activity.speakers[index].bio!,
                             textAlign: TextAlign.justify,
                             style: AppTextStyles.body.copyWith(
                                 fontSize: MediaQuery.of(context).size.width <
@@ -437,10 +437,10 @@ class _MoreInfoPageState
                           Column(
                             children: [
                               Text(
-                                controller.activity.date == null
+                                controller.activity.startDate == null
                                     ? ''
                                     : DateFormat('dd/MM')
-                                        .format(controller.activity.date!),
+                                        .format(controller.activity.startDate!),
                                 style: AppTextStyles.buttonBold.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width < 800
@@ -501,7 +501,7 @@ class _MoreInfoPageState
                               ),
                             ],
                           ),
-                          if (controller.activity.location != null)
+                          if (controller.activity.place != null)
                             Column(
                               children: [
                                 Text(
@@ -519,7 +519,7 @@ class _MoreInfoPageState
                                       color: AppColors.brandingBlue),
                                 ),
                                 Text(
-                                  controller.activity.location!,
+                                  controller.activity.place!,
                                   style: AppTextStyles.buttonBold.copyWith(
                                       fontSize: MediaQuery.of(context)
                                                   .size
@@ -535,7 +535,8 @@ class _MoreInfoPageState
                               ],
                             ),
                           if (controller.activity.link != null &&
-                              controller.isRegistered)
+                              controller.isRegistered ==
+                                  EnrollmentStateEnum.ENROLLED)
                             Column(
                               children: [
                                 MouseRegion(
@@ -601,8 +602,9 @@ class _MoreInfoPageState
                       height: 16,
                     ),
                     Observer(builder: (_) {
-                      return !controller.activity.acceptSubscription &&
-                              !controller.isRegistered
+                      return !controller.activity.acceptingNewEnrollments &&
+                              !(controller.isRegistered ==
+                                  EnrollmentStateEnum.ENROLLED)
                           ? Text(
                               S.of(context).unavailabeSubscribe,
                               textAlign: TextAlign.center,
@@ -621,8 +623,9 @@ class _MoreInfoPageState
                                   isLoading: controller.isLoading,
                                   onPressed: () {
                                     if (!controller
-                                            .activity.acceptSubscription &&
-                                        controller.isRegistered) {
+                                            .activity.acceptingNewEnrollments &&
+                                        (controller.isRegistered ==
+                                            EnrollmentStateEnum.ENROLLED)) {
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
@@ -644,7 +647,8 @@ class _MoreInfoPageState
                                         },
                                       );
                                     } else {
-                                      if (controller.isRegistered) {
+                                      if (controller.isRegistered ==
+                                          EnrollmentStateEnum.ENROLLED) {
                                         showDialog(
                                           context: context,
                                           builder: (BuildContext context) {
@@ -667,9 +671,8 @@ class _MoreInfoPageState
                                           },
                                         );
                                       } else if (controller
-                                              .activity.enrolledUsers! >=
-                                          controller
-                                              .activity.totalParticipants!) {
+                                              .activity.takenSlots >=
+                                          controller.activity.totalSlots) {
                                         showDialog(
                                           context: context,
                                           builder: (BuildContext context) {
@@ -756,14 +759,14 @@ class _MoreInfoPageState
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: controller.activity.speakers!.length,
+                      itemCount: controller.activity.speakers.length,
                       itemBuilder: (context, index) => Column(
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               if (controller
-                                      .activity.speakers![index].linkPhoto !=
+                                      .activity.speakers[index].linkPhoto !=
                                   null)
                                 SizedBox(
                                   width:
@@ -773,22 +776,22 @@ class _MoreInfoPageState
                                   child: CircleAvatar(
                                     radius: 102.0,
                                     backgroundImage: CachedNetworkImageProvider(
-                                        controller.activity.speakers![index]
+                                        controller.activity.speakers[index]
                                             .linkPhoto!), // for Network image
                                   ),
                                 ),
                               Flexible(
                                 child: Column(
                                   children: [
-                                    if (controller.activity.speakers![index]
+                                    if (controller.activity.speakers[index]
                                                 .name !=
                                             null &&
-                                        controller.activity.speakers![index]
+                                        controller.activity.speakers[index]
                                                 .name !=
                                             '')
                                       Text(
                                         controller
-                                            .activity.speakers![index].name!,
+                                            .activity.speakers[index].name!,
                                         textAlign: TextAlign.justify,
                                         style: AppTextStyles.buttonBold
                                             .copyWith(
@@ -805,14 +808,14 @@ class _MoreInfoPageState
                                                         : 28,
                                                 color: Colors.black),
                                       ),
-                                    if (controller.activity.speakers![index]
+                                    if (controller.activity.speakers[index]
                                                 .company !=
                                             null &&
-                                        controller.activity.speakers![index]
+                                        controller.activity.speakers[index]
                                                 .company !=
                                             '')
                                       Text(
-                                        'Empresa: ${controller.activity.speakers![index].company}',
+                                        'Empresa: ${controller.activity.speakers[index].company}',
                                         textAlign: TextAlign.justify,
                                         style: AppTextStyles.buttonBold
                                             .copyWith(
@@ -837,13 +840,12 @@ class _MoreInfoPageState
                           const SizedBox(
                             height: 8,
                           ),
-                          if (controller.activity.speakers![index].bio !=
-                                  null &&
-                              controller.activity.speakers![index].bio != '')
+                          if (controller.activity.speakers[index].bio != null &&
+                              controller.activity.speakers[index].bio != '')
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                  controller.activity.speakers![index].bio!,
+                                  controller.activity.speakers[index].bio!,
                                   textAlign: TextAlign.justify,
                                   style: AppTextStyles.body.copyWith(
                                       fontSize: MediaQuery.of(context)

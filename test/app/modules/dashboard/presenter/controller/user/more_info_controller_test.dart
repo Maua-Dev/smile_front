@@ -3,13 +3,17 @@ import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:smile_front/app/app_module.dart';
+import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 
 import '../../../../../../setup_firebase_mocks.dart';
 import 'more_info_controller_test.mocks.dart';
@@ -31,9 +35,46 @@ void main() {
       MockSubscribeActivityInterface();
   GetUserSubscribedActivitiesInterface getUserActivities =
       MockGetUserSubscribedActivitiesInterface();
+
   late MoreInfoController controller;
   late UserEnrollmentController subscriptionController;
-  late UserDashboardController userDashboardController;
+
+  EnrollsActivityModel activity = EnrollsActivityModel(
+    activityCode: 'C01',
+    type: ActivityEnum.COURSES,
+    title:
+        'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
+    description:
+        'Teste de atividade mock Teste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mockTeste de atividade mock',
+    speakers: [
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
+      ),
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
+      ),
+      SpeakerActivityModel(
+        name: 'Gabriel Godoy',
+        bio: 'Caros participantes, este é um teste, aproveitem a atividade',
+        company: 'Oracle',
+      ),
+    ],
+    startDate: DateTime.parse('2022-05-16 13:00'),
+    totalSlots: 20,
+    duration: 120,
+    place: 'H244',
+    link: 'https://www.google.com.br',
+    acceptingNewEnrollments: false,
+    isExtensive: false,
+    takenSlots: 0,
+    responsibleProfessors: [],
+  );
+
+  EnrollmentStateEnum registered = EnrollmentStateEnum.DROPPED;
 
   setUpAll(() async {
     await Firebase.initializeApp();
@@ -43,9 +84,8 @@ void main() {
         unsubscribeActivity: unsubscribeActivity);
     controller = MoreInfoController(
         enrollmentController: subscriptionController,
-        userDashboardController: userDashboardController,
-        activity: null,
-        registered: null);
+        activity: activity,
+        registered: registered);
   });
 
   test('setIsLoading', () {

@@ -8,6 +8,8 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
 
+import '../../../../../../../shared/themes/breakpoint.dart';
+
 class UserFilterCardWidget extends StatelessWidget {
   final Function(ActivityEnum?)? onChangedActivitiesFilter;
   final Color? mainColor;
