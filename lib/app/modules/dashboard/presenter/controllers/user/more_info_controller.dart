@@ -1,6 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/utils/utils.dart';
 
@@ -10,15 +11,26 @@ class MoreInfoController = MoreInfoControllerBase with _$MoreInfoController;
 
 abstract class MoreInfoControllerBase with Store {
   final UserEnrollmentController enrollmentController;
-  final EnrollsActivityModel activity;
+  final String activityCode;
 
   MoreInfoControllerBase({
     required this.enrollmentController,
-    required this.activity,
-  });
+    required this.activityCode,
+  }) {
+    getActivity();
+  }
 
   @observable
   bool isLoading = false;
+
+  @observable
+  EnrollsActivityModel activity = EnrollsActivityModel.newInstance();
+
+  @action
+  void getActivity() {
+    activity = enrollmentController.allActivitiesWithEnrollments
+        .firstWhere((element) => element.activityCode == activityCode);
+  }
 
   @action
   Future<void> setIsLoading(bool value) async {
@@ -52,6 +64,7 @@ abstract class MoreInfoControllerBase with Store {
         await enrollmentController.subscribeActivity(activity.activityCode);
     if (requestDone) {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
+      getActivity();
     }
     setIsLoading(false);
   }
@@ -62,6 +75,7 @@ abstract class MoreInfoControllerBase with Store {
         await enrollmentController.unsubscribeActivity(activity.activityCode);
     if (requestDone) {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
+      getActivity();
     }
     setIsLoading(false);
   }

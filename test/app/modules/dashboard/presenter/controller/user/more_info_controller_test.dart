@@ -81,7 +81,7 @@ void main() {
         unsubscribeActivity: unsubscribeActivity);
     controller = MoreInfoController(
       enrollmentController: subscriptionController,
-      activity: activity,
+      activityCode: activity.activityCode,
     );
   });
 

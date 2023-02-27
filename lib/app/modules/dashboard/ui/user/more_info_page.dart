@@ -169,6 +169,9 @@ class _MoreInfoPageState
                                               onPressed: () {
                                                 controller
                                                     .unsubscribeUserActivity();
+                                                Modular.to.navigate(
+                                                  '/user/home/more-info',
+                                                );
                                                 Modular.to.pop();
                                               });
                                         });
@@ -193,6 +196,7 @@ class _MoreInfoPageState
                                                 onPressed: () {
                                                   controller
                                                       .unsubscribeUserActivity();
+
                                                   Modular.to.pop();
                                                 });
                                           });

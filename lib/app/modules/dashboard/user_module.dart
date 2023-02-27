@@ -23,7 +23,6 @@ import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart'
 import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
-import '../../shared/models/enrolls_activity_model.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/domain/usecases/login_with_email.dart';
@@ -109,7 +108,7 @@ class UserModule extends Module {
     Bind.lazySingleton<MoreInfoController>(
         (i) => MoreInfoController(
               enrollmentController: i(),
-              activity: i.args!.data as EnrollsActivityModel,
+              activityCode: i.args!.data as String,
             ),
         export: true),
     Bind.lazySingleton<CertificateRepositoryInterface>(
