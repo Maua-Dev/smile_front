@@ -230,7 +230,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
       allActivitiesFromGet = enrollmentController.allActivitiesWithEnrollments;
       activitiesOnScreen = enrollmentController.allActivitiesWithEnrollments;
     } on DioError catch (e) {
-      requisitionError = e.message;
+      requisitionError = e.response!.data;
     } catch (e) {
       requisitionError = 'Ocorreu algum erro ao carregar as atividades :(';
     }

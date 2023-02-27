@@ -49,7 +49,7 @@ abstract class ResponsibleActivitiesControllerBase with Store {
       }
       activitiesToShow = allResponsibleActivities;
     } on DioError catch (e) {
-      requisitionError = e.message;
+      requisitionError = e.response!.data;
     } catch (e) {
       requisitionError = 'Ocorreu algum erro ao carregar as atividades :(';
     }

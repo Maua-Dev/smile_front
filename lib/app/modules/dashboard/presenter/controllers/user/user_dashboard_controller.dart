@@ -333,7 +333,7 @@ abstract class UserDashboardControllerBase with Store {
         getNextActivity();
       }
     } on DioError catch (e) {
-      requisitionError = e.message;
+      requisitionError = e.response!.data;
     } catch (e) {
       requisitionError = 'Ocorreu algum erro ao carregar atividades :(';
     }
