@@ -10,6 +10,7 @@ import 'package:smile_front/generated/l10n.dart';
 
 class UserFilterCardWidget extends StatelessWidget {
   final Function(ActivityEnum?)? onChangedActivitiesFilter;
+  final Color? mainColor;
   final ActivityEnum? typeFilter;
   final Function(DateTime?)? onChangedDateFilter;
   final DateTime? dateFilter;
@@ -25,6 +26,7 @@ class UserFilterCardWidget extends StatelessWidget {
     required this.dateFilter,
     required this.hourFilter,
     required this.resetFilters,
+    this.mainColor,
   }) : super(key: key);
 
   @override
@@ -38,7 +40,7 @@ class UserFilterCardWidget extends StatelessWidget {
         Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: AppColors.brandingBlue,
+                color: mainColor ?? AppColors.brandingBlue,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.4),
@@ -47,16 +49,23 @@ class UserFilterCardWidget extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width > tabletSize ? 787 : 380,
-            height: MediaQuery.of(context).size.width > tabletSize ? 47 : 36,
+            width: MediaQuery.of(context).size.width < breakpointLMobile
+                ? 310
+                : MediaQuery.of(context).size.width > breakpointTablet
+                    ? 787
+                    : 380,
+            height:
+                MediaQuery.of(context).size.width > breakpointTablet ? 47 : 36,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width > tabletSize
-                        ? 227
-                        : 160,
-                    height: MediaQuery.of(context).size.width > tabletSize
+                    width: MediaQuery.of(context).size.width < breakpointLMobile
+                        ? 120
+                        : MediaQuery.of(context).size.width > breakpointTablet
+                            ? 227
+                            : 160,
+                    height: MediaQuery.of(context).size.width > breakpointTablet
                         ? 47
                         : 36,
                     decoration: BoxDecoration(
@@ -110,10 +119,12 @@ class UserFilterCardWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width > tabletSize
-                        ? 227
-                        : 100,
-                    height: MediaQuery.of(context).size.width > tabletSize
+                    width: MediaQuery.of(context).size.width < breakpointLMobile
+                        ? 80
+                        : MediaQuery.of(context).size.width > breakpointTablet
+                            ? 227
+                            : 100,
+                    height: MediaQuery.of(context).size.width > breakpointTablet
                         ? 47
                         : 36,
                     decoration: BoxDecoration(
@@ -184,10 +195,12 @@ class UserFilterCardWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width > tabletSize
-                        ? 227
-                        : 105,
-                    height: MediaQuery.of(context).size.width > tabletSize
+                    width: MediaQuery.of(context).size.width < breakpointLMobile
+                        ? 99
+                        : MediaQuery.of(context).size.width > breakpointTablet
+                            ? 227
+                            : 105,
+                    height: MediaQuery.of(context).size.width > breakpointTablet
                         ? 47
                         : 36,
                     decoration: BoxDecoration(
@@ -269,6 +282,7 @@ class UserFilterCardWidget extends StatelessWidget {
           height: 30,
           child: ElevatedButton.icon(
               onPressed: resetFilters,
+              style: ElevatedButton.styleFrom(backgroundColor: mainColor),
               icon: const Icon(Icons.delete),
               label: Text(S.of(context).cleanFiltersTitle)),
         ),

@@ -1,29 +1,22 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
-import '../../../../../shared/models/enrolls_activity_model.dart';
-import '../../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
-import '../../../../auth/presenter/controllers/auth_controller.dart';
-import '../../../domain/infra/activity_enum.dart';
+import '../../../../../../shared/models/enrolls_activity_model.dart';
+import '../../../../../auth/domain/repositories/secure_storage_interface.dart';
+import '../../../../domain/infra/activity_enum.dart';
+import '../../../../domain/usecases/get_user_subscribed_activities.dart';
 
-part 'all_activities_user_dashboard_controller.g.dart';
+part 'responsible_activities_controller.g.dart';
 
-class AllActivitiesUserDashboardController = AllActivitiesUserDashboardControllerBase
-    with _$AllActivitiesUserDashboardController;
+class ResponsibleActivitiesController = ResponsibleActivitiesControllerBase
+    with _$ResponsibleActivitiesController;
 
-abstract class AllActivitiesUserDashboardControllerBase with Store {
-  final UserEnrollmentController enrollmentController;
-  final AuthController authController;
+abstract class ResponsibleActivitiesControllerBase with Store {
+  final GetUserSubscribedActivitiesInterface getUserSubscribedActivities;
+  final SecureStorageInterface storage;
 
-  final FirebaseAnalyticsService analytics;
-
-  AllActivitiesUserDashboardControllerBase({
-    required this.enrollmentController,
-    required this.analytics,
-    required this.authController,
-  }) {
-    getActivities();
+  ResponsibleActivitiesControllerBase(
+      {required this.storage, required this.getUserSubscribedActivities}) {
+    getFiltredActivities();
   }
 
   @observable
@@ -34,25 +27,34 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     isLoading = value;
   }
 
-  Future<void> subscribeUserActivity(String activityCode) async {
-    setIsLoading(true);
-    await enrollmentController.subscribeActivity(activityCode);
-    setIsLoading(false);
-    Modular.to.pop();
-  }
-
-  Future<void> unsubscribeUserActivity(String activityCode) async {
-    setIsLoading(true);
-    await enrollmentController.unsubscribeActivity(activityCode);
-    setIsLoading(false);
-    Modular.to.pop();
-  }
+  @observable
+  List<EnrollsActivityModel> allResponsibleActivities = [];
 
   @observable
-  List<EnrollsActivityModel> allActivitiesFromGet = List.empty();
+  List<EnrollsActivityModel> activitiesToShow = [];
 
   @observable
-  List<EnrollsActivityModel> activitiesOnScreen = List.empty();
+  String? requisitionError;
+
+  @action
+  Future<void> getFiltredActivities() async {
+    setIsLoading(true);
+    try {
+      var allActivities = await getUserSubscribedActivities();
+      var userId = await storage.getId();
+      for (var activity in allActivities) {
+        if (activity.responsibleProfessors[0].id == userId) {
+          allResponsibleActivities.add(activity);
+        }
+      }
+      activitiesToShow = allResponsibleActivities;
+    } on DioError catch (e) {
+      requisitionError = e.response!.data;
+    } catch (e) {
+      requisitionError = 'Ocorreu algum erro ao carregar as atividades :(';
+    }
+    setIsLoading(false);
+  }
 
   @observable
   ActivityEnum? activityType;
@@ -86,7 +88,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
 
   @action
   void setAllFilters() {
-    var listActivities = allActivitiesFromGet;
+    var listActivities = allResponsibleActivities;
     if (typeFilter != null) {
       listActivities = filterActivitiesByType(typeFilter!, listActivities);
     }
@@ -96,12 +98,12 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     if (hourFilter != null) {
       listActivities = filterActivitiesByHour(hourFilter!, listActivities);
     }
-    activitiesOnScreen = listActivities;
+    activitiesToShow = listActivities;
   }
 
   @action
   resetFilters() {
-    activitiesOnScreen = allActivitiesFromGet;
+    activitiesToShow = allResponsibleActivities;
     typeFilter = null;
     dateFilter = null;
     hourFilter = null;
@@ -217,29 +219,5 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
       return true;
     }
     return false;
-  }
-
-  @observable
-  String? requisitionError;
-
-  @action
-  Future getActivities() async {
-    setIsLoading(true);
-    try {
-      await enrollmentController.getUserAllActivitiesWithEnrollment();
-      allActivitiesFromGet = enrollmentController.allActivitiesWithEnrollments;
-      activitiesOnScreen = enrollmentController.allActivitiesWithEnrollments;
-    } on DioError catch (e) {
-      requisitionError = e.response!.data;
-    } catch (e) {
-      requisitionError = 'Ocorreu algum erro ao carregar as atividades :(';
-    }
-    setIsLoading(false);
-  }
-
-  @action
-  Future<void> logout() async {
-    await authController.logout();
-    Modular.to.navigate('/login');
   }
 }

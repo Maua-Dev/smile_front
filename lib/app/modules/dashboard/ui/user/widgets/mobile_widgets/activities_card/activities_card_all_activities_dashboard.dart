@@ -60,8 +60,13 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width < tabletSize ? 342 : 1165,
-            height: MediaQuery.of(context).size.width < tabletSize ? 76 : 204,
+            width: MediaQuery.of(context).size.width < breakpointLMobile
+                ? 300
+                : MediaQuery.of(context).size.width > breakpointTablet
+                    ? 1165
+                    : 342,
+            height:
+                MediaQuery.of(context).size.width < breakpointTablet ? 76 : 204,
             child: Row(children: [
               Container(
                   width:
@@ -90,14 +95,17 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width:
-                                MediaQuery.of(context).size.width < tabletSize
-                                    ? 215
-                                    : 500,
-                            height:
-                                MediaQuery.of(context).size.width < tabletSize
-                                    ? 34
-                                    : 50,
+                            width: MediaQuery.of(context).size.width <
+                                    breakpointLMobile
+                                ? 180
+                                : MediaQuery.of(context).size.width >
+                                        breakpointTablet
+                                    ? 520
+                                    : 215,
+                            height: MediaQuery.of(context).size.width <
+                                    breakpointTablet
+                                ? 34
+                                : 50,
                             child: Text(title,
                                 maxLines: 2,
                                 style: AppTextStyles.bold.copyWith(
@@ -141,9 +149,13 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width < tabletSize
-                            ? 53
-                            : 368,
+                        width: MediaQuery.of(context).size.width <
+                                breakpointLMobile
+                            ? 20
+                            : MediaQuery.of(context).size.width >
+                                    breakpointTablet
+                                ? 390
+                                : 50,
                       ),
                       SizedBox(
                           width: MediaQuery.of(context).size.width < tabletSize

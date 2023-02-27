@@ -11,6 +11,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
   final String? location;
   final Function() onTap;
   final bool isLoading;
+  final Color? mainColor;
   const MobileActivitiesCardUserDashboard({
     Key? key,
     required this.title,
@@ -19,6 +20,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
     required this.isLoading,
     required this.finalTime,
     required this.location,
+    this.mainColor,
   }) : super(key: key);
 
   @override
@@ -40,8 +42,13 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width < tabletSize ? 342 : 1165,
-            height: MediaQuery.of(context).size.width < tabletSize ? 76 : 204,
+            width: MediaQuery.of(context).size.width < breakpointLMobile
+                ? 280
+                : MediaQuery.of(context).size.width > breakpointTablet
+                    ? 1165
+                    : 342,
+            height:
+                MediaQuery.of(context).size.width < breakpointTablet ? 76 : 204,
             child: Row(children: [
               Container(
                   width:
@@ -49,7 +56,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                   height:
                       MediaQuery.of(context).size.width < tabletSize ? 76 : 204,
                   decoration: BoxDecoration(
-                      color: AppColors.brandingBlue,
+                      color: mainColor ?? AppColors.brandingBlue,
                       borderRadius: BorderRadius.circular(15)),
                   child: Align(
                     alignment: Alignment.center,
@@ -70,14 +77,17 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width:
-                                MediaQuery.of(context).size.width < tabletSize
-                                    ? 215
-                                    : 500,
-                            height:
-                                MediaQuery.of(context).size.width < tabletSize
-                                    ? 34
-                                    : 50,
+                            width: MediaQuery.of(context).size.width <
+                                    breakpointLMobile
+                                ? 150
+                                : MediaQuery.of(context).size.width >
+                                        breakpointTablet
+                                    ? 500
+                                    : 215,
+                            height: MediaQuery.of(context).size.width <
+                                    breakpointTablet
+                                ? 34
+                                : 50,
                             child: Text(title,
                                 maxLines: 2,
                                 style: AppTextStyles.bold.copyWith(
@@ -86,7 +96,8 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                                                 tabletSize
                                             ? 16
                                             : 30,
-                                    color: AppColors.brandingBlue)),
+                                    color:
+                                        mainColor ?? AppColors.brandingBlue)),
                           ),
                           if (MediaQuery.of(context).size.width > tabletSize)
                             const SizedBox(width: 200),

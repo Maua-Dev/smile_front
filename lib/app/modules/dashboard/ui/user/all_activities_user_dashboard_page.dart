@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/mobile_filter_card_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/user_filter_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
@@ -68,6 +68,24 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
         Observer(builder: (_) {
           if (controller.isLoading) {
             return const Center(child: CircularProgressIndicator());
+          } else if (controller.requisitionError != null) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 200,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    controller.requisitionError!,
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.titleH1.copyWith(
+                        color: AppColors.brandingOrange, fontSize: 32),
+                  ),
+                ),
+              ],
+            );
           } else {
             if (controller.activitiesOnScreen.isNotEmpty) {
               return Flexible(

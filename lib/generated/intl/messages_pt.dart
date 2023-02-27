@@ -316,6 +316,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n"),
+        "errorGenericGetActivities": MessageLookupByLibrary.simpleMessage(
+            "Ocorreu algum erro ao carregar as atividades :("),
         "errorLoginInvalidCredential":
             MessageLookupByLibrary.simpleMessage("Login e/ou senha inválidos"),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Sair"),
@@ -387,6 +389,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Entidades Participantes da Smile"),
         "monthFebruary": MessageLookupByLibrary.simpleMessage("Fevereiro"),
         "monthJanuary": MessageLookupByLibrary.simpleMessage("Janeiro"),
+        "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
+            "Parece que você ainda não se inscreveu em nenhuma atividade :("),
+        "noResponsibleActivitiesText": MessageLookupByLibrary.simpleMessage(
+            "Parece que você não é responsável por nenhuma atividade :("),
         "noTitle": MessageLookupByLibrary.simpleMessage("Não"),
         "notificationsSchema": m12,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(

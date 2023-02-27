@@ -167,6 +167,8 @@
 
     "successChangePasswordRedirect": "Password changed successfully! \n Redirecting to login...",
 
+    "errorGenericGetActivities": "There was an error loading activities :(",
+
     "admDashboardAppBarTitle": "Administrator Page",
     "admReportsTitle": "Reports",
 
@@ -188,6 +190,10 @@
 
     "localTitle": "Local",
 
+
+    "noActivitiesEnrolledText": "Looks like you haven't signed up for any activities yet :(",
+    "noResponsibleActivitiesText": "Looks like you are not responsible for any activity :(",
+    
 
     "yesTitle": "Yes",
     "noTitle": "No",

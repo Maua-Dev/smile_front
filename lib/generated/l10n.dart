@@ -1504,6 +1504,16 @@ class S {
     );
   }
 
+  /// `There was an error loading activities :(`
+  String get errorGenericGetActivities {
+    return Intl.message(
+      'There was an error loading activities :(',
+      name: 'errorGenericGetActivities',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Administrator Page`
   String get admDashboardAppBarTitle {
     return Intl.message(
@@ -1639,6 +1649,26 @@ class S {
     return Intl.message(
       'Local',
       name: 'localTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Looks like you haven't signed up for any activities yet :(`
+  String get noActivitiesEnrolledText {
+    return Intl.message(
+      'Looks like you haven\'t signed up for any activities yet :(',
+      name: 'noActivitiesEnrolledText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Looks like you are not responsible for any activity :(`
+  String get noResponsibleActivitiesText {
+    return Intl.message(
+      'Looks like you are not responsible for any activity :(',
+      name: 'noResponsibleActivitiesText',
       desc: '',
       args: [],
     );

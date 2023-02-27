@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 import '../../../../../../shared/themes/app_text_styles.dart';
@@ -9,17 +10,18 @@ import '../../../../presenter/controllers/user/user_dashboard_controller.dart';
 import 'name_alteration_dialog.dart';
 
 class UserDataWidget extends StatelessWidget {
-  final UserDashboardController controller;
   final Function()? logout;
+  final Color? mainColor;
 
   const UserDataWidget({
     Key? key,
-    required this.controller,
     this.logout,
+    this.mainColor,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var controller = Modular.get<UserDashboardController>();
     return Padding(
       padding: EdgeInsets.only(
         left: MediaQuery.of(context).size.width < 1000 ? 12 : 8,
@@ -36,7 +38,7 @@ class UserDataWidget extends StatelessWidget {
                       : MediaQuery.of(context).size.width < 1000
                           ? 40
                           : 45,
-                  color: AppColors.brandingBlue),
+                  color: mainColor ?? AppColors.brandingBlue),
             )
           else
             Text(
@@ -47,7 +49,7 @@ class UserDataWidget extends StatelessWidget {
                       : MediaQuery.of(context).size.width < 1000
                           ? 40
                           : 45,
-                  color: AppColors.brandingBlue),
+                  color: mainColor ?? AppColors.brandingBlue),
             ),
           Row(
             children: [
@@ -142,7 +144,7 @@ class UserDataWidget extends StatelessWidget {
                   },
                   icon: Icon(
                     Icons.edit,
-                    color: AppColors.brandingBlue,
+                    color: mainColor ?? AppColors.brandingBlue,
                     size: MediaQuery.of(context).size.width < 1000 ? 30 : 45,
                   )),
               SizedBox(
@@ -153,7 +155,7 @@ class UserDataWidget extends StatelessWidget {
                   onPressed: logout,
                   icon: Icon(
                     Icons.logout,
-                    color: AppColors.brandingBlue,
+                    color: mainColor ?? AppColors.brandingBlue,
                     size: MediaQuery.of(context).size.width < 1000 ? 30 : 45,
                   )),
             ],
