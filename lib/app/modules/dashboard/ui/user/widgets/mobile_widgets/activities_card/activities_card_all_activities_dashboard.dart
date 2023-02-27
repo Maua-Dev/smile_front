@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison
-
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/enrollments_model.dart';
@@ -61,7 +59,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width < breakpointTablet
+            width: MediaQuery.of(context).size.width < breakpointLMobile
                 ? 300
                 : MediaQuery.of(context).size.width > breakpointTablet
                     ? 1165
@@ -100,10 +98,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width <
                                     breakpointLMobile
-                                ? 150
+                                ? 180
                                 : MediaQuery.of(context).size.width >
                                         breakpointTablet
-                                    ? 500
+                                    ? 520
                                     : 215,
                             height: MediaQuery.of(context).size.width <
                                     breakpointTablet
@@ -158,8 +156,8 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                             ? 20
                             : MediaQuery.of(context).size.width >
                                     breakpointTablet
-                                ? 368
-                                : 53,
+                                ? 390
+                                : 50,
                       ),
                       SizedBox(
                           width:
@@ -170,7 +168,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                               MediaQuery.of(context).size.width < breakpointTablet
                                   ? 25
                                   : 50,
-                          child: activityEnrollment! != null
+                          child: activityEnrollment != null
                               ? ElevatedButton(
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
