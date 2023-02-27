@@ -9,12 +9,14 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart'
     as _i4;
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart'
-    as _i8;
+    as _i9;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i6;
 import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i7;
 import 'package:smile_front/app/shared/models/enrollments_model.dart' as _i2;
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
     as _i3;
+import 'package:smile_front/app/shared/models/professor_activity_model.dart'
+    as _i8;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -88,16 +90,16 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
             <_i3.EnrollsActivityModel>[]),
       ) as _i5.Future<List<_i3.EnrollsActivityModel>>);
   @override
-  _i5.Future<List<_i3.EnrollsActivityModel>> getActivityWithEnrollments(
+  _i5.Future<List<_i8.ProfessorActivityModel>> getActivityWithEnrollments(
           String? code) =>
       (super.noSuchMethod(
         Invocation.method(
           #getActivityWithEnrollments,
           [code],
         ),
-        returnValue: _i5.Future<List<_i3.EnrollsActivityModel>>.value(
-            <_i3.EnrollsActivityModel>[]),
-      ) as _i5.Future<List<_i3.EnrollsActivityModel>>);
+        returnValue: _i5.Future<List<_i8.ProfessorActivityModel>>.value(
+            <_i8.ProfessorActivityModel>[]),
+      ) as _i5.Future<List<_i8.ProfessorActivityModel>>);
   @override
   _i5.Future<_i2.EnrollmentsModel> postSubscribe(String? activityCode) =>
       (super.noSuchMethod(
@@ -192,7 +194,7 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
   _i5.Future<_i3.EnrollsActivityModel> postManualChangeAttendance(
     String? activityCode,
     String? userId,
-    _i8.EnrollmentStateEnum? state,
+    _i9.EnrollmentStateEnum? state,
   ) =>
       (super.noSuchMethod(
         Invocation.method(

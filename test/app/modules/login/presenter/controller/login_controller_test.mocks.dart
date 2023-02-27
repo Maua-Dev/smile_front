@@ -8,20 +8,22 @@ import 'dart:async' as _i5;
 import 'package:firebase_analytics/firebase_analytics.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
-    as _i11;
-import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart'
     as _i12;
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart'
+    as _i13;
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
-    as _i10;
+    as _i11;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i4;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i6;
-import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i8;
+import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i9;
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
     as _i7;
+import 'package:smile_front/app/shared/models/professor_activity_model.dart'
+    as _i8;
 import 'package:smile_front/app/shared/models/user_model.dart' as _i3;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
-    as _i9;
+    as _i10;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -95,6 +97,17 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             <_i7.EnrollsActivityModel>[]),
       ) as _i5.Future<List<_i7.EnrollsActivityModel>>);
   @override
+  _i5.Future<List<_i8.ProfessorActivityModel>> getActivityWithEnrollments(
+          String? code) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getActivityWithEnrollments,
+          [code],
+        ),
+        returnValue: _i5.Future<List<_i8.ProfessorActivityModel>>.value(
+            <_i8.ProfessorActivityModel>[]),
+      ) as _i5.Future<List<_i8.ProfessorActivityModel>>);
+  @override
   _i5.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
         Invocation.method(
           #getDownloadLinkCsv,
@@ -112,15 +125,15 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i5.Future<dynamic>.value(),
       ) as _i5.Future<dynamic>);
   @override
-  _i5.Future<List<_i8.AdminActivityModel>> getAdminActivities() =>
+  _i5.Future<List<_i9.AdminActivityModel>> getAdminActivities() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAdminActivities,
           [],
         ),
-        returnValue: _i5.Future<List<_i8.AdminActivityModel>>.value(
-            <_i8.AdminActivityModel>[]),
-      ) as _i5.Future<List<_i8.AdminActivityModel>>);
+        returnValue: _i5.Future<List<_i9.AdminActivityModel>>.value(
+            <_i9.AdminActivityModel>[]),
+      ) as _i5.Future<List<_i9.AdminActivityModel>>);
   @override
   _i5.Future<dynamic> editActivity(_i6.ActivityModel? activityToEdit) =>
       (super.noSuchMethod(
@@ -163,7 +176,7 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFirebaseAnalyticsService extends _i1.Mock
-    implements _i9.FirebaseAnalyticsService {
+    implements _i10.FirebaseAnalyticsService {
   MockFirebaseAnalyticsService() {
     _i1.throwOnMissingStub(this);
   }
@@ -245,7 +258,7 @@ class MockFirebaseAnalyticsService extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockRefreshTokenInterface extends _i1.Mock
-    implements _i10.RefreshTokenInterface {
+    implements _i11.RefreshTokenInterface {
   MockRefreshTokenInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -265,7 +278,7 @@ class MockRefreshTokenInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSecureStorageInterface extends _i1.Mock
-    implements _i11.SecureStorageInterface {
+    implements _i12.SecureStorageInterface {
   MockSecureStorageInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -423,7 +436,7 @@ class MockSecureStorageInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLoginWithEmailInterface extends _i1.Mock
-    implements _i12.LoginWithEmailInterface {
+    implements _i13.LoginWithEmailInterface {
   MockLoginWithEmailInterface() {
     _i1.throwOnMissingStub(this);
   }

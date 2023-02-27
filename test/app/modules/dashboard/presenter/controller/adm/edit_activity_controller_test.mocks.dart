@@ -9,11 +9,13 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i2;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart'
-    as _i7;
+    as _i8;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
-import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i6;
+import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i7;
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
     as _i5;
+import 'package:smile_front/app/shared/models/professor_activity_model.dart'
+    as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -55,6 +57,17 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             <_i5.EnrollsActivityModel>[]),
       ) as _i3.Future<List<_i5.EnrollsActivityModel>>);
   @override
+  _i3.Future<List<_i6.ProfessorActivityModel>> getActivityWithEnrollments(
+          String? code) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getActivityWithEnrollments,
+          [code],
+        ),
+        returnValue: _i3.Future<List<_i6.ProfessorActivityModel>>.value(
+            <_i6.ProfessorActivityModel>[]),
+      ) as _i3.Future<List<_i6.ProfessorActivityModel>>);
+  @override
   _i3.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
         Invocation.method(
           #getDownloadLinkCsv,
@@ -72,15 +85,15 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i3.Future<dynamic>.value(),
       ) as _i3.Future<dynamic>);
   @override
-  _i3.Future<List<_i6.AdminActivityModel>> getAdminActivities() =>
+  _i3.Future<List<_i7.AdminActivityModel>> getAdminActivities() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAdminActivities,
           [],
         ),
-        returnValue: _i3.Future<List<_i6.AdminActivityModel>>.value(
-            <_i6.AdminActivityModel>[]),
-      ) as _i3.Future<List<_i6.AdminActivityModel>>);
+        returnValue: _i3.Future<List<_i7.AdminActivityModel>>.value(
+            <_i7.AdminActivityModel>[]),
+      ) as _i3.Future<List<_i7.AdminActivityModel>>);
   @override
   _i3.Future<dynamic> editActivity(_i4.ActivityModel? activityToEdit) =>
       (super.noSuchMethod(
@@ -123,7 +136,7 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockEditActivityInterface extends _i1.Mock
-    implements _i7.EditActivityInterface {
+    implements _i8.EditActivityInterface {
   MockEditActivityInterface() {
     _i1.throwOnMissingStub(this);
   }

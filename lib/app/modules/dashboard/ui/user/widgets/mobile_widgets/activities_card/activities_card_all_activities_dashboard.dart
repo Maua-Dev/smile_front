@@ -18,7 +18,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final Function() onTap;
   final Function()? onPressedSubscribe;
   final Function()? onPressedUnsubscribe;
-  final List<EnrollmentsModel>? activityEnrollment;
+  final EnrollmentsModel? activityEnrollment;
   final bool isLoading;
   final bool acceptingNewEnrollments;
   final bool isExtensive;
@@ -170,7 +170,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                               MediaQuery.of(context).size.width < breakpointTablet
                                   ? 25
                                   : 50,
-                          child: activityEnrollment![0] != null
+                          child: activityEnrollment! != null
                               ? ElevatedButton(
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -181,19 +181,19 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                     ? 15
                                                     : 20),
                                             side: BorderSide(
-                                                color: activityEnrollment![0].state ==
+                                                color: activityEnrollment!.state ==
                                                             EnrollmentStateEnum
                                                                 .COMPLETED ||
-                                                        activityEnrollment![0].state ==
+                                                        activityEnrollment!.state ==
                                                             EnrollmentStateEnum
                                                                 .ENROLLED
                                                     ? AppColors.brandingOrange
                                                     : Colors.black))),
                                     backgroundColor: MaterialStateProperty.all(
-                                        activityEnrollment![0].state ==
+                                        activityEnrollment!.state ==
                                                     EnrollmentStateEnum
                                                         .COMPLETED ||
-                                                activityEnrollment![0].state ==
+                                                activityEnrollment!.state ==
                                                     EnrollmentStateEnum.ENROLLED
                                             ? AppColors.brandingOrange
                                             : AppColors.gray),
@@ -204,12 +204,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                       builder: (BuildContext context) {
                                         return ActionConfirmationDialogWidget(
                                             isLoading: isLoading,
-                                            title: activityEnrollment![0]
-                                                            .state ==
+                                            title: activityEnrollment!.state ==
                                                         EnrollmentStateEnum
                                                             .COMPLETED ||
-                                                    activityEnrollment![0]
-                                                            .state ==
+                                                    activityEnrollment!.state ==
                                                         EnrollmentStateEnum
                                                             .ENROLLED
                                                 ? S.of(context).unsubscribeAlert
@@ -226,8 +224,8 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                     );
                                   },
                                   child: Text(
-                                      activityEnrollment![0].state == EnrollmentStateEnum.COMPLETED ||
-                                              activityEnrollment![0].state ==
+                                      activityEnrollment!.state == EnrollmentStateEnum.COMPLETED ||
+                                              activityEnrollment!.state ==
                                                   EnrollmentStateEnum.ENROLLED
                                           ? S.of(context).subscribedTitle
                                           : S.of(context).queueTitle,

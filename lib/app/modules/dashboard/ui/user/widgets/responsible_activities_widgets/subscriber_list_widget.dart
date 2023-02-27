@@ -1,9 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_activities_widgets/list_item.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
-import 'package:smile_front/app/shared/models/enrollments_model.dart';
+import 'package:smile_front/app/shared/models/professor_activity_model.dart';
 
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -13,7 +12,7 @@ import '../../../../../../shared/themes/breakpoint.dart';
 
 class SubscriberListWidget extends StatelessWidget {
   final bool isSwitched;
-  final List<EnrollmentsModel>? enrollmentsList;
+  final List<ProfessorActivityModel>? enrollmentsList;
   final int listViewItemCount;
   final Function()? toggleSwitch;
   const SubscriberListWidget({
@@ -96,16 +95,16 @@ class SubscriberListWidget extends StatelessWidget {
             child: ListView.builder(
               itemCount: listViewItemCount,
               itemBuilder: (BuildContext context, int index) {
-                List<ListItem> list = enrollmentsList!
-                    .map(
-                      (e) => ListItem(
-                          name: e.userEnroll!.name,
-                          state: e.state,
-                          isSwitched: e.state == EnrollmentStateEnum.COMPLETED
-                              ? true
-                              : false),
-                    )
-                    .toList();
+                // List<ListItem> list = enrollmentsList!
+                //    .map(
+                //      (e) => ListItem(
+                //         name: e.userEnroll!.name,
+                //         state: e.state,
+                //         isSwitched: e.state == EnrollmentStateEnum.COMPLETED
+                //              ? true
+                //            : false),
+                //   )
+                //   .toList();
                 return Column(
                   children: [
                     Container(
@@ -114,7 +113,8 @@ class SubscriberListWidget extends StatelessWidget {
                               ? 400
                               : 440,
                       decoration: BoxDecoration(
-                        color: list[index].state != EnrollmentStateEnum.IN_QUEUE
+                        color: enrollmentsList![0].enrollments![index].state !=
+                                EnrollmentStateEnum.IN_QUEUE
                             ? AppColors.white
                             : AppColors.gray.withOpacity(0.5),
                       ),
@@ -128,12 +128,16 @@ class SubscriberListWidget extends StatelessWidget {
                                           breakpointTablet
                                       ? 100
                                       : 50,
-                                  child: list[index].state !=
+                                  child: enrollmentsList![0]
+                                              .enrollments![index]
+                                              .state !=
                                           EnrollmentStateEnum.IN_QUEUE
                                       ? Switch(
-                                          value: list[index].isSwitched,
+                                          value: enrollmentsList![0].isExtensive,
                                           onChanged: (value) {
-                                            if (list[index].state !=
+                                            if (enrollmentsList![0]
+                                                    .enrollments![index]
+                                                    .state !=
                                                 EnrollmentStateEnum.IN_QUEUE) {
                                               toggleSwitch!();
                                             } else {
@@ -171,7 +175,10 @@ class SubscriberListWidget extends StatelessWidget {
                                 : 240,
                             child: Text(
                               textAlign: TextAlign.center,
-                              list[index].name,
+                              enrollmentsList![0]
+                                  .enrollments![index]
+                                  .userEnroll!
+                                  .name,
                               style: AppTextStyles.bold
                                   .copyWith(fontSize: 30, color: Colors.black),
                             ),

@@ -1,5 +1,6 @@
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/professor_activity_model.dart';
 import '../../../../shared/models/admin_activity_model.dart';
 import '../../../../shared/models/enrollments_model.dart';
 import '../../../../shared/models/enrolls_activity_model.dart';
@@ -8,7 +9,7 @@ abstract class ActivitiesDatasourceInterface {
   Future<List<ActivityModel>> getAllActivities();
   Future<List<AdminActivityModel>> getAdminAllActivities();
   Future<List<EnrollsActivityModel>> getAllActivitiesLogged();
-  Future<List<EnrollsActivityModel>> getActivityWithEnrollments(String code);
+  Future<List<ProfessorActivityModel>> getActivityWithEnrollments(String code);
   Future<EnrollmentsModel> postSubscribe(String activityCode);
   Future<bool> postUnsubscribe(String activityCode);
   Future editActivity(String id, ActivityModel activity);

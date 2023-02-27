@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/professor_activity_model.dart';
 import '../../../shared/error/dio_exceptions.dart';
 import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/models/admin_activity_model.dart';
@@ -90,12 +91,12 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future<List<EnrollsActivityModel>> getActivityWithEnrollments(
+  Future<List<ProfessorActivityModel>> getActivityWithEnrollments(
       String code) async {
     final res =
         await middleware(url: '/get-activity-with-enrollments?code=$code');
     if (res.statusCode == 200) {
-      return EnrollsActivityModel.fromMaps(
+      return ProfessorActivityModel.fromMaps(
           res.data['activity_with_enrollments']);
     }
     return [];

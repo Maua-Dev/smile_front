@@ -10,6 +10,23 @@ part of 'more_info_responsible_activities_controller.dart';
 
 mixin _$MoreInfoResponsibleActivitiesController
     on MoreInfoResponsibleActivitiesControllerBase, Store {
+  late final _$isLoadingAtom = Atom(
+      name: 'MoreInfoResponsibleActivitiesControllerBase.isLoading',
+      context: context);
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   late final _$isSubscribedListVisibleAtom = Atom(
       name:
           'MoreInfoResponsibleActivitiesControllerBase.isSubscribedListVisible',
@@ -80,10 +97,54 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
+  late final _$professorActivitiesWithEnrollmentsAtom = Atom(
+      name:
+          'MoreInfoResponsibleActivitiesControllerBase.professorActivitiesWithEnrollments',
+      context: context);
+
+  @override
+  List<ProfessorActivityModel> get professorActivitiesWithEnrollments {
+    _$professorActivitiesWithEnrollmentsAtom.reportRead();
+    return super.professorActivitiesWithEnrollments;
+  }
+
+  @override
+  set professorActivitiesWithEnrollments(List<ProfessorActivityModel> value) {
+    _$professorActivitiesWithEnrollmentsAtom
+        .reportWrite(value, super.professorActivitiesWithEnrollments, () {
+      super.professorActivitiesWithEnrollments = value;
+    });
+  }
+
+  late final _$getProfessorActivitiesWithEnrollmentsAsyncAction = AsyncAction(
+      'MoreInfoResponsibleActivitiesControllerBase.getProfessorActivitiesWithEnrollments',
+      context: context);
+
+  @override
+  Future<dynamic> getProfessorActivitiesWithEnrollments() {
+    return _$getProfessorActivitiesWithEnrollmentsAsyncAction
+        .run(() => super.getProfessorActivitiesWithEnrollments());
+  }
+
   late final _$MoreInfoResponsibleActivitiesControllerBaseActionController =
       ActionController(
           name: 'MoreInfoResponsibleActivitiesControllerBase',
           context: context);
+
+  @override
+  void setIsLoading(bool value) {
+    final _$actionInfo =
+        _$MoreInfoResponsibleActivitiesControllerBaseActionController
+            .startAction(
+                name:
+                    'MoreInfoResponsibleActivitiesControllerBase.setIsLoading');
+    try {
+      return super.setIsLoading(value);
+    } finally {
+      _$MoreInfoResponsibleActivitiesControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
 
   @override
   void showSubscribedList() {
@@ -145,10 +206,12 @@ mixin _$MoreInfoResponsibleActivitiesController
   @override
   String toString() {
     return '''
+isLoading: ${isLoading},
 isSubscribedListVisible: ${isSubscribedListVisible},
 isTokenVisible: ${isTokenVisible},
 isIconSelected: ${isIconSelected},
-isSwitched: ${isSwitched}
+isSwitched: ${isSwitched},
+professorActivitiesWithEnrollments: ${professorActivitiesWithEnrollments}
     ''';
   }
 }

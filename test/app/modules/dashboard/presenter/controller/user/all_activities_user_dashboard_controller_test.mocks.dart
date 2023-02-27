@@ -11,30 +11,32 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
     as _i4;
 import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart'
-    as _i17;
+    as _i18;
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
-    as _i16;
+    as _i17;
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart'
-    as _i15;
+    as _i16;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i10;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart'
     as _i3;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart'
-    as _i19;
-import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
     as _i20;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
+    as _i21;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart'
-    as _i18;
+    as _i19;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart'
-    as _i14;
+    as _i15;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart'
     as _i2;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i12;
 import 'package:smile_front/app/shared/models/admin_activity_model.dart'
-    as _i13;
+    as _i14;
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
     as _i6;
+import 'package:smile_front/app/shared/models/professor_activity_model.dart'
+    as _i13;
 import 'package:smile_front/app/shared/models/user_model.dart' as _i8;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
     as _i5;
@@ -178,6 +180,17 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             <_i6.EnrollsActivityModel>[]),
       ) as _i11.Future<List<_i6.EnrollsActivityModel>>);
   @override
+  _i11.Future<List<_i13.ProfessorActivityModel>> getActivityWithEnrollments(
+          String? code) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getActivityWithEnrollments,
+          [code],
+        ),
+        returnValue: _i11.Future<List<_i13.ProfessorActivityModel>>.value(
+            <_i13.ProfessorActivityModel>[]),
+      ) as _i11.Future<List<_i13.ProfessorActivityModel>>);
+  @override
   _i11.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
         Invocation.method(
           #getDownloadLinkCsv,
@@ -195,15 +208,15 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i11.Future<dynamic>.value(),
       ) as _i11.Future<dynamic>);
   @override
-  _i11.Future<List<_i13.AdminActivityModel>> getAdminActivities() =>
+  _i11.Future<List<_i14.AdminActivityModel>> getAdminActivities() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAdminActivities,
           [],
         ),
-        returnValue: _i11.Future<List<_i13.AdminActivityModel>>.value(
-            <_i13.AdminActivityModel>[]),
-      ) as _i11.Future<List<_i13.AdminActivityModel>>);
+        returnValue: _i11.Future<List<_i14.AdminActivityModel>>.value(
+            <_i14.AdminActivityModel>[]),
+      ) as _i11.Future<List<_i14.AdminActivityModel>>);
   @override
   _i11.Future<dynamic> editActivity(_i12.ActivityModel? activityToEdit) =>
       (super.noSuchMethod(
@@ -246,7 +259,7 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUserDashboardController extends _i1.Mock
-    implements _i14.UserDashboardController {
+    implements _i15.UserDashboardController {
   MockUserDashboardController() {
     _i1.throwOnMissingStub(this);
   }
@@ -377,7 +390,7 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  set activityType(_i15.ActivityEnum? _activityType) => super.noSuchMethod(
+  set activityType(_i16.ActivityEnum? _activityType) => super.noSuchMethod(
         Invocation.setter(
           #activityType,
           _activityType,
@@ -385,7 +398,7 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  set typeFilter(_i15.ActivityEnum? _typeFilter) => super.noSuchMethod(
+  set typeFilter(_i16.ActivityEnum? _typeFilter) => super.noSuchMethod(
         Invocation.setter(
           #typeFilter,
           _typeFilter,
@@ -469,6 +482,14 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  set requisitionError(String? _requisitionError) => super.noSuchMethod(
+        Invocation.setter(
+          #requisitionError,
+          _requisitionError,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   _i7.ReactiveContext get context => (super.noSuchMethod(
         Invocation.getter(#context),
         returnValue: _FakeReactiveContext_5(
@@ -477,7 +498,7 @@ class MockUserDashboardController extends _i1.Mock
         ),
       ) as _i7.ReactiveContext);
   @override
-  void setTypeFilter(_i15.ActivityEnum? value) => super.noSuchMethod(
+  void setTypeFilter(_i16.ActivityEnum? value) => super.noSuchMethod(
         Invocation.method(
           #setTypeFilter,
           [value],
@@ -510,7 +531,7 @@ class MockUserDashboardController extends _i1.Mock
       );
   @override
   List<_i6.EnrollsActivityModel> filterActivitiesByType(
-    _i15.ActivityEnum? type,
+    _i16.ActivityEnum? type,
     List<_i6.EnrollsActivityModel>? activitiesToFilter,
   ) =>
       (super.noSuchMethod(
@@ -699,7 +720,7 @@ class MockUserDashboardController extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockRefreshTokenInterface extends _i1.Mock
-    implements _i16.RefreshTokenInterface {
+    implements _i17.RefreshTokenInterface {
   MockRefreshTokenInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -719,7 +740,7 @@ class MockRefreshTokenInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLoginWithEmailInterface extends _i1.Mock
-    implements _i17.LoginWithEmailInterface {
+    implements _i18.LoginWithEmailInterface {
   MockLoginWithEmailInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -912,7 +933,7 @@ class MockSecureStorageInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUnsubscribeActivityInterface extends _i1.Mock
-    implements _i18.UnsubscribeActivityInterface {
+    implements _i19.UnsubscribeActivityInterface {
   MockUnsubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -931,7 +952,7 @@ class MockUnsubscribeActivityInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetUserSubscribedActivitiesInterface extends _i1.Mock
-    implements _i19.GetUserSubscribedActivitiesInterface {
+    implements _i20.GetUserSubscribedActivitiesInterface {
   MockGetUserSubscribedActivitiesInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -951,7 +972,7 @@ class MockGetUserSubscribedActivitiesInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSubscribeActivityInterface extends _i1.Mock
-    implements _i20.SubscribeActivityInterface {
+    implements _i21.SubscribeActivityInterface {
   MockSubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }

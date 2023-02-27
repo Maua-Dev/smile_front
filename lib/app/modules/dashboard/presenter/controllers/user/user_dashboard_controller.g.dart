@@ -273,6 +273,22 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
+  late final _$requisitionErrorAtom = Atom(
+      name: 'UserDashboardControllerBase.requisitionError', context: context);
+
+  @override
+  String? get requisitionError {
+    _$requisitionErrorAtom.reportRead();
+    return super.requisitionError;
+  }
+
+  @override
+  set requisitionError(String? value) {
+    _$requisitionErrorAtom.reportWrite(value, super.requisitionError, () {
+      super.requisitionError = value;
+    });
+  }
+
   late final _$getCertificateWithSocialNameAsyncAction = AsyncAction(
       'UserDashboardControllerBase.getCertificateWithSocialName',
       context: context);
@@ -519,7 +535,8 @@ hourFilter: ${hourFilter},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 allSubscribedActivitiesList: ${allSubscribedActivitiesList},
-nextActivity: ${nextActivity}
+nextActivity: ${nextActivity},
+requisitionError: ${requisitionError}
     ''';
   }
 }

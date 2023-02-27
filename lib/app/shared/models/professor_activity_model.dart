@@ -5,9 +5,9 @@ import '../entities/activity.dart';
 import '../entities/infra/delivery_enum.dart';
 import 'enrollments_model.dart';
 
-class EnrollsActivityModel extends Activity {
-  final EnrollmentsModel? enrollments;
-  EnrollsActivityModel({
+class ProfessorActivityModel extends Activity {
+  final List<EnrollmentsModel>? enrollments;
+  ProfessorActivityModel({
     this.enrollments,
     required super.isExtensive,
     super.deliveryEnum,
@@ -27,8 +27,8 @@ class EnrollsActivityModel extends Activity {
     required super.totalSlots,
   });
 
-  factory EnrollsActivityModel.fromMap(Map<String, dynamic> map) {
-    return EnrollsActivityModel(
+  factory ProfessorActivityModel.fromMap(Map<String, dynamic> map) {
+    return ProfessorActivityModel(
         activityCode: map['activity']['code'],
         type: ActivityEnumExtension.stringToEnumMap(
             map['activity']['activity_type']),
@@ -55,33 +55,33 @@ class EnrollsActivityModel extends Activity {
                     map['activity']['stop_accepting_new_enrollments_before'])
                 : DateTime.now(),
         enrollments: map.containsKey('enrollment')
-            ? EnrollmentsModel.fromMap(map['enrollment'])
+            ? EnrollmentsModel.fromMaps(map['enrollment'])
             : null);
   }
 
-  static List<EnrollsActivityModel> fromMaps(List array) {
-    return array.map((e) => EnrollsActivityModel.fromMap(e)).toList();
+  static List<ProfessorActivityModel> fromMaps(List array) {
+    return array.map((e) => ProfessorActivityModel.fromMap(e)).toList();
   }
 
-  factory EnrollsActivityModel.newInstance() {
-    return EnrollsActivityModel(
-      description: '',
-      activityCode: '',
-      title: '',
-      type: null,
-      speakers: [SpeakerActivityModel.newInstance()],
-      duration: 0,
-      isExtensive: false,
-      startDate: DateTime.now(),
-      deliveryEnum: null,
-      acceptingNewEnrollments: false,
-      responsibleProfessors: [],
-      takenSlots: 0,
-      totalSlots: 0,
-    );
+  factory ProfessorActivityModel.newInstance() {
+    return ProfessorActivityModel(
+        description: '',
+        activityCode: '',
+        title: '',
+        type: null,
+        speakers: [SpeakerActivityModel.newInstance()],
+        duration: 0,
+        isExtensive: false,
+        startDate: DateTime.now(),
+        deliveryEnum: null,
+        acceptingNewEnrollments: false,
+        responsibleProfessors: [],
+        takenSlots: 0,
+        totalSlots: 0,
+        enrollments: []);
   }
 
-  EnrollsActivityModel copyWith(
+  ProfessorActivityModel copyWith(
       {String? id,
       String? activityCode,
       ActivityEnum? type,
@@ -99,8 +99,8 @@ class EnrollsActivityModel extends Activity {
       int? totalSlots,
       DateTime? stopAcceptingNewEnrollmentsBefore,
       List<ResponsibleProfessorModel>? responsibleProfessors,
-      EnrollmentsModel? enrollments}) {
-    return EnrollsActivityModel(
+      List<EnrollmentsModel>? enrollments}) {
+    return ProfessorActivityModel(
       activityCode: activityCode ?? this.activityCode,
       type: type ?? this.type,
       title: title ?? this.title,
