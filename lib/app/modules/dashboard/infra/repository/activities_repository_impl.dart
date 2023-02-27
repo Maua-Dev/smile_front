@@ -20,7 +20,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   var admActivitiesList = List<AdminActivityModel>.empty();
 
-  var activityWithEnrollments = List<ProfessorActivityModel>.empty();
+  var activityWithEnrollments = ProfessorActivityModel.newInstance();
 
   @override
   Future<List<ActivityModel>> getAllActivities() async {
@@ -39,9 +39,8 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future<List<ProfessorActivityModel>> getActivityWithEnrollments(
-      String code) async {
-    if (activityWithEnrollments.isEmpty) {
+  Future<ProfessorActivityModel> getActivityWithEnrollments(String code) async {
+    if (activityWithEnrollments.enrollments != null) {
       activityWithEnrollments =
           await datasource.getActivityWithEnrollments(code);
     }
@@ -97,7 +96,6 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         stopAcceptingNewEnrollmentsBefore: allActivitiesAndEnrollments[index]
             .stopAcceptingNewEnrollmentsBefore,
         enrollments: EnrollmentsModel(
-          acceptingNewEnrollments: requestDone.acceptingNewEnrollments,
           state: requestDone.state,
           dateSubscribed: requestDone.dateSubscribed,
         ),

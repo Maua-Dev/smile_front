@@ -26,10 +26,11 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
     MoreInfoResponsibleActivitiesController> {
   @override
   Widget build(BuildContext context) {
-    var initialTime =
-        DateFormat('HH:mm').format(controller.activity.startDate!);
+    var initialTime = DateFormat('HH:mm')
+        .format(controller.professorActivitiesWithEnrollments.startDate!);
     var finalTime = Utils.getActivityFinalTime(
-        controller.activity.startDate!, controller.activity.duration);
+        controller.professorActivitiesWithEnrollments.startDate!,
+        controller.professorActivitiesWithEnrollments.duration);
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16),
@@ -39,7 +40,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                    '${controller.activity.activityCode} - ${controller.activity.title}',
+                    '${controller.professorActivitiesWithEnrollments.activityCode} - ${controller.professorActivitiesWithEnrollments.title}',
                     style: AppTextStyles.bold.copyWith(
                         color: AppColors.brandingOrange,
                         fontSize:
@@ -73,8 +74,9 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                       ? 12
                                       : 20)),
                           Text(
-                              DateFormat('dd/MM')
-                                  .format(controller.activity.startDate!),
+                              DateFormat('dd/MM').format(controller
+                                  .professorActivitiesWithEnrollments
+                                  .startDate!),
                               style: AppTextStyles.bold.copyWith(
                                   color: AppColors.white,
                                   fontSize: MediaQuery.of(context).size.width <
@@ -132,7 +134,9 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                           breakpointTablet
                                       ? 12
                                       : 20)),
-                          Text(controller.activity.place!,
+                          Text(
+                              controller
+                                  .professorActivitiesWithEnrollments.place!,
                               style: AppTextStyles.bold.copyWith(
                                   color: AppColors.white,
                                   fontSize: MediaQuery.of(context).size.width <
@@ -225,6 +229,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                   toggleSwitch: controller.toggleSwitch,
                                   listViewItemCount: controller
                                       .professorActivitiesWithEnrollments
+                                      .enrollments!
                                       .length,
                                 ))),
                       ],

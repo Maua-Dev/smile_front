@@ -9,7 +9,7 @@ abstract class ActivitiesDatasourceInterface {
   Future<List<ActivityModel>> getAllActivities();
   Future<List<AdminActivityModel>> getAdminAllActivities();
   Future<List<EnrollsActivityModel>> getAllActivitiesLogged();
-  Future<List<ProfessorActivityModel>> getActivityWithEnrollments(String code);
+  Future<ProfessorActivityModel> getActivityWithEnrollments(String code);
   Future<EnrollmentsModel> postSubscribe(String activityCode);
   Future<bool> postUnsubscribe(String activityCode);
   Future editActivity(String id, ActivityModel activity);

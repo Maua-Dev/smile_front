@@ -103,13 +103,13 @@ mixin _$MoreInfoResponsibleActivitiesController
       context: context);
 
   @override
-  List<ProfessorActivityModel> get professorActivitiesWithEnrollments {
+  ProfessorActivityModel get professorActivitiesWithEnrollments {
     _$professorActivitiesWithEnrollmentsAtom.reportRead();
     return super.professorActivitiesWithEnrollments;
   }
 
   @override
-  set professorActivitiesWithEnrollments(List<ProfessorActivityModel> value) {
+  set professorActivitiesWithEnrollments(ProfessorActivityModel value) {
     _$professorActivitiesWithEnrollmentsAtom
         .reportWrite(value, super.professorActivitiesWithEnrollments, () {
       super.professorActivitiesWithEnrollments = value;
@@ -121,7 +121,7 @@ mixin _$MoreInfoResponsibleActivitiesController
       context: context);
 
   @override
-  Future<dynamic> getProfessorActivitiesWithEnrollments() {
+  Future<void> getProfessorActivitiesWithEnrollments() {
     return _$getProfessorActivitiesWithEnrollmentsAsyncAction
         .run(() => super.getProfessorActivitiesWithEnrollments());
   }

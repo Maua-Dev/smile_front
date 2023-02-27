@@ -66,7 +66,7 @@ class UserModule extends Module {
               storage: i<SecureStorageInterface>(),
             )),
     Bind.lazySingleton<GetActivitiesWithEnrollmentsInterface>(
-        (i) => GetActivitiesWithEnrollmentsImp(repository: i()  )),
+        (i) => GetActivitiesWithEnrollmentsImp(repository: i())),
     Bind.lazySingleton<GetAllUserActivitiesInterface>((i) => GetActivitiesList(
           repository: i(),
         )),
@@ -79,7 +79,7 @@ class UserModule extends Module {
         )),
     Bind.lazySingleton<MoreInfoResponsibleActivitiesController>((i) =>
         MoreInfoResponsibleActivitiesController(
-            activity: i.args!.data as EnrollsActivityModel,
+            activityCode: i.args!.data as String,
             getActivitiesWithEnrollments: i())),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),

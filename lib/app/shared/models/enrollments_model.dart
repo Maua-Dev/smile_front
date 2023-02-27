@@ -5,22 +5,17 @@ import '../entities/infra/enrollment_state_enum.dart';
 class EnrollmentsModel {
   final EnrollmentStateEnum state;
   final DateTime dateSubscribed;
-  final bool? acceptingNewEnrollments;
   final UserEnrollModel? userEnroll;
 
   EnrollmentsModel(
-      {required this.state,
-      required this.dateSubscribed,
-      this.acceptingNewEnrollments,
-      this.userEnroll});
+      {required this.state, required this.dateSubscribed, this.userEnroll});
 
   factory EnrollmentsModel.fromMap(Map<String, dynamic> map) {
     return EnrollmentsModel(
-        acceptingNewEnrollments: map['accepting_new_enrollments'] ?? false,
         state: EnrollmentStateEnumExtension.stringToEnumMap(map['state']),
         dateSubscribed:
             DateTime.fromMillisecondsSinceEpoch(map['date_subscribed']),
-        userEnroll: map['user']);
+        userEnroll: UserEnrollModel.fromMap(map['user']));
   }
 
   static List<EnrollmentsModel> fromMaps(List array) {
@@ -29,7 +24,6 @@ class EnrollmentsModel {
 
   factory EnrollmentsModel.newInstance() {
     return EnrollmentsModel(
-      acceptingNewEnrollments: false,
       state: EnrollmentStateEnum.NONE,
       dateSubscribed: DateTime.now(),
     );

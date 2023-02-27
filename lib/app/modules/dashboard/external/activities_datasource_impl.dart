@@ -91,15 +91,14 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future<List<ProfessorActivityModel>> getActivityWithEnrollments(
-      String code) async {
+  Future<ProfessorActivityModel> getActivityWithEnrollments(String code) async {
     final res =
         await middleware(url: '/get-activity-with-enrollments?code=$code');
     if (res.statusCode == 200) {
-      return ProfessorActivityModel.fromMaps(
+      return ProfessorActivityModel.fromMap(
           res.data['activity_with_enrollments']);
     }
-    return [];
+    return ProfessorActivityModel.newInstance();
   }
 
   @override
@@ -130,7 +129,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         state: EnrollmentStateEnumExtension.stringToEnumMap(res.data['state']),
         dateSubscribed:
             DateTime.fromMillisecondsSinceEpoch(res.data['date_subscribed']),
-        acceptingNewEnrollments: res.data['accepting_new_enrollments'] ?? false,
       );
     }
     return EnrollmentsModel.newInstance();

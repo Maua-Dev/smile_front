@@ -1,6 +1,5 @@
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_activities_with_enrollments.dart';
-import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'package:smile_front/app/shared/models/professor_activity_model.dart';
 
 part 'more_info_responsible_activities_controller.g.dart';
@@ -9,11 +8,14 @@ class MoreInfoResponsibleActivitiesController = MoreInfoResponsibleActivitiesCon
     with _$MoreInfoResponsibleActivitiesController;
 
 abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
-  final EnrollsActivityModel activity;
+  final String activityCode;
   final GetActivitiesWithEnrollmentsInterface getActivitiesWithEnrollments;
 
   MoreInfoResponsibleActivitiesControllerBase(
-      {required this.activity, required this.getActivitiesWithEnrollments});
+      {required this.activityCode,
+      required this.getActivitiesWithEnrollments}) {
+    getProfessorActivitiesWithEnrollments();
+  }
 
   @observable
   bool isLoading = false;
@@ -56,13 +58,13 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   }
 
   @observable
-  var professorActivitiesWithEnrollments = List<ProfessorActivityModel>.empty();
+  var professorActivitiesWithEnrollments = ProfessorActivityModel.newInstance();
 
   @action
-  Future getProfessorActivitiesWithEnrollments() async {
+  Future<void> getProfessorActivitiesWithEnrollments() async {
     setIsLoading(true);
     professorActivitiesWithEnrollments =
-        await getActivitiesWithEnrollments(activity.activityCode);
+        await getActivitiesWithEnrollments(activityCode);
     setIsLoading(false);
   }
 }

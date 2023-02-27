@@ -12,7 +12,7 @@ import '../../../../../../shared/themes/breakpoint.dart';
 
 class SubscriberListWidget extends StatelessWidget {
   final bool isSwitched;
-  final List<ProfessorActivityModel>? enrollmentsList;
+  final ProfessorActivityModel enrollmentsList;
   final int listViewItemCount;
   final Function()? toggleSwitch;
   const SubscriberListWidget({
@@ -95,16 +95,16 @@ class SubscriberListWidget extends StatelessWidget {
             child: ListView.builder(
               itemCount: listViewItemCount,
               itemBuilder: (BuildContext context, int index) {
-                // List<ListItem> list = enrollmentsList!
-                //    .map(
+                //List<ListItem> list = enrollmentsList!
+                //     .map(
                 //      (e) => ListItem(
-                //         name: e.userEnroll!.name,
-                //         state: e.state,
-                //         isSwitched: e.state == EnrollmentStateEnum.COMPLETED
-                //              ? true
-                //            : false),
-                //   )
-                //   .toList();
+                //       name: e.userEnroll!.name,
+                //        state: e.state,
+                //       isSwitched: e.state == EnrollmentStateEnum.COMPLETED
+                //            ? true
+                //         : false),
+                //  )
+                //  .toList();
                 return Column(
                   children: [
                     Container(
@@ -113,7 +113,7 @@ class SubscriberListWidget extends StatelessWidget {
                               ? 400
                               : 440,
                       decoration: BoxDecoration(
-                        color: enrollmentsList![0].enrollments![index].state !=
+                        color: enrollmentsList.enrollments![index].state !=
                                 EnrollmentStateEnum.IN_QUEUE
                             ? AppColors.white
                             : AppColors.gray.withOpacity(0.5),
@@ -128,14 +128,13 @@ class SubscriberListWidget extends StatelessWidget {
                                           breakpointTablet
                                       ? 100
                                       : 50,
-                                  child: enrollmentsList![0]
-                                              .enrollments![index]
-                                              .state !=
+                                  child: enrollmentsList
+                                              .enrollments![index].state !=
                                           EnrollmentStateEnum.IN_QUEUE
                                       ? Switch(
-                                          value: enrollmentsList![0].isExtensive,
+                                          value: enrollmentsList.isExtensive,
                                           onChanged: (value) {
-                                            if (enrollmentsList![0]
+                                            if (enrollmentsList
                                                     .enrollments![index]
                                                     .state !=
                                                 EnrollmentStateEnum.IN_QUEUE) {
@@ -175,10 +174,8 @@ class SubscriberListWidget extends StatelessWidget {
                                 : 240,
                             child: Text(
                               textAlign: TextAlign.center,
-                              enrollmentsList![0]
-                                  .enrollments![index]
-                                  .userEnroll!
-                                  .name,
+                              enrollmentsList
+                                  .enrollments![index].userEnroll!.name,
                               style: AppTextStyles.bold
                                   .copyWith(fontSize: 30, color: Colors.black),
                             ),

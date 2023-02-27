@@ -124,7 +124,8 @@ class _ResponsibleActivitiesPageState extends ModularState<
                           onTap: () {
                             Modular.to.navigate(
                               '/user/home/responsible-activities',
-                              arguments: controller.activitiesToShow[index],
+                              arguments: controller
+                                  .activitiesToShow[index].activityCode,
                             );
                           },
                         );
