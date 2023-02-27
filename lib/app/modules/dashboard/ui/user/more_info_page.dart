@@ -147,6 +147,11 @@ class _MoreInfoPageState
                                     ? EnrollmentStateEnum.NONE
                                     : controller.activity.enrollments!.state,
                                 onPressed: () {
+                                  var isReg = controller.activity.enrollments ==
+                                          null
+                                      ? EnrollmentStateEnum.NONE
+                                      : controller.activity.enrollments!.state;
+
                                   if (!controller
                                       .activity.acceptingNewEnrollments) {
                                     showDialog(
@@ -170,9 +175,9 @@ class _MoreInfoPageState
                                       },
                                     );
                                   } else {
-                                    if (controller
-                                            .activity.enrollments!.state ==
-                                        EnrollmentStateEnum.ENROLLED) {
+                                    if (isReg == EnrollmentStateEnum.ENROLLED ||
+                                        isReg ==
+                                            EnrollmentStateEnum.COMPLETED) {
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
@@ -205,7 +210,8 @@ class _MoreInfoPageState
                                           );
                                         },
                                       );
-                                    } else {
+                                    } else if (isReg !=
+                                        EnrollmentStateEnum.ENROLLED) {
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
@@ -600,9 +606,7 @@ class _MoreInfoPageState
                       height: 16,
                     ),
                     Observer(builder: (_) {
-                      return !controller.activity.acceptingNewEnrollments &&
-                              !(controller.activity.enrollments!.state ==
-                                  EnrollmentStateEnum.ENROLLED)
+                      return !controller.activity.acceptingNewEnrollments
                           ? Text(
                               S.of(context).unavailabeSubscribe,
                               textAlign: TextAlign.center,
@@ -624,11 +628,9 @@ class _MoreInfoPageState
                                               .activity.enrollments!.state,
                                   isLoading: controller.isLoading,
                                   onPressed: () {
-                                    if (!controller
-                                            .activity.acceptingNewEnrollments &&
-                                        (controller
-                                                .activity.enrollments!.state ==
-                                            EnrollmentStateEnum.ENROLLED)) {
+                                    if (controller
+                                            .activity.enrollments!.state ==
+                                        EnrollmentStateEnum.ENROLLED) {
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
@@ -649,82 +651,54 @@ class _MoreInfoPageState
                                           });
                                         },
                                       );
+                                    } else if (controller.activity.takenSlots >=
+                                        controller.activity.totalSlots) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return CustomAlertDialogWidget(
+                                            title: S
+                                                .of(context)
+                                                .availabeSpotUnsuficient,
+                                          );
+                                        },
+                                      );
                                     } else {
-                                      if (controller
-                                              .activity.enrollments!.state ==
-                                          EnrollmentStateEnum.ENROLLED) {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return Observer(builder: (context) {
-                                              return ActionConfirmationDialogWidget(
-                                                  isLoading:
-                                                      controller.isLoading,
-                                                  title: S
-                                                      .of(context)
-                                                      .unsubscribeVerification,
-                                                  content: S
-                                                      .of(context)
-                                                      .unsubscribeLoseVanacy,
-                                                  onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return Observer(builder: (context) {
+                                            return ActionConfirmationDialogWidget(
+                                                isLoading: controller.isLoading,
+                                                title: S
+                                                    .of(context)
+                                                    .subscribeVerification,
+                                                content: S
+                                                    .of(context)
+                                                    .scheduleActivityWarning,
+                                                onPressed: () {
+                                                  if (controller
+                                                      .checkIsOkForSubscribe()) {
                                                     controller
-                                                        .unsubscribeUserActivity();
+                                                        .subscribeUserActivity();
                                                     Modular.to.pop();
-                                                  });
-                                            });
-                                          },
-                                        );
-                                      } else if (controller
-                                              .activity.takenSlots >=
-                                          controller.activity.totalSlots) {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return CustomAlertDialogWidget(
-                                              title: S
-                                                  .of(context)
-                                                  .availabeSpotUnsuficient,
-                                            );
-                                          },
-                                        );
-                                      } else {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return Observer(builder: (context) {
-                                              return ActionConfirmationDialogWidget(
-                                                  isLoading:
-                                                      controller.isLoading,
-                                                  title: S
-                                                      .of(context)
-                                                      .subscribeVerification,
-                                                  content: S
-                                                      .of(context)
-                                                      .scheduleActivityWarning,
-                                                  onPressed: () {
-                                                    if (controller
-                                                        .checkIsOkForSubscribe()) {
-                                                      controller
-                                                          .subscribeUserActivity();
-                                                      Modular.to.pop();
-                                                    } else {
-                                                      showDialog(
-                                                        context: context,
-                                                        builder: (BuildContext
-                                                            context) {
-                                                          return CustomAlertDialogWidget(
-                                                            title: S
-                                                                .of(context)
-                                                                .alreadySubscribedOnThisPeriodWarning,
-                                                          );
-                                                        },
-                                                      );
-                                                    }
-                                                  });
-                                            });
-                                          },
-                                        );
-                                      }
+                                                  } else {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                          context) {
+                                                        return CustomAlertDialogWidget(
+                                                          title: S
+                                                              .of(context)
+                                                              .alreadySubscribedOnThisPeriodWarning,
+                                                        );
+                                                      },
+                                                    );
+                                                  }
+                                                });
+                                          });
+                                        },
+                                      );
                                     }
                                   }));
                     }),
