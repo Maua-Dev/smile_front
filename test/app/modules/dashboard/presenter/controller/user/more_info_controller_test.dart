@@ -12,7 +12,6 @@ import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 
 import '../../../../../../setup_firebase_mocks.dart';
@@ -74,8 +73,6 @@ void main() {
     responsibleProfessors: [],
   );
 
-  EnrollmentStateEnum registered = EnrollmentStateEnum.DROPPED;
-
   setUpAll(() async {
     await Firebase.initializeApp();
     subscriptionController = UserEnrollmentController(
@@ -83,9 +80,9 @@ void main() {
         subscribeActivity: subscribeActivity,
         unsubscribeActivity: unsubscribeActivity);
     controller = MoreInfoController(
-        enrollmentController: subscriptionController,
-        activity: activity,
-        registered: registered);
+      enrollmentController: subscriptionController,
+      activity: activity,
+    );
   });
 
   test('setIsLoading', () {

@@ -8,7 +8,6 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/mor
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/extensionist_widget.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
-import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -20,8 +19,7 @@ import '../../domain/infra/activity_enum.dart';
 import 'widgets/register_button_widget.dart';
 
 class MoreInfoPage extends StatefulWidget {
-  const MoreInfoPage({Key? key, required EnrollsActivityModel enrolledActivity})
-      : super(key: key);
+  const MoreInfoPage({Key? key}) : super(key: key);
 
   @override
   State<MoreInfoPage> createState() => _MoreInfoPageState();
@@ -125,9 +123,7 @@ class _MoreInfoPageState
                     width: 50,
                   ),
                   Observer(builder: (_) {
-                    return !controller.activity.acceptingNewEnrollments &&
-                            !(controller.isRegistered ==
-                                EnrollmentStateEnum.ENROLLED)
+                    return !controller.activity.acceptingNewEnrollments
                         ? Text(
                             S.of(context).unavailabeActivityRegistration,
                             textAlign: TextAlign.center,
@@ -145,13 +141,12 @@ class _MoreInfoPageState
                             width: 163,
                             height: 32,
                             child: RegisterButtonWidget(
-                                isRegistered: controller.isRegistered,
                                 isLoading: controller.isLoading,
+                                isRegistered:
+                                    controller.activity.enrollments!.state,
                                 onPressed: () {
                                   if (!controller
-                                          .activity.acceptingNewEnrollments &&
-                                      (controller.isRegistered ==
-                                          EnrollmentStateEnum.ENROLLED)) {
+                                      .activity.acceptingNewEnrollments) {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) {
@@ -173,7 +168,8 @@ class _MoreInfoPageState
                                       },
                                     );
                                   } else {
-                                    if (controller.isRegistered ==
+                                    if (controller
+                                            .activity.enrollments!.state ==
                                         EnrollmentStateEnum.ENROLLED) {
                                       showDialog(
                                         context: context,
@@ -535,7 +531,7 @@ class _MoreInfoPageState
                               ],
                             ),
                           if (controller.activity.link != null &&
-                              controller.isRegistered ==
+                              controller.activity.enrollments!.state ==
                                   EnrollmentStateEnum.ENROLLED)
                             Column(
                               children: [
@@ -603,7 +599,7 @@ class _MoreInfoPageState
                     ),
                     Observer(builder: (_) {
                       return !controller.activity.acceptingNewEnrollments &&
-                              !(controller.isRegistered ==
+                              !(controller.activity.enrollments!.state ==
                                   EnrollmentStateEnum.ENROLLED)
                           ? Text(
                               S.of(context).unavailabeSubscribe,
@@ -619,12 +615,14 @@ class _MoreInfoPageState
                             )
                           : Center(
                               child: RegisterButtonWidget(
-                                  isRegistered: controller.isRegistered,
+                                  isRegistered:
+                                      controller.activity.enrollments!.state,
                                   isLoading: controller.isLoading,
                                   onPressed: () {
                                     if (!controller
                                             .activity.acceptingNewEnrollments &&
-                                        (controller.isRegistered ==
+                                        (controller
+                                                .activity.enrollments!.state ==
                                             EnrollmentStateEnum.ENROLLED)) {
                                       showDialog(
                                         context: context,
@@ -647,7 +645,8 @@ class _MoreInfoPageState
                                         },
                                       );
                                     } else {
-                                      if (controller.isRegistered ==
+                                      if (controller
+                                              .activity.enrollments!.state ==
                                           EnrollmentStateEnum.ENROLLED) {
                                         showDialog(
                                           context: context,

@@ -109,7 +109,6 @@ class UserModule extends Module {
     Bind.lazySingleton<MoreInfoController>(
         (i) => MoreInfoController(
               enrollmentController: i(),
-              registered: i(),
               activity: i(),
             ),
         export: true),
@@ -129,10 +128,7 @@ class UserModule extends Module {
         child: (_, args) => const UserDashboardPage()),
     ChildRoute('/all-activities',
         child: (_, args) => const AllActivitiesUserDashboardPage()),
-    ChildRoute('/more-info',
-        child: (_, args) => MoreInfoPage(
-              enrolledActivity: args.data as EnrollsActivityModel,
-            )),
+    ChildRoute('/more-info', child: (_, args) => MoreInfoPage()),
     ChildRoute('/help', child: (_, args) => const HelpPage()),
     ChildRoute('/certificate', child: (_, args) => const CertificatePage()),
     ModuleRoute('/professor', module: ProfessorModule())

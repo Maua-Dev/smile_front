@@ -1,7 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/utils/utils.dart';
 
@@ -12,23 +11,11 @@ class MoreInfoController = MoreInfoControllerBase with _$MoreInfoController;
 abstract class MoreInfoControllerBase with Store {
   final UserEnrollmentController enrollmentController;
   final EnrollsActivityModel activity;
-  final EnrollmentStateEnum registered;
 
   MoreInfoControllerBase({
     required this.enrollmentController,
-    required this.registered,
     required this.activity,
-  }) {
-    isRegistered = registered;
-  }
-
-  @observable
-  EnrollmentStateEnum isRegistered = EnrollmentStateEnum.NONE;
-
-  @action
-  Future<void> setIsRegistered(EnrollmentStateEnum value) async {
-    isRegistered = EnrollmentStateEnum.ENROLLED;
-  }
+  });
 
   @observable
   bool isLoading = false;
@@ -65,7 +52,6 @@ abstract class MoreInfoControllerBase with Store {
         await enrollmentController.subscribeActivity(activity.activityCode);
     if (requestDone) {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
-      setIsRegistered(EnrollmentStateEnum.ENROLLED);
     }
     setIsLoading(false);
   }
@@ -76,7 +62,6 @@ abstract class MoreInfoControllerBase with Store {
         await enrollmentController.unsubscribeActivity(activity.activityCode);
     if (requestDone) {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
-      setIsRegistered(EnrollmentStateEnum.DROPPED);
     }
     setIsLoading(false);
   }
