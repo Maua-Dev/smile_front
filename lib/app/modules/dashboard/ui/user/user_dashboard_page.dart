@@ -43,7 +43,6 @@ class _UserDashboardPageState
                 logout: () {
                   navBarController.logout();
                 },
-                controller: controller,
               ),
               const SizedBox(
                 height: 8,
@@ -162,7 +161,6 @@ class _UserDashboardPageState
                 logout: () {
                   navBarController.logout();
                 },
-                controller: controller,
               ),
               const SizedBox(
                 height: 200,
@@ -170,7 +168,7 @@ class _UserDashboardPageState
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
-                  'Parece que você ainda não se inscreveu em nenhuma atividade :(',
+                  S.of(context).noActivitiesEnrolledText,
                   textAlign: TextAlign.center,
                   style: AppTextStyles.titleH1
                       .copyWith(color: AppColors.brandingOrange, fontSize: 32),

@@ -1664,6 +1664,26 @@ class S {
     );
   }
 
+  /// `Looks like you haven't signed up for any activities yet :(`
+  String get noActivitiesEnrolledText {
+    return Intl.message(
+      'Looks like you haven\'t signed up for any activities yet :(',
+      name: 'noActivitiesEnrolledText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Looks like you are not responsible for any activity :(`
+  String get noResponsibleActivitiesText {
+    return Intl.message(
+      'Looks like you are not responsible for any activity :(',
+      name: 'noResponsibleActivitiesText',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Yes`
   String get yesTitle {
     return Intl.message(

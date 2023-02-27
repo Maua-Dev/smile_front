@@ -10,6 +10,7 @@ import 'package:smile_front/generated/l10n.dart';
 
 class UserFilterCardWidget extends StatelessWidget {
   final Function(ActivityEnum?)? onChangedActivitiesFilter;
+  final Color? mainColor;
   final ActivityEnum? typeFilter;
   final Function(DateTime?)? onChangedDateFilter;
   final DateTime? dateFilter;
@@ -25,6 +26,7 @@ class UserFilterCardWidget extends StatelessWidget {
     required this.dateFilter,
     required this.hourFilter,
     required this.resetFilters,
+    this.mainColor,
   }) : super(key: key);
 
   @override
@@ -38,7 +40,7 @@ class UserFilterCardWidget extends StatelessWidget {
         Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: AppColors.brandingBlue,
+                color: mainColor ?? AppColors.brandingBlue,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.4),
@@ -281,6 +283,7 @@ class UserFilterCardWidget extends StatelessWidget {
           height: 30,
           child: ElevatedButton.icon(
               onPressed: resetFilters,
+              style: ElevatedButton.styleFrom(backgroundColor: mainColor),
               icon: const Icon(Icons.delete),
               label: Text(S.of(context).cleanFiltersTitle)),
         ),

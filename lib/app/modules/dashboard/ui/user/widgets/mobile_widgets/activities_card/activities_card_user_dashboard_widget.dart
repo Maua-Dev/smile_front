@@ -11,6 +11,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
   final String? location;
   final Function() onTap;
   final bool isLoading;
+  final Color? mainColor;
   const MobileActivitiesCardUserDashboard({
     Key? key,
     required this.title,
@@ -19,6 +20,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
     required this.isLoading,
     required this.finalTime,
     required this.location,
+    this.mainColor,
   }) : super(key: key);
 
   @override
@@ -56,7 +58,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                       ? 76
                       : 204,
                   decoration: BoxDecoration(
-                      color: AppColors.brandingBlue,
+                      color: mainColor ?? AppColors.brandingBlue,
                       borderRadius: BorderRadius.circular(15)),
                   child: Align(
                     alignment: Alignment.center,
@@ -96,7 +98,8 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                                                 breakpointTablet
                                             ? 16
                                             : 30,
-                                    color: AppColors.brandingBlue)),
+                                    color:
+                                        mainColor ?? AppColors.brandingBlue)),
                           ),
                           if (MediaQuery.of(context).size.width >
                               breakpointTablet)
