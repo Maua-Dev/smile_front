@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
@@ -91,6 +92,9 @@ class NameAlterationDialog extends StatelessWidget {
                 height: 8,
               ),
               TextFormField(
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
+                ],
                 initialValue: name,
                 textAlignVertical: TextAlignVertical.center,
                 onChanged: onChangedName,
@@ -168,6 +172,9 @@ class NameAlterationDialog extends StatelessWidget {
                 height: 8,
               ),
               TextFormField(
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
+                ],
                 initialValue: socialName,
                 enabled: wantSocialName ? true : false,
                 textAlignVertical: TextAlignVertical.center,

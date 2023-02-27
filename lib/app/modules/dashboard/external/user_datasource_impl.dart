@@ -34,7 +34,9 @@ class UserDatasourceImpl extends UserDatasourceInterface {
       dynamic data}) async {
     var token = await storage.getIdToken();
     try {
-      needAutorization ? dio.options.headers["authorization"] = "$token" : null;
+      needAutorization
+          ? dio.options.headers["authorization"] = "Bearer $token"
+          : null;
       Response res;
       switch (http) {
         case 'post':
@@ -62,6 +64,6 @@ class UserDatasourceImpl extends UserDatasourceInterface {
   @override
   Future putUser(UserChangeDataModel userChangeDataModel) async {
     await middleware(
-        url: '/user', data: userChangeDataModel.toJson(), http: 'put');
+        url: '/update-user', data: userChangeDataModel.toJson(), http: 'post');
   }
 }
