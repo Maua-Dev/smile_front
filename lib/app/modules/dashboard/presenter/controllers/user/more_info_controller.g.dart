@@ -45,7 +45,7 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
       AsyncAction('MoreInfoControllerBase.setIsRegistered', context: context);
 
   @override
-  Future<void> setIsRegistered(bool value) {
+  Future<void> setIsRegistered(EnrollmentStateEnum value) {
     return _$setIsRegisteredAsyncAction.run(() => super.setIsRegistered(value));
   }
 

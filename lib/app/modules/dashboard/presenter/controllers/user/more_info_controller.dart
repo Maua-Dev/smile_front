@@ -29,7 +29,7 @@ abstract class MoreInfoControllerBase with Store {
   EnrollmentStateEnum isRegistered = EnrollmentStateEnum.NONE;
 
   @action
-  Future<void> setIsRegistered(bool value) async {
+  Future<void> setIsRegistered(EnrollmentStateEnum value) async {
     isRegistered = EnrollmentStateEnum.ENROLLED;
   }
 
@@ -69,7 +69,7 @@ abstract class MoreInfoControllerBase with Store {
     if (requestDone) {
       await userDashboardController.getUserSubscribedActivities();
       userDashboardController.getNextActivity();
-      setIsRegistered(true);
+      setIsRegistered(EnrollmentStateEnum.ENROLLED);
     }
     setIsLoading(false);
   }
@@ -81,7 +81,7 @@ abstract class MoreInfoControllerBase with Store {
     if (requestDone) {
       await userDashboardController.getUserSubscribedActivities();
       userDashboardController.getNextActivity();
-      setIsRegistered(false);
+      setIsRegistered(EnrollmentStateEnum.DROPPED);
     }
     setIsLoading(false);
   }
