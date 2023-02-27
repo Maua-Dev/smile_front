@@ -131,6 +131,7 @@ class _ResendConfirmationPageState
                             ),
                             InputBoxWidget(
                               icon: Icons.person,
+                              isEmail: true,
                               placeholder:
                                   S.of(context).registerEmailPlaceholder,
                               setValue: controller.setEmail,

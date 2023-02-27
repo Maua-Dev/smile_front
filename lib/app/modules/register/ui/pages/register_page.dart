@@ -183,6 +183,7 @@ class _RegisterPageState
                     ),
                     Observer(builder: (_) {
                       return InputBoxWidget(
+                        isEmail: true,
                         icon: Icons.email_rounded,
                         placeholder: controller.role == UserRolesEnum.PROFESSOR
                             ? S.of(context).registerEmailProfessorPlaceholder
@@ -192,6 +193,7 @@ class _RegisterPageState
                       );
                     }),
                     InputBoxWidget(
+                      isEmail: true,
                       icon: Icons.email_rounded,
                       placeholder:
                           S.of(context).registerEmailConfirmationPlaceholder,

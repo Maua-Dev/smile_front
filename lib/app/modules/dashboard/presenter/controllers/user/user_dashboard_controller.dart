@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
@@ -315,17 +316,26 @@ abstract class UserDashboardControllerBase with Store {
   @observable
   EnrollsActivityModel nextActivity = EnrollsActivityModel.newInstance();
 
+  @observable
+  String? requisitionError;
+
   @action
   Future getUserSubscribedActivities() async {
     setIsLoading(true);
-    await enrollmentController.getUserAllActivitiesWithEnrollment();
-    allSubscribedActivitiesList = enrollmentController.subscribedActivities;
-    if (allSubscribedActivitiesList.isNotEmpty) {
-      allSubscribedActivitiesList.sort(
-        (a, b) => a.startDate!.compareTo(b.startDate!),
-      );
-      subscribedActivitiesOnScreen = allSubscribedActivitiesList;
-      getNextActivity();
+    try {
+      await enrollmentController.getUserAllActivitiesWithEnrollment();
+      allSubscribedActivitiesList = enrollmentController.subscribedActivities;
+      if (allSubscribedActivitiesList.isNotEmpty) {
+        allSubscribedActivitiesList.sort(
+          (a, b) => a.startDate!.compareTo(b.startDate!),
+        );
+        subscribedActivitiesOnScreen = allSubscribedActivitiesList;
+        getNextActivity();
+      }
+    } on DioError catch (e) {
+      requisitionError = e.response!.data;
+    } catch (e) {
+      requisitionError = 'Ocorreu algum erro ao carregar atividades :(';
     }
 
     setIsLoading(false);

@@ -68,7 +68,7 @@ class VerticalNavBarWidget extends StatelessWidget {
                     myIndex: 3,
                     onPressed: () async {
                       await controller.toggleIndex(3);
-                      Modular.to.navigate('/user/home/certificate');
+                      Modular.to.navigate('/user/home/professor');
                     },
                     icon: Icons.list_alt,
                   ),

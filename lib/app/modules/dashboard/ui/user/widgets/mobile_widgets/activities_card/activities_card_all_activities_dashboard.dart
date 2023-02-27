@@ -62,8 +62,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                   ),
                 ]),
             width: MediaQuery.of(context).size.width < breakpointTablet
-                ? 342
-                : 1165,
+                ? 300
+                : MediaQuery.of(context).size.width > breakpointTablet
+                    ? 1165
+                    : 342,
             height:
                 MediaQuery.of(context).size.width < breakpointTablet ? 76 : 204,
             child: Row(children: [
@@ -97,9 +99,12 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 215
-                                : 500,
+                                    breakpointLMobile
+                                ? 150
+                                : MediaQuery.of(context).size.width >
+                                        breakpointTablet
+                                    ? 500
+                                    : 215,
                             height: MediaQuery.of(context).size.width <
                                     breakpointTablet
                                 ? 34
@@ -148,10 +153,13 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        width:
-                            MediaQuery.of(context).size.width < breakpointTablet
-                                ? 53
-                                : 368,
+                        width: MediaQuery.of(context).size.width <
+                                breakpointLMobile
+                            ? 20
+                            : MediaQuery.of(context).size.width >
+                                    breakpointTablet
+                                ? 368
+                                : 53,
                       ),
                       SizedBox(
                           width:

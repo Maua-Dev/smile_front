@@ -93,6 +93,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             MediaQuery.of(context).size.width < 800 ? 16 : 32,
                       ),
                     InputBoxWidget(
+                      isEmail: true,
                       icon: Icons.person,
                       placeholder: S.of(context).loginUsernamePlaceholder,
                       setValue: controller.setUsername,

@@ -35,7 +35,7 @@ class DrawerDashboardWidget extends StatelessWidget {
   final List<String> professorRoutes = [
     '/user/home',
     '/user/home/all-activities',
-    '/user/home/help',
+    '/user/home/professor',
     '/user/home/certificate',
     '/user/home/help'
   ];

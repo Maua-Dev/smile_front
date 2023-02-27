@@ -18,6 +18,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/mor
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_responsible_activities_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import 'package:smile_front/app/modules/dashboard/professor_module.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
@@ -75,8 +76,7 @@ class UserModule extends Module {
         )),
     Bind.lazySingleton<MoreInfoResponsibleActivitiesController>((i) =>
         MoreInfoResponsibleActivitiesController(
-            activity: i.args!.data[0] as EnrollsActivityModel
-            )),
+            activity: i.args!.data as EnrollsActivityModel)),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<GetUserSubscribedActivitiesInterface>(
@@ -139,6 +139,7 @@ class UserModule extends Module {
     ChildRoute('/help', child: (_, args) => const HelpPage()),
     ChildRoute('/certificate', child: (_, args) => const CertificatePage()),
     ChildRoute('/responsible-activities',
-        child: (_, args) => const MoreInfoResponsibleActivitiesPage())
+        child: (_, args) => const MoreInfoResponsibleActivitiesPage()),
+    ModuleRoute('/professor', module: ProfessorModule())
   ];
 }
