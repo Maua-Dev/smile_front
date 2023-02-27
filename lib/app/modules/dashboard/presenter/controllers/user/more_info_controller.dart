@@ -26,11 +26,11 @@ abstract class MoreInfoControllerBase with Store {
   }
 
   @observable
-  var isRegistered = 
+  EnrollmentStateEnum isRegistered = EnrollmentStateEnum.NONE;
 
   @action
   Future<void> setIsRegistered(bool value) async {
-    isRegistered = value;
+    isRegistered = EnrollmentStateEnum.ENROLLED;
   }
 
   @observable
@@ -64,7 +64,8 @@ abstract class MoreInfoControllerBase with Store {
 
   Future<void> subscribeUserActivity() async {
     setIsLoading(true);
-    var requestDone = await enrollmentController.subscribeActivity(activity.activityCode);
+    var requestDone =
+        await enrollmentController.subscribeActivity(activity.activityCode);
     if (requestDone) {
       await userDashboardController.getUserSubscribedActivities();
       userDashboardController.getNextActivity();
@@ -75,7 +76,8 @@ abstract class MoreInfoControllerBase with Store {
 
   Future<void> unsubscribeUserActivity() async {
     setIsLoading(true);
-    var requestDone = await enrollmentController.unsubscribeActivity(activity.activityCode);
+    var requestDone =
+        await enrollmentController.unsubscribeActivity(activity.activityCode);
     if (requestDone) {
       await userDashboardController.getUserSubscribedActivities();
       userDashboardController.getNextActivity();

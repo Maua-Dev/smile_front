@@ -108,6 +108,9 @@ class UserModule extends Module {
     Bind.lazySingleton<MoreInfoController>(
         (i) => MoreInfoController(
               enrollmentController: i(),
+              registered: i(),
+              activity: i(),
+              userDashboardController: i(),
             ),
         export: true),
     Bind.lazySingleton<CertificateRepositoryInterface>(

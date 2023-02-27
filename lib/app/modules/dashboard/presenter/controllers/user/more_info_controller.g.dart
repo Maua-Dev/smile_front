@@ -13,13 +13,13 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
       Atom(name: 'MoreInfoControllerBase.isRegistered', context: context);
 
   @override
-  bool get isRegistered {
+  EnrollmentStateEnum get isRegistered {
     _$isRegisteredAtom.reportRead();
     return super.isRegistered;
   }
 
   @override
-  set isRegistered(bool value) {
+  set isRegistered(EnrollmentStateEnum value) {
     _$isRegisteredAtom.reportWrite(value, super.isRegistered, () {
       super.isRegistered = value;
     });
