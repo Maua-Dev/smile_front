@@ -12,14 +12,16 @@ import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart'
     as _i7;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart'
-    as _i10;
+    as _i11;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart'
     as _i3;
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart'
     as _i8;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart'
     as _i9;
+import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
+    as _i10;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -251,13 +253,23 @@ class MockUserRepositoryInterface extends _i1.Mock
         ),
         returnValue: _i4.Future<dynamic>.value(),
       ) as _i4.Future<dynamic>);
+  @override
+  _i4.Future<List<_i9.ResponsibleProfessorModel>> getResponsibleProfessors() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getResponsibleProfessors,
+          [],
+        ),
+        returnValue: _i4.Future<List<_i9.ResponsibleProfessorModel>>.value(
+            <_i9.ResponsibleProfessorModel>[]),
+      ) as _i4.Future<List<_i9.ResponsibleProfessorModel>>);
 }
 
 /// A class which mocks [FirebaseAnalyticsService].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFirebaseAnalyticsService extends _i1.Mock
-    implements _i9.FirebaseAnalyticsService {
+    implements _i10.FirebaseAnalyticsService {
   MockFirebaseAnalyticsService() {
     _i1.throwOnMissingStub(this);
   }
@@ -339,7 +351,7 @@ class MockFirebaseAnalyticsService extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockChangeDataInterface extends _i1.Mock
-    implements _i10.ChangeDataInterface {
+    implements _i11.ChangeDataInterface {
   MockChangeDataInterface() {
     _i1.throwOnMissingStub(this);
   }

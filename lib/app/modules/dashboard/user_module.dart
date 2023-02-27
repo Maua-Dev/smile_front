@@ -66,14 +66,14 @@ class UserModule extends Module {
         )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
-    Bind.lazySingleton<GetUserSubscribedActivitiesInterface>(
-        (i) => GetUserSubscribedActivitiesImp(repository: i())),
     Bind.lazySingleton<UnsubscribeActivityInterface>(
         (i) => UnsubscribeActivity(repository: i())),
     Bind.lazySingleton<SubscribeActivityInterface>(
         (i) => SubscribeActivity(repository: i())),
     Bind.lazySingleton<UserRepositoryInterface>(
         (i) => UserRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<GetUserSubscribedActivitiesInterface>(
+        (i) => GetUserSubscribedActivitiesImp(repository: i())),
     Bind.lazySingleton<ChangeDataInterface>(
         (i) => ChangeData(userRepository: i())),
     Bind.lazySingleton<FaqDatasourceInterface>((i) => FaqDatasourceImpl()),

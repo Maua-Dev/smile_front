@@ -25,6 +25,42 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
     });
   }
 
+  late final _$allResponsibleProfessorsListAtom = Atom(
+      name: 'CreateActivityControllerBase.allResponsibleProfessorsList',
+      context: context);
+
+  @override
+  List<ResponsibleProfessorModel> get allResponsibleProfessorsList {
+    _$allResponsibleProfessorsListAtom.reportRead();
+    return super.allResponsibleProfessorsList;
+  }
+
+  @override
+  set allResponsibleProfessorsList(List<ResponsibleProfessorModel> value) {
+    _$allResponsibleProfessorsListAtom
+        .reportWrite(value, super.allResponsibleProfessorsList, () {
+      super.allResponsibleProfessorsList = value;
+    });
+  }
+
+  late final _$responsibleProfessorAtom = Atom(
+      name: 'CreateActivityControllerBase.responsibleProfessor',
+      context: context);
+
+  @override
+  ResponsibleProfessorModel get responsibleProfessor {
+    _$responsibleProfessorAtom.reportRead();
+    return super.responsibleProfessor;
+  }
+
+  @override
+  set responsibleProfessor(ResponsibleProfessorModel value) {
+    _$responsibleProfessorAtom.reportWrite(value, super.responsibleProfessor,
+        () {
+      super.responsibleProfessor = value;
+    });
+  }
+
   late final _$isLoadingAtom =
       Atom(name: 'CreateActivityControllerBase.isLoading', context: context);
 
@@ -39,6 +75,16 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
     _$isLoadingAtom.reportWrite(value, super.isLoading, () {
       super.isLoading = value;
     });
+  }
+
+  late final _$getAllResponsibleProfessorsAsyncAction = AsyncAction(
+      'CreateActivityControllerBase.getAllResponsibleProfessors',
+      context: context);
+
+  @override
+  Future<dynamic> getAllResponsibleProfessors() {
+    return _$getAllResponsibleProfessorsAsyncAction
+        .run(() => super.getAllResponsibleProfessors());
   }
 
   late final _$setIsLoadingAsyncAction = AsyncAction(
@@ -171,6 +217,18 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
         .startAction(name: 'CreateActivityControllerBase.setLink');
     try {
       return super.setLink(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setResponsibleProfessorId(String id) {
+    final _$actionInfo =
+        _$CreateActivityControllerBaseActionController.startAction(
+            name: 'CreateActivityControllerBase.setResponsibleProfessorId');
+    try {
+      return super.setResponsibleProfessorId(id);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -313,6 +371,8 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   String toString() {
     return '''
 activityToCreate: ${activityToCreate},
+allResponsibleProfessorsList: ${allResponsibleProfessorsList},
+responsibleProfessor: ${responsibleProfessor},
 isLoading: ${isLoading}
     ''';
   }

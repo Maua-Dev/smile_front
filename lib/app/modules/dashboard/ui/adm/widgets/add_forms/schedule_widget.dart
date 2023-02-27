@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+// import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/autocomplete_textfield/autocomplete_textfield_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/tooltip/tooltip_widget.dart';
+import 'package:smile_front/app/shared/entities/responsible_professor.dart';
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/entities/infra/delivery_enum.dart';
 import '../../../../../../shared/entities/screen_variables.dart';
@@ -9,6 +13,7 @@ import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/utils/screen_helper.dart';
 import '../../../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import '../../../../utils/formatters/NumberTextInputFormatter.dart';
+import '../autocomplete_textfield/autocomplete_textfield_widget.dart';
 import 'text_field_dialog_widget.dart';
 
 class ScheduleWidget extends StatelessWidget {
@@ -40,6 +45,7 @@ class ScheduleWidget extends StatelessWidget {
   final String? closeInscriptionsDate;
   final String? closeInscriptionsHour;
   final String? professorName;
+  final List<ResponsibleProfessorModel>? responsibleProfessors;
 
   const ScheduleWidget({
     Key? key,
@@ -71,6 +77,7 @@ class ScheduleWidget extends StatelessWidget {
     this.onChangedModality,
     this.modality,
     this.validateRequiredField,
+    this.responsibleProfessors,
   }) : super(key: key);
 
   @override
@@ -185,15 +192,21 @@ class ScheduleWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Row(
                   children: [
+                    // Flexible(
+                    //   child: TextFieldDialogWidget(
+                    //     validator: validateRequiredField,
+                    //     labelText: S.of(context).activityResponsibleTeacher,
+                    //     value: professorName,
+                    //     onChanged: onChangedProfessor,
+                    //     padding: false,
+                    //   ),
+                    // ),
                     Flexible(
-                      child: TextFieldDialogWidget(
-                        validator: validateRequiredField,
-                        labelText: S.of(context).activityResponsibleTeacher,
-                        value: professorName,
-                        onChanged: onChangedProfessor,
-                        padding: false,
-                      ),
-                    ),
+                        child: AutocompleteTextField(
+                      onChangedProfessor: onChangedProfessor!,
+                      responsibleProfessors: responsibleProfessors!,
+                      labelText: S.of(context).activityResponsibleTeacher,
+                    )),
                     const SizedBox(
                       width: 16,
                     ),

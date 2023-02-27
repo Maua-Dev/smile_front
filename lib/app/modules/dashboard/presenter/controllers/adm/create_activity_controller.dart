@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart';
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../shared/entities/infra/delivery_enum.dart';
 import '../../../../../shared/models/activity_model.dart';
@@ -15,16 +18,31 @@ class CreateActivityController = CreateActivityControllerBase
 
 abstract class CreateActivityControllerBase with Store {
   final CreateActivityInterface createActivity;
+  final GetResponsibleProfessorsInterface getResponsibleProfessors;
 
   CreateActivityControllerBase({
     required this.createActivity,
-  });
+    required this.getResponsibleProfessors,
+  }) {
+    getAllResponsibleProfessors();
+  }
 
   @observable
   var activityToCreate = ActivityModel.newInstance();
 
   @observable
+  var allResponsibleProfessorsList = [ResponsibleProfessorModel.newInstance()];
+
+  @observable
+  var responsibleProfessor = ResponsibleProfessorModel.newInstance();
+
+  @observable
   bool isLoading = false;
+
+  @action
+  Future getAllResponsibleProfessors() async {
+    allResponsibleProfessorsList = await getResponsibleProfessors();
+  }
 
   /// Function that helps createUserActivity, by changing the boolean is loading.
   @action
@@ -97,7 +115,7 @@ abstract class CreateActivityControllerBase with Store {
   /// * Hybrid
   @action
   void setModality(DeliveryEnum? value) {
-    activityToCreate.deliveryEnum = value;
+    activityToCreate = activityToCreate.copyWith(deliveryEnum: value);
   }
 
   ///A function that changes the boolean variable isExtensive.
@@ -135,6 +153,13 @@ abstract class CreateActivityControllerBase with Store {
   @action
   void setLink(String value) {
     activityToCreate = activityToCreate.copyWith(link: value);
+  }
+
+  @action
+  void setResponsibleProfessorId(String id) {
+    var professor = allResponsibleProfessorsList
+        .firstWhere((professor) => professor.id == id);
+    responsibleProfessor = professor;
   }
 
   ///Sets the DATE the activity will occur.

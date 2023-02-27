@@ -152,6 +152,10 @@ class _CreateActivityPageState
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 114),
                             child: ScheduleWidget(
+                              onChangedProfessor:
+                                  controller.setResponsibleProfessorId,
+                              responsibleProfessors:
+                                  controller.allResponsibleProfessorsList,
                               closeInscriptionsHour: closureHour,
                               professorName: controller
                                   .activityToCreate.responsibleProfessor.name,

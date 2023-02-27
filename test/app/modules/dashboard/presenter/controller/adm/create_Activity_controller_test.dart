@@ -16,6 +16,8 @@ import 'create_Activity_controller_test.mocks.dart';
 @GenerateMocks([CreateActivityInterface])
 void main() {
   CreateActivityInterface createActivity = MockCreateActivityInterface();
+  CreateActivityInterface getResponsibleProfessors =
+      MockCreateActivityInterface();
 
   late CreateActivityController controller;
   initModules([AppModule(), AdmModule()]);
