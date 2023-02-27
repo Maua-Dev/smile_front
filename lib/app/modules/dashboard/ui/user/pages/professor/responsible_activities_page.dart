@@ -2,28 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/activities_card/activities_card_user_dashboard_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/user_filter_card_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_data_widget.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/themes/breakpoint.dart';
-import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
-import 'package:smile_front/generated/l10n.dart';
-import '../../../../shared/utils/utils.dart';
-import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
-import '../../presenter/controllers/user/user_dashboard_controller.dart';
-import 'widgets/next_activity/next_activity_card_widget.dart';
 
-class UserDashboardPage extends StatefulWidget {
-  const UserDashboardPage({Key? key}) : super(key: key);
+import '../../../../../../../generated/l10n.dart';
+import '../../../../../../shared/themes/app_colors.dart';
+import '../../../../../../shared/themes/app_text_styles.dart';
+import '../../../../../../shared/themes/breakpoint.dart';
+import '../../../../../../shared/utils/utils.dart';
+import '../../../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
+import '../../../../presenter/controllers/user/professor/responsible_activities_controller.dart';
+import '../../widgets/mobile_widgets/activities_card/activities_card_user_dashboard_widget.dart';
+import '../../widgets/mobile_widgets/filter/user_filter_card_widget.dart';
+import '../../widgets/user_data/user_data_widget.dart';
+
+class ResponsibleActivitiesPage extends StatefulWidget {
+  const ResponsibleActivitiesPage({super.key});
 
   @override
-  State<UserDashboardPage> createState() => _UserDashboardPageState();
+  State<ResponsibleActivitiesPage> createState() =>
+      _ResponsibleActivitiesPageState();
 }
 
-class _UserDashboardPageState
-    extends ModularState<UserDashboardPage, UserDashboardController> {
+class _ResponsibleActivitiesPageState extends ModularState<
+    ResponsibleActivitiesPage, ResponsibleActivitiesController> {
   var navBarController = Modular.get<NavigationBarController>();
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,7 @@ class _UserDashboardPageState
       if (controller.isLoading) {
         return const Center(child: CircularProgressIndicator());
       } else {
-        if (controller.allSubscribedActivitiesList.isNotEmpty &&
-            controller.nextActivity.type != null) {
+        if (controller.allResponsibleActivities.isNotEmpty) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -40,6 +39,7 @@ class _UserDashboardPageState
                 height: 16,
               ),
               UserDataWidget(
+                mainColor: AppColors.brandingOrange,
                 logout: () {
                   navBarController.logout();
                 },
@@ -47,36 +47,11 @@ class _UserDashboardPageState
               const SizedBox(
                 height: 8,
               ),
-              TextHeader(
-                title: 'Sua próxima atividade',
-                fontSize: MediaQuery.of(context).size.width < 500
-                    ? 24
-                    : MediaQuery.of(context).size.width > 1000
-                        ? 38
-                        : 30,
-                leftPadding: MediaQuery.of(context).size.width < 1000 ? 12 : 8,
-              ),
-              Observer(builder: (_) {
-                return NextActivityCardWidget(
-                  isUser: true,
-                  link: controller.nextActivity.link,
-                  location: controller.nextActivity.place,
-                  duration: controller.nextActivity.duration,
-                  onTap: () {
-                    Modular.to.navigate('/user/home/more-info',
-                        arguments: controller.nextActivity);
-                    controller.analytics
-                        .logViewActivity(controller.nextActivity.activityCode);
-                  },
-                  name: controller.nextActivity.title,
-                  description: controller.nextActivity.description,
-                  date: controller.nextActivity.startDate,
-                );
-              }),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Observer(builder: (_) {
                   return UserFilterCardWidget(
+                      mainColor: AppColors.brandingOrange,
                       typeFilter: controller.typeFilter,
                       dateFilter: controller.dateFilter,
                       hourFilter: controller.hourFilter,
@@ -93,7 +68,7 @@ class _UserDashboardPageState
                 }),
               ),
               Observer(builder: (_) {
-                if (controller.subscribedActivitiesOnScreen.isNotEmpty) {
+                if (controller.allResponsibleActivities.isNotEmpty) {
                   return Flexible(
                       child: ConstrainedBox(
                     constraints: BoxConstraints(
@@ -102,37 +77,35 @@ class _UserDashboardPageState
                                 ? 342
                                 : 1165),
                     child: ListView.builder(
-                      itemCount: controller.subscribedActivitiesOnScreen.length,
+                      itemCount: controller.allResponsibleActivities.length,
                       itemBuilder: (context, index) {
                         var finalTime = controller
-                                    .subscribedActivitiesOnScreen[index]
+                                    .allResponsibleActivities[index]
                                     .startDate ==
                                 null
                             ? ''
                             : Utils.getActivityFinalTime(
-                                controller.subscribedActivitiesOnScreen[index]
-                                    .startDate!,
-                                controller.subscribedActivitiesOnScreen[index]
-                                    .duration);
+                                controller
+                                    .allResponsibleActivities[index].startDate!,
+                                controller
+                                    .allResponsibleActivities[index].duration);
                         var hour = DateFormat('HH:mm').format(controller
-                            .subscribedActivitiesOnScreen[index].startDate!);
+                            .allResponsibleActivities[index].startDate!);
                         return MobileActivitiesCardUserDashboard(
+                          mainColor: AppColors.brandingOrange,
                           isLoading: controller.isLoading,
                           finalTime: finalTime,
-                          location: controller
-                              .subscribedActivitiesOnScreen[index].place,
-                          title: controller
-                              .subscribedActivitiesOnScreen[index].title,
+                          location:
+                              controller.allResponsibleActivities[index].place,
+                          title:
+                              controller.allResponsibleActivities[index].title,
                           hour: hour,
                           onTap: () {
                             Modular.to.navigate(
                               '/user/home/more-info',
-                              arguments: controller
-                                  .subscribedActivitiesOnScreen[index],
+                              arguments:
+                                  controller.allResponsibleActivities[index],
                             );
-                            controller.analytics.logViewActivity(controller
-                                .subscribedActivitiesOnScreen[index]
-                                .activityCode);
                           },
                         );
                       },
@@ -158,6 +131,7 @@ class _UserDashboardPageState
                 height: 16,
               ),
               UserDataWidget(
+                mainColor: AppColors.brandingOrange,
                 logout: () {
                   navBarController.logout();
                 },
@@ -168,7 +142,7 @@ class _UserDashboardPageState
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
-                  S.of(context).noActivitiesEnrolledText,
+                  S.of(context).noResponsibleActivitiesText,
                   textAlign: TextAlign.center,
                   style: AppTextStyles.titleH1
                       .copyWith(color: AppColors.brandingOrange, fontSize: 32),

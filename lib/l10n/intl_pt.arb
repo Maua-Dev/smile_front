@@ -74,6 +74,7 @@
 
 
 
+
     "maintenanceTitle": "O serviço de login esta em manutenção",
     "maintenanceDescription": "Agradecemos a paciência",
     "clickToGoBack": "Clique aqui para voltar",
@@ -97,6 +98,7 @@
     "loginWarningTitle": "{title, select, normalPart{Em caso de erro ao se logar, envie um e-mail para: } boldPart{dev@maua.br} other{}}",
     
     
+
     
     "selectOptionTitle": "Selecione uma opção:",
     "registerFullNamePlaceholder": "Nome Completo",
@@ -191,6 +193,11 @@
     "drawerCertificatesButton": "Certificados",
     "drawerHelpButton": "Ajuda",
     "drawerProfileButton": "Perfil",
+
+
+    "noActivitiesEnrolledText": "Parece que você ainda não se inscreveu em nenhuma atividade :(",
+    "noResponsibleActivitiesText": "Parece que você não é responsável por nenhuma atividade :(",
+
 
     "yesTitle": "Sim",
     "noTitle": "Não",
