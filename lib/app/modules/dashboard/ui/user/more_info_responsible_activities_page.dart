@@ -41,6 +41,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                 child: Text(
                     '${controller.activity.activityCode} - ${controller.activity.title}',
                     style: AppTextStyles.bold.copyWith(
+                        color: AppColors.brandingOrange,
                         fontSize:
                             MediaQuery.of(context).size.width < breakpointTablet
                                 ? 20
