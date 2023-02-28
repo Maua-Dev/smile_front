@@ -43,7 +43,7 @@ class SponsorEmailModel {
     data['number'] = number;
     data['cnpj'] = cnpj;
     data['sponsor_type'] = sponsorType;
-    data['closure_date'] = 0;
+    data['closure_date'] = '0';
     return data;
   }
 }
