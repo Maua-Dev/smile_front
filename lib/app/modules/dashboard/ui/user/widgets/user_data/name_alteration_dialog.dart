@@ -100,7 +100,8 @@ class NameAlterationDialog extends StatelessWidget {
               ),
               TextFormField(
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
+                  FilteringTextInputFormatter.allow(
+                      RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ\\s]")),
                 ],
                 initialValue: name,
                 textAlignVertical: TextAlignVertical.center,
@@ -180,7 +181,8 @@ class NameAlterationDialog extends StatelessWidget {
               ),
               TextFormField(
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
+                  FilteringTextInputFormatter.allow(
+                      RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ\\s]")),
                 ],
                 initialValue: socialName,
                 enabled: wantSocialName ? true : false,
