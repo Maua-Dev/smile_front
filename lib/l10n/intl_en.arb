@@ -183,6 +183,8 @@
 
     "codeTitle": "Code",
 
+    "isExtensiveTooltip": "Extension Activity",
+
     "drawerHomeButton": "Home",
     "drawerActivitiesButton": "Activities",
     "drawerResponsibleActivitiesButton": "Responsible Activities",

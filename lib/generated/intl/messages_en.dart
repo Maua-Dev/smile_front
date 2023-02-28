@@ -350,6 +350,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "initTitle": MessageLookupByLibrary.simpleMessage("Home"),
         "insertPasswordCodeInstructions": MessageLookupByLibrary.simpleMessage(
             "Enter your new password and the code sent to your email:"),
+        "isExtensiveTooltip":
+            MessageLookupByLibrary.simpleMessage("Extension Activity"),
         "knowMore": MessageLookupByLibrary.simpleMessage("KNOW MORE >>>"),
         "local": MessageLookupByLibrary.simpleMessage("Local"),
         "loginForgotPasswordTitle":

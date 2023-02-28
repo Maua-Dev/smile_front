@@ -121,13 +121,14 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                               width: 8,
                             ),
                             if (isExtensive)
-                              Icon(
-                                Icons.star,
-                                color: AppColors.brandingOrange,
-                                size: MediaQuery.of(context).size.width <
-                                        breakpointTablet
-                                    ? 20
-                                    : 40,
+                              Tooltip(
+                                triggerMode: TooltipTriggerMode.tap,
+                                message: S.of(context).isExtensiveTooltip,
+                                child: Icon(
+                                  Icons.star,
+                                  size: 33,
+                                  color: AppColors.brandingOrange,
+                                ),
                               ),
                           ]),
                       Row(

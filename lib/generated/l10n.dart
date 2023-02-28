@@ -1554,6 +1554,16 @@ class S {
     );
   }
 
+  /// `Extension Activity`
+  String get isExtensiveTooltip {
+    return Intl.message(
+      'Extension Activity',
+      name: 'isExtensiveTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Home`
   String get drawerHomeButton {
     return Intl.message(
