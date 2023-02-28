@@ -154,11 +154,21 @@ class S {
     );
   }
 
-  /// `Main Speakers - 2022`
+  /// `Speakers`
   String get speakersTitle {
     return Intl.message(
-      'Main Speakers - 2022',
+      'Speakers',
       name: 'speakersTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Main Speakers - 2022`
+  String get speakersMainTitle {
+    return Intl.message(
+      'Main Speakers - 2022',
+      name: 'speakersMainTitle',
       desc: '',
       args: [],
     );
@@ -455,6 +465,16 @@ class S {
     return Intl.message(
       'Date',
       name: 'dateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Day`
+  String get dayTitle {
+    return Intl.message(
+      'Day',
+      name: 'dayTitle',
       desc: '',
       args: [],
     );
@@ -917,26 +937,6 @@ class S {
     );
   }
 
-  /// `Telefone celular não preenchido.`
-  String get phoneNotFilledWarn {
-    return Intl.message(
-      'Telefone celular não preenchido.',
-      name: 'phoneNotFilledWarn',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Preencha o seu telefone celular para ativar as notificações via SMS!`
-  String get phoneFillWarn {
-    return Intl.message(
-      'Preencha o seu telefone celular para ativar as notificações via SMS!',
-      name: 'phoneFillWarn',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `E-mail`
   String get loginUsernamePlaceholder {
     return Intl.message(
@@ -1032,21 +1032,21 @@ class S {
     );
   }
 
-  /// `Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.`
-  String get registerSocialNameTooltip {
-    return Intl.message(
-      'Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.',
-      name: 'registerSocialNameTooltip',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `E-mail`
   String get registerEmailPlaceholder {
     return Intl.message(
       'E-mail',
       name: 'registerEmailPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.`
+  String get registerSocialNameTooltip {
+    return Intl.message(
+      'Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.',
+      name: 'registerSocialNameTooltip',
       desc: '',
       args: [],
     );
@@ -1139,10 +1139,10 @@ class S {
     );
   }
 
-  /// `Activity notifications:`
+  /// `Means of notification about activities:`
   String get notificationsTitle {
     return Intl.message(
-      'Activity notifications:',
+      'Means of notification about activities:',
       name: 'notificationsTitle',
       desc: '',
       args: [],
@@ -1414,6 +1414,16 @@ class S {
     );
   }
 
+  /// `Presence Validate`
+  String get presenceValidateTitle {
+    return Intl.message(
+      'Presence Validate',
+      name: 'presenceValidateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your registration has been successfully confirmed!`
   String get successRegister {
     return Intl.message(
@@ -1574,11 +1584,31 @@ class S {
     );
   }
 
+  /// `Company:`
+  String get companyTitle {
+    return Intl.message(
+      'Company:',
+      name: 'companyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description`
   String get descriptionTitle {
     return Intl.message(
       'Description',
       name: 'descriptionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hora`
+  String get hourTitle {
+    return Intl.message(
+      'Hora',
+      name: 'hourTitle',
       desc: '',
       args: [],
     );
@@ -1614,61 +1644,11 @@ class S {
     );
   }
 
-  /// `Home`
-  String get drawerHomeButton {
+  /// `Local`
+  String get localTitle {
     return Intl.message(
-      'Home',
-      name: 'drawerHomeButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Activities`
-  String get drawerActivitiesButton {
-    return Intl.message(
-      'Activities',
-      name: 'drawerActivitiesButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Responsible Activities`
-  String get drawerResponsibleActivitiesButton {
-    return Intl.message(
-      'Responsible Activities',
-      name: 'drawerResponsibleActivitiesButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Certificates`
-  String get drawerCertificatesButton {
-    return Intl.message(
-      'Certificates',
-      name: 'drawerCertificatesButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Help`
-  String get drawerHelpButton {
-    return Intl.message(
-      'Help',
-      name: 'drawerHelpButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Profile`
-  String get drawerProfileButton {
-    return Intl.message(
-      'Profile',
-      name: 'drawerProfileButton',
+      'Local',
+      name: 'localTitle',
       desc: '',
       args: [],
     );
@@ -1715,6 +1695,156 @@ class S {
   }
 
   // skipped getter for the '' key
+
+  /// `Registration unavailabe for this activity!`
+  String get unavailabeActivityRegistration {
+    return Intl.message(
+      'Registration unavailabe for this activity!',
+      name: 'unavailabeActivityRegistration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you wanna unsubscribe?`
+  String get unsubscribeVerification {
+    return Intl.message(
+      'Are you sure you wanna unsubscribe?',
+      name: 'unsubscribeVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you wanna subscribe?`
+  String get subscribeVerification {
+    return Intl.message(
+      'Are you sure you wanna subscribe?',
+      name: 'subscribeVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!`
+  String get unsubscribeVerificationClosedRegistration {
+    return Intl.message(
+      'Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!',
+      name: 'unsubscribeVerificationClosedRegistration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will lose your vacancy by continuing!`
+  String get unsubscribeLoseVanacy {
+    return Intl.message(
+      'You will lose your vacancy by continuing!',
+      name: 'unsubscribeLoseVanacy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems that the number of vacancies for this activity has run out :(`
+  String get availabeSpotUnsuficient {
+    return Intl.message(
+      'It seems that the number of vacancies for this activity has run out :(',
+      name: 'availabeSpotUnsuficient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep in mind of your schedules and activities that you have already signed up for!`
+  String get scheduleActivityWarning {
+    return Intl.message(
+      'Keep in mind of your schedules and activities that you have already signed up for!',
+      name: 'scheduleActivityWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems you are already subscribed on another activity at this period.`
+  String get alreadySubscribedOnThisPeriodWarning {
+    return Intl.message(
+      'It seems you are already subscribed on another activity at this period.',
+      name: 'alreadySubscribedOnThisPeriodWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The registration for this activity is unavailabe!`
+  String get unavailabeSubscribe {
+    return Intl.message(
+      'The registration for this activity is unavailabe!',
+      name: 'unavailabeSubscribe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activities`
+  String get drawerActivitiesButton {
+    return Intl.message(
+      'Activities',
+      name: 'drawerActivitiesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Certificates`
+  String get drawerCertificatesButton {
+    return Intl.message(
+      'Certificates',
+      name: 'drawerCertificatesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help`
+  String get drawerHelpButton {
+    return Intl.message(
+      'Help',
+      name: 'drawerHelpButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get drawerHomeButton {
+    return Intl.message(
+      'Home',
+      name: 'drawerHomeButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get drawerProfileButton {
+    return Intl.message(
+      'Profile',
+      name: 'drawerProfileButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible Activities`
+  String get drawerResponsibleActivitiesButton {
+    return Intl.message(
+      'Responsible Activities',
+      name: 'drawerResponsibleActivitiesButton',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 class Utils {
   static String getActivityFinalTime(DateTime time, int duration) {
     var hour = duration / 60;
-    var minutes = duration - (hour * 60);
+    var minutes = duration;
     var newDate = DateTime(time.year, time.month, time.day,
         time.hour + hour.toInt(), time.minute + minutes.toInt());
 

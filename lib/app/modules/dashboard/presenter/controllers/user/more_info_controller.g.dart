@@ -25,15 +25,50 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
     });
   }
 
+  late final _$activityAtom =
+      Atom(name: 'MoreInfoControllerBase.activity', context: context);
+
+  @override
+  EnrollsActivityModel get activity {
+    _$activityAtom.reportRead();
+    return super.activity;
+  }
+
+  @override
+  set activity(EnrollsActivityModel value) {
+    _$activityAtom.reportWrite(value, super.activity, () {
+      super.activity = value;
+    });
+  }
+
+  late final _$setIsLoadingAsyncAction =
+      AsyncAction('MoreInfoControllerBase.setIsLoading', context: context);
+
+  @override
+  Future<void> setIsLoading(bool value) {
+    return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
+  }
+
   late final _$MoreInfoControllerBaseActionController =
       ActionController(name: 'MoreInfoControllerBase', context: context);
 
   @override
-  void setIsLoading(bool value) {
+  void getActivity() {
     final _$actionInfo = _$MoreInfoControllerBaseActionController.startAction(
-        name: 'MoreInfoControllerBase.setIsLoading');
+        name: 'MoreInfoControllerBase.getActivity');
     try {
-      return super.setIsLoading(value);
+      return super.getActivity();
+    } finally {
+      _$MoreInfoControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  bool checkIsOkForSubscribe() {
+    final _$actionInfo = _$MoreInfoControllerBaseActionController.startAction(
+        name: 'MoreInfoControllerBase.checkIsOkForSubscribe');
+    try {
+      return super.checkIsOkForSubscribe();
     } finally {
       _$MoreInfoControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -42,7 +77,8 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
   @override
   String toString() {
     return '''
-isLoading: ${isLoading}
+isLoading: ${isLoading},
+activity: ${activity}
     ''';
   }
 }

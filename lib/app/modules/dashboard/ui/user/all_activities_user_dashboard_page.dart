@@ -6,8 +6,8 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/user_filter_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
+import '../../../../shared/entities/screen_variables.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 import 'widgets/mobile_widgets/activities_card/activities_card_all_activities_dashboard.dart';
@@ -30,13 +30,13 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
           height: 16,
         ),
         TextHeader(
-          title: MediaQuery.of(context).size.width < breakpointTablet
+          title: MediaQuery.of(context).size.width < tabletSize
               ? 'Atividades'
               : 'Todas as Atividades',
-          color: MediaQuery.of(context).size.width < breakpointTablet
+          color: MediaQuery.of(context).size.width < tabletSize
               ? AppColors.brandingOrange
               : AppColors.brandingBlue,
-          fontSize: MediaQuery.of(context).size.width < breakpointTablet
+          fontSize: MediaQuery.of(context).size.width < tabletSize
               ? 24
               : MediaQuery.of(context).size.width > 1000
                   ? 38
@@ -91,10 +91,9 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
               return Flexible(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                      maxWidth:
-                          MediaQuery.of(context).size.width < breakpointTablet
-                              ? 342
-                              : 1165),
+                      maxWidth: MediaQuery.of(context).size.width < tabletSize
+                          ? 342
+                          : 1165),
                   child: ListView.builder(
                     itemCount: controller.activitiesOnScreen.length,
                     itemBuilder: (context, index) {
@@ -134,7 +133,8 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                           onTap: () {
                             Modular.to.navigate(
                               '/user/home/more-info',
-                              arguments: controller.activitiesOnScreen[index],
+                              arguments: controller
+                                  .activitiesOnScreen[index].activityCode,
                             );
                             controller.analytics.logViewActivity(controller
                                 .activitiesOnScreen[index].activityCode);
@@ -151,10 +151,9 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
               return Observer(builder: (_) {
                 return Text(S.of(context).activitiesNotFound,
                     style: AppTextStyles.body.copyWith(
-                        fontSize:
-                            MediaQuery.of(context).size.width < breakpointTablet
-                                ? 20
-                                : 25));
+                        fontSize: MediaQuery.of(context).size.width < tabletSize
+                            ? 20
+                            : 25));
               });
             }
           }
