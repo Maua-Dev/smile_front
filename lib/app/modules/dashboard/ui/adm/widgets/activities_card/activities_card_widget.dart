@@ -86,7 +86,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                               triggerMode: TooltipTriggerMode.tap,
                               message: S.of(context).isExtensiveTooltip,
                               child: Icon(
-                                Icons.star_border_outlined,
+                                Icons.star,
                                 size: 33,
                                 color: AppColors.brandingOrange,
                               ),
