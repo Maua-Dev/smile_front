@@ -66,11 +66,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
                     ),
                     Flexible(
                       child: Center(
-                        child: SizedBox(
-                            width: Screen.width(context) < 1024
-                                ? Screen.width(context)
-                                : 1000,
-                            child: RouterOutlet()),
+                        child: RouterOutlet(),
                       ),
                     ),
                   ],

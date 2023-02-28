@@ -12,6 +12,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
   final Function() onTap;
   final bool isLoading;
   final Color? mainColor;
+  final bool isExtensive;
   const MobileActivitiesCardUserDashboard({
     Key? key,
     required this.title,
@@ -21,6 +22,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
     required this.finalTime,
     required this.location,
     this.mainColor,
+    required this.isExtensive,
   }) : super(key: key);
 
   @override
@@ -69,76 +71,83 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                                 ? 20
                                 : 40)),
                   )),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 0, 2),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width <
-                                    breakpointLMobile
-                                ? 150
-                                : MediaQuery.of(context).size.width >
+              Expanded(
+                child: Padding(
+                  padding: MediaQuery.of(context).size.width < breakpointTablet
+                      ? const EdgeInsets.symmetric(horizontal: 8)
+                      : const EdgeInsets.only(left: 32),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.width <
+                                      breakpointTablet
+                                  ? 34
+                                  : 50,
+                              child: Text(title,
+                                  maxLines: 2,
+                                  style: AppTextStyles.bold.copyWith(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  breakpointTablet
+                                              ? 14
+                                              : 30,
+                                      color:
+                                          mainColor ?? AppColors.brandingBlue)),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            if (isExtensive)
+                              Icon(
+                                Icons.star,
+                                color: AppColors.brandingOrange,
+                                size: MediaQuery.of(context).size.width <
                                         breakpointTablet
-                                    ? 500
-                                    : 215,
-                            height: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 34
-                                : 50,
-                            child: Text(title,
-                                maxLines: 2,
+                                    ? 20
+                                    : 40,
+                              ),
+                          ]),
+                      Row(children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('${S.of(context).termination}: $finalTime',
                                 style: AppTextStyles.bold.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width <
                                                 breakpointTablet
-                                            ? 16
-                                            : 30,
-                                    color:
-                                        mainColor ?? AppColors.brandingBlue)),
-                          ),
-                          if (MediaQuery.of(context).size.width >
-                              breakpointTablet)
-                            const SizedBox(width: 200),
-                        ]),
-                    Row(children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('${S.of(context).termination}: $finalTime',
-                              style: AppTextStyles.bold.copyWith(
-                                  fontSize: MediaQuery.of(context).size.width <
-                                          breakpointTablet
-                                      ? 12
-                                      : 24,
-                                  color: Colors.black)),
-                          Text('${S.of(context).local}: $location',
-                              style: AppTextStyles.bold.copyWith(
-                                  fontSize: MediaQuery.of(context).size.width <
-                                          breakpointTablet
-                                      ? 12
-                                      : 24,
-                                  color: Colors.black)),
-                        ],
-                      ),
-                      SizedBox(
-                        width:
-                            MediaQuery.of(context).size.width < breakpointTablet
-                                ? 53
-                                : 368,
-                      ),
-                    ])
-                  ],
+                                            ? 12
+                                            : 24,
+                                    color: Colors.black)),
+                            Text('${S.of(context).local}: $location',
+                                style: AppTextStyles.bold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width <
+                                                breakpointTablet
+                                            ? 12
+                                            : 24,
+                                    color: Colors.black)),
+                          ],
+                        ),
+                      ])
+                    ],
+                  ),
                 ),
               ),
-              Icon(Icons.arrow_forward_ios_sharp,
-                  size: MediaQuery.of(context).size.width < breakpointTablet
-                      ? 20
-                      : 40)
+              Padding(
+                padding: MediaQuery.of(context).size.width < breakpointTablet
+                    ? const EdgeInsets.only(right: 8)
+                    : const EdgeInsets.only(right: 64),
+                child: Icon(Icons.arrow_forward_ios_sharp,
+                    size: MediaQuery.of(context).size.width < breakpointTablet
+                        ? 20
+                        : 40),
+              )
             ]),
           ),
           const SizedBox(
