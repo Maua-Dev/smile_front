@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
-import '../../../../generated/l10n.dart';
 import '../dialogs/custom_alert_dialog_widget.dart';
 import 'widgets/nav_bar_button_widget.dart';
 

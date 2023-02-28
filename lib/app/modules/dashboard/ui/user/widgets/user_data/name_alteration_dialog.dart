@@ -330,9 +330,7 @@ class NameAlterationDialog extends StatelessWidget {
                     isBrazilianPhoneField: controller.isBrazilianPhone,
                     placeholder: S.of(context).registerPhonePlaceholder,
                     setValue: controller.setPhone,
-                    widthSize: MediaQuery.of(context).size.width < 650
-                        ? MediaQuery.of(context).size.width * 0.53
-                        : 480,
+                    widthSize: 380,
                     validation: controller.validatePhone,
                   )
                 ],
