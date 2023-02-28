@@ -150,7 +150,7 @@ class FilterCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 4.0),
                             child: Text(
                                 formattedHour == ''
-                                    ? S.of(context).scheduleTitle
+                                    ? S.of(context).hourTitle
                                     : formattedHour,
                                 style: AppTextStyles.body.copyWith(
                                     fontSize: formattedHour == '' ? 25 : 16)),

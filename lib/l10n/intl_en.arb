@@ -10,7 +10,8 @@
     
     
     "knowMore": "KNOW MORE >>>",
-    "speakersTitle": "Main Speakers - 2022",
+    "speakersTitle": "Speakers",
+    "speakersMainTitle": "Main Speakers - 2022",
     "speakersAddTitle": "Add Speaker",
     "speakersSwipe": "SWIPE TO SEE MORE >>>",
     "speakersSchemaName": "{speakers, select, nina{Nina Silva} viviane{Viviane Nunes} leila{Leila Ferreira} boris{Bóris Fabris} marco{Marco Antonio Teixeira} willian{Dr. William Schoenell} other{}}",
@@ -65,7 +66,6 @@
     "queueTitle": "Na fila",
     "queueExitAlert": "Are you sure you want to exit the queue?",
     
-    
 
 
 
@@ -77,9 +77,6 @@
     "exitTitle": "Exit",
     "cancelTitle": "Cancel",
     "saveTitle": "Save",
-
-    "phoneNotFilledWarn": "Telefone celular não preenchido.",
-    "phoneFillWarn": "Preencha o seu telefone celular para ativar as notificações via SMS!",
 
 
 
@@ -93,12 +90,11 @@
     
     
     
-
     "selectOptionTitle": "Select an option:",
     "registerFullNamePlaceholder": "Full Name",
     "registerSocialNamePlaceholder": "Social Name",
-    "registerSocialNameTooltip": "Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.",
     "registerEmailPlaceholder": "E-mail",
+    "registerSocialNameTooltip": "Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.",
     "registerEmailProfessorPlaceholder": "Enter your email Mauá",
     "registerEmailConfirmationPlaceholder": "Confirm your e-mail",
     "registerPhonePlaceholder": "Phone",
@@ -107,7 +103,7 @@
     "registerRAPlaceholder": "RA",
     "registerConfirmPasswordPlaceholder": "Confirm password",
     "registerTerms": "{terms, select, one{I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.} two{I have read and accept the Terms of Use.} three{I authorize the sending of notification by email, for the purposes of promoting Smile.}}",
-    "notificationsTitle": "Activity notifications:",
+    "notificationsTitle": "Means of notification about activities:",
     "notificationsSchemaTitle": "I want to receive notifications by ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
     "registerTitle": "Register",
@@ -146,7 +142,7 @@
     "returnLogin": "Return to login",
     "errorEmailInstructionsTitle": "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n",
     
-    
+    "presenceValidateTitle": "Presence Validate",
     
 
     "successRegister": "Your registration has been successfully confirmed!",
@@ -175,9 +171,11 @@
     "activityEditTitle": "Edit Activity",
     "activityTypeTitle": "Activity Type",
     "activityNameTitle": "Activity Title",
+    "companyTitle": "Company:",
 
     "descriptionTitle": "Description",
 
+    "hourTitle": "Hora",
     "scheduleTitle": "Schedule",
     "scheduleAddTitle": "Add Schedule",
 
@@ -199,5 +197,17 @@
 
     "yesTitle": "Yes",
     "noTitle": "No",
-    "": ""
+    "": "",
+
+    
+    "unavailabeActivityRegistration": "Registration unavailabe for this activity!",
+    "unsubscribeVerification": "Are you sure you wanna unsubscribe?",
+    "subscribeVerification": "Are you sure you wanna subscribe?",
+    "unsubscribeVerificationClosedRegistration": "Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!",
+    "unsubscribeLoseVanacy": "You will lose your vacancy by continuing!",
+    "availabeSpotUnsuficient": "It seems that the number of vacancies for this activity has run out :(",
+    "scheduleActivityWarning": "Keep in mind of your schedules and activities that you have already signed up for!",
+    "alreadySubscribedOnThisPeriodWarning": "It seems you are already subscribed on another activity at this period.",
+    "unavailabeSubscribe": "The registration for this activity is unavailabe!",
+
 }

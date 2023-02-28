@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
+
+import '../../../../../../../shared/themes/breakpoint.dart';
 
 class MobileActivitiesCardUserDashboard extends StatelessWidget {
   final String title;
@@ -57,12 +58,10 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                 MediaQuery.of(context).size.width < breakpointTablet ? 76 : 204,
             child: Row(children: [
               Container(
-                  width: MediaQuery.of(context).size.width < breakpointTablet
-                      ? 70
-                      : 190,
-                  height: MediaQuery.of(context).size.width < breakpointTablet
-                      ? 76
-                      : 204,
+                  width:
+                      MediaQuery.of(context).size.width < tabletSize ? 70 : 190,
+                  height:
+                      MediaQuery.of(context).size.width < tabletSize ? 76 : 204,
                   decoration: BoxDecoration(
                       color: mainColor ?? AppColors.brandingBlue,
                       borderRadius: BorderRadius.circular(15)),
@@ -70,10 +69,10 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(hour,
                         style: AppTextStyles.bold.copyWith(
-                            fontSize: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 20
-                                : 40)),
+                            fontSize:
+                                MediaQuery.of(context).size.width < tabletSize
+                                    ? 20
+                                    : 40)),
                   )),
               Expanded(
                 child: Padding(

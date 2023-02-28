@@ -6,8 +6,9 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/user_filter_card_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
+import '../../../../shared/entities/screen_variables.dart';
+import '../../../../shared/themes/breakpoint.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 import 'widgets/mobile_widgets/activities_card/activities_card_all_activities_dashboard.dart';

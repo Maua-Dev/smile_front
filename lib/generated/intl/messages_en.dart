@@ -260,6 +260,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Administrator Page"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Reports"),
+        "alreadySubscribedOnThisPeriodWarning":
+            MessageLookupByLibrary.simpleMessage(
+                "It seems you are already subscribed on another activity at this period."),
+        "availabeSpotUnsuficient": MessageLookupByLibrary.simpleMessage(
+            "It seems that the number of vacancies for this activity has run out :("),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
             "SMILE brings an opportunity for partnership and integration between the labor market and academia. Become an event Sponsor and find out about the benefits and opportunities that SMILE offers. In this edition, 4 types of sponsorship quotas are available: Diamond, Gold, Silver and Bronze. In addition, when closing the sponsorship in advance, there will be a progressive discount on the quotas. Information about quotas and benefits is below."),
         "beSponsorMoreInfoDescription": MessageLookupByLibrary.simpleMessage(
@@ -282,6 +287,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
             "A code will be sent to the registered email address:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Code"),
+        "companyTitle": MessageLookupByLibrary.simpleMessage("Company:"),
         "confirmAllFieldsConrrectlyFilled":
             MessageLookupByLibrary.simpleMessage(
                 "Check that all fields are filled in correctly."),
@@ -292,6 +298,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmToContinue": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to continue?"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Date"),
+        "dayTitle": MessageLookupByLibrary.simpleMessage("Day"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "drawerActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Activities"),
@@ -347,6 +354,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "homePageTitle": MessageLookupByLibrary.simpleMessage(
             "Mauá Week of Innovation, Leadership and Entrepreneurship"),
         "homePageTitleSelection": m8,
+        "hourTitle": MessageLookupByLibrary.simpleMessage("Hora"),
         "initTitle": MessageLookupByLibrary.simpleMessage("Home"),
         "insertPasswordCodeInstructions": MessageLookupByLibrary.simpleMessage(
             "Enter your new password and the code sent to your email:"),
@@ -354,6 +362,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Extension Activity"),
         "knowMore": MessageLookupByLibrary.simpleMessage("KNOW MORE >>>"),
         "local": MessageLookupByLibrary.simpleMessage("Local"),
+        "localTitle": MessageLookupByLibrary.simpleMessage("Local"),
         "loginForgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Forgot my password"),
         "loginPasswordPlaceholder":
@@ -384,14 +393,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationsSchema": m12,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
             "I want to receive notifications by "),
-        "notificationsTitle":
-            MessageLookupByLibrary.simpleMessage("Activity notifications:"),
-        "phoneFillWarn": MessageLookupByLibrary.simpleMessage(
-            "Preencha o seu telefone celular para ativar as notificações via SMS!"),
-        "phoneNotFilledWarn": MessageLookupByLibrary.simpleMessage(
-            "Telefone celular não preenchido."),
+        "notificationsTitle": MessageLookupByLibrary.simpleMessage(
+            "Means of notification about activities:"),
         "planPriceSponsorSchema": m13,
         "planSponsorSchema": m14,
+        "presenceValidateTitle":
+            MessageLookupByLibrary.simpleMessage("Presence Validate"),
         "queueExitAlert": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to exit the queue?"),
         "queueTitle": MessageLookupByLibrary.simpleMessage("Na fila"),
@@ -420,6 +427,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "returnLogin": MessageLookupByLibrary.simpleMessage("Return to login"),
         "saveTitle": MessageLookupByLibrary.simpleMessage("Save"),
+        "scheduleActivityWarning": MessageLookupByLibrary.simpleMessage(
+            "Keep in mind of your schedules and activities that you have already signed up for!"),
         "scheduleAddTitle":
             MessageLookupByLibrary.simpleMessage("Add Schedule"),
         "scheduleTitle": MessageLookupByLibrary.simpleMessage("Schedule"),
@@ -431,12 +440,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("May 22 to 27, 2023"),
         "speakersAddTitle": MessageLookupByLibrary.simpleMessage("Add Speaker"),
+        "speakersMainTitle":
+            MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),
         "speakersSchemaDescription": m16,
         "speakersSchemaName": m17,
         "speakersSwipe":
             MessageLookupByLibrary.simpleMessage("SWIPE TO SEE MORE >>>"),
-        "speakersTitle":
-            MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),
+        "speakersTitle": MessageLookupByLibrary.simpleMessage("Speakers"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Sponsors"),
         "subcribeTitle": MessageLookupByLibrary.simpleMessage("Subscribe"),
         "subscribeAlert": MessageLookupByLibrary.simpleMessage(
@@ -445,6 +455,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Pay attention to your schedules and activities that you have already subscribed for!"),
         "subscribeSlotsSoldOut": MessageLookupByLibrary.simpleMessage(
             "It seems that the number of vacancies for the activity has sold out :("),
+        "subscribeVerification": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you wanna subscribe?"),
         "subscribedTitle": MessageLookupByLibrary.simpleMessage("Subscribed"),
         "successChangePassword": MessageLookupByLibrary.simpleMessage(
             "Password changed successfully!"),
@@ -459,15 +471,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "successSendingSponsorEmail": MessageLookupByLibrary.simpleMessage(
             "Sent with success!! Our team will contact you shortly."),
         "termination": MessageLookupByLibrary.simpleMessage("Termination"),
+        "unavailabeActivityRegistration": MessageLookupByLibrary.simpleMessage(
+            "Registration unavailabe for this activity!"),
+        "unavailabeSubscribe": MessageLookupByLibrary.simpleMessage(
+            "The registration for this activity is unavailabe!"),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Unsubscribe"),
         "unsubscribeAcceptingNewEnrollments":
             MessageLookupByLibrary.simpleMessage(
                 "You will be able to subscribe again"),
         "unsubscribeAlert": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to unsubscribe?"),
+        "unsubscribeLoseVanacy": MessageLookupByLibrary.simpleMessage(
+            "You will lose your vacancy by continuing!"),
         "unsubscribeNotAcceptingNewEnrollments":
             MessageLookupByLibrary.simpleMessage(
                 "Caution: subscriptions for this activity closed, you will not be able to subscribe again"),
+        "unsubscribeVerification": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you wanna unsubscribe?"),
+        "unsubscribeVerificationClosedRegistration":
+            MessageLookupByLibrary.simpleMessage(
+                "Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!"),
         "userRolesNameSchema": m18,
         "yesTitle": MessageLookupByLibrary.simpleMessage("Yes")
       };

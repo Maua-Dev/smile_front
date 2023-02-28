@@ -165,7 +165,8 @@ class _UserDashboardPageState
                             Modular.to.navigate(
                               '/user/home/more-info',
                               arguments: controller
-                                  .subscribedActivitiesOnScreen[index],
+                                  .subscribedActivitiesOnScreen[index]
+                                  .activityCode,
                             );
                             controller.analytics.logViewActivity(controller
                                 .subscribedActivitiesOnScreen[index]
