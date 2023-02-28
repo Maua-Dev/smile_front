@@ -31,7 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m1(activity) => "${Intl.select(activity, {
-            'COURSE':
+            'COURSES':
                 'Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.',
             'LECTURES':
                 'As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.',
@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m2(activity) => "${Intl.select(activity, {
-            'COURSE': 'Cursos',
+            'COURSES': 'Cursos',
             'LECTURES': 'Palestras',
             'HIGH_IMPACT_LECTURES': 'Palestras de Alto Impacto',
             'TECHNICAL_VISITS': 'Visitas Técnicas',
