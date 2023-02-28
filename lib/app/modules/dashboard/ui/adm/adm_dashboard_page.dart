@@ -70,7 +70,7 @@ class _AdmDashboardPageState
                         height: MediaQuery.of(context).size.height - 268,
                         child: ListView.builder(
                           itemCount: controller.activitiesList.length,
-                          itemBuilder: +
+                          itemBuilder: (BuildContext context, int index) {
                             String date = DateFormat('dd/MM/yyyy').format(
                                 controller.activitiesList[index].startDate!);
                             String time = DateFormat('HH:mm').format(

@@ -1694,11 +1694,11 @@ class S {
     );
   }
 
-  /// `Name`
-  String get nameTitle {
+  /// `Names`
+  String get namesTitle {
     return Intl.message(
-      'Name',
-      name: 'nameTitle',
+      'Names',
+      name: 'namesTitle',
       desc: '',
       args: [],
     );
