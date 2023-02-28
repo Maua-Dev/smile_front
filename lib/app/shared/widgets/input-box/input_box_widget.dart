@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
+import 'package:smile_front/app/shared/utils/screen_helper.dart';
 
 class InputBoxWidget extends StatelessWidget {
   final IconData icon;
@@ -93,7 +95,7 @@ class InputBoxWidget extends StatelessWidget {
                 hintStyle: TextStyle(color: letterColor ?? AppColors.gray),
                 errorStyle: TextStyle(
                   color: AppColors.brandingOrange,
-                  fontSize: 16,
+                  fontSize: Screen.width(context) < breakpointLMobile ? 14 : 16,
                   height: 1,
                 ),
                 prefixIcon: Icon(
