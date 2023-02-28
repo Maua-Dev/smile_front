@@ -410,16 +410,6 @@ class S {
     );
   }
 
-  /// `Discount`
-  String get beSponsorDiscount {
-    return Intl.message(
-      'Discount',
-      name: 'beSponsorDiscount',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `SPONSORSHIP INFORMATION`
   String get beSponsorMoreInfoTitle {
     return Intl.message(
@@ -440,61 +430,11 @@ class S {
     );
   }
 
-  /// `2023`
-  String get year2023 {
-    return Intl.message(
-      '2023',
-      name: 'year2023',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Date`
   String get dateTitle {
     return Intl.message(
       'Date',
       name: 'dateTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `February`
-  String get monthFebruary {
-    return Intl.message(
-      'February',
-      name: 'monthFebruary',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `January`
-  String get monthJanuary {
-    return Intl.message(
-      'January',
-      name: 'monthJanuary',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `10% Off`
-  String get discount10 {
-    return Intl.message(
-      '10% Off',
-      name: 'discount10',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `20% Off`
-  String get discount20 {
-    return Intl.message(
-      '20% Off',
-      name: 'discount20',
       desc: '',
       args: [],
     );

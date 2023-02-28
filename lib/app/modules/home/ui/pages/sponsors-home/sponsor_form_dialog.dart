@@ -108,24 +108,6 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
         }),
       ),
     ];
-    var optionsClosureDate = [
-      RadioListTile<String>(
-        title: const Text('Janeiro de 2023 (20% de desconto)'),
-        value: 'Janeiro de 2023 (20% de desconto)',
-        groupValue: formSponsorModel.closureDate,
-        onChanged: (value) => setState(() {
-          formSponsorModel = formSponsorModel.copyWith(closureDate: value);
-        }),
-      ),
-      RadioListTile<String>(
-        title: const Text('Fevereiro de 2023 (10% de desconto)'),
-        value: 'Fevereiro de 2023 (10% de desconto)',
-        groupValue: formSponsorModel.closureDate,
-        onChanged: (value) => setState(() {
-          formSponsorModel = formSponsorModel.copyWith(closureDate: value);
-        }),
-      ),
-    ];
     return AlertDialog(
       content: Form(
         key: formKey,
@@ -308,31 +290,6 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
                             Expanded(child: optionsSponsorType[3])
                           ],
                         )
-                      ],
-                    ),
-              const SizedBox(
-                height: 16,
-              ),
-              const Text('Deseja Realizar o fechamento do patrocínio em'),
-              const SizedBox(
-                height: 16,
-              ),
-              MediaQuery.of(context).size.width < 530
-                  ? Column(
-                      children: optionsClosureDate,
-                    )
-                  : Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [Expanded(child: optionsClosureDate[0])],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(child: optionsClosureDate[1]),
-                          ],
-                        ),
                       ],
                     ),
             ],

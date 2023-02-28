@@ -262,7 +262,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Reports"),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
             "SMILE brings an opportunity for partnership and integration between the labor market and academia. Become an event Sponsor and find out about the benefits and opportunities that SMILE offers. In this edition, 4 types of sponsorship quotas are available: Diamond, Gold, Silver and Bronze. In addition, when closing the sponsorship in advance, there will be a progressive discount on the quotas. Information about quotas and benefits is below."),
-        "beSponsorDiscount": MessageLookupByLibrary.simpleMessage("Discount"),
         "beSponsorMoreInfoDescription": MessageLookupByLibrary.simpleMessage(
             "If you are interested in sponsoring the event, click here for more information."),
         "beSponsorMoreInfoTitle":
@@ -294,8 +293,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to continue?"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Date"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
-        "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
-        "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
         "drawerActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Activities"),
         "drawerCertificatesButton":
@@ -377,8 +374,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "mauaEntitiesSchemaSocialMidia": m11,
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
             "Entities Participating in Smile"),
-        "monthFebruary": MessageLookupByLibrary.simpleMessage("February"),
-        "monthJanuary": MessageLookupByLibrary.simpleMessage("January"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Looks like you haven\'t signed up for any activities yet :("),
         "noResponsibleActivitiesText": MessageLookupByLibrary.simpleMessage(
@@ -472,7 +467,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Caution: subscriptions for this activity closed, you will not be able to subscribe again"),
         "userRolesNameSchema": m18,
-        "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }
