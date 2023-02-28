@@ -91,6 +91,9 @@ abstract class RegisterControllerBase with Store {
   bool isPhoneFieldFilled = false;
 
   @observable
+  String phoneValue = '';
+
+  @observable
   CountryCode? countryCode =
       const CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
 
@@ -115,7 +118,7 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setSMSNotifications(bool? value) async {
-    if (phone.length > 3) {
+    if (phoneValue.isNotEmpty) {
       acceptSMSNotifications = value!;
     }
   }
@@ -165,6 +168,7 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
+    phoneValue = value;
     phone = '${countryCode?.dialCode}$value';
     if (countryCode?.code == "BR") {
       phone = phone.replaceAll('(', '');
@@ -174,6 +178,9 @@ abstract class RegisterControllerBase with Store {
     }
     if (value.isNotEmpty) {
       isPhoneFieldFilled = true;
+    } else {
+      isPhoneFieldFilled = false;
+      acceptSMSNotifications = false;
     }
   }
 

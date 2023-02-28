@@ -1104,6 +1104,16 @@ class S {
     );
   }
 
+  /// `Fill in your cell phone to enable sms notifications!`
+  String get notificationsSmsAlert {
+    return Intl.message(
+      'Fill in your cell phone to enable sms notifications!',
+      name: 'notificationsSmsAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Register`
   String get registerTitle {
     return Intl.message(
