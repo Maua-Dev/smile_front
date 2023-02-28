@@ -84,7 +84,6 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         stopAcceptingNewEnrollmentsBefore: allActivitiesWithEnrollments[index]
             .stopAcceptingNewEnrollmentsBefore,
         enrollments: EnrollmentsModel(
-          acceptingNewEnrollments: requestDone.acceptingNewEnrollments,
           state: requestDone.state,
           dateSubscribed: requestDone.dateSubscribed,
         ),

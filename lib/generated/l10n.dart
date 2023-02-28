@@ -1694,6 +1694,16 @@ class S {
     );
   }
 
+  /// `Name`
+  String get nameTitle {
+    return Intl.message(
+      'Name',
+      name: 'nameTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Yes`
   String get yesTitle {
     return Intl.message(

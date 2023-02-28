@@ -70,7 +70,7 @@ class _AdmDashboardPageState
                         height: MediaQuery.of(context).size.height - 268,
                         child: ListView.builder(
                           itemCount: controller.activitiesList.length,
-                          itemBuilder: (BuildContext context, int index) {
+                          itemBuilder: +
                             String date = DateFormat('dd/MM/yyyy').format(
                                 controller.activitiesList[index].startDate!);
                             String time = DateFormat('HH:mm').format(
@@ -82,6 +82,8 @@ class _AdmDashboardPageState
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
                                 return ActivitiesCardWidget(
+                                  enrollments: controller
+                                      .activitiesList[index].enrollments,
                                   isExtensive: controller
                                       .activitiesList[index].isExtensive,
                                   activityCode: controller

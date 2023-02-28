@@ -379,6 +379,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Entities Participating in Smile"),
         "monthFebruary": MessageLookupByLibrary.simpleMessage("February"),
         "monthJanuary": MessageLookupByLibrary.simpleMessage("January"),
+        "nameTitle": MessageLookupByLibrary.simpleMessage("Name"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Looks like you haven\'t signed up for any activities yet :("),
         "noResponsibleActivitiesText": MessageLookupByLibrary.simpleMessage(

@@ -1,7 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/subscriber_list_dialog/subscriber_list_dialog.dart';
 
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/subscriber_list_dialog/subscriber_list_dialog.dart';
+import 'package:smile_front/app/shared/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
@@ -12,6 +13,7 @@ class ActivitiesCardWidget extends StatelessWidget {
   final String date;
   final String time;
   final String finalTime;
+  final List<EnrollmentsModel> enrollments;
   final int enrolledUsersLength;
   final int totalParticipants;
   final bool isExtensive;
@@ -25,9 +27,10 @@ class ActivitiesCardWidget extends StatelessWidget {
     required this.date,
     required this.time,
     required this.finalTime,
-    required this.isExtensive,
+    required this.enrollments,
     required this.enrolledUsersLength,
     required this.totalParticipants,
+    required this.isExtensive,
     required this.onPressedEdit,
     required this.onPressedDelete,
   }) : super(key: key);
@@ -152,6 +155,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                     isExtensive: isExtensive,
                                     participants:
                                         '$enrolledUsersLength/$totalParticipants',
+                                    enrollments: enrollments,
                                   );
                                 });
                           },

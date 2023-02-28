@@ -1,15 +1,20 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/shared/models/enrollments_model.dart';
 
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 class SubscriberListDialog extends StatelessWidget {
   final String activityTitle;
   final bool isExtensive;
+  final List<EnrollmentsModel> enrollments;
   final String participants;
+
   const SubscriberListDialog({
     Key? key,
+    required this.enrollments,
     required this.activityTitle,
     required this.isExtensive,
     required this.participants,
@@ -86,6 +91,50 @@ class SubscriberListDialog extends StatelessWidget {
                 ],
               ),
             ),
+          ],
+        ),
+        const SizedBox(
+          height: 50,
+        ),
+        Column(
+          children: [
+            Text(
+              S.of(context).nameTitle,
+              style: AppTextStyles.bold
+                  .copyWith(color: Colors.black, fontSize: 20),
+            ),
+            SizedBox(
+              width: 556,
+              child: Divider(
+                thickness: 2,
+                color: AppColors.brandingBlue,
+              ),
+            ),
+            ListView.builder(
+              itemCount: enrollments.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Row(
+                  children: [
+                    IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.do_not_disturb_on_total_silence_outlined,
+                          color: AppColors.redButton,
+                        )),
+                    Text(enrollments[index].user!.name,
+                        style: AppTextStyles.bold
+                            .copyWith(color: Colors.black, fontSize: 30))
+                  ],
+                );
+              },
+            ),
+            SizedBox(
+              width: 556,
+              child: Divider(
+                thickness: 2,
+                color: AppColors.brandingBlue,
+              ),
+            )
           ],
         )
       ]),

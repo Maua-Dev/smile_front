@@ -1,3 +1,4 @@
+
 import '../entities/infra/user_roles_enum.dart';
 
 class UserEnrollModel {
@@ -13,5 +14,9 @@ class UserEnrollModel {
         name: map['name'],
         userId: map['user_id'],
         role: UserRolesEnumExtension.stringToEnumMap(map['role']));
+  }
+
+  factory UserEnrollModel.newInstance() {
+    return UserEnrollModel(name: '', userId: '', role: UserRolesEnum.ADMIN);
   }
 }
