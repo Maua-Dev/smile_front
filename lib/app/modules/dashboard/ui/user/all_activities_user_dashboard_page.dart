@@ -141,6 +141,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                         },
                         isExtensive:
                             controller.activitiesOnScreen[index].isExtensive,
+                        date: controller.activitiesOnScreen[index].startDate!,
                       );
                     });
                   },

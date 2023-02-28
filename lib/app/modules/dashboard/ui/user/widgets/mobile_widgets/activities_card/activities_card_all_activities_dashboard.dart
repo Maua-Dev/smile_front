@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -22,6 +23,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final bool isExtensive;
   final int takenSlots;
   final int totalSlots;
+  final DateTime date;
 
   const ActivitiesCardAllActivitiesDashboard(
       {Key? key,
@@ -37,11 +39,13 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
       required this.isExtensive,
       required this.totalSlots,
       this.onPressedSubscribe,
-      this.onPressedUnsubscribe})
+      this.onPressedUnsubscribe,
+      required this.date})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String formattedDate = DateFormat('dd/MM').format(date);
     return GestureDetector(
       onTap: onTap,
       child: Column(
@@ -140,14 +144,36 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                 ? 12
                                                 : 24,
                                         color: Colors.black)),
-                                Text('${S.of(context).local}: $location',
-                                    style: AppTextStyles.bold.copyWith(
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
+                                Row(
+                                  children: [
+                                    Text('${S.of(context).local}: $location',
+                                        style: AppTextStyles.bold.copyWith(
+                                            fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width <
                                                     breakpointTablet
                                                 ? 12
                                                 : 24,
-                                        color: Colors.black)),
+                                            color: Colors.black)),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width <
+                                              breakpointTablet
+                                          ? 16
+                                          : 64,
+                                    ),
+                                    Text(
+                                      'Data: $formattedDate',
+                                      style: AppTextStyles.bold.copyWith(
+                                          fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  breakpointTablet
+                                              ? 12
+                                              : 24,
+                                          color: Colors.black),
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                             SizedBox(

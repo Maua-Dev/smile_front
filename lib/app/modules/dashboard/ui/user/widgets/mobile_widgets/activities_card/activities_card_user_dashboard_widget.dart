@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
@@ -13,6 +14,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
   final bool isLoading;
   final Color? mainColor;
   final bool isExtensive;
+  final DateTime date;
   const MobileActivitiesCardUserDashboard({
     Key? key,
     required this.title,
@@ -23,10 +25,12 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
     required this.location,
     this.mainColor,
     required this.isExtensive,
+    required this.date,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String formattedDate = DateFormat('dd/MM').format(date);
     return GestureDetector(
       onTap: onTap,
       child: Column(
@@ -124,14 +128,34 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                                             ? 12
                                             : 24,
                                     color: Colors.black)),
-                            Text('${S.of(context).local}: $location',
-                                style: AppTextStyles.bold.copyWith(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width <
-                                                breakpointTablet
-                                            ? 12
-                                            : 24,
-                                    color: Colors.black)),
+                            Row(
+                              children: [
+                                Text('${S.of(context).local}: $location',
+                                    style: AppTextStyles.bold.copyWith(
+                                        fontSize:
+                                            MediaQuery.of(context).size.width <
+                                                    breakpointTablet
+                                                ? 12
+                                                : 24,
+                                        color: Colors.black)),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width <
+                                          breakpointTablet
+                                      ? 16
+                                      : 64,
+                                ),
+                                Text(
+                                  'Data: $formattedDate',
+                                  style: AppTextStyles.bold.copyWith(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  breakpointTablet
+                                              ? 12
+                                              : 24,
+                                      color: Colors.black),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ])
