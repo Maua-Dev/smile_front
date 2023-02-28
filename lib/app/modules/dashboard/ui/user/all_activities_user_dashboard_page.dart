@@ -7,7 +7,6 @@ import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../shared/entities/screen_variables.dart';
 import '../../../../shared/themes/breakpoint.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';

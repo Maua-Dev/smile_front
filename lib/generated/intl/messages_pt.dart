@@ -297,7 +297,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmToContinue": MessageLookupByLibrary.simpleMessage(
             "Tem certeza que deseja continuar?"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Data"),
-        "dayTitle": MessageLookupByLibrary.simpleMessage("Dia"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Descrição"),
         "drawerActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Atividades"),

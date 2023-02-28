@@ -298,7 +298,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmToContinue": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to continue?"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Date"),
-        "dayTitle": MessageLookupByLibrary.simpleMessage("Day"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "drawerActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Activities"),
@@ -362,7 +361,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Extension Activity"),
         "knowMore": MessageLookupByLibrary.simpleMessage("KNOW MORE >>>"),
         "local": MessageLookupByLibrary.simpleMessage("Local"),
-        "localTitle": MessageLookupByLibrary.simpleMessage("Local"),
+        "localTitle": MessageLookupByLibrary.simpleMessage("Locati   on"),
         "loginForgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Forgot my password"),
         "loginPasswordPlaceholder":

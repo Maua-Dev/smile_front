@@ -190,6 +190,8 @@
     "drawerHelpButton": "Help",
     "drawerProfileButton": "Profile",
 
+    "localTitle": "Locati   on",
+
 
     "noActivitiesEnrolledText": "Looks like you haven't signed up for any activities yet :(",
     "noResponsibleActivitiesText": "Looks like you are not responsible for any activity :(",
@@ -208,6 +210,6 @@
     "availabeSpotUnsuficient": "It seems that the number of vacancies for this activity has run out :(",
     "scheduleActivityWarning": "Keep in mind of your schedules and activities that you have already signed up for!",
     "alreadySubscribedOnThisPeriodWarning": "It seems you are already subscribed on another activity at this period.",
-    "unavailabeSubscribe": "The registration for this activity is unavailabe!",
+    "unavailabeSubscribe": "The registration for this activity is unavailabe!"
 
 }

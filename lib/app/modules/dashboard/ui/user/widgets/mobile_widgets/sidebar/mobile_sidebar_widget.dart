@@ -53,7 +53,6 @@ class DrawerDashboardWidget extends StatelessWidget {
           itemCount: isProfessor ? professorOptions.length : userOptions.length,
           itemBuilder: (BuildContext context, int index) {
             return SideBarContents(
-              notDisplay: true,
               title: isProfessor ? professorOptions[index] : userOptions[index],
               route: isProfessor ? professorRoutes[index] : userRoutes[index],
             );
@@ -65,18 +64,20 @@ class DrawerDashboardWidget extends StatelessWidget {
 }
 
 class SideBarContents extends StatelessWidget {
-  final bool? notDisplay;
   final String title;
   final String route;
-  const SideBarContents(
-      {super.key, required this.title, required this.route, this.notDisplay});
+  const SideBarContents({
+    super.key,
+    required this.title,
+    required this.route,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: GestureDetector(
-        onTap: notDisplay != null
+        onTap: route.contains('certificate')
             ? () {
                 showDialog(
                   context: context,

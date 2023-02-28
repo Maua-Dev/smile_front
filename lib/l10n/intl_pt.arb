@@ -192,6 +192,8 @@
     "drawerHelpButton": "Ajuda",
     "drawerProfileButton": "Perfil",
 
+    "localTitle": "Local",
+
 
     "noActivitiesEnrolledText": "Parece que você ainda não se inscreveu em nenhuma atividade :(",
     "noResponsibleActivitiesText": "Parece que você não é responsável por nenhuma atividade :(",
@@ -211,4 +213,5 @@
     "scheduleActivityWarning": "Se atente aos seus horários e atividades que você já se inscreveu!",
     "alreadySubscribedOnThisPeriodWarning": "Parece que você já se inscreveu em uma atividade no mesmo horário.",
     "unavailabeSubscribe": "Inscrição para a atividade indisponível!"
+
 }
