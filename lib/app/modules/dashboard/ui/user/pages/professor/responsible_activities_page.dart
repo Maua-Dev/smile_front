@@ -115,6 +115,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
                         var hour = DateFormat('HH:mm').format(controller
                             .allResponsibleActivities[index].startDate!);
                         return MobileActivitiesCardUserDashboard(
+                          date: controller.activitiesToShow[index].startDate!,
                           isExtensive:
                               controller.activitiesToShow[index].isExtensive,
                           mainColor: AppColors.brandingOrange,

@@ -136,7 +136,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('${S.of(context).termination}: $finalTime',
+                                Text(
+                                    location == null || location == ''
+                                        ? '${S.of(context).local}: Online'
+                                        : '${S.of(context).termination}: $finalTime',
                                     style: AppTextStyles.bold.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <

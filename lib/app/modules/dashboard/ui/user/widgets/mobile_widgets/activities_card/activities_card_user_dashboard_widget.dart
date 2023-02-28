@@ -130,7 +130,10 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                                     color: Colors.black)),
                             Row(
                               children: [
-                                Text('${S.of(context).local}: $location',
+                                Text(
+                                    location == null || location == ''
+                                        ? '${S.of(context).local}: Online'
+                                        : '${S.of(context).local}: $location',
                                     style: AppTextStyles.bold.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <

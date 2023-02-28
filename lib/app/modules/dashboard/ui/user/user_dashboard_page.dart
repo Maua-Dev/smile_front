@@ -10,7 +10,6 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../shared/utils/screen_helper.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
