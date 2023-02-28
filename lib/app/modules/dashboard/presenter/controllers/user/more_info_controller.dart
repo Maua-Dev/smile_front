@@ -1,5 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/utils/utils.dart';
@@ -28,7 +29,22 @@ abstract class MoreInfoControllerBase with Store {
   @action
   void getActivity() {
     activity = enrollmentController.allActivitiesWithEnrollments
-        .firstWhere((element) => element.activityCode == activityCode);
+        .firstWhere((element) => element.activityCode == activityCode,
+            orElse: () => EnrollsActivityModel(
+                  description: '',
+                  activityCode: '',
+                  title: '',
+                  type: null,
+                  speakers: [SpeakerActivityModel.newInstance()],
+                  duration: 0,
+                  isExtensive: false,
+                  startDate: DateTime.now(),
+                  deliveryEnum: null,
+                  acceptingNewEnrollments: false,
+                  responsibleProfessors: [],
+                  takenSlots: 0,
+                  totalSlots: 0,
+                ));
   }
 
   @action
