@@ -21,10 +21,10 @@ class RegisterButtonWidget extends StatelessWidget {
     return ElevatedButton(
         style: ButtonStyle(
             padding: MaterialStateProperty.all(
-                const EdgeInsets.symmetric(vertical: 12, horizontal: 64)),
+                const EdgeInsets.symmetric(vertical: 12, horizontal: 8)),
             elevation: MaterialStateProperty.all(20),
             backgroundColor: MaterialStateProperty.all(
-              isRegistered != EnrollmentStateEnum.ENROLLED
+              isRegistered == EnrollmentStateEnum.ENROLLED
                   ? AppColors.redButton
                   : AppColors.brandingBlue,
             ),
@@ -43,9 +43,9 @@ class RegisterButtonWidget extends StatelessWidget {
                     : S.of(context).signUp,
                 style: AppTextStyles.buttonBold.copyWith(
                     fontSize: MediaQuery.of(context).size.width < 500
-                        ? 20
+                        ? 16
                         : MediaQuery.of(context).size.width < 1000
-                            ? 24
+                            ? 18
                             : 28,
                     color: Colors.white)));
   }

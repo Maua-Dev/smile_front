@@ -5,6 +5,7 @@ import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../../shared/utils/screen_helper.dart';
+import '../../../../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 
 class DrawerDashboardWidget extends StatelessWidget {
   DrawerDashboardWidget({super.key, required this.isProfessor});
@@ -58,6 +59,7 @@ class DrawerDashboardWidget extends StatelessWidget {
           itemCount: isProfessor ? professorOptions.length : userOptions.length,
           itemBuilder: (BuildContext context, int index) {
             return SideBarContents(
+              notDisplay: true,
               title: isProfessor ? professorOptions[index] : userOptions[index],
               route: isProfessor ? professorRoutes[index] : userRoutes[index],
             );
@@ -69,8 +71,9 @@ class DrawerDashboardWidget extends StatelessWidget {
 }
 
 class SideBarContents extends StatelessWidget {
-  const SideBarContents({super.key, required this.title, required this.route});
-
+  const SideBarContents(
+      {super.key, required this.title, required this.route, this.notDisplay});
+  final bool? notDisplay;
   final String title;
   final String route;
 
@@ -79,10 +82,21 @@ class SideBarContents extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: GestureDetector(
-        onTap: () async {
-          Modular.to.navigate(route);
-          Scaffold.of(context).closeDrawer();
-        },
+        onTap: notDisplay != null
+            ? () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const CustomAlertDialogWidget(
+                      title: 'Funcionalidade disponível em breve',
+                    );
+                  },
+                );
+              }
+            : () async {
+                Modular.to.navigate(route);
+                Scaffold.of(context).closeDrawer();
+              },
         child: Container(
           decoration:
               BoxDecoration(color: AppColors.brandingBlue, boxShadow: const [

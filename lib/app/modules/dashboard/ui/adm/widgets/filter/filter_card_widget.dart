@@ -108,7 +108,7 @@ class FilterCardWidget extends StatelessWidget {
                             onPressed: () {
                               showDatePicker(
                                   context: context,
-                                  initialDate: DateTime.utc(2022, 5, 16),
+                                  initialDate: DateTime.now(),
                                   firstDate: DateTime(2022),
                                   lastDate: DateTime(2024),
                                   builder: ((context, child) {
@@ -150,7 +150,7 @@ class FilterCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 4.0),
                             child: Text(
                                 formattedHour == ''
-                                    ? S.of(context).scheduleTitle
+                                    ? S.of(context).hourTitle
                                     : formattedHour,
                                 style: AppTextStyles.body.copyWith(
                                     fontSize: formattedHour == '' ? 25 : 16)),
