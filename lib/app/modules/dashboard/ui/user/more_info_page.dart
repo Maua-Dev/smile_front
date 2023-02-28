@@ -69,7 +69,7 @@ class _MoreInfoPageState
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(S.of(context).dayTitle,
+                            Text(S.of(context).dateTitle,
                                 style: AppTextStyles.bold.copyWith(
                                     color: AppColors.white, fontSize: 12)),
                             Text(

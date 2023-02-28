@@ -420,16 +420,6 @@ class S {
     );
   }
 
-  /// `Discount`
-  String get beSponsorDiscount {
-    return Intl.message(
-      'Discount',
-      name: 'beSponsorDiscount',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `SPONSORSHIP INFORMATION`
   String get beSponsorMoreInfoTitle {
     return Intl.message(
@@ -450,71 +440,11 @@ class S {
     );
   }
 
-  /// `2023`
-  String get year2023 {
-    return Intl.message(
-      '2023',
-      name: 'year2023',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Date`
   String get dateTitle {
     return Intl.message(
       'Date',
       name: 'dateTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Day`
-  String get dayTitle {
-    return Intl.message(
-      'Day',
-      name: 'dayTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `February`
-  String get monthFebruary {
-    return Intl.message(
-      'February',
-      name: 'monthFebruary',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `January`
-  String get monthJanuary {
-    return Intl.message(
-      'January',
-      name: 'monthJanuary',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `10% Off`
-  String get discount10 {
-    return Intl.message(
-      '10% Off',
-      name: 'discount10',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `20% Off`
-  String get discount20 {
-    return Intl.message(
-      '20% Off',
-      name: 'discount20',
       desc: '',
       args: [],
     );
@@ -1644,10 +1574,80 @@ class S {
     );
   }
 
-  /// `Local`
+  /// `Extension Activity`
+  String get isExtensiveTooltip {
+    return Intl.message(
+      'Extension Activity',
+      name: 'isExtensiveTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get drawerHomeButton {
+    return Intl.message(
+      'Home',
+      name: 'drawerHomeButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activities`
+  String get drawerActivitiesButton {
+    return Intl.message(
+      'Activities',
+      name: 'drawerActivitiesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible Activities`
+  String get drawerResponsibleActivitiesButton {
+    return Intl.message(
+      'Responsible Activities',
+      name: 'drawerResponsibleActivitiesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Certificates`
+  String get drawerCertificatesButton {
+    return Intl.message(
+      'Certificates',
+      name: 'drawerCertificatesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help`
+  String get drawerHelpButton {
+    return Intl.message(
+      'Help',
+      name: 'drawerHelpButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get drawerProfileButton {
+    return Intl.message(
+      'Profile',
+      name: 'drawerProfileButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Locati   on`
   String get localTitle {
     return Intl.message(
-      'Local',
+      'Locati   on',
       name: 'localTitle',
       desc: '',
       args: [],
@@ -1781,66 +1781,6 @@ class S {
     return Intl.message(
       'The registration for this activity is unavailabe!',
       name: 'unavailabeSubscribe',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Activities`
-  String get drawerActivitiesButton {
-    return Intl.message(
-      'Activities',
-      name: 'drawerActivitiesButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Certificates`
-  String get drawerCertificatesButton {
-    return Intl.message(
-      'Certificates',
-      name: 'drawerCertificatesButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Help`
-  String get drawerHelpButton {
-    return Intl.message(
-      'Help',
-      name: 'drawerHelpButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Home`
-  String get drawerHomeButton {
-    return Intl.message(
-      'Home',
-      name: 'drawerHomeButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Profile`
-  String get drawerProfileButton {
-    return Intl.message(
-      'Profile',
-      name: 'drawerProfileButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Responsible Activities`
-  String get drawerResponsibleActivitiesButton {
-    return Intl.message(
-      'Responsible Activities',
-      name: 'drawerResponsibleActivitiesButton',
       desc: '',
       args: [],
     );

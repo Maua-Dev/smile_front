@@ -176,75 +176,6 @@ class BeSponsor extends StatelessWidget {
           const SizedBox(
             height: 24,
           ),
-          Container(
-            padding: const EdgeInsets.all(16),
-            constraints: const BoxConstraints(maxWidth: 700),
-            decoration: BoxDecoration(
-                border: Border.all(color: AppColors.brandingBlue, width: 4),
-                borderRadius: BorderRadius.circular(18)),
-            child: Column(
-              children: [
-                Text(
-                  S.of(context).beSponsorDiscount.toUpperCase(),
-                  style: const TextStyle(fontSize: 24),
-                ),
-                MediaQuery.of(context).size.width < 530
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            children: [
-                              Text(S.of(context).year2023),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
-                                month: S.of(context).monthJanuary,
-                                discount: S.of(context).discount20,
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
-                                month: S.of(context).monthFebruary,
-                                discount: S.of(context).discount10,
-                              )
-                            ],
-                          ),
-                        ],
-                      )
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            children: [
-                              Text(S.of(context).year2023),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
-                                month: S.of(context).monthJanuary,
-                                discount: S.of(context).discount20,
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              CardDiscount(
-                                month: S.of(context).monthFebruary,
-                                discount: S.of(context).discount10,
-                              )
-                            ],
-                          ),
-                        ],
-                      )
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
           MediaQuery.of(context).size.width < 530
               ? ListView.separated(
                   physics: const NeverScrollableScrollPhysics(),
@@ -269,7 +200,6 @@ class BeSponsor extends StatelessWidget {
                   ),
                 ),
           Container(
-            // constraints: BoxConstraints(maxWidth: 700),
             padding: EdgeInsets.all(
                 MediaQuery.of(context).size.width < 530 ? 18 : 32),
             child: MediaQuery.of(context).size.width < 710

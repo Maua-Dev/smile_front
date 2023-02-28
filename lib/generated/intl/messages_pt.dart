@@ -31,7 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m1(activity) => "${Intl.select(activity, {
-            'COURSE':
+            'COURSES':
                 'Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.',
             'LECTURES':
                 'As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.',
@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m2(activity) => "${Intl.select(activity, {
-            'COURSE': 'Cursos',
+            'COURSES': 'Cursos',
             'LECTURES': 'Palestras',
             'HIGH_IMPACT_LECTURES': 'Palestras de Alto Impacto',
             'TECHNICAL_VISITS': 'Visitas Técnicas',
@@ -266,7 +266,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Parece que o número de vagas da atividade se esgotou :("),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
             "A SMILE traz uma oportunidade de parceria e integração entre o mercado de trabalho e o meio acadêmico. Venha ser Patrocinador do evento e conheça os benefícios e oportunidades que a SMILE oferece. Nessa edição, estão disponibilizadas 4 tipos de cotas de patrocínio: Diamante, Ouro, Prata e Bronze. Além disso, ao fechar o patrocínio com antecedência, haverá desconto progressivo nas cotas. As informações sobre os cotas e benefícios estão a seguir."),
-        "beSponsorDiscount": MessageLookupByLibrary.simpleMessage("Descontos"),
         "beSponsorMoreInfoDescription": MessageLookupByLibrary.simpleMessage(
             "Caso tenha interesse em patrocinar o evento, clique aqui para mais informações."),
         "beSponsorMoreInfoTitle": MessageLookupByLibrary.simpleMessage(
@@ -298,10 +297,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmToContinue": MessageLookupByLibrary.simpleMessage(
             "Tem certeza que deseja continuar?"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Data"),
-        "dayTitle": MessageLookupByLibrary.simpleMessage("Dia"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Descrição"),
-        "discount10": MessageLookupByLibrary.simpleMessage("10% Off"),
-        "discount20": MessageLookupByLibrary.simpleMessage("20% Off"),
         "drawerActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Atividades"),
         "drawerCertificatesButton":
@@ -362,6 +358,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "initTitle": MessageLookupByLibrary.simpleMessage("Início"),
         "insertPasswordCodeInstructions": MessageLookupByLibrary.simpleMessage(
             "Insira sua nova senha e o codigo enviado para o seu e-mail:"),
+        "isExtensiveTooltip":
+            MessageLookupByLibrary.simpleMessage("Atividade Extensionista"),
         "knowMore": MessageLookupByLibrary.simpleMessage("SAIBA MAIS >>>"),
         "local": MessageLookupByLibrary.simpleMessage("Local"),
         "localTitle": MessageLookupByLibrary.simpleMessage("Local"),
@@ -387,8 +385,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "mauaEntitiesSchemaSocialMidia": m11,
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
             "Entidades Participantes da Smile"),
-        "monthFebruary": MessageLookupByLibrary.simpleMessage("Fevereiro"),
-        "monthJanuary": MessageLookupByLibrary.simpleMessage("Janeiro"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Parece que você ainda não se inscreveu em nenhuma atividade :("),
         "noResponsibleActivitiesText": MessageLookupByLibrary.simpleMessage(
@@ -497,7 +493,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!"),
         "userRolesNameSchema": m18,
-        "year2023": MessageLookupByLibrary.simpleMessage("2023"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Sim")
       };
 }

@@ -6,6 +6,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
+import '../../../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 
 class VerticalNavBarWidget extends StatelessWidget {
   final String? accessLevel;
@@ -81,7 +82,14 @@ class VerticalNavBarWidget extends StatelessWidget {
                     myIndex: 4,
                     onPressed: () async {
                       await controller.toggleIndex(4);
-                      Modular.to.navigate('/user/home/certificate');
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const CustomAlertDialogWidget(
+                            title: 'Funcionalidade disponível em breve',
+                          );
+                        },
+                      );
                     },
                     icon: Icons.assignment,
                   ),
@@ -145,7 +153,14 @@ class VerticalNavBarWidget extends StatelessWidget {
                     myIndex: 3,
                     onPressed: () async {
                       await controller.toggleIndex(3);
-                      Modular.to.navigate('/user/home/certificate');
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const CustomAlertDialogWidget(
+                            title: 'Funcionalidade disponível em breve',
+                          );
+                        },
+                      );
                     },
                     icon: Icons.assignment,
                   ),
