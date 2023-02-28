@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/subscriber_list_dialog/subscriber_list_dialog.dart';
 
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -139,17 +140,58 @@ class ActivitiesCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.person,
-                            size: 33,
-                            color: AppColors.white,
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return SubscriberListDialog(
+                                    activityTitle: '$activityCode - $title',
+                                    isExtensive: isExtensive,
+                                    participants:
+                                        '$enrolledUsersLength/$totalParticipants',
+                                  );
+                                });
+                          },
+                          child: Container(
+                            width: 147,
+                            height: 44,
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.4),
+                                  spreadRadius: 0.5,
+                                  blurRadius: 3,
+                                  offset: const Offset(
+                                      5, 5), // changes position of shadow
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(15),
+                              color: const Color.fromARGB(255, 46, 66, 138),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.person,
+                                  size: 33,
+                                  color: AppColors.white,
+                                ),
+                                Text('$enrolledUsersLength/$totalParticipants',
+                                    style: AppTextStyles.body.copyWith(
+                                        fontSize: 18, color: AppColors.white)),
+                                Icon(
+                                  Icons.keyboard_arrow_right,
+                                  size: 42,
+                                  color: AppColors.white,
+                                ),
+                              ],
+                            ),
                           ),
-                          Text('$enrolledUsersLength/$totalParticipants',
-                              style: AppTextStyles.body.copyWith(
-                                  fontSize: 18, color: AppColors.white))
-                        ],
+                        ),
                       ),
                       IconButton(
                           onPressed: onPressedEdit,
