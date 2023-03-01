@@ -108,13 +108,62 @@ class UserFilterCardWidget extends StatelessWidget {
                             onPressed: () {
                               showDialog(
                                   context: context,
-                                  builder: ((context, child) {
-                                    return Container(
-                                      child: ListView.builder(
-                                          itemCount: ActivityEnum.values.length,
-                                          itemBuilder: itemBuilder),
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      content: SizedBox(
+                                        width: 500,
+                                        height: 500,
+                                        child: ListView.builder(
+                                            itemCount:
+                                                ActivityEnum.values.length,
+                                            itemBuilder: (BuildContext context,
+                                                int index) {
+                                              return MouseRegion(
+                                                  cursor:
+                                                      SystemMouseCursors.click,
+                                                  child: GestureDetector(
+                                                    onTap:
+                                                        onChangedActivitiesFilter!(
+                                                            ActivityEnum
+                                                                .values[index]),
+                                                    child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                vertical: 16),
+                                                        child: Container(
+                                                          height: 50,
+                                                          decoration: BoxDecoration(
+                                                              border: Border.all(
+                                                                  color: AppColors
+                                                                      .brandingBlue),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10)),
+                                                          child: Align(
+                                                            alignment: Alignment
+                                                                .center,
+                                                            child: Text(
+                                                              ActivityEnum
+                                                                  .values[index]
+                                                                  .name
+                                                                  .toString(),
+                                                              style: AppTextStyles
+                                                                  .bold
+                                                                  .copyWith(
+                                                                      color: AppColors
+                                                                          .brandingBlue,
+                                                                      fontSize:
+                                                                          16),
+                                                            ),
+                                                          ),
+                                                        )),
+                                                  ));
+                                            }),
+                                      ),
                                     );
-                                  }));
+                                  });
                             },
                             highlightColor: AppColors.white,
                             hoverColor: AppColors.white,
