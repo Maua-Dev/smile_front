@@ -33,7 +33,7 @@ class RegisterDatasourceImpl implements RegisterDatasourceInterface {
         "social_name": userRegistration.socialName == ''
             ? null
             : userRegistration.socialName,
-        "phone": userRegistration.phone,
+        "phone": userRegistration.phone == '' ? null : userRegistration.phone,
       });
       if (res.statusCode == 201) {
         return 'Usuário criado com sucesso!';
