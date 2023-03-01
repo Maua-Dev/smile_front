@@ -117,6 +117,13 @@
             "firstName": {}
         }
     },
+    "confirmEmailAndPhoneNotificationTitle": "Are you sure your phone {phone} and email address {firstName} are correct?",
+    "@confirmEmailAndPhoneNotificationTitle" : {
+        "placeholders": {
+            "phone": {},
+            "firstName": {}
+        }
+    },
     "confirmEmailNotificationSubtitle": "You will need to access your inbox to validate your registration.",
     "confirmAllFieldsConrrectlyFilled": "Check that all fields are filled in correctly.",
 

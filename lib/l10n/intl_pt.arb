@@ -119,7 +119,14 @@
             "firstName": {}
         }
     },
-    "confirmEmailNotificationSubtitle": "Será necessário acessar sua caixa de entrada para validar seu cadastro.",
+    "confirmEmailAndPhoneNotificationTitle": "Tem certeza que seu telefone celular {phone} e endereço de e-mail {firstName} estão corretos?",
+    "@confirmEmailAndPhoneNotificationTitle" : {
+        "placeholders": {
+            "phone": {},
+            "firstName": {}
+        }
+    },
+    "confirmEmailNotificationSubtitle": "Será necessário acessar sua caixa de entrada do e-mail para validar seu cadastro.",
     "confirmAllFieldsConrrectlyFilled": "Confira se todos os campos estão corretamente preenchidos.",
 
 

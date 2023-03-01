@@ -1164,6 +1164,16 @@ class S {
     );
   }
 
+  /// `Are you sure your phone {phone} and email address {firstName} are correct?`
+  String confirmEmailAndPhoneNotificationTitle(Object phone, Object firstName) {
+    return Intl.message(
+      'Are you sure your phone $phone and email address $firstName are correct?',
+      name: 'confirmEmailAndPhoneNotificationTitle',
+      desc: '',
+      args: [phone, firstName],
+    );
+  }
+
   /// `You will need to access your inbox to validate your registration.`
   String get confirmEmailNotificationSubtitle {
     return Intl.message(

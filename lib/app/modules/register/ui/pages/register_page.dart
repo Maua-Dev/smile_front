@@ -405,29 +405,58 @@ class _RegisterPageState
                                   currentFocus.unfocus();
                                 }
                                 if (_formKey.currentState!.validate()) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return ActionConfirmationDialogWidget(
-                                        title: S
-                                            .of(context)
-                                            .confirmEmailNotificationTitle(
-                                                controller.email),
-                                        content: S
-                                            .of(context)
-                                            .confirmEmailNotificationSubtitle,
-                                        onPressed: () async {
-                                          Navigator.of(context).pop();
-                                          await controller.register();
-                                          if (controller.successRegistration) {
-                                            Modular.to.navigate(
-                                                '/login/cadastro/email');
-                                          }
-                                        },
-                                        isLoading: controller.isLoading,
-                                      );
-                                    },
-                                  );
+                                  if (!controller.isPhoneFieldFilled) {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return ActionConfirmationDialogWidget(
+                                          title: S
+                                              .of(context)
+                                              .confirmEmailNotificationTitle(
+                                                  controller.email),
+                                          content: S
+                                              .of(context)
+                                              .confirmEmailNotificationSubtitle,
+                                          onPressed: () async {
+                                            Navigator.of(context).pop();
+                                            await controller.register();
+                                            if (controller
+                                                .successRegistration) {
+                                              Modular.to.navigate(
+                                                  '/login/cadastro/email');
+                                            }
+                                          },
+                                          isLoading: controller.isLoading,
+                                        );
+                                      },
+                                    );
+                                  } else {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return ActionConfirmationDialogWidget(
+                                          title: S
+                                              .of(context)
+                                              .confirmEmailAndPhoneNotificationTitle(
+                                                  controller.phone,
+                                                  controller.email),
+                                          content: S
+                                              .of(context)
+                                              .confirmEmailNotificationSubtitle,
+                                          onPressed: () async {
+                                            Navigator.of(context).pop();
+                                            await controller.register();
+                                            if (controller
+                                                .successRegistration) {
+                                              Modular.to.navigate(
+                                                  '/login/cadastro/email');
+                                            }
+                                          },
+                                          isLoading: controller.isLoading,
+                                        );
+                                      },
+                                    );
+                                  }
                                 }
                               }
                             : null,
