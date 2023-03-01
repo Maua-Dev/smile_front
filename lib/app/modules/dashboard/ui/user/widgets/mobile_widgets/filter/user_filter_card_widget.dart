@@ -63,10 +63,10 @@ class UserFilterCardWidget extends StatelessWidget {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width < breakpointLMobile
-                        ? 120
+                        ? 80
                         : MediaQuery.of(context).size.width > breakpointTablet
                             ? 227
-                            : 160,
+                            : 100,
                     height: MediaQuery.of(context).size.width > breakpointTablet
                         ? 47
                         : 36,
@@ -75,48 +75,57 @@ class UserFilterCardWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
-                          0,
                           MediaQuery.of(context).size.width > tabletSize
-                              ? 8
-                              : 2,
-                          3,
+                              ? 12
+                              : 6,
+                          4,
                           MediaQuery.of(context).size.width > tabletSize
-                              ? 7
-                              : 8),
-                      child: DropdownButtonFormField<ActivityEnum>(
-                        value: typeFilter,
-                        iconSize: MediaQuery.of(context).size.width > tabletSize
-                            ? 24
-                            : 14,
-                        isExpanded: true,
-                        decoration: InputDecoration(
-                          isDense:
-                              MediaQuery.of(context).size.width > tabletSize
-                                  ? true
-                                  : false,
-                          hintText: S.of(context).activitiesTitle,
-                          fillColor: AppColors.white,
-                          filled: true,
-                          hintStyle: AppTextStyles.body.copyWith(
-                              fontSize:
-                                  MediaQuery.of(context).size.width > tabletSize
-                                      ? 25
-                                      : 16),
-                          border: InputBorder.none,
-                        ),
-                        items: ActivityEnum.values
-                            .map((ActivityEnum activityEnum) {
-                          return DropdownMenuItem<ActivityEnum>(
-                              value: activityEnum,
-                              child: Text(activityEnum.name.toString(),
-                                  style: AppTextStyles.body.copyWith(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width >
-                                                  tabletSize
-                                              ? 15
-                                              : 10)));
-                        }).toList(),
-                        onChanged: onChangedActivitiesFilter,
+                              ? 12
+                              : 0,
+                          10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 4.0),
+                            child: Text(
+                                formattedDate == ''
+                                    ? S.of(context).dateTitle
+                                    : formattedDate,
+                                style: AppTextStyles.body.copyWith(
+                                    fontSize: formattedDate == ''
+                                        ? MediaQuery.of(context).size.width >
+                                                tabletSize
+                                            ? 25
+                                            : 16
+                                        : MediaQuery.of(context).size.width >
+                                                tabletSize
+                                            ? 16
+                                            : 10)),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: ((context, child) {
+                                    return Container(
+                                      child: ListView.builder(
+                                          itemCount: ActivityEnum.values.length,
+                                          itemBuilder: itemBuilder),
+                                    );
+                                  }));
+                            },
+                            highlightColor: AppColors.white,
+                            hoverColor: AppColors.white,
+                            icon: const Icon(Icons.arrow_drop_down),
+                            color: Colors.black,
+                            iconSize:
+                                MediaQuery.of(context).size.width > tabletSize
+                                    ? 24
+                                    : 14,
+                          ),
+                        ],
                       ),
                     ),
                   ),

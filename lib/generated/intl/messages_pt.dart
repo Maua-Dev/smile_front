@@ -238,6 +238,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "InQueueContent": MessageLookupByLibrary.simpleMessage(
+            "Você está na fila da atividade"),
         "aboutSmileDate": MessageLookupByLibrary.simpleMessage(
             "Data: 22 a 27 de maio de 2023."),
         "aboutSmileDescription": m0,
@@ -316,6 +318,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Ocorreu algum erro ao carregar as atividades :("),
         "errorLoginInvalidCredential":
             MessageLookupByLibrary.simpleMessage("Login e/ou senha inválidos"),
+        "exitQueueConfimation":
+            MessageLookupByLibrary.simpleMessage("Deseja sair da fila?"),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Sair"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Insira o número com DDD"),
@@ -355,11 +359,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "Semana Mauá de Inovação, Liderança e Empreendedorismo"),
         "homePageTitleSelection": m8,
         "hourTitle": MessageLookupByLibrary.simpleMessage("Hora"),
+        "inQueueTitle": MessageLookupByLibrary.simpleMessage("Na fila"),
         "initTitle": MessageLookupByLibrary.simpleMessage("Início"),
         "insertPasswordCodeInstructions": MessageLookupByLibrary.simpleMessage(
             "Insira sua nova senha e o codigo enviado para o seu e-mail:"),
         "isExtensiveTooltip":
             MessageLookupByLibrary.simpleMessage("Atividade Extensionista"),
+        "joinQueueConfimation":
+            MessageLookupByLibrary.simpleMessage("Deseja entrar na fila?"),
+        "joinQueueTitle":
+            MessageLookupByLibrary.simpleMessage("Entrar na fila"),
         "knowMore": MessageLookupByLibrary.simpleMessage("SAIBA MAIS >>>"),
         "local": MessageLookupByLibrary.simpleMessage("Local"),
         "localTitle": MessageLookupByLibrary.simpleMessage("Local"),
@@ -476,6 +485,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Inscrição para a atividade indisponível!"),
         "unavailabeSubscribe": MessageLookupByLibrary.simpleMessage(
             "Inscrição para a atividade indisponível!"),
+        "unavailabeTitle": MessageLookupByLibrary.simpleMessage("Indisponível"),
         "unsubscribe": MessageLookupByLibrary.simpleMessage("Desinscrever-se"),
         "unsubscribeAcceptingNewEnrollments":
             MessageLookupByLibrary.simpleMessage(
