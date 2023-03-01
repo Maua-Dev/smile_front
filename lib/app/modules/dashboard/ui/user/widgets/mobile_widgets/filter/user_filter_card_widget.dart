@@ -15,6 +15,7 @@ class UserFilterCardWidget extends StatelessWidget {
   final Function(ActivityEnum?)? onChangedActivitiesFilter;
   final Color? mainColor;
   final ActivityEnum? typeFilter;
+  final String? typeOnScreen;
   final Function(DateTime?)? onChangedDateFilter;
   final DateTime? dateFilter;
   final Function(DateTime?)? onChangedTimeFilter;
@@ -25,6 +26,7 @@ class UserFilterCardWidget extends StatelessWidget {
     required this.onChangedActivitiesFilter,
     required this.onChangedDateFilter,
     required this.onChangedTimeFilter,
+    required this.typeOnScreen,
     required this.typeFilter,
     required this.dateFilter,
     required this.hourFilter,
@@ -64,10 +66,10 @@ class UserFilterCardWidget extends StatelessWidget {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width < breakpointLMobile
-                        ? 80
+                        ? 127
                         : MediaQuery.of(context).size.width > breakpointTablet
-                            ? 227
-                            : 100,
+                            ? 230
+                            : 130,
                     height: MediaQuery.of(context).size.width > breakpointTablet
                         ? 47
                         : 36,
@@ -91,19 +93,19 @@ class UserFilterCardWidget extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 4.0),
                             child: Text(
-                                formattedDate == ''
-                                    ? S.of(context).dateTitle
-                                    : formattedDate,
+                                typeFilter == null
+                                    ? S.of(context).activitiesTitle
+                                    : typeOnScreen!,
                                 style: AppTextStyles.body.copyWith(
-                                    fontSize: formattedDate == ''
+                                    fontSize: typeFilter == null
                                         ? MediaQuery.of(context).size.width >
                                                 tabletSize
                                             ? 25
                                             : 16
                                         : MediaQuery.of(context).size.width >
                                                 tabletSize
-                                            ? 16
-                                            : 10)),
+                                            ? 14
+                                            : 7)),
                           ),
                           IconButton(
                             onPressed: () {
@@ -127,13 +129,13 @@ class UserFilterCardWidget extends StatelessWidget {
                                                       onChangedActivitiesFilter!(
                                                           ActivityEnum
                                                               .values[index]);
-                                                      Modular.to.pop;
+                                                      Modular.to.pop();
                                                     },
                                                     child: Padding(
                                                         padding:
                                                             const EdgeInsets
                                                                     .symmetric(
-                                                                vertical: 16),
+                                                                vertical: 10),
                                                         child: Container(
                                                           height: 50,
                                                           decoration: BoxDecoration(
@@ -221,8 +223,8 @@ class UserFilterCardWidget extends StatelessWidget {
                                             : 16
                                         : MediaQuery.of(context).size.width >
                                                 tabletSize
-                                            ? 16
-                                            : 10)),
+                                            ? 14
+                                            : 7)),
                           ),
                           IconButton(
                             onPressed: () {
@@ -297,8 +299,8 @@ class UserFilterCardWidget extends StatelessWidget {
                                             : 16
                                         : MediaQuery.of(context).size.width >
                                                 tabletSize
-                                            ? 16
-                                            : 10)),
+                                            ? 14
+                                            : 7)),
                           ),
                           IconButton(
                             onPressed: () {

@@ -115,6 +115,7 @@ class _UserDashboardPageState
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Observer(builder: (_) {
                     return UserFilterCardWidget(
+                        typeOnScreen: controller.typeOnScreen,
                         typeFilter: controller.typeFilter,
                         dateFilter: controller.dateFilter,
                         hourFilter: controller.hourFilter,
@@ -150,10 +151,10 @@ class _UserDashboardPageState
                         var hour = DateFormat('HH:mm').format(controller
                             .subscribedActivitiesOnScreen[index].startDate!);
                         return MobileActivitiesCardUserDashboard(
-                          link: controller
-                              .subscribedActivitiesOnScreen[index].link,
-                          deliveryEnum: controller
-                              .subscribedActivitiesOnScreen[index].deliveryEnum,
+                          date: controller
+                              .subscribedActivitiesOnScreen[index].startDate!,
+                          isExtensive: controller
+                              .subscribedActivitiesOnScreen[index].isExtensive,
                           isLoading: controller.isLoading,
                           finalTime: finalTime,
                           location: controller
@@ -171,7 +172,7 @@ class _UserDashboardPageState
                             controller.analytics.logViewActivity(controller
                                 .subscribedActivitiesOnScreen[index]
                                 .activityCode);
-                          }, isExtensive: null,
+                          },
                         );
                       },
                     );
