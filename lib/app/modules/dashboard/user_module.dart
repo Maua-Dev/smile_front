@@ -24,7 +24,7 @@ import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_da
 import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/more_info_responsible_activities_page.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/pages/professor/more_info_responsible_activities_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
 import '../../shared/models/enrolls_activity_model.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
