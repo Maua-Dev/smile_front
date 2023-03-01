@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
+import 'package:smile_front/app/shared/utils/screen_helper.dart';
 
 class InputBoxWidget extends StatelessWidget {
   final IconData icon;
@@ -19,6 +21,9 @@ class InputBoxWidget extends StatelessWidget {
   final bool? isValidated;
   final bool? isPhoneField;
   final bool? isEmail;
+  final Color? backgroundColor;
+  final Color? letterColor;
+  final String? initialValue;
 
   const InputBoxWidget({
     Key? key,
@@ -37,6 +42,9 @@ class InputBoxWidget extends StatelessWidget {
     this.isValidated,
     this.onFieldSubmitted,
     this.isEmail,
+    this.backgroundColor,
+    this.letterColor,
+    this.initialValue,
   }) : super(key: key);
 
   @override
@@ -58,6 +66,7 @@ class InputBoxWidget extends StatelessWidget {
           child: TextFormField(
             validator: validation,
             onChanged: setValue,
+            initialValue: initialValue,
             onFieldSubmitted: onFieldSubmitted,
             obscureText: showPwd != null ? !showPwd! : false,
             enabled: disable != null ? !disable! : true,
@@ -82,16 +91,17 @@ class InputBoxWidget extends StatelessWidget {
                     ? disable!
                         ? AppColors.gray.withOpacity(0.5)
                         : AppColors.white
-                    : AppColors.white,
-                hintStyle: TextStyle(color: AppColors.gray),
+                    : backgroundColor ?? AppColors.white,
+                hintStyle: TextStyle(color: letterColor ?? AppColors.gray),
                 errorStyle: TextStyle(
                   color: AppColors.brandingOrange,
-                  fontSize: 16,
+                  fontSize: Screen.width(context) < breakpointLMobile ? 14 : 16,
                   height: 1,
                 ),
                 prefixIcon: Icon(
                   icon,
                   size: 24,
+                  color: letterColor,
                 ),
                 suffixIcon: onToggleVisibilityPwd != null
                     ? InkWell(
@@ -103,7 +113,7 @@ class InputBoxWidget extends StatelessWidget {
                         ),
                       )
                     : null),
-            style: TextStyle(color: AppColors.gray),
+            style: TextStyle(color: letterColor ?? AppColors.gray),
             inputFormatters: isRAField != null
                 ? [maskRA]
                 : isPhoneField == true && isBrazilianPhoneField == true
@@ -115,11 +125,11 @@ class InputBoxWidget extends StatelessWidget {
                             : isEmail != null
                                 ? [
                                     FilteringTextInputFormatter.allow(
-                                        RegExp("[a-zA-Z0-9.@]")),
+                                        RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ0-9.@-]")),
                                   ]
                                 : [
                                     FilteringTextInputFormatter.allow(
-                                        RegExp("[a-zA-Z]")),
+                                        RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ\\s]")),
                                   ],
           ),
         ));

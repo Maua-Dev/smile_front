@@ -108,7 +108,7 @@ class FilterCardWidget extends StatelessWidget {
                             onPressed: () {
                               showDatePicker(
                                   context: context,
-                                  initialDate: DateTime.utc(2022, 5, 16),
+                                  initialDate: DateTime.now(),
                                   firstDate: DateTime(2022),
                                   lastDate: DateTime(2024),
                                   builder: ((context, child) {

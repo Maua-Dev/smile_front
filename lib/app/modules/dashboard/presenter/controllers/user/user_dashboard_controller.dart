@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
@@ -6,6 +7,8 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.da
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
+
+import '../../../../../../generated/l10n.dart';
 
 part 'user_dashboard_controller.g.dart';
 
@@ -27,6 +30,7 @@ abstract class UserDashboardControllerBase with Store {
     getUserSubscribedActivities();
     getUserName();
     getUserSocialName();
+    getPhone();
   }
 
   @observable
@@ -46,6 +50,9 @@ abstract class UserDashboardControllerBase with Store {
 
   @observable
   String nameToChange = '';
+
+  @observable
+  String phoneToChange = '';
 
   @observable
   bool wantSocialName = false;
@@ -231,6 +238,16 @@ abstract class UserDashboardControllerBase with Store {
   }
 
   @action
+  Future<void> getPhone() async {
+    phone = await secureStorage.getPhone();
+    phoneToChange = phone!.substring(3, 14);
+    if (isBrazilianPhone) {
+      phoneToChange =
+          '(${phoneToChange.substring(0, 2)})${phoneToChange.substring(2, 7)}-${phoneToChange.substring(7, 11)}';
+    }
+  }
+
+  @action
   Future<void> getUserSocialName() async {
     socialName = await secureStorage.getSocialName();
     setUserSocialName(socialName ?? '');
@@ -266,8 +283,8 @@ abstract class UserDashboardControllerBase with Store {
   @action
   Future<void> changeUserData() async {
     setIsLoading(true);
-    await changeData(
-        nameToChange, socialNameToChange, certificateWithSocialName);
+    await changeData(nameToChange, socialNameToChange,
+        certificateWithSocialName, phoneToChange);
     await secureStorage.saveName(nameToChange);
     await secureStorage.saveSocialName(socialNameToChange);
     await secureStorage
@@ -275,6 +292,7 @@ abstract class UserDashboardControllerBase with Store {
     getUserName();
     getUserSocialName();
     getUserSubscribedActivities();
+    getPhone();
     setIsLoading(false);
   }
 
@@ -348,5 +366,57 @@ abstract class UserDashboardControllerBase with Store {
     } else {
       nextActivity = EnrollsActivityModel.newInstance();
     }
+  }
+
+  @observable
+  String? phone = '';
+
+  @observable
+  bool isBrazilianPhone = true;
+
+  @observable
+  bool isPhoneFieldFilled = false;
+
+  @observable
+  CountryCode? countryCode =
+      const CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
+
+  @action
+  void setBrazilianPhone(CountryCode? value) {
+    if (value?.code == "BR") {
+      isBrazilianPhone = true;
+    } else {
+      isBrazilianPhone = false;
+    }
+  }
+
+  @action
+  void setCountryCode(CountryCode? value) {
+    countryCode = value;
+  }
+
+  @action
+  Future<void> setPhone(String value) async {
+    phoneToChange = '${countryCode?.dialCode}$value';
+    if (countryCode?.code == "BR") {
+      phoneToChange = phoneToChange.replaceAll('(', '');
+      phoneToChange = phoneToChange.replaceAll(')', '');
+      phoneToChange = phoneToChange.replaceAll(' ', '');
+      phoneToChange = phoneToChange.replaceAll('-', '');
+    }
+    if (value.isNotEmpty) {
+      isPhoneFieldFilled = true;
+    }
+  }
+
+  @action
+  String? validatePhone(String? value) {
+    if (countryCode?.code == "BR" && phone!.length == 12) {
+      return S.current.fieldDDDRequired;
+    }
+    if (countryCode?.code == "BR" && phone!.length != 14 && phone!.length > 3) {
+      return S.current.fieldInvalid;
+    }
+    return null;
   }
 }

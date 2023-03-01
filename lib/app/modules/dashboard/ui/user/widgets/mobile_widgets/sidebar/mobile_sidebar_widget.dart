@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
-
 import '../../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../../shared/utils/screen_helper.dart';
+import '../../../../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 
 class DrawerDashboardWidget extends StatelessWidget {
   DrawerDashboardWidget({super.key, required this.isProfessor});
@@ -64,20 +64,34 @@ class DrawerDashboardWidget extends StatelessWidget {
 }
 
 class SideBarContents extends StatelessWidget {
-  const SideBarContents({super.key, required this.title, required this.route});
-
   final String title;
   final String route;
+  const SideBarContents({
+    super.key,
+    required this.title,
+    required this.route,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: GestureDetector(
-        onTap: () async {
-          Modular.to.navigate(route);
-          Scaffold.of(context).closeDrawer();
-        },
+        onTap: route.contains('certificate')
+            ? () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const CustomAlertDialogWidget(
+                      title: 'Funcionalidade disponível em breve',
+                    );
+                  },
+                );
+              }
+            : () async {
+                Modular.to.navigate(route);
+                Scaffold.of(context).closeDrawer();
+              },
         child: Container(
           decoration:
               BoxDecoration(color: AppColors.brandingBlue, boxShadow: const [

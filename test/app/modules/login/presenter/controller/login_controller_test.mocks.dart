@@ -380,6 +380,15 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i6.Future<void>.value(),
       ) as _i6.Future<void>);
   @override
+  _i6.Future<void> savePhone(String? phone) => (super.noSuchMethod(
+        Invocation.method(
+          #savePhone,
+          [phone],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
+  @override
   _i6.Future<void> saveCertificateWithSocialName(
           bool? certificateWithSocialName) =>
       (super.noSuchMethod(
@@ -426,6 +435,14 @@ class MockSecureStorageInterface extends _i1.Mock
   _i6.Future<String?> getSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getSocialName,
+          [],
+        ),
+        returnValue: _i6.Future<String?>.value(),
+      ) as _i6.Future<String?>);
+  @override
+  _i6.Future<String?> getPhone() => (super.noSuchMethod(
+        Invocation.method(
+          #getPhone,
           [],
         ),
         returnValue: _i6.Future<String?>.value(),

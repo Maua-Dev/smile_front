@@ -154,11 +154,21 @@ class S {
     );
   }
 
-  /// `Main Speakers - 2022`
+  /// `Speakers`
   String get speakersTitle {
     return Intl.message(
-      'Main Speakers - 2022',
+      'Speakers',
       name: 'speakersTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Main Speakers - 2022`
+  String get speakersMainTitle {
+    return Intl.message(
+      'Main Speakers - 2022',
+      name: 'speakersMainTitle',
       desc: '',
       args: [],
     );
@@ -410,16 +420,6 @@ class S {
     );
   }
 
-  /// `Discount`
-  String get beSponsorDiscount {
-    return Intl.message(
-      'Discount',
-      name: 'beSponsorDiscount',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `SPONSORSHIP INFORMATION`
   String get beSponsorMoreInfoTitle {
     return Intl.message(
@@ -440,61 +440,11 @@ class S {
     );
   }
 
-  /// `2023`
-  String get year2023 {
-    return Intl.message(
-      '2023',
-      name: 'year2023',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Date`
   String get dateTitle {
     return Intl.message(
       'Date',
       name: 'dateTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `February`
-  String get monthFebruary {
-    return Intl.message(
-      'February',
-      name: 'monthFebruary',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `January`
-  String get monthJanuary {
-    return Intl.message(
-      'January',
-      name: 'monthJanuary',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `10% Off`
-  String get discount10 {
-    return Intl.message(
-      '10% Off',
-      name: 'discount10',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `20% Off`
-  String get discount20 {
-    return Intl.message(
-      '20% Off',
-      name: 'discount20',
       desc: '',
       args: [],
     );
@@ -722,6 +672,8 @@ class S {
     return Intl.message(
       'Subscriber List',
       name: 'subscriberListTitle',
+      desc: '',
+      args: [],
     );
   }
 
@@ -925,26 +877,6 @@ class S {
     );
   }
 
-  /// `Telefone celular não preenchido.`
-  String get phoneNotFilledWarn {
-    return Intl.message(
-      'Telefone celular não preenchido.',
-      name: 'phoneNotFilledWarn',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Preencha o seu telefone celular para ativar as notificações via SMS!`
-  String get phoneFillWarn {
-    return Intl.message(
-      'Preencha o seu telefone celular para ativar as notificações via SMS!',
-      name: 'phoneFillWarn',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `E-mail`
   String get loginUsernamePlaceholder {
     return Intl.message(
@@ -1040,21 +972,21 @@ class S {
     );
   }
 
-  /// `Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.`
-  String get registerSocialNameTooltip {
-    return Intl.message(
-      'Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.',
-      name: 'registerSocialNameTooltip',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `E-mail`
   String get registerEmailPlaceholder {
     return Intl.message(
       'E-mail',
       name: 'registerEmailPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.`
+  String get registerSocialNameTooltip {
+    return Intl.message(
+      'Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.',
+      name: 'registerSocialNameTooltip',
       desc: '',
       args: [],
     );
@@ -1147,10 +1079,10 @@ class S {
     );
   }
 
-  /// `Activity notifications:`
+  /// `Means of notification about activities:`
   String get notificationsTitle {
     return Intl.message(
-      'Activity notifications:',
+      'Means of notification about activities:',
       name: 'notificationsTitle',
       desc: '',
       args: [],
@@ -1422,6 +1354,16 @@ class S {
     );
   }
 
+  /// `Presence Validate`
+  String get presenceValidateTitle {
+    return Intl.message(
+      'Presence Validate',
+      name: 'presenceValidateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your registration has been successfully confirmed!`
   String get successRegister {
     return Intl.message(
@@ -1582,6 +1524,16 @@ class S {
     );
   }
 
+  /// `Company:`
+  String get companyTitle {
+    return Intl.message(
+      'Company:',
+      name: 'companyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description`
   String get descriptionTitle {
     return Intl.message(
@@ -1592,10 +1544,10 @@ class S {
     );
   }
 
-  /// `Hour`
+  /// `Hora`
   String get hourTitle {
     return Intl.message(
-      'Hour',
+      'Hora',
       name: 'hourTitle',
       desc: '',
       args: [],
@@ -1637,6 +1589,58 @@ class S {
     return Intl.message(
       'Absence',
       name: 'absenceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Present`
+  String get presenceTitle {
+    return Intl.message(
+      'Present',
+      name: 'presenceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Names`
+  String get namesTitle {
+    return Intl.message(
+      'Names',
+      name: 'namesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Validation Code`
+  String get validationCodeTitle {
+    return Intl.message(
+      'Validation Code',
+      name: 'validationCodeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local`
+  String get localTitle {
+    return Intl.message(
+      'Local',
+      name: 'localTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extension Activity`
+  String get isExtensiveTooltip {
+    return Intl.message(
+      'Extension Activity',
+      name: 'isExtensiveTooltip',
+      desc: '',
+      args: [],
     );
   }
 
@@ -1650,14 +1654,6 @@ class S {
     );
   }
 
-  /// `Present`
-  String get presenceTitle {
-    return Intl.message(
-      'Present',
-      name: 'presenceTitle',
-    );
-  }
-
   /// `Activities`
   String get drawerActivitiesButton {
     return Intl.message(
@@ -1665,14 +1661,6 @@ class S {
       name: 'drawerActivitiesButton',
       desc: '',
       args: [],
-    );
-  }
-
-  /// `Names`
-  String get namesTitle {
-    return Intl.message(
-      'Names',
-      name: 'namesTitle',
     );
   }
 
@@ -1686,14 +1674,6 @@ class S {
     );
   }
 
-  /// `Validation Code`
-  String get validationCodeTitle {
-    return Intl.message(
-      'Validation Code',
-      name: 'validationCodeTitle',
-    );
-  }
-
   /// `Certificates`
   String get drawerCertificatesButton {
     return Intl.message(
@@ -1701,14 +1681,6 @@ class S {
       name: 'drawerCertificatesButton',
       desc: '',
       args: [],
-    );
-  }
-
-  /// `Local`
-  String get localTitle {
-    return Intl.message(
-      'Local',
-      name: 'localTitle',
     );
   }
 
@@ -1727,6 +1699,16 @@ class S {
     return Intl.message(
       'Profile',
       name: 'drawerProfileButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get locationTitle {
+    return Intl.message(
+      'Location',
+      name: 'locationTitle',
       desc: '',
       args: [],
     );
@@ -1773,6 +1755,96 @@ class S {
   }
 
   // skipped getter for the '' key
+
+  /// `Registration unavailabe for this activity!`
+  String get unavailabeActivityRegistration {
+    return Intl.message(
+      'Registration unavailabe for this activity!',
+      name: 'unavailabeActivityRegistration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you wanna unsubscribe?`
+  String get unsubscribeVerification {
+    return Intl.message(
+      'Are you sure you wanna unsubscribe?',
+      name: 'unsubscribeVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you wanna subscribe?`
+  String get subscribeVerification {
+    return Intl.message(
+      'Are you sure you wanna subscribe?',
+      name: 'subscribeVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!`
+  String get unsubscribeVerificationClosedRegistration {
+    return Intl.message(
+      'Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!',
+      name: 'unsubscribeVerificationClosedRegistration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will lose your vacancy by continuing!`
+  String get unsubscribeLoseVanacy {
+    return Intl.message(
+      'You will lose your vacancy by continuing!',
+      name: 'unsubscribeLoseVanacy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems that the number of vacancies for this activity has run out :(`
+  String get availabeSpotUnsuficient {
+    return Intl.message(
+      'It seems that the number of vacancies for this activity has run out :(',
+      name: 'availabeSpotUnsuficient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep in mind of your schedules and activities that you have already signed up for!`
+  String get scheduleActivityWarning {
+    return Intl.message(
+      'Keep in mind of your schedules and activities that you have already signed up for!',
+      name: 'scheduleActivityWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems you are already subscribed on another activity at this period.`
+  String get alreadySubscribedOnThisPeriodWarning {
+    return Intl.message(
+      'It seems you are already subscribed on another activity at this period.',
+      name: 'alreadySubscribedOnThisPeriodWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The registration for this activity is unavailabe!`
+  String get unavailabeSubscribe {
+    return Intl.message(
+      'The registration for this activity is unavailabe!',
+      name: 'unavailabeSubscribe',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

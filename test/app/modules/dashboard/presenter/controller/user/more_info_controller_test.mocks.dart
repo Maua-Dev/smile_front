@@ -5,6 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i10;
 
+import 'package:fl_country_code_picker/fl_country_code_picker.dart' as _i15;
 import 'package:mobx/mobx.dart' as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
@@ -16,9 +17,9 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/activities
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart'
     as _i4;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
-    as _i16;
+    as _i17;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart'
-    as _i15;
+    as _i16;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart'
     as _i13;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart'
@@ -338,6 +339,19 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  String get phoneToChange => (super.noSuchMethod(
+        Invocation.getter(#phoneToChange),
+        returnValue: '',
+      ) as String);
+  @override
+  set phoneToChange(String? _phoneToChange) => super.noSuchMethod(
+        Invocation.setter(
+          #phoneToChange,
+          _phoneToChange,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   bool get wantSocialName => (super.noSuchMethod(
         Invocation.getter(#wantSocialName),
         returnValue: false,
@@ -463,6 +477,48 @@ class MockUserDashboardController extends _i1.Mock
         Invocation.setter(
           #requisitionError,
           _requisitionError,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set phone(String? _phone) => super.noSuchMethod(
+        Invocation.setter(
+          #phone,
+          _phone,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get isBrazilianPhone => (super.noSuchMethod(
+        Invocation.getter(#isBrazilianPhone),
+        returnValue: false,
+      ) as bool);
+  @override
+  set isBrazilianPhone(bool? _isBrazilianPhone) => super.noSuchMethod(
+        Invocation.setter(
+          #isBrazilianPhone,
+          _isBrazilianPhone,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get isPhoneFieldFilled => (super.noSuchMethod(
+        Invocation.getter(#isPhoneFieldFilled),
+        returnValue: false,
+      ) as bool);
+  @override
+  set isPhoneFieldFilled(bool? _isPhoneFieldFilled) => super.noSuchMethod(
+        Invocation.setter(
+          #isPhoneFieldFilled,
+          _isPhoneFieldFilled,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set countryCode(_i15.CountryCode? _countryCode) => super.noSuchMethod(
+        Invocation.setter(
+          #countryCode,
+          _countryCode,
         ),
         returnValueForMissingStub: null,
       );
@@ -600,6 +656,15 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: _i10.Future<void>.value(),
       ) as _i10.Future<void>);
   @override
+  _i10.Future<void> getPhone() => (super.noSuchMethod(
+        Invocation.method(
+          #getPhone,
+          [],
+        ),
+        returnValue: _i10.Future<void>.value(),
+        returnValueForMissingStub: _i10.Future<void>.value(),
+      ) as _i10.Future<void>);
+  @override
   _i10.Future<void> getUserSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getUserSocialName,
@@ -691,13 +756,38 @@ class MockUserDashboardController extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+  @override
+  void setBrazilianPhone(_i15.CountryCode? value) => super.noSuchMethod(
+        Invocation.method(
+          #setBrazilianPhone,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void setCountryCode(_i15.CountryCode? value) => super.noSuchMethod(
+        Invocation.method(
+          #setCountryCode,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i10.Future<void> setPhone(String? value) => (super.noSuchMethod(
+        Invocation.method(
+          #setPhone,
+          [value],
+        ),
+        returnValue: _i10.Future<void>.value(),
+        returnValueForMissingStub: _i10.Future<void>.value(),
+      ) as _i10.Future<void>);
 }
 
 /// A class which mocks [UnsubscribeActivityInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUnsubscribeActivityInterface extends _i1.Mock
-    implements _i15.UnsubscribeActivityInterface {
+    implements _i16.UnsubscribeActivityInterface {
   MockUnsubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -716,7 +806,7 @@ class MockUnsubscribeActivityInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSubscribeActivityInterface extends _i1.Mock
-    implements _i16.SubscribeActivityInterface {
+    implements _i17.SubscribeActivityInterface {
   MockSubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }

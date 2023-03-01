@@ -32,7 +32,7 @@ class UserDatasourceImpl extends UserDatasourceInterface {
       String? http,
       bool needAutorization = true,
       dynamic data}) async {
-    var token = await storage.getIdToken();
+    var token = await storage.getAccessToken();
     try {
       needAutorization
           ? dio.options.headers["authorization"] = "Bearer $token"

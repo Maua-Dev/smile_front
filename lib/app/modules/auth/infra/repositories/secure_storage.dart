@@ -96,4 +96,14 @@ class SecureStorage implements SecureStorageInterface {
   Future<void> saveIdToken(String idToken) async {
     await storage.put('idToken', idToken);
   }
+
+  @override
+  Future<String?> getPhone() async {
+    return await storage.get('phone');
+  }
+
+  @override
+  Future<void> savePhone(String phone) async {
+    await storage.put('phone', phone);
+  }
 }

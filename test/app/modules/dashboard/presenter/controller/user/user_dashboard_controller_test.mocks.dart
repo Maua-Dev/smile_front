@@ -164,6 +164,15 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i4.Future<void>.value(),
       ) as _i4.Future<void>);
   @override
+  _i4.Future<void> savePhone(String? phone) => (super.noSuchMethod(
+        Invocation.method(
+          #savePhone,
+          [phone],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+  @override
   _i4.Future<void> saveCertificateWithSocialName(
           bool? certificateWithSocialName) =>
       (super.noSuchMethod(
@@ -210,6 +219,14 @@ class MockSecureStorageInterface extends _i1.Mock
   _i4.Future<String?> getSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getSocialName,
+          [],
+        ),
+        returnValue: _i4.Future<String?>.value(),
+      ) as _i4.Future<String?>);
+  @override
+  _i4.Future<String?> getPhone() => (super.noSuchMethod(
+        Invocation.method(
+          #getPhone,
           [],
         ),
         returnValue: _i4.Future<String?>.value(),
@@ -346,10 +363,11 @@ class MockChangeDataInterface extends _i1.Mock
   }
 
   @override
-  _i4.Future<dynamic> call(
+  _i4.Future<void> call(
     String? nameToChange,
     String? socialNameToChange,
     bool? certificateWithSocialName,
+    String? phone,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -358,8 +376,10 @@ class MockChangeDataInterface extends _i1.Mock
             nameToChange,
             socialNameToChange,
             certificateWithSocialName,
+            phone,
           ],
         ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 }
