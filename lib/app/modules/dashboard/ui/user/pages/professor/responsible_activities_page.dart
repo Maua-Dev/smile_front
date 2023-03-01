@@ -123,7 +123,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
                           hour: hour,
                           onTap: () {
                             Modular.to.navigate(
-                              '/user/home/responsible-activities',
+                              '/user/home/professor/responsible-activities',
                               arguments: controller
                                   .activitiesToShow[index].activityCode,
                             );

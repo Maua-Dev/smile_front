@@ -16,7 +16,6 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/certificate_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_responsible_activities_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/modules/dashboard/professor_module.dart';
@@ -24,7 +23,6 @@ import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_da
 import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/pages/professor/more_info_responsible_activities_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
 import '../../shared/models/enrolls_activity_model.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
@@ -77,10 +75,6 @@ class UserModule extends Module {
           getAllFaqInformation: i(),
           analytics: i(),
         )),
-    Bind.lazySingleton<MoreInfoResponsibleActivitiesController>((i) =>
-        MoreInfoResponsibleActivitiesController(
-            activityCode: i.args!.data as String,
-            getActivitiesWithEnrollments: i())),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<GetUserSubscribedActivitiesInterface>(
@@ -142,8 +136,6 @@ class UserModule extends Module {
             )),
     ChildRoute('/help', child: (_, args) => const HelpPage()),
     ChildRoute('/certificate', child: (_, args) => const CertificatePage()),
-    ChildRoute('/responsible-activities',
-        child: (_, args) => const MoreInfoResponsibleActivitiesPage()),
     ModuleRoute('/professor', module: ProfessorModule())
   ];
 }
