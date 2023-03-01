@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../../shared/utils/screen_helper.dart';
 import '../../../../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
@@ -11,10 +12,11 @@ class DrawerDashboardWidget extends StatelessWidget {
   final bool isProfessor;
 
   final List<String> userOptions = [
-    "Perfil",
-    "Atividades",
-    "Certificados",
-    "Ajuda",
+    S.current.drawerHomeButton,
+    S.current.drawerProfileButton,
+    S.current.drawerActivitiesButton,
+    S.current.drawerCertificatesButton,
+    S.current.drawerHelpButton,
   ];
 
   final List<String> userRoutes = [
@@ -25,11 +27,12 @@ class DrawerDashboardWidget extends StatelessWidget {
   ];
 
   final List<String> professorOptions = [
-    "Perfil",
-    "Atividades",
-    "Atividades Responsaveis",
-    "Certificados",
-    "Ajuda",
+    S.current.drawerHomeButton,
+    S.current.drawerProfileButton,
+    S.current.drawerActivitiesButton,
+    S.current.drawerResponsibleActivitiesButton,
+    S.current.drawerCertificatesButton,
+    S.current.drawerHelpButton,
   ];
 
   final List<String> professorRoutes = [
