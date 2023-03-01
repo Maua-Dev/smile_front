@@ -1,5 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_responsible_activities_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/professor/responsible_activities_controller.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/more_info_responsible_activities_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/pages/professor/responsible_activities_page.dart';
 
 class ProfessorModule extends Module {
@@ -11,11 +13,17 @@ class ProfessorModule extends Module {
               getUserSubscribedActivities: i(),
             ),
         export: true),
+    Bind.lazySingleton<MoreInfoResponsibleActivitiesController>((i) =>
+        MoreInfoResponsibleActivitiesController(
+            activityCode: i.args!.data as String,
+            getActivitiesWithEnrollments: i())),
   ];
 
   @override
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute,
         child: (_, args) => const ResponsibleActivitiesPage()),
+    ChildRoute('/responsible-activities',
+        child: (_, args) => const MoreInfoResponsibleActivitiesPage()),
   ];
 }
