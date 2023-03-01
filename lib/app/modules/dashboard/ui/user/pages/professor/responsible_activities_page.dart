@@ -129,7 +129,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
                               '/user/home/more-info',
                               arguments: controller.activitiesToShow[index],
                             );
-                          },
+                          }, link: '',
                         );
                       },
                     ),

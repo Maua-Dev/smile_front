@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
@@ -122,10 +123,12 @@ class UserFilterCardWidget extends StatelessWidget {
                                                   cursor:
                                                       SystemMouseCursors.click,
                                                   child: GestureDetector(
-                                                    onTap:
-                                                        onChangedActivitiesFilter!(
-                                                            ActivityEnum
-                                                                .values[index]),
+                                                    onTap: () {
+                                                      onChangedActivitiesFilter!(
+                                                          ActivityEnum
+                                                              .values[index]);
+                                                      Modular.to.pop;
+                                                    },
                                                     child: Padding(
                                                         padding:
                                                             const EdgeInsets

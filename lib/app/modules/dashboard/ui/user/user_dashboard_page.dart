@@ -150,10 +150,10 @@ class _UserDashboardPageState
                         var hour = DateFormat('HH:mm').format(controller
                             .subscribedActivitiesOnScreen[index].startDate!);
                         return MobileActivitiesCardUserDashboard(
-                          date: controller
-                              .subscribedActivitiesOnScreen[index].startDate!,
-                          isExtensive: controller
-                              .subscribedActivitiesOnScreen[index].isExtensive,
+                          link: controller
+                              .subscribedActivitiesOnScreen[index].link,
+                          deliveryEnum: controller
+                              .subscribedActivitiesOnScreen[index].deliveryEnum,
                           isLoading: controller.isLoading,
                           finalTime: finalTime,
                           location: controller
@@ -171,7 +171,7 @@ class _UserDashboardPageState
                             controller.analytics.logViewActivity(controller
                                 .subscribedActivitiesOnScreen[index]
                                 .activityCode);
-                          },
+                          }, isExtensive: null,
                         );
                       },
                     );
