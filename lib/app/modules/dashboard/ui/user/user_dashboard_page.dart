@@ -142,7 +142,11 @@ class _UserDashboardPageState
                                     .duration);
                         var hour = DateFormat('HH:mm').format(controller
                             .subscribedActivitiesOnScreen[index].startDate!);
-                        return MobileActivitiesCardUserDashboard(
+                        return ActivitiesCardUserDashboard(
+                          link: controller
+                              .subscribedActivitiesOnScreen[index].link,
+                          deliveryEnum: controller
+                              .subscribedActivitiesOnScreen[index].deliveryEnum,
                           isLoading: controller.isLoading,
                           finalTime: finalTime,
                           location: controller

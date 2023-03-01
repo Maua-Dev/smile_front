@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class MobileActivitiesCardUserDashboard extends StatelessWidget {
+class ActivitiesCardUserDashboard extends StatelessWidget {
   final String title;
   final String hour;
   final String finalTime;
   final String? location;
+  final DeliveryEnum? deliveryEnum;
+  final String? link;
   final Function() onTap;
   final bool isLoading;
   final Color? mainColor;
-  const MobileActivitiesCardUserDashboard({
+  const ActivitiesCardUserDashboard({
     Key? key,
+    required this.link,
     required this.title,
     required this.hour,
+    required this.deliveryEnum,
     required this.onTap,
     required this.isLoading,
     required this.finalTime,
@@ -116,20 +122,93 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                                       ? 12
                                       : 24,
                                   color: Colors.black)),
-                          Text('${S.of(context).local}: $location',
-                              style: AppTextStyles.bold.copyWith(
-                                  fontSize: MediaQuery.of(context).size.width <
-                                          breakpointTablet
-                                      ? 12
-                                      : 24,
-                                  color: Colors.black)),
+                          deliveryEnum == DeliveryEnum.online
+                              ? MouseRegion(
+                                  cursor: SystemMouseCursors.click,
+                                  child: GestureDetector(
+                                    onTap: () => launchUrl(
+                                      Uri.parse(link!),
+                                      mode: LaunchMode.externalApplication,
+                                    ),
+                                    child: Text('Link',
+                                        style: AppTextStyles.bold.copyWith(
+                                            color: AppColors.white,
+                                            decoration:
+                                                TextDecoration.underline,
+                                            fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    breakpointTablet
+                                                ? 20
+                                                : 40)),
+                                  ),
+                                )
+                              : deliveryEnum == DeliveryEnum.hybrid
+                                  ? Row(
+                                      children: [
+                                        MouseRegion(
+                                          cursor: SystemMouseCursors.click,
+                                          child: GestureDetector(
+                                            onTap: () => launchUrl(
+                                              Uri.parse(link!),
+                                              mode: LaunchMode
+                                                  .externalApplication,
+                                            ),
+                                            child: Text('Link',
+                                                style: AppTextStyles.bold
+                                                    .copyWith(
+                                                        color: AppColors.white,
+                                                        decoration:
+                                                            TextDecoration
+                                                                .underline,
+                                                        fontSize: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width <
+                                                                breakpointTablet
+                                                            ? 20
+                                                            : 40)),
+                                          ),
+                                        ),
+                                        Text(
+                                            '${S.of(context).local}: $location',
+                                            style: AppTextStyles.bold.copyWith(
+                                                fontSize: MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        breakpointTablet
+                                                    ? 12
+                                                    : 24,
+                                                color: Colors.black))
+                                      ],
+                                    )
+                                  : location != null
+                                      ? Text(
+                                          '${S.of(context).local}: $location',
+                                          style: AppTextStyles.bold.copyWith(
+                                              fontSize: MediaQuery.of(context)
+                                                          .size
+                                                          .width <
+                                                      breakpointTablet
+                                                  ? 12
+                                                  : 24,
+                                              color: Colors.black))
+                                      : Text('Indefinido',
+                                          style: AppTextStyles.bold.copyWith(
+                                              fontSize: MediaQuery.of(context)
+                                                          .size
+                                                          .width <
+                                                      breakpointTablet
+                                                  ? 12
+                                                  : 24,
+                                              color: Colors.black)),
                         ],
                       ),
                       SizedBox(
                         width:
                             MediaQuery.of(context).size.width < breakpointTablet
                                 ? 53
-                                : 368,
+                                : 0,
                       ),
                     ])
                   ],
