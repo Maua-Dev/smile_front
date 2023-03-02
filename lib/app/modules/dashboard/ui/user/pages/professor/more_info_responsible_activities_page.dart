@@ -358,6 +358,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                       ? const Center(
                                           child: CircularProgressIndicator())
                                       : SubscriberListWidget(
+                                          manualChangeAttendence: controller.manualChangeAttendence,
                                           enrollmentsList: controller
                                               .professorActivitiesWithEnrollments,
                                           isSwitched: controller.isSwitched,

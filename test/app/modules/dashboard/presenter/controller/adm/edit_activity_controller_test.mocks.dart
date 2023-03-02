@@ -9,6 +9,8 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i3;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart'
+    as _i9;
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart'
     as _i8;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
 import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i7;
@@ -147,13 +149,30 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         ),
         returnValue: _i4.Future<bool>.value(false),
       ) as _i4.Future<bool>);
+  @override
+  _i4.Future<bool> postManualChangeAttendance(
+    String? activityCode,
+    String? userId,
+    _i8.EnrollmentStateEnum? state,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #postManualChangeAttendance,
+          [
+            activityCode,
+            userId,
+            state,
+          ],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
 }
 
 /// A class which mocks [EditActivityInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockEditActivityInterface extends _i1.Mock
-    implements _i8.EditActivityInterface {
+    implements _i9.EditActivityInterface {
   MockEditActivityInterface() {
     _i1.throwOnMissingStub(this);
   }

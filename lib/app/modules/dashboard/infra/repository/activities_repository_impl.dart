@@ -70,45 +70,6 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future<bool> subscribeActivity(String activityCode) async {
-    var requestDone = await datasource.postSubscribe(activityCode);
-    if (requestDone.state != EnrollmentStateEnum.NONE) {
-      var index = allActivitiesAndEnrollments
-          .indexWhere((element) => element.activityCode == activityCode);
-      var activity = EnrollsActivityModel(
-        acceptingNewEnrollments:
-            allActivitiesAndEnrollments[index].acceptingNewEnrollments,
-        activityCode: allActivitiesAndEnrollments[index].activityCode,
-        description: allActivitiesAndEnrollments[index].description,
-        duration: allActivitiesAndEnrollments[index].duration,
-        isExtensive: allActivitiesAndEnrollments[index].isExtensive,
-        responsibleProfessors:
-            allActivitiesAndEnrollments[index].responsibleProfessors,
-        speakers: allActivitiesAndEnrollments[index].speakers,
-        takenSlots: allActivitiesAndEnrollments[index].takenSlots,
-        title: allActivitiesAndEnrollments[index].title,
-        totalSlots: allActivitiesAndEnrollments[index].totalSlots,
-        type: allActivitiesAndEnrollments[index].type,
-        deliveryEnum: allActivitiesAndEnrollments[index].deliveryEnum,
-        link: allActivitiesAndEnrollments[index].link,
-        place: allActivitiesAndEnrollments[index].place,
-        startDate: allActivitiesAndEnrollments[index].startDate,
-        stopAcceptingNewEnrollmentsBefore: allActivitiesAndEnrollments[index]
-            .stopAcceptingNewEnrollmentsBefore,
-        enrollments: EnrollmentsModel(
-          state: requestDone.state,
-          dateSubscribed: requestDone.dateSubscribed,
-        ),
-      );
-      allActivitiesAndEnrollments
-          .removeWhere((element) => element.activityCode == activityCode);
-      allActivitiesAndEnrollments.insert(index, activity);
-      return true;
-    }
-    return false;
-  }
-
-  @override
   Future<bool> unsubscribeActivity(String activityCode) async {
     var requestDone = await datasource.postUnsubscribe(activityCode);
     if (requestDone) {
@@ -155,5 +116,65 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
       admActivitiesList = await datasource.getAdminAllActivities();
     }
     return Future.value(admActivitiesList);
+  }
+
+  @override
+  Future<bool> subscribeActivity(String activityCode) async {
+    var requestDone = await datasource.postSubscribe(activityCode);
+    if (requestDone.state != EnrollmentStateEnum.NONE) {
+      var index = allActivitiesAndEnrollments
+          .indexWhere((element) => element.activityCode == activityCode);
+      var activity = EnrollsActivityModel(
+        acceptingNewEnrollments:
+            allActivitiesAndEnrollments[index].acceptingNewEnrollments,
+        activityCode: allActivitiesAndEnrollments[index].activityCode,
+        description: allActivitiesAndEnrollments[index].description,
+        duration: allActivitiesAndEnrollments[index].duration,
+        isExtensive: allActivitiesAndEnrollments[index].isExtensive,
+        responsibleProfessors:
+            allActivitiesAndEnrollments[index].responsibleProfessors,
+        speakers: allActivitiesAndEnrollments[index].speakers,
+        takenSlots: allActivitiesAndEnrollments[index].takenSlots,
+        title: allActivitiesAndEnrollments[index].title,
+        totalSlots: allActivitiesAndEnrollments[index].totalSlots,
+        type: allActivitiesAndEnrollments[index].type,
+        deliveryEnum: allActivitiesAndEnrollments[index].deliveryEnum,
+        link: allActivitiesAndEnrollments[index].link,
+        place: allActivitiesAndEnrollments[index].place,
+        startDate: allActivitiesAndEnrollments[index].startDate,
+        stopAcceptingNewEnrollmentsBefore: allActivitiesAndEnrollments[index]
+            .stopAcceptingNewEnrollmentsBefore,
+        enrollments: EnrollmentsModel(
+          state: requestDone.state,
+          dateSubscribed: requestDone.dateSubscribed,
+        ),
+      );
+      allActivitiesAndEnrollments
+          .removeWhere((element) => element.activityCode == activityCode);
+      allActivitiesAndEnrollments.insert(index, activity);
+      return true;
+    }
+    return false;
+  }
+
+  @override
+  Future<bool> postManualChangeAttendance(
+      String activityCode, String userId, EnrollmentStateEnum state) async {
+    var requestDone = await datasource.postManualChangeAttendance(
+        activityCode, userId, state);
+    var index = requestDone.enrollments!
+        .indexWhere((element) => element.userEnroll!.userId == userId);
+    if (requestDone.enrollments![index].state != EnrollmentStateEnum.NONE) {
+      var enrollments = EnrollmentsModel(
+          state: requestDone.enrollments![index].state,
+          dateSubscribed:
+              activityWithEnrollments.enrollments![index].dateSubscribed,
+          userEnroll: activityWithEnrollments.enrollments![index].userEnroll);
+      activityWithEnrollments.enrollments!
+          .removeWhere((element) => element.userEnroll!.userId == userId);
+      activityWithEnrollments.enrollments!.insert(index, enrollments);
+      return true;
+    }
+    return false;
   }
 }

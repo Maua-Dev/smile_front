@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_activities_with_enrollments.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/post_manual_change_attendance.dart';
 import 'package:smile_front/app/shared/models/professor_activity_model.dart';
 
 part 'more_info_responsible_activities_controller.g.dart';
@@ -10,9 +11,11 @@ class MoreInfoResponsibleActivitiesController = MoreInfoResponsibleActivitiesCon
 abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   final String activityCode;
   final GetActivitiesWithEnrollmentsInterface getActivitiesWithEnrollments;
+  final PostManualChangeAttendenceInterface postManualChangeAttendence;
 
   MoreInfoResponsibleActivitiesControllerBase(
       {required this.activityCode,
+      required this.postManualChangeAttendence,
       required this.getActivitiesWithEnrollments}) {
     getProfessorActivitiesWithEnrollments();
   }
@@ -66,5 +69,16 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
     professorActivitiesWithEnrollments =
         await getActivitiesWithEnrollments(activityCode);
     setIsLoading(false);
+  }
+
+  @action
+  Future<void> manualChangeAttendence(userId, state) async {
+    setIsLoading(true);
+    var requestDone =
+        await postManualChangeAttendence(activityCode, userId, state);
+    if (requestDone) {
+      await getProfessorActivitiesWithEnrollments();
+      setIsLoading(false);
+    }
   }
 }

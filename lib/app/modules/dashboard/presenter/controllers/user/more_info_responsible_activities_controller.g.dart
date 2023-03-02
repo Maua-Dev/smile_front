@@ -126,6 +126,16 @@ mixin _$MoreInfoResponsibleActivitiesController
         .run(() => super.getProfessorActivitiesWithEnrollments());
   }
 
+  late final _$manualChangeAttendenceAsyncAction = AsyncAction(
+      'MoreInfoResponsibleActivitiesControllerBase.manualChangeAttendence',
+      context: context);
+
+  @override
+  Future<void> manualChangeAttendence(dynamic userId, dynamic state) {
+    return _$manualChangeAttendenceAsyncAction
+        .run(() => super.manualChangeAttendence(userId, state));
+  }
+
   late final _$MoreInfoResponsibleActivitiesControllerBaseActionController =
       ActionController(
           name: 'MoreInfoResponsibleActivitiesControllerBase',

@@ -18,7 +18,7 @@ abstract class ActivitiesDatasourceInterface {
   Future postConfirmAttendance(String activityCode, String confirmationCode);
   Future<String> postGenerateAttendanceConfirmation(String activityCode);
   Future postDeleteAttendanceConfirmation(String activityCode);
-  Future<EnrollsActivityModel> postManualChangeAttendance(
+  Future<ProfessorActivityModel> postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state);
   Future<String> getLinkCsv();
 }

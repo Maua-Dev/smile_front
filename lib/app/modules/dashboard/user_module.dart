@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.da
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_activities_with_enrollments.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_certificates.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/post_manual_change_attendance.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/external/certificate_datasource_impl.dart';
@@ -82,6 +83,8 @@ class UserModule extends Module {
         (i) => UnsubscribeActivity(repository: i())),
     Bind.lazySingleton<SubscribeActivityInterface>(
         (i) => SubscribeActivity(repository: i())),
+    Bind.lazySingleton<PostManualChangeAttendenceInterface>(
+        (i) => PostManualChangeAttendence(repository: i())),
     Bind.lazySingleton<UserRepositoryInterface>(
         (i) => UserRepositoryImpl(datasource: i())),
     Bind.lazySingleton<ChangeDataInterface>(

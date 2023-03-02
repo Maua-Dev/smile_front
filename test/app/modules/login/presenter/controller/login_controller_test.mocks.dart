@@ -8,13 +8,15 @@ import 'dart:async' as _i6;
 import 'package:firebase_analytics/firebase_analytics.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
-    as _i12;
-import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart'
     as _i13;
+import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart'
+    as _i14;
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
-    as _i11;
+    as _i12;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i5;
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart'
+    as _i10;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i7;
 import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i9;
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
@@ -23,7 +25,7 @@ import 'package:smile_front/app/shared/models/professor_activity_model.dart'
     as _i2;
 import 'package:smile_front/app/shared/models/user_model.dart' as _i4;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
-    as _i10;
+    as _i11;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -187,13 +189,30 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         ),
         returnValue: _i6.Future<bool>.value(false),
       ) as _i6.Future<bool>);
+  @override
+  _i6.Future<bool> postManualChangeAttendance(
+    String? activityCode,
+    String? userId,
+    _i10.EnrollmentStateEnum? state,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #postManualChangeAttendance,
+          [
+            activityCode,
+            userId,
+            state,
+          ],
+        ),
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
 }
 
 /// A class which mocks [FirebaseAnalyticsService].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFirebaseAnalyticsService extends _i1.Mock
-    implements _i10.FirebaseAnalyticsService {
+    implements _i11.FirebaseAnalyticsService {
   MockFirebaseAnalyticsService() {
     _i1.throwOnMissingStub(this);
   }
@@ -275,7 +294,7 @@ class MockFirebaseAnalyticsService extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockRefreshTokenInterface extends _i1.Mock
-    implements _i11.RefreshTokenInterface {
+    implements _i12.RefreshTokenInterface {
   MockRefreshTokenInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -295,7 +314,7 @@ class MockRefreshTokenInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSecureStorageInterface extends _i1.Mock
-    implements _i12.SecureStorageInterface {
+    implements _i13.SecureStorageInterface {
   MockSecureStorageInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -470,7 +489,7 @@ class MockSecureStorageInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLoginWithEmailInterface extends _i1.Mock
-    implements _i13.LoginWithEmailInterface {
+    implements _i14.LoginWithEmailInterface {
   MockLoginWithEmailInterface() {
     _i1.throwOnMissingStub(this);
   }

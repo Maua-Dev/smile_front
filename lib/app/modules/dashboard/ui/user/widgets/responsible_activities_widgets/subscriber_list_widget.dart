@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_activities_widgets/list_name_and_state_with_is_switched.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/professor_activity_model.dart';
 
@@ -15,8 +16,10 @@ class SubscriberListWidget extends StatelessWidget {
   final ProfessorActivityModel enrollmentsList;
   final int listViewItemCount;
   final Function()? toggleSwitch;
+  final Function(dynamic, dynamic) manualChangeAttendence;
   const SubscriberListWidget({
     Key? key,
+    required this.manualChangeAttendence,
     required this.enrollmentsList,
     required this.listViewItemCount,
     required this.isSwitched,
@@ -95,16 +98,19 @@ class SubscriberListWidget extends StatelessWidget {
             child: ListView.builder(
               itemCount: listViewItemCount,
               itemBuilder: (BuildContext context, int index) {
-                //List<ListItem> list = enrollmentsList!
-                //     .map(
-                //      (e) => ListItem(
-                //       name: e.userEnroll!.name,
-                //        state: e.state,
-                //       isSwitched: e.state == EnrollmentStateEnum.COMPLETED
-                //            ? true
-                //         : false),
-                //  )
-                //  .toList();
+                List<ListNameAndStateWithIsSwitched> list =
+                    enrollmentsList.enrollments!
+                        .map(
+                          (e) => ListNameAndStateWithIsSwitched(
+                              userId: e.userEnroll!.userId,
+                              name: e.userEnroll!.name,
+                              state: e.state,
+                              isSwitched:
+                                  e.state == EnrollmentStateEnum.COMPLETED
+                                      ? true
+                                      : false),
+                        )
+                        .toList();
                 return Column(
                   children: [
                     Container(
@@ -113,8 +119,7 @@ class SubscriberListWidget extends StatelessWidget {
                               ? 400
                               : 440,
                       decoration: BoxDecoration(
-                        color: enrollmentsList.enrollments![index].state !=
-                                EnrollmentStateEnum.IN_QUEUE
+                        color: list[index].state != EnrollmentStateEnum.IN_QUEUE
                             ? AppColors.white
                             : AppColors.gray.withOpacity(0.5),
                       ),
@@ -132,13 +137,16 @@ class SubscriberListWidget extends StatelessWidget {
                                               .enrollments![index].state !=
                                           EnrollmentStateEnum.IN_QUEUE
                                       ? Switch(
-                                          value: enrollmentsList.isExtensive,
+                                          value: list[index].state ==
+                                                  EnrollmentStateEnum.COMPLETED
+                                              ? true
+                                              : false,
                                           onChanged: (value) {
-                                            if (enrollmentsList
-                                                    .enrollments![index]
-                                                    .state !=
+                                            if (list[index].state !=
                                                 EnrollmentStateEnum.IN_QUEUE) {
-                                              toggleSwitch!();
+                                              manualChangeAttendence(
+                                                  list[index].userId,
+                                                  list[index].state);
                                             } else {
                                               null;
                                             }

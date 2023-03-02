@@ -15,6 +15,7 @@ class ProfessorModule extends Module {
         export: true),
     Bind.lazySingleton<MoreInfoResponsibleActivitiesController>((i) =>
         MoreInfoResponsibleActivitiesController(
+            postManualChangeAttendence: i(),
             activityCode: i.args!.data as String,
             getActivitiesWithEnrollments: i())),
   ];
