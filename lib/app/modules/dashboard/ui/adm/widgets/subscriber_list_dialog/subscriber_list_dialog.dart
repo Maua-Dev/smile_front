@@ -13,9 +13,13 @@ class SubscriberListDialog extends StatelessWidget {
   final bool isExtensive;
   final List<EnrollmentsModel> enrollments;
   final String participants;
+  final String activityCode;
+  final Function(String, String) onPressed;
 
   const SubscriberListDialog({
     Key? key,
+    required this.onPressed,
+    required this.activityCode,
     required this.enrollments,
     required this.activityTitle,
     required this.isExtensive,
@@ -111,50 +115,53 @@ class SubscriberListDialog extends StatelessWidget {
                   color: AppColors.brandingBlue,
                 ),
               ),
-              SizedBox(
-                width: 556,
-                height: 479,
-                child: ListView.builder(
-                  itemCount: enrollments.length,
-                  itemBuilder: (context, index) => Observer(builder: (_) {
-                    return Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 60),
-                              child: IconButton(
-                                  hoverColor: AppColors.white,
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons
-                                        .do_not_disturb_on_total_silence_outlined,
-                                    color: AppColors.redButton,
-                                  )),
-                            ),
-                            SizedBox(
-                              width: 350,
-                              child: Text(enrollments[index].user!.name,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: AppTextStyles.bold.copyWith(
-                                      color: Colors.black, fontSize: 30)),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: 475,
-                          child: Divider(
-                            thickness: 1,
-                            color: AppColors.brandingBlue,
+              Observer(builder: (_) {
+                return SizedBox(
+                  width: 556,
+                  height: 479,
+                  child: ListView.builder(
+                    itemCount: enrollments.length,
+                    itemBuilder: (context, index) => Observer(builder: (_) {
+                      return Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 60),
+                                child: IconButton(
+                                    hoverColor: AppColors.white,
+                                    onPressed: onPressed(activityCode,
+                                        enrollments[index].user!.userId),
+                                    icon: Icon(
+                                      Icons
+                                          .do_not_disturb_on_total_silence_outlined,
+                                      color: AppColors.redButton,
+                                    )),
+                              ),
+                              SizedBox(
+                                width: 350,
+                                child: Text(enrollments[index].user!.name,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: AppTextStyles.bold.copyWith(
+                                        color: Colors.black, fontSize: 30)),
+                              )
+                            ],
                           ),
-                        ),
-                      ],
-                    );
-                  }),
-                ),
-              ),
+                          SizedBox(
+                            width: 475,
+                            child: Divider(
+                              thickness: 1,
+                              color: AppColors.brandingBlue,
+                            ),
+                          ),
+                        ],
+                      );
+                    }),
+                  ),
+                );
+              }),
               SizedBox(
                 width: 556,
                 child: Divider(

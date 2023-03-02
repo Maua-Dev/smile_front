@@ -120,6 +120,12 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
+  Future manualDropActivity(String activityCode, String userId) async {
+    var body = {'code': activityCode, 'user_id': userId};
+    await middleware(url: '/manual-drop-activity', data: body, http: 'post');
+  }
+
+  @override
   Future<EnrollmentsModel> postSubscribe(String activityCode) async {
     var body = {'code': activityCode};
     var res =

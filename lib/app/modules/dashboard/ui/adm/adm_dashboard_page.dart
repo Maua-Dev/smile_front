@@ -82,6 +82,10 @@ class _AdmDashboardPageState
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
                                 return ActivitiesCardWidget(
+                                  onPressed: (activityCode, userId) {
+                                    controller.dropActivity(
+                                        activityCode, userId);
+                                  },
                                   enrollments: controller
                                       .activitiesList[index].enrollments,
                                   isExtensive: controller

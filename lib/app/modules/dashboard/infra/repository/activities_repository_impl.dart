@@ -52,6 +52,16 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
+  Future manualDropActivity(String activityCode, String userId) async {
+    var activityIndex = admActivitiesList
+        .indexWhere((element) => element.activityCode == activityCode);
+    admActivitiesList[activityIndex]
+        .enrollments
+        .removeWhere((element) => element.user!.userId == userId);
+    await datasource.manualDropActivity(activityCode, userId);
+  }
+
+  @override
   Future createActivity(ActivityModel activityToCreate) async {
     activitiesList.insert(0, activityToCreate);
     await datasource.createActivity(activityToCreate);
