@@ -169,14 +169,6 @@ abstract class AdmDashboardControllerBase with Store {
   }
 
   @action
-  Future getAllActivities() async {
-    setIsLoading(true);
-    activitiesList = await getAdminActivities();
-    allActivitiesList = await getAdminActivities();
-    setIsLoading(false);
-  }
-
-  @action
   Future<void> logout() async {
     await authController.logout();
     Modular.to.navigate('/login');
@@ -193,6 +185,14 @@ abstract class AdmDashboardControllerBase with Store {
   Future dropActivity(String activityCode, String userId) async {
     setIsLoading(true);
     await manualDropActivity(activityCode, userId);
+    setIsLoading(false);
+  }
+
+  @action
+  Future getAllActivities() async {
+    setIsLoading(true);
+    activitiesList = await getAdminActivities();
+    allActivitiesList = await getAdminActivities();
     setIsLoading(false);
   }
 }

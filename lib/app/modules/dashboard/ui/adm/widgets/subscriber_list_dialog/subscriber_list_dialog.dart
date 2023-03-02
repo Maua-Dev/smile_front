@@ -127,26 +127,29 @@ class SubscriberListDialog extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 60),
-                                child: IconButton(
-                                    hoverColor: AppColors.white,
-                                    onPressed: onPressed(activityCode,
-                                        enrollments[index].user!.userId),
-                                    icon: Icon(
-                                      Icons
-                                          .do_not_disturb_on_total_silence_outlined,
-                                      color: AppColors.redButton,
-                                    )),
-                              ),
-                              SizedBox(
-                                width: 350,
-                                child: Text(enrollments[index].user!.name,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                    style: AppTextStyles.bold.copyWith(
-                                        color: Colors.black, fontSize: 30)),
-                              )
+                              Observer(builder: (_) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(left: 60),
+                                  child: IconButton(
+                                      hoverColor: AppColors.white,
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons
+                                            .do_not_disturb_on_total_silence_outlined,
+                                        color: AppColors.redButton,
+                                      )),
+                                );
+                              }),
+                              Observer(builder: (_) {
+                                return SizedBox(
+                                  width: 350,
+                                  child: Text(enrollments[index].user!.name,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                      style: AppTextStyles.bold.copyWith(
+                                          color: Colors.black, fontSize: 30)),
+                                );
+                              })
                             ],
                           ),
                           SizedBox(

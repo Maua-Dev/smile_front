@@ -162,7 +162,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                           '$enrolledUsersLength/$totalParticipants',
                                       enrollments: enrollments,
                                       activityCode: activityCode,
-                                    );  
+                                    );
                                   });
                             },
                             child: Container(
@@ -191,11 +191,13 @@ class ActivitiesCardWidget extends StatelessWidget {
                                     size: 33,
                                     color: AppColors.white,
                                   ),
-                                  Text(
-                                      '$enrolledUsersLength/$totalParticipants',
-                                      style: AppTextStyles.body.copyWith(
-                                          fontSize: 18,
-                                          color: AppColors.white)),
+                                  Observer(builder: (_) {
+                                    return Text(
+                                        '$enrolledUsersLength/$totalParticipants',
+                                        style: AppTextStyles.body.copyWith(
+                                            fontSize: 18,
+                                            color: AppColors.white));
+                                  }),
                                   Icon(
                                     Icons.keyboard_arrow_right,
                                     size: 42,
@@ -207,14 +209,18 @@ class ActivitiesCardWidget extends StatelessWidget {
                           ),
                         );
                       }),
-                      IconButton(
-                          onPressed: onPressedEdit,
-                          icon: Icon(Icons.mode_edit_outline_sharp,
-                              size: 28, color: AppColors.brandingOrange)),
-                      IconButton(
-                          onPressed: onPressedDelete,
-                          icon: Icon(Icons.delete,
-                              size: 28, color: AppColors.brandingOrange))
+                      Observer(builder: (_) {
+                        return IconButton(
+                            onPressed: onPressedEdit,
+                            icon: Icon(Icons.mode_edit_outline_sharp,
+                                size: 28, color: AppColors.brandingOrange));
+                      }),
+                      Observer(builder: (_) {
+                        return IconButton(
+                            onPressed: onPressedDelete,
+                            icon: Icon(Icons.delete,
+                                size: 28, color: AppColors.brandingOrange));
+                      })
                     ])
               ],
             ))

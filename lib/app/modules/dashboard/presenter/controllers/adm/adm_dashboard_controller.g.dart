@@ -174,15 +174,6 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$getAllActivitiesAsyncAction = AsyncAction(
-      'AdmDashboardControllerBase.getAllActivities',
-      context: context);
-
-  @override
-  Future<dynamic> getAllActivities() {
-    return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
-  }
-
   late final _$logoutAsyncAction =
       AsyncAction('AdmDashboardControllerBase.logout', context: context);
 
@@ -208,6 +199,15 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
   Future<dynamic> dropActivity(String activityCode, String userId) {
     return _$dropActivityAsyncAction
         .run(() => super.dropActivity(activityCode, userId));
+  }
+
+  late final _$getAllActivitiesAsyncAction = AsyncAction(
+      'AdmDashboardControllerBase.getAllActivities',
+      context: context);
+
+  @override
+  Future<dynamic> getAllActivities() {
+    return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
   }
 
   late final _$AdmDashboardControllerBaseActionController =
