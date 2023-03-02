@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
+import 'package:smile_front/app/shared/utils/screen_helper.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../shared/themes/app_colors.dart';
@@ -330,7 +332,8 @@ class NameAlterationDialog extends StatelessWidget {
                     isBrazilianPhoneField: controller.isBrazilianPhone,
                     placeholder: S.of(context).registerPhonePlaceholder,
                     setValue: controller.setPhone,
-                    widthSize: 380,
+                    widthSize:
+                        Screen.width(context) < breakpointMobile ? 260 : 380,
                     validation: controller.validatePhone,
                   )
                 ],
