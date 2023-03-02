@@ -48,6 +48,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         default:
           res = await dio.get(url);
       }
+      requestCounter = 0;
       return res;
     } on DioError catch (e) {
       if (e.response == null || e.response!.statusCode == 401) {
