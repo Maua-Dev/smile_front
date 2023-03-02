@@ -49,9 +49,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       }
       return res;
     } on DioError catch (e) {
-      if (e.response?.statusCode == 401) {
+      if (e.response == null || e.response!.statusCode == 401) {
         await authController.refreshUserToken();
-        var res = await dio.get(url);
+        var res = await middleware(
+            url: url, needAutorization: needAutorization, data: data);
         return res.data;
       }
       showErrorSnackBar(errorMessage: e.response!.data);
