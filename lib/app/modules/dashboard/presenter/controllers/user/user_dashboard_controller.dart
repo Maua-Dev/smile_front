@@ -405,7 +405,6 @@ abstract class UserDashboardControllerBase with Store {
       phoneToChange = phoneToChange.replaceAll(' ', '');
       phoneToChange = phoneToChange.replaceAll('-', '');
     }
-    print(phoneToChange);
     if (value.isNotEmpty) {
       isPhoneFieldFilled = true;
     }

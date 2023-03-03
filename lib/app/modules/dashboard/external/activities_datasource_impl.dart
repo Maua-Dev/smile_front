@@ -56,7 +56,10 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         requestCounter++;
         if (requestCounter < 2) {
           var res = await middleware(
-              url: url, needAutorization: needAutorization, data: data);
+              http: http,
+              url: url,
+              needAutorization: needAutorization,
+              data: data);
           requestCounter = 0;
           return res.data;
         }
