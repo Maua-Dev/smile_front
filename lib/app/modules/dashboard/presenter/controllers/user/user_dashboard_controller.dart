@@ -293,6 +293,7 @@ abstract class UserDashboardControllerBase with Store {
     await secureStorage.saveSocialName(socialNameToChange);
     await secureStorage
         .saveCertificateWithSocialName(certificateWithSocialName);
+    await secureStorage.savePhone(phoneToChange);
     getUserName();
     getUserSocialName();
     getUserSubscribedActivities();
@@ -415,10 +416,12 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   String? validatePhone(String? value) {
-    if (countryCode?.code == "BR" && phone!.length == 12) {
+    if (countryCode?.code == "BR" && phoneToChange.length == 12) {
       return S.current.fieldDDDRequired;
     }
-    if (countryCode?.code == "BR" && phone!.length != 14 && phone!.length > 3) {
+    if (countryCode?.code == "BR" &&
+        phoneToChange.length != 14 &&
+        phoneToChange.length > 3) {
       return S.current.fieldInvalid;
     }
     return null;
