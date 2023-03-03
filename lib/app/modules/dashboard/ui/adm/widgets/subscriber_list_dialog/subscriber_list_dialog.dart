@@ -132,8 +132,8 @@ class SubscriberListDialog extends StatelessWidget {
                                   padding: const EdgeInsets.only(left: 60),
                                   child: IconButton(
                                       hoverColor: AppColors.white,
-                                      onPressed: (onPressed(activityCode,
-                                          enrollments[index].user!.userId)),
+                                      onPressed: onPressed(activityCode,
+                                          enrollments[index].user!.userId),
                                       icon: Icon(
                                         Icons
                                             .do_not_disturb_on_total_silence_outlined,

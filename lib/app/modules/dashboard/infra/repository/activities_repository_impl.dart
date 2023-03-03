@@ -54,29 +54,31 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   @override
   Future manualDropActivity(String activityCode, String userId) async {
     var requestDone = await datasource.manualDropActivity(activityCode, userId);
-    var activityIndex = admActivitiesList
+    var index = admActivitiesList
         .indexWhere((element) => element.activityCode == activityCode);
-    admActivitiesList[activityIndex] = AdminActivityModel(
+    var activity = AdminActivityModel(
         acceptingNewEnrollments:
-            admActivitiesList[activityIndex].acceptingNewEnrollments,
-        activityCode: admActivitiesList[activityIndex].activityCode,
-        description: admActivitiesList[activityIndex].description,
-        duration: admActivitiesList[activityIndex].duration,
-        isExtensive: admActivitiesList[activityIndex].isExtensive,
-        responsibleProfessors:
-            admActivitiesList[activityIndex].responsibleProfessors,
-        speakers: admActivitiesList[activityIndex].speakers,
-        takenSlots: admActivitiesList[activityIndex].takenSlots,
-        title: admActivitiesList[activityIndex].title,
-        totalSlots: admActivitiesList[activityIndex].totalSlots,
-        type: admActivitiesList[activityIndex].type,
-        deliveryEnum: admActivitiesList[activityIndex].deliveryEnum,
-        link: admActivitiesList[activityIndex].link,
-        place: admActivitiesList[activityIndex].place,
-        startDate: admActivitiesList[activityIndex].startDate,
+            admActivitiesList[index].acceptingNewEnrollments,
+        activityCode: admActivitiesList[index].activityCode,
+        description: admActivitiesList[index].description,
+        duration: admActivitiesList[index].duration,
+        isExtensive: admActivitiesList[index].isExtensive,
+        responsibleProfessors: admActivitiesList[index].responsibleProfessors,
+        speakers: admActivitiesList[index].speakers,
+        takenSlots: admActivitiesList[index].takenSlots,
+        title: admActivitiesList[index].title,
+        totalSlots: admActivitiesList[index].totalSlots,
+        type: admActivitiesList[index].type,
+        deliveryEnum: admActivitiesList[index].deliveryEnum,
+        link: admActivitiesList[index].link,
+        place: admActivitiesList[index].place,
+        startDate: admActivitiesList[index].startDate,
         stopAcceptingNewEnrollmentsBefore:
-            admActivitiesList[activityIndex].stopAcceptingNewEnrollmentsBefore,
+            admActivitiesList[index].stopAcceptingNewEnrollmentsBefore,
         enrollments: requestDone.enrollments);
+    admActivitiesList
+        .removeWhere((element) => element.activityCode == activityCode);
+    admActivitiesList.insert(index, activity);
   }
 
   @override
