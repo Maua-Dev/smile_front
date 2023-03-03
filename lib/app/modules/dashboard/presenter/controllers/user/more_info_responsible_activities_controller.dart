@@ -76,8 +76,10 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
     setIsLoading(true);
     var requestDone =
         await postManualChangeAttendence(activityCode, userId, state);
+    print('fez o request');
     if (requestDone) {
       await getProfessorActivitiesWithEnrollments();
+      print('fez o segundo');
       setIsLoading(false);
     }
   }

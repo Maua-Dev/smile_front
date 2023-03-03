@@ -142,14 +142,9 @@ class SubscriberListWidget extends StatelessWidget {
                                               ? true
                                               : false,
                                           onChanged: (value) {
-                                            if (list[index].state !=
-                                                EnrollmentStateEnum.IN_QUEUE) {
-                                              manualChangeAttendence(
-                                                  list[index].userId,
-                                                  list[index].state);
-                                            } else {
-                                              null;
-                                            }
+                                            manualChangeAttendence(
+                                                list[index].userId,
+                                                list[index].state);
                                           },
                                           activeColor: Colors.green,
                                           inactiveThumbColor: Colors.red,
