@@ -39,14 +39,19 @@ jobs:
          - name: rename sw file
            if: github.ref == 'refs/heads/prod'
            run: mv web/firebase-messaging-sw-prod.js web/firebase-messaging-sw.js
+           
+         - name: Setup AWS Credentials
+           uses: aws-actions/configure-aws-credentials@v1
+           with:
+              aws-region: ${{ secrets.AWS_REGION }}
+              role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GithubActionsRole
+              role-session-name: github-action
 
          - run: flutter build web -t lib/${{secrets.MAIN_FLAVOR}}.dart --web-renderer canvaskit --release --dart-define=MSS_USER_BASE_URL=${{secrets.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{secrets.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=https://d3ebnpochj0915.cloudfront.net/ --dart-define=MSS_CERTIFICATE_BASE_URL=https://gywf2oepfesleyuhgpwj5humz40bguxi.lambda-url.sa-east-1.on.aws/ --dart-define=SPONSOR_FORM_REQUEST_URL=${{secrets.SPONSOR_FORM_REQUEST_URL}} --dart-define=ENV=${{secrets.ENV}}
 
          - name: Upload to S3
            uses: shallwefootball/s3-upload-action@master
            with:
-             aws_key_id: ${{ secrets.AWS_KEY_ID }}
-             aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
              aws_bucket: ${{ secrets.AWS_BUCKET }}
              source_dir: 'build/web'
              destination_dir: ''
