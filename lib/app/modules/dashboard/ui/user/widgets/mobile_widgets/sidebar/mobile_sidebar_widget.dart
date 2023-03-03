@@ -20,6 +20,7 @@ class DrawerDashboardWidget extends StatelessWidget {
   ];
 
   final List<String> userRoutes = [
+    '/home',
     '/user/home',
     '/user/home/all-activities',
     '/user/home/certificate',
@@ -36,6 +37,7 @@ class DrawerDashboardWidget extends StatelessWidget {
   ];
 
   final List<String> professorRoutes = [
+    '/home',
     '/user/home',
     '/user/home/all-activities',
     '/user/home/professor',
