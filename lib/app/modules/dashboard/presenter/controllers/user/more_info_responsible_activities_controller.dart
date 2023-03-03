@@ -74,13 +74,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @action
   Future<void> manualChangeAttendence(userId, state) async {
     setIsLoading(true);
-    var requestDone =
-        await postManualChangeAttendence(activityCode, userId, state);
-    print('fez o request');
-    if (requestDone) {
-      await getProfessorActivitiesWithEnrollments();
-      print('fez o segundo');
-      setIsLoading(false);
-    }
+    await postManualChangeAttendence(activityCode, userId, state);
+    setIsLoading(false);
   }
 }

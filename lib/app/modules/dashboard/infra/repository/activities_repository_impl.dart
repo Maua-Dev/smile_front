@@ -158,23 +158,38 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future<bool> postManualChangeAttendance(
+  Future postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state) async {
     var requestDone = await datasource.postManualChangeAttendance(
         activityCode, userId, state);
-    var index = requestDone.enrollments!
+    var index = activityWithEnrollments.enrollments!
         .indexWhere((element) => element.userEnroll!.userId == userId);
-    if (requestDone.enrollments![index].state != EnrollmentStateEnum.NONE) {
-      var enrollments = EnrollmentsModel(
-          state: requestDone.enrollments![index].state,
-          dateSubscribed:
-              activityWithEnrollments.enrollments![index].dateSubscribed,
-          userEnroll: activityWithEnrollments.enrollments![index].userEnroll);
-      activityWithEnrollments.enrollments!
-          .removeWhere((element) => element.userEnroll!.userId == userId);
-      activityWithEnrollments.enrollments!.insert(index, enrollments);
-      return true;
-    }
-    return false;
+    var activity = EnrollsActivityModel(
+      acceptingNewEnrollments: activityWithEnrollments.acceptingNewEnrollments,
+      activityCode: activityWithEnrollments.activityCode,
+      description: activityWithEnrollments.description,
+      duration: activityWithEnrollments.duration,
+      isExtensive: activityWithEnrollments.isExtensive,
+      responsibleProfessors: activityWithEnrollments.responsibleProfessors,
+      speakers: activityWithEnrollments.speakers,
+      takenSlots: activityWithEnrollments.takenSlots,
+      title: activityWithEnrollments.title,
+      totalSlots: activityWithEnrollments.totalSlots,
+      type: activityWithEnrollments.type,
+      deliveryEnum: activityWithEnrollments.deliveryEnum,
+      link: activityWithEnrollments.link,
+      place: activityWithEnrollments.place,
+      startDate: activityWithEnrollments.startDate,
+      stopAcceptingNewEnrollmentsBefore:
+          activityWithEnrollments.stopAcceptingNewEnrollmentsBefore,
+      enrollments: EnrollmentsModel(
+        state: requestDone.enrollments![index].state,
+        userEnroll: requestDone.enrollments![index].userEnroll,
+        dateSubscribed: requestDone.enrollments![index].dateSubscribed,
+      ),
+    );
+    activityWithEnrollments.enrollments!
+        .removeWhere((element) => element.userEnroll!.userId == userId);
+    activityWithEnrollments.enrollments!.insert(index, activity.enrollments!);
   }
 }

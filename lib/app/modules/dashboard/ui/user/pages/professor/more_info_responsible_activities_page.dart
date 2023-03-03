@@ -281,97 +281,92 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                 runSpacing: 40,
                 crossAxisAlignment: WrapCrossAlignment.start,
                 children: [
-                  Observer(builder: (_) {
-                    return SizedBox(
-                      width: 570,
-                      child: Column(
-                        children: [
-                          MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            child: GestureDetector(
-                              onTap: () {
-                                controller.showSubscribedList();
-                              },
-                              child: Observer(builder: (_) {
-                                return Container(
-                                  width: MediaQuery.of(context).size.width <
-                                          breakpointTablet
-                                      ? 339
-                                      : 484,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color:
-                                              controller.isSubscribedListVisible
-                                                  ? AppColors.brandingOrange
-                                                  : AppColors.white),
-                                      color: controller.isSubscribedListVisible
-                                          ? AppColors.white
-                                          : AppColors.brandingOrange,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                      .size
-                                                      .width <
-                                                  breakpointMobile
-                                              ? 30
-                                              : 50,
-                                        ),
-                                        Text(S.of(context).subscriberListTitle,
-                                            style: AppTextStyles.bold.copyWith(
-                                                color: controller
-                                                        .isSubscribedListVisible
-                                                    ? AppColors.brandingOrange
-                                                    : AppColors.white,
-                                                fontSize: 30)),
-                                        Icon(
-                                          controller.isSubscribedListVisible
-                                              ? Icons.keyboard_arrow_up
-                                              : Icons.keyboard_arrow_down,
-                                          size: MediaQuery.of(context)
-                                                      .size
-                                                      .width <
-                                                  breakpointMobile
-                                              ? 30
-                                              : 50,
-                                          color:
-                                              controller.isSubscribedListVisible
+                  SizedBox(
+                    width: 570,
+                    child: Column(
+                      children: [
+                        MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            onTap: () {
+                              controller.showSubscribedList();
+                            },
+                            child: Observer(builder: (_) {
+                              return Container(
+                                width: MediaQuery.of(context).size.width <
+                                        breakpointTablet
+                                    ? 339
+                                    : 484,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color:
+                                            controller.isSubscribedListVisible
+                                                ? AppColors.brandingOrange
+                                                : AppColors.white),
+                                    color: controller.isSubscribedListVisible
+                                        ? AppColors.white
+                                        : AppColors.brandingOrange,
+                                    borderRadius: BorderRadius.circular(15)),
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width <
+                                                    breakpointMobile
+                                                ? 30
+                                                : 50,
+                                      ),
+                                      Text(S.of(context).subscriberListTitle,
+                                          style: AppTextStyles.bold.copyWith(
+                                              color: controller
+                                                      .isSubscribedListVisible
                                                   ? AppColors.brandingOrange
                                                   : AppColors.white,
-                                        )
-                                      ]),
-                                );
-                              }),
-                            ),
+                                              fontSize: 30)),
+                                      Icon(
+                                        controller.isSubscribedListVisible
+                                            ? Icons.keyboard_arrow_up
+                                            : Icons.keyboard_arrow_down,
+                                        size:
+                                            MediaQuery.of(context).size.width <
+                                                    breakpointMobile
+                                                ? 30
+                                                : 50,
+                                        color:
+                                            controller.isSubscribedListVisible
+                                                ? AppColors.brandingOrange
+                                                : AppColors.white,
+                                      )
+                                    ]),
+                              );
+                            }),
                           ),
-                          const SizedBox(height: 30),
-                          Observer(
-                              builder: (_) => Visibility(
-                                  visible: controller.isSubscribedListVisible,
-                                  child: controller.isLoading
-                                      ? const Center(
-                                          child: CircularProgressIndicator())
-                                      : SubscriberListWidget(
-                                          manualChangeAttendence: controller.manualChangeAttendence,
-                                          enrollmentsList: controller
-                                              .professorActivitiesWithEnrollments,
-                                          isSwitched: controller.isSwitched,
-                                          toggleSwitch: controller.toggleSwitch,
-                                          listViewItemCount: controller
-                                              .professorActivitiesWithEnrollments
-                                              .enrollments!
-                                              .length,
-                                        ))),
-                        ],
-                      ),
-                    );
-                  }),
+                        ),
+                        const SizedBox(height: 30),
+                        Observer(
+                            builder: (_) => Visibility(
+                                visible: controller.isSubscribedListVisible,
+                                child: SubscriberListWidget(
+                                        manualChangeAttendence:
+                                            controller.manualChangeAttendence,
+                                        enrollmentsList: controller
+                                            .professorActivitiesWithEnrollments,
+                                        isSwitched: controller.isSwitched,
+                                        toggleSwitch: controller.toggleSwitch,
+                                        listViewItemCount: controller
+                                            .professorActivitiesWithEnrollments
+                                            .enrollments!
+                                            .length,
+                                        isLoading: controller.isLoading,
+                                      ))),
+                      ],
+                    ),
+                  ),
                   if (MediaQuery.of(context).size.width > 1350)
                     const SizedBox(
                       width: 40,

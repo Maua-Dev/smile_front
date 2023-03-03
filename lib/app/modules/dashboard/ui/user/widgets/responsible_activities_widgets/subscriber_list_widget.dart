@@ -15,10 +15,12 @@ class SubscriberListWidget extends StatelessWidget {
   final bool isSwitched;
   final ProfessorActivityModel enrollmentsList;
   final int listViewItemCount;
+  final bool isLoading;
   final Function()? toggleSwitch;
   final Function(dynamic, dynamic) manualChangeAttendence;
   const SubscriberListWidget({
     Key? key,
+    required this.isLoading,
     required this.manualChangeAttendence,
     required this.enrollmentsList,
     required this.listViewItemCount,
@@ -136,23 +138,27 @@ class SubscriberListWidget extends StatelessWidget {
                                   child: enrollmentsList
                                               .enrollments![index].state !=
                                           EnrollmentStateEnum.IN_QUEUE
-                                      ? Switch(
-                                          value: list[index].state ==
-                                                  EnrollmentStateEnum.COMPLETED
-                                              ? true
-                                              : false,
-                                          onChanged: (value) {
-                                            manualChangeAttendence(
-                                                list[index].userId,
-                                                list[index].state);
-                                          },
-                                          activeColor: Colors.green,
-                                          inactiveThumbColor: Colors.red,
-                                          inactiveTrackColor:
-                                              Colors.red.withOpacity(0.5),
-                                          activeTrackColor:
-                                              Colors.green.withOpacity(0.5),
-                                        )
+                                      ? isLoading
+                                          ? const Center(
+                                              child:
+                                                  CircularProgressIndicator(),
+                                            )
+                                          : Switch(
+                                              value: list[index].state ==
+                                                      EnrollmentStateEnum
+                                                          .COMPLETED
+                                                  ? true
+                                                  : false,
+                                              onChanged: manualChangeAttendence(
+                                                  list[index].userId,
+                                                  list[index].state),
+                                              activeColor: Colors.green,
+                                              inactiveThumbColor: Colors.red,
+                                              inactiveTrackColor:
+                                                  Colors.red.withOpacity(0.5),
+                                              activeTrackColor:
+                                                  Colors.green.withOpacity(0.5),
+                                            )
                                       : Padding(
                                           padding: EdgeInsets.only(
                                               left: MediaQuery.of(context)
