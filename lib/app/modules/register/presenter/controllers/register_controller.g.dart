@@ -363,6 +363,22 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
+  late final _$phoneValueAtom =
+      Atom(name: 'RegisterControllerBase.phoneValue', context: context);
+
+  @override
+  String get phoneValue {
+    _$phoneValueAtom.reportRead();
+    return super.phoneValue;
+  }
+
+  @override
+  set phoneValue(String value) {
+    _$phoneValueAtom.reportWrite(value, super.phoneValue, () {
+      super.phoneValue = value;
+    });
+  }
+
   late final _$countryCodeAtom =
       Atom(name: 'RegisterControllerBase.countryCode', context: context);
 
@@ -694,6 +710,7 @@ acceptEmailNotifications: ${acceptEmailNotifications},
 acceptSMSNotifications: ${acceptSMSNotifications},
 isBrazilianPhone: ${isBrazilianPhone},
 isPhoneFieldFilled: ${isPhoneFieldFilled},
+phoneValue: ${phoneValue},
 countryCode: ${countryCode},
 raInt: ${raInt},
 registerInformations: ${registerInformations}

@@ -121,50 +121,47 @@ class UserFilterCardWidget extends StatelessWidget {
                                                 ActivityEnum.values.length,
                                             itemBuilder: (BuildContext context,
                                                 int index) {
-                                              return MouseRegion(
-                                                  cursor:
-                                                      SystemMouseCursors.click,
-                                                  child: GestureDetector(
-                                                    onTap: () {
-                                                      onChangedActivitiesFilter!(
-                                                          ActivityEnum
-                                                              .values[index]);
-                                                      Modular.to.pop();
-                                                    },
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                vertical: 10),
-                                                        child: Container(
-                                                          height: 50,
-                                                          decoration: BoxDecoration(
-                                                              border: Border.all(
-                                                                  color: AppColors
-                                                                      .brandingBlue),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10)),
-                                                          child: Align(
-                                                            alignment: Alignment
-                                                                .center,
-                                                            child: Text(
-                                                              ActivityEnum
-                                                                  .values[index]
-                                                                  .name
-                                                                  .toString(),
-                                                              style: AppTextStyles
-                                                                  .bold
-                                                                  .copyWith(
-                                                                      color: AppColors
-                                                                          .brandingBlue,
-                                                                      fontSize:
-                                                                          16),
-                                                            ),
-                                                          ),
-                                                        )),
-                                                  ));
+                                              return Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 12,
+                                                        horizontal: 30),
+                                                child: ElevatedButton(
+                                                  style: ButtonStyle(
+                                                    shape: MaterialStateProperty
+                                                        .all<
+                                                            RoundedRectangleBorder>(
+                                                      RoundedRectangleBorder(
+                                                          side: BorderSide(
+                                                              color: AppColors
+                                                                  .white),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10)),
+                                                    ),
+                                                  ),
+                                                  onPressed: () {
+                                                    onChangedActivitiesFilter!(
+                                                        ActivityEnum
+                                                            .values[index]);
+                                                    Modular.to.pop();
+                                                  },
+                                                  child: Align(
+                                                    alignment: Alignment.center,
+                                                    child: Text(
+                                                      ActivityEnum
+                                                          .values[index].name
+                                                          .toString(),
+                                                      style: AppTextStyles.bold
+                                                          .copyWith(
+                                                              color: AppColors
+                                                                  .white,
+                                                              fontSize: 16),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
                                             }),
                                       ),
                                     );
