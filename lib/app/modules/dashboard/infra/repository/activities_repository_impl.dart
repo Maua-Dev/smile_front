@@ -54,13 +54,29 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   @override
   Future manualDropActivity(String activityCode, String userId) async {
     var requestDone = await datasource.manualDropActivity(activityCode, userId);
-    if (requestDone) {
-      var activityIndex = admActivitiesList
-          .indexWhere((element) => element.activityCode == activityCode);
-      admActivitiesList[activityIndex]
-          .enrollments
-          .removeWhere((element) => element.user!.userId == userId);
-    }
+    var activityIndex = admActivitiesList
+        .indexWhere((element) => element.activityCode == activityCode);
+    admActivitiesList[activityIndex] = AdminActivityModel(
+        acceptingNewEnrollments:
+            admActivitiesList[activityIndex].acceptingNewEnrollments,
+        activityCode: admActivitiesList[activityIndex].activityCode,
+        description: admActivitiesList[activityIndex].description,
+        duration: admActivitiesList[activityIndex].duration,
+        isExtensive: admActivitiesList[activityIndex].isExtensive,
+        responsibleProfessors:
+            admActivitiesList[activityIndex].responsibleProfessors,
+        speakers: admActivitiesList[activityIndex].speakers,
+        takenSlots: admActivitiesList[activityIndex].takenSlots,
+        title: admActivitiesList[activityIndex].title,
+        totalSlots: admActivitiesList[activityIndex].totalSlots,
+        type: admActivitiesList[activityIndex].type,
+        deliveryEnum: admActivitiesList[activityIndex].deliveryEnum,
+        link: admActivitiesList[activityIndex].link,
+        place: admActivitiesList[activityIndex].place,
+        startDate: admActivitiesList[activityIndex].startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            admActivitiesList[activityIndex].stopAcceptingNewEnrollmentsBefore,
+        enrollments: requestDone.enrollments);
   }
 
   @override

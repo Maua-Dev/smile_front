@@ -120,9 +120,12 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future manualDropActivity(String activityCode, String userId) async {
+  Future<AdminActivityModel> manualDropActivity(
+      String activityCode, String userId) async {
     var body = {'code': activityCode, 'user_id': userId};
-    await middleware(url: '/manual-drop-activity', data: body, http: 'post');
+    var res = await middleware(
+        url: '/manual-drop-activity', data: body, http: 'post');
+    return AdminActivityModel.fromMap(res.data['activity_with_enrollments']);
   }
 
   @override

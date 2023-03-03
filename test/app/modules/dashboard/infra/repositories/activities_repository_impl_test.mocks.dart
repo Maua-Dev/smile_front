@@ -3,18 +3,18 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i6;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart'
-    as _i4;
+    as _i5;
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart'
     as _i8;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i6;
-import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i7;
+import 'package:smile_front/app/shared/models/activity_model.dart' as _i7;
+import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i3;
 import 'package:smile_front/app/shared/models/enrollments_model.dart' as _i2;
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
-    as _i3;
+    as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -38,9 +38,20 @@ class _FakeEnrollmentsModel_0 extends _i1.SmartFake
         );
 }
 
-class _FakeEnrollsActivityModel_1 extends _i1.SmartFake
-    implements _i3.EnrollsActivityModel {
-  _FakeEnrollsActivityModel_1(
+class _FakeAdminActivityModel_1 extends _i1.SmartFake
+    implements _i3.AdminActivityModel {
+  _FakeAdminActivityModel_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeEnrollsActivityModel_2 extends _i1.SmartFake
+    implements _i4.EnrollsActivityModel {
+  _FakeEnrollsActivityModel_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -53,77 +64,77 @@ class _FakeEnrollsActivityModel_1 extends _i1.SmartFake
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockActivitiesDatasourceInterface extends _i1.Mock
-    implements _i4.ActivitiesDatasourceInterface {
+    implements _i5.ActivitiesDatasourceInterface {
   MockActivitiesDatasourceInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<List<_i6.ActivityModel>> getAllActivities() => (super.noSuchMethod(
+  _i6.Future<List<_i7.ActivityModel>> getAllActivities() => (super.noSuchMethod(
         Invocation.method(
           #getAllActivities,
           [],
         ),
         returnValue:
-            _i5.Future<List<_i6.ActivityModel>>.value(<_i6.ActivityModel>[]),
-      ) as _i5.Future<List<_i6.ActivityModel>>);
+            _i6.Future<List<_i7.ActivityModel>>.value(<_i7.ActivityModel>[]),
+      ) as _i6.Future<List<_i7.ActivityModel>>);
   @override
-  _i5.Future<List<_i7.AdminActivityModel>> getAdminAllActivities() =>
+  _i6.Future<List<_i3.AdminActivityModel>> getAdminAllActivities() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAdminAllActivities,
           [],
         ),
-        returnValue: _i5.Future<List<_i7.AdminActivityModel>>.value(
-            <_i7.AdminActivityModel>[]),
-      ) as _i5.Future<List<_i7.AdminActivityModel>>);
+        returnValue: _i6.Future<List<_i3.AdminActivityModel>>.value(
+            <_i3.AdminActivityModel>[]),
+      ) as _i6.Future<List<_i3.AdminActivityModel>>);
   @override
-  _i5.Future<List<_i3.EnrollsActivityModel>> getAllActivitiesLogged() =>
+  _i6.Future<List<_i4.EnrollsActivityModel>> getAllActivitiesLogged() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllActivitiesLogged,
           [],
         ),
-        returnValue: _i5.Future<List<_i3.EnrollsActivityModel>>.value(
-            <_i3.EnrollsActivityModel>[]),
-      ) as _i5.Future<List<_i3.EnrollsActivityModel>>);
+        returnValue: _i6.Future<List<_i4.EnrollsActivityModel>>.value(
+            <_i4.EnrollsActivityModel>[]),
+      ) as _i6.Future<List<_i4.EnrollsActivityModel>>);
   @override
-  _i5.Future<List<_i3.EnrollsActivityModel>> getActivityWithEnrollments(
+  _i6.Future<List<_i4.EnrollsActivityModel>> getActivityWithEnrollments(
           String? code) =>
       (super.noSuchMethod(
         Invocation.method(
           #getActivityWithEnrollments,
           [code],
         ),
-        returnValue: _i5.Future<List<_i3.EnrollsActivityModel>>.value(
-            <_i3.EnrollsActivityModel>[]),
-      ) as _i5.Future<List<_i3.EnrollsActivityModel>>);
+        returnValue: _i6.Future<List<_i4.EnrollsActivityModel>>.value(
+            <_i4.EnrollsActivityModel>[]),
+      ) as _i6.Future<List<_i4.EnrollsActivityModel>>);
   @override
-  _i5.Future<_i2.EnrollmentsModel> postSubscribe(String? activityCode) =>
+  _i6.Future<_i2.EnrollmentsModel> postSubscribe(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #postSubscribe,
           [activityCode],
         ),
         returnValue:
-            _i5.Future<_i2.EnrollmentsModel>.value(_FakeEnrollmentsModel_0(
+            _i6.Future<_i2.EnrollmentsModel>.value(_FakeEnrollmentsModel_0(
           this,
           Invocation.method(
             #postSubscribe,
             [activityCode],
           ),
         )),
-      ) as _i5.Future<_i2.EnrollmentsModel>);
+      ) as _i6.Future<_i2.EnrollmentsModel>);
   @override
-  _i5.Future<bool> postUnsubscribe(String? activityCode) => (super.noSuchMethod(
+  _i6.Future<bool> postUnsubscribe(String? activityCode) => (super.noSuchMethod(
         Invocation.method(
           #postUnsubscribe,
           [activityCode],
         ),
-        returnValue: _i5.Future<bool>.value(false),
-      ) as _i5.Future<bool>);
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
   @override
-  _i5.Future<dynamic> manualDropActivity(
+  _i6.Future<_i3.AdminActivityModel> manualDropActivity(
     String? activityCode,
     String? userId,
   ) =>
@@ -135,12 +146,22 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
             userId,
           ],
         ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
+        returnValue:
+            _i6.Future<_i3.AdminActivityModel>.value(_FakeAdminActivityModel_1(
+          this,
+          Invocation.method(
+            #manualDropActivity,
+            [
+              activityCode,
+              userId,
+            ],
+          ),
+        )),
+      ) as _i6.Future<_i3.AdminActivityModel>);
   @override
-  _i5.Future<dynamic> editActivity(
+  _i6.Future<dynamic> editActivity(
     String? id,
-    _i6.ActivityModel? activity,
+    _i7.ActivityModel? activity,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -150,28 +171,28 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
             activity,
           ],
         ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
+        returnValue: _i6.Future<dynamic>.value(),
+      ) as _i6.Future<dynamic>);
   @override
-  _i5.Future<dynamic> createActivity(_i6.ActivityModel? activity) =>
+  _i6.Future<dynamic> createActivity(_i7.ActivityModel? activity) =>
       (super.noSuchMethod(
         Invocation.method(
           #createActivity,
           [activity],
         ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
+        returnValue: _i6.Future<dynamic>.value(),
+      ) as _i6.Future<dynamic>);
   @override
-  _i5.Future<dynamic> deleteActivity(String? activityCode) =>
+  _i6.Future<dynamic> deleteActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #deleteActivity,
           [activityCode],
         ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
+        returnValue: _i6.Future<dynamic>.value(),
+      ) as _i6.Future<dynamic>);
   @override
-  _i5.Future<dynamic> postConfirmAttendance(
+  _i6.Future<dynamic> postConfirmAttendance(
     String? activityCode,
     String? confirmationCode,
   ) =>
@@ -183,28 +204,28 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
             confirmationCode,
           ],
         ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
+        returnValue: _i6.Future<dynamic>.value(),
+      ) as _i6.Future<dynamic>);
   @override
-  _i5.Future<String> postGenerateAttendanceConfirmation(String? activityCode) =>
+  _i6.Future<String> postGenerateAttendanceConfirmation(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #postGenerateAttendanceConfirmation,
           [activityCode],
         ),
-        returnValue: _i5.Future<String>.value(''),
-      ) as _i5.Future<String>);
+        returnValue: _i6.Future<String>.value(''),
+      ) as _i6.Future<String>);
   @override
-  _i5.Future<dynamic> postDeleteAttendanceConfirmation(String? activityCode) =>
+  _i6.Future<dynamic> postDeleteAttendanceConfirmation(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #postDeleteAttendanceConfirmation,
           [activityCode],
         ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
+        returnValue: _i6.Future<dynamic>.value(),
+      ) as _i6.Future<dynamic>);
   @override
-  _i5.Future<_i3.EnrollsActivityModel> postManualChangeAttendance(
+  _i6.Future<_i4.EnrollsActivityModel> postManualChangeAttendance(
     String? activityCode,
     String? userId,
     _i8.EnrollmentStateEnum? state,
@@ -218,8 +239,8 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
             state,
           ],
         ),
-        returnValue: _i5.Future<_i3.EnrollsActivityModel>.value(
-            _FakeEnrollsActivityModel_1(
+        returnValue: _i6.Future<_i4.EnrollsActivityModel>.value(
+            _FakeEnrollsActivityModel_2(
           this,
           Invocation.method(
             #postManualChangeAttendance,
@@ -230,13 +251,13 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
             ],
           ),
         )),
-      ) as _i5.Future<_i3.EnrollsActivityModel>);
+      ) as _i6.Future<_i4.EnrollsActivityModel>);
   @override
-  _i5.Future<String> getLinkCsv() => (super.noSuchMethod(
+  _i6.Future<String> getLinkCsv() => (super.noSuchMethod(
         Invocation.method(
           #getLinkCsv,
           [],
         ),
-        returnValue: _i5.Future<String>.value(''),
-      ) as _i5.Future<String>);
+        returnValue: _i6.Future<String>.value(''),
+      ) as _i6.Future<String>);
 }
