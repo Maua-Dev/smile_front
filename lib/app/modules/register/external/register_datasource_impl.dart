@@ -19,22 +19,7 @@ class RegisterDatasourceImpl implements RegisterDatasourceInterface {
     );
     Dio dio = Dio(options);
     try {
-      var res = await dio.post('/create-user', data: {
-        "email": userRegistration.email,
-        "name": userRegistration.name,
-        "password": userRegistration.password,
-        "role": userRegistration.role.name.toUpperCase(),
-        "access_level": userRegistration.accessLevel.name.toUpperCase(),
-        "accepted_terms": userRegistration.acceptTerms,
-        "ra": userRegistration.ra == '' ? null : userRegistration.ra,
-        "accepted_notifications": userRegistration.acceptEmailNotifications,
-        "certificate_with_social_name":
-            userRegistration.certificateWithSocialName,
-        "social_name": userRegistration.socialName == ''
-            ? null
-            : userRegistration.socialName,
-        "phone": userRegistration.phone == '' ? null : userRegistration.phone,
-      });
+      var res = await dio.post('/create-user', data: userRegistration.toJson());
       if (res.statusCode == 201) {
         return 'Usuário criado com sucesso!';
       }
