@@ -59,6 +59,7 @@ class UserDataWidget extends StatelessWidget {
                     controller.getCertificateWithSocialName();
                     controller.getUserName();
                     controller.getUserSocialName();
+                    controller.getPhone();
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
