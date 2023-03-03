@@ -48,6 +48,20 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     Modular.to.pop();
   }
 
+  Future<void> getInQueueUserActivity(String activityCode) async {
+    setIsLoading(true);
+    await enrollmentController.subscribeActivity(activityCode);
+    setIsLoading(false);
+    Modular.to.pop();
+  }
+
+  Future<void> getOutQueueUserActivity(String activityCode) async {
+    setIsLoading(true);
+    await enrollmentController.unsubscribeActivity(activityCode);
+    setIsLoading(false);
+    Modular.to.pop();
+  }
+
   @observable
   List<EnrollsActivityModel> allActivitiesFromGet = List.empty();
 

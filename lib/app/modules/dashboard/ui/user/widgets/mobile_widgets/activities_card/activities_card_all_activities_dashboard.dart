@@ -17,7 +17,6 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final String? location;
   final Function() onTap;
   final Function()? onPressedGetInQueue;
-  final Function()? onPressedGetOutQueue;
   final Function()? onPressedSubscribe;
   final Function()? onPressedUnsubscribe;
   final EnrollmentsModel? activityEnrollment;
@@ -41,7 +40,6 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
       required this.takenSlots,
       required this.isExtensive,
       required this.totalSlots,
-      this.onPressedGetOutQueue,
       this.onPressedGetInQueue,
       this.onPressedSubscribe,
       this.onPressedUnsubscribe,
@@ -278,7 +276,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                               .of(context)
                                                               .exitQueueConfimation,
                                                           onPressed:
-                                                              onPressedGetOutQueue);
+                                                              onPressedUnsubscribe);
                                                     },
                                                   );
                                                 },
