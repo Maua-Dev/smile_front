@@ -6,9 +6,7 @@ name: CD_AWS_S3
 on:
   # Triggers the workflow on push or pull request events but only for the develop branch
   push:
-    branches: [ homolog, develop, prod ]
-
-
+    branches: [ homolog, develop, prod, sam-deploy ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -45,6 +43,7 @@ jobs:
            run: mv web/firebase-messaging-sw-prod.js web/firebase-messaging-sw.js
            
          - name: Setup AWS Credentials
+           uses: aws-actions/setup-sam@v2
            uses: aws-actions/configure-aws-credentials@v1
            with:
              aws-region: us-east-1
@@ -53,9 +52,23 @@ jobs:
           
          - run: flutter build web -t lib/${{vars.MAIN_FLAVOR}}.dart --web-renderer canvaskit --release --dart-define=MSS_USER_BASE_URL=${{vars.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{vars.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=${{vars.AWS_BUCKET_ASSETS}} --dart-define=MSS_CERTIFICATE_BASE_URL=${{vars.MSS_CERTIFICATE_BASE_URL}} --dart-define=SPONSOR_FORM_REQUEST_URL=${{vars.SPONSOR_FORM_REQUEST_URL}} --dart-define=ENV=${{vars.ENV}}
 
+         - name: Deploy SAM template
+          #  uses: aws-actions/setup-sam@v2
+           uses: actions/python@v3
+          #  with:
+          #   aws-region: us-east-1
+          #   role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GithubActionsRole
+          #   role-session-name: github-action
+           run: sam build --use-container
+           run: sam deploy --template-file samtemplate.yml --stack-name SmileFront2023SamStack --region ${{ vars.AWS_S3_BUCKET_REGION }} 
+
+         - name: Set CloudFront ID
+           run: echo "CLOUD_FRONT_ID=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamTestStack --query "Stacks[0].Outputs[?OutputKey==`CloudfrontId`].OutputValue" --output text)" >> $CLOUD_FRONT_ID
+         - name: Set AWS Bucket
+           run: echo "AWS_BUCKET=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamTestStack --query "Stacks[0].Outputs[?OutputKey==`AwsBucket`].OutputValue" --output text)" >> $AWS_BUCKET
+         
          - name: Upload to S3
            run: aws s3 cp build/web s3://${{ vars.AWS_BUCKET }}/ --recursive --region ${{ vars.AWS_S3_BUCKET_REGION }}
-             
+        
          - name: Clear CDN cache
            run: aws cloudfront create-invalidation --distribution-id ${{vars.CLOUD_FRONT_ID}} --paths "/*" --region us-east-1
-
