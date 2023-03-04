@@ -61,7 +61,7 @@ jobs:
 
          - name: Set CloudFront ID
            run: |
-           CLOUD_FRONT_ID = $(aws cloudformation describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='CloudfrontId'].OutputValue" --output text)
+            CLOUD_FRONT_ID = $(aws cloudformation describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='CloudfrontId'].OutputValue" --output text)
             
          - name: Set AWS Bucket
            run: |
