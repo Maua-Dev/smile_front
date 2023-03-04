@@ -43,8 +43,10 @@ jobs:
            run: mv web/firebase-messaging-sw-prod.js web/firebase-messaging-sw.js
            
          - name: Setup AWS Credentials
-           uses: aws-actions/setup-sam@v2
-           uses: aws-actions/configure-aws-credentials@v1
+           uses: |
+            aws-actions/configure-aws-credentials@v1
+            aws-actions/setup-sam@v2
+            
            with:
              aws-region: us-east-1
              role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GithubActionsRole
