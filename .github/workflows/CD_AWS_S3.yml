@@ -51,22 +51,11 @@ jobs:
              role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GithubActionsRole
              role-session-name: github-action
           
-         - run: flutter build web -t lib/${{secrets.MAIN_FLAVOR}}.dart --web-renderer canvaskit --release --dart-define=MSS_USER_BASE_URL=${{secrets.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{secrets.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=https://d3ebnpochj0915.cloudfront.net/ --dart-define=MSS_CERTIFICATE_BASE_URL=https://gywf2oepfesleyuhgpwj5humz40bguxi.lambda-url.sa-east-1.on.aws/ --dart-define=SPONSOR_FORM_REQUEST_URL=${{secrets.SPONSOR_FORM_REQUEST_URL}} --dart-define=ENV=${{secrets.ENV}}
+         - run: flutter build web -t lib/${{vars.MAIN_FLAVOR}}.dart --web-renderer canvaskit --release --dart-define=MSS_USER_BASE_URL=${{vars.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{vars.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=${{vars.AWS_BUCKET_ASSETS}} --dart-define=MSS_CERTIFICATE_BASE_URL=${{vars.MSS_CERTIFICATE_BASE_URL}} --dart-define=SPONSOR_FORM_REQUEST_URL=${{vars.SPONSOR_FORM_REQUEST_URL}} --dart-define=ENV=${{vars.ENV}}
 
-#          - name: Upload to S3
-#            uses: shallwefootball/s3-upload-action@master
-#            with:
-#              aws_key_id: ${{ secrets.AWS_KEY_ID }}
-#              aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-#              aws_bucket: ${{ secrets.AWS_BUCKET }}
-#              source_dir: 'build/web'
-#              destination_dir: ''
-             
          - name: Upload to S3
-           run: aws s3 cp build/web s3://${{ secrets.AWS_BUCKET }}/ --recursive --region ${{ vars.AWS_S3_BUCKET_REGION }}
+           run: aws s3 cp build/web s3://${{ vars.AWS_BUCKET }}/ --recursive --region ${{ vars.AWS_S3_BUCKET_REGION }}
              
          - name: Clear CDN cache
-           run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUD_FRONT_ID}} --paths "/*" --region ${{ secrets.AWS_DEFAULT_REGION }}
-           env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+           run: aws cloudfront create-invalidation --distribution-id ${{vars.CLOUD_FRONT_ID}} --paths "/*" --region us-east-1
+
