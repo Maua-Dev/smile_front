@@ -53,13 +53,14 @@ jobs:
 
          - name: Setup SAM
            uses: aws-actions/setup-sam@v2
-           
+
          - name: Setup Python
            uses: actions/python@v3
 
          - name: Build SAM          
-           run: sam build --use-container
-           run: sam deploy --template-file samtemplate.yml --stack-name SmileFront2023SamStack --region ${{ vars.AWS_S3_BUCKET_REGION }} 
+           run: |
+            sam build --use-container
+            sam deploy --template-file samtemplate.yml --stack-name SmileFront2023SamStack --region ${{ vars.AWS_S3_BUCKET_REGION }} 
 
          - name: Set CloudFront ID
            run: echo "CLOUD_FRONT_ID=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamTestStack --query "Stacks[0].Outputs[?OutputKey==`CloudfrontId`].OutputValue" --output text)" >> $CLOUD_FRONT_ID
