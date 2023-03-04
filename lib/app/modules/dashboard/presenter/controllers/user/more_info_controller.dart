@@ -23,6 +23,9 @@ abstract class MoreInfoControllerBase with Store {
   bool isLoading = false;
 
   @observable
+  String attendanceCode = "";
+
+  @observable
   EnrollsActivityModel activity = EnrollsActivityModel.newInstance();
 
   @action
@@ -77,5 +80,10 @@ abstract class MoreInfoControllerBase with Store {
       getActivity();
     }
     setIsLoading(false);
+  }
+
+  @action
+  Future<void> setAttendanceCode(String code) async {
+    attendanceCode = code;
   }
 }

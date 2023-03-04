@@ -16,6 +16,7 @@ import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../domain/infra/activity_enum.dart';
+import 'widgets/attendance_confirmation/attendance_confirmation_widget.dart';
 import 'widgets/register_button_widget.dart';
 
 class MoreInfoPage extends StatefulWidget {
@@ -58,7 +59,7 @@ class _MoreInfoPageState
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       width: 78,
@@ -79,6 +80,9 @@ class _MoreInfoPageState
                                     color: AppColors.white, fontSize: 20))
                           ]),
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Container(
                       width: 138,
                       height: 49,
@@ -95,6 +99,9 @@ class _MoreInfoPageState
                                 style: AppTextStyles.bold.copyWith(
                                     color: AppColors.white, fontSize: 20))
                           ]),
+                    ),
+                    const SizedBox(
+                      width: 10,
                     ),
                     Container(
                       width: 78,
@@ -366,28 +373,32 @@ class _MoreInfoPageState
               const SizedBox(
                 height: 50,
               ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: SizedBox(
-                  width: 150,
-                  height: 33,
-                  child: ElevatedButton(
-                      onPressed: (() {}),
-                      style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    side: BorderSide(
-                                        color: AppColors.brandingOrange))),
-                        backgroundColor:
-                            MaterialStateProperty.all(AppColors.white),
-                      ),
-                      child: Text(S.of(context).presenceValidateTitle,
-                          style: AppTextStyles.bold.copyWith(
-                              fontSize: 15, color: AppColors.brandingOrange))),
-                ),
-              )
+              // Align(
+              //   alignment: Alignment.center,
+              //   child: SizedBox(
+              //     width: MediaQuery.of(context).size.width * 0.7,
+              //     height: 33,
+              //     child: ElevatedButton(
+              //         onPressed: (() {}),
+              //         style: ButtonStyle(
+              //           shape:
+              //               MaterialStateProperty.all<RoundedRectangleBorder>(
+              //                   RoundedRectangleBorder(
+              //                       borderRadius: BorderRadius.circular(10),
+              //                       side: BorderSide(
+              //                           color: AppColors.brandingOrange))),
+              //           backgroundColor:
+              //               MaterialStateProperty.all(AppColors.white),
+              //         ),
+              //         child: Text(S.of(context).presenceValidateTitle,
+              //             style: AppTextStyles.bold.copyWith(
+              //                 fontSize: 15, color: AppColors.brandingOrange))),
+              //   ),
+              // ),
+              AttendanceConfirmationWidget(
+                code: controller.attendanceCode,
+                onChangeCode: controller.setAttendanceCode,
+              ),
             ]),
           ))
         : SafeArea(
