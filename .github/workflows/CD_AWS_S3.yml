@@ -57,7 +57,7 @@ jobs:
          - name: Build SAM          
            run: |
             sam build --template-file samtemplate.yml --use-container
-            sam deploy --template-file samtemplate.yml --stack-name SmileFront2023SamStack --region ${{ vars.AWS_S3_BUCKET_REGION }} -no-fail-on-empty-changeset
+            sam deploy --no-fail-on-empty-changeset --template-file samtemplate.yml --stack-name SmileFront2023SamTestStack --region ${{ vars.AWS_S3_BUCKET_REGION }} 
 
          - name: Set CloudFront ID
            run: echo "CLOUD_FRONT_ID=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamTestStack --query "Stacks[0].Outputs[?OutputKey==`CloudfrontId`].OutputValue" --output text)" >> $GITHUB_ENV
