@@ -60,9 +60,9 @@ jobs:
             sam deploy --template-file samtemplate.yml --stack-name SmileFront2023SamStack --region ${{ vars.AWS_S3_BUCKET_REGION }} 
 
          - name: Set CloudFront ID
-           run: echo "CLOUD_FRONT_ID=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamTestStack --query "Stacks[0].Outputs[?OutputKey==`CloudfrontId`].OutputValue" --output text)" >> $CLOUD_FRONT_ID
+           run: echo "CLOUD_FRONT_ID=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamTestStack --query "Stacks[0].Outputs[?OutputKey==`CloudfrontId`].OutputValue" --output text)" >> $GITHUB_ENV
          - name: Set AWS Bucket
-           run: echo "AWS_BUCKET=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamTestStack --query "Stacks[0].Outputs[?OutputKey==`AwsBucket`].OutputValue" --output text)" >> $AWS_BUCKET
+           run: echo "AWS_BUCKET=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamTestStack --query "Stacks[0].Outputs[?OutputKey==`AwsBucket`].OutputValue" --output text)" >> $GITHUB_ENV
          
          - name: Upload to S3
            run: aws s3 cp build/web s3://${{ vars.AWS_BUCKET }}/ --recursive --region ${{ vars.AWS_S3_BUCKET_REGION }}
