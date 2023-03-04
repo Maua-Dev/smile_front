@@ -54,9 +54,6 @@ jobs:
          - name: Setup SAM
            uses: aws-actions/setup-sam@v2
 
-         - name: Setup Python
-           uses: actions/python@v3
-
          - name: Build SAM          
            run: |
             sam build --use-container
