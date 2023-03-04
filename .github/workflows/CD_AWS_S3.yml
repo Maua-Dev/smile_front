@@ -57,12 +57,12 @@ jobs:
          - name: Build SAM          
            run: |
             sam build --template-file samtemplate.yml --use-container
-            sam deploy --no-fail-on-empty-changeset --template-file samtemplate.yml --stack-name SmileFront2023SamTestStack --region ${{ vars.AWS_S3_BUCKET_REGION }} 
+            sam deploy --no-fail-on-empty-changeset --template-file samtemplate.yml --stack-name SmileFront2023SamStack --region ${{ vars.AWS_S3_BUCKET_REGION }} 
 
          - name: Set CloudFront ID
-           run: echo "CLOUD_FRONT_ID=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamTestStack --query "Stacks[0].Outputs[?OutputKey==`CloudfrontId`].OutputValue" --output text)" >> $GITHUB_ENV
+           run: echo "CLOUD_FRONT_ID=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey==`CloudfrontId`].OutputValue" --output text)" >> $GITHUB_ENV
          - name: Set AWS Bucket
-           run: echo "AWS_BUCKET=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamTestStack --query "Stacks[0].Outputs[?OutputKey==`AwsBucket`].OutputValue" --output text)" >> $GITHUB_ENV
+           run: echo "AWS_BUCKET=$(aws cloudformation describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey==`AwsBucket`].OutputValue" --output text)" >> $GITHUB_ENV
          
          - name: Upload to S3
            run: aws s3 cp build/web s3://${{ vars.AWS_BUCKET }}/ --recursive --region ${{ vars.AWS_S3_BUCKET_REGION }}
