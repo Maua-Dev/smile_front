@@ -15,7 +15,7 @@ Resources:
   MyBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: smile2023-front-${{ github.ref_name }}
+      BucketName: smile2023-front-sam-test
       AccessControl: Private
       PublicAccessBlockConfiguration: 
         BlockPublicAcls: true
