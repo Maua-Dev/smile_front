@@ -61,13 +61,13 @@ jobs:
          
          - name: Set CloudFront ID
            run: |
-           CLOUD_FRONT_ID=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='CloudfrontId'].OutputValue" --output text)
-           echo: "CLOUD_FRONT_ID=$CLOUD_FRONT_ID" >> $GITHUB_ENV
+            CLOUD_FRONT_ID=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='CloudfrontId'].OutputValue" --output text)
+            echo: "CLOUD_FRONT_ID=$CLOUD_FRONT_ID" >> $GITHUB_ENV
 
          - name: Set AWS Bucket
            run: |
-           AWS_BUCKET=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='AwsBucket'].OutputValue" --output text)
-           echo: "AWS_BUCKET=$AWS_BUCKET" >> $GITHUB_ENV
+            AWS_BUCKET=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='AwsBucket'].OutputValue" --output text)
+            echo: "AWS_BUCKET=$AWS_BUCKET" >> $GITHUB_ENV
 
 
          - name: Upload to S3
