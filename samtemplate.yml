@@ -36,6 +36,7 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
+        SslSupportMethod: sni-only
         ViewerCertificate:
           AcmCertificateArn: !Ref AcmCertificateArn
 
