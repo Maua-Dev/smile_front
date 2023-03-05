@@ -1,18 +1,12 @@
 # This is a basic workflow to help you get started with Actions
-
 name: CD_AWS_S3
-
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the develop branch
   push:
     branches: [ homolog, develop, prod ]
-
-
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -23,8 +17,6 @@ jobs:
       permissions:
         id-token: write
         contents: write
-
-
       steps:
          - name: Checkout code
            uses: actions/checkout@v2
@@ -39,23 +31,34 @@ jobs:
              channel: "stable"
          - name: Get flutter dependencies
            run: flutter pub get
-           
          - name: rename sw file
            if: github.ref == 'refs/heads/prod'
            run: mv web/firebase-messaging-sw-prod.js web/firebase-messaging-sw.js
-           
          - name: Setup AWS Credentials
            uses: aws-actions/configure-aws-credentials@v1
            with:
              aws-region: us-east-1
              role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GithubActionsRole
              role-session-name: github-action
-          
          - run: flutter build web -t lib/${{vars.MAIN_FLAVOR}}.dart --web-renderer canvaskit --release --dart-define=MSS_USER_BASE_URL=${{vars.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{vars.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=${{vars.AWS_BUCKET_ASSETS}} --dart-define=MSS_CERTIFICATE_BASE_URL=${{vars.MSS_CERTIFICATE_BASE_URL}} --dart-define=SPONSOR_FORM_REQUEST_URL=${{vars.SPONSOR_FORM_REQUEST_URL}} --dart-define=ENV=${{vars.ENV}}
-
+         - name: Setup SAM
+           uses: aws-actions/setup-sam@v2
+         - name: Set Stack Name
+           run: |
+            echo "STACK_NAME='SmileFront2023SamStack${{github.ref_name}}'" >> $GITHUB_ENV
+         - name: Build SAM          
+           run: |
+            sam build --template-file samtemplate.yml --use-container
+            sam deploy --no-fail-on-empty-changeset --template-file samtemplate.yml --stack-name ${{env.STACK_NAME}} --region ${{ vars.AWS_S3_BUCKET_REGION }}  --parameter-overrides "ParameterKey=BucketName,ParameterValue=smile-2023-front-${{github.ref_name}} ParameterKey=AcmCertificateArn,ParameterValue=${{secrets.ACM_CERTIFICATE_ARN}}"
+         - name: Set CloudFront ID
+           run: |
+            CLOUD_FRONT_ID=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name ${{env.STACK_NAME}} --query "Stacks[0].Outputs[?OutputKey=='CloudfrontId'].OutputValue" --output text)
+            echo "CLOUD_FRONT_ID='$CLOUD_FRONT_ID'" >> $GITHUB_ENV
+         - name: Set AWS Bucket
+           run: |
+            AWS_BUCKET=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name ${{env.STACK_NAME}} --query "Stacks[0].Outputs[?OutputKey=='AwsBucket'].OutputValue" --output text)
+            echo "AWS_BUCKET='$AWS_BUCKET'" >> $GITHUB_ENV
          - name: Upload to S3
-           run: aws s3 cp build/web s3://${{ vars.AWS_BUCKET }}/ --recursive --region ${{ vars.AWS_S3_BUCKET_REGION }}
-             
+           run: aws s3 cp build/web s3://${{env.AWS_BUCKET}}/ --recursive --region ${{ vars.AWS_S3_BUCKET_REGION }}
          - name: Clear CDN cache
-           run: aws cloudfront create-invalidation --distribution-id ${{vars.CLOUD_FRONT_ID}} --paths "/*" --region us-east-1
-
+           run: aws cloudfront create-invalidation --distribution-id ${{env.CLOUD_FRONT_ID}} --paths "/*" --region us-east-1
