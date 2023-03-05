@@ -7,6 +7,10 @@ Parameters:
   BucketName:
     Type: String
     Description: Name of the S3 bucket to store the website content
+  
+  AcmCertificateArn:
+    Type: String
+    Description: ARN of the ACM certificate to use for the CloudFront distribution
 
 Resources:
   CloudFrontOriginAccessIdentity:
@@ -32,6 +36,10 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
+        ViewerCertificate:
+          AcmCertificateArn: !Ref AcmCertificateArn
+
+        Comment: !Ref BucketName 
         HttpVersion: http2
         Origins:
           - Id: !Ref MyBucket
