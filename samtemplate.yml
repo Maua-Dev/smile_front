@@ -2,25 +2,19 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
   SMILE 2023 Frontend
-
 Parameters:
   BucketName:
     Type: String
     Description: Name of the S3 bucket to store the website content
-  
   AcmCertificateArn:
     Type: String
     Description: ARN of the ACM certificate to use for the CloudFront distribution
-
 Resources:
   CloudFrontOriginAccessIdentity:
     Type: 'AWS::CloudFront::CloudFrontOriginAccessIdentity'
     Properties:
-      
       CloudFrontOriginAccessIdentityConfig:
         Comment: 'Smile 2023 Front OA'
-    
-
   MyBucket:
     Type: AWS::S3::Bucket
     Properties:
@@ -31,12 +25,10 @@ Resources:
         BlockPublicPolicy: true
         IgnorePublicAcls: true
         RestrictPublicBuckets: true
-
   CloudfrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
-      
         Comment: !Ref BucketName 
         HttpVersion: http2
         Origins:
@@ -45,7 +37,6 @@ Resources:
             S3OriginConfig:
               OriginAccessIdentity: 
                 Fn::Sub: 'origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}'
-
         Enabled: true
         DefaultCacheBehavior:
           AllowedMethods:
@@ -56,26 +47,21 @@ Resources:
             QueryString: false
           TargetOriginId: !Ref MyBucket
           ViewerProtocolPolicy : redirect-to-https
-
         DefaultRootObject: index.html
-
   S3BucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
       Bucket: !Ref MyBucket
       PolicyDocument:
         Statement:
-          -
             Effect: Allow
             Action: 's3:GetObject'
             Resource:
               - !Sub "arn:aws:s3:::${MyBucket}/*"
             Principal:
               AWS: !Sub "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${CloudFrontOriginAccessIdentity}"
-
 Outputs:
   AwsBucket:
     Value: !Ref MyBucket
-
   CloudfrontId:
     Value: !Ref CloudfrontDistribution
