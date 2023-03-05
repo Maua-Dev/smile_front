@@ -61,7 +61,7 @@ jobs:
          - name: Build SAM          
            run: |
             sam build --template-file samtemplate.yml --use-container
-            sam deploy --no-fail-on-empty-changeset --template-file samtemplate.yml --stack-name ${{env.STACK_NAME}} --region ${{ vars.AWS_S3_BUCKET_REGION }}  --parameter-overrides ParameterKey=BucketName,ParameterValue=smile-2023-front-${{github.ref_name}}, ParameterKey=AcmCertificateArn,ParameterValue=${{secrets.ACM_CERTIFICATE_ARN}}"
+            sam deploy --no-fail-on-empty-changeset --template-file samtemplate.yml --stack-name ${{env.STACK_NAME}} --region ${{ vars.AWS_S3_BUCKET_REGION }}  --parameter-overrides "ParameterKey=BucketName,ParameterValue=smile-2023-front-${{github.ref_name}}, ParameterKey=AcmCertificateArn,ParameterValue=${{secrets.ACM_CERTIFICATE_ARN}}"
          
          - name: Set CloudFront ID
            run: |
