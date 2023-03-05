@@ -58,16 +58,20 @@ jobs:
            run: |
             sam build --template-file samtemplate.yml --use-container
             sam deploy --no-fail-on-empty-changeset --template-file samtemplate.yml --stack-name SmileFront2023SamStack --region ${{ vars.AWS_S3_BUCKET_REGION }}  --parameter-overrides BucketName=smile-2023-front-${{github.ref_name}}
-          - name: Set CloudFront ID
-            run: CLOUD_FRONT_ID=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='CloudfrontId'].OutputValue" --output text)
+         
+         - name: Set CloudFront ID
+           run: |
+           CLOUD_FRONT_ID=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='CloudfrontId'].OutputValue" --output text)
+           echo: "CLOUD_FRONT_ID=$CLOUD_FRONT_ID" >> $GITHUB_ENV
 
-          - name: Set AWS Bucket
-            run: AWS_BUCKET=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='AwsBucket'].OutputValue" --output text)
-            echo "AWS Bucket: $AWS_BUCKET"
-            echo "CloudFront ID: $CLOUD_FRONT_ID"
-             
+         - name: Set AWS Bucket
+           run: |
+           AWS_BUCKET=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='AwsBucket'].OutputValue" --output text)
+           echo: "AWS_BUCKET=$AWS_BUCKET" >> $GITHUB_ENV
+
+
          - name: Upload to S3
-           run: aws s3 cp build/web s3://${AWS_BUCKET}/ --recursive --region ${{ vars.AWS_S3_BUCKET_REGION }}
+           run: aws s3 cp build/web s3://${{env.AWS_BUCKET}}/ --recursive --region ${{ vars.AWS_S3_BUCKET_REGION }}
         
          - name: Clear CDN cache
-           run: aws cloudfront create-invalidation --distribution-id ${CLOUD_FRONT_ID} --paths "/*" --region us-east-1
+           run: aws cloudfront create-invalidation --distribution-id ${{env.CLOUD_FRONT_ID}} --paths "/*" --region us-east-1
