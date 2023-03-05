@@ -49,6 +49,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                     alignment: Alignment.center,
                     child: Text(
                         '${controller.professorActivitiesWithEnrollments.activityCode} - ${controller.professorActivitiesWithEnrollments.title}',
+                        textAlign: TextAlign.center,
                         style: AppTextStyles.bold.copyWith(
                             color: AppColors.brandingOrange,
                             fontSize: MediaQuery.of(context).size.width <
@@ -352,18 +353,18 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                             builder: (_) => Visibility(
                                 visible: controller.isSubscribedListVisible,
                                 child: SubscriberListWidget(
-                                        manualChangeAttendence:
-                                            controller.manualChangeAttendence,
-                                        enrollmentsList: controller
-                                            .professorActivitiesWithEnrollments,
-                                        isSwitched: controller.isSwitched,
-                                        toggleSwitch: controller.toggleSwitch,
-                                        listViewItemCount: controller
-                                            .professorActivitiesWithEnrollments
-                                            .enrollments!
-                                            .length,
-                                        isLoading: controller.isLoading,
-                                      ))),
+                                  manualChangeAttendence:
+                                      controller.manualChangeAttendence,
+                                  enrollmentsList: controller
+                                      .professorActivitiesWithEnrollments,
+                                  isSwitched: controller.isSwitched,
+                                  toggleSwitch: controller.toggleSwitch,
+                                  listViewItemCount: controller
+                                      .professorActivitiesWithEnrollments
+                                      .enrollments!
+                                      .length,
+                                  isLoading: controller.isLoading,
+                                ))),
                       ],
                     ),
                   ),
