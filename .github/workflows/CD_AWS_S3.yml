@@ -57,17 +57,19 @@ jobs:
          - name: Build SAM          
            run: |
             sam build --template-file samtemplate.yml --use-container
-            sam deploy --no-fail-on-empty-changeset --template-file samtemplate.yml --stack-name SmileFront2023SamStack --region ${{ vars.AWS_S3_BUCKET_REGION }}  --parameter-overrides BucketName=smile-2023-front-${{github.ref_name}}
+            echo "STACK_NAME=SmileFront2023SamStack${{github.ref_name}}" >> $GITHUB_ENV
+
+            sam deploy --no-fail-on-empty-changeset --template-file samtemplate.yml --stack-name ${{env.STACK_NAME}} --region ${{ vars.AWS_S3_BUCKET_REGION }}  --parameter-overrides BucketName=smile-2023-front-${{github.ref_name}}
          
          - name: Set CloudFront ID
            run: |
-            CLOUD_FRONT_ID=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='CloudfrontId'].OutputValue" --output text)
-            echo: "CLOUD_FRONT_ID=$CLOUD_FRONT_ID" >> $GITHUB_ENV
+            CLOUD_FRONT_ID=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name ${{env.STACK_NAME}} --query "Stacks[0].Outputs[?OutputKey=='CloudfrontId'].OutputValue" --output text)
+            echo "CLOUD_FRONT_ID=$CLOUD_FRONT_ID" >> $GITHUB_ENV
 
          - name: Set AWS Bucket
            run: |
-            AWS_BUCKET=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name SmileFront2023SamStack --query "Stacks[0].Outputs[?OutputKey=='AwsBucket'].OutputValue" --output text)
-            echo: "AWS_BUCKET=$AWS_BUCKET" >> $GITHUB_ENV
+            AWS_BUCKET=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name ${{env.STACK_NAME}} --query "Stacks[0].Outputs[?OutputKey=='AwsBucket'].OutputValue" --output text)
+            echo "AWS_BUCKET=$AWS_BUCKET" >> $GITHUB_ENV
 
 
          - name: Upload to S3
