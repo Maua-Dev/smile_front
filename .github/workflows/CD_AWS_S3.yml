@@ -53,6 +53,8 @@ jobs:
 
          - name: Setup SAM
            uses: aws-actions/setup-sam@v2
+
+         - name: Set Stack Name
            run: |
             echo "STACK_NAME='SmileFront2023SamStack${{github.ref_name}}'" >> $GITHUB_ENV
 
