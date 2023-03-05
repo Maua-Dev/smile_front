@@ -15,7 +15,7 @@ Resources:
   MyBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: smile2023-front-sam-test
+      BucketName: !Ref BucketName
       AccessControl: Private
       PublicAccessBlockConfiguration: 
         BlockPublicAcls: true
