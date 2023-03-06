@@ -41,7 +41,7 @@ abstract class MoreInfoControllerBase with Store {
                   startDate: DateTime.now(),
                   deliveryEnum: null,
                   acceptingNewEnrollments: false,
-                  responsibleProfessors: [],
+                  responsibleProfessor: '',
                   takenSlots: 0,
                   totalSlots: 0,
                 ));
@@ -58,7 +58,7 @@ abstract class MoreInfoControllerBase with Store {
     for (var i = 0; i < subscribedActivities.length; i++) {
       var finalTime = DateFormat("yyyy-MM-dd hh:mm").parse(
           Utils.getActivityFullFinalTime(subscribedActivities[i].startDate!,
-              subscribedActivities[i].duration));
+              subscribedActivities[i].duration!));
       if ((subscribedActivities[i].startDate!.day != activity.startDate!.day) ||
           activity.startDate! == finalTime) {
       } else if (((!activity.startDate!

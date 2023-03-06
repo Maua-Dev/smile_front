@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
@@ -130,7 +129,7 @@ abstract class UserDashboardControllerBase with Store {
         description: enrolledActivity.description,
         duration: enrolledActivity.duration,
         isExtensive: enrolledActivity.isExtensive,
-        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        responsibleProfessor: enrolledActivity.responsibleProfessor,
         speakers: enrolledActivity.speakers,
         takenSlots: enrolledActivity.takenSlots,
         title: enrolledActivity.title,
@@ -162,7 +161,7 @@ abstract class UserDashboardControllerBase with Store {
         description: enrolledActivity.description,
         duration: enrolledActivity.duration,
         isExtensive: enrolledActivity.isExtensive,
-        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        responsibleProfessor: enrolledActivity.responsibleProfessor,
         speakers: enrolledActivity.speakers,
         takenSlots: enrolledActivity.takenSlots,
         title: enrolledActivity.title,
@@ -194,7 +193,7 @@ abstract class UserDashboardControllerBase with Store {
         description: enrolledActivity.description,
         duration: enrolledActivity.duration,
         isExtensive: enrolledActivity.isExtensive,
-        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        responsibleProfessor: enrolledActivity.responsibleProfessor,
         speakers: enrolledActivity.speakers,
         takenSlots: enrolledActivity.takenSlots,
         title: enrolledActivity.title,
