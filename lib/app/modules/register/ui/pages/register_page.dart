@@ -196,8 +196,11 @@ class _RegisterPageState
                     InputBoxWidget(
                       isEmail: true,
                       icon: Icons.email_rounded,
-                      placeholder:
-                          S.of(context).registerEmailConfirmationPlaceholder,
+                      placeholder: controller.role == UserRolesEnum.PROFESSOR
+                          ? S
+                              .of(context)
+                              .registerEmailProfessorConfirmationPlaceholder
+                          : S.of(context).registerEmailConfirmationPlaceholder,
                       setValue: controller.setVerifyEmail,
                       validation: controller.validateVerifyEmail,
                     ),

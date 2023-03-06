@@ -24,6 +24,7 @@ import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
+import '../auth/infra/auth_guards/auth_guard_professor.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/domain/usecases/login_with_email.dart';
 import '../auth/domain/usecases/refresh_token.dart';
@@ -130,6 +131,7 @@ class UserModule extends Module {
     ChildRoute('/more-info', child: (_, args) => const MoreInfoPage()),
     ChildRoute('/help', child: (_, args) => const HelpPage()),
     ChildRoute('/certificate', child: (_, args) => const CertificatePage()),
-    ModuleRoute('/professor', module: ProfessorModule())
+    ModuleRoute('/professor',
+        module: ProfessorModule(), guards: [AuthGuardProfessor()])
   ];
 }
