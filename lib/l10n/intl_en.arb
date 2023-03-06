@@ -209,6 +209,8 @@
     "noTitle": "No",
     "": "",
 
+    "unavailabeTitle": "Unavailabe",
+
     
     "unavailabeActivityRegistration": "Registration unavailabe for this activity!",
     "unsubscribeVerification": "Are you sure you wanna unsubscribe?",
@@ -218,6 +220,11 @@
     "availabeSpotUnsuficient": "It seems that the number of vacancies for this activity has run out :(",
     "scheduleActivityWarning": "Keep in mind of your schedules and activities that you have already signed up for!",
     "alreadySubscribedOnThisPeriodWarning": "It seems you are already subscribed on another activity at this period.",
-    "unavailabeSubscribe": "The registration for this activity is unavailabe!"
+    "unavailabeSubscribe": "The registration for this activity is unavailabe!",
+    "joinQueueConfimation": "Do you want to join the queue?",
+    "joinQueueTitle": "Get in queue",
+    "inQueueTitle": "In queue",
+    "exitQueueConfimation": "Do you want to leave the queue?",
+    "InQueueContent": "You are in the activity queue"
 
 }

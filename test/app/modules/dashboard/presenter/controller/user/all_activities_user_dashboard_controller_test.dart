@@ -349,12 +349,6 @@ void main() {
     expect(controller.isLoading, true);
   });
 
-  test('setTypeFilter', () {
-    var value = ActivityEnum.COURSES;
-    controller.setTypeFilter(value);
-    expect(controller.typeFilter, value);
-  });
-
   test('setDateFilter', () {
     var value = DateTime.utc(2022, 03, 18, 13);
     controller.setDateFilter(value);

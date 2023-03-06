@@ -55,6 +55,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
           ),
           Observer(builder: (_) {
             return UserFilterCardWidget(
+                typeOnScreen: controller.typeOnScreen,
                 typeFilter: controller.typeFilter,
                 dateFilter: controller.dateFilter,
                 hourFilter: controller.hourFilter,

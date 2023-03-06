@@ -211,6 +211,8 @@
     "noTitle": "Não",
     "": "",
 
+    "unavailabeTitle": "Indisponível",
+
 
     "unavailabeActivityRegistration": "Inscrição para a atividade indisponível!",
     "unsubscribeVerification": "Tem certeza que deseja se desinscrever?",
@@ -220,6 +222,12 @@
     "availabeSpotUnsuficient": "Parece que o número de vagas da atividade se esgotou :(",
     "scheduleActivityWarning": "Se atente aos seus horários e atividades que você já se inscreveu!",
     "alreadySubscribedOnThisPeriodWarning": "Parece que você já se inscreveu em uma atividade no mesmo horário.",
-    "unavailabeSubscribe": "Inscrição para a atividade indisponível!"
+    "unavailabeSubscribe": "Inscrição para a atividade indisponível!",
+    "joinQueueConfimation": "Deseja entrar na fila?",
+    "joinQueueTitle": "Entrar na fila",
+    "inQueueTitle": "Na fila",
+    "exitQueueConfimation": "Deseja sair da fila?",
+    "InQueueContent": "Você está na fila da atividade"
+
 
 }
