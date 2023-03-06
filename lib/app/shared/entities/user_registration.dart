@@ -40,4 +40,19 @@ class UserRegistration extends User {
       acceptSMSNotifications: false,
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        "email": email,
+        "name": name,
+        "password": password,
+        "role": role.name.toUpperCase(),
+        "access_level": accessLevel.name.toUpperCase(),
+        "accepted_terms": acceptTerms,
+        "ra": ra == '' ? null : ra,
+        "accepted_notifications_email": acceptEmailNotifications,
+        "accepted_notifications_sms": acceptSMSNotifications,
+        "certificate_with_social_name": certificateWithSocialName,
+        "social_name": socialName == '' ? null : socialName,
+        "phone": phone == '' ? null : phone,
+      };
 }

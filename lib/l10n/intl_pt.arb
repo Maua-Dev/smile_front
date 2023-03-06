@@ -107,6 +107,7 @@
     "registerConfirmPasswordPlaceholder": "Confirme sua senha",
     "registerTerms": "{terms, select, one{Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile.} two{Li e Aceito os Termos de Uso.} three{Autorizo o envio de notificação por email, para fins de divulgação da Smile.}}",
     "notificationsTitle": "Meios de notificação sobre as atividades:",
+    "notificationsSmsAlert": "Preencha o seu telefone celular para ativar as notificações por sms!",
     "notificationsSchemaTitle": "Quero receber notificações por ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
     "registerTitle": "Cadastrar",
@@ -119,7 +120,14 @@
             "firstName": {}
         }
     },
-    "confirmEmailNotificationSubtitle": "Será necessário acessar sua caixa de entrada para validar seu cadastro.",
+    "confirmEmailAndPhoneNotificationTitle": "Tem certeza que seu telefone celular {phone} e endereço de e-mail {firstName} estão corretos?",
+    "@confirmEmailAndPhoneNotificationTitle" : {
+        "placeholders": {
+            "phone": {},
+            "firstName": {}
+        }
+    },
+    "confirmEmailNotificationSubtitle": "Será necessário acessar sua caixa de entrada do e-mail para validar seu cadastro.",
     "confirmAllFieldsConrrectlyFilled": "Confira se todos os campos estão corretamente preenchidos.",
 
 
@@ -221,6 +229,8 @@
     "noTitle": "Não",
     "": "",
 
+    "unavailabeTitle": "Indisponível",
+
 
     "unavailabeActivityRegistration": "Inscrição para a atividade indisponível!",
     "unsubscribeVerification": "Tem certeza que deseja se desinscrever?",
@@ -230,6 +240,12 @@
     "availabeSpotUnsuficient": "Parece que o número de vagas da atividade se esgotou :(",
     "scheduleActivityWarning": "Se atente aos seus horários e atividades que você já se inscreveu!",
     "alreadySubscribedOnThisPeriodWarning": "Parece que você já se inscreveu em uma atividade no mesmo horário.",
-    "unavailabeSubscribe": "Inscrição para a atividade indisponível!"
+    "unavailabeSubscribe": "Inscrição para a atividade indisponível!",
+    "joinQueueConfimation": "Deseja entrar na fila?",
+    "joinQueueTitle": "Entrar na fila",
+    "inQueueTitle": "Na fila",
+    "exitQueueConfimation": "Deseja sair da fila?",
+    "InQueueContent": "Você está na fila da atividade"
+
 
 }

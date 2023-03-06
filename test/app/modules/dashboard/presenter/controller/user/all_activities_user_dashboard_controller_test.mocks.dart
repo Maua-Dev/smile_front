@@ -456,6 +456,14 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  set typeOnScreen(String? _typeOnScreen) => super.noSuchMethod(
+        Invocation.setter(
+          #typeOnScreen,
+          _typeOnScreen,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   set dateFilter(DateTime? _dateFilter) => super.noSuchMethod(
         Invocation.setter(
           #dateFilter,

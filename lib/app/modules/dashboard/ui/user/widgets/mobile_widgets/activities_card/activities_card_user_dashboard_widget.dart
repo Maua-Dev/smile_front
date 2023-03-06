@@ -35,6 +35,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
     required this.link,
     required this.isExtensive,
     required this.date,
+    DeliveryEnum? deliveryEnum,
   }) : super(key: key);
 
   @override

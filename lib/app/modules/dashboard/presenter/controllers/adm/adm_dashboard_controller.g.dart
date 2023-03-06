@@ -125,6 +125,22 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
     });
   }
 
+  late final _$typeOnScreenAtom =
+      Atom(name: 'AdmDashboardControllerBase.typeOnScreen', context: context);
+
+  @override
+  String? get typeOnScreen {
+    _$typeOnScreenAtom.reportRead();
+    return super.typeOnScreen;
+  }
+
+  @override
+  set typeOnScreen(String? value) {
+    _$typeOnScreenAtom.reportWrite(value, super.typeOnScreen, () {
+      super.typeOnScreen = value;
+    });
+  }
+
   late final _$dateFilterAtom =
       Atom(name: 'AdmDashboardControllerBase.dateFilter', context: context);
 
@@ -317,6 +333,7 @@ filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 activitiesList: ${activitiesList},
 allActivitiesList: ${allActivitiesList},
 typeFilter: ${typeFilter},
+typeOnScreen: ${typeOnScreen},
 dateFilter: ${dateFilter},
 hourFilter: ${hourFilter}
     ''';
