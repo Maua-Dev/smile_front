@@ -28,18 +28,20 @@ class _LandingUserPageState extends State<LandingUserPage> {
             preferredSize: Size.fromHeight(Screen.height(context) * 0.1),
             child: AppBar(
                 leading: Builder(builder: (context) {
-                  return IconButton(
-                    splashRadius: 1,
-                    onPressed: () => Scaffold.of(context).openDrawer(),
-                    icon: const Padding(
-                      padding: EdgeInsets.only(top: 10.0),
-                      child: Icon(
-                        Icons.menu,
-                        size: 44,
-                      ),
-                    ),
-                    color: AppColors.white,
-                  );
+                  return Screen.width(context) < tabletSize
+                      ? IconButton(
+                          splashRadius: 1,
+                          onPressed: () => Scaffold.of(context).openDrawer(),
+                          icon: const Padding(
+                            padding: EdgeInsets.only(top: 10.0),
+                            child: Icon(
+                              Icons.menu,
+                              size: 44,
+                            ),
+                          ),
+                          color: AppColors.white,
+                        )
+                      : SizedBox();
                 }),
                 foregroundColor: AppColors.brandingBlue)),
         body: MediaQuery.of(context).size.width < tabletSize
