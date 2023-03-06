@@ -7,7 +7,6 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
-import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../../../shared/entities/screen_variables.dart';
@@ -190,149 +189,255 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                               ],
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width <
-                                      breakpointTablet
-                                  ? 100
-                                  : 200,
-                              height: MediaQuery.of(context).size.width <
-                                      breakpointTablet
-                                  ? 25
-                                  : 50,
-                              child: activityEnrollment != null
-                                  ? ElevatedButton(
-                                      style: ButtonStyle(
-                                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                                MediaQuery.of(context).size.width <
-                                                        tabletSize
-                                                    ? 15
-                                                    : 20),
-                                            side: BorderSide(
-                                                color: activityEnrollment!.state ==
-                                                            EnrollmentStateEnum
-                                                                .COMPLETED ||
-                                                        activityEnrollment!.state ==
-                                                            EnrollmentStateEnum
-                                                                .ENROLLED
-                                                    ? AppColors.brandingOrange
-                                                    : Colors.black))),
-                                        backgroundColor:
-                                            MaterialStateProperty.all(
-                                                activityEnrollment!.state ==
-                                                            EnrollmentStateEnum
-                                                                .COMPLETED ||
-                                                        activityEnrollment!
-                                                                .state ==
-                                                            EnrollmentStateEnum
-                                                                .ENROLLED
-                                                    ? AppColors.brandingOrange
-                                                    : AppColors.gray),
-                                      ),
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return ActionConfirmationDialogWidget(
-                                                isLoading: isLoading,
-                                                title: activityEnrollment!
-                                                                .state ==
-                                                            EnrollmentStateEnum
-                                                                .COMPLETED ||
-                                                        activityEnrollment!
-                                                                .state ==
-                                                            EnrollmentStateEnum
-                                                                .ENROLLED
-                                                    ? S
-                                                        .of(context)
-                                                        .unsubscribeAlert
-                                                    : S
-                                                        .of(context)
-                                                        .queueExitAlert,
-                                                content: acceptingNewEnrollments
-                                                    ? S
-                                                        .of(context)
-                                                        .unsubscribeAcceptingNewEnrollments
-                                                    : S
-                                                        .of(context)
-                                                        .unsubscribeNotAcceptingNewEnrollments,
-                                                onPressed:
-                                                    onPressedUnsubscribe);
-                                          },
-                                        );
-                                      },
-                                      child: Text(
-                                          activityEnrollment!.state ==
-                                                      EnrollmentStateEnum
-                                                          .COMPLETED ||
-                                                  activityEnrollment!.state ==
-                                                      EnrollmentStateEnum
-                                                          .ENROLLED
-                                              ? S.of(context).subscribedTitle
-                                              : S.of(context).queueTitle,
-                                          style: AppTextStyles.bold.copyWith(
-                                              fontSize: MediaQuery.of(context)
-                                                          .size
-                                                          .width <
-                                                      breakpointTablet
-                                                  ? 12
-                                                  : 24,
-                                              color: AppColors.white)))
-                                  : ElevatedButton(
-                                      style: ButtonStyle(
-                                        shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        MediaQuery.of(context)
+                                width: MediaQuery.of(context).size.width < breakpointTablet
+                                    ? 100
+                                    : 200,
+                                height: MediaQuery.of(context).size.width < breakpointTablet
+                                    ? 25
+                                    : 50,
+                                child: acceptingNewEnrollments == true
+                                    ? activityEnrollment != null
+                                        ? activityEnrollment!.state !=
+                                                EnrollmentStateEnum.IN_QUEUE
+                                            ? ElevatedButton(
+                                                style: ButtonStyle(
+                                                  shape: MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                      RoundedRectangleBorder(
+                                                          borderRadius: BorderRadius
+                                                              .circular(MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width <
+                                                                      tabletSize
+                                                                  ? 15
+                                                                  : 20),
+                                                          side: BorderSide(
+                                                              color: AppColors
+                                                                  .brandingOrange))),
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all(
+                                                          AppColors
+                                                              .brandingOrange),
+                                                ),
+                                                onPressed: () {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return ActionConfirmationDialogWidget(
+                                                          isLoading: isLoading,
+                                                          title: S
+                                                              .of(context)
+                                                              .unsubscribeVerification,
+                                                          content: S
+                                                              .of(context)
+                                                              .unsubscribeLoseVanacy,
+                                                          onPressed:
+                                                              onPressedUnsubscribe);
+                                                    },
+                                                  );
+                                                },
+                                                child: Text(S.of(context).subscribedTitle,
+                                                    style: AppTextStyles.bold.copyWith(
+                                                        fontSize: MediaQuery.of(context)
                                                                     .size
                                                                     .width <
                                                                 breakpointTablet
-                                                            ? 15
-                                                            : 20),
-                                                side: BorderSide(
-                                                    color: AppColors
-                                                        .brandingOrange))),
-                                        backgroundColor:
-                                            MaterialStateProperty.all(
-                                                AppColors.white),
-                                      ),
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return takenSlots < totalSlots
-                                                ? ActionConfirmationDialogWidget(
-                                                    isLoading: isLoading,
-                                                    title: S
-                                                        .of(context)
-                                                        .subscribeAlert,
-                                                    content: S
-                                                        .of(context)
-                                                        .subscribeScheduleAtention,
-                                                    onPressed:
-                                                        onPressedSubscribe)
-                                                : CustomAlertDialogWidget(
-                                                    title: S
-                                                        .of(context)
-                                                        .subscribeSlotsSoldOut,
+                                                            ? 12
+                                                            : 24,
+                                                        color:
+                                                            AppColors.white)))
+                                            : ElevatedButton(
+                                                style: ButtonStyle(
+                                                  shape: MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                      RoundedRectangleBorder(
+                                                          borderRadius: BorderRadius
+                                                              .circular(MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width <
+                                                                      breakpointTablet
+                                                                  ? 15
+                                                                  : 20),
+                                                          side: BorderSide(
+                                                              color: AppColors
+                                                                  .brandingBlue))),
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all(
+                                                          AppColors
+                                                              .brandingBlue),
+                                                ),
+                                                onPressed: () {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return ActionConfirmationDialogWidget(
+                                                          isLoading: isLoading,
+                                                          title: S
+                                                              .of(context)
+                                                              .InQueueContent,
+                                                          content: S
+                                                              .of(context)
+                                                              .exitQueueConfimation,
+                                                          onPressed:
+                                                              onPressedUnsubscribe);
+                                                    },
                                                   );
-                                          },
-                                        );
-                                      },
-                                      child: Text(
-                                        S.of(context).subcribeTitle,
-                                        style: AppTextStyles.bold.copyWith(
-                                            fontSize: MediaQuery.of(context)
-                                                        .size
-                                                        .width <
-                                                    breakpointTablet
-                                                ? 12
-                                                : 24,
-                                            color: AppColors.brandingOrange),
-                                      ),
-                                    ),
-                            ),
+                                                },
+                                                child: Text(
+                                                  S.of(context).inQueueTitle,
+                                                  style: AppTextStyles.bold.copyWith(
+                                                      fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width <
+                                                              breakpointTablet
+                                                          ? 12
+                                                          : 24,
+                                                      color: AppColors.white),
+                                                ),
+                                              )
+                                        : takenSlots < totalSlots
+                                            ? ElevatedButton(
+                                                style: ButtonStyle(
+                                                  shape: MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                      RoundedRectangleBorder(
+                                                          borderRadius: BorderRadius
+                                                              .circular(MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width <
+                                                                      breakpointTablet
+                                                                  ? 15
+                                                                  : 20),
+                                                          side: BorderSide(
+                                                              color: AppColors
+                                                                  .brandingOrange))),
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all(
+                                                          AppColors.white),
+                                                ),
+                                                onPressed: () {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return ActionConfirmationDialogWidget(
+                                                          isLoading: isLoading,
+                                                          title: S
+                                                              .of(context)
+                                                              .subscribeVerification,
+                                                          content: S
+                                                              .of(context)
+                                                              .scheduleActivityWarning,
+                                                          onPressed:
+                                                              onPressedSubscribe);
+                                                    },
+                                                  );
+                                                },
+                                                child: Text(
+                                                  'Inscrever-se',
+                                                  style: AppTextStyles.bold.copyWith(
+                                                      fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width <
+                                                              breakpointTablet
+                                                          ? 12
+                                                          : 24,
+                                                      color: AppColors
+                                                          .brandingOrange),
+                                                ),
+                                              )
+                                            : ElevatedButton(
+                                                style: ButtonStyle(
+                                                  shape: MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                      RoundedRectangleBorder(
+                                                          borderRadius: BorderRadius
+                                                              .circular(MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width <
+                                                                      breakpointTablet
+                                                                  ? 15
+                                                                  : 20),
+                                                          side: BorderSide(
+                                                              color: AppColors
+                                                                  .brandingBlue))),
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all(
+                                                          AppColors.white),
+                                                ),
+                                                onPressed: () {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return ActionConfirmationDialogWidget(
+                                                          isLoading: isLoading,
+                                                          title: S
+                                                              .of(context)
+                                                              .availabeSpotUnsuficient,
+                                                          content: S
+                                                              .of(context)
+                                                              .joinQueueConfimation,
+                                                          onPressed:
+                                                              onPressedSubscribe);
+                                                    },
+                                                  );
+                                                },
+                                                child: Text(
+                                                  S.of(context).joinQueueTitle,
+                                                  style: AppTextStyles.bold.copyWith(
+                                                      fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width <
+                                                              breakpointTablet
+                                                          ? 12
+                                                          : 24,
+                                                      color: AppColors
+                                                          .brandingBlue),
+                                                ),
+                                              )
+                                    : Container(
+                                        width: MediaQuery.of(context).size.width <
+                                                breakpointTablet
+                                            ? 100
+                                            : 200,
+                                        height: MediaQuery.of(context).size.width <
+                                                breakpointTablet
+                                            ? 25
+                                            : 50,
+                                        decoration: BoxDecoration(
+                                          color: AppColors.gray,
+                                          borderRadius: BorderRadius.circular(
+                                              MediaQuery.of(context)
+                                                          .size
+                                                          .width <
+                                                      tabletSize
+                                                  ? 15
+                                                  : 20),
+                                        ),
+                                        child: Align(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            S.of(context).unavailabeTitle,
+                                            style: AppTextStyles.bold.copyWith(
+                                                fontSize: MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        breakpointTablet
+                                                    ? 12
+                                                    : 24,
+                                                color: AppColors.white),
+                                          ),
+                                        ))),
                           ])
                     ],
                   ),

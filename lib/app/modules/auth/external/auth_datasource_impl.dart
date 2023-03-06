@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/services/environment/environment_config.dart';
+import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/models/user_model.dart';
 import '../domain/repositories/secure_storage_interface.dart';
 import '../errors/errors.dart';
@@ -39,20 +40,21 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
 
   @override
   Future<Map<String, dynamic>> refreshToken() async {
-    var token = await storage.getAccessToken();
+    var token = await storage.getRefreshToken();
     try {
-      dio.options.headers["authorization"] = "$token";
-      final res = await dio.post("/refresh-token");
+      dio.options.headers["authorization"] = "Bearer $token";
+      final res = await dio.get("/refresh-token");
       if (res.statusCode == 200) {
         var tokens = res.data;
         return tokens;
       }
       throw Exception();
     } on DioError catch (e) {
-      if (e.response!.statusCode.toString().contains('400')) {
+      if (e.response == null || e.response!.statusCode == 401) {
         storage.cleanSecureStorage();
         Modular.to.navigate('/login');
       }
+      showErrorSnackBar(errorMessage: e.response!.data);
       rethrow;
     }
   }

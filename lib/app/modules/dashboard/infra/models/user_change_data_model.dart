@@ -12,8 +12,8 @@ class UserChangeDataModel {
 
   Map<String, dynamic> toJson() => {
         'name': name,
-        'social_name': socialName,
+        'social_name': socialName == '' ? null : socialName,
         'certificate_with_social_name': certificateWithSocialName,
-        'phone': phone,
+        'phone': phone == '' ? null : phone,
       };
 }
