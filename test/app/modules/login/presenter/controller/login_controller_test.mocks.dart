@@ -190,7 +190,7 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i6.Future<bool>.value(false),
       ) as _i6.Future<bool>);
   @override
-  _i6.Future<bool> postManualChangeAttendance(
+  _i6.Future<dynamic> postManualChangeAttendance(
     String? activityCode,
     String? userId,
     _i10.EnrollmentStateEnum? state,
@@ -204,8 +204,8 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             state,
           ],
         ),
-        returnValue: _i6.Future<bool>.value(false),
-      ) as _i6.Future<bool>);
+        returnValue: _i6.Future<dynamic>.value(),
+      ) as _i6.Future<dynamic>);
 }
 
 /// A class which mocks [FirebaseAnalyticsService].

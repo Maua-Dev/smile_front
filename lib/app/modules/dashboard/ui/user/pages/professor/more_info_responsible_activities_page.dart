@@ -353,8 +353,12 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                             builder: (_) => Visibility(
                                 visible: controller.isSubscribedListVisible,
                                 child: SubscriberListWidget(
-                                  manualChangeAttendence:
-                                      controller.manualChangeAttendence,
+                                  onChangedIsSwitched: (index, value) =>
+                                      controller.onChangedIsSwitched(
+                                          index, value),
+                                  professorList: controller.professorList,
+                                  //  manualChangeAttendence:
+                                  //       controller.manualChangeAttendence,
                                   enrollmentsList: controller
                                       .professorActivitiesWithEnrollments,
                                   isSwitched: controller.isSwitched,

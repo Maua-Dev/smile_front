@@ -97,6 +97,23 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
+  late final _$professorListAtom = Atom(
+      name: 'MoreInfoResponsibleActivitiesControllerBase.professorList',
+      context: context);
+
+  @override
+  List<ListNameAndStateWithIsSwitched> get professorList {
+    _$professorListAtom.reportRead();
+    return super.professorList;
+  }
+
+  @override
+  set professorList(List<ListNameAndStateWithIsSwitched> value) {
+    _$professorListAtom.reportWrite(value, super.professorList, () {
+      super.professorList = value;
+    });
+  }
+
   late final _$professorActivitiesWithEnrollmentsAtom = Atom(
       name:
           'MoreInfoResponsibleActivitiesControllerBase.professorActivitiesWithEnrollments',
@@ -124,16 +141,6 @@ mixin _$MoreInfoResponsibleActivitiesController
   Future<void> getProfessorActivitiesWithEnrollments() {
     return _$getProfessorActivitiesWithEnrollmentsAsyncAction
         .run(() => super.getProfessorActivitiesWithEnrollments());
-  }
-
-  late final _$manualChangeAttendenceAsyncAction = AsyncAction(
-      'MoreInfoResponsibleActivitiesControllerBase.manualChangeAttendence',
-      context: context);
-
-  @override
-  Future<void> manualChangeAttendence(dynamic userId, dynamic state) {
-    return _$manualChangeAttendenceAsyncAction
-        .run(() => super.manualChangeAttendence(userId, state));
   }
 
   late final _$MoreInfoResponsibleActivitiesControllerBaseActionController =
@@ -214,6 +221,20 @@ mixin _$MoreInfoResponsibleActivitiesController
   }
 
   @override
+  void onChangedIsSwitched(dynamic index, dynamic value) {
+    final _$actionInfo =
+        _$MoreInfoResponsibleActivitiesControllerBaseActionController.startAction(
+            name:
+                'MoreInfoResponsibleActivitiesControllerBase.onChangedIsSwitched');
+    try {
+      return super.onChangedIsSwitched(index, value);
+    } finally {
+      _$MoreInfoResponsibleActivitiesControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isLoading: ${isLoading},
@@ -221,6 +242,7 @@ isSubscribedListVisible: ${isSubscribedListVisible},
 isTokenVisible: ${isTokenVisible},
 isIconSelected: ${isIconSelected},
 isSwitched: ${isSwitched},
+professorList: ${professorList},
 professorActivitiesWithEnrollments: ${professorActivitiesWithEnrollments}
     ''';
   }
