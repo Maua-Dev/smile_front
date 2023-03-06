@@ -201,6 +201,21 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         ),
         returnValue: _i9.Future<bool>.value(false),
       ) as _i9.Future<bool>);
+  @override
+  _i9.Future<dynamic> confirmAttendance(
+    String? confirmAttendanceCode,
+    String? activityCode,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #confirmAttendance,
+          [
+            confirmAttendanceCode,
+            activityCode,
+          ],
+        ),
+        returnValue: _i9.Future<dynamic>.value(),
+      ) as _i9.Future<dynamic>);
 }
 
 /// A class which mocks [UserDashboardController].

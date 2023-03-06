@@ -373,32 +373,15 @@ class _MoreInfoPageState
               const SizedBox(
                 height: 50,
               ),
-              // Align(
-              //   alignment: Alignment.center,
-              //   child: SizedBox(
-              //     width: MediaQuery.of(context).size.width * 0.7,
-              //     height: 33,
-              //     child: ElevatedButton(
-              //         onPressed: (() {}),
-              //         style: ButtonStyle(
-              //           shape:
-              //               MaterialStateProperty.all<RoundedRectangleBorder>(
-              //                   RoundedRectangleBorder(
-              //                       borderRadius: BorderRadius.circular(10),
-              //                       side: BorderSide(
-              //                           color: AppColors.brandingOrange))),
-              //           backgroundColor:
-              //               MaterialStateProperty.all(AppColors.white),
-              //         ),
-              //         child: Text(S.of(context).presenceValidateTitle,
-              //             style: AppTextStyles.bold.copyWith(
-              //                 fontSize: 15, color: AppColors.brandingOrange))),
-              //   ),
-              // ),
-              AttendanceConfirmationWidget(
-                code: controller.attendanceCode,
-                onChangeCode: controller.setAttendanceCode,
-              ),
+              Observer(builder: (context) {
+                return AttendanceConfirmationWidget(
+                  enrollmentState: controller.enrollmentState,
+                  checkCanViewConfirmAttendance:
+                      controller.canViewConfirmAttendance,
+                  isLoading: controller.isLoadingConfirmAttendance,
+                  onConfirmCode: controller.onConfirmCode,
+                );
+              }),
             ]),
           ))
         : SafeArea(
