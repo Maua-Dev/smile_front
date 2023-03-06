@@ -8,8 +8,6 @@ class UserRegistration extends User {
   final bool acceptTerms;
   final bool acceptEmailNotifications;
   final bool acceptSMSNotifications;
-  final bool acceptWPPNotifications;
-  final bool acceptAPPWEBNotifications;
 
   UserRegistration({
     required super.name,
@@ -24,8 +22,6 @@ class UserRegistration extends User {
     required this.acceptTerms,
     required this.acceptEmailNotifications,
     required this.acceptSMSNotifications,
-    required this.acceptWPPNotifications,
-    required this.acceptAPPWEBNotifications,
   });
 
   factory UserRegistration.newInstance() {
@@ -42,8 +38,21 @@ class UserRegistration extends User {
       acceptTerms: true,
       acceptEmailNotifications: false,
       acceptSMSNotifications: false,
-      acceptWPPNotifications: false,
-      acceptAPPWEBNotifications: false,
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        "email": email,
+        "name": name,
+        "password": password,
+        "role": role.name.toUpperCase(),
+        "access_level": accessLevel.name.toUpperCase(),
+        "accepted_terms": acceptTerms,
+        "ra": ra == '' ? null : ra,
+        "accepted_notifications_email": acceptEmailNotifications,
+        "accepted_notifications_sms": acceptSMSNotifications,
+        "certificate_with_social_name": certificateWithSocialName,
+        "social_name": socialName == '' ? null : socialName,
+        "phone": phone == '' ? null : phone,
+      };
 }

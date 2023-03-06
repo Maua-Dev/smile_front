@@ -40,10 +40,13 @@ class AuthController {
 
     await storage.saveAccessToken(loginResponse.accessToken);
     await storage.saveRefreshToken(loginResponse.refreshToken);
+    await storage.saveIdToken(loginResponse.idToken);
     await storage.saveRole(_role);
     await storage.saveName(_name);
-    await storage.saveSocialName(_socialname ?? '');
-    await storage.saveId(_id ?? '');
+    await storage.saveSocialName(loginResponse.socialName ?? '');
+    await storage.saveId(loginResponse.userId);
+    await storage.saveIdToken(loginResponse.idToken);
+    await storage.savePhone(loginResponse.phone);
     await storage
         .saveCertificateWithSocialName(_certificateWithSocialName ?? false);
     await analytics.setUserProperties(await storage.getId() ?? '');
@@ -58,9 +61,10 @@ class AuthController {
       return;
     }
     try {
-      var tokens = await refreshToken(token);
+      var tokens = await refreshToken();
       await storage.saveAccessToken(tokens['access_token']);
       await storage.saveRefreshToken(tokens['refresh_token']);
+      await storage.saveIdToken(tokens['id_token']);
       _loggedIn = true;
 
       var role = await storage.getRole();

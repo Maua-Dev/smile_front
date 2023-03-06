@@ -1,28 +1,28 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/services/environment/environment_config.dart';
-import 'package:smile_front/generated/l10n.dart';
-
+import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/models/user_model.dart';
 import '../domain/repositories/secure_storage_interface.dart';
 import '../errors/errors.dart';
 import '../infra/datasource/auth_datasource_interface.dart';
 
 class AuthDatasourceImpl implements AuthDatasourceInterface {
-  final Dio dioClient;
   final SecureStorageInterface storage;
+  BaseOptions options = BaseOptions(
+    baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
+    responseType: ResponseType.json,
+    connectTimeout: 30000,
+    receiveTimeout: 30000,
+  );
+  Dio dio = Dio();
 
-  AuthDatasourceImpl({required this.dioClient, required this.storage});
+  AuthDatasourceImpl({required this.storage}) {
+    dio = Dio(options);
+  }
 
   @override
   Future<UserModel> login(email, password) async {
-    BaseOptions options = BaseOptions(
-      baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
-      responseType: ResponseType.json,
-      connectTimeout: 30000,
-      receiveTimeout: 30000,
-    );
-    Dio dio = Dio(options);
     try {
       final res = await dio.post('/login-user', data: {
         'login': email,
@@ -34,37 +34,27 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
       }
       throw Exception();
     } on DioError catch (e) {
-      if (e.response.toString().contains('User is not confirmed')) {
-        Modular.to.navigate('/login/reenviar-email');
-      } else if (e.response.toString().contains('User not found')) {
-        throw LoginInvalid(S.current.errorLoginInvalidConfirmation);
-      }
-      throw LoginInvalid(S.current.errorLoginInvalidCredential);
+      throw LoginInvalid(e.response!.data);
     }
   }
 
   @override
-  Future<Map<String, dynamic>> refreshToken(String token) async {
+  Future<Map<String, dynamic>> refreshToken() async {
+    var token = await storage.getRefreshToken();
     try {
-      BaseOptions options = BaseOptions(
-        baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
-        responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
-      );
-      Dio dio = Dio(options);
       dio.options.headers["authorization"] = "Bearer $token";
-      final res = await dio.post("/refreshToken");
+      final res = await dio.get("/refresh-token");
       if (res.statusCode == 200) {
         var tokens = res.data;
         return tokens;
       }
       throw Exception();
-    } catch (e) {
-      if (e.toString().contains('400')) {
+    } on DioError catch (e) {
+      if (e.response == null || e.response!.statusCode == 401) {
         storage.cleanSecureStorage();
         Modular.to.navigate('/login');
       }
+      showErrorSnackBar(errorMessage: e.response!.data);
       rethrow;
     }
   }

@@ -1,9 +1,11 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
 import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/generated/l10n.dart';
+import 'package:string_validator/string_validator.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/entities/user_registration.dart';
 import '../../../../shared/error/error_snackbar.dart';
@@ -59,7 +61,7 @@ abstract class RegisterControllerBase with Store {
   String phone = '';
 
   @observable
-  bool isMauaStudent = false;
+  UserRolesEnum role = UserRolesEnum.STUDENT;
 
   @observable
   String ra = '';
@@ -83,10 +85,31 @@ abstract class RegisterControllerBase with Store {
   bool acceptSMSNotifications = false;
 
   @observable
-  bool acceptWPPNotifications = false;
+  bool isBrazilianPhone = true;
 
   @observable
-  bool acceptAPPWEBNotifications = false;
+  bool isPhoneFieldFilled = false;
+
+  @observable
+  String phoneValue = '';
+
+  @observable
+  CountryCode? countryCode =
+      const CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
+
+  @action
+  void setBrazilianPhone(CountryCode? value) {
+    if (value?.code == "BR") {
+      isBrazilianPhone = true;
+    } else {
+      isBrazilianPhone = false;
+    }
+  }
+
+  @action
+  void setCountryCode(CountryCode? value) {
+    countryCode = value;
+  }
 
   @action
   Future<void> setEmailNotifications(bool? value) async {
@@ -95,17 +118,9 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setSMSNotifications(bool? value) async {
-    acceptSMSNotifications = value!;
-  }
-
-  @action
-  Future<void> setWPPNotifications(bool? value) async {
-    acceptWPPNotifications = value!;
-  }
-
-  @action
-  Future<void> setAPPWEBNotifications(bool? value) async {
-    acceptAPPWEBNotifications = value!;
+    if (phoneValue.isNotEmpty) {
+      acceptSMSNotifications = value!;
+    }
   }
 
   @action
@@ -153,18 +168,28 @@ abstract class RegisterControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
-    phone = value;
+    phoneValue = value;
+    phone = '${countryCode?.dialCode}$value';
+    if (countryCode?.code == "BR") {
+      phone = phone.replaceAll('(', '');
+      phone = phone.replaceAll(')', '');
+      phone = phone.replaceAll(' ', '');
+      phone = phone.replaceAll('-', '');
+    }
+    if (value.isNotEmpty) {
+      isPhoneFieldFilled = true;
+    } else {
+      isPhoneFieldFilled = false;
+      acceptSMSNotifications = false;
+    }
   }
 
   @action
   String? validatePhone(String? value) {
-    if (value!.isEmpty) {
-      return S.current.fieldRequired;
-    }
-    if (phone[0] == "5" && phone[1] == "5" && phone.length == 11) {
+    if (countryCode?.code == "BR" && phone.length == 12) {
       return S.current.fieldDDDRequired;
     }
-    if (phone[0] == "5" && phone[1] == "5" && phone.length != 13) {
+    if (countryCode?.code == "BR" && phone.length != 14 && phone.length > 3) {
       return S.current.fieldInvalid;
     }
     return null;
@@ -175,7 +200,11 @@ abstract class RegisterControllerBase with Store {
     if (value!.isEmpty) {
       return S.current.fieldRequired;
     }
-    if (!EmailValidator.validate(email)) {
+    if (role == UserRolesEnum.PROFESSOR) {
+      if (!email.contains('@maua.br') || isNumeric(email[0])) {
+        return S.current.fieldProfessorEmailInvalid;
+      }
+    } else if (!EmailValidator.validate(email)) {
       return S.current.fieldEmailInvalid;
     }
     return null;
@@ -193,11 +222,8 @@ abstract class RegisterControllerBase with Store {
   }
 
   @action
-  Future<void> setIsMauaStudent(bool? value) async {
-    isMauaStudent = value!;
-    if (isMauaStudent == false) {
-      ra = '';
-    }
+  Future<void> setRole(UserRolesEnum? value) async {
+    role = value!;
   }
 
   @action
@@ -215,7 +241,7 @@ abstract class RegisterControllerBase with Store {
 
   @action
   String? validateRa(String? value) {
-    if (isMauaStudent) {
+    if (role == UserRolesEnum.STUDENT) {
       if (value!.isEmpty) {
         return S.current.fieldRequired;
       }
@@ -274,11 +300,9 @@ abstract class RegisterControllerBase with Store {
         phone: phone,
         acceptEmailNotifications: acceptEmailNotifications,
         acceptSMSNotifications: acceptSMSNotifications,
-        acceptWPPNotifications: acceptWPPNotifications,
-        acceptAPPWEBNotifications: acceptAPPWEBNotifications,
         accessLevel: AccessLevelEnum.USER,
         certificateWithSocialName: hasSocialName,
-        role: isMauaStudent ? UserRolesEnum.STUDENT : UserRolesEnum.EXTERNAL,
+        role: role,
       );
 
   @action

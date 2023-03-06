@@ -22,8 +22,6 @@ void main() {
     phone: 'phone',
     acceptEmailNotifications: true,
     acceptSMSNotifications: true,
-    acceptWPPNotifications: true,
-    acceptAPPWEBNotifications: true,
     accessLevel: AccessLevelEnum.USER,
     certificateWithSocialName: true,
     role: UserRolesEnum.STUDENT,

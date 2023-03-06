@@ -6,7 +6,7 @@ import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 var subscribedActivities = <ActivityModel>[
   ActivityModel(
     activityCode: 'C01',
-    type: ActivityEnum.COURSE,
+    type: ActivityEnum.COURSES,
     title:
         'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
     description:

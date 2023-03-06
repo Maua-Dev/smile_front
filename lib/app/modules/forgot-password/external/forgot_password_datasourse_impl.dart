@@ -5,46 +5,41 @@ import '../../../shared/services/environment/environment_config.dart';
 import '../infra/datasources/forgot_password_datasource.dart';
 import 'errors.dart';
 
-class ForgotPasswordDatasourceImpl implements ForgotPasswordDatasource {
-  final Dio dioClient;
+class ForgotPasswordDatasourceImpl
+    implements ForgotPasswordDatasourceInterface {
+  BaseOptions options = BaseOptions(
+    baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
+    responseType: ResponseType.json,
+    connectTimeout: 30000,
+    receiveTimeout: 30000,
+  );
+  Dio dio = Dio();
 
-  ForgotPasswordDatasourceImpl({required this.dioClient});
+  ForgotPasswordDatasourceImpl() {
+    dio = Dio(options);
+  }
 
   @override
   Future<String> forgotPassword(String username) async {
-    BaseOptions options = BaseOptions(
-      baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
-      responseType: ResponseType.json,
-      connectTimeout: 30000,
-      receiveTimeout: 30000,
-    );
-    Dio dio = Dio(options);
     try {
-      final res = await dio.put('/changePassword', data: {
-        "login": username,
+      final res = await dio.post('/change-password', data: {
+        "email": username,
       });
       if (res.statusCode == 200) {
         return S.current.successSendingCode;
       }
       throw Exception();
-    } catch (e) {
-      throw ForgotPasswordInvalid(S.current.errorSendingCode);
+    } on DioError catch (e) {
+      throw ForgotPasswordInvalid(e.response!.data);
     }
   }
 
   @override
   Future<String> changePassword(
       String username, String password, String code) async {
-    BaseOptions options = BaseOptions(
-      baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
-      responseType: ResponseType.json,
-      connectTimeout: 30000,
-      receiveTimeout: 30000,
-    );
-    Dio dio = Dio(options);
     try {
-      final res = await dio.post('/changePassword', data: {
-        "login": username,
+      final res = await dio.post('/confirm-change-password', data: {
+        "email": username,
         "new_password": password,
         "confirmation_code": code
       });
@@ -52,8 +47,8 @@ class ForgotPasswordDatasourceImpl implements ForgotPasswordDatasource {
         return S.current.successChangePassword;
       }
       throw Exception();
-    } catch (e) {
-      throw ForgotPasswordInvalid(S.current.errorChangePassword);
+    } on DioError catch (e) {
+      throw ForgotPasswordInvalid(e.response!.data);
     }
   }
 }

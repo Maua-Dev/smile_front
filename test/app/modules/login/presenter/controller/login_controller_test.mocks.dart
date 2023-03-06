@@ -8,17 +8,20 @@ import 'dart:async' as _i5;
 import 'package:firebase_analytics/firebase_analytics.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
-    as _i9;
+    as _i11;
 import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart'
-    as _i10;
+    as _i12;
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
-    as _i8;
+    as _i10;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i4;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i6;
+import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i8;
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
+    as _i7;
 import 'package:smile_front/app/shared/models/user_model.dart' as _i3;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
-    as _i7;
+    as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -82,15 +85,15 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             _i5.Future<List<_i6.ActivityModel>>.value(<_i6.ActivityModel>[]),
       ) as _i5.Future<List<_i6.ActivityModel>>);
   @override
-  _i5.Future<List<_i6.ActivityModel>> getUserSubscribedActivities() =>
+  _i5.Future<List<_i7.EnrollsActivityModel>> getUserSubscribedActivities() =>
       (super.noSuchMethod(
         Invocation.method(
           #getUserSubscribedActivities,
           [],
         ),
-        returnValue:
-            _i5.Future<List<_i6.ActivityModel>>.value(<_i6.ActivityModel>[]),
-      ) as _i5.Future<List<_i6.ActivityModel>>);
+        returnValue: _i5.Future<List<_i7.EnrollsActivityModel>>.value(
+            <_i7.EnrollsActivityModel>[]),
+      ) as _i5.Future<List<_i7.EnrollsActivityModel>>);
   @override
   _i5.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
         Invocation.method(
@@ -108,6 +111,16 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         ),
         returnValue: _i5.Future<dynamic>.value(),
       ) as _i5.Future<dynamic>);
+  @override
+  _i5.Future<List<_i8.AdminActivityModel>> getAdminActivities() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAdminActivities,
+          [],
+        ),
+        returnValue: _i5.Future<List<_i8.AdminActivityModel>>.value(
+            <_i8.AdminActivityModel>[]),
+      ) as _i5.Future<List<_i8.AdminActivityModel>>);
   @override
   _i5.Future<dynamic> editActivity(_i6.ActivityModel? activityToEdit) =>
       (super.noSuchMethod(
@@ -127,34 +140,20 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i5.Future<dynamic>.value(),
       ) as _i5.Future<dynamic>);
   @override
-  _i5.Future<bool> subscribeActivity(
-    _i6.ActivityModel? activity,
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
+  _i5.Future<bool> subscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #subscribeActivity,
-          [
-            activity,
-            activityId,
-            activityDate,
-          ],
+          [activityCode],
         ),
         returnValue: _i5.Future<bool>.value(false),
       ) as _i5.Future<bool>);
   @override
-  _i5.Future<bool> unsubscribeActivity(
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
+  _i5.Future<bool> unsubscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #unsubscribeActivity,
-          [
-            activityId,
-            activityDate,
-          ],
+          [activityCode],
         ),
         returnValue: _i5.Future<bool>.value(false),
       ) as _i5.Future<bool>);
@@ -164,7 +163,7 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFirebaseAnalyticsService extends _i1.Mock
-    implements _i7.FirebaseAnalyticsService {
+    implements _i9.FirebaseAnalyticsService {
   MockFirebaseAnalyticsService() {
     _i1.throwOnMissingStub(this);
   }
@@ -246,16 +245,16 @@ class MockFirebaseAnalyticsService extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockRefreshTokenInterface extends _i1.Mock
-    implements _i8.RefreshTokenInterface {
+    implements _i10.RefreshTokenInterface {
   MockRefreshTokenInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<Map<String, dynamic>> call(String? token) => (super.noSuchMethod(
+  _i5.Future<Map<String, dynamic>> call() => (super.noSuchMethod(
         Invocation.method(
           #call,
-          [token],
+          [],
         ),
         returnValue:
             _i5.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
@@ -266,7 +265,7 @@ class MockRefreshTokenInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSecureStorageInterface extends _i1.Mock
-    implements _i9.SecureStorageInterface {
+    implements _i11.SecureStorageInterface {
   MockSecureStorageInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -351,6 +350,15 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i5.Future<void>.value(),
       ) as _i5.Future<void>);
   @override
+  _i5.Future<void> savePhone(String? phone) => (super.noSuchMethod(
+        Invocation.method(
+          #savePhone,
+          [phone],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+  @override
   _i5.Future<void> saveCertificateWithSocialName(
           bool? certificateWithSocialName) =>
       (super.noSuchMethod(
@@ -402,6 +410,14 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValue: _i5.Future<String?>.value(),
       ) as _i5.Future<String?>);
   @override
+  _i5.Future<String?> getPhone() => (super.noSuchMethod(
+        Invocation.method(
+          #getPhone,
+          [],
+        ),
+        returnValue: _i5.Future<String?>.value(),
+      ) as _i5.Future<String?>);
+  @override
   _i5.Future<bool?> getCertificateWithSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getCertificateWithSocialName,
@@ -424,7 +440,7 @@ class MockSecureStorageInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLoginWithEmailInterface extends _i1.Mock
-    implements _i10.LoginWithEmailInterface {
+    implements _i12.LoginWithEmailInterface {
   MockLoginWithEmailInterface() {
     _i1.throwOnMissingStub(this);
   }

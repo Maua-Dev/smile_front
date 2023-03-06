@@ -27,8 +27,8 @@ class ForgotPasswordModule extends Module {
     Bind.lazySingleton<ForgotPasswordInterface>(
         (i) => ForgotPassword(repository: i()),
         export: true),
-    Bind.lazySingleton<ForgotPasswordDatasource>(
-        (i) => ForgotPasswordDatasourceImpl(dioClient: i()),
+    Bind.lazySingleton<ForgotPasswordDatasourceInterface>(
+        (i) => ForgotPasswordDatasourceImpl(),
         export: true),
     Bind.lazySingleton<ForgotPasswordRepositoryInterface>(
         (i) => ForgotPasswordRepositoryImpl(datasource: i()),

@@ -1,7 +1,6 @@
 import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
-import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
@@ -32,7 +31,7 @@ class ActivityModel extends Activity {
         type: ActivityEnumExtension.stringToEnumMap(map['activity_type']),
         title: map['title'],
         description: map['description'],
-        speakers: SpeakerActivityModel.fromMaps(map['speakers']),
+        speakers: [],
         duration: map['duration'] ?? 0,
         isExtensive: map['is_extensive'] ?? false,
         link: map['link'] ?? '',
@@ -41,8 +40,8 @@ class ActivityModel extends Activity {
         deliveryEnum:
             DeliveryEnumExtension.stringToEnumMap(map['delivery_model']),
         acceptingNewEnrollments: map['accepting_new_enrollments'] ?? false,
-        responsibleProfessor: ResponsibleProfessorModel(
-            id: '', name: '', role: UserRolesEnum.ADMIN),
+        responsibleProfessors:
+            ResponsibleProfessorModel.fromMaps(map['responsible_professors']),
         takenSlots: map['taken_slots'],
         totalSlots: map['total_slots'],
         stopAcceptingNewEnrollmentsBefore:

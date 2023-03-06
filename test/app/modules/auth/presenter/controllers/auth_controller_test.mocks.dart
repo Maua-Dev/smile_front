@@ -149,6 +149,15 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i5.Future<void>.value(),
       ) as _i5.Future<void>);
   @override
+  _i5.Future<void> savePhone(String? phone) => (super.noSuchMethod(
+        Invocation.method(
+          #savePhone,
+          [phone],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+  @override
   _i5.Future<void> saveCertificateWithSocialName(
           bool? certificateWithSocialName) =>
       (super.noSuchMethod(
@@ -195,6 +204,14 @@ class MockSecureStorageInterface extends _i1.Mock
   _i5.Future<String?> getSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getSocialName,
+          [],
+        ),
+        returnValue: _i5.Future<String?>.value(),
+      ) as _i5.Future<String?>);
+  @override
+  _i5.Future<String?> getPhone() => (super.noSuchMethod(
+        Invocation.method(
+          #getPhone,
           [],
         ),
         returnValue: _i5.Future<String?>.value(),
@@ -310,10 +327,10 @@ class MockRefreshTokenInterface extends _i1.Mock
   }
 
   @override
-  _i5.Future<Map<String, dynamic>> call(String? token) => (super.noSuchMethod(
+  _i5.Future<Map<String, dynamic>> call() => (super.noSuchMethod(
         Invocation.method(
           #call,
-          [token],
+          [],
         ),
         returnValue:
             _i5.Future<Map<String, dynamic>>.value(<String, dynamic>{}),

@@ -5,8 +5,10 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/infra/repository/activities_repository_impl.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
+import 'package:smile_front/app/shared/models/enrollments_model.dart';
 
 import 'activities_repository_impl_test.mocks.dart';
 
@@ -18,7 +20,7 @@ void main() {
   final mockActivities = <ActivityModel>[
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -52,7 +54,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -86,7 +88,7 @@ void main() {
     ),
     ActivityModel(
       activityCode: 'C01',
-      type: ActivityEnum.COURSE,
+      type: ActivityEnum.COURSES,
       title:
           'Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01Atividade 01',
       description:
@@ -125,7 +127,10 @@ void main() {
         .thenAnswer((_) async => null);
     when(datasource.deleteActivity('')).thenAnswer((_) async => null);
     when(datasource.postUnsubscribe('')).thenAnswer((_) async => true);
-    when(datasource.postSubscribe('')).thenAnswer((_) async => true);
+    when(datasource.postSubscribe('')).thenAnswer((_) async => EnrollmentsModel(
+        state: EnrollmentStateEnum.ENROLLED,
+        dateSubscribed: DateTime.now(),
+        acceptingNewEnrollments: true));
     when(datasource.createActivity(ActivityModel.newInstance()))
         .thenAnswer((_) async => null);
     // when(datasource.getAllActivitiesLogged())
@@ -136,24 +141,12 @@ void main() {
 
   test('getAllActivities if activitiesList is empty', () async {
     repository.getAllActivities();
-    expect(repository.subscribedActivities.isNotEmpty, false);
+    expect(repository.activitiesList.isNotEmpty, false);
   });
 
   test('getAllActivities', () async {
     repository.activitiesList = [ActivityModel.newInstance()];
     repository.getAllActivities();
     expect(repository.activitiesList.isNotEmpty, true);
-  });
-
-  test('getUserSubscribedActivities if subscribedActivities is empty',
-      () async {
-    repository.getUserSubscribedActivities();
-    expect(repository.subscribedActivities.isNotEmpty, false);
-  });
-
-  test('getUserSubscribedActivities', () async {
-    repository.subscribedActivities = [ActivityModel.newInstance()];
-    repository.getUserSubscribedActivities();
-    expect(repository.subscribedActivities.isNotEmpty, true);
   });
 }

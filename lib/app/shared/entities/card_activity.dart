@@ -17,28 +17,24 @@ class CardActivity {
   final String? link;
   final bool acceptSubscription;
   final int? enrolledUsers;
-  final bool isExtensive;
-  final DeliveryEnum? delivery;
-  final ResponsibleProfessorModel responsibleProfessor;
+  final bool? isExtensionist;
 
-  CardActivity({
-    required this.responsibleProfessor,
-    required this.acceptSubscription,
-    required this.enrolledUsers,
-    required this.id,
-    required this.activityCode,
-    required this.type,
-    required this.title,
-    required this.description,
-    required this.date,
-    required this.duration,
-    required this.totalParticipants,
-    required this.location,
-    required this.delivery,
-    this.speakers,
-    required this.link,
-    required this.isExtensive,
-  }) : super();
+  CardActivity(
+      {required this.acceptSubscription,
+      required this.enrolledUsers,
+      required this.id,
+      required this.activityCode,
+      required this.type,
+      required this.title,
+      required this.description,
+      required this.date,
+      required this.duration,
+      required this.totalParticipants,
+      required this.location,
+      this.speakers,
+      required this.link,
+      required this.isExtensionist})
+      : super();
 
   factory CardActivity.newInstance() {
     return CardActivity(
@@ -55,9 +51,7 @@ class CardActivity {
       location: '',
       speakers: [],
       totalParticipants: 0,
-      isExtensive: false,
-      delivery: null,
-      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
+      isExtensionist: false,
     );
   }
 }

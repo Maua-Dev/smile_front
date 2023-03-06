@@ -29,12 +29,14 @@ class _SpeakersHomePageState
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 24.0),
           child: TextHeader(
-            title: S.of(context).speakersTitle,
+            title: S.of(context).speakersMainTitle,
             leftPadding: Screen.width(context) > 530 ? 32 : 24,
             color: AppColors.brandingOrange,
             fontSize: MediaQuery.of(context).size.width < 900
                 ? MediaQuery.of(context).size.width < 530
-                    ? 24
+                    ? MediaQuery.of(context).size.width < 375
+                        ? 18
+                        : 20
                     : 32
                 : 48,
           ),

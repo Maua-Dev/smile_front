@@ -27,8 +27,8 @@ class ResendConfirmationDatasourceImpl implements ResendConfirmationDatasource {
         return S.current.successEmailSend;
       }
       throw Exception();
-    } catch (e) {
-      throw ResendConfirmationInvalid(S.current.errorSendingCode);
+    } on DioError catch (e) {
+      throw ResendConfirmationInvalid(e.response!.data);
     }
   }
 }
