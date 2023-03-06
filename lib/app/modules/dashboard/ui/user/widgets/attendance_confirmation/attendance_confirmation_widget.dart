@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../shared/entities/infra/enrollment_state_enum.dart';
+import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 
@@ -28,7 +29,9 @@ class AttendanceConfirmationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (checkCanViewConfirmAttendance) {
       return Container(
-        width: MediaQuery.of(context).size.width * 0.5,
+        width: MediaQuery.of(context).size.width > tabletSize
+            ? MediaQuery.of(context).size.width * 0.36
+            : MediaQuery.of(context).size.width * 0.7,
         decoration: BoxDecoration(
           border: Border.all(color: AppColors.brandingOrange),
           borderRadius: BorderRadius.circular(12),
@@ -38,14 +41,24 @@ class AttendanceConfirmationWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(S.of(context).presenceValidateTitle,
-                  style: AppTextStyles.bold
-                      .copyWith(fontSize: 24, color: AppColors.brandingOrange)),
+                  style: AppTextStyles.bold.copyWith(
+                      fontSize: MediaQuery.of(context).size.width < tabletSize
+                          ? 20
+                          : 24,
+                      color: AppColors.brandingOrange)),
             ),
-            Text(
-              'Insira o código para realizar a validação de presença',
-              style: AppTextStyles.bold.copyWith(
-                fontSize: 15,
-                color: AppColors.gray,
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Text(
+                  'Insira o código para realizar a validação de presença',
+                  style: AppTextStyles.bold.copyWith(
+                    fontSize: MediaQuery.of(context).size.width < tabletSize
+                        ? 14
+                        : 16,
+                    color: AppColors.gray,
+                  ),
+                ),
               ),
             ),
             isLoading
@@ -63,7 +76,9 @@ class AttendanceConfirmationWidget extends StatelessWidget {
                       (index) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: SizedBox(
-                          width: 40,
+                          width: MediaQuery.of(context).size.width < tabletSize
+                              ? 28
+                              : 40,
                           child: TextField(
                             controller: _controllers[index],
                             textAlign: TextAlign.center,
@@ -117,7 +132,7 @@ class AttendanceConfirmationWidget extends StatelessWidget {
                       style: AppTextStyles.bold.copyWith(
                           fontSize: 15, color: AppColors.brandingOrange))),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
           ],
         ),
       );
@@ -126,7 +141,9 @@ class AttendanceConfirmationWidget extends StatelessWidget {
       return Container();
     }
     return Container(
-      width: MediaQuery.of(context).size.width * 0.5,
+      width: MediaQuery.of(context).size.width > tabletSize
+          ? MediaQuery.of(context).size.width * 0.36
+          : MediaQuery.of(context).size.width * 0.7,
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.brandingOrange),
         borderRadius: BorderRadius.circular(12),
@@ -140,7 +157,9 @@ class AttendanceConfirmationWidget extends StatelessWidget {
                     .copyWith(fontSize: 24, color: AppColors.brandingOrange)),
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.3,
+            width: MediaQuery.of(context).size.width > tabletSize
+                ? MediaQuery.of(context).size.width * 0.3
+                : MediaQuery.of(context).size.width * 0.6,
             child: Text(
               'Aguarde o início da atividade e seu professor responsável gerar o código de validação.',
               style: AppTextStyles.bold.copyWith(
