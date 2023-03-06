@@ -28,16 +28,9 @@
     "mauaEntitiesSchemaInstagramUrl": "{entity, select, atletica{https://www.instagram.com/gaspar_maua/} ca{https://www.instagram.com/camaua/} diversidade{https://www.instagram.com/diversidademaua/} enactus{https://www.instagram.com/enactusmaua/} esports{https://www.instagram.com/esportsmaua/} inova{https://www.instagram.com/inovamaua/} mauajr{https://www.instagram.com/mauajr/} mauasocial{https://www.instagram.com/mauasocial/} mbc{https://www.instagram.com/mauabusinessclub/} nae{https://www.instagram.com/naemaua/} dev{https://www.instagram.com/devcommunitymaua/} nine{https://www.instagram.com/nine.maua/} finance{https://www.instagram.com/imtfinance/} baja{https://www.instagram.com/bajamaua/} ecomaua{https://www.instagram.com/eco_maua/} mauaracing2{https://www.instagram.com/mauaracingh2/} mauaracing{https://www.instagram.com/mauaracing/} other{}}",
     "beSponsorTitle": "Be our Sponsor",
     "beSponsorDescription": "SMILE brings an opportunity for partnership and integration between the labor market and academia. Become an event Sponsor and find out about the benefits and opportunities that SMILE offers. In this edition, 4 types of sponsorship quotas are available: Diamond, Gold, Silver and Bronze. In addition, when closing the sponsorship in advance, there will be a progressive discount on the quotas. Information about quotas and benefits is below.",
-    "beSponsorDiscount": "Discount",
     "beSponsorMoreInfoTitle": "SPONSORSHIP INFORMATION",
     "beSponsorMoreInfoDescription": "If you are interested in sponsoring the event, click here for more information.",
-    "year2023": "2023",
     "dateTitle": "Date",
-    "dayTitle": "Day",
-    "monthFebruary": "February",
-    "monthJanuary": "January",
-    "discount10": "10% Off",
-    "discount20": "20% Off",
     "benefitsSponsorSchema": "{benefit, select, one{Video prepared by the sponsor for dissemination on the website.} two{Sponsor teaser video for disclosure in the high-impact lecture.} three{VIP booth at the Internships Fair.} four{Lecture or course to be given at the event.} five{Disclosure of the sponsor's logo on the website and in emails directed to the company's website.} six{Disclosure of the sponsor's logo on the bag.} seven{Disclosure of the sponsor on the IMT social networks.} eight{Insertion of the sponsor's folder or gift in the event bag.} nine{Space for publicizing the stand at the internship fair.} other{}}",
     "planSponsorSchema": "{plan, select, diamond{Diamond} gold{Gold} silver{Silver} bronze{Bronze}}",
     "planPriceSponsorSchema": "{plan, select, diamond{10.000} gold{5.000} silver{3.000} bronze{1.000}}",
@@ -113,6 +106,7 @@
     "notificationsTitle": "Means of notification about activities:",
     "notificationsSchemaTitle": "I want to receive notifications by ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
+    "notificationsSmsAlert": "Fill in your cell phone to enable sms notifications!",
     "registerTitle": "Register",
     "emailNotificationTitle": "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.",
     "changePasswordTitle": "Change password",
@@ -120,6 +114,13 @@
     "confirmEmailNotificationTitle": "Are you sure your email address {firstName} is correct?",
     "@confirmEmailNotificationTitle" : {
         "placeholders": {
+            "firstName": {}
+        }
+    },
+    "confirmEmailAndPhoneNotificationTitle": "Are you sure your phone {phone} and email address {firstName} are correct?",
+    "@confirmEmailAndPhoneNotificationTitle" : {
+        "placeholders": {
+            "phone": {},
             "firstName": {}
         }
     },
@@ -188,7 +189,16 @@
 
     "codeTitle": "Code",
 
-    "localTitle": "Local",
+    "isExtensiveTooltip": "Extension Activity",
+
+    "drawerHomeButton": "Home",
+    "drawerActivitiesButton": "Activities",
+    "drawerResponsibleActivitiesButton": "Responsible Activities",
+    "drawerCertificatesButton": "Certificates",
+    "drawerHelpButton": "Help",
+    "drawerProfileButton": "Profile",
+
+    "localTitle": "Locati   on",
 
 
     "noActivitiesEnrolledText": "Looks like you haven't signed up for any activities yet :(",
@@ -208,12 +218,6 @@
     "availabeSpotUnsuficient": "It seems that the number of vacancies for this activity has run out :(",
     "scheduleActivityWarning": "Keep in mind of your schedules and activities that you have already signed up for!",
     "alreadySubscribedOnThisPeriodWarning": "It seems you are already subscribed on another activity at this period.",
-    "unavailabeSubscribe": "The registration for this activity is unavailabe!",
+    "unavailabeSubscribe": "The registration for this activity is unavailabe!"
 
-    "drawerActivitiesButton": "Activities",
-    "drawerCertificatesButton": "Certificates",
-    "drawerHelpButton": "Help",
-    "drawerHomeButton": "Home",
-    "drawerProfileButton": "Profile",
-    "drawerResponsibleActivitiesButton": "Responsible Activities"
 }

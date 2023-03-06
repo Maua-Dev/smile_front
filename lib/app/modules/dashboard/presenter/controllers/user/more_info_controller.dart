@@ -43,7 +43,22 @@ abstract class MoreInfoControllerBase with Store {
   @action
   void getActivity() {
     activity = enrollmentController.allActivitiesWithEnrollments
-        .firstWhere((element) => element.activityCode == activityCode);
+        .firstWhere((element) => element.activityCode == activityCode,
+            orElse: () => EnrollsActivityModel(
+                  description: '',
+                  activityCode: '',
+                  title: '',
+                  type: null,
+                  speakers: [SpeakerActivityModel.newInstance()],
+                  duration: 0,
+                  isExtensive: false,
+                  startDate: DateTime.now(),
+                  deliveryEnum: null,
+                  acceptingNewEnrollments: false,
+                  responsibleProfessors: [],
+                  takenSlots: 0,
+                  totalSlots: 0,
+                ));
   }
 
   @action

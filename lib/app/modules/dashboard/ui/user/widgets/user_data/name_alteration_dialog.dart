@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
+import 'package:smile_front/app/shared/utils/screen_helper.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../../shared/themes/app_colors.dart';
@@ -100,7 +102,8 @@ class NameAlterationDialog extends StatelessWidget {
               ),
               TextFormField(
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
+                  FilteringTextInputFormatter.allow(
+                      RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ\\s]")),
                 ],
                 initialValue: name,
                 textAlignVertical: TextAlignVertical.center,
@@ -180,7 +183,8 @@ class NameAlterationDialog extends StatelessWidget {
               ),
               TextFormField(
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
+                  FilteringTextInputFormatter.allow(
+                      RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ\\s]")),
                 ],
                 initialValue: socialName,
                 enabled: wantSocialName ? true : false,
@@ -328,9 +332,8 @@ class NameAlterationDialog extends StatelessWidget {
                     isBrazilianPhoneField: controller.isBrazilianPhone,
                     placeholder: S.of(context).registerPhonePlaceholder,
                     setValue: controller.setPhone,
-                    widthSize: MediaQuery.of(context).size.width < 650
-                        ? MediaQuery.of(context).size.width * 0.53
-                        : 480,
+                    widthSize:
+                        Screen.width(context) < breakpointMobile ? 260 : 380,
                     validation: controller.validatePhone,
                   )
                 ],

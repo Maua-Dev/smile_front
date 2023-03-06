@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
+import '../../../../../../../generated/l10n.dart';
+
 class ActivitiesCardWidget extends StatelessWidget {
   final String title;
   final String activityCode;
@@ -80,11 +82,15 @@ class ActivitiesCardWidget extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis)),
                           ),
                           if (isExtensive)
-                            Icon(
-                              Icons.star_border_outlined,
-                              size: 33,
-                              color: AppColors.brandingOrange,
-                            ),
+                            Tooltip(
+                              triggerMode: TooltipTriggerMode.tap,
+                              message: S.of(context).isExtensiveTooltip,
+                              child: Icon(
+                                Icons.star,
+                                size: 33,
+                                color: AppColors.brandingOrange,
+                              ),
+                            )
                         ],
                       ),
                     ),
