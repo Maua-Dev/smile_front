@@ -6,11 +6,13 @@ class EnableTextFieldCheckBoxWidget extends StatelessWidget {
   final bool check;
   final Function(bool?)? onChanged;
   final String title;
+  final Widget? tooltipButton;
   const EnableTextFieldCheckBoxWidget({
     Key? key,
     required this.check,
     this.onChanged,
     required this.title,
+    this.tooltipButton,
   }) : super(key: key);
 
   @override
@@ -32,29 +34,41 @@ class EnableTextFieldCheckBoxWidget extends StatelessWidget {
                   title,
                   style: TextStyle(color: AppColors.gray, fontSize: 14),
                 ),
-              )
+              ),
+              const SizedBox(width: 5),
+              tooltipButton ?? const SizedBox.shrink(),
             ],
           )
-        : Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+        : Stack(
+            alignment: Alignment.center,
             children: [
-              SizedBox(
-                height: 24,
-                width: 24,
-                child: Checkbox(
-                  activeColor: AppColors.brandingBlue,
-                  value: check,
-                  onChanged: onChanged,
-                ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: Checkbox(
+                      activeColor: AppColors.brandingBlue,
+                      value: check,
+                      onChanged: onChanged,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  Flexible(
+                    child: Text(
+                      title,
+                      style: TextStyle(color: AppColors.gray, fontSize: 14),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 4,
-              ),
-              Flexible(
-                child: Text(
-                  title,
-                  style: const TextStyle(color: Colors.white, fontSize: 14),
-                ),
+              Positioned(
+                top: 2,
+                right: 2,
+                child: tooltipButton ?? const SizedBox.shrink(),
               )
             ],
           );

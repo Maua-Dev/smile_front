@@ -1,10 +1,8 @@
 import 'package:smile_front/app/shared/entities/activity.dart';
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
-
 import '../../modules/dashboard/domain/infra/activity_enum.dart';
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
 import '../entities/infra/delivery_enum.dart';
-import '../entities/infra/user_roles_enum.dart';
 import 'enrollments_model.dart';
 
 class AdminActivityModel extends Activity {
@@ -49,9 +47,8 @@ class AdminActivityModel extends Activity {
             map['activity']['delivery_model']),
         acceptingNewEnrollments:
             map['activity']['accepting_new_enrollments'] ?? false,
-        responsibleProfessors: [
-          ResponsibleProfessorModel(id: '', name: '', role: UserRolesEnum.ADMIN)
-        ],
+        responsibleProfessors: ResponsibleProfessorModel.fromMaps(
+            map['activity']['responsible_professors']),
         takenSlots: map['activity']['taken_slots'],
         totalSlots: map['activity']['total_slots'],
         stopAcceptingNewEnrollmentsBefore:

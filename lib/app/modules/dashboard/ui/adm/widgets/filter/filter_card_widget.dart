@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
@@ -7,9 +8,13 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
 
+import '../../../../../../shared/entities/screen_variables.dart';
+import '../../../../../../shared/themes/breakpoint.dart';
+
 class FilterCardWidget extends StatelessWidget {
   final Function(ActivityEnum?)? onChangedActivitiesFilter;
   final ActivityEnum? typeFilter;
+  final String? typeOnScreen;
   final Function(DateTime?)? onChangedDateFilter;
   final DateTime? dateFilter;
   final Function(DateTime?)? onChangedTimeFilter;
@@ -17,6 +22,7 @@ class FilterCardWidget extends StatelessWidget {
   final Function()? resetFilters;
   const FilterCardWidget({
     Key? key,
+    this.typeOnScreen,
     this.onChangedActivitiesFilter,
     this.onChangedDateFilter,
     this.onChangedTimeFilter,
@@ -52,34 +58,118 @@ class FilterCardWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 227,
-                    height: 47,
+                    width: MediaQuery.of(context).size.width < breakpointLMobile
+                        ? 127
+                        : MediaQuery.of(context).size.width > breakpointTablet
+                            ? 230
+                            : 130,
+                    height: MediaQuery.of(context).size.width > breakpointTablet
+                        ? 47
+                        : 36,
                     decoration: BoxDecoration(
                         color: AppColors.white,
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 3, 3, 0),
-                      child: DropdownButtonFormField<ActivityEnum>(
-                        value: typeFilter,
-                        iconSize: 24,
-                        isExpanded: true,
-                        decoration: InputDecoration(
-                          isDense: true,
-                          hintText: S.of(context).activitiesTitle,
-                          fillColor: AppColors.white,
-                          filled: true,
-                          hintStyle: AppTextStyles.body.copyWith(fontSize: 25),
-                          border: InputBorder.none,
-                        ),
-                        items: ActivityEnum.values
-                            .map((ActivityEnum activityEnum) {
-                          return DropdownMenuItem<ActivityEnum>(
-                              value: activityEnum,
-                              child: Text(activityEnum.name.toString(),
-                                  style: AppTextStyles.body
-                                      .copyWith(fontSize: 15)));
-                        }).toList(),
-                        onChanged: onChangedActivitiesFilter,
+                      padding: EdgeInsets.fromLTRB(
+                          MediaQuery.of(context).size.width > tabletSize
+                              ? 12
+                              : 6,
+                          4,
+                          MediaQuery.of(context).size.width > tabletSize
+                              ? 12
+                              : 0,
+                          10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 4.0),
+                            child: Text(
+                                typeFilter == null
+                                    ? S.of(context).activitiesTitle
+                                    : typeOnScreen!,
+                                style: AppTextStyles.body.copyWith(
+                                    fontSize: typeFilter == null
+                                        ? MediaQuery.of(context).size.width >
+                                                tabletSize
+                                            ? 25
+                                            : 16
+                                        : MediaQuery.of(context).size.width >
+                                                tabletSize
+                                            ? 14
+                                            : 7)),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      content: SizedBox(
+                                        width: 500,
+                                        height: 500,
+                                        child: ListView.builder(
+                                            itemCount:
+                                                ActivityEnum.values.length,
+                                            itemBuilder: (BuildContext context,
+                                                int index) {
+                                              return Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 12,
+                                                        horizontal: 30),
+                                                child: ElevatedButton(
+                                                  style: ButtonStyle(
+                                                    shape: MaterialStateProperty
+                                                        .all<
+                                                            RoundedRectangleBorder>(
+                                                      RoundedRectangleBorder(
+                                                          side: BorderSide(
+                                                              color: AppColors
+                                                                  .white),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10)),
+                                                    ),
+                                                  ),
+                                                  onPressed: () {
+                                                    onChangedActivitiesFilter!(
+                                                        ActivityEnum
+                                                            .values[index]);
+                                                    Modular.to.pop();
+                                                  },
+                                                  child: Align(
+                                                    alignment: Alignment.center,
+                                                    child: Text(
+                                                      ActivityEnum
+                                                          .values[index].name
+                                                          .toString(),
+                                                      style: AppTextStyles.bold
+                                                          .copyWith(
+                                                              color: AppColors
+                                                                  .white,
+                                                              fontSize: 16),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }),
+                                      ),
+                                    );
+                                  });
+                            },
+                            highlightColor: AppColors.white,
+                            hoverColor: AppColors.white,
+                            icon: const Icon(Icons.arrow_drop_down),
+                            color: Colors.black,
+                            iconSize:
+                                MediaQuery.of(context).size.width > tabletSize
+                                    ? 24
+                                    : 14,
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -108,7 +198,7 @@ class FilterCardWidget extends StatelessWidget {
                             onPressed: () {
                               showDatePicker(
                                   context: context,
-                                  initialDate: DateTime.utc(2022, 5, 16),
+                                  initialDate: DateTime.now(),
                                   firstDate: DateTime(2022),
                                   lastDate: DateTime(2024),
                                   builder: ((context, child) {
@@ -150,7 +240,7 @@ class FilterCardWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 4.0),
                             child: Text(
                                 formattedHour == ''
-                                    ? S.of(context).scheduleTitle
+                                    ? S.of(context).hourTitle
                                     : formattedHour,
                                 style: AppTextStyles.body.copyWith(
                                     fontSize: formattedHour == '' ? 25 : 16)),

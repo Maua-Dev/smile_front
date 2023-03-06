@@ -125,6 +125,25 @@ class S {
     );
   }
 
+  /// `{schema, select, STUDENT{Mauá Student} EXTERNAL{External} EMPLOYEE{Employee} INTERNAL_STUDENT{International Student} PROFESSOR{Mauá Professor (Responsável)} ADMIN{Admin} other{}}`
+  String userRolesNameSchema(Object schema) {
+    return Intl.select(
+      schema,
+      {
+        'STUDENT': 'Mauá Student',
+        'EXTERNAL': 'External',
+        'EMPLOYEE': 'Employee',
+        'INTERNAL_STUDENT': 'International Student',
+        'PROFESSOR': 'Mauá Professor (Responsável)',
+        'ADMIN': 'Admin',
+        'other': '',
+      },
+      name: 'userRolesNameSchema',
+      desc: '',
+      args: [schema],
+    );
+  }
+
   /// `KNOW MORE >>>`
   String get knowMore {
     return Intl.message(
@@ -135,11 +154,21 @@ class S {
     );
   }
 
-  /// `Main Speakers - 2022`
+  /// `Speakers`
   String get speakersTitle {
     return Intl.message(
-      'Main Speakers - 2022',
+      'Speakers',
       name: 'speakersTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Main Speakers - 2022`
+  String get speakersMainTitle {
+    return Intl.message(
+      'Main Speakers - 2022',
+      name: 'speakersMainTitle',
       desc: '',
       args: [],
     );
@@ -281,6 +310,16 @@ class S {
     );
   }
 
+  /// `Activities not found`
+  String get activitiesNotFound {
+    return Intl.message(
+      'Activities not found',
+      name: 'activitiesNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sponsors`
   String get sponsorsTitle {
     return Intl.message(
@@ -381,16 +420,6 @@ class S {
     );
   }
 
-  /// `Discount`
-  String get beSponsorDiscount {
-    return Intl.message(
-      'Discount',
-      name: 'beSponsorDiscount',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `SPONSORSHIP INFORMATION`
   String get beSponsorMoreInfoTitle {
     return Intl.message(
@@ -411,61 +440,11 @@ class S {
     );
   }
 
-  /// `2023`
-  String get year2023 {
-    return Intl.message(
-      '2023',
-      name: 'year2023',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Date`
   String get dateTitle {
     return Intl.message(
       'Date',
       name: 'dateTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `February`
-  String get monthFebruary {
-    return Intl.message(
-      'February',
-      name: 'monthFebruary',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `January`
-  String get monthJanuary {
-    return Intl.message(
-      'January',
-      name: 'monthJanuary',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `10% Off`
-  String get discount10 {
-    return Intl.message(
-      '10% Off',
-      name: 'discount10',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `20% Off`
-  String get discount20 {
-    return Intl.message(
-      '20% Off',
-      name: 'discount20',
       desc: '',
       args: [],
     );
@@ -688,6 +667,126 @@ class S {
     );
   }
 
+  /// `Termination`
+  String get termination {
+    return Intl.message(
+      'Termination',
+      name: 'termination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local`
+  String get local {
+    return Intl.message(
+      'Local',
+      name: 'local',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscribed`
+  String get subscribedTitle {
+    return Intl.message(
+      'Subscribed',
+      name: 'subscribedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscribe`
+  String get subcribeTitle {
+    return Intl.message(
+      'Subscribe',
+      name: 'subcribeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to subscribe?`
+  String get subscribeAlert {
+    return Intl.message(
+      'Are you sure you want to subscribe?',
+      name: 'subscribeAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay attention to your schedules and activities that you have already subscribed for!`
+  String get subscribeScheduleAtention {
+    return Intl.message(
+      'Pay attention to your schedules and activities that you have already subscribed for!',
+      name: 'subscribeScheduleAtention',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems that the number of vacancies for the activity has sold out :(`
+  String get subscribeSlotsSoldOut {
+    return Intl.message(
+      'It seems that the number of vacancies for the activity has sold out :(',
+      name: 'subscribeSlotsSoldOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to unsubscribe?`
+  String get unsubscribeAlert {
+    return Intl.message(
+      'Are you sure you want to unsubscribe?',
+      name: 'unsubscribeAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will be able to subscribe again`
+  String get unsubscribeAcceptingNewEnrollments {
+    return Intl.message(
+      'You will be able to subscribe again',
+      name: 'unsubscribeAcceptingNewEnrollments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Caution: subscriptions for this activity closed, you will not be able to subscribe again`
+  String get unsubscribeNotAcceptingNewEnrollments {
+    return Intl.message(
+      'Caution: subscriptions for this activity closed, you will not be able to subscribe again',
+      name: 'unsubscribeNotAcceptingNewEnrollments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Na fila`
+  String get queueTitle {
+    return Intl.message(
+      'Na fila',
+      name: 'queueTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to exit the queue?`
+  String get queueExitAlert {
+    return Intl.message(
+      'Are you sure you want to exit the queue?',
+      name: 'queueExitAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The login service is under maintenance`
   String get maintenanceTitle {
     return Intl.message(
@@ -833,6 +932,16 @@ class S {
     );
   }
 
+  /// `Select an option:`
+  String get selectOptionTitle {
+    return Intl.message(
+      'Select an option:',
+      name: 'selectOptionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Full Name`
   String get registerFullNamePlaceholder {
     return Intl.message(
@@ -863,11 +972,41 @@ class S {
     );
   }
 
+  /// `Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.`
+  String get registerSocialNameTooltip {
+    return Intl.message(
+      'Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.',
+      name: 'registerSocialNameTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email Mauá`
+  String get registerEmailProfessorPlaceholder {
+    return Intl.message(
+      'Enter your email Mauá',
+      name: 'registerEmailProfessorPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirm your e-mail`
   String get registerEmailConfirmationPlaceholder {
     return Intl.message(
       'Confirm your e-mail',
       name: 'registerEmailConfirmationPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm your e-mail Mauá`
+  String get registerEmailProfessorConfirmationPlaceholder {
+    return Intl.message(
+      'Confirm your e-mail Mauá',
+      name: 'registerEmailProfessorConfirmationPlaceholder',
       desc: '',
       args: [],
     );
@@ -960,20 +1099,28 @@ class S {
     );
   }
 
-  /// `{notification, select, email{EMAIL} sms{SMS} whatsapp{WHATSAPP} app{APP/WEB} other{}}`
+  /// `{notification, select, email{EMAIL} sms{SMS} other{}}`
   String notificationsSchema(Object notification) {
     return Intl.select(
       notification,
       {
         'email': 'EMAIL',
         'sms': 'SMS',
-        'whatsapp': 'WHATSAPP',
-        'app': 'APP/WEB',
         'other': '',
       },
       name: 'notificationsSchema',
       desc: '',
       args: [notification],
+    );
+  }
+
+  /// `Fill in your cell phone to enable sms notifications!`
+  String get notificationsSmsAlert {
+    return Intl.message(
+      'Fill in your cell phone to enable sms notifications!',
+      name: 'notificationsSmsAlert',
+      desc: '',
+      args: [],
     );
   }
 
@@ -1024,6 +1171,16 @@ class S {
       name: 'confirmEmailNotificationTitle',
       desc: '',
       args: [firstName],
+    );
+  }
+
+  /// `Are you sure your phone {phone} and email address {firstName} are correct?`
+  String confirmEmailAndPhoneNotificationTitle(Object phone, Object firstName) {
+    return Intl.message(
+      'Are you sure your phone $phone and email address $firstName are correct?',
+      name: 'confirmEmailAndPhoneNotificationTitle',
+      desc: '',
+      args: [phone, firstName],
     );
   }
 
@@ -1082,6 +1239,16 @@ class S {
     return Intl.message(
       'Invalid e-mail',
       name: 'fieldEmailInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid professor e-mail`
+  String get fieldProfessorEmailInvalid {
+    return Intl.message(
+      'Invalid professor e-mail',
+      name: 'fieldProfessorEmailInvalid',
       desc: '',
       args: [],
     );
@@ -1207,31 +1374,21 @@ class S {
     );
   }
 
+  /// `Presence Validate`
+  String get presenceValidateTitle {
+    return Intl.message(
+      'Presence Validate',
+      name: 'presenceValidateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your registration has been successfully confirmed!`
   String get successRegister {
     return Intl.message(
       'Your registration has been successfully confirmed!',
       name: 'successRegister',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Failed to register, please try again.`
-  String get errorRegister {
-    return Intl.message(
-      'Failed to register, please try again.',
-      name: 'errorRegister',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `User already exist.`
-  String get errorUserAlreadyExist {
-    return Intl.message(
-      'User already exist.',
-      name: 'errorUserAlreadyExist',
       desc: '',
       args: [],
     );
@@ -1277,41 +1434,11 @@ class S {
     );
   }
 
-  /// `Failed to send code, email not registered or not confirmed.`
-  String get errorSendingCode {
-    return Intl.message(
-      'Failed to send code, email not registered or not confirmed.',
-      name: 'errorSendingCode',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Password changed successfully!`
   String get successChangePassword {
     return Intl.message(
       'Password changed successfully!',
       name: 'successChangePassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Failed to change password, please try again.`
-  String get errorChangePassword {
-    return Intl.message(
-      'Failed to change password, please try again.',
-      name: 'errorChangePassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `It was not possible to login.\n\n- Register by clicking on the "I have no account" button\n- Your e-mail may not have been confirmed, click on "Resend confirmation e-mail"`
-  String get errorLoginInvalidConfirmation {
-    return Intl.message(
-      'It was not possible to login.\n\n- Register by clicking on the "I have no account" button\n- Your e-mail may not have been confirmed, click on "Resend confirmation e-mail"',
-      name: 'errorLoginInvalidConfirmation',
       desc: '',
       args: [],
     );
@@ -1332,6 +1459,16 @@ class S {
     return Intl.message(
       'Password changed successfully! \n Redirecting to login...',
       name: 'successChangePasswordRedirect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There was an error loading activities :(`
+  String get errorGenericGetActivities {
+    return Intl.message(
+      'There was an error loading activities :(',
+      name: 'errorGenericGetActivities',
       desc: '',
       args: [],
     );
@@ -1407,11 +1544,31 @@ class S {
     );
   }
 
+  /// `Company:`
+  String get companyTitle {
+    return Intl.message(
+      'Company:',
+      name: 'companyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description`
   String get descriptionTitle {
     return Intl.message(
       'Description',
       name: 'descriptionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hora`
+  String get hourTitle {
+    return Intl.message(
+      'Hora',
+      name: 'hourTitle',
       desc: '',
       args: [],
     );
@@ -1447,6 +1604,106 @@ class S {
     );
   }
 
+  /// `Extension Activity`
+  String get isExtensiveTooltip {
+    return Intl.message(
+      'Extension Activity',
+      name: 'isExtensiveTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get drawerHomeButton {
+    return Intl.message(
+      'Home',
+      name: 'drawerHomeButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activities`
+  String get drawerActivitiesButton {
+    return Intl.message(
+      'Activities',
+      name: 'drawerActivitiesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible Activities`
+  String get drawerResponsibleActivitiesButton {
+    return Intl.message(
+      'Responsible Activities',
+      name: 'drawerResponsibleActivitiesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Certificates`
+  String get drawerCertificatesButton {
+    return Intl.message(
+      'Certificates',
+      name: 'drawerCertificatesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help`
+  String get drawerHelpButton {
+    return Intl.message(
+      'Help',
+      name: 'drawerHelpButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get drawerProfileButton {
+    return Intl.message(
+      'Profile',
+      name: 'drawerProfileButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Locati   on`
+  String get localTitle {
+    return Intl.message(
+      'Locati   on',
+      name: 'localTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Looks like you haven't signed up for any activities yet :(`
+  String get noActivitiesEnrolledText {
+    return Intl.message(
+      'Looks like you haven\'t signed up for any activities yet :(',
+      name: 'noActivitiesEnrolledText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Looks like you are not responsible for any activity :(`
+  String get noResponsibleActivitiesText {
+    return Intl.message(
+      'Looks like you are not responsible for any activity :(',
+      name: 'noResponsibleActivitiesText',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Yes`
   String get yesTitle {
     return Intl.message(
@@ -1468,6 +1725,156 @@ class S {
   }
 
   // skipped getter for the '' key
+
+  /// `Unavailabe`
+  String get unavailabeTitle {
+    return Intl.message(
+      'Unavailabe',
+      name: 'unavailabeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registration unavailabe for this activity!`
+  String get unavailabeActivityRegistration {
+    return Intl.message(
+      'Registration unavailabe for this activity!',
+      name: 'unavailabeActivityRegistration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you wanna unsubscribe?`
+  String get unsubscribeVerification {
+    return Intl.message(
+      'Are you sure you wanna unsubscribe?',
+      name: 'unsubscribeVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you wanna subscribe?`
+  String get subscribeVerification {
+    return Intl.message(
+      'Are you sure you wanna subscribe?',
+      name: 'subscribeVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!`
+  String get unsubscribeVerificationClosedRegistration {
+    return Intl.message(
+      'Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!',
+      name: 'unsubscribeVerificationClosedRegistration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will lose your vacancy by continuing!`
+  String get unsubscribeLoseVanacy {
+    return Intl.message(
+      'You will lose your vacancy by continuing!',
+      name: 'unsubscribeLoseVanacy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems that the number of vacancies for this activity has run out :(`
+  String get availabeSpotUnsuficient {
+    return Intl.message(
+      'It seems that the number of vacancies for this activity has run out :(',
+      name: 'availabeSpotUnsuficient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep in mind of your schedules and activities that you have already signed up for!`
+  String get scheduleActivityWarning {
+    return Intl.message(
+      'Keep in mind of your schedules and activities that you have already signed up for!',
+      name: 'scheduleActivityWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems you are already subscribed on another activity at this period.`
+  String get alreadySubscribedOnThisPeriodWarning {
+    return Intl.message(
+      'It seems you are already subscribed on another activity at this period.',
+      name: 'alreadySubscribedOnThisPeriodWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The registration for this activity is unavailabe!`
+  String get unavailabeSubscribe {
+    return Intl.message(
+      'The registration for this activity is unavailabe!',
+      name: 'unavailabeSubscribe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to join the queue?`
+  String get joinQueueConfimation {
+    return Intl.message(
+      'Do you want to join the queue?',
+      name: 'joinQueueConfimation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get in queue`
+  String get joinQueueTitle {
+    return Intl.message(
+      'Get in queue',
+      name: 'joinQueueTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In queue`
+  String get inQueueTitle {
+    return Intl.message(
+      'In queue',
+      name: 'inQueueTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to leave the queue?`
+  String get exitQueueConfimation {
+    return Intl.message(
+      'Do you want to leave the queue?',
+      name: 'exitQueueConfimation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are in the activity queue`
+  String get InQueueContent {
+    return Intl.message(
+      'You are in the activity queue',
+      name: 'InQueueContent',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

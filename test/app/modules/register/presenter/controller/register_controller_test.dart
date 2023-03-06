@@ -9,6 +9,7 @@ import 'package:smile_front/app/modules/register/domain/repositories/register_in
 import 'package:smile_front/app/modules/register/presenter/controllers/register_controller.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
 import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import 'package:smile_front/generated/l10n.dart';
 
@@ -125,9 +126,10 @@ void main() {
     expect(controller.validateVerifyEmail(str), null);
   });
 
-  test('setIsMauaStudent', () {
-    controller.setIsMauaStudent(true);
-    expect(controller.isMauaStudent, true);
+  test('setRole', () {
+    var role = UserRolesEnum.EXTERNAL;
+    controller.setRole(role);
+    expect(controller.role, role);
     expect(controller.ra, '');
   });
 
@@ -145,7 +147,7 @@ void main() {
   });
 
   test('validateRa if is empty : String Error Message', () {
-    controller.isMauaStudent = true;
+    controller.role = UserRolesEnum.STUDENT;
     expect(controller.validateRa(''), isA<String>());
   });
 
@@ -186,19 +188,15 @@ void main() {
     expect(controller.acceptEmailNotifications, true);
   });
 
-  test('setSMSNotifications', () {
+  test('setSMSNotifications: phone <= 3', () {
+    controller.setSMSNotifications(true);
+    expect(controller.acceptSMSNotifications, false);
+  });
+
+  test('setSMSNotifications: phone > 3', () {
+    controller.setPhone('1234');
     controller.setSMSNotifications(true);
     expect(controller.acceptSMSNotifications, true);
-  });
-
-  test('setWPPNotifications', () {
-    controller.setWPPNotifications(true);
-    expect(controller.acceptWPPNotifications, true);
-  });
-
-  test('setAPPWEBNotifications', () {
-    controller.setAPPWEBNotifications(true);
-    expect(controller.acceptAPPWEBNotifications, true);
   });
 
   test('setAcceptTermsOfUse', () {

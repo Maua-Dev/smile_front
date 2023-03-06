@@ -17,7 +17,8 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subsc
     as _i3;
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart'
     as _i8;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
+    as _i5;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
     as _i9;
 
@@ -64,14 +65,14 @@ class MockGetUserSubscribedActivitiesInterface extends _i1.Mock
   }
 
   @override
-  _i4.Future<List<_i5.ActivityModel>> call() => (super.noSuchMethod(
+  _i4.Future<List<_i5.EnrollsActivityModel>> call() => (super.noSuchMethod(
         Invocation.method(
           #call,
           [],
         ),
-        returnValue:
-            _i4.Future<List<_i5.ActivityModel>>.value(<_i5.ActivityModel>[]),
-      ) as _i4.Future<List<_i5.ActivityModel>>);
+        returnValue: _i4.Future<List<_i5.EnrollsActivityModel>>.value(
+            <_i5.EnrollsActivityModel>[]),
+      ) as _i4.Future<List<_i5.EnrollsActivityModel>>);
 }
 
 /// A class which mocks [SecureStorageInterface].
@@ -163,6 +164,15 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i4.Future<void>.value(),
       ) as _i4.Future<void>);
   @override
+  _i4.Future<void> savePhone(String? phone) => (super.noSuchMethod(
+        Invocation.method(
+          #savePhone,
+          [phone],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+  @override
   _i4.Future<void> saveCertificateWithSocialName(
           bool? certificateWithSocialName) =>
       (super.noSuchMethod(
@@ -209,6 +219,14 @@ class MockSecureStorageInterface extends _i1.Mock
   _i4.Future<String?> getSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getSocialName,
+          [],
+        ),
+        returnValue: _i4.Future<String?>.value(),
+      ) as _i4.Future<String?>);
+  @override
+  _i4.Future<String?> getPhone() => (super.noSuchMethod(
+        Invocation.method(
+          #getPhone,
           [],
         ),
         returnValue: _i4.Future<String?>.value(),
@@ -345,10 +363,11 @@ class MockChangeDataInterface extends _i1.Mock
   }
 
   @override
-  _i4.Future<dynamic> call(
+  _i4.Future<void> call(
     String? nameToChange,
     String? socialNameToChange,
     bool? certificateWithSocialName,
+    String? phone,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -357,8 +376,10 @@ class MockChangeDataInterface extends _i1.Mock
             nameToChange,
             socialNameToChange,
             certificateWithSocialName,
+            phone,
           ],
         ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 }

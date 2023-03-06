@@ -1,10 +1,7 @@
-import 'package:smile_front/app/shared/models/activity_model.dart';
-
 import '../repositories/activities_repository_interface.dart';
 
 abstract class SubscribeActivityInterface {
-  Future<bool> call(
-      ActivityModel activity, String activityId, DateTime activityDate);
+  Future<bool> call(String activityCode);
 }
 
 class SubscribeActivity implements SubscribeActivityInterface {
@@ -13,8 +10,7 @@ class SubscribeActivity implements SubscribeActivityInterface {
   SubscribeActivity({required this.repository});
 
   @override
-  Future<bool> call(
-      ActivityModel activity, String activityId, DateTime activityDate) {
-    return repository.subscribeActivity(activity, activityId, activityDate);
+  Future<bool> call(String activityCode) {
+    return repository.subscribeActivity(activityCode);
   }
 }

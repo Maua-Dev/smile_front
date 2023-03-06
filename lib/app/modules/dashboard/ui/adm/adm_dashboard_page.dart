@@ -43,6 +43,7 @@ class _AdmDashboardPageState
                     padding: const EdgeInsets.symmetric(vertical: 50),
                     child: Observer(builder: (_) {
                       return FilterCardWidget(
+                        typeOnScreen: controller.typeOnScreen,
                         typeFilter: controller.typeFilter,
                         dateFilter: controller.dateFilter,
                         hourFilter: controller.hourFilter,
@@ -141,7 +142,7 @@ class _AdmDashboardPageState
                         ),
                       );
                     } else {
-                      return Text('Atividade não encontrada',
+                      return Text(S.of(context).activitiesNotFound,
                           style: AppTextStyles.body);
                     }
                   }

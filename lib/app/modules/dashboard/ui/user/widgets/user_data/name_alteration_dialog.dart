@@ -1,9 +1,16 @@
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
+import 'package:smile_front/app/shared/utils/screen_helper.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/widgets/custom_elevated_button_widget.dart';
+import '../../../../presenter/controllers/user/user_dashboard_controller.dart';
 
 class NameAlterationDialog extends StatelessWidget {
   final String name;
@@ -17,22 +24,28 @@ class NameAlterationDialog extends StatelessWidget {
   final bool isLoading;
   final Function()? changeData;
 
-  const NameAlterationDialog(
-      {Key? key,
-      this.onChangedName,
-      required this.name,
-      required this.socialName,
-      this.onChangedSocialName,
-      required this.wantSocialName,
-      this.onChangedWantSocialName,
-      this.onChangedCertificateWithSocialName,
-      required this.certificateWithSocialName,
-      required this.isLoading,
-      this.changeData})
-      : super(key: key);
+  const NameAlterationDialog({
+    Key? key,
+    this.onChangedName,
+    required this.name,
+    required this.socialName,
+    this.onChangedSocialName,
+    required this.wantSocialName,
+    this.onChangedWantSocialName,
+    this.onChangedCertificateWithSocialName,
+    required this.certificateWithSocialName,
+    required this.isLoading,
+    this.changeData,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var controller = Modular.get<UserDashboardController>();
+    final maskBrazilianPhone = MaskTextInputFormatter(
+        mask: "(##) #####-####", filter: {"#": RegExp(r'[0-9]')});
+    final maskPhone = MaskTextInputFormatter(
+        mask: "###############", filter: {"#": RegExp(r'[0-9]')});
+    const countryPicker = FlCountryCodePicker();
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Padding(
@@ -91,6 +104,10 @@ class NameAlterationDialog extends StatelessWidget {
                 height: 8,
               ),
               TextFormField(
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ-\\s]")),
+                ],
                 initialValue: name,
                 textAlignVertical: TextAlignVertical.center,
                 onChanged: onChangedName,
@@ -168,6 +185,10 @@ class NameAlterationDialog extends StatelessWidget {
                 height: 8,
               ),
               TextFormField(
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ-\\s]")),
+                ],
                 initialValue: socialName,
                 enabled: wantSocialName ? true : false,
                 textAlignVertical: TextAlignVertical.center,
@@ -232,6 +253,123 @@ class NameAlterationDialog extends StatelessWidget {
                     ],
                   ),
                 ),
+              const SizedBox(
+                height: 8,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 4),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Telefone:',
+                    style: AppTextStyles.body.copyWith(
+                        color: Colors.black,
+                        fontSize: MediaQuery.of(context).size.width < 500
+                            ? 16
+                            : MediaQuery.of(context).size.width < 1000
+                                ? 20
+                                : 24),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Observer(builder: (_) {
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: GestureDetector(
+                        onTap: () async {
+                          final code =
+                              await countryPicker.showPicker(context: context);
+                          controller.setCountryCode(code);
+                          controller.setBrazilianPhone(code);
+                        },
+                        child: Container(
+                          height: 60,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              color: AppColors.brandingBlue,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: SizedBox(
+                              child: Row(
+                                children: [
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  Container(
+                                      child: controller.countryCode != null
+                                          ? controller.countryCode!.flagImage
+                                          : null),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    controller.countryCode != null
+                                        ? controller.countryCode!.dialCode
+                                        : "DDI",
+                                    style: TextStyle(
+                                        color: AppColors.white, fontSize: 14),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: SizedBox(
+                        width: Screen.width(context) < breakpointMobile
+                            ? 260
+                            : 380,
+                        child: TextFormField(
+                          inputFormatters: controller.isBrazilianPhone
+                              ? [maskBrazilianPhone]
+                              : [maskPhone],
+                          validator: controller.validatePhone,
+                          initialValue: controller.phoneToChange,
+                          keyboardType: TextInputType.number,
+                          textAlignVertical: TextAlignVertical.center,
+                          onChanged: controller.setPhone,
+                          style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: MediaQuery.of(context).size.width < 500
+                                  ? 14
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 18
+                                      : 22),
+                          cursorColor: Colors.white,
+                          decoration: InputDecoration(
+                            fillColor: AppColors.brandingBlue,
+                            filled: true,
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                  color: AppColors.brandingBlue, width: 0.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                  color: AppColors.brandingBlue, width: 0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              }),
               const SizedBox(
                 height: 32,
               ),

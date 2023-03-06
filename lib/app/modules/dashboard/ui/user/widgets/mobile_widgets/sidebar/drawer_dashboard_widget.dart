@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../../shared/utils/screen_helper.dart';
+import '../../../../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 
 class DrawerDashboardWidget extends StatelessWidget {
   DrawerDashboardWidget({super.key, required this.isProfessor});
@@ -11,13 +13,15 @@ class DrawerDashboardWidget extends StatelessWidget {
   final bool isProfessor;
 
   final List<String> userOptions = [
-    "Perfil",
-    "Atividades",
-    "Certificados",
-    "Ajuda",
+    S.current.drawerHomeButton,
+    S.current.drawerProfileButton,
+    S.current.drawerActivitiesButton,
+    S.current.drawerCertificatesButton,
+    S.current.drawerHelpButton,
   ];
 
   final List<String> userRoutes = [
+    '/home',
     '/user/home',
     '/user/home/all-activities',
     '/user/home/certificate',
@@ -25,14 +29,16 @@ class DrawerDashboardWidget extends StatelessWidget {
   ];
 
   final List<String> professorOptions = [
-    "Perfil",
-    "Atividades",
-    "Atividades Responsaveis",
-    "Certificados",
-    "Ajuda",
+    S.current.drawerHomeButton,
+    S.current.drawerProfileButton,
+    S.current.drawerActivitiesButton,
+    S.current.drawerResponsibleActivitiesButton,
+    S.current.drawerCertificatesButton,
+    S.current.drawerHelpButton,
   ];
 
   final List<String> professorRoutes = [
+    '/home',
     '/user/home',
     '/user/home/all-activities',
     '/user/home/help',
@@ -53,6 +59,7 @@ class DrawerDashboardWidget extends StatelessWidget {
           itemCount: isProfessor ? professorOptions.length : userOptions.length,
           itemBuilder: (BuildContext context, int index) {
             return SideBarContents(
+              notDisplay: true,
               title: isProfessor ? professorOptions[index] : userOptions[index],
               route: isProfessor ? professorRoutes[index] : userRoutes[index],
             );
@@ -64,8 +71,9 @@ class DrawerDashboardWidget extends StatelessWidget {
 }
 
 class SideBarContents extends StatelessWidget {
-  const SideBarContents({super.key, required this.title, required this.route});
-
+  const SideBarContents(
+      {super.key, required this.title, required this.route, this.notDisplay});
+  final bool? notDisplay;
   final String title;
   final String route;
 
@@ -74,10 +82,21 @@ class SideBarContents extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: GestureDetector(
-        onTap: () async {
-          Modular.to.navigate(route);
-          Scaffold.of(context).closeDrawer();
-        },
+        onTap: notDisplay != null
+            ? () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const CustomAlertDialogWidget(
+                      title: 'Funcionalidade disponível em breve',
+                    );
+                  },
+                );
+              }
+            : () async {
+                Modular.to.navigate(route);
+                Scaffold.of(context).closeDrawer();
+              },
         child: Container(
           decoration:
               BoxDecoration(color: AppColors.brandingBlue, boxShadow: const [

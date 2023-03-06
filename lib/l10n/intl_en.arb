@@ -6,9 +6,12 @@
     "homePageSubtitle": "This fifth edition of SMILE highlights even more the primordial union between the areas of Administration, Engineering, Computer Science, Design and Information Systems, necessary for innovation and generation of added value both for the training of future professionals and for the development of new ideas. The main return expected from this initiative is the expansion of the culture of innovation across the campus, with the participation of students, graduates, professors and the community, showing that the diversity of ideas and the integration of areas are catalysts for the development of skills.",
     "smileDate": "May 22 to 27",
     "smileDateWithYear": "May 22 to 27, 2023",
+    "userRolesNameSchema": "{schema, select, STUDENT{Mauá Student} EXTERNAL{External} EMPLOYEE{Employee} INTERNAL_STUDENT{International Student} PROFESSOR{Mauá Professor (Responsável)} ADMIN{Admin} other{}}",
+    
     
     "knowMore": "KNOW MORE >>>",
-    "speakersTitle": "Main Speakers - 2022",
+    "speakersTitle": "Speakers",
+    "speakersMainTitle": "Main Speakers - 2022",
     "speakersAddTitle": "Add Speaker",
     "speakersSwipe": "SWIPE TO SEE MORE >>>",
     "speakersSchemaName": "{speakers, select, nina{Nina Silva} viviane{Viviane Nunes} leila{Leila Ferreira} boris{Bóris Fabris} marco{Marco Antonio Teixeira} willian{Dr. William Schoenell} other{}}",
@@ -17,22 +20,17 @@
     "activitiesTitle": "Activities",
     "activitiesOfferedName": "{activity, select, COURSE{Courses} LECTURES{Speeches} HIGH_IMPACT_LECTURES{High Impact Speeches} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} GCSP{GCSP} SPORTS_ACTIVITY{Sport Activity} other{Activities}}",
     "activitiesOfferedDescription": "{activity, select, COURSE{The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.} LECTURES{The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.} HIGH_IMPACT_LECTURES{The high-impact lectures will be delivered by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!} TECHNICAL_VISITS{In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.} ACADEMIC_COMPETITIONS{During SMILE, participants will be able to have fun with Academic Competition activities: League Of Legend Championship (online) and GameDev Mauá - Game Jam (in person).} HACKATHON{Hackathons are events that bring together students, software developers, designers and other professionals, with the aim of creating innovative solutions for a specific problem in a short period of time. This is an excellent opportunity to develop your professional side, in addition to discovering new talent. The events promote a great interaction between the participants and offer prizes for the winners at the end.} INTERNSHIP_FAIR{Representatives of renowned companies will present Internship and Trainee Programs, in addition to bringing tips on selection processes, interviews, career tips and answering questions from participants.} ALUMNI_CAFE{The activity aims to promote informal conversations between IMT students and graduates who occupy prominent positions in their areas of expertise. Come join!} PROFESSORS_ACADEMY{Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.} CULTURAL_ACTIVITY{Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.} GCSP{The GCSP - Grand Challenges Scholars Program is a program that offers undergraduate students the opportunity to work with the great challenges of humanity, being mentored by professors.} SPORTS_ACTIVITY{Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!} other{Activity}}",
-    
+    "activitiesNotFound": "Activities not found",
+
     "sponsorsTitle": "Sponsors",
     "mauaEntititesTitle": "Entities Participating in Smile",
     "mauaEntitiesSchemaSocialMidia": "{entity, select, atletica{gaspar_maua} ca{camaua} diversidade{diversidademaua} enactus{enactusmaua} esports{esportsmaua} inova{inovamaua} mauajr{mauajr} mauasocial{mauasocial} mbc{mauabusiness} nae{naemaua} dev{devcommunitymaua} nine{nine.maua} finance{imtfinance} baja{bajamaua} ecomaua{eco_maua} mauaracing2{mauaracingh2} mauaracing{mauaracing} other{}}",
     "mauaEntitiesSchemaInstagramUrl": "{entity, select, atletica{https://www.instagram.com/gaspar_maua/} ca{https://www.instagram.com/camaua/} diversidade{https://www.instagram.com/diversidademaua/} enactus{https://www.instagram.com/enactusmaua/} esports{https://www.instagram.com/esportsmaua/} inova{https://www.instagram.com/inovamaua/} mauajr{https://www.instagram.com/mauajr/} mauasocial{https://www.instagram.com/mauasocial/} mbc{https://www.instagram.com/mauabusinessclub/} nae{https://www.instagram.com/naemaua/} dev{https://www.instagram.com/devcommunitymaua/} nine{https://www.instagram.com/nine.maua/} finance{https://www.instagram.com/imtfinance/} baja{https://www.instagram.com/bajamaua/} ecomaua{https://www.instagram.com/eco_maua/} mauaracing2{https://www.instagram.com/mauaracingh2/} mauaracing{https://www.instagram.com/mauaracing/} other{}}",
     "beSponsorTitle": "Be our Sponsor",
     "beSponsorDescription": "SMILE brings an opportunity for partnership and integration between the labor market and academia. Become an event Sponsor and find out about the benefits and opportunities that SMILE offers. In this edition, 4 types of sponsorship quotas are available: Diamond, Gold, Silver and Bronze. In addition, when closing the sponsorship in advance, there will be a progressive discount on the quotas. Information about quotas and benefits is below.",
-    "beSponsorDiscount": "Discount",
     "beSponsorMoreInfoTitle": "SPONSORSHIP INFORMATION",
     "beSponsorMoreInfoDescription": "If you are interested in sponsoring the event, click here for more information.",
-    "year2023": "2023",
     "dateTitle": "Date",
-    "monthFebruary": "February",
-    "monthJanuary": "January",
-    "discount10": "10% Off",
-    "discount20": "20% Off",
     "benefitsSponsorSchema": "{benefit, select, one{Video prepared by the sponsor for dissemination on the website.} two{Sponsor teaser video for disclosure in the high-impact lecture.} three{VIP booth at the Internships Fair.} four{Lecture or course to be given at the event.} five{Disclosure of the sponsor's logo on the website and in emails directed to the company's website.} six{Disclosure of the sponsor's logo on the bag.} seven{Disclosure of the sponsor on the IMT social networks.} eight{Insertion of the sponsor's folder or gift in the event bag.} nine{Space for publicizing the stand at the internship fair.} other{}}",
     "planSponsorSchema": "{plan, select, diamond{Diamond} gold{Gold} silver{Silver} bronze{Bronze}}",
     "planPriceSponsorSchema": "{plan, select, diamond{10.000} gold{5.000} silver{3.000} bronze{1.000}}",
@@ -54,6 +52,19 @@
     "aboutSmileDate": "Date: May 22 to 27, 2023.",
     "signUp": "Sign Up",
     "unsubscribe": "Unsubscribe",
+    "termination": "Termination",
+    "local": "Local",
+
+    "subscribedTitle": "Subscribed",
+    "subcribeTitle": "Subscribe",
+    "subscribeAlert": "Are you sure you want to subscribe?",
+    "subscribeScheduleAtention": "Pay attention to your schedules and activities that you have already subscribed for!",
+    "subscribeSlotsSoldOut": "It seems that the number of vacancies for the activity has sold out :(",
+    "unsubscribeAlert": "Are you sure you want to unsubscribe?",
+    "unsubscribeAcceptingNewEnrollments" : "You will be able to subscribe again",
+    "unsubscribeNotAcceptingNewEnrollments" : "Caution: subscriptions for this activity closed, you will not be able to subscribe again",
+    "queueTitle": "Na fila",
+    "queueExitAlert": "Are you sure you want to exit the queue?",
     
 
 
@@ -79,11 +90,14 @@
     
     
     
-
+    "selectOptionTitle": "Select an option:",
     "registerFullNamePlaceholder": "Full Name",
     "registerSocialNamePlaceholder": "Social Name",
     "registerEmailPlaceholder": "E-mail",
+    "registerSocialNameTooltip": "Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.",
+    "registerEmailProfessorPlaceholder": "Enter your email Mauá",
     "registerEmailConfirmationPlaceholder": "Confirm your e-mail",
+    "registerEmailProfessorConfirmationPlaceholder": "Confirm your e-mail Mauá",
     "registerPhonePlaceholder": "Phone",
     "registerCountryPlaceholder": "Search by country or DDI",
     "registerStudentMauaPlaceholder": "Mauá Student",
@@ -92,7 +106,8 @@
     "registerTerms": "{terms, select, one{I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.} two{I have read and accept the Terms of Use.} three{I authorize the sending of notification by email, for the purposes of promoting Smile.}}",
     "notificationsTitle": "Means of notification about activities:",
     "notificationsSchemaTitle": "I want to receive notifications by ",
-    "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} whatsapp{WHATSAPP} app{APP/WEB} other{}}",
+    "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
+    "notificationsSmsAlert": "Fill in your cell phone to enable sms notifications!",
     "registerTitle": "Register",
     "emailNotificationTitle": "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.",
     "changePasswordTitle": "Change password",
@@ -100,6 +115,13 @@
     "confirmEmailNotificationTitle": "Are you sure your email address {firstName} is correct?",
     "@confirmEmailNotificationTitle" : {
         "placeholders": {
+            "firstName": {}
+        }
+    },
+    "confirmEmailAndPhoneNotificationTitle": "Are you sure your phone {phone} and email address {firstName} are correct?",
+    "@confirmEmailAndPhoneNotificationTitle" : {
+        "placeholders": {
+            "phone": {},
             "firstName": {}
         }
     },
@@ -112,6 +134,7 @@
     "fieldInvalid": "Invalid field",
     "fieldFullNameRequired": "Enter your full name",
     "fieldEmailInvalid": "Invalid e-mail",
+    "fieldProfessorEmailInvalid": "Invalid professor e-mail",
     "fieldEmailsEqualsRequired": "E-mails must be the same",
     "fieldPasswordEqualsRequired": "The \"Password\" and \"Confirm your password\" fields must be the same",
     "fieldPasswordRequisits": "Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, $, %, ^, &, *, -) \n - Minimum 8 characters",
@@ -128,12 +151,10 @@
     "returnLogin": "Return to login",
     "errorEmailInstructionsTitle": "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n",
     
-    
+    "presenceValidateTitle": "Presence Validate",
     
 
     "successRegister": "Your registration has been successfully confirmed!",
-    "errorRegister": "Failed to register, please try again.",
-    "errorUserAlreadyExist": "User already exist.",
 
     "successEmailSend": "Email successfully sent!",
 
@@ -141,15 +162,14 @@
     "lostOldDataWarn": "When saving all old data will be lost.",
     
     "successSendingCode": "Code sent successfully!",
-    "errorSendingCode": "Failed to send code, email not registered or not confirmed.",
     
     "successChangePassword": "Password changed successfully!",
-    "errorChangePassword": "Failed to change password, please try again.",
 
-    "errorLoginInvalidConfirmation": "It was not possible to login.\n\n- Register by clicking on the \"I have no account\" button\n- Your e-mail may not have been confirmed, click on \"Resend confirmation e-mail\"",
     "errorLoginInvalidCredential": "Invalid login and/or password",
 
     "successChangePasswordRedirect": "Password changed successfully! \n Redirecting to login...",
+
+    "errorGenericGetActivities": "There was an error loading activities :(",
 
     "admDashboardAppBarTitle": "Administrator Page",
     "admReportsTitle": "Reports",
@@ -160,16 +180,52 @@
     "activityEditTitle": "Edit Activity",
     "activityTypeTitle": "Activity Type",
     "activityNameTitle": "Activity Title",
+    "companyTitle": "Company:",
 
     "descriptionTitle": "Description",
 
+    "hourTitle": "Hora",
     "scheduleTitle": "Schedule",
     "scheduleAddTitle": "Add Schedule",
 
     "codeTitle": "Code",
 
+    "isExtensiveTooltip": "Extension Activity",
+
+    "drawerHomeButton": "Home",
+    "drawerActivitiesButton": "Activities",
+    "drawerResponsibleActivitiesButton": "Responsible Activities",
+    "drawerCertificatesButton": "Certificates",
+    "drawerHelpButton": "Help",
+    "drawerProfileButton": "Profile",
+
+    "localTitle": "Locati   on",
+
+
+    "noActivitiesEnrolledText": "Looks like you haven't signed up for any activities yet :(",
+    "noResponsibleActivitiesText": "Looks like you are not responsible for any activity :(",
+    
 
     "yesTitle": "Yes",
     "noTitle": "No",
-    "": ""
+    "": "",
+
+    "unavailabeTitle": "Unavailabe",
+
+    
+    "unavailabeActivityRegistration": "Registration unavailabe for this activity!",
+    "unsubscribeVerification": "Are you sure you wanna unsubscribe?",
+    "subscribeVerification": "Are you sure you wanna subscribe?",
+    "unsubscribeVerificationClosedRegistration": "Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!",
+    "unsubscribeLoseVanacy": "You will lose your vacancy by continuing!",
+    "availabeSpotUnsuficient": "It seems that the number of vacancies for this activity has run out :(",
+    "scheduleActivityWarning": "Keep in mind of your schedules and activities that you have already signed up for!",
+    "alreadySubscribedOnThisPeriodWarning": "It seems you are already subscribed on another activity at this period.",
+    "unavailabeSubscribe": "The registration for this activity is unavailabe!",
+    "joinQueueConfimation": "Do you want to join the queue?",
+    "joinQueueTitle": "Get in queue",
+    "inQueueTitle": "In queue",
+    "exitQueueConfimation": "Do you want to leave the queue?",
+    "InQueueContent": "You are in the activity queue"
+
 }

@@ -3,28 +3,32 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i10;
+import 'dart:async' as _i9;
 
-import 'package:mobx/mobx.dart' as _i8;
+import 'package:fl_country_code_picker/fl_country_code_picker.dart' as _i14;
+import 'package:mobx/mobx.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
     as _i4;
+import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart'
+    as _i13;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
-    as _i9;
+    as _i8;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart'
     as _i3;
-import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart'
-    as _i2;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
-    as _i14;
+    as _i16;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart'
-    as _i13;
+    as _i15;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart'
     as _i12;
-import 'package:smile_front/app/shared/entities/card_activity.dart' as _i7;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i6;
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart'
+    as _i2;
+import 'package:smile_front/app/shared/models/activity_model.dart' as _i10;
 import 'package:smile_front/app/shared/models/admin_activity_model.dart'
     as _i11;
+import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
+    as _i6;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
     as _i5;
 
@@ -39,9 +43,9 @@ import 'package:smile_front/app/shared/services/firebase-analytics/firebase_anal
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeGetUserSubscribedActivitiesInterface_0 extends _i1.SmartFake
-    implements _i2.GetUserSubscribedActivitiesInterface {
-  _FakeGetUserSubscribedActivitiesInterface_0(
+class _FakeUserEnrollmentController_0 extends _i1.SmartFake
+    implements _i2.UserEnrollmentController {
+  _FakeUserEnrollmentController_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -83,8 +87,9 @@ class _FakeFirebaseAnalyticsService_3 extends _i1.SmartFake
         );
 }
 
-class _FakeActivityModel_4 extends _i1.SmartFake implements _i6.ActivityModel {
-  _FakeActivityModel_4(
+class _FakeEnrollsActivityModel_4 extends _i1.SmartFake
+    implements _i6.EnrollsActivityModel {
+  _FakeEnrollsActivityModel_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -93,19 +98,9 @@ class _FakeActivityModel_4 extends _i1.SmartFake implements _i6.ActivityModel {
         );
 }
 
-class _FakeCardActivity_5 extends _i1.SmartFake implements _i7.CardActivity {
-  _FakeCardActivity_5(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeReactiveContext_6 extends _i1.SmartFake
-    implements _i8.ReactiveContext {
-  _FakeReactiveContext_6(
+class _FakeReactiveContext_5 extends _i1.SmartFake
+    implements _i7.ReactiveContext {
+  _FakeReactiveContext_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -118,108 +113,94 @@ class _FakeReactiveContext_6 extends _i1.SmartFake
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockActivitiesRepositoryInterface extends _i1.Mock
-    implements _i9.ActivitiesRepositoryInterface {
+    implements _i8.ActivitiesRepositoryInterface {
   MockActivitiesRepositoryInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<List<_i6.ActivityModel>> getAllActivities() =>
+  _i9.Future<List<_i10.ActivityModel>> getAllActivities() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllActivities,
           [],
         ),
         returnValue:
-            _i10.Future<List<_i6.ActivityModel>>.value(<_i6.ActivityModel>[]),
-      ) as _i10.Future<List<_i6.ActivityModel>>);
+            _i9.Future<List<_i10.ActivityModel>>.value(<_i10.ActivityModel>[]),
+      ) as _i9.Future<List<_i10.ActivityModel>>);
   @override
-  _i10.Future<List<_i6.ActivityModel>> getUserSubscribedActivities() =>
+  _i9.Future<List<_i6.EnrollsActivityModel>> getUserSubscribedActivities() =>
       (super.noSuchMethod(
         Invocation.method(
           #getUserSubscribedActivities,
           [],
         ),
-        returnValue:
-            _i10.Future<List<_i6.ActivityModel>>.value(<_i6.ActivityModel>[]),
-      ) as _i10.Future<List<_i6.ActivityModel>>);
+        returnValue: _i9.Future<List<_i6.EnrollsActivityModel>>.value(
+            <_i6.EnrollsActivityModel>[]),
+      ) as _i9.Future<List<_i6.EnrollsActivityModel>>);
   @override
-  _i10.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
+  _i9.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
         Invocation.method(
           #getDownloadLinkCsv,
           [],
         ),
-        returnValue: _i10.Future<String>.value(''),
-      ) as _i10.Future<String>);
+        returnValue: _i9.Future<String>.value(''),
+      ) as _i9.Future<String>);
   @override
-  _i10.Future<dynamic> createActivity(_i6.ActivityModel? activityToCreate) =>
+  _i9.Future<dynamic> createActivity(_i10.ActivityModel? activityToCreate) =>
       (super.noSuchMethod(
         Invocation.method(
           #createActivity,
           [activityToCreate],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i9.Future<dynamic>.value(),
+      ) as _i9.Future<dynamic>);
   @override
-  _i10.Future<List<_i11.AdminActivityModel>> getAdminActivities() =>
+  _i9.Future<List<_i11.AdminActivityModel>> getAdminActivities() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAdminActivities,
           [],
         ),
-        returnValue: _i10.Future<List<_i11.AdminActivityModel>>.value(
+        returnValue: _i9.Future<List<_i11.AdminActivityModel>>.value(
             <_i11.AdminActivityModel>[]),
-      ) as _i10.Future<List<_i11.AdminActivityModel>>);
+      ) as _i9.Future<List<_i11.AdminActivityModel>>);
   @override
-  _i10.Future<dynamic> editActivity(_i6.ActivityModel? activityToEdit) =>
+  _i9.Future<dynamic> editActivity(_i10.ActivityModel? activityToEdit) =>
       (super.noSuchMethod(
         Invocation.method(
           #editActivity,
           [activityToEdit],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i9.Future<dynamic>.value(),
+      ) as _i9.Future<dynamic>);
   @override
-  _i10.Future<dynamic> deleteActivity(String? activityCode) =>
+  _i9.Future<dynamic> deleteActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #deleteActivity,
           [activityCode],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i9.Future<dynamic>.value(),
+      ) as _i9.Future<dynamic>);
   @override
-  _i10.Future<bool> subscribeActivity(
-    _i6.ActivityModel? activity,
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
+  _i9.Future<bool> subscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #subscribeActivity,
-          [
-            activity,
-            activityId,
-            activityDate,
-          ],
+          [activityCode],
         ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
   @override
-  _i10.Future<bool> unsubscribeActivity(
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
+  _i9.Future<bool> unsubscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #unsubscribeActivity,
-          [
-            activityId,
-            activityDate,
-          ],
+          [activityCode],
         ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 }
 
 /// A class which mocks [UserDashboardController].
@@ -232,14 +213,13 @@ class MockUserDashboardController extends _i1.Mock
   }
 
   @override
-  _i2.GetUserSubscribedActivitiesInterface get getUserActivities =>
-      (super.noSuchMethod(
-        Invocation.getter(#getUserActivities),
-        returnValue: _FakeGetUserSubscribedActivitiesInterface_0(
+  _i2.UserEnrollmentController get enrollmentController => (super.noSuchMethod(
+        Invocation.getter(#enrollmentController),
+        returnValue: _FakeUserEnrollmentController_0(
           this,
-          Invocation.getter(#getUserActivities),
+          Invocation.getter(#enrollmentController),
         ),
-      ) as _i2.GetUserSubscribedActivitiesInterface);
+      ) as _i2.UserEnrollmentController);
   @override
   _i3.ChangeDataInterface get changeData => (super.noSuchMethod(
         Invocation.getter(#changeData),
@@ -329,6 +309,19 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  String get phoneToChange => (super.noSuchMethod(
+        Invocation.getter(#phoneToChange),
+        returnValue: '',
+      ) as String);
+  @override
+  set phoneToChange(String? _phoneToChange) => super.noSuchMethod(
+        Invocation.setter(
+          #phoneToChange,
+          _phoneToChange,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   bool get wantSocialName => (super.noSuchMethod(
         Invocation.getter(#wantSocialName),
         returnValue: false,
@@ -338,6 +331,62 @@ class MockUserDashboardController extends _i1.Mock
         Invocation.setter(
           #wantSocialName,
           _wantSocialName,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  List<_i6.EnrollsActivityModel> get subscribedActivitiesOnScreen =>
+      (super.noSuchMethod(
+        Invocation.getter(#subscribedActivitiesOnScreen),
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
+  @override
+  set subscribedActivitiesOnScreen(
+          List<_i6.EnrollsActivityModel>? _subscribedActivitiesOnScreen) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #subscribedActivitiesOnScreen,
+          _subscribedActivitiesOnScreen,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set activityType(_i13.ActivityEnum? _activityType) => super.noSuchMethod(
+        Invocation.setter(
+          #activityType,
+          _activityType,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set typeFilter(_i13.ActivityEnum? _typeFilter) => super.noSuchMethod(
+        Invocation.setter(
+          #typeFilter,
+          _typeFilter,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set typeOnScreen(String? _typeOnScreen) => super.noSuchMethod(
+        Invocation.setter(
+          #typeOnScreen,
+          _typeOnScreen,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set dateFilter(DateTime? _dateFilter) => super.noSuchMethod(
+        Invocation.setter(
+          #dateFilter,
+          _dateFilter,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set hourFilter(DateTime? _hourFilter) => super.noSuchMethod(
+        Invocation.setter(
+          #hourFilter,
+          _hourFilter,
         ),
         returnValueForMissingStub: null,
       );
@@ -369,30 +418,32 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  List<_i6.ActivityModel> get subscribedActivitiesList => (super.noSuchMethod(
-        Invocation.getter(#subscribedActivitiesList),
-        returnValue: <_i6.ActivityModel>[],
-      ) as List<_i6.ActivityModel>);
+  List<_i6.EnrollsActivityModel> get allSubscribedActivitiesList =>
+      (super.noSuchMethod(
+        Invocation.getter(#allSubscribedActivitiesList),
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
   @override
-  set subscribedActivitiesList(
-          List<_i6.ActivityModel>? _subscribedActivitiesList) =>
+  set allSubscribedActivitiesList(
+          List<_i6.EnrollsActivityModel>? _allSubscribedActivitiesList) =>
       super.noSuchMethod(
         Invocation.setter(
-          #subscribedActivitiesList,
-          _subscribedActivitiesList,
+          #allSubscribedActivitiesList,
+          _allSubscribedActivitiesList,
         ),
         returnValueForMissingStub: null,
       );
   @override
-  _i6.ActivityModel get nextActivity => (super.noSuchMethod(
+  _i6.EnrollsActivityModel get nextActivity => (super.noSuchMethod(
         Invocation.getter(#nextActivity),
-        returnValue: _FakeActivityModel_4(
+        returnValue: _FakeEnrollsActivityModel_4(
           this,
           Invocation.getter(#nextActivity),
         ),
-      ) as _i6.ActivityModel);
+      ) as _i6.EnrollsActivityModel);
   @override
-  set nextActivity(_i6.ActivityModel? _nextActivity) => super.noSuchMethod(
+  set nextActivity(_i6.EnrollsActivityModel? _nextActivity) =>
+      super.noSuchMethod(
         Invocation.setter(
           #nextActivity,
           _nextActivity,
@@ -400,124 +451,215 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i7.CardActivity get cardNextActivity => (super.noSuchMethod(
-        Invocation.getter(#cardNextActivity),
-        returnValue: _FakeCardActivity_5(
-          this,
-          Invocation.getter(#cardNextActivity),
-        ),
-      ) as _i7.CardActivity);
-  @override
-  set cardNextActivity(_i7.CardActivity? _cardNextActivity) =>
-      super.noSuchMethod(
+  set requisitionError(String? _requisitionError) => super.noSuchMethod(
         Invocation.setter(
-          #cardNextActivity,
-          _cardNextActivity,
+          #requisitionError,
+          _requisitionError,
         ),
         returnValueForMissingStub: null,
       );
   @override
-  List<_i7.CardActivity> get weekActivitiesList => (super.noSuchMethod(
-        Invocation.getter(#weekActivitiesList),
-        returnValue: <_i7.CardActivity>[],
-      ) as List<_i7.CardActivity>);
-  @override
-  set weekActivitiesList(List<_i7.CardActivity>? _weekActivitiesList) =>
-      super.noSuchMethod(
+  set phone(String? _phone) => super.noSuchMethod(
         Invocation.setter(
-          #weekActivitiesList,
-          _weekActivitiesList,
+          #phone,
+          _phone,
         ),
         returnValueForMissingStub: null,
       );
   @override
-  List<_i7.CardActivity> get allActivitiesToCards => (super.noSuchMethod(
-        Invocation.getter(#allActivitiesToCards),
-        returnValue: <_i7.CardActivity>[],
-      ) as List<_i7.CardActivity>);
+  bool get isBrazilianPhone => (super.noSuchMethod(
+        Invocation.getter(#isBrazilianPhone),
+        returnValue: false,
+      ) as bool);
   @override
-  set allActivitiesToCards(List<_i7.CardActivity>? _allActivitiesToCards) =>
-      super.noSuchMethod(
+  set isBrazilianPhone(bool? _isBrazilianPhone) => super.noSuchMethod(
         Invocation.setter(
-          #allActivitiesToCards,
-          _allActivitiesToCards,
+          #isBrazilianPhone,
+          _isBrazilianPhone,
         ),
         returnValueForMissingStub: null,
       );
   @override
-  List<_i7.CardActivity> get mondayActivitiesList => (super.noSuchMethod(
-        Invocation.getter(#mondayActivitiesList),
-        returnValue: <_i7.CardActivity>[],
-      ) as List<_i7.CardActivity>);
+  bool get isPhoneFieldFilled => (super.noSuchMethod(
+        Invocation.getter(#isPhoneFieldFilled),
+        returnValue: false,
+      ) as bool);
   @override
-  List<_i7.CardActivity> get tuesdayActivitiesList => (super.noSuchMethod(
-        Invocation.getter(#tuesdayActivitiesList),
-        returnValue: <_i7.CardActivity>[],
-      ) as List<_i7.CardActivity>);
+  set isPhoneFieldFilled(bool? _isPhoneFieldFilled) => super.noSuchMethod(
+        Invocation.setter(
+          #isPhoneFieldFilled,
+          _isPhoneFieldFilled,
+        ),
+        returnValueForMissingStub: null,
+      );
   @override
-  List<_i7.CardActivity> get wednesdayActivitiesList => (super.noSuchMethod(
-        Invocation.getter(#wednesdayActivitiesList),
-        returnValue: <_i7.CardActivity>[],
-      ) as List<_i7.CardActivity>);
+  set countryCode(_i14.CountryCode? _countryCode) => super.noSuchMethod(
+        Invocation.setter(
+          #countryCode,
+          _countryCode,
+        ),
+        returnValueForMissingStub: null,
+      );
   @override
-  List<_i7.CardActivity> get thursdayActivitiesList => (super.noSuchMethod(
-        Invocation.getter(#thursdayActivitiesList),
-        returnValue: <_i7.CardActivity>[],
-      ) as List<_i7.CardActivity>);
-  @override
-  List<_i7.CardActivity> get fridayActivitiesList => (super.noSuchMethod(
-        Invocation.getter(#fridayActivitiesList),
-        returnValue: <_i7.CardActivity>[],
-      ) as List<_i7.CardActivity>);
-  @override
-  List<_i7.CardActivity> get saturdayActivitiesList => (super.noSuchMethod(
-        Invocation.getter(#saturdayActivitiesList),
-        returnValue: <_i7.CardActivity>[],
-      ) as List<_i7.CardActivity>);
-  @override
-  _i8.ReactiveContext get context => (super.noSuchMethod(
+  _i7.ReactiveContext get context => (super.noSuchMethod(
         Invocation.getter(#context),
-        returnValue: _FakeReactiveContext_6(
+        returnValue: _FakeReactiveContext_5(
           this,
           Invocation.getter(#context),
         ),
-      ) as _i8.ReactiveContext);
+      ) as _i7.ReactiveContext);
   @override
-  _i10.Future<void> getCertificateWithSocialName() => (super.noSuchMethod(
+  void setTypeFilter(_i13.ActivityEnum? value) => super.noSuchMethod(
+        Invocation.method(
+          #setTypeFilter,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void setDateFilter(DateTime? value) => super.noSuchMethod(
+        Invocation.method(
+          #setDateFilter,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void setHourFilter(DateTime? value) => super.noSuchMethod(
+        Invocation.method(
+          #setHourFilter,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void setAllFilters() => super.noSuchMethod(
+        Invocation.method(
+          #setAllFilters,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  List<_i6.EnrollsActivityModel> filterActivitiesByType(
+    _i13.ActivityEnum? type,
+    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #filterActivitiesByType,
+          [
+            type,
+            activitiesToFilter,
+          ],
+        ),
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
+  @override
+  List<_i6.EnrollsActivityModel> filterActivitiesByDate(
+    DateTime? date,
+    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #filterActivitiesByDate,
+          [
+            date,
+            activitiesToFilter,
+          ],
+        ),
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
+  @override
+  List<_i6.EnrollsActivityModel> filterActivitiesByHour(
+    DateTime? hour,
+    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #filterActivitiesByHour,
+          [
+            hour,
+            activitiesToFilter,
+          ],
+        ),
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
+  @override
+  bool isValidDateFilter(
+    DateTime? activityDate,
+    DateTime? dateToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #isValidDateFilter,
+          [
+            activityDate,
+            dateToFilter,
+          ],
+        ),
+        returnValue: false,
+      ) as bool);
+  @override
+  bool isValidHourFilter(
+    DateTime? activityDate,
+    DateTime? dateToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #isValidHourFilter,
+          [
+            activityDate,
+            dateToFilter,
+          ],
+        ),
+        returnValue: false,
+      ) as bool);
+  @override
+  _i9.Future<void> getCertificateWithSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getCertificateWithSocialName,
           [],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
   @override
-  _i10.Future<void> getUserName() => (super.noSuchMethod(
+  _i9.Future<void> getUserName() => (super.noSuchMethod(
         Invocation.method(
           #getUserName,
           [],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
   @override
-  _i10.Future<void> getUserSocialName() => (super.noSuchMethod(
+  _i9.Future<void> getPhone() => (super.noSuchMethod(
+        Invocation.method(
+          #getPhone,
+          [],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+  @override
+  _i9.Future<void> getUserSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getUserSocialName,
           [],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
   @override
-  _i10.Future<void> setWantSocialName(bool? value) => (super.noSuchMethod(
+  _i9.Future<void> setWantSocialName(bool? value) => (super.noSuchMethod(
         Invocation.method(
           #setWantSocialName,
           [value],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
   @override
   void setName(String? value) => super.noSuchMethod(
         Invocation.method(
@@ -543,14 +685,14 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i10.Future<void> changeUserData() => (super.noSuchMethod(
+  _i9.Future<void> changeUserData() => (super.noSuchMethod(
         Invocation.method(
           #changeUserData,
           [],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
   @override
   bool validateName() => (super.noSuchMethod(
         Invocation.method(
@@ -568,30 +710,22 @@ class MockUserDashboardController extends _i1.Mock
         returnValue: false,
       ) as bool);
   @override
-  _i10.Future<void> setIsLoading(bool? value) => (super.noSuchMethod(
+  _i9.Future<void> setIsLoading(bool? value) => (super.noSuchMethod(
         Invocation.method(
           #setIsLoading,
           [value],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
   @override
-  _i10.Future<dynamic> getActivities() => (super.noSuchMethod(
-        Invocation.method(
-          #getActivities,
-          [],
-        ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
-  @override
-  _i10.Future<dynamic> getUserSubscribedActivities() => (super.noSuchMethod(
+  _i9.Future<dynamic> getUserSubscribedActivities() => (super.noSuchMethod(
         Invocation.method(
           #getUserSubscribedActivities,
           [],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i9.Future<dynamic>.value(),
+      ) as _i9.Future<dynamic>);
   @override
   void getNextActivity() => super.noSuchMethod(
         Invocation.method(
@@ -601,65 +735,66 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  void toggleFilterActivityChipIndex(dynamic index) => super.noSuchMethod(
+  void setBrazilianPhone(_i14.CountryCode? value) => super.noSuchMethod(
         Invocation.method(
-          #toggleFilterActivityChipIndex,
-          [index],
+          #setBrazilianPhone,
+          [value],
         ),
         returnValueForMissingStub: null,
       );
+  @override
+  void setCountryCode(_i14.CountryCode? value) => super.noSuchMethod(
+        Invocation.method(
+          #setCountryCode,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i9.Future<void> setPhone(String? value) => (super.noSuchMethod(
+        Invocation.method(
+          #setPhone,
+          [value],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 }
 
 /// A class which mocks [UnsubscribeActivityInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUnsubscribeActivityInterface extends _i1.Mock
-    implements _i13.UnsubscribeActivityInterface {
+    implements _i15.UnsubscribeActivityInterface {
   MockUnsubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<bool> call(
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
-      (super.noSuchMethod(
+  _i9.Future<bool> call(String? activityCode) => (super.noSuchMethod(
         Invocation.method(
           #call,
-          [
-            activityId,
-            activityDate,
-          ],
+          [activityCode],
         ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 }
 
 /// A class which mocks [SubscribeActivityInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSubscribeActivityInterface extends _i1.Mock
-    implements _i14.SubscribeActivityInterface {
+    implements _i16.SubscribeActivityInterface {
   MockSubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<bool> call(
-    _i6.ActivityModel? activity,
-    String? activityId,
-    DateTime? activityDate,
-  ) =>
-      (super.noSuchMethod(
+  _i9.Future<bool> call(String? activityCode) => (super.noSuchMethod(
         Invocation.method(
           #call,
-          [
-            activity,
-            activityId,
-            activityDate,
-          ],
+          [activityCode],
         ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 }

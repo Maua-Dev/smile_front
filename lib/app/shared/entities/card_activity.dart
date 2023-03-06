@@ -15,22 +15,24 @@ class CardActivity {
   final String? link;
   final bool acceptSubscription;
   final int? enrolledUsers;
+  final bool? isExtensionist;
 
-  CardActivity({
-    required this.acceptSubscription,
-    required this.enrolledUsers,
-    required this.id,
-    required this.activityCode,
-    required this.type,
-    required this.title,
-    required this.description,
-    required this.date,
-    required this.duration,
-    required this.totalParticipants,
-    required this.location,
-    this.speakers,
-    required this.link,
-  }) : super();
+  CardActivity(
+      {required this.acceptSubscription,
+      required this.enrolledUsers,
+      required this.id,
+      required this.activityCode,
+      required this.type,
+      required this.title,
+      required this.description,
+      required this.date,
+      required this.duration,
+      required this.totalParticipants,
+      required this.location,
+      this.speakers,
+      required this.link,
+      required this.isExtensionist})
+      : super();
 
   factory CardActivity.newInstance() {
     return CardActivity(
@@ -47,6 +49,7 @@ class CardActivity {
       location: '',
       speakers: [],
       totalParticipants: 0,
+      isExtensionist: false,
     );
   }
 }

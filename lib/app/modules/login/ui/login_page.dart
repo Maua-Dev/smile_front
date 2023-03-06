@@ -93,13 +93,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             MediaQuery.of(context).size.width < 800 ? 16 : 32,
                       ),
                     InputBoxWidget(
+                      isEmail: true,
                       icon: Icons.person,
                       placeholder: S.of(context).loginUsernamePlaceholder,
                       setValue: controller.setUsername,
                       validation: controller.validateEmail,
-                    ),
-                    const SizedBox(
-                      height: 20,
                     ),
                     Observer(builder: (context) {
                       return InputBoxWidget(
@@ -118,7 +116,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       );
                     }),
                     const SizedBox(
-                      height: 40,
+                      height: 20,
                     ),
                     Observer(builder: (_) {
                       return CustomElevatedButtonWidget(
