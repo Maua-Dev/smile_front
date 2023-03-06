@@ -41,7 +41,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
                           ),
                           color: AppColors.white,
                         )
-                      : SizedBox();
+                      : const SizedBox();
                 }),
                 foregroundColor: AppColors.brandingBlue)),
         body: MediaQuery.of(context).size.width < tabletSize
