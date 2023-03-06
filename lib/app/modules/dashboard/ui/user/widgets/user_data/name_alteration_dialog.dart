@@ -7,12 +7,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/utils/screen_helper.dart';
-
-import '../../../../../../../generated/l10n.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/widgets/custom_elevated_button_widget.dart';
-import '../../../../../../shared/widgets/input-box/input_box_widget.dart';
 import '../../../../presenter/controllers/user/user_dashboard_controller.dart';
 
 class NameAlterationDialog extends StatelessWidget {
