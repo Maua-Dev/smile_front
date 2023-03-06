@@ -425,6 +425,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirme seu e-mail"),
         "registerEmailPlaceholder":
             MessageLookupByLibrary.simpleMessage("E-mail"),
+        "registerEmailProfessorConfirmationPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Confirme seu e-mail Mauá"),
         "registerEmailProfessorPlaceholder":
             MessageLookupByLibrary.simpleMessage("Insira seu e-mail da Mauá"),
         "registerFullNamePlaceholder":
