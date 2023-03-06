@@ -64,11 +64,16 @@ class _ResponsibleActivitiesPageState extends ModularState<
               const SizedBox(
                 height: 16,
               ),
-              UserDataWidget(
-                mainColor: AppColors.brandingOrange,
-                logout: () {
-                  navBarController.logout();
-                },
+              SizedBox(
+                width: MediaQuery.of(context).size.width < breakpointTablet
+                    ? 380
+                    : 1165,
+                child: UserDataWidget(
+                  mainColor: AppColors.brandingOrange,
+                  logout: () {
+                    navBarController.logout();
+                  },
+                ),
               ),
               const SizedBox(
                 height: 8,
