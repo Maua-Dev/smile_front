@@ -164,32 +164,13 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         activityCode, userId, state);
     var index = activityWithEnrollments.enrollments!
         .indexWhere((element) => element.userEnroll!.userId == userId);
-    var activity = EnrollsActivityModel(
-      acceptingNewEnrollments: activityWithEnrollments.acceptingNewEnrollments,
-      activityCode: activityWithEnrollments.activityCode,
-      description: activityWithEnrollments.description,
-      duration: activityWithEnrollments.duration,
-      isExtensive: activityWithEnrollments.isExtensive,
-      responsibleProfessors: activityWithEnrollments.responsibleProfessors,
-      speakers: activityWithEnrollments.speakers,
-      takenSlots: activityWithEnrollments.takenSlots,
-      title: activityWithEnrollments.title,
-      totalSlots: activityWithEnrollments.totalSlots,
-      type: activityWithEnrollments.type,
-      deliveryEnum: activityWithEnrollments.deliveryEnum,
-      link: activityWithEnrollments.link,
-      place: activityWithEnrollments.place,
-      startDate: activityWithEnrollments.startDate,
-      stopAcceptingNewEnrollmentsBefore:
-          activityWithEnrollments.stopAcceptingNewEnrollmentsBefore,
-      enrollments: EnrollmentsModel(
-        state: requestDone.enrollments![index].state,
-        userEnroll: requestDone.enrollments![index].userEnroll,
-        dateSubscribed: requestDone.enrollments![index].dateSubscribed,
-      ),
-    );
     activityWithEnrollments.enrollments!
         .removeWhere((element) => element.userEnroll!.userId == userId);
-    activityWithEnrollments.enrollments!.insert(index, activity.enrollments!);
+    activityWithEnrollments.enrollments!.insert(
+        index,
+        EnrollmentsModel(
+            dateSubscribed: requestDone.enrollments![index].dateSubscribed,
+            state: requestDone.enrollments![index].state,
+            userEnroll: requestDone.enrollments![index].userEnroll));
   }
 }

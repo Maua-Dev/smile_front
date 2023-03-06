@@ -56,7 +56,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         return res.data;
       }
       showErrorSnackBar(errorMessage: e.response!.data);
-      rethrow;
+      return e.response!;
     }
   }
 

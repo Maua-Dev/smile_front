@@ -149,19 +149,17 @@ class SubscriberListWidget extends StatelessWidget {
                                                           .COMPLETED
                                                   ? true
                                                   : false,
-                                              onChanged:
-                                                  (value) {}, //list[index].state ==
-                                              //  EnrollmentStateEnum
-                                              // .COMPLETED
-                                              //  ? manualChangeAttendence(
-                                              //     list[index].userId,
-                                              //       EnrollmentStateEnum
-                                              //           .DROPPED)
-                                              //   : manualChangeAttendence(
-                                              //       list[index].userId,
-                                              //      EnrollmentStateEnum
-                                              //          .COMPLETED
-
+                                              onChanged: list[index].state ==
+                                                      EnrollmentStateEnum
+                                                          .COMPLETED
+                                                  ? manualChangeAttendence(
+                                                      list[index].userId,
+                                                      EnrollmentStateEnum
+                                                          .DROPPED)
+                                                  : manualChangeAttendence(
+                                                      list[index].userId,
+                                                      EnrollmentStateEnum
+                                                          .COMPLETED),
                                               activeColor: Colors.green,
                                               inactiveThumbColor: Colors.red,
                                               inactiveTrackColor:
