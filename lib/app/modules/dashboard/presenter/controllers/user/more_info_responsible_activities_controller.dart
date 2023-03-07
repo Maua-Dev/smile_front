@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/generate_atendance_token.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/generate_confirmation_code.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_activities_with_enrollments.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/post_manual_change_attendance.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_activities_widgets/list_name_and_state_with_is_switched.dart';
@@ -15,13 +15,13 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   final String activityCode;
   final GetActivitiesWithEnrollmentsInterface getActivitiesWithEnrollments;
   final PostManualChangeAttendenceInterface postManualChangeAttendence;
-  final GenerateAtendanceTokenInterface generateAtendanceToken;
+  final GenerateConfirmationCodeInterface generateConfirmationCode;
 
   MoreInfoResponsibleActivitiesControllerBase({
     required this.activityCode,
     required this.postManualChangeAttendence,
     required this.getActivitiesWithEnrollments,
-    required this.generateAtendanceToken,
+    required this.generateConfirmationCode,
   }) {
     getProfessorActivitiesWithEnrollments();
   }
@@ -41,7 +41,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   }
 
   @action
-  void setIsLoadingAtendanceToken(bool value) {
+  void setIsLoadingAtendanceCode(bool value) {
     isLoadingAtendanceToken = value;
   }
 
@@ -62,9 +62,10 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   }
 
   @action
-  void generateToken() async {
-    setIsLoadingAtendanceToken(true);
-    token = await generateAtendanceToken(activityCode);
+  void generateNewAtendanceCode() async {
+    setIsLoadingAtendanceCode(true);
+    token = await generateConfirmationCode(activityCode);
+    setIsLoadingAtendanceCode(false);
   }
 
   @observable

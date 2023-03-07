@@ -191,8 +191,8 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future<String> generateAtendanceToken(String activityCode) async {
-    var response = await datasource.generateAtendanceToken(activityCode);
+  Future<String> generateConfirmationCode(String activityCode) async {
+    var response = await datasource.generateConfirmationCode(activityCode);
 
     return Future.value(response);
   }

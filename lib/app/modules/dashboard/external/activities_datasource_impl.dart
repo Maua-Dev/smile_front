@@ -210,7 +210,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future<String> generateAtendanceToken(String activityCode) async {
+  Future<String> generateConfirmationCode(String activityCode) async {
     var body = {'code': activityCode};
     var response = await middleware(
         url: '/generate-attendance-confirmation', data: body, http: 'post');
