@@ -102,7 +102,7 @@ class _UserDashboardPageState
                     duration: controller.nextActivity.duration,
                     onTap: () {
                       Modular.to.navigate('/user/home/more-info',
-                          arguments: controller.nextActivity);
+                          arguments: controller.nextActivity.activityCode);
                       controller.analytics.logViewActivity(
                           controller.nextActivity.activityCode);
                     },
@@ -115,6 +115,7 @@ class _UserDashboardPageState
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Observer(builder: (_) {
                     return UserFilterCardWidget(
+                        typeOnScreen: controller.typeOnScreen,
                         typeFilter: controller.typeFilter,
                         dateFilter: controller.dateFilter,
                         hourFilter: controller.hourFilter,

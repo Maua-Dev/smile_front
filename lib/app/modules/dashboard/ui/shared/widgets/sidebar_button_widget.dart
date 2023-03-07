@@ -4,6 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
+import '../../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
+
 class SideBarButtonWidget extends StatelessWidget {
   final String buttonText;
   final String onPressedPath;
@@ -24,9 +26,18 @@ class SideBarButtonWidget extends StatelessWidget {
       width: 90,
       height: 90,
       child: ElevatedButton(
-        onPressed: () {
-          Modular.to.navigate(onPressedPath);
-        },
+        onPressed: onPressedPath == ''
+            ? () {
+                showDialog(
+                  context: context,
+                  builder: (context) => const CustomAlertDialogWidget(
+                      title: 'Funcionalidade Indisponível',
+                      content: 'Aguarde novas atualizações!'),
+                );
+              }
+            : () {
+                Modular.to.navigate(onPressedPath);
+              },
         style: ButtonStyle(
             elevation: MaterialStateProperty.all(20),
             backgroundColor: MaterialStateProperty.all(buttonColor),

@@ -96,6 +96,23 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
+  late final _$typeOnScreenAtom = Atom(
+      name: 'AllActivitiesUserDashboardControllerBase.typeOnScreen',
+      context: context);
+
+  @override
+  String? get typeOnScreen {
+    _$typeOnScreenAtom.reportRead();
+    return super.typeOnScreen;
+  }
+
+  @override
+  set typeOnScreen(String? value) {
+    _$typeOnScreenAtom.reportWrite(value, super.typeOnScreen, () {
+      super.typeOnScreen = value;
+    });
+  }
+
   late final _$dateFilterAtom = Atom(
       name: 'AllActivitiesUserDashboardControllerBase.dateFilter',
       context: context);
@@ -296,6 +313,7 @@ allActivitiesFromGet: ${allActivitiesFromGet},
 activitiesOnScreen: ${activitiesOnScreen},
 activityType: ${activityType},
 typeFilter: ${typeFilter},
+typeOnScreen: ${typeOnScreen},
 dateFilter: ${dateFilter},
 hourFilter: ${hourFilter},
 requisitionError: ${requisitionError}

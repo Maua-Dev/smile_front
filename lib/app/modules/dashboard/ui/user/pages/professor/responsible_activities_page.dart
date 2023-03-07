@@ -64,11 +64,16 @@ class _ResponsibleActivitiesPageState extends ModularState<
               const SizedBox(
                 height: 16,
               ),
-              UserDataWidget(
-                mainColor: AppColors.brandingOrange,
-                logout: () {
-                  navBarController.logout();
-                },
+              SizedBox(
+                width: MediaQuery.of(context).size.width < breakpointTablet
+                    ? 380
+                    : 1165,
+                child: UserDataWidget(
+                  mainColor: AppColors.brandingOrange,
+                  logout: () {
+                    navBarController.logout();
+                  },
+                ),
               ),
               const SizedBox(
                 height: 8,
@@ -77,6 +82,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Observer(builder: (_) {
                   return UserFilterCardWidget(
+                      typeOnScreen: controller.typeOnScreen,
                       mainColor: AppColors.brandingOrange,
                       typeFilter: controller.typeFilter,
                       dateFilter: controller.dateFilter,

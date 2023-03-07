@@ -66,9 +66,13 @@ abstract class UserDashboardControllerBase with Store {
   @observable
   ActivityEnum? typeFilter;
 
+  @observable
+  String? typeOnScreen;
+
   @action
   void setTypeFilter(ActivityEnum value) {
     typeFilter = value;
+    typeOnScreen = value.name;
     setAllFilters();
   }
 

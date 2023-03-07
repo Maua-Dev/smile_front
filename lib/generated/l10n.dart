@@ -1002,6 +1002,16 @@ class S {
     );
   }
 
+  /// `Confirm your e-mail Mauá`
+  String get registerEmailProfessorConfirmationPlaceholder {
+    return Intl.message(
+      'Confirm your e-mail Mauá',
+      name: 'registerEmailProfessorConfirmationPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Phone`
   String get registerPhonePlaceholder {
     return Intl.message(
@@ -1716,6 +1726,16 @@ class S {
 
   // skipped getter for the '' key
 
+  /// `Unavailabe`
+  String get unavailabeTitle {
+    return Intl.message(
+      'Unavailabe',
+      name: 'unavailabeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Registration unavailabe for this activity!`
   String get unavailabeActivityRegistration {
     return Intl.message(
@@ -1801,6 +1821,56 @@ class S {
     return Intl.message(
       'The registration for this activity is unavailabe!',
       name: 'unavailabeSubscribe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to join the queue?`
+  String get joinQueueConfimation {
+    return Intl.message(
+      'Do you want to join the queue?',
+      name: 'joinQueueConfimation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get in queue`
+  String get joinQueueTitle {
+    return Intl.message(
+      'Get in queue',
+      name: 'joinQueueTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In queue`
+  String get inQueueTitle {
+    return Intl.message(
+      'In queue',
+      name: 'inQueueTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to leave the queue?`
+  String get exitQueueConfimation {
+    return Intl.message(
+      'Do you want to leave the queue?',
+      name: 'exitQueueConfimation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are in the activity queue`
+  String get InQueueContent {
+    return Intl.message(
+      'You are in the activity queue',
+      name: 'InQueueContent',
       desc: '',
       args: [],
     );

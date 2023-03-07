@@ -99,6 +99,7 @@
     "registerSocialNameTooltip": "Nome social se refere à designação pela qual a pessoa travesti ou transexual se identifica e é socialmente reconhecida.",
     "registerEmailProfessorPlaceholder": "Insira seu e-mail da Mauá",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
+    "registerEmailProfessorConfirmationPlaceholder": "Confirme seu e-mail Mauá",
     "registerPhonePlaceholder": "Telefone Celular",
     "registerCountryPlaceholder": "Pesquisar por país ou DDI",
     "registerStudentMauaPlaceholder": "Aluno Mauá",
@@ -211,6 +212,8 @@
     "noTitle": "Não",
     "": "",
 
+    "unavailabeTitle": "Indisponível",
+
 
     "unavailabeActivityRegistration": "Inscrição para a atividade indisponível!",
     "unsubscribeVerification": "Tem certeza que deseja se desinscrever?",
@@ -220,6 +223,12 @@
     "availabeSpotUnsuficient": "Parece que o número de vagas da atividade se esgotou :(",
     "scheduleActivityWarning": "Se atente aos seus horários e atividades que você já se inscreveu!",
     "alreadySubscribedOnThisPeriodWarning": "Parece que você já se inscreveu em uma atividade no mesmo horário.",
-    "unavailabeSubscribe": "Inscrição para a atividade indisponível!"
+    "unavailabeSubscribe": "Inscrição para a atividade indisponível!",
+    "joinQueueConfimation": "Deseja entrar na fila?",
+    "joinQueueTitle": "Entrar na fila",
+    "inQueueTitle": "Na fila",
+    "exitQueueConfimation": "Deseja sair da fila?",
+    "InQueueContent": "Você está na fila da atividade"
+
 
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
@@ -28,6 +29,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
     this.mainColor,
     required this.isExtensive,
     required this.date,
+    DeliveryEnum? deliveryEnum,
   }) : super(key: key);
 
   @override
