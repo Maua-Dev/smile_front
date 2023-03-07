@@ -32,9 +32,9 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
+        Aliase:
+          - !Ref AlternateDomainName
         ViewerCertificate:
-          Aliase:
-            - !Ref AlternateDomainName
           AcmCertificateArn: !Ref AcmCertificateArn
           SslSupportMethod: sni-only
         Comment: !Ref BucketName 
