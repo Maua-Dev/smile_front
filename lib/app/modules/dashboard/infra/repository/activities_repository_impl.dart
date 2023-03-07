@@ -173,4 +173,11 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
             state: requestDone.enrollments![index].state,
             userEnroll: requestDone.enrollments![index].userEnroll));
   }
+
+  @override
+  Future<String> generateAtendanceToken(String activityCode) async {
+    var response = await datasource.generateAtendanceToken(activityCode);
+
+    return Future.value(response);
+  }
 }

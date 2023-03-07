@@ -411,11 +411,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Fill in your cell phone to enable sms notifications!"),
         "notificationsTitle": MessageLookupByLibrary.simpleMessage(
             "Means of notification about activities:"),
-        "planPriceSponsorSchema": m13,
-        "planSponsorSchema": m14,
-        "presenceTitle": MessageLookupByLibrary.simpleMessage("Present"),
         "planPriceSponsorSchema": m14,
         "planSponsorSchema": m15,
+        "presenceTitle": MessageLookupByLibrary.simpleMessage("Present"),
         "presenceValidateTitle":
             MessageLookupByLibrary.simpleMessage("Presence Validate"),
         "queueExitAlert": MessageLookupByLibrary.simpleMessage(
@@ -513,10 +511,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "unsubscribeVerificationClosedRegistration":
             MessageLookupByLibrary.simpleMessage(
                 "Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!"),
-        "userRolesNameSchema": m18,
+        "userRolesNameSchema": m19,
         "validationCodeTitle":
             MessageLookupByLibrary.simpleMessage("Validation Code"),
-        "userRolesNameSchema": m19,
         "yesTitle": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

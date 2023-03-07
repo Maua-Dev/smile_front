@@ -21,4 +21,5 @@ abstract class ActivitiesDatasourceInterface {
   Future<ProfessorActivityModel> postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state);
   Future<String> getLinkCsv();
+  Future<String> generateAtendanceToken(String activityCode);
 }
