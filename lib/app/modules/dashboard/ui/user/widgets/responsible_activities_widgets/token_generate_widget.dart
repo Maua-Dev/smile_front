@@ -5,7 +5,9 @@ import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 class TokenGenerateWidget extends StatelessWidget {
-  const TokenGenerateWidget({super.key});
+  const TokenGenerateWidget({super.key, required this.token});
+
+  final String token;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class TokenGenerateWidget extends StatelessWidget {
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
-                  '821584',
+                  token,
                   style: AppTextStyles.bold.copyWith(
                       color: Colors.black, fontSize: 40, letterSpacing: 10),
                 ),

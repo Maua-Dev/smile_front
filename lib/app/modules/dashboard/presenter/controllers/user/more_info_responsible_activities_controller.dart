@@ -64,7 +64,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @action
   void generateToken() async {
     setIsLoadingAtendanceToken(true);
-    var token = await generateAtendanceToken(activityCode);
+    token = await generateAtendanceToken(activityCode);
   }
 
   @observable

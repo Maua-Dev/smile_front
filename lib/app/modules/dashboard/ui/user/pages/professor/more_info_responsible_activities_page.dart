@@ -461,7 +461,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                           Observer(
                               builder: (_) => Visibility(
                                   visible: controller.isTokenVisible,
-                                  child: const TokenGenerateWidget())),
+                                  child:  TokenGenerateWidget(token: controller.token))),
                         ],
                       ),
                     );
