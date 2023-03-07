@@ -26,7 +26,7 @@ class ListNameAndStateWithIsSwitched {
         state: state ?? this.state);
   }
 
-  void toogleSwitch() {
-    isSwitched = !isSwitched;
+  void toogleSwitch(bool value) {
+    isSwitched = value;
   }
 }

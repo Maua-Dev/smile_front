@@ -87,14 +87,16 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   }
 
   @action
-  void toogleListSwitch(index) {
-    professorList[index].toogleSwitch();
+  Future<void> toogleListSwitch(bool value, int index) async {
+    setIsLoading(true);
+    professorList[index].toogleSwitch(value);
+    if (value = true) {
+      await postManualChangeAttendence(activityCode,
+          professorList[index].userId, EnrollmentStateEnum.COMPLETED);
+    } else {
+      await postManualChangeAttendence(activityCode,
+          professorList[index].userId, EnrollmentStateEnum.ENROLLED);
+    }
+    setIsLoading(false);
   }
-
-  //@action
-  //Future<void> manualChangeAttendence(userId, state) async {
-  // setIsLoading(true);
-  // await postManualChangeAttendence(activityCode, userId, state);
-  //  setIsLoading(false);
-  // }
 }

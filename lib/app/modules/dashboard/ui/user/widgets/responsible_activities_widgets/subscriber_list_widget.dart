@@ -17,15 +17,13 @@ class SubscriberListWidget extends StatelessWidget {
   final int listViewItemCount;
   final bool isLoading;
   final List<ListNameAndStateWithIsSwitched> professorList;
-  final Function(int) onChangedIsSwitched;
+  final Function(bool, int) onChangedIsSwitched;
   final Function()? toggleSwitch;
-  // final Function(dynamic, dynamic) manualChangeAttendence;
   const SubscriberListWidget({
     Key? key,
     required this.onChangedIsSwitched,
     required this.professorList,
     required this.isLoading,
-    // required this.manualChangeAttendence,
     required this.enrollmentsList,
     required this.listViewItemCount,
     required this.isSwitched,
@@ -139,10 +137,10 @@ class SubscriberListWidget extends StatelessWidget {
                                               return Switch(
                                                 value: professorList[index]
                                                     .isSwitched,
-                                                onChanged: 
-                                               // professorList[index].toogleSwitch;
-                                                (value) =>
-                                                    onChangedIsSwitched(index),
+                                                onChanged: (value) {
+                                                  onChangedIsSwitched(
+                                                      value, index);
+                                                },
                                                 activeColor: Colors.green,
                                                 inactiveThumbColor: Colors.red,
                                                 inactiveTrackColor:

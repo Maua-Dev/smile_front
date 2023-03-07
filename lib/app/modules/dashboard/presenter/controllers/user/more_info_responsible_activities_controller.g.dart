@@ -143,6 +143,16 @@ mixin _$MoreInfoResponsibleActivitiesController
         .run(() => super.getProfessorActivitiesWithEnrollments());
   }
 
+  late final _$toogleListSwitchAsyncAction = AsyncAction(
+      'MoreInfoResponsibleActivitiesControllerBase.toogleListSwitch',
+      context: context);
+
+  @override
+  Future<void> toogleListSwitch(bool value, int index) {
+    return _$toogleListSwitchAsyncAction
+        .run(() => super.toogleListSwitch(value, index));
+  }
+
   late final _$MoreInfoResponsibleActivitiesControllerBaseActionController =
       ActionController(
           name: 'MoreInfoResponsibleActivitiesControllerBase',
@@ -214,20 +224,6 @@ mixin _$MoreInfoResponsibleActivitiesController
                     'MoreInfoResponsibleActivitiesControllerBase.toggleSwitch');
     try {
       return super.toggleSwitch();
-    } finally {
-      _$MoreInfoResponsibleActivitiesControllerBaseActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void toogleListSwitch(dynamic index) {
-    final _$actionInfo =
-        _$MoreInfoResponsibleActivitiesControllerBaseActionController.startAction(
-            name:
-                'MoreInfoResponsibleActivitiesControllerBase.toogleListSwitch');
-    try {
-      return super.toogleListSwitch(index);
     } finally {
       _$MoreInfoResponsibleActivitiesControllerBaseActionController
           .endAction(_$actionInfo);
