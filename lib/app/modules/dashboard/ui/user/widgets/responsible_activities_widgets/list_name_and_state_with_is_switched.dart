@@ -12,4 +12,21 @@ class ListNameAndStateWithIsSwitched {
     required this.state,
     required this.isSwitched,
   });
+
+  ListNameAndStateWithIsSwitched copyWith({
+    String? name,
+    String? userId,
+    EnrollmentStateEnum? state,
+    bool? isSwitched,
+  }) {
+    return ListNameAndStateWithIsSwitched(
+        name: name ?? this.name,
+        userId: userId ?? this.userId,
+        isSwitched: isSwitched ?? this.isSwitched,
+        state: state ?? this.state);
+  }
+
+  void toogleSwitch(bool value) {
+    isSwitched = value;
+  }
 }

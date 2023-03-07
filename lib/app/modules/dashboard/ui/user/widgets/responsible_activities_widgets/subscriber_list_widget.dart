@@ -16,12 +16,14 @@ class SubscriberListWidget extends StatelessWidget {
   final ProfessorActivityModel enrollmentsList;
   final int listViewItemCount;
   final bool isLoading;
+  final List<ListNameAndStateWithIsSwitched> professorList;
+  final Function(bool, int) onChangedIsSwitched;
   final Function()? toggleSwitch;
-  final Function(dynamic, dynamic) manualChangeAttendence;
   const SubscriberListWidget({
     Key? key,
+    required this.onChangedIsSwitched,
+    required this.professorList,
     required this.isLoading,
-    required this.manualChangeAttendence,
     required this.enrollmentsList,
     required this.listViewItemCount,
     required this.isSwitched,
@@ -100,19 +102,6 @@ class SubscriberListWidget extends StatelessWidget {
             child: ListView.builder(
               itemCount: listViewItemCount,
               itemBuilder: (BuildContext context, int index) {
-                List<ListNameAndStateWithIsSwitched> list =
-                    enrollmentsList.enrollments!
-                        .map(
-                          (e) => ListNameAndStateWithIsSwitched(
-                              userId: e.userEnroll!.userId,
-                              name: e.userEnroll!.name,
-                              state: e.state,
-                              isSwitched:
-                                  e.state == EnrollmentStateEnum.COMPLETED
-                                      ? true
-                                      : false),
-                        )
-                        .toList();
                 return Column(
                   children: [
                     Container(
@@ -121,7 +110,8 @@ class SubscriberListWidget extends StatelessWidget {
                               ? 400
                               : 440,
                       decoration: BoxDecoration(
-                        color: list[index].state != EnrollmentStateEnum.IN_QUEUE
+                        color: professorList[index].state !=
+                                EnrollmentStateEnum.IN_QUEUE
                             ? AppColors.white
                             : AppColors.gray.withOpacity(0.5),
                       ),
@@ -143,30 +133,22 @@ class SubscriberListWidget extends StatelessWidget {
                                               child:
                                                   CircularProgressIndicator(),
                                             )
-                                          : Switch(
-                                              value: list[index].state ==
-                                                      EnrollmentStateEnum
-                                                          .COMPLETED
-                                                  ? true
-                                                  : false,
-                                              onChanged: list[index].state ==
-                                                      EnrollmentStateEnum
-                                                          .COMPLETED
-                                                  ? manualChangeAttendence(
-                                                      list[index].userId,
-                                                      EnrollmentStateEnum
-                                                          .DROPPED)
-                                                  : manualChangeAttendence(
-                                                      list[index].userId,
-                                                      EnrollmentStateEnum
-                                                          .COMPLETED),
-                                              activeColor: Colors.green,
-                                              inactiveThumbColor: Colors.red,
-                                              inactiveTrackColor:
-                                                  Colors.red.withOpacity(0.5),
-                                              activeTrackColor:
-                                                  Colors.green.withOpacity(0.5),
-                                            )
+                                          : Observer(builder: (_) {
+                                              return Switch(
+                                                value: professorList[index]
+                                                    .isSwitched,
+                                                onChanged: (value) {
+                                                  onChangedIsSwitched(
+                                                      value, index);
+                                                },
+                                                activeColor: Colors.green,
+                                                inactiveThumbColor: Colors.red,
+                                                inactiveTrackColor:
+                                                    Colors.red.withOpacity(0.5),
+                                                activeTrackColor: Colors.green
+                                                    .withOpacity(0.5),
+                                              );
+                                            })
                                       : Padding(
                                           padding: EdgeInsets.only(
                                               left: MediaQuery.of(context)

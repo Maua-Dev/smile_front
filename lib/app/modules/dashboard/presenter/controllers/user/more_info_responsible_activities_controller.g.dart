@@ -97,6 +97,23 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
+  late final _$professorListAtom = Atom(
+      name: 'MoreInfoResponsibleActivitiesControllerBase.professorList',
+      context: context);
+
+  @override
+  List<ListNameAndStateWithIsSwitched> get professorList {
+    _$professorListAtom.reportRead();
+    return super.professorList;
+  }
+
+  @override
+  set professorList(List<ListNameAndStateWithIsSwitched> value) {
+    _$professorListAtom.reportWrite(value, super.professorList, () {
+      super.professorList = value;
+    });
+  }
+
   late final _$professorActivitiesWithEnrollmentsAtom = Atom(
       name:
           'MoreInfoResponsibleActivitiesControllerBase.professorActivitiesWithEnrollments',
@@ -126,14 +143,14 @@ mixin _$MoreInfoResponsibleActivitiesController
         .run(() => super.getProfessorActivitiesWithEnrollments());
   }
 
-  late final _$manualChangeAttendenceAsyncAction = AsyncAction(
-      'MoreInfoResponsibleActivitiesControllerBase.manualChangeAttendence',
+  late final _$toogleListSwitchAsyncAction = AsyncAction(
+      'MoreInfoResponsibleActivitiesControllerBase.toogleListSwitch',
       context: context);
 
   @override
-  Future<void> manualChangeAttendence(dynamic userId, dynamic state) {
-    return _$manualChangeAttendenceAsyncAction
-        .run(() => super.manualChangeAttendence(userId, state));
+  Future<void> toogleListSwitch(bool value, int index) {
+    return _$toogleListSwitchAsyncAction
+        .run(() => super.toogleListSwitch(value, index));
   }
 
   late final _$MoreInfoResponsibleActivitiesControllerBaseActionController =
@@ -221,6 +238,7 @@ isSubscribedListVisible: ${isSubscribedListVisible},
 isTokenVisible: ${isTokenVisible},
 isIconSelected: ${isIconSelected},
 isSwitched: ${isSwitched},
+professorList: ${professorList},
 professorActivitiesWithEnrollments: ${professorActivitiesWithEnrollments}
     ''';
   }

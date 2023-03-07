@@ -164,14 +164,30 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         activityCode, userId, state);
     var index = activityWithEnrollments.enrollments!
         .indexWhere((element) => element.userEnroll!.userId == userId);
-    activityWithEnrollments.enrollments!
+    var enrollmentsList = activityWithEnrollments.enrollments;
+    enrollmentsList!
         .removeWhere((element) => element.userEnroll!.userId == userId);
-    activityWithEnrollments.enrollments!.insert(
-        index,
-        EnrollmentsModel(
-            dateSubscribed: requestDone.enrollments![index].dateSubscribed,
-            state: requestDone.enrollments![index].state,
-            userEnroll: requestDone.enrollments![index].userEnroll));
+    enrollmentsList.insert(index, requestDone.enrollments![index]);
+    activityWithEnrollments = ProfessorActivityModel(
+        acceptingNewEnrollments:
+            activityWithEnrollments.acceptingNewEnrollments,
+        activityCode: activityWithEnrollments.activityCode,
+        description: activityWithEnrollments.description,
+        duration: activityWithEnrollments.duration,
+        isExtensive: activityWithEnrollments.isExtensive,
+        responsibleProfessors: activityWithEnrollments.responsibleProfessors,
+        speakers: activityWithEnrollments.speakers,
+        takenSlots: activityWithEnrollments.takenSlots,
+        title: activityWithEnrollments.title,
+        totalSlots: activityWithEnrollments.totalSlots,
+        type: activityWithEnrollments.type,
+        deliveryEnum: activityWithEnrollments.deliveryEnum,
+        link: activityWithEnrollments.link,
+        place: activityWithEnrollments.place,
+        startDate: activityWithEnrollments.startDate,
+        stopAcceptingNewEnrollmentsBefore: allActivitiesAndEnrollments[index]
+            .stopAcceptingNewEnrollmentsBefore,
+        enrollments: enrollmentsList);
   }
 
   @override
