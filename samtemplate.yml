@@ -12,6 +12,9 @@ Parameters:
   AlternateDomainName:
     Type: String
     Description: Alternate domain name to use for the CloudFront distribution
+  HostedZoneId:
+    Type: String
+    Description: Hosted zone ID of the domain name
 Resources:
   CloudFrontOriginAccessIdentity:
     Type: 'AWS::CloudFront::CloudFrontOriginAccessIdentity'
@@ -68,6 +71,15 @@ Resources:
               - !Sub "arn:aws:s3:::${MyBucket}/*"
             Principal:
               AWS: !Sub "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${CloudFrontOriginAccessIdentity}"
+  MyRecordSet:
+      Type: AWS::Route53::RecordSet
+      Properties:
+        HostedZoneId: !Ref HostedZoneId
+        Name: !Ref AlternateDomainName
+        Type: A
+        AliasTarget:
+          DNSName: !GetAtt CloudfrontDistribution.DomainName
+          HostedZoneId: !Ref CloudfrontDistribution
 Outputs:
   AwsBucket:
     Value: !Ref MyBucket
