@@ -79,7 +79,7 @@ Resources:
         Type: A
         AliasTarget:
           DNSName: !GetAtt CloudfrontDistribution.DomainName
-          HostedZoneId: !Ref CloudfrontDistribution
+          HostedZoneId: Z2FDTNDATAQYW2
 Outputs:
   AwsBucket:
     Value: !Ref MyBucket
