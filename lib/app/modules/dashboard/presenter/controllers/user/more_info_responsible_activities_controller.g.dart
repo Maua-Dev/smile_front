@@ -221,13 +221,13 @@ mixin _$MoreInfoResponsibleActivitiesController
   }
 
   @override
-  void onChangedIsSwitched(dynamic index, dynamic value) {
+  void toogleListSwitch(dynamic index) {
     final _$actionInfo =
         _$MoreInfoResponsibleActivitiesControllerBaseActionController.startAction(
             name:
-                'MoreInfoResponsibleActivitiesControllerBase.onChangedIsSwitched');
+                'MoreInfoResponsibleActivitiesControllerBase.toogleListSwitch');
     try {
-      return super.onChangedIsSwitched(index, value);
+      return super.toogleListSwitch(index);
     } finally {
       _$MoreInfoResponsibleActivitiesControllerBaseActionController
           .endAction(_$actionInfo);

@@ -25,4 +25,8 @@ class ListNameAndStateWithIsSwitched {
         isSwitched: isSwitched ?? this.isSwitched,
         state: state ?? this.state);
   }
+
+  void toogleSwitch() {
+    isSwitched = !isSwitched;
+  }
 }

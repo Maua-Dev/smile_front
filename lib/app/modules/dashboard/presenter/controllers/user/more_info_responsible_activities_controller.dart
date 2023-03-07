@@ -87,8 +87,8 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   }
 
   @action
-  void onChangedIsSwitched(index, value) {
-    professorList[index].copyWith(isSwitched: true);
+  void toogleListSwitch(index) {
+    professorList[index].toogleSwitch();
   }
 
   //@action
