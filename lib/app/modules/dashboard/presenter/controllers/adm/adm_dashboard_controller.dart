@@ -191,9 +191,9 @@ abstract class AdmDashboardControllerBase with Store {
 
   @action
   Future dropActivity(String activityCode, String userId) async {
-    setManualDropIsLoading(true);
+    setIsLoading(true);
     await manualDropActivity(activityCode, userId);
-    setManualDropIsLoading(false);
+    setIsLoading(false);
   }
 
   @action

@@ -82,6 +82,7 @@ class _AdmDashboardPageState
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
                                 return ActivitiesCardWidget(
+                                  isLoading: controller.isLoading,
                                   isManualDropLoading:
                                       controller.isManualDropLoading,
                                   onPressedDropActivity:
@@ -98,8 +99,6 @@ class _AdmDashboardPageState
                                   date: date,
                                   description: controller
                                       .activitiesList[index].description,
-                                  enrolledUsersLength: controller
-                                      .activitiesList[index].takenSlots,
                                   totalParticipants: controller
                                       .activitiesList[index].totalSlots,
                                   title: controller.activitiesList[index].title,

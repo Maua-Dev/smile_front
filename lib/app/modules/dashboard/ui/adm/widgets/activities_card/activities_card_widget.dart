@@ -17,15 +17,16 @@ class ActivitiesCardWidget extends StatelessWidget {
   final String time;
   final String finalTime;
   final List<EnrollmentsModel> enrollments;
-  final int enrolledUsersLength;
   final int totalParticipants;
   final bool isExtensive;
   final bool isManualDropLoading;
+  final bool isLoading;
   final Function() onPressedEdit;
   final Function() onPressedDelete;
   final Function(String, String) onPressedDropActivity;
   const ActivitiesCardWidget(
       {Key? key,
+      required this.isLoading,
       required this.onPressedDropActivity,
       required this.title,
       required this.activityCode,
@@ -35,7 +36,6 @@ class ActivitiesCardWidget extends StatelessWidget {
       required this.time,
       required this.finalTime,
       required this.enrollments,
-      required this.enrolledUsersLength,
       required this.totalParticipants,
       required this.isExtensive,
       required this.onPressedEdit,
@@ -49,6 +49,8 @@ class ActivitiesCardWidget extends StatelessWidget {
             enrollment.state == EnrollmentStateEnum.COMPLETED ||
             enrollment.state == EnrollmentStateEnum.ENROLLED)
         .toList();
+    int enrolledUsersLength = filteredEnrollments.length;
+
     return Container(
       width: 1165,
       height: 204,
@@ -289,7 +291,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                         Observer(builder: (_) {
                                                       return Column(
                                                         children: [
-                                                          isManualDropLoading
+                                                          isLoading
                                                               ? const Center(
                                                                   child:
                                                                       CircularProgressIndicator())
@@ -308,6 +310,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                                             hoverColor: AppColors.white,
                                                                             onPressed: () {
                                                                               onPressedDropActivity(activityCode, filteredEnrollments[index].user!.userId);
+                                                                              Modular.to.pop();
                                                                             },
                                                                             icon: Icon(
                                                                               Icons.do_not_disturb_on_total_silence_outlined,
