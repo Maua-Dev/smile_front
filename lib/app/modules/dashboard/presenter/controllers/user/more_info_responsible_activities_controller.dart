@@ -62,7 +62,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   }
 
   @action
-  void generateNewAtendanceCode() async {
+  Future<void> generateNewAtendanceCode() async {
     setIsLoadingAtendanceCode(true);
     token = await generateConfirmationCode(activityCode);
     setIsLoadingAtendanceCode(false);
@@ -112,7 +112,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   Future<void> toogleListSwitch(bool value, int index) async {
     setIsLoading(true);
     professorList[index].toogleSwitch(value);
-    if (value = true) {
+    if (professorList[index].state == EnrollmentStateEnum.ENROLLED) {
       await postManualChangeAttendence(activityCode,
           professorList[index].userId, EnrollmentStateEnum.COMPLETED);
     } else {
