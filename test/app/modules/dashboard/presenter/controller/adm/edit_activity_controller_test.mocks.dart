@@ -100,21 +100,6 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i3.Future<dynamic>.value(),
       ) as _i3.Future<dynamic>);
   @override
-  _i3.Future<dynamic> manualDropActivity(
-    String? activityCode,
-    String? userId,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #manualDropActivity,
-          [
-            activityCode,
-            userId,
-          ],
-        ),
-        returnValue: _i3.Future<dynamic>.value(),
-      ) as _i3.Future<dynamic>);
-  @override
   _i3.Future<bool> subscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(

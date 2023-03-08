@@ -1364,10 +1364,10 @@ class S {
     );
   }
 
-  /// `If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n`
+  /// `If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n`
   String get errorEmailInstructionsTitle {
     return Intl.message(
-      'If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n',
+      'If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n',
       name: 'errorEmailInstructionsTitle',
       desc: '',
       args: [],

@@ -149,7 +149,7 @@
     "codeInEmailInstructionsTitle": "You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional.",
     "sendTitle": "Send",
     "returnLogin": "Return to login",
-    "errorEmailInstructionsTitle": "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n",
+    "errorEmailInstructionsTitle": "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n",
     
     "presenceValidateTitle": "Presence Validate",
     
