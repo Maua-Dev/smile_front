@@ -1,4 +1,3 @@
-
 import '../entities/infra/user_roles_enum.dart';
 
 class UserEnrollModel {

@@ -31,7 +31,7 @@ class AdmModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<AdmDashboardController>(
         (i) => AdmDashboardController(
-          manualDropActivity: i(),
+              manualDropActivity: i(),
               getAdminActivities: i(),
               getDownloadLinkCsv: i(),
               authController: i(),
