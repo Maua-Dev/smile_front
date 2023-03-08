@@ -234,7 +234,7 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i10.Future<bool>.value(false),
       ) as _i10.Future<bool>);
   @override
-  _i10.Future<dynamic> postManualChangeAttendance(
+  _i10.Future<_i2.ProfessorActivityModel> postManualChangeAttendance(
     String? activityCode,
     String? userId,
     _i13.EnrollmentStateEnum? state,
@@ -248,8 +248,19 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             state,
           ],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i10.Future<_i2.ProfessorActivityModel>.value(
+            _FakeProfessorActivityModel_0(
+          this,
+          Invocation.method(
+            #postManualChangeAttendance,
+            [
+              activityCode,
+              userId,
+              state,
+            ],
+          ),
+        )),
+      ) as _i10.Future<_i2.ProfessorActivityModel>);
 }
 
 /// A class which mocks [UserDashboardController].

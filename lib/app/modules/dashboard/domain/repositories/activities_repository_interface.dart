@@ -15,6 +15,6 @@ abstract class ActivitiesRepositoryInterface {
   Future deleteActivity(String activityCode);
   Future<bool> subscribeActivity(String activityCode);
   Future<bool> unsubscribeActivity(String activityCode);
-  Future postManualChangeAttendance(
+  Future<ProfessorActivityModel> postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state);
 }

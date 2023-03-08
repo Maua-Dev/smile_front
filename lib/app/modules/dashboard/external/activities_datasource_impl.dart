@@ -199,7 +199,11 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   @override
   Future<ProfessorActivityModel> postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state) async {
-    var body = {'code': activityCode, 'user_id': userId, 'new_state': state};
+    var body = {
+      'code': activityCode,
+      'user_id': userId,
+      'new_state': state.name
+    };
     var res = await middleware(
         url: '/manual-attendance-change', data: body, http: 'post');
     if (res.statusCode == 200) {

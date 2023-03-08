@@ -356,6 +356,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                   onChangedIsSwitched: (bool value, int index) {
                                     controller.toogleListSwitch(value, index);
                                   },
+                    
                                   professorList: controller.professorList,
                                   enrollmentsList: controller
                                       .professorActivitiesWithEnrollments,
