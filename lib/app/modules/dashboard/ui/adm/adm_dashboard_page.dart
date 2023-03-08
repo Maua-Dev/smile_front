@@ -43,6 +43,7 @@ class _AdmDashboardPageState
                     padding: const EdgeInsets.symmetric(vertical: 50),
                     child: Observer(builder: (_) {
                       return FilterCardWidget(
+                        typeOnScreen: controller.typeOnScreen,
                         typeFilter: controller.typeFilter,
                         dateFilter: controller.dateFilter,
                         hourFilter: controller.hourFilter,

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
@@ -66,10 +67,30 @@ abstract class UserDashboardControllerBase with Store {
   @observable
   ActivityEnum? typeFilter;
 
+  @observable
+  String? typeOnScreen;
+
   @action
   void setTypeFilter(ActivityEnum value) {
     typeFilter = value;
+    typeOnScreen = value.name;
     setAllFilters();
+  }
+
+  Future<void> subscribeUserActivity(String activityCode) async {
+    setIsLoading(true);
+    await enrollmentController.subscribeActivity(activityCode);
+    await getUserSubscribedActivities();
+    setIsLoading(false);
+    Modular.to.pop();
+  }
+
+  Future<void> unsubscribeUserActivity(String activityCode) async {
+    setIsLoading(true);
+    await enrollmentController.unsubscribeActivity(activityCode);
+    await getUserSubscribedActivities();
+    setIsLoading(false);
+    Modular.to.pop();
   }
 
   @observable
@@ -289,6 +310,7 @@ abstract class UserDashboardControllerBase with Store {
     await secureStorage.saveSocialName(socialNameToChange);
     await secureStorage
         .saveCertificateWithSocialName(certificateWithSocialName);
+    await secureStorage.savePhone(phoneToChange);
     getUserName();
     getUserSocialName();
     getUserSubscribedActivities();
@@ -411,10 +433,12 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   String? validatePhone(String? value) {
-    if (countryCode?.code == "BR" && phone!.length == 12) {
+    if (countryCode?.code == "BR" && phoneToChange.length == 12) {
       return S.current.fieldDDDRequired;
     }
-    if (countryCode?.code == "BR" && phone!.length != 14 && phone!.length > 3) {
+    if (countryCode?.code == "BR" &&
+        phoneToChange.length != 14 &&
+        phoneToChange.length > 3) {
       return S.current.fieldInvalid;
     }
     return null;

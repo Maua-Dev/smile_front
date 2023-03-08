@@ -15,6 +15,7 @@ import '../../auth/presenter/controllers/auth_controller.dart';
 class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   final SecureStorageInterface storage;
   var authController = Modular.get<AuthController>();
+  static int requestCounter = 0;
   BaseOptions options = BaseOptions(
     baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
     responseType: ResponseType.json,
@@ -47,12 +48,21 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         default:
           res = await dio.get(url);
       }
+      requestCounter = 0;
       return res;
     } on DioError catch (e) {
-      if (e.response?.statusCode == 401) {
+      if (e.response == null || e.response!.statusCode == 401) {
         await authController.refreshUserToken();
-        var res = await dio.get(url);
-        return res.data;
+        requestCounter++;
+        if (requestCounter < 2) {
+          var res = await middleware(
+              http: http,
+              url: url,
+              needAutorization: needAutorization,
+              data: data);
+          requestCounter = 0;
+          return res.data;
+        }
       }
       showErrorSnackBar(errorMessage: e.response!.data);
       rethrow;

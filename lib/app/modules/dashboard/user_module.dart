@@ -23,8 +23,8 @@ import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart'
 import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
-import '../../shared/models/enrolls_activity_model.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
+import '../auth/infra/auth_guards/auth_guard_professor.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/domain/usecases/login_with_email.dart';
 import '../auth/domain/usecases/refresh_token.dart';
@@ -109,6 +109,7 @@ class UserModule extends Module {
     Bind.lazySingleton<MoreInfoController>(
         (i) => MoreInfoController(
               enrollmentController: i(),
+              activityCode: i.args!.data as String,
             ),
         export: true),
     Bind.lazySingleton<CertificateRepositoryInterface>(
@@ -127,12 +128,10 @@ class UserModule extends Module {
         child: (_, args) => const UserDashboardPage()),
     ChildRoute('/all-activities',
         child: (_, args) => const AllActivitiesUserDashboardPage()),
-    ChildRoute('/more-info',
-        child: (_, args) => MoreInfoPage(
-              enrolledActivity: args.data as EnrollsActivityModel,
-            )),
+    ChildRoute('/more-info', child: (_, args) => const MoreInfoPage()),
     ChildRoute('/help', child: (_, args) => const HelpPage()),
     ChildRoute('/certificate', child: (_, args) => const CertificatePage()),
-    ModuleRoute('/professor', module: ProfessorModule())
+    ModuleRoute('/professor',
+        module: ProfessorModule(), guards: [AuthGuardProfessor()])
   ];
 }

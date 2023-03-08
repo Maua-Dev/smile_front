@@ -28,24 +28,20 @@ class _LandingUserPageState extends State<LandingUserPage> {
             preferredSize: Size.fromHeight(Screen.height(context) * 0.1),
             child: AppBar(
                 leading: Builder(builder: (context) {
-                  return Padding(
-                    padding: Screen.width(context) < cellphoneSize
-                        ? const EdgeInsets.only(top: 16.0)
-                        : const EdgeInsets.only(top: 8.0),
-                    child: Screen.width(context) < tabletSize
-                        ? IconButton(
-                            splashRadius: 1,
-                            onPressed: () => Scaffold.of(context).openDrawer(),
-                            icon: Icon(
+                  return Screen.width(context) < tabletSize
+                      ? IconButton(
+                          splashRadius: 1,
+                          onPressed: () => Scaffold.of(context).openDrawer(),
+                          icon: const Padding(
+                            padding: EdgeInsets.only(top: 10.0),
+                            child: Icon(
                               Icons.menu,
-                              size: Screen.width(context) < cellphoneSize
-                                  ? 40
-                                  : 56,
+                              size: 44,
                             ),
-                            color: AppColors.white,
-                          )
-                        : null,
-                  );
+                          ),
+                          color: AppColors.white,
+                        )
+                      : const SizedBox();
                 }),
                 foregroundColor: AppColors.brandingBlue)),
         body: MediaQuery.of(context).size.width < tabletSize
@@ -66,11 +62,7 @@ class _LandingUserPageState extends State<LandingUserPage> {
                     ),
                     Flexible(
                       child: Center(
-                        child: SizedBox(
-                            width: Screen.width(context) < 1024
-                                ? Screen.width(context)
-                                : 1000,
-                            child: RouterOutlet()),
+                        child: RouterOutlet(),
                       ),
                     ),
                   ],

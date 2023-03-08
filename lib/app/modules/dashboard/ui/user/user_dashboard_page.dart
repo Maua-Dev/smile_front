@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/activities_card/activities_card_user_dashboard_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/activities_card/activities_card_all_activities_dashboard.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/user_filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_data_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -59,75 +59,83 @@ class _UserDashboardPageState
       } else {
         if (controller.allSubscribedActivitiesList.isNotEmpty &&
             controller.nextActivity.type != null) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 16,
-              ),
-              UserDataWidget(
-                logout: () {
-                  navBarController.logout();
-                },
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              TextHeader(
-                title: 'Sua próxima atividade',
-                fontSize: MediaQuery.of(context).size.width < 500
-                    ? 24
-                    : MediaQuery.of(context).size.width > 1000
-                        ? 38
-                        : 30,
-                leftPadding: MediaQuery.of(context).size.width < 1000 ? 12 : 8,
-              ),
-              Observer(builder: (_) {
-                return NextActivityCardWidget(
-                  isUser: true,
-                  link: controller.nextActivity.link,
-                  location: controller.nextActivity.place,
-                  duration: controller.nextActivity.duration,
-                  onTap: () {
-                    Modular.to.navigate('/user/home/more-info',
-                        arguments: controller.nextActivity);
-                    controller.analytics
-                        .logViewActivity(controller.nextActivity.activityCode);
-                  },
-                  name: controller.nextActivity.title,
-                  description: controller.nextActivity.description,
-                  date: controller.nextActivity.startDate,
-                );
-              }),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: Observer(builder: (_) {
-                  return UserFilterCardWidget(
-                      typeFilter: controller.typeFilter,
-                      dateFilter: controller.dateFilter,
-                      hourFilter: controller.hourFilter,
-                      resetFilters: () => controller.resetFilters(),
-                      onChangedActivitiesFilter: (type) {
-                        controller.setTypeFilter(type!);
-                      },
-                      onChangedDateFilter: (date) {
-                        controller.setDateFilter(date!);
-                      },
-                      onChangedTimeFilter: (hour) {
-                        controller.setHourFilter(hour!);
-                      });
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 16,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width < breakpointTablet
+                      ? 380
+                      : 1165,
+                  child: UserDataWidget(
+                    logout: () {
+                      navBarController.logout();
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width < breakpointTablet
+                      ? 380
+                      : 1165,
+                  child: TextHeader(
+                    title: 'Sua próxima atividade',
+                    fontSize: MediaQuery.of(context).size.width < 500
+                        ? 24
+                        : MediaQuery.of(context).size.width > 1000
+                            ? 38
+                            : 30,
+                    leftPadding:
+                        MediaQuery.of(context).size.width < 1000 ? 12 : 8,
+                  ),
+                ),
+                Observer(builder: (_) {
+                  return NextActivityCardWidget(
+                    isUser: true,
+                    link: controller.nextActivity.link,
+                    location: controller.nextActivity.place,
+                    duration: controller.nextActivity.duration,
+                    onTap: () {
+                      Modular.to.navigate('/user/home/more-info',
+                          arguments: controller.nextActivity.activityCode);
+                      controller.analytics.logViewActivity(
+                          controller.nextActivity.activityCode);
+                    },
+                    name: controller.nextActivity.title,
+                    description: controller.nextActivity.description,
+                    date: controller.nextActivity.startDate,
+                  );
                 }),
-              ),
-              Observer(builder: (_) {
-                if (controller.subscribedActivitiesOnScreen.isNotEmpty) {
-                  return Flexible(
-                      child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                        maxWidth:
-                            MediaQuery.of(context).size.width < breakpointTablet
-                                ? 342
-                                : 1165),
-                    child: ListView.builder(
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Observer(builder: (_) {
+                    return UserFilterCardWidget(
+                        typeOnScreen: controller.typeOnScreen,
+                        typeFilter: controller.typeFilter,
+                        dateFilter: controller.dateFilter,
+                        hourFilter: controller.hourFilter,
+                        resetFilters: () => controller.resetFilters(),
+                        onChangedActivitiesFilter: (type) {
+                          controller.setTypeFilter(type!);
+                        },
+                        onChangedDateFilter: (date) {
+                          controller.setDateFilter(date!);
+                        },
+                        onChangedTimeFilter: (hour) {
+                          controller.setHourFilter(hour!);
+                        });
+                  }),
+                ),
+                Observer(builder: (_) {
+                  if (controller.subscribedActivitiesOnScreen.isNotEmpty) {
+                    return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       itemCount: controller.subscribedActivitiesOnScreen.length,
                       itemBuilder: (context, index) {
                         var finalTime = controller
@@ -142,7 +150,17 @@ class _UserDashboardPageState
                                     .duration);
                         var hour = DateFormat('HH:mm').format(controller
                             .subscribedActivitiesOnScreen[index].startDate!);
-                        return MobileActivitiesCardUserDashboard(
+                        return ActivitiesCardAllActivitiesDashboard(
+                          onPressedSubscribe: () {
+                            controller.subscribeUserActivity(controller
+                                .subscribedActivitiesOnScreen[index]
+                                .activityCode);
+                          },
+                          onPressedUnsubscribe: () {
+                            controller.unsubscribeUserActivity(controller
+                                .subscribedActivitiesOnScreen[index]
+                                .activityCode);
+                          },
                           isLoading: controller.isLoading,
                           finalTime: finalTime,
                           location: controller
@@ -150,6 +168,15 @@ class _UserDashboardPageState
                           title: controller
                               .subscribedActivitiesOnScreen[index].title,
                           hour: hour,
+                          activityEnrollment: controller
+                              .subscribedActivitiesOnScreen[index].enrollments,
+                          acceptingNewEnrollments: controller
+                              .subscribedActivitiesOnScreen[index]
+                              .acceptingNewEnrollments,
+                          takenSlots: controller
+                              .subscribedActivitiesOnScreen[index].takenSlots,
+                          totalSlots: controller
+                              .subscribedActivitiesOnScreen[index].totalSlots,
                           onTap: () {
                             Modular.to.navigate(
                               '/user/home/more-info',
@@ -160,20 +187,24 @@ class _UserDashboardPageState
                                 .subscribedActivitiesOnScreen[index]
                                 .activityCode);
                           },
+                          isExtensive: controller
+                              .subscribedActivitiesOnScreen[index].isExtensive,
+                          date: controller
+                              .subscribedActivitiesOnScreen[index].startDate!,
                         );
                       },
-                    ),
-                  ));
-                } else {
-                  return Text(S.of(context).activitiesNotFound,
-                      style: AppTextStyles.body.copyWith(
-                          fontSize: MediaQuery.of(context).size.width <
-                                  breakpointTablet
-                              ? 20
-                              : 25));
-                }
-              }),
-            ],
+                    );
+                  } else {
+                    return Text(S.of(context).activitiesNotFound,
+                        style: AppTextStyles.body.copyWith(
+                            fontSize: MediaQuery.of(context).size.width <
+                                    breakpointTablet
+                                ? 20
+                                : 25));
+                  }
+                }),
+              ],
+            ),
           );
         } else {
           return Scaffold(

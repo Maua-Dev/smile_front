@@ -2,13 +2,14 @@ import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
-import '../../../../../../../generated/l10n.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
+import 'package:smile_front/app/shared/utils/screen_helper.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/widgets/custom_elevated_button_widget.dart';
-import '../../../../../../shared/widgets/input-box/input_box_widget.dart';
 import '../../../../presenter/controllers/user/user_dashboard_controller.dart';
 
 class NameAlterationDialog extends StatelessWidget {
@@ -40,6 +41,10 @@ class NameAlterationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Modular.get<UserDashboardController>();
+    final maskBrazilianPhone = MaskTextInputFormatter(
+        mask: "(##) #####-####", filter: {"#": RegExp(r'[0-9]')});
+    final maskPhone = MaskTextInputFormatter(
+        mask: "###############", filter: {"#": RegExp(r'[0-9]')});
     const countryPicker = FlCountryCodePicker();
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -100,7 +105,8 @@ class NameAlterationDialog extends StatelessWidget {
               ),
               TextFormField(
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
+                  FilteringTextInputFormatter.allow(
+                      RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ-\\s]")),
                 ],
                 initialValue: name,
                 textAlignVertical: TextAlignVertical.center,
@@ -180,7 +186,8 @@ class NameAlterationDialog extends StatelessWidget {
               ),
               TextFormField(
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
+                  FilteringTextInputFormatter.allow(
+                      RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ-\\s]")),
                 ],
                 initialValue: socialName,
                 enabled: wantSocialName ? true : false,
@@ -268,73 +275,101 @@ class NameAlterationDialog extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: GestureDetector(
-                      onTap: () async {
-                        final code =
-                            await countryPicker.showPicker(context: context);
-                        controller.setCountryCode(code);
-                        controller.setBrazilianPhone(code);
-                      },
-                      child: Container(
-                        height: 60,
-                        width: 110,
-                        decoration: BoxDecoration(
-                            color: AppColors.brandingBlue,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: SizedBox(
-                            child: Row(
-                              children: [
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                Container(
-                                    child: controller.countryCode != null
-                                        ? controller.countryCode!.flagImage
-                                        : null),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  controller.countryCode != null
-                                      ? controller.countryCode!.dialCode
-                                      : "DDI",
-                                  style: TextStyle(
-                                      color: AppColors.white, fontSize: 14),
-                                ),
-                              ],
+              Observer(builder: (_) {
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: GestureDetector(
+                        onTap: () async {
+                          final code =
+                              await countryPicker.showPicker(context: context);
+                          controller.setCountryCode(code);
+                          controller.setBrazilianPhone(code);
+                        },
+                        child: Container(
+                          height: 60,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              color: AppColors.brandingBlue,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: SizedBox(
+                              child: Row(
+                                children: [
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  Container(
+                                      child: controller.countryCode != null
+                                          ? controller.countryCode!.flagImage
+                                          : null),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    controller.countryCode != null
+                                        ? controller.countryCode!.dialCode
+                                        : "DDI",
+                                    style: TextStyle(
+                                        color: AppColors.white, fontSize: 14),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  InputBoxWidget(
-                    initialValue: controller.phoneToChange,
-                    letterColor: AppColors.white,
-                    backgroundColor: AppColors.brandingBlue,
-                    isPhoneField: true,
-                    icon: Icons.phone,
-                    isBrazilianPhoneField: controller.isBrazilianPhone,
-                    placeholder: S.of(context).registerPhonePlaceholder,
-                    setValue: controller.setPhone,
-                    widthSize: MediaQuery.of(context).size.width < 650
-                        ? MediaQuery.of(context).size.width * 0.53
-                        : 480,
-                    validation: controller.validatePhone,
-                  )
-                ],
-              ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: SizedBox(
+                        width: Screen.width(context) < breakpointMobile
+                            ? 260
+                            : 380,
+                        child: TextFormField(
+                          inputFormatters: controller.isBrazilianPhone
+                              ? [maskBrazilianPhone]
+                              : [maskPhone],
+                          validator: controller.validatePhone,
+                          initialValue: controller.phoneToChange,
+                          keyboardType: TextInputType.number,
+                          textAlignVertical: TextAlignVertical.center,
+                          onChanged: controller.setPhone,
+                          style: AppTextStyles.body.copyWith(
+                              color: Colors.white,
+                              fontSize: MediaQuery.of(context).size.width < 500
+                                  ? 14
+                                  : MediaQuery.of(context).size.width < 1000
+                                      ? 18
+                                      : 22),
+                          cursorColor: Colors.white,
+                          decoration: InputDecoration(
+                            fillColor: AppColors.brandingBlue,
+                            filled: true,
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                  color: AppColors.brandingBlue, width: 0.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                  color: AppColors.brandingBlue, width: 0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              }),
               const SizedBox(
                 height: 32,
               ),

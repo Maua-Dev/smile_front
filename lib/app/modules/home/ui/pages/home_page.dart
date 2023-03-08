@@ -46,8 +46,6 @@ class _HomePageState extends State<HomePage> {
     var authController = Modular.get<AuthController>();
     if (authController.role == 'ADMIN') {
       Modular.to.navigate('/adm');
-    } else if (authController.role == 'PROFESSOR') {
-      Modular.to.navigate('/professor');
     } else {
       Modular.to.navigate('/user/home');
     }
