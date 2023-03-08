@@ -16,6 +16,6 @@ class UserEnrollModel {
   }
 
   factory UserEnrollModel.newInstance() {
-    return UserEnrollModel(name: '', userId: '', role: UserRolesEnum.ADMIN);
+    return UserEnrollModel(name: '', userId: '', role: UserRolesEnum.STUDENT);
   }
 }
