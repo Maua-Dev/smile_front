@@ -28,13 +28,6 @@ class _MoreInfoPageState
     var timeString = controller.activity.startDate == null
         ? ''
         : DateFormat('HH:mm').format(controller.activity.startDate!);
-    var weekday = controller.activity.startDate == null
-        ? ''
-        : DateFormat('EEEE')
-            .format(controller.activity.startDate!)
-            .split('-')
-            .first
-            .capitalize();
     var finalTime = controller.activity.startDate == null
         ? ''
         : Utils.getActivityFinalTime(

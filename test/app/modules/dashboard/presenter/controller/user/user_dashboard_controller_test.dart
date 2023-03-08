@@ -17,7 +17,6 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/use
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../../../setup_firebase_mocks.dart';
-import 'more_info_controller_test.mocks.dart';
 import 'user_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([
