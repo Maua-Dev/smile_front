@@ -169,23 +169,6 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
-  late final _$isButtonLoadingAtom = Atom(
-      name: 'MoreInfoResponsibleActivitiesControllerBase.isButtonLoading',
-      context: context);
-
-  @override
-  bool get isButtonLoading {
-    _$isButtonLoadingAtom.reportRead();
-    return super.isButtonLoading;
-  }
-
-  @override
-  set isButtonLoading(bool value) {
-    _$isButtonLoadingAtom.reportWrite(value, super.isButtonLoading, () {
-      super.isButtonLoading = value;
-    });
-  }
-
   late final _$generateNewAtendanceCodeAsyncAction = AsyncAction(
       'MoreInfoResponsibleActivitiesControllerBase.generateNewAtendanceCode',
       context: context);
@@ -224,7 +207,7 @@ mixin _$MoreInfoResponsibleActivitiesController
   @override
   void setIsLoading(bool value) {
     final _$actionInfo =
-        _$MoreInfoResponsibleActivitiesControllerBaseActionControllers
+        _$MoreInfoResponsibleActivitiesControllerBaseActionController
             .startAction(
                 name:
                     'MoreInfoResponsibleActivitiesControllerBase.setIsLoading');
@@ -318,8 +301,7 @@ isTokenVisible: ${isTokenVisible},
 isIconSelected: ${isIconSelected},
 isSwitched: ${isSwitched},
 professorList: ${professorList},
-professorActivitiesWithEnrollments: ${professorActivitiesWithEnrollments},
-isButtonLoading: ${isButtonLoading}
+professorActivitiesWithEnrollments: ${professorActivitiesWithEnrollments}
     ''';
   }
 }
