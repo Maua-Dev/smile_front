@@ -185,6 +185,7 @@
     "descriptionTitle": "Description",
 
     "hourTitle": "Hora",
+    "dayTitle": "Data",
     "scheduleTitle": "Schedule",
     "scheduleAddTitle": "Add Schedule",
 

@@ -15,6 +15,10 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.da
     as _i10;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart'
     as _i3;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
+    as _i11;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart'
+    as _i12;
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart'
     as _i8;
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
@@ -382,4 +386,42 @@ class MockChangeDataInterface extends _i1.Mock
         returnValue: _i4.Future<void>.value(),
         returnValueForMissingStub: _i4.Future<void>.value(),
       ) as _i4.Future<void>);
+}
+
+/// A class which mocks [SubscribeActivityInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSubscribeActivityInterface extends _i1.Mock
+    implements _i11.SubscribeActivityInterface {
+  MockSubscribeActivityInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<bool> call(String? activityCode) => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [activityCode],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+}
+
+/// A class which mocks [UnsubscribeActivityInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUnsubscribeActivityInterface extends _i1.Mock
+    implements _i12.UnsubscribeActivityInterface {
+  MockUnsubscribeActivityInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<bool> call(String? activityCode) => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [activityCode],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
 }
