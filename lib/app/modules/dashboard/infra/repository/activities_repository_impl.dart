@@ -46,7 +46,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   @override
   Future deleteActivity(String activityCode) async {
-    activitiesList
+    admActivitiesList
         .removeWhere((element) => element.activityCode == activityCode);
     await datasource.deleteActivity(activityCode);
   }
