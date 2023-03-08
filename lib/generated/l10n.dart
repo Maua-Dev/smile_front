@@ -1012,6 +1012,16 @@ class S {
     );
   }
 
+  /// `Confirm your e-mail Mauá`
+  String get registerEmailProfessorConfirmationPlaceholder {
+    return Intl.message(
+      'Confirm your e-mail Mauá',
+      name: 'registerEmailProfessorConfirmationPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Phone`
   String get registerPhonePlaceholder {
     return Intl.message(
@@ -1569,6 +1579,16 @@ class S {
     return Intl.message(
       'Hora',
       name: 'hourTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data`
+  String get dayTitle {
+    return Intl.message(
+      'Data',
+      name: 'dayTitle',
       desc: '',
       args: [],
     );

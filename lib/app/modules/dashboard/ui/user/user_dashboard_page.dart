@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/activities_card/activities_card_user_dashboard_widget.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/activities_card/activities_card_all_activities_dashboard.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/user_filter_card_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_data_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -102,7 +102,7 @@ class _UserDashboardPageState
                     duration: controller.nextActivity.duration,
                     onTap: () {
                       Modular.to.navigate('/user/home/more-info',
-                          arguments: controller.nextActivity);
+                          arguments: controller.nextActivity.activityCode);
                       controller.analytics.logViewActivity(
                           controller.nextActivity.activityCode);
                     },
@@ -150,15 +150,17 @@ class _UserDashboardPageState
                                     .duration);
                         var hour = DateFormat('HH:mm').format(controller
                             .subscribedActivitiesOnScreen[index].startDate!);
-                        return MobileActivitiesCardUserDashboard(
-                          link: controller
-                              .subscribedActivitiesOnScreen[index].link!,
-                          deliveryEnum: controller
-                              .subscribedActivitiesOnScreen[index].deliveryEnum,
-                          date: controller
-                              .subscribedActivitiesOnScreen[index].startDate!,
-                          isExtensive: controller
-                              .subscribedActivitiesOnScreen[index].isExtensive,
+                        return ActivitiesCardAllActivitiesDashboard(
+                          onPressedSubscribe: () {
+                            controller.subscribeUserActivity(controller
+                                .subscribedActivitiesOnScreen[index]
+                                .activityCode);
+                          },
+                          onPressedUnsubscribe: () {
+                            controller.unsubscribeUserActivity(controller
+                                .subscribedActivitiesOnScreen[index]
+                                .activityCode);
+                          },
                           isLoading: controller.isLoading,
                           finalTime: finalTime,
                           location: controller
@@ -166,6 +168,15 @@ class _UserDashboardPageState
                           title: controller
                               .subscribedActivitiesOnScreen[index].title,
                           hour: hour,
+                          activityEnrollment: controller
+                              .subscribedActivitiesOnScreen[index].enrollments,
+                          acceptingNewEnrollments: controller
+                              .subscribedActivitiesOnScreen[index]
+                              .acceptingNewEnrollments,
+                          takenSlots: controller
+                              .subscribedActivitiesOnScreen[index].takenSlots,
+                          totalSlots: controller
+                              .subscribedActivitiesOnScreen[index].totalSlots,
                           onTap: () {
                             Modular.to.navigate(
                               '/user/home/more-info',
@@ -177,6 +188,10 @@ class _UserDashboardPageState
                                 .subscribedActivitiesOnScreen[index]
                                 .activityCode);
                           },
+                          isExtensive: controller
+                              .subscribedActivitiesOnScreen[index].isExtensive,
+                          date: controller
+                              .subscribedActivitiesOnScreen[index].startDate!,
                         );
                       },
                     );

@@ -137,7 +137,8 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                         onTap: () {
                           Modular.to.navigate(
                             '/user/home/more-info',
-                            arguments: controller.activitiesOnScreen[index],
+                            arguments: controller
+                                .activitiesOnScreen[index].activityCode,
                           );
                           controller.analytics.logViewActivity(controller
                               .activitiesOnScreen[index].activityCode);

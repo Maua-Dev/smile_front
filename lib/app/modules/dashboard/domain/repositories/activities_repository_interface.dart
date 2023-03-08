@@ -18,4 +18,5 @@ abstract class ActivitiesRepositoryInterface {
   Future<String> generateConfirmationCode(String activityCode);
   Future postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state);
+  Future confirmAttendance(String confirmAttendanceCode, String activityCode);
 }

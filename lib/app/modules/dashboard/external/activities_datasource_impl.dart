@@ -151,12 +151,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future postConfirmAttendance(
-      String activityCode, String confirmationCode) async {
-    await middleware(url: '/confirm-attendance', http: 'post');
-  }
-
-  @override
   Future postDeleteAttendanceConfirmation(String activityCode) async {
     await middleware(url: '/delete-attendance-confirmation', http: 'post');
   }
@@ -199,7 +193,11 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   @override
   Future<ProfessorActivityModel> postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state) async {
-    var body = {'code': activityCode, 'user_id': userId, 'new_state': state};
+    var body = {
+      'code': activityCode,
+      'user_id': userId,
+      'new_state': state.name
+    };
     var res = await middleware(
         url: '/manual-attendance-change', data: body, http: 'post');
     if (res.statusCode == 200) {
@@ -218,5 +216,16 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       return response.data['confirmation_code'];
     }
     throw Exception();
+  }
+
+  @override
+  Future confirmAttendance(
+      String confirmAttendanceCode, String activityCode) async {
+    var body = {
+      'code': activityCode,
+      'confirmation_code': confirmAttendanceCode
+    };
+
+    await middleware(url: '/confirm-attendance', http: 'post', data: body);
   }
 }

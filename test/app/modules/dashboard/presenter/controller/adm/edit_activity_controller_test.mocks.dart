@@ -175,6 +175,21 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         ),
         returnValue: _i4.Future<dynamic>.value(),
       ) as _i4.Future<dynamic>);
+  @override
+  _i4.Future<dynamic> confirmAttendance(
+    String? confirmAttendanceCode,
+    String? activityCode,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #confirmAttendance,
+          [
+            confirmAttendanceCode,
+            activityCode,
+          ],
+        ),
+        returnValue: _i4.Future<dynamic>.value(),
+      ) as _i4.Future<dynamic>);
 }
 
 /// A class which mocks [EditActivityInterface].

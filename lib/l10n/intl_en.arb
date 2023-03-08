@@ -101,6 +101,7 @@
     "registerSocialNameTooltip": "Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.",
     "registerEmailProfessorPlaceholder": "Enter your email Mauá",
     "registerEmailConfirmationPlaceholder": "Confirm your e-mail",
+    "registerEmailProfessorConfirmationPlaceholder": "Confirm your e-mail Mauá",
     "registerPhonePlaceholder": "Phone",
     "registerCountryPlaceholder": "Search by country or DDI",
     "registerStudentMauaPlaceholder": "Mauá Student",
@@ -188,6 +189,7 @@
     "descriptionTitle": "Description",
 
     "hourTitle": "Hora",
+    "dayTitle": "Data",
     "scheduleTitle": "Schedule",
     "scheduleAddTitle": "Add Schedule",
 

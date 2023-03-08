@@ -215,6 +215,21 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         ),
         returnValue: _i6.Future<dynamic>.value(),
       ) as _i6.Future<dynamic>);
+  @override
+  _i6.Future<dynamic> confirmAttendance(
+    String? confirmAttendanceCode,
+    String? activityCode,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #confirmAttendance,
+          [
+            confirmAttendanceCode,
+            activityCode,
+          ],
+        ),
+        returnValue: _i6.Future<dynamic>.value(),
+      ) as _i6.Future<dynamic>);
 }
 
 /// A class which mocks [FirebaseAnalyticsService].

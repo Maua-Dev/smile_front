@@ -158,7 +158,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future postManualChangeAttendance(
+  Future<ProfessorActivityModel> postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state) async {
     var requestDone = await datasource.postManualChangeAttendance(
         activityCode, userId, state);
@@ -188,6 +188,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         stopAcceptingNewEnrollmentsBefore: allActivitiesAndEnrollments[index]
             .stopAcceptingNewEnrollmentsBefore,
         enrollments: enrollmentsList);
+    return Future.value(requestDone);
   }
 
   @override
@@ -195,5 +196,11 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
     var response = await datasource.generateConfirmationCode(activityCode);
 
     return Future.value(response);
+  }
+
+  @override
+  Future confirmAttendance(String confirmAttendanceCode, String activityCode) {
+    var res = datasource.confirmAttendance(confirmAttendanceCode, activityCode);
+    return Future.value(res);
   }
 }

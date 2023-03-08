@@ -164,21 +164,6 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
         returnValue: _i5.Future<dynamic>.value(),
       ) as _i5.Future<dynamic>);
   @override
-  _i5.Future<dynamic> postConfirmAttendance(
-    String? activityCode,
-    String? confirmationCode,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #postConfirmAttendance,
-          [
-            activityCode,
-            confirmationCode,
-          ],
-        ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
-  @override
   _i5.Future<String> postGenerateAttendanceConfirmation(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -241,4 +226,19 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
         ),
         returnValue: _i5.Future<String>.value(''),
       ) as _i5.Future<String>);
+  @override
+  _i5.Future<dynamic> confirmAttendance(
+    String? confirmAttendanceCode,
+    String? activityCode,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #confirmAttendance,
+          [
+            confirmAttendanceCode,
+            activityCode,
+          ],
+        ),
+        returnValue: _i5.Future<dynamic>.value(),
+      ) as _i5.Future<dynamic>);
 }

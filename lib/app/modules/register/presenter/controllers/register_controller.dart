@@ -135,9 +135,10 @@ abstract class RegisterControllerBase with Store {
 
   @action
   String? validateName(String? value) {
-    if (value!.isEmpty) {
+    List<String> words = value!.trim().split(' ');
+    if (value.isEmpty) {
       return S.current.fieldRequired;
-    } else if (value.split(' ').length < 2) {
+    } else if (value.split(' ').length < 2 || words.length < 2) {
       return 'Insira seu nome completo';
     }
     return null;
