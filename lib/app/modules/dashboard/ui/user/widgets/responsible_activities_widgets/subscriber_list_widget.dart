@@ -35,8 +35,16 @@ class SubscriberListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width < breakpointTablet ? 400 : 570,
-      height: MediaQuery.of(context).size.width < breakpointTablet ? 300 : 430,
+      width: MediaQuery.of(context).size.width < breakpointLMobile
+          ? 320
+          : MediaQuery.of(context).size.width > breakpointTablet
+              ? 570
+              : 400,
+      height: MediaQuery.of(context).size.width < breakpointLMobile
+          ? 300
+          : MediaQuery.of(context).size.width > breakpointTablet
+              ? 430
+              : 300,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           border: Border.all(width: 4, color: AppColors.brandingOrange)),
@@ -49,39 +57,59 @@ class SubscriberListWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: 224,
+                width: MediaQuery.of(context).size.width > breakpointLMobile
+                    ? 224
+                    : 180,
                 child: Row(
                   children: [
                     SizedBox(
-                      width:
-                          MediaQuery.of(context).size.width < breakpointTablet
-                              ? 5
-                              : 78,
+                      width: MediaQuery.of(context).size.width <
+                              breakpointLMobile
+                          ? 10
+                          : MediaQuery.of(context).size.width > breakpointTablet
+                              ? 78
+                              : 5,
                     ),
                     Text(S.of(context).absenceTitle,
-                        style: AppTextStyles.bold
-                            .copyWith(fontSize: 20, color: Colors.black)),
+                        style: AppTextStyles.bold.copyWith(
+                            fontSize: MediaQuery.of(context).size.width <
+                                    breakpointLMobile
+                                ? 15
+                                : 20,
+                            color: Colors.black)),
                     SizedBox(
-                      width:
-                          MediaQuery.of(context).size.width < breakpointTablet
-                              ? 10
-                              : 20,
+                      width: MediaQuery.of(context).size.width <
+                              breakpointLMobile
+                          ? 12
+                          : MediaQuery.of(context).size.width > breakpointTablet
+                              ? 20
+                              : 10,
                     ),
                     Text(S.of(context).presenceTitle,
-                        style: AppTextStyles.bold
-                            .copyWith(fontSize: 20, color: Colors.black)),
+                        style: AppTextStyles.bold.copyWith(
+                            fontSize: MediaQuery.of(context).size.width <
+                                    breakpointLMobile
+                                ? 15
+                                : 20,
+                            color: Colors.black)),
                   ],
                 ),
               ),
               Row(
                 children: [
                   Text(S.of(context).namesTitle,
-                      style: AppTextStyles.bold
-                          .copyWith(fontSize: 20, color: Colors.black)),
+                      style: AppTextStyles.bold.copyWith(
+                          fontSize: MediaQuery.of(context).size.width <
+                                  breakpointLMobile
+                              ? 15
+                              : 20,
+                          color: Colors.black)),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width < breakpointTablet
-                        ? 104
-                        : 180,
+                    width: MediaQuery.of(context).size.width < breakpointLMobile
+                        ? 84
+                        : MediaQuery.of(context).size.width < breakpointTablet
+                            ? 104
+                            : 200,
                   )
                 ],
               )
@@ -95,12 +123,12 @@ class SubscriberListWidget extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width < breakpointTablet
-                ? 400
-                : 570,
-            height: MediaQuery.of(context).size.width < breakpointTablet
-                ? 242
-                : 360,
+            width: MediaQuery.of(context).size.width > breakpointTablet
+                ? 570
+                : 400,
+            height: MediaQuery.of(context).size.width > breakpointTablet
+                ? 360
+                : 242,
             child: ListView.builder(
               itemCount: listViewItemCount,
               itemBuilder: (BuildContext context, int index) {
@@ -108,9 +136,9 @@ class SubscriberListWidget extends StatelessWidget {
                   children: [
                     Container(
                       width:
-                          MediaQuery.of(context).size.width < breakpointTablet
-                              ? 400
-                              : 440,
+                          MediaQuery.of(context).size.width > breakpointTablet
+                              ? 440
+                              : 400,
                       decoration: BoxDecoration(
                         color: professorList[index].state !=
                                 EnrollmentStateEnum.IN_QUEUE
@@ -122,59 +150,75 @@ class SubscriberListWidget extends StatelessWidget {
                         children: [
                           Observer(
                             builder: (_) {
-                              return SizedBox(
-                                  width: MediaQuery.of(context).size.width <
-                                          breakpointTablet
-                                      ? 100
-                                      : 50,
-                                  child: enrollmentsList
-                                              .enrollments![index].state !=
-                                          EnrollmentStateEnum.IN_QUEUE
-                                      ? Observer(builder: (_) {
-                                          return Switch(
-                                            value:
-                                                professorList[index].isSwitched,
-                                            onChanged: (value) {
-                                              onChangedIsSwitched(value, index);
-                                            },
-                                            activeColor: Colors.green,
-                                            inactiveThumbColor: Colors.red,
-                                            inactiveTrackColor:
-                                                Colors.red.withOpacity(0.5),
-                                            activeTrackColor:
-                                                Colors.green.withOpacity(0.5),
-                                          );
-                                        })
-                                      : Padding(
-                                          padding: EdgeInsets.only(
-                                              left: MediaQuery.of(context)
-                                                          .size
-                                                          .width <
-                                                      breakpointTablet
-                                                  ? 26
-                                                  : 2),
-                                          child: Text("Na fila",
-                                              style: AppTextStyles.bold
-                                                  .copyWith(
-                                                      color: AppColors
-                                                          .brandingOrange,
-                                                      fontSize: 16)),
-                                        ));
+                              return Observer(builder: (_) {
+                                return SizedBox(
+                                    width: MediaQuery.of(context).size.width <
+                                            breakpointLMobile
+                                        ? 80
+                                        : MediaQuery.of(context).size.width >
+                                                breakpointTablet
+                                            ? 50
+                                            : 100,
+                                    child: enrollmentsList
+                                                .enrollments![index].state !=
+                                            EnrollmentStateEnum.IN_QUEUE
+                                        ? Observer(builder: (_) {
+                                            return Switch(
+                                              value: professorList[index]
+                                                  .isSwitched,
+                                              onChanged: (value) {
+                                                onChangedIsSwitched(
+                                                    value, index);
+                                              },
+                                              activeColor: Colors.green,
+                                              inactiveThumbColor: Colors.red,
+                                              inactiveTrackColor:
+                                                  Colors.red.withOpacity(0.5),
+                                              activeTrackColor:
+                                                  Colors.green.withOpacity(0.5),
+                                            );
+                                          })
+                                        : Padding(
+                                            padding: EdgeInsets.only(
+                                                left: MediaQuery.of(context)
+                                                            .size
+                                                            .width >
+                                                        breakpointTablet
+                                                    ? 2
+                                                    : 26),
+                                            child: Text("Na fila",
+                                                style: AppTextStyles.bold
+                                                    .copyWith(
+                                                        color: AppColors
+                                                            .brandingOrange,
+                                                        fontSize: 16)),
+                                          ));
+                              });
                             },
                           ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width <
-                                    breakpointTablet
-                                ? 270
-                                : 240,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              enrollmentsList
-                                  .enrollments![index].userEnroll!.name,
-                              style: AppTextStyles.bold
-                                  .copyWith(fontSize: 30, color: Colors.black),
-                            ),
-                          ),
+                          Observer(builder: (_) {
+                            return SizedBox(
+                              width: MediaQuery.of(context).size.width <
+                                      breakpointLMobile
+                                  ? 200
+                                  : MediaQuery.of(context).size.width >
+                                          breakpointTablet
+                                      ? 240
+                                      : 270,
+                              child: Text(
+                                textAlign: TextAlign.center,
+                                enrollmentsList
+                                    .enrollments![index].userEnroll!.name,
+                                style: AppTextStyles.bold.copyWith(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width <
+                                                breakpointLMobile
+                                            ? 20
+                                            : 30,
+                                    color: Colors.black),
+                              ),
+                            );
+                          }),
                         ],
                       ),
                     ),

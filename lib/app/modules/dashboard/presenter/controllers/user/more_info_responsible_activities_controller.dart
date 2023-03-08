@@ -116,9 +116,11 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
     setIsLoading(true);
     professorList[index].toogleSwitch(value);
     if (professorList[index].state == EnrollmentStateEnum.ENROLLED) {
+      professorList[index].state = EnrollmentStateEnum.COMPLETED;
       await postManualChangeAttendence(activityCode,
           professorList[index].userId, EnrollmentStateEnum.COMPLETED);
     } else {
+      professorList[index].state = EnrollmentStateEnum.ENROLLED;
       await postManualChangeAttendence(activityCode,
           professorList[index].userId, EnrollmentStateEnum.ENROLLED);
     }
