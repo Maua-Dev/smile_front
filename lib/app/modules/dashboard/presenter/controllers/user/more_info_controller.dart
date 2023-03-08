@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/use
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
 import '../../../../../shared/utils/utils.dart';
+import '../../../infra/models/speaker_activity_model.dart';
 
 part 'more_info_controller.g.dart';
 

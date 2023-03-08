@@ -137,7 +137,8 @@ class AttendanceConfirmationWidget extends StatelessWidget {
         ),
       );
     }
-    if (enrollmentState == EnrollmentStateEnum.NONE) {
+    if (enrollmentState == EnrollmentStateEnum.NONE ||
+        enrollmentState == EnrollmentStateEnum.IN_QUEUE) {
       return Container();
     }
     return Container(

@@ -331,7 +331,9 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                   );
                                                 },
                                                 child: Text(
-                                                  'Inscrever-se',
+                                                  S
+                                                              .of(context)
+                                                              .signUp,
                                                   style: AppTextStyles.bold.copyWith(
                                                       fontSize: MediaQuery.of(
                                                                       context)

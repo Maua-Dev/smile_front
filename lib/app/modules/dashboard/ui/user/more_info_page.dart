@@ -142,6 +142,8 @@ class _MoreInfoPageState
                           width: 163,
                           height: 32,
                           child: RegisterButtonWidget(
+                              activityIsFull: controller.activity.takenSlots >=
+                                  controller.activity.totalSlots,
                               isLoading: controller.isLoading,
                               isRegistered:
                                   controller.activity.enrollments == null
@@ -203,15 +205,45 @@ class _MoreInfoPageState
                                       },
                                     );
                                   } else if (controller.activity.takenSlots >=
+                                          controller.activity.totalSlots &&
+                                      controller.activity.enrollments != null) {
+                                    if (controller
+                                            .activity.enrollments!.state ==
+                                        EnrollmentStateEnum.IN_QUEUE) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return ActionConfirmationDialogWidget(
+                                              isLoading: controller.isLoading,
+                                              title:
+                                                  S.of(context).InQueueContent,
+                                              content: S
+                                                  .of(context)
+                                                  .exitQueueConfimation,
+                                              onPressed: () {
+                                                controller
+                                                    .unsubscribeUserActivity();
+                                                Modular.to.pop();
+                                              });
+                                        },
+                                      );
+                                    }
+                                  } else if (controller.activity.takenSlots >=
                                       controller.activity.totalSlots) {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) {
-                                        return CustomAlertDialogWidget(
-                                          title: S
-                                              .of(context)
-                                              .availabeSpotUnsuficient,
-                                        );
+                                        return ActionConfirmationDialogWidget(
+                                            isLoading: controller.isLoading,
+                                            title: S.of(context).joinQueueTitle,
+                                            content: S
+                                                .of(context)
+                                                .joinQueueConfimation,
+                                            onPressed: () {
+                                              controller
+                                                  .subscribeUserActivity();
+                                              Modular.to.pop();
+                                            });
                                       },
                                     );
                                   } else if (isReg !=

@@ -7,11 +7,13 @@ import '../../../../../shared/themes/app_text_styles.dart';
 
 class RegisterButtonWidget extends StatelessWidget {
   final EnrollmentStateEnum isRegistered;
+  final bool activityIsFull;
   final bool isLoading;
   final Function()? onPressed;
   const RegisterButtonWidget(
       {Key? key,
       required this.isRegistered,
+      required this.activityIsFull,
       this.onPressed,
       required this.isLoading})
       : super(key: key);
@@ -40,7 +42,11 @@ class RegisterButtonWidget extends StatelessWidget {
             : Text(
                 isRegistered == EnrollmentStateEnum.ENROLLED
                     ? S.of(context).unsubscribe
-                    : S.of(context).signUp,
+                    : isRegistered == EnrollmentStateEnum.IN_QUEUE
+                        ? S.of(context).inQueueTitle
+                        : activityIsFull
+                            ? S.of(context).joinQueueTitle
+                            : S.of(context).signUp,
                 style: AppTextStyles.buttonBold.copyWith(
                     fontSize: MediaQuery.of(context).size.width < 500 ? 16 : 18,
                     color: Colors.white)));
