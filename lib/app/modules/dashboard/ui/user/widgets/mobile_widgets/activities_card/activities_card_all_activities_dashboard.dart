@@ -331,9 +331,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                   );
                                                 },
                                                 child: Text(
-                                                  S
-                                                              .of(context)
-                                                              .signUp,
+                                                  S.of(context).signUp,
                                                   style: AppTextStyles.bold.copyWith(
                                                       fontSize: MediaQuery.of(
                                                                       context)
