@@ -130,6 +130,15 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
+  Future<AdminActivityModel> manualDropActivity(
+      String activityCode, String userId) async {
+    var body = {'code': activityCode, 'user_id': userId};
+    var res = await middleware(
+        url: '/manual-drop-activity', data: body, http: 'post');
+    return AdminActivityModel.fromMap(res.data['activity_with_enrollments']);
+  }
+
+  @override
   Future<EnrollmentsModel> postSubscribe(String activityCode) async {
     var body = {'code': activityCode};
     var res =
@@ -139,7 +148,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         state: EnrollmentStateEnumExtension.stringToEnumMap(res.data['state']),
         dateSubscribed:
             DateTime.fromMillisecondsSinceEpoch(res.data['date_subscribed']),
-        acceptingNewEnrollments: res.data['accepting_new_enrollments'] ?? false,
       );
     }
     return EnrollmentsModel.newInstance();

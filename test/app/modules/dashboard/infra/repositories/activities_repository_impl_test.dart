@@ -127,9 +127,9 @@ void main() {
     when(datasource.deleteActivity('')).thenAnswer((_) async => null);
     when(datasource.postUnsubscribe('')).thenAnswer((_) async => true);
     when(datasource.postSubscribe('')).thenAnswer((_) async => EnrollmentsModel(
-        state: EnrollmentStateEnum.ENROLLED,
-        dateSubscribed: DateTime.now(),
-        acceptingNewEnrollments: true));
+          state: EnrollmentStateEnum.ENROLLED,
+          dateSubscribed: DateTime.now(),
+        ));
     when(datasource.createActivity(ActivityModel.newInstance()))
         .thenAnswer((_) async => null);
     // when(datasource.getAllActivitiesLogged())

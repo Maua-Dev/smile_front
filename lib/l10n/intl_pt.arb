@@ -151,7 +151,7 @@
     "codeInEmailInstructionsTitle": "Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.",
     "sendTitle": "Enviar",
     "returnLogin": "Voltar ao login",
-    "errorEmailInstructionsTitle": "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n",
+    "errorEmailInstructionsTitle": "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu e-mail no campo abaixo:\n",
     
     "presenceValidateTitle": "Validar Presença",
     
@@ -207,6 +207,8 @@
 
     "noActivitiesEnrolledText": "Parece que você ainda não se inscreveu em nenhuma atividade :(",
     "noResponsibleActivitiesText": "Parece que você não é responsável por nenhuma atividade :(",
+
+    "namesTitle": "Nomes",
 
 
     "yesTitle": "Sim",
