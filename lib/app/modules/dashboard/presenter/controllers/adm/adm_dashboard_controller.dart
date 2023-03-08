@@ -59,6 +59,14 @@ abstract class AdmDashboardControllerBase with Store {
   }
 
   @observable
+  bool isManualDropLoading = false;
+
+  @action
+  Future<void> setManualDropIsLoading(bool value) async {
+    isManualDropLoading = value;
+  }
+
+  @observable
   bool isFloatActionButtonOpen = false;
 
   @observable
@@ -183,9 +191,9 @@ abstract class AdmDashboardControllerBase with Store {
 
   @action
   Future dropActivity(String activityCode, String userId) async {
-    setIsLoading(true);
+    setManualDropIsLoading(true);
     await manualDropActivity(activityCode, userId);
-    setIsLoading(false);
+    setManualDropIsLoading(false);
   }
 
   @action
