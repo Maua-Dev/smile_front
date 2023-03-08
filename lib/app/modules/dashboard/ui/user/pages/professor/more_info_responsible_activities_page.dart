@@ -400,6 +400,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                             cursor: SystemMouseCursors.click,
                             child: GestureDetector(
                               onTap: () {
+                                controller.generateNewAtendanceCode();
                                 controller.showToken();
                               },
                               child: Observer(builder: (_) {

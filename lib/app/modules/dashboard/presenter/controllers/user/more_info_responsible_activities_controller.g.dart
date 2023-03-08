@@ -27,6 +27,42 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
+  late final _$isLoadingAtendanceTokenAtom = Atom(
+      name:
+          'MoreInfoResponsibleActivitiesControllerBase.isLoadingAtendanceToken',
+      context: context);
+
+  @override
+  bool get isLoadingAtendanceToken {
+    _$isLoadingAtendanceTokenAtom.reportRead();
+    return super.isLoadingAtendanceToken;
+  }
+
+  @override
+  set isLoadingAtendanceToken(bool value) {
+    _$isLoadingAtendanceTokenAtom
+        .reportWrite(value, super.isLoadingAtendanceToken, () {
+      super.isLoadingAtendanceToken = value;
+    });
+  }
+
+  late final _$tokenAtom = Atom(
+      name: 'MoreInfoResponsibleActivitiesControllerBase.token',
+      context: context);
+
+  @override
+  String get token {
+    _$tokenAtom.reportRead();
+    return super.token;
+  }
+
+  @override
+  set token(String value) {
+    _$tokenAtom.reportWrite(value, super.token, () {
+      super.token = value;
+    });
+  }
+
   late final _$isSubscribedListVisibleAtom = Atom(
       name:
           'MoreInfoResponsibleActivitiesControllerBase.isSubscribedListVisible',
@@ -133,6 +169,16 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
+  late final _$generateNewAtendanceCodeAsyncAction = AsyncAction(
+      'MoreInfoResponsibleActivitiesControllerBase.generateNewAtendanceCode',
+      context: context);
+
+  @override
+  Future<void> generateNewAtendanceCode() {
+    return _$generateNewAtendanceCodeAsyncAction
+        .run(() => super.generateNewAtendanceCode());
+  }
+
   late final _$getProfessorActivitiesWithEnrollmentsAsyncAction = AsyncAction(
       'MoreInfoResponsibleActivitiesControllerBase.getProfessorActivitiesWithEnrollments',
       context: context);
@@ -167,6 +213,20 @@ mixin _$MoreInfoResponsibleActivitiesController
                     'MoreInfoResponsibleActivitiesControllerBase.setIsLoading');
     try {
       return super.setIsLoading(value);
+    } finally {
+      _$MoreInfoResponsibleActivitiesControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIsLoadingAtendanceCode(bool value) {
+    final _$actionInfo =
+        _$MoreInfoResponsibleActivitiesControllerBaseActionController.startAction(
+            name:
+                'MoreInfoResponsibleActivitiesControllerBase.setIsLoadingAtendanceCode');
+    try {
+      return super.setIsLoadingAtendanceCode(value);
     } finally {
       _$MoreInfoResponsibleActivitiesControllerBaseActionController
           .endAction(_$actionInfo);
@@ -234,6 +294,8 @@ mixin _$MoreInfoResponsibleActivitiesController
   String toString() {
     return '''
 isLoading: ${isLoading},
+isLoadingAtendanceToken: ${isLoadingAtendanceToken},
+token: ${token},
 isSubscribedListVisible: ${isSubscribedListVisible},
 isTokenVisible: ${isTokenVisible},
 isIconSelected: ${isIconSelected},

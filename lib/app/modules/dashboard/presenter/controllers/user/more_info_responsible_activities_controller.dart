@@ -62,10 +62,14 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   }
 
   @action
-  void generateNewAtendanceCode() async {
+  Future<void> generateNewAtendanceCode() async {
+    print('Entrou na função');
     setIsLoadingAtendanceCode(true);
+    print('isLoadingTrue');
     token = await generateConfirmationCode(activityCode);
+    print('Generate coisa');
     setIsLoadingAtendanceCode(false);
+    print('IsLoading false');
   }
 
   @observable

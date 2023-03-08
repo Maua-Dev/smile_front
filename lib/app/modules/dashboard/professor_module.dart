@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/generate_confirmation_code.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_responsible_activities_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/professor/responsible_activities_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/pages/professor/more_info_responsible_activities_page.dart';
@@ -19,6 +20,10 @@ class ProfessorModule extends Module {
             generateConfirmationCode: i(),
             activityCode: i.args!.data as String,
             getActivitiesWithEnrollments: i())),
+    Bind.lazySingleton<GenerateConfirmationCodeInterface>(
+        (i) => GenerateConfirmationCodeImpl(
+              repository: i(),
+            )),
   ];
 
   @override

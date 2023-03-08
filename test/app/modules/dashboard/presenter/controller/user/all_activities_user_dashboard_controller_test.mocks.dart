@@ -274,6 +274,15 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i12.Future<bool>.value(false),
       ) as _i12.Future<bool>);
   @override
+  _i12.Future<String> generateConfirmationCode(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #generateConfirmationCode,
+          [activityCode],
+        ),
+        returnValue: _i12.Future<String>.value(''),
+      ) as _i12.Future<String>);
+  @override
   _i12.Future<dynamic> postManualChangeAttendance(
     String? activityCode,
     String? userId,
