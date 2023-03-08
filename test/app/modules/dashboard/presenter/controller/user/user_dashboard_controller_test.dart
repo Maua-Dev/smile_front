@@ -26,6 +26,8 @@ import 'user_dashboard_controller_test.mocks.dart';
   UserRepositoryInterface,
   FirebaseAnalyticsService,
   ChangeDataInterface,
+  SubscribeActivityInterface,
+  UnsubscribeActivityInterface
 ])
 void main() {
   initModule(AppModule());

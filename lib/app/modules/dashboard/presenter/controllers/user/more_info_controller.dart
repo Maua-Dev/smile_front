@@ -14,10 +14,10 @@ class MoreInfoController = MoreInfoControllerBase with _$MoreInfoController;
 abstract class MoreInfoControllerBase with Store {
   final UserEnrollmentController enrollmentController;
   final String activityCode;
-  final ConfirmAttendanceUsecase sendConfirmAttendanceUseCase;
+  final ConfirmAttendanceUsecase sendConfirmAttendanceUsecase;
 
   MoreInfoControllerBase({
-    required this.sendConfirmAttendanceUseCase,
+    required this.sendConfirmAttendanceUsecase,
     required this.enrollmentController,
     required this.activityCode,
   }) {
@@ -141,7 +141,7 @@ abstract class MoreInfoControllerBase with Store {
   @action
   Future<void> onConfirmCode(String code) async {
     setIsLoadingConfirmAttendance(true);
-    await sendConfirmAttendanceUseCase(code, activityCode);
+    await sendConfirmAttendanceUsecase(code, activityCode);
     setIsLoadingConfirmAttendance(false);
   }
 }

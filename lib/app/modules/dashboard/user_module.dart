@@ -109,7 +109,7 @@ class UserModule extends Module {
         export: true),
     Bind.lazySingleton<MoreInfoController>(
         (i) => MoreInfoController(
-              sendConfirmAttendanceUseCase: i(),
+              sendConfirmAttendanceUsecase: i(),
               enrollmentController: i(),
               activityCode: i.args!.data as String,
             ),
