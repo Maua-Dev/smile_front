@@ -532,6 +532,26 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  _i9.Future<void> subscribeUserActivity(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #subscribeUserActivity,
+          [activityCode],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+  @override
+  _i9.Future<void> unsubscribeUserActivity(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #unsubscribeUserActivity,
+          [activityCode],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+  @override
   void setDateFilter(DateTime? value) => super.noSuchMethod(
         Invocation.method(
           #setDateFilter,

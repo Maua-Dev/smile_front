@@ -12,6 +12,8 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_admin_acti
     as _i5;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart'
     as _i2;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/manual_drop_activity.dart'
+    as _i7;
 import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i6;
 
 // ignore_for_file: type=lint
@@ -81,4 +83,30 @@ class MockGetAdminActivitiesInterface extends _i1.Mock
         returnValue: _i3.Future<List<_i6.AdminActivityModel>>.value(
             <_i6.AdminActivityModel>[]),
       ) as _i3.Future<List<_i6.AdminActivityModel>>);
+}
+
+/// A class which mocks [ManualDropActivityInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockManualDropActivityInterface extends _i1.Mock
+    implements _i7.ManualDropActivityInterface {
+  MockManualDropActivityInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<dynamic> call(
+    String? activityCode,
+    String? userId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [
+            activityCode,
+            userId,
+          ],
+        ),
+        returnValue: _i3.Future<dynamic>.value(),
+      ) as _i3.Future<dynamic>);
 }
