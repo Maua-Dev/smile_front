@@ -232,4 +232,13 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
         ),
         returnValue: _i5.Future<String>.value(''),
       ) as _i5.Future<String>);
+  @override
+  _i5.Future<String> generateConfirmationCode(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #generateConfirmationCode,
+          [activityCode],
+        ),
+        returnValue: _i5.Future<String>.value(''),
+      ) as _i5.Future<String>);
 }

@@ -190,4 +190,11 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         enrollments: enrollmentsList);
     return Future.value(requestDone);
   }
+
+  @override
+  Future<String> generateConfirmationCode(String activityCode) async {
+    var response = await datasource.generateConfirmationCode(activityCode);
+
+    return Future.value(response);
+  }
 }

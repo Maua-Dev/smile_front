@@ -13,7 +13,7 @@ import 'package:smile_front/app/shared/utils/utils.dart';
 import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../widgets/responsible_activities_widgets/token_generate_widget.dart';
+import '../../widgets/responsible_activities_widgets/confirmation_code_generate_widget.dart';
 
 class MoreInfoResponsibleActivitiesPage extends StatefulWidget {
   const MoreInfoResponsibleActivitiesPage({super.key});
@@ -462,7 +462,8 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                           Observer(
                               builder: (_) => Visibility(
                                   visible: controller.isTokenVisible,
-                                  child: const TokenGenerateWidget())),
+                                  child: TokenGenerateWidget(
+                                      confirmationCode: controller.token))),
                         ],
                       ),
                     );

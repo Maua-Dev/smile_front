@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/generate_confirmation_code.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_activities_with_enrollments.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/post_manual_change_attendance.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_activities_widgets/list_name_and_state_with_is_switched.dart';
@@ -14,20 +15,34 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   final String activityCode;
   final GetActivitiesWithEnrollmentsInterface getActivitiesWithEnrollments;
   final PostManualChangeAttendenceInterface postManualChangeAttendence;
+  final GenerateConfirmationCodeInterface generateConfirmationCode;
 
-  MoreInfoResponsibleActivitiesControllerBase(
-      {required this.activityCode,
-      required this.postManualChangeAttendence,
-      required this.getActivitiesWithEnrollments}) {
+  MoreInfoResponsibleActivitiesControllerBase({
+    required this.activityCode,
+    required this.postManualChangeAttendence,
+    required this.getActivitiesWithEnrollments,
+    required this.generateConfirmationCode,
+  }) {
     getProfessorActivitiesWithEnrollments();
   }
 
   @observable
   bool isLoading = false;
 
+  @observable
+  bool isLoadingAtendanceToken = false;
+
+  @observable
+  String token = '';
+
   @action
   void setIsLoading(bool value) {
     isLoading = !isLoading;
+  }
+
+  @action
+  void setIsLoadingAtendanceCode(bool value) {
+    isLoadingAtendanceToken = value;
   }
 
   @observable
@@ -44,6 +59,13 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @action
   void showToken() {
     isTokenVisible = !isTokenVisible;
+  }
+
+  @action
+  void generateNewAtendanceCode() async {
+    setIsLoadingAtendanceCode(true);
+    token = await generateConfirmationCode(activityCode);
+    setIsLoadingAtendanceCode(false);
   }
 
   @observable

@@ -212,4 +212,15 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     }
     throw Exception();
   }
+
+  @override
+  Future<String> generateConfirmationCode(String activityCode) async {
+    var body = {'code': activityCode};
+    var response = await middleware(
+        url: '/generate-attendance-confirmation', data: body, http: 'post');
+    if (response.statusCode == 200) {
+      return response.data['confirmation_code'];
+    }
+    throw Exception();
+  }
 }
