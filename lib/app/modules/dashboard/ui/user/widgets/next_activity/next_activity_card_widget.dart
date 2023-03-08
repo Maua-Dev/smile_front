@@ -7,6 +7,7 @@ import 'dart:math' as math;
 import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
+import '../../../../../../shared/themes/breakpoint.dart';
 
 class NextActivityCardWidget extends StatelessWidget {
   final String name;
@@ -41,7 +42,9 @@ class NextActivityCardWidget extends StatelessWidget {
         ? ''
         : Utils.getActivityFinalTime(date!, duration!);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: MediaQuery.of(context).size.width < breakpointLMobile
+          ? const EdgeInsets.symmetric(horizontal: 8, vertical: 16)
+          : const EdgeInsets.symmetric(horizontal: 0, vertical: 16),
       child: GestureDetector(
         onTap: onTap,
         child: Container(

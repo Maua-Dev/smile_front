@@ -145,4 +145,10 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
     }
     return Future.value(admActivitiesList);
   }
+
+  @override
+  Future confirmAttendance(String confirmAttendanceCode, String activityCode) {
+    var res = datasource.confirmAttendance(confirmAttendanceCode, activityCode);
+    return Future.value(res);
+  }
 }
