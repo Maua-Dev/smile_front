@@ -108,6 +108,9 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
     setIsLoading(false);
   }
 
+  @observable
+  bool isButtonLoading = false;
+
   @action
   Future<void> toogleListSwitch(bool value, int index) async {
     setIsLoading(true);
