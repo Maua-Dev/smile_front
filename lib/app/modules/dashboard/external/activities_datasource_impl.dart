@@ -65,7 +65,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         }
       }
       showErrorSnackBar(errorMessage: e.response!.data);
-      rethrow;
+      return e.response!;
     }
   }
 
@@ -185,12 +185,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future postConfirmAttendance(
-      String activityCode, String confirmationCode) async {
-    await middleware(url: '/confirm-attendance', http: 'post');
-  }
-
-  @override
   Future postDeleteAttendanceConfirmation(String activityCode) async {
     await middleware(url: '/delete-attendance-confirmation', http: 'post');
   }
@@ -215,5 +209,16 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
           res.data['activity_with_enrollments']);
     }
     throw Exception();
+  }
+
+  @override
+  Future confirmAttendance(
+      String confirmAttendanceCode, String activityCode) async {
+    var body = {
+      'code': activityCode,
+      'confirmation_code': confirmAttendanceCode
+    };
+
+    await middleware(url: '/confirm-attendance', http: 'post', data: body);
   }
 }

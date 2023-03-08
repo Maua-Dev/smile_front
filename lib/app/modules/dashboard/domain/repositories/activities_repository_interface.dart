@@ -13,4 +13,5 @@ abstract class ActivitiesRepositoryInterface {
   Future manualDropActivity(String activityCode, String userId);
   Future<bool> subscribeActivity(String activityCode);
   Future<bool> unsubscribeActivity(String activityCode);
+  Future confirmAttendance(String confirmAttendanceCode, String activityCode);
 }

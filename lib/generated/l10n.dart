@@ -1574,6 +1574,16 @@ class S {
     );
   }
 
+  /// `Data`
+  String get dayTitle {
+    return Intl.message(
+      'Data',
+      name: 'dayTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Schedule`
   String get scheduleTitle {
     return Intl.message(

@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/certificat
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_certificates.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/send_confirm_attendance.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/external/certificate_datasource_impl.dart';
@@ -108,6 +109,7 @@ class UserModule extends Module {
         export: true),
     Bind.lazySingleton<MoreInfoController>(
         (i) => MoreInfoController(
+              sendConfirmAttendanceUsecase: i(),
               enrollmentController: i(),
               activityCode: i.args!.data as String,
             ),
@@ -120,6 +122,8 @@ class UserModule extends Module {
         (i) => CertificateController(getUserCertificates: i())),
     Bind.lazySingleton<GetUserCertificatesInterface>(
         (i) => GetUserCertificates(repository: i())),
+    Bind.lazySingleton<SendConfirmAttendance>(
+        (i) => SendConfirmAttendance(repository: i())),
   ];
 
   @override
