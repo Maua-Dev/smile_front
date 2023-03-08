@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_attendance_confirmation.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/generate_confirmation_code.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_activities_with_enrollments.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/post_manual_change_attendance.dart';
@@ -16,12 +17,14 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   final GetActivitiesWithEnrollmentsInterface getActivitiesWithEnrollments;
   final PostManualChangeAttendenceInterface postManualChangeAttendence;
   final GenerateConfirmationCodeInterface generateConfirmationCode;
+  final DeleteAtendanceConfirmationCodeInterface deleteConfirmationCode;
 
   MoreInfoResponsibleActivitiesControllerBase({
     required this.activityCode,
     required this.postManualChangeAttendence,
     required this.getActivitiesWithEnrollments,
     required this.generateConfirmationCode,
+    required this.deleteConfirmationCode,
   }) {
     getProfessorActivitiesWithEnrollments();
   }
@@ -33,7 +36,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   bool isLoadingAtendanceToken = false;
 
   @observable
-  String token = '';
+  String? token;
 
   @action
   void setIsLoading(bool value) {
@@ -64,11 +67,15 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @action
   Future<void> generateNewAtendanceCode() async {
     setIsLoadingAtendanceCode(true);
-    print('isLoadingTrue');
     token = await generateConfirmationCode(activityCode);
-    print('Generate coisa');
     setIsLoadingAtendanceCode(false);
-    print('IsLoading false');
+  }
+
+  @action
+  Future<void> deleteOldAttendanceCode() async {
+    setIsLoadingAtendanceCode(true);
+    token = await deleteConfirmationCode(activityCode);
+    setIsLoadingAtendanceCode(false);
   }
 
   @observable

@@ -203,4 +203,10 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
     var res = datasource.confirmAttendance(confirmAttendanceCode, activityCode);
     return Future.value(res);
   }
+
+  @override
+  Future<String> deleteAtendanceCode(String activityCode) async {
+    var response = await datasource.deleteAttendanceCode(activityCode);
+    return Future.value(response);
+  }
 }

@@ -357,7 +357,6 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                   onChangedIsSwitched: (bool value, int index) {
                                     controller.toogleListSwitch(value, index);
                                   },
-                    
                                   professorList: controller.professorList,
                                   enrollmentsList: controller
                                       .professorActivitiesWithEnrollments,
@@ -402,7 +401,11 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                             cursor: SystemMouseCursors.click,
                             child: GestureDetector(
                               onTap: () {
-                                controller.generateNewAtendanceCode();
+                                if (controller.isTokenVisible == false) {
+                                  controller.generateNewAtendanceCode();
+                                } else {
+                                  controller.deleteOldAttendanceCode();
+                                }
                                 controller.showToken();
                               },
                               child: Observer(builder: (_) {

@@ -228,4 +228,15 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
 
     await middleware(url: '/confirm-attendance', http: 'post', data: body);
   }
+
+  @override
+  Future deleteAttendanceCode(String activityCode) async {
+    var body = {'code': activityCode};
+    var response = await middleware(
+        url: '/delete-attendance-confirmation', data: body, http: 'post');
+    if (response.statusCode == 200) {
+      return response.data['confirmation_code'];
+    }
+    throw Exception();
+  }
 }

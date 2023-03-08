@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_attendance_confirmation.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/generate_confirmation_code.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_responsible_activities_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/professor/responsible_activities_controller.dart';
@@ -19,9 +20,14 @@ class ProfessorModule extends Module {
             postManualChangeAttendence: i(),
             generateConfirmationCode: i(),
             activityCode: i.args!.data as String,
-            getActivitiesWithEnrollments: i())),
+            getActivitiesWithEnrollments: i(),
+            deleteConfirmationCode: i())),
     Bind.lazySingleton<GenerateConfirmationCodeInterface>(
         (i) => GenerateConfirmationCodeImpl(
+              repository: i(),
+            )),
+    Bind.lazySingleton<DeleteAtendanceConfirmationCodeInterface>(
+        (i) => DeleteAtendanceConfirmationCodeImpl(
               repository: i(),
             )),
   ];

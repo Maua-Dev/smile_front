@@ -22,4 +22,5 @@ abstract class ActivitiesDatasourceInterface {
   Future<String> getLinkCsv();
   Future<String> generateConfirmationCode(String activityCode);
   Future confirmAttendance(String confirmAttendanceCode, String activityCode);
+  Future deleteAttendanceCode(String activityCode);
 }
