@@ -169,12 +169,29 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
+  late final _$isButtonLoadingAtom = Atom(
+      name: 'MoreInfoResponsibleActivitiesControllerBase.isButtonLoading',
+      context: context);
+
+  @override
+  bool get isButtonLoading {
+    _$isButtonLoadingAtom.reportRead();
+    return super.isButtonLoading;
+  }
+
+  @override
+  set isButtonLoading(bool value) {
+    _$isButtonLoadingAtom.reportWrite(value, super.isButtonLoading, () {
+      super.isButtonLoading = value;
+    });
+  }
+
   late final _$generateNewAtendanceCodeAsyncAction = AsyncAction(
       'MoreInfoResponsibleActivitiesControllerBase.generateNewAtendanceCode',
       context: context);
 
   @override
-  Future generateNewAtendanceCode() {
+  Future<void> generateNewAtendanceCode() {
     return _$generateNewAtendanceCodeAsyncAction
         .run(() => super.generateNewAtendanceCode());
   }
@@ -301,7 +318,8 @@ isTokenVisible: ${isTokenVisible},
 isIconSelected: ${isIconSelected},
 isSwitched: ${isSwitched},
 professorList: ${professorList},
-professorActivitiesWithEnrollments: ${professorActivitiesWithEnrollments}
+professorActivitiesWithEnrollments: ${professorActivitiesWithEnrollments},
+isButtonLoading: ${isButtonLoading}
     ''';
   }
 }

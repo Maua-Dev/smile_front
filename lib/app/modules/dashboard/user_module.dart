@@ -8,6 +8,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_activities
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_certificates.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/post_manual_change_attendance.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/send_confirm_attendance.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/external/certificate_datasource_impl.dart';
@@ -27,6 +28,7 @@ import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
+import '../auth/infra/auth_guards/auth_guard_professor.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/domain/usecases/login_with_email.dart';
 import '../auth/domain/usecases/refresh_token.dart';
@@ -116,6 +118,7 @@ class UserModule extends Module {
         export: true),
     Bind.lazySingleton<MoreInfoController>(
         (i) => MoreInfoController(
+              sendConfirmAttendanceUsecase: i(),
               enrollmentController: i(),
               activityCode: i.args!.data as String,
             ),
@@ -128,6 +131,8 @@ class UserModule extends Module {
         (i) => CertificateController(getUserCertificates: i())),
     Bind.lazySingleton<GetUserCertificatesInterface>(
         (i) => GetUserCertificates(repository: i())),
+    Bind.lazySingleton<SendConfirmAttendance>(
+        (i) => SendConfirmAttendance(repository: i())),
   ];
 
   @override
@@ -139,6 +144,7 @@ class UserModule extends Module {
     ChildRoute('/more-info', child: (_, args) => const MoreInfoPage()),
     ChildRoute('/help', child: (_, args) => const HelpPage()),
     ChildRoute('/certificate', child: (_, args) => const CertificatePage()),
-    ModuleRoute('/professor', module: ProfessorModule())
+    ModuleRoute('/professor',
+        module: ProfessorModule(), guards: [AuthGuardProfessor()])
   ];
 }

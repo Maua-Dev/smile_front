@@ -305,6 +305,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmToContinue": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to continue?"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Date"),
+        "dayTitle": MessageLookupByLibrary.simpleMessage("Data"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "drawerActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Activities"),
@@ -427,6 +428,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm your e-mail"),
         "registerEmailPlaceholder":
             MessageLookupByLibrary.simpleMessage("E-mail"),
+        "registerEmailProfessorConfirmationPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Confirm your e-mail Mauá"),
         "registerEmailProfessorPlaceholder":
             MessageLookupByLibrary.simpleMessage("Enter your email Mauá"),
         "registerFullNamePlaceholder":

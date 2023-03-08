@@ -15,11 +15,11 @@ abstract class ActivitiesDatasourceInterface {
   Future editActivity(String id, ActivityModel activity);
   Future createActivity(ActivityModel activity);
   Future deleteActivity(String activityCode);
-  Future postConfirmAttendance(String activityCode, String confirmationCode);
   Future<String> postGenerateAttendanceConfirmation(String activityCode);
   Future postDeleteAttendanceConfirmation(String activityCode);
   Future<ProfessorActivityModel> postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state);
   Future<String> getLinkCsv();
   Future<String> generateConfirmationCode(String activityCode);
+  Future confirmAttendance(String confirmAttendanceCode, String activityCode);
 }

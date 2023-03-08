@@ -299,6 +299,21 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         ),
         returnValue: _i12.Future<dynamic>.value(),
       ) as _i12.Future<dynamic>);
+  @override
+  _i12.Future<dynamic> confirmAttendance(
+    String? confirmAttendanceCode,
+    String? activityCode,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #confirmAttendance,
+          [
+            confirmAttendanceCode,
+            activityCode,
+          ],
+        ),
+        returnValue: _i12.Future<dynamic>.value(),
+      ) as _i12.Future<dynamic>);
 }
 
 /// A class which mocks [UserDashboardController].
@@ -614,6 +629,26 @@ class MockUserDashboardController extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+  @override
+  _i12.Future<void> subscribeUserActivity(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #subscribeUserActivity,
+          [activityCode],
+        ),
+        returnValue: _i12.Future<void>.value(),
+        returnValueForMissingStub: _i12.Future<void>.value(),
+      ) as _i12.Future<void>);
+  @override
+  _i12.Future<void> unsubscribeUserActivity(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #unsubscribeUserActivity,
+          [activityCode],
+        ),
+        returnValue: _i12.Future<void>.value(),
+        returnValueForMissingStub: _i12.Future<void>.value(),
+      ) as _i12.Future<void>);
   @override
   void setDateFilter(DateTime? value) => super.noSuchMethod(
         Invocation.method(
