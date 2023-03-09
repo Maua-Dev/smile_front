@@ -72,7 +72,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                   ? MediaQuery.of(context).size.width
                   : MediaQuery.of(context).size.width > breakpointTablet
                       ? 1165
-                      : 342,
+                      : 360,
               height: MediaQuery.of(context).size.width < breakpointTablet
                   ? 76
                   : 204,
@@ -111,8 +111,8 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                             children: [
                               SizedBox(
                                 width: MediaQuery.of(context).size.width <
-                                        breakpointMobile
-                                    ? 230
+                                        breakpointTablet
+                                    ? 200
                                     : null,
                                 child: Text(title,
                                     maxLines: 2,
@@ -146,9 +146,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                      location == null || location == ''
-                                          ? '${S.of(context).local}: Online'
-                                          : '${S.of(context).termination}: $finalTime',
+                                      '${S.of(context).termination}: $finalTime',
                                       style: AppTextStyles.bold.copyWith(
                                           fontSize: MediaQuery.of(context)
                                                       .size
@@ -159,7 +157,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                           color: Colors.black)),
                                   Row(
                                     children: [
-                                      Text('${S.of(context).local}: $location',
+                                      Text(
+                                          location == null || location == ''
+                                              ? '${S.of(context).local}: Online'
+                                              : '${S.of(context).local}: $location',
                                           style: AppTextStyles.bold.copyWith(
                                               fontSize: MediaQuery.of(context)
                                                           .size

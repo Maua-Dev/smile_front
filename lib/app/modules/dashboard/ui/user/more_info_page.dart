@@ -90,26 +90,29 @@ class _MoreInfoPageState
                                   color: AppColors.white, fontSize: 20))
                         ]),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    width: 78,
-                    height: 49,
-                    decoration: BoxDecoration(
-                        color: AppColors.brandingBlue,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(S.of(context).localTitle,
-                              style: AppTextStyles.bold.copyWith(
-                                  color: AppColors.white, fontSize: 12)),
-                          Text(controller.activity.place!,
-                              style: AppTextStyles.bold.copyWith(
-                                  color: AppColors.white, fontSize: 20))
-                        ]),
-                  ),
+                  if (controller.activity.place != null &&
+                      controller.activity.place != '') ...[
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: 78,
+                      height: 49,
+                      decoration: BoxDecoration(
+                          color: AppColors.brandingBlue,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(S.of(context).localTitle,
+                                style: AppTextStyles.bold.copyWith(
+                                    color: AppColors.white, fontSize: 12)),
+                            Text(controller.activity.place!,
+                                style: AppTextStyles.bold.copyWith(
+                                    color: AppColors.white, fontSize: 20))
+                          ]),
+                    ),
+                  ]
                 ],
               ),
             ),
@@ -131,9 +134,6 @@ class _MoreInfoPageState
                                   : 26),
                         )
                       : Center(
-                          child: SizedBox(
-                          width: 163,
-                          height: 32,
                           child: RegisterButtonWidget(
                               activityIsFull: controller.activity.takenSlots >=
                                   controller.activity.totalSlots,
@@ -278,8 +278,7 @@ class _MoreInfoPageState
                                     );
                                   }
                                 }
-                              }),
-                        ));
+                              }));
                 }),
                 ExtensionistWidget(
                     isExtensionist: controller.activity.isExtensive)
