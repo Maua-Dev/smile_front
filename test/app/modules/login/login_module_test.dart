@@ -16,7 +16,6 @@ void main() {
 
   setUpAll(() async {
     await Modular.isModuleReady<AuthModule>();
-    await Firebase.initializeApp();
   });
 
   test('LoginController Injection', () {

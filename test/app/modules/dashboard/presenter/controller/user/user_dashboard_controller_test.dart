@@ -289,7 +289,6 @@ void main() {
   var certificateWithSocialName = true;
 
   setUpAll(() async {
-    await Firebase.initializeApp();
     when(getUserActivities()).thenAnswer((_) async => mockActivities);
     when(secureStorage.getName()).thenAnswer((_) async => name);
     when(secureStorage.getSocialName()).thenAnswer((_) async => socialName);

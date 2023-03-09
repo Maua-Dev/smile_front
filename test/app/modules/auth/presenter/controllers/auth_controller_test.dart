@@ -46,7 +46,6 @@ void main() {
   var pwMock = '';
 
   setUpAll(() async {
-    await Firebase.initializeApp();
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
     when(loginWithEmail(emailMock, pwMock)).thenAnswer((_) async => userMock);
     when(storage.getRole()).thenAnswer((_) async => 'STUDENT');

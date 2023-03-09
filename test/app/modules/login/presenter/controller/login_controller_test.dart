@@ -35,7 +35,6 @@ void main() {
   late AuthController authController;
 
   setUpAll(() async {
-    await Firebase.initializeApp();
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
     authController = AuthController(
       refreshToken: refreshToken,

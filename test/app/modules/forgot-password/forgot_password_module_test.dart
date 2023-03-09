@@ -17,7 +17,6 @@ void main() {
 
   setUp(() async {
     await Modular.isModuleReady<AppModule>();
-    await Firebase.initializeApp();
   });
 
   test('ForgotPasswordController Injection', () {

@@ -15,9 +15,7 @@ void main() {
     AppModule(),
   ]);
 
-  setUpAll(() async {
-    await Firebase.initializeApp();
-  });
+  setUpAll(() async {});
 
   test('RegisterController Injection', () {
     Modular.get<RegisterController>();

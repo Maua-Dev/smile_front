@@ -24,7 +24,6 @@ void main() {
   RegisterUserInterface registerUser = MockRegisterUserInterface();
 
   setUpAll(() async {
-    await Firebase.initializeApp();
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
     controller = RegisterController(registerUser: registerUser);
   });

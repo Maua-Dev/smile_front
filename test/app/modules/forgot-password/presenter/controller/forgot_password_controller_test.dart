@@ -28,8 +28,6 @@ void main() {
   late ForgotPasswordController controller;
 
   setUpAll(() async {
-    await Firebase.initializeApp();
-
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
     when(forgotPassword('')).thenAnswer((_) async => '');
 

@@ -28,7 +28,6 @@ void main() {
   ];
 
   setUpAll(() async {
-    await Firebase.initializeApp();
     when(getAllFaqInformation()).thenAnswer((_) async => mockFaqList);
     controller = HelpController(
       getAllFaqInformation: getAllFaqInformation,

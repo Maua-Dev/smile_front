@@ -324,7 +324,6 @@ void main() {
   ];
 
   setUpAll(() async {
-    await Firebase.initializeApp();
     when(getUserActivities()).thenAnswer((_) async => mockActivities);
     authController = AuthController(
       loginWithEmail: loginWithEmail,

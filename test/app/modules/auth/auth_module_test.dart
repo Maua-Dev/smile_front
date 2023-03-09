@@ -12,9 +12,7 @@ import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
 void main() {
   initModules([AuthModule(), AppModule()]);
 
-  setUpAll(() async {
-    await Firebase.initializeApp();
-  });
+  setUpAll(() async {});
 
   test('SecureStorage Injection', () async {
     await Modular.isModuleReady<AuthModule>();

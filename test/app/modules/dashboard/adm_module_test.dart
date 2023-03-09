@@ -16,7 +16,6 @@ void main() {
   setUp(() async {
     await Modular.isModuleReady<AppModule>();
     await Modular.isModuleReady<AdmModule>();
-    await Firebase.initializeApp();
   });
 
   test('CreateActivityController Injection', () {
