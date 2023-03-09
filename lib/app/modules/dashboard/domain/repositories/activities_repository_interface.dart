@@ -13,6 +13,7 @@ abstract class ActivitiesRepositoryInterface {
   Future<List<AdminActivityModel>> getAdminActivities();
   Future editActivity(ActivityModel activityToEdit);
   Future deleteActivity(String activityCode);
+  Future manualDropActivity(String activityCode, String userId);
   Future<bool> subscribeActivity(String activityCode);
   Future<bool> unsubscribeActivity(String activityCode);
   Future<String> generateConfirmationCode(String activityCode);

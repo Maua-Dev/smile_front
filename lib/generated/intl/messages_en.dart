@@ -319,7 +319,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration."),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
-            "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n"),
+            "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n"),
         "errorGenericGetActivities": MessageLookupByLibrary.simpleMessage(
             "There was an error loading activities :("),
         "errorLoginInvalidCredential": MessageLookupByLibrary.simpleMessage(
@@ -410,8 +410,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "I want to receive notifications by "),
         "notificationsSmsAlert": MessageLookupByLibrary.simpleMessage(
             "Fill in your cell phone to enable sms notifications!"),
-        "notificationsTitle": MessageLookupByLibrary.simpleMessage(
-            "Means of notification about activities:"),
+        "notificationsTitle":
+            MessageLookupByLibrary.simpleMessage("Means of notification:"),
         "planPriceSponsorSchema": m14,
         "planSponsorSchema": m15,
         "presenceTitle": MessageLookupByLibrary.simpleMessage("Present"),

@@ -58,15 +58,84 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   @override
   Future deleteActivity(String activityCode) async {
-    activitiesList
+    admActivitiesList
         .removeWhere((element) => element.activityCode == activityCode);
     await datasource.deleteActivity(activityCode);
+  }
+
+  @override
+  Future manualDropActivity(String activityCode, String userId) async {
+    var requestDone = await datasource.manualDropActivity(activityCode, userId);
+    var index = admActivitiesList
+        .indexWhere((element) => element.activityCode == activityCode);
+    var activity = AdminActivityModel(
+        acceptingNewEnrollments:
+            admActivitiesList[index].acceptingNewEnrollments,
+        activityCode: admActivitiesList[index].activityCode,
+        description: admActivitiesList[index].description,
+        duration: admActivitiesList[index].duration,
+        isExtensive: admActivitiesList[index].isExtensive,
+        responsibleProfessors: admActivitiesList[index].responsibleProfessors,
+        speakers: admActivitiesList[index].speakers,
+        takenSlots: admActivitiesList[index].takenSlots,
+        title: admActivitiesList[index].title,
+        totalSlots: admActivitiesList[index].totalSlots,
+        type: admActivitiesList[index].type,
+        deliveryEnum: admActivitiesList[index].deliveryEnum,
+        link: admActivitiesList[index].link,
+        place: admActivitiesList[index].place,
+        startDate: admActivitiesList[index].startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            admActivitiesList[index].stopAcceptingNewEnrollmentsBefore,
+        enrollments: requestDone.enrollments);
+    admActivitiesList
+        .removeWhere((element) => element.activityCode == activityCode);
+    admActivitiesList.insert(index, activity);
   }
 
   @override
   Future createActivity(ActivityModel activityToCreate) async {
     activitiesList.insert(0, activityToCreate);
     await datasource.createActivity(activityToCreate);
+  }
+
+  @override
+  Future<bool> subscribeActivity(String activityCode) async {
+    var requestDone = await datasource.postSubscribe(activityCode);
+    if (requestDone.state != EnrollmentStateEnum.NONE) {
+      var index = allActivitiesWithEnrollments
+          .indexWhere((element) => element.activityCode == activityCode);
+      var activity = EnrollsActivityModel(
+        acceptingNewEnrollments:
+            allActivitiesWithEnrollments[index].acceptingNewEnrollments,
+        activityCode: allActivitiesWithEnrollments[index].activityCode,
+        description: allActivitiesWithEnrollments[index].description,
+        duration: allActivitiesWithEnrollments[index].duration,
+        isExtensive: allActivitiesWithEnrollments[index].isExtensive,
+        responsibleProfessors:
+            allActivitiesWithEnrollments[index].responsibleProfessors,
+        speakers: allActivitiesWithEnrollments[index].speakers,
+        takenSlots: allActivitiesWithEnrollments[index].takenSlots,
+        title: allActivitiesWithEnrollments[index].title,
+        totalSlots: allActivitiesWithEnrollments[index].totalSlots,
+        type: allActivitiesWithEnrollments[index].type,
+        deliveryEnum: allActivitiesWithEnrollments[index].deliveryEnum,
+        link: allActivitiesWithEnrollments[index].link,
+        place: allActivitiesWithEnrollments[index].place,
+        startDate: allActivitiesWithEnrollments[index].startDate,
+        stopAcceptingNewEnrollmentsBefore: allActivitiesWithEnrollments[index]
+            .stopAcceptingNewEnrollmentsBefore,
+        enrollments: EnrollmentsModel(
+          state: requestDone.state,
+          dateSubscribed: requestDone.dateSubscribed,
+        ),
+      );
+      allActivitiesWithEnrollments
+          .removeWhere((element) => element.activityCode == activityCode);
+      allActivitiesWithEnrollments.insert(index, activity);
+      return true;
+    }
+    return false;
   }
 
   @override

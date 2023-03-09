@@ -12,6 +12,8 @@ abstract class ActivitiesDatasourceInterface {
   Future<ProfessorActivityModel> getActivityWithEnrollments(String code);
   Future<EnrollmentsModel> postSubscribe(String activityCode);
   Future<bool> postUnsubscribe(String activityCode);
+  Future<AdminActivityModel> manualDropActivity(
+      String activityCode, String userId);
   Future editActivity(String id, ActivityModel activity);
   Future createActivity(ActivityModel activity);
   Future deleteActivity(String activityCode);

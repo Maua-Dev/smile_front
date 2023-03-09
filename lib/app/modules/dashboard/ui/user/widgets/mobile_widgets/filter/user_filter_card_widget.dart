@@ -227,6 +227,8 @@ class UserFilterCardWidget extends StatelessWidget {
                             onPressed: () {
                               showDatePicker(
                                   context: context,
+                                  initialEntryMode:
+                                      DatePickerEntryMode.calendarOnly,
                                   initialDate: DateTime.utc(2022, 5, 16),
                                   firstDate: DateTime(2022),
                                   lastDate: DateTime(2024),
@@ -303,6 +305,8 @@ class UserFilterCardWidget extends StatelessWidget {
                             onPressed: () {
                               showTimePicker(
                                   context: context,
+                                  initialEntryMode:
+                                      TimePickerEntryMode.dialOnly,
                                   initialTime: TimeOfDay.now(),
                                   builder:
                                       (BuildContext context, Widget? child) {

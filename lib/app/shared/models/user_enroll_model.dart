@@ -14,4 +14,8 @@ class UserEnrollModel {
         userId: map['user_id'],
         role: UserRolesEnumExtension.stringToEnumMap(map['role']));
   }
+
+  factory UserEnrollModel.newInstance() {
+    return UserEnrollModel(name: '', userId: '', role: UserRolesEnum.STUDENT);
+  }
 }

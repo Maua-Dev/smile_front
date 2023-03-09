@@ -108,7 +108,7 @@
     "registerRAPlaceholder": "RA",
     "registerConfirmPasswordPlaceholder": "Confirm password",
     "registerTerms": "{terms, select, one{I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.} two{I have read and accept the Terms of Use.} three{I authorize the sending of notification by email, for the purposes of promoting Smile.}}",
-    "notificationsTitle": "Means of notification about activities:",
+    "notificationsTitle": "Means of notification:",
     "notificationsSchemaTitle": "I want to receive notifications by ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
     "notificationsSmsAlert": "Fill in your cell phone to enable sms notifications!",
@@ -153,7 +153,7 @@
     "codeInEmailInstructionsTitle": "You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional.",
     "sendTitle": "Send",
     "returnLogin": "Return to login",
-    "errorEmailInstructionsTitle": "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n",
+    "errorEmailInstructionsTitle": "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n",
     
     "presenceValidateTitle": "Presence Validate",
     
@@ -221,6 +221,8 @@
 
     "noActivitiesEnrolledText": "Looks like you haven't signed up for any activities yet :(",
     "noResponsibleActivitiesText": "Looks like you are not responsible for any activity :(",
+
+    "namesTitle": "Names",
     
 
     "yesTitle": "Yes",

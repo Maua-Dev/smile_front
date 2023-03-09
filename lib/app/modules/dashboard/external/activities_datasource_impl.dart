@@ -130,6 +130,40 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
+  Future<AdminActivityModel> manualDropActivity(
+      String activityCode, String userId) async {
+    var body = {'code': activityCode, 'user_id': userId};
+    var res = await middleware(
+        url: '/manual-drop-activity', data: body, http: 'post');
+    return AdminActivityModel.fromMap(res.data['activity_with_enrollments']);
+  }
+
+  @override
+  Future<EnrollmentsModel> postSubscribe(String activityCode) async {
+    var body = {'code': activityCode};
+    var res =
+        await middleware(url: '/enroll-activity', data: body, http: 'post');
+    if (res.statusCode == 200) {
+      return EnrollmentsModel(
+        state: EnrollmentStateEnumExtension.stringToEnumMap(res.data['state']),
+        dateSubscribed:
+            DateTime.fromMillisecondsSinceEpoch(res.data['date_subscribed']),
+      );
+    }
+    return EnrollmentsModel.newInstance();
+  }
+
+  @override
+  Future<bool> postUnsubscribe(String activityCode) async {
+    var body = {'code': activityCode};
+    var res = await middleware(url: '/drop-activity', data: body, http: 'post');
+    if (res.statusCode == 200) {
+      return true;
+    }
+    return false;
+  }
+
+  @override
   Future<String> getLinkCsv() async {
     var token = await storage.getAccessToken();
     try {

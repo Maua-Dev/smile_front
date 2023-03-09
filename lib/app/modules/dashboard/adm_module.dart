@@ -4,6 +4,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activit
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/manual_drop_activity.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
@@ -30,6 +31,7 @@ class AdmModule extends Module {
   final List<Bind> binds = [
     Bind.lazySingleton<AdmDashboardController>(
         (i) => AdmDashboardController(
+              manualDropActivity: i(),
               getAdminActivities: i(),
               getDownloadLinkCsv: i(),
               authController: i(),
@@ -54,6 +56,8 @@ class AdmModule extends Module {
             )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<ManualDropActivityInterface>(
+        (i) => ManualDropActivity(repository: i())),
     Bind.lazySingleton<CreateActivityInterface>(
         (i) => CreateActivity(repository: i())),
     Bind.lazySingleton<GetAllUserActivitiesInterface>(
