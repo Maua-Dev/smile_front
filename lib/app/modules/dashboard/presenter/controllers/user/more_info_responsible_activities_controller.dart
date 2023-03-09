@@ -36,7 +36,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   bool isLoadingAtendanceToken = false;
 
   @observable
-  String? token;
+  String token = '';
 
   @action
   void setIsLoading(bool value) {

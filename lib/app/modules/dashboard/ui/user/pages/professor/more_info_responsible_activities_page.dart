@@ -438,7 +438,10 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                               ? 30
                                               : 50,
                                         ),
-                                        Text('Gerar Token',
+                                        Text(
+                                            controller.isTokenVisible
+                                                ? 'Apagar Token'
+                                                : 'Gerar Token',
                                             style: AppTextStyles.bold.copyWith(
                                                 color: controller.isTokenVisible
                                                     ? AppColors.brandingOrange
