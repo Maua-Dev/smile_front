@@ -318,7 +318,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
-            "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n"),
+            "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu e-mail no campo abaixo:\n"),
         "errorGenericGetActivities": MessageLookupByLibrary.simpleMessage(
             "Ocorreu algum erro ao carregar as atividades :("),
         "errorLoginInvalidCredential":
@@ -399,6 +399,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mauaEntitiesSchemaSocialMidia": m12,
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
             "Entidades Participantes da Smile"),
+        "namesTitle": MessageLookupByLibrary.simpleMessage("Nomes"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Parece que você ainda não se inscreveu em nenhuma atividade :("),
         "noResponsibleActivitiesText": MessageLookupByLibrary.simpleMessage(
@@ -409,8 +410,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Quero receber notificações por "),
         "notificationsSmsAlert": MessageLookupByLibrary.simpleMessage(
             "Preencha o seu telefone celular para ativar as notificações por sms!"),
-        "notificationsTitle": MessageLookupByLibrary.simpleMessage(
-            "Meios de notificação sobre as atividades:"),
+        "notificationsTitle":
+            MessageLookupByLibrary.simpleMessage("Meios de notificação:"),
         "planPriceSponsorSchema": m14,
         "planSponsorSchema": m15,
         "presenceValidateTitle":

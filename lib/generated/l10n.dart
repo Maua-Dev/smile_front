@@ -1079,10 +1079,10 @@ class S {
     );
   }
 
-  /// `Means of notification about activities:`
+  /// `Means of notification:`
   String get notificationsTitle {
     return Intl.message(
-      'Means of notification about activities:',
+      'Means of notification:',
       name: 'notificationsTitle',
       desc: '',
       args: [],
@@ -1364,10 +1364,10 @@ class S {
     );
   }
 
-  /// `If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n`
+  /// `If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n`
   String get errorEmailInstructionsTitle {
     return Intl.message(
-      'If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n',
+      'If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n',
       name: 'errorEmailInstructionsTitle',
       desc: '',
       args: [],
@@ -1709,6 +1709,16 @@ class S {
     return Intl.message(
       'Looks like you are not responsible for any activity :(',
       name: 'noResponsibleActivitiesText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Names`
+  String get namesTitle {
+    return Intl.message(
+      'Names',
+      name: 'namesTitle',
       desc: '',
       args: [],
     );

@@ -46,9 +46,39 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   @override
   Future deleteActivity(String activityCode) async {
-    activitiesList
+    admActivitiesList
         .removeWhere((element) => element.activityCode == activityCode);
     await datasource.deleteActivity(activityCode);
+  }
+
+  @override
+  Future manualDropActivity(String activityCode, String userId) async {
+    var requestDone = await datasource.manualDropActivity(activityCode, userId);
+    var index = admActivitiesList
+        .indexWhere((element) => element.activityCode == activityCode);
+    var activity = AdminActivityModel(
+        acceptingNewEnrollments:
+            admActivitiesList[index].acceptingNewEnrollments,
+        activityCode: admActivitiesList[index].activityCode,
+        description: admActivitiesList[index].description,
+        duration: admActivitiesList[index].duration,
+        isExtensive: admActivitiesList[index].isExtensive,
+        responsibleProfessors: admActivitiesList[index].responsibleProfessors,
+        speakers: admActivitiesList[index].speakers,
+        takenSlots: admActivitiesList[index].takenSlots,
+        title: admActivitiesList[index].title,
+        totalSlots: admActivitiesList[index].totalSlots,
+        type: admActivitiesList[index].type,
+        deliveryEnum: admActivitiesList[index].deliveryEnum,
+        link: admActivitiesList[index].link,
+        place: admActivitiesList[index].place,
+        startDate: admActivitiesList[index].startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            admActivitiesList[index].stopAcceptingNewEnrollmentsBefore,
+        enrollments: requestDone.enrollments);
+    admActivitiesList
+        .removeWhere((element) => element.activityCode == activityCode);
+    admActivitiesList.insert(index, activity);
   }
 
   @override
@@ -84,7 +114,6 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         stopAcceptingNewEnrollmentsBefore: allActivitiesWithEnrollments[index]
             .stopAcceptingNewEnrollmentsBefore,
         enrollments: EnrollmentsModel(
-          acceptingNewEnrollments: requestDone.acceptingNewEnrollments,
           state: requestDone.state,
           dateSubscribed: requestDone.dateSubscribed,
         ),
