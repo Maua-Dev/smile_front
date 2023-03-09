@@ -104,7 +104,7 @@
     "registerRAPlaceholder": "RA",
     "registerConfirmPasswordPlaceholder": "Confirm password",
     "registerTerms": "{terms, select, one{I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.} two{I have read and accept the Terms of Use.} three{I authorize the sending of notification by email, for the purposes of promoting Smile.}}",
-    "notificationsTitle": "Means of notification about activities:",
+    "notificationsTitle": "Means of notification:",
     "notificationsSchemaTitle": "I want to receive notifications by ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
     "notificationsSmsAlert": "Fill in your cell phone to enable sms notifications!",
