@@ -200,31 +200,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future<EnrollmentsModel> postSubscribe(String activityCode) async {
-    var body = {'code': activityCode};
-    var res =
-        await middleware(url: '/enroll-activity', data: body, http: 'post');
-    if (res.statusCode == 200) {
-      return EnrollmentsModel(
-        state: EnrollmentStateEnumExtension.stringToEnumMap(res.data['state']),
-        dateSubscribed:
-            DateTime.fromMillisecondsSinceEpoch(res.data['date_subscribed']),
-      );
-    }
-    return EnrollmentsModel.newInstance();
-  }
-
-  @override
-  Future<bool> postUnsubscribe(String activityCode) async {
-    var body = {'code': activityCode};
-    var res = await middleware(url: '/drop-activity', data: body, http: 'post');
-    if (res.statusCode == 200) {
-      return true;
-    }
-    return false;
-  }
-
-  @override
   Future<ProfessorActivityModel> postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state) async {
     var body = {

@@ -117,8 +117,8 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
     professorList = professorActivitiesWithEnrollments.enrollments!
         .map(
           (e) => ListNameAndStateWithIsSwitched(
-              userId: e.userEnroll!.userId,
-              name: e.userEnroll!.name,
+              userId: e.user!.userId,
+              name: e.user!.name,
               state: e.state,
               isSwitched:
                   e.state == EnrollmentStateEnum.COMPLETED ? true : false),

@@ -207,8 +207,7 @@ class SubscriberListWidget extends StatelessWidget {
                                       : 270,
                               child: Text(
                                 textAlign: TextAlign.center,
-                                enrollmentsList
-                                    .enrollments![index].userEnroll!.name,
+                                enrollmentsList.enrollments![index].user!.name,
                                 style: AppTextStyles.bold.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width <
