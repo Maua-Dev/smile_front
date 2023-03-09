@@ -44,7 +44,7 @@ class NameAlterationDialog extends StatelessWidget {
     final maskBrazilianPhone = MaskTextInputFormatter(
         mask: "(##) #####-####", filter: {"#": RegExp(r'[0-9]')});
     final maskPhone = MaskTextInputFormatter(
-        mask: "###############", filter: {"#": RegExp(r'[0-9]')});
+        mask: "+###############", filter: {"#": RegExp(r'[0-9]')});
     const countryPicker = FlCountryCodePicker();
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -280,7 +280,7 @@ class NameAlterationDialog extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    if (controller.isBrazilianPhone)
+                    if (controller.phone == null)
                       GestureDetector(
                           child: Padding(
                         padding: const EdgeInsets.only(bottom: 20.0),
@@ -326,17 +326,22 @@ class NameAlterationDialog extends StatelessWidget {
                           ),
                         ),
                       )),
-                    const SizedBox(
-                      width: 10,
-                    ),
+                    if (controller.phone == null)
+                      const SizedBox(
+                        width: 10,
+                      ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
                       child: SizedBox(
-                        width: Screen.width(context) < breakpointMobile
-                            ? 260
-                            : 380,
+                        width: controller.phone == null
+                            ? Screen.width(context) < breakpointMobile
+                                ? 260
+                                : 380
+                            : Screen.width(context) < breakpointMobile
+                                ? 388
+                                : 500,
                         child: TextFormField(
-                          inputFormatters: controller.isBrazilianPhone
+                          inputFormatters: controller.isGetPhoneBrazilian
                               ? [maskBrazilianPhone]
                               : [maskPhone],
                           validator: controller.validatePhone,

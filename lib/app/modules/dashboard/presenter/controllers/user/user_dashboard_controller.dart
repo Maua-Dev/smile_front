@@ -259,16 +259,19 @@ abstract class UserDashboardControllerBase with Store {
   }
 
   @observable
-  bool isNewPhoneBrazilian = false;
+  bool isGetPhoneBrazilian = false;
 
   @action
   Future<void> getPhone() async {
     phone = await secureStorage.getPhone();
-    isNewPhoneBrazilian = phone!.substring(0, 3) == "+55";
-    phoneToChange = phone!.substring(3, 14);
-    if (isNewPhoneBrazilian) {
+    isGetPhoneBrazilian = phone!.substring(0, 3) == "+55";
+    phoneToChange = phone!;
+    print(phoneToChange);
+    if (isGetPhoneBrazilian) {
       phoneToChange =
-          '(${phoneToChange.substring(0, 2)})${phoneToChange.substring(2, 7)}-${phoneToChange.substring(7, 11)}';
+          '${phoneToChange.substring(0, 3)} (${phoneToChange.substring(3, 5)}) ${phoneToChange.substring(5, 10)}-${phoneToChange.substring(10, 14)}';
+    } else {
+      //setCountryCode(Coutnz);
     }
   }
 
