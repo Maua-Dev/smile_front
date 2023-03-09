@@ -39,8 +39,8 @@ class AdminActivityModel extends Activity {
         speakers: SpeakerActivityModel.fromMaps(map['activity']['speakers']),
         duration: map['activity']['duration'] ?? 0,
         isExtensive: map['activity']['is_extensive'] ?? false,
-        link: map['activity']['link'] ?? '',
-        place: map['activity']['place'] ?? '',
+        link: map['activity']['link'],
+        place: map['activity']['place'],
         startDate:
             DateTime.fromMillisecondsSinceEpoch(map['activity']['start_date']),
         deliveryEnum: DeliveryEnumExtension.stringToEnumMap(
