@@ -48,7 +48,11 @@ class RegisterButtonWidget extends StatelessWidget {
                             ? S.of(context).joinQueueTitle
                             : S.of(context).signUp,
                 style: AppTextStyles.buttonBold.copyWith(
-                    fontSize: MediaQuery.of(context).size.width < 500 ? 16 : 18,
+                    fontSize: isRegistered == EnrollmentStateEnum.IN_QUEUE
+                        ? 14
+                        : MediaQuery.of(context).size.width < 500
+                            ? 16
+                            : 18,
                     color: Colors.white)));
   }
 }

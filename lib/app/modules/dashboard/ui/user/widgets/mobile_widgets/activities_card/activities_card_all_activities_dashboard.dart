@@ -112,7 +112,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width <
                                         breakpointTablet
-                                    ? 230
+                                    ? 200
                                     : null,
                                 child: Text(title,
                                     maxLines: 2,
