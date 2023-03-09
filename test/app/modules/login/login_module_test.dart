@@ -11,11 +11,8 @@ import 'package:smile_front/app/modules/home/home_module.dart';
 import 'package:smile_front/app/modules/login/login_module.dart';
 import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
 
-import '../../../setup_firebase_mocks.dart';
-
 void main() {
   initModules([LoginModule(), AppModule(), HomeModule(), AuthModule()]);
-  setupCloudFirestoreMocks();
 
   setUpAll(() async {
     await Modular.isModuleReady<AuthModule>();

@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import '../../../../../shared/models/enrolls_activity_model.dart';
-import '../../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
+
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/infra/activity_enum.dart';
 
@@ -16,11 +16,8 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   final UserEnrollmentController enrollmentController;
   final AuthController authController;
 
-  final FirebaseAnalyticsService analytics;
-
   AllActivitiesUserDashboardControllerBase({
     required this.enrollmentController,
-    required this.analytics,
     required this.authController,
   }) {
     getActivities();

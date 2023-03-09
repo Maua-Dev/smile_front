@@ -7,7 +7,6 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../../../generated/l10n.dart';
 
@@ -20,11 +19,8 @@ abstract class UserDashboardControllerBase with Store {
   final UserEnrollmentController enrollmentController;
   final ChangeDataInterface changeData;
   final SecureStorageInterface secureStorage;
-  final FirebaseAnalyticsService analytics;
-
   UserDashboardControllerBase({
     required this.enrollmentController,
-    required this.analytics,
     required this.changeData,
     required this.secureStorage,
   }) {

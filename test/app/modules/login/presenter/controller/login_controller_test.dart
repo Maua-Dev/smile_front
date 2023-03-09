@@ -14,25 +14,22 @@ import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
 
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
+
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../../setup_firebase_mocks.dart';
 import 'login_controller_test.mocks.dart';
 
 @GenerateMocks([
   ActivitiesRepositoryInterface,
-  FirebaseAnalyticsService,
   RefreshTokenInterface,
   SecureStorageInterface,
   LoginWithEmailInterface
 ])
 void main() {
   initModule(AppModule());
-  setupCloudFirestoreMocks();
+
   LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   SecureStorageInterface storage = MockSecureStorageInterface();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
 
   late LoginController controller;
   late AuthController authController;
@@ -43,11 +40,11 @@ void main() {
     authController = AuthController(
       refreshToken: refreshToken,
       storage: storage,
-      analytics: analytics,
       loginWithEmail: loginWithEmail,
     );
-    controller =
-        LoginController(authController: authController, analytics: analytics);
+    controller = LoginController(
+      authController: authController,
+    );
   });
 
   test('setUsername if contains @ and Upper Case : email', () {

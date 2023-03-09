@@ -10,26 +10,23 @@ import 'package:smile_front/app/modules/register/presenter/controllers/register_
 import 'package:smile_front/app/modules/register/register_module.dart';
 import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
+
 import 'package:smile_front/generated/l10n.dart';
 
-import '../../../../../setup_firebase_mocks.dart';
-import '../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import 'register_controller_test.mocks.dart';
 
 @GenerateMocks([RegisterRepositoryInterface, RegisterUserInterface])
 void main() {
   initModules([AppModule(), RegisterModule()]);
-  setupCloudFirestoreMocks();
+
   late RegisterController controller;
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
+
   RegisterUserInterface registerUser = MockRegisterUserInterface();
 
   setUpAll(() async {
     await Firebase.initializeApp();
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
-    controller =
-        RegisterController(analytics: analytics, registerUser: registerUser);
+    controller = RegisterController(registerUser: registerUser);
   });
 
   test('setAcceptImage', () {

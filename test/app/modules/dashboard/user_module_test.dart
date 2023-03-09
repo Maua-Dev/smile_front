@@ -8,12 +8,8 @@ import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controll
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/user_module.dart';
 
-import '../../../setup_firebase_mocks.dart';
-
 void main() {
   initModules([AppModule(), UserModule()]);
-
-  setupCloudFirestoreMocks();
 
   setUp(() async {
     await Modular.isModuleReady<AppModule>();

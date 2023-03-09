@@ -8,11 +8,9 @@ import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
 import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
-import '../../../setup_firebase_mocks.dart';
 
 void main() {
   initModules([AuthModule(), AppModule()]);
-  setupCloudFirestoreMocks();
 
   setUpAll(() async {
     await Firebase.initializeApp();

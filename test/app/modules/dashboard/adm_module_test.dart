@@ -10,12 +10,8 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/activities
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
 
-import '../../../setup_firebase_mocks.dart';
-
 void main() {
   initModules([AppModule(), AdmModule()]);
-
-  setupCloudFirestoreMocks();
 
   setUp(() async {
     await Modular.isModuleReady<AppModule>();

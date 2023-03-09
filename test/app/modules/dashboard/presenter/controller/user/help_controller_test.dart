@@ -6,17 +6,11 @@ import 'package:smile_front/app/modules/dashboard/domain/entities/faq.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/faq_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_faq_information.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
-import '../../../../../../setup_firebase_mocks.dart';
-import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import 'help_controller_test.mocks.dart';
 
 @GenerateMocks([FaqRepositoryInterface, GetAllFaqInformationInterface])
 void main() {
-  setupCloudFirestoreMocks();
-
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
   GetAllFaqInformationInterface getAllFaqInformation =
       MockGetAllFaqInformationInterface();
   late HelpController controller;
@@ -37,7 +31,8 @@ void main() {
     await Firebase.initializeApp();
     when(getAllFaqInformation()).thenAnswer((_) async => mockFaqList);
     controller = HelpController(
-        getAllFaqInformation: getAllFaqInformation, analytics: analytics);
+      getAllFaqInformation: getAllFaqInformation,
+    );
   });
 
   test('getFaqInformation && setFaqAction', () {

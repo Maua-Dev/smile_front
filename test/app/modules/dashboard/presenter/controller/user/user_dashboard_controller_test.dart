@@ -15,22 +15,20 @@ import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
-import '../../../../../../setup_firebase_mocks.dart';
+
 import 'user_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([
   GetUserSubscribedActivitiesInterface,
   SecureStorageInterface,
   UserRepositoryInterface,
-  FirebaseAnalyticsService,
   ChangeDataInterface,
   SubscribeActivityInterface,
   UnsubscribeActivityInterface
 ])
 void main() {
   initModule(AppModule());
-  setupCloudFirestoreMocks();
+
   SubscribeActivityInterface subscribeActivity =
       MockSubscribeActivityInterface();
 
@@ -39,7 +37,7 @@ void main() {
   GetUserSubscribedActivitiesInterface getUserActivities =
       MockGetUserSubscribedActivitiesInterface();
   ChangeDataInterface changeData = MockChangeDataInterface();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
+
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
 
   late UserDashboardController controller;
@@ -305,7 +303,6 @@ void main() {
     controller = UserDashboardController(
         secureStorage: secureStorage,
         changeData: changeData,
-        analytics: analytics,
         enrollmentController: subscriptionController);
   });
 

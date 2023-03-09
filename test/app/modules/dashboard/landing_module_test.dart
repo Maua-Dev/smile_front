@@ -7,12 +7,8 @@ import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/landing_module.dart';
 import 'package:smile_front/app/shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 
-import '../../../setup_firebase_mocks.dart';
-
 void main() {
   initModules([AppModule(), LandingModule(), AdmModule()]);
-
-  setupCloudFirestoreMocks();
 
   setUp(() async {
     await Modular.isModuleReady<AppModule>();

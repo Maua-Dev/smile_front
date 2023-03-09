@@ -9,14 +9,11 @@ import 'package:smile_front/app/modules/register/infra/datasources/register_data
 import 'package:smile_front/app/modules/register/presenter/controllers/register_controller.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
 
-import '../../../setup_firebase_mocks.dart';
-
 void main() {
   initModules([
     RegisterModule(),
     AppModule(),
   ]);
-  setupCloudFirestoreMocks();
 
   setUpAll(() async {
     await Firebase.initializeApp();

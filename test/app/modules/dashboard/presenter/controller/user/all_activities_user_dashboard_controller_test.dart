@@ -18,8 +18,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
-import '../../../../../../setup_firebase_mocks.dart';
+
 import 'all_activities_user_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([
@@ -31,11 +30,10 @@ import 'all_activities_user_dashboard_controller_test.mocks.dart';
   UnsubscribeActivityInterface,
   GetUserSubscribedActivitiesInterface,
   SubscribeActivityInterface,
-  FirebaseAnalyticsService
 ])
 void main() {
   initModules([AppModule()]);
-  setupCloudFirestoreMocks();
+
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
   GetUserSubscribedActivitiesInterface getUserActivities =
@@ -45,7 +43,6 @@ void main() {
   SubscribeActivityInterface subscribeActivity =
       MockSubscribeActivityInterface();
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
 
   late AllActivitiesUserDashboardController controller;
   late AuthController authController;
@@ -330,17 +327,16 @@ void main() {
     await Firebase.initializeApp();
     when(getUserActivities()).thenAnswer((_) async => mockActivities);
     authController = AuthController(
-        loginWithEmail: loginWithEmail,
-        refreshToken: refreshToken,
-        storage: secureStorage,
-        analytics: analytics);
+      loginWithEmail: loginWithEmail,
+      refreshToken: refreshToken,
+      storage: secureStorage,
+    );
     subscriptionController = UserEnrollmentController(
         getUserActivities: getUserActivities,
         subscribeActivity: subscribeActivity,
         unsubscribeActivity: unsubscribeActivity);
     controller = AllActivitiesUserDashboardController(
         authController: authController,
-        analytics: analytics,
         enrollmentController: subscriptionController);
   });
 

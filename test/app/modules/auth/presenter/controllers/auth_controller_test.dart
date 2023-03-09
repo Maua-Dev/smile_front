@@ -11,24 +11,20 @@ import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
 import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/models/user_model.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
+
 import 'package:smile_front/generated/l10n.dart';
 
-import '../../../../../setup_firebase_mocks.dart';
 import 'auth_controller_test.mocks.dart';
 
 @GenerateMocks([
   SecureStorageInterface,
-  FirebaseAnalyticsService,
   RefreshTokenInterface,
   LoginWithEmailInterface,
 ])
 void main() {
-  setupCloudFirestoreMocks();
   SecureStorageInterface storage = MockSecureStorageInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
   late AuthController controller;
 
   UserModel userMock = UserModel(
@@ -53,7 +49,6 @@ void main() {
     await Firebase.initializeApp();
     await S.load(const Locale.fromSubtags(languageCode: 'en'));
     when(loginWithEmail(emailMock, pwMock)).thenAnswer((_) async => userMock);
-    when(analytics.setUserProperties('')).thenAnswer((_) async => null);
     when(storage.getRole()).thenAnswer((_) async => 'STUDENT');
     when(storage.getId()).thenAnswer((_) async => '');
     when(storage.getAccessToken()).thenAnswer((_) async => 'token12354');
@@ -62,7 +57,6 @@ void main() {
     controller = AuthController(
       refreshToken: refreshToken,
       storage: storage,
-      analytics: analytics,
       loginWithEmail: loginWithEmail,
     );
   });

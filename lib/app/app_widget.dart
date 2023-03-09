@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
+
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
@@ -22,7 +22,6 @@ class AppWidget extends StatelessWidget {
       scaffoldMessengerKey: scaffoldKey,
       debugShowCheckedModeBanner: false,
       initialRoute: '/home',
-      navigatorObservers: [FirebaseAnalyticsService().getAnalyticsObserver()],
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
