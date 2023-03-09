@@ -733,17 +733,6 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
   @override
-  _i11.Future<Map<String, dynamic>> getCountryNameFromDialCode(
-          String? dialCode) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getCountryNameFromDialCode,
-          [dialCode],
-        ),
-        returnValue:
-            _i11.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i11.Future<Map<String, dynamic>>);
-  @override
   _i11.Future<void> getUserSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getUserSocialName,

@@ -261,40 +261,10 @@ abstract class UserDashboardControllerBase with Store {
   @action
   Future<void> getPhone() async {
     phone = await secureStorage.getPhone();
-    if (phone!.contains('+55')) {
-      isBrazilianPhone = true;
-    } else {
-      isBrazilianPhone = false;
-    }
-    phoneToChange = phone!.substring(3);
-    var phoneCountryCode = phone!.substring(0, 3);
-
-    var country =
-        await getCountryNameFromDialCode(phoneCountryCode.replaceAll('+', ''));
-    var countryCode = CountryCode(
-        name: country['name'],
-        code: country['alpha2Code'],
-        dialCode: phoneCountryCode);
-    setCountryCode(countryCode);
-
+    phoneToChange = phone!.substring(3, 14);
     if (isBrazilianPhone) {
       phoneToChange =
-          '(${phone!.substring(3, 5)})${phone!.substring(6, 11)}-${phone!.substring(11, 14)}';
-    }
-  }
-
-  Future<Map<String, dynamic>> getCountryNameFromDialCode(
-      String dialCode) async {
-    try {
-      Response response =
-          await Dio().get('https://restcountries.com/v2/callingcode/$dialCode');
-      if (response.statusCode == 200) {
-        return response.data[0];
-      } else {
-        return {};
-      }
-    } catch (e) {
-      return {};
+          '(${phoneToChange.substring(0, 2)})${phoneToChange.substring(2, 7)}-${phoneToChange.substring(7, 11)}';
     }
   }
 
@@ -334,7 +304,6 @@ abstract class UserDashboardControllerBase with Store {
   @action
   Future<void> changeUserData() async {
     setIsLoading(true);
-    phoneToChange = '${countryCode?.dialCode}$phoneToChange';
     await changeData(nameToChange, socialNameToChange,
         certificateWithSocialName, phoneToChange);
     await secureStorage.saveName(nameToChange);
@@ -450,11 +419,13 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
-    phoneToChange = value;
-    phoneToChange = phoneToChange.replaceAll('(', '');
-    phoneToChange = phoneToChange.replaceAll(')', '');
-    phoneToChange = phoneToChange.replaceAll(' ', '');
-    phoneToChange = phoneToChange.replaceAll('-', '');
+    phoneToChange = '${countryCode?.dialCode}$value';
+    if (countryCode?.code == "BR") {
+      phoneToChange = phoneToChange.replaceAll('(', '');
+      phoneToChange = phoneToChange.replaceAll(')', '');
+      phoneToChange = phoneToChange.replaceAll(' ', '');
+      phoneToChange = phoneToChange.replaceAll('-', '');
+    }
     if (value.isNotEmpty) {
       isPhoneFieldFilled = true;
     }
