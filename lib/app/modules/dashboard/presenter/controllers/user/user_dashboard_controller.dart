@@ -258,11 +258,15 @@ abstract class UserDashboardControllerBase with Store {
     setName(name ?? '');
   }
 
+  @observable
+  bool isNewPhoneBrazilian = false;
+
   @action
   Future<void> getPhone() async {
     phone = await secureStorage.getPhone();
+    isNewPhoneBrazilian = phone!.substring(0, 3) == "+55";
     phoneToChange = phone!.substring(3, 14);
-    if (isBrazilianPhone) {
+    if (isNewPhoneBrazilian) {
       phoneToChange =
           '(${phoneToChange.substring(0, 2)})${phoneToChange.substring(2, 7)}-${phoneToChange.substring(7, 11)}';
     }

@@ -280,50 +280,52 @@ class NameAlterationDialog extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20.0),
-                      child: GestureDetector(
-                        onTap: () async {
-                          final code =
-                              await countryPicker.showPicker(context: context);
-                          controller.setCountryCode(code);
-                          controller.setBrazilianPhone(code);
-                        },
-                        child: Container(
-                          height: 60,
-                          width: 110,
-                          decoration: BoxDecoration(
-                              color: AppColors.brandingBlue,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: SizedBox(
-                              child: Row(
-                                children: [
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Container(
-                                      child: controller.countryCode != null
-                                          ? controller.countryCode!.flagImage
-                                          : null),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    controller.countryCode != null
-                                        ? controller.countryCode!.dialCode
-                                        : "DDI",
-                                    style: TextStyle(
-                                        color: AppColors.white, fontSize: 14),
-                                  ),
-                                ],
+                    if (controller.isBrazilianPhone)
+                      GestureDetector(
+                          child: Padding(
+                        padding: const EdgeInsets.only(bottom: 20.0),
+                        child: GestureDetector(
+                          onTap: () async {
+                            final code = await countryPicker.showPicker(
+                                context: context);
+                            controller.setCountryCode(code);
+                            controller.setBrazilianPhone(code);
+                          },
+                          child: Container(
+                            height: 60,
+                            width: 110,
+                            decoration: BoxDecoration(
+                                color: AppColors.brandingBlue,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: SizedBox(
+                                child: Row(
+                                  children: [
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    Container(
+                                        child: controller.countryCode != null
+                                            ? controller.countryCode!.flagImage
+                                            : null),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      controller.countryCode != null
+                                          ? controller.countryCode!.dialCode
+                                          : "DDI",
+                                      style: TextStyle(
+                                          color: AppColors.white, fontSize: 14),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
+                      )),
                     const SizedBox(
                       width: 10,
                     ),
