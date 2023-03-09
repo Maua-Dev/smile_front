@@ -134,9 +134,6 @@ class _MoreInfoPageState
                                   : 26),
                         )
                       : Center(
-                          child: SizedBox(
-                          width: 163,
-                          height: 32,
                           child: RegisterButtonWidget(
                               activityIsFull: controller.activity.takenSlots >=
                                   controller.activity.totalSlots,
@@ -281,8 +278,7 @@ class _MoreInfoPageState
                                     );
                                   }
                                 }
-                              }),
-                        ));
+                              }));
                 }),
                 ExtensionistWidget(
                     isExtensionist: controller.activity.isExtensive)
