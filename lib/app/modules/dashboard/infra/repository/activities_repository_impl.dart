@@ -169,6 +169,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         .removeWhere((element) => element.userEnroll!.userId == userId);
     enrollmentsList.insert(index, requestDone.enrollments![index]);
     activityWithEnrollments = ProfessorActivityModel(
+        confirmationCode: activityWithEnrollments.confirmationCode,
         acceptingNewEnrollments:
             activityWithEnrollments.acceptingNewEnrollments,
         activityCode: activityWithEnrollments.activityCode,

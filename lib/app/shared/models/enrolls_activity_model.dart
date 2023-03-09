@@ -10,6 +10,7 @@ class EnrollsActivityModel extends Activity {
   EnrollsActivityModel({
     this.enrollments,
     required super.isExtensive,
+    super.confirmationCode,
     super.deliveryEnum,
     super.startDate,
     required super.duration,
@@ -32,6 +33,7 @@ class EnrollsActivityModel extends Activity {
         activityCode: map['activity']['code'],
         type: ActivityEnumExtension.stringToEnumMap(
             map['activity']['activity_type']),
+        confirmationCode: map['activity']['confirmation_code'],
         title: map['activity']['title'],
         description: map['activity']['description'],
         speakers: SpeakerActivityModel.fromMaps(map['activity']['speakers']),
@@ -68,6 +70,7 @@ class EnrollsActivityModel extends Activity {
       description: '',
       activityCode: '',
       title: '',
+      confirmationCode: null,
       type: null,
       speakers: [SpeakerActivityModel.newInstance()],
       duration: 0,
@@ -90,6 +93,7 @@ class EnrollsActivityModel extends Activity {
       bool? isExtensive,
       DeliveryEnum? deliveryEnum,
       DateTime? startDate,
+      String? confirmationCode,
       int? duration,
       String? place,
       String? link,
@@ -112,6 +116,7 @@ class EnrollsActivityModel extends Activity {
       deliveryEnum: deliveryEnum ?? this.deliveryEnum,
       acceptingNewEnrollments:
           acceptingNewEnrollments ?? this.acceptingNewEnrollments,
+      confirmationCode: confirmationCode ?? this.confirmationCode,
       responsibleProfessors:
           responsibleProfessors ?? this.responsibleProfessors,
       takenSlots: takenSlots ?? this.takenSlots,

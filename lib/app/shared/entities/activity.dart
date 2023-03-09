@@ -6,6 +6,7 @@ import 'infra/delivery_enum.dart';
 class Activity {
   final String activityCode;
   final ActivityEnum? type;
+  final String? confirmationCode;
   final String title;
   final String description;
   final bool isExtensive;
@@ -29,6 +30,7 @@ class Activity {
     required this.responsibleProfessors,
     this.place,
     this.link,
+    this.confirmationCode,
     required this.isExtensive,
     required this.deliveryEnum,
     required this.startDate,
@@ -51,6 +53,7 @@ class Activity {
       isExtensive: false,
       startDate: null,
       speakers: [],
+      confirmationCode: null,
       acceptingNewEnrollments: false,
       responsibleProfessors: [],
       takenSlots: 0,

@@ -241,4 +241,13 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
         ),
         returnValue: _i5.Future<dynamic>.value(),
       ) as _i5.Future<dynamic>);
+  @override
+  _i5.Future<dynamic> deleteAttendanceCode(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteAttendanceCode,
+          [activityCode],
+        ),
+        returnValue: _i5.Future<dynamic>.value(),
+      ) as _i5.Future<dynamic>);
 }

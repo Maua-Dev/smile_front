@@ -7,10 +7,8 @@ import 'enrollments_model.dart';
 
 class AdminActivityModel extends Activity {
   final List<EnrollmentsModel> enrollments;
-  final String? confirmationCode;
   AdminActivityModel({
     required this.enrollments,
-    this.confirmationCode,
     required super.isExtensive,
     super.deliveryEnum,
     super.startDate,

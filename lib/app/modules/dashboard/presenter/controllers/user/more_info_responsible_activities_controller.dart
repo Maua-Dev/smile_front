@@ -27,6 +27,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
     required this.deleteConfirmationCode,
   }) {
     getProfessorActivitiesWithEnrollments();
+    isTokenAlreadyOpen();
   }
 
   @observable
@@ -62,6 +63,14 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @action
   void showToken() {
     isTokenVisible = !isTokenVisible;
+  }
+
+  @action
+  void isTokenAlreadyOpen() {
+    if (professorActivitiesWithEnrollments.confirmationCode != null) {
+      token = professorActivitiesWithEnrollments.confirmationCode!;
+      showToken();
+    }
   }
 
   @action

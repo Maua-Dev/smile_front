@@ -18,6 +18,7 @@ class ProfessorActivityModel extends Activity {
     required super.title,
     required super.description,
     required super.speakers,
+    super.confirmationCode,
     super.link,
     super.place,
     required super.acceptingNewEnrollments,
@@ -39,6 +40,7 @@ class ProfessorActivityModel extends Activity {
         isExtensive: map['activity']['is_extensive'] ?? false,
         link: map['activity']['link'] ?? '',
         place: map['activity']['place'] ?? '',
+        confirmationCode: map['activity']['confirmation_code'],
         startDate:
             DateTime.fromMillisecondsSinceEpoch(map['activity']['start_date']),
         deliveryEnum: DeliveryEnumExtension.stringToEnumMap(
@@ -66,6 +68,7 @@ class ProfessorActivityModel extends Activity {
         description: '',
         activityCode: '',
         title: '',
+        confirmationCode: null,
         type: null,
         speakers: [SpeakerActivityModel.newInstance()],
         duration: 0,
@@ -86,6 +89,7 @@ class ProfessorActivityModel extends Activity {
       String? title,
       String? description,
       bool? isExtensive,
+      String? confirmationCode,
       DeliveryEnum? deliveryEnum,
       DateTime? startDate,
       int? duration,
@@ -108,6 +112,7 @@ class ProfessorActivityModel extends Activity {
       isExtensive: isExtensive ?? this.isExtensive,
       startDate: startDate ?? this.startDate,
       deliveryEnum: deliveryEnum ?? this.deliveryEnum,
+      confirmationCode: confirmationCode ?? this.confirmationCode,
       acceptingNewEnrollments:
           acceptingNewEnrollments ?? this.acceptingNewEnrollments,
       responsibleProfessors:

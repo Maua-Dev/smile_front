@@ -169,6 +169,23 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
+  late final _$isButtonLoadingAtom = Atom(
+      name: 'MoreInfoResponsibleActivitiesControllerBase.isButtonLoading',
+      context: context);
+
+  @override
+  bool get isButtonLoading {
+    _$isButtonLoadingAtom.reportRead();
+    return super.isButtonLoading;
+  }
+
+  @override
+  set isButtonLoading(bool value) {
+    _$isButtonLoadingAtom.reportWrite(value, super.isButtonLoading, () {
+      super.isButtonLoading = value;
+    });
+  }
+
   late final _$generateNewAtendanceCodeAsyncAction = AsyncAction(
       'MoreInfoResponsibleActivitiesControllerBase.generateNewAtendanceCode',
       context: context);
@@ -177,6 +194,16 @@ mixin _$MoreInfoResponsibleActivitiesController
   Future<void> generateNewAtendanceCode() {
     return _$generateNewAtendanceCodeAsyncAction
         .run(() => super.generateNewAtendanceCode());
+  }
+
+  late final _$deleteOldAttendanceCodeAsyncAction = AsyncAction(
+      'MoreInfoResponsibleActivitiesControllerBase.deleteOldAttendanceCode',
+      context: context);
+
+  @override
+  Future<void> deleteOldAttendanceCode() {
+    return _$deleteOldAttendanceCodeAsyncAction
+        .run(() => super.deleteOldAttendanceCode());
   }
 
   late final _$getProfessorActivitiesWithEnrollmentsAsyncAction = AsyncAction(
@@ -262,6 +289,20 @@ mixin _$MoreInfoResponsibleActivitiesController
   }
 
   @override
+  void isTokenAlreadyOpen() {
+    final _$actionInfo =
+        _$MoreInfoResponsibleActivitiesControllerBaseActionController.startAction(
+            name:
+                'MoreInfoResponsibleActivitiesControllerBase.isTokenAlreadyOpen');
+    try {
+      return super.isTokenAlreadyOpen();
+    } finally {
+      _$MoreInfoResponsibleActivitiesControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void toggleIconSelection() {
     final _$actionInfo =
         _$MoreInfoResponsibleActivitiesControllerBaseActionController.startAction(
@@ -301,7 +342,8 @@ isTokenVisible: ${isTokenVisible},
 isIconSelected: ${isIconSelected},
 isSwitched: ${isSwitched},
 professorList: ${professorList},
-professorActivitiesWithEnrollments: ${professorActivitiesWithEnrollments}
+professorActivitiesWithEnrollments: ${professorActivitiesWithEnrollments},
+isButtonLoading: ${isButtonLoading}
     ''';
   }
 }
