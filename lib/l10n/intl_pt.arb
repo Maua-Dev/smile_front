@@ -189,13 +189,7 @@
 
 
     "hourTitle": "Hora",
-<<<<<<< HEAD
-
-
-
-=======
     "dayTitle": "Data",
->>>>>>> develop
     "scheduleTitle": "Horário",
     "scheduleAddTitle": "Adicionar Horário",
 
@@ -229,7 +223,6 @@
     "noActivitiesEnrolledText": "Parece que você ainda não se inscreveu em nenhuma atividade :(",
     "noResponsibleActivitiesText": "Parece que você não é responsável por nenhuma atividade :(",
 
-    "namesTitle": "Nomes",
 
 
     "yesTitle": "Sim",
@@ -239,7 +232,6 @@
     "unavailabeTitle": "Indisponível",
 
 
-    "unavailabeActivityRegistration": "Inscrição para a atividade indisponível!",
     "unsubscribeVerification": "Tem certeza que deseja se desinscrever?",
     "subscribeVerification": "Tem certeza que deseja se inscrever?",
     "unsubscribeVerificationClosedRegistration": "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!",

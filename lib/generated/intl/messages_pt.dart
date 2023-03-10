@@ -496,8 +496,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "successSendingSponsorEmail": MessageLookupByLibrary.simpleMessage(
             "Enviado com sucesso!! Nossa equipe entrará em contato em breve."),
         "termination": MessageLookupByLibrary.simpleMessage("Término"),
-        "unavailabeActivityRegistration": MessageLookupByLibrary.simpleMessage(
-            "Inscrição para a atividade indisponível!"),
         "unavailabeSubscribe": MessageLookupByLibrary.simpleMessage(
             "Inscrição para a atividade indisponível!"),
         "unavailabeTitle": MessageLookupByLibrary.simpleMessage("Indisponível"),

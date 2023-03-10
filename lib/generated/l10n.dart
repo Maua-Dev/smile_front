@@ -1806,16 +1806,6 @@ class S {
     );
   }
 
-  /// `Registration unavailabe for this activity!`
-  String get unavailabeActivityRegistration {
-    return Intl.message(
-      'Registration unavailabe for this activity!',
-      name: 'unavailabeActivityRegistration',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Are you sure you wanna unsubscribe?`
   String get unsubscribeVerification {
     return Intl.message(
