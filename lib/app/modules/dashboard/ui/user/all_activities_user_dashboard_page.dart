@@ -138,8 +138,6 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                             arguments: controller
                                 .activitiesOnScreen[index].activityCode,
                           );
-                          controller.analytics.logViewActivity(controller
-                              .activitiesOnScreen[index].activityCode);
                         },
                         isExtensive:
                             controller.activitiesOnScreen[index].isExtensive,

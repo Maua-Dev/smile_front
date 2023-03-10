@@ -173,7 +173,6 @@ class _ChangePasswordPageState
                       }
                       if (_formKey.currentState!.validate()) {
                         await controller.changeUserPassword();
-                        await controller.analytics.logChangePassword();
                       }
                     },
                   );

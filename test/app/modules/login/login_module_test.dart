@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,15 +11,11 @@ import 'package:smile_front/app/modules/home/home_module.dart';
 import 'package:smile_front/app/modules/login/login_module.dart';
 import 'package:smile_front/app/modules/login/presenter/controllers/login_controller.dart';
 
-import '../../../setup_firebase_mocks.dart';
-
 void main() {
   initModules([LoginModule(), AppModule(), HomeModule(), AuthModule()]);
-  setupCloudFirestoreMocks();
 
   setUpAll(() async {
     await Modular.isModuleReady<AuthModule>();
-    await Firebase.initializeApp();
   });
 
   test('LoginController Injection', () {

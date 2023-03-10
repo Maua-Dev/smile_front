@@ -76,7 +76,6 @@ class AdmModule extends Module {
               loginWithEmail: i<LoginWithEmailInterface>(),
               refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
-              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<GetDownloadLinkCsvInterface>(

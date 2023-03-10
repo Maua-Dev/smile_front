@@ -1,14 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
-import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../domain/usecases/refresh_token.dart';
 
 class AuthController {
   final RefreshTokenInterface refreshToken;
   final LoginWithEmailInterface loginWithEmail;
   final SecureStorageInterface storage;
-  final FirebaseAnalyticsService analytics;
   bool _loggedIn = false;
   String _role = '';
   String _name = '';
@@ -17,7 +15,6 @@ class AuthController {
   bool? _certificateWithSocialName = false;
 
   AuthController({
-    required this.analytics,
     required this.storage,
     required this.refreshToken,
     required this.loginWithEmail,
@@ -49,7 +46,6 @@ class AuthController {
     await storage.savePhone(loginResponse.phone);
     await storage
         .saveCertificateWithSocialName(_certificateWithSocialName ?? false);
-    await analytics.setUserProperties(await storage.getId() ?? '');
 
     _loggedIn = true;
   }
