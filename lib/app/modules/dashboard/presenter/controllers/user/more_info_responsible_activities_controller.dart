@@ -111,7 +111,6 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
     setIsLoading(true);
     professorActivityWithEnrollments =
         await getActivitiesWithEnrollments(activityCode);
-    print(professorActivityWithEnrollments.confirmationCode);
     professorList = professorActivityWithEnrollments.enrollments!
         .map(
           (e) => ListNameAndStateWithIsSwitched(
@@ -122,7 +121,6 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
                   e.state == EnrollmentStateEnum.COMPLETED ? true : false),
         )
         .toList();
-    print(professorActivityWithEnrollments.confirmationCode);
     isTokenAlreadyOpen();
     setIsLoading(false);
   }

@@ -1,28 +1,24 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
-
-import '../../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../../shared/themes/breakpoint.dart';
 
-class MobileActivitiesCardUserDashboard extends StatelessWidget {
+class ActivitiesCardProfessorWidget extends StatelessWidget {
   final String title;
   final String hour;
   final String finalTime;
-  final String? location;
+  final String location;
   final Function() onTap;
   final bool isLoading;
   final Color? mainColor;
   final DeliveryEnum? deliveryEnum;
-  final String link;
   final bool isExtensive;
   final DateTime date;
-  const MobileActivitiesCardUserDashboard({
+  const ActivitiesCardProfessorWidget({
     Key? key,
     required this.title,
     required this.hour,
@@ -32,7 +28,6 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
     required this.isLoading,
     this.mainColor,
     this.deliveryEnum,
-    required this.link,
     required this.isExtensive,
     required this.date,
   }) : super(key: key);
@@ -57,19 +52,21 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                     offset: const Offset(5, 5), // changes position of shadow
                   ),
                 ]),
-            width: MediaQuery.of(context).size.width < breakpointLMobile
-                ? 280
+            width: MediaQuery.of(context).size.width < breakpointMobile
+                ? MediaQuery.of(context).size.width
                 : MediaQuery.of(context).size.width > breakpointTablet
                     ? 1165
-                    : 342,
+                    : 360,
             height:
                 MediaQuery.of(context).size.width < breakpointTablet ? 76 : 204,
             child: Row(children: [
               Container(
-                  width:
-                      MediaQuery.of(context).size.width < tabletSize ? 70 : 190,
-                  height:
-                      MediaQuery.of(context).size.width < tabletSize ? 76 : 204,
+                  width: MediaQuery.of(context).size.width < breakpointTablet
+                      ? 70
+                      : 190,
+                  height: MediaQuery.of(context).size.width < breakpointTablet
+                      ? 76
+                      : 204,
                   decoration: BoxDecoration(
                       color: mainColor ?? AppColors.brandingBlue,
                       borderRadius: BorderRadius.circular(15)),
@@ -77,16 +74,16 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(hour,
                         style: AppTextStyles.bold.copyWith(
-                            fontSize:
-                                MediaQuery.of(context).size.width < tabletSize
-                                    ? 20
-                                    : 40)),
+                            fontSize: MediaQuery.of(context).size.width <
+                                    breakpointTablet
+                                ? 20
+                                : 40)),
                   )),
               Expanded(
                 child: Padding(
                   padding: MediaQuery.of(context).size.width < breakpointTablet
                       ? const EdgeInsets.symmetric(horizontal: 8)
-                      : const EdgeInsets.only(left: 32),
+                      : const EdgeInsets.only(left: 32, right: 64),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -95,25 +92,25 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height: MediaQuery.of(context).size.width <
+                              width: MediaQuery.of(context).size.width <
                                       breakpointTablet
-                                  ? 34
-                                  : 50,
+                                  ? 200
+                                  : MediaQuery.of(context).size.width / 2.7,
                               child: Text(title,
                                   maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
                                   style: AppTextStyles.bold.copyWith(
                                       fontSize:
                                           MediaQuery.of(context).size.width <
                                                   breakpointTablet
                                               ? 14
                                               : 30,
-                                      color:
-                                          mainColor ?? AppColors.brandingBlue)),
+                                      color: AppColors.brandingBlue)),
                             ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            if (isExtensive)
+                            if (isExtensive) ...[
+                              const SizedBox(
+                                width: 8,
+                              ),
                               Tooltip(
                                 triggerMode: TooltipTriggerMode.tap,
                                 message: S.of(context).isExtensiveTooltip,
@@ -123,6 +120,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                                   color: AppColors.brandingOrange,
                                 ),
                               ),
+                            ]
                           ]),
                       Row(children: [
                         Column(
@@ -138,14 +136,7 @@ class MobileActivitiesCardUserDashboard extends StatelessWidget {
                                     color: Colors.black)),
                             Row(
                               children: [
-                                Text(
-                                    deliveryEnum == DeliveryEnum.online
-                                        ? '${S.of(context).local}: Online'
-                                        : deliveryEnum == DeliveryEnum.hybrid
-                                            ? '${S.of(context).local}: Online ou $location'
-                                            : location == null || location == ''
-                                                ? '${S.of(context).local}: Indefinido'
-                                                : '${S.of(context).local}: $location',
+                                Text(location,
                                     style: AppTextStyles.bold.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <

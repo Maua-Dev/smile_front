@@ -81,10 +81,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                   : 204,
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Container(
-                    width: MediaQuery.of(context).size.width < tabletSize
+                    width: MediaQuery.of(context).size.width < breakpointTablet
                         ? 70
                         : 190,
-                    height: MediaQuery.of(context).size.width < tabletSize
+                    height: MediaQuery.of(context).size.width < breakpointTablet
                         ? 76
                         : 204,
                     decoration: BoxDecoration(
@@ -128,10 +128,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                 : 30,
                                         color: AppColors.brandingBlue)),
                               ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              if (isExtensive)
+                              if (isExtensive) ...[
+                                const SizedBox(
+                                  width: 8,
+                                ),
                                 Tooltip(
                                   triggerMode: TooltipTriggerMode.tap,
                                   message: S.of(context).isExtensiveTooltip,
@@ -141,6 +141,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                     color: AppColors.brandingOrange,
                                   ),
                                 ),
+                              ]
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
