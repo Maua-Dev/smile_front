@@ -52,6 +52,7 @@
     "aboutSmileDate": "Data: 22 a 27 de maio de 2023.",
     "signUp": "Inscreva-se",
     "unsubscribe": "Desinscrever-se",
+    "subscriberListTitle": "Lista de Inscritos",
     "termination": "Término",
     "local": "Local",
 
@@ -186,14 +187,33 @@
 
     "descriptionTitle": "Descrição",
 
+
     "hourTitle": "Hora",
+<<<<<<< HEAD
+
+
+
+=======
     "dayTitle": "Data",
+>>>>>>> develop
     "scheduleTitle": "Horário",
     "scheduleAddTitle": "Adicionar Horário",
 
     "codeTitle": "Código",
 
+
+    "absenceTitle": "Falta",
+    "presenceTitle": "Presente",
+
+    "namesTitle": "Nomes",
+
+    "validationCodeTitle": "Código de validação",
+
+    "localTitle": "Local",
+
+
     "isExtensiveTooltip": "Atividade Extensionista",
+
 
     "drawerHomeButton": "Página Inicial",
     "drawerActivitiesButton": "Atividades",
@@ -202,7 +222,8 @@
     "drawerHelpButton": "Ajuda",
     "drawerProfileButton": "Perfil",
 
-    "localTitle": "Local",
+
+    "locationTitle": "Local",
 
 
     "noActivitiesEnrolledText": "Parece que você ainda não se inscreveu em nenhuma atividade :(",

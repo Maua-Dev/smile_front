@@ -52,6 +52,9 @@
     "aboutSmileDate": "Date: May 22 to 27, 2023.",
     "signUp": "Sign Up",
     "unsubscribe": "Unsubscribe",
+
+    "subscriberListTitle": "Subscriber List",
+
     "termination": "Termination",
     "local": "Local",
 
@@ -66,6 +69,7 @@
     "queueTitle": "Na fila",
     "queueExitAlert": "Are you sure you want to exit the queue?",
     
+
 
 
 
@@ -191,7 +195,18 @@
 
     "codeTitle": "Code",
 
+
+    "absenceTitle": "Absence",
+    "presenceTitle": "Present",
+
+    "namesTitle": "Names",
+
+    "validationCodeTitle": "Validation Code",
+
+    "localTitle": "Local",
+
     "isExtensiveTooltip": "Extension Activity",
+
 
     "drawerHomeButton": "Home",
     "drawerActivitiesButton": "Activities",
@@ -200,7 +215,8 @@
     "drawerHelpButton": "Help",
     "drawerProfileButton": "Profile",
 
-    "localTitle": "Locati   on",
+
+    "locationTitle": "Location",
 
 
     "noActivitiesEnrolledText": "Looks like you haven't signed up for any activities yet :(",

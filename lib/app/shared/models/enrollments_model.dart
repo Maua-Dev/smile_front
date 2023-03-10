@@ -12,10 +12,11 @@ class EnrollmentsModel {
 
   factory EnrollmentsModel.fromMap(Map<String, dynamic> map) {
     return EnrollmentsModel(
-        user: map['user'] == null ? null : UserEnrollModel.fromMap(map['user']),
-        state: EnrollmentStateEnumExtension.stringToEnumMap(map['state']),
-        dateSubscribed:
-            DateTime.fromMillisecondsSinceEpoch(map['date_subscribed']));
+      user: map['user'] == null ? null : UserEnrollModel.fromMap(map['user']),
+      state: EnrollmentStateEnumExtension.stringToEnumMap(map['state']),
+      dateSubscribed:
+          DateTime.fromMillisecondsSinceEpoch(map['date_subscribed']),
+    );
   }
 
   static List<EnrollmentsModel> fromMaps(List array) {

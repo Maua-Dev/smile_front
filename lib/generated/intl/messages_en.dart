@@ -249,6 +249,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Date: May 22 to 27, 2023."),
         "aboutSmileDescription": m0,
         "aboutSmileTitle": MessageLookupByLibrary.simpleMessage("About Smile"),
+        "absenceTitle": MessageLookupByLibrary.simpleMessage("Absence"),
         "activitiesNotFound":
             MessageLookupByLibrary.simpleMessage("Activities not found"),
         "activitiesOfferedDescription": m1,
@@ -374,7 +375,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "joinQueueTitle": MessageLookupByLibrary.simpleMessage("Get in queue"),
         "knowMore": MessageLookupByLibrary.simpleMessage("KNOW MORE >>>"),
         "local": MessageLookupByLibrary.simpleMessage("Local"),
-        "localTitle": MessageLookupByLibrary.simpleMessage("Locati   on"),
+        "localTitle": MessageLookupByLibrary.simpleMessage("Local"),
+        "locationTitle": MessageLookupByLibrary.simpleMessage("Location"),
         "loginForgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Forgot my password"),
         "loginPasswordPlaceholder":
@@ -412,6 +414,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Means of notification:"),
         "planPriceSponsorSchema": m14,
         "planSponsorSchema": m15,
+        "presenceTitle": MessageLookupByLibrary.simpleMessage("Present"),
         "presenceValidateTitle":
             MessageLookupByLibrary.simpleMessage("Presence Validate"),
         "queueExitAlert": MessageLookupByLibrary.simpleMessage(
@@ -475,6 +478,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "subscribeVerification": MessageLookupByLibrary.simpleMessage(
             "Are you sure you wanna subscribe?"),
         "subscribedTitle": MessageLookupByLibrary.simpleMessage("Subscribed"),
+        "subscriberListTitle":
+            MessageLookupByLibrary.simpleMessage("Subscriber List"),
         "successChangePassword": MessageLookupByLibrary.simpleMessage(
             "Password changed successfully!"),
         "successChangePasswordRedirect": MessageLookupByLibrary.simpleMessage(
@@ -510,6 +515,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!"),
         "userRolesNameSchema": m19,
+        "validationCodeTitle":
+            MessageLookupByLibrary.simpleMessage("Validation Code"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }
