@@ -69,7 +69,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   void isTokenAlreadyOpen() {
     if (professorActivitiesWithEnrollments.confirmationCode != null) {
       token = professorActivitiesWithEnrollments.confirmationCode!;
-      showToken();
+      isTokenVisible = true;
     }
   }
 

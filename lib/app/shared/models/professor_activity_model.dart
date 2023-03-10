@@ -7,7 +7,9 @@ import 'enrollments_model.dart';
 
 class ProfessorActivityModel extends Activity {
   final List<EnrollmentsModel>? enrollments;
+  final String? confirmationCode;
   ProfessorActivityModel({
+    this.confirmationCode,
     this.enrollments,
     required super.isExtensive,
     super.deliveryEnum,
@@ -18,7 +20,6 @@ class ProfessorActivityModel extends Activity {
     required super.title,
     required super.description,
     required super.speakers,
-    super.confirmationCode,
     super.link,
     super.place,
     required super.acceptingNewEnrollments,
