@@ -273,7 +273,6 @@ abstract class UserDashboardControllerBase with Store {
       phoneToChange =
           '${phoneToChange.substring(0, 3)} (${phoneToChange.substring(3, 5)}) ${phoneToChange.substring(5, 10)}-${phoneToChange.substring(10, 14)}';
     }
-    setCountryCode(const CountryCode(name: '', code: '', dialCode: ''));
   }
 
   @action
@@ -432,15 +431,17 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
-    phoneToChange = '${countryCode?.dialCode}$value';
+    if (value == '') {
+      phoneToChange = '';
+    } else {
+      phoneToChange = '${countryCode?.dialCode}$value';
+      isPhoneFieldFilled = true;
+    }
     if (countryCode?.code == "BR") {
       phoneToChange = phoneToChange.replaceAll('(', '');
       phoneToChange = phoneToChange.replaceAll(')', '');
       phoneToChange = phoneToChange.replaceAll(' ', '');
       phoneToChange = phoneToChange.replaceAll('-', '');
-    }
-    if (value.isNotEmpty) {
-      isPhoneFieldFilled = true;
     }
   }
 
