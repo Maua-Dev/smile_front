@@ -379,6 +379,19 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  bool get acceptedNotifications => (super.noSuchMethod(
+        Invocation.getter(#acceptedNotifications),
+        returnValue: false,
+      ) as bool);
+  @override
+  set acceptedNotifications(bool? _acceptedNotifications) => super.noSuchMethod(
+        Invocation.setter(
+          #acceptedNotifications,
+          _acceptedNotifications,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   String get phoneToChange => (super.noSuchMethod(
         Invocation.getter(#phoneToChange),
         returnValue: '',
@@ -457,6 +470,19 @@ class MockUserDashboardController extends _i1.Mock
         Invocation.setter(
           #hourFilter,
           _hourFilter,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get isGetPhoneBrazilian => (super.noSuchMethod(
+        Invocation.getter(#isGetPhoneBrazilian),
+        returnValue: false,
+      ) as bool);
+  @override
+  set isGetPhoneBrazilian(bool? _isGetPhoneBrazilian) => super.noSuchMethod(
+        Invocation.setter(
+          #isGetPhoneBrazilian,
+          _isGetPhoneBrazilian,
         ),
         returnValueForMissingStub: null,
       );

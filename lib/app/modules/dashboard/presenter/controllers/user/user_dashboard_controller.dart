@@ -53,6 +53,9 @@ abstract class UserDashboardControllerBase with Store {
   String nameToChange = '';
 
   @observable
+  bool acceptedNotifications = false;
+
+  @observable
   String phoneToChange = '';
 
   @observable
@@ -309,8 +312,13 @@ abstract class UserDashboardControllerBase with Store {
   @action
   Future<void> changeUserData() async {
     setIsLoading(true);
+    if (phoneToChange == '') {
+      acceptedNotifications = false;
+    } else {
+      acceptedNotifications = true;
+    }
     await changeData(nameToChange, socialNameToChange,
-        certificateWithSocialName, phoneToChange);
+        certificateWithSocialName, phoneToChange, acceptedNotifications);
     await secureStorage.saveName(nameToChange);
     await secureStorage.saveSocialName(socialNameToChange);
     await secureStorage

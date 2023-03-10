@@ -107,6 +107,24 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
+  late final _$acceptedNotificationsAtom = Atom(
+      name: 'UserDashboardControllerBase.acceptedNotifications',
+      context: context);
+
+  @override
+  bool get acceptedNotifications {
+    _$acceptedNotificationsAtom.reportRead();
+    return super.acceptedNotifications;
+  }
+
+  @override
+  set acceptedNotifications(bool value) {
+    _$acceptedNotificationsAtom.reportWrite(value, super.acceptedNotifications,
+        () {
+      super.acceptedNotifications = value;
+    });
+  }
+
   late final _$phoneToChangeAtom =
       Atom(name: 'UserDashboardControllerBase.phoneToChange', context: context);
 
@@ -234,6 +252,23 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   set hourFilter(DateTime? value) {
     _$hourFilterAtom.reportWrite(value, super.hourFilter, () {
       super.hourFilter = value;
+    });
+  }
+
+  late final _$isGetPhoneBrazilianAtom = Atom(
+      name: 'UserDashboardControllerBase.isGetPhoneBrazilian',
+      context: context);
+
+  @override
+  bool get isGetPhoneBrazilian {
+    _$isGetPhoneBrazilianAtom.reportRead();
+    return super.isGetPhoneBrazilian;
+  }
+
+  @override
+  set isGetPhoneBrazilian(bool value) {
+    _$isGetPhoneBrazilianAtom.reportWrite(value, super.isGetPhoneBrazilian, () {
+      super.isGetPhoneBrazilian = value;
     });
   }
 
@@ -671,6 +706,7 @@ name: ${name},
 certificateWithSocialName: ${certificateWithSocialName},
 socialNameToChange: ${socialNameToChange},
 nameToChange: ${nameToChange},
+acceptedNotifications: ${acceptedNotifications},
 phoneToChange: ${phoneToChange},
 wantSocialName: ${wantSocialName},
 subscribedActivitiesOnScreen: ${subscribedActivitiesOnScreen},
@@ -679,6 +715,7 @@ typeFilter: ${typeFilter},
 typeOnScreen: ${typeOnScreen},
 dateFilter: ${dateFilter},
 hourFilter: ${hourFilter},
+isGetPhoneBrazilian: ${isGetPhoneBrazilian},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 allSubscribedActivitiesList: ${allSubscribedActivitiesList},

@@ -372,6 +372,7 @@ class MockChangeDataInterface extends _i1.Mock
     String? socialNameToChange,
     bool? certificateWithSocialName,
     String? phone,
+    bool? acceptedNotifications,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -381,6 +382,7 @@ class MockChangeDataInterface extends _i1.Mock
             socialNameToChange,
             certificateWithSocialName,
             phone,
+            acceptedNotifications,
           ],
         ),
         returnValue: _i4.Future<void>.value(),
