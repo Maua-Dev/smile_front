@@ -52,6 +52,7 @@
     "aboutSmileDate": "Data: 22 a 27 de maio de 2023.",
     "signUp": "Inscreva-se",
     "unsubscribe": "Desinscrever-se",
+    "subscriberListTitle": "Lista de Inscritos",
     "termination": "Término",
     "local": "Local",
 
@@ -186,6 +187,7 @@
 
     "descriptionTitle": "Descrição",
 
+
     "hourTitle": "Hora",
     "dayTitle": "Data",
     "scheduleTitle": "Horário",
@@ -193,7 +195,19 @@
 
     "codeTitle": "Código",
 
+
+    "absenceTitle": "Falta",
+    "presenceTitle": "Presente",
+
+    "namesTitle": "Nomes",
+
+    "validationCodeTitle": "Código de validação",
+
+    "localTitle": "Local",
+
+
     "isExtensiveTooltip": "Atividade Extensionista",
+
 
     "drawerHomeButton": "Página Inicial",
     "drawerActivitiesButton": "Atividades",
@@ -202,13 +216,13 @@
     "drawerHelpButton": "Ajuda",
     "drawerProfileButton": "Perfil",
 
-    "localTitle": "Local",
+
+    "locationTitle": "Local",
 
 
     "noActivitiesEnrolledText": "Parece que você ainda não se inscreveu em nenhuma atividade :(",
     "noResponsibleActivitiesText": "Parece que você não é responsável por nenhuma atividade :(",
 
-    "namesTitle": "Nomes",
 
 
     "yesTitle": "Sim",
@@ -218,7 +232,6 @@
     "unavailabeTitle": "Indisponível",
 
 
-    "unavailabeActivityRegistration": "Inscrição para a atividade indisponível!",
     "unsubscribeVerification": "Tem certeza que deseja se desinscrever?",
     "subscribeVerification": "Tem certeza que deseja se inscrever?",
     "unsubscribeVerificationClosedRegistration": "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!",

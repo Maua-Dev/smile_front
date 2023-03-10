@@ -9,7 +9,6 @@ import 'package:string_validator/string_validator.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/entities/user_registration.dart';
 import '../../../../shared/error/error_snackbar.dart';
-import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../external/errors/errors.dart';
 part 'register_controller.g.dart';
@@ -17,10 +16,9 @@ part 'register_controller.g.dart';
 class RegisterController = RegisterControllerBase with _$RegisterController;
 
 abstract class RegisterControllerBase with Store {
-  final FirebaseAnalyticsService analytics;
   final RegisterUserInterface registerUser;
 
-  RegisterControllerBase({required this.analytics, required this.registerUser});
+  RegisterControllerBase({required this.registerUser});
 
   @computed
   String? get raInt => ra == ''
@@ -315,7 +313,6 @@ abstract class RegisterControllerBase with Store {
         await registerUser(registerInformations);
         setIsLoading(false);
         setSuccessRegistration(true);
-        analytics.logSignUp();
       } on Failure catch (e) {
         if (scaffold.context.size!.width <= 1024) {
           showErrorSnackBar(

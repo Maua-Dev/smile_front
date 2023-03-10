@@ -3,8 +3,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/certificate_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/generate_confirmation_code.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_activities_with_enrollments.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_certificates.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/post_manual_change_attendance.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/send_confirm_attendance.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
@@ -48,7 +51,6 @@ class UserModule extends Module {
     Bind.lazySingleton<AllActivitiesUserDashboardController>(
         (i) => AllActivitiesUserDashboardController(
               authController: i(),
-              analytics: i(),
               enrollmentController: i(),
             ),
         export: true),
@@ -63,6 +65,10 @@ class UserModule extends Module {
         (i) => ActivitiesDatasourceImpl(
               storage: i<SecureStorageInterface>(),
             )),
+    Bind.lazySingleton<GenerateConfirmationCodeInterface>(
+        (i) => GenerateConfirmationCodeImpl(repository: i())),
+    Bind.lazySingleton<GetActivitiesWithEnrollmentsInterface>(
+        (i) => GetActivitiesWithEnrollmentsImp(repository: i())),
     Bind.lazySingleton<GetAllUserActivitiesInterface>((i) => GetActivitiesList(
           repository: i(),
         )),
@@ -71,7 +77,6 @@ class UserModule extends Module {
         )),
     Bind.lazySingleton<HelpController>((i) => HelpController(
           getAllFaqInformation: i(),
-          analytics: i(),
         )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
@@ -81,6 +86,8 @@ class UserModule extends Module {
         (i) => UnsubscribeActivity(repository: i())),
     Bind.lazySingleton<SubscribeActivityInterface>(
         (i) => SubscribeActivity(repository: i())),
+    Bind.lazySingleton<PostManualChangeAttendenceInterface>(
+        (i) => PostManualChangeAttendence(repository: i())),
     Bind.lazySingleton<UserRepositoryInterface>(
         (i) => UserRepositoryImpl(datasource: i())),
     Bind.lazySingleton<ChangeDataInterface>(
@@ -94,7 +101,6 @@ class UserModule extends Module {
       (i) => UserDashboardController(
         secureStorage: i(),
         changeData: i(),
-        analytics: i(),
         enrollmentController: i(),
       ),
     ),
@@ -104,7 +110,6 @@ class UserModule extends Module {
               loginWithEmail: i<LoginWithEmailInterface>(),
               refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
-              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<MoreInfoController>(

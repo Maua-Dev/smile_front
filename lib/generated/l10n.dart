@@ -667,6 +667,16 @@ class S {
     );
   }
 
+  /// `Subscriber List`
+  String get subscriberListTitle {
+    return Intl.message(
+      'Subscriber List',
+      name: 'subscriberListTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Termination`
   String get termination {
     return Intl.message(
@@ -1614,6 +1624,56 @@ class S {
     );
   }
 
+  /// `Absence`
+  String get absenceTitle {
+    return Intl.message(
+      'Absence',
+      name: 'absenceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Present`
+  String get presenceTitle {
+    return Intl.message(
+      'Present',
+      name: 'presenceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Names`
+  String get namesTitle {
+    return Intl.message(
+      'Names',
+      name: 'namesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Validation Code`
+  String get validationCodeTitle {
+    return Intl.message(
+      'Validation Code',
+      name: 'validationCodeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local`
+  String get localTitle {
+    return Intl.message(
+      'Local',
+      name: 'localTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Extension Activity`
   String get isExtensiveTooltip {
     return Intl.message(
@@ -1684,11 +1744,11 @@ class S {
     );
   }
 
-  /// `Locati   on`
-  String get localTitle {
+  /// `Location`
+  String get locationTitle {
     return Intl.message(
-      'Locati   on',
-      name: 'localTitle',
+      'Location',
+      name: 'locationTitle',
       desc: '',
       args: [],
     );
@@ -1709,16 +1769,6 @@ class S {
     return Intl.message(
       'Looks like you are not responsible for any activity :(',
       name: 'noResponsibleActivitiesText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Names`
-  String get namesTitle {
-    return Intl.message(
-      'Names',
-      name: 'namesTitle',
       desc: '',
       args: [],
     );
@@ -1751,16 +1801,6 @@ class S {
     return Intl.message(
       'Unavailabe',
       name: 'unavailabeTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Registration unavailabe for this activity!`
-  String get unavailabeActivityRegistration {
-    return Intl.message(
-      'Registration unavailabe for this activity!',
-      name: 'unavailabeActivityRegistration',
       desc: '',
       args: [],
     );
