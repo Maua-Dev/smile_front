@@ -82,6 +82,23 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
+  late final _$tokenAtom = Atom(
+      name: 'MoreInfoResponsibleActivitiesControllerBase.token',
+      context: context);
+
+  @override
+  String? get token {
+    _$tokenAtom.reportRead();
+    return super.token;
+  }
+
+  @override
+  set token(String? value) {
+    _$tokenAtom.reportWrite(value, super.token, () {
+      super.token = value;
+    });
+  }
+
   late final _$isIconSelectedAtom = Atom(
       name: 'MoreInfoResponsibleActivitiesControllerBase.isIconSelected',
       context: context);
@@ -321,6 +338,7 @@ isLoading: ${isLoading},
 isLoadingAtendanceToken: ${isLoadingAtendanceToken},
 isSubscribedListVisible: ${isSubscribedListVisible},
 isTokenVisible: ${isTokenVisible},
+token: ${token},
 isIconSelected: ${isIconSelected},
 isSwitched: ${isSwitched},
 professorList: ${professorList},
