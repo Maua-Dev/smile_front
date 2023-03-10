@@ -27,7 +27,6 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
     required this.deleteConfirmationCode,
   }) {
     getProfessorActivitiesWithEnrollments();
-    isTokenAlreadyOpen();
   }
 
   @observable
@@ -35,9 +34,6 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
 
   @observable
   bool isLoadingAtendanceToken = false;
-
-  @observable
-  String token = '';
 
   @action
   void setIsLoading(bool value) {
@@ -67,8 +63,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
 
   @action
   void isTokenAlreadyOpen() {
-    if (professorActivitiesWithEnrollments.confirmationCode != null) {
-      token = professorActivitiesWithEnrollments.confirmationCode!;
+    if (professorActivityWithEnrollments.confirmationCode != null) {
       isTokenVisible = true;
     }
   }
@@ -76,14 +71,16 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @action
   Future<void> generateNewAtendanceCode() async {
     setIsLoadingAtendanceCode(true);
-    token = await generateConfirmationCode(activityCode);
+    var token = await generateConfirmationCode(activityCode);
+    professorActivityWithEnrollments.copyWith(confirmationCode: token);
     setIsLoadingAtendanceCode(false);
   }
 
   @action
   Future<void> deleteOldAttendanceCode() async {
     setIsLoadingAtendanceCode(true);
-    token = await deleteConfirmationCode(activityCode);
+    var token = await deleteConfirmationCode(activityCode);
+    professorActivityWithEnrollments.copyWith(confirmationCode: token);
     setIsLoadingAtendanceCode(false);
   }
 
@@ -107,14 +104,15 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   List<ListNameAndStateWithIsSwitched> professorList = [];
 
   @observable
-  var professorActivitiesWithEnrollments = ProfessorActivityModel.newInstance();
+  var professorActivityWithEnrollments = ProfessorActivityModel.newInstance();
 
   @action
   Future<void> getProfessorActivitiesWithEnrollments() async {
     setIsLoading(true);
-    professorActivitiesWithEnrollments =
+    professorActivityWithEnrollments =
         await getActivitiesWithEnrollments(activityCode);
-    professorList = professorActivitiesWithEnrollments.enrollments!
+    print(professorActivityWithEnrollments.confirmationCode);
+    professorList = professorActivityWithEnrollments.enrollments!
         .map(
           (e) => ListNameAndStateWithIsSwitched(
               userId: e.user!.userId,
@@ -124,6 +122,8 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
                   e.state == EnrollmentStateEnum.COMPLETED ? true : false),
         )
         .toList();
+    print(professorActivityWithEnrollments.confirmationCode);
+    isTokenAlreadyOpen();
     setIsLoading(false);
   }
 

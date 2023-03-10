@@ -40,10 +40,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   @override
   Future<ProfessorActivityModel> getActivityWithEnrollments(String code) async {
-    if (activityWithEnrollments.enrollments != null) {
-      activityWithEnrollments =
-          await datasource.getActivityWithEnrollments(code);
-    }
+    activityWithEnrollments = await datasource.getActivityWithEnrollments(code);
     return Future.value(activityWithEnrollments);
   }
 

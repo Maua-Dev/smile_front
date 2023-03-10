@@ -29,10 +29,10 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
   @override
   Widget build(BuildContext context) {
     var initialTime = DateFormat('HH:mm')
-        .format(controller.professorActivitiesWithEnrollments.startDate!);
+        .format(controller.professorActivityWithEnrollments.startDate!);
     var finalTime = Utils.getActivityFinalTime(
-        controller.professorActivitiesWithEnrollments.startDate!,
-        controller.professorActivitiesWithEnrollments.duration);
+        controller.professorActivityWithEnrollments.startDate!,
+        controller.professorActivityWithEnrollments.duration);
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16),
@@ -48,7 +48,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                   return Align(
                     alignment: Alignment.center,
                     child: Text(
-                        '${controller.professorActivitiesWithEnrollments.activityCode} - ${controller.professorActivitiesWithEnrollments.title}',
+                        '${controller.professorActivityWithEnrollments.activityCode} - ${controller.professorActivityWithEnrollments.title}',
                         textAlign: TextAlign.center,
                         style: AppTextStyles.bold.copyWith(
                             color: AppColors.brandingOrange,
@@ -93,7 +93,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                               } else {
                                 return Text(
                                     DateFormat('dd/MM').format(controller
-                                        .professorActivitiesWithEnrollments
+                                        .professorActivityWithEnrollments
                                         .startDate!),
                                     style: AppTextStyles.bold.copyWith(
                                         color: AppColors.white,
@@ -150,7 +150,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                           MediaQuery.of(context).size.width < breakpointTablet
                               ? 78
                               : 175,
-                      height: controller.professorActivitiesWithEnrollments
+                      height: controller.professorActivityWithEnrollments
                                   .deliveryEnum ==
                               DeliveryEnum.hybrid
                           ? MediaQuery.of(context).size.width < breakpointTablet
@@ -180,7 +180,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                 );
                               } else {
                                 return controller
-                                            .professorActivitiesWithEnrollments
+                                            .professorActivityWithEnrollments
                                             .deliveryEnum ==
                                         DeliveryEnum.online
                                     ? MouseRegion(
@@ -188,7 +188,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                         child: GestureDetector(
                                           onTap: () => launchUrl(
                                             Uri.parse(controller
-                                                .professorActivitiesWithEnrollments
+                                                .professorActivityWithEnrollments
                                                 .link!),
                                             mode:
                                                 LaunchMode.externalApplication,
@@ -208,7 +208,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                                           : 40)),
                                         ),
                                       )
-                                    : controller.professorActivitiesWithEnrollments
+                                    : controller.professorActivityWithEnrollments
                                                 .deliveryEnum ==
                                             DeliveryEnum.hybrid
                                         ? Column(
@@ -219,7 +219,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                                 child: GestureDetector(
                                                   onTap: () => launchUrl(
                                                     Uri.parse(controller
-                                                        .professorActivitiesWithEnrollments
+                                                        .professorActivityWithEnrollments
                                                         .link!),
                                                     mode: LaunchMode
                                                         .externalApplication,
@@ -242,7 +242,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                               ),
                                               Text(
                                                   controller
-                                                      .professorActivitiesWithEnrollments
+                                                      .professorActivityWithEnrollments
                                                       .place!,
                                                   style: AppTextStyles.bold.copyWith(
                                                       color: AppColors.white,
@@ -255,9 +255,9 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                                           : 40))
                                             ],
                                           )
-                                        : controller.professorActivitiesWithEnrollments.place !=
+                                        : controller.professorActivityWithEnrollments.place !=
                                                 null
-                                            ? Text(controller.professorActivitiesWithEnrollments.place!,
+                                            ? Text(controller.professorActivityWithEnrollments.place!,
                                                 style: AppTextStyles.bold.copyWith(
                                                     color: AppColors.white,
                                                     fontSize: MediaQuery.of(context)
@@ -359,11 +359,11 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                   },
                                   professorList: controller.professorList,
                                   enrollmentsList: controller
-                                      .professorActivitiesWithEnrollments,
+                                      .professorActivityWithEnrollments,
                                   isSwitched: controller.isSwitched,
                                   toggleSwitch: controller.toggleSwitch,
                                   listViewItemCount: controller
-                                      .professorActivitiesWithEnrollments
+                                      .professorActivityWithEnrollments
                                       .enrollments!
                                       .length,
                                   isLoading: controller.isLoading,
@@ -408,70 +408,70 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                 }
                                 controller.showToken();
                               },
-                              child: Observer(builder: (_) {
-                                return Container(
-                                  width: MediaQuery.of(context).size.width <
-                                          breakpointTablet
-                                      ? 339
-                                      : 484,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: controller.isTokenVisible
-                                              ? AppColors.brandingOrange
-                                              : AppColors.white),
-                                      color: controller.isTokenVisible
-                                          ? AppColors.white
-                                          : AppColors.brandingOrange,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                      .size
-                                                      .width <
-                                                  breakpointMobile
-                                              ? 30
-                                              : 50,
-                                        ),
-                                        Text(
-                                            controller.isTokenVisible
-                                                ? 'Apagar Token'
-                                                : 'Gerar Token',
-                                            style: AppTextStyles.bold.copyWith(
-                                                color: controller.isTokenVisible
-                                                    ? AppColors.brandingOrange
-                                                    : AppColors.white,
-                                                fontSize: 30)),
-                                        Icon(
+                              child: Container(
+                                width: MediaQuery.of(context).size.width <
+                                        breakpointTablet
+                                    ? 339
+                                    : 484,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: controller.isTokenVisible
+                                            ? AppColors.brandingOrange
+                                            : AppColors.white),
+                                    color: controller.isTokenVisible
+                                        ? AppColors.white
+                                        : AppColors.brandingOrange,
+                                    borderRadius: BorderRadius.circular(15)),
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width <
+                                                    breakpointMobile
+                                                ? 30
+                                                : 50,
+                                      ),
+                                      Text(
                                           controller.isTokenVisible
-                                              ? Icons.keyboard_arrow_up
-                                              : Icons.keyboard_arrow_down,
-                                          size: MediaQuery.of(context)
-                                                      .size
-                                                      .width <
-                                                  breakpointMobile
-                                              ? 30
-                                              : 50,
-                                          color: controller.isTokenVisible
-                                              ? AppColors.brandingOrange
-                                              : AppColors.white,
-                                        )
-                                      ]),
-                                );
-                              }),
+                                              ? 'Apagar Token'
+                                              : 'Gerar Token',
+                                          style: AppTextStyles.bold.copyWith(
+                                              color: controller.isTokenVisible
+                                                  ? AppColors.brandingOrange
+                                                  : AppColors.white,
+                                              fontSize: 30)),
+                                      Icon(
+                                        controller.isTokenVisible
+                                            ? Icons.keyboard_arrow_up
+                                            : Icons.keyboard_arrow_down,
+                                        size:
+                                            MediaQuery.of(context).size.width <
+                                                    breakpointMobile
+                                                ? 30
+                                                : 50,
+                                        color: controller.isTokenVisible
+                                            ? AppColors.brandingOrange
+                                            : AppColors.white,
+                                      )
+                                    ]),
+                              ),
                             ),
                           ),
                           const SizedBox(height: 30),
-                          Observer(
-                              builder: (_) => Visibility(
-                                  visible: controller.isTokenVisible,
-                                  child: TokenGenerateWidget(
-                                      confirmationCode: controller.token))),
+                          controller.isTokenVisible &&
+                                  controller.professorActivityWithEnrollments
+                                          .confirmationCode !=
+                                      null
+                              ? TokenGenerateWidget(
+                                  confirmationCode: controller
+                                      .professorActivityWithEnrollments
+                                      .confirmationCode!)
+                              : const SizedBox.shrink(),
                         ],
                       ),
                     );

@@ -46,23 +46,6 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
-  late final _$tokenAtom = Atom(
-      name: 'MoreInfoResponsibleActivitiesControllerBase.token',
-      context: context);
-
-  @override
-  String get token {
-    _$tokenAtom.reportRead();
-    return super.token;
-  }
-
-  @override
-  set token(String value) {
-    _$tokenAtom.reportWrite(value, super.token, () {
-      super.token = value;
-    });
-  }
-
   late final _$isSubscribedListVisibleAtom = Atom(
       name:
           'MoreInfoResponsibleActivitiesControllerBase.isSubscribedListVisible',
@@ -150,22 +133,22 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
-  late final _$professorActivitiesWithEnrollmentsAtom = Atom(
+  late final _$professorActivityWithEnrollmentsAtom = Atom(
       name:
-          'MoreInfoResponsibleActivitiesControllerBase.professorActivitiesWithEnrollments',
+          'MoreInfoResponsibleActivitiesControllerBase.professorActivityWithEnrollments',
       context: context);
 
   @override
-  ProfessorActivityModel get professorActivitiesWithEnrollments {
-    _$professorActivitiesWithEnrollmentsAtom.reportRead();
-    return super.professorActivitiesWithEnrollments;
+  ProfessorActivityModel get professorActivityWithEnrollments {
+    _$professorActivityWithEnrollmentsAtom.reportRead();
+    return super.professorActivityWithEnrollments;
   }
 
   @override
-  set professorActivitiesWithEnrollments(ProfessorActivityModel value) {
-    _$professorActivitiesWithEnrollmentsAtom
-        .reportWrite(value, super.professorActivitiesWithEnrollments, () {
-      super.professorActivitiesWithEnrollments = value;
+  set professorActivityWithEnrollments(ProfessorActivityModel value) {
+    _$professorActivityWithEnrollmentsAtom
+        .reportWrite(value, super.professorActivityWithEnrollments, () {
+      super.professorActivityWithEnrollments = value;
     });
   }
 
@@ -336,13 +319,12 @@ mixin _$MoreInfoResponsibleActivitiesController
     return '''
 isLoading: ${isLoading},
 isLoadingAtendanceToken: ${isLoadingAtendanceToken},
-token: ${token},
 isSubscribedListVisible: ${isSubscribedListVisible},
 isTokenVisible: ${isTokenVisible},
 isIconSelected: ${isIconSelected},
 isSwitched: ${isSwitched},
 professorList: ${professorList},
-professorActivitiesWithEnrollments: ${professorActivitiesWithEnrollments},
+professorActivityWithEnrollments: ${professorActivityWithEnrollments},
 isButtonLoading: ${isButtonLoading}
     ''';
   }
