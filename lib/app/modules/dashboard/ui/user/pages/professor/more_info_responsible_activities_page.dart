@@ -447,14 +447,9 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                           ),
                         ),
                         const SizedBox(height: 30),
-                        controller.isTokenVisible &&
-                                controller.professorActivityWithEnrollments
-                                        .confirmationCode !=
-                                    null
+                        controller.isTokenVisible && controller.token != null
                             ? TokenGenerateWidget(
-                                confirmationCode: controller
-                                    .professorActivityWithEnrollments
-                                    .confirmationCode!)
+                                confirmationCode: controller.token!)
                             : const SizedBox.shrink(),
                       ],
                     ),

@@ -56,6 +56,9 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @observable
   bool isTokenVisible = false;
 
+  @observable
+  String? token;
+
   @action
   void showToken() {
     isTokenVisible = !isTokenVisible;
@@ -64,6 +67,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @action
   void isTokenAlreadyOpen() {
     if (professorActivityWithEnrollments.confirmationCode != null) {
+      token = professorActivityWithEnrollments.confirmationCode;
       isTokenVisible = true;
     }
   }
@@ -71,8 +75,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @action
   Future<void> generateNewAtendanceCode() async {
     setIsLoadingAtendanceCode(true);
-    var token = await generateConfirmationCode(activityCode);
-    professorActivityWithEnrollments.copyWith(confirmationCode: token);
+    token = await generateConfirmationCode(activityCode);
     setIsLoadingAtendanceCode(false);
   }
 
