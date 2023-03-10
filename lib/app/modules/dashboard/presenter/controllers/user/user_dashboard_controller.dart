@@ -266,13 +266,11 @@ abstract class UserDashboardControllerBase with Store {
     phone = await secureStorage.getPhone();
     isGetPhoneBrazilian = phone!.substring(0, 3) == "+55";
     phoneToChange = phone!;
-    print(phoneToChange);
     if (isGetPhoneBrazilian) {
       phoneToChange =
           '${phoneToChange.substring(0, 3)} (${phoneToChange.substring(3, 5)}) ${phoneToChange.substring(5, 10)}-${phoneToChange.substring(10, 14)}';
-    } else {
-      //setCountryCode(Coutnz);
     }
+    setCountryCode(const CountryCode(name: '', code: '', dialCode: ''));
   }
 
   @action

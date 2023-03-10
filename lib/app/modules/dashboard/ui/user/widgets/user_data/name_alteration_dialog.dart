@@ -45,6 +45,8 @@ class NameAlterationDialog extends StatelessWidget {
         mask: "(##) #####-####", filter: {"#": RegExp(r'[0-9]')});
     final maskPhone = MaskTextInputFormatter(
         mask: "+###############", filter: {"#": RegExp(r'[0-9]')});
+    final maskNewPhone = MaskTextInputFormatter(
+        mask: "###############", filter: {"#": RegExp(r'[0-9]')});
     const countryPicker = FlCountryCodePicker();
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -280,9 +282,8 @@ class NameAlterationDialog extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    if (controller.phone == null)
-                      GestureDetector(
-                          child: Padding(
+                    if (controller.phone == '')
+                      Padding(
                         padding: const EdgeInsets.only(bottom: 20.0),
                         child: GestureDetector(
                           onTap: () async {
@@ -290,6 +291,10 @@ class NameAlterationDialog extends StatelessWidget {
                                 context: context);
                             controller.setCountryCode(code);
                             controller.setBrazilianPhone(code);
+                            if (controller.countryCode == null) {
+                              controller.setCountryCode(const CountryCode(
+                                  name: 'Brazil', code: 'BR', dialCode: '+55'));
+                            }
                           },
                           child: Container(
                             height: 60,
@@ -325,15 +330,15 @@ class NameAlterationDialog extends StatelessWidget {
                             ),
                           ),
                         ),
-                      )),
-                    if (controller.phone == null)
+                      ),
+                    if (controller.phone == '')
                       const SizedBox(
                         width: 10,
                       ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
                       child: SizedBox(
-                        width: controller.phone == null
+                        width: controller.phone == ''
                             ? Screen.width(context) < breakpointMobile
                                 ? 260
                                 : 380
@@ -341,9 +346,11 @@ class NameAlterationDialog extends StatelessWidget {
                                 ? 388
                                 : 500,
                         child: TextFormField(
-                          inputFormatters: controller.isGetPhoneBrazilian
-                              ? [maskBrazilianPhone]
-                              : [maskPhone],
+                          inputFormatters: controller.phone != ''
+                              ? [maskPhone]
+                              : controller.countryCode!.code == "BR"
+                                  ? [maskBrazilianPhone]
+                                  : [maskNewPhone],
                           validator: controller.validatePhone,
                           initialValue: controller.phoneToChange,
                           keyboardType: TextInputType.number,
