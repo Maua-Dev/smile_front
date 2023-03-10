@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/app_widget.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
+
 import '../../../../../generated/l10n.dart';
 import '../../../../shared/error/error_snackbar.dart';
 import '../../../../shared/themes/app_colors.dart';
@@ -17,12 +17,9 @@ class ForgotPasswordController = ForgotPasswordControllerBase
 abstract class ForgotPasswordControllerBase with Store {
   final ForgotPasswordInterface forgotPassword;
   final ChangePasswordInterface changePassword;
-  final FirebaseAnalyticsService analytics;
 
   ForgotPasswordControllerBase(
-      {required this.analytics,
-      required this.forgotPassword,
-      required this.changePassword});
+      {required this.forgotPassword, required this.changePassword});
 
   @observable
   bool isLoading = false;

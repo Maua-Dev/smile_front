@@ -7,7 +7,6 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/error/error_snackbar.dart';
-import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../../auth/presenter/controllers/auth_controller.dart';
 
 part 'login_controller.g.dart';
@@ -16,11 +15,9 @@ class LoginController = LoginControllerBase with _$LoginController;
 
 abstract class LoginControllerBase with Store {
   final AuthController authController;
-  final FirebaseAnalyticsService analytics;
 
   LoginControllerBase({
     required this.authController,
-    required this.analytics,
   });
 
   @observable
@@ -65,7 +62,6 @@ abstract class LoginControllerBase with Store {
               .navigate('/user/home', arguments: [email, authController.role]);
         }
       }
-      analytics.logLogin();
     } on Failure catch (e) {
       if (scaffold.context.size!.width <= 1024) {
         showErrorSnackBar(

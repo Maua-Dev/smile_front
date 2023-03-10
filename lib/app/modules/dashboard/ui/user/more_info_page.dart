@@ -7,6 +7,7 @@ import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/generated/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
@@ -90,29 +91,42 @@ class _MoreInfoPageState
                                   color: AppColors.white, fontSize: 20))
                         ]),
                   ),
-                  if (controller.activity.place != null &&
-                      controller.activity.place != '') ...[
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      width: 78,
-                      height: 49,
-                      decoration: BoxDecoration(
-                          color: AppColors.brandingBlue,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(S.of(context).localTitle,
-                                style: AppTextStyles.bold.copyWith(
-                                    color: AppColors.white, fontSize: 12)),
-                            Text(controller.activity.place!,
-                                style: AppTextStyles.bold.copyWith(
-                                    color: AppColors.white, fontSize: 20))
-                          ]),
-                    ),
-                  ]
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 78,
+                    height: 49,
+                    decoration: BoxDecoration(
+                        color: AppColors.brandingBlue,
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(S.of(context).localTitle,
+                              style: AppTextStyles.bold.copyWith(
+                                  color: AppColors.white, fontSize: 12)),
+                          controller.activity.place != null
+                              ? Text(controller.activity.place!,
+                                  style: AppTextStyles.bold.copyWith(
+                                      color: AppColors.white, fontSize: 20))
+                              : controller.activity.link != null
+                                  ? TextButton(
+                                      onPressed: () {
+                                        launchUrl(Uri.parse(
+                                            controller.activity.link!));
+                                      },
+                                      child: Text(
+                                        'Online',
+                                        style: AppTextStyles.bold.copyWith(
+                                          color: AppColors.white,
+                                          fontSize: 20,
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                      ))
+                                  : const SizedBox.shrink()
+                        ]),
+                  ),
                 ],
               ),
             ),
@@ -139,9 +153,9 @@ class _MoreInfoPageState
                                   controller.activity.totalSlots,
                               isLoading: controller.isLoading,
                               isRegistered:
-                                  controller.activity.enrollments == null
-                                      ? EnrollmentStateEnum.NONE
-                                      : controller.activity.enrollments!.state,
+                                  // controller.activity.enrollments == null
+                                  EnrollmentStateEnum.NONE,
+                              // : controller.activity.enrollments!.state,
                               onPressed: () {
                                 var isReg = controller.activity.enrollments ==
                                         null

@@ -51,7 +51,6 @@ class UserModule extends Module {
     Bind.lazySingleton<AllActivitiesUserDashboardController>(
         (i) => AllActivitiesUserDashboardController(
               authController: i(),
-              analytics: i(),
               enrollmentController: i(),
             ),
         export: true),
@@ -78,7 +77,6 @@ class UserModule extends Module {
         )),
     Bind.lazySingleton<HelpController>((i) => HelpController(
           getAllFaqInformation: i(),
-          analytics: i(),
         )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
@@ -103,7 +101,6 @@ class UserModule extends Module {
       (i) => UserDashboardController(
         secureStorage: i(),
         changeData: i(),
-        analytics: i(),
         enrollmentController: i(),
       ),
     ),
@@ -113,7 +110,6 @@ class UserModule extends Module {
               loginWithEmail: i<LoginWithEmailInterface>(),
               refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
-              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<MoreInfoController>(
