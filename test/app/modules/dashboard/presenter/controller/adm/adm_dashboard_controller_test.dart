@@ -11,7 +11,6 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_admin_acti
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
@@ -73,7 +72,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
       enrollments: [],
     ),
     AdminActivityModel(
@@ -108,7 +107,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
       enrollments: [],
     ),
     AdminActivityModel(
@@ -143,7 +142,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
       enrollments: [],
     ),
     AdminActivityModel(
@@ -178,7 +177,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessors: [],
+      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
       enrollments: [],
     ),
   ];

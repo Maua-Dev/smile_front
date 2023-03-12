@@ -106,7 +106,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                             ? ''
                             : Utils.getActivityFinalTime(
                                 controller.activitiesOnScreen[index].startDate!,
-                                controller.activitiesOnScreen[index].duration);
+                                controller.activitiesOnScreen[index].duration!);
                     var hour = DateFormat('HH:mm').format(
                         controller.activitiesOnScreen[index].startDate!);
                     return Observer(builder: (_) {
@@ -131,7 +131,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                         takenSlots:
                             controller.activitiesOnScreen[index].takenSlots,
                         totalSlots:
-                            controller.activitiesOnScreen[index].totalSlots,
+                            controller.activitiesOnScreen[index].totalSlots!,
                         onTap: () {
                           Modular.to.navigate(
                             '/user/home/more-info',

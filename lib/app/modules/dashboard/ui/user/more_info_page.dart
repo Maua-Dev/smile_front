@@ -42,7 +42,7 @@ class _MoreInfoPageState
     var finalTime = controller.activity.startDate == null
         ? ''
         : Utils.getActivityFinalTime(
-            controller.activity.startDate!, controller.activity.duration);
+            controller.activity.startDate!, controller.activity.duration!);
     return MediaQuery.of(context).size.width < tabletSize
         ? SafeArea(
             child: Padding(
@@ -203,7 +203,7 @@ class _MoreInfoPageState
                                         },
                                       );
                                     } else if (controller.activity.takenSlots >=
-                                        controller.activity.totalSlots) {
+                                        controller.activity.totalSlots!) {
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
@@ -656,7 +656,7 @@ class _MoreInfoPageState
                                         },
                                       );
                                     } else if (controller.activity.takenSlots >=
-                                        controller.activity.totalSlots) {
+                                        controller.activity.totalSlots!) {
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) {

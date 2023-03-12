@@ -11,8 +11,6 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_ac
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
-import 'package:smile_front/app/shared/entities/card_activity.dart';
-import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
@@ -73,7 +71,7 @@ void main() {
     acceptingNewEnrollments: false,
     isExtensive: false,
     takenSlots: 0,
-    responsibleProfessors: [],
+    responsibleProfessor: ResponsibleProfessorModel.newInstance(),
   );
 
   setUpAll(() async {

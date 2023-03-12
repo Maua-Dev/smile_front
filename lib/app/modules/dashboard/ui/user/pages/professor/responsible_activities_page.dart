@@ -112,7 +112,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
                             ? ''
                             : Utils.getActivityFinalTime(
                                 controller.activitiesToShow[index].startDate!,
-                                controller.activitiesToShow[index].duration);
+                                controller.activitiesToShow[index].duration!);
                         var hour = DateFormat('HH:mm').format(controller
                             .allResponsibleActivities[index].startDate!);
                         return MobileActivitiesCardUserDashboard(

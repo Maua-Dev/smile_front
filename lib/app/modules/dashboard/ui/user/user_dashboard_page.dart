@@ -147,7 +147,7 @@ class _UserDashboardPageState
                                 controller.subscribedActivitiesOnScreen[index]
                                     .startDate!,
                                 controller.subscribedActivitiesOnScreen[index]
-                                    .duration);
+                                    .duration!);
                         var hour = DateFormat('HH:mm').format(controller
                             .subscribedActivitiesOnScreen[index].startDate!);
                         return MobileActivitiesCardUserDashboard(

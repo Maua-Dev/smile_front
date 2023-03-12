@@ -1,7 +1,5 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
-import 'infra/delivery_enum.dart';
 
 class CardActivity {
   final String id;

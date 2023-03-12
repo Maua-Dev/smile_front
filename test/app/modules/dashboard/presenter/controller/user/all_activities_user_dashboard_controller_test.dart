@@ -16,7 +16,6 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_ac
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';

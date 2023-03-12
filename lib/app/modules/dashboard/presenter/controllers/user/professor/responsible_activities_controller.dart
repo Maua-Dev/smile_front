@@ -43,7 +43,7 @@ abstract class ResponsibleActivitiesControllerBase with Store {
       var allActivities = await getUserSubscribedActivities();
       var userId = await storage.getId();
       for (var activity in allActivities) {
-        if (activity.responsibleProfessors[0].id == userId) {
+        if (activity.responsibleProfessor.id == userId) {
           allResponsibleActivities.add(activity);
         }
       }
@@ -126,7 +126,7 @@ abstract class ResponsibleActivitiesControllerBase with Store {
         description: enrolledActivity.description,
         duration: enrolledActivity.duration,
         isExtensive: enrolledActivity.isExtensive,
-        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        responsibleProfessor: enrolledActivity.responsibleProfessor,
         speakers: enrolledActivity.speakers,
         takenSlots: enrolledActivity.takenSlots,
         title: enrolledActivity.title,
@@ -158,7 +158,7 @@ abstract class ResponsibleActivitiesControllerBase with Store {
         description: enrolledActivity.description,
         duration: enrolledActivity.duration,
         isExtensive: enrolledActivity.isExtensive,
-        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        responsibleProfessor: enrolledActivity.responsibleProfessor,
         speakers: enrolledActivity.speakers,
         takenSlots: enrolledActivity.takenSlots,
         title: enrolledActivity.title,
@@ -190,7 +190,7 @@ abstract class ResponsibleActivitiesControllerBase with Store {
         description: enrolledActivity.description,
         duration: enrolledActivity.duration,
         isExtensive: enrolledActivity.isExtensive,
-        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        responsibleProfessor: enrolledActivity.responsibleProfessor,
         speakers: enrolledActivity.speakers,
         takenSlots: enrolledActivity.takenSlots,
         title: enrolledActivity.title,

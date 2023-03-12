@@ -3,6 +3,7 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import '../../../../../shared/utils/utils.dart';
 
 part 'more_info_controller.g.dart';
@@ -41,7 +42,7 @@ abstract class MoreInfoControllerBase with Store {
                   startDate: DateTime.now(),
                   deliveryEnum: null,
                   acceptingNewEnrollments: false,
-                  responsibleProfessor: '',
+                  responsibleProfessor: ResponsibleProfessorModel.newInstance(),
                   takenSlots: 0,
                   totalSlots: 0,
                 ));

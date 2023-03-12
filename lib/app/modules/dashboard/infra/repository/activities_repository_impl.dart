@@ -70,8 +70,8 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         description: allActivitiesWithEnrollments[index].description,
         duration: allActivitiesWithEnrollments[index].duration,
         isExtensive: allActivitiesWithEnrollments[index].isExtensive,
-        responsibleProfessors:
-            allActivitiesWithEnrollments[index].responsibleProfessors,
+        responsibleProfessor:
+            allActivitiesWithEnrollments[index].responsibleProfessor,
         speakers: allActivitiesWithEnrollments[index].speakers,
         takenSlots: allActivitiesWithEnrollments[index].takenSlots,
         title: allActivitiesWithEnrollments[index].title,
@@ -110,8 +110,8 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         description: allActivitiesWithEnrollments[index].description,
         duration: allActivitiesWithEnrollments[index].duration,
         isExtensive: allActivitiesWithEnrollments[index].isExtensive,
-        responsibleProfessors:
-            allActivitiesWithEnrollments[index].responsibleProfessors,
+        responsibleProfessor:
+            allActivitiesWithEnrollments[index].responsibleProfessor,
         speakers: allActivitiesWithEnrollments[index].speakers,
         takenSlots: allActivitiesWithEnrollments[index].takenSlots,
         title: allActivitiesWithEnrollments[index].title,

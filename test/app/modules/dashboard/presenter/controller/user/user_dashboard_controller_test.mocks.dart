@@ -17,11 +17,9 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subsc
     as _i3;
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart'
     as _i8;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
-import 'package:smile_front/app/shared/models/responsible_professor_model.dart'
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
     as _i5;
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart'
     as _i9;
 import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
     as _i10;
