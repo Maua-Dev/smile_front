@@ -100,8 +100,9 @@ abstract class MoreInfoControllerBase with Store {
           DateTime.now().isAfter(activity.startDate!)) {
         canViewConfirmAttendance = true;
       }
+    } else {
+      canViewConfirmAttendance = false;
     }
-    canViewConfirmAttendance = false;
   }
 
   @action
