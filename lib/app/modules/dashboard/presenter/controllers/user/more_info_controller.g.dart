@@ -93,6 +93,14 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
     });
   }
 
+  late final _$getActivityAsyncAction =
+      AsyncAction('MoreInfoControllerBase.getActivity', context: context);
+
+  @override
+  Future<dynamic> getActivity() {
+    return _$getActivityAsyncAction.run(() => super.getActivity());
+  }
+
   late final _$setIsLoadingAsyncAction =
       AsyncAction('MoreInfoControllerBase.setIsLoading', context: context);
 
@@ -141,17 +149,6 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
 
   late final _$MoreInfoControllerBaseActionController =
       ActionController(name: 'MoreInfoControllerBase', context: context);
-
-  @override
-  void getActivity() {
-    final _$actionInfo = _$MoreInfoControllerBaseActionController.startAction(
-        name: 'MoreInfoControllerBase.getActivity');
-    try {
-      return super.getActivity();
-    } finally {
-      _$MoreInfoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
 
   @override
   bool checkIsOkForSubscribe() {
