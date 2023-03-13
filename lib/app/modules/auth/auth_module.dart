@@ -20,7 +20,6 @@ class AuthModule extends Module {
               loginWithEmail: i<LoginWithEmailInterface>(),
               refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
-              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<LoginWithEmailInterface>(

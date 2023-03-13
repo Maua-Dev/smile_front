@@ -6,10 +6,8 @@ import 'enrollments_model.dart';
 
 class AdminActivityModel extends Activity {
   final List<EnrollmentsModel> enrollments;
-  final String? confirmationCode;
   AdminActivityModel({
     required this.enrollments,
-    this.confirmationCode,
     required super.isExtensive,
     super.deliveryEnum,
     super.startDate,
@@ -38,8 +36,8 @@ class AdminActivityModel extends Activity {
         speakers: SpeakerActivityModel.fromMaps(map['activity']['speakers']),
         duration: map['activity']['duration'] ?? 0,
         isExtensive: map['activity']['is_extensive'] ?? false,
-        link: map['activity']['link'] ?? '',
-        place: map['activity']['place'] ?? '',
+        link: map['activity']['link'],
+        place: map['activity']['place'],
         startDate:
             DateTime.fromMillisecondsSinceEpoch(map['activity']['start_date']),
         deliveryEnum: DeliveryEnumExtension.stringToEnumMap(

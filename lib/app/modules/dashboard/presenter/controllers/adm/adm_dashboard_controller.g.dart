@@ -41,6 +41,22 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
     });
   }
 
+  late final _$isManualDropLoadingAtom = Atom(
+      name: 'AdmDashboardControllerBase.isManualDropLoading', context: context);
+
+  @override
+  bool get isManualDropLoading {
+    _$isManualDropLoadingAtom.reportRead();
+    return super.isManualDropLoading;
+  }
+
+  @override
+  set isManualDropLoading(bool value) {
+    _$isManualDropLoadingAtom.reportWrite(value, super.isManualDropLoading, () {
+      super.isManualDropLoading = value;
+    });
+  }
+
   late final _$isFloatActionButtonOpenAtom = Atom(
       name: 'AdmDashboardControllerBase.isFloatActionButtonOpen',
       context: context);
@@ -190,13 +206,14 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$getAllActivitiesAsyncAction = AsyncAction(
-      'AdmDashboardControllerBase.getAllActivities',
+  late final _$setManualDropIsLoadingAsyncAction = AsyncAction(
+      'AdmDashboardControllerBase.setManualDropIsLoading',
       context: context);
 
   @override
-  Future<dynamic> getAllActivities() {
-    return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
+  Future<void> setManualDropIsLoading(bool value) {
+    return _$setManualDropIsLoadingAsyncAction
+        .run(() => super.setManualDropIsLoading(value));
   }
 
   late final _$logoutAsyncAction =
@@ -215,6 +232,24 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
   Future<dynamic> deleteUserActivity(String id) {
     return _$deleteUserActivityAsyncAction
         .run(() => super.deleteUserActivity(id));
+  }
+
+  late final _$dropActivityAsyncAction =
+      AsyncAction('AdmDashboardControllerBase.dropActivity', context: context);
+
+  @override
+  Future<dynamic> dropActivity(String activityCode, String userId) {
+    return _$dropActivityAsyncAction
+        .run(() => super.dropActivity(activityCode, userId));
+  }
+
+  late final _$getAllActivitiesAsyncAction = AsyncAction(
+      'AdmDashboardControllerBase.getAllActivities',
+      context: context);
+
+  @override
+  Future<dynamic> getAllActivities() {
+    return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
   }
 
   late final _$AdmDashboardControllerBaseActionController =
@@ -328,6 +363,7 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
     return '''
 isLoadingCsv: ${isLoadingCsv},
 isLoading: ${isLoading},
+isManualDropLoading: ${isManualDropLoading},
 isFloatActionButtonOpen: ${isFloatActionButtonOpen},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 activitiesList: ${activitiesList},

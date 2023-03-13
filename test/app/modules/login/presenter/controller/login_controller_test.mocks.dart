@@ -5,7 +5,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i5;
 
-import 'package:firebase_analytics/firebase_analytics.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
     as _i11;
@@ -15,13 +14,15 @@ import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
     as _i10;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
     as _i4;
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart'
+    as _i9;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i6;
 import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i8;
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
     as _i7;
+import 'package:smile_front/app/shared/models/professor_activity_model.dart'
+    as _i2;
 import 'package:smile_front/app/shared/models/user_model.dart' as _i3;
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
-    as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -34,9 +35,9 @@ import 'package:smile_front/app/shared/services/firebase-analytics/firebase_anal
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeFirebaseAnalytics_0 extends _i1.SmartFake
-    implements _i2.FirebaseAnalytics {
-  _FakeFirebaseAnalytics_0(
+class _FakeProfessorActivityModel_0 extends _i1.SmartFake
+    implements _i2.ProfessorActivityModel {
+  _FakeProfessorActivityModel_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -45,19 +46,8 @@ class _FakeFirebaseAnalytics_0 extends _i1.SmartFake
         );
 }
 
-class _FakeFirebaseAnalyticsObserver_1 extends _i1.SmartFake
-    implements _i2.FirebaseAnalyticsObserver {
-  _FakeFirebaseAnalyticsObserver_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeUserModel_2 extends _i1.SmartFake implements _i3.UserModel {
-  _FakeUserModel_2(
+class _FakeUserModel_1 extends _i1.SmartFake implements _i3.UserModel {
+  _FakeUserModel_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -94,6 +84,23 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i5.Future<List<_i7.EnrollsActivityModel>>.value(
             <_i7.EnrollsActivityModel>[]),
       ) as _i5.Future<List<_i7.EnrollsActivityModel>>);
+  @override
+  _i5.Future<_i2.ProfessorActivityModel> getActivityWithEnrollments(
+          String? code) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getActivityWithEnrollments,
+          [code],
+        ),
+        returnValue: _i5.Future<_i2.ProfessorActivityModel>.value(
+            _FakeProfessorActivityModel_0(
+          this,
+          Invocation.method(
+            #getActivityWithEnrollments,
+            [code],
+          ),
+        )),
+      ) as _i5.Future<_i2.ProfessorActivityModel>);
   @override
   _i5.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
         Invocation.method(
@@ -140,6 +147,21 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i5.Future<dynamic>.value(),
       ) as _i5.Future<dynamic>);
   @override
+  _i5.Future<dynamic> manualDropActivity(
+    String? activityCode,
+    String? userId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #manualDropActivity,
+          [
+            activityCode,
+            userId,
+          ],
+        ),
+        returnValue: _i5.Future<dynamic>.value(),
+      ) as _i5.Future<dynamic>);
+  @override
   _i5.Future<bool> subscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -157,85 +179,53 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         ),
         returnValue: _i5.Future<bool>.value(false),
       ) as _i5.Future<bool>);
-}
-
-/// A class which mocks [FirebaseAnalyticsService].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockFirebaseAnalyticsService extends _i1.Mock
-    implements _i9.FirebaseAnalyticsService {
-  MockFirebaseAnalyticsService() {
-    _i1.throwOnMissingStub(this);
-  }
-
   @override
-  _i2.FirebaseAnalytics get analytics => (super.noSuchMethod(
-        Invocation.getter(#analytics),
-        returnValue: _FakeFirebaseAnalytics_0(
-          this,
-          Invocation.getter(#analytics),
-        ),
-      ) as _i2.FirebaseAnalytics);
-  @override
-  _i2.FirebaseAnalyticsObserver getAnalyticsObserver() => (super.noSuchMethod(
-        Invocation.method(
-          #getAnalyticsObserver,
-          [],
-        ),
-        returnValue: _FakeFirebaseAnalyticsObserver_1(
-          this,
-          Invocation.method(
-            #getAnalyticsObserver,
-            [],
-          ),
-        ),
-      ) as _i2.FirebaseAnalyticsObserver);
-  @override
-  _i5.Future<dynamic> setUserProperties(String? userId) => (super.noSuchMethod(
-        Invocation.method(
-          #setUserProperties,
-          [userId],
-        ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
-  @override
-  _i5.Future<dynamic> logLogin() => (super.noSuchMethod(
-        Invocation.method(
-          #logLogin,
-          [],
-        ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
-  @override
-  _i5.Future<dynamic> logSignUp() => (super.noSuchMethod(
-        Invocation.method(
-          #logSignUp,
-          [],
-        ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
-  @override
-  _i5.Future<dynamic> logViewActivity(String? activityCode) =>
+  _i5.Future<String> generateConfirmationCode(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
-          #logViewActivity,
+          #generateConfirmationCode,
           [activityCode],
         ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
+        returnValue: _i5.Future<String>.value(''),
+      ) as _i5.Future<String>);
   @override
-  _i5.Future<dynamic> logChangePassword() => (super.noSuchMethod(
+  _i5.Future<dynamic> postManualChangeAttendance(
+    String? activityCode,
+    String? userId,
+    _i9.EnrollmentStateEnum? state,
+  ) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #logChangePassword,
-          [],
+          #postManualChangeAttendance,
+          [
+            activityCode,
+            userId,
+            state,
+          ],
         ),
         returnValue: _i5.Future<dynamic>.value(),
       ) as _i5.Future<dynamic>);
   @override
-  _i5.Future<dynamic> logFaq(int? id) => (super.noSuchMethod(
+  _i5.Future<dynamic> confirmAttendance(
+    String? confirmAttendanceCode,
+    String? activityCode,
+  ) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #logFaq,
-          [id],
+          #confirmAttendance,
+          [
+            confirmAttendanceCode,
+            activityCode,
+          ],
+        ),
+        returnValue: _i5.Future<dynamic>.value(),
+      ) as _i5.Future<dynamic>);
+  @override
+  _i5.Future<dynamic> deleteAtendanceCode(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteAtendanceCode,
+          [activityCode],
         ),
         returnValue: _i5.Future<dynamic>.value(),
       ) as _i5.Future<dynamic>);
@@ -458,7 +448,7 @@ class MockLoginWithEmailInterface extends _i1.Mock
             password,
           ],
         ),
-        returnValue: _i5.Future<_i3.UserModel>.value(_FakeUserModel_2(
+        returnValue: _i5.Future<_i3.UserModel>.value(_FakeUserModel_1(
           this,
           Invocation.method(
             #call,

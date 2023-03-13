@@ -667,6 +667,16 @@ class S {
     );
   }
 
+  /// `Subscriber List`
+  String get subscriberListTitle {
+    return Intl.message(
+      'Subscriber List',
+      name: 'subscriberListTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Termination`
   String get termination {
     return Intl.message(
@@ -1002,6 +1012,16 @@ class S {
     );
   }
 
+  /// `Confirm your e-mail Mauá`
+  String get registerEmailProfessorConfirmationPlaceholder {
+    return Intl.message(
+      'Confirm your e-mail Mauá',
+      name: 'registerEmailProfessorConfirmationPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Phone`
   String get registerPhonePlaceholder {
     return Intl.message(
@@ -1069,10 +1089,10 @@ class S {
     );
   }
 
-  /// `Means of notification about activities:`
+  /// `Means of notification:`
   String get notificationsTitle {
     return Intl.message(
-      'Means of notification about activities:',
+      'Means of notification:',
       name: 'notificationsTitle',
       desc: '',
       args: [],
@@ -1304,20 +1324,10 @@ class S {
     );
   }
 
-  /// `Invalid Date`
-  String get fieldInvalidDate {
-    return Intl.message(
-      'Invalid Date',
-      name: 'fieldInvalidDate',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `A code will be sent to the registered email address:`
+  /// `Follow the steps that will be sent in the registered email:`
   String get codeInEmailTitle {
     return Intl.message(
-      'A code will be sent to the registered email address:',
+      'Follow the steps that will be sent in the registered email:',
       name: 'codeInEmailTitle',
       desc: '',
       args: [],
@@ -1364,10 +1374,10 @@ class S {
     );
   }
 
-  /// `If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n`
+  /// `If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n`
   String get errorEmailInstructionsTitle {
     return Intl.message(
-      'If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n',
+      'If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n',
       name: 'errorEmailInstructionsTitle',
       desc: '',
       args: [],
@@ -1664,6 +1674,16 @@ class S {
     );
   }
 
+  /// `Data`
+  String get dayTitle {
+    return Intl.message(
+      'Data',
+      name: 'dayTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Schedule`
   String get scheduleTitle {
     return Intl.message(
@@ -1689,6 +1709,56 @@ class S {
     return Intl.message(
       'Code',
       name: 'codeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Absence`
+  String get absenceTitle {
+    return Intl.message(
+      'Absence',
+      name: 'absenceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Present`
+  String get presenceTitle {
+    return Intl.message(
+      'Present',
+      name: 'presenceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Names`
+  String get namesTitle {
+    return Intl.message(
+      'Names',
+      name: 'namesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Validation Code`
+  String get validationCodeTitle {
+    return Intl.message(
+      'Validation Code',
+      name: 'validationCodeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local`
+  String get localTitle {
+    return Intl.message(
+      'Local',
+      name: 'localTitle',
       desc: '',
       args: [],
     );
@@ -1764,11 +1834,11 @@ class S {
     );
   }
 
-  /// `Locati   on`
-  String get localTitle {
+  /// `Location`
+  String get locationTitle {
     return Intl.message(
-      'Locati   on',
-      name: 'localTitle',
+      'Location',
+      name: 'locationTitle',
       desc: '',
       args: [],
     );
@@ -1821,16 +1891,6 @@ class S {
     return Intl.message(
       'Unavailabe',
       name: 'unavailabeTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Registration unavailabe for this activity!`
-  String get unavailabeActivityRegistration {
-    return Intl.message(
-      'Registration unavailabe for this activity!',
-      name: 'unavailabeActivityRegistration',
       desc: '',
       args: [],
     );

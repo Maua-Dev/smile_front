@@ -196,8 +196,11 @@ class _RegisterPageState
                     InputBoxWidget(
                       isEmail: true,
                       icon: Icons.email_rounded,
-                      placeholder:
-                          S.of(context).registerEmailConfirmationPlaceholder,
+                      placeholder: controller.role == UserRolesEnum.PROFESSOR
+                          ? S
+                              .of(context)
+                              .registerEmailProfessorConfirmationPlaceholder
+                          : S.of(context).registerEmailConfirmationPlaceholder,
                       setValue: controller.setVerifyEmail,
                       validation: controller.validateVerifyEmail,
                     ),
@@ -336,23 +339,26 @@ class _RegisterPageState
                       );
                     }),
                     const SizedBox(
-                      height: 20,
+                      height: 12,
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width < 650
                           ? MediaQuery.of(context).size.width * 0.85
-                          : 550,
-                      child: Text(
-                        S.of(context).notificationsTitle,
-                        style: AppTextStyles.body.copyWith(
-                          color: AppColors.white,
-                          fontSize: 24,
+                          : 600,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          S.of(context).notificationsTitle,
+                          style: AppTextStyles.body.copyWith(
+                            color: AppColors.white,
+                            fontSize: 24,
+                          ),
+                          textAlign: TextAlign.start,
                         ),
-                        textAlign: TextAlign.start,
                       ),
                     ),
                     const SizedBox(
-                      height: 8,
+                      height: 12,
                     ),
                     Observer(builder: (_) {
                       return SwitchToggleWidget(

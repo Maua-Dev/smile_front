@@ -52,6 +52,7 @@
     "aboutSmileDate": "Data: 22 a 27 de maio de 2023.",
     "signUp": "Inscreva-se",
     "unsubscribe": "Desinscrever-se",
+    "subscriberListTitle": "Lista de Inscritos",
     "termination": "Término",
     "local": "Local",
 
@@ -99,13 +100,14 @@
     "registerSocialNameTooltip": "Nome social se refere à designação pela qual a pessoa travesti ou transexual se identifica e é socialmente reconhecida.",
     "registerEmailProfessorPlaceholder": "Insira seu e-mail da Mauá",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
+    "registerEmailProfessorConfirmationPlaceholder": "Confirme seu e-mail Mauá",
     "registerPhonePlaceholder": "Telefone Celular",
     "registerCountryPlaceholder": "Pesquisar por país ou DDI",
     "registerStudentMauaPlaceholder": "Aluno Mauá",
     "registerRAPlaceholder": "RA",
     "registerConfirmPasswordPlaceholder": "Confirme sua senha",
     "registerTerms": "{terms, select, one{Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile.} two{Li e Aceito os Termos de Uso.} three{Autorizo o envio de notificação por email, para fins de divulgação da Smile.}}",
-    "notificationsTitle": "Meios de notificação sobre as atividades:",
+    "notificationsTitle": "Meios de notificação:",
     "notificationsSmsAlert": "Preencha o seu telefone celular para ativar as notificações por sms!",
     "notificationsSchemaTitle": "Quero receber notificações por ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
@@ -146,12 +148,12 @@
 
 
 
-    "codeInEmailTitle": "Um código será enviado no email cadastrado:",
+    "codeInEmailTitle": "Siga os passos que serão enviados no e-mail cadastrado:",
     "insertPasswordCodeInstructions": "Insira sua nova senha e o codigo enviado para o seu e-mail:",
     "codeInEmailInstructionsTitle": "Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.",
     "sendTitle": "Enviar",
     "returnLogin": "Voltar ao login",
-    "errorEmailInstructionsTitle": "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu CPF no campo abaixo:\n",
+    "errorEmailInstructionsTitle": "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu e-mail no campo abaixo:\n",
     
     "presenceValidateTitle": "Validar Presença",
     
@@ -195,13 +197,27 @@
 
     "descriptionTitle": "Descrição",
 
+
     "hourTitle": "Hora",
+    "dayTitle": "Data",
     "scheduleTitle": "Horário",
     "scheduleAddTitle": "Adicionar Horário",
 
     "codeTitle": "Código",
 
+
+    "absenceTitle": "Falta",
+    "presenceTitle": "Presente",
+
+    "namesTitle": "Nomes",
+
+    "validationCodeTitle": "Código de validação",
+
+    "localTitle": "Local",
+
+
     "isExtensiveTooltip": "Atividade Extensionista",
+
 
     "drawerHomeButton": "Página Inicial",
     "drawerActivitiesButton": "Atividades",
@@ -210,11 +226,13 @@
     "drawerHelpButton": "Ajuda",
     "drawerProfileButton": "Perfil",
 
-    "localTitle": "Local",
+
+    "locationTitle": "Local",
 
 
     "noActivitiesEnrolledText": "Parece que você ainda não se inscreveu em nenhuma atividade :(",
     "noResponsibleActivitiesText": "Parece que você não é responsável por nenhuma atividade :(",
+
 
 
     "yesTitle": "Sim",
@@ -224,7 +242,6 @@
     "unavailabeTitle": "Indisponível",
 
 
-    "unavailabeActivityRegistration": "Inscrição para a atividade indisponível!",
     "unsubscribeVerification": "Tem certeza que deseja se desinscrever?",
     "subscribeVerification": "Tem certeza que deseja se inscrever?",
     "unsubscribeVerificationClosedRegistration": "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!",

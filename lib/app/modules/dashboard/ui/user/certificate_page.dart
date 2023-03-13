@@ -203,7 +203,7 @@ class _CertificatePageState
                               ),
                               TextSpan(
                                 text:
-                                    ' com nome completo e CPF relatando o problema.',
+                                    ' com nome completo e e-mail relatando o problema.',
                                 style: AppTextStyles.body.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width < 1000

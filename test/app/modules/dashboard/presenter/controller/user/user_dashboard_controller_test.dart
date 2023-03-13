@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -16,21 +15,20 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/use
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
-import '../../../../../../setup_firebase_mocks.dart';
-import 'more_info_controller_test.mocks.dart';
+
 import 'user_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([
   GetUserSubscribedActivitiesInterface,
   SecureStorageInterface,
   UserRepositoryInterface,
-  FirebaseAnalyticsService,
   ChangeDataInterface,
+  SubscribeActivityInterface,
+  UnsubscribeActivityInterface
 ])
 void main() {
   initModule(AppModule());
-  setupCloudFirestoreMocks();
+
   SubscribeActivityInterface subscribeActivity =
       MockSubscribeActivityInterface();
 
@@ -39,7 +37,7 @@ void main() {
   GetUserSubscribedActivitiesInterface getUserActivities =
       MockGetUserSubscribedActivitiesInterface();
   ChangeDataInterface changeData = MockChangeDataInterface();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
+
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
 
   late UserDashboardController controller;
@@ -291,7 +289,6 @@ void main() {
   var certificateWithSocialName = true;
 
   setUpAll(() async {
-    await Firebase.initializeApp();
     when(getUserActivities()).thenAnswer((_) async => mockActivities);
     when(secureStorage.getName()).thenAnswer((_) async => name);
     when(secureStorage.getSocialName()).thenAnswer((_) async => socialName);
@@ -305,7 +302,6 @@ void main() {
     controller = UserDashboardController(
         secureStorage: secureStorage,
         changeData: changeData,
-        analytics: analytics,
         enrollmentController: subscriptionController);
   });
 

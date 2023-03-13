@@ -9,11 +9,11 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_admin_activities_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/manual_drop_activity.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import 'package:smile_front/app/shared/models/admin_activity_model.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
 import 'adm_dashboard_controller_test.mocks.dart';
@@ -21,13 +21,16 @@ import 'adm_dashboard_controller_test.mocks.dart';
 @GenerateMocks([
   GetDownloadLinkCsvInterface,
   DeleteActivityInterface,
-  GetAdminActivitiesInterface
+  GetAdminActivitiesInterface,
+  ManualDropActivityInterface
 ])
 void main() {
   GetDownloadLinkCsvInterface getDownloadLinkCsv =
       MockGetDownloadLinkCsvInterface();
   GetAdminActivitiesInterface getAdminActivities =
       MockGetAdminActivitiesInterface();
+  ManualDropActivityInterface manualDropActivity =
+      MockManualDropActivityInterface();
   LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
   RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
   DeleteActivityInterface deleteActivity = MockDeleteActivityInterface();
@@ -35,7 +38,6 @@ void main() {
   late AdmDashboardController controller;
 
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
-  FirebaseAnalyticsService analytics = MockFirebaseAnalyticsService();
 
   late AuthController authController;
 
@@ -189,9 +191,9 @@ void main() {
       refreshToken: refreshToken,
       loginWithEmail: loginWithEmail,
       storage: secureStorage,
-      analytics: analytics,
     );
     controller = AdmDashboardController(
+      manualDropActivity: manualDropActivity,
       getAdminActivities: getAdminActivities,
       getDownloadLinkCsv: getDownloadLinkCsv,
       authController: authController,

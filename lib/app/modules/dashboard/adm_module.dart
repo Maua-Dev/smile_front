@@ -8,6 +8,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_l
 import 'package:smile_front/app/modules/dashboard/external/user_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/user_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/repository/user_repository_impl.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/manual_drop_activity.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
@@ -75,6 +76,7 @@ class AdmModule extends Module {
         export: true),
     Bind.lazySingleton<AdmDashboardController>(
         (i) => AdmDashboardController(
+              manualDropActivity: i(),
               getAdminActivities: i(),
               getDownloadLinkCsv: i(),
               authController: i(),
@@ -88,6 +90,29 @@ class AdmModule extends Module {
             i.args!.data as ActivityModel? ?? ActivityModel.newInstance(),
       ),
     ),
+    Bind.lazySingleton<CreateActivityController>(
+      (i) => CreateActivityController(
+        createActivity: i(),
+      ),
+    ),
+    Bind.lazySingleton<ActivitiesDatasourceInterface>(
+        (i) => ActivitiesDatasourceImpl(
+              storage: i<SecureStorageInterface>(),
+            )),
+    Bind.lazySingleton<ActivitiesRepositoryInterface>(
+        (i) => ActivitiesRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<ManualDropActivityInterface>(
+        (i) => ManualDropActivity(repository: i())),
+    Bind.lazySingleton<CreateActivityInterface>(
+        (i) => CreateActivity(repository: i())),
+    Bind.lazySingleton<GetAllUserActivitiesInterface>(
+        (i) => GetActivitiesList(repository: i())),
+    Bind.lazySingleton<DeleteActivityInterface>(
+        (i) => DeleteActivity(repository: i())),
+    Bind.lazySingleton<EditActivityInterface>(
+        (i) => EditActivity(repository: i())),
+    Bind.lazySingleton<CreateActivityInterface>(
+        (i) => CreateActivity(repository: i())),
     Bind.lazySingleton((i) => Dio(smileOption)),
     Bind.lazySingleton<GetAdminActivitiesInterface>(
         (i) => GetAdminActivitiesImp(repository: i())),
@@ -96,7 +121,6 @@ class AdmModule extends Module {
               loginWithEmail: i<LoginWithEmailInterface>(),
               refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
-              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<GetDownloadLinkCsvInterface>(

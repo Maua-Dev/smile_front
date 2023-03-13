@@ -1,10 +1,12 @@
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/send_confirm_attendance.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
+import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
 import '../../../../../shared/utils/utils.dart';
+import '../../../infra/models/speaker_activity_model.dart';
 
 part 'more_info_controller.g.dart';
 
@@ -13,16 +15,29 @@ class MoreInfoController = MoreInfoControllerBase with _$MoreInfoController;
 abstract class MoreInfoControllerBase with Store {
   final UserEnrollmentController enrollmentController;
   final String activityCode;
+  final ConfirmAttendanceUsecase sendConfirmAttendanceUsecase;
 
   MoreInfoControllerBase({
+    required this.sendConfirmAttendanceUsecase,
     required this.enrollmentController,
     required this.activityCode,
   }) {
     getActivity();
+    checkCanViewConfirmAttendance();
+    getEnrollmentState();
   }
 
   @observable
   bool isLoading = false;
+
+  @observable
+  bool isLoadingConfirmAttendance = false;
+
+  @observable
+  EnrollmentStateEnum enrollmentState = EnrollmentStateEnum.NONE;
+
+  @observable
+  bool canViewConfirmAttendance = false;
 
   @observable
   EnrollsActivityModel activity = EnrollsActivityModel.newInstance();
@@ -54,6 +69,11 @@ abstract class MoreInfoControllerBase with Store {
   }
 
   @action
+  Future<void> setIsLoadingConfirmAttendance(bool value) async {
+    isLoadingConfirmAttendance = value;
+  }
+
+  @action
   bool checkIsOkForSubscribe() {
     var subscribedActivities = enrollmentController.subscribedActivities;
     for (var i = 0; i < subscribedActivities.length; i++) {
@@ -74,6 +94,25 @@ abstract class MoreInfoControllerBase with Store {
     return true;
   }
 
+  @action
+  Future<void> checkCanViewConfirmAttendance() async {
+    if (activity.enrollments != null) {
+      if (activity.enrollments!.state == EnrollmentStateEnum.ENROLLED &&
+          DateTime.now().isAfter(activity.startDate!)) {
+        canViewConfirmAttendance = true;
+      }
+    }
+    canViewConfirmAttendance = false;
+  }
+
+  @action
+  Future<void> getEnrollmentState() async {
+    if (activity.enrollments == null) {
+      enrollmentState = EnrollmentStateEnum.NONE;
+    }
+    enrollmentState = activity.enrollments!.state;
+  }
+
   Future<void> subscribeUserActivity() async {
     setIsLoading(true);
     var requestDone =
@@ -82,6 +121,8 @@ abstract class MoreInfoControllerBase with Store {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
       getActivity();
     }
+    checkCanViewConfirmAttendance();
+    getEnrollmentState();
     setIsLoading(false);
   }
 
@@ -93,6 +134,15 @@ abstract class MoreInfoControllerBase with Store {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
       getActivity();
     }
+    checkCanViewConfirmAttendance();
+    getEnrollmentState();
     setIsLoading(false);
+  }
+
+  @action
+  Future<void> onConfirmCode(String code) async {
+    setIsLoadingConfirmAttendance(true);
+    await sendConfirmAttendanceUsecase(code, activityCode);
+    setIsLoadingConfirmAttendance(false);
   }
 }

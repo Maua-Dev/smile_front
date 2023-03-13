@@ -66,10 +66,9 @@ class _AdmDashboardPageState
                     );
                   } else {
                     if (controller.activitiesList.isNotEmpty) {
-                      return SizedBox(
-                        width: 1165,
-                        height: MediaQuery.of(context).size.height - 268,
+                      return Expanded(
                         child: ListView.builder(
+                          shrinkWrap: true,
                           itemCount: controller.activitiesList.length,
                           itemBuilder: (BuildContext context, int index) {
                             String date = DateFormat('dd/MM/yyyy').format(
@@ -83,6 +82,16 @@ class _AdmDashboardPageState
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
                                 return ActivitiesCardWidget(
+                                  isLoading: controller.isLoading,
+                                  isManualDropLoading:
+                                      controller.isManualDropLoading,
+                                  onPressedDropActivity:
+                                      (activityCode, userId) {
+                                    controller.dropActivity(
+                                        activityCode, userId);
+                                  },
+                                  enrollments: controller
+                                      .activitiesList[index].enrollments,
                                   isExtensive: controller
                                       .activitiesList[index].isExtensive,
                                   activityCode: controller
@@ -90,8 +99,6 @@ class _AdmDashboardPageState
                                   date: date,
                                   description: controller
                                       .activitiesList[index].description,
-                                  enrolledUsersLength: controller
-                                      .activitiesList[index].takenSlots,
                                   totalParticipants: controller
                                       .activitiesList[index].totalSlots!,
                                   title: controller.activitiesList[index].title,

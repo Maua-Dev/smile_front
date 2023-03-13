@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/professor_activity_model.dart';
 import '../../../shared/error/dio_exceptions.dart';
 import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/models/admin_activity_model.dart';
@@ -100,15 +101,14 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future<List<EnrollsActivityModel>> getActivityWithEnrollments(
-      String code) async {
+  Future<ProfessorActivityModel> getActivityWithEnrollments(String code) async {
     final res =
         await middleware(url: '/get-activity-with-enrollments?code=$code');
     if (res.statusCode == 200) {
-      return EnrollsActivityModel.fromMaps(
+      return ProfessorActivityModel.fromMap(
           res.data['activity_with_enrollments']);
     }
-    return [];
+    return ProfessorActivityModel.newInstance();
   }
 
   @override
@@ -130,6 +130,15 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
+  Future<AdminActivityModel> manualDropActivity(
+      String activityCode, String userId) async {
+    var body = {'code': activityCode, 'user_id': userId};
+    var res = await middleware(
+        url: '/manual-drop-activity', data: body, http: 'post');
+    return AdminActivityModel.fromMap(res.data['activity_with_enrollments']);
+  }
+
+  @override
   Future<EnrollmentsModel> postSubscribe(String activityCode) async {
     var body = {'code': activityCode};
     var res =
@@ -139,7 +148,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         state: EnrollmentStateEnumExtension.stringToEnumMap(res.data['state']),
         dateSubscribed:
             DateTime.fromMillisecondsSinceEpoch(res.data['date_subscribed']),
-        acceptingNewEnrollments: res.data['accepting_new_enrollments'] ?? false,
       );
     }
     return EnrollmentsModel.newInstance();
@@ -177,12 +185,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future postConfirmAttendance(
-      String activityCode, String confirmationCode) async {
-    await middleware(url: '/confirm-attendance', http: 'post');
-  }
-
-  @override
   Future postDeleteAttendanceConfirmation(String activityCode) async {
     await middleware(url: '/delete-attendance-confirmation', http: 'post');
   }
@@ -198,13 +200,51 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future<EnrollsActivityModel> postManualChangeAttendance(
+  Future<ProfessorActivityModel> postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state) async {
-    var res =
-        await middleware(url: '/delete-attendance-confirmation', http: 'post');
+    var body = {
+      'code': activityCode,
+      'user_id': userId,
+      'new_state': state.name
+    };
+    var res = await middleware(
+        url: '/manual-attendance-change', data: body, http: 'post');
     if (res.statusCode == 200) {
-      return EnrollsActivityModel.fromMap(
+      return ProfessorActivityModel.fromMap(
           res.data['activity_with_enrollments']);
+    }
+    throw Exception();
+  }
+
+  @override
+  Future<String> generateConfirmationCode(String activityCode) async {
+    var body = {'code': activityCode};
+    var response = await middleware(
+        url: '/generate-attendance-confirmation', data: body, http: 'post');
+    if (response.statusCode == 200) {
+      return response.data['confirmation_code'];
+    }
+    throw Exception();
+  }
+
+  @override
+  Future confirmAttendance(
+      String confirmAttendanceCode, String activityCode) async {
+    var body = {
+      'code': activityCode,
+      'confirmation_code': confirmAttendanceCode
+    };
+
+    await middleware(url: '/confirm-attendance', http: 'post', data: body);
+  }
+
+  @override
+  Future deleteAttendanceCode(String activityCode) async {
+    var body = {'code': activityCode};
+    var response = await middleware(
+        url: '/delete-attendance-confirmation', data: body, http: 'post');
+    if (response.statusCode == 200) {
+      return response.data['confirmation_code'];
     }
     throw Exception();
   }

@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
 
 import '../../../../../../generated/l10n.dart';
 
@@ -19,11 +19,8 @@ abstract class UserDashboardControllerBase with Store {
   final UserEnrollmentController enrollmentController;
   final ChangeDataInterface changeData;
   final SecureStorageInterface secureStorage;
-  final FirebaseAnalyticsService analytics;
-
   UserDashboardControllerBase({
     required this.enrollmentController,
-    required this.analytics,
     required this.changeData,
     required this.secureStorage,
   }) {
@@ -74,6 +71,22 @@ abstract class UserDashboardControllerBase with Store {
     typeFilter = value;
     typeOnScreen = value.name;
     setAllFilters();
+  }
+
+  Future<void> subscribeUserActivity(String activityCode) async {
+    setIsLoading(true);
+    await enrollmentController.subscribeActivity(activityCode);
+    await getUserSubscribedActivities();
+    setIsLoading(false);
+    Modular.to.pop();
+  }
+
+  Future<void> unsubscribeUserActivity(String activityCode) async {
+    setIsLoading(true);
+    await enrollmentController.unsubscribeActivity(activityCode);
+    await getUserSubscribedActivities();
+    setIsLoading(false);
+    Modular.to.pop();
   }
 
   @observable
