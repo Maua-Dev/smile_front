@@ -1324,10 +1324,10 @@ class S {
     );
   }
 
-  /// `A code will be sent to the registered email address:`
+  /// `A reset link will be sent to the registered email:`
   String get codeInEmailTitle {
     return Intl.message(
-      'A code will be sent to the registered email address:',
+      'A reset link will be sent to the registered email:',
       name: 'codeInEmailTitle',
       desc: '',
       args: [],

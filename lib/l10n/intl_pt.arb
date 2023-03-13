@@ -147,7 +147,7 @@
 
 
 
-    "codeInEmailTitle": "Um código será enviado no email cadastrado:",
+    "codeInEmailTitle": "Um link de redefinição será enviado no email cadastrado:",
     "insertPasswordCodeInstructions": "Insira sua nova senha e o codigo enviado para o seu e-mail:",
     "codeInEmailInstructionsTitle": "Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.",
     "sendTitle": "Enviar",
