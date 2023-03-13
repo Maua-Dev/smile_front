@@ -290,7 +290,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "codeInEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional."),
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
-            "Um link de redefinição será enviado no email cadastrado:"),
+            "Siga os passos que serão enviados no e-mail cadastrado:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Código"),
         "companyTitle": MessageLookupByLibrary.simpleMessage("Empresa:"),
         "confirmAllFieldsConrrectlyFilled":
