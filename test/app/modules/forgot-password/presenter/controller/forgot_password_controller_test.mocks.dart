@@ -3,18 +3,15 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i3;
 
-import 'package:firebase_analytics/firebase_analytics.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/forgot-password/domain/repository/forgot_password_datasource_interface.dart'
-    as _i3;
+    as _i2;
 import 'package:smile_front/app/modules/forgot-password/domain/usecases/change_password.dart'
-    as _i7;
-import 'package:smile_front/app/modules/forgot-password/domain/usecases/forgot_password.dart'
-    as _i6;
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart'
     as _i5;
+import 'package:smile_front/app/modules/forgot-password/domain/usecases/forgot_password.dart'
+    as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -27,47 +24,25 @@ import 'package:smile_front/app/shared/services/firebase-analytics/firebase_anal
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeFirebaseAnalytics_0 extends _i1.SmartFake
-    implements _i2.FirebaseAnalytics {
-  _FakeFirebaseAnalytics_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeFirebaseAnalyticsObserver_1 extends _i1.SmartFake
-    implements _i2.FirebaseAnalyticsObserver {
-  _FakeFirebaseAnalyticsObserver_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
 /// A class which mocks [ForgotPasswordRepositoryInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockForgotPasswordRepositoryInterface extends _i1.Mock
-    implements _i3.ForgotPasswordRepositoryInterface {
+    implements _i2.ForgotPasswordRepositoryInterface {
   MockForgotPasswordRepositoryInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<String> forgotPassword(String? username) => (super.noSuchMethod(
+  _i3.Future<String> forgotPassword(String? username) => (super.noSuchMethod(
         Invocation.method(
           #forgotPassword,
           [username],
         ),
-        returnValue: _i4.Future<String>.value(''),
-      ) as _i4.Future<String>);
+        returnValue: _i3.Future<String>.value(''),
+      ) as _i3.Future<String>);
   @override
-  _i4.Future<String> changePassword(
+  _i3.Future<String> changePassword(
     String? username,
     String? password,
     String? code,
@@ -81,122 +56,40 @@ class MockForgotPasswordRepositoryInterface extends _i1.Mock
             code,
           ],
         ),
-        returnValue: _i4.Future<String>.value(''),
-      ) as _i4.Future<String>);
-}
-
-/// A class which mocks [FirebaseAnalyticsService].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockFirebaseAnalyticsService extends _i1.Mock
-    implements _i5.FirebaseAnalyticsService {
-  MockFirebaseAnalyticsService() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i2.FirebaseAnalytics get analytics => (super.noSuchMethod(
-        Invocation.getter(#analytics),
-        returnValue: _FakeFirebaseAnalytics_0(
-          this,
-          Invocation.getter(#analytics),
-        ),
-      ) as _i2.FirebaseAnalytics);
-  @override
-  _i2.FirebaseAnalyticsObserver getAnalyticsObserver() => (super.noSuchMethod(
-        Invocation.method(
-          #getAnalyticsObserver,
-          [],
-        ),
-        returnValue: _FakeFirebaseAnalyticsObserver_1(
-          this,
-          Invocation.method(
-            #getAnalyticsObserver,
-            [],
-          ),
-        ),
-      ) as _i2.FirebaseAnalyticsObserver);
-  @override
-  _i4.Future<dynamic> setUserProperties(String? userId) => (super.noSuchMethod(
-        Invocation.method(
-          #setUserProperties,
-          [userId],
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> logLogin() => (super.noSuchMethod(
-        Invocation.method(
-          #logLogin,
-          [],
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> logSignUp() => (super.noSuchMethod(
-        Invocation.method(
-          #logSignUp,
-          [],
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> logViewActivity(String? activityCode) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #logViewActivity,
-          [activityCode],
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> logChangePassword() => (super.noSuchMethod(
-        Invocation.method(
-          #logChangePassword,
-          [],
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
-  @override
-  _i4.Future<dynamic> logFaq(int? id) => (super.noSuchMethod(
-        Invocation.method(
-          #logFaq,
-          [id],
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+        returnValue: _i3.Future<String>.value(''),
+      ) as _i3.Future<String>);
 }
 
 /// A class which mocks [ForgotPasswordInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockForgotPasswordInterface extends _i1.Mock
-    implements _i6.ForgotPasswordInterface {
+    implements _i4.ForgotPasswordInterface {
   MockForgotPasswordInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<String> call(String? username) => (super.noSuchMethod(
+  _i3.Future<String> call(String? username) => (super.noSuchMethod(
         Invocation.method(
           #call,
           [username],
         ),
-        returnValue: _i4.Future<String>.value(''),
-      ) as _i4.Future<String>);
+        returnValue: _i3.Future<String>.value(''),
+      ) as _i3.Future<String>);
 }
 
 /// A class which mocks [ChangePasswordInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockChangePasswordInterface extends _i1.Mock
-    implements _i7.ChangePasswordInterface {
+    implements _i5.ChangePasswordInterface {
   MockChangePasswordInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<String> call(
+  _i3.Future<String> call(
     String? username,
     String? password,
     String? code,
@@ -210,6 +103,6 @@ class MockChangePasswordInterface extends _i1.Mock
             code,
           ],
         ),
-        returnValue: _i4.Future<String>.value(''),
-      ) as _i4.Future<String>);
+        returnValue: _i3.Future<String>.value(''),
+      ) as _i3.Future<String>);
 }

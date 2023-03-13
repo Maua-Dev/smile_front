@@ -5,9 +5,11 @@ import '../entities/activity.dart';
 import '../entities/infra/delivery_enum.dart';
 import 'enrollments_model.dart';
 
-class EnrollsActivityModel extends Activity {
-  final EnrollmentsModel? enrollments;
-  EnrollsActivityModel({
+class ProfessorActivityModel extends Activity {
+  final List<EnrollmentsModel>? enrollments;
+  final String? confirmationCode;
+  ProfessorActivityModel({
+    this.confirmationCode,
     this.enrollments,
     required super.isExtensive,
     super.deliveryEnum,
@@ -27,8 +29,8 @@ class EnrollsActivityModel extends Activity {
     required super.totalSlots,
   });
 
-  factory EnrollsActivityModel.fromMap(Map<String, dynamic> map) {
-    return EnrollsActivityModel(
+  factory ProfessorActivityModel.fromMap(Map<String, dynamic> map) {
+    return ProfessorActivityModel(
         activityCode: map['activity']['code'],
         type: ActivityEnumExtension.stringToEnumMap(
             map['activity']['activity_type']),
@@ -37,8 +39,9 @@ class EnrollsActivityModel extends Activity {
         speakers: SpeakerActivityModel.fromMaps(map['activity']['speakers']),
         duration: map['activity']['duration'] ?? 0,
         isExtensive: map['activity']['is_extensive'] ?? false,
-        link: map['activity']['link'],
-        place: map['activity']['place'],
+        link: map['activity']['link'] ?? '',
+        place: map['activity']['place'] ?? '',
+        confirmationCode: map['activity']['confirmation_code'],
         startDate:
             DateTime.fromMillisecondsSinceEpoch(map['activity']['start_date']),
         deliveryEnum: DeliveryEnumExtension.stringToEnumMap(
@@ -54,40 +57,40 @@ class EnrollsActivityModel extends Activity {
                 ? DateTime.fromMillisecondsSinceEpoch(
                     map['activity']['stop_accepting_new_enrollments_before'])
                 : DateTime.now(),
-        enrollments: map.containsKey('enrollment')
-            ? EnrollmentsModel.fromMap(map['enrollment'])
-            : null);
+        enrollments: EnrollmentsModel.fromMaps(map['enrollments']));
   }
 
-  static List<EnrollsActivityModel> fromMaps(List array) {
-    return array.map((e) => EnrollsActivityModel.fromMap(e)).toList();
+  static List<ProfessorActivityModel> fromMaps(List array) {
+    return array.map((e) => ProfessorActivityModel.fromMap(e)).toList();
   }
 
-  factory EnrollsActivityModel.newInstance() {
-    return EnrollsActivityModel(
-      description: '',
-      activityCode: '',
-      title: '',
-      type: null,
-      speakers: [SpeakerActivityModel.newInstance()],
-      duration: 0,
-      isExtensive: false,
-      startDate: DateTime.now(),
-      deliveryEnum: null,
-      acceptingNewEnrollments: false,
-      responsibleProfessors: [],
-      takenSlots: 0,
-      totalSlots: 0,
-    );
+  factory ProfessorActivityModel.newInstance() {
+    return ProfessorActivityModel(
+        description: '',
+        activityCode: '',
+        title: '',
+        confirmationCode: null,
+        type: null,
+        speakers: [SpeakerActivityModel.newInstance()],
+        duration: 0,
+        isExtensive: false,
+        startDate: DateTime.now(),
+        deliveryEnum: null,
+        acceptingNewEnrollments: false,
+        responsibleProfessors: [],
+        takenSlots: 0,
+        totalSlots: 0,
+        enrollments: []);
   }
 
-  EnrollsActivityModel copyWith(
+  ProfessorActivityModel copyWith(
       {String? id,
       String? activityCode,
       ActivityEnum? type,
       String? title,
       String? description,
       bool? isExtensive,
+      String? confirmationCode,
       DeliveryEnum? deliveryEnum,
       DateTime? startDate,
       int? duration,
@@ -99,8 +102,8 @@ class EnrollsActivityModel extends Activity {
       int? totalSlots,
       DateTime? stopAcceptingNewEnrollmentsBefore,
       List<ResponsibleProfessorModel>? responsibleProfessors,
-      EnrollmentsModel? enrollments}) {
-    return EnrollsActivityModel(
+      List<EnrollmentsModel>? enrollments}) {
+    return ProfessorActivityModel(
       activityCode: activityCode ?? this.activityCode,
       type: type ?? this.type,
       title: title ?? this.title,
@@ -110,6 +113,7 @@ class EnrollsActivityModel extends Activity {
       isExtensive: isExtensive ?? this.isExtensive,
       startDate: startDate ?? this.startDate,
       deliveryEnum: deliveryEnum ?? this.deliveryEnum,
+      confirmationCode: confirmationCode ?? this.confirmationCode,
       acceptingNewEnrollments:
           acceptingNewEnrollments ?? this.acceptingNewEnrollments,
       responsibleProfessors:

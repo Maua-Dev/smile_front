@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -14,6 +15,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final String title;
   final String hour;
   final String finalTime;
+  final DeliveryEnum? deliveryEnum;
   final String? location;
   final Function() onTap;
   final Function()? onPressedSubscribe;
@@ -28,6 +30,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
 
   const ActivitiesCardAllActivitiesDashboard(
       {Key? key,
+      this.deliveryEnum,
       required this.title,
       required this.hour,
       required this.onTap,
@@ -78,10 +81,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                   : 204,
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Container(
-                    width: MediaQuery.of(context).size.width < tabletSize
+                    width: MediaQuery.of(context).size.width < breakpointTablet
                         ? 70
                         : 190,
-                    height: MediaQuery.of(context).size.width < tabletSize
+                    height: MediaQuery.of(context).size.width < breakpointTablet
                         ? 76
                         : 204,
                     decoration: BoxDecoration(
@@ -125,10 +128,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                 : 30,
                                         color: AppColors.brandingBlue)),
                               ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              if (isExtensive)
+                              if (isExtensive) ...[
+                                const SizedBox(
+                                  width: 8,
+                                ),
                                 Tooltip(
                                   triggerMode: TooltipTriggerMode.tap,
                                   message: S.of(context).isExtensiveTooltip,
@@ -138,6 +141,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                     color: AppColors.brandingOrange,
                                   ),
                                 ),
+                              ]
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

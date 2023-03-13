@@ -2,6 +2,7 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/activities
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/professor_activity_model.dart';
 
 import '../../../../shared/models/enrollments_model.dart';
 import '../../../../shared/models/enrolls_activity_model.dart';
@@ -15,9 +16,11 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   var activitiesList = List<ActivityModel>.empty();
 
-  var allActivitiesWithEnrollments = List<EnrollsActivityModel>.empty();
+  var allActivitiesAndEnrollments = List<EnrollsActivityModel>.empty();
 
   var admActivitiesList = List<AdminActivityModel>.empty();
+
+  var activityWithEnrollments = ProfessorActivityModel.newInstance();
 
   @override
   Future<List<ActivityModel>> getAllActivities() async {
@@ -29,10 +32,16 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
 
   @override
   Future<List<EnrollsActivityModel>> getUserSubscribedActivities() async {
-    if (allActivitiesWithEnrollments.isEmpty) {
-      allActivitiesWithEnrollments = await datasource.getAllActivitiesLogged();
+    if (allActivitiesAndEnrollments.isEmpty) {
+      allActivitiesAndEnrollments = await datasource.getAllActivitiesLogged();
     }
-    return Future.value(allActivitiesWithEnrollments);
+    return Future.value(allActivitiesAndEnrollments);
+  }
+
+  @override
+  Future<ProfessorActivityModel> getActivityWithEnrollments(String code) async {
+    activityWithEnrollments = await datasource.getActivityWithEnrollments(code);
+    return Future.value(activityWithEnrollments);
   }
 
   @override
@@ -88,75 +97,36 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future<bool> subscribeActivity(String activityCode) async {
-    var requestDone = await datasource.postSubscribe(activityCode);
-    if (requestDone.state != EnrollmentStateEnum.NONE) {
-      var index = allActivitiesWithEnrollments
-          .indexWhere((element) => element.activityCode == activityCode);
-      var activity = EnrollsActivityModel(
-        acceptingNewEnrollments:
-            allActivitiesWithEnrollments[index].acceptingNewEnrollments,
-        activityCode: allActivitiesWithEnrollments[index].activityCode,
-        description: allActivitiesWithEnrollments[index].description,
-        duration: allActivitiesWithEnrollments[index].duration,
-        isExtensive: allActivitiesWithEnrollments[index].isExtensive,
-        responsibleProfessors:
-            allActivitiesWithEnrollments[index].responsibleProfessors,
-        speakers: allActivitiesWithEnrollments[index].speakers,
-        takenSlots: allActivitiesWithEnrollments[index].takenSlots,
-        title: allActivitiesWithEnrollments[index].title,
-        totalSlots: allActivitiesWithEnrollments[index].totalSlots,
-        type: allActivitiesWithEnrollments[index].type,
-        deliveryEnum: allActivitiesWithEnrollments[index].deliveryEnum,
-        link: allActivitiesWithEnrollments[index].link,
-        place: allActivitiesWithEnrollments[index].place,
-        startDate: allActivitiesWithEnrollments[index].startDate,
-        stopAcceptingNewEnrollmentsBefore: allActivitiesWithEnrollments[index]
-            .stopAcceptingNewEnrollmentsBefore,
-        enrollments: EnrollmentsModel(
-          state: requestDone.state,
-          dateSubscribed: requestDone.dateSubscribed,
-        ),
-      );
-      allActivitiesWithEnrollments
-          .removeWhere((element) => element.activityCode == activityCode);
-      allActivitiesWithEnrollments.insert(index, activity);
-      return true;
-    }
-    return false;
-  }
-
-  @override
   Future<bool> unsubscribeActivity(String activityCode) async {
     var requestDone = await datasource.postUnsubscribe(activityCode);
     if (requestDone) {
-      var index = allActivitiesWithEnrollments
+      var index = allActivitiesAndEnrollments
           .indexWhere((element) => element.activityCode == activityCode);
       var activity = EnrollsActivityModel(
         acceptingNewEnrollments:
-            allActivitiesWithEnrollments[index].acceptingNewEnrollments,
-        activityCode: allActivitiesWithEnrollments[index].activityCode,
-        description: allActivitiesWithEnrollments[index].description,
-        duration: allActivitiesWithEnrollments[index].duration,
-        isExtensive: allActivitiesWithEnrollments[index].isExtensive,
+            allActivitiesAndEnrollments[index].acceptingNewEnrollments,
+        activityCode: allActivitiesAndEnrollments[index].activityCode,
+        description: allActivitiesAndEnrollments[index].description,
+        duration: allActivitiesAndEnrollments[index].duration,
+        isExtensive: allActivitiesAndEnrollments[index].isExtensive,
         responsibleProfessors:
-            allActivitiesWithEnrollments[index].responsibleProfessors,
-        speakers: allActivitiesWithEnrollments[index].speakers,
-        takenSlots: allActivitiesWithEnrollments[index].takenSlots,
-        title: allActivitiesWithEnrollments[index].title,
-        totalSlots: allActivitiesWithEnrollments[index].totalSlots,
-        type: allActivitiesWithEnrollments[index].type,
-        deliveryEnum: allActivitiesWithEnrollments[index].deliveryEnum,
-        link: allActivitiesWithEnrollments[index].link,
-        place: allActivitiesWithEnrollments[index].place,
-        startDate: allActivitiesWithEnrollments[index].startDate,
-        stopAcceptingNewEnrollmentsBefore: allActivitiesWithEnrollments[index]
+            allActivitiesAndEnrollments[index].responsibleProfessors,
+        speakers: allActivitiesAndEnrollments[index].speakers,
+        takenSlots: allActivitiesAndEnrollments[index].takenSlots,
+        title: allActivitiesAndEnrollments[index].title,
+        totalSlots: allActivitiesAndEnrollments[index].totalSlots,
+        type: allActivitiesAndEnrollments[index].type,
+        deliveryEnum: allActivitiesAndEnrollments[index].deliveryEnum,
+        link: allActivitiesAndEnrollments[index].link,
+        place: allActivitiesAndEnrollments[index].place,
+        startDate: allActivitiesAndEnrollments[index].startDate,
+        stopAcceptingNewEnrollmentsBefore: allActivitiesAndEnrollments[index]
             .stopAcceptingNewEnrollmentsBefore,
         enrollments: null,
       );
-      allActivitiesWithEnrollments
+      allActivitiesAndEnrollments
           .removeWhere((element) => element.activityCode == activityCode);
-      allActivitiesWithEnrollments.insert(index, activity);
+      allActivitiesAndEnrollments.insert(index, activity);
     }
     return requestDone;
   }
@@ -176,8 +146,94 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
+  Future<bool> subscribeActivity(String activityCode) async {
+    var requestDone = await datasource.postSubscribe(activityCode);
+    if (requestDone.state != EnrollmentStateEnum.NONE) {
+      var index = allActivitiesAndEnrollments
+          .indexWhere((element) => element.activityCode == activityCode);
+      var activity = EnrollsActivityModel(
+        acceptingNewEnrollments:
+            allActivitiesAndEnrollments[index].acceptingNewEnrollments,
+        activityCode: allActivitiesAndEnrollments[index].activityCode,
+        description: allActivitiesAndEnrollments[index].description,
+        duration: allActivitiesAndEnrollments[index].duration,
+        isExtensive: allActivitiesAndEnrollments[index].isExtensive,
+        responsibleProfessors:
+            allActivitiesAndEnrollments[index].responsibleProfessors,
+        speakers: allActivitiesAndEnrollments[index].speakers,
+        takenSlots: allActivitiesAndEnrollments[index].takenSlots,
+        title: allActivitiesAndEnrollments[index].title,
+        totalSlots: allActivitiesAndEnrollments[index].totalSlots,
+        type: allActivitiesAndEnrollments[index].type,
+        deliveryEnum: allActivitiesAndEnrollments[index].deliveryEnum,
+        link: allActivitiesAndEnrollments[index].link,
+        place: allActivitiesAndEnrollments[index].place,
+        startDate: allActivitiesAndEnrollments[index].startDate,
+        stopAcceptingNewEnrollmentsBefore: allActivitiesAndEnrollments[index]
+            .stopAcceptingNewEnrollmentsBefore,
+        enrollments: EnrollmentsModel(
+          state: requestDone.state,
+          dateSubscribed: requestDone.dateSubscribed,
+        ),
+      );
+      allActivitiesAndEnrollments
+          .removeWhere((element) => element.activityCode == activityCode);
+      allActivitiesAndEnrollments.insert(index, activity);
+      return true;
+    }
+    return false;
+  }
+
+  @override
+  Future<ProfessorActivityModel> postManualChangeAttendance(
+      String activityCode, String userId, EnrollmentStateEnum state) async {
+    var requestDone = await datasource.postManualChangeAttendance(
+        activityCode, userId, state);
+    var index = activityWithEnrollments.enrollments!
+        .indexWhere((element) => element.user!.userId == userId);
+    var enrollmentsList = activityWithEnrollments.enrollments;
+    enrollmentsList!.removeWhere((element) => element.user!.userId == userId);
+    enrollmentsList.insert(index, requestDone.enrollments![index]);
+    activityWithEnrollments = ProfessorActivityModel(
+        confirmationCode: activityWithEnrollments.confirmationCode,
+        acceptingNewEnrollments:
+            activityWithEnrollments.acceptingNewEnrollments,
+        activityCode: activityWithEnrollments.activityCode,
+        description: activityWithEnrollments.description,
+        duration: activityWithEnrollments.duration,
+        isExtensive: activityWithEnrollments.isExtensive,
+        responsibleProfessors: activityWithEnrollments.responsibleProfessors,
+        speakers: activityWithEnrollments.speakers,
+        takenSlots: activityWithEnrollments.takenSlots,
+        title: activityWithEnrollments.title,
+        totalSlots: activityWithEnrollments.totalSlots,
+        type: activityWithEnrollments.type,
+        deliveryEnum: activityWithEnrollments.deliveryEnum,
+        link: activityWithEnrollments.link,
+        place: activityWithEnrollments.place,
+        startDate: activityWithEnrollments.startDate,
+        stopAcceptingNewEnrollmentsBefore: allActivitiesAndEnrollments[index]
+            .stopAcceptingNewEnrollmentsBefore,
+        enrollments: enrollmentsList);
+    return Future.value(requestDone);
+  }
+
+  @override
+  Future<String> generateConfirmationCode(String activityCode) async {
+    var response = await datasource.generateConfirmationCode(activityCode);
+
+    return Future.value(response);
+  }
+
+  @override
   Future confirmAttendance(String confirmAttendanceCode, String activityCode) {
     var res = datasource.confirmAttendance(confirmAttendanceCode, activityCode);
     return Future.value(res);
+  }
+
+  @override
+  Future<String> deleteAtendanceCode(String activityCode) async {
+    var response = await datasource.deleteAttendanceCode(activityCode);
+    return Future.value(response);
   }
 }

@@ -111,6 +111,8 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                         controller.activitiesOnScreen[index].startDate!);
                     return Observer(builder: (_) {
                       return ActivitiesCardAllActivitiesDashboard(
+                        deliveryEnum:
+                            controller.activitiesOnScreen[index].deliveryEnum,
                         onPressedSubscribe: () {
                           controller.subscribeUserActivity(controller
                               .activitiesOnScreen[index].activityCode);
@@ -138,8 +140,6 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                             arguments: controller
                                 .activitiesOnScreen[index].activityCode,
                           );
-                          controller.analytics.logViewActivity(controller
-                              .activitiesOnScreen[index].activityCode);
                         },
                         isExtensive:
                             controller.activitiesOnScreen[index].isExtensive,

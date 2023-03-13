@@ -103,8 +103,6 @@ class _UserDashboardPageState
                     onTap: () {
                       Modular.to.navigate('/user/home/more-info',
                           arguments: controller.nextActivity.activityCode);
-                      controller.analytics.logViewActivity(
-                          controller.nextActivity.activityCode);
                     },
                     name: controller.nextActivity.title,
                     description: controller.nextActivity.description,
@@ -184,9 +182,6 @@ class _UserDashboardPageState
                                   .subscribedActivitiesOnScreen[index]
                                   .activityCode,
                             );
-                            controller.analytics.logViewActivity(controller
-                                .subscribedActivitiesOnScreen[index]
-                                .activityCode);
                           },
                           isExtensive: controller
                               .subscribedActivitiesOnScreen[index].isExtensive,
