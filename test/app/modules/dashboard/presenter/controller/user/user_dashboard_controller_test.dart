@@ -294,6 +294,10 @@ void main() {
     when(secureStorage.getPhone()).thenAnswer((_) async => '+5511991273092');
     when(secureStorage.getCertificateWithSocialName())
         .thenAnswer((_) async => certificateWithSocialName);
+    when(secureStorage.getAcceptEmailNotifications())
+        .thenAnswer((_) async => false);
+    when(secureStorage.getAcceptSMSNotifications())
+        .thenAnswer((_) async => false);
     subscriptionController = UserEnrollmentController(
         getUserActivities: getUserActivities,
         subscribeActivity: subscribeActivity,

@@ -118,7 +118,8 @@ class SecureStorage implements SecureStorageInterface {
   }
 
   @override
-  Future<void> saveAcceptEmailNotifications(bool acceptEmailNotifications) async {
+  Future<void> saveAcceptEmailNotifications(
+      bool acceptEmailNotifications) async {
     await storage.put('acceptEmailNotifications', acceptEmailNotifications);
   }
 
