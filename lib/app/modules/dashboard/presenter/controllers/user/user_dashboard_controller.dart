@@ -297,6 +297,7 @@ abstract class UserDashboardControllerBase with Store {
   @action
   Future<void> getPhone() async {
     phone = await secureStorage.getPhone();
+    isPhoneFieldFilled = phone!.isNotEmpty;
     isGetPhoneBrazilian = phone!.substring(0, 3) == "+55";
     phoneToChange = phone!;
     if (isGetPhoneBrazilian) {

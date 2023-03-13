@@ -901,15 +901,6 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i10.Future<void> changeUserData() => (super.noSuchMethod(
-        Invocation.method(
-          #changeUserData,
-          [],
-        ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
-  @override
   bool validateName() => (super.noSuchMethod(
         Invocation.method(
           #validateName,
@@ -971,6 +962,15 @@ class MockUserDashboardController extends _i1.Mock
         Invocation.method(
           #setPhone,
           [value],
+        ),
+        returnValue: _i10.Future<void>.value(),
+        returnValueForMissingStub: _i10.Future<void>.value(),
+      ) as _i10.Future<void>);
+  @override
+  _i10.Future<void> changeUserData() => (super.noSuchMethod(
+        Invocation.method(
+          #changeUserData,
+          [],
         ),
         returnValue: _i10.Future<void>.value(),
         returnValueForMissingStub: _i10.Future<void>.value(),
