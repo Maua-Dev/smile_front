@@ -87,7 +87,7 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   Future<void> setSMSNotifications(bool? value) async {
-    if (phoneValue.isNotEmpty) {
+    if (isPhoneFieldFilled) {
       acceptSMSNotifications = value!;
     }
   }
@@ -339,35 +339,6 @@ abstract class UserDashboardControllerBase with Store {
   }
 
   @action
-  Future<void> changeUserData() async {
-    setIsLoading(true);
-    if (phoneToChange == '') {
-      acceptSMSNotifications = false;
-    }
-    await changeData(
-        nameToChange,
-        socialNameToChange,
-        certificateWithSocialName,
-        phoneToChange,
-        acceptSMSNotifications,
-        acceptEmailNotifications);
-    await secureStorage.saveName(nameToChange);
-    await secureStorage.saveSocialName(socialNameToChange);
-    await secureStorage
-        .saveCertificateWithSocialName(certificateWithSocialName);
-    await secureStorage.savePhone(phoneToChange);
-    await secureStorage.saveAcceptEmailNotifications(acceptEmailNotifications);
-    await secureStorage.saveAcceptSMSNotifications(acceptSMSNotifications);
-    getUserName();
-    getUserSocialName();
-    getUserSubscribedActivities();
-    getPhone();
-    getAcceptEmailNotifications();
-    getAcceptSMSNotifications();
-    setIsLoading(false);
-  }
-
-  @action
   bool validateName() {
     if (nameToChange.isEmpty) {
       error = 'Campo "Nome" obrigatório!';
@@ -470,14 +441,42 @@ abstract class UserDashboardControllerBase with Store {
   Future<void> setPhone(String value) async {
     phoneValue = value;
     if (value.isEmpty) {
-      setCountryCode(const CountryCode(code: '', dialCode: '', name: ''));
       phoneToChange = '';
       isPhoneFieldFilled = false;
       acceptSMSNotifications = false;
     } else {
+      if (phone != '') {
+        countryCode = const CountryCode(code: "", dialCode: "", name: "");
+      }
       phoneToChange = '${countryCode?.dialCode}$value';
       isPhoneFieldFilled = true;
     }
+  }
+
+  @action
+  Future<void> changeUserData() async {
+    setIsLoading(true);
+    await changeData(
+        nameToChange,
+        socialNameToChange,
+        certificateWithSocialName,
+        phoneToChange,
+        acceptSMSNotifications,
+        acceptEmailNotifications);
+    await secureStorage.saveName(nameToChange);
+    await secureStorage.saveSocialName(socialNameToChange);
+    await secureStorage
+        .saveCertificateWithSocialName(certificateWithSocialName);
+    await secureStorage.savePhone(phoneToChange);
+    await secureStorage.saveAcceptEmailNotifications(acceptEmailNotifications);
+    await secureStorage.saveAcceptSMSNotifications(acceptSMSNotifications);
+    getUserName();
+    getUserSocialName();
+    getUserSubscribedActivities();
+    getPhone();
+    getAcceptEmailNotifications();
+    getAcceptSMSNotifications();
+    setIsLoading(false);
   }
 
   @action
