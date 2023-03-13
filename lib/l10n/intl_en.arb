@@ -148,7 +148,7 @@
 
 
 
-    "codeInEmailTitle": "A code will be sent to the registered email address:",
+    "codeInEmailTitle": "Follow the steps that will be sent in the registered email:",
     "insertPasswordCodeInstructions": "Enter your new password and the code sent to your email:",
     "codeInEmailInstructionsTitle": "You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional.",
     "sendTitle": "Send",

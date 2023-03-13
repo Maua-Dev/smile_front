@@ -229,7 +229,7 @@ class UserFilterCardWidget extends StatelessWidget {
                                   context: context,
                                   initialEntryMode:
                                       DatePickerEntryMode.calendarOnly,
-                                  initialDate: DateTime.utc(2022, 5, 16),
+                                  initialDate: DateTime.now(),
                                   firstDate: DateTime(2022),
                                   lastDate: DateTime(2024),
                                   builder: ((context, child) {

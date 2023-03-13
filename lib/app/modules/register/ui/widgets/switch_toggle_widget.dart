@@ -22,7 +22,6 @@ class SwitchToggleWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width < 650
           ? MediaQuery.of(context).size.width * 0.85
           : 600,
-      height: 40,
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(10),
@@ -30,24 +29,29 @@ class SwitchToggleWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: RichText(
-                text: TextSpan(
-                    text: S.of(context).notificationsSchemaTitle,
-                    style: AppTextStyles.body.copyWith(
-                      color: AppColors.gray,
-                      fontSize: 16,
-                    ),
-                    children: [
-                  TextSpan(
-                      text: tipo.toUpperCase(),
+          SizedBox(
+            width: MediaQuery.of(context).size.width < 440
+                ? MediaQuery.of(context).size.width * 0.5
+                : null,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: RichText(
+                  text: TextSpan(
+                      text: S.of(context).notificationsSchemaTitle,
                       style: AppTextStyles.body.copyWith(
-                        color: AppColors.brandingOrange,
-                        fontWeight: FontWeight.bold,
+                        color: AppColors.gray,
                         fontSize: 16,
-                      ))
-                ])),
+                      ),
+                      children: [
+                    TextSpan(
+                        text: tipo.toUpperCase(),
+                        style: AppTextStyles.body.copyWith(
+                          color: AppColors.brandingOrange,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ))
+                  ])),
+            ),
           ),
           GestureDetector(
             child: Switch(

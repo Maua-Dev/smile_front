@@ -10,6 +10,7 @@ import '../../../../../../shared/themes/breakpoint.dart';
 import '../../../../../../shared/utils/screen_helper.dart';
 import '../../../../../../shared/utils/utils.dart';
 import '../../../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
+import '../../../../../../shared/widgets/text-header/text_header.dart';
 import '../../../../presenter/controllers/user/professor/responsible_activities_controller.dart';
 import '../../widgets/mobile_widgets/activities_card/activities_card_professor_widget.dart';
 import '../../widgets/mobile_widgets/filter/user_filter_card_widget.dart';
@@ -41,10 +42,16 @@ class _ResponsibleActivitiesPageState extends ModularState<
                 const SizedBox(
                   height: 16,
                 ),
-                UserDataWidget(
-                  logout: () {
-                    navBarController.logout();
-                  },
+                TextHeader(
+                  title: 'Atividades Responsáveis',
+                  color: MediaQuery.of(context).size.width < breakpointTablet
+                      ? AppColors.brandingOrange
+                      : AppColors.brandingBlue,
+                  fontSize: MediaQuery.of(context).size.width < breakpointTablet
+                      ? 24
+                      : MediaQuery.of(context).size.width > 1000
+                          ? 38
+                          : 30,
                 ),
                 const SizedBox(
                   height: 200,
@@ -69,14 +76,24 @@ class _ResponsibleActivitiesPageState extends ModularState<
                     height: 16,
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width < breakpointTablet
-                        ? 380
-                        : 1165,
-                    child: UserDataWidget(
-                      mainColor: AppColors.brandingOrange,
-                      logout: () {
-                        navBarController.logout();
-                      },
+                    width: MediaQuery.of(context).size.width < breakpointMobile
+                        ? MediaQuery.of(context).size.width
+                        : MediaQuery.of(context).size.width > breakpointTablet
+                            ? 1165
+                            : 360,
+                    child: TextHeader(
+                      title: 'Atividades Responsáveis',
+                      color: AppColors.brandingOrange,
+                      fontSize:
+                          MediaQuery.of(context).size.width < breakpointTablet
+                              ? 24
+                              : MediaQuery.of(context).size.width > 1000
+                                  ? 38
+                                  : 30,
+                      leftPadding:
+                          MediaQuery.of(context).size.width < breakpointMobile
+                              ? 24
+                              : 0,
                     ),
                   ),
                   const SizedBox(
