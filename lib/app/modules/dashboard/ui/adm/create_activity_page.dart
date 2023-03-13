@@ -291,8 +291,8 @@ class _CreateActivityPageState
                                               S.of(context).confirmToContinue,
                                           content:
                                               S.of(context).lostOldDataWarn,
-                                          onPressed:
-                                              controller.createUserActivity,
+                                          onPressed: () =>
+                                              controller.createUserActivity(),
                                         );
                                       });
                                     },
