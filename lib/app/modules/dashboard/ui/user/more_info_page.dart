@@ -153,7 +153,9 @@ class _MoreInfoPageState
                 ),
               ),
               Observer(builder: (_) {
-                return !controller.activity.acceptingNewEnrollments
+                return !controller.activity.acceptingNewEnrollments &&
+                        controller.enrollmentState !=
+                            EnrollmentStateEnum.ENROLLED
                     ? Text(
                         S.of(context).unavailabeSubscribe,
                         textAlign: TextAlign.center,
