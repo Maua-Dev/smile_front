@@ -45,11 +45,8 @@ class AdmModule extends Module {
             i.args!.data as ActivityModel? ?? ActivityModel.newInstance(),
       ),
     ),
-    Bind.lazySingleton<CreateActivityController>(
-      (i) => CreateActivityController(
-        createActivity: i(),
-      ),
-    ),
+    Bind.lazySingleton<CreateActivityInterface>(
+        (i) => CreateActivity(repository: i())),
     Bind.lazySingleton<ActivitiesDatasourceInterface>(
         (i) => ActivitiesDatasourceImpl(
               storage: i<SecureStorageInterface>(),

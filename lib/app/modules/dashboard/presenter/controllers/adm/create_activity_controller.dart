@@ -10,8 +10,6 @@ import '../../../../../shared/models/activity_model.dart';
 import '../../../domain/infra/activity_enum.dart';
 import '../../../infra/models/speaker_activity_model.dart';
 
-part 'create_activity_controller.g.dart';
-
 abstract class CreateActivityControllerBase with Store {
   final CreateActivityInterface createActivity;
   final GetResponsibleProfessorsInterface getResponsibleProfessors;
@@ -33,7 +31,7 @@ abstract class CreateActivityControllerBase with Store {
   var allResponsibleProfessorsList = [];
 
   @observable
-  ResponsibleProfessorModel responsibleProfessor = ;
+  var responsibleProfessor = ResponsibleProfessorModel;
 
   @action
   Future getAllResponsibleProfessors() async {

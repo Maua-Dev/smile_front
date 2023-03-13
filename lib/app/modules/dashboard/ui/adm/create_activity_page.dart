@@ -29,7 +29,7 @@ class CreateActivityPage extends StatefulWidget {
 }
 
 class _CreateActivityPageState
-    extends ModularState<CreateActivityPage, CreateActivityController> {
+    extends ModularState<CreateActivityPage, CreateActivityControllerBase> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
