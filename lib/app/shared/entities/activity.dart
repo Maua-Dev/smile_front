@@ -18,7 +18,7 @@ class Activity {
   final int takenSlots;
   final bool acceptingNewEnrollments;
   final DateTime? stopAcceptingNewEnrollmentsBefore;
-  final ResponsibleProfessorModel responsibleProfessor;
+  final ResponsibleProfessorModel? responsibleProfessors;
   final List<SpeakerActivityModel> speakers;
 
   Activity({
@@ -26,7 +26,7 @@ class Activity {
     required this.takenSlots,
     required this.acceptingNewEnrollments,
     this.stopAcceptingNewEnrollmentsBefore,
-    required this.responsibleProfessor,
+    required this.responsibleProfessors,
     this.place,
     this.link,
     required this.isExtensive,

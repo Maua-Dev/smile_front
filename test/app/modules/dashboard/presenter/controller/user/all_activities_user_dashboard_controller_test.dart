@@ -81,7 +81,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
@@ -115,7 +115,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
@@ -149,7 +149,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
@@ -183,7 +183,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
@@ -217,7 +217,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
@@ -251,7 +251,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
@@ -285,7 +285,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
     EnrollsActivityModel(
       activityCode: 'C01',
@@ -319,7 +319,7 @@ void main() {
       acceptingNewEnrollments: false,
       isExtensive: false,
       takenSlots: 0,
-      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
     ),
   ];
 

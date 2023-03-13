@@ -1324,6 +1324,16 @@ class S {
     );
   }
 
+  /// `Invalid Date`
+  String get fieldInvalidDate {
+    return Intl.message(
+      'Invalid Date',
+      name: 'fieldInvalidDate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Follow the steps that will be sent in the registered email:`
   String get codeInEmailTitle {
     return Intl.message(

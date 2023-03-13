@@ -19,7 +19,7 @@ class ActivityModel extends Activity {
     super.link,
     super.place,
     required super.acceptingNewEnrollments,
-    required super.responsibleProfessor,
+    required super.responsibleProfessors,
     super.stopAcceptingNewEnrollmentsBefore,
     required super.takenSlots,
     super.totalSlots,
@@ -40,7 +40,7 @@ class ActivityModel extends Activity {
         deliveryEnum:
             DeliveryEnumExtension.stringToEnumMap(map['delivery_model']),
         acceptingNewEnrollments: map['accepting_new_enrollments'] ?? false,
-        responsibleProfessor: map['responsible_professors'],
+        responsibleProfessors: map['responsible_professors'],
         takenSlots: map['taken_slots'],
         totalSlots: map['total_slots'],
         stopAcceptingNewEnrollmentsBefore:
@@ -70,7 +70,7 @@ class ActivityModel extends Activity {
         'accepting_new_enrollments': acceptingNewEnrollments,
         'stop_accepting_new_enrollments_before':
             stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
-        'responsible_professors': [responsibleProfessor.id],
+        'responsible_professors': [responsibleProfessors!.id],
         'speakers': speakers.map((e) => e.toJson()).toList(),
       };
 
@@ -91,7 +91,7 @@ class ActivityModel extends Activity {
         'new_accepting_new_enrollments': acceptingNewEnrollments,
         'new_stop_accepting_new_enrollments_before':
             stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
-        'new_responsible_professors': [responsibleProfessor.id],
+        'new_responsible_professors': [responsibleProfessors!.id],
         'new_speakers': speakers.map((e) => e.toJson()).toList(),
       };
 
@@ -107,7 +107,7 @@ class ActivityModel extends Activity {
       startDate: null,
       deliveryEnum: null,
       acceptingNewEnrollments: false,
-      responsibleProfessor: ResponsibleProfessorModel.newInstance(),
+      responsibleProfessors: ResponsibleProfessorModel.newInstance(),
       takenSlots: 0,
       totalSlots: null,
     );
@@ -143,7 +143,8 @@ class ActivityModel extends Activity {
       deliveryEnum: deliveryEnum ?? this.deliveryEnum,
       acceptingNewEnrollments:
           acceptingNewEnrollments ?? this.acceptingNewEnrollments,
-      responsibleProfessor: responsibleProfessor ?? this.responsibleProfessor,
+      // ignore: unnecessary_this
+      responsibleProfessors: responsibleProfessor ?? this.responsibleProfessors,
       takenSlots: takenSlots ?? this.takenSlots,
       totalSlots: totalSlots ?? this.totalSlots,
       link: link ?? this.link,

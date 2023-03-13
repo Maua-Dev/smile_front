@@ -72,7 +72,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         description: admActivitiesList[index].description,
         duration: admActivitiesList[index].duration,
         isExtensive: admActivitiesList[index].isExtensive,
-        responsibleProfessor: admActivitiesList[index].responsibleProfessor,
+        responsibleProfessors: admActivitiesList[index].responsibleProfessors,
         speakers: admActivitiesList[index].speakers,
         takenSlots: admActivitiesList[index].takenSlots,
         title: admActivitiesList[index].title,
@@ -109,8 +109,8 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         description: allActivitiesAndEnrollments[index].description,
         duration: allActivitiesAndEnrollments[index].duration,
         isExtensive: allActivitiesAndEnrollments[index].isExtensive,
-        responsibleProfessor:
-            allActivitiesAndEnrollments[index].responsibleProfessor,
+        responsibleProfessors:
+            allActivitiesAndEnrollments[index].responsibleProfessors,
         speakers: allActivitiesAndEnrollments[index].speakers,
         takenSlots: allActivitiesAndEnrollments[index].takenSlots,
         title: allActivitiesAndEnrollments[index].title,
@@ -148,8 +148,8 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         description: allActivitiesAndEnrollments[index].description,
         duration: allActivitiesAndEnrollments[index].duration,
         isExtensive: allActivitiesAndEnrollments[index].isExtensive,
-        responsibleProfessor:
-            allActivitiesAndEnrollments[index].responsibleProfessor,
+        responsibleProfessors:
+            allActivitiesAndEnrollments[index].responsibleProfessors,
         speakers: allActivitiesAndEnrollments[index].speakers,
         takenSlots: allActivitiesAndEnrollments[index].takenSlots,
         title: allActivitiesAndEnrollments[index].title,
@@ -202,7 +202,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         description: activityWithEnrollments.description,
         duration: activityWithEnrollments.duration,
         isExtensive: activityWithEnrollments.isExtensive,
-        responsibleProfessor: activityWithEnrollments.responsibleProfessor,
+        responsibleProfessors: activityWithEnrollments.responsibleProfessors,
         speakers: activityWithEnrollments.speakers,
         takenSlots: activityWithEnrollments.takenSlots,
         title: activityWithEnrollments.title,
