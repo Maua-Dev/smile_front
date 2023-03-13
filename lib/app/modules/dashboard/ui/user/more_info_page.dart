@@ -26,13 +26,6 @@ class _MoreInfoPageState
     extends ModularState<MoreInfoPage, MoreInfoController> {
   @override
   Widget build(BuildContext context) {
-    var timeString = controller.activity.startDate == null
-        ? ''
-        : DateFormat('HH:mm').format(controller.activity.startDate!);
-    var finalTime = controller.activity.startDate == null
-        ? ''
-        : Utils.getActivityFinalTime(
-            controller.activity.startDate!, controller.activity.duration);
     return SafeArea(
         child: ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
@@ -43,6 +36,13 @@ class _MoreInfoPageState
                 height: MediaQuery.of(context).size.height,
                 child: const Center(child: CircularProgressIndicator()));
           }
+          var timeString = controller.activity.startDate == null
+              ? ''
+              : DateFormat('HH:mm').format(controller.activity.startDate!);
+          var finalTime = controller.activity.startDate == null
+              ? ''
+              : Utils.getActivityFinalTime(
+                  controller.activity.startDate!, controller.activity.duration);
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: Column(children: [
