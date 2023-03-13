@@ -23,7 +23,7 @@ class ProfessorActivityModel extends Activity {
     super.link,
     super.place,
     required super.acceptingNewEnrollments,
-    required super.responsibleProfessor,
+    required super.responsibleProfessors,
     super.stopAcceptingNewEnrollmentsBefore,
     required super.takenSlots,
     required super.totalSlots,
@@ -48,7 +48,7 @@ class ProfessorActivityModel extends Activity {
             map['activity']['delivery_model']),
         acceptingNewEnrollments:
             map['activity']['accepting_new_enrollments'] ?? false,
-        responsibleProfessor: map['activity']['responsible_professors'],
+        responsibleProfessors: map['activity']['responsible_professors'],
         takenSlots: map['activity']['taken_slots'],
         totalSlots: map['activity']['total_slots'],
         stopAcceptingNewEnrollmentsBefore:
@@ -76,7 +76,7 @@ class ProfessorActivityModel extends Activity {
         startDate: DateTime.now(),
         deliveryEnum: null,
         acceptingNewEnrollments: false,
-        responsibleProfessor: ResponsibleProfessorModel.newInstance(),
+        responsibleProfessors: ResponsibleProfessorModel.newInstance(),
         takenSlots: 0,
         totalSlots: 0,
         enrollments: []);
@@ -100,7 +100,7 @@ class ProfessorActivityModel extends Activity {
       int? takenSlots,
       int? totalSlots,
       DateTime? stopAcceptingNewEnrollmentsBefore,
-      List<ResponsibleProfessorModel>? responsibleProfessors,
+      ResponsibleProfessorModel? responsibleProfessors,
       List<EnrollmentsModel>? enrollments}) {
     return ProfessorActivityModel(
       activityCode: activityCode ?? this.activityCode,
@@ -115,7 +115,7 @@ class ProfessorActivityModel extends Activity {
       confirmationCode: confirmationCode ?? this.confirmationCode,
       acceptingNewEnrollments:
           acceptingNewEnrollments ?? this.acceptingNewEnrollments,
-      responsibleProfessor: responsibleProfessor,
+      responsibleProfessors: responsibleProfessors,
       takenSlots: takenSlots ?? this.takenSlots,
       totalSlots: totalSlots ?? this.totalSlots,
       link: link ?? this.link,
