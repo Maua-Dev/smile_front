@@ -52,7 +52,6 @@ class AuthController {
     await storage.savePhone(loginResponse.phone);
     await storage
         .saveCertificateWithSocialName(_certificateWithSocialName ?? false);
-    await analytics.setUserProperties(await storage.getId() ?? '');
     await storage.saveAcceptSMSNotifications(_acceptSMSNotifications ?? false);
     await storage
         .saveAcceptEmailNotifications(_acceptEmailNotificiations ?? false);
