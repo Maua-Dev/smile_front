@@ -23,7 +23,7 @@ class ProfessorActivityModel extends Activity {
     super.link,
     super.place,
     required super.acceptingNewEnrollments,
-    required super.responsibleProfessors,
+    required super.responsibleProfessor,
     super.stopAcceptingNewEnrollmentsBefore,
     required super.takenSlots,
     required super.totalSlots,
@@ -48,8 +48,7 @@ class ProfessorActivityModel extends Activity {
             map['activity']['delivery_model']),
         acceptingNewEnrollments:
             map['activity']['accepting_new_enrollments'] ?? false,
-        responsibleProfessors: ResponsibleProfessorModel.fromMaps(
-            map['activity']['responsible_professors']),
+        responsibleProfessor: map['activity']['responsible_professors'],
         takenSlots: map['activity']['taken_slots'],
         totalSlots: map['activity']['total_slots'],
         stopAcceptingNewEnrollmentsBefore:
@@ -77,7 +76,7 @@ class ProfessorActivityModel extends Activity {
         startDate: DateTime.now(),
         deliveryEnum: null,
         acceptingNewEnrollments: false,
-        responsibleProfessors: [],
+        responsibleProfessor: ResponsibleProfessorModel.newInstance(),
         takenSlots: 0,
         totalSlots: 0,
         enrollments: []);
@@ -116,8 +115,7 @@ class ProfessorActivityModel extends Activity {
       confirmationCode: confirmationCode ?? this.confirmationCode,
       acceptingNewEnrollments:
           acceptingNewEnrollments ?? this.acceptingNewEnrollments,
-      responsibleProfessors:
-          responsibleProfessors ?? this.responsibleProfessors,
+      responsibleProfessor: responsibleProfessor,
       takenSlots: takenSlots ?? this.takenSlots,
       totalSlots: totalSlots ?? this.totalSlots,
       link: link ?? this.link,

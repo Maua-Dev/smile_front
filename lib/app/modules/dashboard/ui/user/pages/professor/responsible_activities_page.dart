@@ -124,7 +124,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
                                         controller
                                             .activitiesToShow[index].startDate!,
                                         controller
-                                            .activitiesToShow[index].duration);
+                                            .activitiesToShow[index].duration!);
                             var hour = DateFormat('HH:mm').format(controller
                                 .allResponsibleActivities[index].startDate!);
                             return ActivitiesCardProfessorWidget(

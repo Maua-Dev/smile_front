@@ -32,7 +32,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
         .format(controller.professorActivityWithEnrollments.startDate!);
     var finalTime = Utils.getActivityFinalTime(
         controller.professorActivityWithEnrollments.startDate!,
-        controller.professorActivityWithEnrollments.duration);
+        controller.professorActivityWithEnrollments.duration!);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: SingleChildScrollView(

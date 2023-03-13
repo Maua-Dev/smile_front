@@ -32,7 +32,7 @@ class _MoreInfoPageState
     var finalTime = controller.activity.startDate == null
         ? ''
         : Utils.getActivityFinalTime(
-            controller.activity.startDate!, controller.activity.duration);
+            controller.activity.startDate!, controller.activity.duration!);
     return SafeArea(
         child: ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
@@ -144,7 +144,7 @@ class _MoreInfoPageState
                   : Center(
                       child: RegisterButtonWidget(
                           activityIsFull: controller.activity.takenSlots >=
-                              controller.activity.totalSlots,
+                              controller.activity.totalSlots!,
                           isLoading: controller.isLoading,
                           isRegistered: controller.activity.enrollments == null
                               ? EnrollmentStateEnum.NONE
@@ -202,7 +202,7 @@ class _MoreInfoPageState
                                   },
                                 );
                               } else if (controller.activity.takenSlots >=
-                                      controller.activity.totalSlots &&
+                                      controller.activity.totalSlots! &&
                                   controller.activity.enrollments != null) {
                                 if (controller.activity.enrollments!.state ==
                                     EnrollmentStateEnum.IN_QUEUE) {
@@ -224,7 +224,7 @@ class _MoreInfoPageState
                                   );
                                 }
                               } else if (controller.activity.takenSlots >=
-                                  controller.activity.totalSlots) {
+                                  controller.activity.totalSlots!) {
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {

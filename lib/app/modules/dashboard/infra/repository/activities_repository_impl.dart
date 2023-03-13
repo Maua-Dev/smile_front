@@ -72,7 +72,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         description: admActivitiesList[index].description,
         duration: admActivitiesList[index].duration,
         isExtensive: admActivitiesList[index].isExtensive,
-        responsibleProfessors: admActivitiesList[index].responsibleProfessors,
+        responsibleProfessor: admActivitiesList[index].responsibleProfessor,
         speakers: admActivitiesList[index].speakers,
         takenSlots: admActivitiesList[index].takenSlots,
         title: admActivitiesList[index].title,
@@ -100,37 +100,36 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   Future<bool> subscribeActivity(String activityCode) async {
     var requestDone = await datasource.postSubscribe(activityCode);
     if (requestDone.state != EnrollmentStateEnum.NONE) {
-      var index = allActivitiesWithEnrollments
+      var index = allActivitiesAndEnrollments
           .indexWhere((element) => element.activityCode == activityCode);
       var activity = EnrollsActivityModel(
         acceptingNewEnrollments:
-            allActivitiesWithEnrollments[index].acceptingNewEnrollments,
-        activityCode: allActivitiesWithEnrollments[index].activityCode,
-        description: allActivitiesWithEnrollments[index].description,
-        duration: allActivitiesWithEnrollments[index].duration,
-        isExtensive: allActivitiesWithEnrollments[index].isExtensive,
+            allActivitiesAndEnrollments[index].acceptingNewEnrollments,
+        activityCode: allActivitiesAndEnrollments[index].activityCode,
+        description: allActivitiesAndEnrollments[index].description,
+        duration: allActivitiesAndEnrollments[index].duration,
+        isExtensive: allActivitiesAndEnrollments[index].isExtensive,
         responsibleProfessor:
-            allActivitiesWithEnrollments[index].responsibleProfessor,
-        speakers: allActivitiesWithEnrollments[index].speakers,
-        takenSlots: allActivitiesWithEnrollments[index].takenSlots,
-        title: allActivitiesWithEnrollments[index].title,
-        totalSlots: allActivitiesWithEnrollments[index].totalSlots,
-        type: allActivitiesWithEnrollments[index].type,
-        deliveryEnum: allActivitiesWithEnrollments[index].deliveryEnum,
-        link: allActivitiesWithEnrollments[index].link,
-        place: allActivitiesWithEnrollments[index].place,
-        startDate: allActivitiesWithEnrollments[index].startDate,
-        stopAcceptingNewEnrollmentsBefore: allActivitiesWithEnrollments[index]
+            allActivitiesAndEnrollments[index].responsibleProfessor,
+        speakers: allActivitiesAndEnrollments[index].speakers,
+        takenSlots: allActivitiesAndEnrollments[index].takenSlots,
+        title: allActivitiesAndEnrollments[index].title,
+        totalSlots: allActivitiesAndEnrollments[index].totalSlots,
+        type: allActivitiesAndEnrollments[index].type,
+        deliveryEnum: allActivitiesAndEnrollments[index].deliveryEnum,
+        link: allActivitiesAndEnrollments[index].link,
+        place: allActivitiesAndEnrollments[index].place,
+        startDate: allActivitiesAndEnrollments[index].startDate,
+        stopAcceptingNewEnrollmentsBefore: allActivitiesAndEnrollments[index]
             .stopAcceptingNewEnrollmentsBefore,
         enrollments: EnrollmentsModel(
-          acceptingNewEnrollments: requestDone.acceptingNewEnrollments,
           state: requestDone.state,
           dateSubscribed: requestDone.dateSubscribed,
         ),
       );
-      allActivitiesWithEnrollments
+      allActivitiesAndEnrollments
           .removeWhere((element) => element.activityCode == activityCode);
-      allActivitiesWithEnrollments.insert(index, activity);
+      allActivitiesAndEnrollments.insert(index, activity);
       return true;
     }
     return false;
@@ -149,8 +148,8 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         description: allActivitiesAndEnrollments[index].description,
         duration: allActivitiesAndEnrollments[index].duration,
         isExtensive: allActivitiesAndEnrollments[index].isExtensive,
-        responsibleProfessors:
-            allActivitiesAndEnrollments[index].responsibleProfessors,
+        responsibleProfessor:
+            allActivitiesAndEnrollments[index].responsibleProfessor,
         speakers: allActivitiesAndEnrollments[index].speakers,
         takenSlots: allActivitiesAndEnrollments[index].takenSlots,
         title: allActivitiesAndEnrollments[index].title,
@@ -186,45 +185,6 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future<bool> subscribeActivity(String activityCode) async {
-    var requestDone = await datasource.postSubscribe(activityCode);
-    if (requestDone.state != EnrollmentStateEnum.NONE) {
-      var index = allActivitiesAndEnrollments
-          .indexWhere((element) => element.activityCode == activityCode);
-      var activity = EnrollsActivityModel(
-        acceptingNewEnrollments:
-            allActivitiesAndEnrollments[index].acceptingNewEnrollments,
-        activityCode: allActivitiesAndEnrollments[index].activityCode,
-        description: allActivitiesAndEnrollments[index].description,
-        duration: allActivitiesAndEnrollments[index].duration,
-        isExtensive: allActivitiesAndEnrollments[index].isExtensive,
-        responsibleProfessors:
-            allActivitiesAndEnrollments[index].responsibleProfessors,
-        speakers: allActivitiesAndEnrollments[index].speakers,
-        takenSlots: allActivitiesAndEnrollments[index].takenSlots,
-        title: allActivitiesAndEnrollments[index].title,
-        totalSlots: allActivitiesAndEnrollments[index].totalSlots,
-        type: allActivitiesAndEnrollments[index].type,
-        deliveryEnum: allActivitiesAndEnrollments[index].deliveryEnum,
-        link: allActivitiesAndEnrollments[index].link,
-        place: allActivitiesAndEnrollments[index].place,
-        startDate: allActivitiesAndEnrollments[index].startDate,
-        stopAcceptingNewEnrollmentsBefore: allActivitiesAndEnrollments[index]
-            .stopAcceptingNewEnrollmentsBefore,
-        enrollments: EnrollmentsModel(
-          state: requestDone.state,
-          dateSubscribed: requestDone.dateSubscribed,
-        ),
-      );
-      allActivitiesAndEnrollments
-          .removeWhere((element) => element.activityCode == activityCode);
-      allActivitiesAndEnrollments.insert(index, activity);
-      return true;
-    }
-    return false;
-  }
-
-  @override
   Future<ProfessorActivityModel> postManualChangeAttendance(
       String activityCode, String userId, EnrollmentStateEnum state) async {
     var requestDone = await datasource.postManualChangeAttendance(
@@ -242,7 +202,7 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
         description: activityWithEnrollments.description,
         duration: activityWithEnrollments.duration,
         isExtensive: activityWithEnrollments.isExtensive,
-        responsibleProfessors: activityWithEnrollments.responsibleProfessors,
+        responsibleProfessor: activityWithEnrollments.responsibleProfessor,
         speakers: activityWithEnrollments.speakers,
         takenSlots: activityWithEnrollments.takenSlots,
         title: activityWithEnrollments.title,

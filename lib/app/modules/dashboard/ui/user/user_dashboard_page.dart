@@ -174,7 +174,7 @@ class _UserDashboardPageState
                           takenSlots: controller
                               .subscribedActivitiesOnScreen[index].takenSlots,
                           totalSlots: controller
-                              .subscribedActivitiesOnScreen[index].totalSlots,
+                              .subscribedActivitiesOnScreen[index].totalSlots!,
                           onTap: () {
                             Modular.to.navigate(
                               '/user/home/more-info',

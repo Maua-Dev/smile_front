@@ -71,7 +71,6 @@ class AdmModule extends Module {
               loginWithEmail: i<LoginWithEmailInterface>(),
               refreshToken: i<RefreshTokenInterface>(),
               storage: i<SecureStorageInterface>(),
-              analytics: i(),
             ),
         export: true),
     Bind.lazySingleton<AdmDashboardController>(
@@ -93,6 +92,7 @@ class AdmModule extends Module {
     Bind.lazySingleton<CreateActivityController>(
       (i) => CreateActivityController(
         createActivity: i(),
+        getResponsibleProfessors: i(),
       ),
     ),
     Bind.lazySingleton<ActivitiesDatasourceInterface>(
