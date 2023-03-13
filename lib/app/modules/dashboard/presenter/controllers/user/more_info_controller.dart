@@ -26,7 +26,6 @@ abstract class MoreInfoControllerBase with Store {
   }) {
     getActivity();
     checkCanViewConfirmAttendance();
-    getEnrollmentState();
   }
 
   @observable
@@ -65,6 +64,13 @@ abstract class MoreInfoControllerBase with Store {
     activity = enrollmentController.allActivitiesWithEnrollments
         .firstWhere((element) => element.activityCode == activityCodeToSearch);
     isLoadingGetActivity = false;
+    if (activity.enrollments == null) {
+      enrollmentState = EnrollmentStateEnum.NONE;
+    } else {
+      enrollmentState = activity.enrollments!.state;
+    }
+
+    await checkCanViewConfirmAttendance();
   }
 
   @action
@@ -110,24 +116,15 @@ abstract class MoreInfoControllerBase with Store {
     }
   }
 
-  @action
-  Future<void> getEnrollmentState() async {
-    if (activity.enrollments == null) {
-      enrollmentState = EnrollmentStateEnum.NONE;
-    }
-    enrollmentState = activity.enrollments!.state;
-  }
-
   Future<void> subscribeUserActivity() async {
     setIsLoading(true);
     var requestDone =
         await enrollmentController.subscribeActivity(activity.activityCode);
     if (requestDone) {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
-      getActivity();
+      await getActivity();
     }
-    checkCanViewConfirmAttendance();
-    getEnrollmentState();
+    await checkCanViewConfirmAttendance();
     setIsLoading(false);
   }
 
@@ -137,10 +134,9 @@ abstract class MoreInfoControllerBase with Store {
         await enrollmentController.unsubscribeActivity(activity.activityCode);
     if (requestDone) {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
-      getActivity();
+      await getActivity();
     }
-    checkCanViewConfirmAttendance();
-    getEnrollmentState();
+    await checkCanViewConfirmAttendance();
     setIsLoading(false);
   }
 

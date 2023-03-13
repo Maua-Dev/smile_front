@@ -146,16 +146,6 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
         .run(() => super.checkCanViewConfirmAttendance());
   }
 
-  late final _$getEnrollmentStateAsyncAction = AsyncAction(
-      'MoreInfoControllerBase.getEnrollmentState',
-      context: context);
-
-  @override
-  Future<void> getEnrollmentState() {
-    return _$getEnrollmentStateAsyncAction
-        .run(() => super.getEnrollmentState());
-  }
-
   late final _$onConfirmCodeAsyncAction =
       AsyncAction('MoreInfoControllerBase.onConfirmCode', context: context);
 
