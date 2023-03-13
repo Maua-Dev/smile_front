@@ -32,22 +32,21 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
             height: 16,
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width < breakpointTablet
-                ? 380
-                : 1165,
+            width: MediaQuery.of(context).size.width < breakpointMobile
+                ? MediaQuery.of(context).size.width
+                : MediaQuery.of(context).size.width > breakpointTablet
+                    ? 1165
+                    : 360,
             child: TextHeader(
-              title: MediaQuery.of(context).size.width < breakpointTablet
-                  ? 'Atividades'
-                  : 'Todas as Atividades',
-              color: MediaQuery.of(context).size.width < breakpointTablet
-                  ? AppColors.brandingOrange
-                  : AppColors.brandingBlue,
+              title: 'Todas as Atividades',
+              color: AppColors.brandingBlue,
               fontSize: MediaQuery.of(context).size.width < breakpointTablet
                   ? 24
                   : MediaQuery.of(context).size.width > 1000
                       ? 38
                       : 30,
-              leftPadding: 32,
+              leftPadding:
+                  MediaQuery.of(context).size.width < breakpointMobile ? 24 : 0,
             ),
           ),
           const SizedBox(

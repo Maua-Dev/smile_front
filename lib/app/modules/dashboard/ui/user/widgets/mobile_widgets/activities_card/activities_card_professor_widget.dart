@@ -93,9 +93,12 @@ class ActivitiesCardProfessorWidget extends StatelessWidget {
                           children: [
                             SizedBox(
                               width: MediaQuery.of(context).size.width <
-                                      breakpointTablet
-                                  ? 200
-                                  : MediaQuery.of(context).size.width / 2.7,
+                                      breakpointLMobile
+                                  ? MediaQuery.of(context).size.width / 2.1
+                                  : MediaQuery.of(context).size.width <
+                                          breakpointTablet
+                                      ? 185
+                                      : null,
                               child: Text(title,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
