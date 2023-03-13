@@ -106,4 +106,24 @@ class SecureStorage implements SecureStorageInterface {
   Future<void> savePhone(String phone) async {
     await storage.put('phone', phone);
   }
+
+  @override
+  Future<void> saveAcceptSMSNotifications(bool acceptSMSNotifications) async {
+    await storage.put('acceptSMSNotifications', acceptSMSNotifications);
+  }
+
+  @override
+  Future<bool?> getAcceptSMSNotifications() async {
+    return await storage.get('acceptSMSNotifications');
+  }
+
+  @override
+  Future<void> saveAcceptEmailNotifications(bool acceptEmailNotifications) async {
+    await storage.put('acceptEmailNotifications', acceptEmailNotifications);
+  }
+
+  @override
+  Future<bool?> getAcceptEmailNotifications() async {
+    return await storage.get('acceptEmailNotifications');
+  }
 }

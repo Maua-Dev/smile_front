@@ -458,6 +458,47 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  bool get acceptEmailNotifications => (super.noSuchMethod(
+        Invocation.getter(#acceptEmailNotifications),
+        returnValue: false,
+      ) as bool);
+  @override
+  set acceptEmailNotifications(bool? _acceptEmailNotifications) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #acceptEmailNotifications,
+          _acceptEmailNotifications,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get acceptSMSNotifications => (super.noSuchMethod(
+        Invocation.getter(#acceptSMSNotifications),
+        returnValue: false,
+      ) as bool);
+  @override
+  set acceptSMSNotifications(bool? _acceptSMSNotifications) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #acceptSMSNotifications,
+          _acceptSMSNotifications,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  String get phoneValue => (super.noSuchMethod(
+        Invocation.getter(#phoneValue),
+        returnValue: '',
+      ) as String);
+  @override
+  set phoneValue(String? _phoneValue) => super.noSuchMethod(
+        Invocation.setter(
+          #phoneValue,
+          _phoneValue,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   set dateFilter(DateTime? _dateFilter) => super.noSuchMethod(
         Invocation.setter(
           #dateFilter,
@@ -605,6 +646,24 @@ class MockUserDashboardController extends _i1.Mock
         ),
       ) as _i7.ReactiveContext);
   @override
+  _i11.Future<void> setEmailNotifications(bool? value) => (super.noSuchMethod(
+        Invocation.method(
+          #setEmailNotifications,
+          [value],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  _i11.Future<void> setSMSNotifications(bool? value) => (super.noSuchMethod(
+        Invocation.method(
+          #setSMSNotifications,
+          [value],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
   void setTypeFilter(_i15.ActivityEnum? value) => super.noSuchMethod(
         Invocation.method(
           #setTypeFilter,
@@ -750,6 +809,24 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
   @override
+  _i11.Future<void> getAcceptSMSNotifications() => (super.noSuchMethod(
+        Invocation.method(
+          #getAcceptSMSNotifications,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  _i11.Future<void> getAcceptEmailNotifications() => (super.noSuchMethod(
+        Invocation.method(
+          #getAcceptEmailNotifications,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
   _i11.Future<void> getPhone() => (super.noSuchMethod(
         Invocation.method(
           #getPhone,
@@ -871,6 +948,15 @@ class MockUserDashboardController extends _i1.Mock
         Invocation.method(
           #setPhone,
           [value],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  _i11.Future<void> replaceCharactersPhone() => (super.noSuchMethod(
+        Invocation.method(
+          #replaceCharactersPhone,
+          [],
         ),
         returnValue: _i11.Future<void>.value(),
         returnValueForMissingStub: _i11.Future<void>.value(),
@@ -1041,6 +1127,27 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
   @override
+  _i11.Future<void> saveAcceptSMSNotifications(bool? acceptSMSNotifications) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveAcceptSMSNotifications,
+          [acceptSMSNotifications],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  _i11.Future<void> saveAcceptEmailNotifications(
+          bool? acceptEmailNotifications) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveAcceptEmailNotifications,
+          [acceptEmailNotifications],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
   _i11.Future<String?> getRole() => (super.noSuchMethod(
         Invocation.method(
           #getRole,
@@ -1088,6 +1195,22 @@ class MockSecureStorageInterface extends _i1.Mock
         ),
         returnValue: _i11.Future<String?>.value(),
       ) as _i11.Future<String?>);
+  @override
+  _i11.Future<bool?> getAcceptSMSNotifications() => (super.noSuchMethod(
+        Invocation.method(
+          #getAcceptSMSNotifications,
+          [],
+        ),
+        returnValue: _i11.Future<bool?>.value(),
+      ) as _i11.Future<bool?>);
+  @override
+  _i11.Future<bool?> getAcceptEmailNotifications() => (super.noSuchMethod(
+        Invocation.method(
+          #getAcceptEmailNotifications,
+          [],
+        ),
+        returnValue: _i11.Future<bool?>.value(),
+      ) as _i11.Future<bool?>);
   @override
   _i11.Future<bool?> getCertificateWithSocialName() => (super.noSuchMethod(
         Invocation.method(

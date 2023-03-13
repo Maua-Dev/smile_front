@@ -32,6 +32,8 @@ abstract class UserDashboardControllerBase with Store {
     getUserName();
     getUserSocialName();
     getPhone();
+    getAcceptSMSNotifications();
+    getAcceptEmailNotifications();
   }
 
   @observable
@@ -72,6 +74,27 @@ abstract class UserDashboardControllerBase with Store {
 
   @observable
   String? typeOnScreen;
+
+  @observable
+  bool acceptEmailNotifications = false;
+
+  @observable
+  bool acceptSMSNotifications = false;
+
+  @observable
+  String phoneValue = '';
+
+  @action
+  Future<void> setEmailNotifications(bool? value) async {
+    acceptEmailNotifications = value!;
+  }
+
+  @action
+  Future<void> setSMSNotifications(bool? value) async {
+    if (phoneValue.isNotEmpty) {
+      acceptSMSNotifications = value!;
+    }
+  }
 
   @action
   void setTypeFilter(ActivityEnum value) {
@@ -261,6 +284,17 @@ abstract class UserDashboardControllerBase with Store {
     setName(name ?? '');
   }
 
+  @action
+  Future<void> getAcceptSMSNotifications() async {
+    acceptSMSNotifications = (await secureStorage.getAcceptSMSNotifications())!;
+  }
+
+  @action
+  Future<void> getAcceptEmailNotifications() async {
+    acceptEmailNotifications =
+        (await secureStorage.getAcceptEmailNotifications())!;
+  }
+
   @observable
   bool isGetPhoneBrazilian = false;
 
@@ -312,21 +346,28 @@ abstract class UserDashboardControllerBase with Store {
   Future<void> changeUserData() async {
     setIsLoading(true);
     if (phoneToChange == '') {
-      acceptedNotifications = false;
-    } else {
-      acceptedNotifications = true;
+      acceptSMSNotifications = false;
     }
-    await changeData(nameToChange, socialNameToChange,
-        certificateWithSocialName, phoneToChange, acceptedNotifications);
+    await changeData(
+        nameToChange,
+        socialNameToChange,
+        certificateWithSocialName,
+        phoneToChange,
+        acceptSMSNotifications,
+        acceptEmailNotifications);
     await secureStorage.saveName(nameToChange);
     await secureStorage.saveSocialName(socialNameToChange);
     await secureStorage
         .saveCertificateWithSocialName(certificateWithSocialName);
     await secureStorage.savePhone(phoneToChange);
+    await secureStorage.saveAcceptEmailNotifications(acceptEmailNotifications);
+    await secureStorage.saveAcceptSMSNotifications(acceptSMSNotifications);
     getUserName();
     getUserSocialName();
     getUserSubscribedActivities();
     getPhone();
+    getAcceptEmailNotifications();
+    getAcceptSMSNotifications();
     setIsLoading(false);
   }
 
@@ -413,7 +454,7 @@ abstract class UserDashboardControllerBase with Store {
 
   @observable
   CountryCode? countryCode =
-      const CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
+      const CountryCode(code: "BR", dialCode: "+55", name: "Brazil");
 
   @action
   void setBrazilianPhone(CountryCode? value) {
@@ -431,18 +472,24 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
-    if (value == '') {
+    phoneValue = value;
+    if (value.isEmpty) {
+      setCountryCode(const CountryCode(code: '', dialCode: '', name: ''));
       phoneToChange = '';
+      isPhoneFieldFilled = false;
+      acceptSMSNotifications = false;
     } else {
       phoneToChange = '${countryCode?.dialCode}$value';
       isPhoneFieldFilled = true;
     }
-    if (countryCode?.code == "BR") {
-      phoneToChange = phoneToChange.replaceAll('(', '');
-      phoneToChange = phoneToChange.replaceAll(')', '');
-      phoneToChange = phoneToChange.replaceAll(' ', '');
-      phoneToChange = phoneToChange.replaceAll('-', '');
-    }
+  }
+
+  @action
+  Future<void> replaceCharactersPhone() async {
+    phoneToChange = phoneToChange.replaceAll('(', '');
+    phoneToChange = phoneToChange.replaceAll(')', '');
+    phoneToChange = phoneToChange.replaceAll(' ', '');
+    phoneToChange = phoneToChange.replaceAll('-', '');
   }
 
   @action

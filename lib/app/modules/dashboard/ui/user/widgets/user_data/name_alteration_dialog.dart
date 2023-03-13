@@ -5,8 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:smile_front/app/modules/register/ui/widgets/switch_toggle_widget.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/utils/screen_helper.dart';
+import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/widgets/custom_elevated_button_widget.dart';
@@ -384,6 +387,32 @@ class NameAlterationDialog extends StatelessWidget {
                   ],
                 );
               }),
+              Observer(builder: (_) {
+                return SwitchToggleWidget(
+                  isSwitched: controller.acceptEmailNotifications,
+                  tipo: S.of(context).notificationsSchema('email'),
+                  onChanged: (bool? value) {
+                    controller.setEmailNotifications(value);
+                  },
+                );
+              }),
+              Observer(builder: (_) {
+                return SwitchToggleWidget(
+                    isSwitched: controller.acceptSMSNotifications,
+                    tipo: S.of(context).notificationsSchema('sms'),
+                    onChanged: (bool? value) {
+                      controller.setSMSNotifications(value);
+                      if (!controller.isPhoneFieldFilled) {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return CustomAlertDialogWidget(
+                                title: S.of(context).notificationsSmsAlert,
+                              );
+                            });
+                      }
+                    });
+              }),
               const SizedBox(
                 height: 32,
               ),
@@ -435,6 +464,7 @@ class NameAlterationDialog extends StatelessWidget {
                 heightSize: 50,
                 backgroundColor: AppColors.brandingOrange,
                 onPressed: () async {
+                  controller.replaceCharactersPhone();
                   await changeData!();
                 },
               ),

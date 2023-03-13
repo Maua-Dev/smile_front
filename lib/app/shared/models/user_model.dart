@@ -7,6 +7,8 @@ class UserModel extends User {
   final String accessToken;
   final String refreshToken;
   final String idToken;
+  final bool acceptEmailNotifications;
+  final bool acceptSMSNotifications;
   UserModel({
     required this.accessToken,
     required this.refreshToken,
@@ -20,6 +22,8 @@ class UserModel extends User {
     super.ra,
     required super.phone,
     required this.userId,
+    required this.acceptEmailNotifications,
+    required this.acceptSMSNotifications,
   });
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
@@ -29,6 +33,8 @@ class UserModel extends User {
           AccessLevelEnumExtension.stringToEnumMap(map['access_level']),
       email: map['email'],
       role: UserRolesEnumExtension.stringToEnumMap(map['role']),
+      acceptEmailNotifications: map['accepted_notifications_email'],
+      acceptSMSNotifications: map['accepted_notifications_sms'],
       name: map['name'],
       accessToken: map['access_token'],
       idToken: map['id_token'],

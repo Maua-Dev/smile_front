@@ -3,8 +3,13 @@ import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_
 import '../repositories/user_repository_interface.dart';
 
 abstract class ChangeDataInterface {
-  Future<void> call(String nameToChange, String socialNameToChange,
-      bool certificateWithSocialName, String phone, bool acceptedNotifications);
+  Future<void> call(
+      String nameToChange,
+      String socialNameToChange,
+      bool certificateWithSocialName,
+      String phone,
+      bool acceptedSmsNotifications,
+      bool acceptedEmailNotifications);
 }
 
 class ChangeData implements ChangeDataInterface {
@@ -18,9 +23,11 @@ class ChangeData implements ChangeDataInterface {
       String socialNameToChange,
       bool certificateWithSocialName,
       String phone,
-      bool acceptedNotifications) {
+      bool acceptedSmsNotifications,
+      bool acceptedEmailNotifications) {
     final userData = UserChangeDataModel(
-        acceptedNotifications: acceptedNotifications,
+        acceptedSmsNotifications: acceptedSmsNotifications,
+        acceptedEmailNotifications: acceptedEmailNotifications,
         phone: phone,
         name: nameToChange,
         socialName: socialNameToChange,

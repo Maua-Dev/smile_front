@@ -400,6 +400,27 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i5.Future<void>.value(),
       ) as _i5.Future<void>);
   @override
+  _i5.Future<void> saveAcceptSMSNotifications(bool? acceptSMSNotifications) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveAcceptSMSNotifications,
+          [acceptSMSNotifications],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+  @override
+  _i5.Future<void> saveAcceptEmailNotifications(
+          bool? acceptEmailNotifications) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveAcceptEmailNotifications,
+          [acceptEmailNotifications],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+  @override
   _i5.Future<String?> getRole() => (super.noSuchMethod(
         Invocation.method(
           #getRole,
@@ -447,6 +468,22 @@ class MockSecureStorageInterface extends _i1.Mock
         ),
         returnValue: _i5.Future<String?>.value(),
       ) as _i5.Future<String?>);
+  @override
+  _i5.Future<bool?> getAcceptSMSNotifications() => (super.noSuchMethod(
+        Invocation.method(
+          #getAcceptSMSNotifications,
+          [],
+        ),
+        returnValue: _i5.Future<bool?>.value(),
+      ) as _i5.Future<bool?>);
+  @override
+  _i5.Future<bool?> getAcceptEmailNotifications() => (super.noSuchMethod(
+        Invocation.method(
+          #getAcceptEmailNotifications,
+          [],
+        ),
+        returnValue: _i5.Future<bool?>.value(),
+      ) as _i5.Future<bool?>);
   @override
   _i5.Future<bool?> getCertificateWithSocialName() => (super.noSuchMethod(
         Invocation.method(
