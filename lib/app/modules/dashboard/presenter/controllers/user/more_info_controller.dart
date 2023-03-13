@@ -33,6 +33,9 @@ abstract class MoreInfoControllerBase with Store {
   bool isLoading = false;
 
   @observable
+  bool isLoadingGetActivity = false;
+
+  @observable
   bool isLoadingConfirmAttendance = false;
 
   @observable
@@ -46,7 +49,7 @@ abstract class MoreInfoControllerBase with Store {
 
   @action
   Future getActivity() async {
-    setIsLoading(true);
+    isLoadingGetActivity = true;
     var activityCodeToSearch = activityCode;
     if (activityCodeToSearch == "") {
       activityCodeToSearch = await storage.getActivityCode() ?? '';
@@ -61,7 +64,7 @@ abstract class MoreInfoControllerBase with Store {
     }
     activity = enrollmentController.allActivitiesWithEnrollments
         .firstWhere((element) => element.activityCode == activityCodeToSearch);
-    setIsLoading(false);
+    isLoadingGetActivity = false;
   }
 
   @action

@@ -25,6 +25,23 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
     });
   }
 
+  late final _$isLoadingGetActivityAtom = Atom(
+      name: 'MoreInfoControllerBase.isLoadingGetActivity', context: context);
+
+  @override
+  bool get isLoadingGetActivity {
+    _$isLoadingGetActivityAtom.reportRead();
+    return super.isLoadingGetActivity;
+  }
+
+  @override
+  set isLoadingGetActivity(bool value) {
+    _$isLoadingGetActivityAtom.reportWrite(value, super.isLoadingGetActivity,
+        () {
+      super.isLoadingGetActivity = value;
+    });
+  }
+
   late final _$isLoadingConfirmAttendanceAtom = Atom(
       name: 'MoreInfoControllerBase.isLoadingConfirmAttendance',
       context: context);
@@ -165,6 +182,7 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
+isLoadingGetActivity: ${isLoadingGetActivity},
 isLoadingConfirmAttendance: ${isLoadingConfirmAttendance},
 enrollmentState: ${enrollmentState},
 canViewConfirmAttendance: ${canViewConfirmAttendance},

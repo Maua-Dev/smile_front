@@ -38,7 +38,7 @@ class _MoreInfoPageState
       behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
       child: SingleChildScrollView(
         child: Observer(builder: (context) {
-          if (controller.isLoading) {
+          if (controller.isLoadingGetActivity) {
             return SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: const Center(child: CircularProgressIndicator()));
