@@ -27,6 +27,8 @@ void main() {
   late AuthController controller;
 
   UserModel userMock = UserModel(
+    acceptEmailNotifications: false,
+    acceptSMSNotifications: false,
     socialName: '',
     accessLevel: AccessLevelEnum.USER,
     email: 'email',

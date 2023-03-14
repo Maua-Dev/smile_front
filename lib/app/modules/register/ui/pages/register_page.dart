@@ -217,6 +217,12 @@ class _RegisterPageState
                                     context: context);
                                 controller.setCountryCode(code);
                                 controller.setBrazilianPhone(code);
+                                if (controller.countryCode == null) {
+                                  controller.setCountryCode(const CountryCode(
+                                      name: 'Brazil',
+                                      code: 'BR',
+                                      dialCode: '+55'));
+                                }
                               },
                               child: Container(
                                 height: 60,
