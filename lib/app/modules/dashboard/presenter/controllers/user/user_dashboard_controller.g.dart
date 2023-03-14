@@ -107,6 +107,24 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
+  late final _$acceptedNotificationsAtom = Atom(
+      name: 'UserDashboardControllerBase.acceptedNotifications',
+      context: context);
+
+  @override
+  bool get acceptedNotifications {
+    _$acceptedNotificationsAtom.reportRead();
+    return super.acceptedNotifications;
+  }
+
+  @override
+  set acceptedNotifications(bool value) {
+    _$acceptedNotificationsAtom.reportWrite(value, super.acceptedNotifications,
+        () {
+      super.acceptedNotifications = value;
+    });
+  }
+
   late final _$phoneToChangeAtom =
       Atom(name: 'UserDashboardControllerBase.phoneToChange', context: context);
 
@@ -205,6 +223,58 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
+  late final _$acceptEmailNotificationsAtom = Atom(
+      name: 'UserDashboardControllerBase.acceptEmailNotifications',
+      context: context);
+
+  @override
+  bool get acceptEmailNotifications {
+    _$acceptEmailNotificationsAtom.reportRead();
+    return super.acceptEmailNotifications;
+  }
+
+  @override
+  set acceptEmailNotifications(bool value) {
+    _$acceptEmailNotificationsAtom
+        .reportWrite(value, super.acceptEmailNotifications, () {
+      super.acceptEmailNotifications = value;
+    });
+  }
+
+  late final _$acceptSMSNotificationsAtom = Atom(
+      name: 'UserDashboardControllerBase.acceptSMSNotifications',
+      context: context);
+
+  @override
+  bool get acceptSMSNotifications {
+    _$acceptSMSNotificationsAtom.reportRead();
+    return super.acceptSMSNotifications;
+  }
+
+  @override
+  set acceptSMSNotifications(bool value) {
+    _$acceptSMSNotificationsAtom
+        .reportWrite(value, super.acceptSMSNotifications, () {
+      super.acceptSMSNotifications = value;
+    });
+  }
+
+  late final _$phoneValueAtom =
+      Atom(name: 'UserDashboardControllerBase.phoneValue', context: context);
+
+  @override
+  String get phoneValue {
+    _$phoneValueAtom.reportRead();
+    return super.phoneValue;
+  }
+
+  @override
+  set phoneValue(String value) {
+    _$phoneValueAtom.reportWrite(value, super.phoneValue, () {
+      super.phoneValue = value;
+    });
+  }
+
   late final _$dateFilterAtom =
       Atom(name: 'UserDashboardControllerBase.dateFilter', context: context);
 
@@ -234,6 +304,23 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   set hourFilter(DateTime? value) {
     _$hourFilterAtom.reportWrite(value, super.hourFilter, () {
       super.hourFilter = value;
+    });
+  }
+
+  late final _$isGetPhoneBrazilianAtom = Atom(
+      name: 'UserDashboardControllerBase.isGetPhoneBrazilian',
+      context: context);
+
+  @override
+  bool get isGetPhoneBrazilian {
+    _$isGetPhoneBrazilianAtom.reportRead();
+    return super.isGetPhoneBrazilian;
+  }
+
+  @override
+  set isGetPhoneBrazilian(bool value) {
+    _$isGetPhoneBrazilianAtom.reportWrite(value, super.isGetPhoneBrazilian, () {
+      super.isGetPhoneBrazilian = value;
     });
   }
 
@@ -385,6 +472,26 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
+  late final _$setEmailNotificationsAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.setEmailNotifications',
+      context: context);
+
+  @override
+  Future<void> setEmailNotifications(bool? value) {
+    return _$setEmailNotificationsAsyncAction
+        .run(() => super.setEmailNotifications(value));
+  }
+
+  late final _$setSMSNotificationsAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.setSMSNotifications',
+      context: context);
+
+  @override
+  Future<void> setSMSNotifications(bool? value) {
+    return _$setSMSNotificationsAsyncAction
+        .run(() => super.setSMSNotifications(value));
+  }
+
   late final _$getCertificateWithSocialNameAsyncAction = AsyncAction(
       'UserDashboardControllerBase.getCertificateWithSocialName',
       context: context);
@@ -401,6 +508,26 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   @override
   Future<void> getUserName() {
     return _$getUserNameAsyncAction.run(() => super.getUserName());
+  }
+
+  late final _$getAcceptSMSNotificationsAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.getAcceptSMSNotifications',
+      context: context);
+
+  @override
+  Future<void> getAcceptSMSNotifications() {
+    return _$getAcceptSMSNotificationsAsyncAction
+        .run(() => super.getAcceptSMSNotifications());
+  }
+
+  late final _$getAcceptEmailNotificationsAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.getAcceptEmailNotifications',
+      context: context);
+
+  @override
+  Future<void> getAcceptEmailNotifications() {
+    return _$getAcceptEmailNotificationsAsyncAction
+        .run(() => super.getAcceptEmailNotifications());
   }
 
   late final _$getPhoneAsyncAction =
@@ -430,15 +557,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
         .run(() => super.setWantSocialName(value));
   }
 
-  late final _$changeUserDataAsyncAction = AsyncAction(
-      'UserDashboardControllerBase.changeUserData',
-      context: context);
-
-  @override
-  Future<void> changeUserData() {
-    return _$changeUserDataAsyncAction.run(() => super.changeUserData());
-  }
-
   late final _$setIsLoadingAsyncAction =
       AsyncAction('UserDashboardControllerBase.setIsLoading', context: context);
 
@@ -463,6 +581,25 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   @override
   Future<void> setPhone(String value) {
     return _$setPhoneAsyncAction.run(() => super.setPhone(value));
+  }
+
+  late final _$changeUserDataAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.changeUserData',
+      context: context);
+
+  @override
+  Future<void> changeUserData() {
+    return _$changeUserDataAsyncAction.run(() => super.changeUserData());
+  }
+
+  late final _$replaceCharactersPhoneAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.replaceCharactersPhone',
+      context: context);
+
+  @override
+  Future<void> replaceCharactersPhone() {
+    return _$replaceCharactersPhoneAsyncAction
+        .run(() => super.replaceCharactersPhone());
   }
 
   late final _$UserDashboardControllerBaseActionController =
@@ -671,14 +808,19 @@ name: ${name},
 certificateWithSocialName: ${certificateWithSocialName},
 socialNameToChange: ${socialNameToChange},
 nameToChange: ${nameToChange},
+acceptedNotifications: ${acceptedNotifications},
 phoneToChange: ${phoneToChange},
 wantSocialName: ${wantSocialName},
 subscribedActivitiesOnScreen: ${subscribedActivitiesOnScreen},
 activityType: ${activityType},
 typeFilter: ${typeFilter},
 typeOnScreen: ${typeOnScreen},
+acceptEmailNotifications: ${acceptEmailNotifications},
+acceptSMSNotifications: ${acceptSMSNotifications},
+phoneValue: ${phoneValue},
 dateFilter: ${dateFilter},
 hourFilter: ${hourFilter},
+isGetPhoneBrazilian: ${isGetPhoneBrazilian},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 allSubscribedActivitiesList: ${allSubscribedActivitiesList},

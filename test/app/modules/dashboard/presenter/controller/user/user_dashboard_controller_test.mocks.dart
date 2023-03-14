@@ -163,6 +163,27 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i3.Future<void>.value(),
       ) as _i3.Future<void>);
   @override
+  _i3.Future<void> saveAcceptSMSNotifications(bool? acceptSMSNotifications) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveAcceptSMSNotifications,
+          [acceptSMSNotifications],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
+  @override
+  _i3.Future<void> saveAcceptEmailNotifications(
+          bool? acceptEmailNotifications) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveAcceptEmailNotifications,
+          [acceptEmailNotifications],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
+  @override
   _i3.Future<String?> getRole() => (super.noSuchMethod(
         Invocation.method(
           #getRole,
@@ -210,6 +231,22 @@ class MockSecureStorageInterface extends _i1.Mock
         ),
         returnValue: _i3.Future<String?>.value(),
       ) as _i3.Future<String?>);
+  @override
+  _i3.Future<bool?> getAcceptSMSNotifications() => (super.noSuchMethod(
+        Invocation.method(
+          #getAcceptSMSNotifications,
+          [],
+        ),
+        returnValue: _i3.Future<bool?>.value(),
+      ) as _i3.Future<bool?>);
+  @override
+  _i3.Future<bool?> getAcceptEmailNotifications() => (super.noSuchMethod(
+        Invocation.method(
+          #getAcceptEmailNotifications,
+          [],
+        ),
+        returnValue: _i3.Future<bool?>.value(),
+      ) as _i3.Future<bool?>);
   @override
   _i3.Future<bool?> getCertificateWithSocialName() => (super.noSuchMethod(
         Invocation.method(
@@ -265,6 +302,8 @@ class MockChangeDataInterface extends _i1.Mock
     String? socialNameToChange,
     bool? certificateWithSocialName,
     String? phone,
+    bool? acceptedSmsNotifications,
+    bool? acceptedEmailNotifications,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -274,6 +313,8 @@ class MockChangeDataInterface extends _i1.Mock
             socialNameToChange,
             certificateWithSocialName,
             phone,
+            acceptedSmsNotifications,
+            acceptedEmailNotifications,
           ],
         ),
         returnValue: _i3.Future<void>.value(),
