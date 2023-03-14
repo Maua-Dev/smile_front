@@ -8,6 +8,7 @@ import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../../shared/entities/screen_variables.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
@@ -44,7 +45,11 @@ class _MoreInfoPageState
               : Utils.getActivityFinalTime(
                   controller.activity.startDate!, controller.activity.duration);
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width > tabletSize
+                    ? MediaQuery.of(context).size.width * 0.2
+                    : 8,
+                vertical: 16),
             child: Column(children: [
               Text(
                 '${controller.activity.activityCode} - ${controller.activity.title}',
@@ -61,7 +66,7 @@ class _MoreInfoPageState
                     if (MediaQuery.of(context).size.width >= 600)
                       Padding(
                         padding: EdgeInsets.only(
-                            right: MediaQuery.of(context).size.width * 0.1),
+                            right: MediaQuery.of(context).size.width * 0.09),
                         child: const SizedBox(
                           width: 50,
                         ),
@@ -145,7 +150,7 @@ class _MoreInfoPageState
                     if (MediaQuery.of(context).size.width >= 600)
                       Padding(
                         padding: EdgeInsets.only(
-                            left: MediaQuery.of(context).size.width * 0.1),
+                            left: MediaQuery.of(context).size.width * 0.09),
                         child: ExtensionistWidget(
                             isExtensionist: controller.activity.isExtensive),
                       ),
