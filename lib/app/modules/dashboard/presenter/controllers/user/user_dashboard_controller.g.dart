@@ -259,22 +259,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
-  late final _$phoneValueAtom =
-      Atom(name: 'UserDashboardControllerBase.phoneValue', context: context);
-
-  @override
-  String get phoneValue {
-    _$phoneValueAtom.reportRead();
-    return super.phoneValue;
-  }
-
-  @override
-  set phoneValue(String value) {
-    _$phoneValueAtom.reportWrite(value, super.phoneValue, () {
-      super.phoneValue = value;
-    });
-  }
-
   late final _$dateFilterAtom =
       Atom(name: 'UserDashboardControllerBase.dateFilter', context: context);
 
@@ -817,7 +801,6 @@ typeFilter: ${typeFilter},
 typeOnScreen: ${typeOnScreen},
 acceptEmailNotifications: ${acceptEmailNotifications},
 acceptSMSNotifications: ${acceptSMSNotifications},
-phoneValue: ${phoneValue},
 dateFilter: ${dateFilter},
 hourFilter: ${hourFilter},
 isGetPhoneBrazilian: ${isGetPhoneBrazilian},

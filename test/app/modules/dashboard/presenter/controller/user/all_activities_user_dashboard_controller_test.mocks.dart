@@ -509,19 +509,6 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  String get phoneValue => (super.noSuchMethod(
-        Invocation.getter(#phoneValue),
-        returnValue: '',
-      ) as String);
-  @override
-  set phoneValue(String? _phoneValue) => super.noSuchMethod(
-        Invocation.setter(
-          #phoneValue,
-          _phoneValue,
-        ),
-        returnValueForMissingStub: null,
-      );
-  @override
   set dateFilter(DateTime? _dateFilter) => super.noSuchMethod(
         Invocation.setter(
           #dateFilter,
