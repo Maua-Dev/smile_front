@@ -1251,6 +1251,24 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValue: _i10.Future<void>.value(),
         returnValueForMissingStub: _i10.Future<void>.value(),
       ) as _i10.Future<void>);
+  @override
+  _i10.Future<void> saveActivityCode(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveActivityCode,
+          [activityCode],
+        ),
+        returnValue: _i10.Future<void>.value(),
+        returnValueForMissingStub: _i10.Future<void>.value(),
+      ) as _i10.Future<void>);
+  @override
+  _i10.Future<String?> getActivityCode() => (super.noSuchMethod(
+        Invocation.method(
+          #getActivityCode,
+          [],
+        ),
+        returnValue: _i10.Future<String?>.value(),
+      ) as _i10.Future<String?>);
 }
 
 /// A class which mocks [UnsubscribeActivityInterface].

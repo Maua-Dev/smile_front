@@ -1,3 +1,4 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/send_confirm_attendance.dart';
@@ -5,7 +6,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/use
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
 import '../../../../../shared/utils/utils.dart';
-import '../../../infra/models/speaker_activity_model.dart';
+import '../../../../auth/domain/repositories/secure_storage_interface.dart';
 
 part 'more_info_controller.g.dart';
 
@@ -15,19 +16,23 @@ abstract class MoreInfoControllerBase with Store {
   final UserEnrollmentController enrollmentController;
   final String activityCode;
   final ConfirmAttendanceUsecase sendConfirmAttendanceUsecase;
+  final SecureStorageInterface storage;
 
   MoreInfoControllerBase({
     required this.sendConfirmAttendanceUsecase,
     required this.enrollmentController,
     required this.activityCode,
+    required this.storage,
   }) {
     getActivity();
     checkCanViewConfirmAttendance();
-    getEnrollmentState();
   }
 
   @observable
   bool isLoading = false;
+
+  @observable
+  bool isLoadingGetActivity = false;
 
   @observable
   bool isLoadingConfirmAttendance = false;
@@ -42,24 +47,30 @@ abstract class MoreInfoControllerBase with Store {
   EnrollsActivityModel activity = EnrollsActivityModel.newInstance();
 
   @action
-  void getActivity() {
+  Future getActivity() async {
+    isLoadingGetActivity = true;
+    var activityCodeToSearch = activityCode;
+    if (activityCodeToSearch == "") {
+      activityCodeToSearch = await storage.getActivityCode() ?? '';
+    } else {
+      await storage.saveActivityCode(activityCodeToSearch);
+    }
+    if (activityCodeToSearch == '') {
+      Modular.to.navigate('/user/home/all-activities');
+    }
+    if (enrollmentController.allActivitiesWithEnrollments.isEmpty) {
+      await enrollmentController.getUserAllActivitiesWithEnrollment();
+    }
     activity = enrollmentController.allActivitiesWithEnrollments
-        .firstWhere((element) => element.activityCode == activityCode,
-            orElse: () => EnrollsActivityModel(
-                  description: '',
-                  activityCode: '',
-                  title: '',
-                  type: null,
-                  speakers: [SpeakerActivityModel.newInstance()],
-                  duration: 0,
-                  isExtensive: false,
-                  startDate: DateTime.now(),
-                  deliveryEnum: null,
-                  acceptingNewEnrollments: false,
-                  responsibleProfessors: [],
-                  takenSlots: 0,
-                  totalSlots: 0,
-                ));
+        .firstWhere((element) => element.activityCode == activityCodeToSearch);
+    isLoadingGetActivity = false;
+    if (activity.enrollments == null) {
+      enrollmentState = EnrollmentStateEnum.NONE;
+    } else {
+      enrollmentState = activity.enrollments!.state;
+    }
+
+    await checkCanViewConfirmAttendance();
   }
 
   @action
@@ -100,16 +111,9 @@ abstract class MoreInfoControllerBase with Store {
           DateTime.now().isAfter(activity.startDate!)) {
         canViewConfirmAttendance = true;
       }
+    } else {
+      canViewConfirmAttendance = false;
     }
-    canViewConfirmAttendance = false;
-  }
-
-  @action
-  Future<void> getEnrollmentState() async {
-    if (activity.enrollments == null) {
-      enrollmentState = EnrollmentStateEnum.NONE;
-    }
-    enrollmentState = activity.enrollments!.state;
   }
 
   Future<void> subscribeUserActivity() async {
@@ -118,10 +122,9 @@ abstract class MoreInfoControllerBase with Store {
         await enrollmentController.subscribeActivity(activity.activityCode);
     if (requestDone) {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
-      getActivity();
+      await getActivity();
     }
-    checkCanViewConfirmAttendance();
-    getEnrollmentState();
+    await checkCanViewConfirmAttendance();
     setIsLoading(false);
   }
 
@@ -131,10 +134,9 @@ abstract class MoreInfoControllerBase with Store {
         await enrollmentController.unsubscribeActivity(activity.activityCode);
     if (requestDone) {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
-      getActivity();
+      await getActivity();
     }
-    checkCanViewConfirmAttendance();
-    getEnrollmentState();
+    await checkCanViewConfirmAttendance();
     setIsLoading(false);
   }
 

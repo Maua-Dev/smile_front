@@ -22,4 +22,6 @@ abstract class SecureStorageInterface {
   Future<bool?> getAcceptEmailNotifications();
   Future<bool?> getCertificateWithSocialName();
   Future<void> cleanSecureStorage();
+  Future<void> saveActivityCode(String activityCode);
+  Future<String?> getActivityCode();
 }
