@@ -235,7 +235,7 @@ class _EditActivityPageState
                             removeSpeaker: () {
                               controller.removeSpeaker(index);
                               setState(() {});
-                            }, validateRequiredField: ,
+                            },
                           );
                         },
                       );

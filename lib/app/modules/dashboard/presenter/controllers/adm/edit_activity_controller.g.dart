@@ -84,6 +84,17 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
+  void setModality(DeliveryEnum? value) {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.setModality');
+    try {
+      return super.setModality(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setActivityCode(String value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setActivityCode');
@@ -221,6 +232,17 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
         .startAction(name: 'EditActivityControllerBase.setEnableSubscription');
     try {
       return super.setEnableSubscription(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIsExtensive() {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.setIsExtensive');
+    try {
+      return super.setIsExtensive();
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }

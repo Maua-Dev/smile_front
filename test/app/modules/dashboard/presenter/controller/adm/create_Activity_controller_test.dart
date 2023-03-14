@@ -9,20 +9,25 @@ import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
 
 import 'create_Activity_controller_test.mocks.dart';
 
-@GenerateMocks([CreateActivityInterface])
+@GenerateMocks([CreateActivityInterface, GetResponsibleProfessorsInterface])
 void main() {
   CreateActivityInterface createActivity = MockCreateActivityInterface();
+  GetResponsibleProfessorsInterface getResponsibleProfessors =
+      MockGetResponsibleProfessorsInterface();
 
   late CreateActivityController controller;
   initModules([AppModule(), AdmModule()]);
 
   setUpAll(() async {
     await Modular.isModuleReady<AppModule>();
-    controller = CreateActivityController(createActivity: createActivity);
+    controller = CreateActivityController(
+        createActivity: createActivity,
+        getResponsibleProfessors: getResponsibleProfessors);
   });
 
   test('setIsLoading', () {
@@ -31,7 +36,7 @@ void main() {
   });
 
   test('isFilled', () {
-    var test = controller.isFilled();
+    var test = controller.validateRequiredField('');
     expect(test, false);
   });
 
@@ -94,7 +99,7 @@ void main() {
 
   test('setParticipants', () {
     var str = 1;
-    controller.setParticipants(str);
+    controller.setParticipants(str.toString());
     expect(controller.activityToCreate.totalSlots, str);
   });
 
