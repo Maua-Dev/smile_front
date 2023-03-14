@@ -53,7 +53,6 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
     String formattedLocation = location == null || location == ''
         ? '${S.of(context).local}: Online'
         : '${S.of(context).local}: $location';
-    print(formattedLocation.length);
     return Padding(
       padding: MediaQuery.of(context).size.width < breakpointLMobile
           ? const EdgeInsets.symmetric(horizontal: 8)
