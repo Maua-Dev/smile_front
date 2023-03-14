@@ -264,6 +264,24 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValue: _i3.Future<void>.value(),
         returnValueForMissingStub: _i3.Future<void>.value(),
       ) as _i3.Future<void>);
+  @override
+  _i3.Future<void> saveActivityCode(String? activityCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveActivityCode,
+          [activityCode],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
+  @override
+  _i3.Future<String?> getActivityCode() => (super.noSuchMethod(
+        Invocation.method(
+          #getActivityCode,
+          [],
+        ),
+        returnValue: _i3.Future<String?>.value(),
+      ) as _i3.Future<String?>);
 }
 
 /// A class which mocks [UserRepositoryInterface].

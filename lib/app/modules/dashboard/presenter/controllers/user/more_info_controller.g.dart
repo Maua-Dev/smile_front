@@ -25,6 +25,23 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
     });
   }
 
+  late final _$isLoadingGetActivityAtom = Atom(
+      name: 'MoreInfoControllerBase.isLoadingGetActivity', context: context);
+
+  @override
+  bool get isLoadingGetActivity {
+    _$isLoadingGetActivityAtom.reportRead();
+    return super.isLoadingGetActivity;
+  }
+
+  @override
+  set isLoadingGetActivity(bool value) {
+    _$isLoadingGetActivityAtom.reportWrite(value, super.isLoadingGetActivity,
+        () {
+      super.isLoadingGetActivity = value;
+    });
+  }
+
   late final _$isLoadingConfirmAttendanceAtom = Atom(
       name: 'MoreInfoControllerBase.isLoadingConfirmAttendance',
       context: context);
@@ -93,6 +110,14 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
     });
   }
 
+  late final _$getActivityAsyncAction =
+      AsyncAction('MoreInfoControllerBase.getActivity', context: context);
+
+  @override
+  Future<dynamic> getActivity() {
+    return _$getActivityAsyncAction.run(() => super.getActivity());
+  }
+
   late final _$setIsLoadingAsyncAction =
       AsyncAction('MoreInfoControllerBase.setIsLoading', context: context);
 
@@ -121,16 +146,6 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
         .run(() => super.checkCanViewConfirmAttendance());
   }
 
-  late final _$getEnrollmentStateAsyncAction = AsyncAction(
-      'MoreInfoControllerBase.getEnrollmentState',
-      context: context);
-
-  @override
-  Future<void> getEnrollmentState() {
-    return _$getEnrollmentStateAsyncAction
-        .run(() => super.getEnrollmentState());
-  }
-
   late final _$onConfirmCodeAsyncAction =
       AsyncAction('MoreInfoControllerBase.onConfirmCode', context: context);
 
@@ -141,17 +156,6 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
 
   late final _$MoreInfoControllerBaseActionController =
       ActionController(name: 'MoreInfoControllerBase', context: context);
-
-  @override
-  void getActivity() {
-    final _$actionInfo = _$MoreInfoControllerBaseActionController.startAction(
-        name: 'MoreInfoControllerBase.getActivity');
-    try {
-      return super.getActivity();
-    } finally {
-      _$MoreInfoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
 
   @override
   bool checkIsOkForSubscribe() {
@@ -168,6 +172,7 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
+isLoadingGetActivity: ${isLoadingGetActivity},
 isLoadingConfirmAttendance: ${isLoadingConfirmAttendance},
 enrollmentState: ${enrollmentState},
 canViewConfirmAttendance: ${canViewConfirmAttendance},
