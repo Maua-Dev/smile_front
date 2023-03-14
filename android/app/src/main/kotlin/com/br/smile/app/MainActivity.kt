@@ -1,4 +1,4 @@
-package com.example.smile_front
+package com.br.smile.app
 
 import io.flutter.embedding.android.FlutterActivity
 
