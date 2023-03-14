@@ -28,6 +28,8 @@ abstract class UserDashboardControllerBase with Store {
     getUserName();
     getUserSocialName();
     getPhone();
+    getAcceptSMSNotifications();
+    getAcceptEmailNotifications();
   }
 
   @observable
@@ -49,6 +51,9 @@ abstract class UserDashboardControllerBase with Store {
   String nameToChange = '';
 
   @observable
+  bool acceptedNotifications = false;
+
+  @observable
   String phoneToChange = '';
 
   @observable
@@ -65,6 +70,27 @@ abstract class UserDashboardControllerBase with Store {
 
   @observable
   String? typeOnScreen;
+
+  @observable
+  bool acceptEmailNotifications = false;
+
+  @observable
+  bool acceptSMSNotifications = false;
+
+  @observable
+  String phoneValue = '';
+
+  @action
+  Future<void> setEmailNotifications(bool? value) async {
+    acceptEmailNotifications = value!;
+  }
+
+  @action
+  Future<void> setSMSNotifications(bool? value) async {
+    if (isPhoneFieldFilled) {
+      acceptSMSNotifications = value!;
+    }
+  }
 
   @action
   void setTypeFilter(ActivityEnum value) {
@@ -255,12 +281,28 @@ abstract class UserDashboardControllerBase with Store {
   }
 
   @action
+  Future<void> getAcceptSMSNotifications() async {
+    acceptSMSNotifications = (await secureStorage.getAcceptSMSNotifications())!;
+  }
+
+  @action
+  Future<void> getAcceptEmailNotifications() async {
+    acceptEmailNotifications =
+        (await secureStorage.getAcceptEmailNotifications())!;
+  }
+
+  @observable
+  bool isGetPhoneBrazilian = false;
+
+  @action
   Future<void> getPhone() async {
     phone = await secureStorage.getPhone();
-    phoneToChange = phone!.substring(3, 14);
-    if (isBrazilianPhone) {
+    isPhoneFieldFilled = phone!.isNotEmpty;
+    isGetPhoneBrazilian = phone!.substring(0, 3) == "+55";
+    phoneToChange = phone!;
+    if (isGetPhoneBrazilian) {
       phoneToChange =
-          '(${phoneToChange.substring(0, 2)})${phoneToChange.substring(2, 7)}-${phoneToChange.substring(7, 11)}';
+          '${phoneToChange.substring(0, 3)} (${phoneToChange.substring(3, 5)}) ${phoneToChange.substring(5, 10)}-${phoneToChange.substring(10, 14)}';
     }
   }
 
@@ -295,23 +337,6 @@ abstract class UserDashboardControllerBase with Store {
   @action
   void setCertificateWithSocialName(bool value) {
     certificateWithSocialName = value;
-  }
-
-  @action
-  Future<void> changeUserData() async {
-    setIsLoading(true);
-    await changeData(nameToChange, socialNameToChange,
-        certificateWithSocialName, phoneToChange);
-    await secureStorage.saveName(nameToChange);
-    await secureStorage.saveSocialName(socialNameToChange);
-    await secureStorage
-        .saveCertificateWithSocialName(certificateWithSocialName);
-    await secureStorage.savePhone(phoneToChange);
-    getUserName();
-    getUserSocialName();
-    getUserSubscribedActivities();
-    getPhone();
-    setIsLoading(false);
   }
 
   @action
@@ -397,7 +422,7 @@ abstract class UserDashboardControllerBase with Store {
 
   @observable
   CountryCode? countryCode =
-      const CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
+      const CountryCode(code: "BR", dialCode: "+55", name: "Brazil");
 
   @action
   void setBrazilianPhone(CountryCode? value) {
@@ -415,27 +440,68 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
-    phoneToChange = '${countryCode?.dialCode}$value';
-    if (countryCode?.code == "BR") {
-      phoneToChange = phoneToChange.replaceAll('(', '');
-      phoneToChange = phoneToChange.replaceAll(')', '');
-      phoneToChange = phoneToChange.replaceAll(' ', '');
-      phoneToChange = phoneToChange.replaceAll('-', '');
-    }
-    if (value.isNotEmpty) {
+    phoneValue = value;
+    if (value.isEmpty) {
+      phoneToChange = '';
+      isPhoneFieldFilled = false;
+      acceptSMSNotifications = false;
+    } else {
+      if (phone != '') {
+        countryCode = const CountryCode(code: "", dialCode: "", name: "");
+      }
+      phoneToChange = '${countryCode?.dialCode}$value';
       isPhoneFieldFilled = true;
     }
   }
 
   @action
+  Future<void> changeUserData() async {
+    setIsLoading(true);
+    await changeData(
+        nameToChange,
+        socialNameToChange,
+        certificateWithSocialName,
+        phoneToChange,
+        acceptSMSNotifications,
+        acceptEmailNotifications);
+    await secureStorage.saveName(nameToChange);
+    await secureStorage.saveSocialName(socialNameToChange);
+    await secureStorage
+        .saveCertificateWithSocialName(certificateWithSocialName);
+    await secureStorage.savePhone(phoneToChange);
+    await secureStorage.saveAcceptEmailNotifications(acceptEmailNotifications);
+    await secureStorage.saveAcceptSMSNotifications(acceptSMSNotifications);
+    getUserName();
+    getUserSocialName();
+    getUserSubscribedActivities();
+    getPhone();
+    getAcceptEmailNotifications();
+    getAcceptSMSNotifications();
+    setIsLoading(false);
+  }
+
+  @action
+  Future<void> replaceCharactersPhone() async {
+    phoneToChange = phoneToChange.replaceAll('(', '');
+    phoneToChange = phoneToChange.replaceAll(')', '');
+    phoneToChange = phoneToChange.replaceAll(' ', '');
+    phoneToChange = phoneToChange.replaceAll('-', '');
+  }
+
+  @action
   String? validatePhone(String? value) {
-    if (countryCode?.code == "BR" && phoneToChange.length == 12) {
-      return S.current.fieldDDDRequired;
-    }
-    if (countryCode?.code == "BR" &&
-        phoneToChange.length != 14 &&
-        phoneToChange.length > 3) {
-      return S.current.fieldInvalid;
+    if (value!.isNotEmpty) {
+      value = value.replaceAll('(', '');
+      value = value.replaceAll(')', '');
+      value = value.replaceAll(' ', '');
+      value = value.replaceAll('-', '');
+      if ((value[0] == '+' &&
+              value[1] == '5' &&
+              value[2] == '5' &&
+              value.length != 14) ||
+          (countryCode!.dialCode == "+55" && value.length != 11)) {
+        return S.current.fieldInvalid;
+      }
     }
     return null;
   }
