@@ -131,7 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m10(title) => "${Intl.select(title, {
             'normalPart':
                 'In case of error when logging in, send an email to: ',
-            'boldPart': 'dev@maua.br',
+            'boldPart': 'atendimento.smile@maua.br',
             'other': '',
           })}";
 

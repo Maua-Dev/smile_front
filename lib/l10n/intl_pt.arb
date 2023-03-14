@@ -88,7 +88,7 @@
     "loginWithoutRecordTitle": "Não tenho cadastro",
     "loginForgotPasswordTitle": "Esqueci minha senha",
     "loginResendConfirmationTitle": "Reenviar e-mail de confirmação",
-    "loginWarningTitle": "{title, select, normalPart{Em caso de erro ao se logar, envie um e-mail para: } boldPart{dev@maua.br} other{}}",
+    "loginWarningTitle": "{title, select, normalPart{Em caso de erro ao se logar, envie um e-mail para: } boldPart{atendimento.smile@maua.br} other{}}",
     
     
 
