@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.smile.app">
+    package="com.br.smile.app">
    <application
         android:label="Smile 2023"
         android:icon="@mipmap/ic_launcher">
