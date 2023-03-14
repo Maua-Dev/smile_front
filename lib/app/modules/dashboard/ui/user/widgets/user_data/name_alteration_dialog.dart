@@ -43,7 +43,7 @@ class NameAlterationDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
     var controller = Modular.get<UserDashboardController>();
     final maskBrazilianPhone = MaskTextInputFormatter(
         mask: "(##) #####-####", filter: {"#": RegExp(r'[0-9]')});
@@ -59,7 +59,7 @@ class NameAlterationDialog extends StatelessWidget {
         child: SizedBox(
           width: MediaQuery.of(context).size.width < 600 ? null : 500,
           child: Form(
-            key: _formKey,
+            key: formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -473,7 +473,7 @@ class NameAlterationDialog extends StatelessWidget {
                   heightSize: 50,
                   backgroundColor: AppColors.brandingOrange,
                   onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
+                    if (formKey.currentState!.validate()) {
                       controller.replaceCharactersPhone();
                       await changeData!();
                     }
