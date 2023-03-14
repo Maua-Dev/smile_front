@@ -490,13 +490,18 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   String? validatePhone(String? value) {
-    if (countryCode?.code == "BR" && phoneToChange.length == 12) {
-      return S.current.fieldDDDRequired;
-    }
-    if (countryCode?.code == "BR" &&
-        phoneToChange.length != 14 &&
-        phoneToChange.length > 3) {
-      return S.current.fieldInvalid;
+    if (value!.isNotEmpty) {
+      value = value.replaceAll('(', '');
+      value = value.replaceAll(')', '');
+      value = value.replaceAll(' ', '');
+      value = value.replaceAll('-', '');
+      if ((value[0] == '+' &&
+              value[1] == '5' &&
+              value[2] == '5' &&
+              value.length != 14) ||
+          (countryCode!.dialCode == "+55" && value.length != 11)) {
+        return S.current.fieldInvalid;
+      }
     }
     return null;
   }
