@@ -50,6 +50,10 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String formattedDate = DateFormat('dd/MM').format(date);
+    String formattedLocation = location == null || location == ''
+        ? '${S.of(context).local}: Online'
+        : '${S.of(context).local}: $location';
+    print(formattedLocation.length);
     return Padding(
       padding: MediaQuery.of(context).size.width < breakpointLMobile
           ? const EdgeInsets.symmetric(horizontal: 8)
@@ -164,10 +168,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      Text(
-                                          location == null || location == ''
-                                              ? '${S.of(context).local}: Online'
-                                              : '${S.of(context).local}: $location',
+                                      Text(formattedLocation,
                                           style: AppTextStyles.bold.copyWith(
                                               fontSize: MediaQuery.of(context)
                                                           .size
@@ -183,12 +184,16 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                 ? 16
                                                 : 64,
                                       ),
-                                      MediaQuery.of(context).size.width <
-                                              breakpointLMobile
+                                      MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  breakpointLMobile ||
+                                              formattedLocation.length > 13
                                           ? const SizedBox.shrink()
                                           : Text(
                                               '${S.of(context).termination}: $finalTime',
-                                              style: AppTextStyles.bold
+                                              style: AppTextStyles
+                                                  .bold
                                                   .copyWith(
                                                       fontSize: MediaQuery.of(
                                                                       context)
@@ -419,7 +424,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                                     .size
                                                                     .width <
                                                                 breakpointTablet
-                                                            ? 12
+                                                            ? 10
                                                             : 24,
                                                         color: AppColors
                                                             .brandingBlue),
