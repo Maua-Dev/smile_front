@@ -51,12 +51,40 @@ class _MoreInfoPageState
                     : 8,
                 vertical: 16),
             child: Column(children: [
-              Text(
-                '${controller.activity.activityCode} - ${controller.activity.title}',
-                style: TextStyle(
-                    color: AppColors.brandingOrange,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      right: MediaQuery.of(context).size.width > 700 ? 28 : 10,
+                    ),
+                    child: IconButton(
+                        iconSize:
+                            MediaQuery.of(context).size.width > 700 ? 24 : 18,
+                        onPressed: () {
+                          Modular.to.navigate('/user/home/all-activities');
+                        },
+                        icon: const Icon(Icons.arrow_back)),
+                  ),
+                  Flexible(
+                    child: Text(
+                      '${controller.activity.activityCode} - ${controller.activity.title}',
+                      style: TextStyle(
+                          color: AppColors.brandingOrange,
+                          fontSize:
+                              MediaQuery.of(context).size.width > 700 ? 32 : 26,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width > 700 ? 28 : 10,
+                    ),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width > 700 ? 24 : 18,
+                    ),
+                  ),
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 14),
