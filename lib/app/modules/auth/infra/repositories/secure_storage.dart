@@ -115,7 +115,9 @@ class SecureStorage implements SecureStorageInterface {
   @override
   Future<void> saveActivityCode(String activityCode) async {
     await storage.put('activityCode', activityCode);
+  }
 
+  @override
   Future<void> saveAcceptSMSNotifications(bool acceptSMSNotifications) async {
     await storage.put('acceptSMSNotifications', acceptSMSNotifications);
   }
