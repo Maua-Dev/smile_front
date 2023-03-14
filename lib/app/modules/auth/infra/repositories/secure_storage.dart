@@ -106,4 +106,14 @@ class SecureStorage implements SecureStorageInterface {
   Future<void> savePhone(String phone) async {
     await storage.put('phone', phone);
   }
+
+  @override
+  Future<String?> getActivityCode() async {
+    return await storage.get('activityCode');
+  }
+
+  @override
+  Future<void> saveActivityCode(String activityCode) async {
+    await storage.put('activityCode', activityCode);
+  }
 }
