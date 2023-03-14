@@ -380,7 +380,12 @@ abstract class UserDashboardControllerBase with Store {
   @action
   void getNextActivity() {
     if (allSubscribedActivitiesList.isNotEmpty) {
-      nextActivity = allSubscribedActivitiesList.first;
+      for (EnrollsActivityModel activity in allSubscribedActivitiesList) {
+        if (activity.startDate!.isAfter(DateTime.now())) {
+          nextActivity = activity;
+          break;
+        }
+      }
     } else {
       nextActivity = EnrollsActivityModel.newInstance();
     }
