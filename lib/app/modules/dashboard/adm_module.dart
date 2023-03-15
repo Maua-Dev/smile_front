@@ -26,8 +26,6 @@ import 'external/activities_datasource_impl.dart';
 import 'infra/datasources/activities_datasource_interface.dart';
 import 'infra/repository/activities_repository_impl.dart';
 
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
-
 class AdmModule extends Module {
   @override
   final List<Bind> binds = [

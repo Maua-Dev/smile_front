@@ -52,9 +52,7 @@
     "aboutSmileDate": "Date: May 22 to 27, 2023.",
     "signUp": "Sign Up",
     "unsubscribe": "Unsubscribe",
-
     "subscriberListTitle": "Subscriber List",
-
     "termination": "Termination",
     "local": "Local",
 
@@ -180,6 +178,8 @@
 
     "cleanFiltersTitle": "Clean Filters",
 
+
+    "activity": "Activity",
     "activityCreateTitle": "Create Activity",
     "activityEditTitle": "Edit Activity",
     "activityTypeTitle": "Activity Type",
@@ -194,8 +194,8 @@
     "activityErrorClosureDateAfterStartDate": "The inscription closure date must be before the event date",
     "companyTitle": "Company:",
 
+    
     "descriptionTitle": "Description",
-
     "hourTitle": "Hora",
     "dayTitle": "Data",
     "scheduleTitle": "Schedule",
@@ -251,5 +251,4 @@
     "inQueueTitle": "In queue",
     "exitQueueConfimation": "Do you want to leave the queue?",
     "InQueueContent": "You are in the activity queue"
-
 }

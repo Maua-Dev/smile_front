@@ -254,6 +254,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
+        "activity": MessageLookupByLibrary.simpleMessage("Atividade"),
         "activityAcceptSbscriptions":
             MessageLookupByLibrary.simpleMessage("Aceitar inscrições"),
         "activityCreateTitle":

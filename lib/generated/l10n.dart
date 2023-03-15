@@ -1514,6 +1514,16 @@ class S {
     );
   }
 
+  /// `Activity`
+  String get activity {
+    return Intl.message(
+      'Activity',
+      name: 'activity',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Create Activity`
   String get activityCreateTitle {
     return Intl.message(

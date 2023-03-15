@@ -92,7 +92,6 @@
     
     
 
-    
     "selectOptionTitle": "Selecione uma opção:",
     "registerFullNamePlaceholder": "Nome Completo",
     "registerSocialNamePlaceholder": "Nome Social",
@@ -179,6 +178,8 @@
     
     "cleanFiltersTitle": "Limpar Filtros",
 
+
+    "activity": "Atividade",
     "activityCreateTitle": "Criar Atividade",
     "activityEditTitle": "Editar Atividade",
     "activityTypeTitle": "Tipo de Atividade",
@@ -193,9 +194,8 @@
     "activityErrorClosureDateAfterStartDate": "A data de fechamento das inscrições deve ser antes da data da atividade",
     "companyTitle": "Empresa:",
 
+    
     "descriptionTitle": "Descrição",
-
-
     "hourTitle": "Hora",
     "dayTitle": "Data",
     "scheduleTitle": "Horário",
@@ -212,7 +212,6 @@
     "validationCodeTitle": "Código de validação",
 
     "localTitle": "Local",
-
 
     "isExtensiveTooltip": "Atividade Extensionista",
 
@@ -239,7 +238,6 @@
 
     "unavailabeTitle": "Indisponível",
 
-
     "unsubscribeVerification": "Tem certeza que deseja se desinscrever?",
     "subscribeVerification": "Tem certeza que deseja se inscrever?",
     "unsubscribeVerificationClosedRegistration": "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!",
@@ -253,6 +251,4 @@
     "inQueueTitle": "Na fila",
     "exitQueueConfimation": "Deseja sair da fila?",
     "InQueueContent": "Você está na fila da atividade"
-
-
 }
