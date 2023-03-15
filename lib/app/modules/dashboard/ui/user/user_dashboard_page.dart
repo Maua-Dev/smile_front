@@ -10,6 +10,8 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import 'package:smile_front/generated/l10n.dart';
+import '../../../../shared/entities/infra/enrollment_state_enum.dart';
+import '../../../../shared/models/enrollments_model.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
@@ -167,7 +169,11 @@ class _UserDashboardPageState
                               .subscribedActivitiesOnScreen[index].title,
                           hour: hour,
                           activityEnrollment: controller
-                              .subscribedActivitiesOnScreen[index].enrollments,
+                                  .subscribedActivitiesOnScreen[index]
+                                  .enrollments ??
+                              EnrollmentsModel(
+                                  state: EnrollmentStateEnum.NONE,
+                                  dateSubscribed: DateTime.now()),
                           acceptingNewEnrollments: controller
                               .subscribedActivitiesOnScreen[index]
                               .acceptingNewEnrollments,
