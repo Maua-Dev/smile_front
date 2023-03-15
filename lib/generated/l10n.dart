@@ -1284,10 +1284,10 @@ class S {
     );
   }
 
-  /// `Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, $, %, ^, &, *, -) \n - Minimum 8 characters`
+  /// `Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, !, @, $, %, ^, &, *, -) \n - Minimum 8 characters`
   String get fieldPasswordRequisits {
     return Intl.message(
-      'Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters',
+      'Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters',
       name: 'fieldPasswordRequisits',
       desc: '',
       args: [],

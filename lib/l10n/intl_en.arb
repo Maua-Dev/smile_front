@@ -141,7 +141,7 @@
     "fieldProfessorEmailInvalid": "Invalid professor e-mail",
     "fieldEmailsEqualsRequired": "E-mails must be the same",
     "fieldPasswordEqualsRequired": "The \"Password\" and \"Confirm your password\" fields must be the same",
-    "fieldPasswordRequisits": "Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, $, %, ^, &, *, -) \n - Minimum 8 characters",
+    "fieldPasswordRequisits": "Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, !, @, $, %, ^, &, *, -) \n - Minimum 8 characters",
     "fieldDDDRequired": "Enter the number with DDD",
     "fieldRAInvalid": "Invalid RA",
     "fieldFillAllRequired": "Fill in all fields!",

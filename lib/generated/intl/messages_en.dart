@@ -341,7 +341,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fieldPasswordEqualsRequired": MessageLookupByLibrary.simpleMessage(
             "The \"Password\" and \"Confirm your password\" fields must be the same"),
         "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(
-            "Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters"),
+            "Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters"),
         "fieldProfessorEmailInvalid":
             MessageLookupByLibrary.simpleMessage("Invalid professor e-mail"),
         "fieldRAInvalid": MessageLookupByLibrary.simpleMessage("Invalid RA"),

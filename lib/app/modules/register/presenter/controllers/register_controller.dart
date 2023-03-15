@@ -269,7 +269,7 @@ abstract class RegisterControllerBase with Store {
       return S.current.fieldRequired;
     }
     String pattern =
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~_%\[\]<>:^-]).{8,}$';
     RegExp regExp = RegExp(pattern);
     if (!regExp.hasMatch(value)) {
       return S.current.fieldPasswordRequisits;
