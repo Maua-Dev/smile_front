@@ -1,11 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/ui/pages/activities-home/pages/next_home_page.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
-import '../../../../../shared/utils/screen_helper.dart';
-import '../../../../../shared/widgets/text-header/text_header.dart';
 import '../../../../dashboard/domain/infra/activity_enum.dart';
 
 class ActivitiesHomePage extends StatefulWidget {
@@ -33,19 +32,7 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 24.0),
-          child: TextHeader(
-            title: S.of(context).activitiesTitle,
-            leftPadding: Screen.width(context) > 530 ? 32 : 24,
-            color: AppColors.brandingOrange,
-            fontSize: MediaQuery.of(context).size.width < 900
-                ? MediaQuery.of(context).size.width < 530
-                    ? 24
-                    : 32
-                : 48,
-          ),
-        ),
+        H1HeaderTextWidget(title: S.of(context).activitiesAndEventsTitle),
         SizedBox(
           height: width > 1024 ? height * 0.75 : height * 0.4,
           width: width * 0.9,

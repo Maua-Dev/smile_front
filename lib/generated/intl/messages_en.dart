@@ -250,6 +250,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutSmileDescription": m0,
         "aboutSmileTitle": MessageLookupByLibrary.simpleMessage("About Smile"),
         "absenceTitle": MessageLookupByLibrary.simpleMessage("Absence"),
+        "activitiesAndEventsTitle":
+            MessageLookupByLibrary.simpleMessage("Activities and Events"),
         "activitiesNotFound":
             MessageLookupByLibrary.simpleMessage("Activities not found"),
         "activitiesOfferedDescription": m1,
