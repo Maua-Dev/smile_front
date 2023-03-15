@@ -5,8 +5,6 @@ import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_t
 import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
-import '../../../../../shared/utils/screen_helper.dart';
-import '../../../../../shared/widgets/text-header/text_header.dart';
 import '../../../../dashboard/domain/infra/activity_enum.dart';
 
 class ActivitiesHomePage extends StatefulWidget {

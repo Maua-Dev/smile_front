@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/domain/infra/maua_entities_enum.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../shared/themes/app_colors.dart';
-import '../../../../../shared/utils/screen_helper.dart';
-import '../../../../../shared/widgets/text-header/text_header.dart';
 
 class SponsorsHomePage extends StatefulWidget {
   const SponsorsHomePage({Key? key}) : super(key: key);
@@ -25,33 +24,20 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
       padding: const EdgeInsets.only(top: 24),
       child: Column(
         children: [
-          TextHeader(
+          H1HeaderTextWidget(
             title: S.of(context).sponsorsTitle,
-            leftPadding: Screen.width(context) > 530 ? 32 : 24,
-            color: AppColors.brandingBlue,
-            fontSize: MediaQuery.of(context).size.width < 900
-                ? MediaQuery.of(context).size.width < 530
-                    ? 24
-                    : 32
-                : 48,
           ),
-          const CompanySponsor(),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24),
-            child: TextHeader(
-              title: S.of(context).mauaEntititesTitle,
-              leftPadding: Screen.width(context) > 530 ? 32 : 24,
-              color: AppColors.brandingOrange,
-              fontSize: MediaQuery.of(context).size.width < 900
-                  ? MediaQuery.of(context).size.width < 530
-                      ? MediaQuery.of(context).size.width < 375
-                          ? 16
-                          : 22
-                      : 32
-                  : 48,
-            ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 32),
+            child: CompanySponsor(),
           ),
-          const EntitiesStack(),
+          H1HeaderTextWidget(
+            title: S.of(context).mauaEntititesTitle,
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 32),
+            child: EntitiesStack(),
+          ),
           Column(
             children: const [BeSponsor()],
           )
@@ -377,12 +363,12 @@ class CompanySponsor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width / 1.3,
+      child: Center(
         child: Wrap(
-          alignment: WrapAlignment.center,
           spacing: 48,
-          runSpacing: 16,
+          runSpacing: 25,
           children: [
             SponsorsWidget(link: mauaAzulLogoUrl, color: Colors.white),
             SponsorsWidget(link: devLogoUrl, color: Colors.white),
@@ -401,7 +387,9 @@ class CompanySponsor extends StatelessWidget {
             SponsorsWidget(
                 link: patrocinadorCengageLogoUrl, color: Colors.white),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -410,36 +398,17 @@ class EntitiesStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(alignment: Alignment.bottomCenter, children: [
-      Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.width < 500
-            ? MediaQuery.of(context).size.height * 0.15
-            : MediaQuery.of(context).size.width < 1000
-                ? MediaQuery.of(context).size.height * 0.25
-                : MediaQuery.of(context).size.height * 0.60,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.contain,
-                image: CachedNetworkImageProvider(
-                  entitiesBackground,
-                ))),
-      ),
-      Padding(
-        padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).size.width < 500
-                ? MediaQuery.of(context).size.height / 10
-                : MediaQuery.of(context).size.width < 1000
-                    ? MediaQuery.of(context).size.height / 6
-                    : MediaQuery.of(context).size.height / 4),
-        child: Wrap(
-            alignment: WrapAlignment.center,
-            children: MauaEntitiesEnum.values
-                .map((e) => EntitiesWidget(
-                      entity: e,
-                    ))
-                .toList()),
-      ),
-    ]);
+    return SizedBox(
+      width: MediaQuery.of(context).size.width / 1.1,
+      child: Wrap(
+          spacing: 20,
+          runSpacing: 25,
+          alignment: WrapAlignment.center,
+          children: MauaEntitiesEnum.values
+              .map((e) => EntitiesWidget(
+                    entity: e,
+                  ))
+              .toList()),
+    );
   }
 }

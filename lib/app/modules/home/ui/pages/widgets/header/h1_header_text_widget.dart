@@ -14,14 +14,17 @@ class H1HeaderTextWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(title,
-              style: AppTextStyles.titleH1.copyWith(
-                  fontSize: MediaQuery.of(context).size.width < 900
-                      ? MediaQuery.of(context).size.width < 530
-                          ? 24
-                          : 32
-                      : 48,
-                  color: AppColors.brandingBlue)),
+          Text(
+            title,
+            style: AppTextStyles.titleH1.copyWith(
+                fontSize: MediaQuery.of(context).size.width < 900
+                    ? MediaQuery.of(context).size.width < 530
+                        ? 24
+                        : 32
+                    : 48,
+                color: AppColors.brandingBlue),
+            textAlign: TextAlign.center,
+          ),
           const SizedBox(
             height: 16,
           ),
