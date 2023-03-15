@@ -6,8 +6,8 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activi
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/manual_drop_activity.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/adm_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/edit_activity_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/create_activity_page.dart';
@@ -26,6 +26,8 @@ import 'external/activities_datasource_impl.dart';
 import 'infra/datasources/activities_datasource_interface.dart';
 import 'infra/repository/activities_repository_impl.dart';
 
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
+
 class AdmModule extends Module {
   @override
   final List<Bind> binds = [
@@ -43,6 +45,12 @@ class AdmModule extends Module {
         editActivity: i(),
         activityModel:
             i.args!.data as ActivityModel? ?? ActivityModel.newInstance(),
+      ),
+    ),
+    Bind.lazySingleton<CreateActivityController>(
+      (i) => CreateActivityController(
+        createActivity: i(),
+        getResponsibleProfessors: i(),
       ),
     ),
     Bind.lazySingleton<CreateActivityInterface>(
@@ -79,7 +87,7 @@ class AdmModule extends Module {
       (i) => GetDownloadLinkCsv(
         repository: i(),
       ),
-    )
+    ),
   ];
 
   @override
