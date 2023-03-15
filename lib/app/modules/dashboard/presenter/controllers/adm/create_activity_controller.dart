@@ -33,10 +33,10 @@ abstract class CreateActivityControllerBase with Store {
   bool isLoading = false;
 
   @observable
-  var allResponsibleProfessorsList = [];
+  List<ResponsibleProfessorModel>? allResponsibleProfessorsList = [];
 
   @observable
-  var responsibleProfessor = ResponsibleProfessorModel;
+  ResponsibleProfessorModel? responsibleProfessor;
 
   @action
   Future getAllResponsibleProfessors() async {
@@ -107,7 +107,7 @@ abstract class CreateActivityControllerBase with Store {
 
   @action
   void setResponsibleProfessorId(String id) {
-    var professor = allResponsibleProfessorsList
+    ResponsibleProfessorModel professor = allResponsibleProfessorsList!
         .firstWhere((professor) => professor.id == id);
     responsibleProfessor = professor;
   }
