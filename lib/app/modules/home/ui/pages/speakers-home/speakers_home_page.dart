@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home_controller.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
@@ -26,76 +27,172 @@ class _SpeakersHomePageState
           H1HeaderTextWidget(
             title: S.of(context).speakersMainTitle,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 5,
-                  height: MediaQuery.of(context).size.width / 5,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: AppColors.brandingOrange, width: 10),
-                      borderRadius: BorderRadius.circular(100000)),
-                  child: Container(
+          Observer(builder: (_) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width / 5,
+                    height: MediaQuery.of(context).size.width / 5,
                     decoration: BoxDecoration(
                         border: Border.all(
-                            color: AppColors.gray.withOpacity(0.3), width: 10),
+                            color: AppColors.brandingOrange, width: 10),
                         borderRadius: BorderRadius.circular(100000)),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      backgroundImage: NetworkImage(SpeakersEnum
-                          .values[controller.indexToShow].linkPhoto),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: AppColors.gray.withOpacity(0.3),
+                              width: 10),
+                          borderRadius: BorderRadius.circular(100000)),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        backgroundImage: NetworkImage(SpeakersEnum
+                            .values[controller.indexToShow].linkPhoto),
+                      ),
                     ),
                   ),
-                ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 64),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(SpeakersEnum.values[controller.indexToShow].name,
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 64),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(SpeakersEnum.values[controller.indexToShow].name,
+                              textAlign: TextAlign.center,
+                              style:
+                                  AppTextStyles.titleH1.copyWith(fontSize: 50)),
+                          const SizedBox(
+                            height: 64,
+                          ),
+                          Text(
+                            SpeakersEnum
+                                .values[controller.indexToShow].description,
+                            style: AppTextStyles.body.copyWith(fontSize: 25),
                             textAlign: TextAlign.justify,
-                            style:
-                                AppTextStyles.titleH1.copyWith(fontSize: 50)),
-                        const SizedBox(
-                          height: 64,
-                        ),
-                        Text(
-                          SpeakersEnum
-                              .values[controller.indexToShow].description,
-                          style: AppTextStyles.body.copyWith(fontSize: 25),
-                          textAlign: TextAlign.justify,
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 6,
-                  child: GridView.count(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 8,
-                      shrinkWrap: true,
-                      mainAxisSpacing: 4,
-                      children: SpeakersEnum.values
-                          .map(
-                            (e) => Container(
-                              color: Colors.black,
-                            ),
-                          )
-                          .toList()),
-                )
-              ],
-            ),
-          )
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    child: GridView.count(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 8,
+                        shrinkWrap: true,
+                        mainAxisSpacing: 8,
+                        children: SpeakersEnum.values
+                            .map(
+                              (e) => MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    controller.toggleIndex(e.index);
+                                  },
+                                  child: Opacity(
+                                    opacity: controller.indexToShow == e.index
+                                        ? 0.5
+                                        : 1.0,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.white,
+                                      backgroundImage:
+                                          NetworkImage(e.linkPhoto),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                            .toList()),
+                  )
+                ],
+              ),
+            );
+          })
         ],
       );
     } else {
-      return const SizedBox();
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 32),
+        child: Observer(builder: (_) {
+          return Column(
+            children: [
+              H1HeaderTextWidget(
+                title: S.of(context).speakersMainTitle,
+              ),
+              Container(
+                width: 200,
+                height: 200,
+                decoration: BoxDecoration(
+                    border:
+                        Border.all(color: AppColors.brandingOrange, width: 7),
+                    borderRadius: BorderRadius.circular(100000)),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: AppColors.gray.withOpacity(0.3), width: 7),
+                      borderRadius: BorderRadius.circular(100000)),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    backgroundImage: NetworkImage(
+                        SpeakersEnum.values[controller.indexToShow].linkPhoto),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(SpeakersEnum.values[controller.indexToShow].name,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.titleH1.copyWith(fontSize: 32)),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      SpeakersEnum.values[controller.indexToShow].description,
+                      style: AppTextStyles.body.copyWith(fontSize: 16),
+                      textAlign: TextAlign.justify,
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: GridView.count(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 8,
+                    shrinkWrap: true,
+                    mainAxisSpacing: 8,
+                    children: SpeakersEnum.values
+                        .map(
+                          (e) => MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.toggleIndex(e.index);
+                              },
+                              child: Opacity(
+                                opacity: controller.indexToShow == e.index
+                                    ? 0.5
+                                    : 1.0,
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  backgroundImage: NetworkImage(e.linkPhoto),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList()),
+              )
+            ],
+          );
+        }),
+      );
     }
   }
 }
