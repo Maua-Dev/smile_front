@@ -13,13 +13,13 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
       name: 'CreateActivityControllerBase.activityToCreate', context: context);
 
   @override
-  ActivityModel get activityToCreate {
+  AdminActivityModel get activityToCreate {
     _$activityToCreateAtom.reportRead();
     return super.activityToCreate;
   }
 
   @override
-  set activityToCreate(ActivityModel value) {
+  set activityToCreate(AdminActivityModel value) {
     _$activityToCreateAtom.reportWrite(value, super.activityToCreate, () {
       super.activityToCreate = value;
     });

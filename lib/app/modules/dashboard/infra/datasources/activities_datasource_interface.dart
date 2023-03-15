@@ -14,8 +14,8 @@ abstract class ActivitiesDatasourceInterface {
   Future<bool> postUnsubscribe(String activityCode);
   Future<AdminActivityModel> manualDropActivity(
       String activityCode, String userId);
-  Future editActivity(String id, ActivityModel activity);
-  Future createActivity(ActivityModel activity);
+  Future editActivity(String id, AdminActivityModel activity);
+  Future createActivity(AdminActivityModel activity);
   Future deleteActivity(String activityCode);
   Future<String> postGenerateAttendanceConfirmation(String activityCode);
   Future postDeleteAttendanceConfirmation(String activityCode);

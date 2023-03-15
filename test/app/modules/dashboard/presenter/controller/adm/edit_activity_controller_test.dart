@@ -10,7 +10,7 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/activities
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 
 import 'edit_activity_controller_test.mocks.dart';
 
@@ -23,7 +23,7 @@ void main() {
 
   EditActivityInterface editActivity = MockEditActivityInterface();
   late EditActivityController controller;
-  final activity = ActivityModel(
+  final activity = AdminActivityModel(
     activityCode: 'C01',
     type: ActivityEnum.COURSES,
     title:
@@ -56,6 +56,7 @@ void main() {
     isExtensive: false,
     takenSlots: 0,
     responsibleProfessors: [],
+    enrollments: [],
   );
 
   setUpAll(() async {

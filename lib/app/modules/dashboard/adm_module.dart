@@ -15,7 +15,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit
 import 'package:smile_front/app/modules/dashboard/ui/adm/adm_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/edit_activity_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/create_activity_page.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 
 import '../../shared/error/error_page.dart';
 import '../../shared/services/dio/smile_activities_options.dart';
@@ -53,8 +53,8 @@ class AdmModule extends Module {
     Bind.lazySingleton<EditActivityController>(
       (i) => EditActivityController(
         editActivity: i(),
-        activityModel:
-            i.args!.data as ActivityModel? ?? ActivityModel.newInstance(),
+        activityModel: i.args!.data as AdminActivityModel? ??
+            AdminActivityModel.newInstance(),
       ),
     ),
     Bind.lazySingleton<CreateActivityController>(

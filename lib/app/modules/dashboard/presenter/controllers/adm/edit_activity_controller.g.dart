@@ -13,13 +13,13 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
       Atom(name: 'EditActivityControllerBase.activityToEdit', context: context);
 
   @override
-  ActivityModel get activityToEdit {
+  AdminActivityModel get activityToEdit {
     _$activityToEditAtom.reportRead();
     return super.activityToEdit;
   }
 
   @override
-  set activityToEdit(ActivityModel value) {
+  set activityToEdit(AdminActivityModel value) {
     _$activityToEditAtom.reportWrite(value, super.activityToEdit, () {
       super.activityToEdit = value;
     });

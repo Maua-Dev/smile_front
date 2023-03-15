@@ -10,7 +10,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activit
     as _i2;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart'
     as _i5;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
+import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i4;
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart'
     as _i6;
 
@@ -35,7 +35,7 @@ class MockCreateActivityInterface extends _i1.Mock
   }
 
   @override
-  _i3.Future<dynamic> call(_i4.ActivityModel? activityToCreate) =>
+  _i3.Future<dynamic> call(_i4.AdminActivityModel? activityToCreate) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,

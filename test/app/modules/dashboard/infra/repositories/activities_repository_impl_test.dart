@@ -7,6 +7,7 @@ import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_
 import 'package:smile_front/app/modules/dashboard/infra/repository/activities_repository_impl.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 import 'package:smile_front/app/shared/models/enrollments_model.dart';
 
 import 'activities_repository_impl_test.mocks.dart';
@@ -122,7 +123,7 @@ void main() {
   ];
 
   setUpAll(() {
-    when(datasource.editActivity('', ActivityModel.newInstance()))
+    when(datasource.editActivity('', AdminActivityModel.newInstance()))
         .thenAnswer((_) async => null);
     when(datasource.deleteActivity('')).thenAnswer((_) async => null);
     when(datasource.postUnsubscribe('')).thenAnswer((_) async => true);
@@ -130,7 +131,7 @@ void main() {
           state: EnrollmentStateEnum.ENROLLED,
           dateSubscribed: DateTime.now(),
         ));
-    when(datasource.createActivity(ActivityModel.newInstance()))
+    when(datasource.createActivity(AdminActivityModel.newInstance()))
         .thenAnswer((_) async => null);
     // when(datasource.getAllActivitiesLogged())
     //     .thenAnswer((_) async => mockActivities);

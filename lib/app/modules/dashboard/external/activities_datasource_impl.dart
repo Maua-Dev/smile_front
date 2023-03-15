@@ -112,13 +112,13 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future editActivity(String id, ActivityModel activity) async {
+  Future editActivity(String id, AdminActivityModel activity) async {
     await middleware(
         url: '/update-activity', data: activity.editToJson(), http: 'put');
   }
 
   @override
-  Future createActivity(ActivityModel activity) async {
+  Future createActivity(AdminActivityModel activity) async {
     await middleware(
         url: '/create-activity', data: activity.toJson(), http: 'post');
   }

@@ -4,9 +4,9 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart';
 import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../../shared/models/activity_model.dart';
 import '../../../domain/infra/activity_enum.dart';
 import '../../../infra/models/speaker_activity_model.dart';
 
@@ -27,7 +27,7 @@ abstract class CreateActivityControllerBase with Store {
   }
 
   @observable
-  var activityToCreate = ActivityModel.newInstance();
+  var activityToCreate = AdminActivityModel.newInstance();
 
   @observable
   bool isLoading = false;

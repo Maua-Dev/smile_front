@@ -4,7 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 
 import '../../../../../shared/entities/infra/delivery_enum.dart';
 
@@ -14,7 +14,7 @@ class EditActivityController = EditActivityControllerBase
     with _$EditActivityController;
 
 abstract class EditActivityControllerBase with Store {
-  final ActivityModel activityModel;
+  final AdminActivityModel activityModel;
   final EditActivityInterface editActivity;
 
   EditActivityControllerBase({
