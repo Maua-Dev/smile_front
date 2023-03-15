@@ -76,7 +76,7 @@ class _SpeakersHomePageState
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width / 5,
+                  width: MediaQuery.of(context).size.width / 6,
                   child: GridView.count(
                       crossAxisCount: 2,
                       crossAxisSpacing: 8,
