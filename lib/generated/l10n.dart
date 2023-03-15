@@ -248,6 +248,16 @@ class S {
     );
   }
 
+  /// `Activities and Events`
+  String get activitiesAndEventsTitle {
+    return Intl.message(
+      'Activities and Events',
+      name: 'activitiesAndEventsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{activity, select, COURSE{Courses} LECTURES{Speeches} HIGH_IMPACT_LECTURES{High Impact Speeches} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} GCSP{GCSP} SPORTS_ACTIVITY{Sport Activity} other{Activities}}`
   String activitiesOfferedName(Object activity) {
     return Intl.select(

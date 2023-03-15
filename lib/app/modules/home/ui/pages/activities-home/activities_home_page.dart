@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/ui/pages/activities-home/pages/next_home_page.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
@@ -30,77 +31,72 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 24.0),
-          child: TextHeader(
-            title: S.of(context).activitiesTitle,
-            leftPadding: Screen.width(context) > 530 ? 32 : 24,
-            color: AppColors.brandingOrange,
-            fontSize: MediaQuery.of(context).size.width < 900
-                ? MediaQuery.of(context).size.width < 530
-                    ? 24
-                    : 32
-                : 48,
+    return Padding(
+      padding: const EdgeInsets.only(top: 32),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          H1HeaderTextWidget(title: S.of(context).activitiesAndEventsTitle),
+          const SizedBox(
+            height: 32,
           ),
-        ),
-        SizedBox(
-          height: width > 1024 ? height * 0.75 : height * 0.4,
-          width: width * 0.9,
-          child: CarouselSlider(
-            items: imgList,
-            carouselController: _controller,
-            options: CarouselOptions(
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 10),
-                autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                height: height,
-                viewportFraction: 1.0,
-                enlargeCenterPage: false,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _current = index;
-                  });
-                }),
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: imgList.asMap().entries.map((entry) {
-            return GestureDetector(
-              onTap: () => _controller.animateToPage(entry.key),
-              child: Container(
-                width: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
-                height: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
-                margin: EdgeInsets.symmetric(
-                    vertical: 16.0,
-                    horizontal:
-                        MediaQuery.of(context).size.width < 1024 ? 6 : 8),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: (Theme.of(context).brightness == Brightness.dark
-                            ? AppColors.lightPurple
-                            : AppColors.brandingBlue)
-                        .withOpacity(_current == entry.key ? 0.9 : 0.4)),
-              ),
-            );
-          }).toList(),
-        ),
-        if (MediaQuery.of(context).size.width <= 1024)
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal:
-                    MediaQuery.of(context).size.width < 800 ? 16.0 : 32),
-            child: Text(
-              ActivityEnum.values[_current].description,
-              style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width < 800 ? 14 : 18),
+          SizedBox(
+            height: width > 1024 ? height * 0.75 : height * 0.4,
+            width: width * 0.9,
+            child: CarouselSlider(
+              items: imgList,
+              carouselController: _controller,
+              options: CarouselOptions(
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 10),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  height: height,
+                  viewportFraction: 1.0,
+                  enlargeCenterPage: false,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _current = index;
+                    });
+                  }),
             ),
-          )
-      ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: imgList.asMap().entries.map((entry) {
+              return GestureDetector(
+                onTap: () => _controller.animateToPage(entry.key),
+                child: Container(
+                  width: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
+                  height: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
+                  margin: EdgeInsets.symmetric(
+                      vertical: 16.0,
+                      horizontal:
+                          MediaQuery.of(context).size.width < 1024 ? 6 : 8),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: (Theme.of(context).brightness == Brightness.dark
+                              ? AppColors.lightPurple
+                              : AppColors.brandingBlue)
+                          .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+                ),
+              );
+            }).toList(),
+          ),
+          if (MediaQuery.of(context).size.width <= 1024)
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal:
+                      MediaQuery.of(context).size.width < 800 ? 16.0 : 32),
+              child: Text(
+                ActivityEnum.values[_current].description,
+                style: TextStyle(
+                    fontSize:
+                        MediaQuery.of(context).size.width < 800 ? 14 : 18),
+              ),
+            )
+        ],
+      ),
     );
   }
 }
