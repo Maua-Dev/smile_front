@@ -157,8 +157,8 @@ class _CreateActivityPageState
                               responsibleProfessors:
                                   controller.allResponsibleProfessorsList,
                               closeInscriptionsHour: closureHour,
-                              professorName: controller
-                                  .activityToCreate.responsibleProfessor.name,
+                              professorName: controller.activityToCreate
+                                  .responsibleProfessors[0].name,
                               isValidSubscriptionclosureDate:
                                   controller.isValidSubscriptionclosureDate,
                               validateRequiredField:
