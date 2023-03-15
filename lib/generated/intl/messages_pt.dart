@@ -254,14 +254,31 @@ class MessageLookup extends MessageLookupByLibrary {
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
+        "activityAcceptSbscriptions":
+            MessageLookupByLibrary.simpleMessage("Aceitar inscrições"),
         "activityCreateTitle":
             MessageLookupByLibrary.simpleMessage("Criar Atividade"),
+        "activityDurationTitle":
+            MessageLookupByLibrary.simpleMessage("Duração(Minutos)"),
         "activityEditTitle":
             MessageLookupByLibrary.simpleMessage("Editar Atividade"),
+        "activityErrorClosureDateAfterStartDate":
+            MessageLookupByLibrary.simpleMessage(
+                "A data de fechamento das inscrições deve ser antes da data da atividade"),
+        "activityInscriptionClosureDate": MessageLookupByLibrary.simpleMessage(
+            "Fechamento das Inscrições (Data)"),
+        "activityInscriptionClosureHour": MessageLookupByLibrary.simpleMessage(
+            "Fechamento das Inscrições (Hora)"),
+        "activityInscriptionClosureTooltip": MessageLookupByLibrary.simpleMessage(
+            "O sistema encerra automaticamente as inscrições da atividade\nem uma data e hora específica. Se não preencher esse campo, as\ninscrições não se encerrarão sozinhas e um administrador deverá\nfazê-lo manualmente."),
         "activityNameTitle":
             MessageLookupByLibrary.simpleMessage("Titulo da Atividade"),
+        "activityResponsibleTeacher":
+            MessageLookupByLibrary.simpleMessage("Professor Responsável"),
         "activityTypeTitle":
             MessageLookupByLibrary.simpleMessage("Tipo de Atividade"),
+        "activityVacancyNumber":
+            MessageLookupByLibrary.simpleMessage("Número de Vagas"),
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Página do Administrador"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Relatórios"),

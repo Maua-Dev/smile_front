@@ -255,14 +255,31 @@ class MessageLookup extends MessageLookupByLibrary {
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Activities"),
+        "activityAcceptSbscriptions":
+            MessageLookupByLibrary.simpleMessage("Accept Subscriptions"),
         "activityCreateTitle":
             MessageLookupByLibrary.simpleMessage("Create Activity"),
+        "activityDurationTitle":
+            MessageLookupByLibrary.simpleMessage("Duration(Minutes)"),
         "activityEditTitle":
             MessageLookupByLibrary.simpleMessage("Edit Activity"),
+        "activityErrorClosureDateAfterStartDate":
+            MessageLookupByLibrary.simpleMessage(
+                "The inscription closure date must be before the event date"),
+        "activityInscriptionClosureDate":
+            MessageLookupByLibrary.simpleMessage("Inscription Closure (Date)"),
+        "activityInscriptionClosureHour":
+            MessageLookupByLibrary.simpleMessage("Inscription Closure (Hour)"),
+        "activityInscriptionClosureTooltip": MessageLookupByLibrary.simpleMessage(
+            "The system automatically closes the activity\nsubscriptions at a specific date and time. If this field is not filled in, the\nsubscriptions will not close by themselves and an administrator must\ndo it manually."),
         "activityNameTitle":
             MessageLookupByLibrary.simpleMessage("Activity Title"),
+        "activityResponsibleTeacher":
+            MessageLookupByLibrary.simpleMessage("Responsible Teacher"),
         "activityTypeTitle":
             MessageLookupByLibrary.simpleMessage("Activity Type"),
+        "activityVacancyNumber":
+            MessageLookupByLibrary.simpleMessage("Number of Vanacies"),
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Administrator Page"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Reports"),
