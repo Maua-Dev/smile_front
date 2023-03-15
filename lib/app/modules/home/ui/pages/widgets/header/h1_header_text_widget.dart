@@ -9,26 +9,29 @@ class H1HeaderTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(title,
-            style: AppTextStyles.titleH1.copyWith(
-                fontSize: MediaQuery.of(context).size.width < 900
-                    ? MediaQuery.of(context).size.width < 530
-                        ? 24
-                        : 32
-                    : 48,
-                color: AppColors.brandingBlue)),
-        const SizedBox(
-          height: 16,
-        ),
-        Container(
-          height: 5,
-          width: 200,
-          color: AppColors.brandingOrange,
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 32),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(title,
+              style: AppTextStyles.titleH1.copyWith(
+                  fontSize: MediaQuery.of(context).size.width < 900
+                      ? MediaQuery.of(context).size.width < 530
+                          ? 24
+                          : 32
+                      : 48,
+                  color: AppColors.brandingBlue)),
+          const SizedBox(
+            height: 16,
+          ),
+          Container(
+            height: 5,
+            width: 200,
+            color: AppColors.brandingOrange,
+          ),
+        ],
+      ),
     );
   }
 }

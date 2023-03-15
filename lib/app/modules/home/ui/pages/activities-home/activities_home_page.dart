@@ -31,72 +31,65 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.only(top: 32),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          H1HeaderTextWidget(title: S.of(context).activitiesAndEventsTitle),
-          const SizedBox(
-            height: 32,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        H1HeaderTextWidget(title: S.of(context).activitiesAndEventsTitle),
+        SizedBox(
+          height: width > 1024 ? height * 0.75 : height * 0.4,
+          width: width * 0.9,
+          child: CarouselSlider(
+            items: imgList,
+            carouselController: _controller,
+            options: CarouselOptions(
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 10),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                height: height,
+                viewportFraction: 1.0,
+                enlargeCenterPage: false,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                }),
           ),
-          SizedBox(
-            height: width > 1024 ? height * 0.75 : height * 0.4,
-            width: width * 0.9,
-            child: CarouselSlider(
-              items: imgList,
-              carouselController: _controller,
-              options: CarouselOptions(
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 10),
-                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  height: height,
-                  viewportFraction: 1.0,
-                  enlargeCenterPage: false,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
-                  }),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: imgList.asMap().entries.map((entry) {
-              return GestureDetector(
-                onTap: () => _controller.animateToPage(entry.key),
-                child: Container(
-                  width: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
-                  height: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
-                  margin: EdgeInsets.symmetric(
-                      vertical: 16.0,
-                      horizontal:
-                          MediaQuery.of(context).size.width < 1024 ? 6 : 8),
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: (Theme.of(context).brightness == Brightness.dark
-                              ? AppColors.lightPurple
-                              : AppColors.brandingBlue)
-                          .withOpacity(_current == entry.key ? 0.9 : 0.4)),
-                ),
-              );
-            }).toList(),
-          ),
-          if (MediaQuery.of(context).size.width <= 1024)
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal:
-                      MediaQuery.of(context).size.width < 800 ? 16.0 : 32),
-              child: Text(
-                ActivityEnum.values[_current].description,
-                style: TextStyle(
-                    fontSize:
-                        MediaQuery.of(context).size.width < 800 ? 14 : 18),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: imgList.asMap().entries.map((entry) {
+            return GestureDetector(
+              onTap: () => _controller.animateToPage(entry.key),
+              child: Container(
+                width: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
+                height: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
+                margin: EdgeInsets.symmetric(
+                    vertical: 16.0,
+                    horizontal:
+                        MediaQuery.of(context).size.width < 1024 ? 6 : 8),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: (Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.lightPurple
+                            : AppColors.brandingBlue)
+                        .withOpacity(_current == entry.key ? 0.9 : 0.4)),
               ),
-            )
-        ],
-      ),
+            );
+          }).toList(),
+        ),
+        if (MediaQuery.of(context).size.width <= 1024)
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal:
+                    MediaQuery.of(context).size.width < 800 ? 16.0 : 32),
+            child: Text(
+              ActivityEnum.values[_current].description,
+              style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.width < 800 ? 14 : 18),
+            ),
+          )
+      ],
     );
   }
 }
