@@ -36,7 +36,7 @@ abstract class CreateActivityControllerBase with Store {
   List<ResponsibleProfessorModel>? allResponsibleProfessorsList = [];
 
   @observable
-  ResponsibleProfessorModel? responsibleProfessor;
+  var responsibleProfessor = ResponsibleProfessorModel.newInstance();
 
   @action
   Future getAllResponsibleProfessors() async {

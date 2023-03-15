@@ -64,13 +64,13 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
       context: context);
 
   @override
-  ResponsibleProfessorModel? get responsibleProfessor {
+  ResponsibleProfessorModel get responsibleProfessor {
     _$responsibleProfessorAtom.reportRead();
     return super.responsibleProfessor;
   }
 
   @override
-  set responsibleProfessor(ResponsibleProfessorModel? value) {
+  set responsibleProfessor(ResponsibleProfessorModel value) {
     _$responsibleProfessorAtom.reportWrite(value, super.responsibleProfessor,
         () {
       super.responsibleProfessor = value;
