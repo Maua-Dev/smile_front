@@ -146,7 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'nae': 'https://www.instagram.com/naemaua/',
             'dev': 'https://www.instagram.com/devcommunitymaua/',
             'nine': 'https://www.instagram.com/nine.maua/',
-            'finance': 'https://www.instagram.com/imtfinance/',
+            'finance': 'https://www.instagram.com/mauafinancegroup/',
             'baja': 'https://www.instagram.com/bajamaua/',
             'ecomaua': 'https://www.instagram.com/eco_maua/',
             'mauaracing2': 'https://www.instagram.com/mauaracingh2/',
