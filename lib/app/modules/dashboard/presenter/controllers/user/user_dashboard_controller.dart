@@ -386,6 +386,7 @@ abstract class UserDashboardControllerBase with Store {
     try {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
       allSubscribedActivitiesList = enrollmentController.subscribedActivities;
+      print(allSubscribedActivitiesList.length);
       if (allSubscribedActivitiesList.isNotEmpty) {
         allSubscribedActivitiesList.sort(
           (a, b) => a.startDate!.compareTo(b.startDate!),
@@ -405,16 +406,7 @@ abstract class UserDashboardControllerBase with Store {
   @action
   void getNextActivity() {
     if (allSubscribedActivitiesList.isNotEmpty) {
-      for (EnrollsActivityModel activity in allSubscribedActivitiesList) {
-        var finalTime = DateFormat("yyyy-MM-dd hh:mm").parse(
-            Utils.getActivityFullFinalTime(
-                activity.startDate!, activity.duration));
-        if (finalTime
-            .isAfter(DateTime.now().add(const Duration(minutes: 15)))) {
-          nextActivity = activity;
-          break;
-        }
-      }
+      nextActivity = allSubscribedActivitiesList[0];
     } else {
       nextActivity = EnrollsActivityModel.newInstance();
     }
