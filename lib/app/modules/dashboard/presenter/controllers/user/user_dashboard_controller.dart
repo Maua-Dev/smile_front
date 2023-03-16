@@ -486,17 +486,19 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   String? validatePhone(String? value) {
-    if (value!.isNotEmpty) {
-      value = value.replaceAll('(', '');
-      value = value.replaceAll(')', '');
-      value = value.replaceAll(' ', '');
-      value = value.replaceAll('-', '');
-      if ((value[0] == '+' &&
-              value[1] == '5' &&
-              value[2] == '5' &&
-              value.length != 14) ||
-          (countryCode!.dialCode == "+55" && value.length != 11)) {
-        return S.current.fieldInvalid;
+    value = value!.replaceAll('(', '');
+    value = value.replaceAll(')', '');
+    value = value.replaceAll(' ', '');
+    value = value.replaceAll('-', '');
+    if (value.isNotEmpty) {
+      if (value[0] == '+' && value[1] == '5' && value[2] == '5') {
+        if (value.length != 14) {
+          return S.current.fieldInvalid;
+        }
+      } else {
+        if (countryCode!.dialCode == "+55" && value.length != 11) {
+          return S.current.fieldInvalid;
+        }
       }
     }
     return null;
