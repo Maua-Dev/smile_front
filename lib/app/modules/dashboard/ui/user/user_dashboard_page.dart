@@ -204,75 +204,85 @@ class _UserDashboardPageState
           );
         } else {
           return Scaffold(
-              body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 16,
-              ),
-              UserDataWidget(
-                logout: () {
-                  navBarController.logout();
-                },
-              ),
-              const SizedBox(
-                height: 200,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text(
-                  S.of(context).noActivitiesEnrolledText,
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.titleH1
-                      .copyWith(color: AppColors.brandingOrange, fontSize: 32),
-                ),
-              ),
-              const SizedBox(
-                height: 48,
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      await navBarController.toggleIndex(2);
-                      Modular.to.navigate('/user/home/all-activities');
+              body: Center(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width < breakpointTablet
+                  ? MediaQuery.of(context).size.width
+                  : 1165,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  UserDataWidget(
+                    logout: () {
+                      navBarController.logout();
                     },
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(20),
-                      backgroundColor:
-                          MaterialStateProperty.all(AppColors.brandingOrange),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(40)),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(right: 16),
-                          child: Icon(
-                            Icons.check,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          S.of(context).signUp.toUpperCase(),
-                          style: AppTextStyles.button.copyWith(
-                            fontSize: MediaQuery.of(context).size.width < 1630
-                                ? 20
-                                : 24,
-                          ),
-                        ),
-                      ],
+                  ),
+                  const SizedBox(
+                    height: 200,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      S.of(context).noActivitiesEnrolledText,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.titleH1.copyWith(
+                          color: AppColors.brandingOrange, fontSize: 32),
                     ),
                   ),
-                ),
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          await navBarController.toggleIndex(2);
+                          Modular.to.navigate('/user/home/all-activities');
+                        },
+                        style: ButtonStyle(
+                          elevation: MaterialStateProperty.all(20),
+                          backgroundColor: MaterialStateProperty.all(
+                              AppColors.brandingOrange),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(40)),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(right: 16),
+                              child: Icon(
+                                Icons.check,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              S.of(context).signUp.toUpperCase(),
+                              style: AppTextStyles.button.copyWith(
+                                fontWeight: FontWeight.bold,
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 1630
+                                        ? 20
+                                        : 24,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ));
         }
       }

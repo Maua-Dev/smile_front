@@ -42,6 +42,7 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
             child: GestureDetector(
                 onTap: () {
                   Modular.to.navigate('/home/');
+                  widget.scrollToHome!();
                 },
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
                   Container(

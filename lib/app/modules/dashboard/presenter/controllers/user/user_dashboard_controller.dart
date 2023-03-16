@@ -1,16 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
-
 import '../../../../../../generated/l10n.dart';
-import '../../../../../shared/utils/utils.dart';
 
 part 'user_dashboard_controller.g.dart';
 
@@ -405,16 +402,7 @@ abstract class UserDashboardControllerBase with Store {
   @action
   void getNextActivity() {
     if (allSubscribedActivitiesList.isNotEmpty) {
-      for (EnrollsActivityModel activity in allSubscribedActivitiesList) {
-        var finalTime = DateFormat("yyyy-MM-dd hh:mm").parse(
-            Utils.getActivityFullFinalTime(
-                activity.startDate!, activity.duration));
-        if (finalTime
-            .isAfter(DateTime.now().add(const Duration(minutes: 15)))) {
-          nextActivity = activity;
-          break;
-        }
-      }
+      nextActivity = allSubscribedActivitiesList[0];
     } else {
       nextActivity = EnrollsActivityModel.newInstance();
     }
