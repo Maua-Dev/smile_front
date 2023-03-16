@@ -7,6 +7,7 @@ import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 
 import '../../../../../../generated/l10n.dart';
@@ -409,9 +410,12 @@ abstract class UserDashboardControllerBase with Store {
         var finalTime = DateFormat("yyyy-MM-dd hh:mm").parse(
             Utils.getActivityFullFinalTime(
                 activity.startDate!, activity.duration));
+
         if (finalTime
-            .isAfter(DateTime.now().add(const Duration(minutes: 15)))) {
+                .isAfter(DateTime.now().add(const Duration(minutes: 15))) &&
+            activity.enrollments!.state != EnrollmentStateEnum.COMPLETED) {
           nextActivity = activity;
+
           break;
         }
       }
@@ -498,17 +502,19 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   String? validatePhone(String? value) {
-    if (value!.isNotEmpty) {
-      value = value.replaceAll('(', '');
-      value = value.replaceAll(')', '');
-      value = value.replaceAll(' ', '');
-      value = value.replaceAll('-', '');
-      if ((value[0] == '+' &&
-              value[1] == '5' &&
-              value[2] == '5' &&
-              value.length != 14) ||
-          (countryCode!.dialCode == "+55" && value.length != 11)) {
-        return S.current.fieldInvalid;
+    value = value!.replaceAll('(', '');
+    value = value.replaceAll(')', '');
+    value = value.replaceAll(' ', '');
+    value = value.replaceAll('-', '');
+    if (value.isNotEmpty) {
+      if (value[0] == '+' && value[1] == '5' && value[2] == '5') {
+        if (value.length != 14) {
+          return S.current.fieldInvalid;
+        }
+      } else {
+        if (countryCode!.dialCode == "+55" && value.length != 11) {
+          return S.current.fieldInvalid;
+        }
       }
     }
     return null;

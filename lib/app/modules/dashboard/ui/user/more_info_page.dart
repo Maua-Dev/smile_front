@@ -198,189 +198,212 @@ class _MoreInfoPageState
                                 ? 22
                                 : 26),
                       )
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          if (MediaQuery.of(context).size.width < 600)
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  right:
-                                      MediaQuery.of(context).size.width * 0.07),
-                              child: const SizedBox(
-                                width: 50,
-                              ),
-                            ),
-                          Center(
-                              child: RegisterButtonWidget(
-                                  activityIsFull:
-                                      controller.activity.takenSlots >=
-                                          controller.activity.totalSlots,
-                                  isLoading: controller.isLoading,
-                                  isRegistered:
-                                      controller.activity.enrollments == null
-                                          ? EnrollmentStateEnum.NONE
-                                          : controller
-                                              .activity.enrollments!.state,
-                                  onPressed: () {
-                                    var isReg =
-                                        controller.activity.enrollments == null
-                                            ? EnrollmentStateEnum.NONE
-                                            : controller
-                                                .activity.enrollments!.state;
-
-                                    if (!controller
-                                        .activity.acceptingNewEnrollments) {
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return Observer(builder: (context) {
-                                            return ActionConfirmationDialogWidget(
-                                                isLoading: controller.isLoading,
-                                                title: S
-                                                    .of(context)
-                                                    .unsubscribeVerification,
-                                                content: S
-                                                    .of(context)
-                                                    .unsubscribeVerificationClosedRegistration,
-                                                onPressed: () {
-                                                  controller
-                                                      .unsubscribeUserActivity();
-                                                  Modular.to.navigate(
-                                                    '/user/home/more-info',
-                                                  );
-                                                  Modular.to.pop();
-                                                });
-                                          });
-                                        },
-                                      );
-                                    } else {
-                                      if (isReg ==
-                                              EnrollmentStateEnum.ENROLLED ||
-                                          isReg ==
-                                              EnrollmentStateEnum.COMPLETED) {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return Observer(builder: (context) {
-                                              return ActionConfirmationDialogWidget(
-                                                  isLoading:
-                                                      controller.isLoading,
-                                                  title: S
-                                                      .of(context)
-                                                      .unsubscribeVerification,
-                                                  content: S
-                                                      .of(context)
-                                                      .unsubscribeLoseVanacy,
-                                                  onPressed: () {
-                                                    controller
-                                                        .unsubscribeUserActivity();
-
-                                                    Modular.to.pop();
-                                                  });
-                                            });
-                                          },
-                                        );
-                                      } else if (controller
-                                                  .activity.takenSlots >=
-                                              controller.activity.totalSlots &&
-                                          controller.activity.enrollments !=
-                                              null) {
-                                        if (controller
-                                                .activity.enrollments!.state ==
-                                            EnrollmentStateEnum.IN_QUEUE) {
+                    : controller.enrollmentState ==
+                            EnrollmentStateEnum.COMPLETED
+                        ? Text(
+                            'Completo',
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.titleH1.copyWith(
+                                color: AppColors.greenButton,
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 800
+                                        ? 22
+                                        : 26),
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              if (MediaQuery.of(context).size.width < 600)
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      right: MediaQuery.of(context).size.width *
+                                          0.07),
+                                  child: const SizedBox(
+                                    width: 50,
+                                  ),
+                                ),
+                              Center(
+                                  child: RegisterButtonWidget(
+                                      activityIsFull:
+                                          controller.activity.takenSlots >=
+                                              controller.activity.totalSlots,
+                                      isLoading: controller.isLoading,
+                                      isRegistered:
+                                          controller.activity.enrollments ==
+                                                  null
+                                              ? EnrollmentStateEnum.NONE
+                                              : controller
+                                                  .activity.enrollments!.state,
+                                      onPressed: () {
+                                        var isReg =
+                                            controller.activity.enrollments ==
+                                                    null
+                                                ? EnrollmentStateEnum.NONE
+                                                : controller.activity
+                                                    .enrollments!.state;
+                                        if (!controller
+                                            .activity.acceptingNewEnrollments) {
                                           showDialog(
                                             context: context,
                                             builder: (BuildContext context) {
-                                              return ActionConfirmationDialogWidget(
-                                                  isLoading:
-                                                      controller.isLoading,
-                                                  title: S
-                                                      .of(context)
-                                                      .InQueueContent,
-                                                  content: S
-                                                      .of(context)
-                                                      .exitQueueConfimation,
-                                                  onPressed: () {
-                                                    controller
-                                                        .unsubscribeUserActivity();
-                                                    Modular.to.pop();
-                                                  });
+                                              return Observer(
+                                                  builder: (context) {
+                                                return ActionConfirmationDialogWidget(
+                                                    isLoading:
+                                                        controller.isLoading,
+                                                    title: S
+                                                        .of(context)
+                                                        .unsubscribeVerification,
+                                                    content: S
+                                                        .of(context)
+                                                        .unsubscribeVerificationClosedRegistration,
+                                                    onPressed: () {
+                                                      controller
+                                                          .unsubscribeUserActivity();
+                                                      Modular.to.navigate(
+                                                        '/user/home/more-info',
+                                                      );
+                                                      Modular.to.pop();
+                                                    });
+                                              });
                                             },
                                           );
-                                        }
-                                      } else if (controller
-                                              .activity.takenSlots >=
-                                          controller.activity.totalSlots) {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return ActionConfirmationDialogWidget(
-                                                isLoading: controller.isLoading,
-                                                title: S
-                                                    .of(context)
-                                                    .joinQueueTitle,
-                                                content: S
-                                                    .of(context)
-                                                    .joinQueueConfimation,
-                                                onPressed: () {
-                                                  controller
-                                                      .subscribeUserActivity();
-                                                  Modular.to.pop();
+                                        } else {
+                                          if (isReg ==
+                                                  EnrollmentStateEnum
+                                                      .ENROLLED ||
+                                              isReg ==
+                                                  EnrollmentStateEnum
+                                                      .COMPLETED) {
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return Observer(
+                                                    builder: (context) {
+                                                  return ActionConfirmationDialogWidget(
+                                                      isLoading:
+                                                          controller.isLoading,
+                                                      title: S
+                                                          .of(context)
+                                                          .unsubscribeVerification,
+                                                      content: S
+                                                          .of(context)
+                                                          .unsubscribeLoseVanacy,
+                                                      onPressed: () {
+                                                        controller
+                                                            .unsubscribeUserActivity();
+
+                                                        Modular.to.pop();
+                                                      });
                                                 });
-                                          },
-                                        );
-                                      } else if (isReg !=
-                                          EnrollmentStateEnum.ENROLLED) {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return Observer(builder: (context) {
-                                              return ActionConfirmationDialogWidget(
-                                                  isLoading:
-                                                      controller.isLoading,
-                                                  title: S
-                                                      .of(context)
-                                                      .subscribeVerification,
-                                                  content: S
-                                                      .of(context)
-                                                      .scheduleActivityWarning,
-                                                  onPressed: () {
-                                                    if (controller
-                                                        .checkIsOkForSubscribe()) {
+                                              },
+                                            );
+                                          } else if (controller
+                                                      .activity.takenSlots >=
+                                                  controller
+                                                      .activity.totalSlots &&
+                                              controller.activity.enrollments !=
+                                                  null) {
+                                            if (controller.activity.enrollments!
+                                                    .state ==
+                                                EnrollmentStateEnum.IN_QUEUE) {
+                                              showDialog(
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return ActionConfirmationDialogWidget(
+                                                      isLoading:
+                                                          controller.isLoading,
+                                                      title: S
+                                                          .of(context)
+                                                          .InQueueContent,
+                                                      content: S
+                                                          .of(context)
+                                                          .exitQueueConfimation,
+                                                      onPressed: () {
+                                                        controller
+                                                            .unsubscribeUserActivity();
+                                                        Modular.to.pop();
+                                                      });
+                                                },
+                                              );
+                                            }
+                                          } else if (controller
+                                                  .activity.takenSlots >=
+                                              controller.activity.totalSlots) {
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return ActionConfirmationDialogWidget(
+                                                    isLoading:
+                                                        controller.isLoading,
+                                                    title: S
+                                                        .of(context)
+                                                        .joinQueueTitle,
+                                                    content: S
+                                                        .of(context)
+                                                        .joinQueueConfimation,
+                                                    onPressed: () {
                                                       controller
                                                           .subscribeUserActivity();
                                                       Modular.to.pop();
-                                                    } else {
-                                                      showDialog(
-                                                        context: context,
-                                                        builder: (BuildContext
-                                                            context) {
-                                                          return CustomAlertDialogWidget(
-                                                            title: S
-                                                                .of(context)
-                                                                .alreadySubscribedOnThisPeriodWarning,
+                                                    });
+                                              },
+                                            );
+                                          } else if (isReg !=
+                                              EnrollmentStateEnum.ENROLLED) {
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return Observer(
+                                                    builder: (context) {
+                                                  return ActionConfirmationDialogWidget(
+                                                      isLoading:
+                                                          controller.isLoading,
+                                                      title: S
+                                                          .of(context)
+                                                          .subscribeVerification,
+                                                      content: S
+                                                          .of(context)
+                                                          .scheduleActivityWarning,
+                                                      onPressed: () {
+                                                        if (controller
+                                                            .checkIsOkForSubscribe()) {
+                                                          controller
+                                                              .subscribeUserActivity();
+                                                          Modular.to.pop();
+                                                        } else {
+                                                          showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (BuildContext
+                                                                    context) {
+                                                              return CustomAlertDialogWidget(
+                                                                title: S
+                                                                    .of(context)
+                                                                    .alreadySubscribedOnThisPeriodWarning,
+                                                              );
+                                                            },
                                                           );
-                                                        },
-                                                      );
-                                                    }
-                                                  });
-                                            });
-                                          },
-                                        );
-                                      }
-                                    }
-                                  })),
-                          if (MediaQuery.of(context).size.width < 600)
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * 0.07),
-                              child: ExtensionistWidget(
-                                  isExtensionist:
-                                      controller.activity.isExtensive),
-                            ),
-                        ],
-                      );
+                                                        }
+                                                      });
+                                                });
+                                              },
+                                            );
+                                          }
+                                        }
+                                      })),
+                              if (MediaQuery.of(context).size.width < 600)
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: MediaQuery.of(context).size.width *
+                                          0.07),
+                                  child: ExtensionistWidget(
+                                      isExtensionist:
+                                          controller.activity.isExtensive),
+                                ),
+                            ],
+                          );
               }),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),

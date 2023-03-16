@@ -217,8 +217,40 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                       : 50,
                                   child: acceptingNewEnrollments == true
                                       ? activityEnrollment != null
-                                          ? activityEnrollment!.state !=
-                                                  EnrollmentStateEnum.IN_QUEUE
+                                          ? activityEnrollment!.state ==
+                                                  EnrollmentStateEnum.COMPLETED ?Container(
+                                          width: MediaQuery.of(context).size.width <
+                                                  breakpointTablet
+                                              ? 100
+                                              : 200,
+                                          height: MediaQuery.of(context).size.width < breakpointTablet ? 25 : 50,
+                                          decoration: BoxDecoration(
+                                            color: AppColors.greenButton,
+                                            borderRadius: BorderRadius.circular(
+                                                MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        tabletSize
+                                                    ? 15
+                                                    : 20),
+                                          ),
+                                          child: Align(
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              'Completo',
+                                              style: AppTextStyles.bold
+                                                  .copyWith(
+                                                      fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width <
+                                                              breakpointTablet
+                                                          ? 12
+                                                          : 24,
+                                                      color: AppColors.white),
+                                            ),
+                                          )) : activityEnrollment!.state ==
+                                                  EnrollmentStateEnum.ENROLLED
                                               ? ElevatedButton(
                                                   style: ButtonStyle(
                                                     shape: MaterialStateProperty.all<
