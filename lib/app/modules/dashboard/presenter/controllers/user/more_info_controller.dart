@@ -144,6 +144,7 @@ abstract class MoreInfoControllerBase with Store {
   Future<void> onConfirmCode(String code) async {
     setIsLoadingConfirmAttendance(true);
     await sendConfirmAttendanceUsecase(code, activityCode);
+    enrollmentState = EnrollmentStateEnum.COMPLETED;
     setIsLoadingConfirmAttendance(false);
   }
 }
