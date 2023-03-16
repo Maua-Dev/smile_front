@@ -14,6 +14,7 @@ class StatusButtonWidget extends StatelessWidget {
   final EnrollmentStateEnum enrollmentStateEnum;
   final Color buttonColor;
   final Color buttonBorderColor;
+  final Color buttonTitleColor;
   final String dialogTitle;
   final String dialogContent;
   final String buttonTitle;
@@ -25,6 +26,7 @@ class StatusButtonWidget extends StatelessWidget {
     required this.enrollmentStateEnum,
     required this.buttonColor,
     required this.buttonBorderColor,
+    required this.buttonTitleColor,
     required this.dialogContent,
     required this.dialogTitle,
     required this.buttonTitle,
@@ -62,9 +64,7 @@ class StatusButtonWidget extends StatelessWidget {
                   fontSize: MediaQuery.of(context).size.width < breakpointTablet
                       ? 12
                       : 24,
-                  color: buttonColor != Colors.white
-                      ? AppColors.white
-                      : AppColors.brandingBlue)));
+                  color: buttonTitleColor)));
     } else {
       return Container(
           width:
