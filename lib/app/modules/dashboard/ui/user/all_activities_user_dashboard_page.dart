@@ -7,6 +7,8 @@ import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
+import '../../../../shared/entities/infra/enrollment_state_enum.dart';
+import '../../../../shared/models/enrollments_model.dart';
 import '../../../../shared/themes/breakpoint.dart';
 import '../../../../shared/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
@@ -126,7 +128,10 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                         title: controller.activitiesOnScreen[index].title,
                         hour: hour,
                         activityEnrollment:
-                            controller.activitiesOnScreen[index].enrollments,
+                            controller.activitiesOnScreen[index].enrollments ??
+                                EnrollmentsModel(
+                                    state: EnrollmentStateEnum.NONE,
+                                    dateSubscribed: DateTime.now()),
                         acceptingNewEnrollments: controller
                             .activitiesOnScreen[index].acceptingNewEnrollments,
                         takenSlots:
