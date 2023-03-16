@@ -129,7 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m10(title) => "${Intl.select(title, {
             'normalPart': 'Em caso de erro ao se logar, envie um e-mail para: ',
-            'boldPart': 'dev@maua.br',
+            'boldPart': 'atendimento.smile@maua.br',
             'other': '',
           })}";
 
@@ -249,6 +249,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutSmileTitle":
             MessageLookupByLibrary.simpleMessage("Sobre a Smile"),
         "absenceTitle": MessageLookupByLibrary.simpleMessage("Falta"),
+        "activitiesAndEventsTitle":
+            MessageLookupByLibrary.simpleMessage("Atividades e Eventos"),
         "activitiesNotFound":
             MessageLookupByLibrary.simpleMessage("Atividades não encontradas"),
         "activitiesOfferedDescription": m1,
@@ -341,7 +343,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fieldPasswordEqualsRequired": MessageLookupByLibrary.simpleMessage(
             "Os campos \"Senha\" e \"Confirme sua senha\" devem ser iguais"),
         "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(
-            "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, ?, !, @, \$, %, ^, &, *, -)  \n - Mínimo de 8 caracteres"),
+            "Sua senha deve conter: \n - Uma ou mais letras maiúsculas \n - Uma ou mais letras minúsculas \n - Um ou mais números \n - Um ou mais caracteres especiais\n(#, !, @, \$, %, ^, &, *, -)  \n - Mínimo de 8 caracteres"),
         "fieldProfessorEmailInvalid": MessageLookupByLibrary.simpleMessage(
             "E-mail de professor inválido"),
         "fieldRAInvalid": MessageLookupByLibrary.simpleMessage("RA inválido"),

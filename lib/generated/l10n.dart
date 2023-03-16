@@ -248,6 +248,16 @@ class S {
     );
   }
 
+  /// `Activities and Events`
+  String get activitiesAndEventsTitle {
+    return Intl.message(
+      'Activities and Events',
+      name: 'activitiesAndEventsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{activity, select, COURSE{Courses} LECTURES{Speeches} HIGH_IMPACT_LECTURES{High Impact Speeches} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} GCSP{GCSP} SPORTS_ACTIVITY{Sport Activity} other{Activities}}`
   String activitiesOfferedName(Object activity) {
     return Intl.select(
@@ -927,13 +937,13 @@ class S {
     );
   }
 
-  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{dev@maua.br} other{}}`
+  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{atendimento.smile@maua.br} other{}}`
   String loginWarningTitle(Object title) {
     return Intl.select(
       title,
       {
         'normalPart': 'In case of error when logging in, send an email to: ',
-        'boldPart': 'dev@maua.br',
+        'boldPart': 'atendimento.smile@maua.br',
         'other': '',
       },
       name: 'loginWarningTitle',
@@ -1284,10 +1294,10 @@ class S {
     );
   }
 
-  /// `Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, $, %, ^, &, *, -) \n - Minimum 8 characters`
+  /// `Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, !, @, $, %, ^, &, *, -) \n - Minimum 8 characters`
   String get fieldPasswordRequisits {
     return Intl.message(
-      'Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters',
+      'Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters',
       name: 'fieldPasswordRequisits',
       desc: '',
       args: [],

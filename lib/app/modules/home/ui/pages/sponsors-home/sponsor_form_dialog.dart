@@ -46,12 +46,13 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
           Modular.to.pop(true);
         } else {
           erroMsg =
-              'Erro ao enviar formulario! Entre em contato com dev@maua.br';
+              'Erro ao enviar formulario! Entre em contato com atendimento.smile@maua.br';
           setState(() {});
         }
       } catch (e) {
         setLoading();
-        erroMsg = 'Erro ao enviar formulario! Entre em contato com dev@maua.br';
+        erroMsg =
+            'Erro ao enviar formulario! Entre em contato com atendimento.smile@maua.br';
         setState(() {});
       }
     }

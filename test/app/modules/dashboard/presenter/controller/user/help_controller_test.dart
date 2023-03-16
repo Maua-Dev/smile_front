@@ -23,7 +23,8 @@ void main() {
     Faq(
         id: 1,
         question: 'Inseri meu e-mail errado. Como pedir alteração?',
-        response: 'Envie um e-mail para dev@maua.br ou ligue para 4239-3169.'),
+        response:
+            'Envie um e-mail para atendimento.smile@maua.br ou ligue para 4239-3169.'),
   ];
 
   setUpAll(() async {

@@ -131,7 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m10(title) => "${Intl.select(title, {
             'normalPart':
                 'In case of error when logging in, send an email to: ',
-            'boldPart': 'dev@maua.br',
+            'boldPart': 'atendimento.smile@maua.br',
             'other': '',
           })}";
 
@@ -250,6 +250,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutSmileDescription": m0,
         "aboutSmileTitle": MessageLookupByLibrary.simpleMessage("About Smile"),
         "absenceTitle": MessageLookupByLibrary.simpleMessage("Absence"),
+        "activitiesAndEventsTitle":
+            MessageLookupByLibrary.simpleMessage("Activities and Events"),
         "activitiesNotFound":
             MessageLookupByLibrary.simpleMessage("Activities not found"),
         "activitiesOfferedDescription": m1,
@@ -341,7 +343,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fieldPasswordEqualsRequired": MessageLookupByLibrary.simpleMessage(
             "The \"Password\" and \"Confirm your password\" fields must be the same"),
         "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(
-            "Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters"),
+            "Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters"),
         "fieldProfessorEmailInvalid":
             MessageLookupByLibrary.simpleMessage("Invalid professor e-mail"),
         "fieldRAInvalid": MessageLookupByLibrary.simpleMessage("Invalid RA"),

@@ -30,7 +30,7 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        elevation: 40,
+        elevation: 0,
         backgroundColor: AppColors.brandingBlue,
         centerTitle: false,
         leadingWidth: 0,
@@ -43,9 +43,10 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                 onTap: () {
                   Modular.to.navigate('/home/');
                 },
-                child: Stack(children: [
+                child: Row(mainAxisSize: MainAxisSize.min, children: [
                   Container(
                     height: 40,
+                    width: 100,
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.contain,
@@ -54,33 +55,26 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                               smile2023LogoUrl,
                             ))),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left:
-                            MediaQuery.of(context).size.width < 1024 ? 83 : 86),
-                    child: SizedBox(
-                      height: 40,
-                      child: VerticalDivider(
-                        color: (AppColors.brandingOrange),
-                        thickness: 2,
-                      ),
+                  SizedBox(
+                    height: 40,
+                    child: VerticalDivider(
+                      color: (AppColors.brandingOrange),
+                      thickness: 2,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width < 1024
-                            ? 100
-                            : 108),
-                    child: Container(
-                      height: 40,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.contain,
-                              alignment: Alignment.centerLeft,
-                              image: CachedNetworkImageProvider(
-                                mauaLogoUrl,
-                              ))),
-                    ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Container(
+                    height: 40,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.contain,
+                            alignment: Alignment.centerLeft,
+                            image: CachedNetworkImageProvider(
+                              mauaLogoUrl,
+                            ))),
                   ),
                 ])),
           ),

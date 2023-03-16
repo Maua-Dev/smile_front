@@ -79,9 +79,6 @@ abstract class UserDashboardControllerBase with Store {
   @observable
   bool acceptSMSNotifications = false;
 
-  @observable
-  String phoneValue = '';
-
   @action
   Future<void> setEmailNotifications(bool? value) async {
     acceptEmailNotifications = value!;
@@ -298,6 +295,7 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   Future<void> getPhone() async {
+    phoneToChange = '';
     phone = await secureStorage.getPhone();
     isPhoneFieldFilled = phone!.isNotEmpty;
     isGetPhoneBrazilian = phone!.substring(0, 3) == "+55";
@@ -451,7 +449,6 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   Future<void> setPhone(String value) async {
-    phoneValue = value;
     if (value.isEmpty) {
       phoneToChange = '';
       isPhoneFieldFilled = false;
