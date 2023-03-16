@@ -13,7 +13,9 @@ class SocialMediaWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: SizedBox(
-            width: Screen.width(context) < cellphoneSize ? 168 : null,
+            width: Screen.width(context) < cellphoneSize
+                ? Screen.width(context) / 2
+                : null,
             child: GridView.count(
                 crossAxisCount: Screen.width(context) < cellphoneSize ? 4 : 8,
                 crossAxisSpacing: 12,
