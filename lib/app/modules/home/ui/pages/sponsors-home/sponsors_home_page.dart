@@ -1,18 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:smile_front/app/modules/home/domain/infra/maua_entities_enum.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
-import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../../../shared/themes/app_colors.dart';
 
 class SponsorsHomePage extends StatefulWidget {
