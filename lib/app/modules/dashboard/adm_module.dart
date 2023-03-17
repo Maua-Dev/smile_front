@@ -55,6 +55,7 @@ class AdmModule extends Module {
         editActivity: i(),
         activityModel: i.args!.data as AdminActivityModel? ??
             AdminActivityModel.newInstance(),
+        getResponsibleProfessors: i(),
       ),
     ),
     Bind.lazySingleton<CreateActivityController>(

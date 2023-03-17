@@ -30,12 +30,14 @@ class EditActivityPage extends StatefulWidget {
 
 class _EditActivityPageState
     extends ModularState<EditActivityPage, EditActivityController> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(73),
-          child: AdmAppBarWidget(appBarText: S.of(context).activityEditTitle)),
+          child:
+              AdmAppBarWidget(appBarText: S.of(context).activityCreateTitle)),
       body: Row(
         children: [
           const SideBarWidget(),
@@ -43,92 +45,128 @@ class _EditActivityPageState
             width: Screen.width(context) - 115,
             child: SingleChildScrollView(
               child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.25,
-                          child: DropDownFieldCustom<ActivityEnum>(
-                            textStyles: AppTextStyles.body.copyWith(
-                                color: AppColors.brandingBlue,
-                                fontSize:
-                                    MediaQuery.of(context).size.width < 1200
-                                        ? 16
-                                        : 20),
-                            filledColor: Colors.white,
-                            titulo: S.of(context).activityTypeTitle,
-                            value: controller.activityToEdit.type,
-                            items: ActivityEnum.values
-                                .toList()
-                                .map((ActivityEnum value) {
-                              return DropdownMenuItem<ActivityEnum>(
-                                value: value,
-                                child: Text(value.name),
-                              );
-                            }).toList(),
-                            onChanged: controller.setType,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 16,
-                        ),
-                        SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.1,
-                            child: TextFieldDialogWidget(
-                              labelText: S.of(context).codeTitle,
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 114, right: 114, top: 64, bottom: 8),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.25,
+                              child: DropDownFieldCustom<ActivityEnum>(
+                                textStyles: AppTextStyles.body.copyWith(
+                                    color: AppColors.brandingBlue,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1200
+                                            ? 16
+                                            : 20),
+                                filledColor: Colors.white,
+                                titulo: S.of(context).activity,
+                                value: controller.activityToEdit.type,
+                                items: ActivityEnum.values
+                                    .toList()
+                                    .map((ActivityEnum value) {
+                                  return DropdownMenuItem<ActivityEnum>(
+                                    value: value,
+                                    child: Text(value.name),
+                                  );
+                                }).toList(),
+                                onChanged: controller.setType,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 16,
+                            ),
+                            SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.1,
+                                child: TextFieldDialogWidget(
+                                  validator: controller.validateRequiredField,
+                                  labelText: S.of(context).codeTitle,
+                                  padding: false,
+                                  onChanged: controller.setActivityCode,
+                                  value: controller.activityToEdit.activityCode,
+                                )),
+                            const SizedBox(
+                              width: 16,
+                            ),
+                            Flexible(
+                                child: TextFieldDialogWidget(
+                              validator: controller.validateRequiredField,
+                              labelText: S.of(context).activityNameTitle,
                               padding: false,
-                              onChanged: controller.setActivityCode,
-                              value: controller.activityToEdit.activityCode,
+                              onChanged: controller.setTitle,
+                              value: controller.activityToEdit.title,
                             )),
-                        const SizedBox(
-                          width: 16,
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 24.0),
+                              child: ExtensiveActivityCheck(
+                                onChanged: (() {
+                                  setState(() {
+                                    controller.setIsExtensive();
+                                  });
+                                }),
+                                isExtensive:
+                                    controller.activityToEdit.isExtensive,
+                              ),
+                            )
+                          ],
                         ),
-                        Flexible(
-                            child: TextFieldDialogWidget(
-                          labelText: S.of(context).activityNameTitle,
-                          padding: false,
-                          onChanged: controller.setTitle,
-                          value: controller.activityToEdit.title,
-                        )),
-                        ExtensiveActivityCheck(
-                          onChanged: (() {
-                            setState(() {
-                              controller.setIsExtensive();
-                            });
-                          }),
-                          isExtensive: controller.activityToEdit.isExtensive,
-                        ),
-                      ],
-                    ),
-                    TextFieldDialogWidget(
-                      labelText: S.of(context).descriptionTitle,
-                      value: controller.activityToEdit.description,
-                      onChanged: controller.setDescription,
-                    ),
-                    Observer(builder: (_) {
-                      return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: 1,
-                          itemBuilder: (context, index) {
-                            var hour =
-                                controller.activityToEdit.startDate == null
-                                    ? ''
-                                    : DateFormat('HH:mm').format(
-                                        controller.activityToEdit.startDate!);
-                            var date =
-                                controller.activityToEdit.startDate == null
-                                    ? ''
-                                    : DateFormat('dd-MM-yyyy').format(
-                                        controller.activityToEdit.startDate!);
+                      ),
+                      TextFieldDialogWidget(
+                        validator: controller.validateRequiredField,
+                        labelText: S.of(context).descriptionTitle,
+                        value: controller.activityToEdit.description,
+                        onChanged: controller.setDescription,
+                      ),
+                      Observer(builder: (_) {
+                        var closureDate = controller.activityToEdit
+                                    .stopAcceptingNewEnrollmentsBefore ==
+                                null
+                            ? ''
+                            : DateFormat('dd/MM/yyyy').format(controller
+                                .activityToEdit
+                                .stopAcceptingNewEnrollmentsBefore!);
+                        var closureHour = controller.activityToEdit
+                                    .stopAcceptingNewEnrollmentsBefore ==
+                                null
+                            ? ''
+                            : DateFormat('HH:mm').format(controller
+                                .activityToEdit
+                                .stopAcceptingNewEnrollmentsBefore!);
+                        var hour = controller.activityToEdit.startDate == null
+                            ? ''
+                            : DateFormat('HH:mm')
+                                .format(controller.activityToEdit.startDate!);
+                        var date = controller.activityToEdit.startDate == null
+                            ? ''
+                            : DateFormat('dd/MM/yyyy')
+                                .format(controller.activityToEdit.startDate!);
 
-                            return ScheduleWidget(
+                        return Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 114),
+                            child: ScheduleWidget(
+                              onChangedProfessor:
+                                  controller.setResponsibleProfessorId,
+                              responsibleProfessors:
+                                  controller.allResponsibleProfessorsList,
+                              closeInscriptionsHour: closureHour,
+                              professorName:
+                                  controller.responsibleProfessor.name,
+                              isValidSubscriptionclosureDate:
+                                  controller.isValidSubscriptionclosureDate,
+                              validateRequiredField:
+                                  controller.validateRequiredField,
                               modality: controller.activityToEdit.deliveryEnum,
-                              onChangedModality: (value) {
-                                controller.setModality(value);
-                              },
+                              onChangedClosureDate: controller.setClosureDate,
+                              onChangedClosureHour: controller.setClosureHour,
+                              closeInscriptionsDate: closureDate,
+                              onChangedModality: controller.setModality,
                               enableSubscription: controller
                                   .activityToEdit.acceptingNewEnrollments,
                               onChangedEnableSubscription: (valueBool) {
@@ -153,165 +191,129 @@ class _EditActivityPageState
                               length: 1,
                               totalParticipants:
                                   controller.activityToEdit.totalSlots,
+                              onChangedParticipants: controller.setParticipants,
                               onChangedDate: (value) {
                                 controller.setDate(value);
                               },
                               onChangedHour: (value) {
                                 controller.setHour(value);
                               },
-                              onChangedParticipants: (value) {
-                                controller.setParticipants(int.parse(value));
-                              },
                               removeSchedule: () {},
-                              onPressedIconDate: () {
-                                showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2022),
-                                  lastDate: DateTime(2023),
-                                  confirmText:
-                                      S.of(context).confirmTitle.toUpperCase(),
-                                  builder:
-                                      (BuildContext context, Widget? child) {
-                                    return Theme(
-                                      data: ThemeData.light().copyWith(
-                                        primaryColor: AppColors.brandingOrange,
-                                        colorScheme: ColorScheme.light(
-                                            primary: AppColors.brandingOrange),
-                                      ),
-                                      child: child!,
-                                    );
-                                  },
-                                ).then((value) {
-                                  controller.setDate(
-                                      DateFormat('dd-MM-yyyy').format(value!));
-                                });
+                            ));
+                      }),
+                      Observer(builder: (_) {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: controller.activityToEdit.speakers.length,
+                          itemBuilder: (context, index) {
+                            return SpeakerAddWidget(
+                              validateRequiredField:
+                                  controller.validateRequiredField,
+                              length: controller.activityToEdit.speakers.length,
+                              name: controller
+                                  .activityToEdit.speakers[index].name,
+                              bio:
+                                  controller.activityToEdit.speakers[index].bio,
+                              company: controller
+                                  .activityToEdit.speakers[index].company,
+                              onChangedName: (value) {
+                                controller.setSpeakerName(value, index);
                               },
-                              onPressedIconTime: () {
-                                showTimePicker(
-                                  context: context,
-                                  initialTime: TimeOfDay.now(),
-                                  confirmText:
-                                      S.of(context).confirmTitle.toUpperCase(),
-                                  builder:
-                                      (BuildContext context, Widget? child) {
-                                    return Theme(
-                                      data: ThemeData.light().copyWith(
-                                        primaryColor: AppColors.brandingOrange,
-                                        colorScheme: ColorScheme.light(
-                                            primary: AppColors.brandingOrange),
-                                      ),
-                                      child: child!,
-                                    );
-                                  },
-                                ).then((value) {
-                                  controller.setHour(value!.format(context));
-                                });
+                              onChangedBio: (value) {
+                                controller.setSpeakerBio(value, index);
+                              },
+                              onChangedCompany: (value) {
+                                controller.setSpeakerCompany(value, index);
+                              },
+                              removeSpeaker: () {
+                                controller.removeSpeaker(index);
+                                setState(() {});
                               },
                             );
-                          });
-                    }),
-                    Observer(builder: (_) {
-                      return ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: controller.activityToEdit.speakers.length,
-                        itemBuilder: (context, index) {
-                          return SpeakerAddWidget(
-                            length: controller.activityToEdit.speakers.length,
-                            name:
-                                controller.activityToEdit.speakers[index].name,
-                            bio: controller.activityToEdit.speakers[index].bio,
-                            company: controller
-                                .activityToEdit.speakers[index].company,
-                            onChangedName: (value) {
-                              controller.setSpeakerName(value, index);
-                            },
-                            onChangedBio: (value) {
-                              controller.setSpeakerBio(value, index);
-                            },
-                            onChangedCompany: (value) {
-                              controller.setSpeakerCompany(value, index);
-                            },
-                            removeSpeaker: () {
-                              controller.removeSpeaker(index);
-                              setState(() {});
-                            },
-                          );
-                        },
-                      );
-                    }),
-                    FormsButtonWidget(
-                        width: 220,
-                        buttonTittle: S.of(context).speakersAddTitle,
-                        onPressed: controller.addSpeaker,
-                        backgroundColor: AppColors.brandingBlue,
-                        icon: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 22,
-                        )),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        CustomElevatedButtonWidget(
-                            borderRadius: 8,
-                            widthSize: Screen.width(context) > tabletSize
-                                ? Screen.width(context) * 0.35
-                                : Screen.width(context) * 0.3,
-                            heightSize: 40,
-                            title: 'Cancelar',
-                            onPressed: () {
-                              Modular.to.navigate('/adm');
-                            },
-                            backgroundColor: AppColors.brandingBlue),
-                        SizedBox(
-                          width: Screen.width(context) > tabletSize
-                              ? 50
-                              : Screen.width(context) * 0.015,
-                        ),
-                        CustomElevatedButtonWidget(
-                          borderRadius: 8,
-                          title: 'Salvar',
-                          widthSize: Screen.width(context) > tabletSize
-                              ? Screen.width(context) * 0.35
-                              : Screen.width(context) * 0.3,
-                          heightSize: 40,
-                          backgroundColor: AppColors.brandingBlue,
-                          onPressed: () {
-                            if (controller.isFilled()) {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return Observer(builder: (context) {
-                                    return ActionConfirmationDialogWidget(
-                                        isLoading: controller.isLoading,
-                                        title: S.of(context).confirmToContinue,
-                                        content: S.of(context).lostOldDataWarn,
-                                        onPressed: () {
-                                          controller.editUserActivity();
-                                        });
-                                  });
-                                },
-                              );
-                            } else {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return CustomAlertDialogWidget(
-                                    title: S.of(context).fieldFillAllRequired,
-                                    content: S
-                                        .of(context)
-                                        .confirmAllFieldsConrrectlyFilled,
-                                  );
-                                },
-                              );
-                            }
                           },
+                        );
+                      }),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 114),
+                        child: FormsButtonWidget(
+                            width: 500,
+                            buttonTittle: S.of(context).speakersAddTitle,
+                            onPressed: controller.addSpeaker,
+                            backgroundColor: AppColors.brandingBlue,
+                            icon: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: 22,
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 48, horizontal: 114),
+                        child: Row(
+                          children: [
+                            CustomElevatedButtonWidget(
+                                borderRadius: 8,
+                                widthSize: Screen.width(context) > tabletSize
+                                    ? Screen.width(context) * 0.35
+                                    : Screen.width(context) * 0.3,
+                                heightSize: 40,
+                                title: 'Cancelar',
+                                onPressed: () {
+                                  Modular.to.navigate('/adm');
+                                },
+                                backgroundColor: AppColors.brandingBlue),
+                            SizedBox(
+                              width: Screen.width(context) > tabletSize
+                                  ? 50
+                                  : Screen.width(context) * 0.015,
+                            ),
+                            CustomElevatedButtonWidget(
+                              borderRadius: 8,
+                              title: 'Salvar',
+                              widthSize: Screen.width(context) > tabletSize
+                                  ? Screen.width(context) * 0.35
+                                  : Screen.width(context) * 0.3,
+                              heightSize: 40,
+                              backgroundColor: AppColors.brandingBlue,
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return Observer(builder: (context) {
+                                        return ActionConfirmationDialogWidget(
+                                          isLoading: controller.isLoading,
+                                          title:
+                                              S.of(context).confirmToContinue,
+                                          content:
+                                              S.of(context).lostOldDataWarn,
+                                          onPressed: () =>
+                                              controller.editUserActivity(),
+                                        );
+                                      });
+                                    },
+                                  );
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return CustomAlertDialogWidget(
+                                        title:
+                                            S.of(context).fieldFillAllRequired,
+                                        content: S
+                                            .of(context)
+                                            .confirmAllFieldsConrrectlyFilled,
+                                      );
+                                    },
+                                  );
+                                }
+                              },
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
