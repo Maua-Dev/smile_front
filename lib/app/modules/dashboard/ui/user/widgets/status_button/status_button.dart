@@ -18,6 +18,7 @@ class StatusButtonWidget extends StatelessWidget {
   final String dialogTitle;
   final String dialogContent;
   final String buttonTitle;
+  final bool? disableButton;
   const StatusButtonWidget({
     Key? key,
     required this.onPressed,
@@ -30,6 +31,7 @@ class StatusButtonWidget extends StatelessWidget {
     required this.dialogContent,
     required this.dialogTitle,
     required this.buttonTitle,
+    this.disableButton,
   }) : super(key: key);
 
   @override
@@ -51,16 +53,20 @@ class StatusButtonWidget extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all(buttonColor),
             ),
             onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return ActionConfirmationDialogWidget(
-                      isLoading: isLoading,
-                      title: dialogTitle,
-                      content: dialogContent,
-                      onPressed: onPressed);
-                },
-              );
+              if (disableButton != null) {
+                if (!disableButton!) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return ActionConfirmationDialogWidget(
+                          isLoading: isLoading,
+                          title: dialogTitle,
+                          content: dialogContent,
+                          onPressed: onPressed);
+                    },
+                  );
+                }
+              }
             },
             child: Text(buttonTitle,
                 style: AppTextStyles.bold.copyWith(

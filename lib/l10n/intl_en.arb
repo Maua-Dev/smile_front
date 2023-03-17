@@ -68,6 +68,7 @@
     "unsubscribeNotAcceptingNewEnrollments" : "Caution: subscriptions for this activity closed, you will not be able to subscribe again",
     "queueTitle": "Na fila",
     "queueExitAlert": "Are you sure you want to exit the queue?",
+    "completed": "Completed",
     
 
 

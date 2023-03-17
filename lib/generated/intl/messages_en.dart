@@ -294,6 +294,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Follow the steps that will be sent in the registered email:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Code"),
         "companyTitle": MessageLookupByLibrary.simpleMessage("Company:"),
+        "completed": MessageLookupByLibrary.simpleMessage("Completed"),
         "confirmAllFieldsConrrectlyFilled":
             MessageLookupByLibrary.simpleMessage(
                 "Check that all fields are filled in correctly."),
