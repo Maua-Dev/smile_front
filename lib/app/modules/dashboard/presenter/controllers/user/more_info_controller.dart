@@ -155,7 +155,6 @@ abstract class MoreInfoControllerBase with Store {
     await sendConfirmAttendanceUsecase(code, activityCodeToConfirm);
     await enrollmentController.getUserAllActivitiesWithEnrollment();
     await getActivity();
-    enrollmentState = EnrollmentStateEnum.COMPLETED;
     await checkCanViewConfirmAttendance();
 
     setIsLoadingConfirmAttendance(false);
