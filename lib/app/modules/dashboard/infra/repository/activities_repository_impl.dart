@@ -226,8 +226,11 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future confirmAttendance(String confirmAttendanceCode, String activityCode) {
-    var res = datasource.confirmAttendance(confirmAttendanceCode, activityCode);
+  Future confirmAttendance(
+      String confirmAttendanceCode, String activityCode) async {
+    var res =
+        await datasource.confirmAttendance(confirmAttendanceCode, activityCode);
+    allActivitiesAndEnrollments = await datasource.getAllActivitiesLogged();
     return Future.value(res);
   }
 

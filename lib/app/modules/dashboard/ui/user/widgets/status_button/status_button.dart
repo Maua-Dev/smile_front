@@ -37,7 +37,8 @@ class StatusButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (acceptingNewEnrollments == true ||
-        enrollmentStateEnum == EnrollmentStateEnum.ENROLLED) {
+        enrollmentStateEnum == EnrollmentStateEnum.ENROLLED ||
+        enrollmentStateEnum == EnrollmentStateEnum.COMPLETED) {
       return SizedBox(
         width: MediaQuery.of(context).size.width < breakpointTablet ? 100 : 200,
         height: MediaQuery.of(context).size.width < breakpointTablet ? 25 : 50,

@@ -305,6 +305,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmTitle": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirmToContinue": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to continue?"),
+        "confirmedAttendance":
+            MessageLookupByLibrary.simpleMessage("Completed activity!"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Date"),
         "dayTitle": MessageLookupByLibrary.simpleMessage("Data"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
