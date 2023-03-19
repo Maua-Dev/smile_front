@@ -153,13 +153,7 @@ class _CreateActivityPageState
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 114),
                             child: ScheduleWidget(
-                              onChangedProfessor:
-                                  controller.setResponsibleProfessorId,
-                              responsibleProfessors:
-                                  controller.allResponsibleProfessorsList,
                               closeInscriptionsHour: closureHour,
-                              professorName:
-                                  controller.responsibleProfessor.name,
                               isValidSubscriptionclosureDate:
                                   controller.isValidSubscriptionclosureDate,
                               validateRequiredField:
@@ -215,8 +209,10 @@ class _CreateActivityPageState
                                 controller.removeProfessor(index);
                                 setState(() {});
                               },
-                              onChangedProfessor:
-                                  controller.setResponsibleProfessorId,
+                              onChangedProfessor: (value) {
+                                controller.setResponsibleProfessorId(
+                                    value, index);
+                              },
                               responsibleProfessors:
                                   controller.allResponsibleProfessorsList,
                               validateRequiredField:

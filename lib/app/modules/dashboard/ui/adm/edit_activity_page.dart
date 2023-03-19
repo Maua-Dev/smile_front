@@ -151,13 +151,7 @@ class _EditActivityPageState
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 114),
                             child: ScheduleWidget(
-                              onChangedProfessor:
-                                  controller.setResponsibleProfessorId,
-                              responsibleProfessors:
-                                  controller.allResponsibleProfessorsList,
                               closeInscriptionsHour: closureHour,
-                              professorName:
-                                  controller.responsibleProfessor.name,
                               isValidSubscriptionclosureDate:
                                   controller.isValidSubscriptionclosureDate,
                               validateRequiredField:

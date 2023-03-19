@@ -111,10 +111,12 @@ abstract class CreateActivityControllerBase with Store {
 
   //tirar dps
   @action
-  void setResponsibleProfessorId(String id) {
+  void setResponsibleProfessorId(String id, int index) {
+    var list = activityToCreate.responsibleProfessors;
     ResponsibleProfessorModel professor = allResponsibleProfessorsList!
         .firstWhere((professor) => professor.id == id);
-    responsibleProfessor = professor;
+    list[index] = professor;
+    activityToCreate = activityToCreate.copyWith(responsibleProfessors: list);
   }
 
   @action

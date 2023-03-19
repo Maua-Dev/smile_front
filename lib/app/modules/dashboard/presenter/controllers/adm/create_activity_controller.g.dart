@@ -209,12 +209,12 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
-  void setResponsibleProfessorId(String id) {
+  void setResponsibleProfessorId(String id, int index) {
     final _$actionInfo =
         _$CreateActivityControllerBaseActionController.startAction(
             name: 'CreateActivityControllerBase.setResponsibleProfessorId');
     try {
-      return super.setResponsibleProfessorId(id);
+      return super.setResponsibleProfessorId(id, index);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
