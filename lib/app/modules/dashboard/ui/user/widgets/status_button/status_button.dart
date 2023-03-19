@@ -67,6 +67,17 @@ class StatusButtonWidget extends StatelessWidget {
                     },
                   );
                 }
+              } else {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return ActionConfirmationDialogWidget(
+                        isLoading: isLoading,
+                        title: dialogTitle,
+                        content: dialogContent,
+                        onPressed: onPressed);
+                  },
+                );
               }
             },
             child: Text(buttonTitle,
