@@ -190,15 +190,6 @@ class ScheduleWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     Flexible(
-                        child: AutocompleteTextField(
-                      onChangedProfessor: onChangedProfessor!,
-                      responsibleProfessors: responsibleProfessors!,
-                      labelText: S.of(context).activityResponsibleTeacher,
-                    )),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Flexible(
                       child: TextFieldDialogWidget(
                           suffixTooltip: TooltipWidget(
                             message:
