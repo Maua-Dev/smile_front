@@ -29,6 +29,10 @@ abstract class CreateActivityControllerBase with Store {
   @observable
   var activityToCreate = AdminActivityModel.newInstance();
 
+  //tirar dps
+  @observable
+  var responsibleProfessor = ResponsibleProfessorModel.newInstance();
+
   @observable
   bool isLoading = false;
 
@@ -36,7 +40,7 @@ abstract class CreateActivityControllerBase with Store {
   List<ResponsibleProfessorModel>? allResponsibleProfessorsList = [];
 
   @observable
-  var responsibleProfessor = ResponsibleProfessorModel.newInstance();
+  List<ResponsibleProfessorModel>? activityResponsibleProfessorsList = [];
 
   @action
   Future getAllResponsibleProfessors() async {
@@ -105,11 +109,55 @@ abstract class CreateActivityControllerBase with Store {
     activityToCreate = activityToCreate.copyWith(title: value);
   }
 
+  //tirar dps
   @action
   void setResponsibleProfessorId(String id) {
     ResponsibleProfessorModel professor = allResponsibleProfessorsList!
         .firstWhere((professor) => professor.id == id);
     responsibleProfessor = professor;
+  }
+
+  @action
+  void removeProfessor(int index) {
+    var list = activityToCreate.responsibleProfessors;
+    list.removeAt(index);
+    activityToCreate = activityToCreate.copyWith(responsibleProfessors: list);
+  }
+
+  // @action
+  // void setResponsibleProfessorId(String id, int index) {
+  //   ResponsibleProfessorModel professor = allResponsibleProfessorsList!
+  //       .firstWhere((professor) => professor.id == id);
+  //   activityToCreate.responsibleProfessors[index].id = professor.id;
+  // }
+
+  @action
+  void addResponsibleProfessor() {
+    var list = activityToCreate.responsibleProfessors;
+    list.add(ResponsibleProfessorModel.newInstance());
+    activityToCreate = activityToCreate.copyWith(responsibleProfessors: list);
+  }
+
+  @action
+  void addSpeaker() {
+    var list = activityToCreate.speakers;
+    list.add(SpeakerActivityModel.newInstance());
+    activityToCreate = activityToCreate.copyWith(speakers: list);
+  }
+
+  @action
+  void setSpeakerName(String value, int index) {
+    activityToCreate.speakers[index].name = value;
+  }
+
+  @action
+  void setSpeakerBio(String value, int index) {
+    activityToCreate.speakers[index].bio = value;
+  }
+
+  @action
+  void setSpeakerCompany(String value, int index) {
+    activityToCreate.speakers[index].company = value;
   }
 
   @action
@@ -196,28 +244,6 @@ abstract class CreateActivityControllerBase with Store {
   void setEnableSubscription(bool value) {
     activityToCreate =
         activityToCreate.copyWith(acceptingNewEnrollments: value);
-  }
-
-  @action
-  void setSpeakerName(String value, int index) {
-    activityToCreate.speakers[index].name = value;
-  }
-
-  @action
-  void setSpeakerBio(String value, int index) {
-    activityToCreate.speakers[index].bio = value;
-  }
-
-  @action
-  void setSpeakerCompany(String value, int index) {
-    activityToCreate.speakers[index].company = value;
-  }
-
-  @action
-  void addSpeaker() {
-    var list = activityToCreate.speakers;
-    list.add(SpeakerActivityModel.newInstance());
-    activityToCreate = activityToCreate.copyWith(speakers: list);
   }
 
   @action

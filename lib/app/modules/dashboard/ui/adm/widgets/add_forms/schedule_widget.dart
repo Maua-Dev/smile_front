@@ -189,15 +189,6 @@ class ScheduleWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Row(
                   children: [
-                    // Flexible(
-                    //   child: TextFieldDialogWidget(
-                    //     validator: validateRequiredField,
-                    //     labelText: S.of(context).activityResponsibleTeacher,
-                    //     value: professorName,
-                    //     onChanged: onChangedProfessor,
-                    //     padding: false,
-                    //   ),
-                    // ),
                     Flexible(
                         child: AutocompleteTextField(
                       onChangedProfessor: onChangedProfessor!,
