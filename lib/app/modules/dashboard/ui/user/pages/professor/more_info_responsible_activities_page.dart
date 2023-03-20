@@ -9,7 +9,6 @@ import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
-import 'package:smile_front/app/shared/utils/utils.dart';
 import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -28,11 +27,6 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
     MoreInfoResponsibleActivitiesController> {
   @override
   Widget build(BuildContext context) {
-    var initialTime = DateFormat('HH:mm')
-        .format(controller.professorActivityWithEnrollments.startDate!);
-    var finalTime = Utils.getActivityFinalTime(
-        controller.professorActivityWithEnrollments.startDate!,
-        controller.professorActivityWithEnrollments.duration);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: SingleChildScrollView(
@@ -131,7 +125,8 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                             return const Center(
                                 child: CircularProgressIndicator());
                           } else {
-                            return Text('$initialTime - $finalTime',
+                            return Text(
+                                '${controller.initialTime} - ${controller.finalTime}',
                                 style: AppTextStyles.bold.copyWith(
                                     color: AppColors.white,
                                     fontSize:
