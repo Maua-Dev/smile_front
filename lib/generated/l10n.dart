@@ -807,6 +807,26 @@ class S {
     );
   }
 
+  /// `Completed`
+  String get completed {
+    return Intl.message(
+      'Completed',
+      name: 'completed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed activity!`
+  String get confirmedAttendance {
+    return Intl.message(
+      'Completed activity!',
+      name: 'confirmedAttendance',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The login service is under maintenance`
   String get maintenanceTitle {
     return Intl.message(

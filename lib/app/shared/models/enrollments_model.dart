@@ -3,7 +3,7 @@ import 'package:smile_front/app/shared/models/user_enroll_model.dart';
 import '../entities/infra/enrollment_state_enum.dart';
 
 class EnrollmentsModel {
-  final EnrollmentStateEnum state;
+  late final EnrollmentStateEnum state;
   final DateTime dateSubscribed;
   final UserEnrollModel? user;
 
