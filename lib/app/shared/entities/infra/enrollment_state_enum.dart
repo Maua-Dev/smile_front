@@ -12,6 +12,23 @@ enum EnrollmentStateEnum {
 }
 
 extension EnrollmentStateEnumExtension on EnrollmentStateEnum {
+  String get name {
+    switch (this) {
+      case EnrollmentStateEnum.ENROLLED:
+        return 'Inscrito';
+      case EnrollmentStateEnum.IN_QUEUE:
+        return 'Na fila';
+      case EnrollmentStateEnum.COMPLETED:
+        return 'Completo';
+      case EnrollmentStateEnum.DROPPED:
+        return 'Dropped';
+      case EnrollmentStateEnum.REJECTED:
+        return 'Rejeitado';
+      case EnrollmentStateEnum.NONE:
+        return '';
+    }
+  }
+
   static EnrollmentStateEnum stringToEnumMap(String toMap) {
     EnrollmentStateEnum modality = EnrollmentStateEnum.values.firstWhere(
         (modality) =>

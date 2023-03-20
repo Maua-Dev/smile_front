@@ -160,6 +160,23 @@ mixin _$ResponsibleActivitiesController
     });
   }
 
+  late final _$enrollmentFilterAtom = Atom(
+      name: 'ResponsibleActivitiesControllerBase.enrollmentFilter',
+      context: context);
+
+  @override
+  EnrollButtonEnum? get enrollmentFilter {
+    _$enrollmentFilterAtom.reportRead();
+    return super.enrollmentFilter;
+  }
+
+  @override
+  set enrollmentFilter(EnrollButtonEnum? value) {
+    _$enrollmentFilterAtom.reportWrite(value, super.enrollmentFilter, () {
+      super.enrollmentFilter = value;
+    });
+  }
+
   late final _$setIsLoadingAsyncAction = AsyncAction(
       'ResponsibleActivitiesControllerBase.setIsLoading',
       context: context);
@@ -213,6 +230,34 @@ mixin _$ResponsibleActivitiesController
         .startAction(name: 'ResponsibleActivitiesControllerBase.setHourFilter');
     try {
       return super.setHourFilter(value);
+    } finally {
+      _$ResponsibleActivitiesControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEnrollmentFilter(EnrollButtonEnum value) {
+    final _$actionInfo =
+        _$ResponsibleActivitiesControllerBaseActionController.startAction(
+            name: 'ResponsibleActivitiesControllerBase.setEnrollmentFilter');
+    try {
+      return super.setEnrollmentFilter(value);
+    } finally {
+      _$ResponsibleActivitiesControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<EnrollsActivityModel> filterActivitiesByEnrollmentState(
+      EnrollButtonEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+    final _$actionInfo =
+        _$ResponsibleActivitiesControllerBaseActionController.startAction(
+            name:
+                'ResponsibleActivitiesControllerBase.filterActivitiesByEnrollmentState');
+    try {
+      return super.filterActivitiesByEnrollmentState(type, activitiesToFilter);
     } finally {
       _$ResponsibleActivitiesControllerBaseActionController
           .endAction(_$actionInfo);
@@ -296,7 +341,8 @@ activityType: ${activityType},
 typeFilter: ${typeFilter},
 typeOnScreen: ${typeOnScreen},
 dateFilter: ${dateFilter},
-hourFilter: ${hourFilter}
+hourFilter: ${hourFilter},
+enrollmentFilter: ${enrollmentFilter}
     ''';
   }
 }

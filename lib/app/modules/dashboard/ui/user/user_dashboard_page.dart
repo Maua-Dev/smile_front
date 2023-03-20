@@ -115,6 +115,10 @@ class _UserDashboardPageState
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Observer(builder: (_) {
                     return UserFilterCardWidget(
+                        onChangedEnrollmentFilter: (type) {
+                          controller.setEnrollmentFilter(type!);
+                        },
+                        enrollmentFilter: controller.enrollmentFilter,
                         typeOnScreen: controller.typeOnScreen,
                         typeFilter: controller.typeFilter,
                         dateFilter: controller.dateFilter,
