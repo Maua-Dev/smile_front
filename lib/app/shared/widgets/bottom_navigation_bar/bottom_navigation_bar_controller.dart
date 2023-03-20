@@ -29,7 +29,7 @@ abstract class BottomNavigationBarControllerBase with Store {
 
   @action
   Future<void> getIndex() async {
-    indexToShow = (await secureStorage.getNavBarIndex())!;
+    indexToShow = await secureStorage.getNavBarIndex() ?? 1;
   }
 
   @action
