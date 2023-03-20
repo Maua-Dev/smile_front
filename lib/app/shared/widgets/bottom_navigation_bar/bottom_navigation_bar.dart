@@ -57,7 +57,6 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 indexToShow: controller.indexToShow,
                 myIndex: 3,
                 onPressed: () async {
-                  await controller.toggleIndex(3);
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {

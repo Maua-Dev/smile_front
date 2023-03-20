@@ -81,7 +81,6 @@ class VerticalNavBarWidget extends StatelessWidget {
                     indexToShow: controller.indexToShow,
                     myIndex: 4,
                     onPressed: () async {
-                      await controller.toggleIndex(4);
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
@@ -152,7 +151,6 @@ class VerticalNavBarWidget extends StatelessWidget {
                     indexToShow: controller.indexToShow,
                     myIndex: 3,
                     onPressed: () async {
-                      await controller.toggleIndex(3);
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {

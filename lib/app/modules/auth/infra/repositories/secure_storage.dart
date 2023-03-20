@@ -137,4 +137,14 @@ class SecureStorage implements SecureStorageInterface {
   Future<bool?> getAcceptEmailNotifications() async {
     return await storage.get('acceptEmailNotifications');
   }
+
+  @override
+  Future<int?> getNavBarIndex() async {
+    return await storage.get('navBarIndex');
+  }
+
+  @override
+  Future<void> saveNavBarIndex(int navBarIndex) async {
+    await storage.put('navBarIndex', navBarIndex);
+  }
 }
