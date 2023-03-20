@@ -165,13 +165,13 @@ mixin _$ResponsibleActivitiesController
       context: context);
 
   @override
-  EnrollmentStateEnum? get enrollmentFilter {
+  EnrollButtonEnum? get enrollmentFilter {
     _$enrollmentFilterAtom.reportRead();
     return super.enrollmentFilter;
   }
 
   @override
-  set enrollmentFilter(EnrollmentStateEnum? value) {
+  set enrollmentFilter(EnrollButtonEnum? value) {
     _$enrollmentFilterAtom.reportWrite(value, super.enrollmentFilter, () {
       super.enrollmentFilter = value;
     });
@@ -237,7 +237,7 @@ mixin _$ResponsibleActivitiesController
   }
 
   @override
-  void setEnrollmentFilter(EnrollmentStateEnum value) {
+  void setEnrollmentFilter(EnrollButtonEnum value) {
     final _$actionInfo =
         _$ResponsibleActivitiesControllerBaseActionController.startAction(
             name: 'ResponsibleActivitiesControllerBase.setEnrollmentFilter');
@@ -251,7 +251,7 @@ mixin _$ResponsibleActivitiesController
 
   @override
   List<EnrollsActivityModel> filterActivitiesByEnrollmentState(
-      EnrollmentStateEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+      EnrollButtonEnum type, List<EnrollsActivityModel> activitiesToFilter) {
     final _$actionInfo =
         _$ResponsibleActivitiesControllerBaseActionController.startAction(
             name:

@@ -2,14 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/widgets/button_filter_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
-
-import '../../../../../../../shared/entities/infra/enrollment_state_enum.dart';
+import '../../../../../../../shared/entities/infra/enroll_button_enum.dart';
 import '../../../../../../../shared/themes/breakpoint.dart';
 
 class UserFilterCardWidget extends StatelessWidget {
@@ -22,8 +20,8 @@ class UserFilterCardWidget extends StatelessWidget {
   final Function(DateTime?)? onChangedTimeFilter;
   final DateTime? hourFilter;
   final Function()? resetFilters;
-  final EnrollmentStateEnum? enrollmentFilter;
-  final Function(EnrollmentStateEnum?) onChangedEnrollmentFilter;
+  final EnrollButtonEnum? enrollmentFilter;
+  final Function(EnrollButtonEnum?) onChangedEnrollmentFilter;
   const UserFilterCardWidget({
     Key? key,
     required this.onChangedActivitiesFilter,
@@ -129,7 +127,7 @@ class UserFilterCardWidget extends StatelessWidget {
                                 width: 500,
                                 height: 500,
                                 child: ListView.builder(
-                                    itemCount: 5,
+                                    itemCount: EnrollButtonEnum.values.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return Padding(
@@ -149,14 +147,13 @@ class UserFilterCardWidget extends StatelessWidget {
                                           ),
                                           onPressed: () {
                                             onChangedEnrollmentFilter(
-                                                EnrollmentStateEnum
-                                                    .values[index]);
+                                                EnrollButtonEnum.values[index]);
                                             Modular.to.pop();
                                           },
                                           child: Align(
                                             alignment: Alignment.center,
                                             child: Text(
-                                              EnrollmentStateEnum
+                                              EnrollButtonEnum
                                                   .values[index].name
                                                   .toString(),
                                               style: AppTextStyles.bold
@@ -315,7 +312,7 @@ class UserFilterCardWidget extends StatelessWidget {
                             width: 500,
                             height: 500,
                             child: ListView.builder(
-                                itemCount: 5,
+                                itemCount: EnrollButtonEnum.values.length,
                                 itemBuilder: (BuildContext context, int index) {
                                   return Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -333,13 +330,13 @@ class UserFilterCardWidget extends StatelessWidget {
                                       ),
                                       onPressed: () {
                                         onChangedEnrollmentFilter(
-                                            EnrollmentStateEnum.values[index]);
+                                            EnrollButtonEnum.values[index]);
                                         Modular.to.pop();
                                       },
                                       child: Align(
                                         alignment: Alignment.center,
                                         child: Text(
-                                          EnrollmentStateEnum.values[index].name
+                                          EnrollButtonEnum.values[index].name
                                               .toString(),
                                           style: AppTextStyles.bold.copyWith(
                                               color: AppColors.white,

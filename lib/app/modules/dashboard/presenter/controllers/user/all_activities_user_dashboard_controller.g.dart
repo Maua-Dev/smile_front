@@ -67,13 +67,13 @@ mixin _$AllActivitiesUserDashboardController
       context: context);
 
   @override
-  EnrollmentStateEnum? get enrollmentFilter {
+  EnrollButtonEnum? get enrollmentFilter {
     _$enrollmentFilterAtom.reportRead();
     return super.enrollmentFilter;
   }
 
   @override
-  set enrollmentFilter(EnrollmentStateEnum? value) {
+  set enrollmentFilter(EnrollButtonEnum? value) {
     _$enrollmentFilterAtom.reportWrite(value, super.enrollmentFilter, () {
       super.enrollmentFilter = value;
     });
@@ -209,7 +209,7 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   @override
-  void setEnrollmentFilter(EnrollmentStateEnum value) {
+  void setEnrollmentFilter(EnrollButtonEnum value) {
     final _$actionInfo =
         _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
             name:
@@ -291,7 +291,7 @@ mixin _$AllActivitiesUserDashboardController
 
   @override
   List<EnrollsActivityModel> filterActivitiesByEnrollmentState(
-      EnrollmentStateEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+      EnrollButtonEnum type, List<EnrollsActivityModel> activitiesToFilter) {
     final _$actionInfo =
         _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
             name:

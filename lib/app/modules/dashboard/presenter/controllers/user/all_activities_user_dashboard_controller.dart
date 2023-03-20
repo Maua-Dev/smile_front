@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import '../../../../../shared/entities/infra/enroll_button_enum.dart';
 import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
 import '../../../../../shared/models/enrollments_model.dart';
 import '../../../../../shared/models/enrolls_activity_model.dart';
@@ -38,6 +39,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     await enrollmentController.subscribeActivity(activityCode);
     setIsLoading(false);
     Modular.to.pop();
+    setAllFilters();
   }
 
   Future<void> unsubscribeUserActivity(String activityCode) async {
@@ -45,6 +47,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     await enrollmentController.unsubscribeActivity(activityCode);
     setIsLoading(false);
     Modular.to.pop();
+    setAllFilters();
   }
 
   Future<void> getInQueueUserActivity(String activityCode) async {
@@ -52,6 +55,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     await enrollmentController.subscribeActivity(activityCode);
     setIsLoading(false);
     Modular.to.pop();
+    setAllFilters();
   }
 
   Future<void> getOutQueueUserActivity(String activityCode) async {
@@ -59,6 +63,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     await enrollmentController.unsubscribeActivity(activityCode);
     setIsLoading(false);
     Modular.to.pop();
+    setAllFilters();
   }
 
   @observable
@@ -68,7 +73,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   List<EnrollsActivityModel> activitiesOnScreen = List.empty();
 
   @observable
-  EnrollmentStateEnum? enrollmentFilter;
+  EnrollButtonEnum? enrollmentFilter;
 
   @observable
   ActivityEnum? typeFilter;
@@ -84,7 +89,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   }
 
   @action
-  void setEnrollmentFilter(EnrollmentStateEnum value) {
+  void setEnrollmentFilter(EnrollButtonEnum value) {
     enrollmentFilter = value;
     setAllFilters();
   }
@@ -168,12 +173,34 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
 
   @action
   List<EnrollsActivityModel> filterActivitiesByEnrollmentState(
-      EnrollmentStateEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+      EnrollButtonEnum type, List<EnrollsActivityModel> activitiesToFilter) {
     var list = activitiesToFilter.where((element) {
-      var enroll = element.enrollments ??
-          EnrollmentsModel(
+      var enroll = element.enrollments != null
+          ? element.enrollments!.state
+          : EnrollmentsModel(
               state: EnrollmentStateEnum.NONE, dateSubscribed: DateTime.now());
-      return enroll.state == type;
+      switch (type) {
+        case EnrollButtonEnum.COMPLETED:
+          return enroll == EnrollmentStateEnum.COMPLETED;
+        case EnrollButtonEnum.INSCRITO:
+          return enroll == EnrollmentStateEnum.ENROLLED;
+        case EnrollButtonEnum.INSCREVA_SE:
+          return (element.takenSlots < element.totalSlots &&
+              element.acceptingNewEnrollments == true &&
+              enroll != EnrollmentStateEnum.COMPLETED &&
+              enroll != EnrollmentStateEnum.ENROLLED);
+        case EnrollButtonEnum.INDISPONIVEL:
+          return (element.acceptingNewEnrollments != true &&
+              enroll != EnrollmentStateEnum.ENROLLED &&
+              enroll != EnrollmentStateEnum.COMPLETED);
+        case EnrollButtonEnum.ENTRAR_NA_FILA:
+          return (element.takenSlots >= element.totalSlots &&
+              enroll != EnrollmentStateEnum.ENROLLED &&
+              enroll != EnrollmentStateEnum.COMPLETED &&
+              element.acceptingNewEnrollments == true);
+        case EnrollButtonEnum.NA_FILA:
+          return enroll == EnrollmentStateEnum.IN_QUEUE;
+      }
     }).toList();
 
     List<EnrollsActivityModel> enrolledList = [];

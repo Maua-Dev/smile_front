@@ -118,6 +118,7 @@ class _UserDashboardPageState
                         onChangedEnrollmentFilter: (type) {
                           controller.setEnrollmentFilter(type!);
                         },
+                        enrollmentFilter: controller.enrollmentFilter,
                         typeOnScreen: controller.typeOnScreen,
                         typeFilter: controller.typeFilter,
                         dateFilter: controller.dateFilter,
