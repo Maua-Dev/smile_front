@@ -8,8 +8,8 @@ import '../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_control
 class LandingModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton<NavigationBarController>(
-        (i) => NavigationBarController(authController: i())),
+    Bind.lazySingleton<NavigationBarController>((i) =>
+        NavigationBarController(authController: i(), secureStorage: i())),
   ];
 
   @override

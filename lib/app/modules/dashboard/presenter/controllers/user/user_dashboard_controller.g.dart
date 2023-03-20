@@ -259,6 +259,22 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
+  late final _$enrollmentFilterAtom = Atom(
+      name: 'UserDashboardControllerBase.enrollmentFilter', context: context);
+
+  @override
+  EnrollButtonEnum? get enrollmentFilter {
+    _$enrollmentFilterAtom.reportRead();
+    return super.enrollmentFilter;
+  }
+
+  @override
+  set enrollmentFilter(EnrollButtonEnum? value) {
+    _$enrollmentFilterAtom.reportWrite(value, super.enrollmentFilter, () {
+      super.enrollmentFilter = value;
+    });
+  }
+
   late final _$dateFilterAtom =
       Atom(name: 'UserDashboardControllerBase.dateFilter', context: context);
 
@@ -601,6 +617,17 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   }
 
   @override
+  void setEnrollmentFilter(EnrollButtonEnum value) {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.setEnrollmentFilter');
+    try {
+      return super.setEnrollmentFilter(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setDateFilter(DateTime value) {
     final _$actionInfo = _$UserDashboardControllerBaseActionController
         .startAction(name: 'UserDashboardControllerBase.setDateFilter');
@@ -617,6 +644,20 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
         .startAction(name: 'UserDashboardControllerBase.setHourFilter');
     try {
       return super.setHourFilter(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<EnrollsActivityModel> filterActivitiesByEnrollmentState(
+      EnrollButtonEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+    final _$actionInfo =
+        _$UserDashboardControllerBaseActionController.startAction(
+            name:
+                'UserDashboardControllerBase.filterActivitiesByEnrollmentState');
+    try {
+      return super.filterActivitiesByEnrollmentState(type, activitiesToFilter);
     } finally {
       _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -801,6 +842,7 @@ typeFilter: ${typeFilter},
 typeOnScreen: ${typeOnScreen},
 acceptEmailNotifications: ${acceptEmailNotifications},
 acceptSMSNotifications: ${acceptSMSNotifications},
+enrollmentFilter: ${enrollmentFilter},
 dateFilter: ${dateFilter},
 hourFilter: ${hourFilter},
 isGetPhoneBrazilian: ${isGetPhoneBrazilian},

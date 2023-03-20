@@ -29,7 +29,9 @@ class RegisterButtonWidget extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all(
                 isRegistered == EnrollmentStateEnum.ENROLLED
                     ? AppColors.redButton
-                    : AppColors.brandingBlue,
+                    : isRegistered == EnrollmentStateEnum.COMPLETED
+                        ? AppColors.greenButton
+                        : AppColors.brandingBlue,
               ),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
@@ -47,7 +49,9 @@ class RegisterButtonWidget extends StatelessWidget {
                           ? S.of(context).inQueueTitle
                           : activityIsFull
                               ? S.of(context).joinQueueTitle
-                              : S.of(context).signUp,
+                              : isRegistered == EnrollmentStateEnum.COMPLETED
+                                  ? S.of(context).completed
+                                  : S.of(context).signUp,
                   style: AppTextStyles.buttonBold.copyWith(
                       fontSize: isRegistered == EnrollmentStateEnum.IN_QUEUE
                           ? 14

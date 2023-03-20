@@ -380,7 +380,7 @@ class S {
     );
   }
 
-  /// `{entity, select, atletica{https://www.instagram.com/gaspar_maua/} ca{https://www.instagram.com/camaua/} diversidade{https://www.instagram.com/diversidademaua/} enactus{https://www.instagram.com/enactusmaua/} esports{https://www.instagram.com/esportsmaua/} inova{https://www.instagram.com/inovamaua/} mauajr{https://www.instagram.com/mauajr/} mauasocial{https://www.instagram.com/mauasocial/} mbc{https://www.instagram.com/mauabusinessclub/} nae{https://www.instagram.com/naemaua/} dev{https://www.instagram.com/devcommunitymaua/} nine{https://www.instagram.com/nine.maua/} finance{https://www.instagram.com/imtfinance/} baja{https://www.instagram.com/bajamaua/} ecomaua{https://www.instagram.com/eco_maua/} mauaracing2{https://www.instagram.com/mauaracingh2/} mauaracing{https://www.instagram.com/mauaracing/} other{}}`
+  /// `{entity, select, atletica{https://www.instagram.com/gaspar_maua/} ca{https://www.instagram.com/camaua/} diversidade{https://www.instagram.com/diversidademaua/} enactus{https://www.instagram.com/enactusmaua/} esports{https://www.instagram.com/esportsmaua/} inova{https://www.instagram.com/inovamaua/} mauajr{https://www.instagram.com/mauajr/} mauasocial{https://www.instagram.com/mauasocial/} mbc{https://www.instagram.com/mauabusinessclub/} nae{https://www.instagram.com/naemaua/} dev{https://www.instagram.com/devcommunitymaua/} nine{https://www.instagram.com/nine.maua/} finance{https://www.instagram.com/mauafinancegroup/} baja{https://www.instagram.com/bajamaua/} ecomaua{https://www.instagram.com/eco_maua/} mauaracing2{https://www.instagram.com/mauaracingh2/} mauaracing{https://www.instagram.com/mauaracing/} other{}}`
   String mauaEntitiesSchemaInstagramUrl(Object entity) {
     return Intl.select(
       entity,
@@ -397,7 +397,7 @@ class S {
         'nae': 'https://www.instagram.com/naemaua/',
         'dev': 'https://www.instagram.com/devcommunitymaua/',
         'nine': 'https://www.instagram.com/nine.maua/',
-        'finance': 'https://www.instagram.com/imtfinance/',
+        'finance': 'https://www.instagram.com/mauafinancegroup/',
         'baja': 'https://www.instagram.com/bajamaua/',
         'ecomaua': 'https://www.instagram.com/eco_maua/',
         'mauaracing2': 'https://www.instagram.com/mauaracingh2/',
@@ -802,6 +802,26 @@ class S {
     return Intl.message(
       'Are you sure you want to exit the queue?',
       name: 'queueExitAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed`
+  String get completed {
+    return Intl.message(
+      'Completed',
+      name: 'completed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed activity!`
+  String get confirmedAttendance {
+    return Intl.message(
+      'Completed activity!',
+      name: 'confirmedAttendance',
       desc: '',
       args: [],
     );
@@ -1579,6 +1599,16 @@ class S {
     return Intl.message(
       'Description',
       name: 'descriptionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Status`
+  String get enrollmentTitle {
+    return Intl.message(
+      'Status',
+      name: 'enrollmentTitle',
       desc: '',
       args: [],
     );

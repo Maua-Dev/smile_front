@@ -103,6 +103,10 @@ class _ResponsibleActivitiesPageState extends ModularState<
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: Observer(builder: (_) {
                       return UserFilterCardWidget(
+                          enrollmentFilter: controller.enrollmentFilter,
+                          onChangedEnrollmentFilter: (type) {
+                            controller.setEnrollmentFilter(type!);
+                          },
                           typeOnScreen: controller.typeOnScreen,
                           mainColor: AppColors.brandingOrange,
                           typeFilter: controller.typeFilter,

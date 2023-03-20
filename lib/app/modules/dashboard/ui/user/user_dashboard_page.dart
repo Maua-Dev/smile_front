@@ -59,8 +59,7 @@ class _UserDashboardPageState
           ],
         );
       } else {
-        if (controller.allSubscribedActivitiesList.isNotEmpty &&
-            controller.nextActivity.type != null) {
+        if (controller.allSubscribedActivitiesList.isNotEmpty) {
           return SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -96,25 +95,30 @@ class _UserDashboardPageState
                         MediaQuery.of(context).size.width < 1000 ? 12 : 8,
                   ),
                 ),
-                Observer(builder: (_) {
-                  return NextActivityCardWidget(
-                    isUser: true,
-                    link: controller.nextActivity.link,
-                    location: controller.nextActivity.place,
-                    duration: controller.nextActivity.duration,
-                    onTap: () {
-                      Modular.to.navigate('/user/home/more-info',
-                          arguments: controller.nextActivity.activityCode);
-                    },
-                    name: controller.nextActivity.title,
-                    description: controller.nextActivity.description,
-                    date: controller.nextActivity.startDate,
-                  );
-                }),
+                if (controller.nextActivity.type != null)
+                  Observer(builder: (_) {
+                    return NextActivityCardWidget(
+                      isUser: true,
+                      link: controller.nextActivity.link,
+                      location: controller.nextActivity.place,
+                      duration: controller.nextActivity.duration,
+                      onTap: () {
+                        Modular.to.navigate('/user/home/more-info',
+                            arguments: controller.nextActivity.activityCode);
+                      },
+                      name: controller.nextActivity.title,
+                      description: controller.nextActivity.description,
+                      date: controller.nextActivity.startDate,
+                    );
+                  }),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Observer(builder: (_) {
                     return UserFilterCardWidget(
+                        onChangedEnrollmentFilter: (type) {
+                          controller.setEnrollmentFilter(type!);
+                        },
+                        enrollmentFilter: controller.enrollmentFilter,
                         typeOnScreen: controller.typeOnScreen,
                         typeFilter: controller.typeFilter,
                         dateFilter: controller.dateFilter,

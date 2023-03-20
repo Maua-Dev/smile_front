@@ -5,15 +5,15 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i10;
 
-import 'package:fl_country_code_picker/fl_country_code_picker.dart' as _i16;
+import 'package:fl_country_code_picker/fl_country_code_picker.dart' as _i17;
 import 'package:mobx/mobx.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
     as _i5;
 import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart'
-    as _i18;
+    as _i19;
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
-    as _i17;
+    as _i18;
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart'
     as _i15;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
@@ -21,15 +21,17 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/activities
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart'
     as _i4;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart'
-    as _i20;
-import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
     as _i21;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
+    as _i22;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart'
-    as _i19;
+    as _i20;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart'
     as _i14;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart'
     as _i3;
+import 'package:smile_front/app/shared/entities/infra/enroll_button_enum.dart'
+    as _i16;
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart'
     as _i13;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i11;
@@ -509,6 +511,15 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  set enrollmentFilter(_i16.EnrollButtonEnum? _enrollmentFilter) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #enrollmentFilter,
+          _enrollmentFilter,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   set dateFilter(DateTime? _dateFilter) => super.noSuchMethod(
         Invocation.setter(
           #dateFilter,
@@ -640,7 +651,7 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  set countryCode(_i16.CountryCode? _countryCode) => super.noSuchMethod(
+  set countryCode(_i17.CountryCode? _countryCode) => super.noSuchMethod(
         Invocation.setter(
           #countryCode,
           _countryCode,
@@ -682,6 +693,14 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  void setEnrollmentFilter(_i16.EnrollButtonEnum? value) => super.noSuchMethod(
+        Invocation.method(
+          #setEnrollmentFilter,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   _i10.Future<void> subscribeUserActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -717,6 +736,21 @@ class MockUserDashboardController extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+  @override
+  List<_i6.EnrollsActivityModel> filterActivitiesByEnrollmentState(
+    _i16.EnrollButtonEnum? type,
+    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #filterActivitiesByEnrollmentState,
+          [
+            type,
+            activitiesToFilter,
+          ],
+        ),
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
   @override
   void setAllFilters() => super.noSuchMethod(
         Invocation.method(
@@ -929,7 +963,7 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  void setBrazilianPhone(_i16.CountryCode? value) => super.noSuchMethod(
+  void setBrazilianPhone(_i17.CountryCode? value) => super.noSuchMethod(
         Invocation.method(
           #setBrazilianPhone,
           [value],
@@ -937,7 +971,7 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  void setCountryCode(_i16.CountryCode? value) => super.noSuchMethod(
+  void setCountryCode(_i17.CountryCode? value) => super.noSuchMethod(
         Invocation.method(
           #setCountryCode,
           [value],
@@ -977,7 +1011,7 @@ class MockUserDashboardController extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockRefreshTokenInterface extends _i1.Mock
-    implements _i17.RefreshTokenInterface {
+    implements _i18.RefreshTokenInterface {
   MockRefreshTokenInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -997,7 +1031,7 @@ class MockRefreshTokenInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLoginWithEmailInterface extends _i1.Mock
-    implements _i18.LoginWithEmailInterface {
+    implements _i19.LoginWithEmailInterface {
   MockLoginWithEmailInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -1256,13 +1290,30 @@ class MockSecureStorageInterface extends _i1.Mock
         ),
         returnValue: _i10.Future<String?>.value(),
       ) as _i10.Future<String?>);
+  @override
+  _i10.Future<void> saveNavBarIndex(int? navBarIndex) => (super.noSuchMethod(
+        Invocation.method(
+          #saveNavBarIndex,
+          [navBarIndex],
+        ),
+        returnValue: _i10.Future<void>.value(),
+        returnValueForMissingStub: _i10.Future<void>.value(),
+      ) as _i10.Future<void>);
+  @override
+  _i10.Future<int?> getNavBarIndex() => (super.noSuchMethod(
+        Invocation.method(
+          #getNavBarIndex,
+          [],
+        ),
+        returnValue: _i10.Future<int?>.value(),
+      ) as _i10.Future<int?>);
 }
 
 /// A class which mocks [UnsubscribeActivityInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUnsubscribeActivityInterface extends _i1.Mock
-    implements _i19.UnsubscribeActivityInterface {
+    implements _i20.UnsubscribeActivityInterface {
   MockUnsubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -1281,7 +1332,7 @@ class MockUnsubscribeActivityInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetUserSubscribedActivitiesInterface extends _i1.Mock
-    implements _i20.GetUserSubscribedActivitiesInterface {
+    implements _i21.GetUserSubscribedActivitiesInterface {
   MockGetUserSubscribedActivitiesInterface() {
     _i1.throwOnMissingStub(this);
   }
@@ -1301,7 +1352,7 @@ class MockGetUserSubscribedActivitiesInterface extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSubscribeActivityInterface extends _i1.Mock
-    implements _i21.SubscribeActivityInterface {
+    implements _i22.SubscribeActivityInterface {
   MockSubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
