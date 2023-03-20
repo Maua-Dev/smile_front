@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_attendance_confirmation.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/generate_confirmation_code.dart';
@@ -6,6 +7,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/post_manual_ch
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_activities_widgets/list_name_and_state_with_is_switched.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/professor_activity_model.dart';
+import 'package:smile_front/app/shared/utils/utils.dart';
 
 part 'more_info_responsible_activities_controller.g.dart';
 
@@ -109,6 +111,12 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @observable
   var professorActivityWithEnrollments = ProfessorActivityModel.newInstance();
 
+  @observable
+  String initialTime = '';
+
+  @observable
+  String finalTime = '';
+
   @action
   Future<void> getProfessorActivitiesWithEnrollments() async {
     setIsLoading(true);
@@ -124,6 +132,11 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
                   e.state == EnrollmentStateEnum.COMPLETED ? true : false),
         )
         .toList();
+    initialTime =
+        DateFormat('HH:mm').format(professorActivityWithEnrollments.startDate!);
+    finalTime = Utils.getActivityFinalTime(
+        professorActivityWithEnrollments.startDate!,
+        professorActivityWithEnrollments.duration);
     isTokenAlreadyOpen();
     setIsLoading(false);
   }

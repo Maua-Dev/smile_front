@@ -415,7 +415,16 @@ class EntitiesStack extends StatelessWidget {
           : CarouselSlider.builder(
               itemCount: MauaEntitiesEnum.values.length,
               itemBuilder: (context, index, realIndex) {
-                return EntitiesWidget(entity: MauaEntitiesEnum.values[index]);
+                return Container(
+                    decoration: BoxDecoration(
+                        border:
+                            Border.all(color: AppColors.brandingBlue, width: 4),
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: EntitiesWidget(
+                          entity: MauaEntitiesEnum.values[index]),
+                    ));
               },
               options: CarouselOptions(autoPlay: false, viewportFraction: 0.5),
             ),
