@@ -125,7 +125,8 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                             return const Center(
                                 child: CircularProgressIndicator());
                           } else {
-                            return Text('${controller.initialTime} - ${controller.finalTime}',
+                            return Text(
+                                '${controller.initialTime} - ${controller.finalTime}',
                                 style: AppTextStyles.bold.copyWith(
                                     color: AppColors.white,
                                     fontSize:
