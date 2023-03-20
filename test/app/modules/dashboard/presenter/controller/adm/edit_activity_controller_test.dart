@@ -8,22 +8,27 @@ import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 
 import 'edit_activity_controller_test.mocks.dart';
 
 @GenerateMocks([
   ActivitiesRepositoryInterface,
   EditActivityInterface,
+  GetResponsibleProfessorsInterface,
 ])
 void main() {
   initModules([AppModule(), AdmModule()]);
 
+  GetResponsibleProfessorsInterface getResponsibleProfessors =
+      MockGetResponsibleProfessorsInterface();
   EditActivityInterface editActivity = MockEditActivityInterface();
+
   late EditActivityController controller;
-  final activity = ActivityModel(
+  final activity = AdminActivityModel(
     activityCode: 'C01',
     type: ActivityEnum.COURSES,
     title:
@@ -56,6 +61,7 @@ void main() {
     isExtensive: false,
     takenSlots: 0,
     responsibleProfessors: [],
+    enrollments: [],
   );
 
   setUpAll(() async {
@@ -63,6 +69,7 @@ void main() {
     controller = EditActivityController(
       editActivity: editActivity,
       activityModel: activity,
+      getResponsibleProfessors: getResponsibleProfessors,
     );
   });
 
@@ -71,8 +78,9 @@ void main() {
     expect(controller.isLoading, true);
   });
 
-  test('isFilled', () {
-    var test = controller.isFilled();
+  test('ValideteRequiredField', () {
+    String str = 'Teste';
+    var test = controller.validateRequiredField(str);
     expect(test, true);
   });
 
@@ -131,7 +139,7 @@ void main() {
   });
 
   test('setParticipants', () {
-    var str = 1;
+    String str = '15';
     controller.setParticipants(str);
     expect(controller.activityToEdit.totalSlots, str);
   });

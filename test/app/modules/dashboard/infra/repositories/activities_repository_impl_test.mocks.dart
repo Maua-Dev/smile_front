@@ -169,7 +169,7 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
   @override
   _i6.Future<dynamic> editActivity(
     String? id,
-    _i7.ActivityModel? activity,
+    _i4.AdminActivityModel? activity,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -182,14 +182,15 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
         returnValue: _i6.Future<dynamic>.value(),
       ) as _i6.Future<dynamic>);
   @override
-  _i6.Future<dynamic> createActivity(_i7.ActivityModel? activity) =>
+  _i6.Future<_i4.AdminActivityModel?> createActivity(
+          _i4.AdminActivityModel? activity) =>
       (super.noSuchMethod(
         Invocation.method(
           #createActivity,
           [activity],
         ),
-        returnValue: _i6.Future<dynamic>.value(),
-      ) as _i6.Future<dynamic>);
+        returnValue: _i6.Future<_i4.AdminActivityModel?>.value(),
+      ) as _i6.Future<_i4.AdminActivityModel?>);
   @override
   _i6.Future<dynamic> deleteActivity(String? activityCode) =>
       (super.noSuchMethod(

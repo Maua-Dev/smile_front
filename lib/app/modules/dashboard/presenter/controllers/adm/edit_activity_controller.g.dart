@@ -13,13 +13,13 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
       Atom(name: 'EditActivityControllerBase.activityToEdit', context: context);
 
   @override
-  ActivityModel get activityToEdit {
+  AdminActivityModel get activityToEdit {
     _$activityToEditAtom.reportRead();
     return super.activityToEdit;
   }
 
   @override
-  set activityToEdit(ActivityModel value) {
+  set activityToEdit(AdminActivityModel value) {
     _$activityToEditAtom.reportWrite(value, super.activityToEdit, () {
       super.activityToEdit = value;
     });
@@ -39,6 +39,52 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
     _$isLoadingAtom.reportWrite(value, super.isLoading, () {
       super.isLoading = value;
     });
+  }
+
+  late final _$allResponsibleProfessorsListAtom = Atom(
+      name: 'EditActivityControllerBase.allResponsibleProfessorsList',
+      context: context);
+
+  @override
+  List<ResponsibleProfessorModel>? get allResponsibleProfessorsList {
+    _$allResponsibleProfessorsListAtom.reportRead();
+    return super.allResponsibleProfessorsList;
+  }
+
+  @override
+  set allResponsibleProfessorsList(List<ResponsibleProfessorModel>? value) {
+    _$allResponsibleProfessorsListAtom
+        .reportWrite(value, super.allResponsibleProfessorsList, () {
+      super.allResponsibleProfessorsList = value;
+    });
+  }
+
+  late final _$responsibleProfessorAtom = Atom(
+      name: 'EditActivityControllerBase.responsibleProfessor',
+      context: context);
+
+  @override
+  ResponsibleProfessorModel get responsibleProfessor {
+    _$responsibleProfessorAtom.reportRead();
+    return super.responsibleProfessor;
+  }
+
+  @override
+  set responsibleProfessor(ResponsibleProfessorModel value) {
+    _$responsibleProfessorAtom.reportWrite(value, super.responsibleProfessor,
+        () {
+      super.responsibleProfessor = value;
+    });
+  }
+
+  late final _$getAllResponsibleProfessorsAsyncAction = AsyncAction(
+      'EditActivityControllerBase.getAllResponsibleProfessors',
+      context: context);
+
+  @override
+  Future<dynamic> getAllResponsibleProfessors() {
+    return _$getAllResponsibleProfessorsAsyncAction
+        .run(() => super.getAllResponsibleProfessors());
   }
 
   late final _$setIsLoadingAsyncAction =
@@ -62,11 +108,45 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
       ActionController(name: 'EditActivityControllerBase', context: context);
 
   @override
-  bool isFilled() {
+  String? validateRequiredField(String? value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
-        .startAction(name: 'EditActivityControllerBase.isFilled');
+        .startAction(name: 'EditActivityControllerBase.validateRequiredField');
     try {
-      return super.isFilled();
+      return super.validateRequiredField(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? isValidSubscriptionclosureDate(String? value) {
+    final _$actionInfo =
+        _$EditActivityControllerBaseActionController.startAction(
+            name: 'EditActivityControllerBase.isValidSubscriptionclosureDate');
+    try {
+      return super.isValidSubscriptionclosureDate(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeProfessor(int index) {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.removeProfessor');
+    try {
+      return super.removeProfessor(index);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIsExtensive() {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.setIsExtensive');
+    try {
+      return super.setIsExtensive();
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -78,6 +158,17 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
         .startAction(name: 'EditActivityControllerBase.setType');
     try {
       return super.setType(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setModality(DeliveryEnum? value) {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.setModality');
+    try {
+      return super.setModality(value);
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -139,6 +230,30 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
+  void setResponsibleProfessorId(String id, int index) {
+    final _$actionInfo =
+        _$EditActivityControllerBaseActionController.startAction(
+            name: 'EditActivityControllerBase.setResponsibleProfessorId');
+    try {
+      return super.setResponsibleProfessorId(id, index);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addResponsibleProfessor() {
+    final _$actionInfo =
+        _$EditActivityControllerBaseActionController.startAction(
+            name: 'EditActivityControllerBase.addResponsibleProfessor');
+    try {
+      return super.addResponsibleProfessor();
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setDate(String value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setDate');
@@ -161,6 +276,28 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
+  void setClosureDate(String value) {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.setClosureDate');
+    try {
+      return super.setClosureDate(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setClosureHour(String value) {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.setClosureHour');
+    try {
+      return super.setClosureHour(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setDuration(String value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setDuration');
@@ -172,7 +309,7 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
-  void setParticipants(int value) {
+  void setParticipants(String value) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setParticipants');
     try {
@@ -252,7 +389,9 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   String toString() {
     return '''
 activityToEdit: ${activityToEdit},
-isLoading: ${isLoading}
+isLoading: ${isLoading},
+allResponsibleProfessorsList: ${allResponsibleProfessorsList},
+responsibleProfessor: ${responsibleProfessor}
     ''';
   }
 }

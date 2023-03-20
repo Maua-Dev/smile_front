@@ -93,7 +93,6 @@
     
     
 
-    
     "selectOptionTitle": "Selecione uma opção:",
     "registerFullNamePlaceholder": "Nome Completo",
     "registerSocialNamePlaceholder": "Nome Social",
@@ -180,15 +179,24 @@
     
     "cleanFiltersTitle": "Limpar Filtros",
 
+
+    "activity": "Atividade",
     "activityCreateTitle": "Criar Atividade",
     "activityEditTitle": "Editar Atividade",
     "activityTypeTitle": "Tipo de Atividade",
     "activityNameTitle": "Titulo da Atividade",
+    "activityDurationTitle": "Duração(Minutos)",  
+    "activityVacancyNumber": "Número de Vagas",  
+    "activityAcceptSbscriptions": "Aceitar inscrições",
+    "activityResponsibleTeacher": "Professor Responsável",
+    "activityInscriptionClosureDate": "Fechamento das Inscrições (Data)",
+    "activityInscriptionClosureHour": "Fechamento das Inscrições (Hora)",
+    "activityInscriptionClosureTooltip": "O sistema encerra automaticamente as inscrições da atividade\nem uma data e hora específica. Se não preencher esse campo, as\ninscrições não se encerrarão sozinhas e um administrador deverá\nfazê-lo manualmente.",
+    "activityErrorClosureDateAfterStartDate": "A data de fechamento das inscrições deve ser antes da data da atividade",
     "companyTitle": "Empresa:",
 
+    
     "descriptionTitle": "Descrição",
-
-
     "hourTitle": "Hora",
     "dayTitle": "Data",
     "scheduleTitle": "Horário",
@@ -205,7 +213,6 @@
     "validationCodeTitle": "Código de validação",
 
     "localTitle": "Local",
-
 
     "isExtensiveTooltip": "Atividade Extensionista",
 
@@ -232,7 +239,6 @@
 
     "unavailabeTitle": "Indisponível",
 
-
     "unsubscribeVerification": "Tem certeza que deseja se desinscrever?",
     "subscribeVerification": "Tem certeza que deseja se inscrever?",
     "unsubscribeVerificationClosedRegistration": "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!",
@@ -246,6 +252,4 @@
     "inQueueTitle": "Na fila",
     "exitQueueConfimation": "Deseja sair da fila?",
     "InQueueContent": "Você está na fila da atividade"
-
-
 }

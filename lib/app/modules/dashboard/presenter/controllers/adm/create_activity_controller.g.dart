@@ -13,15 +13,33 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
       name: 'CreateActivityControllerBase.activityToCreate', context: context);
 
   @override
-  ActivityModel get activityToCreate {
+  AdminActivityModel get activityToCreate {
     _$activityToCreateAtom.reportRead();
     return super.activityToCreate;
   }
 
   @override
-  set activityToCreate(ActivityModel value) {
+  set activityToCreate(AdminActivityModel value) {
     _$activityToCreateAtom.reportWrite(value, super.activityToCreate, () {
       super.activityToCreate = value;
+    });
+  }
+
+  late final _$responsibleProfessorAtom = Atom(
+      name: 'CreateActivityControllerBase.responsibleProfessor',
+      context: context);
+
+  @override
+  ResponsibleProfessorModel get responsibleProfessor {
+    _$responsibleProfessorAtom.reportRead();
+    return super.responsibleProfessor;
+  }
+
+  @override
+  set responsibleProfessor(ResponsibleProfessorModel value) {
+    _$responsibleProfessorAtom.reportWrite(value, super.responsibleProfessor,
+        () {
+      super.responsibleProfessor = value;
     });
   }
 
@@ -39,6 +57,53 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
     _$isLoadingAtom.reportWrite(value, super.isLoading, () {
       super.isLoading = value;
     });
+  }
+
+  late final _$allResponsibleProfessorsListAtom = Atom(
+      name: 'CreateActivityControllerBase.allResponsibleProfessorsList',
+      context: context);
+
+  @override
+  List<ResponsibleProfessorModel>? get allResponsibleProfessorsList {
+    _$allResponsibleProfessorsListAtom.reportRead();
+    return super.allResponsibleProfessorsList;
+  }
+
+  @override
+  set allResponsibleProfessorsList(List<ResponsibleProfessorModel>? value) {
+    _$allResponsibleProfessorsListAtom
+        .reportWrite(value, super.allResponsibleProfessorsList, () {
+      super.allResponsibleProfessorsList = value;
+    });
+  }
+
+  late final _$activityResponsibleProfessorsListAtom = Atom(
+      name: 'CreateActivityControllerBase.activityResponsibleProfessorsList',
+      context: context);
+
+  @override
+  List<ResponsibleProfessorModel>? get activityResponsibleProfessorsList {
+    _$activityResponsibleProfessorsListAtom.reportRead();
+    return super.activityResponsibleProfessorsList;
+  }
+
+  @override
+  set activityResponsibleProfessorsList(
+      List<ResponsibleProfessorModel>? value) {
+    _$activityResponsibleProfessorsListAtom
+        .reportWrite(value, super.activityResponsibleProfessorsList, () {
+      super.activityResponsibleProfessorsList = value;
+    });
+  }
+
+  late final _$getAllResponsibleProfessorsAsyncAction = AsyncAction(
+      'CreateActivityControllerBase.getAllResponsibleProfessors',
+      context: context);
+
+  @override
+  Future<dynamic> getAllResponsibleProfessors() {
+    return _$getAllResponsibleProfessorsAsyncAction
+        .run(() => super.getAllResponsibleProfessors());
   }
 
   late final _$setIsLoadingAsyncAction = AsyncAction(
@@ -64,11 +129,47 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
       ActionController(name: 'CreateActivityControllerBase', context: context);
 
   @override
-  bool isFilled() {
-    final _$actionInfo = _$CreateActivityControllerBaseActionController
-        .startAction(name: 'CreateActivityControllerBase.isFilled');
+  String? validateRequiredField(String? value) {
+    final _$actionInfo =
+        _$CreateActivityControllerBaseActionController.startAction(
+            name: 'CreateActivityControllerBase.validateRequiredField');
     try {
-      return super.isFilled();
+      return super.validateRequiredField(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? isValidSubscriptionclosureDate(String? value) {
+    final _$actionInfo =
+        _$CreateActivityControllerBaseActionController.startAction(
+            name:
+                'CreateActivityControllerBase.isValidSubscriptionclosureDate');
+    try {
+      return super.isValidSubscriptionclosureDate(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setModality(DeliveryEnum? value) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.setModality');
+    try {
+      return super.setModality(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIsExtensive() {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.setIsExtensive');
+    try {
+      return super.setIsExtensive();
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -102,6 +203,85 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
         .startAction(name: 'CreateActivityControllerBase.setTitle');
     try {
       return super.setTitle(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setResponsibleProfessorId(String id, int index) {
+    final _$actionInfo =
+        _$CreateActivityControllerBaseActionController.startAction(
+            name: 'CreateActivityControllerBase.setResponsibleProfessorId');
+    try {
+      return super.setResponsibleProfessorId(id, index);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeProfessor(int index) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.removeProfessor');
+    try {
+      return super.removeProfessor(index);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addResponsibleProfessor() {
+    final _$actionInfo =
+        _$CreateActivityControllerBaseActionController.startAction(
+            name: 'CreateActivityControllerBase.addResponsibleProfessor');
+    try {
+      return super.addResponsibleProfessor();
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addSpeaker() {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.addSpeaker');
+    try {
+      return super.addSpeaker();
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSpeakerName(String value, int index) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.setSpeakerName');
+    try {
+      return super.setSpeakerName(value, index);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSpeakerBio(String value, int index) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.setSpeakerBio');
+    try {
+      return super.setSpeakerBio(value, index);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSpeakerCompany(String value, int index) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.setSpeakerCompany');
+    try {
+      return super.setSpeakerCompany(value, index);
     } finally {
       _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -174,7 +354,29 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
-  void setParticipants(int value) {
+  void setClosureDate(String value) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.setClosureDate');
+    try {
+      return super.setClosureDate(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setClosureHour(String value) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.setClosureHour');
+    try {
+      return super.setClosureHour(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setParticipants(String value) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.setParticipants');
     try {
@@ -197,50 +399,6 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
-  void setSpeakerName(String value, int index) {
-    final _$actionInfo = _$CreateActivityControllerBaseActionController
-        .startAction(name: 'CreateActivityControllerBase.setSpeakerName');
-    try {
-      return super.setSpeakerName(value, index);
-    } finally {
-      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setSpeakerBio(String value, int index) {
-    final _$actionInfo = _$CreateActivityControllerBaseActionController
-        .startAction(name: 'CreateActivityControllerBase.setSpeakerBio');
-    try {
-      return super.setSpeakerBio(value, index);
-    } finally {
-      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setSpeakerCompany(String value, int index) {
-    final _$actionInfo = _$CreateActivityControllerBaseActionController
-        .startAction(name: 'CreateActivityControllerBase.setSpeakerCompany');
-    try {
-      return super.setSpeakerCompany(value, index);
-    } finally {
-      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void addSpeaker() {
-    final _$actionInfo = _$CreateActivityControllerBaseActionController
-        .startAction(name: 'CreateActivityControllerBase.addSpeaker');
-    try {
-      return super.addSpeaker();
-    } finally {
-      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void removeSpeaker(int index) {
     final _$actionInfo = _$CreateActivityControllerBaseActionController
         .startAction(name: 'CreateActivityControllerBase.removeSpeaker');
@@ -255,7 +413,10 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   String toString() {
     return '''
 activityToCreate: ${activityToCreate},
-isLoading: ${isLoading}
+responsibleProfessor: ${responsibleProfessor},
+isLoading: ${isLoading},
+allResponsibleProfessorsList: ${allResponsibleProfessorsList},
+activityResponsibleProfessorsList: ${activityResponsibleProfessorsList}
     ''';
   }
 }

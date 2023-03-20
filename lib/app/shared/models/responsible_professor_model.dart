@@ -16,4 +16,9 @@ class ResponsibleProfessorModel extends ResponsibleProfessor {
   static List<ResponsibleProfessorModel> fromMaps(List array) {
     return array.map((e) => ResponsibleProfessorModel.fromMap(e)).toList();
   }
+
+  factory ResponsibleProfessorModel.newInstance() {
+    return ResponsibleProfessorModel(
+        name: '', id: '', role: UserRolesEnum.PROFESSOR);
+  }
 }

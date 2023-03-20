@@ -19,7 +19,7 @@ void main() {
   });
 
   test('CreateActivityController Injection', () {
-    Modular.get<CreateActivityController>();
+    Modular.get<CreateActivityControllerBase>();
   });
 
   test('ActivitiesDatasource Injection', () {

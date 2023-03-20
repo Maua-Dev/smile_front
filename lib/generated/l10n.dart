@@ -1524,6 +1524,16 @@ class S {
     );
   }
 
+  /// `Activity`
+  String get activity {
+    return Intl.message(
+      'Activity',
+      name: 'activity',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Create Activity`
   String get activityCreateTitle {
     return Intl.message(
@@ -1559,6 +1569,86 @@ class S {
     return Intl.message(
       'Activity Title',
       name: 'activityNameTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Duration(Minutes)`
+  String get activityDurationTitle {
+    return Intl.message(
+      'Duration(Minutes)',
+      name: 'activityDurationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of Vanacies`
+  String get activityVacancyNumber {
+    return Intl.message(
+      'Number of Vanacies',
+      name: 'activityVacancyNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept Subscriptions`
+  String get activityAcceptSbscriptions {
+    return Intl.message(
+      'Accept Subscriptions',
+      name: 'activityAcceptSbscriptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible Teacher`
+  String get activityResponsibleTeacher {
+    return Intl.message(
+      'Responsible Teacher',
+      name: 'activityResponsibleTeacher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inscription Closure (Date)`
+  String get activityInscriptionClosureDate {
+    return Intl.message(
+      'Inscription Closure (Date)',
+      name: 'activityInscriptionClosureDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inscription Closure (Hour)`
+  String get activityInscriptionClosureHour {
+    return Intl.message(
+      'Inscription Closure (Hour)',
+      name: 'activityInscriptionClosureHour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The system automatically closes the activity\nsubscriptions at a specific date and time. If this field is not filled in, the\nsubscriptions will not close by themselves and an administrator must\ndo it manually.`
+  String get activityInscriptionClosureTooltip {
+    return Intl.message(
+      'The system automatically closes the activity\nsubscriptions at a specific date and time. If this field is not filled in, the\nsubscriptions will not close by themselves and an administrator must\ndo it manually.',
+      name: 'activityInscriptionClosureTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The inscription closure date must be before the event date`
+  String get activityErrorClosureDateAfterStartDate {
+    return Intl.message(
+      'The inscription closure date must be before the event date',
+      name: 'activityErrorClosureDateAfterStartDate',
       desc: '',
       args: [],
     );
