@@ -169,6 +169,40 @@ mixin _$MoreInfoResponsibleActivitiesController
     });
   }
 
+  late final _$initialTimeAtom = Atom(
+      name: 'MoreInfoResponsibleActivitiesControllerBase.initialTime',
+      context: context);
+
+  @override
+  String get initialTime {
+    _$initialTimeAtom.reportRead();
+    return super.initialTime;
+  }
+
+  @override
+  set initialTime(String value) {
+    _$initialTimeAtom.reportWrite(value, super.initialTime, () {
+      super.initialTime = value;
+    });
+  }
+
+  late final _$finalTimeAtom = Atom(
+      name: 'MoreInfoResponsibleActivitiesControllerBase.finalTime',
+      context: context);
+
+  @override
+  String get finalTime {
+    _$finalTimeAtom.reportRead();
+    return super.finalTime;
+  }
+
+  @override
+  set finalTime(String value) {
+    _$finalTimeAtom.reportWrite(value, super.finalTime, () {
+      super.finalTime = value;
+    });
+  }
+
   late final _$isButtonLoadingAtom = Atom(
       name: 'MoreInfoResponsibleActivitiesControllerBase.isButtonLoading',
       context: context);
@@ -343,6 +377,8 @@ isIconSelected: ${isIconSelected},
 isSwitched: ${isSwitched},
 professorList: ${professorList},
 professorActivityWithEnrollments: ${professorActivityWithEnrollments},
+initialTime: ${initialTime},
+finalTime: ${finalTime},
 isButtonLoading: ${isButtonLoading}
     ''';
   }

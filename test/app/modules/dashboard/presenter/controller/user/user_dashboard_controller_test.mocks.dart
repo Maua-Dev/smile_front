@@ -282,6 +282,23 @@ class MockSecureStorageInterface extends _i1.Mock
         ),
         returnValue: _i3.Future<String?>.value(),
       ) as _i3.Future<String?>);
+  @override
+  _i3.Future<void> saveNavBarIndex(int? navBarIndex) => (super.noSuchMethod(
+        Invocation.method(
+          #saveNavBarIndex,
+          [navBarIndex],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
+  @override
+  _i3.Future<int?> getNavBarIndex() => (super.noSuchMethod(
+        Invocation.method(
+          #getNavBarIndex,
+          [],
+        ),
+        returnValue: _i3.Future<int?>.value(),
+      ) as _i3.Future<int?>);
 }
 
 /// A class which mocks [UserRepositoryInterface].
