@@ -2,6 +2,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
 
 enum MauaEntitiesEnum {
+  dev,
   atletica,
   ca,
   diversidade,
@@ -12,7 +13,6 @@ enum MauaEntitiesEnum {
   mauasocial,
   mbc,
   nae,
-  dev,
   nine,
   finance,
   baja,
