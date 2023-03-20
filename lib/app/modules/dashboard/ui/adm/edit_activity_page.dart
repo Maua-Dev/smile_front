@@ -152,6 +152,7 @@ class _EditActivityPageState
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 114),
                             child: ScheduleWidget(
+                              delivery: controller.activityToEdit.deliveryEnum,
                               closeInscriptionsHour: closureHour,
                               isValidSubscriptionclosureDate:
                                   controller.isValidSubscriptionclosureDate,
@@ -203,6 +204,8 @@ class _EditActivityPageState
                               .activityToEdit.responsibleProfessors.length,
                           itemBuilder: (context, index) {
                             return ProfessorAddWidget(
+                              professor: controller
+                                  .activityToEdit.responsibleProfessors[index],
                               removeProfessor: () {
                                 controller.removeProfessor(index);
                                 setState(() {});

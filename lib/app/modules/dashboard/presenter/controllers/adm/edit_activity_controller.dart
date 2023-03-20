@@ -41,9 +41,6 @@ abstract class EditActivityControllerBase with Store {
   @observable
   List<ResponsibleProfessorModel>? allResponsibleProfessorsList = [];
 
-  @observable
-  var responsibleProfessor = ResponsibleProfessorModel.newInstance();
-
   @action
   Future getAllResponsibleProfessors() async {
     allResponsibleProfessorsList = await getResponsibleProfessors();
@@ -78,9 +75,18 @@ abstract class EditActivityControllerBase with Store {
   @action
   Future editUserActivity() async {
     setIsLoading(true);
-    await editActivity(activityToEdit);
+    if (activityToEdit.deliveryEnum == DeliveryEnum.in_person) {
+      activityToEdit.link = null;
+    }
+    if (activityToEdit.deliveryEnum == DeliveryEnum.online) {
+      activityToEdit.place = null;
+    }
+    var res = await editActivity(activityToEdit);
+    Modular.to.pop();
     setIsLoading(false);
-    Modular.to.navigate('/adm');
+    if (res) {
+      Modular.to.navigate('/adm');
+    }
   }
 
   @action

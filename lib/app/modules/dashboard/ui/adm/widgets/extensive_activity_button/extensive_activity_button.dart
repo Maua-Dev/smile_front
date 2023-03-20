@@ -19,7 +19,7 @@ class ExtensiveActivityCheck extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.only(bottom: 4.0, left: 4),
             child: Text(
-              "Extensiva",
+              "Extensionista",
               style: TextStyle(fontSize: 18),
             ),
           ),

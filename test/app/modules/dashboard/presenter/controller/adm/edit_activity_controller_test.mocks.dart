@@ -118,14 +118,14 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             <_i7.AdminActivityModel>[]),
       ) as _i4.Future<List<_i7.AdminActivityModel>>);
   @override
-  _i4.Future<dynamic> editActivity(_i7.AdminActivityModel? activityToEdit) =>
+  _i4.Future<bool> editActivity(_i7.AdminActivityModel? activityToEdit) =>
       (super.noSuchMethod(
         Invocation.method(
           #editActivity,
           [activityToEdit],
         ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
   @override
   _i4.Future<dynamic> deleteActivity(String? activityCode) =>
       (super.noSuchMethod(

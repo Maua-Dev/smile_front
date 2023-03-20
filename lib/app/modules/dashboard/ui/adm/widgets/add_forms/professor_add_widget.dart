@@ -12,12 +12,14 @@ class ProfessorAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedProfessor;
 
   final int length;
+  final ResponsibleProfessorModel? professor;
   final List<ResponsibleProfessorModel>? responsibleProfessors;
   const ProfessorAddWidget(
       {Key? key,
       this.responsibleProfessors,
       this.removeProfessor,
       this.onChangedProfessor,
+      this.professor,
       required this.length,
       this.validateRequiredField})
       : super(key: key);
@@ -32,6 +34,7 @@ class ProfessorAddWidget extends StatelessWidget {
         children: [
           Flexible(
               child: AutocompleteTextField(
+            professor: professor,
             onChangedProfessor: onChangedProfessor!,
             responsibleProfessors: responsibleProfessors!,
             labelText: S.of(context).activityResponsibleTeacher,

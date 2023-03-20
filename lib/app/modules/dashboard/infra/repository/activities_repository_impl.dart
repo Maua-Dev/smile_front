@@ -45,12 +45,17 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future editActivity(AdminActivityModel activityToEdit) async {
+  Future<bool> editActivity(AdminActivityModel activityToEdit) async {
     var index = activitiesList.indexWhere(
         (element) => element.activityCode == activityToEdit.activityCode);
-    admActivitiesList.removeAt(index);
-    admActivitiesList.insert(index, activityToEdit);
-    await datasource.editActivity(activityToEdit.activityCode, activityToEdit);
+    var response = await datasource.editActivity(
+        activityToEdit.activityCode, activityToEdit);
+    if (response != null) {
+      admActivitiesList.removeAt(index);
+      admActivitiesList.insert(index, activityToEdit);
+      return true;
+    }
+    return false;
   }
 
   @override

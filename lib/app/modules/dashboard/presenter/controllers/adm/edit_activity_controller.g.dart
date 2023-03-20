@@ -59,24 +59,6 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
     });
   }
 
-  late final _$responsibleProfessorAtom = Atom(
-      name: 'EditActivityControllerBase.responsibleProfessor',
-      context: context);
-
-  @override
-  ResponsibleProfessorModel get responsibleProfessor {
-    _$responsibleProfessorAtom.reportRead();
-    return super.responsibleProfessor;
-  }
-
-  @override
-  set responsibleProfessor(ResponsibleProfessorModel value) {
-    _$responsibleProfessorAtom.reportWrite(value, super.responsibleProfessor,
-        () {
-      super.responsibleProfessor = value;
-    });
-  }
-
   late final _$getAllResponsibleProfessorsAsyncAction = AsyncAction(
       'EditActivityControllerBase.getAllResponsibleProfessors',
       context: context);
@@ -390,8 +372,7 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
     return '''
 activityToEdit: ${activityToEdit},
 isLoading: ${isLoading},
-allResponsibleProfessorsList: ${allResponsibleProfessorsList},
-responsibleProfessor: ${responsibleProfessor}
+allResponsibleProfessorsList: ${allResponsibleProfessorsList}
     ''';
   }
 }

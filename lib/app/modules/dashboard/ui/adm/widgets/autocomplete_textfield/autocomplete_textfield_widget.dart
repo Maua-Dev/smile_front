@@ -8,9 +8,11 @@ class AutocompleteTextField extends StatelessWidget {
   final String labelText;
   final void Function(String value) onChangedProfessor;
   final List<ResponsibleProfessorModel>? responsibleProfessors;
+  final ResponsibleProfessorModel? professor;
   const AutocompleteTextField(
       {super.key,
       required this.labelText,
+      this.professor,
       this.responsibleProfessors,
       required this.onChangedProfessor});
   static String _displayStringForOption(ResponsibleProfessorModel option) =>
@@ -18,6 +20,8 @@ class AutocompleteTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Autocomplete<ResponsibleProfessorModel>(
+      initialValue:
+          professor != null ? TextEditingValue(text: professor!.name) : null,
       displayStringForOption: _displayStringForOption,
       optionsBuilder: (TextEditingValue textEditingValue) {
         if (textEditingValue.text == '') {
