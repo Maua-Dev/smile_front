@@ -320,6 +320,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Atividades Responsáveis"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
+        "enrollmentTitle": MessageLookupByLibrary.simpleMessage("Status"),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu e-mail no campo abaixo:\n"),
         "errorGenericGetActivities": MessageLookupByLibrary.simpleMessage(

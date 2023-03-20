@@ -1584,6 +1584,16 @@ class S {
     );
   }
 
+  /// `Status`
+  String get enrollmentTitle {
+    return Intl.message(
+      'Status',
+      name: 'enrollmentTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Hora`
   String get hourTitle {
     return Intl.message(

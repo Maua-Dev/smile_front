@@ -509,6 +509,15 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  set enrollmentFilter(_i13.EnrollmentStateEnum? _enrollmentFilter) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #enrollmentFilter,
+          _enrollmentFilter,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   set dateFilter(DateTime? _dateFilter) => super.noSuchMethod(
         Invocation.setter(
           #dateFilter,
@@ -682,6 +691,15 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  void setEnrollmentFilter(_i13.EnrollmentStateEnum? value) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #setEnrollmentFilter,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   _i10.Future<void> subscribeUserActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -717,6 +735,21 @@ class MockUserDashboardController extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+  @override
+  List<_i6.EnrollsActivityModel> filterActivitiesByEnrollmentState(
+    _i13.EnrollmentStateEnum? type,
+    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #filterActivitiesByEnrollmentState,
+          [
+            type,
+            activitiesToFilter,
+          ],
+        ),
+        returnValue: <_i6.EnrollsActivityModel>[],
+      ) as List<_i6.EnrollsActivityModel>);
   @override
   void setAllFilters() => super.noSuchMethod(
         Invocation.method(

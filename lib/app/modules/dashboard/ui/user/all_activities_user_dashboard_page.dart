@@ -60,6 +60,10 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                 typeFilter: controller.typeFilter,
                 dateFilter: controller.dateFilter,
                 hourFilter: controller.hourFilter,
+                enrollmentFilter: controller.enrollmentFilter,
+                onChangedEnrollmentFilter: (type) {
+                  controller.setEnrollmentFilter(type!);
+                },
                 resetFilters: () => controller.resetFilters(),
                 onChangedActivitiesFilter: (type) {
                   controller.setTypeFilter(type!);

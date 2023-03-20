@@ -8,6 +8,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.da
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import '../../../../../../generated/l10n.dart';
+import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
 
 part 'user_dashboard_controller.g.dart';
 
@@ -95,6 +96,15 @@ abstract class UserDashboardControllerBase with Store {
     setAllFilters();
   }
 
+  @observable
+  EnrollmentStateEnum? enrollmentFilter;
+
+  @action
+  void setEnrollmentFilter(EnrollmentStateEnum value) {
+    enrollmentFilter = value;
+    setAllFilters();
+  }
+
   Future<void> subscribeUserActivity(String activityCode) async {
     setIsLoading(true);
     await enrollmentController.subscribeActivity(activityCode);
@@ -130,10 +140,46 @@ abstract class UserDashboardControllerBase with Store {
   }
 
   @action
+  List<EnrollsActivityModel> filterActivitiesByEnrollmentState(
+      EnrollmentStateEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+    var list = activitiesToFilter
+        .where((element) => element.enrollments!.state == type)
+        .toList();
+    List<EnrollsActivityModel> enrolledList = [];
+    for (var enrolledActivity in list) {
+      enrolledList.add(EnrollsActivityModel(
+        acceptingNewEnrollments: enrolledActivity.acceptingNewEnrollments,
+        activityCode: enrolledActivity.activityCode,
+        description: enrolledActivity.description,
+        duration: enrolledActivity.duration,
+        isExtensive: enrolledActivity.isExtensive,
+        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        speakers: enrolledActivity.speakers,
+        takenSlots: enrolledActivity.takenSlots,
+        title: enrolledActivity.title,
+        totalSlots: enrolledActivity.totalSlots,
+        type: enrolledActivity.type,
+        deliveryEnum: enrolledActivity.deliveryEnum,
+        enrollments: enrolledActivity.enrollments,
+        link: enrolledActivity.link,
+        place: enrolledActivity.place,
+        startDate: enrolledActivity.startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            enrolledActivity.stopAcceptingNewEnrollmentsBefore,
+      ));
+    }
+    return enrolledList;
+  }
+
+  @action
   void setAllFilters() {
     var listActivities = allSubscribedActivitiesList;
     if (typeFilter != null) {
       listActivities = filterActivitiesByType(typeFilter!, listActivities);
+    }
+    if (enrollmentFilter != null) {
+      listActivities =
+          filterActivitiesByEnrollmentState(enrollmentFilter!, listActivities);
     }
     if (dateFilter != null) {
       listActivities = filterActivitiesByDate(dateFilter!, listActivities);

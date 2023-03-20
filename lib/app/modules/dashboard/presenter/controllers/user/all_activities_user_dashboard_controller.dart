@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
+import '../../../../../shared/models/enrollments_model.dart';
 import '../../../../../shared/models/enrolls_activity_model.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller.dart';
@@ -66,7 +68,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   List<EnrollsActivityModel> activitiesOnScreen = List.empty();
 
   @observable
-  ActivityEnum? activityType;
+  EnrollmentStateEnum? enrollmentFilter;
 
   @observable
   ActivityEnum? typeFilter;
@@ -78,6 +80,12 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
   void setTypeFilter(ActivityEnum value) {
     typeFilter = value;
     typeOnScreen = value.name;
+    setAllFilters();
+  }
+
+  @action
+  void setEnrollmentFilter(EnrollmentStateEnum value) {
+    enrollmentFilter = value;
     setAllFilters();
   }
 
@@ -105,6 +113,10 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     if (typeFilter != null) {
       listActivities = filterActivitiesByType(typeFilter!, listActivities);
     }
+    if (enrollmentFilter != null) {
+      listActivities =
+          filterActivitiesByEnrollmentState(enrollmentFilter!, listActivities);
+    }
     if (dateFilter != null) {
       listActivities = filterActivitiesByDate(dateFilter!, listActivities);
     }
@@ -120,6 +132,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
     typeFilter = null;
     dateFilter = null;
     hourFilter = null;
+    enrollmentFilter = null;
   }
 
   @action
@@ -127,6 +140,42 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
       ActivityEnum type, List<EnrollsActivityModel> activitiesToFilter) {
     var list =
         activitiesToFilter.where((element) => element.type == type).toList();
+    List<EnrollsActivityModel> enrolledList = [];
+    for (var enrolledActivity in list) {
+      enrolledList.add(EnrollsActivityModel(
+        acceptingNewEnrollments: enrolledActivity.acceptingNewEnrollments,
+        activityCode: enrolledActivity.activityCode,
+        description: enrolledActivity.description,
+        duration: enrolledActivity.duration,
+        isExtensive: enrolledActivity.isExtensive,
+        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        speakers: enrolledActivity.speakers,
+        takenSlots: enrolledActivity.takenSlots,
+        title: enrolledActivity.title,
+        totalSlots: enrolledActivity.totalSlots,
+        type: enrolledActivity.type,
+        deliveryEnum: enrolledActivity.deliveryEnum,
+        enrollments: enrolledActivity.enrollments,
+        link: enrolledActivity.link,
+        place: enrolledActivity.place,
+        startDate: enrolledActivity.startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            enrolledActivity.stopAcceptingNewEnrollmentsBefore,
+      ));
+    }
+    return enrolledList;
+  }
+
+  @action
+  List<EnrollsActivityModel> filterActivitiesByEnrollmentState(
+      EnrollmentStateEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+    var list = activitiesToFilter.where((element) {
+      var enroll = element.enrollments ??
+          EnrollmentsModel(
+              state: EnrollmentStateEnum.NONE, dateSubscribed: DateTime.now());
+      return enroll.state == type;
+    }).toList();
+
     List<EnrollsActivityModel> enrolledList = [];
     for (var enrolledActivity in list) {
       enrolledList.add(EnrollsActivityModel(

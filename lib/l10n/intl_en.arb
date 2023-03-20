@@ -189,6 +189,7 @@
 
     "descriptionTitle": "Description",
 
+    "enrollmentTitle": "Status",
     "hourTitle": "Hora",
     "dayTitle": "Data",
     "scheduleTitle": "Schedule",

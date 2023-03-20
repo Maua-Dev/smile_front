@@ -5,11 +5,11 @@ import 'package:intl/intl.dart';
 
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/widgets/button_filter_widget.dart';
-import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
 
+import '../../../../../../../shared/entities/infra/enrollment_state_enum.dart';
 import '../../../../../../../shared/themes/breakpoint.dart';
 
 class UserFilterCardWidget extends StatelessWidget {
@@ -22,6 +22,8 @@ class UserFilterCardWidget extends StatelessWidget {
   final Function(DateTime?)? onChangedTimeFilter;
   final DateTime? hourFilter;
   final Function()? resetFilters;
+  final EnrollmentStateEnum? enrollmentFilter;
+  final Function(EnrollmentStateEnum?) onChangedEnrollmentFilter;
   const UserFilterCardWidget({
     Key? key,
     required this.onChangedActivitiesFilter,
@@ -33,6 +35,8 @@ class UserFilterCardWidget extends StatelessWidget {
     required this.hourFilter,
     required this.resetFilters,
     this.mainColor,
+    this.enrollmentFilter,
+    required this.onChangedEnrollmentFilter,
   }) : super(key: key);
 
   @override
@@ -93,6 +97,67 @@ class UserFilterCardWidget extends StatelessWidget {
                                             alignment: Alignment.center,
                                             child: Text(
                                               ActivityEnum.values[index].name
+                                                  .toString(),
+                                              style: AppTextStyles.bold
+                                                  .copyWith(
+                                                      color: AppColors.white,
+                                                      fontSize: 16),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                              ),
+                            );
+                          });
+                    },
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  ButtonFilterWidget(
+                    title: enrollmentFilter == null
+                        ? S.of(context).enrollmentTitle
+                        : enrollmentFilter!.name,
+                    width: MediaQuery.of(context).size.width,
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              content: SizedBox(
+                                width: 500,
+                                height: 500,
+                                child: ListView.builder(
+                                    itemCount: 5,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 12, horizontal: 30),
+                                        child: ElevatedButton(
+                                          style: ButtonStyle(
+                                            shape: MaterialStateProperty.all<
+                                                RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                      color: AppColors.white),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            onChangedEnrollmentFilter(
+                                                EnrollmentStateEnum
+                                                    .values[index]);
+                                            Modular.to.pop();
+                                          },
+                                          child: Align(
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              EnrollmentStateEnum
+                                                  .values[index].name
                                                   .toString(),
                                               style: AppTextStyles.bold
                                                   .copyWith(
@@ -237,6 +302,59 @@ class UserFilterCardWidget extends StatelessWidget {
                 },
               ),
               ButtonFilterWidget(
+                title: enrollmentFilter == null
+                    ? S.of(context).enrollmentTitle
+                    : enrollmentFilter!.name,
+                width: 200,
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          content: SizedBox(
+                            width: 500,
+                            height: 500,
+                            child: ListView.builder(
+                                itemCount: 5,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12, horizontal: 30),
+                                    child: ElevatedButton(
+                                      style: ButtonStyle(
+                                        shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                              side: BorderSide(
+                                                  color: AppColors.white),
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        onChangedEnrollmentFilter(
+                                            EnrollmentStateEnum.values[index]);
+                                        Modular.to.pop();
+                                      },
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          EnrollmentStateEnum.values[index].name
+                                              .toString(),
+                                          style: AppTextStyles.bold.copyWith(
+                                              color: AppColors.white,
+                                              fontSize: 16),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }),
+                          ),
+                        );
+                      });
+                },
+              ),
+              ButtonFilterWidget(
                 title: formattedDate == ''
                     ? S.of(context).dateTitle
                     : formattedDate,
@@ -265,7 +383,7 @@ class UserFilterCardWidget extends StatelessWidget {
                 title: formattedHour == ''
                     ? S.of(context).scheduleTitle
                     : formattedHour,
-                width: 200,
+                width: 180,
                 onPressed: () {
                   showTimePicker(
                       context: context,
