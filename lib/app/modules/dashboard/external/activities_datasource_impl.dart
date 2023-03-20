@@ -118,12 +118,11 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   }
 
   @override
-  Future<AdminActivityModel?> createActivity(
-      AdminActivityModel activity) async {
+  Future<ActivityModel?> createActivity(AdminActivityModel activity) async {
     var res = await middleware(
         url: '/create-activity', data: activity.toJson(), http: 'post');
     if (res.statusCode == 201) {
-      return AdminActivityModel.fromMap(res.data['activity']);
+      return ActivityModel.fromMap(res.data['activity']);
     }
     return null;
   }
