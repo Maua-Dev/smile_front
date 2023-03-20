@@ -131,6 +131,17 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
+  void removeProfessor(int index) {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.removeProfessor');
+    try {
+      return super.removeProfessor(index);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setIsExtensive() {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.setIsExtensive');
@@ -219,12 +230,24 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
-  void setResponsibleProfessorId(String id) {
+  void setResponsibleProfessorId(String id, int index) {
     final _$actionInfo =
         _$EditActivityControllerBaseActionController.startAction(
             name: 'EditActivityControllerBase.setResponsibleProfessorId');
     try {
-      return super.setResponsibleProfessorId(id);
+      return super.setResponsibleProfessorId(id, index);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addResponsibleProfessor() {
+    final _$actionInfo =
+        _$EditActivityControllerBaseActionController.startAction(
+            name: 'EditActivityControllerBase.addResponsibleProfessor');
+    try {
+      return super.addResponsibleProfessor();
     } finally {
       _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
     }

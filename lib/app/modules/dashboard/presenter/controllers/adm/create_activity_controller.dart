@@ -60,9 +60,18 @@ abstract class CreateActivityControllerBase with Store {
   @action
   Future createUserActivity() async {
     setIsLoading(true);
-    await createActivity(activityToCreate);
+    if (activityToCreate.deliveryEnum == DeliveryEnum.in_person) {
+      activityToCreate.link = null;
+    }
+    if (activityToCreate.deliveryEnum == DeliveryEnum.online) {
+      activityToCreate.place = null;
+    }
+    var res = await createActivity(activityToCreate);
+    Modular.to.pop();
     setIsLoading(false);
-    Modular.to.navigate('/adm');
+    if (res) {
+      Modular.to.navigate('/adm');
+    }
   }
 
   @action
@@ -109,7 +118,6 @@ abstract class CreateActivityControllerBase with Store {
     activityToCreate = activityToCreate.copyWith(title: value);
   }
 
-  //tirar dps
   @action
   void setResponsibleProfessorId(String id, int index) {
     var list = activityToCreate.responsibleProfessors;
@@ -125,13 +133,6 @@ abstract class CreateActivityControllerBase with Store {
     list.removeAt(index);
     activityToCreate = activityToCreate.copyWith(responsibleProfessors: list);
   }
-
-  // @action
-  // void setResponsibleProfessorId(String id, int index) {
-  //   ResponsibleProfessorModel professor = allResponsibleProfessorsList!
-  //       .firstWhere((professor) => professor.id == id);
-  //   activityToCreate.responsibleProfessors[index].id = professor.id;
-  // }
 
   @action
   void addResponsibleProfessor() {

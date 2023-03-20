@@ -99,15 +99,14 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i4.Future<String>.value(''),
       ) as _i4.Future<String>);
   @override
-  _i4.Future<dynamic> createActivity(
-          _i7.AdminActivityModel? activityToCreate) =>
+  _i4.Future<bool> createActivity(_i7.AdminActivityModel? activityToCreate) =>
       (super.noSuchMethod(
         Invocation.method(
           #createActivity,
           [activityToCreate],
         ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
   @override
   _i4.Future<List<_i7.AdminActivityModel>> getAdminActivities() =>
       (super.noSuchMethod(

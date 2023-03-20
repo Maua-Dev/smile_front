@@ -153,6 +153,8 @@ class _CreateActivityPageState
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 114),
                             child: ScheduleWidget(
+                              delivery:
+                                  controller.activityToCreate.deliveryEnum,
                               closeInscriptionsHour: closureHour,
                               isValidSubscriptionclosureDate:
                                   controller.isValidSubscriptionclosureDate,
@@ -322,8 +324,6 @@ class _CreateActivityPageState
                                           isLoading: controller.isLoading,
                                           title:
                                               S.of(context).confirmToContinue,
-                                          content:
-                                              S.of(context).lostOldDataWarn,
                                           onPressed: () =>
                                               controller.createUserActivity(),
                                         );

@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
+import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/add_forms/professor_add_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app_bar_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/extensive_activity_button/extensive_activity_button.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
@@ -195,6 +196,44 @@ class _EditActivityPageState
                               removeSchedule: () {},
                             ));
                       }),
+                      Observer(builder: (_) {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: controller
+                              .activityToEdit.responsibleProfessors.length,
+                          itemBuilder: (context, index) {
+                            return ProfessorAddWidget(
+                              removeProfessor: () {
+                                controller.removeProfessor(index);
+                                setState(() {});
+                              },
+                              onChangedProfessor: (value) {
+                                controller.setResponsibleProfessorId(
+                                    value, index);
+                              },
+                              responsibleProfessors:
+                                  controller.allResponsibleProfessorsList,
+                              validateRequiredField:
+                                  controller.validateRequiredField,
+                              length: controller
+                                  .activityToEdit.responsibleProfessors.length,
+                            );
+                          },
+                        );
+                      }),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 114, bottom: 24),
+                        child: FormsButtonWidget(
+                            width: 500,
+                            buttonTittle: 'Adicionar Professor',
+                            onPressed: controller.addResponsibleProfessor,
+                            backgroundColor: AppColors.brandingBlue,
+                            icon: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: 22,
+                            )),
+                      ),
                       Observer(builder: (_) {
                         return ListView.builder(
                           shrinkWrap: true,

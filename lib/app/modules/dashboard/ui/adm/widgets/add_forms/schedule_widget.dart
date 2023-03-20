@@ -38,6 +38,7 @@ class ScheduleWidget extends StatelessWidget {
   final int length;
   final String? closeInscriptionsDate;
   final String? closeInscriptionsHour;
+  final DeliveryEnum? delivery;
 
   const ScheduleWidget({
     Key? key,
@@ -67,6 +68,7 @@ class ScheduleWidget extends StatelessWidget {
     this.onChangedModality,
     this.modality,
     this.validateRequiredField,
+    this.delivery,
   }) : super(key: key);
 
   @override
@@ -156,25 +158,31 @@ class ScheduleWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Flexible(
-                    child: TextFieldDialogWidget(
-                      labelText: 'Link',
-                      value: link,
-                      onChanged: onChangedLink,
-                      padding: false,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Flexible(
-                    child: TextFieldDialogWidget(
-                      labelText: 'Local',
-                      value: location,
-                      onChanged: onChangedLocation,
-                      padding: false,
-                    ),
-                  ),
+                  delivery == null || delivery != DeliveryEnum.in_person
+                      ? Flexible(
+                          child: TextFieldDialogWidget(
+                            labelText: 'Link',
+                            value: link,
+                            onChanged: onChangedLink,
+                            padding: false,
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                  delivery != DeliveryEnum.in_person
+                      ? const SizedBox(
+                          width: 16,
+                        )
+                      : const SizedBox.shrink(),
+                  delivery == null || delivery != DeliveryEnum.online
+                      ? Flexible(
+                          child: TextFieldDialogWidget(
+                            labelText: 'Local',
+                            value: location,
+                            onChanged: onChangedLocation,
+                            padding: false,
+                          ),
+                        )
+                      : const SizedBox.shrink(),
                 ],
               ),
               Padding(

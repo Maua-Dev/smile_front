@@ -84,6 +84,13 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
+  void removeProfessor(int index) {
+    var list = activityToEdit.responsibleProfessors;
+    list.removeAt(index);
+    activityToEdit = activityToEdit.copyWith(responsibleProfessors: list);
+  }
+
+  @action
   void setIsExtensive() {
     activityToEdit =
         activityToEdit.copyWith(isExtensive: !activityToEdit.isExtensive);
@@ -125,9 +132,19 @@ abstract class EditActivityControllerBase with Store {
   }
 
   @action
-  void setResponsibleProfessorId(String id) {
-    responsibleProfessor = allResponsibleProfessorsList!
+  void setResponsibleProfessorId(String id, int index) {
+    var list = activityToEdit.responsibleProfessors;
+    ResponsibleProfessorModel professor = allResponsibleProfessorsList!
         .firstWhere((professor) => professor.id == id);
+    list[index] = professor;
+    activityToEdit = activityToEdit.copyWith(responsibleProfessors: list);
+  }
+
+  @action
+  void addResponsibleProfessor() {
+    var list = activityToEdit.responsibleProfessors;
+    list.add(ResponsibleProfessorModel.newInstance());
+    activityToEdit = activityToEdit.copyWith(responsibleProfessors: list);
   }
 
   @action

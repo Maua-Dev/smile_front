@@ -91,9 +91,13 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future createActivity(AdminActivityModel activityToCreate) async {
-    admActivitiesList.insert(0, activityToCreate);
-    await datasource.createActivity(activityToCreate);
+  Future<bool> createActivity(AdminActivityModel activityToCreate) async {
+    var response = await datasource.createActivity(activityToCreate);
+    if (response != null) {
+      admActivitiesList.insert(0, activityToCreate);
+      return true;
+    }
+    return false;
   }
 
   @override
