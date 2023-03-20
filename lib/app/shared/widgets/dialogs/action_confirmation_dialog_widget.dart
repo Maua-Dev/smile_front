@@ -7,6 +7,7 @@ class ActionConfirmationDialogWidget extends StatelessWidget {
   final String title;
   final String? content;
   final bool isLoading;
+  final bool? isDisable;
 
   const ActionConfirmationDialogWidget({
     Key? key,
@@ -14,6 +15,7 @@ class ActionConfirmationDialogWidget extends StatelessWidget {
     required this.title,
     this.content,
     required this.isLoading,
+    this.isDisable,
   }) : super(key: key);
 
   @override

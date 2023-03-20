@@ -27,7 +27,36 @@ class AttendanceConfirmationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (checkCanViewConfirmAttendance) {
+    if (enrollmentState == EnrollmentStateEnum.COMPLETED) {
+      return Container(
+        constraints: const BoxConstraints(maxWidth: 400),
+        width: MediaQuery.of(context).size.width > tabletSize
+            ? MediaQuery.of(context).size.width * 0.36
+            : MediaQuery.of(context).size.width * 0.7,
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.brandingOrange),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Icon(
+                Icons.check_circle,
+                color: AppColors.greenButton,
+                size: 62,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(S.of(context).confirmedAttendance,
+                  style: AppTextStyles.bold
+                      .copyWith(fontSize: 24, color: AppColors.brandingOrange)),
+            ),
+          ],
+        ),
+      );
+    } else if (checkCanViewConfirmAttendance) {
       return Container(
         width: MediaQuery.of(context).size.width > tabletSize
             ? MediaQuery.of(context).size.width * 0.36
