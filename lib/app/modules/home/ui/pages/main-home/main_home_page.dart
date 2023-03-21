@@ -220,7 +220,7 @@ class _MainHomePageState extends State<MainHomePage> {
             child: Text(
               S.of(context).smileDate,
               textAlign: TextAlign.center,
-              style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
+              style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
             ),
           ),
           Padding(
@@ -242,7 +242,7 @@ class _MainHomePageState extends State<MainHomePage> {
                   child: Text(
                     S.of(context).knowMore,
                     textAlign: TextAlign.center,
-                    style: AppTextStyles.buttonBold.copyWith(fontSize: 14),
+                    style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
                   ),
                 ),
               ),
