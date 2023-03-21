@@ -229,8 +229,7 @@ class _MoreInfoPageState
                                             ? EnrollmentStateEnum.NONE
                                             : controller
                                                 .activity.enrollments!.state;
-                                    if (controller
-                                            .activity.enrollments!.state ==
+                                    if (isReg ==
                                         EnrollmentStateEnum.COMPLETED) {
                                       return;
                                     } else if (!controller
@@ -288,8 +287,7 @@ class _MoreInfoPageState
                                               controller.activity.totalSlots &&
                                           controller.activity.enrollments !=
                                               null) {
-                                        if (controller
-                                                .activity.enrollments!.state ==
+                                        if (isReg ==
                                             EnrollmentStateEnum.IN_QUEUE) {
                                           showDialog(
                                             context: context,
