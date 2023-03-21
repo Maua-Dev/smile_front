@@ -1664,6 +1664,26 @@ class S {
     );
   }
 
+  /// `Company`
+  String get companyTitleWithoutDouble {
+    return Intl.message(
+      'Company',
+      name: 'companyTitleWithoutDouble',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extensionist`
+  String get extensionistTitle {
+    return Intl.message(
+      'Extensionist',
+      name: 'extensionistTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description`
   String get descriptionTitle {
     return Intl.message(
@@ -2031,6 +2051,26 @@ class S {
     return Intl.message(
       'You are in the activity queue',
       name: 'InQueueContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Professor`
+  String get addProfessorTitle {
+    return Intl.message(
+      'Add Professor',
+      name: 'addProfessorTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Speaker Name`
+  String get speakerNameTitle {
+    return Intl.message(
+      'Speaker Name',
+      name: 'speakerNameTitle',
       desc: '',
       args: [],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../../shared/themes/app_colors.dart';
 import 'text_field_dialog_widget.dart';
@@ -44,7 +45,7 @@ class SpeakerAddWidget extends StatelessWidget {
                     Flexible(
                       child: TextFieldDialogWidget(
                         validator: validateRequiredField,
-                        labelText: 'Nome Palestrante',
+                        labelText: S.of(context).speakerNameTitle,
                         padding: false,
                         onChanged: onChangedName,
                         value: name,
@@ -56,7 +57,7 @@ class SpeakerAddWidget extends StatelessWidget {
                     Flexible(
                       child: TextFieldDialogWidget(
                         validator: validateRequiredField,
-                        labelText: 'Empresa',
+                        labelText: S.of(context).companyTitleWithoutDouble,
                         onChanged: onChangedCompany,
                         value: company,
                         padding: false,

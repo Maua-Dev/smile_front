@@ -194,6 +194,8 @@
     "activityInscriptionClosureTooltip": "O sistema encerra automaticamente as inscrições da atividade\nem uma data e hora específica. Se não preencher esse campo, as\ninscrições não se encerrarão sozinhas e um administrador deverá\nfazê-lo manualmente.",
     "activityErrorClosureDateAfterStartDate": "A data de fechamento das inscrições deve ser antes da data da atividade",
     "companyTitle": "Empresa:",
+    "companyTitleWithoutDouble": "Empresa",
+    "extensionistTitle": "Extensionista",
 
     
     "descriptionTitle": "Descrição",
@@ -251,5 +253,8 @@
     "joinQueueTitle": "Entrar na fila",
     "inQueueTitle": "Na fila",
     "exitQueueConfimation": "Deseja sair da fila?",
-    "InQueueContent": "Você está na fila da atividade"
+    "InQueueContent": "Você está na fila da atividade",
+
+    "addProfessorTitle": "Adicionar Professor",
+    "speakerNameTitle": "Nome do Palestrante"
 }

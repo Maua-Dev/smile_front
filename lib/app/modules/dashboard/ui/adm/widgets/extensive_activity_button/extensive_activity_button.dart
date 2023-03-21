@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../../shared/themes/app_colors.dart';
 
@@ -16,11 +17,11 @@ class ExtensiveActivityCheck extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(bottom: 4.0, left: 4),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4.0, left: 4),
             child: Text(
-              "Extensionista",
-              style: TextStyle(fontSize: 18),
+              S.of(context).extensionistTitle,
+              style: const TextStyle(fontSize: 18),
             ),
           ),
           Container(

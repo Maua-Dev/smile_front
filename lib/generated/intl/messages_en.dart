@@ -283,6 +283,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Activity Type"),
         "activityVacancyNumber":
             MessageLookupByLibrary.simpleMessage("Number of Vanacies"),
+        "addProfessorTitle":
+            MessageLookupByLibrary.simpleMessage("Add Professor"),
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Administrator Page"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Reports"),
@@ -314,6 +316,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Follow the steps that will be sent in the registered email:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Code"),
         "companyTitle": MessageLookupByLibrary.simpleMessage("Company:"),
+        "companyTitleWithoutDouble":
+            MessageLookupByLibrary.simpleMessage("Company"),
         "confirmAllFieldsConrrectlyFilled":
             MessageLookupByLibrary.simpleMessage(
                 "Check that all fields are filled in correctly."),
@@ -347,6 +351,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "exitQueueConfimation": MessageLookupByLibrary.simpleMessage(
             "Do you want to leave the queue?"),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Exit"),
+        "extensionistTitle":
+            MessageLookupByLibrary.simpleMessage("Extensionist"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Enter the number with DDD"),
         "fieldEmailInvalid":
@@ -479,6 +485,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDate": MessageLookupByLibrary.simpleMessage("May 22 to 27"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("May 22 to 27, 2023"),
+        "speakerNameTitle":
+            MessageLookupByLibrary.simpleMessage("Speaker Name"),
         "speakersAddTitle": MessageLookupByLibrary.simpleMessage("Add Speaker"),
         "speakersMainTitle":
             MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),

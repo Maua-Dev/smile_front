@@ -229,7 +229,7 @@ class _CreateActivityPageState
                         padding: const EdgeInsets.only(left: 114, bottom: 24),
                         child: FormsButtonWidget(
                             width: 500,
-                            buttonTittle: 'Adicionar Professor',
+                            buttonTittle: S.of(context).addProfessorTitle,
                             onPressed: controller.addResponsibleProfessor,
                             backgroundColor: AppColors.brandingBlue,
                             icon: const Icon(
@@ -296,7 +296,7 @@ class _CreateActivityPageState
                                     ? Screen.width(context) * 0.35
                                     : Screen.width(context) * 0.3,
                                 heightSize: 40,
-                                title: 'Cancelar',
+                                title: S.of(context).cancelTitle,
                                 onPressed: () {
                                   Modular.to.navigate('/adm');
                                 },
@@ -308,7 +308,7 @@ class _CreateActivityPageState
                             ),
                             CustomElevatedButtonWidget(
                               borderRadius: 8,
-                              title: 'Salvar',
+                              title: S.of(context).saveTitle,
                               widthSize: Screen.width(context) > tabletSize
                                   ? Screen.width(context) * 0.35
                                   : Screen.width(context) * 0.3,

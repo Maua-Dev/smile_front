@@ -282,6 +282,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tipo de Atividade"),
         "activityVacancyNumber":
             MessageLookupByLibrary.simpleMessage("Número de Vagas"),
+        "addProfessorTitle":
+            MessageLookupByLibrary.simpleMessage("Adicionar Professor"),
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Página do Administrador"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Relatórios"),
@@ -313,6 +315,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Siga os passos que serão enviados no e-mail cadastrado:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Código"),
         "companyTitle": MessageLookupByLibrary.simpleMessage("Empresa:"),
+        "companyTitleWithoutDouble":
+            MessageLookupByLibrary.simpleMessage("Empresa"),
         "confirmAllFieldsConrrectlyFilled":
             MessageLookupByLibrary.simpleMessage(
                 "Confira se todos os campos estão corretamente preenchidos."),
@@ -347,6 +351,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "exitQueueConfimation":
             MessageLookupByLibrary.simpleMessage("Deseja sair da fila?"),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Sair"),
+        "extensionistTitle":
+            MessageLookupByLibrary.simpleMessage("Extensionista"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Insira o número com DDD"),
         "fieldEmailInvalid":
@@ -481,6 +487,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("22 a 27 de Maio de 2023"),
+        "speakerNameTitle":
+            MessageLookupByLibrary.simpleMessage("Nome do Palestrante"),
         "speakersAddTitle":
             MessageLookupByLibrary.simpleMessage("Adicionar Palestrante"),
         "speakersMainTitle": MessageLookupByLibrary.simpleMessage(

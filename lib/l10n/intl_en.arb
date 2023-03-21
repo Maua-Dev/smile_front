@@ -194,6 +194,8 @@
     "activityInscriptionClosureTooltip": "The system automatically closes the activity\nsubscriptions at a specific date and time. If this field is not filled in, the\nsubscriptions will not close by themselves and an administrator must\ndo it manually.",
     "activityErrorClosureDateAfterStartDate": "The inscription closure date must be before the event date",
     "companyTitle": "Company:",
+    "companyTitleWithoutDouble": "Company",
+    "extensionistTitle": "Extensionist",
 
     
     "descriptionTitle": "Description",
@@ -251,5 +253,8 @@
     "joinQueueTitle": "Get in queue",
     "inQueueTitle": "In queue",
     "exitQueueConfimation": "Do you want to leave the queue?",
-    "InQueueContent": "You are in the activity queue"
+    "InQueueContent": "You are in the activity queue",
+
+    "addProfessorTitle": "Add Professor",
+    "speakerNameTitle": "Speaker Name"
 }
