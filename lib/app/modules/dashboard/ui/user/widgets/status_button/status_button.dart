@@ -18,6 +18,7 @@ class StatusButtonWidget extends StatelessWidget {
   final String dialogTitle;
   final String dialogContent;
   final String buttonTitle;
+  final bool? disableButton;
   const StatusButtonWidget({
     Key? key,
     required this.onPressed,
@@ -30,63 +31,91 @@ class StatusButtonWidget extends StatelessWidget {
     required this.dialogContent,
     required this.dialogTitle,
     required this.buttonTitle,
+    this.disableButton,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     if (acceptingNewEnrollments == true ||
-        enrollmentStateEnum == EnrollmentStateEnum.ENROLLED) {
-      return ElevatedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width < tabletSize
-                            ? 15
-                            : 20),
-                    side: BorderSide(color: buttonBorderColor))),
-            backgroundColor: MaterialStateProperty.all(buttonColor),
-          ),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return ActionConfirmationDialogWidget(
-                    isLoading: isLoading,
-                    title: dialogTitle,
-                    content: dialogContent,
-                    onPressed: onPressed);
-              },
-            );
-          },
-          child: Text(buttonTitle,
-              style: AppTextStyles.bold.copyWith(
-                  fontSize: MediaQuery.of(context).size.width < breakpointTablet
-                      ? 12
-                      : 24,
-                  color: buttonTitleColor)));
-    } else {
-      return Container(
-          width:
-              MediaQuery.of(context).size.width < breakpointTablet ? 100 : 200,
-          height:
-              MediaQuery.of(context).size.width < breakpointTablet ? 25 : 50,
-          decoration: BoxDecoration(
-            color: AppColors.gray,
-            borderRadius: BorderRadius.circular(
-                MediaQuery.of(context).size.width < tabletSize ? 15 : 20),
-          ),
-          child: Align(
-            alignment: Alignment.center,
-            child: Text(
-              S.of(context).unavailabeTitle,
-              style: AppTextStyles.bold.copyWith(
-                  fontSize: MediaQuery.of(context).size.width < breakpointTablet
-                      ? 12
-                      : 24,
-                  color: AppColors.white),
+        enrollmentStateEnum == EnrollmentStateEnum.ENROLLED ||
+        enrollmentStateEnum == EnrollmentStateEnum.COMPLETED) {
+      return SizedBox(
+        width: MediaQuery.of(context).size.width < breakpointTablet ? 100 : 200,
+        height: MediaQuery.of(context).size.width < breakpointTablet ? 25 : 50,
+        child: ElevatedButton(
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width < tabletSize
+                              ? 15
+                              : 20),
+                      side: BorderSide(color: buttonBorderColor))),
+              backgroundColor: MaterialStateProperty.all(buttonColor),
             ),
-          ));
+            onPressed: () {
+              if (disableButton != null) {
+                if (!disableButton!) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return ActionConfirmationDialogWidget(
+                          isLoading: isLoading,
+                          title: dialogTitle,
+                          content: dialogContent,
+                          onPressed: onPressed);
+                    },
+                  );
+                }
+              } else {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return ActionConfirmationDialogWidget(
+                        isLoading: isLoading,
+                        title: dialogTitle,
+                        content: dialogContent,
+                        onPressed: onPressed);
+                  },
+                );
+              }
+            },
+            child: Text(buttonTitle,
+                style: AppTextStyles.bold.copyWith(
+                    fontSize:
+                        MediaQuery.of(context).size.width < breakpointTablet
+                            ? 12
+                            : 24,
+                    color: buttonTitleColor))),
+      );
+    } else {
+      return SizedBox(
+        width: MediaQuery.of(context).size.width < breakpointTablet ? 100 : 200,
+        height: MediaQuery.of(context).size.width < breakpointTablet ? 25 : 50,
+        child: Container(
+            width: MediaQuery.of(context).size.width < breakpointTablet
+                ? 100
+                : 200,
+            height:
+                MediaQuery.of(context).size.width < breakpointTablet ? 25 : 50,
+            decoration: BoxDecoration(
+              color: AppColors.gray,
+              borderRadius: BorderRadius.circular(
+                  MediaQuery.of(context).size.width < tabletSize ? 15 : 20),
+            ),
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                S.of(context).unavailabeTitle,
+                style: AppTextStyles.bold.copyWith(
+                    fontSize:
+                        MediaQuery.of(context).size.width < breakpointTablet
+                            ? 12
+                            : 24,
+                    color: AppColors.white),
+              ),
+            )),
+      );
     }
   }
 }

@@ -315,8 +315,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Siga os passos que serão enviados no e-mail cadastrado:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Código"),
         "companyTitle": MessageLookupByLibrary.simpleMessage("Empresa:"),
+
         "companyTitleWithoutDouble":
             MessageLookupByLibrary.simpleMessage("Empresa"),
+
+        "completed": MessageLookupByLibrary.simpleMessage("Completa"),
+
         "confirmAllFieldsConrrectlyFilled":
             MessageLookupByLibrary.simpleMessage(
                 "Confira se todos os campos estão corretamente preenchidos."),
@@ -327,6 +331,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmTitle": MessageLookupByLibrary.simpleMessage("Confirmar"),
         "confirmToContinue": MessageLookupByLibrary.simpleMessage(
             "Tem certeza que deseja continuar?"),
+        "confirmedAttendance":
+            MessageLookupByLibrary.simpleMessage("Atividade completa!"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Data"),
         "dayTitle": MessageLookupByLibrary.simpleMessage("Data"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Descrição"),
@@ -342,6 +348,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Atividades Responsáveis"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
+        "enrollmentTitle": MessageLookupByLibrary.simpleMessage("Status"),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu e-mail no campo abaixo:\n"),
         "errorGenericGetActivities": MessageLookupByLibrary.simpleMessage(

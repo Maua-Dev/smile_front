@@ -479,6 +479,23 @@ class MockSecureStorageInterface extends _i1.Mock
         ),
         returnValue: _i5.Future<String?>.value(),
       ) as _i5.Future<String?>);
+  @override
+  _i5.Future<void> saveNavBarIndex(int? navBarIndex) => (super.noSuchMethod(
+        Invocation.method(
+          #saveNavBarIndex,
+          [navBarIndex],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+  @override
+  _i5.Future<int?> getNavBarIndex() => (super.noSuchMethod(
+        Invocation.method(
+          #getNavBarIndex,
+          [],
+        ),
+        returnValue: _i5.Future<int?>.value(),
+      ) as _i5.Future<int?>);
 }
 
 /// A class which mocks [LoginWithEmailInterface].

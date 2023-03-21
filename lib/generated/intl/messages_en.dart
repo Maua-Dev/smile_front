@@ -316,8 +316,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Follow the steps that will be sent in the registered email:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Code"),
         "companyTitle": MessageLookupByLibrary.simpleMessage("Company:"),
+
         "companyTitleWithoutDouble":
             MessageLookupByLibrary.simpleMessage("Company"),
+
+        "completed": MessageLookupByLibrary.simpleMessage("Completed"),
+
         "confirmAllFieldsConrrectlyFilled":
             MessageLookupByLibrary.simpleMessage(
                 "Check that all fields are filled in correctly."),
@@ -328,6 +332,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmTitle": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirmToContinue": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to continue?"),
+        "confirmedAttendance":
+            MessageLookupByLibrary.simpleMessage("Completed activity!"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Date"),
         "dayTitle": MessageLookupByLibrary.simpleMessage("Data"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
@@ -342,6 +348,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Responsible Activities"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
             "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration."),
+        "enrollmentTitle": MessageLookupByLibrary.simpleMessage("Status"),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n"),
         "errorGenericGetActivities": MessageLookupByLibrary.simpleMessage(

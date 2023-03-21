@@ -62,20 +62,20 @@ mixin _$AllActivitiesUserDashboardController
     });
   }
 
-  late final _$activityTypeAtom = Atom(
-      name: 'AllActivitiesUserDashboardControllerBase.activityType',
+  late final _$enrollmentFilterAtom = Atom(
+      name: 'AllActivitiesUserDashboardControllerBase.enrollmentFilter',
       context: context);
 
   @override
-  ActivityEnum? get activityType {
-    _$activityTypeAtom.reportRead();
-    return super.activityType;
+  EnrollButtonEnum? get enrollmentFilter {
+    _$enrollmentFilterAtom.reportRead();
+    return super.enrollmentFilter;
   }
 
   @override
-  set activityType(ActivityEnum? value) {
-    _$activityTypeAtom.reportWrite(value, super.activityType, () {
-      super.activityType = value;
+  set enrollmentFilter(EnrollButtonEnum? value) {
+    _$enrollmentFilterAtom.reportWrite(value, super.enrollmentFilter, () {
+      super.enrollmentFilter = value;
     });
   }
 
@@ -209,6 +209,20 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   @override
+  void setEnrollmentFilter(EnrollButtonEnum value) {
+    final _$actionInfo =
+        _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name:
+                'AllActivitiesUserDashboardControllerBase.setEnrollmentFilter');
+    try {
+      return super.setEnrollmentFilter(value);
+    } finally {
+      _$AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setDateFilter(DateTime value) {
     final _$actionInfo =
         _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
@@ -276,6 +290,21 @@ mixin _$AllActivitiesUserDashboardController
   }
 
   @override
+  List<EnrollsActivityModel> filterActivitiesByEnrollmentState(
+      EnrollButtonEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+    final _$actionInfo =
+        _$AllActivitiesUserDashboardControllerBaseActionController.startAction(
+            name:
+                'AllActivitiesUserDashboardControllerBase.filterActivitiesByEnrollmentState');
+    try {
+      return super.filterActivitiesByEnrollmentState(type, activitiesToFilter);
+    } finally {
+      _$AllActivitiesUserDashboardControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   List<EnrollsActivityModel> filterActivitiesByDate(
       DateTime date, List<EnrollsActivityModel> activitiesToFilter) {
     final _$actionInfo =
@@ -311,7 +340,7 @@ mixin _$AllActivitiesUserDashboardController
 isLoading: ${isLoading},
 allActivitiesFromGet: ${allActivitiesFromGet},
 activitiesOnScreen: ${activitiesOnScreen},
-activityType: ${activityType},
+enrollmentFilter: ${enrollmentFilter},
 typeFilter: ${typeFilter},
 typeOnScreen: ${typeOnScreen},
 dateFilter: ${dateFilter},

@@ -115,7 +115,7 @@ class _SpeakersHomePageState
       );
     } else {
       return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Observer(builder: (_) {
           return Column(
             children: [
@@ -142,7 +142,7 @@ class _SpeakersHomePageState
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -154,7 +154,7 @@ class _SpeakersHomePageState
                     ),
                     Text(
                       SpeakersEnum.values[controller.indexToShow].description,
-                      style: AppTextStyles.body.copyWith(fontSize: 16),
+                      style: AppTextStyles.body.copyWith(fontSize: 14),
                       textAlign: TextAlign.justify,
                     )
                   ],

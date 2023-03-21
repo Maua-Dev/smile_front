@@ -214,7 +214,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     var body = {
       'code': activityCode,
       'user_id': userId,
-      'new_state': state.name
+      'new_state': state.key
     };
     var res = await middleware(
         url: '/manual-attendance-change', data: body, http: 'post');

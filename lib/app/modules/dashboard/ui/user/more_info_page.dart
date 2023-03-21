@@ -188,7 +188,9 @@ class _MoreInfoPageState
               Observer(builder: (_) {
                 return !controller.activity.acceptingNewEnrollments &&
                         controller.enrollmentState !=
-                            EnrollmentStateEnum.ENROLLED
+                            EnrollmentStateEnum.ENROLLED &&
+                        controller.enrollmentState !=
+                            EnrollmentStateEnum.COMPLETED
                     ? Text(
                         S.of(context).unavailabeSubscribe,
                         textAlign: TextAlign.center,
@@ -227,8 +229,10 @@ class _MoreInfoPageState
                                             ? EnrollmentStateEnum.NONE
                                             : controller
                                                 .activity.enrollments!.state;
-
-                                    if (!controller
+                                    if (isReg ==
+                                        EnrollmentStateEnum.COMPLETED) {
+                                      return;
+                                    } else if (!controller
                                         .activity.acceptingNewEnrollments) {
                                       showDialog(
                                         context: context,
@@ -255,9 +259,7 @@ class _MoreInfoPageState
                                       );
                                     } else {
                                       if (isReg ==
-                                              EnrollmentStateEnum.ENROLLED ||
-                                          isReg ==
-                                              EnrollmentStateEnum.COMPLETED) {
+                                          EnrollmentStateEnum.ENROLLED) {
                                         showDialog(
                                           context: context,
                                           builder: (BuildContext context) {
@@ -285,8 +287,7 @@ class _MoreInfoPageState
                                               controller.activity.totalSlots &&
                                           controller.activity.enrollments !=
                                               null) {
-                                        if (controller
-                                                .activity.enrollments!.state ==
+                                        if (isReg ==
                                             EnrollmentStateEnum.IN_QUEUE) {
                                           showDialog(
                                             context: context,
@@ -422,16 +423,6 @@ class _MoreInfoPageState
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 64,
-                          height: 64,
-                          decoration: BoxDecoration(
-                              color: AppColors.brandingBlue,
-                              borderRadius: BorderRadius.circular(15)),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
                         Flexible(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

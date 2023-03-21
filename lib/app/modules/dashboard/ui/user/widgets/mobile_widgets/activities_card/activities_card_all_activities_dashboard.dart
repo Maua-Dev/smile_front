@@ -206,109 +206,91 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
-                                  width: MediaQuery.of(context).size.width <
-                                          breakpointTablet
-                                      ? 100
-                                      : 200,
-                                  height: MediaQuery.of(context).size.width <
-                                          breakpointTablet
-                                      ? 25
-                                      : 50,
-                                  child: activityEnrollment.state ==
-                                          EnrollmentStateEnum.ENROLLED
-                                      ? StatusButtonWidget(
-                                          onPressed: onPressedUnsubscribe,
-                                          isLoading: isLoading,
-                                          acceptingNewEnrollments:
-                                              acceptingNewEnrollments,
-                                          enrollmentStateEnum:
-                                              activityEnrollment.state,
-                                          buttonColor: AppColors.brandingOrange,
-                                          buttonTitleColor: AppColors.white,
-                                          buttonBorderColor:
-                                              AppColors.brandingOrange,
-                                          dialogTitle: S
-                                              .of(context)
-                                              .unsubscribeVerification,
-                                          dialogContent: S
-                                              .of(context)
-                                              .unsubscribeLoseVanacy,
-                                          buttonTitle:
-                                              S.of(context).subscribedTitle,
-                                        )
-                                      : activityEnrollment.state ==
-                                              EnrollmentStateEnum.IN_QUEUE
-                                          ?
-                                          // Botão aparecendo: Na fila
-                                          StatusButtonWidget(
-                                              onPressed: onPressedUnsubscribe,
-                                              isLoading: isLoading,
-                                              acceptingNewEnrollments:
-                                                  acceptingNewEnrollments,
-                                              enrollmentStateEnum:
-                                                  activityEnrollment.state,
-                                              buttonColor:
-                                                  AppColors.brandingBlue,
-                                              buttonTitleColor: AppColors.white,
-                                              buttonBorderColor:
-                                                  AppColors.brandingBlue,
-                                              dialogContent: S
-                                                  .of(context)
-                                                  .exitQueueConfimation,
-                                              dialogTitle:
-                                                  S.of(context).InQueueContent,
-                                              buttonTitle:
-                                                  S.of(context).inQueueTitle,
-                                            )
-                                          : takenSlots < totalSlots
-                                              ?
-                                              // Inscrever-se
-                                              StatusButtonWidget(
-                                                  onPressed: onPressedSubscribe,
-                                                  isLoading: isLoading,
-                                                  acceptingNewEnrollments:
-                                                      acceptingNewEnrollments,
-                                                  enrollmentStateEnum:
-                                                      activityEnrollment.state,
-                                                  buttonColor: AppColors.white,
-                                                  buttonTitleColor:
-                                                      AppColors.brandingOrange,
-                                                  buttonBorderColor:
-                                                      AppColors.brandingOrange,
-                                                  dialogContent: S
-                                                      .of(context)
-                                                      .scheduleActivityWarning,
-                                                  dialogTitle: S
-                                                      .of(context)
-                                                      .subscribeVerification,
-                                                  buttonTitle:
-                                                      S.of(context).signUp,
-                                                )
-                                              :
-                                              // Entrar na fila
-                                              StatusButtonWidget(
-                                                  onPressed: onPressedSubscribe,
-                                                  isLoading: isLoading,
-                                                  acceptingNewEnrollments:
-                                                      acceptingNewEnrollments,
-                                                  enrollmentStateEnum:
-                                                      activityEnrollment.state,
-                                                  buttonColor: AppColors.white,
-                                                  buttonTitleColor:
-                                                      AppColors.brandingBlue,
-                                                  buttonBorderColor:
-                                                      AppColors.brandingBlue,
-                                                  dialogContent: S
-                                                      .of(context)
-                                                      .scheduleActivityWarning,
-                                                  dialogTitle: S
-                                                      .of(context)
-                                                      .subscribeVerification,
-                                                  buttonTitle: S
-                                                      .of(context)
-                                                      .joinQueueTitle,
-                                                )),
+                              if (activityEnrollment.state ==
+                                  EnrollmentStateEnum.ENROLLED)
+                                StatusButtonWidget(
+                                  onPressed: onPressedUnsubscribe,
+                                  isLoading: isLoading,
+                                  acceptingNewEnrollments:
+                                      acceptingNewEnrollments,
+                                  enrollmentStateEnum: activityEnrollment.state,
+                                  buttonColor: AppColors.brandingOrange,
+                                  buttonTitleColor: AppColors.white,
+                                  buttonBorderColor: AppColors.brandingOrange,
+                                  dialogTitle:
+                                      S.of(context).unsubscribeVerification,
+                                  dialogContent:
+                                      S.of(context).unsubscribeLoseVanacy,
+                                  buttonTitle: S.of(context).subscribedTitle,
+                                )
+                              else if (activityEnrollment.state ==
+                                  EnrollmentStateEnum.IN_QUEUE)
+                                // Botão aparecendo: Na fila
+                                StatusButtonWidget(
+                                  onPressed: onPressedUnsubscribe,
+                                  isLoading: isLoading,
+                                  acceptingNewEnrollments:
+                                      acceptingNewEnrollments,
+                                  enrollmentStateEnum: activityEnrollment.state,
+                                  buttonColor: AppColors.brandingBlue,
+                                  buttonTitleColor: AppColors.white,
+                                  buttonBorderColor: AppColors.brandingBlue,
+                                  dialogContent:
+                                      S.of(context).exitQueueConfimation,
+                                  dialogTitle: S.of(context).InQueueContent,
+                                  buttonTitle: S.of(context).inQueueTitle,
+                                )
+                              else if (activityEnrollment.state ==
+                                  EnrollmentStateEnum.COMPLETED)
+                                // Completa
+                                StatusButtonWidget(
+                                  onPressed: onPressedUnsubscribe,
+                                  isLoading: isLoading,
+                                  acceptingNewEnrollments:
+                                      acceptingNewEnrollments,
+                                  enrollmentStateEnum: activityEnrollment.state,
+                                  buttonColor: AppColors.greenButton,
+                                  buttonTitleColor: AppColors.white,
+                                  buttonBorderColor: AppColors.greenButton,
+                                  dialogContent: S.of(context).completed,
+                                  dialogTitle: S.of(context).completed,
+                                  buttonTitle: S.of(context).completed,
+                                  disableButton: true,
+                                )
+                              else if (takenSlots < totalSlots)
+                                // Inscrever-se
+                                StatusButtonWidget(
+                                  onPressed: onPressedSubscribe,
+                                  isLoading: isLoading,
+                                  acceptingNewEnrollments:
+                                      acceptingNewEnrollments,
+                                  enrollmentStateEnum: activityEnrollment.state,
+                                  buttonColor: AppColors.white,
+                                  buttonTitleColor: AppColors.brandingOrange,
+                                  buttonBorderColor: AppColors.brandingOrange,
+                                  dialogContent:
+                                      S.of(context).scheduleActivityWarning,
+                                  dialogTitle:
+                                      S.of(context).subscribeVerification,
+                                  buttonTitle: S.of(context).signUp,
+                                )
+                              else if (takenSlots <= totalSlots)
+                                // Entrar na fila
+                                StatusButtonWidget(
+                                  onPressed: onPressedSubscribe,
+                                  isLoading: isLoading,
+                                  acceptingNewEnrollments:
+                                      acceptingNewEnrollments,
+                                  enrollmentStateEnum: activityEnrollment.state,
+                                  buttonColor: AppColors.white,
+                                  buttonTitleColor: AppColors.brandingBlue,
+                                  buttonBorderColor: AppColors.brandingBlue,
+                                  dialogContent:
+                                      S.of(context).scheduleActivityWarning,
+                                  dialogTitle:
+                                      S.of(context).subscribeVerification,
+                                  buttonTitle: S.of(context).joinQueueTitle,
+                                ),
                             ])
                       ],
                     ),

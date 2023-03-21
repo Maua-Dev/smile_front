@@ -24,4 +24,6 @@ abstract class SecureStorageInterface {
   Future<void> cleanSecureStorage();
   Future<void> saveActivityCode(String activityCode);
   Future<String?> getActivityCode();
+  Future<void> saveNavBarIndex(int navBarIndex);
+  Future<int?> getNavBarIndex();
 }

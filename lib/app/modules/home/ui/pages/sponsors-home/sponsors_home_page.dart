@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/domain/infra/maua_entities_enum.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
@@ -27,20 +29,12 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
           H1HeaderTextWidget(
             title: S.of(context).sponsorsTitle,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 32),
-            child: CompanySponsor(),
-          ),
+          const CompanySponsor(),
           H1HeaderTextWidget(
             title: S.of(context).mauaEntititesTitle,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 32),
-            child: EntitiesStack(),
-          ),
-          Column(
-            children: const [BeSponsor()],
-          )
+          const EntitiesStack(),
+          const BeSponsor()
         ],
       ),
     );
@@ -111,7 +105,7 @@ class BeSponsor extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.all(32.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
           Row(
@@ -127,22 +121,9 @@ class BeSponsor extends StatelessWidget {
                       )
                     : Container(),
               ),
-              Center(
-                  child: Padding(
-                padding: MediaQuery.of(context).size.width > 530
-                    ? const EdgeInsets.all(8.0)
-                    : const EdgeInsets.all(0.0),
-                child: Text(
-                  S.of(context).beSponsorTitle,
-                  style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width < 375
-                          ? 20
-                          : MediaQuery.of(context).size.width > 530
-                              ? 35
-                              : 28,
-                      fontWeight: FontWeight.w900),
-                ),
-              )),
+              H1HeaderTextWidget(
+                title: S.of(context).beSponsorTitle,
+              ),
               Expanded(
                 child: MediaQuery.of(context).size.width > 530
                     ? Container(
@@ -156,7 +137,10 @@ class BeSponsor extends StatelessWidget {
           ),
           Text(
             S.of(context).beSponsorDescription,
-            style: const TextStyle(fontSize: 16),
+            style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width > breakpointMobile
+                    ? 16
+                    : 14),
             textAlign: TextAlign.justify,
           ),
           const SizedBox(
@@ -399,16 +383,32 @@ class EntitiesStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width / 1.1,
-      child: Wrap(
-          spacing: 20,
-          runSpacing: 25,
-          alignment: WrapAlignment.center,
-          children: MauaEntitiesEnum.values
-              .map((e) => EntitiesWidget(
-                    entity: e,
-                  ))
-              .toList()),
+      width: MediaQuery.of(context).size.width > breakpointMobile
+          ? MediaQuery.of(context).size.width / 1.3
+          : MediaQuery.of(context).size.width,
+      child: MediaQuery.of(context).size.width > breakpointMobile
+          ? Wrap(
+              spacing: 20,
+              runSpacing: 25,
+              alignment: WrapAlignment.center,
+              children: MauaEntitiesEnum.values
+                  .map((e) => EntitiesWidget(
+                        entity: e,
+                      ))
+                  .toList())
+          : CarouselSlider.builder(
+              itemCount: MauaEntitiesEnum.values.length,
+              itemBuilder: (context, index, realIndex) {
+                return Container(
+                    decoration: BoxDecoration(
+                        border:
+                            Border.all(color: AppColors.brandingBlue, width: 4),
+                        borderRadius: BorderRadius.circular(15)),
+                    child:
+                        EntitiesWidget(entity: MauaEntitiesEnum.values[index]));
+              },
+              options: CarouselOptions(autoPlay: false, viewportFraction: 0.5),
+            ),
     );
   }
 }
