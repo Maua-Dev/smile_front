@@ -115,7 +115,7 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   Future<AdminActivityModel?> editActivity(
       String id, AdminActivityModel activity) async {
     var res = await middleware(
-        url: '/update-activity', data: activity.editToJson(), http: 'put');
+        url: '/update-activity', data: activity.editToJson(), http: 'post');
     if (res.statusCode == 200) {
       return AdminActivityModel.fromMap(res.data);
     }

@@ -145,7 +145,7 @@ class AdminActivityModel extends Activity {
   Map<String, dynamic> editToJson() => {
         'new_activity_type': ActivityEnumExtension.enumToStringMap(type!),
         'code': activityCode,
-        'new_title  ': title,
+        'new_title': title,
         'new_description': description,
         'new_is_extensive': isExtensive,
         'new_delivery_model':
