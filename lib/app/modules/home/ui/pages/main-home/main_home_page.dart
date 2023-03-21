@@ -199,19 +199,19 @@ class _MainHomePageState extends State<MainHomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 32, right: 32),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               S.of(context).homePageSubtitle,
-              style: const TextStyle(fontSize: 12),
+              style: const TextStyle(fontSize: 14),
               textAlign: TextAlign.justify,
             ),
           ),
           const SizedBox(
-            height: 8,
+            height: 16,
           ),
           Container(
             width: 200,
-            height: 20,
+            height: 40,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: AppColors.brandingOrange,
@@ -233,7 +233,7 @@ class _MainHomePageState extends State<MainHomePage> {
                 },
                 child: Container(
                   width: 200,
-                  height: 20,
+                  height: 40,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: AppColors.brandingBlue,
