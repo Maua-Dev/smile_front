@@ -15,13 +15,15 @@ class ProfessorModule extends Module {
               getUserSubscribedActivities: i(),
             ),
         export: true),
-    Bind.lazySingleton<MoreInfoResponsibleActivitiesController>((i) =>
-        MoreInfoResponsibleActivitiesController(
-            postManualChangeAttendence: i(),
-            generateConfirmationCode: i(),
-            activityCode: i.args!.data as String,
-            getActivitiesWithEnrollments: i(),
-            deleteConfirmationCode: i())),
+    Bind.lazySingleton<MoreInfoResponsibleActivitiesController>(
+        (i) => MoreInfoResponsibleActivitiesController(
+              postManualChangeAttendence: i(),
+              generateConfirmationCode: i(),
+              activityCode: i.args?.data as String? ?? '',
+              getActivitiesWithEnrollments: i(),
+              deleteConfirmationCode: i(),
+              storage: i(),
+            )),
     Bind.lazySingleton<GenerateConfirmationCodeInterface>(
         (i) => GenerateConfirmationCodeImpl(
               repository: i(),
