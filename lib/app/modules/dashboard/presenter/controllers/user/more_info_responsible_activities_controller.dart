@@ -1,3 +1,4 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_attendance_confirmation.dart';
@@ -8,6 +9,8 @@ import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_ac
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/professor_activity_model.dart';
 import 'package:smile_front/app/shared/utils/utils.dart';
+
+import '../../../../auth/domain/repositories/secure_storage_interface.dart';
 
 part 'more_info_responsible_activities_controller.g.dart';
 
@@ -20,6 +23,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   final PostManualChangeAttendenceInterface postManualChangeAttendence;
   final GenerateConfirmationCodeInterface generateConfirmationCode;
   final DeleteAtendanceConfirmationCodeInterface deleteConfirmationCode;
+  final SecureStorageInterface storage;
 
   MoreInfoResponsibleActivitiesControllerBase({
     required this.activityCode,
@@ -27,6 +31,7 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
     required this.getActivitiesWithEnrollments,
     required this.generateConfirmationCode,
     required this.deleteConfirmationCode,
+    required this.storage,
   }) {
     getProfessorActivitiesWithEnrollments();
   }
@@ -120,8 +125,17 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @action
   Future<void> getProfessorActivitiesWithEnrollments() async {
     setIsLoading(true);
+    var activityCodeToSearch = activityCode;
+    if (activityCodeToSearch == "") {
+      activityCodeToSearch = await storage.getActivityCode() ?? '';
+    } else {
+      await storage.saveActivityCode(activityCodeToSearch);
+    }
+    if (activityCodeToSearch == '') {
+      Modular.to.navigate('/user/home/professor');
+    }
     professorActivityWithEnrollments =
-        await getActivitiesWithEnrollments(activityCode);
+        await getActivitiesWithEnrollments(activityCodeToSearch);
     professorList = professorActivityWithEnrollments.enrollments!
         .map(
           (e) => ListNameAndStateWithIsSwitched(
@@ -147,14 +161,23 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @action
   Future<void> toogleListSwitch(bool value, int index) async {
     setIsLoading(true);
+    var activityCodeToToogle = activityCode;
+    if (activityCodeToToogle == "") {
+      activityCodeToToogle = await storage.getActivityCode() ?? '';
+    } else {
+      await storage.saveActivityCode(activityCodeToToogle);
+    }
+    if (activityCodeToToogle == '') {
+      Modular.to.navigate('/user/home/professor');
+    }
     professorList[index].toogleSwitch(value);
     if (professorList[index].state == EnrollmentStateEnum.ENROLLED) {
       professorList[index].state = EnrollmentStateEnum.COMPLETED;
-      await postManualChangeAttendence(activityCode,
+      await postManualChangeAttendence(activityCodeToToogle,
           professorList[index].userId, EnrollmentStateEnum.COMPLETED);
     } else {
       professorList[index].state = EnrollmentStateEnum.ENROLLED;
-      await postManualChangeAttendence(activityCode,
+      await postManualChangeAttendence(activityCodeToToogle,
           professorList[index].userId, EnrollmentStateEnum.ENROLLED);
     }
     setIsLoading(false);
