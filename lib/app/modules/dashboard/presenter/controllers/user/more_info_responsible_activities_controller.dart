@@ -161,14 +161,23 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   @action
   Future<void> toogleListSwitch(bool value, int index) async {
     setIsLoading(true);
+    var activityCodeToToogle = activityCode;
+    if (activityCodeToToogle == "") {
+      activityCodeToToogle = await storage.getActivityCode() ?? '';
+    } else {
+      await storage.saveActivityCode(activityCodeToToogle);
+    }
+    if (activityCodeToToogle == '') {
+      Modular.to.navigate('/user/home/professor');
+    }
     professorList[index].toogleSwitch(value);
     if (professorList[index].state == EnrollmentStateEnum.ENROLLED) {
       professorList[index].state = EnrollmentStateEnum.COMPLETED;
-      await postManualChangeAttendence(activityCode,
+      await postManualChangeAttendence(activityCodeToToogle,
           professorList[index].userId, EnrollmentStateEnum.COMPLETED);
     } else {
       professorList[index].state = EnrollmentStateEnum.ENROLLED;
-      await postManualChangeAttendence(activityCode,
+      await postManualChangeAttendence(activityCodeToToogle,
           professorList[index].userId, EnrollmentStateEnum.ENROLLED);
     }
     setIsLoading(false);
