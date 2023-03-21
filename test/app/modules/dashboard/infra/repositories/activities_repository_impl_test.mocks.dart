@@ -167,7 +167,7 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
         )),
       ) as _i6.Future<_i4.AdminActivityModel>);
   @override
-  _i6.Future<_i4.AdminActivityModel?> editActivity(
+  _i6.Future<_i7.ActivityModel?> editActivity(
     String? id,
     _i4.AdminActivityModel? activity,
   ) =>
@@ -179,8 +179,8 @@ class MockActivitiesDatasourceInterface extends _i1.Mock
             activity,
           ],
         ),
-        returnValue: _i6.Future<_i4.AdminActivityModel?>.value(),
-      ) as _i6.Future<_i4.AdminActivityModel?>);
+        returnValue: _i6.Future<_i7.ActivityModel?>.value(),
+      ) as _i6.Future<_i7.ActivityModel?>);
   @override
   _i6.Future<_i7.ActivityModel?> createActivity(
           _i4.AdminActivityModel? activity) =>
