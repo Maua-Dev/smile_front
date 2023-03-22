@@ -7,6 +7,7 @@ import 'package:smile_front/app/shared/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
+import 'package:smile_front/app/shared/utils/screen_helper.dart';
 import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../../../shared/entities/screen_variables.dart';
@@ -122,9 +123,9 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                     : MediaQuery.of(context).size.width <
                                             breakpointTablet
                                         ? 200
-                                        : null,
+                                        : 800,
                                 child: Text(title,
-                                    maxLines: 2,
+                                    maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: AppTextStyles.bold.copyWith(
                                         fontSize:
@@ -167,7 +168,13 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      Text(formattedLocation,
+                                      SizedBox(
+                                        width: Screen.width(context) <
+                                                breakpointMobile
+                                            ? Screen.width(context) / 4
+                                            : Screen.width(context) / 5,
+                                        child: Text(
+                                          formattedLocation,
                                           style: AppTextStyles.bold.copyWith(
                                               fontSize: MediaQuery.of(context)
                                                           .size
@@ -175,7 +182,11 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                       breakpointTablet
                                                   ? 12
                                                   : 24,
-                                              color: Colors.black)),
+                                              color: Colors.black,
+                                              overflow: TextOverflow.ellipsis),
+                                          maxLines: 1,
+                                        ),
+                                      ),
                                       SizedBox(
                                         width:
                                             MediaQuery.of(context).size.width <
