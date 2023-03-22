@@ -80,21 +80,22 @@ class _UserDashboardPageState
                 const SizedBox(
                   height: 8,
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width < breakpointTablet
-                      ? 380
-                      : 1165,
-                  child: TextHeader(
-                    title: 'Sua próxima atividade',
-                    fontSize: MediaQuery.of(context).size.width < 500
-                        ? 24
-                        : MediaQuery.of(context).size.width > 1000
-                            ? 38
-                            : 30,
-                    leftPadding:
-                        MediaQuery.of(context).size.width < 1000 ? 12 : 8,
+                if (controller.nextActivity.type != null)
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width < breakpointTablet
+                        ? 380
+                        : 1165,
+                    child: TextHeader(
+                      title: 'Sua próxima atividade',
+                      fontSize: MediaQuery.of(context).size.width < 500
+                          ? 24
+                          : MediaQuery.of(context).size.width > 1000
+                              ? 38
+                              : 30,
+                      leftPadding:
+                          MediaQuery.of(context).size.width < 1000 ? 12 : 8,
+                    ),
                   ),
-                ),
                 if (controller.nextActivity.type != null)
                   Observer(builder: (_) {
                     return NextActivityCardWidget(
