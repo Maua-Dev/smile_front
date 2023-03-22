@@ -1,4 +1,3 @@
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -45,16 +44,12 @@ class NameAlterationDialog extends StatefulWidget {
 
 class _NameAlterationDialogState extends State<NameAlterationDialog> {
   final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     var controller = Modular.get<UserDashboardController>();
-    final maskBrazilianPhone = MaskTextInputFormatter(
-        mask: "(##) #####-####", filter: {"#": RegExp(r'[0-9]')});
     final maskPhone = MaskTextInputFormatter(
         mask: "+###############", filter: {"#": RegExp(r'[0-9]')});
-    final maskNewPhone = MaskTextInputFormatter(
-        mask: "###############", filter: {"#": RegExp(r'[0-9]')});
-    const countryPicker = FlCountryCodePicker();
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: SingleChildScrollView(
@@ -300,148 +295,35 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                     height: 8,
                   ),
                   Observer(builder: (_) {
-                    return ConstrainedBox(
-                      constraints:
-                          const BoxConstraints(maxHeight: 50, minHeight: 50),
-                      child: Observer(builder: (_) {
-                        return Expanded(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              if (controller.phone == '')
-                                ConstrainedBox(
-                                  constraints: BoxConstraints(
-                                      maxHeight:
-                                          MediaQuery.of(context).size.width >
-                                                  500
-                                              ? 60
-                                              : 54,
-                                      minHeight:
-                                          MediaQuery.of(context).size.width >
-                                                  500
-                                              ? 60
-                                              : 54),
-                                  child: GestureDetector(
-                                    onTap: () async {
-                                      final code = await countryPicker
-                                          .showPicker(context: context);
-                                      controller.setCountryCode(code);
-                                      controller.setBrazilianPhone(code);
-                                      if (controller.countryCode == null) {
-                                        controller.setCountryCode(
-                                            const CountryCode(
-                                                name: 'Brazil',
-                                                code: 'BR',
-                                                dialCode: '+55'));
-                                      }
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: AppColors.brandingBlue,
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: Row(
-                                          children: [
-                                            SizedBox(
-                                              width: MediaQuery.of(context)
-                                                          .size
-                                                          .width >
-                                                      500
-                                                  ? 20
-                                                  : 5,
-                                            ),
-                                            if (MediaQuery.of(context)
-                                                    .size
-                                                    .width >
-                                                430)
-                                              Container(
-                                                  child:
-                                                      controller.countryCode !=
-                                                              null
-                                                          ? controller
-                                                              .countryCode!
-                                                              .flagImage
-                                                          : null),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text(
-                                              controller.countryCode != null
-                                                  ? controller
-                                                      .countryCode!.dialCode
-                                                  : "DDI",
-                                              style: TextStyle(
-                                                  color: AppColors.white,
-                                                  fontSize: 14),
-                                            ),
-                                            SizedBox(
-                                              width: MediaQuery.of(context)
-                                                          .size
-                                                          .width >
-                                                      500
-                                                  ? 20
-                                                  : 15,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              if (controller.phone == '')
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                              Flexible(
-                                flex: 3,
-                                child: TextFormField(
-                                  inputFormatters: controller.phone != ''
-                                      ? [maskPhone]
-                                      : controller.countryCode!.code == "BR"
-                                          ? [maskBrazilianPhone]
-                                          : [maskNewPhone],
-                                  validator: controller.validatePhone,
-                                  initialValue: controller.phoneToChange,
-                                  keyboardType: TextInputType.number,
-                                  textAlignVertical: TextAlignVertical.center,
-                                  onChanged: controller.setPhone,
-                                  style: AppTextStyles.body.copyWith(
-                                      color: Colors.white,
-                                      fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width <
-                                              500
-                                          ? 14
-                                          : MediaQuery.of(context).size.width <
-                                                  1000
-                                              ? 18
-                                              : 22),
-                                  cursorColor: Colors.white,
-                                  decoration: InputDecoration(
-                                    fillColor: AppColors.brandingBlue,
-                                    filled: true,
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      borderSide: BorderSide(
-                                          color: AppColors.brandingBlue,
-                                          width: 0.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      borderSide: BorderSide(
-                                          color: AppColors.brandingBlue,
-                                          width: 0.0),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      }),
+                    return TextFormField(
+                      inputFormatters: [maskPhone],
+                      validator: controller.validatePhone,
+                      initialValue: controller.phoneToChange,
+                      keyboardType: TextInputType.number,
+                      textAlignVertical: TextAlignVertical.center,
+                      onChanged: controller.setPhone,
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.white,
+                          fontSize: MediaQuery.of(context).size.width < 500
+                              ? 14
+                              : MediaQuery.of(context).size.width < 1000
+                                  ? 18
+                                  : 22),
+                      cursorColor: Colors.white,
+                      decoration: InputDecoration(
+                        fillColor: AppColors.brandingBlue,
+                        filled: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(
+                              color: AppColors.brandingBlue, width: 0.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(
+                              color: AppColors.brandingBlue, width: 0.0),
+                        ),
+                      ),
                     );
                   }),
                   Observer(builder: (_) {
