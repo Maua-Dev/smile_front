@@ -235,7 +235,7 @@ class UserFilterCardWidget extends StatelessWidget {
                           padding: EdgeInsets.zero,
                           onPressed: resetFilters,
                           icon: Icon(
-                            Icons.refresh,
+                            Icons.cleaning_services,
                             size: 35,
                             color: AppColors.brandingOrange,
                           )),
@@ -408,7 +408,7 @@ class UserFilterCardWidget extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   onPressed: resetFilters,
                   icon: Icon(
-                    Icons.refresh,
+                    Icons.cleaning_services,
                     size: 35,
                     color: AppColors.brandingOrange,
                   )),
