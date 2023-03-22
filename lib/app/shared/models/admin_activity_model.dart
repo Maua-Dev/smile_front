@@ -137,7 +137,9 @@ class AdminActivityModel extends Activity {
         'taken_slots': takenSlots,
         'accepting_new_enrollments': acceptingNewEnrollments,
         'stop_accepting_new_enrollments_before':
-            stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
+            stopAcceptingNewEnrollmentsBefore == null
+                ? null
+                : stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
         'responsible_professors': [responsibleProfessors[0].id],
         'speakers': speakers.map((e) => e.toJson()).toList(),
       };
