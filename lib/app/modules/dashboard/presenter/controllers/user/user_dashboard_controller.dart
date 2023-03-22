@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
@@ -373,10 +372,10 @@ abstract class UserDashboardControllerBase with Store {
     isPhoneFieldFilled = phone!.isNotEmpty;
     isGetPhoneBrazilian = phone!.substring(0, 3) == "+55";
     phoneToChange = phone!;
-    if (isGetPhoneBrazilian) {
-      phoneToChange =
-          '${phoneToChange.substring(0, 3)} (${phoneToChange.substring(3, 5)}) ${phoneToChange.substring(5, 10)}-${phoneToChange.substring(10, 14)}';
-    }
+    //if (isGetPhoneBrazilian) {
+    // phoneToChange =
+    //    '${phoneToChange.substring(0, 3)} (${phoneToChange.substring(3, 5)}) ${phoneToChange.substring(5, 10)}-${phoneToChange.substring(10, 14)}';
+    //}
   }
 
   @action
@@ -502,28 +501,7 @@ abstract class UserDashboardControllerBase with Store {
   String? phone = '';
 
   @observable
-  bool isBrazilianPhone = true;
-
-  @observable
   bool isPhoneFieldFilled = false;
-
-  @observable
-  CountryCode? countryCode =
-      const CountryCode(code: "BR", dialCode: "+55", name: "Brazil");
-
-  @action
-  void setBrazilianPhone(CountryCode? value) {
-    if (value?.code == "BR") {
-      isBrazilianPhone = true;
-    } else {
-      isBrazilianPhone = false;
-    }
-  }
-
-  @action
-  void setCountryCode(CountryCode? value) {
-    countryCode = value;
-  }
 
   @action
   Future<void> setPhone(String value) async {
@@ -532,10 +510,7 @@ abstract class UserDashboardControllerBase with Store {
       isPhoneFieldFilled = false;
       acceptSMSNotifications = false;
     } else {
-      if (phone != '') {
-        countryCode = const CountryCode(code: "", dialCode: "", name: "");
-      }
-      phoneToChange = '${countryCode?.dialCode}$value';
+      phoneToChange = value;
       isPhoneFieldFilled = true;
     }
   }
@@ -576,20 +551,11 @@ abstract class UserDashboardControllerBase with Store {
 
   @action
   String? validatePhone(String? value) {
-    value = value!.replaceAll('(', '');
-    value = value.replaceAll(')', '');
-    value = value.replaceAll(' ', '');
-    value = value.replaceAll('-', '');
-    if (value.isNotEmpty) {
-      if (value[0] == '+' && value[1] == '5' && value[2] == '5') {
-        if (value.length != 14) {
-          return S.current.fieldInvalid;
-        }
-      } else {
-        if (countryCode!.dialCode == "+55" && value.length != 11) {
-          return S.current.fieldInvalid;
-        }
-      }
+    if (value![0] == '+' &&
+        value[1] == '5' &&
+        value[2] == '5' &&
+        value.length != 14) {
+      return S.current.fieldInvalid;
     }
     return null;
   }

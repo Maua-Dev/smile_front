@@ -424,22 +424,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
-  late final _$isBrazilianPhoneAtom = Atom(
-      name: 'UserDashboardControllerBase.isBrazilianPhone', context: context);
-
-  @override
-  bool get isBrazilianPhone {
-    _$isBrazilianPhoneAtom.reportRead();
-    return super.isBrazilianPhone;
-  }
-
-  @override
-  set isBrazilianPhone(bool value) {
-    _$isBrazilianPhoneAtom.reportWrite(value, super.isBrazilianPhone, () {
-      super.isBrazilianPhone = value;
-    });
-  }
-
   late final _$isPhoneFieldFilledAtom = Atom(
       name: 'UserDashboardControllerBase.isPhoneFieldFilled', context: context);
 
@@ -453,22 +437,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   set isPhoneFieldFilled(bool value) {
     _$isPhoneFieldFilledAtom.reportWrite(value, super.isPhoneFieldFilled, () {
       super.isPhoneFieldFilled = value;
-    });
-  }
-
-  late final _$countryCodeAtom =
-      Atom(name: 'UserDashboardControllerBase.countryCode', context: context);
-
-  @override
-  CountryCode? get countryCode {
-    _$countryCodeAtom.reportRead();
-    return super.countryCode;
-  }
-
-  @override
-  set countryCode(CountryCode? value) {
-    _$countryCodeAtom.reportWrite(value, super.countryCode, () {
-      super.countryCode = value;
     });
   }
 
@@ -792,28 +760,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   }
 
   @override
-  void setBrazilianPhone(CountryCode? value) {
-    final _$actionInfo = _$UserDashboardControllerBaseActionController
-        .startAction(name: 'UserDashboardControllerBase.setBrazilianPhone');
-    try {
-      return super.setBrazilianPhone(value);
-    } finally {
-      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setCountryCode(CountryCode? value) {
-    final _$actionInfo = _$UserDashboardControllerBaseActionController
-        .startAction(name: 'UserDashboardControllerBase.setCountryCode');
-    try {
-      return super.setCountryCode(value);
-    } finally {
-      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String? validatePhone(String? value) {
     final _$actionInfo = _$UserDashboardControllerBaseActionController
         .startAction(name: 'UserDashboardControllerBase.validatePhone');
@@ -852,9 +798,7 @@ allSubscribedActivitiesList: ${allSubscribedActivitiesList},
 nextActivity: ${nextActivity},
 requisitionError: ${requisitionError},
 phone: ${phone},
-isBrazilianPhone: ${isBrazilianPhone},
-isPhoneFieldFilled: ${isPhoneFieldFilled},
-countryCode: ${countryCode}
+isPhoneFieldFilled: ${isPhoneFieldFilled}
     ''';
   }
 }

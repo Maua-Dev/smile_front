@@ -1,4 +1,3 @@
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -61,8 +60,6 @@ class UserDataWidget extends StatelessWidget {
                     controller.getUserName();
                     controller.getUserSocialName();
                     controller.getPhone();
-                    controller.setCountryCode(const CountryCode(
-                        code: "BR", dialCode: "+55", name: "Brazil"));
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
