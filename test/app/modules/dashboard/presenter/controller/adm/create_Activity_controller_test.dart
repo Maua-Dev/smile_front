@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -20,6 +21,7 @@ import 'create_Activity_controller_test.mocks.dart';
 
 @GenerateMocks([CreateActivityInterface, GetResponsibleProfessorsInterface])
 void main() {
+  initializeDateFormatting('pt');
   CreateActivityInterface createActivity = MockCreateActivityInterface();
   GetResponsibleProfessorsInterface getResponsibleProfessors =
       MockGetResponsibleProfessorsInterface();
@@ -89,7 +91,7 @@ void main() {
   });
 
   test('setDate', () {
-    var str = DateFormat('dd-MM-yyyy').format(DateTime.now());
+    var str = DateFormat('dd-MM-yyyy', 'en').format(DateTime.now());
     controller.setDate(str);
     expect(
         controller.activityToCreate.startDate!,

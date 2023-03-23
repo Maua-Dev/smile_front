@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -28,6 +29,7 @@ import 'edit_activity_controller_test.mocks.dart';
 void main() {
   initModules([AppModule(), AdmModule()]);
 
+  initializeDateFormatting();
   List<ResponsibleProfessorModel> responsibleProfessors = [
     ResponsibleProfessorModel(
         id: '123124', name: 'Breno Amorim', role: UserRolesEnum.PROFESSOR)
