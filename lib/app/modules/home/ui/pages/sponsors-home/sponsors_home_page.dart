@@ -29,20 +29,12 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
           H1HeaderTextWidget(
             title: S.of(context).sponsorsTitle,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 32),
-            child: CompanySponsor(),
-          ),
+          const CompanySponsor(),
           H1HeaderTextWidget(
             title: S.of(context).mauaEntititesTitle,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 32),
-            child: EntitiesStack(),
-          ),
-          Column(
-            children: const [BeSponsor()],
-          )
+          const EntitiesStack(),
+          const BeSponsor()
         ],
       ),
     );
@@ -113,7 +105,7 @@ class BeSponsor extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.all(32.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
           Row(
@@ -129,22 +121,9 @@ class BeSponsor extends StatelessWidget {
                       )
                     : Container(),
               ),
-              Center(
-                  child: Padding(
-                padding: MediaQuery.of(context).size.width > 530
-                    ? const EdgeInsets.all(8.0)
-                    : const EdgeInsets.all(0.0),
-                child: Text(
-                  S.of(context).beSponsorTitle,
-                  style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width < 375
-                          ? 20
-                          : MediaQuery.of(context).size.width > 530
-                              ? 35
-                              : 28,
-                      fontWeight: FontWeight.w900),
-                ),
-              )),
+              H1HeaderTextWidget(
+                title: S.of(context).beSponsorTitle,
+              ),
               Expanded(
                 child: MediaQuery.of(context).size.width > 530
                     ? Container(
@@ -158,7 +137,10 @@ class BeSponsor extends StatelessWidget {
           ),
           Text(
             S.of(context).beSponsorDescription,
-            style: const TextStyle(fontSize: 16),
+            style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width > breakpointMobile
+                    ? 16
+                    : 14),
             textAlign: TextAlign.justify,
           ),
           const SizedBox(
@@ -401,7 +383,9 @@ class EntitiesStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width / 1.1,
+      width: MediaQuery.of(context).size.width > breakpointMobile
+          ? MediaQuery.of(context).size.width / 1.3
+          : MediaQuery.of(context).size.width,
       child: MediaQuery.of(context).size.width > breakpointMobile
           ? Wrap(
               spacing: 20,
@@ -420,11 +404,8 @@ class EntitiesStack extends StatelessWidget {
                         border:
                             Border.all(color: AppColors.brandingBlue, width: 4),
                         borderRadius: BorderRadius.circular(15)),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: EntitiesWidget(
-                          entity: MauaEntitiesEnum.values[index]),
-                    ));
+                    child:
+                        EntitiesWidget(entity: MauaEntitiesEnum.values[index]));
               },
               options: CarouselOptions(autoPlay: false, viewportFraction: 0.5),
             ),

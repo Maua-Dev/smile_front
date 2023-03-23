@@ -60,4 +60,108 @@ class AdminActivityModel extends Activity {
   static List<AdminActivityModel> fromMaps(List array) {
     return array.map((e) => AdminActivityModel.fromMap(e)).toList();
   }
+
+  factory AdminActivityModel.newInstance() {
+    return AdminActivityModel(
+        description: '',
+        activityCode: '',
+        title: '',
+        type: null,
+        speakers: [SpeakerActivityModel.newInstance()],
+        duration: 0,
+        isExtensive: false,
+        startDate: DateTime.now(),
+        deliveryEnum: null,
+        acceptingNewEnrollments: false,
+        responsibleProfessors: [ResponsibleProfessorModel.newInstance()],
+        takenSlots: 0,
+        totalSlots: 0,
+        enrollments: []);
+  }
+
+  AdminActivityModel copyWith(
+      {String? id,
+      String? activityCode,
+      ActivityEnum? type,
+      String? title,
+      String? description,
+      bool? isExtensive,
+      DeliveryEnum? deliveryEnum,
+      DateTime? startDate,
+      int? duration,
+      String? place,
+      String? link,
+      List<SpeakerActivityModel>? speakers,
+      bool? acceptingNewEnrollments,
+      int? takenSlots,
+      int? totalSlots,
+      DateTime? stopAcceptingNewEnrollmentsBefore,
+      List<ResponsibleProfessorModel>? responsibleProfessors,
+      List<EnrollmentsModel>? enrollments}) {
+    return AdminActivityModel(
+      activityCode: activityCode ?? this.activityCode,
+      type: type ?? this.type,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      duration: duration ?? this.duration,
+      speakers: speakers ?? this.speakers,
+      isExtensive: isExtensive ?? this.isExtensive,
+      startDate: startDate ?? this.startDate,
+      deliveryEnum: deliveryEnum ?? this.deliveryEnum,
+      acceptingNewEnrollments:
+          acceptingNewEnrollments ?? this.acceptingNewEnrollments,
+      responsibleProfessors:
+          responsibleProfessors ?? this.responsibleProfessors,
+      takenSlots: takenSlots ?? this.takenSlots,
+      totalSlots: totalSlots ?? this.totalSlots,
+      link: link ?? this.link,
+      place: place ?? this.place,
+      stopAcceptingNewEnrollmentsBefore: stopAcceptingNewEnrollmentsBefore ??
+          this.stopAcceptingNewEnrollmentsBefore,
+      enrollments: enrollments ?? this.enrollments,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'activity_type': ActivityEnumExtension.enumToStringMap(type!),
+        'code': activityCode,
+        'title': title,
+        'description': description,
+        'is_extensive': isExtensive,
+        'delivery_model': DeliveryEnumExtension.enumToStringMap(deliveryEnum!),
+        'start_date': startDate!.millisecondsSinceEpoch,
+        'duration': duration,
+        'place': place,
+        'link': link,
+        'total_slots': totalSlots,
+        'taken_slots': takenSlots,
+        'accepting_new_enrollments': acceptingNewEnrollments,
+        'stop_accepting_new_enrollments_before':
+            stopAcceptingNewEnrollmentsBefore == null
+                ? null
+                : stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
+        'responsible_professors': [responsibleProfessors[0].id],
+        'speakers': speakers.map((e) => e.toJson()).toList(),
+      };
+
+  Map<String, dynamic> editToJson() => {
+        'code': activityCode,
+        'new_title': title,
+        'new_description': description,
+        'new_activity_type': ActivityEnumExtension.enumToStringMap(type!),
+        'new_is_extensive': isExtensive,
+        'new_delivery_model':
+            DeliveryEnumExtension.enumToStringMap(deliveryEnum!),
+        'new_start_date': startDate!.millisecondsSinceEpoch,
+        'new_duration': duration,
+        'new_place': place,
+        'new_link': link,
+        'new_total_slots': totalSlots,
+        'new_taken_slots': takenSlots,
+        'new_accepting_new_enrollments': acceptingNewEnrollments,
+        'new_stop_accepting_new_enrollments_before':
+            stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
+        'new_responsible_professors': [responsibleProfessors[0].id],
+        'new_speakers': speakers.map((e) => e.toJson()).toList(),
+      };
 }

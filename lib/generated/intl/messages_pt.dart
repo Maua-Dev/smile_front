@@ -256,14 +256,34 @@ class MessageLookup extends MessageLookupByLibrary {
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Atividades"),
+        "activity": MessageLookupByLibrary.simpleMessage("Atividade"),
+        "activityAcceptSbscriptions":
+            MessageLookupByLibrary.simpleMessage("Aceitar inscrições"),
         "activityCreateTitle":
             MessageLookupByLibrary.simpleMessage("Criar Atividade"),
+        "activityDurationTitle":
+            MessageLookupByLibrary.simpleMessage("Duração(Minutos)"),
         "activityEditTitle":
             MessageLookupByLibrary.simpleMessage("Editar Atividade"),
+        "activityErrorClosureDateAfterStartDate":
+            MessageLookupByLibrary.simpleMessage(
+                "A data de fechamento das inscrições deve ser antes da data da atividade"),
+        "activityInscriptionClosureDate": MessageLookupByLibrary.simpleMessage(
+            "Fechamento das Inscrições (Data)"),
+        "activityInscriptionClosureHour": MessageLookupByLibrary.simpleMessage(
+            "Fechamento das Inscrições (Hora)"),
+        "activityInscriptionClosureTooltip": MessageLookupByLibrary.simpleMessage(
+            "O sistema encerra automaticamente as inscrições da atividade\nem uma data e hora específica. Se não preencher esse campo, as\ninscrições não se encerrarão sozinhas e um administrador deverá\nfazê-lo manualmente."),
         "activityNameTitle":
             MessageLookupByLibrary.simpleMessage("Titulo da Atividade"),
+        "activityResponsibleTeacher":
+            MessageLookupByLibrary.simpleMessage("Professor Responsável"),
         "activityTypeTitle":
             MessageLookupByLibrary.simpleMessage("Tipo de Atividade"),
+        "activityVacancyNumber":
+            MessageLookupByLibrary.simpleMessage("Número de Vagas"),
+        "addProfessorTitle":
+            MessageLookupByLibrary.simpleMessage("Adicionar Professor"),
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Página do Administrador"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Relatórios"),
@@ -295,6 +315,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Siga os passos que serão enviados no e-mail cadastrado:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Código"),
         "companyTitle": MessageLookupByLibrary.simpleMessage("Empresa:"),
+        "companyTitleWithoutDouble":
+            MessageLookupByLibrary.simpleMessage("Empresa"),
         "completed": MessageLookupByLibrary.simpleMessage("Completa"),
         "confirmAllFieldsConrrectlyFilled":
             MessageLookupByLibrary.simpleMessage(
@@ -333,8 +355,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "exitQueueConfimation":
             MessageLookupByLibrary.simpleMessage("Deseja sair da fila?"),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Sair"),
+        "extensionistTitle":
+            MessageLookupByLibrary.simpleMessage("Extensionista"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Insira o número com DDD"),
+        "fieldDurationMoreThanZero":
+            MessageLookupByLibrary.simpleMessage("Deve ser maior que 0"),
         "fieldEmailInvalid":
             MessageLookupByLibrary.simpleMessage("E-mail inválido"),
         "fieldEmailsEqualsRequired":
@@ -343,7 +369,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Preencha todos os campos!"),
         "fieldFullNameRequired":
             MessageLookupByLibrary.simpleMessage("Insira seu nome completo"),
+        "fieldHourBeforeToday":
+            MessageLookupByLibrary.simpleMessage("Data antiga"),
         "fieldInvalid": MessageLookupByLibrary.simpleMessage("Campo inválido"),
+        "fieldParticipantsMoreThanThirty":
+            MessageLookupByLibrary.simpleMessage("Deve ser maior que 30"),
         "fieldPasswordEqualsRequired": MessageLookupByLibrary.simpleMessage(
             "Os campos \"Senha\" e \"Confirme sua senha\" devem ser iguais"),
         "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(
@@ -467,6 +497,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("22 a 27 de Maio de 2023"),
+        "speakerNameTitle":
+            MessageLookupByLibrary.simpleMessage("Nome do Palestrante"),
         "speakersAddTitle":
             MessageLookupByLibrary.simpleMessage("Adicionar Palestrante"),
         "speakersMainTitle": MessageLookupByLibrary.simpleMessage(
