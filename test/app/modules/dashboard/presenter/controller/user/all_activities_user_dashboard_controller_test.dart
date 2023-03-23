@@ -339,6 +339,8 @@ void main() {
         authController: authController,
         enrollmentController: subscriptionController);
   });
+  //FileSystemException: lock failed, path = 'C:\Users\breno\OneDrive\Documentos\box.lock' (OS Error: O processo não pode acessar o arquivo porque outro processo bloqueou parte do arquivo.
+  // , errno = 33)
 
   test('setIsLoading', () {
     controller.setIsLoading(true);

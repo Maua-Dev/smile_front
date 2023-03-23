@@ -22,6 +22,7 @@ void main() {
   test('ForgotPasswordController Injection', () {
     Modular.get<ForgotPasswordController>();
   });
+  //
 
   test('ForgotPasswordDatasourceImpl Injection', () {
     Modular.get<ForgotPasswordDatasourceImpl>();
