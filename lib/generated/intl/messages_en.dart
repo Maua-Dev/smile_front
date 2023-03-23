@@ -372,8 +372,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "fieldHourBeforeToday":
             MessageLookupByLibrary.simpleMessage("Old date"),
         "fieldInvalid": MessageLookupByLibrary.simpleMessage("Invalid field"),
-        "fieldParticipantsMoreThanThirty":
-            MessageLookupByLibrary.simpleMessage("Must be bigger than 30"),
         "fieldPasswordEqualsRequired": MessageLookupByLibrary.simpleMessage(
             "The \"Password\" and \"Confirm your password\" fields must be the same"),
         "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(

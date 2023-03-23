@@ -1364,16 +1364,6 @@ class S {
     );
   }
 
-  /// `Must be bigger than 30`
-  String get fieldParticipantsMoreThanThirty {
-    return Intl.message(
-      'Must be bigger than 30',
-      name: 'fieldParticipantsMoreThanThirty',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Old date`
   String get fieldHourBeforeToday {
     return Intl.message(

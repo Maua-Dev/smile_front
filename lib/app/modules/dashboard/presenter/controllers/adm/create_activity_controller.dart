@@ -60,9 +60,7 @@ abstract class CreateActivityControllerBase with Store {
   @action
   String? validateParticipantsField(String? value) {
     if (value!.isNotEmpty) {
-      return int.parse(value) < 30
-          ? S.current.fieldParticipantsMoreThanThirty
-          : null;
+      return int.parse(value) < 0 ? S.current.fieldDurationMoreThanZero : null;
     }
     return S.current.fieldRequired;
   }

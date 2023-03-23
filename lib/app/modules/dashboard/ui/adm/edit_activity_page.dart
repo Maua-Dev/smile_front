@@ -37,8 +37,7 @@ class _EditActivityPageState
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(73),
-          child:
-              AdmAppBarWidget(appBarText: S.of(context).activityCreateTitle)),
+          child: AdmAppBarWidget(appBarText: S.of(context).activityEditTitle)),
       body: Row(
         children: [
           const SideBarWidget(),
