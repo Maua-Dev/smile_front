@@ -1,29 +1,46 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import 'edit_activity_controller_test.mocks.dart';
 
 @GenerateMocks([
   ActivitiesRepositoryInterface,
   EditActivityInterface,
+  GetResponsibleProfessorsInterface,
 ])
 void main() {
   initModules([AppModule(), AdmModule()]);
 
+  initializeDateFormatting();
+  List<ResponsibleProfessorModel> responsibleProfessors = [
+    ResponsibleProfessorModel(
+        id: '123124', name: 'Breno Amorim', role: UserRolesEnum.PROFESSOR)
+  ];
+
+  GetResponsibleProfessorsInterface getResponsibleProfessors =
+      MockGetResponsibleProfessorsInterface();
   EditActivityInterface editActivity = MockEditActivityInterface();
+
   late EditActivityController controller;
-  final activity = ActivityModel(
+  final activity = AdminActivityModel(
     activityCode: 'C01',
     type: ActivityEnum.COURSES,
     title:
@@ -56,13 +73,18 @@ void main() {
     isExtensive: false,
     takenSlots: 0,
     responsibleProfessors: [],
+    enrollments: [],
   );
 
   setUpAll(() async {
+    await S.load(const Locale.fromSubtags(languageCode: 'pt'));
     await Modular.isModuleReady<AppModule>();
+    when(getResponsibleProfessors())
+        .thenAnswer((_) async => responsibleProfessors);
     controller = EditActivityController(
       editActivity: editActivity,
       activityModel: activity,
+      getResponsibleProfessors: getResponsibleProfessors,
     );
   });
 
@@ -71,9 +93,9 @@ void main() {
     expect(controller.isLoading, true);
   });
 
-  test('isFilled', () {
-    var test = controller.isFilled();
-    expect(test, true);
+  test('validateRequiredField', () async {
+    var test = controller.validateRequiredField('');
+    expect(test, 'Campo obrigatório');
   });
 
   test('setType', () {
@@ -131,9 +153,9 @@ void main() {
   });
 
   test('setParticipants', () {
-    var str = 1;
+    String str = '15';
     controller.setParticipants(str);
-    expect(controller.activityToEdit.totalSlots, str);
+    expect(controller.activityToEdit.totalSlots, int.parse(str));
   });
 
   test('setEnableSubscription', () {

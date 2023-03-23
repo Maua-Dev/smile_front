@@ -45,12 +45,17 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future editActivity(ActivityModel activityToEdit) async {
-    var index = activitiesList.indexWhere(
+  Future<bool> editActivity(AdminActivityModel activityToEdit) async {
+    var index = admActivitiesList.indexWhere(
         (element) => element.activityCode == activityToEdit.activityCode);
-    activitiesList.removeAt(index);
-    activitiesList.insert(index, activityToEdit);
-    await datasource.editActivity(activityToEdit.activityCode, activityToEdit);
+    var response = await datasource.editActivity(
+        activityToEdit.activityCode, activityToEdit);
+    if (response != null) {
+      admActivitiesList.removeAt(index);
+      admActivitiesList.insert(index, activityToEdit);
+      return true;
+    }
+    return false;
   }
 
   @override
@@ -91,9 +96,13 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   }
 
   @override
-  Future createActivity(ActivityModel activityToCreate) async {
-    activitiesList.insert(0, activityToCreate);
-    await datasource.createActivity(activityToCreate);
+  Future<bool> createActivity(AdminActivityModel activityToCreate) async {
+    var response = await datasource.createActivity(activityToCreate);
+    if (response != null) {
+      admActivitiesList.insert(0, activityToCreate);
+      return true;
+    }
+    return false;
   }
 
   @override

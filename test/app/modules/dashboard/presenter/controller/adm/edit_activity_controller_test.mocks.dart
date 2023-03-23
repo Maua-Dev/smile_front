@@ -10,6 +10,8 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/activities
     as _i3;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart'
     as _i9;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart'
+    as _i10;
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart'
     as _i8;
 import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
@@ -18,6 +20,8 @@ import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
     as _i6;
 import 'package:smile_front/app/shared/models/professor_activity_model.dart'
     as _i2;
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart'
+    as _i11;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -95,14 +99,14 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i4.Future<String>.value(''),
       ) as _i4.Future<String>);
   @override
-  _i4.Future<dynamic> createActivity(_i5.ActivityModel? activityToCreate) =>
+  _i4.Future<bool> createActivity(_i7.AdminActivityModel? activityToCreate) =>
       (super.noSuchMethod(
         Invocation.method(
           #createActivity,
           [activityToCreate],
         ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
   @override
   _i4.Future<List<_i7.AdminActivityModel>> getAdminActivities() =>
       (super.noSuchMethod(
@@ -114,14 +118,14 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             <_i7.AdminActivityModel>[]),
       ) as _i4.Future<List<_i7.AdminActivityModel>>);
   @override
-  _i4.Future<dynamic> editActivity(_i5.ActivityModel? activityToEdit) =>
+  _i4.Future<bool> editActivity(_i7.AdminActivityModel? activityToEdit) =>
       (super.noSuchMethod(
         Invocation.method(
           #editActivity,
           [activityToEdit],
         ),
-        returnValue: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
   @override
   _i4.Future<dynamic> deleteActivity(String? activityCode) =>
       (super.noSuchMethod(
@@ -226,7 +230,7 @@ class MockEditActivityInterface extends _i1.Mock
   }
 
   @override
-  _i4.Future<dynamic> call(_i5.ActivityModel? activityToEdit) =>
+  _i4.Future<dynamic> call(_i7.AdminActivityModel? activityToEdit) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -234,4 +238,25 @@ class MockEditActivityInterface extends _i1.Mock
         ),
         returnValue: _i4.Future<dynamic>.value(),
       ) as _i4.Future<dynamic>);
+}
+
+/// A class which mocks [GetResponsibleProfessorsInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetResponsibleProfessorsInterface extends _i1.Mock
+    implements _i10.GetResponsibleProfessorsInterface {
+  MockGetResponsibleProfessorsInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<List<_i11.ResponsibleProfessorModel>> call() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+        ),
+        returnValue: _i4.Future<List<_i11.ResponsibleProfessorModel>>.value(
+            <_i11.ResponsibleProfessorModel>[]),
+      ) as _i4.Future<List<_i11.ResponsibleProfessorModel>>);
 }

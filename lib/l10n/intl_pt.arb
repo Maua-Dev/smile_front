@@ -95,7 +95,6 @@
     
     
 
-    
     "selectOptionTitle": "Selecione uma opção:",
     "registerFullNamePlaceholder": "Nome Completo",
     "registerSocialNamePlaceholder": "Nome Social",
@@ -147,6 +146,9 @@
     "fieldDDDRequired": "Insira o número com DDD",
     "fieldRAInvalid": "RA inválido",
     "fieldFillAllRequired": "Preencha todos os campos!",
+    "fieldDurationMoreThanZero": "Deve ser maior que 0",
+    "fieldParticipantsMoreThanThirty": "Deve ser maior que 30",
+    "fieldHourBeforeToday": "Data antiga",
 
 
 
@@ -182,15 +184,30 @@
     
     "cleanFiltersTitle": "Limpar Filtros",
 
+
+    "activity": "Atividade",
     "activityCreateTitle": "Criar Atividade",
     "activityEditTitle": "Editar Atividade",
     "activityTypeTitle": "Tipo de Atividade",
     "activityNameTitle": "Titulo da Atividade",
+    "activityDurationTitle": "Duração(Minutos)",  
+    "activityVacancyNumber": "Número de Vagas",  
+    "activityAcceptSbscriptions": "Aceitar inscrições",
+    "activityResponsibleTeacher": "Professor Responsável",
+    "activityInscriptionClosureDate": "Fechamento das Inscrições (Data)",
+    "activityInscriptionClosureHour": "Fechamento das Inscrições (Hora)",
+    "activityInscriptionClosureTooltip": "O sistema encerra automaticamente as inscrições da atividade\nem uma data e hora específica. Se não preencher esse campo, as\ninscrições não se encerrarão sozinhas e um administrador deverá\nfazê-lo manualmente.",
+    "activityErrorClosureDateAfterStartDate": "A data de fechamento das inscrições deve ser antes da data da atividade",
     "companyTitle": "Empresa:",
+    "companyTitleWithoutDouble": "Empresa",
+    "extensionistTitle": "Extensionista",
 
+    
     "descriptionTitle": "Descrição",
 
+
     "enrollmentTitle": "Status",
+
     "hourTitle": "Hora",
     "dayTitle": "Data",
     "scheduleTitle": "Horário",
@@ -207,7 +224,6 @@
     "validationCodeTitle": "Código de validação",
 
     "localTitle": "Local",
-
 
     "isExtensiveTooltip": "Atividade Extensionista",
 
@@ -234,7 +250,6 @@
 
     "unavailabeTitle": "Indisponível",
 
-
     "unsubscribeVerification": "Tem certeza que deseja se desinscrever?",
     "subscribeVerification": "Tem certeza que deseja se inscrever?",
     "unsubscribeVerificationClosedRegistration": "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!",
@@ -247,7 +262,8 @@
     "joinQueueTitle": "Entrar na fila",
     "inQueueTitle": "Na fila",
     "exitQueueConfimation": "Deseja sair da fila?",
-    "InQueueContent": "Você está na fila da atividade"
+    "InQueueContent": "Você está na fila da atividade",
 
-
+    "addProfessorTitle": "Adicionar Professor",
+    "speakerNameTitle": "Nome do Palestrante"
 }

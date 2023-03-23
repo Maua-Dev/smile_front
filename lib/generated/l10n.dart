@@ -1354,6 +1354,36 @@ class S {
     );
   }
 
+  /// `Must be bigger than 0`
+  String get fieldDurationMoreThanZero {
+    return Intl.message(
+      'Must be bigger than 0',
+      name: 'fieldDurationMoreThanZero',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Must be bigger than 30`
+  String get fieldParticipantsMoreThanThirty {
+    return Intl.message(
+      'Must be bigger than 30',
+      name: 'fieldParticipantsMoreThanThirty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old date`
+  String get fieldHourBeforeToday {
+    return Intl.message(
+      'Old date',
+      name: 'fieldHourBeforeToday',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Follow the steps that will be sent in the registered email:`
   String get codeInEmailTitle {
     return Intl.message(
@@ -1544,6 +1574,16 @@ class S {
     );
   }
 
+  /// `Activity`
+  String get activity {
+    return Intl.message(
+      'Activity',
+      name: 'activity',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Create Activity`
   String get activityCreateTitle {
     return Intl.message(
@@ -1584,11 +1624,111 @@ class S {
     );
   }
 
+  /// `Duration(Minutes)`
+  String get activityDurationTitle {
+    return Intl.message(
+      'Duration(Minutes)',
+      name: 'activityDurationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of Vanacies`
+  String get activityVacancyNumber {
+    return Intl.message(
+      'Number of Vanacies',
+      name: 'activityVacancyNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept Subscriptions`
+  String get activityAcceptSbscriptions {
+    return Intl.message(
+      'Accept Subscriptions',
+      name: 'activityAcceptSbscriptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible Teacher`
+  String get activityResponsibleTeacher {
+    return Intl.message(
+      'Responsible Teacher',
+      name: 'activityResponsibleTeacher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inscription Closure (Date)`
+  String get activityInscriptionClosureDate {
+    return Intl.message(
+      'Inscription Closure (Date)',
+      name: 'activityInscriptionClosureDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inscription Closure (Hour)`
+  String get activityInscriptionClosureHour {
+    return Intl.message(
+      'Inscription Closure (Hour)',
+      name: 'activityInscriptionClosureHour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The system automatically closes the activity\nsubscriptions at a specific date and time. If this field is not filled in, the\nsubscriptions will not close by themselves and an administrator must\ndo it manually.`
+  String get activityInscriptionClosureTooltip {
+    return Intl.message(
+      'The system automatically closes the activity\nsubscriptions at a specific date and time. If this field is not filled in, the\nsubscriptions will not close by themselves and an administrator must\ndo it manually.',
+      name: 'activityInscriptionClosureTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The inscription closure date must be before the event date`
+  String get activityErrorClosureDateAfterStartDate {
+    return Intl.message(
+      'The inscription closure date must be before the event date',
+      name: 'activityErrorClosureDateAfterStartDate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Company:`
   String get companyTitle {
     return Intl.message(
       'Company:',
       name: 'companyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Company`
+  String get companyTitleWithoutDouble {
+    return Intl.message(
+      'Company',
+      name: 'companyTitleWithoutDouble',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extensionist`
+  String get extensionistTitle {
+    return Intl.message(
+      'Extensionist',
+      name: 'extensionistTitle',
       desc: '',
       args: [],
     );
@@ -1971,6 +2111,26 @@ class S {
     return Intl.message(
       'You are in the activity queue',
       name: 'InQueueContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Professor`
+  String get addProfessorTitle {
+    return Intl.message(
+      'Add Professor',
+      name: 'addProfessorTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Speaker Name`
+  String get speakerNameTitle {
+    return Intl.message(
+      'Speaker Name',
+      name: 'speakerNameTitle',
       desc: '',
       args: [],
     );

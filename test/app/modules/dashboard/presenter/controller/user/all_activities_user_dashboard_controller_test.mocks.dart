@@ -184,14 +184,14 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         returnValue: _i10.Future<String>.value(''),
       ) as _i10.Future<String>);
   @override
-  _i10.Future<dynamic> createActivity(_i11.ActivityModel? activityToCreate) =>
+  _i10.Future<bool> createActivity(_i12.AdminActivityModel? activityToCreate) =>
       (super.noSuchMethod(
         Invocation.method(
           #createActivity,
           [activityToCreate],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i10.Future<bool>.value(false),
+      ) as _i10.Future<bool>);
   @override
   _i10.Future<List<_i12.AdminActivityModel>> getAdminActivities() =>
       (super.noSuchMethod(
@@ -203,14 +203,14 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             <_i12.AdminActivityModel>[]),
       ) as _i10.Future<List<_i12.AdminActivityModel>>);
   @override
-  _i10.Future<dynamic> editActivity(_i11.ActivityModel? activityToEdit) =>
+  _i10.Future<bool> editActivity(_i12.AdminActivityModel? activityToEdit) =>
       (super.noSuchMethod(
         Invocation.method(
           #editActivity,
           [activityToEdit],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i10.Future<bool>.value(false),
+      ) as _i10.Future<bool>);
   @override
   _i10.Future<dynamic> deleteActivity(String? activityCode) =>
       (super.noSuchMethod(

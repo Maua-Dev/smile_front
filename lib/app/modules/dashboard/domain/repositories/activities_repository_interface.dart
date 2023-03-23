@@ -9,9 +9,9 @@ abstract class ActivitiesRepositoryInterface {
   Future<List<EnrollsActivityModel>> getUserSubscribedActivities();
   Future<ProfessorActivityModel> getActivityWithEnrollments(String code);
   Future<String> getDownloadLinkCsv();
-  Future createActivity(ActivityModel activityToCreate);
+  Future<bool> createActivity(AdminActivityModel activityToCreate);
   Future<List<AdminActivityModel>> getAdminActivities();
-  Future editActivity(ActivityModel activityToEdit);
+  Future<bool> editActivity(AdminActivityModel activityToEdit);
   Future deleteActivity(String activityCode);
   Future manualDropActivity(String activityCode, String userId);
   Future<bool> subscribeActivity(String activityCode);

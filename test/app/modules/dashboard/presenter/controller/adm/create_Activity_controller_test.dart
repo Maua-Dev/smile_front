@@ -1,28 +1,47 @@
 // ignore_for_file: file_names
-
+import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
 import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/app_module.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
+import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import 'create_Activity_controller_test.mocks.dart';
 
-@GenerateMocks([CreateActivityInterface])
+@GenerateMocks([CreateActivityInterface, GetResponsibleProfessorsInterface])
 void main() {
+  initializeDateFormatting('pt');
   CreateActivityInterface createActivity = MockCreateActivityInterface();
+  GetResponsibleProfessorsInterface getResponsibleProfessors =
+      MockGetResponsibleProfessorsInterface();
+
+  List<ResponsibleProfessorModel> responsibleProfessors = [
+    ResponsibleProfessorModel(
+        id: '123124', name: 'Breno Amorim', role: UserRolesEnum.PROFESSOR)
+  ];
 
   late CreateActivityController controller;
   initModules([AppModule(), AdmModule()]);
 
   setUpAll(() async {
-    await Modular.isModuleReady<AppModule>();
-    controller = CreateActivityController(createActivity: createActivity);
+    await Modular.isModuleReady<AdmModule>();
+    await S.load(const Locale.fromSubtags(languageCode: 'pt'));
+    when(getResponsibleProfessors())
+        .thenAnswer((_) async => responsibleProfessors);
+    controller = CreateActivityController(
+        createActivity: createActivity,
+        getResponsibleProfessors: getResponsibleProfessors);
   });
 
   test('setIsLoading', () {
@@ -30,9 +49,9 @@ void main() {
     expect(controller.isLoading, true);
   });
 
-  test('isFilled', () {
-    var test = controller.isFilled();
-    expect(test, false);
+  test('validateRequiredField', () async {
+    var test = controller.validateRequiredField('');
+    expect(test, 'Campo obrigatório');
   });
 
   test('setType', () {
@@ -72,7 +91,7 @@ void main() {
   });
 
   test('setDate', () {
-    var str = DateFormat('dd-MM-yyyy').format(DateTime.now());
+    var str = DateFormat('dd-MM-yyyy', 'en').format(DateTime.now());
     controller.setDate(str);
     expect(
         controller.activityToCreate.startDate!,
@@ -94,7 +113,7 @@ void main() {
 
   test('setParticipants', () {
     var str = 1;
-    controller.setParticipants(str);
+    controller.setParticipants(str.toString());
     expect(controller.activityToCreate.totalSlots, str);
   });
 

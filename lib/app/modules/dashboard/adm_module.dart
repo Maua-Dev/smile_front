@@ -1,17 +1,21 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/manual_drop_activity.dart';
+import 'package:smile_front/app/modules/dashboard/external/user_datasource_impl.dart';
+import 'package:smile_front/app/modules/dashboard/infra/repository/user_repository_impl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/create_activity_controller.dart';
+import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/adm_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/edit_activity_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/create_activity_page.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 
 import '../../shared/error/error_page.dart';
 import '../../shared/services/dio/smile_activities_options.dart';
@@ -24,11 +28,19 @@ import 'domain/repositories/activities_repository_interface.dart';
 import 'domain/usecases/edit_activity.dart';
 import 'external/activities_datasource_impl.dart';
 import 'infra/datasources/activities_datasource_interface.dart';
+import 'infra/datasources/user_datasource_interface.dart';
 import 'infra/repository/activities_repository_impl.dart';
 
 class AdmModule extends Module {
   @override
   final List<Bind> binds = [
+    Bind.lazySingleton<UserDatasourceInterface>((i) => UserDatasourceImpl(
+          storage: i<SecureStorageInterface>(),
+        )),
+    Bind.lazySingleton<UserRepositoryInterface>(
+        (i) => UserRepositoryImpl(datasource: i())),
+    Bind.lazySingleton<GetResponsibleProfessorsInterface>(
+        (i) => GetResponsibleProfessorsList(repository: i())),
     Bind.lazySingleton<AdmDashboardController>(
         (i) => AdmDashboardController(
               manualDropActivity: i(),
@@ -41,15 +53,19 @@ class AdmModule extends Module {
     Bind.lazySingleton<EditActivityController>(
       (i) => EditActivityController(
         editActivity: i(),
-        activityModel:
-            i.args!.data as ActivityModel? ?? ActivityModel.newInstance(),
+        activityModel: i.args!.data as AdminActivityModel? ??
+            AdminActivityModel.newInstance(),
+        getResponsibleProfessors: i(),
       ),
     ),
     Bind.lazySingleton<CreateActivityController>(
       (i) => CreateActivityController(
         createActivity: i(),
+        getResponsibleProfessors: i(),
       ),
     ),
+    Bind.lazySingleton<CreateActivityInterface>(
+        (i) => CreateActivity(repository: i())),
     Bind.lazySingleton<ActivitiesDatasourceInterface>(
         (i) => ActivitiesDatasourceImpl(
               storage: i<SecureStorageInterface>(),
@@ -82,7 +98,7 @@ class AdmModule extends Module {
       (i) => GetDownloadLinkCsv(
         repository: i(),
       ),
-    )
+    ),
   ];
 
   @override
