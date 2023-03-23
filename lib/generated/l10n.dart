@@ -1354,6 +1354,36 @@ class S {
     );
   }
 
+  /// `Must be bigger than 0`
+  String get fieldDurationMoreThanZero {
+    return Intl.message(
+      'Must be bigger than 0',
+      name: 'fieldDurationMoreThanZero',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Must be bigger than 30`
+  String get fieldParticipantsMoreThanThirty {
+    return Intl.message(
+      'Must be bigger than 30',
+      name: 'fieldParticipantsMoreThanThirty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old date`
+  String get fieldHourBeforeToday {
+    return Intl.message(
+      'Old date',
+      name: 'fieldHourBeforeToday',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Follow the steps that will be sent in the registered email:`
   String get codeInEmailTitle {
     return Intl.message(

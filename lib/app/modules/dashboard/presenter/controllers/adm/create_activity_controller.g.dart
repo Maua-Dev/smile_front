@@ -141,6 +141,52 @@ mixin _$CreateActivityController on CreateActivityControllerBase, Store {
   }
 
   @override
+  String? validateParticipantsField(String? value) {
+    final _$actionInfo =
+        _$CreateActivityControllerBaseActionController.startAction(
+            name: 'CreateActivityControllerBase.validateParticipantsField');
+    try {
+      return super.validateParticipantsField(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? validateDurationField(String? value) {
+    final _$actionInfo =
+        _$CreateActivityControllerBaseActionController.startAction(
+            name: 'CreateActivityControllerBase.validateDurationField');
+    try {
+      return super.validateDurationField(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? validateHourField(String? value) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.validateHourField');
+    try {
+      return super.validateHourField(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? validateDateField(String? value) {
+    final _$actionInfo = _$CreateActivityControllerBaseActionController
+        .startAction(name: 'CreateActivityControllerBase.validateDateField');
+    try {
+      return super.validateDateField(value);
+    } finally {
+      _$CreateActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String? isValidSubscriptionclosureDate(String? value) {
     final _$actionInfo =
         _$CreateActivityControllerBaseActionController.startAction(

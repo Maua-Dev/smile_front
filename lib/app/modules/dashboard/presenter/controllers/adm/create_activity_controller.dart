@@ -58,6 +58,45 @@ abstract class CreateActivityControllerBase with Store {
   }
 
   @action
+  String? validateParticipantsField(String? value) {
+    if (value!.isNotEmpty) {
+      return int.parse(value) < 30
+          ? S.current.fieldParticipantsMoreThanThirty
+          : null;
+    }
+    return S.current.fieldRequired;
+  }
+
+  @action
+  String? validateDurationField(String? value) {
+    if (value!.isNotEmpty) {
+      return int.parse(value) > 0 ? null : S.current.fieldDurationMoreThanZero;
+    }
+    return S.current.fieldRequired;
+  }
+
+  @action
+  String? validateHourField(String? value) {
+    if (value!.isNotEmpty) {
+      return activityToCreate.startDate!.isBefore(DateTime.now())
+          ? S.current.fieldHourBeforeToday
+          : null;
+    }
+    return S.current.fieldRequired;
+  }
+
+  @action
+  String? validateDateField(String? value) {
+    if (value!.isNotEmpty) {
+      return activityToCreate.startDate!
+              .isBefore(DateTime.now().subtract(const Duration(days: 1)))
+          ? S.current.fieldHourBeforeToday
+          : null;
+    }
+    return S.current.fieldRequired;
+  }
+
+  @action
   Future createUserActivity() async {
     setIsLoading(true);
     if (activityToCreate.deliveryEnum == DeliveryEnum.in_person) {

@@ -359,6 +359,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Extensionista"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Insira o número com DDD"),
+        "fieldDurationMoreThanZero":
+            MessageLookupByLibrary.simpleMessage("Deve ser maior que 0"),
         "fieldEmailInvalid":
             MessageLookupByLibrary.simpleMessage("E-mail inválido"),
         "fieldEmailsEqualsRequired":
@@ -367,7 +369,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Preencha todos os campos!"),
         "fieldFullNameRequired":
             MessageLookupByLibrary.simpleMessage("Insira seu nome completo"),
+        "fieldHourBeforeToday":
+            MessageLookupByLibrary.simpleMessage("Data antiga"),
         "fieldInvalid": MessageLookupByLibrary.simpleMessage("Campo inválido"),
+        "fieldParticipantsMoreThanThirty":
+            MessageLookupByLibrary.simpleMessage("Deve ser maior que 30"),
         "fieldPasswordEqualsRequired": MessageLookupByLibrary.simpleMessage(
             "Os campos \"Senha\" e \"Confirme sua senha\" devem ser iguais"),
         "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(

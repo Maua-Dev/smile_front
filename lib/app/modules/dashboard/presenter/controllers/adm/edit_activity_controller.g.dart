@@ -101,6 +101,51 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
+  String? validateParticipantsField(String? value) {
+    final _$actionInfo =
+        _$EditActivityControllerBaseActionController.startAction(
+            name: 'EditActivityControllerBase.validateParticipantsField');
+    try {
+      return super.validateParticipantsField(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? validateDurationField(String? value) {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.validateDurationField');
+    try {
+      return super.validateDurationField(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? validateHourField(String? value) {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.validateHourField');
+    try {
+      return super.validateHourField(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String? validateDateField(String? value) {
+    final _$actionInfo = _$EditActivityControllerBaseActionController
+        .startAction(name: 'EditActivityControllerBase.validateDateField');
+    try {
+      return super.validateDateField(value);
+    } finally {
+      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String? isValidSubscriptionclosureDate(String? value) {
     final _$actionInfo =
         _$EditActivityControllerBaseActionController.startAction(

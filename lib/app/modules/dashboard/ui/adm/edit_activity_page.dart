@@ -152,6 +152,12 @@ class _EditActivityPageState
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 114),
                             child: ScheduleWidget(
+                              validateDurationField:
+                                  controller.validateDurationField,
+                              validateParticipantsField:
+                                  controller.validateParticipantsField,
+                              validateDateField: controller.validateDateField,
+                              validateHourField: controller.validateHourField,
                               delivery: controller.activityToEdit.deliveryEnum,
                               closeInscriptionsHour: closureHour,
                               isValidSubscriptionclosureDate:

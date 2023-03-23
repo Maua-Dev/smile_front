@@ -9,6 +9,7 @@ class SpeakerAddWidget extends StatelessWidget {
   final void Function(String value)? onChangedBio;
   final void Function(String value)? onChangedCompany;
   final String? Function(String? value)? validateRequiredField;
+  final String? Function(DateTime? value)? validateHourField;
   final void Function()? removeSpeaker;
   final String? name;
   final String? bio;
@@ -23,6 +24,7 @@ class SpeakerAddWidget extends StatelessWidget {
       this.name,
       this.bio,
       this.company,
+      this.validateHourField,
       required this.length,
       this.validateRequiredField})
       : super(key: key);
