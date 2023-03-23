@@ -59,9 +59,7 @@ abstract class EditActivityControllerBase with Store {
   @action
   String? validateParticipantsField(String? value) {
     if (value!.isNotEmpty) {
-      return int.parse(value) < 30
-          ? S.current.fieldParticipantsMoreThanThirty
-          : null;
+      return int.parse(value) < 30 ? S.current.fieldDurationMoreThanZero : null;
     }
     return S.current.fieldRequired;
   }
@@ -77,24 +75,22 @@ abstract class EditActivityControllerBase with Store {
   @action
   String? validateHourField(String? value) {
     if (value!.isNotEmpty) {
-      var date = DateFormat('yyyy-MM-dd').format(DateTime.now());
-      var hour = DateTime.parse("$date $value");
-      return hour.isBefore(DateTime.now()) ? S.current.fieldRequired : null;
+      return activityToEdit.startDate!.isBefore(DateTime.now())
+          ? S.current.fieldHourBeforeToday
+          : null;
     }
-    return S.current.fieldHourBeforeToday;
+    return S.current.fieldRequired;
   }
 
   @action
   String? validateDateField(String? value) {
     if (value!.isNotEmpty) {
-      var year = value.substring(6, 10);
-      var month = value.substring(3, 5);
-      var day = value.substring(0, 2);
-      value = '$year-$month-$day 00:00:00';
-      var date = DateTime.parse(value);
-      return date.isBefore(DateTime.now()) ? S.current.fieldRequired : null;
+      return activityToEdit.startDate!
+              .isBefore(DateTime.now().subtract(const Duration(days: 1)))
+          ? S.current.fieldHourBeforeToday
+          : null;
     }
-    return S.current.fieldHourBeforeToday;
+    return S.current.fieldRequired;
   }
 
   @action

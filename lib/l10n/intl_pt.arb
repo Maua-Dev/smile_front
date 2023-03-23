@@ -147,7 +147,6 @@
     "fieldRAInvalid": "RA inválido",
     "fieldFillAllRequired": "Preencha todos os campos!",
     "fieldDurationMoreThanZero": "Deve ser maior que 0",
-    "fieldParticipantsMoreThanThirty": "Deve ser maior que 30",
     "fieldHourBeforeToday": "Data antiga",
 
 

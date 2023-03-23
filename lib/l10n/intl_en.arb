@@ -146,7 +146,6 @@
     "fieldRAInvalid": "Invalid RA",
     "fieldFillAllRequired": "Fill in all fields!",
     "fieldDurationMoreThanZero": "Must be bigger than 0",
-    "fieldParticipantsMoreThanThirty": "Must be bigger than 30",
     "fieldHourBeforeToday": "Old date",
 
 
