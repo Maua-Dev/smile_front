@@ -13,7 +13,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/crea
 void main() {
   initModules([AppModule(), AdmModule()]);
 
-  setUp(() async {
+  setUpAll(() async {
     await Modular.isModuleReady<AppModule>();
     await Modular.isModuleReady<AdmModule>();
   });
