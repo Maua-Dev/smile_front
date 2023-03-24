@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
+import '../../../../../../shared/utils/screen_helper.dart';
 
 class H1HeaderTextWidget extends StatelessWidget {
   final String title;
@@ -18,11 +20,11 @@ class H1HeaderTextWidget extends StatelessWidget {
           Text(
             title,
             style: AppTextStyles.titleH1.copyWith(
-                fontSize: MediaQuery.of(context).size.width < 900
-                    ? MediaQuery.of(context).size.width < 530
-                        ? 24
-                        : 32
-                    : 48,
+                fontSize: Screen.width(context) < cellphoneSize
+                    ? 24
+                    : MediaQuery.of(context).size.width < tabletSize
+                        ? 32
+                        : 46,
                 color: AppColors.brandingBlue),
             textAlign: TextAlign.center,
           ),

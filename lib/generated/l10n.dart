@@ -144,6 +144,16 @@ class S {
     );
   }
 
+  /// `O que é a semana SMILE?`
+  String get whatIsSmile {
+    return Intl.message(
+      'O que é a semana SMILE?',
+      name: 'whatIsSmile',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `KNOW MORE >>>`
   String get knowMore {
     return Intl.message(

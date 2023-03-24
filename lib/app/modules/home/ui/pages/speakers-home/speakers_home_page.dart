@@ -62,15 +62,22 @@ class _SpeakersHomePageState
                         children: [
                           Text(SpeakersEnum.values[controller.indexToShow].name,
                               textAlign: TextAlign.center,
-                              style:
-                                  AppTextStyles.titleH1.copyWith(fontSize: 50)),
-                          const SizedBox(
-                            height: 64,
+                              style: AppTextStyles.titleH1.copyWith(
+                                  fontSize: MediaQuery.of(context).size.width <
+                                          tabletSize
+                                      ? 32
+                                      : 46)),
+                          SizedBox(
+                            height:
+                                Screen.width(context) < tabletSize ? 32 : 64,
                           ),
                           Text(
                             SpeakersEnum
                                 .values[controller.indexToShow].description,
-                            style: AppTextStyles.body.copyWith(fontSize: 25),
+                            style: AppTextStyles.body.copyWith(
+                                fontSize: Screen.width(context) < tabletSize
+                                    ? 18
+                                    : 25),
                             textAlign: TextAlign.justify,
                           )
                         ],

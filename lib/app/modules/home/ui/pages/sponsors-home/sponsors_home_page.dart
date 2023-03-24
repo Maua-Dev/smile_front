@@ -10,7 +10,9 @@ import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
+import '../../../../../shared/entities/screen_variables.dart';
 import '../../../../../shared/themes/app_colors.dart';
+import '../../../../../shared/utils/screen_helper.dart';
 
 class SponsorsHomePage extends StatefulWidget {
   const SponsorsHomePage({Key? key}) : super(key: key);
@@ -105,42 +107,21 @@ class BeSponsor extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(
+          horizontal: Screen.width(context) < cellphoneSize
+              ? 16
+              : Screen.width(context) < tabletSize
+                  ? 32
+                  : 64),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: MediaQuery.of(context).size.width > 530
-                    ? Container(
-                        alignment: Alignment.center,
-                        height: 2,
-                        color: AppColors.brandingBlue,
-                      )
-                    : Container(),
-              ),
-              H1HeaderTextWidget(
-                title: S.of(context).beSponsorTitle,
-              ),
-              Expanded(
-                child: MediaQuery.of(context).size.width > 530
-                    ? Container(
-                        alignment: Alignment.center,
-                        height: 2,
-                        color: AppColors.brandingBlue,
-                      )
-                    : Container(),
-              )
-            ],
+          H1HeaderTextWidget(
+            title: S.of(context).beSponsorTitle,
           ),
           Text(
             S.of(context).beSponsorDescription,
             style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width > breakpointMobile
-                    ? 16
-                    : 14),
+                fontSize: Screen.width(context) < tabletSize ? 18 : 25),
             textAlign: TextAlign.justify,
           ),
           const SizedBox(

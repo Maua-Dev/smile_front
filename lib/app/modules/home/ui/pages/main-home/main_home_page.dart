@@ -24,7 +24,8 @@ class _MainHomePageState extends State<MainHomePage> {
       return SizedBox(
         height: Screen.height(context) - 56,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 64),
+          padding: EdgeInsets.symmetric(
+              horizontal: Screen.width(context) < tabletSize ? 32 : 64),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,7 +43,9 @@ class _MainHomePageState extends State<MainHomePage> {
                     ),
                     Text(
                       S.of(context).homePageSubtitle,
-                      style: AppTextStyles.body.copyWith(fontSize: 25),
+                      style: AppTextStyles.body.copyWith(
+                          fontSize:
+                              Screen.width(context) < tabletSize ? 18 : 25),
                       textAlign: TextAlign.justify,
                     ),
                     const SizedBox(
@@ -77,11 +80,13 @@ class _MainHomePageState extends State<MainHomePage> {
                   ],
                 ),
               ),
+              const SizedBox(
+                width: 64,
+              ),
               Flexible(
                   child: Center(
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 104, horizontal: 64),
+                  padding: const EdgeInsets.symmetric(vertical: 104),
                   child: Container(
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
