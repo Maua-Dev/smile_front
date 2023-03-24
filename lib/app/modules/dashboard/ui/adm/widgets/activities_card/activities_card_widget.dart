@@ -44,18 +44,26 @@ class ActivitiesCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var filteredEnrollments = enrollments
-        .where((enrollment) =>
-            enrollment.state == EnrollmentStateEnum.COMPLETED ||
-            enrollment.state == EnrollmentStateEnum.ENROLLED ||
-            enrollment.state == EnrollmentStateEnum.IN_QUEUE)
+    var filteredEnrollmentsForCompleted = enrollments
+        .where(
+            (enrollment) => enrollment.state == EnrollmentStateEnum.COMPLETED)
         .toList();
+
+    var filteredEnrollmentsForEnrolled = enrollments
+        .where((enrollment) => enrollment.state == EnrollmentStateEnum.ENROLLED)
+        .toList();
+
+    var filteredEnrollmentsForQueue = enrollments
+        .where((enrollment) => enrollment.state == EnrollmentStateEnum.IN_QUEUE)
+        .toList();
+
+    var filteredEnrollments = filteredEnrollmentsForCompleted +
+        filteredEnrollmentsForEnrolled +
+        filteredEnrollmentsForQueue;
 
     int enrolledUsersLength = filteredEnrollments.length > totalParticipants
         ? totalParticipants
         : filteredEnrollments.length;
-
-    filteredEnrollments.sort((a, b) => b.state.index.compareTo(a.state.index));
 
     return Column(
       children: [
