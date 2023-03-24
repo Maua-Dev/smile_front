@@ -42,16 +42,7 @@ class RegisterButtonWidget extends StatelessWidget {
                   child: CircularProgressIndicator(
                   color: Colors.white,
                 ))
-              : Text(
-                  isRegistered == EnrollmentStateEnum.ENROLLED
-                      ? S.of(context).unsubscribe
-                      : isRegistered == EnrollmentStateEnum.IN_QUEUE
-                          ? S.of(context).inQueueTitle
-                          : activityIsFull
-                              ? S.of(context).joinQueueTitle
-                              : isRegistered == EnrollmentStateEnum.COMPLETED
-                                  ? S.of(context).completed
-                                  : S.of(context).signUp,
+              : Text(getText(isRegistered, context),
                   style: AppTextStyles.buttonBold.copyWith(
                       fontSize: isRegistered == EnrollmentStateEnum.IN_QUEUE
                           ? 14
@@ -60,5 +51,17 @@ class RegisterButtonWidget extends StatelessWidget {
                               : 18,
                       color: Colors.white))),
     );
+  }
+
+  String getText(isRegistered, context) {
+    return isRegistered == EnrollmentStateEnum.ENROLLED
+        ? S.of(context).unsubscribe
+        : isRegistered == EnrollmentStateEnum.IN_QUEUE
+            ? S.of(context).inQueueTitle
+            : isRegistered == EnrollmentStateEnum.COMPLETED
+                ? S.of(context).completed
+                : activityIsFull
+                    ? S.of(context).joinQueueTitle
+                    : S.of(context).signUp;
   }
 }
