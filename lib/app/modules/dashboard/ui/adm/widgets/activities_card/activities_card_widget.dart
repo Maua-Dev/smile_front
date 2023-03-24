@@ -47,9 +47,15 @@ class ActivitiesCardWidget extends StatelessWidget {
     var filteredEnrollments = enrollments
         .where((enrollment) =>
             enrollment.state == EnrollmentStateEnum.COMPLETED ||
-            enrollment.state == EnrollmentStateEnum.ENROLLED)
+            enrollment.state == EnrollmentStateEnum.ENROLLED ||
+            enrollment.state == EnrollmentStateEnum.IN_QUEUE)
         .toList();
-    int enrolledUsersLength = filteredEnrollments.length;
+
+    int enrolledUsersLength = filteredEnrollments.length > totalParticipants
+        ? totalParticipants
+        : filteredEnrollments.length;
+
+    filteredEnrollments.sort((a, b) => b.state.index.compareTo(a.state.index));
 
     return Column(
       children: [
@@ -282,7 +288,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                             fontSize: 20),
                                                   ),
                                                   SizedBox(
-                                                    width: 556,
+                                                    width: 700,
                                                     child: Divider(
                                                       thickness: 2,
                                                       color: AppColors
@@ -291,7 +297,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                   ),
                                                   Observer(builder: (_) {
                                                     return SizedBox(
-                                                      width: 556,
+                                                      width: 700,
                                                       height: 479,
                                                       child: ListView.builder(
                                                         itemCount:
@@ -333,17 +339,42 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                                             (_) {
                                                                           return SizedBox(
                                                                             width:
-                                                                                430,
+                                                                                450,
                                                                             child: Text(filteredEnrollments[index].user!.name,
                                                                                 overflow: TextOverflow.ellipsis,
                                                                                 maxLines: 1,
                                                                                 style: AppTextStyles.bold.copyWith(color: Colors.black, fontSize: 30)),
                                                                           );
-                                                                        })
+                                                                        }),
+                                                                        Container(
+                                                                          height:
+                                                                              40,
+                                                                          width:
+                                                                              120,
+                                                                          decoration: BoxDecoration(
+                                                                              borderRadius: BorderRadius.circular(8),
+                                                                              color: filteredEnrollments[index].state == EnrollmentStateEnum.IN_QUEUE
+                                                                                  ? AppColors.brandingBlue
+                                                                                  : filteredEnrollments[index].state == EnrollmentStateEnum.COMPLETED
+                                                                                      ? AppColors.greenButton
+                                                                                      : AppColors.brandingOrange),
+                                                                          child:
+                                                                              Center(
+                                                                            child:
+                                                                                Text(
+                                                                              filteredEnrollments[index].state == EnrollmentStateEnum.IN_QUEUE
+                                                                                  ? 'Na Fila'
+                                                                                  : filteredEnrollments[index].state == EnrollmentStateEnum.COMPLETED
+                                                                                      ? 'Completo'
+                                                                                      : 'Inscrito',
+                                                                              style: AppTextStyles.bold,
+                                                                            ),
+                                                                          ),
+                                                                        )
                                                                       ],
                                                                     ),
                                                               SizedBox(
-                                                                width: 475,
+                                                                width: 700,
                                                                 child: Divider(
                                                                   thickness: 1,
                                                                   color: AppColors
