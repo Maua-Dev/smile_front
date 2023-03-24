@@ -24,60 +24,19 @@ mixin _$HelpController on HelpControllerBase, Store {
     });
   }
 
-  late final _$faqActionAtom =
-      Atom(name: 'HelpControllerBase.faqAction', context: context);
-
-  @override
-  List<FaqPanelModel> get faqAction {
-    _$faqActionAtom.reportRead();
-    return super.faqAction;
-  }
-
-  @override
-  set faqAction(List<FaqPanelModel> value) {
-    _$faqActionAtom.reportWrite(value, super.faqAction, () {
-      super.faqAction = value;
-    });
-  }
-
   late final _$getFaqInformationAsyncAction =
       AsyncAction('HelpControllerBase.getFaqInformation', context: context);
 
   @override
-  Future<void> getFaqInformation() {
-    return _$getFaqInformationAsyncAction.run(() => super.getFaqInformation());
-  }
-
-  late final _$HelpControllerBaseActionController =
-      ActionController(name: 'HelpControllerBase', context: context);
-
-  @override
-  void setFaqAction() {
-    final _$actionInfo = _$HelpControllerBaseActionController.startAction(
-        name: 'HelpControllerBase.setFaqAction');
-    try {
-      return super.setFaqAction();
-    } finally {
-      _$HelpControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void swapOpen(int index) {
-    final _$actionInfo = _$HelpControllerBaseActionController.startAction(
-        name: 'HelpControllerBase.swapOpen');
-    try {
-      return super.swapOpen(index);
-    } finally {
-      _$HelpControllerBaseActionController.endAction(_$actionInfo);
-    }
+  ObservableFuture<void> getFaqInformation() {
+    return ObservableFuture<void>(
+        _$getFaqInformationAsyncAction.run(() => super.getFaqInformation()));
   }
 
   @override
   String toString() {
     return '''
-faq: ${faq},
-faqAction: ${faqAction}
+faq: ${faq}
     ''';
   }
 }

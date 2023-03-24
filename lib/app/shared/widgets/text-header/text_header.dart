@@ -17,23 +17,18 @@ class TextHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: leftPadding ?? 72,
-      ),
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Text(
-              title,
-              style: AppTextStyles.titleH1.copyWith(
-                  fontSize: fontSize ?? 45,
-                  color: color ?? AppColors.brandingBlue),
-            ),
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: Text(
+            title,
+            style: AppTextStyles.titleH1.copyWith(
+                fontSize: fontSize ?? 45,
+                color: color ?? AppColors.brandingBlue),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -6,9 +6,9 @@ import '../../../../../../../../shared/themes/breakpoint.dart';
 class ButtonFilterWidget extends StatelessWidget {
   final Function()? onPressed;
   final String title;
-  final double width;
+  final double? width;
   const ButtonFilterWidget(
-      {super.key, this.onPressed, required this.title, required this.width});
+      {super.key, this.onPressed, required this.title, this.width});
 
   @override
   Widget build(BuildContext context) {

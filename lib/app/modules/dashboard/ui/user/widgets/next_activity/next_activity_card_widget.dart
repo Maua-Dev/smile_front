@@ -48,7 +48,9 @@ class NextActivityCardWidget extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          width: MediaQuery.of(context).size.width < tabletSize ? 380 : 1165,
+          width: MediaQuery.of(context).size.width < breakpointTablet
+              ? MediaQuery.of(context).size.width
+              : 1165,
           height: MediaQuery.of(context).size.width < tabletSize ? 164 : 204,
           decoration: BoxDecoration(
             color: AppColors.brandingOrange,

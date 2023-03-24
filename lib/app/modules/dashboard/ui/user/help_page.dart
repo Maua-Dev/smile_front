@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/faq/faq_card_widget.dart';
 
+import '../../../../shared/themes/breakpoint.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 
 class HelpPage extends StatefulWidget {
@@ -18,36 +19,41 @@ class _HelpPageState extends ModularState<HelpPage, HelpController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 16,
+        child: Center(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width < breakpointTablet
+                ? MediaQuery.of(context).size.width
+                : 1165,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  TextHeader(
+                    title: 'Perguntas Frequentes',
+                    fontSize:
+                        MediaQuery.of(context).size.width < 1000 ? 30 : 38,
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Observer(builder: (_) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: controller.faq.length,
+                      itemBuilder: (context, index) => FaqCardWidget(
+                        titulo: controller.faq[index].question,
+                        descricao: controller.faq[index].response,
+                      ),
+                    );
+                  }),
+                ],
+              ),
             ),
-            TextHeader(
-              title: 'Perguntas Frequentes',
-              fontSize: MediaQuery.of(context).size.width < 1000 ? 30 : 38,
-              leftPadding: 12,
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Observer(builder: (_) {
-              return ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: controller.faqAction.length,
-                itemBuilder: (context, index) => FaqCardWidget(
-                  titulo: controller.faqAction[index].faq.question,
-                  descricao: controller.faqAction[index].faq.response,
-                  isOpen: controller.faqAction[index].isOpen,
-                  onPressed: () {
-                    controller.swapOpen(index);
-                  },
-                  analyticsLogPress: () {},
-                ),
-              );
-            }),
-          ],
+          ),
         ),
       ),
     );

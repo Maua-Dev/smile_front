@@ -7,10 +7,7 @@ import 'package:smile_front/app/shared/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
-import 'package:smile_front/app/shared/utils/screen_helper.dart';
 import 'package:smile_front/generated/l10n.dart';
-
-import '../../../../../../../shared/entities/screen_variables.dart';
 
 class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final String title;
@@ -75,22 +72,17 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                       offset: const Offset(5, 5), // changes position of shadow
                     ),
                   ]),
-              width: MediaQuery.of(context).size.width < breakpointLMobile
+              width: MediaQuery.of(context).size.width < breakpointTablet
                   ? MediaQuery.of(context).size.width
-                  : MediaQuery.of(context).size.width < breakpointTablet
-                      ? 360
-                      : 1165,
+                  : 1165,
               height: MediaQuery.of(context).size.width < breakpointTablet
                   ? 76
                   : 204,
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Container(
-                    width: MediaQuery.of(context).size.width < breakpointTablet
+                    width: MediaQuery.of(context).size.width < breakpointMobile
                         ? 70
                         : 190,
-                    height: MediaQuery.of(context).size.width < breakpointTablet
-                        ? 76
-                        : 204,
                     decoration: BoxDecoration(
                         color: AppColors.brandingBlue,
                         borderRadius: BorderRadius.circular(15)),
@@ -98,17 +90,22 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(hour,
                           style: AppTextStyles.bold.copyWith(
-                              fontSize:
-                                  MediaQuery.of(context).size.width < tabletSize
+                              fontSize: MediaQuery.of(context).size.width <
+                                      breakpointMobile
+                                  ? 14
+                                  : MediaQuery.of(context).size.width <
+                                          breakpointTablet
                                       ? 20
-                                      : 40)),
+                                      : 30)),
                     )),
                 Expanded(
                   child: Padding(
-                    padding:
-                        MediaQuery.of(context).size.width < breakpointTablet
-                            ? const EdgeInsets.symmetric(horizontal: 8)
-                            : const EdgeInsets.only(left: 32, right: 64),
+                    padding: MediaQuery.of(context).size.width <
+                            breakpointMobile
+                        ? const EdgeInsets.symmetric(horizontal: 8)
+                        : MediaQuery.of(context).size.width < breakpointTablet
+                            ? const EdgeInsets.symmetric(horizontal: 16)
+                            : const EdgeInsets.symmetric(horizontal: 32),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -118,21 +115,27 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                             children: [
                               SizedBox(
                                 width: MediaQuery.of(context).size.width <
-                                        breakpointLMobile
+                                        breakpointMobile
                                     ? MediaQuery.of(context).size.width / 2
                                     : MediaQuery.of(context).size.width <
                                             breakpointTablet
-                                        ? 200
-                                        : 800,
+                                        ? MediaQuery.of(context).size.width /
+                                            2.3
+                                        : 650,
                                 child: Text(title,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: AppTextStyles.bold.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <
-                                                    breakpointTablet
+                                                    breakpointMobile
                                                 ? 14
-                                                : 30,
+                                                : MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        breakpointTablet
+                                                    ? 18
+                                                    : 30,
                                         color: AppColors.brandingBlue)),
                               ),
                               if (isExtensive) ...[
@@ -161,31 +164,35 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                     style: AppTextStyles.bold.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <
-                                                    breakpointTablet
+                                                    breakpointMobile
                                                 ? 12
-                                                : 24,
+                                                : MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        breakpointTablet
+                                                    ? 16
+                                                    : 24,
                                         color: Colors.black),
                                   ),
                                   Row(
                                     children: [
-                                      SizedBox(
-                                        width: Screen.width(context) <
-                                                breakpointMobile
-                                            ? Screen.width(context) / 4
-                                            : Screen.width(context) / 5,
-                                        child: Text(
-                                          formattedLocation,
-                                          style: AppTextStyles.bold.copyWith(
-                                              fontSize: MediaQuery.of(context)
-                                                          .size
-                                                          .width <
-                                                      breakpointTablet
-                                                  ? 12
-                                                  : 24,
-                                              color: Colors.black,
-                                              overflow: TextOverflow.ellipsis),
-                                          maxLines: 1,
-                                        ),
+                                      Text(
+                                        formattedLocation,
+                                        style: AppTextStyles.bold.copyWith(
+                                            fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    breakpointMobile
+                                                ? 12
+                                                : MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        breakpointTablet
+                                                    ? 16
+                                                    : 24,
+                                            color: Colors.black,
+                                            overflow: TextOverflow.ellipsis),
+                                        maxLines: 1,
                                       ),
                                       SizedBox(
                                         width:
@@ -194,24 +201,26 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                                 ? 16
                                                 : 64,
                                       ),
-                                      MediaQuery.of(context)
-                                                      .size
-                                                      .width <
+                                      MediaQuery.of(context).size.width <
                                                   breakpointLMobile ||
                                               formattedLocation.length > 13
                                           ? const SizedBox.shrink()
                                           : Text(
                                               '${S.of(context).termination}: $finalTime',
-                                              style: AppTextStyles
-                                                  .bold
+                                              style: AppTextStyles.bold
                                                   .copyWith(
                                                       fontSize: MediaQuery.of(
                                                                       context)
                                                                   .size
                                                                   .width <
-                                                              breakpointTablet
+                                                              breakpointMobile
                                                           ? 12
-                                                          : 24,
+                                                          : MediaQuery.of(context)
+                                                                      .size
+                                                                      .width <
+                                                                  breakpointTablet
+                                                              ? 16
+                                                              : 24,
                                                       color: Colors.black)),
                                     ],
                                   ),

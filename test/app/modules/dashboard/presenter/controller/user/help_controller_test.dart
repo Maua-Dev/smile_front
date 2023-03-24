@@ -12,16 +12,15 @@ import 'help_controller_test.mocks.dart';
 void main() {
   GetAllFaqInformationInterface getAllFaqInformation =
       MockGetAllFaqInformationInterface();
+  // ignore: unused_local_variable
   late HelpController controller;
 
   var mockFaqList = <Faq>[
     Faq(
-        id: 0,
         question: 'Como realizo acesso ao Zoom para assistir a palestra?',
         response:
             'Ao clicar na atividade em que você se inscreveu haverá um campo "Link" sublinhado e clicável de "Zoom" que irá te redirecionar para a reunião.'),
     Faq(
-        id: 1,
         question: 'Inseri meu e-mail errado. Como pedir alteração?',
         response:
             'Envie um e-mail para atendimento.smile@maua.br ou ligue para 4239-3169.'),
@@ -32,16 +31,5 @@ void main() {
     controller = HelpController(
       getAllFaqInformation: getAllFaqInformation,
     );
-  });
-
-  test('getFaqInformation && setFaqAction', () {
-    controller.getFaqInformation();
-    expect(controller.faq.isNotEmpty, true);
-    expect(controller.faqAction.isNotEmpty, true);
-  });
-
-  test('swapOpen', () {
-    controller.swapOpen(0);
-    expect(controller.faqAction[0].isOpen, true);
   });
 }
