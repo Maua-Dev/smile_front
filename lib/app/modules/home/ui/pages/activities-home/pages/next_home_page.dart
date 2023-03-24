@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
+import '../../../../../../shared/utils/screen_helper.dart';
 
 class NextHomePage extends StatelessWidget {
   final String title;
@@ -51,9 +53,8 @@ class NextHomePage extends StatelessWidget {
                         description,
                         style: AppTextStyles.body.copyWith(
                             color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width < 1400
-                                ? 19
-                                : 22),
+                            fontSize:
+                                Screen.width(context) < tabletSize ? 18 : 25),
                         textAlign: TextAlign.justify,
                       ),
                     ),
