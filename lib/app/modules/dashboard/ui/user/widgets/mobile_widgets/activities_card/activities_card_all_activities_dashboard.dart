@@ -7,10 +7,7 @@ import 'package:smile_front/app/shared/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
-import 'package:smile_front/app/shared/utils/screen_helper.dart';
 import 'package:smile_front/generated/l10n.dart';
-
-import '../../../../../../../shared/entities/screen_variables.dart';
 
 class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   final String title;
