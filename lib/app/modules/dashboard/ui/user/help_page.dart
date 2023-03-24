@@ -21,11 +21,9 @@ class _HelpPageState extends ModularState<HelpPage, HelpController> {
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(
-            width: MediaQuery.of(context).size.width < breakpointMobile
+            width: MediaQuery.of(context).size.width < breakpointTablet
                 ? MediaQuery.of(context).size.width
-                : MediaQuery.of(context).size.width > breakpointTablet
-                    ? 1165
-                    : 360,
+                : 1165,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(

@@ -43,144 +43,133 @@ class UserFilterCardWidget extends StatelessWidget {
         dateFilter != null ? DateFormat('dd/MM/yyyy').format(dateFilter!) : '';
     String formattedHour =
         hourFilter != null ? DateFormat('HH:mm').format(hourFilter!) : '';
-    return SizedBox(
-      width: MediaQuery.of(context).size.width < breakpointLMobile
-          ? MediaQuery.of(context).size.width
-          : MediaQuery.of(context).size.width < breakpointTablet
-              ? 360
-              : 1165,
-      child: MediaQuery.of(context).size.width < breakpointTablet
-          ? Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: Column(
-                children: [
-                  ButtonFilterWidget(
-                    title: typeFilter == null
-                        ? S.of(context).activitiesTitle
-                        : typeOnScreen!,
-                    width: MediaQuery.of(context).size.width,
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              content: SizedBox(
-                                width: 500,
-                                height: 500,
-                                child: ListView.builder(
-                                    itemCount: ActivityEnum.values.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 12, horizontal: 30),
-                                        child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  side: BorderSide(
-                                                      color: AppColors.white),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                            ),
-                                          ),
-                                          onPressed: () {
-                                            onChangedActivitiesFilter!(
-                                                ActivityEnum.values[index]);
-                                            Modular.to.pop();
-                                          },
-                                          child: Align(
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              ActivityEnum.values[index].name
-                                                  .toString(),
-                                              style: AppTextStyles.bold
-                                                  .copyWith(
-                                                      color: AppColors.white,
-                                                      fontSize: 16),
-                                            ),
+    return MediaQuery.of(context).size.width < breakpointMobile
+        ? Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Column(
+              children: [
+                ButtonFilterWidget(
+                  title: typeFilter == null
+                      ? S.of(context).activitiesTitle
+                      : typeOnScreen!,
+                  width: MediaQuery.of(context).size.width,
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            content: SizedBox(
+                              width: 500,
+                              height: 500,
+                              child: ListView.builder(
+                                  itemCount: ActivityEnum.values.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12, horizontal: 30),
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                                side: BorderSide(
+                                                    color: AppColors.white),
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
                                           ),
                                         ),
-                                      );
-                                    }),
-                              ),
-                            );
-                          });
-                    },
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  ButtonFilterWidget(
-                    title: enrollmentFilter == null
-                        ? S.of(context).enrollmentTitle
-                        : enrollmentFilter!.name,
-                    width: MediaQuery.of(context).size.width,
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              content: SizedBox(
-                                width: 500,
-                                height: 500,
-                                child: ListView.builder(
-                                    itemCount: EnrollButtonEnum.values.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 12, horizontal: 30),
-                                        child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  side: BorderSide(
-                                                      color: AppColors.white),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                            ),
-                                          ),
-                                          onPressed: () {
-                                            onChangedEnrollmentFilter(
-                                                EnrollButtonEnum.values[index]);
-                                            Modular.to.pop();
-                                          },
-                                          child: Align(
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              EnrollButtonEnum
-                                                  .values[index].name
-                                                  .toString(),
-                                              style: AppTextStyles.bold
-                                                  .copyWith(
-                                                      color: AppColors.white,
-                                                      fontSize: 16),
-                                            ),
+                                        onPressed: () {
+                                          onChangedActivitiesFilter!(
+                                              ActivityEnum.values[index]);
+                                          Modular.to.pop();
+                                        },
+                                        child: Align(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            ActivityEnum.values[index].name
+                                                .toString(),
+                                            style: AppTextStyles.bold.copyWith(
+                                                color: AppColors.white,
+                                                fontSize: 16),
                                           ),
                                         ),
-                                      );
-                                    }),
-                              ),
-                            );
-                          });
-                    },
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ButtonFilterWidget(
+                                      ),
+                                    );
+                                  }),
+                            ),
+                          );
+                        });
+                  },
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                ButtonFilterWidget(
+                  title: enrollmentFilter == null
+                      ? S.of(context).enrollmentTitle
+                      : enrollmentFilter!.name,
+                  width: MediaQuery.of(context).size.width,
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            content: SizedBox(
+                              width: 500,
+                              height: 500,
+                              child: ListView.builder(
+                                  itemCount: EnrollButtonEnum.values.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12, horizontal: 30),
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                                side: BorderSide(
+                                                    color: AppColors.white),
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          onChangedEnrollmentFilter(
+                                              EnrollButtonEnum.values[index]);
+                                          Modular.to.pop();
+                                        },
+                                        child: Align(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            EnrollButtonEnum.values[index].name
+                                                .toString(),
+                                            style: AppTextStyles.bold.copyWith(
+                                                color: AppColors.white,
+                                                fontSize: 16),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }),
+                            ),
+                          );
+                        });
+                  },
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: ButtonFilterWidget(
                         title: formattedDate == ''
                             ? S.of(context).dateTitle
                             : formattedDate,
-                        width: 140,
                         onPressed: () {
                           showDatePicker(
                               context: context,
@@ -203,11 +192,15 @@ class UserFilterCardWidget extends StatelessWidget {
                           });
                         },
                       ),
-                      ButtonFilterWidget(
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Flexible(
+                      child: ButtonFilterWidget(
                         title: formattedHour == ''
                             ? S.of(context).scheduleTitle
                             : formattedHour,
-                        width: 140,
                         onPressed: () {
                           showTimePicker(
                               context: context,
@@ -231,6 +224,225 @@ class UserFilterCardWidget extends StatelessWidget {
                           });
                         },
                       ),
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    IconButton(
+                        padding: EdgeInsets.zero,
+                        onPressed: resetFilters,
+                        icon: Icon(
+                          Icons.cleaning_services,
+                          size: 35,
+                          color: AppColors.brandingOrange,
+                        )),
+                  ],
+                ),
+              ],
+            ),
+          )
+        : MediaQuery.of(context).size.width < 1400
+            ? Column(
+                children: [
+                  Row(
+                    children: [
+                      Flexible(
+                        child: ButtonFilterWidget(
+                          title: typeFilter == null
+                              ? S.of(context).activitiesTitle
+                              : typeOnScreen!,
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    content: SizedBox(
+                                      width: 500,
+                                      height: 500,
+                                      child: ListView.builder(
+                                          itemCount: ActivityEnum.values.length,
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 12,
+                                                      horizontal: 30),
+                                              child: ElevatedButton(
+                                                style: ButtonStyle(
+                                                  shape:
+                                                      MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                        side: BorderSide(
+                                                            color: AppColors
+                                                                .white),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10)),
+                                                  ),
+                                                ),
+                                                onPressed: () {
+                                                  onChangedActivitiesFilter!(
+                                                      ActivityEnum
+                                                          .values[index]);
+                                                  Modular.to.pop();
+                                                },
+                                                child: Align(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    ActivityEnum
+                                                        .values[index].name
+                                                        .toString(),
+                                                    style: AppTextStyles.bold
+                                                        .copyWith(
+                                                            color:
+                                                                AppColors.white,
+                                                            fontSize: 16),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                    ),
+                                  );
+                                });
+                          },
+                        ),
+                      ),
+                      Flexible(
+                        child: ButtonFilterWidget(
+                          title: enrollmentFilter == null
+                              ? S.of(context).enrollmentTitle
+                              : enrollmentFilter!.name,
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    content: SizedBox(
+                                      width: 500,
+                                      height: 500,
+                                      child: ListView.builder(
+                                          itemCount:
+                                              EnrollButtonEnum.values.length,
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 12,
+                                                      horizontal: 30),
+                                              child: ElevatedButton(
+                                                style: ButtonStyle(
+                                                  shape:
+                                                      MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                        side: BorderSide(
+                                                            color: AppColors
+                                                                .white),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10)),
+                                                  ),
+                                                ),
+                                                onPressed: () {
+                                                  onChangedEnrollmentFilter(
+                                                      EnrollButtonEnum
+                                                          .values[index]);
+                                                  Modular.to.pop();
+                                                },
+                                                child: Align(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    EnrollButtonEnum
+                                                        .values[index].name
+                                                        .toString(),
+                                                    style: AppTextStyles.bold
+                                                        .copyWith(
+                                                            color:
+                                                                AppColors.white,
+                                                            fontSize: 16),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                    ),
+                                  );
+                                });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: ButtonFilterWidget(
+                          title: formattedDate == ''
+                              ? S.of(context).dateTitle
+                              : formattedDate,
+                          onPressed: () {
+                            showDatePicker(
+                                context: context,
+                                initialEntryMode:
+                                    DatePickerEntryMode.calendarOnly,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2022),
+                                lastDate: DateTime(2024),
+                                builder: ((context, child) {
+                                  return Theme(
+                                    data: Theme.of(context).copyWith(
+                                        textTheme: TextTheme(
+                                            headline5: AppTextStyles.body)),
+                                    child: child!,
+                                  );
+                                })).then((date) {
+                              formattedDate =
+                                  DateFormat('dd/MM/yyyy').format(date!);
+                              onChangedDateFilter!(date);
+                            });
+                          },
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Flexible(
+                        child: ButtonFilterWidget(
+                          title: formattedHour == ''
+                              ? S.of(context).scheduleTitle
+                              : formattedHour,
+                          onPressed: () {
+                            showTimePicker(
+                                context: context,
+                                initialEntryMode: TimePickerEntryMode.dialOnly,
+                                initialTime: TimeOfDay.now(),
+                                builder: (BuildContext context, Widget? child) {
+                                  return Theme(
+                                    data: ThemeData.light().copyWith(
+                                      primaryColor: AppColors.brandingBlue,
+                                      colorScheme: ColorScheme.light(
+                                          primary: AppColors.brandingBlue),
+                                    ),
+                                    child: child!,
+                                  );
+                                }).then((time) {
+                              formattedHour = time!.format(context);
+                              var now = DateTime.now();
+                              now = DateTime(now.year, now.month, now.day,
+                                  time.hour, time.minute);
+                              onChangedTimeFilter!(now);
+                            });
+                          },
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
                       IconButton(
                           padding: EdgeInsets.zero,
                           onPressed: resetFilters,
@@ -242,177 +454,177 @@ class UserFilterCardWidget extends StatelessWidget {
                     ],
                   ),
                 ],
-              ),
-            )
-          : Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              ButtonFilterWidget(
-                title: typeFilter == null
-                    ? S.of(context).activitiesTitle
-                    : typeOnScreen!,
-                width: 400,
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          content: SizedBox(
-                            width: 500,
-                            height: 500,
-                            child: ListView.builder(
-                                itemCount: ActivityEnum.values.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 12, horizontal: 30),
-                                    child: ElevatedButton(
-                                      style: ButtonStyle(
-                                        shape: MaterialStateProperty.all<
-                                            RoundedRectangleBorder>(
-                                          RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                  color: AppColors.white),
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
+              )
+            : Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                ButtonFilterWidget(
+                  title: typeFilter == null
+                      ? S.of(context).activitiesTitle
+                      : typeOnScreen!,
+                  width: 400,
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            content: SizedBox(
+                              width: 500,
+                              height: 500,
+                              child: ListView.builder(
+                                  itemCount: ActivityEnum.values.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12, horizontal: 30),
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                                side: BorderSide(
+                                                    color: AppColors.white),
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          onChangedActivitiesFilter!(
+                                              ActivityEnum.values[index]);
+                                          Modular.to.pop();
+                                        },
+                                        child: Align(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            ActivityEnum.values[index].name
+                                                .toString(),
+                                            style: AppTextStyles.bold.copyWith(
+                                                color: AppColors.white,
+                                                fontSize: 16),
+                                          ),
                                         ),
                                       ),
-                                      onPressed: () {
-                                        onChangedActivitiesFilter!(
-                                            ActivityEnum.values[index]);
-                                        Modular.to.pop();
-                                      },
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          ActivityEnum.values[index].name
-                                              .toString(),
-                                          style: AppTextStyles.bold.copyWith(
-                                              color: AppColors.white,
-                                              fontSize: 16),
+                                    );
+                                  }),
+                            ),
+                          );
+                        });
+                  },
+                ),
+                ButtonFilterWidget(
+                  title: enrollmentFilter == null
+                      ? S.of(context).enrollmentTitle
+                      : enrollmentFilter!.name,
+                  width: 200,
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            content: SizedBox(
+                              width: 500,
+                              height: 500,
+                              child: ListView.builder(
+                                  itemCount: EnrollButtonEnum.values.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12, horizontal: 30),
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                                side: BorderSide(
+                                                    color: AppColors.white),
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          onChangedEnrollmentFilter(
+                                              EnrollButtonEnum.values[index]);
+                                          Modular.to.pop();
+                                        },
+                                        child: Align(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            EnrollButtonEnum.values[index].name
+                                                .toString(),
+                                            style: AppTextStyles.bold.copyWith(
+                                                color: AppColors.white,
+                                                fontSize: 16),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  );
-                                }),
-                          ),
-                        );
-                      });
-                },
-              ),
-              ButtonFilterWidget(
-                title: enrollmentFilter == null
-                    ? S.of(context).enrollmentTitle
-                    : enrollmentFilter!.name,
-                width: 200,
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          content: SizedBox(
-                            width: 500,
-                            height: 500,
-                            child: ListView.builder(
-                                itemCount: EnrollButtonEnum.values.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 12, horizontal: 30),
-                                    child: ElevatedButton(
-                                      style: ButtonStyle(
-                                        shape: MaterialStateProperty.all<
-                                            RoundedRectangleBorder>(
-                                          RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                  color: AppColors.white),
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                        ),
-                                      ),
-                                      onPressed: () {
-                                        onChangedEnrollmentFilter(
-                                            EnrollButtonEnum.values[index]);
-                                        Modular.to.pop();
-                                      },
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          EnrollButtonEnum.values[index].name
-                                              .toString(),
-                                          style: AppTextStyles.bold.copyWith(
-                                              color: AppColors.white,
-                                              fontSize: 16),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }),
-                          ),
-                        );
-                      });
-                },
-              ),
-              ButtonFilterWidget(
-                title: formattedDate == ''
-                    ? S.of(context).dateTitle
-                    : formattedDate,
-                width: 200,
-                onPressed: () {
-                  showDatePicker(
-                      context: context,
-                      initialEntryMode: DatePickerEntryMode.calendarOnly,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2022),
-                      lastDate: DateTime(2024),
-                      builder: ((context, child) {
-                        return Theme(
-                          data: Theme.of(context).copyWith(
-                              textTheme:
-                                  TextTheme(headline5: AppTextStyles.body)),
-                          child: child!,
-                        );
-                      })).then((date) {
-                    formattedDate = DateFormat('dd/MM/yyyy').format(date!);
-                    onChangedDateFilter!(date);
-                  });
-                },
-              ),
-              ButtonFilterWidget(
-                title: formattedHour == ''
-                    ? S.of(context).scheduleTitle
-                    : formattedHour,
-                width: 180,
-                onPressed: () {
-                  showTimePicker(
-                      context: context,
-                      initialEntryMode: TimePickerEntryMode.dialOnly,
-                      initialTime: TimeOfDay.now(),
-                      builder: (BuildContext context, Widget? child) {
-                        return Theme(
-                          data: ThemeData.light().copyWith(
-                            primaryColor: AppColors.brandingBlue,
-                            colorScheme: ColorScheme.light(
-                                primary: AppColors.brandingBlue),
-                          ),
-                          child: child!,
-                        );
-                      }).then((time) {
-                    formattedHour = time!.format(context);
-                    var now = DateTime.now();
-                    now = DateTime(
-                        now.year, now.month, now.day, time.hour, time.minute);
-                    onChangedTimeFilter!(now);
-                  });
-                },
-              ),
-              IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: resetFilters,
-                  icon: Icon(
-                    Icons.cleaning_services,
-                    size: 35,
-                    color: AppColors.brandingOrange,
-                  )),
-            ]),
-    );
+                                    );
+                                  }),
+                            ),
+                          );
+                        });
+                  },
+                ),
+                ButtonFilterWidget(
+                  title: formattedDate == ''
+                      ? S.of(context).dateTitle
+                      : formattedDate,
+                  width: 200,
+                  onPressed: () {
+                    showDatePicker(
+                        context: context,
+                        initialEntryMode: DatePickerEntryMode.calendarOnly,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2022),
+                        lastDate: DateTime(2024),
+                        builder: ((context, child) {
+                          return Theme(
+                            data: Theme.of(context).copyWith(
+                                textTheme:
+                                    TextTheme(headline5: AppTextStyles.body)),
+                            child: child!,
+                          );
+                        })).then((date) {
+                      formattedDate = DateFormat('dd/MM/yyyy').format(date!);
+                      onChangedDateFilter!(date);
+                    });
+                  },
+                ),
+                ButtonFilterWidget(
+                  title: formattedHour == ''
+                      ? S.of(context).scheduleTitle
+                      : formattedHour,
+                  width: 180,
+                  onPressed: () {
+                    showTimePicker(
+                        context: context,
+                        initialEntryMode: TimePickerEntryMode.dialOnly,
+                        initialTime: TimeOfDay.now(),
+                        builder: (BuildContext context, Widget? child) {
+                          return Theme(
+                            data: ThemeData.light().copyWith(
+                              primaryColor: AppColors.brandingBlue,
+                              colorScheme: ColorScheme.light(
+                                  primary: AppColors.brandingBlue),
+                            ),
+                            child: child!,
+                          );
+                        }).then((time) {
+                      formattedHour = time!.format(context);
+                      var now = DateTime.now();
+                      now = DateTime(
+                          now.year, now.month, now.day, time.hour, time.minute);
+                      onChangedTimeFilter!(now);
+                    });
+                  },
+                ),
+                IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: resetFilters,
+                    icon: Icon(
+                      Icons.cleaning_services,
+                      size: 35,
+                      color: AppColors.brandingOrange,
+                    )),
+              ]);
   }
 }
