@@ -22,98 +22,65 @@ class UserDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Modular.get<UserDashboardController>();
-    return Padding(
-      padding: EdgeInsets.only(
-        left: MediaQuery.of(context).size.width < 1000 ? 12 : 8,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          if (controller.socialName == '' || controller.socialName == null)
-            Text(
-              'Olá, ${controller.name!.split(' ').first}',
-              style: AppTextStyles.titleH1.copyWith(
-                  fontSize: MediaQuery.of(context).size.width < 500
-                      ? 35
-                      : MediaQuery.of(context).size.width < 1000
-                          ? 40
-                          : 45,
-                  color: mainColor ?? AppColors.brandingBlue),
-            )
-          else
-            Text(
-              'Olá, ${controller.socialName!.split(' ').first}',
-              style: AppTextStyles.titleH1.copyWith(
-                  fontSize: MediaQuery.of(context).size.width < 500
-                      ? 35
-                      : MediaQuery.of(context).size.width < 1000
-                          ? 40
-                          : 45,
-                  color: mainColor ?? AppColors.brandingBlue),
-            ),
-          Row(
-            children: [
-              IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () {
-                    controller.getCertificateWithSocialName();
-                    controller.getUserName();
-                    controller.getUserSocialName();
-                    controller.getPhone();
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Observer(builder: (_) {
-                          return NameAlterationDialog(
-                              name: controller.nameToChange,
-                              onChangedName: controller.setName,
-                              socialName: controller.socialNameToChange,
-                              onChangedSocialName: controller.setUserSocialName,
-                              onChangedWantSocialName:
-                                  controller.setWantSocialName,
-                              wantSocialName: controller.wantSocialName,
-                              certificateWithSocialName:
-                                  controller.certificateWithSocialName,
-                              onChangedCertificateWithSocialName:
-                                  controller.setCertificateWithSocialName,
-                              isLoading: controller.isLoading,
-                              changeData: () {
-                                if (controller.wantSocialName) {
-                                  if (controller.validateName() &&
-                                      controller.validateSocialName()) {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return Observer(builder: (context) {
-                                          return ActionConfirmationDialogWidget(
-                                              isLoading: controller.isLoading,
-                                              title:
-                                                  'Tem certeza que deseja continuar?',
-                                              content:
-                                                  'Se atente! A alteração afetará diretamente a sua certificação.',
-                                              onPressed: () {
-                                                controller.changeUserData();
-                                                Navigator.of(context).pop();
-                                                Navigator.of(context).pop();
-                                              });
-                                        });
-                                      },
-                                    );
-                                  } else {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return CustomAlertDialogWidget(
-                                          title: controller.error!,
-                                        );
-                                      },
-                                    );
-                                  }
-                                } else {
-                                  if (controller.validateName()) {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        if (controller.socialName == '' || controller.socialName == null)
+          Text(
+            'Olá, ${controller.name!.split(' ').first}',
+            style: AppTextStyles.titleH1.copyWith(
+                fontSize: MediaQuery.of(context).size.width < 500
+                    ? 35
+                    : MediaQuery.of(context).size.width < 1000
+                        ? 40
+                        : 45,
+                color: mainColor ?? AppColors.brandingBlue),
+          )
+        else
+          Text(
+            'Olá, ${controller.socialName!.split(' ').first}',
+            style: AppTextStyles.titleH1.copyWith(
+                fontSize: MediaQuery.of(context).size.width < 500
+                    ? 35
+                    : MediaQuery.of(context).size.width < 1000
+                        ? 40
+                        : 45,
+                color: mainColor ?? AppColors.brandingBlue),
+          ),
+        Row(
+          children: [
+            IconButton(
+                padding: EdgeInsets.zero,
+                onPressed: () {
+                  controller.getCertificateWithSocialName();
+                  controller.getUserName();
+                  controller.getUserSocialName();
+                  controller.getPhone();
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Observer(builder: (_) {
+                        return NameAlterationDialog(
+                            name: controller.nameToChange,
+                            onChangedName: controller.setName,
+                            socialName: controller.socialNameToChange,
+                            onChangedSocialName: controller.setUserSocialName,
+                            onChangedWantSocialName:
+                                controller.setWantSocialName,
+                            wantSocialName: controller.wantSocialName,
+                            certificateWithSocialName:
+                                controller.certificateWithSocialName,
+                            onChangedCertificateWithSocialName:
+                                controller.setCertificateWithSocialName,
+                            isLoading: controller.isLoading,
+                            changeData: () {
+                              if (controller.wantSocialName) {
+                                if (controller.validateName() &&
+                                    controller.validateSocialName()) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return Observer(builder: (context) {
                                         return ActionConfirmationDialogWidget(
                                             isLoading: controller.isLoading,
                                             title:
@@ -125,44 +92,72 @@ class UserDataWidget extends StatelessWidget {
                                               Navigator.of(context).pop();
                                               Navigator.of(context).pop();
                                             });
-                                      },
-                                    );
-                                  } else {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return CustomAlertDialogWidget(
-                                          title: controller.error!,
-                                        );
-                                      },
-                                    );
-                                  }
+                                      });
+                                    },
+                                  );
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return CustomAlertDialogWidget(
+                                        title: controller.error!,
+                                      );
+                                    },
+                                  );
                                 }
-                              });
-                        });
-                      },
-                    );
-                  },
-                  icon: Icon(
-                    Icons.edit,
-                    color: mainColor ?? AppColors.brandingBlue,
-                    size: MediaQuery.of(context).size.width < 1000 ? 30 : 45,
-                  )),
-              SizedBox(
-                width: MediaQuery.of(context).size.width < 1000 ? 8 : 32,
-              ),
-              IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: logout,
-                  icon: Icon(
-                    Icons.logout,
-                    color: mainColor ?? AppColors.brandingBlue,
-                    size: MediaQuery.of(context).size.width < 1000 ? 30 : 45,
-                  )),
-            ],
-          ),
-        ],
-      ),
+                              } else {
+                                if (controller.validateName()) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return ActionConfirmationDialogWidget(
+                                          isLoading: controller.isLoading,
+                                          title:
+                                              'Tem certeza que deseja continuar?',
+                                          content:
+                                              'Se atente! A alteração afetará diretamente a sua certificação.',
+                                          onPressed: () {
+                                            controller.changeUserData();
+                                            Navigator.of(context).pop();
+                                            Navigator.of(context).pop();
+                                          });
+                                    },
+                                  );
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return CustomAlertDialogWidget(
+                                        title: controller.error!,
+                                      );
+                                    },
+                                  );
+                                }
+                              }
+                            });
+                      });
+                    },
+                  );
+                },
+                icon: Icon(
+                  Icons.edit,
+                  color: mainColor ?? AppColors.brandingBlue,
+                  size: MediaQuery.of(context).size.width < 1000 ? 30 : 45,
+                )),
+            SizedBox(
+              width: MediaQuery.of(context).size.width < 1000 ? 8 : 32,
+            ),
+            IconButton(
+                padding: EdgeInsets.zero,
+                onPressed: logout,
+                icon: Icon(
+                  Icons.logout,
+                  color: mainColor ?? AppColors.brandingBlue,
+                  size: MediaQuery.of(context).size.width < 1000 ? 30 : 45,
+                )),
+          ],
+        ),
+      ],
     );
   }
 }
