@@ -93,7 +93,7 @@ class _MainHomePageState extends State<MainHomePage> {
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               image: CachedNetworkImageProvider(
-                                  '${previousEditionsBaseUrl}main_home.png')))),
+                                  '${previousEditionsBaseUrl}entrada_maua.png.png')))),
                 ),
               ))
             ],
@@ -120,7 +120,7 @@ class _MainHomePageState extends State<MainHomePage> {
             ),
             Image(
               image: CachedNetworkImageProvider(
-                  '${previousEditionsBaseUrl}main_home.png'),
+                  '${previousEditionsBaseUrl}entrada_maua.png.png'),
               fit: BoxFit.fitWidth,
             ),
             const SizedBox(
