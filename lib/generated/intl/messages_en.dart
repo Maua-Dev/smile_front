@@ -551,6 +551,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "userRolesNameSchema": m19,
         "validationCodeTitle":
             MessageLookupByLibrary.simpleMessage("Validation Code"),
+        "whatIsSmile":
+            MessageLookupByLibrary.simpleMessage("O que é a semana SMILE?"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

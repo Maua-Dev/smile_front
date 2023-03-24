@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
+import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/widgets/custom_elevated_button_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/paragraph_text_widget.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../app_module.dart';
 import '../../../../shared/themes/app_colors.dart';
-import '../../../../shared/widgets/text-header/text_header.dart';
+import '../../../../shared/utils/screen_helper.dart';
 import 'footer/footer.dart';
 
 class MoreInfoHomePage extends StatelessWidget {
@@ -24,10 +26,10 @@ class MoreInfoHomePage extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(
-                  vertical: 24.0,
-                  horizontal: MediaQuery.of(context).size.width < 800 ? 16 : 32,
-                ),
+                    horizontal:
+                        MediaQuery.of(context).size.width < 800 ? 16 : 108),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
                         padding: EdgeInsets.zero,
@@ -38,17 +40,14 @@ class MoreInfoHomePage extends StatelessWidget {
                           Icons.arrow_back_sharp,
                           color: AppColors.brandingOrange,
                           size:
-                              MediaQuery.of(context).size.width < 800 ? 24 : 32,
+                              MediaQuery.of(context).size.width < cellphoneSize
+                                  ? 24
+                                  : 48,
                         )),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width < 800 ? 8 : 16,
-                    ),
-                    TextHeader(
-                      title: S.of(context).aboutSmileTitle,
-                      fontSize:
-                          MediaQuery.of(context).size.width < 800 ? 24 : 45,
-                      leftPadding: 0,
-                      color: AppColors.brandingOrange,
+                    Expanded(
+                      child: H1HeaderTextWidget(
+                        title: S.of(context).whatIsSmile,
+                      ),
                     ),
                   ],
                 ),
@@ -86,17 +85,10 @@ class MoreInfoHomePage extends StatelessWidget {
                   title: S.of(context).signUp,
                   textStyle: AppTextStyles.buttonBold.copyWith(
                       color: Colors.white,
-                      fontSize: MediaQuery.of(context).size.width < 800
-                          ? 24
-                          : MediaQuery.of(context).size.width < 1300
-                              ? 36
-                              : MediaQuery.of(context).size.width < 1300
-                                  ? 48
-                                  : 60),
-                  paddingVertical:
-                      MediaQuery.of(context).size.width < 800 ? 12 : 24,
-                  widthSize:
-                      MediaQuery.of(context).size.width < 800 ? 200 : 400,
+                      fontSize:
+                          Screen.width(context) < cellphoneSize ? 16 : 24),
+                  widthSize: Screen.width(context) < cellphoneSize ? 200 : 400,
+                  heightSize: Screen.width(context) < cellphoneSize ? 40 : 50,
                   backgroundColor: AppColors.brandingOrange,
                   onPressed: () async {
                     await Modular.isModuleReady<AppModule>();
