@@ -47,10 +47,6 @@ var faqMock = <Faq>[
       response:
           'A data limite para solicitações de correções nos certificados é até dia (13/06/2023), sendo a data limite para a entrega das correções até dia (19/06/2023).'),
   Faq(
-      question: 'A partir de quando posso emitir meu certificado?',
-      response:
-          'Os Certificados estarão disponíveis para download no site a partir de 30 de maio de 2023.'),
-  Faq(
       question: 'Em caso de dúvidas, como faço para entrar em contato?',
       response:
           'Para mais informações sobre o evento entre em contato com nosso suporte: antendimento.smile@maua.br'),
