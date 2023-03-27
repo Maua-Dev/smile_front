@@ -1894,6 +1894,16 @@ class S {
     );
   }
 
+  /// `All Activities`
+  String get allActivitiesTitle {
+    return Intl.message(
+      'All Activities',
+      name: 'allActivitiesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Certificates`
   String get drawerCertificatesButton {
     return Intl.message(
@@ -1929,6 +1939,16 @@ class S {
     return Intl.message(
       'Location',
       name: 'locationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It looks like you don't have any certificates.`
+  String get noCertificatesFoundTitle {
+    return Intl.message(
+      'It looks like you don\'t have any certificates.',
+      name: 'noCertificatesFoundTitle',
       desc: '',
       args: [],
     );

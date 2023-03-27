@@ -287,6 +287,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Página do Administrador"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Relatórios"),
+        "allActivitiesTitle":
+            MessageLookupByLibrary.simpleMessage("Todas as Atividades"),
         "alreadySubscribedOnThisPeriodWarning":
             MessageLookupByLibrary.simpleMessage(
                 "Parece que você já se inscreveu em uma atividade no mesmo horário."),
@@ -438,6 +440,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "namesTitle": MessageLookupByLibrary.simpleMessage("Nomes"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Parece que você ainda não se inscreveu em nenhuma atividade :("),
+        "noCertificatesFoundTitle": MessageLookupByLibrary.simpleMessage(
+            "Parece que você não tem nenhum certificado."),
         "noResponsibleActivitiesText": MessageLookupByLibrary.simpleMessage(
             "Parece que você não é responsável por nenhuma atividade :("),
         "noTitle": MessageLookupByLibrary.simpleMessage("Não"),

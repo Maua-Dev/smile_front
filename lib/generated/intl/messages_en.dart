@@ -288,6 +288,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Administrator Page"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Reports"),
+        "allActivitiesTitle":
+            MessageLookupByLibrary.simpleMessage("All Activities"),
         "alreadySubscribedOnThisPeriodWarning":
             MessageLookupByLibrary.simpleMessage(
                 "It seems you are already subscribed on another activity at this period."),
@@ -436,6 +438,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "namesTitle": MessageLookupByLibrary.simpleMessage("Names"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Looks like you haven\'t signed up for any activities yet :("),
+        "noCertificatesFoundTitle": MessageLookupByLibrary.simpleMessage(
+            "It looks like you don\'t have any certificates."),
         "noResponsibleActivitiesText": MessageLookupByLibrary.simpleMessage(
             "Looks like you are not responsible for any activity :("),
         "noTitle": MessageLookupByLibrary.simpleMessage("No"),

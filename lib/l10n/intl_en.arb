@@ -228,12 +228,16 @@
     "drawerHomeButton": "Home",
     "drawerActivitiesButton": "Activities",
     "drawerResponsibleActivitiesButton": "Responsible Activities",
+    "allActivitiesTitle": "All Activities",
     "drawerCertificatesButton": "Certificates",
     "drawerHelpButton": "Help",
     "drawerProfileButton": "Profile",
 
 
     "locationTitle": "Location",
+
+
+    "noCertificatesFoundTitle": "It looks like you don't have any certificates.",
 
 
     "noActivitiesEnrolledText": "Looks like you haven't signed up for any activities yet :(",
