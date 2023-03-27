@@ -30,9 +30,7 @@ class CertificateDatasourceImpl implements CertificateDatasourceInterface {
       dio.options.headers["authorization"] = "$token";
       final res = await dio.get('/get-certificate');
       if (res.statusCode == 200) {
-        return res.data['certificates'] as List == []
-            ? []
-            : CertificateModel.fromMaps(res.data['certificates']);
+        return CertificateModel.fromMaps(res.data['certificates']);
       }
       throw Exception();
     } on DioError catch (e) {

@@ -32,96 +32,71 @@ class _CertificatePageState
                 width: MediaQuery.of(context).size.width < breakpointTablet
                     ? MediaQuery.of(context).size.width
                     : 1165,
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    TextHeader(
-                      title: S.of(context).drawerCertificatesButton,
-                      fontSize:
-                          MediaQuery.of(context).size.width < breakpointTablet
-                              ? 24
-                              : MediaQuery.of(context).size.width > 1000
-                                  ? 38
-                                  : 30,
-                      leftPadding:
-                          MediaQuery.of(context).size.width < breakpointMobile
-                              ? 24
-                              : 0,
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    controller.certificateList.isEmpty
-                        ? Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  S.of(context).noCertificatesFoundTitle,
-                                  textAlign: TextAlign.center,
-                                  style: AppTextStyles.titleH1.copyWith(
-                                      color: AppColors.brandingOrange,
-                                      fontSize: 32),
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                              ],
-                            ),
-                          )
-                        : ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: controller.certificateList.length,
-                            itemBuilder: (context, index) => Padding(
-                              padding: const EdgeInsets.only(bottom: 16),
-                              child: CertificateWidget(
-                                certificateName:
-                                    controller.certificateList[index].name,
-                                isLoading: controller.isLoading,
-                                onPressed: () async {
-                                  controller.setIsLoading(true);
-                                  await launchUrl(
-                                    Uri.parse(
-                                        controller.certificateList[index].url),
-                                    mode: LaunchMode.externalApplication,
-                                  );
-                                  controller.setIsLoading(false);
-                                },
-                              ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      TextHeader(
+                        title: S.of(context).drawerCertificatesButton,
+                        fontSize:
+                            MediaQuery.of(context).size.width < breakpointTablet
+                                ? 24
+                                : MediaQuery.of(context).size.width > 1000
+                                    ? 38
+                                    : 30,
+                        leftPadding:
+                            MediaQuery.of(context).size.width < breakpointMobile
+                                ? 24
+                                : 0,
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      if (controller.certificateList.isEmpty)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0, vertical: 64),
+                          child: Text(
+                            S.of(context).noCertificatesFoundTitle,
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.titleH1.copyWith(
+                                color: AppColors.brandingOrange, fontSize: 32),
+                          ),
+                        )
+                      else ...[
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: controller.certificateList.length,
+                          itemBuilder: (context, index) => Padding(
+                            padding: const EdgeInsets.only(bottom: 16),
+                            child: CertificateWidget(
+                              certificateName:
+                                  controller.certificateList[index].name,
+                              isLoading: controller.isLoading,
+                              onPressed: () async {
+                                controller.setIsLoading(true);
+                                await launchUrl(
+                                  Uri.parse(
+                                      controller.certificateList[index].url),
+                                  mode: LaunchMode.externalApplication,
+                                );
+                                controller.setIsLoading(false);
+                              },
                             ),
                           ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Center(
-                        child: RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                                text:
-                                    'Data limite para alterações no seu certificado: ',
-                                style: AppTextStyles.body.copyWith(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width < 1000
-                                            ? 18
-                                            : 22,
-                                    color: Colors.black),
-                                children: [
-                                  TextSpan(
-                                    text: '10/06/2022',
-                                    style: AppTextStyles.titleH1.copyWith(
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1000
-                                                ? 18
-                                                : 22,
-                                        color: Colors.black),
-                                  ),
-                                  TextSpan(
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 24),
+                          child: Center(
+                            child: RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
                                     text:
-                                        '.\nPara isso, basta enviar um e-mail para ',
+                                        'Data limite para alterações no seu certificado: ',
                                     style: AppTextStyles.body.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <
@@ -129,32 +104,24 @@ class _CertificatePageState
                                                 ? 18
                                                 : 22,
                                         color: Colors.black),
-                                  ),
-                                  TextSpan(
-                                    text: 'dev@maua.br',
-                                    style: AppTextStyles.titleH1.copyWith(
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
+                                    children: [
+                                      TextSpan(
+                                        text: '13/06/2023.',
+                                        style: AppTextStyles.titleH1.copyWith(
+                                            fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width <
                                                     1000
                                                 ? 18
                                                 : 22,
-                                        color: Colors.black),
-                                  ),
-                                  TextSpan(
-                                    text:
-                                        ' com nome completo e e-mail relatando o problema.',
-                                    style: AppTextStyles.body.copyWith(
-                                        fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    1000
-                                                ? 18
-                                                : 22,
-                                        color: Colors.black),
-                                  ),
-                                ])),
-                      ),
-                    ),
-                  ],
+                                            color: Colors.black),
+                                      ),
+                                    ])),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
                 ),
               ),
             ),
