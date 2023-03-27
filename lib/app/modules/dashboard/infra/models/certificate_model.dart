@@ -8,8 +8,8 @@ class CertificateModel extends Certificate {
     List<CertificateModel> list = [];
     for (var e in array) {
       e.forEach(
-        (key, value) =>
-            list.add(CertificateModel(name: value['name'], url: value['link'])),
+        (key, value) => list
+            .add(CertificateModel(name: value['activity'], url: value['url'])),
       );
     }
 
