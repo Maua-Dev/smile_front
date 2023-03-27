@@ -231,8 +231,12 @@
     "drawerActivitiesButton": "Atividades",
     "drawerResponsibleActivitiesButton": "Atividades Responsáveis",
     "drawerCertificatesButton": "Certificados",
+    "allActivitiesTitle": "Todas as Atividades",
     "drawerHelpButton": "Ajuda",
     "drawerProfileButton": "Perfil",
+
+
+    "noCertificatesFoundTitle": "Parece que você não tem nenhum certificado.",
 
 
     "locationTitle": "Local",

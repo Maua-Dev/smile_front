@@ -45,7 +45,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                     height: 16,
                   ),
                   TextHeader(
-                    title: 'Todas as Atividades',
+                    title: S.of(context).allActivitiesTitle,
                     color: AppColors.brandingBlue,
                     fontSize:
                         MediaQuery.of(context).size.width < breakpointTablet

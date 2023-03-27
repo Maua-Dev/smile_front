@@ -4,9 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/vertical-nav-bar/nav_bar_button_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/generated/l10n.dart';
-
 import '../../../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
-import '../../../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 
 class VerticalNavBarWidget extends StatelessWidget {
   final String? accessLevel;
@@ -81,14 +79,16 @@ class VerticalNavBarWidget extends StatelessWidget {
                     indexToShow: controller.indexToShow,
                     myIndex: 4,
                     onPressed: () async {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const CustomAlertDialogWidget(
-                            title: 'Funcionalidade disponível em breve',
-                          );
-                        },
-                      );
+                      // showDialog(
+                      //   context: context,
+                      //   builder: (BuildContext context) {
+                      //     return const CustomAlertDialogWidget(
+                      //       title: 'Funcionalidade disponível em breve',
+                      //     );
+                      //   },
+                      // );
+                      await controller.toggleIndex(4);
+                      Modular.to.navigate('/user/home/certificate');
                     },
                     icon: Icons.assignment,
                   ),
@@ -151,14 +151,16 @@ class VerticalNavBarWidget extends StatelessWidget {
                     indexToShow: controller.indexToShow,
                     myIndex: 3,
                     onPressed: () async {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const CustomAlertDialogWidget(
-                            title: 'Funcionalidade disponível em breve',
-                          );
-                        },
-                      );
+                      // showDialog(
+                      //   context: context,
+                      //   builder: (BuildContext context) {
+                      //     return const CustomAlertDialogWidget(
+                      //       title: 'Funcionalidade disponível em breve',
+                      //     );
+                      //   },
+                      // );
+                      await controller.toggleIndex(3);
+                      Modular.to.navigate('/user/home/certificate');
                     },
                     icon: Icons.assignment,
                   ),

@@ -4,7 +4,6 @@ import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../../shared/utils/screen_helper.dart';
-import '../../../../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 
 class DrawerDashboardWidget extends StatelessWidget {
   DrawerDashboardWidget({super.key, required this.isProfessor});
@@ -82,21 +81,10 @@ class SideBarContents extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: GestureDetector(
-        onTap: route.contains('certificate')
-            ? () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return const CustomAlertDialogWidget(
-                      title: 'Funcionalidade disponível em breve',
-                    );
-                  },
-                );
-              }
-            : () async {
-                Modular.to.navigate(route);
-                Scaffold.of(context).closeDrawer();
-              },
+        onTap: () async {
+          Modular.to.navigate(route);
+          Scaffold.of(context).closeDrawer();
+        },
         child: Container(
           decoration:
               BoxDecoration(color: AppColors.brandingBlue, boxShadow: const [
