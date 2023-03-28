@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/switch_toggle_user_dialog/switch_toggle_user_dialog_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
@@ -271,15 +270,54 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                   const SizedBox(
                     height: 8,
                   ),
-                  Observer(builder: (_) {
-                    return SwitchToggleUserDialogWidget(
-                      isSwitched: controller.acceptEmailNotifications,
-                      type: S.of(context).notificationsSchema('email'),
-                      onChanged: (bool? value) {
-                        controller.setEmailNotifications(value);
-                      },
-                    );
-                  }),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RichText(
+                            text: TextSpan(
+                                text: S.of(context).notificationsSchemaTitle,
+                                style: AppTextStyles.body.copyWith(
+                                  color: Colors.black,
+                                  fontSize: MediaQuery.of(context).size.width <
+                                          500
+                                      ? 16
+                                      : MediaQuery.of(context).size.width < 1000
+                                          ? 18
+                                          : 24,
+                                ),
+                                children: [
+                              TextSpan(
+                                  text: S
+                                      .of(context)
+                                      .notificationsSchema('email'),
+                                  style: AppTextStyles.body.copyWith(
+                                    color: AppColors.brandingOrange,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 500
+                                            ? 16
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1000
+                                                ? 18
+                                                : 24,
+                                  ))
+                            ])),
+                        CupertinoSwitch(
+                          value: controller.acceptEmailNotifications,
+                          onChanged: (bool? value) {
+                            controller.setEmailNotifications(value);
+                          },
+                          trackColor: AppColors.gray,
+                          thumbColor: AppColors.brandingBlue,
+                          activeColor: AppColors.lightPurple,
+                        ),
+                      ],
+                    ),
+                  ),
                   const SizedBox(
                     height: 16,
                   ),
