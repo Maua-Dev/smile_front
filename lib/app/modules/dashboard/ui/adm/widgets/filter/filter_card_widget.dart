@@ -2,14 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
-
-import '../../../../../../shared/entities/screen_variables.dart';
-import '../../../../../../shared/themes/breakpoint.dart';
 import '../../../user/widgets/mobile_widgets/filter/widgets/button_filter_widget.dart';
 
 class FilterCardWidget extends StatelessWidget {
