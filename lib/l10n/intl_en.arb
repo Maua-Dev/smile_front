@@ -102,16 +102,13 @@
     "registerEmailProfessorPlaceholder": "Enter your email Mauá",
     "registerEmailConfirmationPlaceholder": "Confirm your e-mail",
     "registerEmailProfessorConfirmationPlaceholder": "Confirm your e-mail Mauá",
-    "registerPhonePlaceholder": "Phone",
-    "registerCountryPlaceholder": "Search by country or DDI",
     "registerStudentMauaPlaceholder": "Mauá Student",
     "registerRAPlaceholder": "RA",
     "registerConfirmPasswordPlaceholder": "Confirm password",
     "registerTerms": "{terms, select, one{I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.} two{I have read and accept the Terms of Use.} three{I authorize the sending of notification by email, for the purposes of promoting Smile.}}",
     "notificationsTitle": "Means of notification:",
     "notificationsSchemaTitle": "I want to receive notifications by ",
-    "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
-    "notificationsSmsAlert": "Fill in your cell phone to enable sms notifications!",
+    "notificationsSchema": "{notification, select, email{EMAIL} other{}}",
     "registerTitle": "Register",
     "emailNotificationTitle": "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.",
     "changePasswordTitle": "Change password",
@@ -122,10 +119,9 @@
             "firstName": {}
         }
     },
-    "confirmEmailAndPhoneNotificationTitle": "Are you sure your phone {phone} and email address {firstName} are correct?",
+    "confirmEmailAndPhoneNotificationTitle": "Are you sure your email address {firstName} is correct?",
     "@confirmEmailAndPhoneNotificationTitle" : {
         "placeholders": {
-            "phone": {},
             "firstName": {}
         }
     },

@@ -103,14 +103,11 @@
     "registerEmailProfessorPlaceholder": "Insira seu e-mail da Mauá",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
     "registerEmailProfessorConfirmationPlaceholder": "Confirme seu e-mail Mauá",
-    "registerPhonePlaceholder": "Telefone Celular",
-    "registerCountryPlaceholder": "Pesquisar por país ou DDI",
     "registerStudentMauaPlaceholder": "Aluno Mauá",
     "registerRAPlaceholder": "RA",
     "registerConfirmPasswordPlaceholder": "Confirme sua senha",
     "registerTerms": "{terms, select, one{Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile.} two{Li e Aceito os Termos de Uso.} three{Autorizo o envio de notificação por email, para fins de divulgação da Smile.}}",
     "notificationsTitle": "Meios de notificação:",
-    "notificationsSmsAlert": "Preencha o seu telefone celular para ativar as notificações por sms!",
     "notificationsSchemaTitle": "Quero receber notificações por ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
     "registerTitle": "Cadastrar",
@@ -123,10 +120,9 @@
             "firstName": {}
         }
     },
-    "confirmEmailAndPhoneNotificationTitle": "Tem certeza que seu telefone celular {phone} e endereço de e-mail {firstName} estão corretos?",
+    "confirmEmailAndPhoneNotificationTitle": "Tem certeza que seu endereço de e-mail {firstName} esta correto?",
     "@confirmEmailAndPhoneNotificationTitle" : {
         "placeholders": {
-            "phone": {},
             "firstName": {}
         }
     },

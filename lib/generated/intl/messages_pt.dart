@@ -90,8 +90,8 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m4(phone, firstName) =>
-      "Tem certeza que seu telefone celular ${phone} e endereço de e-mail ${firstName} estão corretos?";
+  static String m4(firstName) =>
+      "Tem certeza que seu endereço de e-mail ${firstName} esta correto?";
 
   static String m5(firstName) =>
       "Tem certeza que seu e-mail ${firstName} está correto?";
@@ -448,8 +448,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationsSchema": m13,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
             "Quero receber notificações por "),
-        "notificationsSmsAlert": MessageLookupByLibrary.simpleMessage(
-            "Preencha o seu telefone celular para ativar as notificações por sms!"),
         "notificationsTitle":
             MessageLookupByLibrary.simpleMessage("Meios de notificação:"),
         "planPriceSponsorSchema": m14,
@@ -462,8 +460,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "queueTitle": MessageLookupByLibrary.simpleMessage("Na fila"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme sua senha"),
-        "registerCountryPlaceholder":
-            MessageLookupByLibrary.simpleMessage("Pesquisar por país ou DDI"),
         "registerEmailConfirmationPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme seu e-mail"),
         "registerEmailPlaceholder":
@@ -474,8 +470,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Insira seu e-mail da Mauá"),
         "registerFullNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Nome Completo"),
-        "registerPhonePlaceholder":
-            MessageLookupByLibrary.simpleMessage("Telefone Celular"),
         "registerRAPlaceholder": MessageLookupByLibrary.simpleMessage("RA"),
         "registerSocialNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Nome Social"),
