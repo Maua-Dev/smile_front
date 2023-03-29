@@ -95,7 +95,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                         style: AppTextStyles.body.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 500
-                                ? 16
+                                ? 14
                                 : MediaQuery.of(context).size.width < 1000
                                     ? 20
                                     : 24),
@@ -151,7 +151,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                           style: AppTextStyles.body.copyWith(
                               color: Colors.black,
                               fontSize: MediaQuery.of(context).size.width < 500
-                                  ? 16
+                                  ? 14
                                   : MediaQuery.of(context).size.width < 1000
                                       ? 20
                                       : 24),
@@ -184,7 +184,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                         style: AppTextStyles.body.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 500
-                                ? 16
+                                ? 14
                                 : MediaQuery.of(context).size.width < 1000
                                     ? 20
                                     : 24),
@@ -206,7 +206,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                     style: AppTextStyles.body.copyWith(
                         color: Colors.white,
                         fontSize: MediaQuery.of(context).size.width < 500
-                            ? 12
+                            ? 14
                             : MediaQuery.of(context).size.width < 1000
                                 ? 16
                                 : 20),
@@ -244,17 +244,16 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                         children: [
                           Text(
                             MediaQuery.of(context).size.width < 410
-                                ? 'Usar nome social\nno certificado?'
+                                ? 'Usar nome social no\ncertificado?'
                                 : 'Usar nome social no certificado?',
                             style: AppTextStyles.body.copyWith(
                                 color: Colors.black,
                                 fontSize: MediaQuery.of(context).size.width <
                                         500
-                                    ? 16
+                                    ? 14
                                     : MediaQuery.of(context).size.width < 1000
                                         ? 20
                                         : 24),
-                            textAlign: TextAlign.center,
                           ),
                           CupertinoSwitch(
                             value: widget.certificateWithSocialName,
@@ -277,12 +276,13 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                       children: [
                         RichText(
                             text: TextSpan(
-                                text: S.of(context).notificationsSchemaTitle,
+                                text:
+                                    '${S.of(context).notificationsSchemaTitle}\n',
                                 style: AppTextStyles.body.copyWith(
                                   color: Colors.black,
                                   fontSize: MediaQuery.of(context).size.width <
                                           500
-                                      ? 16
+                                      ? 14
                                       : MediaQuery.of(context).size.width < 1000
                                           ? 18
                                           : 24,
@@ -297,7 +297,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                                     fontWeight: FontWeight.bold,
                                     fontSize:
                                         MediaQuery.of(context).size.width < 500
-                                            ? 16
+                                            ? 14
                                             : MediaQuery.of(context)
                                                         .size
                                                         .width <
@@ -306,15 +306,17 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                                                 : 24,
                                   ))
                             ])),
-                        CupertinoSwitch(
-                          value: controller.acceptEmailNotifications,
-                          onChanged: (bool? value) {
-                            controller.setEmailNotifications(value);
-                          },
-                          trackColor: AppColors.gray,
-                          thumbColor: AppColors.brandingBlue,
-                          activeColor: AppColors.lightPurple,
-                        ),
+                        Observer(builder: (_) {
+                          return CupertinoSwitch(
+                            value: controller.acceptEmailNotifications,
+                            onChanged: (bool? value) {
+                              controller.setEmailNotifications(value);
+                            },
+                            trackColor: AppColors.gray,
+                            thumbColor: AppColors.brandingBlue,
+                            activeColor: AppColors.lightPurple,
+                          );
+                        }),
                       ],
                     ),
                   ),
