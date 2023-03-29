@@ -184,22 +184,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$phoneAtom =
-      Atom(name: 'RegisterControllerBase.phone', context: context);
-
-  @override
-  String get phone {
-    _$phoneAtom.reportRead();
-    return super.phone;
-  }
-
-  @override
-  set phone(String value) {
-    _$phoneAtom.reportWrite(value, super.phone, () {
-      super.phone = value;
-    });
-  }
-
   late final _$roleAtom =
       Atom(name: 'RegisterControllerBase.role', context: context);
 
@@ -314,87 +298,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$acceptSMSNotificationsAtom = Atom(
-      name: 'RegisterControllerBase.acceptSMSNotifications', context: context);
-
-  @override
-  bool get acceptSMSNotifications {
-    _$acceptSMSNotificationsAtom.reportRead();
-    return super.acceptSMSNotifications;
-  }
-
-  @override
-  set acceptSMSNotifications(bool value) {
-    _$acceptSMSNotificationsAtom
-        .reportWrite(value, super.acceptSMSNotifications, () {
-      super.acceptSMSNotifications = value;
-    });
-  }
-
-  late final _$isBrazilianPhoneAtom =
-      Atom(name: 'RegisterControllerBase.isBrazilianPhone', context: context);
-
-  @override
-  bool get isBrazilianPhone {
-    _$isBrazilianPhoneAtom.reportRead();
-    return super.isBrazilianPhone;
-  }
-
-  @override
-  set isBrazilianPhone(bool value) {
-    _$isBrazilianPhoneAtom.reportWrite(value, super.isBrazilianPhone, () {
-      super.isBrazilianPhone = value;
-    });
-  }
-
-  late final _$isPhoneFieldFilledAtom =
-      Atom(name: 'RegisterControllerBase.isPhoneFieldFilled', context: context);
-
-  @override
-  bool get isPhoneFieldFilled {
-    _$isPhoneFieldFilledAtom.reportRead();
-    return super.isPhoneFieldFilled;
-  }
-
-  @override
-  set isPhoneFieldFilled(bool value) {
-    _$isPhoneFieldFilledAtom.reportWrite(value, super.isPhoneFieldFilled, () {
-      super.isPhoneFieldFilled = value;
-    });
-  }
-
-  late final _$phoneValueAtom =
-      Atom(name: 'RegisterControllerBase.phoneValue', context: context);
-
-  @override
-  String get phoneValue {
-    _$phoneValueAtom.reportRead();
-    return super.phoneValue;
-  }
-
-  @override
-  set phoneValue(String value) {
-    _$phoneValueAtom.reportWrite(value, super.phoneValue, () {
-      super.phoneValue = value;
-    });
-  }
-
-  late final _$countryCodeAtom =
-      Atom(name: 'RegisterControllerBase.countryCode', context: context);
-
-  @override
-  CountryCode? get countryCode {
-    _$countryCodeAtom.reportRead();
-    return super.countryCode;
-  }
-
-  @override
-  set countryCode(CountryCode? value) {
-    _$countryCodeAtom.reportWrite(value, super.countryCode, () {
-      super.countryCode = value;
-    });
-  }
-
   late final _$setEmailNotificationsAsyncAction = AsyncAction(
       'RegisterControllerBase.setEmailNotifications',
       context: context);
@@ -403,16 +306,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   Future<void> setEmailNotifications(bool? value) {
     return _$setEmailNotificationsAsyncAction
         .run(() => super.setEmailNotifications(value));
-  }
-
-  late final _$setSMSNotificationsAsyncAction = AsyncAction(
-      'RegisterControllerBase.setSMSNotifications',
-      context: context);
-
-  @override
-  Future<void> setSMSNotifications(bool? value) {
-    return _$setSMSNotificationsAsyncAction
-        .run(() => super.setSMSNotifications(value));
   }
 
   late final _$setAcceptImageAsyncAction =
@@ -453,14 +346,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   @override
   Future<void> setVerifyEmail(String value) {
     return _$setVerifyEmailAsyncAction.run(() => super.setVerifyEmail(value));
-  }
-
-  late final _$setPhoneAsyncAction =
-      AsyncAction('RegisterControllerBase.setPhone', context: context);
-
-  @override
-  Future<void> setPhone(String value) {
-    return _$setPhoneAsyncAction.run(() => super.setPhone(value));
   }
 
   late final _$setRoleAsyncAction =
@@ -555,28 +440,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
       ActionController(name: 'RegisterControllerBase', context: context);
 
   @override
-  void setBrazilianPhone(CountryCode? value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.setBrazilianPhone');
-    try {
-      return super.setBrazilianPhone(value);
-    } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setCountryCode(CountryCode? value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.setCountryCode');
-    try {
-      return super.setCountryCode(value);
-    } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String? validateName(String? value) {
     final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
         name: 'RegisterControllerBase.validateName');
@@ -593,17 +456,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
         name: 'RegisterControllerBase.validateSocialName');
     try {
       return super.validateSocialName(value);
-    } finally {
-      _$RegisterControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  String? validatePhone(String? value) {
-    final _$actionInfo = _$RegisterControllerBaseActionController.startAction(
-        name: 'RegisterControllerBase.validatePhone');
-    try {
-      return super.validatePhone(value);
     } finally {
       _$RegisterControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -699,7 +551,6 @@ socialName: ${socialName},
 hasSocialName: ${hasSocialName},
 email: ${email},
 verifyEmail: ${verifyEmail},
-phone: ${phone},
 role: ${role},
 ra: ${ra},
 password: ${password},
@@ -707,11 +558,6 @@ verifyPassword: ${verifyPassword},
 acceptTermsOfUse: ${acceptTermsOfUse},
 acceptImage: ${acceptImage},
 acceptEmailNotifications: ${acceptEmailNotifications},
-acceptSMSNotifications: ${acceptSMSNotifications},
-isBrazilianPhone: ${isBrazilianPhone},
-isPhoneFieldFilled: ${isPhoneFieldFilled},
-phoneValue: ${phoneValue},
-countryCode: ${countryCode},
 raInt: ${raInt},
 registerInformations: ${registerInformations}
     ''';

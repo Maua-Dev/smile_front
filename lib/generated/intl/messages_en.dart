@@ -91,8 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m4(phone, firstName) =>
-      "Are you sure your phone ${phone} and email address ${firstName} are correct?";
+  static String m4(firstName) =>
+      "Are you sure your email address ${firstName} is correct?";
 
   static String m5(firstName) =>
       "Are you sure your email address ${firstName} is correct?";
@@ -179,7 +179,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m13(notification) => "${Intl.select(notification, {
             'email': 'EMAIL',
-            'sms': 'SMS',
             'other': '',
           })}";
 
@@ -446,8 +445,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationsSchema": m13,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
             "I want to receive notifications by "),
-        "notificationsSmsAlert": MessageLookupByLibrary.simpleMessage(
-            "Fill in your cell phone to enable sms notifications!"),
         "notificationsTitle":
             MessageLookupByLibrary.simpleMessage("Means of notification:"),
         "planPriceSponsorSchema": m14,
@@ -460,8 +457,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "queueTitle": MessageLookupByLibrary.simpleMessage("Na fila"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
-        "registerCountryPlaceholder":
-            MessageLookupByLibrary.simpleMessage("Search by country or DDI"),
         "registerEmailConfirmationPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirm your e-mail"),
         "registerEmailPlaceholder":
@@ -472,8 +467,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your email Mauá"),
         "registerFullNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Full Name"),
-        "registerPhonePlaceholder":
-            MessageLookupByLibrary.simpleMessage("Phone"),
         "registerRAPlaceholder": MessageLookupByLibrary.simpleMessage("RA"),
         "registerSocialNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Social Name"),

@@ -107,40 +107,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
-  late final _$acceptedNotificationsAtom = Atom(
-      name: 'UserDashboardControllerBase.acceptedNotifications',
-      context: context);
-
-  @override
-  bool get acceptedNotifications {
-    _$acceptedNotificationsAtom.reportRead();
-    return super.acceptedNotifications;
-  }
-
-  @override
-  set acceptedNotifications(bool value) {
-    _$acceptedNotificationsAtom.reportWrite(value, super.acceptedNotifications,
-        () {
-      super.acceptedNotifications = value;
-    });
-  }
-
-  late final _$phoneToChangeAtom =
-      Atom(name: 'UserDashboardControllerBase.phoneToChange', context: context);
-
-  @override
-  String get phoneToChange {
-    _$phoneToChangeAtom.reportRead();
-    return super.phoneToChange;
-  }
-
-  @override
-  set phoneToChange(String value) {
-    _$phoneToChangeAtom.reportWrite(value, super.phoneToChange, () {
-      super.phoneToChange = value;
-    });
-  }
-
   late final _$wantSocialNameAtom = Atom(
       name: 'UserDashboardControllerBase.wantSocialName', context: context);
 
@@ -241,24 +207,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
-  late final _$acceptSMSNotificationsAtom = Atom(
-      name: 'UserDashboardControllerBase.acceptSMSNotifications',
-      context: context);
-
-  @override
-  bool get acceptSMSNotifications {
-    _$acceptSMSNotificationsAtom.reportRead();
-    return super.acceptSMSNotifications;
-  }
-
-  @override
-  set acceptSMSNotifications(bool value) {
-    _$acceptSMSNotificationsAtom
-        .reportWrite(value, super.acceptSMSNotifications, () {
-      super.acceptSMSNotifications = value;
-    });
-  }
-
   late final _$enrollmentFilterAtom = Atom(
       name: 'UserDashboardControllerBase.enrollmentFilter', context: context);
 
@@ -304,23 +252,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   set hourFilter(DateTime? value) {
     _$hourFilterAtom.reportWrite(value, super.hourFilter, () {
       super.hourFilter = value;
-    });
-  }
-
-  late final _$isGetPhoneBrazilianAtom = Atom(
-      name: 'UserDashboardControllerBase.isGetPhoneBrazilian',
-      context: context);
-
-  @override
-  bool get isGetPhoneBrazilian {
-    _$isGetPhoneBrazilianAtom.reportRead();
-    return super.isGetPhoneBrazilian;
-  }
-
-  @override
-  set isGetPhoneBrazilian(bool value) {
-    _$isGetPhoneBrazilianAtom.reportWrite(value, super.isGetPhoneBrazilian, () {
-      super.isGetPhoneBrazilian = value;
     });
   }
 
@@ -408,38 +339,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
-  late final _$phoneAtom =
-      Atom(name: 'UserDashboardControllerBase.phone', context: context);
-
-  @override
-  String? get phone {
-    _$phoneAtom.reportRead();
-    return super.phone;
-  }
-
-  @override
-  set phone(String? value) {
-    _$phoneAtom.reportWrite(value, super.phone, () {
-      super.phone = value;
-    });
-  }
-
-  late final _$isPhoneFieldFilledAtom = Atom(
-      name: 'UserDashboardControllerBase.isPhoneFieldFilled', context: context);
-
-  @override
-  bool get isPhoneFieldFilled {
-    _$isPhoneFieldFilledAtom.reportRead();
-    return super.isPhoneFieldFilled;
-  }
-
-  @override
-  set isPhoneFieldFilled(bool value) {
-    _$isPhoneFieldFilledAtom.reportWrite(value, super.isPhoneFieldFilled, () {
-      super.isPhoneFieldFilled = value;
-    });
-  }
-
   late final _$setEmailNotificationsAsyncAction = AsyncAction(
       'UserDashboardControllerBase.setEmailNotifications',
       context: context);
@@ -448,16 +347,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   Future<void> setEmailNotifications(bool? value) {
     return _$setEmailNotificationsAsyncAction
         .run(() => super.setEmailNotifications(value));
-  }
-
-  late final _$setSMSNotificationsAsyncAction = AsyncAction(
-      'UserDashboardControllerBase.setSMSNotifications',
-      context: context);
-
-  @override
-  Future<void> setSMSNotifications(bool? value) {
-    return _$setSMSNotificationsAsyncAction
-        .run(() => super.setSMSNotifications(value));
   }
 
   late final _$getCertificateWithSocialNameAsyncAction = AsyncAction(
@@ -478,16 +367,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     return _$getUserNameAsyncAction.run(() => super.getUserName());
   }
 
-  late final _$getAcceptSMSNotificationsAsyncAction = AsyncAction(
-      'UserDashboardControllerBase.getAcceptSMSNotifications',
-      context: context);
-
-  @override
-  Future<void> getAcceptSMSNotifications() {
-    return _$getAcceptSMSNotificationsAsyncAction
-        .run(() => super.getAcceptSMSNotifications());
-  }
-
   late final _$getAcceptEmailNotificationsAsyncAction = AsyncAction(
       'UserDashboardControllerBase.getAcceptEmailNotifications',
       context: context);
@@ -496,14 +375,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   Future<void> getAcceptEmailNotifications() {
     return _$getAcceptEmailNotificationsAsyncAction
         .run(() => super.getAcceptEmailNotifications());
-  }
-
-  late final _$getPhoneAsyncAction =
-      AsyncAction('UserDashboardControllerBase.getPhone', context: context);
-
-  @override
-  Future<void> getPhone() {
-    return _$getPhoneAsyncAction.run(() => super.getPhone());
   }
 
   late final _$getUserSocialNameAsyncAction = AsyncAction(
@@ -543,14 +414,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
         .run(() => super.getUserSubscribedActivities());
   }
 
-  late final _$setPhoneAsyncAction =
-      AsyncAction('UserDashboardControllerBase.setPhone', context: context);
-
-  @override
-  Future<void> setPhone(String value) {
-    return _$setPhoneAsyncAction.run(() => super.setPhone(value));
-  }
-
   late final _$changeUserDataAsyncAction = AsyncAction(
       'UserDashboardControllerBase.changeUserData',
       context: context);
@@ -558,16 +421,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   @override
   Future<void> changeUserData() {
     return _$changeUserDataAsyncAction.run(() => super.changeUserData());
-  }
-
-  late final _$replaceCharactersPhoneAsyncAction = AsyncAction(
-      'UserDashboardControllerBase.replaceCharactersPhone',
-      context: context);
-
-  @override
-  Future<void> replaceCharactersPhone() {
-    return _$replaceCharactersPhoneAsyncAction
-        .run(() => super.replaceCharactersPhone());
   }
 
   late final _$UserDashboardControllerBaseActionController =
@@ -760,17 +613,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   }
 
   @override
-  String? validatePhone(String? value) {
-    final _$actionInfo = _$UserDashboardControllerBaseActionController
-        .startAction(name: 'UserDashboardControllerBase.validatePhone');
-    try {
-      return super.validatePhone(value);
-    } finally {
-      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 error: ${error},
@@ -779,26 +621,20 @@ name: ${name},
 certificateWithSocialName: ${certificateWithSocialName},
 socialNameToChange: ${socialNameToChange},
 nameToChange: ${nameToChange},
-acceptedNotifications: ${acceptedNotifications},
-phoneToChange: ${phoneToChange},
 wantSocialName: ${wantSocialName},
 subscribedActivitiesOnScreen: ${subscribedActivitiesOnScreen},
 activityType: ${activityType},
 typeFilter: ${typeFilter},
 typeOnScreen: ${typeOnScreen},
 acceptEmailNotifications: ${acceptEmailNotifications},
-acceptSMSNotifications: ${acceptSMSNotifications},
 enrollmentFilter: ${enrollmentFilter},
 dateFilter: ${dateFilter},
 hourFilter: ${hourFilter},
-isGetPhoneBrazilian: ${isGetPhoneBrazilian},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 allSubscribedActivitiesList: ${allSubscribedActivitiesList},
 nextActivity: ${nextActivity},
-requisitionError: ${requisitionError},
-phone: ${phone},
-isPhoneFieldFilled: ${isPhoneFieldFilled}
+requisitionError: ${requisitionError}
     ''';
   }
 }

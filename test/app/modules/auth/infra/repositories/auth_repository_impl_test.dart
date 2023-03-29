@@ -16,7 +16,6 @@ void main() {
 
   UserModel userMock = UserModel(
     acceptEmailNotifications: false,
-    acceptSMSNotifications: false,
     socialName: '',
     accessLevel: AccessLevelEnum.USER,
     email: 'email',
@@ -24,7 +23,6 @@ void main() {
     name: 'name',
     accessToken: 'access_token',
     idToken: 'id_token',
-    phone: 'phone',
     refreshToken: 'refresh',
     userId: 'id',
     ra: 'ra',

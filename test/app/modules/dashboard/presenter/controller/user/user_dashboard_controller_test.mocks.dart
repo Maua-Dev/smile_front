@@ -348,8 +348,6 @@ class MockChangeDataInterface extends _i1.Mock
     String? nameToChange,
     String? socialNameToChange,
     bool? certificateWithSocialName,
-    String? phone,
-    bool? acceptedSmsNotifications,
     bool? acceptedEmailNotifications,
   ) =>
       (super.noSuchMethod(
@@ -359,8 +357,6 @@ class MockChangeDataInterface extends _i1.Mock
             nameToChange,
             socialNameToChange,
             certificateWithSocialName,
-            phone,
-            acceptedSmsNotifications,
             acceptedEmailNotifications,
           ],
         ),

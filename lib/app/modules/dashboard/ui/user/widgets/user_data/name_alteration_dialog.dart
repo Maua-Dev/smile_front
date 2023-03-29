@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/widgets/switch_toggle_user_dialog/switch_toggle_user_dialog_widget.dart';
-import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
@@ -48,8 +45,6 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
   @override
   Widget build(BuildContext context) {
     var controller = Modular.get<UserDashboardController>();
-    final maskPhone = MaskTextInputFormatter(
-        mask: "+###############", filter: {"#": RegExp(r'[0-9]')});
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: SingleChildScrollView(
@@ -277,81 +272,52 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 4),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Telefone:',
-                        style: AppTextStyles.body.copyWith(
-                            color: Colors.black,
-                            fontSize: MediaQuery.of(context).size.width < 500
-                                ? 16
-                                : MediaQuery.of(context).size.width < 1000
-                                    ? 20
-                                    : 24),
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RichText(
+                            text: TextSpan(
+                                text: S.of(context).notificationsSchemaTitle,
+                                style: AppTextStyles.body.copyWith(
+                                  color: Colors.black,
+                                  fontSize: MediaQuery.of(context).size.width <
+                                          500
+                                      ? 16
+                                      : MediaQuery.of(context).size.width < 1000
+                                          ? 18
+                                          : 24,
+                                ),
+                                children: [
+                              TextSpan(
+                                  text: S
+                                      .of(context)
+                                      .notificationsSchema('email'),
+                                  style: AppTextStyles.body.copyWith(
+                                    color: AppColors.brandingOrange,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 500
+                                            ? 16
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1000
+                                                ? 18
+                                                : 24,
+                                  ))
+                            ])),
+                        CupertinoSwitch(
+                          value: controller.acceptEmailNotifications,
+                          onChanged: (bool? value) {
+                            controller.setEmailNotifications(value);
+                          },
+                          trackColor: AppColors.gray,
+                          thumbColor: AppColors.brandingBlue,
+                          activeColor: AppColors.lightPurple,
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Observer(builder: (_) {
-                    return TextFormField(
-                      inputFormatters: [maskPhone],
-                      validator: controller.validatePhone,
-                      initialValue: controller.phoneToChange,
-                      keyboardType: TextInputType.number,
-                      textAlignVertical: TextAlignVertical.center,
-                      onChanged: controller.setPhone,
-                      style: AppTextStyles.body.copyWith(
-                          color: Colors.white,
-                          fontSize: MediaQuery.of(context).size.width < 500
-                              ? 14
-                              : MediaQuery.of(context).size.width < 1000
-                                  ? 18
-                                  : 22),
-                      cursorColor: Colors.white,
-                      decoration: InputDecoration(
-                        fillColor: AppColors.brandingBlue,
-                        filled: true,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
-                              color: AppColors.brandingBlue, width: 0.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
-                              color: AppColors.brandingBlue, width: 0.0),
-                        ),
-                      ),
-                    );
-                  }),
-                  Observer(builder: (_) {
-                    return SwitchToggleUserDialogWidget(
-                      isSwitched: controller.acceptEmailNotifications,
-                      type: S.of(context).notificationsSchema('email'),
-                      onChanged: (bool? value) {
-                        controller.setEmailNotifications(value);
-                      },
-                    );
-                  }),
-                  Observer(builder: (_) {
-                    return SwitchToggleUserDialogWidget(
-                        isSwitched: controller.acceptSMSNotifications,
-                        type: S.of(context).notificationsSchema('sms'),
-                        onChanged: (bool? value) {
-                          controller.setSMSNotifications(value);
-                          if (!controller.isPhoneFieldFilled) {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return CustomAlertDialogWidget(
-                                    title: S.of(context).notificationsSmsAlert,
-                                  );
-                                });
-                          }
-                        });
-                  }),
                   const SizedBox(
                     height: 16,
                   ),
@@ -406,7 +372,6 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                     backgroundColor: AppColors.brandingOrange,
                     onPressed: () async {
                       if (formKey.currentState!.validate()) {
-                        controller.replaceCharactersPhone();
                         await widget.changeData!();
                       }
                     },

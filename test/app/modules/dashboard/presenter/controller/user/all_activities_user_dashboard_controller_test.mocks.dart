@@ -403,32 +403,6 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  bool get acceptedNotifications => (super.noSuchMethod(
-        Invocation.getter(#acceptedNotifications),
-        returnValue: false,
-      ) as bool);
-  @override
-  set acceptedNotifications(bool? _acceptedNotifications) => super.noSuchMethod(
-        Invocation.setter(
-          #acceptedNotifications,
-          _acceptedNotifications,
-        ),
-        returnValueForMissingStub: null,
-      );
-  @override
-  String get phoneToChange => (super.noSuchMethod(
-        Invocation.getter(#phoneToChange),
-        returnValue: '',
-      ) as String);
-  @override
-  set phoneToChange(String? _phoneToChange) => super.noSuchMethod(
-        Invocation.setter(
-          #phoneToChange,
-          _phoneToChange,
-        ),
-        returnValueForMissingStub: null,
-      );
-  @override
   bool get wantSocialName => (super.noSuchMethod(
         Invocation.getter(#wantSocialName),
         returnValue: false,
@@ -496,20 +470,6 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  bool get acceptSMSNotifications => (super.noSuchMethod(
-        Invocation.getter(#acceptSMSNotifications),
-        returnValue: false,
-      ) as bool);
-  @override
-  set acceptSMSNotifications(bool? _acceptSMSNotifications) =>
-      super.noSuchMethod(
-        Invocation.setter(
-          #acceptSMSNotifications,
-          _acceptSMSNotifications,
-        ),
-        returnValueForMissingStub: null,
-      );
-  @override
   set enrollmentFilter(_i16.EnrollButtonEnum? _enrollmentFilter) =>
       super.noSuchMethod(
         Invocation.setter(
@@ -531,19 +491,6 @@ class MockUserDashboardController extends _i1.Mock
         Invocation.setter(
           #hourFilter,
           _hourFilter,
-        ),
-        returnValueForMissingStub: null,
-      );
-  @override
-  bool get isGetPhoneBrazilian => (super.noSuchMethod(
-        Invocation.getter(#isGetPhoneBrazilian),
-        returnValue: false,
-      ) as bool);
-  @override
-  set isGetPhoneBrazilian(bool? _isGetPhoneBrazilian) => super.noSuchMethod(
-        Invocation.setter(
-          #isGetPhoneBrazilian,
-          _isGetPhoneBrazilian,
         ),
         returnValueForMissingStub: null,
       );
@@ -616,27 +563,6 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  set phone(String? _phone) => super.noSuchMethod(
-        Invocation.setter(
-          #phone,
-          _phone,
-        ),
-        returnValueForMissingStub: null,
-      );
-  @override
-  bool get isPhoneFieldFilled => (super.noSuchMethod(
-        Invocation.getter(#isPhoneFieldFilled),
-        returnValue: false,
-      ) as bool);
-  @override
-  set isPhoneFieldFilled(bool? _isPhoneFieldFilled) => super.noSuchMethod(
-        Invocation.setter(
-          #isPhoneFieldFilled,
-          _isPhoneFieldFilled,
-        ),
-        returnValueForMissingStub: null,
-      );
-  @override
   _i7.ReactiveContext get context => (super.noSuchMethod(
         Invocation.getter(#context),
         returnValue: _FakeReactiveContext_5(
@@ -648,15 +574,6 @@ class MockUserDashboardController extends _i1.Mock
   _i10.Future<void> setEmailNotifications(bool? value) => (super.noSuchMethod(
         Invocation.method(
           #setEmailNotifications,
-          [value],
-        ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
-  @override
-  _i10.Future<void> setSMSNotifications(bool? value) => (super.noSuchMethod(
-        Invocation.method(
-          #setSMSNotifications,
           [value],
         ),
         returnValue: _i10.Future<void>.value(),
@@ -831,27 +748,9 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: _i10.Future<void>.value(),
       ) as _i10.Future<void>);
   @override
-  _i10.Future<void> getAcceptSMSNotifications() => (super.noSuchMethod(
-        Invocation.method(
-          #getAcceptSMSNotifications,
-          [],
-        ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
-  @override
   _i10.Future<void> getAcceptEmailNotifications() => (super.noSuchMethod(
         Invocation.method(
           #getAcceptEmailNotifications,
-          [],
-        ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
-  @override
-  _i10.Future<void> getPhone() => (super.noSuchMethod(
-        Invocation.method(
-          #getPhone,
           [],
         ),
         returnValue: _i10.Future<void>.value(),
@@ -941,27 +840,9 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i10.Future<void> setPhone(String? value) => (super.noSuchMethod(
-        Invocation.method(
-          #setPhone,
-          [value],
-        ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
-  @override
   _i10.Future<void> changeUserData() => (super.noSuchMethod(
         Invocation.method(
           #changeUserData,
-          [],
-        ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
-  @override
-  _i10.Future<void> replaceCharactersPhone() => (super.noSuchMethod(
-        Invocation.method(
-          #replaceCharactersPhone,
           [],
         ),
         returnValue: _i10.Future<void>.value(),
