@@ -116,7 +116,8 @@ class UserModule extends Module {
         (i) => MoreInfoController(
               sendConfirmAttendanceUsecase: i(),
               enrollmentController: i(),
-              activityCode: i.args?.data as String? ?? '',
+              activityCode: i.args?.data[0] as String? ?? '',
+              previousRoute: i.args?.data[1] as String? ?? '',
               storage: i(),
             ),
         export: true),

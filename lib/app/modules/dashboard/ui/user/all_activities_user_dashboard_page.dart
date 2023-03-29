@@ -159,11 +159,12 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                                 totalSlots: controller
                                     .activitiesOnScreen[index].totalSlots,
                                 onTap: () {
-                                  Modular.to.navigate(
-                                    '/user/home/more-info',
-                                    arguments: controller
-                                        .activitiesOnScreen[index].activityCode,
-                                  );
+                                  Modular.to.navigate('/user/home/more-info',
+                                      arguments: [
+                                        controller.activitiesOnScreen[index]
+                                            .activityCode,
+                                        '/user/home/all-activities'
+                                      ]);
                                 },
                                 isExtensive: controller
                                     .activitiesOnScreen[index].isExtensive,

@@ -62,7 +62,7 @@ class _MoreInfoPageState
                         iconSize:
                             MediaQuery.of(context).size.width > 700 ? 24 : 18,
                         onPressed: () {
-                          Modular.to.navigate('/user/home/all-activities');
+                          Modular.to.navigate(controller.previousRoute);
                         },
                         icon: const Icon(Icons.arrow_back)),
                   ),

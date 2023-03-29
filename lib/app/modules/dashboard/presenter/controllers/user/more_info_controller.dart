@@ -15,6 +15,7 @@ class MoreInfoController = MoreInfoControllerBase with _$MoreInfoController;
 abstract class MoreInfoControllerBase with Store {
   final UserEnrollmentController enrollmentController;
   final String activityCode;
+  final String previousRoute;
   final ConfirmAttendanceUsecase sendConfirmAttendanceUsecase;
   final SecureStorageInterface storage;
 
@@ -22,6 +23,7 @@ abstract class MoreInfoControllerBase with Store {
     required this.sendConfirmAttendanceUsecase,
     required this.enrollmentController,
     required this.activityCode,
+    required this.previousRoute,
     required this.storage,
   }) {
     getActivity();

@@ -212,12 +212,14 @@ class _UserDashboardPageState
                                       .subscribedActivitiesOnScreen[index]
                                       .totalSlots,
                                   onTap: () {
-                                    Modular.to.navigate(
-                                      '/user/home/more-info',
-                                      arguments: controller
-                                          .subscribedActivitiesOnScreen[index]
-                                          .activityCode,
-                                    );
+                                    Modular.to.navigate('/user/home/more-info',
+                                        arguments: [
+                                          controller
+                                              .subscribedActivitiesOnScreen[
+                                                  index]
+                                              .activityCode,
+                                          '/user/home'
+                                        ]);
                                   },
                                   isExtensive: controller
                                       .subscribedActivitiesOnScreen[index]
