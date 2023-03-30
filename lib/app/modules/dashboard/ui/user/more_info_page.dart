@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/mor
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/extensionist_widget.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../shared/entities/screen_variables.dart';
@@ -100,8 +101,14 @@ class _MoreInfoPageState
                         ),
                       ),
                     Container(
-                      width: 78,
-                      height: 49,
+                      width:
+                          MediaQuery.of(context).size.width < breakpointMobile
+                              ? 88
+                              : 150,
+                      height:
+                          MediaQuery.of(context).size.width < breakpointMobile
+                              ? 49
+                              : 60,
                       decoration: BoxDecoration(
                           color: AppColors.brandingBlue,
                           borderRadius: BorderRadius.circular(15)),
@@ -122,8 +129,14 @@ class _MoreInfoPageState
                       width: 20,
                     ),
                     Container(
-                      width: 138,
-                      height: 49,
+                      width:
+                          MediaQuery.of(context).size.width < breakpointMobile
+                              ? 138
+                              : 150,
+                      height:
+                          MediaQuery.of(context).size.width < breakpointMobile
+                              ? 49
+                              : 60,
                       decoration: BoxDecoration(
                           color: AppColors.brandingBlue,
                           borderRadius: BorderRadius.circular(15)),
@@ -142,21 +155,48 @@ class _MoreInfoPageState
                       width: 20,
                     ),
                     Container(
-                      width: 78,
-                      height: 49,
+                      width:
+                          MediaQuery.of(context).size.width < breakpointMobile
+                              ? 88
+                              : 150,
+                      height:
+                          MediaQuery.of(context).size.width < breakpointMobile
+                              ? 49
+                              : 60,
                       decoration: BoxDecoration(
                           color: AppColors.brandingBlue,
                           borderRadius: BorderRadius.circular(15)),
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(S.of(context).localTitle,
-                                style: AppTextStyles.bold.copyWith(
-                                    color: AppColors.white, fontSize: 12)),
+                            Text(
+                              S.of(context).localTitle,
+                              style: AppTextStyles.bold.copyWith(
+                                  color: AppColors.white,
+                                  fontSize: MediaQuery.of(context).size.width <
+                                          breakpointMobile
+                                      ? 12
+                                      : 18),
+                            ),
                             controller.activity.place != null
-                                ? Text(controller.activity.place!,
-                                    style: AppTextStyles.bold.copyWith(
-                                        color: AppColors.white, fontSize: 20))
+                                ? Tooltip(
+                                    triggerMode: TooltipTriggerMode.tap,
+                                    message: controller.activity.place!,
+                                    textStyle: const TextStyle(
+                                        fontSize: 18, color: Colors.white),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 4.0),
+                                      child: Text(
+                                        controller.activity.place!,
+                                        style: AppTextStyles.bold.copyWith(
+                                            color: AppColors.white,
+                                            fontSize: 20),
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                      ),
+                                    ),
+                                  )
                                 : controller.activity.link != null
                                     ? TextButton(
                                         onPressed: () {
