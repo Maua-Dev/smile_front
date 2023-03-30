@@ -396,7 +396,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                     );
                                                   }),
                                                   SizedBox(
-                                                    width: 556,
+                                                    width: 700,
                                                     child: Divider(
                                                       thickness: 2,
                                                       color: AppColors
@@ -415,7 +415,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                         style: AppTextStyles
                                                             .bold
                                                             .copyWith(
-                                                                fontSize: 30))),
+                                                                fontSize: 26))),
                                               )
                                             ]),
                                           ),

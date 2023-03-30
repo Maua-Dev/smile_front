@@ -1,5 +1,4 @@
 import 'package:email_validator/email_validator.dart';
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
 import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
@@ -56,9 +55,6 @@ abstract class RegisterControllerBase with Store {
   String verifyEmail = '';
 
   @observable
-  String phone = '';
-
-  @observable
   UserRolesEnum role = UserRolesEnum.STUDENT;
 
   @observable
@@ -79,46 +75,9 @@ abstract class RegisterControllerBase with Store {
   @observable
   bool acceptEmailNotifications = false;
 
-  @observable
-  bool acceptSMSNotifications = false;
-
-  @observable
-  bool isBrazilianPhone = true;
-
-  @observable
-  bool isPhoneFieldFilled = false;
-
-  @observable
-  String phoneValue = '';
-
-  @observable
-  CountryCode? countryCode =
-      const CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
-
-  @action
-  void setBrazilianPhone(CountryCode? value) {
-    if (value?.code == "BR") {
-      isBrazilianPhone = true;
-    } else {
-      isBrazilianPhone = false;
-    }
-  }
-
-  @action
-  void setCountryCode(CountryCode? value) {
-    countryCode = value;
-  }
-
   @action
   Future<void> setEmailNotifications(bool? value) async {
     acceptEmailNotifications = value!;
-  }
-
-  @action
-  Future<void> setSMSNotifications(bool? value) async {
-    if (phoneValue.isNotEmpty) {
-      acceptSMSNotifications = value!;
-    }
   }
 
   @action
@@ -163,35 +122,6 @@ abstract class RegisterControllerBase with Store {
   @action
   Future<void> setVerifyEmail(String value) async {
     verifyEmail = value.replaceAll(' ', '');
-  }
-
-  @action
-  Future<void> setPhone(String value) async {
-    phoneValue = value;
-    phone = '${countryCode?.dialCode}$value';
-    if (countryCode?.code == "BR") {
-      phone = phone.replaceAll('(', '');
-      phone = phone.replaceAll(')', '');
-      phone = phone.replaceAll(' ', '');
-      phone = phone.replaceAll('-', '');
-    }
-    if (value.isNotEmpty) {
-      isPhoneFieldFilled = true;
-    } else {
-      isPhoneFieldFilled = false;
-      acceptSMSNotifications = false;
-    }
-  }
-
-  @action
-  String? validatePhone(String? value) {
-    if (countryCode?.code == "BR" && phone.length == 12) {
-      return S.current.fieldDDDRequired;
-    }
-    if (countryCode?.code == "BR" && phone.length != 14 && phone.length > 3) {
-      return S.current.fieldInvalid;
-    }
-    return null;
   }
 
   @action
@@ -296,9 +226,7 @@ abstract class RegisterControllerBase with Store {
         ra: raInt,
         password: password,
         acceptTerms: acceptTermsOfUse,
-        phone: phone,
         acceptEmailNotifications: acceptEmailNotifications,
-        acceptSMSNotifications: acceptSMSNotifications,
         accessLevel: AccessLevelEnum.USER,
         certificateWithSocialName: hasSocialName,
         role: role,

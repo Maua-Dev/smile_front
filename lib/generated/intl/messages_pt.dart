@@ -90,8 +90,8 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m4(phone, firstName) =>
-      "Tem certeza que seu telefone celular ${phone} e endereço de e-mail ${firstName} estão corretos?";
+  static String m4(firstName) =>
+      "Tem certeza que seu endereço de e-mail ${firstName} esta correto?";
 
   static String m5(firstName) =>
       "Tem certeza que seu e-mail ${firstName} está correto?";
@@ -312,7 +312,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Clique aqui para voltar"),
         "closeTitle": MessageLookupByLibrary.simpleMessage("Fechar"),
         "codeInEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
-            "Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional."),
+            "Você receberá um e-mail (atendimento.smile@maua.br) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional."),
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
             "Siga os passos que serão enviados no e-mail cadastrado:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Código"),
@@ -346,10 +346,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "drawerResponsibleActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Atividades Responsáveis"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
-            "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
+            "Enviamos um email (atendimento.smile@maua.br) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro."),
         "enrollmentTitle": MessageLookupByLibrary.simpleMessage("Status"),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
-            "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu e-mail no campo abaixo:\n"),
+            "Caso não tenha encontrado o e-mail (atendimento.smile@maua.br) ou o link tenha expirado, reenvie o código inserindo seu e-mail no campo abaixo:\n"),
         "errorGenericGetActivities": MessageLookupByLibrary.simpleMessage(
             "Ocorreu algum erro ao carregar as atividades :("),
         "errorLoginInvalidCredential":
@@ -448,8 +448,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationsSchema": m13,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
             "Quero receber notificações por "),
-        "notificationsSmsAlert": MessageLookupByLibrary.simpleMessage(
-            "Preencha o seu telefone celular para ativar as notificações por sms!"),
         "notificationsTitle":
             MessageLookupByLibrary.simpleMessage("Meios de notificação:"),
         "planPriceSponsorSchema": m14,
@@ -462,8 +460,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "queueTitle": MessageLookupByLibrary.simpleMessage("Na fila"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme sua senha"),
-        "registerCountryPlaceholder":
-            MessageLookupByLibrary.simpleMessage("Pesquisar por país ou DDI"),
         "registerEmailConfirmationPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirme seu e-mail"),
         "registerEmailPlaceholder":
@@ -474,8 +470,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Insira seu e-mail da Mauá"),
         "registerFullNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Nome Completo"),
-        "registerPhonePlaceholder":
-            MessageLookupByLibrary.simpleMessage("Telefone Celular"),
         "registerRAPlaceholder": MessageLookupByLibrary.simpleMessage("RA"),
         "registerSocialNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Nome Social"),

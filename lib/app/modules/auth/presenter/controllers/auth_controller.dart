@@ -13,7 +13,6 @@ class AuthController {
   String? _socialname = '';
   String? _id = '';
   bool? _certificateWithSocialName = false;
-  bool? _acceptSMSNotifications = false;
   bool? _acceptEmailNotificiations = false;
 
   AuthController({
@@ -22,7 +21,6 @@ class AuthController {
     required this.loginWithEmail,
   });
 
-  bool get acceptSMSNotifications => _acceptSMSNotifications ?? false;
   bool get acceptEmailNotificiations => _acceptEmailNotificiations ?? false;
   bool get isLogged => _loggedIn;
   String get role => _role;
@@ -38,7 +36,6 @@ class AuthController {
     _socialname = loginResponse.socialName;
     _certificateWithSocialName = loginResponse.certificateWithSocialName;
     _acceptEmailNotificiations = loginResponse.acceptEmailNotifications;
-    _acceptSMSNotifications = loginResponse.acceptSMSNotifications;
     _id = loginResponse.userId;
 
     await storage.saveAccessToken(loginResponse.accessToken);
@@ -49,10 +46,8 @@ class AuthController {
     await storage.saveSocialName(loginResponse.socialName ?? '');
     await storage.saveId(loginResponse.userId);
     await storage.saveIdToken(loginResponse.idToken);
-    await storage.savePhone(loginResponse.phone);
     await storage
         .saveCertificateWithSocialName(_certificateWithSocialName ?? false);
-    await storage.saveAcceptSMSNotifications(_acceptSMSNotifications ?? false);
     await storage
         .saveAcceptEmailNotifications(_acceptEmailNotificiations ?? false);
 
