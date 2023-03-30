@@ -12,6 +12,5 @@ class RegisterUserInformationsModel extends User {
     super.ra,
     required super.certificateWithSocialName,
     required super.name,
-    required super.phone,
   });
 }

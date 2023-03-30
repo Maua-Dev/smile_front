@@ -20,7 +20,7 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
   @override
   Widget build(BuildContext context) {
-    if (Screen.width(context) > cellphoneSize) {
+    if (Screen.width(context) > tabletSize) {
       return SizedBox(
         height: Screen.height(context) - 56,
         child: Padding(
@@ -101,72 +101,74 @@ class _MainHomePageState extends State<MainHomePage> {
         ),
       );
     } else {
-      return SizedBox(
-        child: Column(
-          children: [
-            H1HeaderTextWidget(
-              title: S.of(context).homePageTitle,
+      return Column(
+        children: [
+          H1HeaderTextWidget(
+            title: S.of(context).homePageTitle,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              S.of(context).homePageSubtitle,
+              style: const TextStyle(fontSize: 14),
+              textAlign: TextAlign.justify,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                S.of(context).homePageSubtitle,
-                style: const TextStyle(fontSize: 14),
-                textAlign: TextAlign.justify,
-              ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Image(
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          SizedBox(
+            height: Screen.height(context) / 2.5,
+            width: Screen.width(context),
+            child: Image(
               image: CachedNetworkImageProvider(
                   '${s3AssetsBaseUrl}maua_entrada.jpg'),
               fit: BoxFit.fitWidth,
             ),
-            const SizedBox(
-              height: 16,
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          Container(
+            width: 200,
+            height: 40,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: AppColors.brandingOrange,
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
             ),
-            Container(
-              width: 200,
-              height: 40,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: AppColors.brandingOrange,
-                borderRadius: const BorderRadius.all(Radius.circular(20)),
-              ),
-              child: Text(
-                S.of(context).smileDate,
-                textAlign: TextAlign.center,
-                style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
-              ),
+            child: Text(
+              S.of(context).smileDate,
+              textAlign: TextAlign.center,
+              style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
             ),
-            const SizedBox(
-              height: 16,
-            ),
-            MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: GestureDetector(
-                onTap: () {
-                  Modular.to.navigate('/home/home-more-info');
-                },
-                child: Container(
-                  width: 200,
-                  height: 40,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: AppColors.brandingBlue,
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  ),
-                  child: Text(
-                    S.of(context).knowMore,
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
-                  ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: () {
+                Modular.to.navigate('/home/home-more-info');
+              },
+              child: Container(
+                width: 200,
+                height: 40,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: AppColors.brandingBlue,
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                ),
+                child: Text(
+                  S.of(context).knowMore,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       );
     }
   }

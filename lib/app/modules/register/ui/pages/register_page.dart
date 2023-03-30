@@ -1,16 +1,13 @@
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
-
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/dialog/select_role_dialog.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/enable_text_field_check_box_widget.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/switch_toggle_widget.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/widgets/custom_elevated_button_widget.dart';
@@ -59,8 +56,6 @@ class _RegisterPageState
 
   @override
   Widget build(BuildContext context) {
-    const countryPicker = FlCountryCodePicker();
-
     return Scaffold(
       body: SafeArea(
           child: Form(
@@ -205,86 +200,6 @@ class _RegisterPageState
                       validation: controller.validateVerifyEmail,
                     ),
                     Observer(builder: (_) {
-                      return Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 20.0),
-                            child: GestureDetector(
-                              onTap: () async {
-                                final code = await countryPicker.showPicker(
-                                    context: context);
-                                controller.setCountryCode(code);
-                                controller.setBrazilianPhone(code);
-                                if (controller.countryCode == null) {
-                                  controller.setCountryCode(const CountryCode(
-                                      name: 'Brazil',
-                                      code: 'BR',
-                                      dialCode: '+55'));
-                                }
-                              },
-                              child: Container(
-                                height: 60,
-                                width: MediaQuery.of(context).size.width < 650
-                                    ? MediaQuery.of(context).size.width * 0.30
-                                    : 110,
-                                decoration: BoxDecoration(
-                                    color: AppColors.white,
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Observer(builder: (_) {
-                                    return SizedBox(
-                                      child: Row(
-                                        children: [
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                          Container(
-                                              child:
-                                                  controller.countryCode != null
-                                                      ? controller.countryCode!
-                                                          .flagImage
-                                                      : null),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            controller.countryCode != null
-                                                ? controller
-                                                    .countryCode!.dialCode
-                                                : "DDI",
-                                            style: TextStyle(
-                                                color: AppColors.gray,
-                                                fontSize: 14),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          InputBoxWidget(
-                            isPhoneField: true,
-                            icon: Icons.phone,
-                            isBrazilianPhoneField: controller.isBrazilianPhone,
-                            placeholder: S.of(context).registerPhonePlaceholder,
-                            setValue: controller.setPhone,
-                            widthSize: MediaQuery.of(context).size.width < 650
-                                ? MediaQuery.of(context).size.width * 0.53
-                                : 480,
-                            validation: controller.validatePhone,
-                          )
-                        ],
-                      );
-                    }),
-                    Observer(builder: (_) {
                       if (controller.role == UserRolesEnum.STUDENT) {
                         return InputBoxWidget(
                           isRAField: true,
@@ -347,25 +262,6 @@ class _RegisterPageState
                     const SizedBox(
                       height: 12,
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width < 650
-                          ? MediaQuery.of(context).size.width * 0.85
-                          : 600,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          S.of(context).notificationsTitle,
-                          style: AppTextStyles.body.copyWith(
-                            color: AppColors.white,
-                            fontSize: 24,
-                          ),
-                          textAlign: TextAlign.start,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
                     Observer(builder: (_) {
                       return SwitchToggleWidget(
                         isSwitched: controller.acceptEmailNotifications,
@@ -377,27 +273,6 @@ class _RegisterPageState
                     }),
                     const SizedBox(
                       height: 16,
-                    ),
-                    Observer(builder: (_) {
-                      return SwitchToggleWidget(
-                          isSwitched: controller.acceptSMSNotifications,
-                          tipo: S.of(context).notificationsSchema('sms'),
-                          onChanged: (bool? value) {
-                            controller.setSMSNotifications(value);
-                            if (!controller.isPhoneFieldFilled) {
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return CustomAlertDialogWidget(
-                                      title:
-                                          S.of(context).notificationsSmsAlert,
-                                    );
-                                  });
-                            }
-                          });
-                    }),
-                    const SizedBox(
-                      height: 30,
                     ),
                     Observer(builder: (_) {
                       return CustomElevatedButtonWidget(
@@ -417,58 +292,29 @@ class _RegisterPageState
                                   currentFocus.unfocus();
                                 }
                                 if (_formKey.currentState!.validate()) {
-                                  if (!controller.isPhoneFieldFilled) {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return ActionConfirmationDialogWidget(
-                                          title: S
-                                              .of(context)
-                                              .confirmEmailNotificationTitle(
-                                                  controller.email),
-                                          content: S
-                                              .of(context)
-                                              .confirmEmailNotificationSubtitle,
-                                          onPressed: () async {
-                                            Navigator.of(context).pop();
-                                            await controller.register();
-                                            if (controller
-                                                .successRegistration) {
-                                              Modular.to.navigate(
-                                                  '/login/cadastro/email');
-                                            }
-                                          },
-                                          isLoading: controller.isLoading,
-                                        );
-                                      },
-                                    );
-                                  } else {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return ActionConfirmationDialogWidget(
-                                          title: S
-                                              .of(context)
-                                              .confirmEmailAndPhoneNotificationTitle(
-                                                  controller.phone,
-                                                  controller.email),
-                                          content: S
-                                              .of(context)
-                                              .confirmEmailNotificationSubtitle,
-                                          onPressed: () async {
-                                            Navigator.of(context).pop();
-                                            await controller.register();
-                                            if (controller
-                                                .successRegistration) {
-                                              Modular.to.navigate(
-                                                  '/login/cadastro/email');
-                                            }
-                                          },
-                                          isLoading: controller.isLoading,
-                                        );
-                                      },
-                                    );
-                                  }
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return ActionConfirmationDialogWidget(
+                                        title: S
+                                            .of(context)
+                                            .confirmEmailAndPhoneNotificationTitle(
+                                                controller.email),
+                                        content: S
+                                            .of(context)
+                                            .confirmEmailNotificationSubtitle,
+                                        onPressed: () async {
+                                          Navigator.of(context).pop();
+                                          await controller.register();
+                                          if (controller.successRegistration) {
+                                            Modular.to.navigate(
+                                                '/login/cadastro/email');
+                                          }
+                                        },
+                                        isLoading: controller.isLoading,
+                                      );
+                                    },
+                                  );
                                 }
                               }
                             : null,

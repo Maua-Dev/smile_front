@@ -36,7 +36,10 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
             title: S.of(context).mauaEntititesTitle,
           ),
           const EntitiesStack(),
-          const BeSponsor()
+          // const BeSponsor()
+          const SizedBox(
+            height: 32,
+          ),
         ],
       ),
     );
