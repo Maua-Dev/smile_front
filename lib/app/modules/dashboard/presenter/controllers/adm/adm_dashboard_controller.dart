@@ -191,6 +191,7 @@ abstract class AdmDashboardControllerBase with Store {
     setIsLoading(true);
     await deleteActivity(id);
     setIsLoading(false);
+    setAllFilters();
   }
 
   @action
@@ -198,6 +199,7 @@ abstract class AdmDashboardControllerBase with Store {
     setIsLoading(true);
     await manualDropActivity(activityCode, userId);
     setIsLoading(false);
+    setAllFilters();
   }
 
   @action
