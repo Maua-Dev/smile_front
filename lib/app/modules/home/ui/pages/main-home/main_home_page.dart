@@ -25,7 +25,7 @@ class _MainHomePageState extends State<MainHomePage> {
         height: Screen.height(context) - 56,
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: Screen.width(context) < tabletSize ? 32 : 64),
+              horizontal: Screen.height(context) < 750 ? 32 : 64),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,21 +35,17 @@ class _MainHomePageState extends State<MainHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     H1HeaderTextWidget(
-                      padding: const EdgeInsets.only(bottom: 32),
+                      padding: const EdgeInsets.only(bottom: 32, top: 16),
                       title: S.of(context).homePageTitle,
-                    ),
-                    const SizedBox(
-                      height: 40,
                     ),
                     Text(
                       S.of(context).homePageSubtitle,
                       style: AppTextStyles.body.copyWith(
-                          fontSize:
-                              Screen.width(context) < tabletSize ? 18 : 25),
+                          fontSize: Screen.height(context) < 750 ? 20 : 25),
                       textAlign: TextAlign.justify,
                     ),
-                    const SizedBox(
-                      height: 40,
+                    SizedBox(
+                      height: Screen.height(context) < 750 ? 16 : 40,
                     ),
                     CustomElevatedButtonWidget(
                       title: S.of(context).smileDateWithYear,
