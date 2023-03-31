@@ -8,6 +8,7 @@ import 'package:smile_front/app/shared/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ActivitiesCardWidget extends StatelessWidget {
   final String title;
@@ -23,7 +24,9 @@ class ActivitiesCardWidget extends StatelessWidget {
   final bool isLoading;
   final Function() onPressedEdit;
   final Function() onPressedDelete;
+  final Function(List<EnrollmentsModel> enrollments) sendEmailToAll;
   final Function(String, String) onPressedDropActivity;
+  final String? emailLogDevCommunity;
   const ActivitiesCardWidget(
       {Key? key,
       required this.isLoading,
@@ -39,7 +42,9 @@ class ActivitiesCardWidget extends StatelessWidget {
       required this.totalParticipants,
       required this.isExtensive,
       required this.onPressedEdit,
-      required this.onPressedDelete})
+      required this.onPressedDelete,
+      this.emailLogDevCommunity,
+      required this.sendEmailToAll})
       : super(key: key);
 
   @override
@@ -191,7 +196,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                               borderRadius:
                                                   BorderRadius.circular(20)),
                                           content: SizedBox(
-                                            height: 692,
+                                            height: 706,
                                             width: 773,
                                             child: Column(children: [
                                               Row(
@@ -288,12 +293,40 @@ class ActivitiesCardWidget extends StatelessWidget {
                                               ),
                                               Column(
                                                 children: [
-                                                  Text(
-                                                    S.of(context).namesTitle,
-                                                    style: AppTextStyles.bold
-                                                        .copyWith(
-                                                            color: Colors.black,
-                                                            fontSize: 20),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    children: [
+                                                      const SizedBox(
+                                                        width: 16,
+                                                      ),
+                                                      Text(
+                                                        S
+                                                            .of(context)
+                                                            .namesTitle,
+                                                        style: AppTextStyles
+                                                            .bold
+                                                            .copyWith(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 20),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                left: 30.0),
+                                                        child: IconButton(
+                                                          onPressed: () {
+                                                            sendEmailToAll(
+                                                                filteredEnrollments);
+                                                          },
+                                                          icon: const Icon(Icons
+                                                              .mail_rounded),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                   SizedBox(
                                                     width: 700,
@@ -330,7 +363,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                                             (_) {
                                                                           return Padding(
                                                                             padding:
-                                                                                const EdgeInsets.only(left: 60),
+                                                                                const EdgeInsets.only(left: 40),
                                                                             child: IconButton(
                                                                                 hoverColor: AppColors.white,
                                                                                 onPressed: () {
@@ -354,30 +387,42 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                                                 style: AppTextStyles.bold.copyWith(color: Colors.black, fontSize: 30)),
                                                                           );
                                                                         }),
-                                                                        Container(
-                                                                          height:
-                                                                              40,
-                                                                          width:
-                                                                              120,
-                                                                          decoration: BoxDecoration(
-                                                                              borderRadius: BorderRadius.circular(8),
-                                                                              color: filteredEnrollments[index].state == EnrollmentStateEnum.IN_QUEUE
-                                                                                  ? AppColors.brandingBlue
-                                                                                  : filteredEnrollments[index].state == EnrollmentStateEnum.COMPLETED
-                                                                                      ? AppColors.greenButton
-                                                                                      : AppColors.brandingOrange),
-                                                                          child:
-                                                                              Center(
-                                                                            child:
-                                                                                Text(
-                                                                              filteredEnrollments[index].state == EnrollmentStateEnum.IN_QUEUE
-                                                                                  ? 'Na Fila'
-                                                                                  : filteredEnrollments[index].state == EnrollmentStateEnum.COMPLETED
-                                                                                      ? 'Completo'
-                                                                                      : 'Inscrito',
-                                                                              style: AppTextStyles.bold,
+                                                                        Row(
+                                                                          children: [
+                                                                            IconButton(
+                                                                              onPressed: () {
+                                                                                launchUrl(
+                                                                                  Uri.parse('mailto:${filteredEnrollments[index].user!.email}?${emailLogDevCommunity != null ? '&bcc=$emailLogDevCommunity' : ''}'),
+                                                                                  mode: LaunchMode.externalApplication,
+                                                                                );
+                                                                              },
+                                                                              icon: const Icon(Icons.mail_rounded),
                                                                             ),
-                                                                          ),
+                                                                            const SizedBox(
+                                                                              width: 10,
+                                                                            ),
+                                                                            Container(
+                                                                              height: 40,
+                                                                              width: 110,
+                                                                              decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(8),
+                                                                                  color: filteredEnrollments[index].state == EnrollmentStateEnum.IN_QUEUE
+                                                                                      ? AppColors.brandingBlue
+                                                                                      : filteredEnrollments[index].state == EnrollmentStateEnum.COMPLETED
+                                                                                          ? AppColors.greenButton
+                                                                                          : AppColors.brandingOrange),
+                                                                              child: Center(
+                                                                                child: Text(
+                                                                                  filteredEnrollments[index].state == EnrollmentStateEnum.IN_QUEUE
+                                                                                      ? 'Na Fila'
+                                                                                      : filteredEnrollments[index].state == EnrollmentStateEnum.COMPLETED
+                                                                                          ? 'Completo'
+                                                                                          : 'Inscrito',
+                                                                                  style: AppTextStyles.bold,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
                                                                         )
                                                                       ],
                                                                     ),
