@@ -7,8 +7,10 @@ import 'package:smile_front/app/shared/models/professor_activity_model.dart';
 
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../../../generated/l10n.dart';
+import '../../../../../../shared/models/enrollments_model.dart';
 import '../../../../../../shared/themes/breakpoint.dart';
 
 class SubscriberListWidget extends StatelessWidget {
@@ -20,6 +22,8 @@ class SubscriberListWidget extends StatelessWidget {
   final List<ListNameAndStateWithIsSwitched> professorList;
   final Function(bool, int) onChangedIsSwitched;
   final Function()? toggleSwitch;
+  final String? emailLogDevCommunity;
+  final Function(List<EnrollmentsModel>) sendEmailToAll;
   const SubscriberListWidget({
     Key? key,
     required this.onChangedIsSwitched,
@@ -30,6 +34,8 @@ class SubscriberListWidget extends StatelessWidget {
     required this.listViewItemCount,
     required this.isSwitched,
     required this.toggleSwitch,
+    this.emailLogDevCommunity,
+    required this.sendEmailToAll,
   }) : super(key: key);
 
   @override
@@ -41,10 +47,10 @@ class SubscriberListWidget extends StatelessWidget {
               ? 570
               : 400,
       height: MediaQuery.of(context).size.width < breakpointLMobile
-          ? 300
+          ? 305
           : MediaQuery.of(context).size.width > breakpointTablet
-              ? 430
-              : 300,
+              ? 435
+              : 305,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           border: Border.all(width: 4, color: AppColors.brandingOrange)),
@@ -95,24 +101,22 @@ class SubscriberListWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  Text(S.of(context).namesTitle,
-                      style: AppTextStyles.bold.copyWith(
-                          fontSize: MediaQuery.of(context).size.width <
-                                  breakpointLMobile
+              Text(S.of(context).namesTitle,
+                  style: AppTextStyles.bold.copyWith(
+                      fontSize:
+                          MediaQuery.of(context).size.width < breakpointLMobile
                               ? 15
                               : 20,
-                          color: Colors.black)),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width < breakpointLMobile
-                        ? 84
-                        : MediaQuery.of(context).size.width < breakpointTablet
-                            ? 104
-                            : 200,
-                  )
-                ],
-              )
+                      color: Colors.black)),
+              Padding(
+                padding: const EdgeInsets.only(right: 88.0),
+                child: IconButton(
+                  onPressed: () {
+                    sendEmailToAll(enrollmentsList.enrollments!);
+                  },
+                  icon: const Icon(Icons.mail_rounded),
+                ),
+              ),
             ],
           ),
           SizedBox(
@@ -218,6 +222,19 @@ class SubscriberListWidget extends StatelessWidget {
                               ),
                             );
                           }),
+                          IconButton(
+                            onPressed: () {
+                              // sendEmailToAll(
+                              //     filteredEnrollments);
+
+                              launchUrl(
+                                Uri.parse(
+                                    'mailto:${enrollmentsList.enrollments![index].user!.email}?${emailLogDevCommunity != null ? '&bcc=$emailLogDevCommunity' : ''}'),
+                                mode: LaunchMode.externalApplication,
+                              );
+                            },
+                            icon: const Icon(Icons.mail_rounded),
+                          ),
                         ],
                       ),
                     ),
