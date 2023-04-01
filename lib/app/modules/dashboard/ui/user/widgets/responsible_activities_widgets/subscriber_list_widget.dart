@@ -110,11 +110,14 @@ class SubscriberListWidget extends StatelessWidget {
                       color: Colors.black)),
               Padding(
                 padding: const EdgeInsets.only(right: 88.0),
-                child: IconButton(
-                  onPressed: () {
-                    sendEmailToAll(enrollmentsList.enrollments!);
-                  },
-                  icon: const Icon(Icons.mail_rounded),
+                child: Tooltip(
+                  message: S.of(context).sendEmailToAllEnrolls,
+                  child: IconButton(
+                    onPressed: () {
+                      sendEmailToAll(enrollmentsList.enrollments!);
+                    },
+                    icon: const Icon(Icons.mail_rounded),
+                  ),
                 ),
               ),
             ],
@@ -222,18 +225,19 @@ class SubscriberListWidget extends StatelessWidget {
                               ),
                             );
                           }),
-                          IconButton(
-                            onPressed: () {
-                              // sendEmailToAll(
-                              //     filteredEnrollments);
-
-                              launchUrl(
-                                Uri.parse(
-                                    'mailto:${enrollmentsList.enrollments![index].user!.email}?${emailLogDevCommunity != null ? '&bcc=$emailLogDevCommunity' : ''}'),
-                                mode: LaunchMode.externalApplication,
-                              );
-                            },
-                            icon: const Icon(Icons.mail_rounded),
+                          Tooltip(
+                            message:
+                                '${S.of(context).sendEmailToSomeone} ${enrollmentsList.enrollments![index].user!.name}',
+                            child: IconButton(
+                              onPressed: () {
+                                launchUrl(
+                                  Uri.parse(
+                                      'mailto:${enrollmentsList.enrollments![index].user!.email}?${emailLogDevCommunity != null ? '&bcc=$emailLogDevCommunity' : ''}'),
+                                  mode: LaunchMode.externalApplication,
+                                );
+                              },
+                              icon: const Icon(Icons.mail_rounded),
+                            ),
                           ),
                         ],
                       ),

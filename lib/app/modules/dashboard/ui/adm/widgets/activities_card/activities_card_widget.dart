@@ -317,13 +317,18 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                             const EdgeInsets
                                                                     .only(
                                                                 left: 30.0),
-                                                        child: IconButton(
-                                                          onPressed: () {
-                                                            sendEmailToAll(
-                                                                filteredEnrollments);
-                                                          },
-                                                          icon: const Icon(Icons
-                                                              .mail_rounded),
+                                                        child: Tooltip(
+                                                          message: S
+                                                              .of(context)
+                                                              .sendEmailToAllEnrolls,
+                                                          child: IconButton(
+                                                            onPressed: () {
+                                                              sendEmailToAll(
+                                                                  filteredEnrollments);
+                                                            },
+                                                            icon: const Icon(Icons
+                                                                .mail_rounded),
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
@@ -389,14 +394,17 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                                         }),
                                                                         Row(
                                                                           children: [
-                                                                            IconButton(
-                                                                              onPressed: () {
-                                                                                launchUrl(
-                                                                                  Uri.parse('mailto:${filteredEnrollments[index].user!.email}?${emailLogDevCommunity != null ? '&bcc=$emailLogDevCommunity' : ''}'),
-                                                                                  mode: LaunchMode.externalApplication,
-                                                                                );
-                                                                              },
-                                                                              icon: const Icon(Icons.mail_rounded),
+                                                                            Tooltip(
+                                                                              message: '${S.of(context).sendEmailToSomeone} ${filteredEnrollments[index].user!.name}',
+                                                                              child: IconButton(
+                                                                                onPressed: () {
+                                                                                  launchUrl(
+                                                                                    Uri.parse('mailto:${filteredEnrollments[index].user!.email}?${emailLogDevCommunity != null ? '&bcc=$emailLogDevCommunity' : ''}'),
+                                                                                    mode: LaunchMode.externalApplication,
+                                                                                  );
+                                                                                },
+                                                                                icon: const Icon(Icons.mail_rounded),
+                                                                              ),
                                                                             ),
                                                                             const SizedBox(
                                                                               width: 10,

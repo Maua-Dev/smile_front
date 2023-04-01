@@ -2124,6 +2124,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Send email to all`
+  String get sendEmailToAllEnrolls {
+    return Intl.message(
+      'Send email to all',
+      name: 'sendEmailToAllEnrolls',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send email to:`
+  String get sendEmailToSomeone {
+    return Intl.message(
+      'Send email to:',
+      name: 'sendEmailToSomeone',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
