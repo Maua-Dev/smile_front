@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          endDrawer: MediaQuery.of(context).size.width < 1024
+          endDrawer: MediaQuery.of(context).size.width <= 1024
               ? EndDrawerWidget(
                   scrollToActivity: scrollToActivity,
                   scrollToHome: scrollToHome,

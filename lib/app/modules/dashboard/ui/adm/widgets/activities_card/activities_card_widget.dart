@@ -430,7 +430,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                         style: AppTextStyles
                                                             .bold
                                                             .copyWith(
-                                                                fontSize: 30))),
+                                                                fontSize: 26))),
                                               )
                                             ]),
                                           ),

@@ -103,18 +103,15 @@
     "registerEmailProfessorPlaceholder": "Insira seu e-mail da Mauá",
     "registerEmailConfirmationPlaceholder": "Confirme seu e-mail",
     "registerEmailProfessorConfirmationPlaceholder": "Confirme seu e-mail Mauá",
-    "registerPhonePlaceholder": "Telefone Celular",
-    "registerCountryPlaceholder": "Pesquisar por país ou DDI",
     "registerStudentMauaPlaceholder": "Aluno Mauá",
     "registerRAPlaceholder": "RA",
     "registerConfirmPasswordPlaceholder": "Confirme sua senha",
     "registerTerms": "{terms, select, one{Tenho ciência de que o evento será todo gravado e fotografado, com a finalidade de divulgação da Smile.} two{Li e Aceito os Termos de Uso.} three{Autorizo o envio de notificação por email, para fins de divulgação da Smile.}}",
     "notificationsTitle": "Meios de notificação:",
-    "notificationsSmsAlert": "Preencha o seu telefone celular para ativar as notificações por sms!",
     "notificationsSchemaTitle": "Quero receber notificações por ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
     "registerTitle": "Cadastrar",
-    "emailNotificationTitle": "Enviamos um email (no-reply@verificationemail.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro.",
+    "emailNotificationTitle": "Enviamos um email (atendimento.smile@maua.br) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro.",
     "changePasswordTitle": "Trocar senha",
     "haveRegistrationTitle": "Já tenho um cadastro",
     "confirmEmailNotificationTitle": "Tem certeza que seu e-mail {firstName} está correto?",
@@ -123,10 +120,9 @@
             "firstName": {}
         }
     },
-    "confirmEmailAndPhoneNotificationTitle": "Tem certeza que seu telefone celular {phone} e endereço de e-mail {firstName} estão corretos?",
+    "confirmEmailAndPhoneNotificationTitle": "Tem certeza que seu endereço de e-mail {firstName} esta correto?",
     "@confirmEmailAndPhoneNotificationTitle" : {
         "placeholders": {
-            "phone": {},
             "firstName": {}
         }
     },
@@ -153,10 +149,10 @@
 
     "codeInEmailTitle": "Siga os passos que serão enviados no e-mail cadastrado:",
     "insertPasswordCodeInstructions": "Insira sua nova senha e o codigo enviado para o seu e-mail:",
-    "codeInEmailInstructionsTitle": "Você receberá um e-mail (no-reply@verificationemail.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.",
+    "codeInEmailInstructionsTitle": "Você receberá um e-mail (atendimento.smile@maua.br) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.",
     "sendTitle": "Enviar",
     "returnLogin": "Voltar ao login",
-    "errorEmailInstructionsTitle": "Caso não tenha encontrado o e-mail (no-reply@verificationemail.com) ou o link tenha expirado, reenvie o código inserindo seu e-mail no campo abaixo:\n",
+    "errorEmailInstructionsTitle": "Caso não tenha encontrado o e-mail (atendimento.smile@maua.br) ou o link tenha expirado, reenvie o código inserindo seu e-mail no campo abaixo:\n",
     
     "presenceValidateTitle": "Validar Presença",
     

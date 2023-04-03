@@ -20,12 +20,12 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
   @override
   Widget build(BuildContext context) {
-    if (Screen.width(context) > cellphoneSize) {
+    if (Screen.width(context) > tabletSize) {
       return SizedBox(
         height: Screen.height(context) - 56,
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: Screen.width(context) < tabletSize ? 32 : 64),
+              horizontal: Screen.height(context) < 750 ? 32 : 64),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,21 +35,17 @@ class _MainHomePageState extends State<MainHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     H1HeaderTextWidget(
-                      padding: const EdgeInsets.only(bottom: 32),
+                      padding: const EdgeInsets.only(bottom: 32, top: 16),
                       title: S.of(context).homePageTitle,
-                    ),
-                    const SizedBox(
-                      height: 40,
                     ),
                     Text(
                       S.of(context).homePageSubtitle,
                       style: AppTextStyles.body.copyWith(
-                          fontSize:
-                              Screen.width(context) < tabletSize ? 18 : 25),
+                          fontSize: Screen.height(context) < 750 ? 20 : 25),
                       textAlign: TextAlign.justify,
                     ),
-                    const SizedBox(
-                      height: 40,
+                    SizedBox(
+                      height: Screen.height(context) < 750 ? 16 : 40,
                     ),
                     CustomElevatedButtonWidget(
                       title: S.of(context).smileDateWithYear,
@@ -101,72 +97,74 @@ class _MainHomePageState extends State<MainHomePage> {
         ),
       );
     } else {
-      return SizedBox(
-        child: Column(
-          children: [
-            H1HeaderTextWidget(
-              title: S.of(context).homePageTitle,
+      return Column(
+        children: [
+          H1HeaderTextWidget(
+            title: S.of(context).homePageTitle,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              S.of(context).homePageSubtitle,
+              style: const TextStyle(fontSize: 14),
+              textAlign: TextAlign.justify,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                S.of(context).homePageSubtitle,
-                style: const TextStyle(fontSize: 14),
-                textAlign: TextAlign.justify,
-              ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Image(
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          SizedBox(
+            height: Screen.height(context) / 2.5,
+            width: Screen.width(context),
+            child: Image(
               image: CachedNetworkImageProvider(
                   '${s3AssetsBaseUrl}maua_entrada.jpg'),
               fit: BoxFit.fitWidth,
             ),
-            const SizedBox(
-              height: 16,
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          Container(
+            width: 200,
+            height: 40,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: AppColors.brandingOrange,
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
             ),
-            Container(
-              width: 200,
-              height: 40,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: AppColors.brandingOrange,
-                borderRadius: const BorderRadius.all(Radius.circular(20)),
-              ),
-              child: Text(
-                S.of(context).smileDate,
-                textAlign: TextAlign.center,
-                style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
-              ),
+            child: Text(
+              S.of(context).smileDate,
+              textAlign: TextAlign.center,
+              style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
             ),
-            const SizedBox(
-              height: 16,
-            ),
-            MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: GestureDetector(
-                onTap: () {
-                  Modular.to.navigate('/home/home-more-info');
-                },
-                child: Container(
-                  width: 200,
-                  height: 40,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: AppColors.brandingBlue,
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  ),
-                  child: Text(
-                    S.of(context).knowMore,
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
-                  ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: () {
+                Modular.to.navigate('/home/home-more-info');
+              },
+              child: Container(
+                width: 200,
+                height: 40,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: AppColors.brandingBlue,
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                ),
+                child: Text(
+                  S.of(context).knowMore,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       );
     }
   }

@@ -42,21 +42,24 @@ class _AdmDashboardPageState
                 Padding(
                     padding: const EdgeInsets.symmetric(vertical: 50),
                     child: Observer(builder: (_) {
-                      return FilterCardWidget(
-                        typeOnScreen: controller.typeOnScreen,
-                        typeFilter: controller.typeFilter,
-                        dateFilter: controller.dateFilter,
-                        hourFilter: controller.hourFilter,
-                        resetFilters: () => controller.resetFilters(),
-                        onChangedActivitiesFilter: (type) {
-                          controller.setTypeFilter(type!);
-                        },
-                        onChangedDateFilter: (date) {
-                          controller.setDateFilter(date!);
-                        },
-                        onChangedTimeFilter: (hour) {
-                          controller.setHourFilter(hour!);
-                        },
+                      return SizedBox(
+                        width: 1165,
+                        child: FilterCardWidget(
+                          typeOnScreen: controller.typeOnScreen,
+                          typeFilter: controller.typeFilter,
+                          dateFilter: controller.dateFilter,
+                          hourFilter: controller.hourFilter,
+                          resetFilters: () => controller.resetFilters(),
+                          onChangedActivitiesFilter: (type) {
+                            controller.setTypeFilter(type!);
+                          },
+                          onChangedDateFilter: (date) {
+                            controller.setDateFilter(date!);
+                          },
+                          onChangedTimeFilter: (hour) {
+                            controller.setHourFilter(hour!);
+                          },
+                        ),
                       );
                     })),
                 Observer(builder: (_) {

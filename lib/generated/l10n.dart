@@ -1062,26 +1062,6 @@ class S {
     );
   }
 
-  /// `Phone`
-  String get registerPhonePlaceholder {
-    return Intl.message(
-      'Phone',
-      name: 'registerPhonePlaceholder',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Search by country or DDI`
-  String get registerCountryPlaceholder {
-    return Intl.message(
-      'Search by country or DDI',
-      name: 'registerCountryPlaceholder',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Mauá Student`
   String get registerStudentMauaPlaceholder {
     return Intl.message(
@@ -1149,28 +1129,17 @@ class S {
     );
   }
 
-  /// `{notification, select, email{EMAIL} sms{SMS} other{}}`
+  /// `{notification, select, email{EMAIL} other{}}`
   String notificationsSchema(Object notification) {
     return Intl.select(
       notification,
       {
         'email': 'EMAIL',
-        'sms': 'SMS',
         'other': '',
       },
       name: 'notificationsSchema',
       desc: '',
       args: [notification],
-    );
-  }
-
-  /// `Fill in your cell phone to enable sms notifications!`
-  String get notificationsSmsAlert {
-    return Intl.message(
-      'Fill in your cell phone to enable sms notifications!',
-      name: 'notificationsSmsAlert',
-      desc: '',
-      args: [],
     );
   }
 
@@ -1184,10 +1153,10 @@ class S {
     );
   }
 
-  /// `We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.`
+  /// `We sent an email (atendimento.smile@maua.br) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.`
   String get emailNotificationTitle {
     return Intl.message(
-      'We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.',
+      'We sent an email (atendimento.smile@maua.br) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.',
       name: 'emailNotificationTitle',
       desc: '',
       args: [],
@@ -1224,13 +1193,13 @@ class S {
     );
   }
 
-  /// `Are you sure your phone {phone} and email address {firstName} are correct?`
-  String confirmEmailAndPhoneNotificationTitle(Object phone, Object firstName) {
+  /// `Are you sure your email address {firstName} is correct?`
+  String confirmEmailAndPhoneNotificationTitle(Object firstName) {
     return Intl.message(
-      'Are you sure your phone $phone and email address $firstName are correct?',
+      'Are you sure your email address $firstName is correct?',
       name: 'confirmEmailAndPhoneNotificationTitle',
       desc: '',
-      args: [phone, firstName],
+      args: [firstName],
     );
   }
 
@@ -1404,10 +1373,10 @@ class S {
     );
   }
 
-  /// `You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional.`
+  /// `You will receive an email (atendimento.smile@maua.br) with a link to change your password! Check inbox, spam or promotional.`
   String get codeInEmailInstructionsTitle {
     return Intl.message(
-      'You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional.',
+      'You will receive an email (atendimento.smile@maua.br) with a link to change your password! Check inbox, spam or promotional.',
       name: 'codeInEmailInstructionsTitle',
       desc: '',
       args: [],
@@ -1434,10 +1403,10 @@ class S {
     );
   }
 
-  /// `If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n`
+  /// `If you have not found the email (atendimento.smile@maua.br) or the link has expired, please resend the code by entering your e-mail in the field below:\n`
   String get errorEmailInstructionsTitle {
     return Intl.message(
-      'If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n',
+      'If you have not found the email (atendimento.smile@maua.br) or the link has expired, please resend the code by entering your e-mail in the field below:\n',
       name: 'errorEmailInstructionsTitle',
       desc: '',
       args: [],
