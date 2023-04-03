@@ -262,5 +262,8 @@
     "InQueueContent": "You are in the activity queue",
 
     "addProfessorTitle": "Add Professor",
-    "speakerNameTitle": "Speaker Name"
+    "speakerNameTitle": "Speaker Name",
+
+    "sendEmailToAllEnrolls": "Send email to all",
+    "sendEmailToSomeone": "Send email to:"
 }

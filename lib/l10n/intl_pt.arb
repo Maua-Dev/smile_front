@@ -264,5 +264,8 @@
     "InQueueContent": "Você está na fila da atividade",
 
     "addProfessorTitle": "Adicionar Professor",
-    "speakerNameTitle": "Nome do Palestrante"
+    "speakerNameTitle": "Nome do Palestrante",
+
+    "sendEmailToAllEnrolls": "Enviar email para todos os inscritos",
+    "sendEmailToSomeone": "Enviar email para:"
 }
