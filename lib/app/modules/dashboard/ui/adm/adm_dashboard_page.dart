@@ -82,6 +82,12 @@ class _AdmDashboardPageState
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
                                 return ActivitiesCardWidget(
+                                  finalDateTime:
+                                      Utils.getActivityFinalTimeDatetime(
+                                          controller
+                                              .activitiesList[index].startDate!,
+                                          controller
+                                              .activitiesList[index].duration),
                                   isLoading: controller.isLoading,
                                   isManualDropLoading:
                                       controller.isManualDropLoading,

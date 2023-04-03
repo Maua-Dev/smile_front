@@ -59,7 +59,7 @@ abstract class EditActivityControllerBase with Store {
   @action
   String? validateParticipantsField(String? value) {
     if (value!.isNotEmpty) {
-      return int.parse(value) < 0 ? S.current.fieldDurationMoreThanZero : null;
+      return int.parse(value) > 0 ? null : S.current.fieldDurationMoreThanZero;
     }
     return S.current.fieldRequired;
   }
