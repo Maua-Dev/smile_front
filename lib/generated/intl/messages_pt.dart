@@ -488,6 +488,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "scheduleTitle": MessageLookupByLibrary.simpleMessage("Horário"),
         "selectOptionTitle":
             MessageLookupByLibrary.simpleMessage("Selecione uma opção:"),
+        "sendEmailToAllEnrolls": MessageLookupByLibrary.simpleMessage(
+            "Enviar email para todos os inscritos"),
+        "sendEmailToSomeone":
+            MessageLookupByLibrary.simpleMessage("Enviar email para:"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Enviar"),
         "signUp": MessageLookupByLibrary.simpleMessage("Inscreva-se"),
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),

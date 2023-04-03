@@ -85,6 +85,9 @@ class _AdmDashboardPageState
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
                                 return ActivitiesCardWidget(
+                                  sendEmailToAll: controller.sendEmailToAll,
+                                  emailLogDevCommunity:
+                                      controller.emailLogDevCommunity,
                                   isLoading: controller.isLoading,
                                   isManualDropLoading:
                                       controller.isManualDropLoading,

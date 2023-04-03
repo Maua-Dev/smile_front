@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_l
 import 'package:smile_front/app/modules/dashboard/domain/usecases/manual_drop_activity.dart';
 import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../../../shared/models/enrollments_model.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/usecases/delete_activity.dart';
 part 'adm_dashboard_controller.g.dart';
@@ -41,6 +42,9 @@ abstract class AdmDashboardControllerBase with Store {
     }
     setIsLoadingCsv(false);
   }
+
+  @computed
+  String get emailLogDevCommunity => 'log.devmaua@gmail.com';
 
   @observable
   bool isLoadingCsv = false;
@@ -206,5 +210,17 @@ abstract class AdmDashboardControllerBase with Store {
     activitiesList = await getAdminActivities();
     allActivitiesList = await getAdminActivities();
     setIsLoading(false);
+  }
+
+  @action
+  Future sendEmailToAll(List<EnrollmentsModel> enrollments) async {
+    if (enrollments.isNotEmpty) {
+      var allEmails =
+          enrollments.map((enrollment) => enrollment.user!.email).join(',');
+      launchUrl(
+        Uri.parse('mailto:$allEmails?&bcc=$emailLogDevCommunity'),
+        mode: LaunchMode.externalApplication,
+      );
+    }
   }
 }

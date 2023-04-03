@@ -40,7 +40,7 @@ class StatusButtonWidget extends StatelessWidget {
         enrollmentStateEnum == EnrollmentStateEnum.ENROLLED ||
         enrollmentStateEnum == EnrollmentStateEnum.COMPLETED) {
       return SizedBox(
-        width: MediaQuery.of(context).size.width < breakpointTablet ? 100 : 200,
+        width: MediaQuery.of(context).size.width < breakpointTablet ? 105 : 200,
         height: MediaQuery.of(context).size.width < breakpointTablet ? 25 : 50,
         child: ElevatedButton(
             style: ButtonStyle(
@@ -90,7 +90,7 @@ class StatusButtonWidget extends StatelessWidget {
       );
     } else {
       return SizedBox(
-        width: MediaQuery.of(context).size.width < breakpointTablet ? 100 : 200,
+        width: MediaQuery.of(context).size.width < breakpointTablet ? 105 : 210,
         height: MediaQuery.of(context).size.width < breakpointTablet ? 25 : 50,
         child: Container(
             width: MediaQuery.of(context).size.width < breakpointTablet

@@ -123,7 +123,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                             2.3
                                         : 650,
                                 child: Text(title,
-                                    maxLines: 1,
+                                    maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: AppTextStyles.bold.copyWith(
                                         fontSize:
@@ -176,23 +176,28 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      Text(
-                                        formattedLocation,
-                                        style: AppTextStyles.bold.copyWith(
-                                            fontSize: MediaQuery.of(context)
-                                                        .size
-                                                        .width <
-                                                    breakpointMobile
-                                                ? 12
-                                                : MediaQuery.of(context)
-                                                            .size
-                                                            .width <
-                                                        breakpointTablet
-                                                    ? 16
-                                                    : 24,
-                                            color: Colors.black,
-                                            overflow: TextOverflow.ellipsis),
-                                        maxLines: 1,
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.31,
+                                        child: Text(
+                                          formattedLocation,
+                                          style: AppTextStyles.bold.copyWith(
+                                              fontSize: MediaQuery.of(context)
+                                                          .size
+                                                          .width <
+                                                      breakpointMobile
+                                                  ? 10
+                                                  : MediaQuery.of(context)
+                                                              .size
+                                                              .width <
+                                                          breakpointTablet
+                                                      ? 16
+                                                      : 24,
+                                              color: Colors.black,
+                                              overflow: TextOverflow.ellipsis),
+                                          maxLines: 2,
+                                        ),
                                       ),
                                       SizedBox(
                                         width:
@@ -203,7 +208,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                       ),
                                       MediaQuery.of(context).size.width <
                                                   breakpointLMobile ||
-                                              formattedLocation.length > 13
+                                              formattedLocation.length > 5
                                           ? const SizedBox.shrink()
                                           : Text(
                                               '${S.of(context).termination}: $finalTime',
