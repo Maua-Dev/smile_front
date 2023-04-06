@@ -12,9 +12,6 @@ Parameters:
   AlternateDomainName:
     Type: String
     Description: Alternate domain name to use for the CloudFront distribution
-  HostedZoneId:
-    Type: String
-    Description: Hosted zone ID of the domain name
 Resources:
   CloudFrontOriginAccessIdentity:
     Type: 'AWS::CloudFront::CloudFrontOriginAccessIdentity'
