@@ -71,15 +71,6 @@ Resources:
               - !Sub "arn:aws:s3:::${MyBucket}/*"
             Principal:
               AWS: !Sub "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${CloudFrontOriginAccessIdentity}"
-  MyRecordSet:
-      Type: AWS::Route53::RecordSet
-      Properties:
-        HostedZoneId: !Ref HostedZoneId
-        Name: !Ref AlternateDomainName
-        Type: A
-        AliasTarget:
-          DNSName: !GetAtt CloudfrontDistribution.DomainName
-          HostedZoneId: Z2FDTNDATAQYW2
 Outputs:
   AwsBucket:
     Value: !Ref MyBucket
