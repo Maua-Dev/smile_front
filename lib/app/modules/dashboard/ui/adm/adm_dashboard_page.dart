@@ -15,7 +15,6 @@ import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
 
 class AdmDashboardPage extends StatefulWidget {
   const AdmDashboardPage({Key? key}) : super(key: key);
-
   @override
   State<AdmDashboardPage> createState() => _AdmDashboardPageState();
 }
@@ -94,7 +93,6 @@ class _AdmDashboardPageState
                                   sendEmailToAll: controller.sendEmailToAll,
                                   emailLogDevCommunity:
                                       controller.emailLogDevCommunity,
-
                                   isLoading: controller.isLoading,
                                   isManualDropLoading:
                                       controller.isManualDropLoading,
