@@ -44,7 +44,6 @@ class ActivitiesCardWidget extends StatelessWidget {
       required this.isExtensive,
       required this.onPressedEdit,
       required this.finalDateTime,
-      required this.onPressedDelete})
       required this.onPressedDelete,
       this.emailLogDevCommunity,
       required this.sendEmailToAll})
