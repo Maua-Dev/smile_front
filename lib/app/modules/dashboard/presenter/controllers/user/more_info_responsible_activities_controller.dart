@@ -9,7 +9,9 @@ import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_ac
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/models/professor_activity_model.dart';
 import 'package:smile_front/app/shared/utils/utils.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../shared/models/enrollments_model.dart';
 import '../../../../auth/domain/repositories/secure_storage_interface.dart';
 
 part 'more_info_responsible_activities_controller.g.dart';
@@ -35,6 +37,9 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
   }) {
     getProfessorActivitiesWithEnrollments();
   }
+
+  @computed
+  String get emailLogDevCommunity => 'log.devmaua@gmail.com';
 
   @observable
   bool isLoading = false;
@@ -181,5 +186,17 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
           professorList[index].userId, EnrollmentStateEnum.ENROLLED);
     }
     setIsLoading(false);
+  }
+
+  @action
+  Future sendEmailToAll(List<EnrollmentsModel> enrollments) async {
+    if (enrollments.isNotEmpty) {
+      var allEmails =
+          enrollments.map((enrollment) => enrollment.user!.email).join(',');
+      launchUrl(
+        Uri.parse('mailto:$allEmails?&bcc=$emailLogDevCommunity'),
+        mode: LaunchMode.externalApplication,
+      );
+    }
   }
 }

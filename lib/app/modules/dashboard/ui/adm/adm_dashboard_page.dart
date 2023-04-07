@@ -91,6 +91,10 @@ class _AdmDashboardPageState
                                               .activitiesList[index].startDate!,
                                           controller
                                               .activitiesList[index].duration),
+                                  sendEmailToAll: controller.sendEmailToAll,
+                                  emailLogDevCommunity:
+                                      controller.emailLogDevCommunity,
+
                                   isLoading: controller.isLoading,
                                   isManualDropLoading:
                                       controller.isManualDropLoading,
