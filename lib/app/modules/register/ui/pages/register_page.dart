@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/dialog/select_role_dialog.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/enable_text_field_check_box_widget.dart';
@@ -15,7 +14,6 @@ import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dar
 import '../../../../shared/widgets/input-box/input_box_widget.dart';
 import '../../../login/ui/widgets/smile_logo_widget.dart';
 import '../../presenter/controllers/register_controller.dart';
-import '../../../../shared/services/environment/environment_config.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -30,18 +28,7 @@ class _RegisterPageState
   @override
   void initState() {
     super.initState();
-    EnvironmentConfig.getConfig() ? null : _showDialog();
     _showSelectRoleDialog();
-  }
-
-  _showDialog() async {
-    await Future.delayed(const Duration(milliseconds: 50));
-    showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return const MainstenanceAlert();
-        });
   }
 
   _showSelectRoleDialog() async {

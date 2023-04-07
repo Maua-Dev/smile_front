@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/modules/login/ui/widgets/maintenance_alert_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../generated/l10n.dart';
-import '../../../shared/services/environment/environment_config.dart';
 import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
@@ -21,22 +19,6 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState
     extends ModularState<ForgotPasswordPage, ForgotPasswordController> {
   final _formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    super.initState();
-    EnvironmentConfig.getConfig() ? null : _showDialog();
-  }
-
-  _showDialog() async {
-    await Future.delayed(const Duration(milliseconds: 50));
-    showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return const MainstenanceAlert();
-        });
-  }
 
   @override
   Widget build(BuildContext context) {
