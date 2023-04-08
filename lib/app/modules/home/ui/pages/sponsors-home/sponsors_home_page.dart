@@ -1,15 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/domain/infra/maua_entities_enum.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
+import '../../../../../shared/entities/screen_variables.dart';
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/utils/screen_helper.dart';
-import '../../../../../shared/widgets/text-header/text_header.dart';
 
 class SponsorsHomePage extends StatefulWidget {
   const SponsorsHomePage({Key? key}) : super(key: key);
@@ -25,36 +28,18 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
       padding: const EdgeInsets.only(top: 24),
       child: Column(
         children: [
-          TextHeader(
+          H1HeaderTextWidget(
             title: S.of(context).sponsorsTitle,
-            leftPadding: Screen.width(context) > 530 ? 32 : 24,
-            color: AppColors.brandingBlue,
-            fontSize: MediaQuery.of(context).size.width < 900
-                ? MediaQuery.of(context).size.width < 530
-                    ? 24
-                    : 32
-                : 48,
           ),
           const CompanySponsor(),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24),
-            child: TextHeader(
-              title: S.of(context).mauaEntititesTitle,
-              leftPadding: Screen.width(context) > 530 ? 32 : 24,
-              color: AppColors.brandingOrange,
-              fontSize: MediaQuery.of(context).size.width < 900
-                  ? MediaQuery.of(context).size.width < 530
-                      ? MediaQuery.of(context).size.width < 375
-                          ? 16
-                          : 22
-                      : 32
-                  : 48,
-            ),
+          H1HeaderTextWidget(
+            title: S.of(context).mauaEntititesTitle,
           ),
           const EntitiesStack(),
-          Column(
-            children: const [BeSponsor()],
-          )
+          // const BeSponsor()
+          const SizedBox(
+            height: 32,
+          ),
         ],
       ),
     );
@@ -125,52 +110,21 @@ class BeSponsor extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.all(32.0),
+      padding: EdgeInsets.symmetric(
+          horizontal: Screen.width(context) < cellphoneSize
+              ? 16
+              : Screen.width(context) < tabletSize
+                  ? 32
+                  : 64),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: MediaQuery.of(context).size.width > 530
-                    ? Container(
-                        alignment: Alignment.center,
-                        height: 2,
-                        color: AppColors.brandingBlue,
-                      )
-                    : Container(),
-              ),
-              Center(
-                  child: Padding(
-                padding: MediaQuery.of(context).size.width > 530
-                    ? const EdgeInsets.all(8.0)
-                    : const EdgeInsets.all(0.0),
-                child: Text(
-                  S.of(context).beSponsorTitle,
-                  style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width < 375
-                          ? 20
-                          : MediaQuery.of(context).size.width > 530
-                              ? 35
-                              : 28,
-                      fontWeight: FontWeight.w900),
-                ),
-              )),
-              Expanded(
-                child: MediaQuery.of(context).size.width > 530
-                    ? Container(
-                        alignment: Alignment.center,
-                        height: 2,
-                        color: AppColors.brandingBlue,
-                      )
-                    : Container(),
-              )
-            ],
+          H1HeaderTextWidget(
+            title: S.of(context).beSponsorTitle,
           ),
           Text(
             S.of(context).beSponsorDescription,
-            style: const TextStyle(fontSize: 16),
+            style: TextStyle(
+                fontSize: Screen.width(context) < tabletSize ? 18 : 25),
             textAlign: TextAlign.justify,
           ),
           const SizedBox(
@@ -377,12 +331,12 @@ class CompanySponsor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width / 1.3,
+      child: Center(
         child: Wrap(
-          alignment: WrapAlignment.center,
           spacing: 48,
-          runSpacing: 16,
+          runSpacing: 25,
           children: [
             SponsorsWidget(link: mauaAzulLogoUrl, color: Colors.white),
             SponsorsWidget(link: devLogoUrl, color: Colors.white),
@@ -401,7 +355,9 @@ class CompanySponsor extends StatelessWidget {
             SponsorsWidget(
                 link: patrocinadorCengageLogoUrl, color: Colors.white),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -410,36 +366,33 @@ class EntitiesStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(alignment: Alignment.bottomCenter, children: [
-      Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.width < 500
-            ? MediaQuery.of(context).size.height * 0.15
-            : MediaQuery.of(context).size.width < 1000
-                ? MediaQuery.of(context).size.height * 0.25
-                : MediaQuery.of(context).size.height * 0.60,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.contain,
-                image: CachedNetworkImageProvider(
-                  entitiesBackground,
-                ))),
-      ),
-      Padding(
-        padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).size.width < 500
-                ? MediaQuery.of(context).size.height / 10
-                : MediaQuery.of(context).size.width < 1000
-                    ? MediaQuery.of(context).size.height / 6
-                    : MediaQuery.of(context).size.height / 4),
-        child: Wrap(
-            alignment: WrapAlignment.center,
-            children: MauaEntitiesEnum.values
-                .map((e) => EntitiesWidget(
-                      entity: e,
-                    ))
-                .toList()),
-      ),
-    ]);
+    return SizedBox(
+      width: MediaQuery.of(context).size.width > breakpointMobile
+          ? MediaQuery.of(context).size.width / 1.3
+          : MediaQuery.of(context).size.width,
+      child: MediaQuery.of(context).size.width > breakpointMobile
+          ? Wrap(
+              spacing: 20,
+              runSpacing: 25,
+              alignment: WrapAlignment.center,
+              children: MauaEntitiesEnum.values
+                  .map((e) => EntitiesWidget(
+                        entity: e,
+                      ))
+                  .toList())
+          : CarouselSlider.builder(
+              itemCount: MauaEntitiesEnum.values.length,
+              itemBuilder: (context, index, realIndex) {
+                return Container(
+                    decoration: BoxDecoration(
+                        border:
+                            Border.all(color: AppColors.brandingBlue, width: 4),
+                        borderRadius: BorderRadius.circular(15)),
+                    child:
+                        EntitiesWidget(entity: MauaEntitiesEnum.values[index]));
+              },
+              options: CarouselOptions(autoPlay: false, viewportFraction: 0.5),
+            ),
+    );
   }
 }

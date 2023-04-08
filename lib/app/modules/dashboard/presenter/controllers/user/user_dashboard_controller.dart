@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
-import 'package:smile_front/app/shared/services/firebase-analytics/firebase_analytics_service.dart';
-
-import '../../../../../../generated/l10n.dart';
+import '../../../../../shared/entities/infra/enroll_button_enum.dart';
+import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
+import '../../../../../shared/models/enrollments_model.dart';
 
 part 'user_dashboard_controller.g.dart';
 
@@ -19,18 +19,15 @@ abstract class UserDashboardControllerBase with Store {
   final UserEnrollmentController enrollmentController;
   final ChangeDataInterface changeData;
   final SecureStorageInterface secureStorage;
-  final FirebaseAnalyticsService analytics;
-
   UserDashboardControllerBase({
     required this.enrollmentController,
-    required this.analytics,
     required this.changeData,
     required this.secureStorage,
   }) {
     getUserSubscribedActivities();
     getUserName();
     getUserSocialName();
-    getPhone();
+    getAcceptEmailNotifications();
   }
 
   @observable
@@ -52,9 +49,6 @@ abstract class UserDashboardControllerBase with Store {
   String nameToChange = '';
 
   @observable
-  String phoneToChange = '';
-
-  @observable
   bool wantSocialName = false;
 
   @observable
@@ -69,10 +63,45 @@ abstract class UserDashboardControllerBase with Store {
   @observable
   String? typeOnScreen;
 
+  @observable
+  bool acceptEmailNotifications = false;
+
+  @action
+  Future<void> setEmailNotifications(bool? value) async {
+    acceptEmailNotifications = value!;
+  }
+
   @action
   void setTypeFilter(ActivityEnum value) {
     typeFilter = value;
     typeOnScreen = value.name;
+    setAllFilters();
+  }
+
+  @observable
+  EnrollButtonEnum? enrollmentFilter;
+
+  @action
+  void setEnrollmentFilter(EnrollButtonEnum value) {
+    enrollmentFilter = value;
+    setAllFilters();
+  }
+
+  Future<void> subscribeUserActivity(String activityCode) async {
+    setIsLoading(true);
+    await enrollmentController.subscribeActivity(activityCode);
+    await getUserSubscribedActivities();
+    setIsLoading(false);
+    Modular.to.pop();
+    setAllFilters();
+  }
+
+  Future<void> unsubscribeUserActivity(String activityCode) async {
+    setIsLoading(true);
+    await enrollmentController.unsubscribeActivity(activityCode);
+    await getUserSubscribedActivities();
+    setIsLoading(false);
+    Modular.to.pop();
     setAllFilters();
   }
 
@@ -95,10 +124,72 @@ abstract class UserDashboardControllerBase with Store {
   }
 
   @action
+  List<EnrollsActivityModel> filterActivitiesByEnrollmentState(
+      EnrollButtonEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+    var list = activitiesToFilter.where((element) {
+      var enroll = element.enrollments != null
+          ? element.enrollments!.state
+          : EnrollmentsModel(
+              state: EnrollmentStateEnum.NONE, dateSubscribed: DateTime.now());
+      switch (type) {
+        case EnrollButtonEnum.COMPLETED:
+          return enroll == EnrollmentStateEnum.COMPLETED;
+        case EnrollButtonEnum.INSCRITO:
+          return enroll == EnrollmentStateEnum.ENROLLED;
+        case EnrollButtonEnum.INSCREVA_SE:
+          return (element.takenSlots < element.totalSlots &&
+              element.acceptingNewEnrollments == true &&
+              enroll != EnrollmentStateEnum.COMPLETED &&
+              enroll != EnrollmentStateEnum.ENROLLED);
+        case EnrollButtonEnum.INDISPONIVEL:
+          return (element.acceptingNewEnrollments != true &&
+              enroll != EnrollmentStateEnum.ENROLLED &&
+              enroll != EnrollmentStateEnum.COMPLETED);
+        case EnrollButtonEnum.ENTRAR_NA_FILA:
+          return (element.takenSlots >= element.totalSlots &&
+              enroll != EnrollmentStateEnum.ENROLLED &&
+              enroll != EnrollmentStateEnum.COMPLETED &&
+              element.acceptingNewEnrollments == true);
+        case EnrollButtonEnum.NA_FILA:
+          return enroll == EnrollmentStateEnum.IN_QUEUE;
+      }
+    }).toList();
+
+    List<EnrollsActivityModel> enrolledList = [];
+    for (var enrolledActivity in list) {
+      enrolledList.add(EnrollsActivityModel(
+        acceptingNewEnrollments: enrolledActivity.acceptingNewEnrollments,
+        activityCode: enrolledActivity.activityCode,
+        description: enrolledActivity.description,
+        duration: enrolledActivity.duration,
+        isExtensive: enrolledActivity.isExtensive,
+        responsibleProfessors: enrolledActivity.responsibleProfessors,
+        speakers: enrolledActivity.speakers,
+        takenSlots: enrolledActivity.takenSlots,
+        title: enrolledActivity.title,
+        totalSlots: enrolledActivity.totalSlots,
+        type: enrolledActivity.type,
+        deliveryEnum: enrolledActivity.deliveryEnum,
+        enrollments: enrolledActivity.enrollments,
+        link: enrolledActivity.link,
+        place: enrolledActivity.place,
+        startDate: enrolledActivity.startDate,
+        stopAcceptingNewEnrollmentsBefore:
+            enrolledActivity.stopAcceptingNewEnrollmentsBefore,
+      ));
+    }
+    return enrolledList;
+  }
+
+  @action
   void setAllFilters() {
     var listActivities = allSubscribedActivitiesList;
     if (typeFilter != null) {
       listActivities = filterActivitiesByType(typeFilter!, listActivities);
+    }
+    if (enrollmentFilter != null) {
+      listActivities =
+          filterActivitiesByEnrollmentState(enrollmentFilter!, listActivities);
     }
     if (dateFilter != null) {
       listActivities = filterActivitiesByDate(dateFilter!, listActivities);
@@ -242,13 +333,9 @@ abstract class UserDashboardControllerBase with Store {
   }
 
   @action
-  Future<void> getPhone() async {
-    phone = await secureStorage.getPhone();
-    phoneToChange = phone!.substring(3, 14);
-    if (isBrazilianPhone) {
-      phoneToChange =
-          '(${phoneToChange.substring(0, 2)})${phoneToChange.substring(2, 7)}-${phoneToChange.substring(7, 11)}';
-    }
+  Future<void> getAcceptEmailNotifications() async {
+    acceptEmailNotifications =
+        (await secureStorage.getAcceptEmailNotifications())!;
   }
 
   @action
@@ -282,23 +369,6 @@ abstract class UserDashboardControllerBase with Store {
   @action
   void setCertificateWithSocialName(bool value) {
     certificateWithSocialName = value;
-  }
-
-  @action
-  Future<void> changeUserData() async {
-    setIsLoading(true);
-    await changeData(nameToChange, socialNameToChange,
-        certificateWithSocialName, phoneToChange);
-    await secureStorage.saveName(nameToChange);
-    await secureStorage.saveSocialName(socialNameToChange);
-    await secureStorage
-        .saveCertificateWithSocialName(certificateWithSocialName);
-    await secureStorage.savePhone(phoneToChange);
-    getUserName();
-    getUserSocialName();
-    getUserSubscribedActivities();
-    getPhone();
-    setIsLoading(false);
   }
 
   @action
@@ -367,63 +437,40 @@ abstract class UserDashboardControllerBase with Store {
   @action
   void getNextActivity() {
     if (allSubscribedActivitiesList.isNotEmpty) {
-      nextActivity = allSubscribedActivitiesList.first;
+      for (EnrollsActivityModel activity in allSubscribedActivitiesList) {
+        var hour = activity.duration ~/ 60;
+        var minutes = activity.duration - (hour * 60);
+        var finalTime = DateTime(
+            activity.startDate!.year,
+            activity.startDate!.month,
+            activity.startDate!.day,
+            activity.startDate!.hour + hour.toInt(),
+            activity.startDate!.minute + minutes.toInt());
+        if (activity.startDate!.isAfter(DateTime.now()) &&
+            finalTime.isAfter(DateTime.now())) {
+          nextActivity = activity;
+          break;
+        }
+      }
     } else {
       nextActivity = EnrollsActivityModel.newInstance();
     }
   }
 
-  @observable
-  String? phone = '';
-
-  @observable
-  bool isBrazilianPhone = true;
-
-  @observable
-  bool isPhoneFieldFilled = false;
-
-  @observable
-  CountryCode? countryCode =
-      const CountryCode(code: "BR", dialCode: "+55", name: "Brasil");
-
   @action
-  void setBrazilianPhone(CountryCode? value) {
-    if (value?.code == "BR") {
-      isBrazilianPhone = true;
-    } else {
-      isBrazilianPhone = false;
-    }
-  }
-
-  @action
-  void setCountryCode(CountryCode? value) {
-    countryCode = value;
-  }
-
-  @action
-  Future<void> setPhone(String value) async {
-    phoneToChange = '${countryCode?.dialCode}$value';
-    if (countryCode?.code == "BR") {
-      phoneToChange = phoneToChange.replaceAll('(', '');
-      phoneToChange = phoneToChange.replaceAll(')', '');
-      phoneToChange = phoneToChange.replaceAll(' ', '');
-      phoneToChange = phoneToChange.replaceAll('-', '');
-    }
-    if (value.isNotEmpty) {
-      isPhoneFieldFilled = true;
-    }
-  }
-
-  @action
-  String? validatePhone(String? value) {
-    if (countryCode?.code == "BR" && phoneToChange.length == 12) {
-      return S.current.fieldDDDRequired;
-    }
-    if (countryCode?.code == "BR" &&
-        phoneToChange.length != 14 &&
-        phoneToChange.length > 3) {
-      return S.current.fieldInvalid;
-    }
-    return null;
+  Future<void> changeUserData() async {
+    setIsLoading(true);
+    await changeData(nameToChange, socialNameToChange,
+        certificateWithSocialName, acceptEmailNotifications);
+    await secureStorage.saveName(nameToChange);
+    await secureStorage.saveSocialName(socialNameToChange);
+    await secureStorage
+        .saveCertificateWithSocialName(certificateWithSocialName);
+    await secureStorage.saveAcceptEmailNotifications(acceptEmailNotifications);
+    getUserName();
+    getUserSocialName();
+    getUserSubscribedActivities();
+    getAcceptEmailNotifications();
+    setIsLoading(false);
   }
 }

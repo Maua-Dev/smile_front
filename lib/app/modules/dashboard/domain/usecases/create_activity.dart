@@ -1,8 +1,8 @@
-import '../../../../shared/models/activity_model.dart';
+import 'package:smile_front/app/shared/models/admin_activity_model.dart';
 import '../repositories/activities_repository_interface.dart';
 
 abstract class CreateActivityInterface {
-  Future call(ActivityModel activityToCreate);
+  Future call(AdminActivityModel activityToCreate);
 }
 
 class CreateActivity implements CreateActivityInterface {
@@ -11,7 +11,7 @@ class CreateActivity implements CreateActivityInterface {
   CreateActivity({required this.repository});
 
   @override
-  Future call(ActivityModel activityToCreate) {
+  Future call(AdminActivityModel activityToCreate) {
     return repository.createActivity(activityToCreate);
   }
 }

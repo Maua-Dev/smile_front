@@ -9,7 +9,6 @@ class InputBoxWidget extends StatelessWidget {
   final IconData icon;
   final String placeholder;
   final double? widthSize;
-  final bool? isBrazilianPhoneField;
   final bool? disable;
   final bool? isPassword;
   final String? Function(String?)? validation;
@@ -19,7 +18,6 @@ class InputBoxWidget extends StatelessWidget {
   final bool? showPwd;
   final bool? isRAField;
   final bool? isValidated;
-  final bool? isPhoneField;
   final bool? isEmail;
   final Color? backgroundColor;
   final Color? letterColor;
@@ -27,8 +25,6 @@ class InputBoxWidget extends StatelessWidget {
 
   const InputBoxWidget({
     Key? key,
-    this.isPhoneField,
-    this.isBrazilianPhoneField,
     required this.icon,
     required this.placeholder,
     this.widthSize,
@@ -51,10 +47,6 @@ class InputBoxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final maskRA = MaskTextInputFormatter(
         mask: "##.#####-#", filter: {"#": RegExp(r'[0-9]')});
-    final maskBrazilianPhone = MaskTextInputFormatter(
-        mask: "(##) #####-####", filter: {"#": RegExp(r'[0-9]')});
-    final maskPhone = MaskTextInputFormatter(
-        mask: "###############", filter: {"#": RegExp(r'[0-9]')});
 
     return Padding(
         padding: const EdgeInsets.only(bottom: 20),
@@ -116,21 +108,17 @@ class InputBoxWidget extends StatelessWidget {
             style: TextStyle(color: letterColor ?? AppColors.gray),
             inputFormatters: isRAField != null
                 ? [maskRA]
-                : isPhoneField == true && isBrazilianPhoneField == true
-                    ? [maskBrazilianPhone]
-                    : isPhoneField == true
-                        ? [maskPhone]
-                        : isPassword != null
-                            ? null
-                            : isEmail != null
-                                ? [
-                                    FilteringTextInputFormatter.allow(
-                                        RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ0-9.@-]")),
-                                  ]
-                                : [
-                                    FilteringTextInputFormatter.allow(
-                                        RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ-\\s]")),
-                                  ],
+                : isPassword != null
+                    ? null
+                    : isEmail != null
+                        ? [
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ0-9.@-]")),
+                          ]
+                        : [
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ-\\s]")),
+                          ],
           ),
         ));
   }

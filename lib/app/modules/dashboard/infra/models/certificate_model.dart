@@ -4,16 +4,12 @@ class CertificateModel extends Certificate {
   CertificateModel({required String name, required String url})
       : super(name: name, url: url);
 
-  static List<CertificateModel> fromMaps(List array) {
-    List<CertificateModel> list = [];
-    for (var e in array) {
-      e.forEach(
-        (key, value) =>
-            list.add(CertificateModel(name: value['name'], url: value['link'])),
-      );
-    }
+  factory CertificateModel.fromMap(Map<String, dynamic> map) {
+    return CertificateModel(name: map['activity'], url: map['url']);
+  }
 
-    return list;
+  static List<CertificateModel> fromMaps(List array) {
+    return array.map((e) => CertificateModel.fromMap(e)).toList();
   }
 
   CertificateModel copyWith({

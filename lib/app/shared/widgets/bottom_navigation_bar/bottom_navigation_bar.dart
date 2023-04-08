@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
-import '../dialogs/custom_alert_dialog_widget.dart';
 import 'widgets/nav_bar_button_widget.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
@@ -57,15 +56,16 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 indexToShow: controller.indexToShow,
                 myIndex: 3,
                 onPressed: () async {
+                  // showDialog(
+                  //   context: context,
+                  //   builder: (BuildContext context) {
+                  //     return const CustomAlertDialogWidget(
+                  //       title: 'Funcionalidade disponível em breve',
+                  //     );
+                  //   },
+                  // );
                   await controller.toggleIndex(3);
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return const CustomAlertDialogWidget(
-                        title: 'Funcionalidade disponível em breve',
-                      );
-                    },
-                  );
+                  Modular.to.navigate('/user/home/certificate');
                 },
                 icon: Icons.assignment,
               ),

@@ -8,7 +8,11 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart'
     as _i2;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i4;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart'
+    as _i5;
+import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i4;
+import 'package:smile_front/app/shared/models/responsible_professor_model.dart'
+    as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -31,7 +35,7 @@ class MockCreateActivityInterface extends _i1.Mock
   }
 
   @override
-  _i3.Future<dynamic> call(_i4.ActivityModel? activityToCreate) =>
+  _i3.Future<dynamic> call(_i4.AdminActivityModel? activityToCreate) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -39,4 +43,24 @@ class MockCreateActivityInterface extends _i1.Mock
         ),
         returnValue: _i3.Future<dynamic>.value(),
       ) as _i3.Future<dynamic>);
+}
+
+/// A class which mocks [GetResponsibleProfessorsInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetResponsibleProfessorsInterface extends _i1.Mock
+    implements _i5.GetResponsibleProfessorsInterface {
+  MockGetResponsibleProfessorsInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<List<_i6.ResponsibleProfessorModel>> call() => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+        ),
+        returnValue: _i3.Future<List<_i6.ResponsibleProfessorModel>>.value(
+            <_i6.ResponsibleProfessorModel>[]),
+      ) as _i3.Future<List<_i6.ResponsibleProfessorModel>>);
 }

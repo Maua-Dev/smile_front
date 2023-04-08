@@ -1,18 +1,15 @@
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:smile_front/app/shared/themes/breakpoint.dart';
-import 'package:smile_front/app/shared/utils/screen_helper.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../../presenter/controllers/user/user_dashboard_controller.dart';
 
-class NameAlterationDialog extends StatelessWidget {
+class NameAlterationDialog extends StatefulWidget {
   final String name;
   final String socialName;
   final Function(String)? onChangedName;
@@ -39,366 +36,298 @@ class NameAlterationDialog extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<NameAlterationDialog> createState() => _NameAlterationDialogState();
+}
+
+class _NameAlterationDialogState extends State<NameAlterationDialog> {
+  final formKey = GlobalKey<FormState>();
+
+  @override
   Widget build(BuildContext context) {
     var controller = Modular.get<UserDashboardController>();
-    final maskBrazilianPhone = MaskTextInputFormatter(
-        mask: "(##) #####-####", filter: {"#": RegExp(r'[0-9]')});
-    final maskPhone = MaskTextInputFormatter(
-        mask: "###############", filter: {"#": RegExp(r'[0-9]')});
-    const countryPicker = FlCountryCodePicker();
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width < 600 ? null : 500,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width < 600 ? null : 500,
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    'Alteração de dados',
-                    style: AppTextStyles.titleH1.copyWith(
-                        fontSize: MediaQuery.of(context).size.width < 500
-                            ? 24
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 30
-                                : 36,
-                        color: AppColors.brandingBlue),
-                  ),
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: Icon(
-                      Icons.close,
-                      color: AppColors.redButton,
-                      size: 30,
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 4),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Nome:',
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize: MediaQuery.of(context).size.width < 500
-                            ? 16
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 20
-                                : 24),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              TextFormField(
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(
-                      RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ-\\s]")),
-                ],
-                initialValue: name,
-                textAlignVertical: TextAlignVertical.center,
-                onChanged: onChangedName,
-                style: AppTextStyles.body.copyWith(
-                    color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width < 500
-                        ? 14
-                        : MediaQuery.of(context).size.width < 1000
-                            ? 18
-                            : 22),
-                cursorColor: Colors.white,
-                decoration: InputDecoration(
-                  fillColor: AppColors.brandingBlue,
-                  filled: true,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide:
-                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide:
-                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 4),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Deseja nome social?',
-                      style: AppTextStyles.body.copyWith(
-                          color: Colors.black,
-                          fontSize: MediaQuery.of(context).size.width < 500
-                              ? 16
-                              : MediaQuery.of(context).size.width < 1000
-                                  ? 20
-                                  : 24),
-                    ),
-                    CupertinoSwitch(
-                      value: wantSocialName,
-                      onChanged: onChangedWantSocialName,
-                      trackColor: AppColors.gray,
-                      thumbColor: AppColors.brandingBlue,
-                      activeColor: AppColors.lightPurple,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 4),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Nome social:',
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize: MediaQuery.of(context).size.width < 500
-                            ? 16
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 20
-                                : 24),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              TextFormField(
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(
-                      RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ-\\s]")),
-                ],
-                initialValue: socialName,
-                enabled: wantSocialName ? true : false,
-                textAlignVertical: TextAlignVertical.center,
-                onChanged: onChangedSocialName,
-                style: AppTextStyles.body.copyWith(
-                    color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width < 500
-                        ? 12
-                        : MediaQuery.of(context).size.width < 1000
-                            ? 16
-                            : 20),
-                cursorColor: Colors.white,
-                decoration: InputDecoration(
-                  fillColor:
-                      wantSocialName ? AppColors.brandingBlue : AppColors.gray,
-                  filled: true,
-                  disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide(color: AppColors.gray, width: 0.0),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide:
-                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide:
-                        BorderSide(color: AppColors.brandingBlue, width: 0.0),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              if (wantSocialName)
-                Padding(
-                  padding: const EdgeInsets.only(left: 4),
-                  child: Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        MediaQuery.of(context).size.width < 410
-                            ? 'Usar nome social\nno certificado?'
-                            : 'Usar nome social no certificado?',
+                        'Alteração de dados',
+                        style: AppTextStyles.titleH1.copyWith(
+                            fontSize: MediaQuery.of(context).size.width < 500
+                                ? 18
+                                : MediaQuery.of(context).size.width < 1000
+                                    ? 30
+                                    : 36,
+                            color: AppColors.brandingBlue),
+                      ),
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: Icon(
+                          Icons.close,
+                          color: AppColors.redButton,
+                          size: 30,
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Nome:',
                         style: AppTextStyles.body.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 500
-                                ? 16
+                                ? 14
                                 : MediaQuery.of(context).size.width < 1000
                                     ? 20
                                     : 24),
-                        textAlign: TextAlign.center,
                       ),
-                      CupertinoSwitch(
-                        value: certificateWithSocialName,
-                        onChanged: onChangedCertificateWithSocialName,
-                        trackColor: AppColors.gray,
-                        thumbColor: AppColors.brandingBlue,
-                        activeColor: AppColors.lightPurple,
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              const SizedBox(
-                height: 8,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 4),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Telefone:',
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize: MediaQuery.of(context).size.width < 500
-                            ? 16
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 20
-                                : 24),
+                  const SizedBox(
+                    height: 8,
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Observer(builder: (_) {
-                return Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20.0),
-                      child: GestureDetector(
-                        onTap: () async {
-                          final code =
-                              await countryPicker.showPicker(context: context);
-                          controller.setCountryCode(code);
-                          controller.setBrazilianPhone(code);
-                        },
-                        child: Container(
-                          height: 60,
-                          width: 110,
-                          decoration: BoxDecoration(
-                              color: AppColors.brandingBlue,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: SizedBox(
-                              child: Row(
-                                children: [
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Container(
-                                      child: controller.countryCode != null
-                                          ? controller.countryCode!.flagImage
-                                          : null),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    controller.countryCode != null
-                                        ? controller.countryCode!.dialCode
-                                        : "DDI",
-                                    style: TextStyle(
-                                        color: AppColors.white, fontSize: 14),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                  Observer(builder: (_) {
+                    return TextFormField(
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                            RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ-\\s]")),
+                      ],
+                      initialValue: widget.name,
+                      textAlignVertical: TextAlignVertical.center,
+                      onChanged: controller.setName,
+                      style: AppTextStyles.body.copyWith(
+                          color: Colors.white,
+                          fontSize: MediaQuery.of(context).size.width < 500
+                              ? 14
+                              : MediaQuery.of(context).size.width < 1000
+                                  ? 18
+                                  : 22),
+                      cursorColor: Colors.white,
+                      decoration: InputDecoration(
+                        fillColor: AppColors.brandingBlue,
+                        filled: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(
+                              color: AppColors.brandingBlue, width: 0.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(
+                              color: AppColors.brandingBlue, width: 0.0),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20.0),
-                      child: SizedBox(
-                        width: Screen.width(context) < breakpointMobile
-                            ? 260
-                            : 380,
-                        child: TextFormField(
-                          inputFormatters: controller.isBrazilianPhone
-                              ? [maskBrazilianPhone]
-                              : [maskPhone],
-                          validator: controller.validatePhone,
-                          initialValue: controller.phoneToChange,
-                          keyboardType: TextInputType.number,
-                          textAlignVertical: TextAlignVertical.center,
-                          onChanged: controller.setPhone,
+                    );
+                  }),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Deseja nome social?',
                           style: AppTextStyles.body.copyWith(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontSize: MediaQuery.of(context).size.width < 500
                                   ? 14
                                   : MediaQuery.of(context).size.width < 1000
-                                      ? 18
-                                      : 22),
-                          cursorColor: Colors.white,
-                          decoration: InputDecoration(
-                            fillColor: AppColors.brandingBlue,
-                            filled: true,
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              borderSide: BorderSide(
-                                  color: AppColors.brandingBlue, width: 0.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              borderSide: BorderSide(
-                                  color: AppColors.brandingBlue, width: 0.0),
+                                      ? 20
+                                      : 24),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 12.0),
+                          child: SizedBox(
+                            width: 30,
+                            child: CupertinoSwitch(
+                              value: widget.wantSocialName,
+                              onChanged: widget.onChangedWantSocialName,
+                              trackColor: AppColors.gray,
+                              thumbColor: AppColors.brandingBlue,
+                              activeColor: AppColors.lightPurple,
                             ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                );
-              }),
-              const SizedBox(
-                height: 32,
-              ),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                    text:
-                        '* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia ',
-                    style: AppTextStyles.body.copyWith(
-                        color: Colors.black,
-                        fontSize: MediaQuery.of(context).size.width < 500
-                            ? 12
-                            : MediaQuery.of(context).size.width < 1000
-                                ? 14
-                                : 16),
-                    children: [
-                      TextSpan(
-                        text: '25/05/2023',
-                        style: AppTextStyles.titleH1.copyWith(
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Nome social:',
+                        style: AppTextStyles.body.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 500
-                                ? 12
+                                ? 14
                                 : MediaQuery.of(context).size.width < 1000
-                                    ? 14
-                                    : 16),
+                                    ? 20
+                                    : 24),
                       ),
-                      TextSpan(
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  TextFormField(
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(
+                          RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ-\\s]")),
+                    ],
+                    initialValue: widget.socialName,
+                    enabled: widget.wantSocialName ? true : false,
+                    textAlignVertical: TextAlignVertical.center,
+                    onChanged: widget.onChangedSocialName,
+                    style: AppTextStyles.body.copyWith(
+                        color: Colors.white,
+                        fontSize: MediaQuery.of(context).size.width < 500
+                            ? 14
+                            : MediaQuery.of(context).size.width < 1000
+                                ? 16
+                                : 20),
+                    cursorColor: Colors.white,
+                    decoration: InputDecoration(
+                      fillColor: widget.wantSocialName
+                          ? AppColors.brandingBlue
+                          : AppColors.gray,
+                      filled: true,
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide:
+                            BorderSide(color: AppColors.gray, width: 0.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                            color: AppColors.brandingBlue, width: 0.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                            color: AppColors.brandingBlue, width: 0.0),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  if (widget.wantSocialName)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 4),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            MediaQuery.of(context).size.width < 410
+                                ? 'Usar nome social no\ncertificado?'
+                                : 'Usar nome social no certificado?',
+                            style: AppTextStyles.body.copyWith(
+                                color: Colors.black,
+                                fontSize: MediaQuery.of(context).size.width <
+                                        500
+                                    ? 14
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 20
+                                        : 24),
+                          ),
+                          CupertinoSwitch(
+                            value: widget.certificateWithSocialName,
+                            onChanged:
+                                widget.onChangedCertificateWithSocialName,
+                            trackColor: AppColors.gray,
+                            thumbColor: AppColors.brandingBlue,
+                            activeColor: AppColors.lightPurple,
+                          ),
+                        ],
+                      ),
+                    ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RichText(
+                            text: TextSpan(
+                                text:
+                                    '${S.of(context).notificationsSchemaTitle}\n',
+                                style: AppTextStyles.body.copyWith(
+                                  color: Colors.black,
+                                  fontSize: MediaQuery.of(context).size.width <
+                                          500
+                                      ? 14
+                                      : MediaQuery.of(context).size.width < 1000
+                                          ? 18
+                                          : 24,
+                                ),
+                                children: [
+                              TextSpan(
+                                  text: S
+                                      .of(context)
+                                      .notificationsSchema('email'),
+                                  style: AppTextStyles.body.copyWith(
+                                    color: AppColors.brandingOrange,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 500
+                                            ? 14
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1000
+                                                ? 18
+                                                : 24,
+                                  ))
+                            ])),
+                        Observer(builder: (_) {
+                          return CupertinoSwitch(
+                            value: controller.acceptEmailNotifications,
+                            onChanged: (bool? value) {
+                              controller.setEmailNotifications(value);
+                            },
+                            trackColor: AppColors.gray,
+                            thumbColor: AppColors.brandingBlue,
+                            activeColor: AppColors.lightPurple,
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
                         text:
-                            ', sob pena do certificado ser emitido com os dados aqui fornecidos.',
+                            '* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia ',
                         style: AppTextStyles.body.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 500
@@ -406,25 +335,52 @@ class NameAlterationDialog extends StatelessWidget {
                                 : MediaQuery.of(context).size.width < 1000
                                     ? 14
                                     : 16),
-                      ),
-                    ]),
+                        children: [
+                          TextSpan(
+                            text: '25/05/2023',
+                            style: AppTextStyles.titleH1.copyWith(
+                                color: Colors.black,
+                                fontSize: MediaQuery.of(context).size.width <
+                                        500
+                                    ? 12
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 14
+                                        : 16),
+                          ),
+                          TextSpan(
+                            text:
+                                ', sob pena do certificado ser emitido com os dados aqui fornecidos.',
+                            style: AppTextStyles.body.copyWith(
+                                color: Colors.black,
+                                fontSize: MediaQuery.of(context).size.width <
+                                        500
+                                    ? 12
+                                    : MediaQuery.of(context).size.width < 1000
+                                        ? 14
+                                        : 16),
+                          ),
+                        ]),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  CustomElevatedButtonWidget(
+                    isLoading: widget.isLoading,
+                    title: 'Alterar dados',
+                    widthSize: MediaQuery.of(context).size.width < 650
+                        ? MediaQuery.of(context).size.width * 0.85
+                        : 600,
+                    heightSize: 50,
+                    backgroundColor: AppColors.brandingOrange,
+                    onPressed: () async {
+                      if (formKey.currentState!.validate()) {
+                        await widget.changeData!();
+                      }
+                    },
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 8,
-              ),
-              CustomElevatedButtonWidget(
-                isLoading: isLoading,
-                title: 'Alterar dados',
-                widthSize: MediaQuery.of(context).size.width < 650
-                    ? MediaQuery.of(context).size.width * 0.85
-                    : 600,
-                heightSize: 50,
-                backgroundColor: AppColors.brandingOrange,
-                onPressed: () async {
-                  await changeData!();
-                },
-              ),
-            ],
+            ),
           ),
         ),
       ),

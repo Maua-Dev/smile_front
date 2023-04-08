@@ -9,13 +9,11 @@ class User {
   final UserRolesEnum role;
   final AccessLevelEnum accessLevel;
   final bool certificateWithSocialName;
-  final String phone;
 
   User({
     required this.name,
     this.ra,
     required this.certificateWithSocialName,
-    required this.phone,
     required this.email,
     required this.accessLevel,
     required this.role,

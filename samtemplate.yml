@@ -9,6 +9,9 @@ Parameters:
   AcmCertificateArn:
     Type: String
     Description: ARN of the ACM certificate to use for the CloudFront distribution
+  AlternateDomainName:
+    Type: String
+    Description: Alternate domain name to use for the CloudFront distribution
 Resources:
   CloudFrontOriginAccessIdentity:
     Type: 'AWS::CloudFront::CloudFrontOriginAccessIdentity'
@@ -29,6 +32,11 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
+        Aliases:
+          - !Ref AlternateDomainName
+        ViewerCertificate:
+          AcmCertificateArn: !Ref AcmCertificateArn
+          SslSupportMethod: sni-only
         Comment: !Ref BucketName 
         HttpVersion: http2
         Origins:

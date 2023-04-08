@@ -91,8 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m4(phone, firstName) =>
-      "Are you sure your phone ${phone} and email address ${firstName} are correct?";
+  static String m4(firstName) =>
+      "Are you sure your email address ${firstName} is correct?";
 
   static String m5(firstName) =>
       "Are you sure your email address ${firstName} is correct?";
@@ -131,7 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m10(title) => "${Intl.select(title, {
             'normalPart':
                 'In case of error when logging in, send an email to: ',
-            'boldPart': 'dev@maua.br',
+            'boldPart': 'atendimento.smile@maua.br',
             'other': '',
           })}";
 
@@ -148,7 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'nae': 'https://www.instagram.com/naemaua/',
             'dev': 'https://www.instagram.com/devcommunitymaua/',
             'nine': 'https://www.instagram.com/nine.maua/',
-            'finance': 'https://www.instagram.com/imtfinance/',
+            'finance': 'https://www.instagram.com/mauafinancegroup/',
             'baja': 'https://www.instagram.com/bajamaua/',
             'ecomaua': 'https://www.instagram.com/eco_maua/',
             'mauaracing2': 'https://www.instagram.com/mauaracingh2/',
@@ -179,7 +179,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m13(notification) => "${Intl.select(notification, {
             'email': 'EMAIL',
-            'sms': 'SMS',
             'other': '',
           })}";
 
@@ -249,22 +248,47 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Date: May 22 to 27, 2023."),
         "aboutSmileDescription": m0,
         "aboutSmileTitle": MessageLookupByLibrary.simpleMessage("About Smile"),
+        "absenceTitle": MessageLookupByLibrary.simpleMessage("Absence"),
+        "activitiesAndEventsTitle":
+            MessageLookupByLibrary.simpleMessage("Activities and Events"),
         "activitiesNotFound":
             MessageLookupByLibrary.simpleMessage("Activities not found"),
         "activitiesOfferedDescription": m1,
         "activitiesOfferedName": m2,
         "activitiesTitle": MessageLookupByLibrary.simpleMessage("Activities"),
+        "activity": MessageLookupByLibrary.simpleMessage("Activity"),
+        "activityAcceptSbscriptions":
+            MessageLookupByLibrary.simpleMessage("Accept Subscriptions"),
         "activityCreateTitle":
             MessageLookupByLibrary.simpleMessage("Create Activity"),
+        "activityDurationTitle":
+            MessageLookupByLibrary.simpleMessage("Duration(Minutes)"),
         "activityEditTitle":
             MessageLookupByLibrary.simpleMessage("Edit Activity"),
+        "activityErrorClosureDateAfterStartDate":
+            MessageLookupByLibrary.simpleMessage(
+                "The inscription closure date must be before the event date"),
+        "activityInscriptionClosureDate":
+            MessageLookupByLibrary.simpleMessage("Inscription Closure (Date)"),
+        "activityInscriptionClosureHour":
+            MessageLookupByLibrary.simpleMessage("Inscription Closure (Hour)"),
+        "activityInscriptionClosureTooltip": MessageLookupByLibrary.simpleMessage(
+            "The system automatically closes the activity\nsubscriptions at a specific date and time. If this field is not filled in, the\nsubscriptions will not close by themselves and an administrator must\ndo it manually."),
         "activityNameTitle":
             MessageLookupByLibrary.simpleMessage("Activity Title"),
+        "activityResponsibleTeacher":
+            MessageLookupByLibrary.simpleMessage("Responsible Teacher"),
         "activityTypeTitle":
             MessageLookupByLibrary.simpleMessage("Activity Type"),
+        "activityVacancyNumber":
+            MessageLookupByLibrary.simpleMessage("Number of Vanacies"),
+        "addProfessorTitle":
+            MessageLookupByLibrary.simpleMessage("Add Professor"),
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Administrator Page"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Reports"),
+        "allActivitiesTitle":
+            MessageLookupByLibrary.simpleMessage("All Activities"),
         "alreadySubscribedOnThisPeriodWarning":
             MessageLookupByLibrary.simpleMessage(
                 "It seems you are already subscribed on another activity at this period."),
@@ -288,11 +312,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Click here to return"),
         "closeTitle": MessageLookupByLibrary.simpleMessage("Close"),
         "codeInEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
-            "You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional."),
+            "You will receive an email (atendimento.smile@maua.br) with a link to change your password! Check inbox, spam or promotional."),
         "codeInEmailTitle": MessageLookupByLibrary.simpleMessage(
-            "A code will be sent to the registered email address:"),
+            "Follow the steps that will be sent in the registered email:"),
         "codeTitle": MessageLookupByLibrary.simpleMessage("Code"),
         "companyTitle": MessageLookupByLibrary.simpleMessage("Company:"),
+        "companyTitleWithoutDouble":
+            MessageLookupByLibrary.simpleMessage("Company"),
+        "completed": MessageLookupByLibrary.simpleMessage("Completed"),
         "confirmAllFieldsConrrectlyFilled":
             MessageLookupByLibrary.simpleMessage(
                 "Check that all fields are filled in correctly."),
@@ -303,7 +330,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmTitle": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirmToContinue": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to continue?"),
+        "confirmedAttendance":
+            MessageLookupByLibrary.simpleMessage("Completed activity!"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Date"),
+        "dayTitle": MessageLookupByLibrary.simpleMessage("Data"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "drawerActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Activities"),
@@ -315,9 +345,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "drawerResponsibleActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Responsible Activities"),
         "emailNotificationTitle": MessageLookupByLibrary.simpleMessage(
-            "We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration."),
+            "We sent an email (atendimento.smile@maua.br) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration."),
+        "enrollmentTitle": MessageLookupByLibrary.simpleMessage("Status"),
         "errorEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
-            "If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n"),
+            "If you have not found the email (atendimento.smile@maua.br) or the link has expired, please resend the code by entering your e-mail in the field below:\n"),
         "errorGenericGetActivities": MessageLookupByLibrary.simpleMessage(
             "There was an error loading activities :("),
         "errorLoginInvalidCredential": MessageLookupByLibrary.simpleMessage(
@@ -325,8 +356,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "exitQueueConfimation": MessageLookupByLibrary.simpleMessage(
             "Do you want to leave the queue?"),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Exit"),
+        "extensionistTitle":
+            MessageLookupByLibrary.simpleMessage("Extensionist"),
         "fieldDDDRequired":
             MessageLookupByLibrary.simpleMessage("Enter the number with DDD"),
+        "fieldDurationMoreThanZero":
+            MessageLookupByLibrary.simpleMessage("Must be bigger than 0"),
         "fieldEmailInvalid":
             MessageLookupByLibrary.simpleMessage("Invalid e-mail"),
         "fieldEmailsEqualsRequired":
@@ -335,11 +370,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Fill in all fields!"),
         "fieldFullNameRequired":
             MessageLookupByLibrary.simpleMessage("Enter your full name"),
+        "fieldHourBeforeToday":
+            MessageLookupByLibrary.simpleMessage("Old date"),
         "fieldInvalid": MessageLookupByLibrary.simpleMessage("Invalid field"),
         "fieldPasswordEqualsRequired": MessageLookupByLibrary.simpleMessage(
             "The \"Password\" and \"Confirm your password\" fields must be the same"),
         "fieldPasswordRequisits": MessageLookupByLibrary.simpleMessage(
-            "Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters"),
+            "Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters"),
         "fieldProfessorEmailInvalid":
             MessageLookupByLibrary.simpleMessage("Invalid professor e-mail"),
         "fieldRAInvalid": MessageLookupByLibrary.simpleMessage("Invalid RA"),
@@ -373,7 +410,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "joinQueueTitle": MessageLookupByLibrary.simpleMessage("Get in queue"),
         "knowMore": MessageLookupByLibrary.simpleMessage("KNOW MORE >>>"),
         "local": MessageLookupByLibrary.simpleMessage("Local"),
-        "localTitle": MessageLookupByLibrary.simpleMessage("Locati   on"),
+        "localTitle": MessageLookupByLibrary.simpleMessage("Local"),
+        "locationTitle": MessageLookupByLibrary.simpleMessage("Location"),
         "loginForgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Forgot my password"),
         "loginPasswordPlaceholder":
@@ -396,20 +434,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "mauaEntitiesSchemaSocialMidia": m12,
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
             "Entities Participating in Smile"),
+        "namesTitle": MessageLookupByLibrary.simpleMessage("Names"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Looks like you haven\'t signed up for any activities yet :("),
+        "noCertificatesFoundTitle": MessageLookupByLibrary.simpleMessage(
+            "It looks like you don\'t have any certificates."),
         "noResponsibleActivitiesText": MessageLookupByLibrary.simpleMessage(
             "Looks like you are not responsible for any activity :("),
         "noTitle": MessageLookupByLibrary.simpleMessage("No"),
         "notificationsSchema": m13,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
             "I want to receive notifications by "),
-        "notificationsSmsAlert": MessageLookupByLibrary.simpleMessage(
-            "Fill in your cell phone to enable sms notifications!"),
-        "notificationsTitle": MessageLookupByLibrary.simpleMessage(
-            "Means of notification about activities:"),
+        "notificationsTitle":
+            MessageLookupByLibrary.simpleMessage("Means of notification:"),
         "planPriceSponsorSchema": m14,
         "planSponsorSchema": m15,
+        "presenceTitle": MessageLookupByLibrary.simpleMessage("Present"),
         "presenceValidateTitle":
             MessageLookupByLibrary.simpleMessage("Presence Validate"),
         "queueExitAlert": MessageLookupByLibrary.simpleMessage(
@@ -417,8 +457,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "queueTitle": MessageLookupByLibrary.simpleMessage("Na fila"),
         "registerConfirmPasswordPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
-        "registerCountryPlaceholder":
-            MessageLookupByLibrary.simpleMessage("Search by country or DDI"),
         "registerEmailConfirmationPlaceholder":
             MessageLookupByLibrary.simpleMessage("Confirm your e-mail"),
         "registerEmailPlaceholder":
@@ -429,8 +467,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your email Mauá"),
         "registerFullNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Full Name"),
-        "registerPhonePlaceholder":
-            MessageLookupByLibrary.simpleMessage("Phone"),
         "registerRAPlaceholder": MessageLookupByLibrary.simpleMessage("RA"),
         "registerSocialNamePlaceholder":
             MessageLookupByLibrary.simpleMessage("Social Name"),
@@ -449,11 +485,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "scheduleTitle": MessageLookupByLibrary.simpleMessage("Schedule"),
         "selectOptionTitle":
             MessageLookupByLibrary.simpleMessage("Select an option:"),
+        "sendEmailToAllEnrolls":
+            MessageLookupByLibrary.simpleMessage("Send email to all"),
+        "sendEmailToSomeone":
+            MessageLookupByLibrary.simpleMessage("Send email to:"),
         "sendTitle": MessageLookupByLibrary.simpleMessage("Send"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "smileDate": MessageLookupByLibrary.simpleMessage("May 22 to 27"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("May 22 to 27, 2023"),
+        "speakerNameTitle":
+            MessageLookupByLibrary.simpleMessage("Speaker Name"),
         "speakersAddTitle": MessageLookupByLibrary.simpleMessage("Add Speaker"),
         "speakersMainTitle":
             MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),
@@ -473,6 +515,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "subscribeVerification": MessageLookupByLibrary.simpleMessage(
             "Are you sure you wanna subscribe?"),
         "subscribedTitle": MessageLookupByLibrary.simpleMessage("Subscribed"),
+        "subscriberListTitle":
+            MessageLookupByLibrary.simpleMessage("Subscriber List"),
         "successChangePassword": MessageLookupByLibrary.simpleMessage(
             "Password changed successfully!"),
         "successChangePasswordRedirect": MessageLookupByLibrary.simpleMessage(
@@ -486,8 +530,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "successSendingSponsorEmail": MessageLookupByLibrary.simpleMessage(
             "Sent with success!! Our team will contact you shortly."),
         "termination": MessageLookupByLibrary.simpleMessage("Termination"),
-        "unavailabeActivityRegistration": MessageLookupByLibrary.simpleMessage(
-            "Registration unavailabe for this activity!"),
         "unavailabeSubscribe": MessageLookupByLibrary.simpleMessage(
             "The registration for this activity is unavailabe!"),
         "unavailabeTitle": MessageLookupByLibrary.simpleMessage("Unavailabe"),
@@ -508,6 +550,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!"),
         "userRolesNameSchema": m19,
+        "validationCodeTitle":
+            MessageLookupByLibrary.simpleMessage("Validation Code"),
+        "whatIsSmile":
+            MessageLookupByLibrary.simpleMessage("O que é a semana SMILE?"),
         "yesTitle": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

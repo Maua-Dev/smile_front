@@ -15,6 +15,7 @@ void main() {
   AuthDatasourceInterface datasource = MockAuthDatasourceInterface();
 
   UserModel userMock = UserModel(
+    acceptEmailNotifications: false,
     socialName: '',
     accessLevel: AccessLevelEnum.USER,
     email: 'email',
@@ -22,7 +23,6 @@ void main() {
     name: 'name',
     accessToken: 'access_token',
     idToken: 'id_token',
-    phone: 'phone',
     refreshToken: 'refresh',
     userId: 'id',
     ra: 'ra',

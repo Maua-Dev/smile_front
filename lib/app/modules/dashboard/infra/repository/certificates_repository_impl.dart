@@ -13,7 +13,7 @@ class CertificateRepositoryImpl implements CertificateRepositoryInterface {
   @override
   Future<List<CertificateModel>> getListDownloads() async {
     if (certificateList.isEmpty) {
-      certificateList = await datasource.getListDownloads();
+      certificateList = await datasource.getListCertificates();
     }
     return Future.value(certificateList);
   }

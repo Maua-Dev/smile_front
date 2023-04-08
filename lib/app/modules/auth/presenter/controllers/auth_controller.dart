@@ -1,28 +1,27 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
-import '../../../../shared/services/firebase-analytics/firebase_analytics_service.dart';
 import '../../domain/usecases/refresh_token.dart';
 
 class AuthController {
   final RefreshTokenInterface refreshToken;
   final LoginWithEmailInterface loginWithEmail;
   final SecureStorageInterface storage;
-  final FirebaseAnalyticsService analytics;
   bool _loggedIn = false;
   String _role = '';
   String _name = '';
   String? _socialname = '';
   String? _id = '';
   bool? _certificateWithSocialName = false;
+  bool? _acceptEmailNotificiations = false;
 
   AuthController({
-    required this.analytics,
     required this.storage,
     required this.refreshToken,
     required this.loginWithEmail,
   });
 
+  bool get acceptEmailNotificiations => _acceptEmailNotificiations ?? false;
   bool get isLogged => _loggedIn;
   String get role => _role;
   String get name => _name;
@@ -36,6 +35,7 @@ class AuthController {
     _name = loginResponse.name;
     _socialname = loginResponse.socialName;
     _certificateWithSocialName = loginResponse.certificateWithSocialName;
+    _acceptEmailNotificiations = loginResponse.acceptEmailNotifications;
     _id = loginResponse.userId;
 
     await storage.saveAccessToken(loginResponse.accessToken);
@@ -46,10 +46,10 @@ class AuthController {
     await storage.saveSocialName(loginResponse.socialName ?? '');
     await storage.saveId(loginResponse.userId);
     await storage.saveIdToken(loginResponse.idToken);
-    await storage.savePhone(loginResponse.phone);
     await storage
         .saveCertificateWithSocialName(_certificateWithSocialName ?? false);
-    await analytics.setUserProperties(await storage.getId() ?? '');
+    await storage
+        .saveAcceptEmailNotifications(_acceptEmailNotificiations ?? false);
 
     _loggedIn = true;
   }

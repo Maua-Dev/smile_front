@@ -25,6 +25,75 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
     });
   }
 
+  late final _$isLoadingGetActivityAtom = Atom(
+      name: 'MoreInfoControllerBase.isLoadingGetActivity', context: context);
+
+  @override
+  bool get isLoadingGetActivity {
+    _$isLoadingGetActivityAtom.reportRead();
+    return super.isLoadingGetActivity;
+  }
+
+  @override
+  set isLoadingGetActivity(bool value) {
+    _$isLoadingGetActivityAtom.reportWrite(value, super.isLoadingGetActivity,
+        () {
+      super.isLoadingGetActivity = value;
+    });
+  }
+
+  late final _$isLoadingConfirmAttendanceAtom = Atom(
+      name: 'MoreInfoControllerBase.isLoadingConfirmAttendance',
+      context: context);
+
+  @override
+  bool get isLoadingConfirmAttendance {
+    _$isLoadingConfirmAttendanceAtom.reportRead();
+    return super.isLoadingConfirmAttendance;
+  }
+
+  @override
+  set isLoadingConfirmAttendance(bool value) {
+    _$isLoadingConfirmAttendanceAtom
+        .reportWrite(value, super.isLoadingConfirmAttendance, () {
+      super.isLoadingConfirmAttendance = value;
+    });
+  }
+
+  late final _$enrollmentStateAtom =
+      Atom(name: 'MoreInfoControllerBase.enrollmentState', context: context);
+
+  @override
+  EnrollmentStateEnum get enrollmentState {
+    _$enrollmentStateAtom.reportRead();
+    return super.enrollmentState;
+  }
+
+  @override
+  set enrollmentState(EnrollmentStateEnum value) {
+    _$enrollmentStateAtom.reportWrite(value, super.enrollmentState, () {
+      super.enrollmentState = value;
+    });
+  }
+
+  late final _$canViewConfirmAttendanceAtom = Atom(
+      name: 'MoreInfoControllerBase.canViewConfirmAttendance',
+      context: context);
+
+  @override
+  bool get canViewConfirmAttendance {
+    _$canViewConfirmAttendanceAtom.reportRead();
+    return super.canViewConfirmAttendance;
+  }
+
+  @override
+  set canViewConfirmAttendance(bool value) {
+    _$canViewConfirmAttendanceAtom
+        .reportWrite(value, super.canViewConfirmAttendance, () {
+      super.canViewConfirmAttendance = value;
+    });
+  }
+
   late final _$activityAtom =
       Atom(name: 'MoreInfoControllerBase.activity', context: context);
 
@@ -41,6 +110,14 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
     });
   }
 
+  late final _$getActivityAsyncAction =
+      AsyncAction('MoreInfoControllerBase.getActivity', context: context);
+
+  @override
+  Future<dynamic> getActivity() {
+    return _$getActivityAsyncAction.run(() => super.getActivity());
+  }
+
   late final _$setIsLoadingAsyncAction =
       AsyncAction('MoreInfoControllerBase.setIsLoading', context: context);
 
@@ -49,19 +126,36 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$MoreInfoControllerBaseActionController =
-      ActionController(name: 'MoreInfoControllerBase', context: context);
+  late final _$setIsLoadingConfirmAttendanceAsyncAction = AsyncAction(
+      'MoreInfoControllerBase.setIsLoadingConfirmAttendance',
+      context: context);
 
   @override
-  void getActivity() {
-    final _$actionInfo = _$MoreInfoControllerBaseActionController.startAction(
-        name: 'MoreInfoControllerBase.getActivity');
-    try {
-      return super.getActivity();
-    } finally {
-      _$MoreInfoControllerBaseActionController.endAction(_$actionInfo);
-    }
+  Future<void> setIsLoadingConfirmAttendance(bool value) {
+    return _$setIsLoadingConfirmAttendanceAsyncAction
+        .run(() => super.setIsLoadingConfirmAttendance(value));
   }
+
+  late final _$checkCanViewConfirmAttendanceAsyncAction = AsyncAction(
+      'MoreInfoControllerBase.checkCanViewConfirmAttendance',
+      context: context);
+
+  @override
+  Future<void> checkCanViewConfirmAttendance() {
+    return _$checkCanViewConfirmAttendanceAsyncAction
+        .run(() => super.checkCanViewConfirmAttendance());
+  }
+
+  late final _$onConfirmCodeAsyncAction =
+      AsyncAction('MoreInfoControllerBase.onConfirmCode', context: context);
+
+  @override
+  Future<void> onConfirmCode(String code) {
+    return _$onConfirmCodeAsyncAction.run(() => super.onConfirmCode(code));
+  }
+
+  late final _$MoreInfoControllerBaseActionController =
+      ActionController(name: 'MoreInfoControllerBase', context: context);
 
   @override
   bool checkIsOkForSubscribe() {
@@ -78,6 +172,10 @@ mixin _$MoreInfoController on MoreInfoControllerBase, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
+isLoadingGetActivity: ${isLoadingGetActivity},
+isLoadingConfirmAttendance: ${isLoadingConfirmAttendance},
+enrollmentState: ${enrollmentState},
+canViewConfirmAttendance: ${canViewConfirmAttendance},
 activity: ${activity}
     ''';
   }

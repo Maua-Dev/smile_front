@@ -107,22 +107,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
-  late final _$phoneToChangeAtom =
-      Atom(name: 'UserDashboardControllerBase.phoneToChange', context: context);
-
-  @override
-  String get phoneToChange {
-    _$phoneToChangeAtom.reportRead();
-    return super.phoneToChange;
-  }
-
-  @override
-  set phoneToChange(String value) {
-    _$phoneToChangeAtom.reportWrite(value, super.phoneToChange, () {
-      super.phoneToChange = value;
-    });
-  }
-
   late final _$wantSocialNameAtom = Atom(
       name: 'UserDashboardControllerBase.wantSocialName', context: context);
 
@@ -202,6 +186,40 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   set typeOnScreen(String? value) {
     _$typeOnScreenAtom.reportWrite(value, super.typeOnScreen, () {
       super.typeOnScreen = value;
+    });
+  }
+
+  late final _$acceptEmailNotificationsAtom = Atom(
+      name: 'UserDashboardControllerBase.acceptEmailNotifications',
+      context: context);
+
+  @override
+  bool get acceptEmailNotifications {
+    _$acceptEmailNotificationsAtom.reportRead();
+    return super.acceptEmailNotifications;
+  }
+
+  @override
+  set acceptEmailNotifications(bool value) {
+    _$acceptEmailNotificationsAtom
+        .reportWrite(value, super.acceptEmailNotifications, () {
+      super.acceptEmailNotifications = value;
+    });
+  }
+
+  late final _$enrollmentFilterAtom = Atom(
+      name: 'UserDashboardControllerBase.enrollmentFilter', context: context);
+
+  @override
+  EnrollButtonEnum? get enrollmentFilter {
+    _$enrollmentFilterAtom.reportRead();
+    return super.enrollmentFilter;
+  }
+
+  @override
+  set enrollmentFilter(EnrollButtonEnum? value) {
+    _$enrollmentFilterAtom.reportWrite(value, super.enrollmentFilter, () {
+      super.enrollmentFilter = value;
     });
   }
 
@@ -321,68 +339,14 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
-  late final _$phoneAtom =
-      Atom(name: 'UserDashboardControllerBase.phone', context: context);
+  late final _$setEmailNotificationsAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.setEmailNotifications',
+      context: context);
 
   @override
-  String? get phone {
-    _$phoneAtom.reportRead();
-    return super.phone;
-  }
-
-  @override
-  set phone(String? value) {
-    _$phoneAtom.reportWrite(value, super.phone, () {
-      super.phone = value;
-    });
-  }
-
-  late final _$isBrazilianPhoneAtom = Atom(
-      name: 'UserDashboardControllerBase.isBrazilianPhone', context: context);
-
-  @override
-  bool get isBrazilianPhone {
-    _$isBrazilianPhoneAtom.reportRead();
-    return super.isBrazilianPhone;
-  }
-
-  @override
-  set isBrazilianPhone(bool value) {
-    _$isBrazilianPhoneAtom.reportWrite(value, super.isBrazilianPhone, () {
-      super.isBrazilianPhone = value;
-    });
-  }
-
-  late final _$isPhoneFieldFilledAtom = Atom(
-      name: 'UserDashboardControllerBase.isPhoneFieldFilled', context: context);
-
-  @override
-  bool get isPhoneFieldFilled {
-    _$isPhoneFieldFilledAtom.reportRead();
-    return super.isPhoneFieldFilled;
-  }
-
-  @override
-  set isPhoneFieldFilled(bool value) {
-    _$isPhoneFieldFilledAtom.reportWrite(value, super.isPhoneFieldFilled, () {
-      super.isPhoneFieldFilled = value;
-    });
-  }
-
-  late final _$countryCodeAtom =
-      Atom(name: 'UserDashboardControllerBase.countryCode', context: context);
-
-  @override
-  CountryCode? get countryCode {
-    _$countryCodeAtom.reportRead();
-    return super.countryCode;
-  }
-
-  @override
-  set countryCode(CountryCode? value) {
-    _$countryCodeAtom.reportWrite(value, super.countryCode, () {
-      super.countryCode = value;
-    });
+  Future<void> setEmailNotifications(bool? value) {
+    return _$setEmailNotificationsAsyncAction
+        .run(() => super.setEmailNotifications(value));
   }
 
   late final _$getCertificateWithSocialNameAsyncAction = AsyncAction(
@@ -403,12 +367,14 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     return _$getUserNameAsyncAction.run(() => super.getUserName());
   }
 
-  late final _$getPhoneAsyncAction =
-      AsyncAction('UserDashboardControllerBase.getPhone', context: context);
+  late final _$getAcceptEmailNotificationsAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.getAcceptEmailNotifications',
+      context: context);
 
   @override
-  Future<void> getPhone() {
-    return _$getPhoneAsyncAction.run(() => super.getPhone());
+  Future<void> getAcceptEmailNotifications() {
+    return _$getAcceptEmailNotificationsAsyncAction
+        .run(() => super.getAcceptEmailNotifications());
   }
 
   late final _$getUserSocialNameAsyncAction = AsyncAction(
@@ -430,15 +396,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
         .run(() => super.setWantSocialName(value));
   }
 
-  late final _$changeUserDataAsyncAction = AsyncAction(
-      'UserDashboardControllerBase.changeUserData',
-      context: context);
-
-  @override
-  Future<void> changeUserData() {
-    return _$changeUserDataAsyncAction.run(() => super.changeUserData());
-  }
-
   late final _$setIsLoadingAsyncAction =
       AsyncAction('UserDashboardControllerBase.setIsLoading', context: context);
 
@@ -457,12 +414,13 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
         .run(() => super.getUserSubscribedActivities());
   }
 
-  late final _$setPhoneAsyncAction =
-      AsyncAction('UserDashboardControllerBase.setPhone', context: context);
+  late final _$changeUserDataAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.changeUserData',
+      context: context);
 
   @override
-  Future<void> setPhone(String value) {
-    return _$setPhoneAsyncAction.run(() => super.setPhone(value));
+  Future<void> changeUserData() {
+    return _$changeUserDataAsyncAction.run(() => super.changeUserData());
   }
 
   late final _$UserDashboardControllerBaseActionController =
@@ -474,6 +432,17 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
         .startAction(name: 'UserDashboardControllerBase.setTypeFilter');
     try {
       return super.setTypeFilter(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEnrollmentFilter(EnrollButtonEnum value) {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.setEnrollmentFilter');
+    try {
+      return super.setEnrollmentFilter(value);
     } finally {
       _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -496,6 +465,20 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
         .startAction(name: 'UserDashboardControllerBase.setHourFilter');
     try {
       return super.setHourFilter(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  List<EnrollsActivityModel> filterActivitiesByEnrollmentState(
+      EnrollButtonEnum type, List<EnrollsActivityModel> activitiesToFilter) {
+    final _$actionInfo =
+        _$UserDashboardControllerBaseActionController.startAction(
+            name:
+                'UserDashboardControllerBase.filterActivitiesByEnrollmentState');
+    try {
+      return super.filterActivitiesByEnrollmentState(type, activitiesToFilter);
     } finally {
       _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -630,39 +613,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   }
 
   @override
-  void setBrazilianPhone(CountryCode? value) {
-    final _$actionInfo = _$UserDashboardControllerBaseActionController
-        .startAction(name: 'UserDashboardControllerBase.setBrazilianPhone');
-    try {
-      return super.setBrazilianPhone(value);
-    } finally {
-      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setCountryCode(CountryCode? value) {
-    final _$actionInfo = _$UserDashboardControllerBaseActionController
-        .startAction(name: 'UserDashboardControllerBase.setCountryCode');
-    try {
-      return super.setCountryCode(value);
-    } finally {
-      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  String? validatePhone(String? value) {
-    final _$actionInfo = _$UserDashboardControllerBaseActionController
-        .startAction(name: 'UserDashboardControllerBase.validatePhone');
-    try {
-      return super.validatePhone(value);
-    } finally {
-      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 error: ${error},
@@ -671,23 +621,20 @@ name: ${name},
 certificateWithSocialName: ${certificateWithSocialName},
 socialNameToChange: ${socialNameToChange},
 nameToChange: ${nameToChange},
-phoneToChange: ${phoneToChange},
 wantSocialName: ${wantSocialName},
 subscribedActivitiesOnScreen: ${subscribedActivitiesOnScreen},
 activityType: ${activityType},
 typeFilter: ${typeFilter},
 typeOnScreen: ${typeOnScreen},
+acceptEmailNotifications: ${acceptEmailNotifications},
+enrollmentFilter: ${enrollmentFilter},
 dateFilter: ${dateFilter},
 hourFilter: ${hourFilter},
 isLoading: ${isLoading},
 filterActivityChipIndexSelected: ${filterActivityChipIndexSelected},
 allSubscribedActivitiesList: ${allSubscribedActivitiesList},
 nextActivity: ${nextActivity},
-requisitionError: ${requisitionError},
-phone: ${phone},
-isBrazilianPhone: ${isBrazilianPhone},
-isPhoneFieldFilled: ${isPhoneFieldFilled},
-countryCode: ${countryCode}
+requisitionError: ${requisitionError}
     ''';
   }
 }

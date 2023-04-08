@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,24 +9,20 @@ import 'package:smile_front/app/modules/forgot-password/forgot_password_module.d
 import 'package:smile_front/app/modules/forgot-password/infra/repository/forgot_password_repository_impl.dart';
 import 'package:smile_front/app/modules/forgot-password/presenter/controller/forgot_password_controller.dart';
 
-import '../../../setup_firebase_mocks.dart';
-
 void main() {
   initModules([
     ForgotPasswordModule(),
     AppModule(),
   ]);
 
-  setupCloudFirestoreMocks();
-
   setUp(() async {
     await Modular.isModuleReady<AppModule>();
-    await Firebase.initializeApp();
   });
 
   test('ForgotPasswordController Injection', () {
     Modular.get<ForgotPasswordController>();
   });
+  //
 
   test('ForgotPasswordDatasourceImpl Injection', () {
     Modular.get<ForgotPasswordDatasourceImpl>();

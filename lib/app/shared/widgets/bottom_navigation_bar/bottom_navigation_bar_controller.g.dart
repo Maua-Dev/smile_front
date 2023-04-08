@@ -33,6 +33,15 @@ mixin _$NavigationBarController on BottomNavigationBarControllerBase, Store {
     return _$logoutAsyncAction.run(() => super.logout());
   }
 
+  late final _$getIndexAsyncAction = AsyncAction(
+      'BottomNavigationBarControllerBase.getIndex',
+      context: context);
+
+  @override
+  Future<void> getIndex() {
+    return _$getIndexAsyncAction.run(() => super.getIndex());
+  }
+
   late final _$toggleIndexAsyncAction = AsyncAction(
       'BottomNavigationBarControllerBase.toggleIndex',
       context: context);

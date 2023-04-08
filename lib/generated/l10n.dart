@@ -144,6 +144,16 @@ class S {
     );
   }
 
+  /// `O que é a semana SMILE?`
+  String get whatIsSmile {
+    return Intl.message(
+      'O que é a semana SMILE?',
+      name: 'whatIsSmile',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `KNOW MORE >>>`
   String get knowMore {
     return Intl.message(
@@ -243,6 +253,16 @@ class S {
     return Intl.message(
       'Activities',
       name: 'activitiesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activities and Events`
+  String get activitiesAndEventsTitle {
+    return Intl.message(
+      'Activities and Events',
+      name: 'activitiesAndEventsTitle',
       desc: '',
       args: [],
     );
@@ -370,7 +390,7 @@ class S {
     );
   }
 
-  /// `{entity, select, atletica{https://www.instagram.com/gaspar_maua/} ca{https://www.instagram.com/camaua/} diversidade{https://www.instagram.com/diversidademaua/} enactus{https://www.instagram.com/enactusmaua/} esports{https://www.instagram.com/esportsmaua/} inova{https://www.instagram.com/inovamaua/} mauajr{https://www.instagram.com/mauajr/} mauasocial{https://www.instagram.com/mauasocial/} mbc{https://www.instagram.com/mauabusinessclub/} nae{https://www.instagram.com/naemaua/} dev{https://www.instagram.com/devcommunitymaua/} nine{https://www.instagram.com/nine.maua/} finance{https://www.instagram.com/imtfinance/} baja{https://www.instagram.com/bajamaua/} ecomaua{https://www.instagram.com/eco_maua/} mauaracing2{https://www.instagram.com/mauaracingh2/} mauaracing{https://www.instagram.com/mauaracing/} other{}}`
+  /// `{entity, select, atletica{https://www.instagram.com/gaspar_maua/} ca{https://www.instagram.com/camaua/} diversidade{https://www.instagram.com/diversidademaua/} enactus{https://www.instagram.com/enactusmaua/} esports{https://www.instagram.com/esportsmaua/} inova{https://www.instagram.com/inovamaua/} mauajr{https://www.instagram.com/mauajr/} mauasocial{https://www.instagram.com/mauasocial/} mbc{https://www.instagram.com/mauabusinessclub/} nae{https://www.instagram.com/naemaua/} dev{https://www.instagram.com/devcommunitymaua/} nine{https://www.instagram.com/nine.maua/} finance{https://www.instagram.com/mauafinancegroup/} baja{https://www.instagram.com/bajamaua/} ecomaua{https://www.instagram.com/eco_maua/} mauaracing2{https://www.instagram.com/mauaracingh2/} mauaracing{https://www.instagram.com/mauaracing/} other{}}`
   String mauaEntitiesSchemaInstagramUrl(Object entity) {
     return Intl.select(
       entity,
@@ -387,7 +407,7 @@ class S {
         'nae': 'https://www.instagram.com/naemaua/',
         'dev': 'https://www.instagram.com/devcommunitymaua/',
         'nine': 'https://www.instagram.com/nine.maua/',
-        'finance': 'https://www.instagram.com/imtfinance/',
+        'finance': 'https://www.instagram.com/mauafinancegroup/',
         'baja': 'https://www.instagram.com/bajamaua/',
         'ecomaua': 'https://www.instagram.com/eco_maua/',
         'mauaracing2': 'https://www.instagram.com/mauaracingh2/',
@@ -667,6 +687,16 @@ class S {
     );
   }
 
+  /// `Subscriber List`
+  String get subscriberListTitle {
+    return Intl.message(
+      'Subscriber List',
+      name: 'subscriberListTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Termination`
   String get termination {
     return Intl.message(
@@ -782,6 +812,26 @@ class S {
     return Intl.message(
       'Are you sure you want to exit the queue?',
       name: 'queueExitAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed`
+  String get completed {
+    return Intl.message(
+      'Completed',
+      name: 'completed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed activity!`
+  String get confirmedAttendance {
+    return Intl.message(
+      'Completed activity!',
+      name: 'confirmedAttendance',
       desc: '',
       args: [],
     );
@@ -917,13 +967,13 @@ class S {
     );
   }
 
-  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{dev@maua.br} other{}}`
+  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{atendimento.smile@maua.br} other{}}`
   String loginWarningTitle(Object title) {
     return Intl.select(
       title,
       {
         'normalPart': 'In case of error when logging in, send an email to: ',
-        'boldPart': 'dev@maua.br',
+        'boldPart': 'atendimento.smile@maua.br',
         'other': '',
       },
       name: 'loginWarningTitle',
@@ -1012,26 +1062,6 @@ class S {
     );
   }
 
-  /// `Phone`
-  String get registerPhonePlaceholder {
-    return Intl.message(
-      'Phone',
-      name: 'registerPhonePlaceholder',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Search by country or DDI`
-  String get registerCountryPlaceholder {
-    return Intl.message(
-      'Search by country or DDI',
-      name: 'registerCountryPlaceholder',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Mauá Student`
   String get registerStudentMauaPlaceholder {
     return Intl.message(
@@ -1079,10 +1109,10 @@ class S {
     );
   }
 
-  /// `Means of notification about activities:`
+  /// `Means of notification:`
   String get notificationsTitle {
     return Intl.message(
-      'Means of notification about activities:',
+      'Means of notification:',
       name: 'notificationsTitle',
       desc: '',
       args: [],
@@ -1099,28 +1129,17 @@ class S {
     );
   }
 
-  /// `{notification, select, email{EMAIL} sms{SMS} other{}}`
+  /// `{notification, select, email{EMAIL} other{}}`
   String notificationsSchema(Object notification) {
     return Intl.select(
       notification,
       {
         'email': 'EMAIL',
-        'sms': 'SMS',
         'other': '',
       },
       name: 'notificationsSchema',
       desc: '',
       args: [notification],
-    );
-  }
-
-  /// `Fill in your cell phone to enable sms notifications!`
-  String get notificationsSmsAlert {
-    return Intl.message(
-      'Fill in your cell phone to enable sms notifications!',
-      name: 'notificationsSmsAlert',
-      desc: '',
-      args: [],
     );
   }
 
@@ -1134,10 +1153,10 @@ class S {
     );
   }
 
-  /// `We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.`
+  /// `We sent an email (atendimento.smile@maua.br) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.`
   String get emailNotificationTitle {
     return Intl.message(
-      'We sent an email (no-reply@verificationemail.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.',
+      'We sent an email (atendimento.smile@maua.br) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.',
       name: 'emailNotificationTitle',
       desc: '',
       args: [],
@@ -1174,13 +1193,13 @@ class S {
     );
   }
 
-  /// `Are you sure your phone {phone} and email address {firstName} are correct?`
-  String confirmEmailAndPhoneNotificationTitle(Object phone, Object firstName) {
+  /// `Are you sure your email address {firstName} is correct?`
+  String confirmEmailAndPhoneNotificationTitle(Object firstName) {
     return Intl.message(
-      'Are you sure your phone $phone and email address $firstName are correct?',
+      'Are you sure your email address $firstName is correct?',
       name: 'confirmEmailAndPhoneNotificationTitle',
       desc: '',
-      args: [phone, firstName],
+      args: [firstName],
     );
   }
 
@@ -1274,10 +1293,10 @@ class S {
     );
   }
 
-  /// `Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, $, %, ^, &, *, -) \n - Minimum 8 characters`
+  /// `Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, !, @, $, %, ^, &, *, -) \n - Minimum 8 characters`
   String get fieldPasswordRequisits {
     return Intl.message(
-      'Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, ?, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters',
+      'Your password must contain: \n - One or more uppercase letters \n - One or more lowercase letters \n - One or more numbers \n - One or more special characters\n(#, !, @, \$, %, ^, &, *, -) \n - Minimum 8 characters',
       name: 'fieldPasswordRequisits',
       desc: '',
       args: [],
@@ -1314,10 +1333,30 @@ class S {
     );
   }
 
-  /// `A code will be sent to the registered email address:`
+  /// `Must be bigger than 0`
+  String get fieldDurationMoreThanZero {
+    return Intl.message(
+      'Must be bigger than 0',
+      name: 'fieldDurationMoreThanZero',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old date`
+  String get fieldHourBeforeToday {
+    return Intl.message(
+      'Old date',
+      name: 'fieldHourBeforeToday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follow the steps that will be sent in the registered email:`
   String get codeInEmailTitle {
     return Intl.message(
-      'A code will be sent to the registered email address:',
+      'Follow the steps that will be sent in the registered email:',
       name: 'codeInEmailTitle',
       desc: '',
       args: [],
@@ -1334,10 +1373,10 @@ class S {
     );
   }
 
-  /// `You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional.`
+  /// `You will receive an email (atendimento.smile@maua.br) with a link to change your password! Check inbox, spam or promotional.`
   String get codeInEmailInstructionsTitle {
     return Intl.message(
-      'You will receive an email (no-reply@verificationemail.com) with a link to change your password! Check inbox, spam or promotional.',
+      'You will receive an email (atendimento.smile@maua.br) with a link to change your password! Check inbox, spam or promotional.',
       name: 'codeInEmailInstructionsTitle',
       desc: '',
       args: [],
@@ -1364,10 +1403,10 @@ class S {
     );
   }
 
-  /// `If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n`
+  /// `If you have not found the email (atendimento.smile@maua.br) or the link has expired, please resend the code by entering your e-mail in the field below:\n`
   String get errorEmailInstructionsTitle {
     return Intl.message(
-      'If you have not found the email (no-reply@verificationemail.com) or the link has expired, please resend the code by entering your CPF in the field below:\n',
+      'If you have not found the email (atendimento.smile@maua.br) or the link has expired, please resend the code by entering your e-mail in the field below:\n',
       name: 'errorEmailInstructionsTitle',
       desc: '',
       args: [],
@@ -1504,6 +1543,16 @@ class S {
     );
   }
 
+  /// `Activity`
+  String get activity {
+    return Intl.message(
+      'Activity',
+      name: 'activity',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Create Activity`
   String get activityCreateTitle {
     return Intl.message(
@@ -1544,11 +1593,111 @@ class S {
     );
   }
 
+  /// `Duration(Minutes)`
+  String get activityDurationTitle {
+    return Intl.message(
+      'Duration(Minutes)',
+      name: 'activityDurationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of Vanacies`
+  String get activityVacancyNumber {
+    return Intl.message(
+      'Number of Vanacies',
+      name: 'activityVacancyNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept Subscriptions`
+  String get activityAcceptSbscriptions {
+    return Intl.message(
+      'Accept Subscriptions',
+      name: 'activityAcceptSbscriptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible Teacher`
+  String get activityResponsibleTeacher {
+    return Intl.message(
+      'Responsible Teacher',
+      name: 'activityResponsibleTeacher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inscription Closure (Date)`
+  String get activityInscriptionClosureDate {
+    return Intl.message(
+      'Inscription Closure (Date)',
+      name: 'activityInscriptionClosureDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inscription Closure (Hour)`
+  String get activityInscriptionClosureHour {
+    return Intl.message(
+      'Inscription Closure (Hour)',
+      name: 'activityInscriptionClosureHour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The system automatically closes the activity\nsubscriptions at a specific date and time. If this field is not filled in, the\nsubscriptions will not close by themselves and an administrator must\ndo it manually.`
+  String get activityInscriptionClosureTooltip {
+    return Intl.message(
+      'The system automatically closes the activity\nsubscriptions at a specific date and time. If this field is not filled in, the\nsubscriptions will not close by themselves and an administrator must\ndo it manually.',
+      name: 'activityInscriptionClosureTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The inscription closure date must be before the event date`
+  String get activityErrorClosureDateAfterStartDate {
+    return Intl.message(
+      'The inscription closure date must be before the event date',
+      name: 'activityErrorClosureDateAfterStartDate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Company:`
   String get companyTitle {
     return Intl.message(
       'Company:',
       name: 'companyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Company`
+  String get companyTitleWithoutDouble {
+    return Intl.message(
+      'Company',
+      name: 'companyTitleWithoutDouble',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extensionist`
+  String get extensionistTitle {
+    return Intl.message(
+      'Extensionist',
+      name: 'extensionistTitle',
       desc: '',
       args: [],
     );
@@ -1564,11 +1713,31 @@ class S {
     );
   }
 
+  /// `Status`
+  String get enrollmentTitle {
+    return Intl.message(
+      'Status',
+      name: 'enrollmentTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Hora`
   String get hourTitle {
     return Intl.message(
       'Hora',
       name: 'hourTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data`
+  String get dayTitle {
+    return Intl.message(
+      'Data',
+      name: 'dayTitle',
       desc: '',
       args: [],
     );
@@ -1599,6 +1768,56 @@ class S {
     return Intl.message(
       'Code',
       name: 'codeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Absence`
+  String get absenceTitle {
+    return Intl.message(
+      'Absence',
+      name: 'absenceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Present`
+  String get presenceTitle {
+    return Intl.message(
+      'Present',
+      name: 'presenceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Names`
+  String get namesTitle {
+    return Intl.message(
+      'Names',
+      name: 'namesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Validation Code`
+  String get validationCodeTitle {
+    return Intl.message(
+      'Validation Code',
+      name: 'validationCodeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local`
+  String get localTitle {
+    return Intl.message(
+      'Local',
+      name: 'localTitle',
       desc: '',
       args: [],
     );
@@ -1644,6 +1863,16 @@ class S {
     );
   }
 
+  /// `All Activities`
+  String get allActivitiesTitle {
+    return Intl.message(
+      'All Activities',
+      name: 'allActivitiesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Certificates`
   String get drawerCertificatesButton {
     return Intl.message(
@@ -1674,11 +1903,21 @@ class S {
     );
   }
 
-  /// `Locati   on`
-  String get localTitle {
+  /// `Location`
+  String get locationTitle {
     return Intl.message(
-      'Locati   on',
-      name: 'localTitle',
+      'Location',
+      name: 'locationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It looks like you don't have any certificates.`
+  String get noCertificatesFoundTitle {
+    return Intl.message(
+      'It looks like you don\'t have any certificates.',
+      name: 'noCertificatesFoundTitle',
       desc: '',
       args: [],
     );
@@ -1731,16 +1970,6 @@ class S {
     return Intl.message(
       'Unavailabe',
       name: 'unavailabeTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Registration unavailabe for this activity!`
-  String get unavailabeActivityRegistration {
-    return Intl.message(
-      'Registration unavailabe for this activity!',
-      name: 'unavailabeActivityRegistration',
       desc: '',
       args: [],
     );
@@ -1871,6 +2100,46 @@ class S {
     return Intl.message(
       'You are in the activity queue',
       name: 'InQueueContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Professor`
+  String get addProfessorTitle {
+    return Intl.message(
+      'Add Professor',
+      name: 'addProfessorTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Speaker Name`
+  String get speakerNameTitle {
+    return Intl.message(
+      'Speaker Name',
+      name: 'speakerNameTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send email to all`
+  String get sendEmailToAllEnrolls {
+    return Intl.message(
+      'Send email to all',
+      name: 'sendEmailToAllEnrolls',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send email to:`
+  String get sendEmailToSomeone {
+    return Intl.message(
+      'Send email to:',
+      name: 'sendEmailToSomeone',
       desc: '',
       args: [],
     );

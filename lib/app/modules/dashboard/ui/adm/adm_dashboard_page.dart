@@ -42,21 +42,24 @@ class _AdmDashboardPageState
                 Padding(
                     padding: const EdgeInsets.symmetric(vertical: 50),
                     child: Observer(builder: (_) {
-                      return FilterCardWidget(
-                        typeOnScreen: controller.typeOnScreen,
-                        typeFilter: controller.typeFilter,
-                        dateFilter: controller.dateFilter,
-                        hourFilter: controller.hourFilter,
-                        resetFilters: () => controller.resetFilters(),
-                        onChangedActivitiesFilter: (type) {
-                          controller.setTypeFilter(type!);
-                        },
-                        onChangedDateFilter: (date) {
-                          controller.setDateFilter(date!);
-                        },
-                        onChangedTimeFilter: (hour) {
-                          controller.setHourFilter(hour!);
-                        },
+                      return SizedBox(
+                        width: 1165,
+                        child: FilterCardWidget(
+                          typeOnScreen: controller.typeOnScreen,
+                          typeFilter: controller.typeFilter,
+                          dateFilter: controller.dateFilter,
+                          hourFilter: controller.hourFilter,
+                          resetFilters: () => controller.resetFilters(),
+                          onChangedActivitiesFilter: (type) {
+                            controller.setTypeFilter(type!);
+                          },
+                          onChangedDateFilter: (date) {
+                            controller.setDateFilter(date!);
+                          },
+                          onChangedTimeFilter: (hour) {
+                            controller.setHourFilter(hour!);
+                          },
+                        ),
                       );
                     })),
                 Observer(builder: (_) {
@@ -66,10 +69,9 @@ class _AdmDashboardPageState
                     );
                   } else {
                     if (controller.activitiesList.isNotEmpty) {
-                      return SizedBox(
-                        width: 1165,
-                        height: MediaQuery.of(context).size.height - 268,
+                      return Expanded(
                         child: ListView.builder(
+                          shrinkWrap: true,
                           itemCount: controller.activitiesList.length,
                           itemBuilder: (BuildContext context, int index) {
                             String date = DateFormat('dd/MM/yyyy').format(
@@ -83,6 +85,19 @@ class _AdmDashboardPageState
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
                                 return ActivitiesCardWidget(
+                                  sendEmailToAll: controller.sendEmailToAll,
+                                  emailLogDevCommunity:
+                                      controller.emailLogDevCommunity,
+                                  isLoading: controller.isLoading,
+                                  isManualDropLoading:
+                                      controller.isManualDropLoading,
+                                  onPressedDropActivity:
+                                      (activityCode, userId) {
+                                    controller.dropActivity(
+                                        activityCode, userId);
+                                  },
+                                  enrollments: controller
+                                      .activitiesList[index].enrollments,
                                   isExtensive: controller
                                       .activitiesList[index].isExtensive,
                                   activityCode: controller
@@ -90,8 +105,6 @@ class _AdmDashboardPageState
                                   date: date,
                                   description: controller
                                       .activitiesList[index].description,
-                                  enrolledUsersLength: controller
-                                      .activitiesList[index].takenSlots,
                                   totalParticipants: controller
                                       .activitiesList[index].totalSlots,
                                   title: controller.activitiesList[index].title,

@@ -4,7 +4,7 @@ import '../repositories/user_repository_interface.dart';
 
 abstract class ChangeDataInterface {
   Future<void> call(String nameToChange, String socialNameToChange,
-      bool certificateWithSocialName, String phone);
+      bool certificateWithSocialName, bool acceptedEmailNotifications);
 }
 
 class ChangeData implements ChangeDataInterface {
@@ -14,9 +14,9 @@ class ChangeData implements ChangeDataInterface {
 
   @override
   Future<void> call(String nameToChange, String socialNameToChange,
-      bool certificateWithSocialName, String phone) {
+      bool certificateWithSocialName, bool acceptedEmailNotifications) {
     final userData = UserChangeDataModel(
-        phone: phone,
+        acceptedEmailNotifications: acceptedEmailNotifications,
         name: nameToChange,
         socialName: socialNameToChange,
         certificateWithSocialName: certificateWithSocialName);

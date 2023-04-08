@@ -1,21 +1,22 @@
+import 'package:smile_front/app/shared/models/user_enroll_model.dart';
+
 import '../entities/infra/enrollment_state_enum.dart';
 
 class EnrollmentsModel {
-  final EnrollmentStateEnum state;
+  late final EnrollmentStateEnum state;
   final DateTime dateSubscribed;
-  final bool acceptingNewEnrollments;
+  final UserEnrollModel? user;
 
   EnrollmentsModel(
-      {required this.state,
-      required this.dateSubscribed,
-      required this.acceptingNewEnrollments});
+      {required this.state, required this.dateSubscribed, this.user});
 
   factory EnrollmentsModel.fromMap(Map<String, dynamic> map) {
     return EnrollmentsModel(
-        acceptingNewEnrollments: map['accepting_new_enrollments'] ?? false,
-        state: EnrollmentStateEnumExtension.stringToEnumMap(map['state']),
-        dateSubscribed:
-            DateTime.fromMillisecondsSinceEpoch(map['date_subscribed']));
+      user: map['user'] == null ? null : UserEnrollModel.fromMap(map['user']),
+      state: EnrollmentStateEnumExtension.stringToEnumMap(map['state']),
+      dateSubscribed:
+          DateTime.fromMillisecondsSinceEpoch(map['date_subscribed']),
+    );
   }
 
   static List<EnrollmentsModel> fromMaps(List array) {
@@ -24,7 +25,7 @@ class EnrollmentsModel {
 
   factory EnrollmentsModel.newInstance() {
     return EnrollmentsModel(
-      acceptingNewEnrollments: false,
+      user: UserEnrollModel.newInstance(),
       state: EnrollmentStateEnum.NONE,
       dateSubscribed: DateTime.now(),
     );
