@@ -1,0 +1,21 @@
+name: 'Check Branch'
+
+on:
+  pull_request:
+    branches:
+      - 'homolog'
+      - 'prod'
+  
+jobs:
+  check_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch
+        if: github.base_ref == 'homolog' && github.head_ref != 'dev'
+        run: |
+          echo "ERROR: You can only merge to homolog from dev."
+          exit 1
+        if: github.base_ref == 'prod' && github.head_ref != 'homolog'
+        run: |
+          echo "ERROR: You can only merge to prod from homolog."
+          exit 1
