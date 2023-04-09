@@ -169,6 +169,7 @@ class ScheduleWidget extends StatelessWidget {
                   delivery == null || delivery != DeliveryEnum.in_person
                       ? Flexible(
                           child: TextFieldDialogWidget(
+                            validator: validateRequiredField,
                             labelText: 'Link',
                             value: link,
                             onChanged: onChangedLink,
@@ -184,6 +185,7 @@ class ScheduleWidget extends StatelessWidget {
                   delivery == null || delivery != DeliveryEnum.online
                       ? Flexible(
                           child: TextFieldDialogWidget(
+                            validator: validateRequiredField,
                             labelText: 'Local',
                             value: location,
                             onChanged: onChangedLocation,
@@ -203,7 +205,6 @@ class ScheduleWidget extends StatelessWidget {
                             message:
                                 S.of(context).activityInscriptionClosureTooltip,
                           ),
-                          validator: isValidSubscriptionclosureDate,
                           labelText:
                               S.of(context).activityInscriptionClosureDate,
                           hintText: 'DD/MM/AAAA',
@@ -225,7 +226,6 @@ class ScheduleWidget extends StatelessWidget {
                             message:
                                 S.of(context).activityInscriptionClosureTooltip,
                           ),
-                          validator: isValidSubscriptionclosureDate,
                           labelText:
                               S.of(context).activityInscriptionClosureHour,
                           hintText: 'HH:MM',

@@ -194,6 +194,7 @@ abstract class AdmDashboardControllerBase with Store {
   Future deleteUserActivity(String id) async {
     setIsLoading(true);
     await deleteActivity(id);
+    setAllFilters();
     setIsLoading(false);
   }
 
@@ -201,6 +202,7 @@ abstract class AdmDashboardControllerBase with Store {
   Future dropActivity(String activityCode, String userId) async {
     setIsLoading(true);
     await manualDropActivity(activityCode, userId);
+    setAllFilters();
     setIsLoading(false);
   }
 

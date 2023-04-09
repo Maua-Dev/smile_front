@@ -124,40 +124,6 @@ mixin _$EditActivityController on EditActivityControllerBase, Store {
   }
 
   @override
-  String? validateHourField(String? value) {
-    final _$actionInfo = _$EditActivityControllerBaseActionController
-        .startAction(name: 'EditActivityControllerBase.validateHourField');
-    try {
-      return super.validateHourField(value);
-    } finally {
-      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  String? validateDateField(String? value) {
-    final _$actionInfo = _$EditActivityControllerBaseActionController
-        .startAction(name: 'EditActivityControllerBase.validateDateField');
-    try {
-      return super.validateDateField(value);
-    } finally {
-      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  String? isValidSubscriptionclosureDate(String? value) {
-    final _$actionInfo =
-        _$EditActivityControllerBaseActionController.startAction(
-            name: 'EditActivityControllerBase.isValidSubscriptionclosureDate');
-    try {
-      return super.isValidSubscriptionclosureDate(value);
-    } finally {
-      _$EditActivityControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void removeProfessor(int index) {
     final _$actionInfo = _$EditActivityControllerBaseActionController
         .startAction(name: 'EditActivityControllerBase.removeProfessor');

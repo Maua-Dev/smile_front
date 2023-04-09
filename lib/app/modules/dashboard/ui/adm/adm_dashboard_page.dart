@@ -15,7 +15,6 @@ import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
 
 class AdmDashboardPage extends StatefulWidget {
   const AdmDashboardPage({Key? key}) : super(key: key);
-
   @override
   State<AdmDashboardPage> createState() => _AdmDashboardPageState();
 }
@@ -85,6 +84,12 @@ class _AdmDashboardPageState
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Observer(builder: (_) {
                                 return ActivitiesCardWidget(
+                                  finalDateTime:
+                                      Utils.getActivityFinalTimeDatetime(
+                                          controller
+                                              .activitiesList[index].startDate!,
+                                          controller
+                                              .activitiesList[index].duration),
                                   sendEmailToAll: controller.sendEmailToAll,
                                   emailLogDevCommunity:
                                       controller.emailLogDevCommunity,
