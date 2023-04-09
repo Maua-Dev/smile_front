@@ -17,6 +17,7 @@ class ActivitiesCardWidget extends StatelessWidget {
   final String date;
   final String time;
   final String finalTime;
+  final DateTime finalDateTime;
   final List<EnrollmentsModel> enrollments;
   final int totalParticipants;
   final bool isExtensive;
@@ -42,6 +43,7 @@ class ActivitiesCardWidget extends StatelessWidget {
       required this.totalParticipants,
       required this.isExtensive,
       required this.onPressedEdit,
+      required this.finalDateTime,
       required this.onPressedDelete,
       this.emailLogDevCommunity,
       required this.sendEmailToAll})
@@ -49,6 +51,10 @@ class ActivitiesCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String isAlreadyCompleted(DateTime date) {
+      return date.isAfter(DateTime.now()) ? "" : "A atividade foi encerrada";
+    }
+
     var filteredEnrollmentsForCompleted = enrollments
         .where(
             (enrollment) => enrollment.state == EnrollmentStateEnum.COMPLETED)
@@ -344,7 +350,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                   Observer(builder: (_) {
                                                     return SizedBox(
                                                       width: 700,
-                                                      height: 479,
+                                                      height: 434,
                                                       child: ListView.builder(
                                                         itemCount:
                                                             filteredEnrollments
@@ -448,12 +454,21 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                       ),
                                                     );
                                                   }),
+                                                  const SizedBox(
+                                                    height: 30,
+                                                  ),
                                                   SizedBox(
-                                                    width: 700,
-                                                    child: Divider(
-                                                      thickness: 2,
-                                                      color: AppColors
-                                                          .brandingBlue,
+                                                    width: 556,
+                                                    child: Column(
+                                                      children: [
+                                                        Text(isAlreadyCompleted(
+                                                            finalDateTime)),
+                                                        Divider(
+                                                          thickness: 2,
+                                                          color: AppColors
+                                                              .brandingBlue,
+                                                        ),
+                                                      ],
                                                     ),
                                                   )
                                                 ],

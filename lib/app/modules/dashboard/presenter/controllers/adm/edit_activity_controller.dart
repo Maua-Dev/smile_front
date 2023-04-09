@@ -59,7 +59,7 @@ abstract class EditActivityControllerBase with Store {
   @action
   String? validateParticipantsField(String? value) {
     if (value!.isNotEmpty) {
-      return int.parse(value) < 30 ? S.current.fieldDurationMoreThanZero : null;
+      return int.parse(value) > 0 ? null : S.current.fieldDurationMoreThanZero;
     }
     return S.current.fieldRequired;
   }
@@ -70,43 +70,6 @@ abstract class EditActivityControllerBase with Store {
       return int.parse(value) > 0 ? null : S.current.fieldDurationMoreThanZero;
     }
     return S.current.fieldRequired;
-  }
-
-  @action
-  String? validateHourField(String? value) {
-    if (value!.isNotEmpty) {
-      return activityToEdit.startDate!.isBefore(DateTime.now())
-          ? S.current.fieldHourBeforeToday
-          : null;
-    }
-    return S.current.fieldRequired;
-  }
-
-  @action
-  String? validateDateField(String? value) {
-    if (value!.isNotEmpty) {
-      return activityToEdit.startDate!
-              .isBefore(DateTime.now().subtract(const Duration(days: 1)))
-          ? S.current.fieldHourBeforeToday
-          : null;
-    }
-    return S.current.fieldRequired;
-  }
-
-  @action
-  String? isValidSubscriptionclosureDate(String? value) {
-    var startDate = activityToEdit.startDate;
-    var endsubscriptionsDate = activityToEdit.stopAcceptingNewEnrollmentsBefore;
-    var finalDate = startDate!.add(Duration(minutes: activityToEdit.duration));
-
-    if (endsubscriptionsDate != null) {
-      var isBefore = endsubscriptionsDate.isBefore(finalDate);
-      var isAtSame = endsubscriptionsDate.isAtSameMomentAs(finalDate);
-      var isAtSameOrBefore = isBefore || isAtSame;
-
-      return isAtSameOrBefore ? null : "Data inválida";
-    }
-    return null;
   }
 
   @action

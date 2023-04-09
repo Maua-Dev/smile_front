@@ -204,7 +204,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           child: GestureDetector(
                             onTap: () {
                               launchUrl(
-                                Uri.parse('mailto:atendimento.smile@maua.br'),
+                                Uri.parse('mailto:contato@devmaua.com'),
                                 mode: LaunchMode.externalApplication,
                               );
                             },
