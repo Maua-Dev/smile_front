@@ -18,6 +18,15 @@ class Utils {
 
     return DateFormat('yyyy-MM-dd hh:mm').format(newDate);
   }
+
+  static DateTime getActivityFinalTimeDatetime(DateTime time, int duration) {
+    var hour = duration ~/ 60;
+    var minutes = duration - (hour * 60);
+    var newDate = DateTime(time.year, time.month, time.day, time.hour + hour,
+        time.minute + minutes);
+
+    return newDate;
+  }
 }
 
 extension StringExtension on String {
