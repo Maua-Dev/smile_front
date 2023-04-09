@@ -967,13 +967,13 @@ class S {
     );
   }
 
-  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{atendimento.smile@maua.br} other{}}`
+  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{contato@devmaua.com} other{}}`
   String loginWarningTitle(Object title) {
     return Intl.select(
       title,
       {
         'normalPart': 'In case of error when logging in, send an email to: ',
-        'boldPart': 'atendimento.smile@maua.br',
+        'boldPart': 'contato@devmaua.com',
         'other': '',
       },
       name: 'loginWarningTitle',
@@ -1153,10 +1153,10 @@ class S {
     );
   }
 
-  /// `We sent an email (atendimento.smile@maua.br) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.`
+  /// `We sent an email (contato@devmaua.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.`
   String get emailNotificationTitle {
     return Intl.message(
-      'We sent an email (atendimento.smile@maua.br) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.',
+      'We sent an email (contato@devmaua.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.',
       name: 'emailNotificationTitle',
       desc: '',
       args: [],
@@ -1373,10 +1373,10 @@ class S {
     );
   }
 
-  /// `You will receive an email (atendimento.smile@maua.br) with a link to change your password! Check inbox, spam or promotional.`
+  /// `You will receive an email (contato@devmaua.com) with a link to change your password! Check inbox, spam or promotional.`
   String get codeInEmailInstructionsTitle {
     return Intl.message(
-      'You will receive an email (atendimento.smile@maua.br) with a link to change your password! Check inbox, spam or promotional.',
+      'You will receive an email (contato@devmaua.com) with a link to change your password! Check inbox, spam or promotional.',
       name: 'codeInEmailInstructionsTitle',
       desc: '',
       args: [],
@@ -1403,10 +1403,10 @@ class S {
     );
   }
 
-  /// `If you have not found the email (atendimento.smile@maua.br) or the link has expired, please resend the code by entering your e-mail in the field below:\n`
+  /// `If you have not found the email (contato@devmaua.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n`
   String get errorEmailInstructionsTitle {
     return Intl.message(
-      'If you have not found the email (atendimento.smile@maua.br) or the link has expired, please resend the code by entering your e-mail in the field below:\n',
+      'If you have not found the email (contato@devmaua.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n',
       name: 'errorEmailInstructionsTitle',
       desc: '',
       args: [],

@@ -91,7 +91,7 @@
     "loginWithoutRecordTitle": "Não tenho cadastro",
     "loginForgotPasswordTitle": "Esqueci minha senha",
     "loginResendConfirmationTitle": "Reenviar e-mail de confirmação",
-    "loginWarningTitle": "{title, select, normalPart{Em caso de erro ao se logar, envie um e-mail para: } boldPart{atendimento.smile@maua.br} other{}}",
+    "loginWarningTitle": "{title, select, normalPart{Em caso de erro ao se logar, envie um e-mail para: } boldPart{contato@devmaua.com} other{}}",
     
     
 
@@ -111,7 +111,7 @@
     "notificationsSchemaTitle": "Quero receber notificações por ",
     "notificationsSchema": "{notification, select, email{EMAIL} sms{SMS} other{}}",
     "registerTitle": "Cadastrar",
-    "emailNotificationTitle": "Enviamos um email (atendimento.smile@maua.br) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro.",
+    "emailNotificationTitle": "Enviamos um email (contato@devmaua.com) para você, por favor, verifique sua caixa de entrada, spam ou promocional e clique no link de confirmação para validar seu cadastro.",
     "changePasswordTitle": "Trocar senha",
     "haveRegistrationTitle": "Já tenho um cadastro",
     "confirmEmailNotificationTitle": "Tem certeza que seu e-mail {firstName} está correto?",
@@ -149,10 +149,10 @@
 
     "codeInEmailTitle": "Siga os passos que serão enviados no e-mail cadastrado:",
     "insertPasswordCodeInstructions": "Insira sua nova senha e o codigo enviado para o seu e-mail:",
-    "codeInEmailInstructionsTitle": "Você receberá um e-mail (atendimento.smile@maua.br) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.",
+    "codeInEmailInstructionsTitle": "Você receberá um e-mail (contato@devmaua.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional.",
     "sendTitle": "Enviar",
     "returnLogin": "Voltar ao login",
-    "errorEmailInstructionsTitle": "Caso não tenha encontrado o e-mail (atendimento.smile@maua.br) ou o link tenha expirado, reenvie o código inserindo seu e-mail no campo abaixo:\n",
+    "errorEmailInstructionsTitle": "Caso não tenha encontrado o e-mail (contato@devmaua.com) ou o link tenha expirado, reenvie o código inserindo seu e-mail no campo abaixo:\n",
     
     "presenceValidateTitle": "Validar Presença",
     
