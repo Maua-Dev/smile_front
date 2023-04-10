@@ -25,7 +25,7 @@ jobs:
 
       - name: GIT commit and push all changed files
         env:
-          CI_COMMIT_USER: ${{ github.event.push.user.login }}
+          CI_COMMIT_USER: ${{ github.actor }}
         run: |
           git config --global user.name "${{ env.CI_COMMIT_USER }}"
           git config --global user.email "${{ env.CI_COMMIT_USER }}@users.noreply.github.com"
