@@ -25,10 +25,10 @@ jobs:
 
       - name: GIT commit and push all changed files
         env:
-          CI_COMMIT_USER: ${{ github.event.push.actor.login }}
+          CI_COMMIT_USER: ${{ github.event.push.user.login }}
         run: |
           git config --global user.name "${{ env.CI_COMMIT_USER }}"
-          git config --global user.email "$CI_COMMIT_USER@users.noreply.github.com"
+          git config --global user.email "${{ env.CI_COMMIT_USER }}@users.noreply.github.com"
           git commit -a -m "bump version from ${{ env.old_version }} to ${{ env.new_version}}"
           git push
 
