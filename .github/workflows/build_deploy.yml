@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
+
       - name: bump version number
         run: |
           old_v=$(cat pubspec.yaml | grep -o 'version:[^:]*' | cut -f2 -d":" | xargs)
@@ -25,8 +25,7 @@ jobs:
 
       - name: GIT commit and push all changed files
         env:
-          CI_COMMIT_USER: ${{ github.event.actor.login }}
-
+          CI_COMMIT_USER: ${{ github.event.push.actor.login }}
         run: |
           git config --global user.name "${{ env.CI_COMMIT_USER }}"
           git config --global user.email "$CI_COMMIT_USER@users.noreply.github.com"
