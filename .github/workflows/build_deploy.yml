@@ -3,6 +3,7 @@ on:
   push:
     paths-ignore:
       - 'pubspec.yaml'
+      - '**/.github/*'
     branches:
       - develop
 
