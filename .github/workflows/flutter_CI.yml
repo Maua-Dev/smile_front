@@ -2,7 +2,7 @@ name: Flutter CI TEST
 
 on:
   pull_request:
-    branches: [develop, master]
+    branches: [dev, master]
 jobs:
   flutter_test:
     name: Run flutter test

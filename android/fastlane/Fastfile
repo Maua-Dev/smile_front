@@ -22,7 +22,7 @@ platform :android do
   end
 
   desc "Submit a new build to the Google Play internal track"
-  lane :develop do
+  lane :dev do
     upload_to_play_store(
       track: 'internal',
       aab: '../build/app/outputs/bundle/release/app-release.aab',

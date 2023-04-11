@@ -3,7 +3,7 @@ name: Check & Create PR
 on:
   push:
     branches:
-      - develop
+      - dev
       - homolog
 
 jobs:

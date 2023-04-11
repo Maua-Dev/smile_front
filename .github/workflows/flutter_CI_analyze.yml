@@ -2,7 +2,7 @@ name: Flutter CI Linter
 
 on:
   pull_request:
-    branches: [develop, master]
+    branches: [dev, master]
 jobs:
   flutter_analyze:
     name: Run flutter analyze

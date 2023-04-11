@@ -3,9 +3,9 @@ on:
   push:
     paths-ignore:
       - 'pubspec.yaml'
-      - '**/.github/*'
+      - '.github/**'
     branches:
-      - develop
+      - dev
 
 jobs:
   bump_version:
