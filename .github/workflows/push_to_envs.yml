@@ -1,0 +1,22 @@
+name: Check & Create PR
+
+on:
+  push:
+    paths-ignore:
+      - 'pubspec.yaml'
+    branches:
+      - dev
+      - homolog
+
+jobs:
+  pull_request:
+    uses: maua-dev/ci_workflows_reusable/.github/workflows/pull_request.yml@main
+    with:
+      repository: ${{ github.repository }}
+
+  bump_version:
+    if: ${{ github.ref_name == 'dev' }}
+    uses: maua-dev/ci_workflows_reusable/.github/workflows/bump_version.yml@main
+    with:
+      repository: ${{ github.repository }}
+    secrets: inherit
