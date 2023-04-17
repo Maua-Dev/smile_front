@@ -18,6 +18,8 @@ jobs:
         with:
           token: ${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}
       - name: bump version number
+        env:
+          ref: ${{ github.ref_name }}
         run: |
           old_v=$(cat pubspec.yaml | grep -o 'version:[^:]*' | cut -f2 -d":" | xargs)
           echo "old_version=$old_v" >> $GITHUB_ENV
