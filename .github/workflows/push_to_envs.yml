@@ -1,6 +1,6 @@
 name: Check & Create PR
 
-on:  
+on:
   push:
     paths-ignore:
       - 'pubspec.yaml'
