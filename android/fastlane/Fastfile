@@ -33,7 +33,7 @@ platform :android do
   desc "Submit a new Beta Build to Google Play beta"
   lane :homolog do
     upload_to_play_store(
-      track: 'beta',
+      track: 'alpha',
       aab: '../build/app/outputs/bundle/release/app-release.aab',
       json_key_data: ENV['PLAY_STORE_CONFIG_JSON'],
       )
@@ -42,6 +42,7 @@ platform :android do
   desc "Deploy a new version to the Google Play production track"
   lane :prod do
     upload_to_play_store(
+      track: 'beta',
       aab: '../build/app/outputs/bundle/release/app-release.aab',
       json_key_data: ENV['PLAY_STORE_CONFIG_JSON'],
       )
