@@ -33,7 +33,7 @@ class FaqCardWidget extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            Text(descricao,
+            SelectableText(descricao,
                 style: AppTextStyles.body.copyWith(
                     fontSize: Screen.width(context) < cellphoneSize
                         ? 14
