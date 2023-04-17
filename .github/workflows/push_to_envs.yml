@@ -11,7 +11,7 @@ on:
 
 jobs:
   pull_request:
-    if: ${{ ! github.ref_name == 'prod'}}
+    if: ${{ github.ref_name != 'prod'}}
     uses: maua-dev/ci_workflows_reusable/.github/workflows/pull_request.yml@main
     with:
       repository: ${{ github.repository }}
