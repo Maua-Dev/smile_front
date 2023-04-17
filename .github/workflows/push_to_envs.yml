@@ -17,3 +17,4 @@ jobs:
     uses: maua-dev/ci_workflows_reusable/.github/workflows/bump_version.yml@main
     with:
       repository: ${{ github.repository }}
+    secrets: inherit
