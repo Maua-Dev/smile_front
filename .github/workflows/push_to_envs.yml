@@ -13,3 +13,7 @@ jobs:
     uses: maua-dev/ci_workflows_reusable/.github/workflows/pull_request.yml@main
     with:
       repository: ${{ github.repository }}
+  bump_version:
+    uses: maua-dev/ci_workflows_reusable/.github/workflows/bump_version.yml@main
+    with:
+      repository: ${{ github.repository }}
