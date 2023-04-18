@@ -32,3 +32,6 @@ jobs:
 
       - name: Run Code format test/
         run: flutter format --dry-run --set-exit-if-changed test/
+
+      - name: Build Android
+        run: flutter build appbundle --debug
