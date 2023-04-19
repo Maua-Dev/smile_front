@@ -2,14 +2,14 @@ import '../../../../../generated/l10n.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
 
 enum SpeakersEnum {
-  bruno,
   wellington,
   vanessa,
+  bruno,
   andressa,
-  flavia,
   daniela,
+  sonia,
   jonathan,
-  sonia
+  flavia,
 }
 
 extension SpeakersEnumExtension on SpeakersEnum {

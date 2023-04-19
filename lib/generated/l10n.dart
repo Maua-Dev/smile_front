@@ -194,16 +194,6 @@ class S {
     );
   }
 
-  /// `SWIPE TO SEE MORE >>>`
-  String get speakersSwipe {
-    return Intl.message(
-      'SWIPE TO SEE MORE >>>',
-      name: 'speakersSwipe',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `{speakers, select, bruno{Bruno Keizo – Mauá Jr.} wellington{Wellington Vitorino} vanessa{Vanessa Pirateli Occhipinti} andressa{Andressa Martins} flavia{Flávia Janine Rosante Beo} daniela{Daniela Klaiman} jonathan{Jonathan Y. Ando Nelson} sonia{Sonia Guimarães} other{}}`
   String speakersSchemaName(Object speakers) {
     return Intl.select(

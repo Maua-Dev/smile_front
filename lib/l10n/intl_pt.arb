@@ -21,6 +21,7 @@
     "speakersPanelDescription1": "Neste painel, vamos explorar como a liderança está sendo moldada para atuar em um ambiente em constante mudança, seja nos negócios, na tecnologia, na cultura ou mesmo na sociedade, e como os líderes podem se preparar para o futuro.",
     "speakersPanelDescription2": "Os participantes terão a oportunidade de saber mais sobre como a tecnologia está transformando a forma como vivemos, trabalhamos, nos relacionamos e interagimos, assim como as implicações éticas, sociais e econômicas dessas mudanças.",
 
+
     "activitiesTitle": "Atividades",
     "activitiesAndEventsTitle": "Atividades e Eventos",
     "activitiesOfferedName": "{activity, select, COURSES{Cursos} LECTURES{Palestras} HIGH_IMPACT_LECTURES{Palestras de Alto Impacto} TECHNICAL_VISITS{Visitas Técnicas} ACADEMIC_COMPETITIONS{Competições Acadêmicas} HACKATHON{Hackathon} INTERNSHIP_FAIR{Feira de Estágios} ALUMNI_CAFE{Café com Ex-aluno(a)} PROFESSORS_ACADEMY{Academia de Professores} CULTURAL_ACTIVITY{Atividade Cultura} GCSP{GCSP} SPORTS_ACTIVITY{Atividade Esportiva} other{Atividades}}",

@@ -519,8 +519,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Tecnologia em transformação: impactos na sociedade, educação e mercado de trabalho"),
         "speakersSchemaDescription": m17,
         "speakersSchemaName": m18,
-        "speakersSwipe":
-            MessageLookupByLibrary.simpleMessage("DESLIZE PARA VER MAIS >>>"),
         "speakersTitle": MessageLookupByLibrary.simpleMessage("Palestrantes"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Patrocinadores"),
         "subcribeTitle": MessageLookupByLibrary.simpleMessage("Inscrever-se"),

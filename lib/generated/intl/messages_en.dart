@@ -515,8 +515,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Technology in transformation: impacts on society, education and the labor market"),
         "speakersSchemaDescription": m17,
         "speakersSchemaName": m18,
-        "speakersSwipe":
-            MessageLookupByLibrary.simpleMessage("SWIPE TO SEE MORE >>>"),
         "speakersTitle": MessageLookupByLibrary.simpleMessage("Speakers"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Sponsors"),
         "subcribeTitle": MessageLookupByLibrary.simpleMessage("Subscribe"),
