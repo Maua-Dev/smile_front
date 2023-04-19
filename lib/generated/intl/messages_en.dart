@@ -213,6 +213,14 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Chemical Engineer from the State University of Campinas (UNICAMP), Master in Chemical and Biochemical Processes from the Instituto Mauá de Tecnologia, holds an MBA in Digital Business from USP-Esalq and other specializations in areas such as Nutrition (UNICAMP), Business Administration and Leadership (Fundação Dom Cabral). He has more than 20 years of experience in Sales, Marketing and Business Management, Product and Market Development, Innovation, Strategy and Projects, mainly in the Chemical, Pharmaceutical, Cosmetic and Food areas. Today she serves as global director of Distribution Channels in an American multinational company. He exercises inclusive leadership and, throughout his career, has acquired solid experience in managing multicultural teams through global and regional positions in Brazil, Germany, Italy and, currently, in Spain, in complex matrix structures.',
             'andressa':
                 'Control and Automation Engineer and master in Aerospace Systems and Mechatronics, she is currently a professor at the Mauá Institute of Technology. Professor of the robotics team at IMT, she works mainly in the disciplines of industrial automation and engineering fundamentals.',
+            'flavia':
+                'Computer Engineer and Master in Computer Science with more than 6 years of experience in technology. Throughout his career, he has worked on the design and implementation of IBM\'s internal scope web applications. His Master\'s line of research was quantum computing and the performance improvement that can exist for machine learning applications in relation to conventional computing. Currently, she is a Senior Software Engineer in the research area at IBM, developing applications for geolocation inference foundation models. She also teaches at the Mauá Institute of Technology, the institution where she graduated, and as an Assistant Professor, she works in undergraduate IT courses. Participates in initiatives to engage women in technical careers and in technology community events.',
+            'daniela':
+                'Daniela Klaiman is a futurist, speaker and consultant specializing in consumer behavior and one of the leading names in futurism in Brazil and Latin America. Graduated in \'Technology and Futurism\' from the Hebrew University of Jerusalem and post-graduated in \'Trends Research\' from the University of Barcelona, ​​she was Research and Trends Director at Box1824 for 5 years, Consumer Insights Manager at Nike Spain and is a professor of Coolhunting and Futurism at the ESPM University of São Paulo for 12 years. With nearly 20 years of experience working in consumer behavior and new technologies, she is the founder and CEO of FutureFuture, a leading forecasting and strategy firm that helps leaders and Fortune 500 organizations prepare, strategize and innovate in a climate of complex futures.',
+            'jonathan':
+                'Lawyer, post graduate from PUC/SP, certified in privacy and data protection by Data Privacy Brasil and Exin; certified as DPO by Instituto Totum; completed the IAPP Privacy Program Management Training and the Personal Data Protection course at Insper; he is certified by ICSI/UK in Cyber ​​Security, has extensive experience in innovation and technology projects and is a mentor at Ace Startups.',
+            'sonia':
+                'Associate Professor I at the Institute of Aeronautical Technology (ITA) and PhD in physics from the University of Manchester (UK). Sonia is the first black woman to have a doctorate in physics in Brazil, graduating in 1989, a title that led her to become a professor at ITA when the institute still did not accept women among its students, in 1993. At the time, she also became the first woman black teacher at the institution, which is one of the most traditional in Brazil. Born in São Paulo (SP), he currently lives in São José dos Campos, where he continues to teach at ITA.',
             'other': '',
           })}";
 
@@ -221,6 +229,10 @@ class MessageLookup extends MessageLookupByLibrary {
             'wellington': 'Wellington Vitorino',
             'vanessa': 'Vanessa Pirateli Occhipinti',
             'andressa': 'Andressa Martins',
+            'flavia': 'Flávia Janine Rosante Beo',
+            'daniela': 'Daniela Klaiman',
+            'jonathan': 'Jonathan Y. Ando Nelson',
+            'sonia': 'Sonia Guimarães',
             'other': '',
           })}";
 
@@ -493,6 +505,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "speakersAddTitle": MessageLookupByLibrary.simpleMessage("Add Speaker"),
         "speakersMainTitle":
             MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),
+        "speakersPanelDescription1": MessageLookupByLibrary.simpleMessage(
+            "In a rapidly changing world, it is the role of leaders to identify opportunities and face new challenges. The dynamics of the market gives rise to new demands and it is up to the leader to identify and solve problems, mobilize teams to achieve goals, effectively use technology and efficiently manage resources, requiring them to adapt and reinvent themselves continuously. In this panel, we will explore how leadership is being shaped to act in an ever-changing environment, whether in business, technology, culture or even society, and how leaders can prepare for the future."),
+        "speakersPanelDescription2": MessageLookupByLibrary.simpleMessage(
+            "Impacts of technology on society, highlighting the challenges, opportunities and perspectives that arise with technological advancement. In this panel, participants will have the opportunity to learn more about how technology is transforming the way we live, work, relate and interact, as well as the ethical, social and economic implications of these changes."),
+        "speakersPanelTitle1": MessageLookupByLibrary.simpleMessage(
+            "Developing leaders of the future: skills, challenges and opportunities"),
+        "speakersPanelTitle2": MessageLookupByLibrary.simpleMessage(
+            "Technology in transformation: impacts on society, education and the labor market"),
         "speakersSchemaDescription": m17,
         "speakersSchemaName": m18,
         "speakersSwipe":

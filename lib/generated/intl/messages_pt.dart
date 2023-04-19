@@ -212,6 +212,14 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Engenheira química pela Universidade Estadual de Campinas (UNICAMP), mestre em Processos Químicos e Bioquímicos pelo Instituto Mauá de Tecnologia, possui MBA em Digital Business pela USP-Esalq e outras especializações em áreas como Nutrição (UNICAMP), Administração de Empresas e Liderança (Fundação dom Cabral). Possui mais de 20 anos de experiência em Gestão de Vendas, Marketing e Negócios, Desenvolvimento de Produtos e Mercado, Inovação, Estratégia e Projetos, principalmente nas áreas Química, Farmacêutica, Cosmética e de Alimentos. Hoje atua como diretora global de Canais de Distribuição em uma empresa americana multinacional. Exerce uma liderança inclusiva e, ao longo de sua carreira, vem adquirindo sólida experiência em gestão de equipes multiculturais através de posições globais e regionais no Brasil, Alemanha, Itália e, atualmente, na Espanha, em complexas estruturas matriciais.',
             'andressa':
                 'Engenheira de Controle e Automação e mestre em Sistemas Aeroespaciais e Mecatrônica , atualmente é professora do Instituto Mauá de Tecnologia. Professora da equipe de robótica do IMT, atua principalmente nas disciplinas de automação industrial e fundamentos de engenharia.',
+            'flavia':
+                'Engenheira da Computação e Mestre em Ciência da Computação com mais de 6 anos de experiência em tecnologia. Ao longo de sua carreira trabalhou no design e implementação de aplicações web de escopo interno da IBM. Sua linha de pesquisa de Mestrado foi computação quântica e a melhoria de performance que pode existir para aplicações de machine learning em relação à computação convencional. Atualmente, é Engenheira de Software Senior na área de pesquisa da IBM, desenvolvendo aplicações para foundation models de inferência de geolocalização. Também leciona no Instituto Mauá de Tecnologia, instituição onde se formou e como Professora Auxiliar, atua  nos cursos de graduação em TI. Participa de iniciativas para engajar mulheres em carreiras técnicas e em eventos da comunidade de tecnologia.',
+            'daniela':
+                'Daniela Klaiman é futurista, palestrante e consultora especialista no comportamento do consumidor e um dos principais nomes do futurismo do Brasil e da América Latina. Formada em \'Tecnologia e Futurismo\' pela Universidade Hebraica de Jerusalém e pós-graduada em ‘Pesquisa de tendências\' pela Universidade de Barcelona, foi Diretora de Pesquisa e Tendências da Box1824 durante 5 anos, Manager de Consumer Insights na Nike Espanha e é professora de Coolhunting e Futurismo da Universidade ESPM de São Paulo há 12 anos. Com quase 20 anos de experiência trabalhando com comportamento do consumidor e novas tecnologias, é a fundadora e CEO da FutureFuture, uma empresa líder em previsão e estratégia que ajuda líderes e organizações da Fortune 500 a se prepararem, traçarem estratégias e inovarem em um cenário de futuros complexos.',
+            'jonathan':
+                'Advogado, pós graduado pela PUC/SP, certificado em privacidade e proteção de dados pela Data Privacy Brasil e Exin; certificado como DPO pelo Instituto Totum; concluiu o Privacy Program Management Training da IAPP e o curso de Proteção de Dados Pessoais pelo Insper; é certificado pelo ICSI/UK em Cyber Security, possui ampla experiência em projetos de inovação e tecnologia e é mentor na Ace Startups.',
+            'sonia':
+                'Professora Associada I no Instituto de Tecnologia Aeronáutica (ITA) e PhD em física pela Universidade de Manchester (Reino Unido). Sonia é a primeira mulher negra doutora em física no Brasil, formada em 1989, título que a levou a se tornar professora do ITA quando o instituto ainda não aceitava mulheres entre seus alunos, em 1993. Na ocasião, tornou-se também a primeira mulher negra professora na instituição, que é uma das mais tradicionais do Brasil. Natural de São Paulo (SP), atualmente vive em São José dos Campos, onde segue lecionando no ITA.',
             'other': '',
           })}";
 
@@ -220,6 +228,10 @@ class MessageLookup extends MessageLookupByLibrary {
             'wellington': 'Wellington Vitorino',
             'vanessa': 'Vanessa Pirateli Occhipinti',
             'andressa': 'Andressa Martins',
+            'flavia': 'Flávia Janine Rosante Beo',
+            'daniela': 'Daniela Klaiman',
+            'jonathan': 'Jonathan Y. Ando Nelson',
+            'sonia': 'Sonia Guimarães',
             'other': '',
           })}";
 
@@ -497,6 +509,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Adicionar Palestrante"),
         "speakersMainTitle": MessageLookupByLibrary.simpleMessage(
             "Principais Palestrantes - 2022"),
+        "speakersPanelDescription1": MessageLookupByLibrary.simpleMessage(
+            "Em um mundo em rápida transformação, é papel dos líderes identificar oportunidades e enfrentar novos desafios. A dinâmica do mercado faz surgir novas demandas e ao líder cabe identificar e solucionar problemas, mobilizar equipes para atingir objetivos, utilizar eficazmente a tecnologia e gerenciar recursos de modo eficiente, exigindo que se adaptem e se reinventem continuamente. Neste painel, vamos explorar como a liderança está sendo moldada para atuar em um ambiente em constante mudança, seja nos negócios, na tecnologia, na cultura ou mesmo na sociedade, e como os líderes podem se preparar para o futuro."),
+        "speakersPanelDescription2": MessageLookupByLibrary.simpleMessage(
+            "Impactos da tecnologia na sociedade, destacando os desafios, oportunidades e perspectivas que surgem com o avanço tecnológico. Neste painel, os participantes terão a oportunidade de saber mais sobre como a tecnologia está transformando a forma como vivemos, trabalhamos, nos relacionamos e interagimos, assim como as implicações éticas, sociais e econômicas dessas mudanças."),
+        "speakersPanelTitle1": MessageLookupByLibrary.simpleMessage(
+            "Desenvolvendo líderes do futuro: habilidades, desafios e oportunidades"),
+        "speakersPanelTitle2": MessageLookupByLibrary.simpleMessage(
+            "Tecnologia em transformação: impactos na sociedade, educação e mercado de trabalho"),
         "speakersSchemaDescription": m17,
         "speakersSchemaName": m18,
         "speakersSwipe":
