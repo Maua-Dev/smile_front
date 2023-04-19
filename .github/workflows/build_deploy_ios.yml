@@ -11,6 +11,7 @@ jobs:
   build_IOS_App:
     name: Build IOS App
     runs-on: macos-latest
+    environment: homolog
     permissions:
       id-token: write
       contents: write
@@ -51,7 +52,7 @@ jobs:
           code-signing-identity: ${{ vars.CODE_SIGNING_IDENTITY }}
 
       - name: Exec fastlane
-        run: bundle exec fastlane homolog
+        run: bundle exec fastlane ${{ github.ref_name }}
         env:
           APP_PATH: /Users/runner/work/smile_front/smile_front/output.ipa
           ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
