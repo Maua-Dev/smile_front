@@ -205,28 +205,22 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m17(speakers) => "${Intl.select(speakers, {
-            'nina':
-                'He studied administration at the Fluminense Federal University, had his first contact with technology in the second year of college, in his first job. She was invited to join the company\'s team that worked with the SAP ERP system. From then on, he deepened his studies, took his certification and made his way into technology.',
-            'viviane':
-                'Viviane Nunes is a businesswoman and director of VN Comunicação. Specialist in institutional relations, with specialization in Energy Efficiency and Business Management in Oil, Gas and Biofuels. In her lectures, subjects related to strategies, women in the labor market and incentives for professional training are addressed.',
-            'leila':
-                'Leila Ferreira holds a degree in Journalism and Letters, with a Masters in Communication from the University of London, worked as a reporter at Rede Globo Minas and, for ten years, presented the program “Leila Interview”, on Rede Minas and TV Alterosa/SBT, which produced 13 international stories. She is the author of the books “Living doesn\'t hurt”, “The art of being light”, “Women – Why would they…?” and “Leila Interview: Backstage”.',
-            'boris':
-                'Designer, Automotive Design Consultant, teacher and speaker with international work experiences in the US, India, China, Europe and several other countries.',
-            'marco':
-                'Political Scientist, Professor and Researcher in the area of ​​Management and Public Policy. He was a commentator for the CBNSP program, on Rádio CBN, between 2012 and 2021, where he addressed issues related to the problems of the city of São Paulo and its public policies. He is one of the editors of the Blog \"Gestão, Política & Sociedade\" housed in the newspaper O Estado de São Paulo.',
-            'willian':
-                'He graduated in Physics from the Federal University of Santa Catarina, with a PhD in Astronomy from the University of Granada, worked as a FAPESP Technical Scholarship for the construction of a robotic telescope in Chile and currently works as an Instrument Control Specialist at the Gigante de Magalhães Observatory (GMT ).',
+            'bruno':
+                'Current Vice President of the junior consulting firm, Mauá Jr. Student of the third year of Production Engineering at the Mauá Institute of Technology and Electronics Technician graduated from the Federal Institute of São Paulo (IFSP). A very curious person who likes to explore new challenges and get to know new environments. Interested in languages ​​and new cultures, he is always willing to acquire new knowledge.',
+            'wellington':
+                'Entrepreneur since childhood. At the age of 12, he founded a small candy factory. He worked as a popsicle seller within a police battalion in RJ for three years of his adolescence. He was a public school student until he received a scholarship to attend the 3rd year of high school at a private school in the south of Rio. He received a scholarship from the American Embassy, ​​Parque da Gávea School, Casa de Espanha and Oxford English Centre. He has a scholarship from Fundação Estudar, Jovem Talento from Fundação Arymax and from the Leaders Network of Fundação Lemann. Its history was reported in chapter 9 of the book Culture of Excellence. Graduated in Business Administration at Ibmec/RJ. He worked at Stone SA, a means of payment company, one of the Brazilian unicorns, running the company\'s first corporate education project. He founded Instituto Four, the organization responsible for ProLider, the largest leadership training program in Brazil. He idealized the Four Summit, one of the biggest discussion events in Brazil on Brazilian soil. In recognition of his work, he was invited to speak at Harvard University. He was elected Forbes Under 30 by Forbes magazine, being the highlight in the Third Sector and Social Impact category and the youngest director of the Brazilian Sailing Confederation. In 2021 he was approved at the MIT MBA in Boston in the United States.',
+            'vanessa':
+                'Chemical Engineer from the State University of Campinas (UNICAMP), Master in Chemical and Biochemical Processes from the Instituto Mauá de Tecnologia, holds an MBA in Digital Business from USP-Esalq and other specializations in areas such as Nutrition (UNICAMP), Business Administration and Leadership (Fundação Dom Cabral). He has more than 20 years of experience in Sales, Marketing and Business Management, Product and Market Development, Innovation, Strategy and Projects, mainly in the Chemical, Pharmaceutical, Cosmetic and Food areas. Today she serves as global director of Distribution Channels in an American multinational company. He exercises inclusive leadership and, throughout his career, has acquired solid experience in managing multicultural teams through global and regional positions in Brazil, Germany, Italy and, currently, in Spain, in complex matrix structures.',
+            'andressa':
+                'Control and Automation Engineer and master in Aerospace Systems and Mechatronics, she is currently a professor at the Mauá Institute of Technology. Professor of the robotics team at IMT, she works mainly in the disciplines of industrial automation and engineering fundamentals.',
             'other': '',
           })}";
 
   static String m18(speakers) => "${Intl.select(speakers, {
-            'nina': 'Nina Silva',
-            'viviane': 'Viviane Nunes',
-            'leila': 'Leila Ferreira',
-            'boris': 'Bóris Fabris',
-            'marco': 'Marco Antonio Teixeira',
-            'willian': 'Dr. William Schoenell',
+            'bruno': 'Bruno Keizo – Mauá Jr.',
+            'wellington': 'Wellington Vitorino',
+            'vanessa': 'Vanessa Pirateli Occhipinti',
+            'andressa': 'Andressa Martins',
             'other': '',
           })}";
 

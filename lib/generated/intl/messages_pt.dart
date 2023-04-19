@@ -204,28 +204,22 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m17(speakers) => "${Intl.select(speakers, {
-            'nina':
-                'Cursou administração na Universidade Federal Fluminense, teve seu primeiro contato com tecnologia no segundo ano da faculdade, em seu primeiro emprego. Foi convidada a integrar o time da empresa que trabalhava com o sistema ERP da SAP. A partir de então, aprofundou seus estudos, tirou a sua certiﬁcação e trilhou seu caminho dentro da tecnologia.',
-            'viviane':
-                'Viviane Nunes é empresária e diretora da VN Comunicação.  Especialista em relações institucionais, possui especialização em Eficiência Energética e em Gestão de Negócios em Petróleo, Gás e  Biocombustíveis. Em suas palestras são abordados assuntos voltados à estratégias, mulheres no mercado de trabalho e incentivo à formação profissional.',
-            'leila':
-                'Leila Ferreira é graduada em Jornalismo e Letras, com mestrado em Comunicação pela Universidade de Londres, trabalhou como repórter na Rede Globo Minas e, durante dez anos, apresentou o programa “Leila Entrevista”, na Rede Minas e TV Alterosa/SBT, que produziu 13 histórias internacionais. Ela é autora dos livros “Viver não dói”, “A arte de ser leve”, “Mulheres – Por que será que elas…?” e “Leila Entrevista: Bastidores”.',
-            'boris':
-                'Designer, Consultor de Design Automotivo, professor e palestrante com experiências de trabalho internacionais nos EUA, Índia, China, Europa e diversos outros países.',
-            'marco':
-                'Cientista Político, Professor e Pesquisador na área de Gestão e Políticas Públicas. Foi comentarista do programa CBNSP, da Rádio CBN, entre 2012 e 2021, onde tratou de questões ligadas aos problemas da cidade de São Paulo e suas políticas públicas. É um dos editores do Blog \"Gestão, Política & Sociedade\" abrigado no jornal O Estado de São Paulo.',
-            'willian':
-                'Se formou em Física pela Univerisade Federal de Santa Catarina, com Doutorado em Astronomia pela Universidade de Granada, trabalhou como Bolsista Técnico FAPESP para a construção de um telescópio robótico no Chile e atualmente trabalha como Especialista em Controle de Instrumentos no Observatório Gigante de Magalhães (GMT).',
+            'bruno':
+                'Atual Vice-Presidente da empresa de consultoria júnior, Mauá Jr. Estudante do terceiro ano de Engenharia de Produção no Instituto Mauá de Tecnologia e Técnico em Eletrônica formado pelo Instituto Federal de São Paulo (IFSP). Uma pessoa muito curiosa que gosta de explorar novos desafios e conhecer novos ambientes. Interessado em idiomas e novas culturas, está sempre disposto a adquirir novos conhecimentos.',
+            'wellington':
+                'Empreendedor desde criança. Aos 12 anos de idade fundou uma pequena fábrica de doces. Trabalhou como vendedor de picolé dentro de um batalhão de polícia no RJ durante três anos da sua adolescência. Foi aluno da rede pública, até que recebeu uma bolsa para cursar o 3º ano do Ensino Médio em uma escola privada na zona sul do Rio. Foi bolsista da Embaixada Americana, Escola Parque da Gávea, Casa de Espanha e Oxford English Centre. É bolsista da Fundação Estudar, Jovem Talento da Fundação Arymax e da Rede de Líderes da Fundação Lemann. Sua história foi relatada no capítulo 9 do livro Cultura de Excelência. Formou-se em Administração de Empresas no Ibmec/RJ. Atuou na Stone SA, empresa de meios de pagamentos um dos unicórnios brasileiros, tocando o primeiro projeto de educação corporativa da companhia. Fundou o Instituto Four, organização responsável pelo ProLíder o Maior Programa de Formação de lideranças do Brasil. Idealizou o Four Summit, um dos maiores eventos de discussão de Brasil em solo brasileiro. Como reconhecimento pelo seu trabalho foi convidado para palestrar na Universidade de Harvard. Foi eleito Forbes Under 30 pela revista Forbes sendo o destaque na categoria Terceiro Setor e Impacto Social e o mais jovem conselheiro da Confederação Brasileira de Vela. Em 2021 foi aprovado no MBA do MIT em Boston nos Estados Unidos.',
+            'vanessa':
+                'Engenheira química pela Universidade Estadual de Campinas (UNICAMP), mestre em Processos Químicos e Bioquímicos pelo Instituto Mauá de Tecnologia, possui MBA em Digital Business pela USP-Esalq e outras especializações em áreas como Nutrição (UNICAMP), Administração de Empresas e Liderança (Fundação dom Cabral). Possui mais de 20 anos de experiência em Gestão de Vendas, Marketing e Negócios, Desenvolvimento de Produtos e Mercado, Inovação, Estratégia e Projetos, principalmente nas áreas Química, Farmacêutica, Cosmética e de Alimentos. Hoje atua como diretora global de Canais de Distribuição em uma empresa americana multinacional. Exerce uma liderança inclusiva e, ao longo de sua carreira, vem adquirindo sólida experiência em gestão de equipes multiculturais através de posições globais e regionais no Brasil, Alemanha, Itália e, atualmente, na Espanha, em complexas estruturas matriciais.',
+            'andressa':
+                'Engenheira de Controle e Automação e mestre em Sistemas Aeroespaciais e Mecatrônica , atualmente é professora do Instituto Mauá de Tecnologia. Professora da equipe de robótica do IMT, atua principalmente nas disciplinas de automação industrial e fundamentos de engenharia.',
             'other': '',
           })}";
 
   static String m18(speakers) => "${Intl.select(speakers, {
-            'nina': 'Nina Silva',
-            'viviane': 'Viviane Nunes',
-            'leila': 'Leila Ferreira',
-            'boris': 'Bóris Fabris',
-            'marco': 'Marco Antonio Teixeira',
-            'willian': 'Dr. William Schoenell',
+            'bruno': 'Bruno Keizo – Mauá Jr.',
+            'wellington': 'Wellington Vitorino',
+            'vanessa': 'Vanessa Pirateli Occhipinti',
+            'andressa': 'Andressa Martins',
             'other': '',
           })}";
 
