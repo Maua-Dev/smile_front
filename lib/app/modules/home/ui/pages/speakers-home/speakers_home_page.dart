@@ -26,36 +26,39 @@ class _SpeakersHomePageState
           const SizedBox(
             height: 100,
           ),
-          SpeakerPanelWebWidget(
-            title: S.of(context).speakersPanelTitle1,
-            description: S.of(context).speakersPanelDescription1,
-            indexToShow: controller.indexToShowPanel1,
-            children: SpeakersEnum.values
-                .take(4)
-                .map(
-                  (e) => MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: GestureDetector(
-                      onTap: () {
-                        controller.toggleIndexPanel1(e.index);
-                      },
-                      child: Opacity(
-                        opacity:
-                            controller.indexToShowPanel1 == e.index ? 0.5 : 1.0,
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width / 11,
-                          height: MediaQuery.of(context).size.width / 11,
-                          child: CircleAvatar(
-                            backgroundColor: Colors.white,
-                            backgroundImage: NetworkImage(e.linkPhoto),
+          Observer(builder: (_) {
+            return SpeakerPanelWebWidget(
+              title: S.of(context).speakersPanelTitle1,
+              description: S.of(context).speakersPanelDescription1,
+              indexToShow: controller.indexToShowPanel1,
+              children: SpeakersEnum.values
+                  .take(4)
+                  .map(
+                    (e) => MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () {
+                          controller.toggleIndexPanel1(e.index);
+                        },
+                        child: Opacity(
+                          opacity: controller.indexToShowPanel1 == e.index
+                              ? 0.5
+                              : 1.0,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width / 11,
+                            height: MediaQuery.of(context).size.width / 11,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              backgroundImage: NetworkImage(e.linkPhoto),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                )
-                .toList(),
-          ),
+                  )
+                  .toList(),
+            );
+          }),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.1,
           ),
@@ -146,10 +149,10 @@ class _SpeakersHomePageState
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            controller.toggleIndexPanel1(e.index);
+                            controller.toggleIndexPanel2(e.index);
                           },
                           child: Opacity(
-                            opacity: controller.indexToShowPanel1 == e.index
+                            opacity: controller.indexToShowPanel2 == e.index
                                 ? 0.5
                                 : 1.0,
                             child: SizedBox(

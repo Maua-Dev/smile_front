@@ -506,7 +506,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "speakersMainTitle":
             MessageLookupByLibrary.simpleMessage("Main Speakers - 2022"),
         "speakersPanelDescription1": MessageLookupByLibrary.simpleMessage(
-            "In a rapidly changing world, it is the role of leaders to identify opportunities and face new challenges. The dynamics of the market gives rise to new demands and it is up to the leader to identify and solve problems, mobilize teams to achieve goals, effectively use technology and efficiently manage resources, requiring them to adapt and reinvent themselves continuously. In this panel, we will explore how leadership is being shaped to act in an ever-changing environment, whether in business, technology, culture or even society, and how leaders can prepare for the future."),
+            "In this panel, we will explore how leadership is being shaped to act in an ever-changing environment, whether in business, technology, culture or even society, and how leaders can prepare for the future."),
         "speakersPanelDescription2": MessageLookupByLibrary.simpleMessage(
             "Impacts of technology on society, highlighting the challenges, opportunities and perspectives that arise with technological advancement. In this panel, participants will have the opportunity to learn more about how technology is transforming the way we live, work, relate and interact, as well as the ethical, social and economic implications of these changes."),
         "speakersPanelTitle1": MessageLookupByLibrary.simpleMessage(
@@ -515,8 +515,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Technology in transformation: impacts on society, education and the labor market"),
         "speakersSchemaDescription": m17,
         "speakersSchemaName": m18,
-        "speakersSwipe":
-            MessageLookupByLibrary.simpleMessage("SWIPE TO SEE MORE >>>"),
         "speakersTitle": MessageLookupByLibrary.simpleMessage("Speakers"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Sponsors"),
         "subcribeTitle": MessageLookupByLibrary.simpleMessage("Subscribe"),

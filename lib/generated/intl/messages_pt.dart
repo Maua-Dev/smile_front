@@ -510,7 +510,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "speakersMainTitle": MessageLookupByLibrary.simpleMessage(
             "Principais Palestrantes - 2022"),
         "speakersPanelDescription1": MessageLookupByLibrary.simpleMessage(
-            "Em um mundo em rápida transformação, é papel dos líderes identificar oportunidades e enfrentar novos desafios. A dinâmica do mercado faz surgir novas demandas e ao líder cabe identificar e solucionar problemas, mobilizar equipes para atingir objetivos, utilizar eficazmente a tecnologia e gerenciar recursos de modo eficiente, exigindo que se adaptem e se reinventem continuamente. Neste painel, vamos explorar como a liderança está sendo moldada para atuar em um ambiente em constante mudança, seja nos negócios, na tecnologia, na cultura ou mesmo na sociedade, e como os líderes podem se preparar para o futuro."),
+            "Neste painel, vamos explorar como a liderança está sendo moldada para atuar em um ambiente em constante mudança, seja nos negócios, na tecnologia, na cultura ou mesmo na sociedade, e como os líderes podem se preparar para o futuro."),
         "speakersPanelDescription2": MessageLookupByLibrary.simpleMessage(
             "Impactos da tecnologia na sociedade, destacando os desafios, oportunidades e perspectivas que surgem com o avanço tecnológico. Neste painel, os participantes terão a oportunidade de saber mais sobre como a tecnologia está transformando a forma como vivemos, trabalhamos, nos relacionamos e interagimos, assim como as implicações éticas, sociais e econômicas dessas mudanças."),
         "speakersPanelTitle1": MessageLookupByLibrary.simpleMessage(
@@ -519,8 +519,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Tecnologia em transformação: impactos na sociedade, educação e mercado de trabalho"),
         "speakersSchemaDescription": m17,
         "speakersSchemaName": m18,
-        "speakersSwipe":
-            MessageLookupByLibrary.simpleMessage("DESLIZE PARA VER MAIS >>>"),
         "speakersTitle": MessageLookupByLibrary.simpleMessage("Palestrantes"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Patrocinadores"),
         "subcribeTitle": MessageLookupByLibrary.simpleMessage("Inscrever-se"),

@@ -194,16 +194,6 @@ class S {
     );
   }
 
-  /// `SWIPE TO SEE MORE >>>`
-  String get speakersSwipe {
-    return Intl.message(
-      'SWIPE TO SEE MORE >>>',
-      name: 'speakersSwipe',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `{speakers, select, bruno{Bruno Keizo – Mauá Jr.} wellington{Wellington Vitorino} vanessa{Vanessa Pirateli Occhipinti} andressa{Andressa Martins} flavia{Flávia Janine Rosante Beo} daniela{Daniela Klaiman} jonathan{Jonathan Y. Ando Nelson} sonia{Sonia Guimarães} other{}}`
   String speakersSchemaName(Object speakers) {
     return Intl.select(
@@ -274,10 +264,10 @@ class S {
     );
   }
 
-  /// `In a rapidly changing world, it is the role of leaders to identify opportunities and face new challenges. The dynamics of the market gives rise to new demands and it is up to the leader to identify and solve problems, mobilize teams to achieve goals, effectively use technology and efficiently manage resources, requiring them to adapt and reinvent themselves continuously. In this panel, we will explore how leadership is being shaped to act in an ever-changing environment, whether in business, technology, culture or even society, and how leaders can prepare for the future.`
+  /// `In this panel, we will explore how leadership is being shaped to act in an ever-changing environment, whether in business, technology, culture or even society, and how leaders can prepare for the future.`
   String get speakersPanelDescription1 {
     return Intl.message(
-      'In a rapidly changing world, it is the role of leaders to identify opportunities and face new challenges. The dynamics of the market gives rise to new demands and it is up to the leader to identify and solve problems, mobilize teams to achieve goals, effectively use technology and efficiently manage resources, requiring them to adapt and reinvent themselves continuously. In this panel, we will explore how leadership is being shaped to act in an ever-changing environment, whether in business, technology, culture or even society, and how leaders can prepare for the future.',
+      'In this panel, we will explore how leadership is being shaped to act in an ever-changing environment, whether in business, technology, culture or even society, and how leaders can prepare for the future.',
       name: 'speakersPanelDescription1',
       desc: '',
       args: [],
