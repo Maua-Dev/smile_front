@@ -7,12 +7,12 @@ import '../../../../../../shared/utils/screen_helper.dart';
 import '../../../../domain/infra/speakers_enum.dart';
 import '../../widgets/header/h1_header_text_widget.dart';
 
-class SpeakerPanelWidget extends StatelessWidget {
+class SpeakerPanelWebWidget extends StatelessWidget {
   final String title;
   final String description;
   final List<Widget> children;
   final int indexToShow;
-  const SpeakerPanelWidget(
+  const SpeakerPanelWebWidget(
       {super.key,
       required this.title,
       required this.description,
