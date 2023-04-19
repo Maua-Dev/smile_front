@@ -25,7 +25,7 @@ class _SpeakersHomePageState
     if (Screen.width(context) > cellphoneSize) {
       return Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
           SpeakerPanelWidget(
