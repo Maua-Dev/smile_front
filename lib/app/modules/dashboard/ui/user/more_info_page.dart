@@ -437,10 +437,21 @@ class _MoreInfoPageState
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  controller.activity.description,
-                  style: AppTextStyles.body
-                      .copyWith(color: Colors.black, fontSize: 16),
+                child: Html(
+                  data: controller.activity.description,
+                  style: {
+                    "body": Style(
+                      margin: EdgeInsets.zero,
+                      padding: EdgeInsets.zero,
+                      fontSize: const FontSize(16),
+                      color: Colors.black,
+                      textAlign: TextAlign.justify,
+                    ),
+                  },
+                  onLinkTap: (url, context, attributes, element) => url != null
+                      ? launchUrl(Uri.parse(url),
+                          mode: LaunchMode.externalApplication)
+                      : null,
                 ),
               ),
               const SizedBox(height: 12),
