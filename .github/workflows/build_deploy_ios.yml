@@ -1,8 +1,7 @@
 name: Build & Deploy to App Store and Testflight
 on:
   workflow_dispatch:
-    
-    
+
   # push:
   #   paths:
   #     - 'pubspec.yaml'
@@ -15,17 +14,17 @@ jobs:
     name: Build IOS App
     runs-on: macos-latest
     permissions:
-        id-token: write
-        contents: write
+      id-token: write
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
+
       - name: Setup Java Version
         uses: actions/setup-java@v1
         with:
-          java-version: '12.x'
-      
+          java-version: "12.x"
+
       - name: Setup Flutter Version
         uses: subosito/flutter-action@v1
         with:
@@ -46,9 +45,9 @@ jobs:
         with:
           project-path: ios/Runner.xcodeproj
           workspace-path: ios/Runner.xcworkspace
-          team-id: ${{ secrets.TEAM_ID }}     
+          team-id: ${{ secrets.TEAM_ID }}
           mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
-          p12-base64: ${{ secrets.P12_KEY }}        
+          p12-base64: ${{ secrets.P12_KEY }}
           certificate-password: ${{ secrets.PW_CERT }}
           export-method: ${{ vars.EXPORT_METHOD }}
           code-signing-identity: ${{ vars.CODE_SIGNING_IDENTITY }}
