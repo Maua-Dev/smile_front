@@ -1,8 +1,6 @@
 name: Build & Deploy to App Store and Testflight
 on:
-  workflow_dispatch:
-
-  # push:
+  push:
   #   paths:
   #     - 'pubspec.yaml'
   #   branches:
