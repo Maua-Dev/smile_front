@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
@@ -436,10 +437,21 @@ class _MoreInfoPageState
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  controller.activity.description,
-                  style: AppTextStyles.body
-                      .copyWith(color: Colors.black, fontSize: 16),
+                child: Html(
+                  data: controller.activity.description,
+                  style: {
+                    "body": Style(
+                      margin: EdgeInsets.zero,
+                      padding: EdgeInsets.zero,
+                      fontSize: const FontSize(16),
+                      color: Colors.black,
+                      textAlign: TextAlign.justify,
+                    ),
+                  },
+                  onLinkTap: (url, context, attributes, element) => url != null
+                      ? launchUrl(Uri.parse(url),
+                          mode: LaunchMode.externalApplication)
+                      : null,
                 ),
               ),
               const SizedBox(height: 12),
@@ -499,10 +511,27 @@ class _MoreInfoPageState
                         controller.activity.speakers[index].bio != '')
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(controller.activity.speakers[index].bio!,
-                            textAlign: TextAlign.justify,
-                            style: AppTextStyles.body
-                                .copyWith(fontSize: 16, color: Colors.black)),
+                        child: Html(
+                          shrinkWrap: true,
+                          data: controller.activity.speakers[index].bio!,
+                          onLinkTap: (url, context, attributes, element) =>
+                              url != null
+                                  ? launchUrl(Uri.parse(url),
+                                      mode: LaunchMode.externalApplication)
+                                  : null,
+                          style: {
+                            "body": Style(
+                              margin: EdgeInsets.zero,
+                              padding: EdgeInsets.zero,
+                              fontSize: const FontSize(16),
+                              color: Colors.black,
+                              textAlign: TextAlign.justify,
+                            ),
+                          },
+                          // textAlign: TextAlign.justify,
+                          // style: AppTextStyles.body
+                          //     .copyWith(fontSize: 16, color: Colors.black)
+                        ),
                       ),
                     const SizedBox(
                       height: 8,
