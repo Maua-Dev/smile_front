@@ -40,7 +40,7 @@ jobs:
           working-directory: ios
 
       - name: iOS Build Action
-        uses: yukiarrr/ios-build-action@v1.9.0
+        uses: yukiarrr/ios-build-action@v1.8.0
         with:
           project-path: ios/Runner.xcodeproj
           workspace-path: ios/Runner.xcworkspace
