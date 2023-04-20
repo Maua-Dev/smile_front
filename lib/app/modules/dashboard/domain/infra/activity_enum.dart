@@ -6,6 +6,7 @@ import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
 
 enum ActivityEnum {
+  MAUA_PLUS,
   COURSES,
   LECTURES,
   HIGH_IMPACT_LECTURES,
@@ -16,7 +17,6 @@ enum ActivityEnum {
   ALUMNI_CAFE,
   PROFESSORS_ACADEMY,
   CULTURAL_ACTIVITY,
-  GCSP,
   SPORTS_ACTIVITY
 }
 
@@ -51,7 +51,7 @@ extension ActivityEnumExtension on ActivityEnum {
         return '${previousEditionsBaseUrl}academia_professores.png';
       case ActivityEnum.CULTURAL_ACTIVITY:
         return '${previousEditionsBaseUrl}atividade_cultural.png';
-      case ActivityEnum.GCSP:
+      case ActivityEnum.MAUA_PLUS:
         return '${previousEditionsBaseUrl}gcsp.png';
       case ActivityEnum.SPORTS_ACTIVITY:
         return '${previousEditionsBaseUrl}atividade_esportiva.png';

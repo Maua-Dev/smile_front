@@ -36,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'LECTURES':
                 'The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.',
             'HIGH_IMPACT_LECTURES':
-                'The high-impact lectures will be delivered by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!',
+                'The panels will be carried out by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!',
             'TECHNICAL_VISITS':
                 'In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.',
             'ACADEMIC_COMPETITIONS':
@@ -51,8 +51,6 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.',
             'CULTURAL_ACTIVITY':
                 'Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.',
-            'GCSP':
-                'The GCSP - Grand Challenges Scholars Program is a program that offers undergraduate students the opportunity to work with the great challenges of humanity, being mentored by professors.',
             'SPORTS_ACTIVITY':
                 'Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!',
             'other': 'Activity',
@@ -61,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(activity) => "${Intl.select(activity, {
             'COURSE': 'Courses',
             'LECTURES': 'Speeches',
-            'HIGH_IMPACT_LECTURES': 'High Impact Speeches',
+            'HIGH_IMPACT_LECTURES': 'Panels',
             'TECHNICAL_VISITS': 'Technical Visits',
             'ACADEMIC_COMPETITIONS': 'Academic Competitions',
             'HACKATHON': 'Hackathon',
@@ -69,7 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'ALUMNI_CAFE': 'Coffeee with alumni',
             'PROFESSORS_ACADEMY': 'Teachers Academy',
             'CULTURAL_ACTIVITY': 'Cultural Activity',
-            'GCSP': 'GCSP',
+            'MAUA_PLUS': 'Mauá Plus',
             'SPORTS_ACTIVITY': 'Sport Activity',
             'other': 'Activities',
           })}";

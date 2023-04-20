@@ -36,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'LECTURES':
                 'As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.',
             'HIGH_IMPACT_LECTURES':
-                'As palestras de alto impacto serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!',
+                'Os painéis serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!',
             'TECHNICAL_VISITS':
                 'Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.',
             'ACADEMIC_COMPETITIONS':
@@ -51,8 +51,6 @@ class MessageLookup extends MessageLookupByLibrary {
                 'A Academia de Professores tem como foco a formação continuada, disseminação de estratégias e ferramentas de ensino para professores do IMT e professores do Ensino Médio.',
             'CULTURAL_ACTIVITY':
                 'Você faz parte de uma banda? Canta? Toca algum instrumento? Gosta de poesia, literatura? Faz teatro? Dança? Venha compatilhar seu talento com a gente! Será uma tarde de apresentações, integração e muita alegria no campus.',
-            'GCSP':
-                'O GCSP - Grand Challenges Scholars Program é um programa que oferece aos alunos de graduação a oportunidade de trabalhar com grandes desafios da humanidade, sendo mentorados por professores.',
             'SPORTS_ACTIVITY':
                 'Os participantes conhecerão duas atividades interessantes: spikeball e flag football. Além disso, também serão oferecidas diversas atividades, tais como, ginástica funcional, meditação energizante e pilates! Todos os participantes poderão interagir com o(a) palestrante e professores(as)! Acompanhe e participe!',
             'other': 'Atividades',
@@ -61,15 +59,15 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(activity) => "${Intl.select(activity, {
             'COURSES': 'Cursos',
             'LECTURES': 'Palestras',
-            'HIGH_IMPACT_LECTURES': 'Palestras de Alto Impacto',
+            'HIGH_IMPACT_LECTURES': 'Painéis',
             'TECHNICAL_VISITS': 'Visitas Técnicas',
             'ACADEMIC_COMPETITIONS': 'Competições Acadêmicas',
             'HACKATHON': 'Hackathon',
             'INTERNSHIP_FAIR': 'Feira de Estágios',
             'ALUMNI_CAFE': 'Café com Ex-aluno(a)',
             'PROFESSORS_ACADEMY': 'Academia de Professores',
-            'CULTURAL_ACTIVITY': 'Atividade Cultura',
-            'GCSP': 'GCSP',
+            'CULTURAL_ACTIVITY': 'Atividade CulturaL',
+            'MAUA_PLUS': 'Mauá Plus',
             'SPORTS_ACTIVITY': 'Atividade Esportiva',
             'other': 'Atividades',
           })}";
