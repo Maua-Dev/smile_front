@@ -1,17 +1,18 @@
 name: Build & Deploy to App Store and Testflight
 on:
   push:
-  #   paths:
-  #     - 'pubspec.yaml'
-  #   branches:
-  #     - homolog
-  #     - prod
+    paths:
+      - 'pubspec.yaml'
+    branches:
+      - homolog
+      - prod
 
 jobs:
   build_IOS_App:
+    if: contains(github.event.head_commit.message, 'bump version')
     name: Build IOS App
     runs-on: macos-latest
-    environment: homolog
+    environment: ${{ github.ref_name }}
     permissions:
       id-token: write
       contents: write
@@ -45,7 +46,7 @@ jobs:
       - name: Pods install
         run: pod install
         working-directory: ios
-      
+
       - name: iOS Build Action
         uses: yukiarrr/ios-build-action@v1.8.0
         with:
@@ -58,7 +59,7 @@ jobs:
           code-signing-identity: ${{ vars.CODE_SIGNING_IDENTITY }}
 
       - name: Exec fastlane
-        run: bundle exec fastlane homolog
+        run: bundle exec fastlane ${{ github.ref_name }}
         env:
           APP_PATH: /Users/runner/work/smile_front/smile_front/output.ipa
           ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
