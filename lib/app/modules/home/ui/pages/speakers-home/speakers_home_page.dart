@@ -8,6 +8,7 @@ import 'package:smile_front/generated/l10n.dart';
 import '../../../../../shared/entities/screen_variables.dart';
 import '../../../../../shared/utils/screen_helper.dart';
 import '../../../domain/infra/speakers_enum.dart';
+import '../widgets/header/h1_header_text_widget.dart';
 
 class SpeakersHomePage extends StatefulWidget {
   const SpeakersHomePage({Key? key}) : super(key: key);
@@ -23,8 +24,11 @@ class _SpeakersHomePageState
     if (Screen.width(context) > cellphoneSize) {
       return Column(
         children: [
+          const H1HeaderTextWidget(
+            title: 'Painéis',
+          ),
           const SizedBox(
-            height: 100,
+            height: 16,
           ),
           Observer(builder: (_) {
             return SpeakerPanelWebWidget(

@@ -8,7 +8,6 @@ import '../../../../shared/utils/s3_assets_url.dart';
 enum ActivityEnum {
   COURSES,
   LECTURES,
-  HIGH_IMPACT_LECTURES,
   TECHNICAL_VISITS,
   ACADEMIC_COMPETITIONS,
   HACKATHON,
@@ -17,6 +16,7 @@ enum ActivityEnum {
   PROFESSORS_ACADEMY,
   CULTURAL_ACTIVITY,
   SPORTS_ACTIVITY,
+  HIGH_IMPACT_LECTURES,
   MAUA_PLUS,
 }
 
