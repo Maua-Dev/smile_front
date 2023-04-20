@@ -10,6 +10,15 @@ part of 'more_info_responsible_activities_controller.dart';
 
 mixin _$MoreInfoResponsibleActivitiesController
     on MoreInfoResponsibleActivitiesControllerBase, Store {
+  Computed<String>? _$emailLogDevCommunityComputed;
+
+  @override
+  String get emailLogDevCommunity => (_$emailLogDevCommunityComputed ??= Computed<
+              String>(() => super.emailLogDevCommunity,
+          name:
+              'MoreInfoResponsibleActivitiesControllerBase.emailLogDevCommunity'))
+      .value;
+
   late final _$isLoadingAtom = Atom(
       name: 'MoreInfoResponsibleActivitiesControllerBase.isLoading',
       context: context);
@@ -260,6 +269,16 @@ mixin _$MoreInfoResponsibleActivitiesController
         .run(() => super.toogleListSwitch(value, index));
   }
 
+  late final _$sendEmailToAllAsyncAction = AsyncAction(
+      'MoreInfoResponsibleActivitiesControllerBase.sendEmailToAll',
+      context: context);
+
+  @override
+  Future<dynamic> sendEmailToAll(List<EnrollmentsModel> enrollments) {
+    return _$sendEmailToAllAsyncAction
+        .run(() => super.sendEmailToAll(enrollments));
+  }
+
   late final _$MoreInfoResponsibleActivitiesControllerBaseActionController =
       ActionController(
           name: 'MoreInfoResponsibleActivitiesControllerBase',
@@ -379,7 +398,8 @@ professorList: ${professorList},
 professorActivityWithEnrollments: ${professorActivityWithEnrollments},
 initialTime: ${initialTime},
 finalTime: ${finalTime},
-isButtonLoading: ${isButtonLoading}
+isButtonLoading: ${isButtonLoading},
+emailLogDevCommunity: ${emailLogDevCommunity}
     ''';
   }
 }

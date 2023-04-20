@@ -264,22 +264,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
     });
   }
 
-  late final _$acceptImageAtom =
-      Atom(name: 'RegisterControllerBase.acceptImage', context: context);
-
-  @override
-  bool get acceptImage {
-    _$acceptImageAtom.reportRead();
-    return super.acceptImage;
-  }
-
-  @override
-  set acceptImage(bool value) {
-    _$acceptImageAtom.reportWrite(value, super.acceptImage, () {
-      super.acceptImage = value;
-    });
-  }
-
   late final _$acceptEmailNotificationsAtom = Atom(
       name: 'RegisterControllerBase.acceptEmailNotifications',
       context: context);
@@ -306,14 +290,6 @@ mixin _$RegisterController on RegisterControllerBase, Store {
   Future<void> setEmailNotifications(bool? value) {
     return _$setEmailNotificationsAsyncAction
         .run(() => super.setEmailNotifications(value));
-  }
-
-  late final _$setAcceptImageAsyncAction =
-      AsyncAction('RegisterControllerBase.setAcceptImage', context: context);
-
-  @override
-  Future<void> setAcceptImage(bool? value) {
-    return _$setAcceptImageAsyncAction.run(() => super.setAcceptImage(value));
   }
 
   late final _$setNameAsyncAction =
@@ -556,7 +532,6 @@ ra: ${ra},
 password: ${password},
 verifyPassword: ${verifyPassword},
 acceptTermsOfUse: ${acceptTermsOfUse},
-acceptImage: ${acceptImage},
 acceptEmailNotifications: ${acceptEmailNotifications},
 raInt: ${raInt},
 registerInformations: ${registerInformations}
