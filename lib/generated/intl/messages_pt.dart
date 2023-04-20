@@ -202,28 +202,34 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m17(speakers) => "${Intl.select(speakers, {
-            'nina':
-                'Cursou administração na Universidade Federal Fluminense, teve seu primeiro contato com tecnologia no segundo ano da faculdade, em seu primeiro emprego. Foi convidada a integrar o time da empresa que trabalhava com o sistema ERP da SAP. A partir de então, aprofundou seus estudos, tirou a sua certiﬁcação e trilhou seu caminho dentro da tecnologia.',
-            'viviane':
-                'Viviane Nunes é empresária e diretora da VN Comunicação.  Especialista em relações institucionais, possui especialização em Eficiência Energética e em Gestão de Negócios em Petróleo, Gás e  Biocombustíveis. Em suas palestras são abordados assuntos voltados à estratégias, mulheres no mercado de trabalho e incentivo à formação profissional.',
-            'leila':
-                'Leila Ferreira é graduada em Jornalismo e Letras, com mestrado em Comunicação pela Universidade de Londres, trabalhou como repórter na Rede Globo Minas e, durante dez anos, apresentou o programa “Leila Entrevista”, na Rede Minas e TV Alterosa/SBT, que produziu 13 histórias internacionais. Ela é autora dos livros “Viver não dói”, “A arte de ser leve”, “Mulheres – Por que será que elas…?” e “Leila Entrevista: Bastidores”.',
-            'boris':
-                'Designer, Consultor de Design Automotivo, professor e palestrante com experiências de trabalho internacionais nos EUA, Índia, China, Europa e diversos outros países.',
-            'marco':
-                'Cientista Político, Professor e Pesquisador na área de Gestão e Políticas Públicas. Foi comentarista do programa CBNSP, da Rádio CBN, entre 2012 e 2021, onde tratou de questões ligadas aos problemas da cidade de São Paulo e suas políticas públicas. É um dos editores do Blog \"Gestão, Política & Sociedade\" abrigado no jornal O Estado de São Paulo.',
-            'willian':
-                'Se formou em Física pela Univerisade Federal de Santa Catarina, com Doutorado em Astronomia pela Universidade de Granada, trabalhou como Bolsista Técnico FAPESP para a construção de um telescópio robótico no Chile e atualmente trabalha como Especialista em Controle de Instrumentos no Observatório Gigante de Magalhães (GMT).',
+            'bruno':
+                'Atual Vice-Presidente da empresa de consultoria júnior, Mauá Jr. Estudante do terceiro ano de Engenharia de Produção no Instituto Mauá de Tecnologia e Técnico em Eletrônica formado pelo Instituto Federal de São Paulo (IFSP). Uma pessoa muito curiosa que gosta de explorar novos desafios e conhecer novos ambientes. Interessado em idiomas e novas culturas, está sempre disposto a adquirir novos conhecimentos.',
+            'wellington':
+                'Fundou o Instituto Four, organização responsável pelo ProLíder o Maior Programa de Formação de lideranças do Brasil. Idealizou o Four Summit, um dos maiores eventos de discussão de Brasil em solo brasileiro. Como reconhecimento pelo seu trabalho foi convidado para palestrar na Universidade de Harvard. Foi eleito Forbes Under 30 pela revista Forbes sendo o destaque na categoria Terceiro Setor e Impacto Social e o mais jovem conselheiro da Confederação Brasileira de Vela. Em 2021 foi aprovado no MBA do MIT em Boston nos Estados Unidos.',
+            'vanessa':
+                'Possui mais de 20 anos de experiência em Gestão de Vendas, Marketing e Negócios, Desenvolvimento de Produtos e Mercado, Inovação, Estratégia e Projetos, principalmente nas áreas Química, Farmacêutica, Cosmética e de Alimentos. Hoje atua como diretora global de Canais de Distribuição em uma empresa americana multinacional. Exerce uma liderança inclusiva e, ao longo de sua carreira, vem adquirindo sólida experiência em gestão de equipes multiculturais através de posições globais e regionais no Brasil, Alemanha, Itália e, atualmente, na Espanha, em complexas estruturas matriciais.',
+            'andressa':
+                'Engenheira de Controle e Automação e mestre em Sistemas Aeroespaciais e Mecatrônica , atualmente é professora do Instituto Mauá de Tecnologia. Professora da equipe de robótica do IMT, atua principalmente nas disciplinas de automação industrial e fundamentos de engenharia.',
+            'daniela':
+                'Formada em \'Tecnologia e Futurismo\' pela Universidade Hebraica de Jerusalém e pós-graduada em ‘Pesquisa de tendências\' pela Universidade de Barcelona, foi Diretora de Pesquisa e Tendências da Box1824 durante 5 anos, Manager de Consumer Insights na Nike Espanha e é professora de Coolhunting e Futurismo da Universidade ESPM de São Paulo há 12 anos. Com quase 20 anos de experiência trabalhando com comportamento do consumidor e novas tecnologias, é a fundadora e CEO da FutureFuture, uma empresa líder em previsão e estratégia que ajuda líderes e organizações da Fortune 500 a se prepararem, traçarem estratégias e inovarem em um cenário de futuros complexos.',
+            'jonathan':
+                'Advogado, pós graduado pela PUC/SP, certificado em privacidade e proteção de dados pela Data Privacy Brasil e Exin; certificado como DPO pelo Instituto Totum; concluiu o Privacy Program Management Training da IAPP e o curso de Proteção de Dados Pessoais pelo Insper; é certificado pelo ICSI/UK em Cyber Security, possui ampla experiência em projetos de inovação e tecnologia e é mentor na Ace Startups.',
+            'sonia':
+                'Professora Associada I no Instituto de Tecnologia Aeronáutica (ITA) e PhD em física pela Universidade de Manchester (Reino Unido). Sonia é a primeira mulher negra doutora em física no Brasil, formada em 1989, título que a levou a se tornar professora do ITA quando o instituto ainda não aceitava mulheres entre seus alunos, em 1993. Na ocasião, tornou-se também a primeira mulher negra professora na instituição, que é uma das mais tradicionais do Brasil. Natural de São Paulo (SP), atualmente vive em São José dos Campos, onde segue lecionando no ITA.',
+            'flavia':
+                'Engenheira da Computação e Mestre em Ciência da Computação com mais de 6 anos de experiência em tecnologia. Ao longo de sua carreira trabalhou no design e implementação de aplicações web de escopo interno da IBM. Sua linha de pesquisa de Mestrado foi computação quântica e a melhoria de performance que pode existir para aplicações de machine learning em relação à computação convencional. Atualmente, é Engenheira de Software Senior na área de pesquisa da IBM, desenvolvendo aplicações para foundation models de inferência de geolocalização. Também leciona no Instituto Mauá de Tecnologia, instituição onde se formou e como Professora Auxiliar, atua  nos cursos de graduação em TI. Participa de iniciativas para engajar mulheres em carreiras técnicas e em eventos da comunidade de tecnologia.',
             'other': '',
           })}";
 
   static String m18(speakers) => "${Intl.select(speakers, {
-            'nina': 'Nina Silva',
-            'viviane': 'Viviane Nunes',
-            'leila': 'Leila Ferreira',
-            'boris': 'Bóris Fabris',
-            'marco': 'Marco Antonio Teixeira',
-            'willian': 'Dr. William Schoenell',
+            'bruno': 'Bruno Keizo – Mauá Jr.',
+            'wellington': 'Wellington Vitorino',
+            'vanessa': 'Vanessa Pirateli Occhipinti',
+            'andressa': 'Andressa Martins',
+            'flavia': 'Flávia Janine Rosante Beo',
+            'daniela': 'Daniela Klaiman',
+            'jonathan': 'Jonathan Y. Ando Nelson',
+            'sonia': 'Sonia Guimarães',
             'other': '',
           })}";
 
@@ -500,10 +506,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Adicionar Palestrante"),
         "speakersMainTitle": MessageLookupByLibrary.simpleMessage(
             "Principais Palestrantes - 2022"),
+        "speakersPanelDescription1": MessageLookupByLibrary.simpleMessage(
+            "Neste painel, vamos explorar como a liderança está sendo moldada para atuar em um ambiente em constante mudança, seja nos negócios, na tecnologia, na cultura ou mesmo na sociedade, e como os líderes podem se preparar para o futuro."),
+        "speakersPanelDescription2": MessageLookupByLibrary.simpleMessage(
+            "Os participantes terão a oportunidade de saber mais sobre como a tecnologia está transformando a forma como vivemos, trabalhamos, nos relacionamos e interagimos, assim como as implicações éticas, sociais e econômicas dessas mudanças."),
+        "speakersPanelTitle1": MessageLookupByLibrary.simpleMessage(
+            "Desenvolvendo líderes do futuro: habilidades, desafios e oportunidades"),
+        "speakersPanelTitle2": MessageLookupByLibrary.simpleMessage(
+            "Tecnologia em transformação: impactos na sociedade, educação e mercado de trabalho"),
         "speakersSchemaDescription": m17,
         "speakersSchemaName": m18,
-        "speakersSwipe":
-            MessageLookupByLibrary.simpleMessage("DESLIZE PARA VER MAIS >>>"),
         "speakersTitle": MessageLookupByLibrary.simpleMessage("Palestrantes"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Patrocinadores"),
         "subcribeTitle": MessageLookupByLibrary.simpleMessage("Inscrever-se"),
