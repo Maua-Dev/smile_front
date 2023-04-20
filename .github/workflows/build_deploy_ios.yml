@@ -39,10 +39,13 @@ jobs:
           bundler-cache: true
           working-directory: ios
 
+      - name: Build appbundle
+        run: flutter build ios --no-codesign --dart-define=MSS_USER_BASE_URL=${{vars.MSS_USERS_ENDPOINT}} --dart-define=MSS_ACTIVITIES_BASE_URL=${{vars.MSS_ACTIVITIES_ENDPOINT}} --dart-define=S3_BASE_URL=${{vars.AWS_BUCKET_ASSETS}} --dart-define=SPONSOR_FORM_REQUEST_URL=${{vars.SPONSOR_FORM_REQUEST_URL}} --dart-define=ENV=${{vars.ENV}}
+
       - name: Pods install
         run: pod install
         working-directory: ios
-
+      
       - name: iOS Build Action
         uses: yukiarrr/ios-build-action@v1.8.0
         with:
@@ -56,7 +59,7 @@ jobs:
           code-signing-identity: ${{ vars.CODE_SIGNING_IDENTITY }}
 
       - name: Exec fastlane
-        run: bundle exec fastlane ${{ github.ref_name }}
+        run: bundle exec fastlane homolog
         env:
           APP_PATH: /Users/runner/work/smile_front/smile_front/output.ipa
           ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
