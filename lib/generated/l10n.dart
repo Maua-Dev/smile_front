@@ -1001,13 +1001,13 @@ class S {
     );
   }
 
-  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{contato@devmaua.com} other{}}`
+  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{atendimento@devmaua.com} other{}}`
   String loginWarningTitle(Object title) {
     return Intl.select(
       title,
       {
         'normalPart': 'In case of error when logging in, send an email to: ',
-        'boldPart': 'contato@devmaua.com',
+        'boldPart': 'atendimento@devmaua.com',
         'other': '',
       },
       name: 'loginWarningTitle',
