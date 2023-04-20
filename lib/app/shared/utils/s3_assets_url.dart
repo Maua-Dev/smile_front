@@ -20,9 +20,21 @@ var mauaLogoUrl = '${s3AssetsBaseUrl}logo_maua_branco.png';
 
 var devLogoUrl = '${s3AssetsBaseUrl}logo_entidades_dev.png';
 
+var bateriaLogoUrl = '${s3AssetsBaseUrl}logo_entidades_bateria.png';
+
 var patrocinadorGCPLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_gcp.png';
 
 var patrocinadorNubeLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_nube.png';
+
+var patrocinadorAzulLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_azul.png';
+
+var patrocinadorBritivicLogoUrl =
+    '${s3AssetsBaseUrl}logo_patrocinador_britivic.png';
+
+var patrocinadorGmLogoUrl = '${s3AssetsBaseUrl}logo_patrocinador_gm.png';
+
+var patrocinadorLorealLogoUrl =
+    '${s3AssetsBaseUrl}logo_patrocinador_loreal.png';
 
 var patrocinadorVendraminiLogoUrl =
     '${s3AssetsBaseUrl}logo_patrocinador_vendramini.png';

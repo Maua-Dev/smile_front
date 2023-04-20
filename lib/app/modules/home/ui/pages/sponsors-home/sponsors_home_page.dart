@@ -351,33 +351,34 @@ class CompanySponsor extends StatelessWidget {
               ],
             ),
             Wrap(
+              alignment: WrapAlignment.center,
               spacing: 48,
               runSpacing: 25,
               children: [
                 SponsorsWidget(
                     link: patrocinadorGCPLogoUrl,
                     color: Colors.white,
-                    size: 0.7),
+                    size: 0.6),
                 SponsorsWidget(
                     link: patrocinadorCSNLogoUrl,
                     color: Colors.white,
-                    size: 0.7),
+                    size: 0.6),
                 SponsorsWidget(
                     link: patrocinadorApplusLogoUrl,
                     color: Colors.white,
-                    size: 0.7),
+                    size: 0.6),
                 SponsorsWidget(
                     link: patrocinadorOsborneLogoUrl,
                     color: Colors.white,
-                    size: 0.7),
+                    size: 0.6),
                 SponsorsWidget(
                     link: patrocinadorAlstomLogoUrl,
                     color: Colors.white,
-                    size: 0.7),
+                    size: 0.6),
                 SponsorsWidget(
                     link: patrocinadorBungeLogoUrl,
                     color: Colors.white,
-                    size: 0.8),
+                    size: 0.65),
               ],
             ),
             Wrap(
@@ -388,17 +389,33 @@ class CompanySponsor extends StatelessWidget {
                 SponsorsWidget(
                     link: patrocinadorNubeLogoUrl,
                     color: Colors.white,
-                    size: 0.5),
+                    size: 0.4),
                 SponsorsWidget(
                     link: patrocinadorVendraminiLogoUrl,
                     color: Colors.white,
-                    size: 0.5),
+                    size: 0.4),
+                SponsorsWidget(
+                    link: patrocinadorAzulLogoUrl,
+                    color: Colors.white,
+                    size: 0.4),
+                SponsorsWidget(
+                    link: patrocinadorBritivicLogoUrl,
+                    color: Colors.white,
+                    size: 0.4),
+                SponsorsWidget(
+                    link: patrocinadorLorealLogoUrl,
+                    color: Colors.white,
+                    size: 0.4),
+                SponsorsWidget(
+                    link: patrocinadorGmLogoUrl,
+                    color: Colors.white,
+                    size: 0.4),
               ],
             ),
             SponsorsWidget(
                 link: patrocinadorCengageLogoUrl,
                 color: Colors.white,
-                size: 0.8),
+                size: 0.5),
           ],
         ),
       ),
