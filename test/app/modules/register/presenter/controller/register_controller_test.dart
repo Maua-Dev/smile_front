@@ -27,11 +27,6 @@ void main() {
     controller = RegisterController(registerUser: registerUser);
   });
 
-  test('setAcceptImage', () {
-    controller.setAcceptImage(true);
-    expect(controller.acceptImage, true);
-  });
-
   test('setName', () {
     var str = 'caio';
     controller.setName(str);

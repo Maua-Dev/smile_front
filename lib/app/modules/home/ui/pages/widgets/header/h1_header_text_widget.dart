@@ -8,7 +8,9 @@ import '../../../../../../shared/utils/screen_helper.dart';
 class H1HeaderTextWidget extends StatelessWidget {
   final String title;
   final EdgeInsets? padding;
-  const H1HeaderTextWidget({super.key, required this.title, this.padding});
+  final double? fontSize;
+  const H1HeaderTextWidget(
+      {super.key, required this.title, this.padding, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +22,12 @@ class H1HeaderTextWidget extends StatelessWidget {
           Text(
             title,
             style: AppTextStyles.titleH1.copyWith(
-                fontSize: Screen.width(context) < cellphoneSize
-                    ? 24
-                    : MediaQuery.of(context).size.width < tabletSize
-                        ? 32
-                        : 46,
+                fontSize: fontSize ??
+                    (Screen.width(context) < cellphoneSize
+                        ? 24
+                        : MediaQuery.of(context).size.width < tabletSize
+                            ? 32
+                            : 46),
                 color: AppColors.brandingBlue),
             textAlign: TextAlign.center,
           ),

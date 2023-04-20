@@ -25,19 +25,35 @@ mixin _$SpeakersHomeController on SpeakersHomeControllerBase, Store {
     });
   }
 
-  late final _$indexToShowAtom =
-      Atom(name: 'SpeakersHomeControllerBase.indexToShow', context: context);
+  late final _$indexToShowPanel1Atom = Atom(
+      name: 'SpeakersHomeControllerBase.indexToShowPanel1', context: context);
 
   @override
-  int get indexToShow {
-    _$indexToShowAtom.reportRead();
-    return super.indexToShow;
+  int get indexToShowPanel1 {
+    _$indexToShowPanel1Atom.reportRead();
+    return super.indexToShowPanel1;
   }
 
   @override
-  set indexToShow(int value) {
-    _$indexToShowAtom.reportWrite(value, super.indexToShow, () {
-      super.indexToShow = value;
+  set indexToShowPanel1(int value) {
+    _$indexToShowPanel1Atom.reportWrite(value, super.indexToShowPanel1, () {
+      super.indexToShowPanel1 = value;
+    });
+  }
+
+  late final _$indexToShowPanel2Atom = Atom(
+      name: 'SpeakersHomeControllerBase.indexToShowPanel2', context: context);
+
+  @override
+  int get indexToShowPanel2 {
+    _$indexToShowPanel2Atom.reportRead();
+    return super.indexToShowPanel2;
+  }
+
+  @override
+  set indexToShowPanel2(int value) {
+    _$indexToShowPanel2Atom.reportWrite(value, super.indexToShowPanel2, () {
+      super.indexToShowPanel2 = value;
     });
   }
 
@@ -49,19 +65,32 @@ mixin _$SpeakersHomeController on SpeakersHomeControllerBase, Store {
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$toggleIndexAsyncAction =
-      AsyncAction('SpeakersHomeControllerBase.toggleIndex', context: context);
+  late final _$toggleIndexPanel1AsyncAction = AsyncAction(
+      'SpeakersHomeControllerBase.toggleIndexPanel1',
+      context: context);
 
   @override
-  Future<void> toggleIndex(dynamic index) {
-    return _$toggleIndexAsyncAction.run(() => super.toggleIndex(index));
+  Future<void> toggleIndexPanel1(dynamic index) {
+    return _$toggleIndexPanel1AsyncAction
+        .run(() => super.toggleIndexPanel1(index));
+  }
+
+  late final _$toggleIndexPanel2AsyncAction = AsyncAction(
+      'SpeakersHomeControllerBase.toggleIndexPanel2',
+      context: context);
+
+  @override
+  Future<void> toggleIndexPanel2(dynamic index) {
+    return _$toggleIndexPanel2AsyncAction
+        .run(() => super.toggleIndexPanel2(index));
   }
 
   @override
   String toString() {
     return '''
 isLoading: ${isLoading},
-indexToShow: ${indexToShow}
+indexToShowPanel1: ${indexToShowPanel1},
+indexToShowPanel2: ${indexToShowPanel2}
     ''';
   }
 }
