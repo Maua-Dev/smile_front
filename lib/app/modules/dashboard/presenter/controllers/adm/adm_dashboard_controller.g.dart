@@ -9,6 +9,14 @@ part of 'adm_dashboard_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
+  Computed<String>? _$emailLogDevCommunityComputed;
+
+  @override
+  String get emailLogDevCommunity => (_$emailLogDevCommunityComputed ??=
+          Computed<String>(() => super.emailLogDevCommunity,
+              name: 'AdmDashboardControllerBase.emailLogDevCommunity'))
+      .value;
+
   late final _$isLoadingCsvAtom =
       Atom(name: 'AdmDashboardControllerBase.isLoadingCsv', context: context);
 
@@ -252,6 +260,16 @@ mixin _$AdmDashboardController on AdmDashboardControllerBase, Store {
     return _$getAllActivitiesAsyncAction.run(() => super.getAllActivities());
   }
 
+  late final _$sendEmailToAllAsyncAction = AsyncAction(
+      'AdmDashboardControllerBase.sendEmailToAll',
+      context: context);
+
+  @override
+  Future<dynamic> sendEmailToAll(List<EnrollmentsModel> enrollments) {
+    return _$sendEmailToAllAsyncAction
+        .run(() => super.sendEmailToAll(enrollments));
+  }
+
   late final _$AdmDashboardControllerBaseActionController =
       ActionController(name: 'AdmDashboardControllerBase', context: context);
 
@@ -371,7 +389,8 @@ allActivitiesList: ${allActivitiesList},
 typeFilter: ${typeFilter},
 typeOnScreen: ${typeOnScreen},
 dateFilter: ${dateFilter},
-hourFilter: ${hourFilter}
+hourFilter: ${hourFilter},
+emailLogDevCommunity: ${emailLogDevCommunity}
     ''';
   }
 }

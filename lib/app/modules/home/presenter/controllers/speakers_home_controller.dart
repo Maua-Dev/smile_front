@@ -17,10 +17,18 @@ abstract class SpeakersHomeControllerBase with Store {
   }
 
   @observable
-  int indexToShow = 0;
+  int indexToShowPanel1 = 0;
 
   @action
-  Future<void> toggleIndex(index) async {
-    indexToShow = index;
+  Future<void> toggleIndexPanel1(index) async {
+    indexToShowPanel1 = index;
+  }
+
+  @observable
+  int indexToShowPanel2 = 4;
+
+  @action
+  Future<void> toggleIndexPanel2(index) async {
+    indexToShowPanel2 = index;
   }
 }

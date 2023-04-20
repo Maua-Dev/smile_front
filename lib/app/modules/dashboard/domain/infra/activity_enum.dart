@@ -16,8 +16,8 @@ enum ActivityEnum {
   ALUMNI_CAFE,
   PROFESSORS_ACADEMY,
   CULTURAL_ACTIVITY,
-  GCSP,
-  SPORTS_ACTIVITY
+  SPORTS_ACTIVITY,
+  MAUA_PLUS,
 }
 
 extension ActivityEnumExtension on ActivityEnum {
@@ -51,7 +51,7 @@ extension ActivityEnumExtension on ActivityEnum {
         return '${previousEditionsBaseUrl}academia_professores.png';
       case ActivityEnum.CULTURAL_ACTIVITY:
         return '${previousEditionsBaseUrl}atividade_cultural.png';
-      case ActivityEnum.GCSP:
+      case ActivityEnum.MAUA_PLUS:
         return '${previousEditionsBaseUrl}gcsp.png';
       case ActivityEnum.SPORTS_ACTIVITY:
         return '${previousEditionsBaseUrl}atividade_esportiva.png';
