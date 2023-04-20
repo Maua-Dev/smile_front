@@ -39,6 +39,10 @@ jobs:
           bundler-cache: true
           working-directory: ios
 
+      - name: Pods install
+        run: pod install
+        working-directory: ios
+
       - name: iOS Build Action
         uses: yukiarrr/ios-build-action@v1.8.0
         with:
