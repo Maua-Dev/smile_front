@@ -55,7 +55,7 @@ jobs:
           mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
           p12-base64: ${{ secrets.P12_KEY }}
           certificate-password: ${{ secrets.PW_CERT }}
-          export-method: ${{ vars.EXPORT_METHOD }}
+          # export-method: ${{ vars.EXPORT_METHOD }}
           code-signing-identity: ${{ vars.CODE_SIGNING_IDENTITY }}
 
       - name: Exec fastlane
