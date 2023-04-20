@@ -268,7 +268,7 @@ class S {
     );
   }
 
-  /// `{activity, select, COURSE{Courses} LECTURES{Speeches} HIGH_IMPACT_LECTURES{Panels} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} MAUA_PLUS{Mauá Plus} SPORTS_ACTIVITY{Sport Activity} other{Activities}}`
+  /// `{activity, select, COURSE{Courses} LECTURES{Speeches} HIGH_IMPACT_LECTURES{Panels} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} MAUA_PLUS{Mauá+} SPORTS_ACTIVITY{Sport Activity} other{Activities}}`
   String activitiesOfferedName(Object activity) {
     return Intl.select(
       activity,
@@ -283,7 +283,7 @@ class S {
         'ALUMNI_CAFE': 'Coffeee with alumni',
         'PROFESSORS_ACADEMY': 'Teachers Academy',
         'CULTURAL_ACTIVITY': 'Cultural Activity',
-        'MAUA_PLUS': 'Mauá Plus',
+        'MAUA_PLUS': 'Mauá+',
         'SPORTS_ACTIVITY': 'Sport Activity',
         'other': 'Activities',
       },
@@ -348,10 +348,10 @@ class S {
     );
   }
 
-  /// `Entities Participating in Smile`
+  /// `MAUÁ+`
   String get mauaEntititesTitle {
     return Intl.message(
-      'Entities Participating in Smile',
+      'MAUÁ+',
       name: 'mauaEntititesTitle',
       desc: '',
       args: [],

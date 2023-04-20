@@ -67,7 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'ALUMNI_CAFE': 'Café com Ex-aluno(a)',
             'PROFESSORS_ACADEMY': 'Academia de Professores',
             'CULTURAL_ACTIVITY': 'Atividade CulturaL',
-            'MAUA_PLUS': 'Mauá Plus',
+            'MAUA_PLUS': 'Mauá+',
             'SPORTS_ACTIVITY': 'Atividade Esportiva',
             'other': 'Atividades',
           })}";
@@ -228,11 +228,11 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m19(schema) => "${Intl.select(schema, {
-            'STUDENT': 'Aluno Mauá',
+            'STUDENT': 'Estudante Mauá',
             'EXTERNAL': 'Visitante',
             'EMPLOYEE': 'Funcionário',
             'INTERNAL_STUDENT': 'Estudante Internacional',
-            'PROFESSOR': 'Professor Smile',
+            'PROFESSOR': 'Professor/Colaborador IMT',
             'ADMIN': 'Admin',
             'other': '',
           })}";
@@ -433,8 +433,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "O serviço de login esta em manutenção"),
         "mauaEntitiesSchemaInstagramUrl": m11,
         "mauaEntitiesSchemaSocialMidia": m12,
-        "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
-            "Entidades Participantes da Smile"),
+        "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage("MAUÁ+"),
         "namesTitle": MessageLookupByLibrary.simpleMessage("Nomes"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Parece que você ainda não se inscreveu em nenhuma atividade :("),
@@ -474,7 +473,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerSocialNameTooltip": MessageLookupByLibrary.simpleMessage(
             "Nome social se refere à designação pela qual a pessoa travesti ou transexual se identifica e é socialmente reconhecida."),
         "registerStudentMauaPlaceholder":
-            MessageLookupByLibrary.simpleMessage("Aluno Mauá"),
+            MessageLookupByLibrary.simpleMessage("Estudante Mauá"),
         "registerTerms": m16,
         "registerTitle": MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "returnLogin": MessageLookupByLibrary.simpleMessage("Voltar ao login"),

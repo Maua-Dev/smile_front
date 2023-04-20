@@ -67,7 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'ALUMNI_CAFE': 'Coffeee with alumni',
             'PROFESSORS_ACADEMY': 'Teachers Academy',
             'CULTURAL_ACTIVITY': 'Cultural Activity',
-            'MAUA_PLUS': 'Mauá Plus',
+            'MAUA_PLUS': 'Mauá+',
             'SPORTS_ACTIVITY': 'Sport Activity',
             'other': 'Activities',
           })}";
@@ -430,8 +430,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "The login service is under maintenance"),
         "mauaEntitiesSchemaInstagramUrl": m11,
         "mauaEntitiesSchemaSocialMidia": m12,
-        "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
-            "Entities Participating in Smile"),
+        "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage("MAUÁ+"),
         "namesTitle": MessageLookupByLibrary.simpleMessage("Names"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Looks like you haven\'t signed up for any activities yet :("),
