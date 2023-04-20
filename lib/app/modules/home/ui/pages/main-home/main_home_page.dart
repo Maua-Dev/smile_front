@@ -48,20 +48,6 @@ class _MainHomePageState extends State<MainHomePage> {
                       height: Screen.height(context) < 750 ? 16 : 40,
                     ),
                     CustomElevatedButtonWidget(
-                      title: S.of(context).smileDateWithYear,
-                      textStyle: AppTextStyles.buttonBold
-                          .copyWith(color: Colors.white, fontSize: 24),
-                      widthSize: 400,
-                      heightSize: 50,
-                      borderRadius: 40,
-                      backgroundColor: AppColors.brandingBlue,
-                      isClickable: false,
-                      onPressed: null,
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    CustomElevatedButtonWidget(
                       title: S.of(context).knowMore,
                       textStyle: AppTextStyles.buttonBold
                           .copyWith(color: Colors.white, fontSize: 24),
@@ -87,9 +73,9 @@ class _MainHomePageState extends State<MainHomePage> {
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           image: DecorationImage(
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fitWidth,
                               image: CachedNetworkImageProvider(
-                                  '${s3AssetsBaseUrl}maua_entrada.jpg')))),
+                                  '${s3AssetsBaseUrl}smile-home.jpg')))),
                 ),
               ))
             ],
@@ -118,29 +104,9 @@ class _MainHomePageState extends State<MainHomePage> {
             width: Screen.width(context),
             child: Image(
               image: CachedNetworkImageProvider(
-                  '${s3AssetsBaseUrl}maua_entrada.jpg'),
+                  '${s3AssetsBaseUrl}smile-home.jpg'),
               fit: BoxFit.fitWidth,
             ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            width: 200,
-            height: 40,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: AppColors.brandingOrange,
-              borderRadius: const BorderRadius.all(Radius.circular(20)),
-            ),
-            child: Text(
-              S.of(context).smileDate,
-              textAlign: TextAlign.center,
-              style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
           ),
           MouseRegion(
             cursor: SystemMouseCursors.click,
@@ -153,7 +119,7 @@ class _MainHomePageState extends State<MainHomePage> {
                 height: 40,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: AppColors.brandingBlue,
+                  color: AppColors.brandingOrange,
                   borderRadius: const BorderRadius.all(Radius.circular(20)),
                 ),
                 child: Text(
