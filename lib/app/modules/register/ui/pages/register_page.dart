@@ -223,15 +223,6 @@ class _RegisterPageState
                         validation: controller.validateVerifyPassword,
                       );
                     }),
-                    Observer(builder: (_) {
-                      return CheckBoxWidget(
-                        check: controller.acceptImage,
-                        title: S.of(context).registerTerms('one'),
-                        onChanged: (bool? value) {
-                          controller.setAcceptImage(value);
-                        },
-                      );
-                    }),
                     const SizedBox(
                       height: 20,
                     ),
@@ -270,8 +261,7 @@ class _RegisterPageState
                             : 600,
                         heightSize: 50,
                         backgroundColor: AppColors.brandingOrange,
-                        onPressed: controller.acceptTermsOfUse &&
-                                controller.acceptImage
+                        onPressed: controller.acceptTermsOfUse
                             ? () async {
                                 FocusScopeNode currentFocus =
                                     FocusScope.of(context);

@@ -70,19 +70,11 @@ abstract class RegisterControllerBase with Store {
   bool acceptTermsOfUse = false;
 
   @observable
-  bool acceptImage = false;
-
-  @observable
   bool acceptEmailNotifications = false;
 
   @action
   Future<void> setEmailNotifications(bool? value) async {
     acceptEmailNotifications = value!;
-  }
-
-  @action
-  Future<void> setAcceptImage(bool? value) async {
-    acceptImage = value!;
   }
 
   @action

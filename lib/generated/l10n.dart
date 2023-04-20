@@ -1020,10 +1020,10 @@ class S {
     );
   }
 
-  /// `Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.`
+  /// `Social name refers to the designation by which the person is socially recognized.`
   String get registerSocialNameTooltip {
     return Intl.message(
-      'Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.',
+      'Social name refers to the designation by which the person is socially recognized.',
       name: 'registerSocialNameTooltip',
       desc: '',
       args: [],
