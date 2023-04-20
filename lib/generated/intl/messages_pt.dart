@@ -66,7 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'INTERNSHIP_FAIR': 'Feira de Estágios',
             'ALUMNI_CAFE': 'Café com Ex-aluno(a)',
             'PROFESSORS_ACADEMY': 'Academia de Professores',
-            'CULTURAL_ACTIVITY': 'Atividade CulturaL',
+            'CULTURAL_ACTIVITY': 'Atividade Cultural',
             'MAUA_PLUS': 'Mauá+',
             'SPORTS_ACTIVITY': 'Atividade Esportiva',
             'other': 'Atividades',

@@ -6,7 +6,6 @@ import 'package:smile_front/generated/l10n.dart';
 import '../../../../shared/utils/s3_assets_url.dart';
 
 enum ActivityEnum {
-  MAUA_PLUS,
   COURSES,
   LECTURES,
   HIGH_IMPACT_LECTURES,
@@ -17,7 +16,8 @@ enum ActivityEnum {
   ALUMNI_CAFE,
   PROFESSORS_ACADEMY,
   CULTURAL_ACTIVITY,
-  SPORTS_ACTIVITY
+  SPORTS_ACTIVITY,
+  MAUA_PLUS,
 }
 
 extension ActivityEnumExtension on ActivityEnum {
