@@ -17,6 +17,7 @@ enum MauaEntitiesEnum {
   finance,
   //baja,
   ecomaua,
+  bateria,
   // mauaracing2,
   // mauaracing
 }
@@ -40,6 +41,8 @@ extension MauaEntitiesEnumExtension on MauaEntitiesEnum {
         return '${s3AssetsBaseUrl}logo_entidades_diversidade.png';
       case MauaEntitiesEnum.enactus:
         return '${s3AssetsBaseUrl}logo_entidades_enactus.png';
+      case MauaEntitiesEnum.bateria:
+        return '${s3AssetsBaseUrl}logo_entidades_bateria.png';
       // case MauaEntitiesEnum.esports:
       //   return '${s3AssetsBaseUrl}logo_entidades_esports.png';
       case MauaEntitiesEnum.inova:
@@ -57,13 +60,13 @@ extension MauaEntitiesEnumExtension on MauaEntitiesEnum {
       // case MauaEntitiesEnum.nine:
       //   return '${s3AssetsBaseUrl}logo_entidades_nine.png';
       case MauaEntitiesEnum.finance:
-        //   return '${s3AssetsBaseUrl}logo_entidades_finance.png';
-        // case MauaEntitiesEnum.baja:
-        return '${s3AssetsBaseUrl}logo_entidades_baja.png';
+        return '${s3AssetsBaseUrl}logo_entidades_finance.png';
+      // case MauaEntitiesEnum.baja:
+      //return '${s3AssetsBaseUrl}logo_entidades_baja.png';
       case MauaEntitiesEnum.ecomaua:
-        //   return '${s3AssetsBaseUrl}logo_entidades_eco.png';
-        // case MauaEntitiesEnum.mauaracing2:
-        return '${s3AssetsBaseUrl}logo_entidades_mauah2.png';
+        return '${s3AssetsBaseUrl}logo_entidades_eco.png';
+      // case MauaEntitiesEnum.mauaracing2:
+      //return '${s3AssetsBaseUrl}logo_entidades_mauah2.png';
       // case MauaEntitiesEnum.mauaracing:
       //   return '${s3AssetsBaseUrl}logo_entidades_racing.png';
     }
