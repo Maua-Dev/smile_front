@@ -2,6 +2,7 @@ name: smile_front
 description: Smile 2023.
 
 publish_to: "none"
+
 version: 1.5.15+35
 
 environment:
