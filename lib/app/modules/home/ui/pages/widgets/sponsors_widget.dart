@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../../../shared/utils/screen_helper.dart';
 
 class SponsorsWidget extends StatelessWidget {
-  const SponsorsWidget({super.key, required this.link, required this.color});
+  const SponsorsWidget(
+      {super.key, required this.link, required this.color, required this.size});
 
   final String link;
   final Color color;
+  final num size;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +26,8 @@ class SponsorsWidget extends StatelessWidget {
     return Stack(
       children: [
         Container(
-            height: height * 0.615,
-            width: widht * 0.615,
+            height: height * size,
+            width: widht * size,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: CachedNetworkImageProvider(link),

@@ -16,7 +16,7 @@ enum ActivityEnum {
   PROFESSORS_ACADEMY,
   CULTURAL_ACTIVITY,
   SPORTS_ACTIVITY,
-  HIGH_IMPACT_LECTURES,
+  PANELS,
   MAUA_PLUS,
 }
 
@@ -35,7 +35,7 @@ extension ActivityEnumExtension on ActivityEnum {
         return '${previousEditionsBaseUrl}cursos.png';
       case ActivityEnum.LECTURES:
         return '${previousEditionsBaseUrl}palestras.png';
-      case ActivityEnum.HIGH_IMPACT_LECTURES:
+      case ActivityEnum.PANELS:
         return '${previousEditionsBaseUrl}palestras_alto_impacto.png';
       case ActivityEnum.TECHNICAL_VISITS:
         return '${previousEditionsBaseUrl}visitas_tecnicas.png';
