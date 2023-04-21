@@ -142,21 +142,23 @@ abstract class MoreInfoControllerBase with Store {
 
   @action
   Future<void> onConfirmCode(String code) async {
-    setIsLoadingConfirmAttendance(true);
-    var activityCodeToConfirm = activityCode;
-    if (activityCodeToConfirm == "") {
-      activityCodeToConfirm = await storage.getActivityCode() ?? '';
-    } else {
-      await storage.saveActivityCode(activityCodeToConfirm);
-    }
-    if (activityCodeToConfirm == '') {
-      Modular.to.navigate('/user/home/all-activities');
-    }
-    await sendConfirmAttendanceUsecase(code, activityCodeToConfirm);
-    await enrollmentController.getUserAllActivitiesWithEnrollment();
-    await getActivity();
-    await checkCanViewConfirmAttendance();
+    if (code.length == 6) {
+      setIsLoadingConfirmAttendance(true);
+      var activityCodeToConfirm = activityCode;
+      if (activityCodeToConfirm == "") {
+        activityCodeToConfirm = await storage.getActivityCode() ?? '';
+      } else {
+        await storage.saveActivityCode(activityCodeToConfirm);
+      }
+      if (activityCodeToConfirm == '') {
+        Modular.to.navigate('/user/home/all-activities');
+      }
+      await sendConfirmAttendanceUsecase(code, activityCodeToConfirm);
+      await enrollmentController.getUserAllActivitiesWithEnrollment();
+      await getActivity();
+      await checkCanViewConfirmAttendance();
 
-    setIsLoadingConfirmAttendance(false);
+      setIsLoadingConfirmAttendance(false);
+    }
   }
 }
