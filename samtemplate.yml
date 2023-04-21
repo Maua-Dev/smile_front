@@ -32,6 +32,7 @@ Resources:
         ViewerCertificate:
           AcmCertificateArn: !Ref AcmCertificateArn
           SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.2_2021 
         Comment: !Ref BucketName 
         HttpVersion: http2
         Origins:

@@ -113,7 +113,7 @@ class InputBoxWidget extends StatelessWidget {
                     : isEmail != null
                         ? [
                             FilteringTextInputFormatter.allow(
-                                RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ0-9.@-]")),
+                                RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ0-9.@-_]")),
                           ]
                         : [
                             FilteringTextInputFormatter.allow(

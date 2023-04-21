@@ -36,7 +36,7 @@ var faqMock = <Faq>[
   Faq(
       question: 'Como emitir o meu Certificado?',
       response:
-          '<p>Os certificados serão disponibilizados automáticamente no seu perfil 10 dias após o evento. Caso ocorra algum erro, entre em contato com nosso suporte: antendimento.smile@maua.br.</p>'),
+          '<p>Os certificados serão disponibilizados automáticamente no seu perfil 10 dias após o evento. Caso ocorra algum erro, entre em contato com nosso suporte: atendimento.smile@maua.br.</p>'),
   Faq(
       question: 'Como alterar meu nome/nome social para a certificação?',
       response:
@@ -49,5 +49,5 @@ var faqMock = <Faq>[
   Faq(
       question: 'Em caso de dúvidas, como faço para entrar em contato?',
       response:
-          '<p>Para mais informações sobre o evento entre em contato com nosso suporte: antendimento.smile@maua.br</p>'),
+          '<p>Para mais informações sobre o evento entre em contato com nosso suporte: atendimento.smile@maua.br</p>'),
 ];

@@ -35,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 'The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.',
             'LECTURES':
                 'The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.',
-            'HIGH_IMPACT_LECTURES':
+            'PANELS':
                 'The panels will be carried out by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!',
             'TECHNICAL_VISITS':
                 'In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.',
@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(activity) => "${Intl.select(activity, {
             'COURSE': 'Courses',
             'LECTURES': 'Speeches',
-            'HIGH_IMPACT_LECTURES': 'Panels',
+            'PANELS': 'Panels',
             'TECHNICAL_VISITS': 'Technical Visits',
             'ACADEMIC_COMPETITIONS': 'Academic Competitions',
             'HACKATHON': 'Hackathon',
@@ -129,12 +129,13 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m10(title) => "${Intl.select(title, {
             'normalPart':
                 'In case of error when logging in, send an email to: ',
-            'boldPart': 'contato@devmaua.com',
+            'boldPart': 'atendimento@devmaua.com',
             'other': '',
           })}";
 
   static String m11(entity) => "${Intl.select(entity, {
             'atletica': 'https://www.instagram.com/gaspar_maua/',
+            'bateria': 'https://www.instagram.com/bateriamauaclubedamanga/',
             'ca': 'https://www.instagram.com/camaua/',
             'diversidade': 'https://www.instagram.com/diversidademaua/',
             'enactus': 'https://www.instagram.com/enactusmaua/',
@@ -171,6 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'baja': 'bajamaua',
             'ecomaua': 'eco_maua',
             'mauaracing2': 'mauaracingh2',
+            'bateria': 'bateriamaua',
             'mauaracing': 'mauaracing',
             'other': '',
           })}";
