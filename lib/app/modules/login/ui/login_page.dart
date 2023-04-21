@@ -46,9 +46,23 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
-                        height:
-                            MediaQuery.of(context).size.width < 800 ? 80 : 150),
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              Modular.to.navigate('/home');
+                            },
+                            icon: Icon(
+                              Icons.keyboard_arrow_left_rounded,
+                              color: AppColors.white,
+                              size: 40,
+                            )),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.width < 800
+                                ? 80
+                                : 150),
+                      ],
+                    ),
                     const Center(
                       child: SmileLogoWidget(),
                     ),

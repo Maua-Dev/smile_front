@@ -31,9 +31,21 @@ class _ForgotPasswordPageState
               height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(color: AppColors.backgroundLogin),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            Modular.to.navigate('/login');
+                          },
+                          icon: Icon(
+                            Icons.keyboard_arrow_left_rounded,
+                            color: AppColors.white,
+                            size: 40,
+                          )),
+                      const SizedBox(height: 80)
+                    ],
+                  ),
                   const Center(
                     child: SmileLogoWidget(),
                   ),

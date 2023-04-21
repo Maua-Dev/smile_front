@@ -35,8 +35,21 @@ class _ResendConfirmationPageState
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 60,
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              Modular.to.navigate('/login');
+                            },
+                            icon: Icon(
+                              Icons.keyboard_arrow_left_rounded,
+                              color: AppColors.white,
+                              size: 40,
+                            )),
+                        const SizedBox(
+                          height: 80,
+                        ),
+                      ],
                     ),
                     const Center(
                       child: SmileLogoWidget(),
