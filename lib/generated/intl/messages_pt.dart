@@ -441,7 +441,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "O serviço de login esta em manutenção"),
         "mauaEntitiesSchemaInstagramUrl": m11,
         "mauaEntitiesSchemaSocialMidia": m12,
-
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage("MAUÁ+"),
         "namesTitle": MessageLookupByLibrary.simpleMessage("Nomes"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
