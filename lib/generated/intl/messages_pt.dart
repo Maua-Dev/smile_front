@@ -35,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.',
             'LECTURES':
                 'As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.',
-            'HIGH_IMPACT_LECTURES':
+            'PANELS':
                 'Os painéis serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!',
             'TECHNICAL_VISITS':
                 'Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.',
@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(activity) => "${Intl.select(activity, {
             'COURSES': 'Cursos',
             'LECTURES': 'Palestras',
-            'HIGH_IMPACT_LECTURES': 'Painéis',
+            'PANELS': 'Painéis',
             'TECHNICAL_VISITS': 'Visitas Técnicas',
             'ACADEMIC_COMPETITIONS': 'Competições Acadêmicas',
             'HACKATHON': 'Hackathon',
