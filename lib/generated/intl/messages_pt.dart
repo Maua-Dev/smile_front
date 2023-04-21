@@ -135,7 +135,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m11(entity) => "${Intl.select(entity, {
             'atletica': 'https://www.instagram.com/gaspar_maua/',
-            'bateria': 'https://www.instagram.com/bateriamauaclubedamanga/',
             'ca': 'https://www.instagram.com/camaua/',
             'diversidade': 'https://www.instagram.com/diversidademaua/',
             'enactus': 'https://www.instagram.com/enactusmaua/',
@@ -152,13 +151,13 @@ class MessageLookup extends MessageLookupByLibrary {
             'ecomaua': 'https://www.instagram.com/eco_maua/',
             'mauaracing2': 'https://www.instagram.com/mauaracingh2/',
             'mauaracing': 'https://www.instagram.com/mauaracing/',
+            'bateria': 'https://www.instagram.com/bateriamauaclubedamanga/',
             'other': '',
           })}";
 
   static String m12(entity) => "${Intl.select(entity, {
             'atletica': 'gaspar_maua',
             'ca': 'camaua',
-            'bateria': 'bateriamaua',
             'diversidade': 'diversidademaua',
             'enactus': 'enactusmaua',
             'esports': 'esportsmaua',
@@ -174,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'ecomaua': 'eco_maua',
             'mauaracing2': 'mauaracingh2',
             'mauaracing': 'mauaracing',
+            'bateria': 'bateriamaua',
             'other': '',
           })}";
 
@@ -437,8 +437,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "O serviço de login esta em manutenção"),
         "mauaEntitiesSchemaInstagramUrl": m11,
         "mauaEntitiesSchemaSocialMidia": m12,
-        "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage(
-            "Entidades Participantes da Smile"),
         "namesTitle": MessageLookupByLibrary.simpleMessage("Nomes"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Parece que você ainda não se inscreveu em nenhuma atividade :("),

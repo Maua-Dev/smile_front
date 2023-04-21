@@ -350,10 +350,10 @@ class S {
     );
   }
 
-  /// `Entities Participating in Smile`
+  /// `MAUÁ+`
   String get mauaEntititesTitle {
     return Intl.message(
-      'Entities Participating in Smile',
+      'MAUÁ+',
       name: 'mauaEntititesTitle',
       desc: '',
       args: [],
