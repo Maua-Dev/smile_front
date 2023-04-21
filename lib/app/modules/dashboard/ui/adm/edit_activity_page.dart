@@ -86,9 +86,10 @@ class _EditActivityPageState
                                 width: MediaQuery.of(context).size.width * 0.1,
                                 child: TextFieldDialogWidget(
                                   validator: controller.validateRequiredField,
+                                  readonly: true,
                                   labelText: S.of(context).codeTitle,
                                   padding: false,
-                                  onChanged: controller.setActivityCode,
+                                  onChanged: null,
                                   value: controller.activityToEdit.activityCode,
                                 )),
                             const SizedBox(
@@ -155,12 +156,14 @@ class _EditActivityPageState
                                   controller.validateDurationField,
                               validateParticipantsField:
                                   controller.validateParticipantsField,
-                              validateDateField: controller.validateDateField,
-                              validateHourField: controller.validateHourField,
+                              validateDateField:
+                                  controller.validateRequiredField,
+                              validateHourField:
+                                  controller.validateRequiredField,
                               delivery: controller.activityToEdit.deliveryEnum,
                               closeInscriptionsHour: closureHour,
                               isValidSubscriptionclosureDate:
-                                  controller.isValidSubscriptionclosureDate,
+                                  controller.validateRequiredField,
                               validateRequiredField:
                                   controller.validateRequiredField,
                               modality: controller.activityToEdit.deliveryEnum,

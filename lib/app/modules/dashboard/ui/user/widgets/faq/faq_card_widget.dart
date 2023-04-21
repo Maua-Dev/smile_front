@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
@@ -33,13 +35,28 @@ class FaqCardWidget extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            Text(descricao,
-                style: AppTextStyles.body.copyWith(
-                    fontSize: Screen.width(context) < cellphoneSize
+            SelectableHtml(
+              data: descricao,
+              onLinkTap: (url, context, attributes, element) => url != null
+                  ? launchUrl(Uri.parse(url),
+                      mode: LaunchMode.externalApplication)
+                  : null,
+              style: {
+                'p': Style(
+                    fontSize: FontSize(Screen.width(context) < cellphoneSize
                         ? 14
                         : Screen.width(context) < tabletSize
                             ? 18
-                            : 25)),
+                            : 25))
+              },
+            ),
+            // SelectableText(descricao,
+            //     style: AppTextStyles.body.copyWith(
+            //         fontSize: Screen.width(context) < cellphoneSize
+            //             ? 14
+            //             : Screen.width(context) < tabletSize
+            //                 ? 18
+            //                 : 25)),
           ],
         ));
   }

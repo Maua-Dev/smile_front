@@ -8,7 +8,6 @@ import '../../../../shared/utils/s3_assets_url.dart';
 enum ActivityEnum {
   COURSES,
   LECTURES,
-  HIGH_IMPACT_LECTURES,
   TECHNICAL_VISITS,
   ACADEMIC_COMPETITIONS,
   HACKATHON,
@@ -16,8 +15,9 @@ enum ActivityEnum {
   ALUMNI_CAFE,
   PROFESSORS_ACADEMY,
   CULTURAL_ACTIVITY,
-  GCSP,
-  SPORTS_ACTIVITY
+  SPORTS_ACTIVITY,
+  PANELS,
+  MAUA_PLUS,
 }
 
 extension ActivityEnumExtension on ActivityEnum {
@@ -35,7 +35,7 @@ extension ActivityEnumExtension on ActivityEnum {
         return '${previousEditionsBaseUrl}cursos.png';
       case ActivityEnum.LECTURES:
         return '${previousEditionsBaseUrl}palestras.png';
-      case ActivityEnum.HIGH_IMPACT_LECTURES:
+      case ActivityEnum.PANELS:
         return '${previousEditionsBaseUrl}palestras_alto_impacto.png';
       case ActivityEnum.TECHNICAL_VISITS:
         return '${previousEditionsBaseUrl}visitas_tecnicas.png';
@@ -51,7 +51,7 @@ extension ActivityEnumExtension on ActivityEnum {
         return '${previousEditionsBaseUrl}academia_professores.png';
       case ActivityEnum.CULTURAL_ACTIVITY:
         return '${previousEditionsBaseUrl}atividade_cultural.png';
-      case ActivityEnum.GCSP:
+      case ActivityEnum.MAUA_PLUS:
         return '${previousEditionsBaseUrl}gcsp.png';
       case ActivityEnum.SPORTS_ACTIVITY:
         return '${previousEditionsBaseUrl}atividade_esportiva.png';

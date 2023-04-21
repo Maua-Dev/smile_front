@@ -24,17 +24,17 @@ class ExtensiveActivityCheck extends StatelessWidget {
               style: const TextStyle(fontSize: 18),
             ),
           ),
-          Container(
-            height: 50,
-            width: 125,
-            decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(width: 1, color: AppColors.brandingBlue)),
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: GestureDetector(
-                onTap: onChanged,
+          GestureDetector(
+            onTap: onChanged,
+            child: Container(
+              height: 50,
+              width: 125,
+              decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(width: 1, color: AppColors.brandingBlue)),
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
                 child: Icon(isExtensive ? Icons.star : Icons.star_border,
                     color: AppColors.brandingOrange),
               ),

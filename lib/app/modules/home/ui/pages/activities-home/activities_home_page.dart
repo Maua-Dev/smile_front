@@ -19,6 +19,7 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
   final CarouselController _controller = CarouselController();
 
   var imgList = ActivityEnum.values
+      .take(10)
       .map((ActivityEnum value) => NextHomePage(
           title: value.name,
           description: value.description,

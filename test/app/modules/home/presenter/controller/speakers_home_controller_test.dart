@@ -14,7 +14,7 @@ void main() {
   });
 
   test('toggleIndex', () {
-    controller.toggleIndex(0);
-    expect(controller.indexToShow, 0);
+    controller.toggleIndexPanel1(0);
+    expect(controller.indexToShowPanel1, 0);
   });
 }

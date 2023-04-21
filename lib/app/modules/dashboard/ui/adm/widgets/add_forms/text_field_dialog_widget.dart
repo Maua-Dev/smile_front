@@ -16,20 +16,22 @@ class TextFieldDialogWidget extends StatelessWidget {
   final void Function()? onPressedIcon;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType? inputType;
-  const TextFieldDialogWidget({
-    Key? key,
-    this.hintText,
-    this.validator,
-    this.value,
-    this.padding = true,
-    this.inputFormatters,
-    this.onChanged,
-    required this.labelText,
-    this.suffixIcon,
-    this.suffixTooltip,
-    this.onPressedIcon,
-    this.inputType,
-  }) : super(key: key);
+  final bool? readonly;
+  const TextFieldDialogWidget(
+      {Key? key,
+      this.hintText,
+      this.validator,
+      this.value,
+      this.padding = true,
+      this.inputFormatters,
+      this.onChanged,
+      required this.labelText,
+      this.suffixIcon,
+      this.suffixTooltip,
+      this.onPressedIcon,
+      this.inputType,
+      this.readonly})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +58,7 @@ class TextFieldDialogWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: TextFormField(
+                readOnly: readonly ?? false,
                 keyboardType: inputType ?? TextInputType.multiline,
                 validator: validator,
                 controller: controller,
@@ -64,7 +67,9 @@ class TextFieldDialogWidget extends StatelessWidget {
                 textAlignVertical: TextAlignVertical.center,
                 inputFormatters: inputFormatters,
                 style: AppTextStyles.body.copyWith(
-                    color: AppColors.brandingBlue,
+                    color: readonly ?? false
+                        ? AppColors.gray
+                        : AppColors.brandingBlue,
                     fontSize:
                         MediaQuery.of(context).size.width < 1200 ? 16 : 20),
                 decoration: InputDecoration(

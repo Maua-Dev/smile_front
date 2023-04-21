@@ -194,27 +194,19 @@ class S {
     );
   }
 
-  /// `SWIPE TO SEE MORE >>>`
-  String get speakersSwipe {
-    return Intl.message(
-      'SWIPE TO SEE MORE >>>',
-      name: 'speakersSwipe',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `{speakers, select, nina{Nina Silva} viviane{Viviane Nunes} leila{Leila Ferreira} boris{Bóris Fabris} marco{Marco Antonio Teixeira} willian{Dr. William Schoenell} other{}}`
+  /// `{speakers, select, bruno{Bruno Keizo – Mauá Jr.} wellington{Wellington Vitorino} vanessa{Vanessa Pirateli Occhipinti} andressa{Andressa Martins} flavia{Flávia Janine Rosante Beo} daniela{Daniela Klaiman} jonathan{Jonathan Y. Ando Nelson} sonia{Sonia Guimarães} other{}}`
   String speakersSchemaName(Object speakers) {
     return Intl.select(
       speakers,
       {
-        'nina': 'Nina Silva',
-        'viviane': 'Viviane Nunes',
-        'leila': 'Leila Ferreira',
-        'boris': 'Bóris Fabris',
-        'marco': 'Marco Antonio Teixeira',
-        'willian': 'Dr. William Schoenell',
+        'bruno': 'Bruno Keizo – Mauá Jr.',
+        'wellington': 'Wellington Vitorino',
+        'vanessa': 'Vanessa Pirateli Occhipinti',
+        'andressa': 'Andressa Martins',
+        'flavia': 'Flávia Janine Rosante Beo',
+        'daniela': 'Daniela Klaiman',
+        'jonathan': 'Jonathan Y. Ando Nelson',
+        'sonia': 'Sonia Guimarães',
         'other': '',
       },
       name: 'speakersSchemaName',
@@ -223,28 +215,72 @@ class S {
     );
   }
 
-  /// `{speakers, select, nina{He studied administration at the Fluminense Federal University, had his first contact with technology in the second year of college, in his first job. She was invited to join the company's team that worked with the SAP ERP system. From then on, he deepened his studies, took his certification and made his way into technology.} viviane{Viviane Nunes is a businesswoman and director of VN Comunicação. Specialist in institutional relations, with specialization in Energy Efficiency and Business Management in Oil, Gas and Biofuels. In her lectures, subjects related to strategies, women in the labor market and incentives for professional training are addressed.} leila{Leila Ferreira holds a degree in Journalism and Letters, with a Masters in Communication from the University of London, worked as a reporter at Rede Globo Minas and, for ten years, presented the program “Leila Interview”, on Rede Minas and TV Alterosa/SBT, which produced 13 international stories. She is the author of the books “Living doesn't hurt”, “The art of being light”, “Women – Why would they…?” and “Leila Interview: Backstage”.} boris{Designer, Automotive Design Consultant, teacher and speaker with international work experiences in the US, India, China, Europe and several other countries.} marco{Political Scientist, Professor and Researcher in the area of ​​Management and Public Policy. He was a commentator for the CBNSP program, on Rádio CBN, between 2012 and 2021, where he addressed issues related to the problems of the city of São Paulo and its public policies. He is one of the editors of the Blog "Gestão, Política & Sociedade" housed in the newspaper O Estado de São Paulo.} willian{He graduated in Physics from the Federal University of Santa Catarina, with a PhD in Astronomy from the University of Granada, worked as a FAPESP Technical Scholarship for the construction of a robotic telescope in Chile and currently works as an Instrument Control Specialist at the Gigante de Magalhães Observatory (GMT ).} other{}}`
+  /// `{speakers, select, bruno{Current Vice President of the junior consulting firm, Mauá Jr. Student of the third year of Production Engineering at the Mauá Institute of Technology and Electronics Technician graduated from the Federal Institute of São Paulo (IFSP). A very curious person who likes to explore new challenges and get to know new environments. Interested in languages ​​and new cultures, he is always willing to acquire new knowledge.} wellington{He founded Instituto Four, the organization responsible for ProLider, the largest leadership training program in Brazil. He idealized the Four Summit, one of the biggest discussion events in Brazil on Brazilian soil. In recognition of his work, he was invited to speak at Harvard University. He was elected Forbes Under 30 by Forbes magazine, being the highlight in the Third Sector and Social Impact category and the youngest director of the Brazilian Sailing Confederation. In 2021 he was approved at the MIT MBA in Boston in the United States.} vanessa{He founded Instituto Four, the organization responsible for ProLider, the largest leadership training program in Brazil. He idealized the Four Summit, one of the biggest discussion events in Brazil on Brazilian soil. In recognition of his work, he was invited to speak at Harvard University. He was elected Forbes Under 30 by Forbes magazine, being the highlight in the Third Sector and Social Impact category and the youngest director of the Brazilian Sailing Confederation. In 2021 he was approved at the MIT MBA in Boston in the United States.} andressa{Control and Automation Engineer and master in Aerospace Systems and Mechatronics, she is currently a professor at the Mauá Institute of Technology. Professor of the robotics team at IMT, she works mainly in the disciplines of industrial automation and engineering fundamentals.} daniela{Graduated in 'Technology and Futurism' from the Hebrew University of Jerusalem and post-graduated in 'Trends Research' from the University of Barcelona, ​​she was Research and Trends Director at Box1824 for 5 years, Consumer Insights Manager at Nike Spain and is a professor of Coolhunting and Futurism at the ESPM University of São Paulo for 12 years. With nearly 20 years of experience working in consumer behavior and new technologies, she is the founder and CEO of FutureFuture, a leading forecasting and strategy firm that helps leaders and Fortune 500 organizations prepare, strategize and innovate in a climate of complex futures} jonathan{Lawyer, post graduate from PUC/SP, certified in privacy and data protection by Data Privacy Brasil and Exin; certified as DPO by Instituto Totum; completed the IAPP Privacy Program Management Training and the Personal Data Protection course at Insper; he is certified by ICSI/UK in Cyber ​​Security, has extensive experience in innovation and technology projects and is a mentor at Ace Startups.} sonia{Associate Professor I at the Institute of Aeronautical Technology (ITA) and PhD in physics from the University of Manchester (UK). Sonia is the first black woman to have a doctorate in physics in Brazil, graduating in 1989, a title that led her to become a professor at ITA when the institute still did not accept women among its students, in 1993. At the time, she also became the first woman black teacher at the institution, which is one of the most traditional in Brazil. Born in São Paulo (SP), he currently lives in São José dos Campos, where he continues to teach at ITA.} flavia{Computer Engineer and Master in Computer Science with more than 6 years of experience in technology. Throughout his career, he has worked on the design and implementation of IBM's internal scope web applications. His Master's line of research was quantum computing and the performance improvement that can exist for machine learning applications in relation to conventional computing. Currently, she is a Senior Software Engineer in the research area at IBM, developing applications for geolocation inference foundation models. She also teaches at the Mauá Institute of Technology, the institution where she graduated, and as an Assistant Professor, she works in undergraduate IT courses. Participates in initiatives to engage women in technical careers and in technology community events.} other{}}`
   String speakersSchemaDescription(Object speakers) {
     return Intl.select(
       speakers,
       {
-        'nina':
-            'He studied administration at the Fluminense Federal University, had his first contact with technology in the second year of college, in his first job. She was invited to join the company\'s team that worked with the SAP ERP system. From then on, he deepened his studies, took his certification and made his way into technology.',
-        'viviane':
-            'Viviane Nunes is a businesswoman and director of VN Comunicação. Specialist in institutional relations, with specialization in Energy Efficiency and Business Management in Oil, Gas and Biofuels. In her lectures, subjects related to strategies, women in the labor market and incentives for professional training are addressed.',
-        'leila':
-            'Leila Ferreira holds a degree in Journalism and Letters, with a Masters in Communication from the University of London, worked as a reporter at Rede Globo Minas and, for ten years, presented the program “Leila Interview”, on Rede Minas and TV Alterosa/SBT, which produced 13 international stories. She is the author of the books “Living doesn\'t hurt”, “The art of being light”, “Women – Why would they…?” and “Leila Interview: Backstage”.',
-        'boris':
-            'Designer, Automotive Design Consultant, teacher and speaker with international work experiences in the US, India, China, Europe and several other countries.',
-        'marco':
-            'Political Scientist, Professor and Researcher in the area of ​​Management and Public Policy. He was a commentator for the CBNSP program, on Rádio CBN, between 2012 and 2021, where he addressed issues related to the problems of the city of São Paulo and its public policies. He is one of the editors of the Blog "Gestão, Política & Sociedade" housed in the newspaper O Estado de São Paulo.',
-        'willian':
-            'He graduated in Physics from the Federal University of Santa Catarina, with a PhD in Astronomy from the University of Granada, worked as a FAPESP Technical Scholarship for the construction of a robotic telescope in Chile and currently works as an Instrument Control Specialist at the Gigante de Magalhães Observatory (GMT ).',
+        'bruno':
+            'Current Vice President of the junior consulting firm, Mauá Jr. Student of the third year of Production Engineering at the Mauá Institute of Technology and Electronics Technician graduated from the Federal Institute of São Paulo (IFSP). A very curious person who likes to explore new challenges and get to know new environments. Interested in languages ​​and new cultures, he is always willing to acquire new knowledge.',
+        'wellington':
+            'He founded Instituto Four, the organization responsible for ProLider, the largest leadership training program in Brazil. He idealized the Four Summit, one of the biggest discussion events in Brazil on Brazilian soil. In recognition of his work, he was invited to speak at Harvard University. He was elected Forbes Under 30 by Forbes magazine, being the highlight in the Third Sector and Social Impact category and the youngest director of the Brazilian Sailing Confederation. In 2021 he was approved at the MIT MBA in Boston in the United States.',
+        'vanessa':
+            'He founded Instituto Four, the organization responsible for ProLider, the largest leadership training program in Brazil. He idealized the Four Summit, one of the biggest discussion events in Brazil on Brazilian soil. In recognition of his work, he was invited to speak at Harvard University. He was elected Forbes Under 30 by Forbes magazine, being the highlight in the Third Sector and Social Impact category and the youngest director of the Brazilian Sailing Confederation. In 2021 he was approved at the MIT MBA in Boston in the United States.',
+        'andressa':
+            'Control and Automation Engineer and master in Aerospace Systems and Mechatronics, she is currently a professor at the Mauá Institute of Technology. Professor of the robotics team at IMT, she works mainly in the disciplines of industrial automation and engineering fundamentals.',
+        'daniela':
+            'Graduated in \'Technology and Futurism\' from the Hebrew University of Jerusalem and post-graduated in \'Trends Research\' from the University of Barcelona, ​​she was Research and Trends Director at Box1824 for 5 years, Consumer Insights Manager at Nike Spain and is a professor of Coolhunting and Futurism at the ESPM University of São Paulo for 12 years. With nearly 20 years of experience working in consumer behavior and new technologies, she is the founder and CEO of FutureFuture, a leading forecasting and strategy firm that helps leaders and Fortune 500 organizations prepare, strategize and innovate in a climate of complex futures',
+        'jonathan':
+            'Lawyer, post graduate from PUC/SP, certified in privacy and data protection by Data Privacy Brasil and Exin; certified as DPO by Instituto Totum; completed the IAPP Privacy Program Management Training and the Personal Data Protection course at Insper; he is certified by ICSI/UK in Cyber ​​Security, has extensive experience in innovation and technology projects and is a mentor at Ace Startups.',
+        'sonia':
+            'Associate Professor I at the Institute of Aeronautical Technology (ITA) and PhD in physics from the University of Manchester (UK). Sonia is the first black woman to have a doctorate in physics in Brazil, graduating in 1989, a title that led her to become a professor at ITA when the institute still did not accept women among its students, in 1993. At the time, she also became the first woman black teacher at the institution, which is one of the most traditional in Brazil. Born in São Paulo (SP), he currently lives in São José dos Campos, where he continues to teach at ITA.',
+        'flavia':
+            'Computer Engineer and Master in Computer Science with more than 6 years of experience in technology. Throughout his career, he has worked on the design and implementation of IBM\'s internal scope web applications. His Master\'s line of research was quantum computing and the performance improvement that can exist for machine learning applications in relation to conventional computing. Currently, she is a Senior Software Engineer in the research area at IBM, developing applications for geolocation inference foundation models. She also teaches at the Mauá Institute of Technology, the institution where she graduated, and as an Assistant Professor, she works in undergraduate IT courses. Participates in initiatives to engage women in technical careers and in technology community events.',
         'other': '',
       },
       name: 'speakersSchemaDescription',
       desc: '',
       args: [speakers],
+    );
+  }
+
+  /// `Developing leaders of the future: skills, challenges and opportunities`
+  String get speakersPanelTitle1 {
+    return Intl.message(
+      'Developing leaders of the future: skills, challenges and opportunities',
+      name: 'speakersPanelTitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Technology in transformation: impacts on society, education and the labor market`
+  String get speakersPanelTitle2 {
+    return Intl.message(
+      'Technology in transformation: impacts on society, education and the labor market',
+      name: 'speakersPanelTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In this panel, we will explore how leadership is being shaped to act in an ever-changing environment, whether in business, technology, culture or even society, and how leaders can prepare for the future.`
+  String get speakersPanelDescription1 {
+    return Intl.message(
+      'In this panel, we will explore how leadership is being shaped to act in an ever-changing environment, whether in business, technology, culture or even society, and how leaders can prepare for the future.',
+      name: 'speakersPanelDescription1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Participants will have the opportunity to learn more about how technology is transforming the way we live, work, relate and interact, as well as the ethical, social and economic implications of these changes.`
+  String get speakersPanelDescription2 {
+    return Intl.message(
+      'Participants will have the opportunity to learn more about how technology is transforming the way we live, work, relate and interact, as well as the ethical, social and economic implications of these changes.',
+      name: 'speakersPanelDescription2',
+      desc: '',
+      args: [],
     );
   }
 
@@ -268,14 +304,14 @@ class S {
     );
   }
 
-  /// `{activity, select, COURSE{Courses} LECTURES{Speeches} HIGH_IMPACT_LECTURES{High Impact Speeches} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} GCSP{GCSP} SPORTS_ACTIVITY{Sport Activity} other{Activities}}`
+  /// `{activity, select, COURSE{Courses} LECTURES{Speeches} PANELS{Panels} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} MAUA_PLUS{Mauá+} SPORTS_ACTIVITY{Sport Activity} other{Activities}}`
   String activitiesOfferedName(Object activity) {
     return Intl.select(
       activity,
       {
         'COURSE': 'Courses',
         'LECTURES': 'Speeches',
-        'HIGH_IMPACT_LECTURES': 'High Impact Speeches',
+        'PANELS': 'Panels',
         'TECHNICAL_VISITS': 'Technical Visits',
         'ACADEMIC_COMPETITIONS': 'Academic Competitions',
         'HACKATHON': 'Hackathon',
@@ -283,7 +319,7 @@ class S {
         'ALUMNI_CAFE': 'Coffeee with alumni',
         'PROFESSORS_ACADEMY': 'Teachers Academy',
         'CULTURAL_ACTIVITY': 'Cultural Activity',
-        'GCSP': 'GCSP',
+        'MAUA_PLUS': 'Mauá+',
         'SPORTS_ACTIVITY': 'Sport Activity',
         'other': 'Activities',
       },
@@ -293,7 +329,7 @@ class S {
     );
   }
 
-  /// `{activity, select, COURSE{The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.} LECTURES{The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.} HIGH_IMPACT_LECTURES{The high-impact lectures will be delivered by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!} TECHNICAL_VISITS{In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.} ACADEMIC_COMPETITIONS{During SMILE, participants will be able to have fun with Academic Competition activities: League Of Legend Championship (online) and GameDev Mauá - Game Jam (in person).} HACKATHON{Hackathons are events that bring together students, software developers, designers and other professionals, with the aim of creating innovative solutions for a specific problem in a short period of time. This is an excellent opportunity to develop your professional side, in addition to discovering new talent. The events promote a great interaction between the participants and offer prizes for the winners at the end.} INTERNSHIP_FAIR{Representatives of renowned companies will present Internship and Trainee Programs, in addition to bringing tips on selection processes, interviews, career tips and answering questions from participants.} ALUMNI_CAFE{The activity aims to promote informal conversations between IMT students and graduates who occupy prominent positions in their areas of expertise. Come join!} PROFESSORS_ACADEMY{Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.} CULTURAL_ACTIVITY{Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.} GCSP{The GCSP - Grand Challenges Scholars Program is a program that offers undergraduate students the opportunity to work with the great challenges of humanity, being mentored by professors.} SPORTS_ACTIVITY{Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!} other{Activity}}`
+  /// `{activity, select, COURSE{The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.} LECTURES{The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.} PANELS{The panels will be carried out by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!} TECHNICAL_VISITS{In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.} ACADEMIC_COMPETITIONS{During SMILE, participants will be able to have fun with Academic Competition activities: League Of Legend Championship (online) and GameDev Mauá - Game Jam (in person).} HACKATHON{Hackathons are events that bring together students, software developers, designers and other professionals, with the aim of creating innovative solutions for a specific problem in a short period of time. This is an excellent opportunity to develop your professional side, in addition to discovering new talent. The events promote a great interaction between the participants and offer prizes for the winners at the end.} INTERNSHIP_FAIR{Representatives of renowned companies will present Internship and Trainee Programs, in addition to bringing tips on selection processes, interviews, career tips and answering questions from participants.} ALUMNI_CAFE{The activity aims to promote informal conversations between IMT students and graduates who occupy prominent positions in their areas of expertise. Come join!} PROFESSORS_ACADEMY{Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.} CULTURAL_ACTIVITY{Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.} SPORTS_ACTIVITY{Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!} other{Activity}}`
   String activitiesOfferedDescription(Object activity) {
     return Intl.select(
       activity,
@@ -302,8 +338,8 @@ class S {
             'The courses offer high quality content, taught by renowned professionals who are active in the market. The courses offer training and updating of participants through theoretical/practical knowledge in the various areas of Administration, Computer Science, Design, Engineering and Information Systems.',
         'LECTURES':
             'The lectures are free and will include the participation of professionals from leading companies in the market, talking about the Challenges of Humanity.',
-        'HIGH_IMPACT_LECTURES':
-            'The high-impact lectures will be delivered by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!',
+        'PANELS':
+            'The panels will be carried out by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!',
         'TECHNICAL_VISITS':
             'In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.',
         'ACADEMIC_COMPETITIONS':
@@ -318,8 +354,6 @@ class S {
             'Teachers Academy focuses on continuing education, dissemination of teaching strategies and tools for IMT teachers and high school teachers.',
         'CULTURAL_ACTIVITY':
             'Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.',
-        'GCSP':
-            'The GCSP - Grand Challenges Scholars Program is a program that offers undergraduate students the opportunity to work with the great challenges of humanity, being mentored by professors.',
         'SPORTS_ACTIVITY':
             'Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!',
         'other': 'Activity',
@@ -969,13 +1003,13 @@ class S {
     );
   }
 
-  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{atendimento.smile@maua.br} other{}}`
+  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{atendimento@devmaua.com} other{}}`
   String loginWarningTitle(Object title) {
     return Intl.select(
       title,
       {
         'normalPart': 'In case of error when logging in, send an email to: ',
-        'boldPart': 'atendimento.smile@maua.br',
+        'boldPart': 'atendimento@devmaua.com',
         'other': '',
       },
       name: 'loginWarningTitle',
@@ -1024,10 +1058,10 @@ class S {
     );
   }
 
-  /// `Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.`
+  /// `Social name refers to the designation by which the person is socially recognized.`
   String get registerSocialNameTooltip {
     return Intl.message(
-      'Social name refers to the designation by which the transvestite or transsexual person identifies and is socially recognized.',
+      'Social name refers to the designation by which the person is socially recognized.',
       name: 'registerSocialNameTooltip',
       desc: '',
       args: [],
@@ -1155,10 +1189,10 @@ class S {
     );
   }
 
-  /// `We sent an email (atendimento.smile@maua.br) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.`
+  /// `We sent an email (contato@devmaua.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.`
   String get emailNotificationTitle {
     return Intl.message(
-      'We sent an email (atendimento.smile@maua.br) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.',
+      'We sent an email (contato@devmaua.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.',
       name: 'emailNotificationTitle',
       desc: '',
       args: [],
@@ -1375,10 +1409,10 @@ class S {
     );
   }
 
-  /// `You will receive an email (atendimento.smile@maua.br) with a link to change your password! Check inbox, spam or promotional.`
+  /// `You will receive an email (contato@devmaua.com) with a link to change your password! Check inbox, spam or promotional.`
   String get codeInEmailInstructionsTitle {
     return Intl.message(
-      'You will receive an email (atendimento.smile@maua.br) with a link to change your password! Check inbox, spam or promotional.',
+      'You will receive an email (contato@devmaua.com) with a link to change your password! Check inbox, spam or promotional.',
       name: 'codeInEmailInstructionsTitle',
       desc: '',
       args: [],
@@ -1405,10 +1439,10 @@ class S {
     );
   }
 
-  /// `If you have not found the email (atendimento.smile@maua.br) or the link has expired, please resend the code by entering your e-mail in the field below:\n`
+  /// `If you have not found the email (contato@devmaua.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n`
   String get errorEmailInstructionsTitle {
     return Intl.message(
-      'If you have not found the email (atendimento.smile@maua.br) or the link has expired, please resend the code by entering your e-mail in the field below:\n',
+      'If you have not found the email (contato@devmaua.com) or the link has expired, please resend the code by entering your e-mail in the field below:\n',
       name: 'errorEmailInstructionsTitle',
       desc: '',
       args: [],
