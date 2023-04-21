@@ -127,7 +127,6 @@ class ScheduleWidget extends StatelessWidget {
                       onChanged: onChangedDuration,
                       value: duration == null ? '' : duration.toString(),
                       padding: false,
-                      inputFormatters: [NumberTextInputFormatter(maxLength: 3)],
                       inputType: TextInputType.number,
                     ),
                   ),
