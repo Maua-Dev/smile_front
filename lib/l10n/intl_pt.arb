@@ -46,7 +46,7 @@
 
     "footerSocialMedia": "Clique aqui para acessar as nossas redes sociais:",
     "footerHowToGet": "Como chegar",
-    "footerDoubtContact": "{bold, select, normalPart1{Em caso de dúvidas, enviar um e-mail para  } boldPart1{smile.patrocinio@maua.br} normalPart2{ ou } boldPart2{smile@maua.br} normalPart3{.} other{}}",
+    "footerDoubtContact": "{bold, select, normalPart1{Em caso de dúvidas, enviar um e-mail para } boldPart2{atendimento.smile@maua.br} normalPart3{.} other{}}",
     "footerContact": "{bold, select, normalPart1{Caso queira falar conosco, entre em contato nos números: } boldPart1{4239-3563} normalPart2{ ou } boldPart2{4239-3059} normalPart3{.} other{}}",
     "footerDev": "{bold, select, normalPart{Criado e desenvolvido por } boldPart{Dev. Community Mauá} other{Dev. Community Mauá}}",
     "footerLocalizationTitle": "Campus São Caetano do Sul",
