@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../generated/l10n.dart';
+import '../../../shared/themes/app_text_styles.dart';
 import '../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../../../shared/widgets/input-box/input_box_widget.dart';
 import '../../login/ui/widgets/smile_logo_widget.dart';
@@ -36,15 +37,12 @@ class _ChangePasswordPageState
                 const Center(
                   child: SmileLogoWidget(),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
                 Observer(builder: (_) {
                   if (controller.successRegistration) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
                       child: Container(
-                        width: 400,
+                        width: 600,
                         decoration: BoxDecoration(
                             color: Colors.green[100],
                             border: Border.all(color: Colors.green),
@@ -55,7 +53,7 @@ class _ChangePasswordPageState
                             S.of(context).successChangePasswordRedirect,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
-                                color: Colors.black, fontSize: 16),
+                                color: Colors.black, fontSize: 18),
                           ),
                         ),
                       ),
@@ -64,7 +62,7 @@ class _ChangePasswordPageState
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
                       child: Container(
-                        width: 450,
+                        width: 600,
                         decoration: BoxDecoration(
                             color: Colors.red[100],
                             border: Border.all(color: AppColors.lightRedButton),
@@ -83,7 +81,7 @@ class _ChangePasswordPageState
                               Text(
                                 controller.errors,
                                 style: const TextStyle(
-                                    color: Colors.black, fontSize: 16),
+                                    color: Colors.black, fontSize: 18),
                               ),
                               const SizedBox(
                                 width: 10,
@@ -99,7 +97,10 @@ class _ChangePasswordPageState
                 }),
                 Text(
                   S.of(context).insertPasswordCodeInstructions,
-                  style: const TextStyle(color: Colors.white),
+                  style: AppTextStyles.body.copyWith(
+                      color: AppColors.white,
+                      fontSize:
+                          MediaQuery.of(context).size.width < 1300 ? 20 : 24),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(
@@ -143,9 +144,7 @@ class _ChangePasswordPageState
                   return CustomElevatedButtonWidget(
                     isLoading: controller.isLoading,
                     title: S.of(context).changePasswordTitle,
-                    widthSize: MediaQuery.of(context).size.width < 650
-                        ? MediaQuery.of(context).size.width * 0.85
-                        : 600,
+                    widthSize: 600,
                     heightSize: 50,
                     backgroundColor: AppColors.brandingOrange,
                     onPressed: () async {

@@ -42,213 +42,195 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(color: AppColors.backgroundLogin),
               child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              Modular.to.navigate('/home');
-                            },
-                            icon: Icon(
-                              Icons.keyboard_arrow_left_rounded,
-                              color: AppColors.white,
-                              size: 40,
-                            )),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.width < 800
-                                ? 80
-                                : 150),
-                      ],
-                    ),
-                    const Center(
-                      child: SmileLogoWidget(),
-                    ),
-                    if (MediaQuery.of(context).size.width > 1024)
-                      Observer(builder: (_) {
-                        if (controller.errors != '') {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: Container(
-                              width: controller.errors.length > 40 ? 500 : 300,
-                              decoration: BoxDecoration(
-                                  color: AppColors.lightRedButton,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 16.0, horizontal: 4),
-                                child: Text(
-                                  controller.errors,
-                                  style: AppTextStyles.body.copyWith(
-                                    fontSize: 18,
-                                    color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                          height: MediaQuery.of(context).size.width < 800
+                              ? 80
+                              : 150),
+                      const Center(
+                        child: SmileLogoWidget(),
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      if (MediaQuery.of(context).size.width > 1024)
+                        Observer(builder: (_) {
+                          if (controller.errors != '') {
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              child: Container(
+                                width:
+                                    controller.errors.length > 40 ? 500 : 300,
+                                decoration: BoxDecoration(
+                                    color: AppColors.lightRedButton,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 16.0, horizontal: 4),
+                                  child: Text(
+                                    controller.errors,
+                                    style: AppTextStyles.body.copyWith(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center,
                                   ),
-                                  textAlign: TextAlign.center,
                                 ),
                               ),
-                            ),
-                          );
-                        }
-                        return const SizedBox.shrink();
+                            );
+                          }
+                          return const SizedBox.shrink();
+                        }),
+                      InputBoxWidget(
+                        isEmail: true,
+                        icon: Icons.person,
+                        placeholder: S.of(context).loginUsernamePlaceholder,
+                        setValue: controller.setUsername,
+                        validation: controller.validateEmail,
+                      ),
+                      Observer(builder: (context) {
+                        return InputBoxWidget(
+                          icon: Icons.lock,
+                          placeholder: S.of(context).loginPasswordPlaceholder,
+                          setValue: controller.setPassword,
+                          isPassword: true,
+                          validation: controller.validateField,
+                          showPwd: controller.showPwd,
+                          onToggleVisibilityPwd: controller.toggleVisibilityPwd,
+                          onFieldSubmitted: (p0) async {
+                            if (_formKey.currentState!.validate()) {
+                              await controller.login();
+                            }
+                          },
+                        );
                       }),
-                    if (controller.errors == '')
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Observer(builder: (_) {
+                        return CustomElevatedButtonWidget(
+                          isLoading: controller.isLoading,
+                          title: S.of(context).loginTitle,
+                          widthSize: 600,
+                          heightSize: 50,
+                          backgroundColor: AppColors.brandingOrange,
+                          onPressed: () async {
+                            FocusScopeNode currentFocus =
+                                FocusScope.of(context);
+                            if (!currentFocus.hasPrimaryFocus) {
+                              currentFocus.unfocus();
+                            }
+                            if (_formKey.currentState!.validate()) {
+                              await controller.login();
+                            }
+                          },
+                        );
+                      }),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      CustomElevatedButtonWidget(
+                        title: S.of(context).loginWithoutRecordTitle,
+                        widthSize: 600,
+                        heightSize: 50,
+                        backgroundColor: AppColors.white,
+                        fontColor: AppColors.backgroundLogin,
+                        onPressed: () {
+                          Modular.to.navigate('/login/cadastro');
+                        },
+                      ),
                       SizedBox(
                         height:
-                            MediaQuery.of(context).size.width < 800 ? 16 : 32,
+                            MediaQuery.of(context).size.width < 650 ? 8 : 16,
                       ),
-                    InputBoxWidget(
-                      isEmail: true,
-                      icon: Icons.person,
-                      placeholder: S.of(context).loginUsernamePlaceholder,
-                      setValue: controller.setUsername,
-                      validation: controller.validateEmail,
-                    ),
-                    Observer(builder: (context) {
-                      return InputBoxWidget(
-                        icon: Icons.lock,
-                        placeholder: S.of(context).loginPasswordPlaceholder,
-                        setValue: controller.setPassword,
-                        isPassword: true,
-                        validation: controller.validateField,
-                        showPwd: controller.showPwd,
-                        onToggleVisibilityPwd: controller.toggleVisibilityPwd,
-                        onFieldSubmitted: (p0) async {
-                          if (_formKey.currentState!.validate()) {
-                            await controller.login();
-                          }
+                      TextButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white.withOpacity(0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 20),
+                            textStyle: const TextStyle(
+                              fontSize: 20,
+                            )),
+                        onPressed: () {
+                          Modular.to.navigate('/login/esqueci-minha-senha');
                         },
-                      );
-                    }),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Observer(builder: (_) {
-                      return CustomElevatedButtonWidget(
-                        isLoading: controller.isLoading,
-                        title: S.of(context).loginTitle,
-                        widthSize: MediaQuery.of(context).size.width < 650
-                            ? MediaQuery.of(context).size.width * 0.85
-                            : 600,
-                        heightSize: 50,
-                        backgroundColor: AppColors.brandingOrange,
-                        onPressed: () async {
-                          FocusScopeNode currentFocus = FocusScope.of(context);
-                          if (!currentFocus.hasPrimaryFocus) {
-                            currentFocus.unfocus();
-                          }
-                          if (_formKey.currentState!.validate()) {
-                            await controller.login();
-                          }
-                        },
-                      );
-                    }),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    CustomElevatedButtonWidget(
-                      title: S.of(context).loginWithoutRecordTitle,
-                      widthSize: MediaQuery.of(context).size.width < 650
-                          ? MediaQuery.of(context).size.width * 0.85
-                          : 600,
-                      heightSize: 50,
-                      backgroundColor: AppColors.white,
-                      fontColor: AppColors.backgroundLogin,
-                      onPressed: () {
-                        Modular.to.navigate('/login/cadastro');
-                      },
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.width < 650 ? 8 : 16,
-                    ),
-                    TextButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white.withOpacity(0),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 50, vertical: 20),
-                          textStyle: const TextStyle(
-                            fontSize: 20,
-                          )),
-                      onPressed: () {
-                        Modular.to.navigate('/login/esqueci-minha-senha');
-                      },
-                      child: Text(
-                        S.of(context).loginForgotPasswordTitle,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white.withOpacity(0),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 50, vertical: 10),
-                          textStyle: const TextStyle(
-                            fontSize: 20,
-                          )),
-                      onPressed: () {
-                        Modular.to.navigate('/login/reenviar-email');
-                      },
-                      child: Text(
-                        S.of(context).loginResendConfirmationTitle,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
+                        child: Text(
+                          S.of(context).loginForgotPasswordTitle,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
                             decoration: TextDecoration.underline,
-                            color: Colors.white),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      width: (MediaQuery.of(context).size.width < 650
-                          ? MediaQuery.of(context).size.width * 0.85
-                          : 600),
-                      decoration: BoxDecoration(
-                          color: AppColors.gray,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: () {
-                              launchUrl(
-                                Uri.parse('mailto:atendimento@devmaua.com'),
-                                mode: LaunchMode.externalApplication,
-                              );
-                            },
-                            child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                    text: S
-                                        .of(context)
-                                        .loginWarningTitle('normalPart'),
-                                    style: const TextStyle(
-                                        color: Colors.white, fontSize: 16),
-                                    children: [
-                                      TextSpan(
-                                        text: S
-                                            .of(context)
-                                            .loginWarningTitle('boldPart'),
-                                        style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ])),
+                            color: Colors.white,
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 60,
-                    ),
-                  ],
+                      TextButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white.withOpacity(0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 10),
+                            textStyle: const TextStyle(
+                              fontSize: 20,
+                            )),
+                        onPressed: () {
+                          Modular.to.navigate('/login/reenviar-email');
+                        },
+                        child: Text(
+                          S.of(context).loginResendConfirmationTitle,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: Colors.white),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Container(
+                        width: 600,
+                        decoration: BoxDecoration(
+                            color: AppColors.gray,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () {
+                                launchUrl(
+                                  Uri.parse('mailto:atendimento@devmaua.com'),
+                                  mode: LaunchMode.externalApplication,
+                                );
+                              },
+                              child: RichText(
+                                  textAlign: TextAlign.center,
+                                  text: TextSpan(
+                                      text: S
+                                          .of(context)
+                                          .loginWarningTitle('normalPart'),
+                                      style: const TextStyle(
+                                          color: Colors.white, fontSize: 16),
+                                      children: [
+                                        TextSpan(
+                                          text: S
+                                              .of(context)
+                                              .loginWarningTitle('boldPart'),
+                                          style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ])),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               )),
         ),
