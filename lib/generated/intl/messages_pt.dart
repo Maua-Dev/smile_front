@@ -149,6 +149,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'ecomaua': 'https://www.instagram.com/eco_maua/',
             'mauaracing2': 'https://www.instagram.com/mauaracingh2/',
             'mauaracing': 'https://www.instagram.com/mauaracing/',
+            'bateria': 'https://www.instagram.com/bateriamauaclubedamanga/',
             'other': '',
           })}";
 
@@ -170,6 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'ecomaua': 'eco_maua',
             'mauaracing2': 'mauaracingh2',
             'mauaracing': 'mauaracing',
+            'bateria': 'bateriamaua',
             'other': '',
           })}";
 

@@ -135,6 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m11(entity) => "${Intl.select(entity, {
             'atletica': 'https://www.instagram.com/gaspar_maua/',
+            'bateria': 'https://www.instagram.com/bateriamauaclubedamanga/',
             'ca': 'https://www.instagram.com/camaua/',
             'diversidade': 'https://www.instagram.com/diversidademaua/',
             'enactus': 'https://www.instagram.com/enactusmaua/',
@@ -171,6 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'baja': 'bajamaua',
             'ecomaua': 'eco_maua',
             'mauaracing2': 'mauaracingh2',
+            'bateria': 'bateriamaua',
             'mauaracing': 'mauaracing',
             'other': '',
           })}";

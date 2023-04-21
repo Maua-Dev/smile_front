@@ -394,7 +394,7 @@ class S {
     );
   }
 
-  /// `{entity, select, atletica{gaspar_maua} ca{camaua} diversidade{diversidademaua} enactus{enactusmaua} esports{esportsmaua} inova{inovamaua} mauajr{mauajr} mauasocial{mauasocial} mbc{mauabusiness} nae{naemaua} dev{devcommunitymaua} nine{nine.maua} finance{imtfinance} baja{bajamaua} ecomaua{eco_maua} mauaracing2{mauaracingh2} mauaracing{mauaracing} other{}}`
+  /// `{entity, select, atletica{gaspar_maua} ca{camaua} diversidade{diversidademaua} enactus{enactusmaua} esports{esportsmaua} inova{inovamaua} mauajr{mauajr} mauasocial{mauasocial} mbc{mauabusiness} nae{naemaua} dev{devcommunitymaua} nine{nine.maua} finance{imtfinance} baja{bajamaua} ecomaua{eco_maua} mauaracing2{mauaracingh2} bateria{bateriamaua} mauaracing{mauaracing} other{}}`
   String mauaEntitiesSchemaSocialMidia(Object entity) {
     return Intl.select(
       entity,
@@ -415,6 +415,7 @@ class S {
         'baja': 'bajamaua',
         'ecomaua': 'eco_maua',
         'mauaracing2': 'mauaracingh2',
+        'bateria': 'bateriamaua',
         'mauaracing': 'mauaracing',
         'other': '',
       },
@@ -424,12 +425,13 @@ class S {
     );
   }
 
-  /// `{entity, select, atletica{https://www.instagram.com/gaspar_maua/} ca{https://www.instagram.com/camaua/} diversidade{https://www.instagram.com/diversidademaua/} enactus{https://www.instagram.com/enactusmaua/} esports{https://www.instagram.com/esportsmaua/} inova{https://www.instagram.com/inovamaua/} mauajr{https://www.instagram.com/mauajr/} mauasocial{https://www.instagram.com/mauasocial/} mbc{https://www.instagram.com/mauabusinessclub/} nae{https://www.instagram.com/naemaua/} dev{https://www.instagram.com/devcommunitymaua/} nine{https://www.instagram.com/nine.maua/} finance{https://www.instagram.com/mauafinancegroup/} baja{https://www.instagram.com/bajamaua/} ecomaua{https://www.instagram.com/eco_maua/} mauaracing2{https://www.instagram.com/mauaracingh2/} mauaracing{https://www.instagram.com/mauaracing/} other{}}`
+  /// `{entity, select, atletica{https://www.instagram.com/gaspar_maua/} bateria{https://www.instagram.com/bateriamauaclubedamanga/} ca{https://www.instagram.com/camaua/} diversidade{https://www.instagram.com/diversidademaua/} enactus{https://www.instagram.com/enactusmaua/} esports{https://www.instagram.com/esportsmaua/} inova{https://www.instagram.com/inovamaua/} mauajr{https://www.instagram.com/mauajr/} mauasocial{https://www.instagram.com/mauasocial/} mbc{https://www.instagram.com/mauabusinessclub/} nae{https://www.instagram.com/naemaua/} dev{https://www.instagram.com/devcommunitymaua/} nine{https://www.instagram.com/nine.maua/} finance{https://www.instagram.com/mauafinancegroup/} baja{https://www.instagram.com/bajamaua/} ecomaua{https://www.instagram.com/eco_maua/} mauaracing2{https://www.instagram.com/mauaracingh2/} mauaracing{https://www.instagram.com/mauaracing/} other{}}`
   String mauaEntitiesSchemaInstagramUrl(Object entity) {
     return Intl.select(
       entity,
       {
         'atletica': 'https://www.instagram.com/gaspar_maua/',
+        'bateria': 'https://www.instagram.com/bateriamauaclubedamanga/',
         'ca': 'https://www.instagram.com/camaua/',
         'diversidade': 'https://www.instagram.com/diversidademaua/',
         'enactus': 'https://www.instagram.com/enactusmaua/',
