@@ -111,10 +111,8 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m8(bold) => "${Intl.select(bold, {
-            'normalPart1': 'Em caso de dúvidas, enviar um e-mail para  ',
-            'boldPart1': 'smile.patrocinio@maua.br',
-            'normalPart2': ' ou ',
-            'boldPart2': 'smile@maua.br',
+            'normalPart1': 'Em caso de dúvidas, enviar um e-mail para ',
+            'boldPart2': 'atendimento.smile@maua.br',
             'normalPart3': '.',
             'other': '',
           })}";
@@ -127,7 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m10(title) => "${Intl.select(title, {
             'normalPart': 'Em caso de erro ao se logar, envie um e-mail para: ',
-            'boldPart': 'atendimento@devmaua.com',
+            'boldPart': 'atendimento.smile@maua.com',
             'other': '',
           })}";
 
