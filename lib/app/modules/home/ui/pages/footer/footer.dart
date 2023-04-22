@@ -155,48 +155,6 @@ class Footer extends StatelessWidget {
                           ),
                         ]),
                   ),
-                  const SizedBox(
-                    height: 2,
-                  ),
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                        text: S.of(context).footerContact('normalPart1'),
-                        style: AppTextStyles.body.copyWith(
-                          color: Colors.white,
-                          fontSize: 12,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: S.of(context).footerContact('boldPart1'),
-                            style: AppTextStyles.body.copyWith(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          TextSpan(
-                            text: S.of(context).footerContact('normalPart2'),
-                            style: AppTextStyles.body.copyWith(
-                              color: Colors.white,
-                              fontSize: 12,
-                            ),
-                          ),
-                          TextSpan(
-                            text: S.of(context).footerContact('boldPart2'),
-                            style: AppTextStyles.body.copyWith(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          TextSpan(
-                            text: S.of(context).footerContact('normalPart3'),
-                            style: AppTextStyles.body.copyWith(
-                              color: Colors.white,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ]),
-                  ),
                 ],
               ),
             )
@@ -357,63 +315,6 @@ class Footer extends StatelessWidget {
                                   text: S
                                       .of(context)
                                       .footerDoubtContact('normalPart3'),
-                                  style: AppTextStyles.body.copyWith(
-                                    color: Colors.white,
-                                    fontSize: Screen.width(context) < tabletSize
-                                        ? 12
-                                        : 14,
-                                  ),
-                                ),
-                              ]),
-                        ),
-                        const SizedBox(
-                          height: 4,
-                        ),
-                        RichText(
-                          text: TextSpan(
-                              text: S.of(context).footerContact('normalPart1'),
-                              style: AppTextStyles.body.copyWith(
-                                color: Colors.white,
-                                fontSize: Screen.width(context) < tabletSize
-                                    ? 12
-                                    : 14,
-                              ),
-                              children: [
-                                TextSpan(
-                                  text:
-                                      S.of(context).footerContact('boldPart1'),
-                                  style: AppTextStyles.body.copyWith(
-                                      color: Colors.white,
-                                      fontSize:
-                                          Screen.width(context) < tabletSize
-                                              ? 12
-                                              : 14,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                TextSpan(
-                                  text: S
-                                      .of(context)
-                                      .footerContact('normalPart2'),
-                                  style: AppTextStyles.body.copyWith(
-                                    color: Colors.white,
-                                    fontSize: Screen.width(context) < tabletSize
-                                        ? 12
-                                        : 14,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text:
-                                      S.of(context).footerContact('boldPart2'),
-                                  style: AppTextStyles.body.copyWith(
-                                      color: Colors.white,
-                                      fontSize:
-                                          Screen.width(context) < tabletSize
-                                              ? 12
-                                              : 14,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                TextSpan(
-                                  text: '.',
                                   style: AppTextStyles.body.copyWith(
                                     color: Colors.white,
                                     fontSize: Screen.width(context) < tabletSize

@@ -93,7 +93,7 @@
     "loginWithoutRecordTitle": "I don't have a registration",
     "loginForgotPasswordTitle": "Forgot my password",
     "loginResendConfirmationTitle": "Resend confirmation email",
-    "loginWarningTitle": "{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{atendimento@devmaua.com} other{}}",
+    "loginWarningTitle": "{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{atendimento.smile@maua.com} other{}}",
     
     
     
