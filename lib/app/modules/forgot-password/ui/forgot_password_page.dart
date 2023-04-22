@@ -30,127 +30,146 @@ class _ForgotPasswordPageState
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(color: AppColors.backgroundLogin),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Center(
-                    child: SmileLogoWidget(),
-                  ),
-                  if (MediaQuery.of(context).size.width > 1024)
-                    Observer(builder: (_) {
-                      if (controller.errors != '') {
-                        return Container(
-                          width: 500,
-                          decoration: BoxDecoration(
-                              color: AppColors.lightRedButton,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16.0),
-                            child: Text(
-                              controller.errors,
-                              style: AppTextStyles.body.copyWith(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        );
-                      }
-                      return const SizedBox.shrink();
-                    }),
-                  Observer(builder: (context) {
-                    if (controller.emailSent) {
-                      return Center(
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 40, vertical: 32),
-                              child: Text(
-                                S.of(context).codeInEmailInstructionsTitle,
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ),
-                            CustomElevatedButtonWidget(
-                              title: S.of(context).returnLogin,
-                              widthSize: MediaQuery.of(context).size.width < 650
-                                  ? MediaQuery.of(context).size.width * 0.85
-                                  : 600,
-                              heightSize: 50,
-                              backgroundColor: AppColors.brandingOrange,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: 600,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                              padding: EdgeInsets.zero,
                               onPressed: () {
                                 Modular.to.navigate('/login');
                               },
-                            ),
-                          ],
-                        ),
-                      );
-                    } else {
-                      return Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 40, vertical: 32),
-                            child: Text(
-                              S.of(context).codeInEmailTitle,
-                              style: const TextStyle(color: Colors.white),
-                              textAlign: TextAlign.justify,
-                            ),
-                          ),
-                          InputBoxWidget(
-                            isEmail: true,
-                            icon: Icons.person,
-                            placeholder: S.of(context).registerEmailPlaceholder,
-                            setValue: controller.setEmail,
-                            validation: controller.validateEmail,
-                          ),
+                              icon: Icon(
+                                Icons.keyboard_arrow_left_rounded,
+                                color: AppColors.white,
+                                size: 40,
+                              )),
                           const SizedBox(
-                            height: 40,
-                          ),
-                          Observer(builder: (_) {
-                            return CustomElevatedButtonWidget(
-                              isLoading: controller.isLoading,
-                              title: S.of(context).sendTitle,
-                              widthSize: MediaQuery.of(context).size.width < 650
-                                  ? MediaQuery.of(context).size.width * 0.85
-                                  : 600,
-                              heightSize: 50,
-                              backgroundColor: AppColors.brandingOrange,
-                              onPressed: () async {
-                                FocusScopeNode currentFocus =
-                                    FocusScope.of(context);
-                                if (!currentFocus.hasPrimaryFocus) {
-                                  currentFocus.unfocus();
-                                }
-                                if (_formKey.currentState!.validate()) {
-                                  await controller.forgotUserPassword();
-                                }
-                              },
-                            );
-                          }),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          CustomElevatedButtonWidget(
-                            title: S.of(context).loginWithoutRecordTitle,
-                            widthSize: MediaQuery.of(context).size.width < 650
-                                ? MediaQuery.of(context).size.width * 0.85
-                                : 600,
-                            heightSize: 50,
-                            backgroundColor: AppColors.white,
-                            fontColor: AppColors.backgroundLogin,
-                            onPressed: () {
-                              Modular.to.navigate('/login/cadastro');
-                            },
+                            height: 80,
                           ),
                         ],
-                      );
-                    }
-                  }),
-                ],
+                      ),
+                    ),
+                    const Center(
+                      child: SmileLogoWidget(),
+                    ),
+                    if (MediaQuery.of(context).size.width > 1024)
+                      Observer(builder: (_) {
+                        if (controller.errors != '') {
+                          return Container(
+                            width: 600,
+                            decoration: BoxDecoration(
+                                color: AppColors.lightRedButton,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Text(
+                                controller.errors,
+                                style: AppTextStyles.body.copyWith(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          );
+                        }
+                        return const SizedBox.shrink();
+                      }),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Observer(builder: (context) {
+                      if (controller.emailSent) {
+                        return Center(
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                width: 600,
+                                child: Text(
+                                  S.of(context).codeInEmailInstructionsTitle,
+                                  textAlign: TextAlign.justify,
+                                  style: AppTextStyles.body.copyWith(
+                                      color: AppColors.white,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  1300
+                                              ? 20
+                                              : 24),
+                                ),
+                              ),
+                              CustomElevatedButtonWidget(
+                                title: S.of(context).returnLogin,
+                                widthSize: 600,
+                                heightSize: 50,
+                                backgroundColor: AppColors.brandingOrange,
+                                onPressed: () {
+                                  Modular.to.navigate('/login');
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      } else {
+                        return Column(
+                          children: [
+                            SizedBox(
+                              width: 600,
+                              child: Text(
+                                S.of(context).codeInEmailTitle,
+                                style: AppTextStyles.body.copyWith(
+                                    color: AppColors.white,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width < 1300
+                                            ? 20
+                                            : 24),
+                                textAlign: TextAlign.justify,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            InputBoxWidget(
+                              isEmail: true,
+                              icon: Icons.person,
+                              placeholder:
+                                  S.of(context).registerEmailPlaceholder,
+                              setValue: controller.setEmail,
+                              validation: controller.validateEmail,
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Observer(builder: (_) {
+                              return CustomElevatedButtonWidget(
+                                isLoading: controller.isLoading,
+                                title: S.of(context).sendTitle,
+                                widthSize: 600,
+                                heightSize: 50,
+                                backgroundColor: AppColors.brandingOrange,
+                                onPressed: () async {
+                                  FocusScopeNode currentFocus =
+                                      FocusScope.of(context);
+                                  if (!currentFocus.hasPrimaryFocus) {
+                                    currentFocus.unfocus();
+                                  }
+                                  if (_formKey.currentState!.validate()) {
+                                    await controller.forgotUserPassword();
+                                  }
+                                },
+                              );
+                            }),
+                          ],
+                        );
+                      }
+                    }),
+                  ],
+                ),
               )),
         ),
       ),

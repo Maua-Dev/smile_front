@@ -49,12 +49,9 @@ class InputBoxWidget extends StatelessWidget {
         mask: "##.#####-#", filter: {"#": RegExp(r'[0-9]')});
 
     return Padding(
-        padding: const EdgeInsets.only(bottom: 20),
+        padding: const EdgeInsets.only(bottom: 16),
         child: SizedBox(
-          width: widthSize ??
-              (MediaQuery.of(context).size.width < 650
-                  ? MediaQuery.of(context).size.width * 0.85
-                  : 600),
+          width: widthSize ?? 600,
           child: TextFormField(
             validator: validation,
             onChanged: setValue,

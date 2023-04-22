@@ -57,7 +57,25 @@ class _RegisterPageState
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.width < 800 ? 80 : 150,
+                    width: 600,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              Modular.to.navigate('/login');
+                            },
+                            icon: Icon(
+                              Icons.keyboard_arrow_left_rounded,
+                              color: AppColors.white,
+                              size: 40,
+                            )),
+                        const SizedBox(
+                          height: 80,
+                        ),
+                      ],
+                    ),
                   ),
                   const Center(
                     child: SmileLogoWidget(),
@@ -223,9 +241,6 @@ class _RegisterPageState
                         validation: controller.validateVerifyPassword,
                       );
                     }),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     Observer(builder: (_) {
                       return CheckBoxWidget(
                         check: controller.acceptTermsOfUse,
@@ -297,21 +312,6 @@ class _RegisterPageState
                             : null,
                       );
                     }),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    CustomElevatedButtonWidget(
-                      title: S.of(context).haveRegistrationTitle,
-                      widthSize: MediaQuery.of(context).size.width < 650
-                          ? MediaQuery.of(context).size.width * 0.85
-                          : 600,
-                      heightSize: 50,
-                      backgroundColor: AppColors.white,
-                      fontColor: AppColors.backgroundLogin,
-                      onPressed: () {
-                        Modular.to.navigate('/login');
-                      },
-                    ),
                     const SizedBox(
                       height: 40,
                     ),
