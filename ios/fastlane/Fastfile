@@ -33,6 +33,8 @@ platform :ios do
       api_key: api_key,
       ipa: ENV['APP_PATH'],
       precheck_include_in_app_purchases: false,
+      run_precheck_before_submit: false,
+      submit_for_review: true,
       force: true, # Skip HTMl report verification
       skip_metadata: true,
       skip_screenshots: true,
