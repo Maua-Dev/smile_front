@@ -1,7 +1,5 @@
 name: Build & Deploy to App Store and Testflight
 on:
-  workflow_dispatch:
-    
   push:
     paths:
       - 'pubspec.yaml'
@@ -11,10 +9,10 @@ on:
 
 jobs:
   build_IOS_App:
-    if: contains(github.event.head_commit.message, 'bump version')
+    if: ${{contains(github.event.head_commit.message, 'bump version') || contains(github.event.head_commit.message, 'hotfix')  }}
     name: Build IOS App
     runs-on: macos-latest
-    environment: prod
+    environment: ${{ github.ref_name }}
     permissions:
       id-token: write
       contents: write
@@ -61,7 +59,7 @@ jobs:
           code-signing-identity: ${{ vars.CODE_SIGNING_IDENTITY }}
 
       - name: Exec fastlane
-        run: bundle exec fastlane prod
+        run: bundle exec fastlane ${{ github.ref_name }}
         env:
           APP_PATH: /Users/runner/work/smile_front/smile_front/output.ipa
           ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
