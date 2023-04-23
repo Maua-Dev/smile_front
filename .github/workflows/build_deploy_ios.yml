@@ -1,5 +1,7 @@
 name: Build & Deploy to App Store and Testflight
 on:
+  workflow_dispatch:
+    
   push:
     paths:
       - 'pubspec.yaml'
