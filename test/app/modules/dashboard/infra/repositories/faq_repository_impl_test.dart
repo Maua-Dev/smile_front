@@ -20,7 +20,7 @@ void main() {
     Faq(
         question: 'Em que local no site eu vejo as atividades da SMILE?',
         response:
-            'Clicando no ícone central da barra de navegação você poderá visualizar todas as atividades do evento. Se você for estudante do IMT poderá também acessar pelo Open LMS da SMILE: https://imt.myopenlms.net/course/view.php?id=1353'),
+            'Clicando no ícone das atividades na barra de navegação você poderá visualizar todas as atividades do evento. Se você for estudante do IMT poderá também acessar pelo Open LMS da SMILE: https://imt.myopenlms.net/course/view.php?id=1353'),
   ];
 
   setUpAll(() {
