@@ -109,9 +109,9 @@ class InputBoxWidget extends StatelessWidget {
             style: TextStyle(color: letterColor ?? AppColors.gray),
             inputFormatters: isRAField != null
                 ? [maskRA]
-                : isPassword != null
+                : isPassword
                     ? null
-                    : isEmail != null
+                    : isEmail
                         ? [
                             FilteringTextInputFormatter.allow(
                                 RegExp("[a-zA-ZÀ-ÖØ-öø-ÿ0-9.@_+-]")),
