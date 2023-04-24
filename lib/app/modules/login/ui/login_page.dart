@@ -34,13 +34,13 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(color: AppColors.backgroundLogin),
+      body: Form(
+        key: _formKey,
+        child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(color: AppColors.backgroundLogin),
+            child: SafeArea(
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -86,29 +86,38 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           }
                           return const SizedBox.shrink();
                         }),
-                      InputBoxWidget(
-                        isEmail: true,
-                        icon: Icons.person,
-                        placeholder: S.of(context).loginUsernamePlaceholder,
-                        setValue: controller.setUsername,
-                        validation: controller.validateEmail,
+                      AutofillGroup(
+                        child: Column(
+                          children: [
+                            InputBoxWidget(
+                              isEmail: true,
+                              icon: Icons.person,
+                              placeholder:
+                                  S.of(context).loginUsernamePlaceholder,
+                              setValue: controller.setUsername,
+                              validation: controller.validateEmail,
+                            ),
+                            Observer(builder: (context) {
+                              return InputBoxWidget(
+                                icon: Icons.lock,
+                                placeholder:
+                                    S.of(context).loginPasswordPlaceholder,
+                                setValue: controller.setPassword,
+                                isPassword: true,
+                                validation: controller.validateField,
+                                showPwd: controller.showPwd,
+                                onToggleVisibilityPwd:
+                                    controller.toggleVisibilityPwd,
+                                onFieldSubmitted: (p0) async {
+                                  if (_formKey.currentState!.validate()) {
+                                    await controller.login();
+                                  }
+                                },
+                              );
+                            }),
+                          ],
+                        ),
                       ),
-                      Observer(builder: (context) {
-                        return InputBoxWidget(
-                          icon: Icons.lock,
-                          placeholder: S.of(context).loginPasswordPlaceholder,
-                          setValue: controller.setPassword,
-                          isPassword: true,
-                          validation: controller.validateField,
-                          showPwd: controller.showPwd,
-                          onToggleVisibilityPwd: controller.toggleVisibilityPwd,
-                          onFieldSubmitted: (p0) async {
-                            if (_formKey.currentState!.validate()) {
-                              await controller.login();
-                            }
-                          },
-                        );
-                      }),
                       const SizedBox(
                         height: 20,
                       ),
@@ -232,8 +241,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     ],
                   ),
                 ),
-              )),
-        ),
+              ),
+            )),
       ),
     );
   }
