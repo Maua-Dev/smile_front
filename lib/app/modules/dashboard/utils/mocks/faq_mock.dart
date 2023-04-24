@@ -12,7 +12,7 @@ var faqMock = <Faq>[
   Faq(
       question: 'Em que local do site eu vejo as atividades da SMILE?',
       response:
-          '<p>Clicando no ícone das atividas na barra de navegação você poderá visualizar todas as atividades do evento. Se você for estudante do IMT poderá também acessar pelo Open LMS da SMILE: <a href="https://imt.myopenlms.net/course/view.php?id=1353">https://imt.myopenlms.net/course/view.php?id=1353</a> </p>'),
+          '<p>Clicando no ícone das atividades na barra de navegação você poderá visualizar todas as atividades do evento. Se você for estudante do IMT poderá também acessar pelo Open LMS da SMILE: <a href="https://imt.myopenlms.net/course/view.php?id=1353">https://imt.myopenlms.net/course/view.php?id=1353</a> </p>'),
   Faq(
       question: 'Na atividade presencial, onde vejo a sala?',
       response:

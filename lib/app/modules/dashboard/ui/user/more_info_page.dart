@@ -50,7 +50,7 @@ class _MoreInfoPageState
             padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width > tabletSize
                     ? MediaQuery.of(context).size.width * 0.2
-                    : 8,
+                    : 16,
                 vertical: 16),
             child: Column(children: [
               Row(
