@@ -15,7 +15,8 @@ platform :ios do
       api_key: api_key,
       changelog: 'Testar todas as funcionalidades do app',
       distribute_external: true,
-      groups: 'Devs Ios',
+      groups: ['Devs Ios'],
+      notify_external_testers: true,
       ipa: ENV['APP_PATH'],
       skip_waiting_for_build_processing: true,
     )
@@ -38,7 +39,8 @@ platform :ios do
       submit_for_review: true,
       force: true, # Skip HTMl report verification
       skip_metadata: true,
-      skip_screenshots: true
+      skip_screenshots: true,
+      submission_information: { add_id_info_uses_idfa: false }
     )
   end
 end

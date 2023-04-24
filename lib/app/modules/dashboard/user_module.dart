@@ -134,13 +134,30 @@ class UserModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(Modular.initialRoute,
-        child: (_, args) => const UserDashboardPage()),
-    ChildRoute('/all-activities',
-        child: (_, args) => const AllActivitiesUserDashboardPage()),
-    ChildRoute('/more-info', child: (_, args) => const MoreInfoPage()),
-    ChildRoute('/help', child: (_, args) => const HelpPage()),
-    ChildRoute('/certificate', child: (_, args) => const CertificatePage()),
+    ChildRoute(
+      Modular.initialRoute,
+      child: (_, args) => const UserDashboardPage(),
+      transition: TransitionType.rightToLeft,
+    ),
+    ChildRoute(
+      '/all-activities',
+      child: (_, args) => const AllActivitiesUserDashboardPage(),
+      transition: TransitionType.rightToLeft,
+    ),
+    ChildRoute(
+      '/more-info',
+      child: (_, args) => const MoreInfoPage(),
+    ),
+    ChildRoute(
+      '/help',
+      child: (_, args) => const HelpPage(),
+      transition: TransitionType.rightToLeft,
+    ),
+    ChildRoute(
+      '/certificate',
+      child: (_, args) => const CertificatePage(),
+      transition: TransitionType.rightToLeft,
+    ),
     ModuleRoute('/professor',
         module: ProfessorModule(), guards: [AuthGuardProfessor()])
   ];

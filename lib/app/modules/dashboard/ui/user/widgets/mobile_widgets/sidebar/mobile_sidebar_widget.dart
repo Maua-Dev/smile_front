@@ -46,22 +46,22 @@ class DrawerDashboardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: Screen.height(context) * 0.1),
-      child: Drawer(
-        width: Screen.width(context) < cellphoneSize
-            ? Screen.width(context) * 0.6
-            : Screen.width(context) * 0.3,
-        backgroundColor: AppColors.brandingBlue,
-        child: ListView.builder(
-          itemCount: isProfessor ? professorOptions.length : userOptions.length,
-          itemBuilder: (BuildContext context, int index) {
-            return SideBarContents(
-              title: isProfessor ? professorOptions[index] : userOptions[index],
-              route: isProfessor ? professorRoutes[index] : userRoutes[index],
-            );
-          },
-        ),
+    return Drawer(
+      width: Screen.width(context) < cellphoneSize
+          ? Screen.width(context) * 0.6
+          : Screen.width(context) * 0.3,
+      backgroundColor: AppColors.brandingBlue,
+      child: ListView.builder(
+        itemCount:
+            (isProfessor ? professorOptions.length : userOptions.length) + 1,
+        itemBuilder: (BuildContext context, int index) {
+          if (index == 0) return SizedBox(height: Screen.height(context) * 0.1);
+          var i = index - 1;
+          return SideBarContents(
+            title: isProfessor ? professorOptions[i] : userOptions[i],
+            route: isProfessor ? professorRoutes[i] : userRoutes[i],
+          );
+        },
       ),
     );
   }
@@ -81,9 +81,9 @@ class SideBarContents extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: GestureDetector(
-        onTap: () async {
-          Modular.to.navigate(route);
+        onTap: () {
           Scaffold.of(context).closeDrawer();
+          Modular.to.navigate(route);
         },
         child: Container(
           decoration:

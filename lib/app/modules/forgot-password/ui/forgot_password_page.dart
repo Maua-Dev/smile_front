@@ -23,13 +23,13 @@ class _ForgotPasswordPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(color: AppColors.backgroundLogin),
+      body: Form(
+        key: _formKey,
+        child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(color: AppColors.backgroundLogin),
+            child: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
@@ -170,8 +170,8 @@ class _ForgotPasswordPageState
                     }),
                   ],
                 ),
-              )),
-        ),
+              ),
+            )),
       ),
     );
   }

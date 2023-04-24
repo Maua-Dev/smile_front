@@ -21,55 +21,57 @@ class EndDrawerWidget extends StatelessWidget {
     return Drawer(
       backgroundColor: AppColors.brandingBlue,
       elevation: 40,
-      child: ListView(
-        controller: ScrollController(),
-        padding: EdgeInsets.zero,
-        children: [
-          ListTile(
-            title: Text(
-              S.of(context).initTitle.toUpperCase(),
-              style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              scrollToHome!();
-            },
-          ),
-          ListTile(
-            title: Text(
-              S.of(context).activitiesTitle.toUpperCase(),
-              style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              scrollToActivity!();
-            },
-          ),
-          ListTile(
-            title: Text(
-              S.of(context).sponsorsTitle.toUpperCase(),
-              style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              scrollToSponsors!();
-            },
-          ),
-          ListTile(
-            title: AppbarButtonWidget(
-              title: S.of(context).loginTitle.toUpperCase(),
-              textStyle: AppTextStyles.buttonBold
-                  .copyWith(color: Colors.white, fontSize: 16),
-              paddingHorizontal: 8,
-              paddingVertical: 8,
-              widthSize: 160,
-              backgroundColor: AppColors.brandingOrange,
-              onPressed: () async {
-                redirect!();
+      child: SafeArea(
+        child: ListView(
+          controller: ScrollController(),
+          padding: EdgeInsets.zero,
+          children: [
+            ListTile(
+              title: Text(
+                S.of(context).initTitle.toUpperCase(),
+                style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                scrollToHome!();
               },
             ),
-          ),
-        ],
+            ListTile(
+              title: Text(
+                S.of(context).activitiesTitle.toUpperCase(),
+                style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                scrollToActivity!();
+              },
+            ),
+            ListTile(
+              title: Text(
+                S.of(context).sponsorsTitle.toUpperCase(),
+                style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                scrollToSponsors!();
+              },
+            ),
+            ListTile(
+              title: AppbarButtonWidget(
+                title: S.of(context).loginTitle.toUpperCase(),
+                textStyle: AppTextStyles.buttonBold
+                    .copyWith(color: Colors.white, fontSize: 16),
+                paddingHorizontal: 8,
+                paddingVertical: 8,
+                widthSize: 160,
+                backgroundColor: AppColors.brandingOrange,
+                onPressed: () async {
+                  redirect!();
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
