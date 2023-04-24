@@ -52,30 +52,30 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future awaitToLoad() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 300));
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          endDrawer: MediaQuery.of(context).size.width <= 1024
-              ? EndDrawerWidget(
-                  scrollToActivity: scrollToActivity,
-                  scrollToHome: scrollToHome,
-                  scrollToSponsors: scrollToSponsors,
-                  redirect: redirect,
-                )
-              : null,
-          appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(56),
-              child: HomeAppBarWidget(
+    return Scaffold(
+        endDrawer: MediaQuery.of(context).size.width <= 1024
+            ? EndDrawerWidget(
                 scrollToActivity: scrollToActivity,
                 scrollToHome: scrollToHome,
                 scrollToSponsors: scrollToSponsors,
                 redirect: redirect,
-              )),
-          body: FutureBuilder(
+              )
+            : null,
+        appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(56),
+            child: HomeAppBarWidget(
+              scrollToActivity: scrollToActivity,
+              scrollToHome: scrollToHome,
+              scrollToSponsors: scrollToSponsors,
+              redirect: redirect,
+            )),
+        body: SafeArea(
+          child: FutureBuilder(
               future: awaitToLoad(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ));
                 }
-              })),
-    );
+              }),
+        ));
   }
 }

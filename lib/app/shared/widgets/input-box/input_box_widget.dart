@@ -10,7 +10,7 @@ class InputBoxWidget extends StatelessWidget {
   final String placeholder;
   final double? widthSize;
   final bool? disable;
-  final bool? isPassword;
+  final bool isPassword;
   final String? Function(String?)? validation;
   final Function(String value) setValue;
   final Function(String)? onFieldSubmitted;
@@ -18,7 +18,7 @@ class InputBoxWidget extends StatelessWidget {
   final bool? showPwd;
   final bool? isRAField;
   final bool? isValidated;
-  final bool? isEmail;
+  final bool isEmail;
   final Color? backgroundColor;
   final Color? letterColor;
   final String? initialValue;
@@ -29,7 +29,7 @@ class InputBoxWidget extends StatelessWidget {
     required this.placeholder,
     this.widthSize,
     this.disable,
-    this.isPassword,
+    this.isPassword = false,
     this.validation,
     required this.setValue,
     this.onToggleVisibilityPwd,
@@ -37,7 +37,7 @@ class InputBoxWidget extends StatelessWidget {
     this.isRAField,
     this.isValidated,
     this.onFieldSubmitted,
-    this.isEmail,
+    this.isEmail = false,
     this.backgroundColor,
     this.letterColor,
     this.initialValue,
@@ -53,10 +53,14 @@ class InputBoxWidget extends StatelessWidget {
         child: SizedBox(
           width: widthSize ?? 600,
           child: TextFormField(
+            autofillHints: isEmail
+                ? [AutofillHints.email]
+                : (isPassword ? [AutofillHints.password] : null),
             validator: validation,
             onChanged: setValue,
             initialValue: initialValue,
             onFieldSubmitted: onFieldSubmitted,
+            enableSuggestions: true,
             obscureText: showPwd != null ? !showPwd! : false,
             enabled: disable != null ? !disable! : true,
             decoration: InputDecoration(
