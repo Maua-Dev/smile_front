@@ -19,7 +19,9 @@ class _LandingUserPageState extends State<LandingUserPage> {
   Widget build(BuildContext context) {
     var authController = Modular.get<AuthController>();
     return Scaffold(
-        drawerScrimColor: Colors.transparent,
+        // drawerScrimColor: Colors.transparent,
+        endDrawerEnableOpenDragGesture: true,
+        drawerEnableOpenDragGesture: true,
         drawer: Screen.width(context) < tabletSize
             ? DrawerDashboardWidget(
                 isProfessor: authController.role == 'PROFESSOR')
@@ -45,14 +47,12 @@ class _LandingUserPageState extends State<LandingUserPage> {
                 }),
                 foregroundColor: AppColors.brandingBlue)),
         body: MediaQuery.of(context).size.width < tabletSize
-            ? SafeArea(
-                child: Center(
-                  child: SizedBox(
-                      width: Screen.width(context) < 1024
-                          ? Screen.width(context)
-                          : 1024,
-                      child: RouterOutlet()),
-                ),
+            ? Center(
+                child: SizedBox(
+                    width: Screen.width(context) < 1024
+                        ? Screen.width(context)
+                        : 1024,
+                    child: RouterOutlet()),
               )
             : SafeArea(
                 child: Row(

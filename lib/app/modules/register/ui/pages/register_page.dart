@@ -44,282 +44,301 @@ class _RegisterPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Form(
+      body: Form(
         key: _formKey,
         child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(color: AppColors.backgroundLogin),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 600,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        IconButton(
-                            padding: EdgeInsets.zero,
-                            onPressed: () {
-                              Modular.to.navigate('/login');
-                            },
-                            icon: Icon(
-                              Icons.keyboard_arrow_left_rounded,
-                              color: AppColors.white,
-                              size: 40,
-                            )),
-                        const SizedBox(
-                          height: 80,
+            child: SafeArea(
+              bottom: false,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 600,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () {
+                                  Modular.to.navigate('/login');
+                                },
+                                icon: Icon(
+                                  Icons.keyboard_arrow_left_rounded,
+                                  color: AppColors.white,
+                                  size: 40,
+                                )),
+                            const SizedBox(
+                              height: 80,
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  const Center(
-                    child: SmileLogoWidget(),
-                  ),
-                  Column(children: [
-                    if (MediaQuery.of(context).size.width > 1024)
-                      Observer(builder: (_) {
-                        if (controller.errors != '') {
-                          return Container(
-                            width: 500,
-                            decoration: BoxDecoration(
-                              color: AppColors.lightRedButton,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 16.0,
-                              ),
-                              child: Text(
-                                controller.errors,
-                                style: AppTextStyles.body.copyWith(
-                                  fontSize: 18,
-                                  color: Colors.white,
+                      ),
+                      const Center(
+                        child: SmileLogoWidget(),
+                      ),
+                      Column(children: [
+                        if (MediaQuery.of(context).size.width > 1024)
+                          Observer(builder: (_) {
+                            if (controller.errors != '') {
+                              return Container(
+                                width: 500,
+                                decoration: BoxDecoration(
+                                  color: AppColors.lightRedButton,
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          );
-                        }
-                        return const SizedBox.shrink();
-                      }),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    Observer(builder: (_) {
-                      return CustomElevatedButtonWidget(
-                        title: controller.role.personalizedNamed.toUpperCase(),
-                        backgroundColor: AppColors.brandingOrange,
-                        widthSize: MediaQuery.of(context).size.width < 650
-                            ? MediaQuery.of(context).size.width * 0.85
-                            : 600,
-                        heightSize: 50,
-                        onPressed: () {
-                          _showSelectRoleDialog();
-                        },
-                      );
-                    }),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    InputBoxWidget(
-                      icon: Icons.person,
-                      placeholder: S.of(context).registerFullNamePlaceholder,
-                      setValue: controller.setName,
-                      validation: controller.validateName,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 20),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width < 650
-                                ? MediaQuery.of(context).size.width * 0.35
-                                : 190,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              color: AppColors.white,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Observer(builder: (_) {
-                              return EnableTextFieldCheckBoxWidget(
-                                check: controller.hasSocialName,
-                                onChanged: controller.setHasSocialName,
-                                title:
-                                    S.of(context).registerSocialNamePlaceholder,
-                                tooltipButton: Tooltip(
-                                  triggerMode: TooltipTriggerMode.tap,
-                                  message:
-                                      S.of(context).registerSocialNameTooltip,
-                                  child: Icon(Icons.help,
-                                      color: AppColors.brandingOrange),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 16.0,
+                                  ),
+                                  child: Text(
+                                    controller.errors,
+                                    style: AppTextStyles.body.copyWith(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               );
-                            }),
-                          ),
-                        ),
+                            }
+                            return const SizedBox.shrink();
+                          }),
                         const SizedBox(
-                          width: 10,
+                          height: 24,
+                        ),
+                        Observer(builder: (_) {
+                          return CustomElevatedButtonWidget(
+                            title:
+                                controller.role.personalizedNamed.toUpperCase(),
+                            backgroundColor: AppColors.brandingOrange,
+                            widthSize: MediaQuery.of(context).size.width < 650
+                                ? MediaQuery.of(context).size.width * 0.85
+                                : 600,
+                            heightSize: 50,
+                            onPressed: () {
+                              _showSelectRoleDialog();
+                            },
+                          );
+                        }),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        InputBoxWidget(
+                          icon: Icons.person,
+                          placeholder:
+                              S.of(context).registerFullNamePlaceholder,
+                          setValue: controller.setName,
+                          validation: controller.validateName,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width < 650
+                                    ? MediaQuery.of(context).size.width * 0.35
+                                    : 190,
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Observer(builder: (_) {
+                                  return EnableTextFieldCheckBoxWidget(
+                                    check: controller.hasSocialName,
+                                    onChanged: controller.setHasSocialName,
+                                    title: S
+                                        .of(context)
+                                        .registerSocialNamePlaceholder,
+                                    tooltipButton: Tooltip(
+                                      triggerMode: TooltipTriggerMode.tap,
+                                      message: S
+                                          .of(context)
+                                          .registerSocialNameTooltip,
+                                      child: Icon(Icons.help,
+                                          color: AppColors.brandingOrange),
+                                    ),
+                                  );
+                                }),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Observer(builder: (_) {
+                              return InputBoxWidget(
+                                disable: !controller.hasSocialName,
+                                icon: Icons.person,
+                                placeholder:
+                                    S.of(context).registerSocialNamePlaceholder,
+                                setValue: controller.setSocialName,
+                                widthSize: MediaQuery.of(context).size.width <
+                                        650
+                                    ? MediaQuery.of(context).size.width * 0.48
+                                    : 400,
+                                validation: controller.validateSocialName,
+                              );
+                            }),
+                          ],
                         ),
                         Observer(builder: (_) {
                           return InputBoxWidget(
-                            disable: !controller.hasSocialName,
-                            icon: Icons.person,
+                            isEmail: true,
+                            icon: Icons.email_rounded,
                             placeholder:
-                                S.of(context).registerSocialNamePlaceholder,
-                            setValue: controller.setSocialName,
-                            widthSize: MediaQuery.of(context).size.width < 650
-                                ? MediaQuery.of(context).size.width * 0.48
-                                : 400,
-                            validation: controller.validateSocialName,
+                                controller.role == UserRolesEnum.PROFESSOR
+                                    ? S
+                                        .of(context)
+                                        .registerEmailProfessorPlaceholder
+                                    : S.of(context).registerEmailPlaceholder,
+                            setValue: controller.setEmail,
+                            validation: controller.validateEmail,
                           );
                         }),
-                      ],
-                    ),
-                    Observer(builder: (_) {
-                      return InputBoxWidget(
-                        isEmail: true,
-                        icon: Icons.email_rounded,
-                        placeholder: controller.role == UserRolesEnum.PROFESSOR
-                            ? S.of(context).registerEmailProfessorPlaceholder
-                            : S.of(context).registerEmailPlaceholder,
-                        setValue: controller.setEmail,
-                        validation: controller.validateEmail,
-                      );
-                    }),
-                    InputBoxWidget(
-                      isEmail: true,
-                      icon: Icons.email_rounded,
-                      placeholder: controller.role == UserRolesEnum.PROFESSOR
-                          ? S
-                              .of(context)
-                              .registerEmailProfessorConfirmationPlaceholder
-                          : S.of(context).registerEmailConfirmationPlaceholder,
-                      setValue: controller.setVerifyEmail,
-                      validation: controller.validateVerifyEmail,
-                    ),
-                    Observer(builder: (_) {
-                      if (controller.role == UserRolesEnum.STUDENT) {
-                        return InputBoxWidget(
-                          isRAField: true,
-                          icon: Icons.person,
-                          placeholder: S.of(context).registerRAPlaceholder,
-                          setValue: controller.setRa,
-                          validation: controller.validateRa,
-                        );
-                      } else {
-                        return const SizedBox.shrink();
-                      }
-                    }),
-                    Observer(builder: (context) {
-                      return InputBoxWidget(
-                        icon: Icons.lock,
-                        placeholder: S.of(context).loginPasswordPlaceholder,
-                        setValue: controller.setPassword,
-                        isPassword: true,
-                        showPwd: controller.showPwd,
-                        onToggleVisibilityPwd: controller.toggleVisibilityPwd,
-                        validation: controller.validatePassword,
-                      );
-                    }),
-                    Observer(builder: (context) {
-                      return InputBoxWidget(
-                        icon: Icons.lock,
-                        placeholder:
-                            S.of(context).registerConfirmPasswordPlaceholder,
-                        setValue: controller.setVerifyPassword,
-                        isPassword: true,
-                        showPwd: controller.showConfirmPwd,
-                        onToggleVisibilityPwd:
-                            controller.toggleVisibilityConfirmPwd,
-                        validation: controller.validateVerifyPassword,
-                      );
-                    }),
-                    Observer(builder: (_) {
-                      return CheckBoxWidget(
-                        check: controller.acceptTermsOfUse,
-                        title: S.of(context).registerTerms('two'),
-                        link:
-                            'https://www.maua.br/a-maua/politica-de-privacidade',
-                        onChanged: (bool? value) {
-                          controller.setAcceptTermsOfUse(value);
-                        },
-                      );
-                    }),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    Observer(builder: (_) {
-                      return SwitchToggleWidget(
-                        isSwitched: controller.acceptEmailNotifications,
-                        tipo: S.of(context).notificationsSchema('email'),
-                        onChanged: (bool? value) {
-                          controller.setEmailNotifications(value);
-                        },
-                      );
-                    }),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Observer(builder: (_) {
-                      return CustomElevatedButtonWidget(
-                        isLoading: controller.isLoading,
-                        title: S.of(context).registerTitle,
-                        widthSize: MediaQuery.of(context).size.width < 650
-                            ? MediaQuery.of(context).size.width * 0.85
-                            : 600,
-                        heightSize: 50,
-                        backgroundColor: AppColors.brandingOrange,
-                        onPressed: controller.acceptTermsOfUse
-                            ? () async {
-                                FocusScopeNode currentFocus =
-                                    FocusScope.of(context);
-                                if (!currentFocus.hasPrimaryFocus) {
-                                  currentFocus.unfocus();
-                                }
-                                if (_formKey.currentState!.validate()) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return ActionConfirmationDialogWidget(
-                                        title: S
-                                            .of(context)
-                                            .confirmEmailAndPhoneNotificationTitle(
-                                                controller.email),
-                                        content: S
-                                            .of(context)
-                                            .confirmEmailNotificationSubtitle,
-                                        onPressed: () async {
-                                          Navigator.of(context).pop();
-                                          await controller.register();
-                                          if (controller.successRegistration) {
-                                            Modular.to.navigate(
-                                                '/login/cadastro/email');
-                                          }
+                        InputBoxWidget(
+                          isEmail: true,
+                          icon: Icons.email_rounded,
+                          placeholder: controller.role ==
+                                  UserRolesEnum.PROFESSOR
+                              ? S
+                                  .of(context)
+                                  .registerEmailProfessorConfirmationPlaceholder
+                              : S
+                                  .of(context)
+                                  .registerEmailConfirmationPlaceholder,
+                          setValue: controller.setVerifyEmail,
+                          validation: controller.validateVerifyEmail,
+                        ),
+                        Observer(builder: (_) {
+                          if (controller.role == UserRolesEnum.STUDENT) {
+                            return InputBoxWidget(
+                              isRAField: true,
+                              icon: Icons.person,
+                              placeholder: S.of(context).registerRAPlaceholder,
+                              setValue: controller.setRa,
+                              validation: controller.validateRa,
+                            );
+                          } else {
+                            return const SizedBox.shrink();
+                          }
+                        }),
+                        Observer(builder: (context) {
+                          return InputBoxWidget(
+                            icon: Icons.lock,
+                            placeholder: S.of(context).loginPasswordPlaceholder,
+                            setValue: controller.setPassword,
+                            isPassword: true,
+                            showPwd: controller.showPwd,
+                            onToggleVisibilityPwd:
+                                controller.toggleVisibilityPwd,
+                            validation: controller.validatePassword,
+                          );
+                        }),
+                        Observer(builder: (context) {
+                          return InputBoxWidget(
+                            icon: Icons.lock,
+                            placeholder: S
+                                .of(context)
+                                .registerConfirmPasswordPlaceholder,
+                            setValue: controller.setVerifyPassword,
+                            isPassword: true,
+                            showPwd: controller.showConfirmPwd,
+                            onToggleVisibilityPwd:
+                                controller.toggleVisibilityConfirmPwd,
+                            validation: controller.validateVerifyPassword,
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return CheckBoxWidget(
+                            check: controller.acceptTermsOfUse,
+                            title: S.of(context).registerTerms('two'),
+                            link:
+                                'https://www.maua.br/a-maua/politica-de-privacidade',
+                            onChanged: (bool? value) {
+                              controller.setAcceptTermsOfUse(value);
+                            },
+                          );
+                        }),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        Observer(builder: (_) {
+                          return SwitchToggleWidget(
+                            isSwitched: controller.acceptEmailNotifications,
+                            tipo: S.of(context).notificationsSchema('email'),
+                            onChanged: (bool? value) {
+                              controller.setEmailNotifications(value);
+                            },
+                          );
+                        }),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Observer(builder: (_) {
+                          return CustomElevatedButtonWidget(
+                            isLoading: controller.isLoading,
+                            title: S.of(context).registerTitle,
+                            widthSize: MediaQuery.of(context).size.width < 650
+                                ? MediaQuery.of(context).size.width * 0.85
+                                : 600,
+                            heightSize: 50,
+                            backgroundColor: AppColors.brandingOrange,
+                            onPressed: controller.acceptTermsOfUse
+                                ? () async {
+                                    FocusScopeNode currentFocus =
+                                        FocusScope.of(context);
+                                    if (!currentFocus.hasPrimaryFocus) {
+                                      currentFocus.unfocus();
+                                    }
+                                    if (_formKey.currentState!.validate()) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return ActionConfirmationDialogWidget(
+                                            title: S
+                                                .of(context)
+                                                .confirmEmailAndPhoneNotificationTitle(
+                                                    controller.email),
+                                            content: S
+                                                .of(context)
+                                                .confirmEmailNotificationSubtitle,
+                                            onPressed: () async {
+                                              Navigator.of(context).pop();
+                                              await controller.register();
+                                              if (controller
+                                                  .successRegistration) {
+                                                Modular.to.navigate(
+                                                    '/login/cadastro/email');
+                                              }
+                                            },
+                                            isLoading: controller.isLoading,
+                                          );
                                         },
-                                        isLoading: controller.isLoading,
                                       );
-                                    },
-                                  );
-                                }
-                              }
-                            : null,
-                      );
-                    }),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                  ]),
-                ],
+                                    }
+                                  }
+                                : null,
+                          );
+                        }),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                      ]),
+                    ],
+                  ),
+                ),
               ),
             )),
-      )),
+      ),
     );
   }
 }
