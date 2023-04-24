@@ -48,14 +48,10 @@ jobs:
          - name: Set Stack Name
            run: |
             echo "STACK_NAME='SmileFront2023SamStack${{github.ref_name}}'" >> $GITHUB_ENV
-         - name: Set ref upper name
-           run: |
-            ref_name_upper = ${github.ref_name^^}
-            echo "REF_NAME_UPPER='${{ref_name_upper}}'" >> $GITHUB_ENV
-         - name: Build SAM          
+         - name: Build SAM
            run: |
             sam build --template-file samtemplate.yml --use-container
-            sam deploy --no-fail-on-empty-changeset --template-file samtemplate.yml --stack-name ${{env.STACK_NAME}} --region ${{ vars.AWS_S3_BUCKET_REGION }}  --parameter-overrides "ParameterKey=BucketName,ParameterValue=smile-2023-front-${{github.ref_name}} ParameterKey=AcmCertificateArn,ParameterValue=${{secrets.ACM_CERTIFICATE_ARN}}" --tags "project=Smile2023" "stack=FRONT" "stage=${{env.REF_NAME_UPPER}}"
+            sam deploy --no-fail-on-empty-changeset --template-file samtemplate.yml --stack-name ${{env.STACK_NAME}} --region ${{ vars.AWS_S3_BUCKET_REGION }}  --parameter-overrides "ParameterKey=BucketName,ParameterValue=smile-2023-front-${{github.ref_name}} ParameterKey=AcmCertificateArn,ParameterValue=${{secrets.ACM_CERTIFICATE_ARN}}" --tags "project=Smile2023" "stack=FRONT"
          - name: Set CloudFront ID
            run: |
             CLOUD_FRONT_ID=$(aws cloudformation --region ${{vars.AWS_S3_BUCKET_REGION}} describe-stacks --stack-name ${{env.STACK_NAME}} --query "Stacks[0].Outputs[?OutputKey=='CloudfrontId'].OutputValue" --output text)
