@@ -13,7 +13,9 @@ platform :ios do
 
     upload_to_testflight(
       api_key: api_key,
-      skip_submission: true,
+      changelog: 'Testar todas as funcionalidades do app',
+      distribute_external: true,
+      groups: 'Devs Ios',
       ipa: ENV['APP_PATH'],
       skip_waiting_for_build_processing: true,
     )
@@ -33,10 +35,10 @@ platform :ios do
       api_key: api_key,
       ipa: ENV['APP_PATH'],
       precheck_include_in_app_purchases: false,
+      submit_for_review: true,
       force: true, # Skip HTMl report verification
       skip_metadata: true,
-      skip_screenshots: true,
-      skip_binary_upload: true
+      skip_screenshots: true
     )
   end
 end
