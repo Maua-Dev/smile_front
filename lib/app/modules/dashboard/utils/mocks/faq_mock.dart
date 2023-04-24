@@ -8,11 +8,11 @@ var faqMock = <Faq>[
   Faq(
       question: 'Como validar a presença nas minhas atividades?',
       response:
-          '<p>Clicando na atividade, você será direcionado para a tela de mais informações, onde encontrará um botão para validação de presença. Ao seleciona-lo, você deve preencher um token com 6 dígitos, que será fornecido pelo professor responsável pela atividade. Lembrando que o botão de validação só estará disponível caso você esteja inscrito na atividade. Qualquer problema com o token informe o professor responsável imediatamente.</p>'),
+          '<p>Clicando na atividade, você será direcionado para a tela de mais informações, onde encontrará um botão para validação de presença. Ao seleciona-lo, você deve preencher um token com 6 dígitos, que será fornecido pelo professor responsável durante a atividade. Lembrando que o botão de validação só estará disponível caso você esteja inscrito na atividade. Qualquer problema com o token informe o professor responsável imediatamente.</p>'),
   Faq(
       question: 'Em que local do site eu vejo as atividades da SMILE?',
       response:
-          '<p>Clicando no ícone central da barra de navegação você poderá visualizar todas as atividades do evento. Se você for estudante do IMT poderá também acessar pelo Open LMS da SMILE: <a href="https://imt.myopenlms.net/course/view.php?id=1353">https://imt.myopenlms.net/course/view.php?id=1353</a> </p>'),
+          '<p>Clicando no ícone das atividades na barra de navegação você poderá visualizar todas as atividades do evento. Se você for estudante do IMT poderá também acessar pelo Open LMS da SMILE: <a href="https://imt.myopenlms.net/course/view.php?id=1353">https://imt.myopenlms.net/course/view.php?id=1353</a> </p>'),
   Faq(
       question: 'Na atividade presencial, onde vejo a sala?',
       response:
