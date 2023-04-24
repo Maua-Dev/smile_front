@@ -50,7 +50,8 @@ jobs:
             echo "STACK_NAME='SmileFront2023SamStack${{github.ref_name}}'" >> $GITHUB_ENV
          - name: Set ref upper name
            run: |
-            echo "REF_NAME_UPPER='${{github.ref_name^^}}'" >> $GITHUB_ENV
+            ref_name_upper = ${github.ref_name^^}
+            echo "REF_NAME_UPPER='${{ref_name_upper}}'" >> $GITHUB_ENV
          - name: Build SAM          
            run: |
             sam build --template-file samtemplate.yml --use-container
