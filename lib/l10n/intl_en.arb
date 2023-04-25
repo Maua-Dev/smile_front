@@ -42,7 +42,7 @@
 
     "footerSocialMedia": "Click here to access our social networks:",
     "footerHowToGet": "How to get",
-    "footerDoubtContact": "{bold, select, normalPart1{If in doubt, send an email to } boldPart1{smile.patrocinio@maua.br} normalPart2{ or } boldPart2{smile@maua.br} normalPart3{.} other{Dev. Community Mauá}}",
+    "footerDoubtContact": "{bold, select, normalPart1{If you have any questions feel free to reach us at via } boldPart1{smile.patrocinio@maua.br} normalPart2{ or } boldPart2{smile@maua.br} normalPart3{.} other{Dev. Community Mauá}}",
     "footerContact": "{bold, select, normalPart1{If you want to talk to us, contact us on the numbers: } boldPart1{4239-3563} normalPart2{ or } boldPart2{4239-3059} normalPart3{.} other{Dev. Community Mauá}}",
     "footerDev": "{bold, select, normalPart{Created and developed by } boldPart{Dev. Community Mauá} other{Dev. Community Mauá}}",
     "footerLocalizationTitle": "Campus São Caetano do Sul",
