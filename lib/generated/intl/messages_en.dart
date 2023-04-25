@@ -112,7 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m8(bold) => "${Intl.select(bold, {
-            'normalPart1': 'If in doubt, send an email to ',
+            'normalPart1':
+                'If you have any questions feel free to reach us at via ',
             'boldPart1': 'smile.patrocinio@maua.br',
             'normalPart2': ' or ',
             'boldPart2': 'smile@maua.br',
