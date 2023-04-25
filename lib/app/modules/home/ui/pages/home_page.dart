@@ -75,6 +75,7 @@ class _HomePageState extends State<HomePage> {
               redirect: redirect,
             )),
         body: SafeArea(
+          bottom: false,
           child: FutureBuilder(
               future: awaitToLoad(),
               builder: (context, snapshot) {

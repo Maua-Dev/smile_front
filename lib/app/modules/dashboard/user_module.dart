@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/certificate_repository_interface.dart';
@@ -134,16 +135,14 @@ class UserModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(
-      Modular.initialRoute,
-      child: (_, args) => const UserDashboardPage(),
-      transition: TransitionType.rightToLeft,
-    ),
-    ChildRoute(
-      '/all-activities',
-      child: (_, args) => const AllActivitiesUserDashboardPage(),
-      transition: TransitionType.rightToLeft,
-    ),
+    ChildRoute(Modular.initialRoute,
+        child: (_, args) => const UserDashboardPage(),
+        transition:
+            kIsWeb ? TransitionType.fadeIn : TransitionType.rightToLeft),
+    ChildRoute('/all-activities',
+        child: (_, args) => const AllActivitiesUserDashboardPage(),
+        transition:
+            kIsWeb ? TransitionType.fadeIn : TransitionType.rightToLeft),
     ChildRoute(
       '/more-info',
       child: (_, args) => const MoreInfoPage(),
@@ -151,12 +150,12 @@ class UserModule extends Module {
     ChildRoute(
       '/help',
       child: (_, args) => const HelpPage(),
-      transition: TransitionType.rightToLeft,
+      transition: kIsWeb ? TransitionType.fadeIn : TransitionType.rightToLeft,
     ),
     ChildRoute(
       '/certificate',
       child: (_, args) => const CertificatePage(),
-      transition: TransitionType.rightToLeft,
+      transition: kIsWeb ? TransitionType.fadeIn : TransitionType.rightToLeft,
     ),
     ModuleRoute('/professor',
         module: ProfessorModule(), guards: [AuthGuardProfessor()])
