@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_delete_dialog.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
@@ -386,37 +387,15 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return Dialog(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0)),
-                                child: Container(
-                                    color: AppColors.white,
-                                    child: Observer(builder: (_) {
-                                      return Column(
-                                        children: [
-                                          Text(
-                                              "Tem certeza que deseja excluir a sua conta? Todas as suas incrições, certificados e dados serão apagados permanentemente.\n Digite o seu e-mail (${controller.email}) para confirmar:"),
-                                          TextField(
-                                            onChanged: (value) =>
-                                                controller.setEmailValue(value),
-                                            decoration: InputDecoration(
-                                              filled: true,
-                                              fillColor:
-                                                  controller.isEmailTypedCorrect
-                                                      ? AppColors.greenButton
-                                                      : AppColors.redButton,
-                                              border: OutlineInputBorder(
-                                                  borderSide: BorderSide.none,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          50)),
-                                            ),
-                                          ),
-                                          Text(
-                                              '${controller.isEmailTypedCorrect}')
-                                        ],
-                                      );
-                                    })));
+                            return Observer(builder: (context) {
+                              return UserDeleteDialog(
+                                email: controller.email,
+                                isEmailTypedCorrectly:
+                                    controller.isEmailTypedCorrectly,
+                                isLoading: controller.isLoading,
+                                setEmailValue: controller.setEmailValue,
+                              );
+                            });
                           },
                         );
                       },
