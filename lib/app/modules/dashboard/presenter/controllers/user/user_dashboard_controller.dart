@@ -56,7 +56,7 @@ abstract class UserDashboardControllerBase with Store {
   String emailTyped = '';
 
   @observable
-  bool isEmailTypedCorrect = false;
+  bool isEmailTypedCorrectly = false;
 
   @observable
   List<EnrollsActivityModel> subscribedActivitiesOnScreen = List.empty();
@@ -498,9 +498,9 @@ abstract class UserDashboardControllerBase with Store {
   @action
   void validateEmailTyped(String value) {
     if (value == email) {
-      isEmailTypedCorrect = true;
+      isEmailTypedCorrectly = true;
     } else {
-      isEmailTypedCorrect = false;
+      isEmailTypedCorrectly = false;
     }
   }
 }
