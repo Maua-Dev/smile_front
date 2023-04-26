@@ -5,6 +5,8 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/widgets/custom_elevated_button_widget.dart';
 
+import '../../../../../../../generated/l10n.dart';
+
 class UserDeleteDialog extends StatelessWidget {
   final String? email;
   final Function(String) onChangedEmail;
@@ -66,8 +68,7 @@ class UserDeleteDialog extends StatelessWidget {
                         const SizedBox(
                           height: 32,
                         ),
-                        Text(
-                            "Tem certeza que deseja excluir a sua conta? Todas as suas incrições, certificados e dados serão apagados permanentemente.",
+                        Text(S.of(context).deleteMessage,
                             style: AppTextStyles.bold.copyWith(
                                 color: Colors.black,
                                 fontSize: MediaQuery.of(context).size.width <
@@ -79,7 +80,7 @@ class UserDeleteDialog extends StatelessWidget {
                         const SizedBox(height: 32),
                         RichText(
                           text: TextSpan(
-                              text: "Digite o seu e-mail",
+                              text: S.of(context).deleteEmailType,
                               style: AppTextStyles.body.copyWith(
                                   color: Colors.black,
                                   fontSize: MediaQuery.of(context).size.width <
@@ -105,7 +106,7 @@ class UserDeleteDialog extends StatelessWidget {
                                               : 22,
                                     )),
                                 TextSpan(
-                                    text: "para completar a ação:",
+                                    text: S.of(context).deleteCompleteAction,
                                     style: AppTextStyles.body.copyWith(
                                         color: Colors.black,
                                         fontSize:
@@ -154,7 +155,7 @@ class UserDeleteDialog extends StatelessWidget {
                         Observer(builder: (context) {
                           return CustomElevatedButtonWidget(
                             isLoading: isLoading,
-                            title: 'Deletar conta permanentemente',
+                            title: S.of(context).deleteAccountPermanent,
                             widthSize: MediaQuery.of(context).size.width < 650
                                 ? MediaQuery.of(context).size.width * 0.85
                                 : 600,

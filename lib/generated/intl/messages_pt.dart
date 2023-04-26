@@ -339,6 +339,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "dateTitle": MessageLookupByLibrary.simpleMessage("Data"),
         "dayTitle": MessageLookupByLibrary.simpleMessage("Data"),
         "deleteAccount": MessageLookupByLibrary.simpleMessage("Deletar Conta"),
+        "deleteAccountPermanent": MessageLookupByLibrary.simpleMessage(
+            "Deletar conta permanentemente"),
+        "deleteCompleteAction":
+            MessageLookupByLibrary.simpleMessage("para completar a ação:"),
+        "deleteEmailType":
+            MessageLookupByLibrary.simpleMessage("Digite o seu e-mail"),
+        "deleteMessage": MessageLookupByLibrary.simpleMessage(
+            "Tem certeza que deseja excluir a sua conta? Todas as suas incrições, certificados e dados serão apagados permanentemente."),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Descrição"),
         "drawerActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Atividades"),
