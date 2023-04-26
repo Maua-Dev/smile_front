@@ -83,4 +83,9 @@ class UserDatasourceImpl extends UserDatasourceInterface {
     await middleware(
         url: '/update-user', data: userChangeDataModel.toJson(), http: 'post');
   }
+
+  @override
+  Future deleteUser(String code) async {
+    await middleware(url: '/delete-user/$code', http: 'delete');
+  }
 }

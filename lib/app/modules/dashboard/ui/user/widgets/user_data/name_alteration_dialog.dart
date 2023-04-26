@@ -378,6 +378,51 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                       }
                     },
                   ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Dialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                child: Container(
+                                    color: AppColors.white,
+                                    child: Observer(builder: (_) {
+                                      return Column(
+                                        children: [
+                                          Text(
+                                              "Tem certeza que deseja excluir a sua conta? Todas as suas incrições, certificados e dados serão apagados permanentemente.\n Digite o seu e-mail (${controller.email}) para confirmar:"),
+                                          TextField(
+                                            onChanged: (value) =>
+                                                controller.setEmailValue(value),
+                                            decoration: InputDecoration(
+                                              filled: true,
+                                              fillColor:
+                                                  controller.isEmailTypedCorrect
+                                                      ? AppColors.greenButton
+                                                      : AppColors.redButton,
+                                              border: OutlineInputBorder(
+                                                  borderSide: BorderSide.none,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50)),
+                                            ),
+                                          ),
+                                          Text(
+                                              '${controller.isEmailTypedCorrect}')
+                                        ],
+                                      );
+                                    })));
+                          },
+                        );
+                      },
+                      child: Text(S.of(context).deleteAccount,
+                          style: AppTextStyles.body.copyWith(
+                              color: AppColors.redButton, fontSize: 16)))
                 ],
               ),
             ),

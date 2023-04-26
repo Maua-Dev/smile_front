@@ -28,6 +28,7 @@ abstract class UserDashboardControllerBase with Store {
     getUserName();
     getUserSocialName();
     getAcceptEmailNotifications();
+    getEmail();
   }
 
   @observable
@@ -52,6 +53,12 @@ abstract class UserDashboardControllerBase with Store {
   bool wantSocialName = false;
 
   @observable
+  String emailTyped = '';
+
+  @observable
+  bool isEmailTypedCorrect = false;
+
+  @observable
   List<EnrollsActivityModel> subscribedActivitiesOnScreen = List.empty();
 
   @observable
@@ -65,6 +72,9 @@ abstract class UserDashboardControllerBase with Store {
 
   @observable
   bool acceptEmailNotifications = false;
+
+  @observable
+  String? email;
 
   @action
   Future<void> setEmailNotifications(bool? value) async {
@@ -339,6 +349,11 @@ abstract class UserDashboardControllerBase with Store {
   }
 
   @action
+  Future<void> getEmail() async {
+    email = (await secureStorage.getEmail());
+  }
+
+  @action
   Future<void> getUserSocialName() async {
     socialName = await secureStorage.getSocialName();
     setUserSocialName(socialName ?? '');
@@ -472,5 +487,20 @@ abstract class UserDashboardControllerBase with Store {
     getUserSubscribedActivities();
     getAcceptEmailNotifications();
     setIsLoading(false);
+  }
+
+  @action
+  void setEmailValue(String value) {
+    emailTyped = value;
+    validateEmailTyped(value);
+  }
+
+  @action
+  void validateEmailTyped(String value) {
+    if (value == email) {
+      isEmailTypedCorrect = true;
+    } else {
+      isEmailTypedCorrect = false;
+    }
   }
 }

@@ -332,6 +332,14 @@ class MockUserRepositoryInterface extends _i1.Mock
         returnValue: _i3.Future<List<_i8.ResponsibleProfessorModel>>.value(
             <_i8.ResponsibleProfessorModel>[]),
       ) as _i3.Future<List<_i8.ResponsibleProfessorModel>>);
+  @override
+  _i3.Future<dynamic> deleteUser(String? code) => (super.noSuchMethod(
+        Invocation.method(
+          #deleteUser,
+          [code],
+        ),
+        returnValue: _i3.Future<dynamic>.value(),
+      ) as _i3.Future<dynamic>);
 }
 
 /// A class which mocks [ChangeDataInterface].

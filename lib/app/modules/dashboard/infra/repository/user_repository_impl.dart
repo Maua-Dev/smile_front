@@ -22,4 +22,9 @@ class UserRepositoryImpl extends UserRepositoryInterface {
     }
     return Future.value(responsibleProfessorsList);
   }
+
+  @override
+  Future deleteUser(String code) async {
+    await datasource.deleteUser(code);
+  }
 }

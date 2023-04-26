@@ -17,6 +17,11 @@ class SecureStorage implements SecureStorageInterface {
   }
 
   @override
+  Future<String?> getEmail() async {
+    return await storage.get('email') as String?;
+  }
+
+  @override
   Future<String?> getRefreshToken() async {
     return await storage.get('refreshToken') as String?;
   }
@@ -120,6 +125,11 @@ class SecureStorage implements SecureStorageInterface {
   @override
   Future<void> saveAcceptSMSNotifications(bool acceptSMSNotifications) async {
     await storage.put('acceptSMSNotifications', acceptSMSNotifications);
+  }
+
+  @override
+  Future<void> saveEmail(String email) async {
+    await storage.put('email', email);
   }
 
   @override

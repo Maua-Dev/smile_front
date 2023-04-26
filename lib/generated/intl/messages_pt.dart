@@ -338,6 +338,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Atividade completa!"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Data"),
         "dayTitle": MessageLookupByLibrary.simpleMessage("Data"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Deletar Conta"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Descrição"),
         "drawerActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Atividades"),

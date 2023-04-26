@@ -874,6 +874,16 @@ class S {
     );
   }
 
+  /// `Delete Account`
+  String get deleteAccount {
+    return Intl.message(
+      'Delete Account',
+      name: 'deleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The login service is under maintenance`
   String get maintenanceTitle {
     return Intl.message(

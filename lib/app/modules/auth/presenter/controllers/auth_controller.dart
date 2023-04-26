@@ -12,6 +12,7 @@ class AuthController {
   String _name = '';
   String? _socialname = '';
   String? _id = '';
+  String? _email = '';
   bool? _certificateWithSocialName = false;
   bool? _acceptEmailNotificiations = false;
 
@@ -27,6 +28,7 @@ class AuthController {
   String get name => _name;
   String get socialname => _socialname ?? '';
   String get id => _id ?? '';
+  String get email => _email ?? '';
   bool get certificateWithSocialName => _certificateWithSocialName ?? false;
 
   Future<void> loginWithUserEmail(String email, String password) async {
@@ -37,6 +39,7 @@ class AuthController {
     _certificateWithSocialName = loginResponse.certificateWithSocialName;
     _acceptEmailNotificiations = loginResponse.acceptEmailNotifications;
     _id = loginResponse.userId;
+    _email = loginResponse.email;
 
     await storage.saveAccessToken(loginResponse.accessToken);
     await storage.saveRefreshToken(loginResponse.refreshToken);
@@ -50,6 +53,7 @@ class AuthController {
         .saveCertificateWithSocialName(_certificateWithSocialName ?? false);
     await storage
         .saveAcceptEmailNotifications(_acceptEmailNotificiations ?? false);
+    await storage.saveEmail(_email ?? '');
 
     _loggedIn = true;
   }
