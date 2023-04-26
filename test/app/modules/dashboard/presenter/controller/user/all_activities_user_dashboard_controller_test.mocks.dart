@@ -3,44 +3,46 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i10;
+import 'dart:async' as _i11;
 
-import 'package:mobx/mobx.dart' as _i7;
+import 'package:mobx/mobx.dart' as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart'
     as _i5;
 import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart'
-    as _i18;
+    as _i19;
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
-    as _i17;
+    as _i18;
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart'
-    as _i15;
+    as _i16;
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart'
-    as _i9;
+    as _i10;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart'
     as _i4;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_user.dart'
+    as _i6;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart'
-    as _i20;
-import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
     as _i21;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
+    as _i22;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart'
-    as _i19;
+    as _i20;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart'
-    as _i14;
+    as _i15;
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart'
     as _i3;
 import 'package:smile_front/app/shared/entities/infra/enroll_button_enum.dart'
-    as _i16;
+    as _i17;
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart'
-    as _i13;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i11;
+    as _i14;
+import 'package:smile_front/app/shared/models/activity_model.dart' as _i12;
 import 'package:smile_front/app/shared/models/admin_activity_model.dart'
-    as _i12;
+    as _i13;
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
-    as _i6;
+    as _i7;
 import 'package:smile_front/app/shared/models/professor_activity_model.dart'
     as _i2;
-import 'package:smile_front/app/shared/models/user_model.dart' as _i8;
+import 'package:smile_front/app/shared/models/user_model.dart' as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -97,9 +99,9 @@ class _FakeSecureStorageInterface_3 extends _i1.SmartFake
         );
 }
 
-class _FakeEnrollsActivityModel_4 extends _i1.SmartFake
-    implements _i6.EnrollsActivityModel {
-  _FakeEnrollsActivityModel_4(
+class _FakeDeleteUserInterface_4 extends _i1.SmartFake
+    implements _i6.DeleteUserInterface {
+  _FakeDeleteUserInterface_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -108,9 +110,9 @@ class _FakeEnrollsActivityModel_4 extends _i1.SmartFake
         );
 }
 
-class _FakeReactiveContext_5 extends _i1.SmartFake
-    implements _i7.ReactiveContext {
-  _FakeReactiveContext_5(
+class _FakeEnrollsActivityModel_5 extends _i1.SmartFake
+    implements _i7.EnrollsActivityModel {
+  _FakeEnrollsActivityModel_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -119,8 +121,19 @@ class _FakeReactiveContext_5 extends _i1.SmartFake
         );
 }
 
-class _FakeUserModel_6 extends _i1.SmartFake implements _i8.UserModel {
-  _FakeUserModel_6(
+class _FakeReactiveContext_6 extends _i1.SmartFake
+    implements _i8.ReactiveContext {
+  _FakeReactiveContext_6(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeUserModel_7 extends _i1.SmartFake implements _i9.UserModel {
+  _FakeUserModel_7(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -133,40 +146,40 @@ class _FakeUserModel_6 extends _i1.SmartFake implements _i8.UserModel {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockActivitiesRepositoryInterface extends _i1.Mock
-    implements _i9.ActivitiesRepositoryInterface {
+    implements _i10.ActivitiesRepositoryInterface {
   MockActivitiesRepositoryInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<List<_i11.ActivityModel>> getAllActivities() =>
+  _i11.Future<List<_i12.ActivityModel>> getAllActivities() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllActivities,
           [],
         ),
         returnValue:
-            _i10.Future<List<_i11.ActivityModel>>.value(<_i11.ActivityModel>[]),
-      ) as _i10.Future<List<_i11.ActivityModel>>);
+            _i11.Future<List<_i12.ActivityModel>>.value(<_i12.ActivityModel>[]),
+      ) as _i11.Future<List<_i12.ActivityModel>>);
   @override
-  _i10.Future<List<_i6.EnrollsActivityModel>> getUserSubscribedActivities() =>
+  _i11.Future<List<_i7.EnrollsActivityModel>> getUserSubscribedActivities() =>
       (super.noSuchMethod(
         Invocation.method(
           #getUserSubscribedActivities,
           [],
         ),
-        returnValue: _i10.Future<List<_i6.EnrollsActivityModel>>.value(
-            <_i6.EnrollsActivityModel>[]),
-      ) as _i10.Future<List<_i6.EnrollsActivityModel>>);
+        returnValue: _i11.Future<List<_i7.EnrollsActivityModel>>.value(
+            <_i7.EnrollsActivityModel>[]),
+      ) as _i11.Future<List<_i7.EnrollsActivityModel>>);
   @override
-  _i10.Future<_i2.ProfessorActivityModel> getActivityWithEnrollments(
+  _i11.Future<_i2.ProfessorActivityModel> getActivityWithEnrollments(
           String? code) =>
       (super.noSuchMethod(
         Invocation.method(
           #getActivityWithEnrollments,
           [code],
         ),
-        returnValue: _i10.Future<_i2.ProfessorActivityModel>.value(
+        returnValue: _i11.Future<_i2.ProfessorActivityModel>.value(
             _FakeProfessorActivityModel_0(
           this,
           Invocation.method(
@@ -174,54 +187,54 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             [code],
           ),
         )),
-      ) as _i10.Future<_i2.ProfessorActivityModel>);
+      ) as _i11.Future<_i2.ProfessorActivityModel>);
   @override
-  _i10.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
+  _i11.Future<String> getDownloadLinkCsv() => (super.noSuchMethod(
         Invocation.method(
           #getDownloadLinkCsv,
           [],
         ),
-        returnValue: _i10.Future<String>.value(''),
-      ) as _i10.Future<String>);
+        returnValue: _i11.Future<String>.value(''),
+      ) as _i11.Future<String>);
   @override
-  _i10.Future<bool> createActivity(_i12.AdminActivityModel? activityToCreate) =>
+  _i11.Future<bool> createActivity(_i13.AdminActivityModel? activityToCreate) =>
       (super.noSuchMethod(
         Invocation.method(
           #createActivity,
           [activityToCreate],
         ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+        returnValue: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
   @override
-  _i10.Future<List<_i12.AdminActivityModel>> getAdminActivities() =>
+  _i11.Future<List<_i13.AdminActivityModel>> getAdminActivities() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAdminActivities,
           [],
         ),
-        returnValue: _i10.Future<List<_i12.AdminActivityModel>>.value(
-            <_i12.AdminActivityModel>[]),
-      ) as _i10.Future<List<_i12.AdminActivityModel>>);
+        returnValue: _i11.Future<List<_i13.AdminActivityModel>>.value(
+            <_i13.AdminActivityModel>[]),
+      ) as _i11.Future<List<_i13.AdminActivityModel>>);
   @override
-  _i10.Future<bool> editActivity(_i12.AdminActivityModel? activityToEdit) =>
+  _i11.Future<bool> editActivity(_i13.AdminActivityModel? activityToEdit) =>
       (super.noSuchMethod(
         Invocation.method(
           #editActivity,
           [activityToEdit],
         ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+        returnValue: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
   @override
-  _i10.Future<dynamic> deleteActivity(String? activityCode) =>
+  _i11.Future<dynamic> deleteActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #deleteActivity,
           [activityCode],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i11.Future<dynamic>.value(),
+      ) as _i11.Future<dynamic>);
   @override
-  _i10.Future<dynamic> manualDropActivity(
+  _i11.Future<dynamic> manualDropActivity(
     String? activityCode,
     String? userId,
   ) =>
@@ -233,40 +246,40 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             userId,
           ],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i11.Future<dynamic>.value(),
+      ) as _i11.Future<dynamic>);
   @override
-  _i10.Future<bool> subscribeActivity(String? activityCode) =>
+  _i11.Future<bool> subscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #subscribeActivity,
           [activityCode],
         ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+        returnValue: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
   @override
-  _i10.Future<bool> unsubscribeActivity(String? activityCode) =>
+  _i11.Future<bool> unsubscribeActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #unsubscribeActivity,
           [activityCode],
         ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+        returnValue: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
   @override
-  _i10.Future<String> generateConfirmationCode(String? activityCode) =>
+  _i11.Future<String> generateConfirmationCode(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #generateConfirmationCode,
           [activityCode],
         ),
-        returnValue: _i10.Future<String>.value(''),
-      ) as _i10.Future<String>);
+        returnValue: _i11.Future<String>.value(''),
+      ) as _i11.Future<String>);
   @override
-  _i10.Future<dynamic> postManualChangeAttendance(
+  _i11.Future<dynamic> postManualChangeAttendance(
     String? activityCode,
     String? userId,
-    _i13.EnrollmentStateEnum? state,
+    _i14.EnrollmentStateEnum? state,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -277,10 +290,10 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             state,
           ],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i11.Future<dynamic>.value(),
+      ) as _i11.Future<dynamic>);
   @override
-  _i10.Future<dynamic> confirmAttendance(
+  _i11.Future<dynamic> confirmAttendance(
     String? confirmAttendanceCode,
     String? activityCode,
   ) =>
@@ -292,24 +305,24 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
             activityCode,
           ],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i11.Future<dynamic>.value(),
+      ) as _i11.Future<dynamic>);
   @override
-  _i10.Future<dynamic> deleteAtendanceCode(String? activityCode) =>
+  _i11.Future<dynamic> deleteAtendanceCode(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #deleteAtendanceCode,
           [activityCode],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i11.Future<dynamic>.value(),
+      ) as _i11.Future<dynamic>);
 }
 
 /// A class which mocks [UserDashboardController].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUserDashboardController extends _i1.Mock
-    implements _i14.UserDashboardController {
+    implements _i15.UserDashboardController {
   MockUserDashboardController() {
     _i1.throwOnMissingStub(this);
   }
@@ -338,6 +351,14 @@ class MockUserDashboardController extends _i1.Mock
           Invocation.getter(#secureStorage),
         ),
       ) as _i5.SecureStorageInterface);
+  @override
+  _i6.DeleteUserInterface get deleteUser => (super.noSuchMethod(
+        Invocation.getter(#deleteUser),
+        returnValue: _FakeDeleteUserInterface_4(
+          this,
+          Invocation.getter(#deleteUser),
+        ),
+      ) as _i6.DeleteUserInterface);
   @override
   set error(String? _error) => super.noSuchMethod(
         Invocation.setter(
@@ -416,14 +437,40 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  List<_i6.EnrollsActivityModel> get subscribedActivitiesOnScreen =>
+  String get emailTyped => (super.noSuchMethod(
+        Invocation.getter(#emailTyped),
+        returnValue: '',
+      ) as String);
+  @override
+  set emailTyped(String? _emailTyped) => super.noSuchMethod(
+        Invocation.setter(
+          #emailTyped,
+          _emailTyped,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get isEmailTypedCorrectly => (super.noSuchMethod(
+        Invocation.getter(#isEmailTypedCorrectly),
+        returnValue: false,
+      ) as bool);
+  @override
+  set isEmailTypedCorrectly(bool? _isEmailTypedCorrectly) => super.noSuchMethod(
+        Invocation.setter(
+          #isEmailTypedCorrectly,
+          _isEmailTypedCorrectly,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  List<_i7.EnrollsActivityModel> get subscribedActivitiesOnScreen =>
       (super.noSuchMethod(
         Invocation.getter(#subscribedActivitiesOnScreen),
-        returnValue: <_i6.EnrollsActivityModel>[],
-      ) as List<_i6.EnrollsActivityModel>);
+        returnValue: <_i7.EnrollsActivityModel>[],
+      ) as List<_i7.EnrollsActivityModel>);
   @override
   set subscribedActivitiesOnScreen(
-          List<_i6.EnrollsActivityModel>? _subscribedActivitiesOnScreen) =>
+          List<_i7.EnrollsActivityModel>? _subscribedActivitiesOnScreen) =>
       super.noSuchMethod(
         Invocation.setter(
           #subscribedActivitiesOnScreen,
@@ -432,7 +479,7 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  set activityType(_i15.ActivityEnum? _activityType) => super.noSuchMethod(
+  set activityType(_i16.ActivityEnum? _activityType) => super.noSuchMethod(
         Invocation.setter(
           #activityType,
           _activityType,
@@ -440,7 +487,7 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  set typeFilter(_i15.ActivityEnum? _typeFilter) => super.noSuchMethod(
+  set typeFilter(_i16.ActivityEnum? _typeFilter) => super.noSuchMethod(
         Invocation.setter(
           #typeFilter,
           _typeFilter,
@@ -470,7 +517,23 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  set enrollmentFilter(_i16.EnrollButtonEnum? _enrollmentFilter) =>
+  set email(String? _email) => super.noSuchMethod(
+        Invocation.setter(
+          #email,
+          _email,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set idToken(String? _idToken) => super.noSuchMethod(
+        Invocation.setter(
+          #idToken,
+          _idToken,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set enrollmentFilter(_i17.EnrollButtonEnum? _enrollmentFilter) =>
       super.noSuchMethod(
         Invocation.setter(
           #enrollmentFilter,
@@ -522,14 +585,14 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  List<_i6.EnrollsActivityModel> get allSubscribedActivitiesList =>
+  List<_i7.EnrollsActivityModel> get allSubscribedActivitiesList =>
       (super.noSuchMethod(
         Invocation.getter(#allSubscribedActivitiesList),
-        returnValue: <_i6.EnrollsActivityModel>[],
-      ) as List<_i6.EnrollsActivityModel>);
+        returnValue: <_i7.EnrollsActivityModel>[],
+      ) as List<_i7.EnrollsActivityModel>);
   @override
   set allSubscribedActivitiesList(
-          List<_i6.EnrollsActivityModel>? _allSubscribedActivitiesList) =>
+          List<_i7.EnrollsActivityModel>? _allSubscribedActivitiesList) =>
       super.noSuchMethod(
         Invocation.setter(
           #allSubscribedActivitiesList,
@@ -538,15 +601,15 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i6.EnrollsActivityModel get nextActivity => (super.noSuchMethod(
+  _i7.EnrollsActivityModel get nextActivity => (super.noSuchMethod(
         Invocation.getter(#nextActivity),
-        returnValue: _FakeEnrollsActivityModel_4(
+        returnValue: _FakeEnrollsActivityModel_5(
           this,
           Invocation.getter(#nextActivity),
         ),
-      ) as _i6.EnrollsActivityModel);
+      ) as _i7.EnrollsActivityModel);
   @override
-  set nextActivity(_i6.EnrollsActivityModel? _nextActivity) =>
+  set nextActivity(_i7.EnrollsActivityModel? _nextActivity) =>
       super.noSuchMethod(
         Invocation.setter(
           #nextActivity,
@@ -563,24 +626,24 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i7.ReactiveContext get context => (super.noSuchMethod(
+  _i8.ReactiveContext get context => (super.noSuchMethod(
         Invocation.getter(#context),
-        returnValue: _FakeReactiveContext_5(
+        returnValue: _FakeReactiveContext_6(
           this,
           Invocation.getter(#context),
         ),
-      ) as _i7.ReactiveContext);
+      ) as _i8.ReactiveContext);
   @override
-  _i10.Future<void> setEmailNotifications(bool? value) => (super.noSuchMethod(
+  _i11.Future<void> setEmailNotifications(bool? value) => (super.noSuchMethod(
         Invocation.method(
           #setEmailNotifications,
           [value],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  void setTypeFilter(_i15.ActivityEnum? value) => super.noSuchMethod(
+  void setTypeFilter(_i16.ActivityEnum? value) => super.noSuchMethod(
         Invocation.method(
           #setTypeFilter,
           [value],
@@ -588,7 +651,7 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  void setEnrollmentFilter(_i16.EnrollButtonEnum? value) => super.noSuchMethod(
+  void setEnrollmentFilter(_i17.EnrollButtonEnum? value) => super.noSuchMethod(
         Invocation.method(
           #setEnrollmentFilter,
           [value],
@@ -596,25 +659,25 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i10.Future<void> subscribeUserActivity(String? activityCode) =>
+  _i11.Future<void> subscribeUserActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #subscribeUserActivity,
           [activityCode],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> unsubscribeUserActivity(String? activityCode) =>
+  _i11.Future<void> unsubscribeUserActivity(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #unsubscribeUserActivity,
           [activityCode],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
   void setDateFilter(DateTime? value) => super.noSuchMethod(
         Invocation.method(
@@ -632,9 +695,9 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  List<_i6.EnrollsActivityModel> filterActivitiesByEnrollmentState(
-    _i16.EnrollButtonEnum? type,
-    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+  List<_i7.EnrollsActivityModel> filterActivitiesByEnrollmentState(
+    _i17.EnrollButtonEnum? type,
+    List<_i7.EnrollsActivityModel>? activitiesToFilter,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -644,8 +707,8 @@ class MockUserDashboardController extends _i1.Mock
             activitiesToFilter,
           ],
         ),
-        returnValue: <_i6.EnrollsActivityModel>[],
-      ) as List<_i6.EnrollsActivityModel>);
+        returnValue: <_i7.EnrollsActivityModel>[],
+      ) as List<_i7.EnrollsActivityModel>);
   @override
   void setAllFilters() => super.noSuchMethod(
         Invocation.method(
@@ -655,9 +718,9 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  List<_i6.EnrollsActivityModel> filterActivitiesByType(
-    _i15.ActivityEnum? type,
-    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+  List<_i7.EnrollsActivityModel> filterActivitiesByType(
+    _i16.ActivityEnum? type,
+    List<_i7.EnrollsActivityModel>? activitiesToFilter,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -667,12 +730,12 @@ class MockUserDashboardController extends _i1.Mock
             activitiesToFilter,
           ],
         ),
-        returnValue: <_i6.EnrollsActivityModel>[],
-      ) as List<_i6.EnrollsActivityModel>);
+        returnValue: <_i7.EnrollsActivityModel>[],
+      ) as List<_i7.EnrollsActivityModel>);
   @override
-  List<_i6.EnrollsActivityModel> filterActivitiesByDate(
+  List<_i7.EnrollsActivityModel> filterActivitiesByDate(
     DateTime? date,
-    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+    List<_i7.EnrollsActivityModel>? activitiesToFilter,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -682,12 +745,12 @@ class MockUserDashboardController extends _i1.Mock
             activitiesToFilter,
           ],
         ),
-        returnValue: <_i6.EnrollsActivityModel>[],
-      ) as List<_i6.EnrollsActivityModel>);
+        returnValue: <_i7.EnrollsActivityModel>[],
+      ) as List<_i7.EnrollsActivityModel>);
   @override
-  List<_i6.EnrollsActivityModel> filterActivitiesByHour(
+  List<_i7.EnrollsActivityModel> filterActivitiesByHour(
     DateTime? hour,
-    List<_i6.EnrollsActivityModel>? activitiesToFilter,
+    List<_i7.EnrollsActivityModel>? activitiesToFilter,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -697,8 +760,8 @@ class MockUserDashboardController extends _i1.Mock
             activitiesToFilter,
           ],
         ),
-        returnValue: <_i6.EnrollsActivityModel>[],
-      ) as List<_i6.EnrollsActivityModel>);
+        returnValue: <_i7.EnrollsActivityModel>[],
+      ) as List<_i7.EnrollsActivityModel>);
   @override
   bool isValidDateFilter(
     DateTime? activityDate,
@@ -730,50 +793,68 @@ class MockUserDashboardController extends _i1.Mock
         returnValue: false,
       ) as bool);
   @override
-  _i10.Future<void> getCertificateWithSocialName() => (super.noSuchMethod(
+  _i11.Future<void> getCertificateWithSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getCertificateWithSocialName,
           [],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> getUserName() => (super.noSuchMethod(
+  _i11.Future<void> getUserName() => (super.noSuchMethod(
         Invocation.method(
           #getUserName,
           [],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> getAcceptEmailNotifications() => (super.noSuchMethod(
+  _i11.Future<void> getAcceptEmailNotifications() => (super.noSuchMethod(
         Invocation.method(
           #getAcceptEmailNotifications,
           [],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> getUserSocialName() => (super.noSuchMethod(
+  _i11.Future<void> getEmail() => (super.noSuchMethod(
+        Invocation.method(
+          #getEmail,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  _i11.Future<void> getIdToken() => (super.noSuchMethod(
+        Invocation.method(
+          #getIdToken,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  _i11.Future<void> getUserSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getUserSocialName,
           [],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> setWantSocialName(bool? value) => (super.noSuchMethod(
+  _i11.Future<void> setWantSocialName(bool? value) => (super.noSuchMethod(
         Invocation.method(
           #setWantSocialName,
           [value],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
   void setName(String? value) => super.noSuchMethod(
         Invocation.method(
@@ -815,22 +896,22 @@ class MockUserDashboardController extends _i1.Mock
         returnValue: false,
       ) as bool);
   @override
-  _i10.Future<void> setIsLoading(bool? value) => (super.noSuchMethod(
+  _i11.Future<void> setIsLoading(bool? value) => (super.noSuchMethod(
         Invocation.method(
           #setIsLoading,
           [value],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<dynamic> getUserSubscribedActivities() => (super.noSuchMethod(
+  _i11.Future<dynamic> getUserSubscribedActivities() => (super.noSuchMethod(
         Invocation.method(
           #getUserSubscribedActivities,
           [],
         ),
-        returnValue: _i10.Future<dynamic>.value(),
-      ) as _i10.Future<dynamic>);
+        returnValue: _i11.Future<dynamic>.value(),
+      ) as _i11.Future<dynamic>);
   @override
   void getNextActivity() => super.noSuchMethod(
         Invocation.method(
@@ -840,47 +921,72 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i10.Future<void> changeUserData() => (super.noSuchMethod(
+  _i11.Future<void> changeUserData() => (super.noSuchMethod(
         Invocation.method(
           #changeUserData,
           [],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  void setIsEmailTypedCorrectly(bool? value) => super.noSuchMethod(
+        Invocation.method(
+          #setIsEmailTypedCorrectly,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void validateEmailTyped(String? value) => super.noSuchMethod(
+        Invocation.method(
+          #validateEmailTyped,
+          [value],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i11.Future<void> deleteUserAccount() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteUserAccount,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
 }
 
 /// A class which mocks [RefreshTokenInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockRefreshTokenInterface extends _i1.Mock
-    implements _i17.RefreshTokenInterface {
+    implements _i18.RefreshTokenInterface {
   MockRefreshTokenInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<Map<String, dynamic>> call() => (super.noSuchMethod(
+  _i11.Future<Map<String, dynamic>> call() => (super.noSuchMethod(
         Invocation.method(
           #call,
           [],
         ),
         returnValue:
-            _i10.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i10.Future<Map<String, dynamic>>);
+            _i11.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i11.Future<Map<String, dynamic>>);
 }
 
 /// A class which mocks [LoginWithEmailInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLoginWithEmailInterface extends _i1.Mock
-    implements _i18.LoginWithEmailInterface {
+    implements _i19.LoginWithEmailInterface {
   MockLoginWithEmailInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<_i8.UserModel> call(
+  _i11.Future<_i9.UserModel> call(
     String? user,
     String? password,
   ) =>
@@ -892,7 +998,7 @@ class MockLoginWithEmailInterface extends _i1.Mock
             password,
           ],
         ),
-        returnValue: _i10.Future<_i8.UserModel>.value(_FakeUserModel_6(
+        returnValue: _i11.Future<_i9.UserModel>.value(_FakeUserModel_7(
           this,
           Invocation.method(
             #call,
@@ -902,7 +1008,7 @@ class MockLoginWithEmailInterface extends _i1.Mock
             ],
           ),
         )),
-      ) as _i10.Future<_i8.UserModel>);
+      ) as _i11.Future<_i9.UserModel>);
 }
 
 /// A class which mocks [SecureStorageInterface].
@@ -915,297 +1021,323 @@ class MockSecureStorageInterface extends _i1.Mock
   }
 
   @override
-  _i10.Future<void> saveAccessToken(String? token) => (super.noSuchMethod(
+  _i11.Future<void> saveAccessToken(String? token) => (super.noSuchMethod(
         Invocation.method(
           #saveAccessToken,
           [token],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> saveRefreshToken(String? token) => (super.noSuchMethod(
+  _i11.Future<void> saveRefreshToken(String? token) => (super.noSuchMethod(
         Invocation.method(
           #saveRefreshToken,
           [token],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<String?> getAccessToken() => (super.noSuchMethod(
+  _i11.Future<String?> getAccessToken() => (super.noSuchMethod(
         Invocation.method(
           #getAccessToken,
           [],
         ),
-        returnValue: _i10.Future<String?>.value(),
-      ) as _i10.Future<String?>);
+        returnValue: _i11.Future<String?>.value(),
+      ) as _i11.Future<String?>);
   @override
-  _i10.Future<String?> getRefreshToken() => (super.noSuchMethod(
+  _i11.Future<String?> getRefreshToken() => (super.noSuchMethod(
         Invocation.method(
           #getRefreshToken,
           [],
         ),
-        returnValue: _i10.Future<String?>.value(),
-      ) as _i10.Future<String?>);
+        returnValue: _i11.Future<String?>.value(),
+      ) as _i11.Future<String?>);
   @override
-  _i10.Future<void> saveRole(String? role) => (super.noSuchMethod(
+  _i11.Future<void> saveRole(String? role) => (super.noSuchMethod(
         Invocation.method(
           #saveRole,
           [role],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> saveId(String? id) => (super.noSuchMethod(
+  _i11.Future<void> saveId(String? id) => (super.noSuchMethod(
         Invocation.method(
           #saveId,
           [id],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> saveIdToken(String? idToken) => (super.noSuchMethod(
+  _i11.Future<void> saveIdToken(String? idToken) => (super.noSuchMethod(
         Invocation.method(
           #saveIdToken,
           [idToken],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> saveName(String? name) => (super.noSuchMethod(
+  _i11.Future<void> saveName(String? name) => (super.noSuchMethod(
         Invocation.method(
           #saveName,
           [name],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> saveSocialName(String? socialName) => (super.noSuchMethod(
+  _i11.Future<void> saveSocialName(String? socialName) => (super.noSuchMethod(
         Invocation.method(
           #saveSocialName,
           [socialName],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> savePhone(String? phone) => (super.noSuchMethod(
+  _i11.Future<void> savePhone(String? phone) => (super.noSuchMethod(
         Invocation.method(
           #savePhone,
           [phone],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> saveCertificateWithSocialName(
+  _i11.Future<void> saveCertificateWithSocialName(
           bool? certificateWithSocialName) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveCertificateWithSocialName,
           [certificateWithSocialName],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> saveAcceptSMSNotifications(bool? acceptSMSNotifications) =>
+  _i11.Future<void> saveAcceptSMSNotifications(bool? acceptSMSNotifications) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveAcceptSMSNotifications,
           [acceptSMSNotifications],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> saveAcceptEmailNotifications(
+  _i11.Future<void> saveAcceptEmailNotifications(
           bool? acceptEmailNotifications) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveAcceptEmailNotifications,
           [acceptEmailNotifications],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<String?> getRole() => (super.noSuchMethod(
+  _i11.Future<void> saveEmail(String? email) => (super.noSuchMethod(
+        Invocation.method(
+          #saveEmail,
+          [email],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  _i11.Future<String?> getRole() => (super.noSuchMethod(
         Invocation.method(
           #getRole,
           [],
         ),
-        returnValue: _i10.Future<String?>.value(),
-      ) as _i10.Future<String?>);
+        returnValue: _i11.Future<String?>.value(),
+      ) as _i11.Future<String?>);
   @override
-  _i10.Future<String?> getId() => (super.noSuchMethod(
+  _i11.Future<String?> getId() => (super.noSuchMethod(
         Invocation.method(
           #getId,
           [],
         ),
-        returnValue: _i10.Future<String?>.value(),
-      ) as _i10.Future<String?>);
+        returnValue: _i11.Future<String?>.value(),
+      ) as _i11.Future<String?>);
   @override
-  _i10.Future<String?> getIdToken() => (super.noSuchMethod(
+  _i11.Future<String?> getIdToken() => (super.noSuchMethod(
         Invocation.method(
           #getIdToken,
           [],
         ),
-        returnValue: _i10.Future<String?>.value(),
-      ) as _i10.Future<String?>);
+        returnValue: _i11.Future<String?>.value(),
+      ) as _i11.Future<String?>);
   @override
-  _i10.Future<String?> getName() => (super.noSuchMethod(
+  _i11.Future<String?> getName() => (super.noSuchMethod(
         Invocation.method(
           #getName,
           [],
         ),
-        returnValue: _i10.Future<String?>.value(),
-      ) as _i10.Future<String?>);
+        returnValue: _i11.Future<String?>.value(),
+      ) as _i11.Future<String?>);
   @override
-  _i10.Future<String?> getSocialName() => (super.noSuchMethod(
+  _i11.Future<String?> getSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getSocialName,
           [],
         ),
-        returnValue: _i10.Future<String?>.value(),
-      ) as _i10.Future<String?>);
+        returnValue: _i11.Future<String?>.value(),
+      ) as _i11.Future<String?>);
   @override
-  _i10.Future<String?> getPhone() => (super.noSuchMethod(
+  _i11.Future<String?> getPhone() => (super.noSuchMethod(
         Invocation.method(
           #getPhone,
           [],
         ),
-        returnValue: _i10.Future<String?>.value(),
-      ) as _i10.Future<String?>);
+        returnValue: _i11.Future<String?>.value(),
+      ) as _i11.Future<String?>);
   @override
-  _i10.Future<bool?> getAcceptSMSNotifications() => (super.noSuchMethod(
+  _i11.Future<String?> getEmail() => (super.noSuchMethod(
+        Invocation.method(
+          #getEmail,
+          [],
+        ),
+        returnValue: _i11.Future<String?>.value(),
+      ) as _i11.Future<String?>);
+  @override
+  _i11.Future<void> deleteAll() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteAll,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  _i11.Future<bool?> getAcceptSMSNotifications() => (super.noSuchMethod(
         Invocation.method(
           #getAcceptSMSNotifications,
           [],
         ),
-        returnValue: _i10.Future<bool?>.value(),
-      ) as _i10.Future<bool?>);
+        returnValue: _i11.Future<bool?>.value(),
+      ) as _i11.Future<bool?>);
   @override
-  _i10.Future<bool?> getAcceptEmailNotifications() => (super.noSuchMethod(
+  _i11.Future<bool?> getAcceptEmailNotifications() => (super.noSuchMethod(
         Invocation.method(
           #getAcceptEmailNotifications,
           [],
         ),
-        returnValue: _i10.Future<bool?>.value(),
-      ) as _i10.Future<bool?>);
+        returnValue: _i11.Future<bool?>.value(),
+      ) as _i11.Future<bool?>);
   @override
-  _i10.Future<bool?> getCertificateWithSocialName() => (super.noSuchMethod(
+  _i11.Future<bool?> getCertificateWithSocialName() => (super.noSuchMethod(
         Invocation.method(
           #getCertificateWithSocialName,
           [],
         ),
-        returnValue: _i10.Future<bool?>.value(),
-      ) as _i10.Future<bool?>);
+        returnValue: _i11.Future<bool?>.value(),
+      ) as _i11.Future<bool?>);
   @override
-  _i10.Future<void> cleanSecureStorage() => (super.noSuchMethod(
+  _i11.Future<void> cleanSecureStorage() => (super.noSuchMethod(
         Invocation.method(
           #cleanSecureStorage,
           [],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<void> saveActivityCode(String? activityCode) =>
+  _i11.Future<void> saveActivityCode(String? activityCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveActivityCode,
           [activityCode],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<String?> getActivityCode() => (super.noSuchMethod(
+  _i11.Future<String?> getActivityCode() => (super.noSuchMethod(
         Invocation.method(
           #getActivityCode,
           [],
         ),
-        returnValue: _i10.Future<String?>.value(),
-      ) as _i10.Future<String?>);
+        returnValue: _i11.Future<String?>.value(),
+      ) as _i11.Future<String?>);
   @override
-  _i10.Future<void> saveNavBarIndex(int? navBarIndex) => (super.noSuchMethod(
+  _i11.Future<void> saveNavBarIndex(int? navBarIndex) => (super.noSuchMethod(
         Invocation.method(
           #saveNavBarIndex,
           [navBarIndex],
         ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
   @override
-  _i10.Future<int?> getNavBarIndex() => (super.noSuchMethod(
+  _i11.Future<int?> getNavBarIndex() => (super.noSuchMethod(
         Invocation.method(
           #getNavBarIndex,
           [],
         ),
-        returnValue: _i10.Future<int?>.value(),
-      ) as _i10.Future<int?>);
+        returnValue: _i11.Future<int?>.value(),
+      ) as _i11.Future<int?>);
 }
 
 /// A class which mocks [UnsubscribeActivityInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUnsubscribeActivityInterface extends _i1.Mock
-    implements _i19.UnsubscribeActivityInterface {
+    implements _i20.UnsubscribeActivityInterface {
   MockUnsubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<bool> call(String? activityCode) => (super.noSuchMethod(
+  _i11.Future<bool> call(String? activityCode) => (super.noSuchMethod(
         Invocation.method(
           #call,
           [activityCode],
         ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+        returnValue: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
 }
 
 /// A class which mocks [GetUserSubscribedActivitiesInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetUserSubscribedActivitiesInterface extends _i1.Mock
-    implements _i20.GetUserSubscribedActivitiesInterface {
+    implements _i21.GetUserSubscribedActivitiesInterface {
   MockGetUserSubscribedActivitiesInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<List<_i6.EnrollsActivityModel>> call() => (super.noSuchMethod(
+  _i11.Future<List<_i7.EnrollsActivityModel>> call() => (super.noSuchMethod(
         Invocation.method(
           #call,
           [],
         ),
-        returnValue: _i10.Future<List<_i6.EnrollsActivityModel>>.value(
-            <_i6.EnrollsActivityModel>[]),
-      ) as _i10.Future<List<_i6.EnrollsActivityModel>>);
+        returnValue: _i11.Future<List<_i7.EnrollsActivityModel>>.value(
+            <_i7.EnrollsActivityModel>[]),
+      ) as _i11.Future<List<_i7.EnrollsActivityModel>>);
 }
 
 /// A class which mocks [SubscribeActivityInterface].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSubscribeActivityInterface extends _i1.Mock
-    implements _i21.SubscribeActivityInterface {
+    implements _i22.SubscribeActivityInterface {
   MockSubscribeActivityInterface() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<bool> call(String? activityCode) => (super.noSuchMethod(
+  _i11.Future<bool> call(String? activityCode) => (super.noSuchMethod(
         Invocation.method(
           #call,
           [activityCode],
         ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+        returnValue: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
 }

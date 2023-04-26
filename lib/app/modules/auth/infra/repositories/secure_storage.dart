@@ -157,4 +157,9 @@ class SecureStorage implements SecureStorageInterface {
   Future<void> saveNavBarIndex(int navBarIndex) async {
     await storage.put('navBarIndex', navBarIndex);
   }
+
+  @override
+  Future<void> deleteAll() {
+    return storage.clear();
+  }
 }

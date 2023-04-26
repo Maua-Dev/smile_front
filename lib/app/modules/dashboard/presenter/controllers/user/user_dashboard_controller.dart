@@ -4,6 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_user.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
 import '../../../../../shared/entities/infra/enroll_button_enum.dart';
@@ -19,16 +20,18 @@ abstract class UserDashboardControllerBase with Store {
   final UserEnrollmentController enrollmentController;
   final ChangeDataInterface changeData;
   final SecureStorageInterface secureStorage;
-  UserDashboardControllerBase({
-    required this.enrollmentController,
-    required this.changeData,
-    required this.secureStorage,
-  }) {
+  final DeleteUserInterface deleteUser;
+  UserDashboardControllerBase(
+      {required this.enrollmentController,
+      required this.changeData,
+      required this.secureStorage,
+      required this.deleteUser}) {
     getUserSubscribedActivities();
     getUserName();
     getUserSocialName();
     getAcceptEmailNotifications();
     getEmail();
+    getIdToken();
   }
 
   @observable
@@ -75,6 +78,9 @@ abstract class UserDashboardControllerBase with Store {
 
   @observable
   String? email;
+
+  @observable
+  String? idToken = '';
 
   @action
   Future<void> setEmailNotifications(bool? value) async {
@@ -354,6 +360,11 @@ abstract class UserDashboardControllerBase with Store {
   }
 
   @action
+  Future<void> getIdToken() async {
+    idToken = (await secureStorage.getIdToken());
+  }
+
+  @action
   Future<void> getUserSocialName() async {
     socialName = await secureStorage.getSocialName();
     setUserSocialName(socialName ?? '');
@@ -490,9 +501,8 @@ abstract class UserDashboardControllerBase with Store {
   }
 
   @action
-  void setEmailValue(String value) {
-    emailTyped = value;
-    validateEmailTyped(value);
+  void setIsEmailTypedCorrectly(bool value) {
+    isEmailTypedCorrectly = value;
   }
 
   @action
@@ -502,5 +512,14 @@ abstract class UserDashboardControllerBase with Store {
     } else {
       isEmailTypedCorrectly = false;
     }
+  }
+
+  @action
+  Future<void> deleteUserAccount() async {
+    setIsLoading(true);
+    //await deleteUser(idToken!);
+    await secureStorage.deleteAll();
+    Modular.to.pushReplacementNamed('/login');
+    setIsLoading(false);
   }
 }

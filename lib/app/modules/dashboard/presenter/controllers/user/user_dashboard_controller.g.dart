@@ -123,6 +123,40 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
+  late final _$emailTypedAtom =
+      Atom(name: 'UserDashboardControllerBase.emailTyped', context: context);
+
+  @override
+  String get emailTyped {
+    _$emailTypedAtom.reportRead();
+    return super.emailTyped;
+  }
+
+  @override
+  set emailTyped(String value) {
+    _$emailTypedAtom.reportWrite(value, super.emailTyped, () {
+      super.emailTyped = value;
+    });
+  }
+
+  late final _$isEmailTypedCorrectlyAtom = Atom(
+      name: 'UserDashboardControllerBase.isEmailTypedCorrectly',
+      context: context);
+
+  @override
+  bool get isEmailTypedCorrectly {
+    _$isEmailTypedCorrectlyAtom.reportRead();
+    return super.isEmailTypedCorrectly;
+  }
+
+  @override
+  set isEmailTypedCorrectly(bool value) {
+    _$isEmailTypedCorrectlyAtom.reportWrite(value, super.isEmailTypedCorrectly,
+        () {
+      super.isEmailTypedCorrectly = value;
+    });
+  }
+
   late final _$subscribedActivitiesOnScreenAtom = Atom(
       name: 'UserDashboardControllerBase.subscribedActivitiesOnScreen',
       context: context);
@@ -204,6 +238,38 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     _$acceptEmailNotificationsAtom
         .reportWrite(value, super.acceptEmailNotifications, () {
       super.acceptEmailNotifications = value;
+    });
+  }
+
+  late final _$emailAtom =
+      Atom(name: 'UserDashboardControllerBase.email', context: context);
+
+  @override
+  String? get email {
+    _$emailAtom.reportRead();
+    return super.email;
+  }
+
+  @override
+  set email(String? value) {
+    _$emailAtom.reportWrite(value, super.email, () {
+      super.email = value;
+    });
+  }
+
+  late final _$idTokenAtom =
+      Atom(name: 'UserDashboardControllerBase.idToken', context: context);
+
+  @override
+  String? get idToken {
+    _$idTokenAtom.reportRead();
+    return super.idToken;
+  }
+
+  @override
+  set idToken(String? value) {
+    _$idTokenAtom.reportWrite(value, super.idToken, () {
+      super.idToken = value;
     });
   }
 
@@ -377,6 +443,22 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
         .run(() => super.getAcceptEmailNotifications());
   }
 
+  late final _$getEmailAsyncAction =
+      AsyncAction('UserDashboardControllerBase.getEmail', context: context);
+
+  @override
+  Future<void> getEmail() {
+    return _$getEmailAsyncAction.run(() => super.getEmail());
+  }
+
+  late final _$getIdTokenAsyncAction =
+      AsyncAction('UserDashboardControllerBase.getIdToken', context: context);
+
+  @override
+  Future<void> getIdToken() {
+    return _$getIdTokenAsyncAction.run(() => super.getIdToken());
+  }
+
   late final _$getUserSocialNameAsyncAction = AsyncAction(
       'UserDashboardControllerBase.getUserSocialName',
       context: context);
@@ -421,6 +503,15 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   @override
   Future<void> changeUserData() {
     return _$changeUserDataAsyncAction.run(() => super.changeUserData());
+  }
+
+  late final _$deleteUserAccountAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.deleteUserAccount',
+      context: context);
+
+  @override
+  Future<void> deleteUserAccount() {
+    return _$deleteUserAccountAsyncAction.run(() => super.deleteUserAccount());
   }
 
   late final _$UserDashboardControllerBaseActionController =
@@ -613,6 +704,29 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   }
 
   @override
+  void setIsEmailTypedCorrectly(bool value) {
+    final _$actionInfo =
+        _$UserDashboardControllerBaseActionController.startAction(
+            name: 'UserDashboardControllerBase.setIsEmailTypedCorrectly');
+    try {
+      return super.setIsEmailTypedCorrectly(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void validateEmailTyped(String value) {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.validateEmailTyped');
+    try {
+      return super.validateEmailTyped(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 error: ${error},
@@ -622,11 +736,15 @@ certificateWithSocialName: ${certificateWithSocialName},
 socialNameToChange: ${socialNameToChange},
 nameToChange: ${nameToChange},
 wantSocialName: ${wantSocialName},
+emailTyped: ${emailTyped},
+isEmailTypedCorrectly: ${isEmailTypedCorrectly},
 subscribedActivitiesOnScreen: ${subscribedActivitiesOnScreen},
 activityType: ${activityType},
 typeFilter: ${typeFilter},
 typeOnScreen: ${typeOnScreen},
 acceptEmailNotifications: ${acceptEmailNotifications},
+email: ${email},
+idToken: ${idToken},
 enrollmentFilter: ${enrollmentFilter},
 dateFilter: ${dateFilter},
 hourFilter: ${hourFilter},

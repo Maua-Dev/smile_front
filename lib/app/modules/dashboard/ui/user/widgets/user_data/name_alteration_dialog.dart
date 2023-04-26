@@ -384,16 +384,18 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                   ),
                   TextButton(
                       onPressed: () {
+                        controller.setIsEmailTypedCorrectly(false);
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
                             return Observer(builder: (context) {
                               return UserDeleteDialog(
+                                deleteUser: controller.deleteUserAccount,
                                 email: controller.email,
                                 isEmailTypedCorrectly:
                                     controller.isEmailTypedCorrectly,
                                 isLoading: controller.isLoading,
-                                setEmailValue: controller.setEmailValue,
+                                onChangedEmail: controller.validateEmailTyped,
                               );
                             });
                           },

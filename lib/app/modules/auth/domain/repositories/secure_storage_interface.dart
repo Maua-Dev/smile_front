@@ -20,6 +20,7 @@ abstract class SecureStorageInterface {
   Future<String?> getSocialName();
   Future<String?> getPhone();
   Future<String?> getEmail();
+  Future<void> deleteAll();
   Future<bool?> getAcceptSMSNotifications();
   Future<bool?> getAcceptEmailNotifications();
   Future<bool?> getCertificateWithSocialName();

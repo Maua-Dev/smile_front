@@ -7,14 +7,16 @@ import 'package:smile_front/app/shared/widgets/custom_elevated_button_widget.dar
 
 class UserDeleteDialog extends StatelessWidget {
   final String? email;
-  final Function(String) setEmailValue;
+  final Function(String) onChangedEmail;
+  final Function() deleteUser;
   final bool isEmailTypedCorrectly;
   final bool isLoading;
 
   const UserDeleteDialog({
     Key? key,
+    required this.deleteUser,
     required this.email,
-    required this.setEmailValue,
+    required this.onChangedEmail,
     required this.isEmailTypedCorrectly,
     required this.isLoading,
   }) : super(key: key);
@@ -122,7 +124,7 @@ class UserDeleteDialog extends StatelessWidget {
                         Observer(builder: (context) {
                           return TextFormField(
                             textAlignVertical: TextAlignVertical.center,
-                            onChanged: setEmailValue,
+                            onChanged: onChangedEmail,
                             style: AppTextStyles.body.copyWith(
                                 color: Colors.white,
                                 fontSize: MediaQuery.of(context).size.width <
@@ -158,8 +160,11 @@ class UserDeleteDialog extends StatelessWidget {
                                 : 600,
                             heightSize: 50,
                             backgroundColor: AppColors.redButton,
-                            onPressed:
-                                isEmailTypedCorrectly == true ? () {} : null,
+                            onPressed: isEmailTypedCorrectly == true
+                                ? () {
+                                    deleteUser();
+                                  }
+                                : null,
                           );
                         }),
                         const SizedBox(height: 8),

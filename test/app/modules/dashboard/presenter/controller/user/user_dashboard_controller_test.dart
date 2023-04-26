@@ -7,6 +7,7 @@ import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_user.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
@@ -23,7 +24,8 @@ import 'user_dashboard_controller_test.mocks.dart';
   UserRepositoryInterface,
   ChangeDataInterface,
   SubscribeActivityInterface,
-  UnsubscribeActivityInterface
+  UnsubscribeActivityInterface,
+  DeleteUserInterface
 ])
 void main() {
   initModule(AppModule());
@@ -38,6 +40,8 @@ void main() {
   ChangeDataInterface changeData = MockChangeDataInterface();
 
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
+
+  DeleteUserInterface deleteUser = MockDeleteUserInterface();
 
   late UserDashboardController controller;
   late UserEnrollmentController subscriptionController;
@@ -303,6 +307,7 @@ void main() {
         subscribeActivity: subscribeActivity,
         unsubscribeActivity: unsubscribeActivity);
     controller = UserDashboardController(
+        deleteUser: deleteUser,
         secureStorage: secureStorage,
         changeData: changeData,
         enrollmentController: subscriptionController);
