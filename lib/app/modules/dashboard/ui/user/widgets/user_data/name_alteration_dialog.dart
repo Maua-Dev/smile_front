@@ -380,7 +380,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                     },
                   ),
                   const SizedBox(
-                    height: 8,
+                    height: 12,
                   ),
                   TextButton(
                       onPressed: () {
