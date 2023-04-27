@@ -517,6 +517,144 @@ class MockUserDashboardController extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
+  bool get initialWantSocialName => (super.noSuchMethod(
+        Invocation.getter(#initialWantSocialName),
+        returnValue: false,
+      ) as bool);
+  @override
+  set initialWantSocialName(bool? _initialWantSocialName) => super.noSuchMethod(
+        Invocation.setter(
+          #initialWantSocialName,
+          _initialWantSocialName,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  String get initialName => (super.noSuchMethod(
+        Invocation.getter(#initialName),
+        returnValue: '',
+      ) as String);
+  @override
+  set initialName(String? _initialName) => super.noSuchMethod(
+        Invocation.setter(
+          #initialName,
+          _initialName,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get initialAcceptEmailNotifications => (super.noSuchMethod(
+        Invocation.getter(#initialAcceptEmailNotifications),
+        returnValue: false,
+      ) as bool);
+  @override
+  set initialAcceptEmailNotifications(bool? _initialAcceptEmailNotifications) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #initialAcceptEmailNotifications,
+          _initialAcceptEmailNotifications,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get inititalCertificateWithSocialName => (super.noSuchMethod(
+        Invocation.getter(#inititalCertificateWithSocialName),
+        returnValue: false,
+      ) as bool);
+  @override
+  set inititalCertificateWithSocialName(
+          bool? _inititalCertificateWithSocialName) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #inititalCertificateWithSocialName,
+          _inititalCertificateWithSocialName,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  String get initialSocialName => (super.noSuchMethod(
+        Invocation.getter(#initialSocialName),
+        returnValue: '',
+      ) as String);
+  @override
+  set initialSocialName(String? _initialSocialName) => super.noSuchMethod(
+        Invocation.setter(
+          #initialSocialName,
+          _initialSocialName,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get wasWantSocialNameUpdated => (super.noSuchMethod(
+        Invocation.getter(#wasWantSocialNameUpdated),
+        returnValue: false,
+      ) as bool);
+  @override
+  set wasWantSocialNameUpdated(bool? _wasWantSocialNameUpdated) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #wasWantSocialNameUpdated,
+          _wasWantSocialNameUpdated,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get wasNameUpdated => (super.noSuchMethod(
+        Invocation.getter(#wasNameUpdated),
+        returnValue: false,
+      ) as bool);
+  @override
+  set wasNameUpdated(bool? _wasNameUpdated) => super.noSuchMethod(
+        Invocation.setter(
+          #wasNameUpdated,
+          _wasNameUpdated,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get wasAcceptEmailNotificationUpdated => (super.noSuchMethod(
+        Invocation.getter(#wasAcceptEmailNotificationUpdated),
+        returnValue: false,
+      ) as bool);
+  @override
+  set wasAcceptEmailNotificationUpdated(
+          bool? _wasAcceptEmailNotificationUpdated) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #wasAcceptEmailNotificationUpdated,
+          _wasAcceptEmailNotificationUpdated,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get wasCertificateWithSocialNameUpdated => (super.noSuchMethod(
+        Invocation.getter(#wasCertificateWithSocialNameUpdated),
+        returnValue: false,
+      ) as bool);
+  @override
+  set wasCertificateWithSocialNameUpdated(
+          bool? _wasCertificateWithSocialNameUpdated) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #wasCertificateWithSocialNameUpdated,
+          _wasCertificateWithSocialNameUpdated,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get wasSocialNameUpdated => (super.noSuchMethod(
+        Invocation.getter(#wasSocialNameUpdated),
+        returnValue: false,
+      ) as bool);
+  @override
+  set wasSocialNameUpdated(bool? _wasSocialNameUpdated) => super.noSuchMethod(
+        Invocation.setter(
+          #wasSocialNameUpdated,
+          _wasSocialNameUpdated,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   set email(String? _email) => super.noSuchMethod(
         Invocation.setter(
           #email,
@@ -633,15 +771,6 @@ class MockUserDashboardController extends _i1.Mock
           Invocation.getter(#context),
         ),
       ) as _i8.ReactiveContext);
-  @override
-  _i11.Future<void> setEmailNotifications(bool? value) => (super.noSuchMethod(
-        Invocation.method(
-          #setEmailNotifications,
-          [value],
-        ),
-        returnValue: _i11.Future<void>.value(),
-        returnValueForMissingStub: _i11.Future<void>.value(),
-      ) as _i11.Future<void>);
   @override
   void setTypeFilter(_i16.ActivityEnum? value) => super.noSuchMethod(
         Invocation.method(
@@ -850,6 +979,15 @@ class MockUserDashboardController extends _i1.Mock
   _i11.Future<void> setWantSocialName(bool? value) => (super.noSuchMethod(
         Invocation.method(
           #setWantSocialName,
+          [value],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  _i11.Future<void> setEmailNotifications(bool? value) => (super.noSuchMethod(
+        Invocation.method(
+          #setEmailNotifications,
           [value],
         ),
         returnValue: _i11.Future<void>.value(),

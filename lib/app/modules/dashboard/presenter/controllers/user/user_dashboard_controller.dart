@@ -77,15 +77,40 @@ abstract class UserDashboardControllerBase with Store {
   bool acceptEmailNotifications = false;
 
   @observable
+  bool initialWantSocialName = false;
+
+  @observable
+  String initialName = '';
+
+  @observable
+  bool initialAcceptEmailNotifications = false;
+
+  @observable
+  bool inititalCertificateWithSocialName = false;
+
+  @observable
+  String initialSocialName = '';
+
+  @observable
+  bool wasWantSocialNameUpdated = false;
+
+  @observable
+  bool wasNameUpdated = false;
+
+  @observable
+  bool wasAcceptEmailNotificationUpdated = false;
+
+  @observable
+  bool wasCertificateWithSocialNameUpdated = false;
+
+  @observable
+  bool wasSocialNameUpdated = false;
+
+  @observable
   String? email;
 
   @observable
   String? idToken = '';
-
-  @action
-  Future<void> setEmailNotifications(bool? value) async {
-    acceptEmailNotifications = value!;
-  }
 
   @action
   void setTypeFilter(ActivityEnum value) {
@@ -340,11 +365,13 @@ abstract class UserDashboardControllerBase with Store {
   Future<void> getCertificateWithSocialName() async {
     certificateWithSocialName =
         (await secureStorage.getCertificateWithSocialName())!;
+    inititalCertificateWithSocialName = certificateWithSocialName;
   }
 
   @action
   Future<void> getUserName() async {
     name = await secureStorage.getName();
+    initialName = name!;
     setName(name ?? '');
   }
 
@@ -352,6 +379,7 @@ abstract class UserDashboardControllerBase with Store {
   Future<void> getAcceptEmailNotifications() async {
     acceptEmailNotifications =
         (await secureStorage.getAcceptEmailNotifications())!;
+    initialAcceptEmailNotifications = acceptEmailNotifications;
   }
 
   @action
@@ -367,33 +395,67 @@ abstract class UserDashboardControllerBase with Store {
   @action
   Future<void> getUserSocialName() async {
     socialName = await secureStorage.getSocialName();
+    initialSocialName = socialName!;
     setUserSocialName(socialName ?? '');
     if (socialName != null && socialName != '') {
       wantSocialName = true;
     } else {
       wantSocialName = false;
     }
+    initialWantSocialName = wantSocialName;
   }
 
   @action
   Future<void> setWantSocialName(bool? value) async {
+    if (value == initialWantSocialName) {
+      wasWantSocialNameUpdated = false;
+    } else {
+      wasWantSocialNameUpdated = true;
+    }
+    if (value == false) {
+      setCertificateWithSocialName(value!);
+    }
     wantSocialName = value!;
-    setCertificateWithSocialName(value);
     setUserSocialName('');
   }
 
   @action
+  Future<void> setEmailNotifications(bool? value) async {
+    if (value == initialAcceptEmailNotifications) {
+      wasAcceptEmailNotificationUpdated = false;
+    } else {
+      wasAcceptEmailNotificationUpdated = true;
+    }
+    acceptEmailNotifications = value!;
+  }
+
+  @action
   void setName(String value) {
+    if (value == initialName) {
+      wasNameUpdated = false;
+    } else {
+      wasNameUpdated = true;
+    }
     nameToChange = value;
   }
 
   @action
   void setUserSocialName(String value) {
+    if (value == initialSocialName) {
+      wasSocialNameUpdated = false;
+    } else {
+      wasSocialNameUpdated = true;
+    }
     socialNameToChange = value;
   }
 
   @action
   void setCertificateWithSocialName(bool value) {
+    if (value == inititalCertificateWithSocialName) {
+      wasCertificateWithSocialNameUpdated = false;
+    } else {
+      wasCertificateWithSocialNameUpdated = true;
+    }
     certificateWithSocialName = value;
   }
 
@@ -517,7 +579,7 @@ abstract class UserDashboardControllerBase with Store {
   @action
   Future<void> deleteUserAccount() async {
     setIsLoading(true);
-    //await deleteUser(idToken!);
+    await deleteUser(idToken!);
     await secureStorage.deleteAll();
     Modular.to.pushReplacementNamed('/login');
     setIsLoading(false);

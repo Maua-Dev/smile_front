@@ -161,13 +161,15 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                           padding: const EdgeInsets.only(right: 12.0),
                           child: SizedBox(
                             width: 30,
-                            child: CupertinoSwitch(
-                              value: widget.wantSocialName,
-                              onChanged: widget.onChangedWantSocialName,
-                              trackColor: AppColors.gray,
-                              thumbColor: AppColors.brandingBlue,
-                              activeColor: AppColors.lightPurple,
-                            ),
+                            child: Observer(builder: (_) {
+                              return CupertinoSwitch(
+                                value: widget.wantSocialName,
+                                onChanged: widget.onChangedWantSocialName,
+                                trackColor: AppColors.gray,
+                                thumbColor: AppColors.brandingBlue,
+                                activeColor: AppColors.lightPurple,
+                              );
+                            }),
                           ),
                         ),
                       ],
@@ -365,20 +367,29 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                   const SizedBox(
                     height: 8,
                   ),
-                  CustomElevatedButtonWidget(
-                    isLoading: widget.isLoading,
-                    title: 'Alterar dados',
-                    widthSize: MediaQuery.of(context).size.width < 650
-                        ? MediaQuery.of(context).size.width * 0.85
-                        : 600,
-                    heightSize: 50,
-                    backgroundColor: AppColors.brandingOrange,
-                    onPressed: () async {
-                      if (formKey.currentState!.validate()) {
-                        await widget.changeData!();
-                      }
-                    },
-                  ),
+                  Observer(builder: (_) {
+                    return CustomElevatedButtonWidget(
+                      isLoading: widget.isLoading,
+                      title: 'Alterar dados',
+                      widthSize: MediaQuery.of(context).size.width < 650
+                          ? MediaQuery.of(context).size.width * 0.85
+                          : 600,
+                      heightSize: 50,
+                      backgroundColor: AppColors.brandingOrange,
+                      onPressed: (controller
+                                  .wasAcceptEmailNotificationUpdated ||
+                              controller.wasNameUpdated ||
+                              controller.wasSocialNameUpdated ||
+                              controller.wasWantSocialNameUpdated ||
+                              controller.wasCertificateWithSocialNameUpdated)
+                          ? () async {
+                              if (formKey.currentState!.validate()) {
+                                await widget.changeData!();
+                              }
+                            }
+                          : null,
+                    );
+                  }),
                   const SizedBox(
                     height: 12,
                   ),
