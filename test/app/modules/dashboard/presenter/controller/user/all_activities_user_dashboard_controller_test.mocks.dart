@@ -316,6 +316,14 @@ class MockActivitiesRepositoryInterface extends _i1.Mock
         ),
         returnValue: _i11.Future<dynamic>.value(),
       ) as _i11.Future<dynamic>);
+  @override
+  _i11.Future<dynamic> deleteUser() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteUser,
+          [],
+        ),
+        returnValue: _i11.Future<dynamic>.value(),
+      ) as _i11.Future<dynamic>);
 }
 
 /// A class which mocks [UserDashboardController].

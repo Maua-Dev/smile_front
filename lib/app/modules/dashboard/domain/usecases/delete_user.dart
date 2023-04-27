@@ -1,16 +1,16 @@
-import '../repositories/user_repository_interface.dart';
+import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 
 abstract class DeleteUserInterface {
-  Future<void> call(String code);
+  Future<void> call();
 }
 
 class DeleteUser implements DeleteUserInterface {
-  final UserRepositoryInterface userRepository;
+  final ActivitiesRepositoryInterface activitiesRepository;
 
-  DeleteUser({required this.userRepository});
+  DeleteUser({required this.activitiesRepository});
 
   @override
-  Future<void> call(String code) {
-    return userRepository.deleteUser(code);
+  Future<void> call() {
+    return activitiesRepository.deleteUser();
   }
 }

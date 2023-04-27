@@ -579,7 +579,7 @@ abstract class UserDashboardControllerBase with Store {
   @action
   Future<void> deleteUserAccount() async {
     setIsLoading(true);
-    await deleteUser(idToken!);
+    await deleteUser();
     await secureStorage.deleteAll();
     Modular.to.pushReplacementNamed('/login');
     setIsLoading(false);
