@@ -874,10 +874,10 @@ class S {
     );
   }
 
-  /// `Delete Account`
+  /// `Delete account`
   String get deleteAccount {
     return Intl.message(
-      'Delete Account',
+      'Delete account',
       name: 'deleteAccount',
       desc: '',
       args: [],

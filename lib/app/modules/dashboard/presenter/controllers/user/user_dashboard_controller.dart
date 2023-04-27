@@ -581,7 +581,7 @@ abstract class UserDashboardControllerBase with Store {
     setIsLoading(true);
     await deleteUser();
     await secureStorage.deleteAll();
-    Modular.to.navigate('/login');
     setIsLoading(false);
+    Modular.to.navigate('/login');
   }
 }
