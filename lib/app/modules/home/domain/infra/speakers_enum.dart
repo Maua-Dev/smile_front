@@ -10,6 +10,11 @@ enum SpeakersEnum {
   sonia,
   jonathan,
   flavia,
+  renato,
+  ana,
+  helga,
+  gustavo,
+  joseph
 }
 
 extension SpeakersEnumExtension on SpeakersEnum {
@@ -39,6 +44,16 @@ extension SpeakersEnumExtension on SpeakersEnum {
         return '${speakersLogoUrl}jonathan_ando.jpg';
       case SpeakersEnum.sonia:
         return '${speakersLogoUrl}sonia_guimaraes.jpg';
+      case SpeakersEnum.renato:
+        return '${speakersLogoUrl}renato_grau.jpg';
+      case SpeakersEnum.ana:
+        return '${speakersLogoUrl}ana_cristina.jpg';
+      case SpeakersEnum.helga:
+        return '${speakersLogoUrl}helga_braren.jpg';
+      case SpeakersEnum.gustavo:
+        return '${speakersLogoUrl}gustavo_paganini.jpg';
+      case SpeakersEnum.joseph:
+        return '${speakersLogoUrl}joseph_youssif.jpg';
     }
   }
 }

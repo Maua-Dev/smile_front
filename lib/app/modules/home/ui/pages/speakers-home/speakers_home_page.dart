@@ -100,6 +100,43 @@ class _SpeakersHomePageState
                   .toList(),
             );
           }),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.1,
+          ),
+          Observer(builder: (_) {
+            return SpeakerPanelWebWidget(
+              title: S.of(context).speakersPanelTitle3,
+              description: S.of(context).speakersPanelDescription3,
+              indexToShow: controller.indexToShowPanel3,
+              children: SpeakersEnum.values
+                  .skip(8)
+                  .take(5)
+                  .map(
+                    (e) => MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () {
+                          controller.toggleIndexPanel3(e.index);
+                        },
+                        child: Opacity(
+                          opacity: controller.indexToShowPanel3 == e.index
+                              ? 0.5
+                              : 1.0,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width / 14,
+                            height: MediaQuery.of(context).size.width / 14,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              backgroundImage: NetworkImage(e.linkPhoto),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                  .toList(),
+            );
+          }),
         ],
       );
     } else {
@@ -162,6 +199,40 @@ class _SpeakersHomePageState
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width / 6,
                               height: MediaQuery.of(context).size.width / 6,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.white,
+                                backgroundImage: NetworkImage(e.linkPhoto),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              );
+            }),
+            Observer(builder: (_) {
+              return SpeakerPanelMobileWidget(
+                title: S.of(context).speakersPanelTitle3,
+                description: S.of(context).speakersPanelDescription3,
+                indexToShow: controller.indexToShowPanel3,
+                children: SpeakersEnum.values
+                    .skip(8)
+                    .take(5)
+                    .map(
+                      (e) => MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            controller.toggleIndexPanel3(e.index);
+                          },
+                          child: Opacity(
+                            opacity: controller.indexToShowPanel3 == e.index
+                                ? 0.5
+                                : 1.0,
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width / 7,
+                              height: MediaQuery.of(context).size.width / 7,
                               child: CircleAvatar(
                                 backgroundColor: Colors.white,
                                 backgroundImage: NetworkImage(e.linkPhoto),

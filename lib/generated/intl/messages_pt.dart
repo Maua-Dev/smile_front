@@ -218,6 +218,16 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Professora Associada I no Instituto de Tecnologia Aeronáutica (ITA) e PhD em física pela Universidade de Manchester (Reino Unido). Sonia é a primeira mulher negra doutora em física no Brasil, formada em 1989, título que a levou a se tornar professora do ITA quando o instituto ainda não aceitava mulheres entre seus alunos, em 1993. Na ocasião, tornou-se também a primeira mulher negra professora na instituição, que é uma das mais tradicionais do Brasil. Natural de São Paulo (SP), atualmente vive em São José dos Campos, onde segue lecionando no ITA.',
             'flavia':
                 'Engenheira da Computação e Mestre em Ciência da Computação com mais de 6 anos de experiência em tecnologia. Ao longo de sua carreira trabalhou no design e implementação de aplicações web de escopo interno da IBM. Sua linha de pesquisa de Mestrado foi computação quântica e a melhoria de performance que pode existir para aplicações de machine learning em relação à computação convencional. Atualmente, é Engenheira de Software Senior na área de pesquisa da IBM, desenvolvendo aplicações para foundation models de inferência de geolocalização. Também leciona no Instituto Mauá de Tecnologia, instituição onde se formou e como Professora Auxiliar, atua  nos cursos de graduação em TI. Participa de iniciativas para engajar mulheres em carreiras técnicas e em eventos da comunidade de tecnologia.',
+            'renato':
+                'Empreendedor e empresário há mais de 25 anos, apaixonado por Inovação, Tecnologia, Pessoas e Futurismo, tema em que é certificado pela Aerolito na metodologia 3 Ondas; Mentor de Startups; Palestrante e Autor de artigos e conteúdos que buscam colaborar com a melhoria de nosso mundo; Fundador e CEO da Innovision, CDO da Suporte24x7 e de outras Empresas ; Criador e Moderador do PodCast TrenDs News e Autor da Newsletter Carta do Especialista; Sócio fundador, Ex-presidente e Conselheiro do ITESCS (Instituto de Tecnologia de São Caetano do Sul); Criador do Arranjo Produtivo Local das Empresas de TIC de São Caetano do Sul e Região; Embaixador e Conselheiro do Movimento Brasil Digital para Todos.',
+            'ana':
+                'Graduação em Psicologia pelo Instituto de Psicologia da USP, em 1995. Especialização em Psicodrama pelo Instituto Sedes Sapientiae, em 2006. Personal and Executive Coach pelo ICI, em 2011. Psicodrama nível 2 e 3 pela SOPSP, em 2020. A Educação socioemocional nos ambientes de ensino-aprendizagem, pelo Instituto Sedes Sapientiae em 2018. Orientação e educação inclusiva: teoria e prática pela PUC- Cogeae em 2010.',
+            'helga':
+                'Innovative, performance-driven, and highly creative professional offering years of experience in engineering research, complemented with a solid academic foundation in mechanical engineering. Well-versed in planning and conducting engineering research requiring judgment in the independent evaluation, selection, and substantial adaptation and modification of standard engineering and scientific techniques. Excel in developing solutions to complex problems that require regular application of scientific and engineering principles. Demonstrates and applies through engineering methods, research protocols, assessment instruments, and data interpretation.',
+            'gustavo':
+                'Responsável pelo projeto de reforma do Reator de Fusão Nuclear do IF-USP. PhD pela Ecole Polytechnique Fédérale de Lausanne, na Suíça, em Física de Plasmas e Fusão Termonuclear. Fez pós-doutorado na empresa americana de tecnologia General Atomics - Fusion Division. Trabalhou na Princeton Plasma Physics Laboratory. Após 8 anos trabalhando em fusão nuclear no exterior, decidiu retornar ao Brasil para contribuir com o desenvolvimento da fusão nuclear aqui. Hoje é Professor Livre-Docente no Instituto de Física da Universidade de São Paulo e, atualmente, coordena o projeto de modernização do tokamak TCABR. Foi o primeiro autor do Programa Nacional de Fusão Nuclear, que foi submetido para o Ministério de Ciência, Tecnologia e Inovações. Tem também colaborado com a Comissão Nacional de Energia Nuclear no desenvolvimento da fusão nuclear em nível nacional.',
+            'joseph':
+                'Membro-Fundador do Grupo de Energia Eólica Poli-Wind e membro do Grupo de Pesquisa em Energias Renováveis, Sustentabilidade e Meio Ambiente do IMT. Coordenador do Grand Challenges Scholars Program no IMT. Experiência em docência nas disciplinas da área de Energia e Fluidos (teoria e laboratórios) desde 1997. Experiência prática na manutenção de aeronaves, motores (turbinas à gás), componentes e sistemas aeronáuticos, projeto conceitual de aeronaves, simulação em CFD e simulação de análise dinâmica de sistemas. Pesquisador ativo em energia eólica, aerodinâmica, energias renováveis e seu impacto no meio ambiente. Empreendedor ativo e com experiência na gestão de empresas, equipes e projetos.',
             'other': '',
           })}";
 
@@ -230,6 +240,11 @@ class MessageLookup extends MessageLookupByLibrary {
             'daniela': 'Daniela Klaiman',
             'jonathan': 'Jonathan Y. Ando Nelson',
             'sonia': 'Sonia Guimarães',
+            'renato': 'Renato Grau',
+            'ana': 'Ana Cristina Caldeira',
+            'helga': 'Helga Braren Zepf',
+            'gustavo': 'Gustavo Paganini Canal',
+            'joseph': 'Joseph Youssif Saab Junior',
             'other': '',
           })}";
 
@@ -519,10 +534,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Neste painel, vamos explorar como a liderança está sendo moldada para atuar em um ambiente em constante mudança, seja nos negócios, na tecnologia, na cultura ou mesmo na sociedade, e como os líderes podem se preparar para o futuro."),
         "speakersPanelDescription2": MessageLookupByLibrary.simpleMessage(
             "Os participantes terão a oportunidade de saber mais sobre como a tecnologia está transformando a forma como vivemos, trabalhamos, nos relacionamos e interagimos, assim como as implicações éticas, sociais e econômicas dessas mudanças."),
+        "speakersPanelDescription3": MessageLookupByLibrary.simpleMessage(
+            "Nesse painel, conversaremos sobre temas de grande relevância, como a sustentabilidade, segurança, saúde e alegria de viver."),
         "speakersPanelTitle1": MessageLookupByLibrary.simpleMessage(
             "Desenvolvendo líderes do futuro: habilidades, desafios e oportunidades"),
         "speakersPanelTitle2": MessageLookupByLibrary.simpleMessage(
             "Tecnologia em transformação: impactos na sociedade, educação e mercado de trabalho"),
+        "speakersPanelTitle3": MessageLookupByLibrary.simpleMessage(
+            "Grandes desafios da humanidade"),
         "speakersSchemaDescription": m17,
         "speakersSchemaName": m18,
         "speakersTitle": MessageLookupByLibrary.simpleMessage("Palestrantes"),
