@@ -290,12 +290,16 @@ void main() {
   var name = 'Name Test';
   var socialName = 'Social Name';
   var certificateWithSocialName = true;
+  var email = 'gabriel.godoybz@hotmail.com';
+  var idToken = 'DHSHSALÇk-djasd-dasexsa-sfkfds';
 
   setUpAll(() async {
     when(getUserActivities()).thenAnswer((_) async => mockActivities);
     when(secureStorage.getName()).thenAnswer((_) async => name);
     when(secureStorage.getSocialName()).thenAnswer((_) async => socialName);
     when(secureStorage.getPhone()).thenAnswer((_) async => '+5511991273092');
+    when(secureStorage.getEmail()).thenAnswer((_) async => email);
+    when(secureStorage.getIdToken()).thenAnswer((_) async => idToken);
     when(secureStorage.getCertificateWithSocialName())
         .thenAnswer((_) async => certificateWithSocialName);
     when(secureStorage.getAcceptEmailNotifications())
