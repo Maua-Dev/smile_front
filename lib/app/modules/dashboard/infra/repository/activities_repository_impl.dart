@@ -248,4 +248,9 @@ class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
     var response = await datasource.deleteAttendanceCode(activityCode);
     return Future.value(response);
   }
+
+  @override
+  Future deleteUser() async {
+    await datasource.deleteUser();
+  }
 }

@@ -874,6 +874,56 @@ class S {
     );
   }
 
+  /// `Delete account`
+  String get deleteAccount {
+    return Intl.message(
+      'Delete account',
+      name: 'deleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete your account? All your registrations, certificates and data will be permanently erased.`
+  String get deleteMessage {
+    return Intl.message(
+      'Are you sure you want to delete your account? All your registrations, certificates and data will be permanently erased.',
+      name: 'deleteMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your e-mail`
+  String get deleteEmailType {
+    return Intl.message(
+      'Enter your e-mail',
+      name: 'deleteEmailType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `to complete the action:`
+  String get deleteCompleteAction {
+    return Intl.message(
+      'to complete the action:',
+      name: 'deleteCompleteAction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Account Permanently`
+  String get deleteAccountPermanent {
+    return Intl.message(
+      'Delete Account Permanently',
+      name: 'deleteAccountPermanent',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The login service is under maintenance`
   String get maintenanceTitle {
     return Intl.message(

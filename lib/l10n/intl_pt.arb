@@ -77,6 +77,12 @@
     "completed": "Completa",
     "confirmedAttendance": "Atividade completa!",
 
+    "deleteAccount": "Deletar conta",
+    "deleteMessage": "Tem certeza que deseja excluir a sua conta? Todas as suas incrições, certificados e dados serão apagados permanentemente.",
+    "deleteEmailType": "Digite o seu e-mail",
+    "deleteCompleteAction": "para completar a ação:",
+    "deleteAccountPermanent": "Deletar conta permanentemente",
+
 
 
 

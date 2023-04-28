@@ -7,6 +7,7 @@ import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_user.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
@@ -23,7 +24,8 @@ import 'user_dashboard_controller_test.mocks.dart';
   UserRepositoryInterface,
   ChangeDataInterface,
   SubscribeActivityInterface,
-  UnsubscribeActivityInterface
+  UnsubscribeActivityInterface,
+  DeleteUserInterface
 ])
 void main() {
   initModule(AppModule());
@@ -38,6 +40,8 @@ void main() {
   ChangeDataInterface changeData = MockChangeDataInterface();
 
   SecureStorageInterface secureStorage = MockSecureStorageInterface();
+
+  DeleteUserInterface deleteUser = MockDeleteUserInterface();
 
   late UserDashboardController controller;
   late UserEnrollmentController subscriptionController;
@@ -286,12 +290,16 @@ void main() {
   var name = 'Name Test';
   var socialName = 'Social Name';
   var certificateWithSocialName = true;
+  var email = 'gabriel.godoybz@hotmail.com';
+  var idToken = 'DHSHSALÇk-djasd-dasexsa-sfkfds';
 
   setUpAll(() async {
     when(getUserActivities()).thenAnswer((_) async => mockActivities);
     when(secureStorage.getName()).thenAnswer((_) async => name);
     when(secureStorage.getSocialName()).thenAnswer((_) async => socialName);
     when(secureStorage.getPhone()).thenAnswer((_) async => '+5511991273092');
+    when(secureStorage.getEmail()).thenAnswer((_) async => email);
+    when(secureStorage.getIdToken()).thenAnswer((_) async => idToken);
     when(secureStorage.getCertificateWithSocialName())
         .thenAnswer((_) async => certificateWithSocialName);
     when(secureStorage.getAcceptEmailNotifications())
@@ -303,6 +311,7 @@ void main() {
         subscribeActivity: subscribeActivity,
         unsubscribeActivity: unsubscribeActivity);
     controller = UserDashboardController(
+        deleteUser: deleteUser,
         secureStorage: secureStorage,
         changeData: changeData,
         enrollmentController: subscriptionController);
