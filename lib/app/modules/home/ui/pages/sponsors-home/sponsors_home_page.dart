@@ -334,9 +334,9 @@ class CompanySponsor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width / 1.3,
-      child: Center(
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
             Wrap(
@@ -406,10 +406,6 @@ class CompanySponsor extends StatelessWidget {
                     color: Colors.white,
                     size: 0.4),
                 SponsorsWidget(
-                    link: patrocinadorLorealLogoUrl,
-                    color: Colors.white,
-                    size: 0.4),
-                SponsorsWidget(
                     link: patrocinadorGmLogoUrl,
                     color: Colors.white,
                     size: 0.4),
@@ -418,7 +414,7 @@ class CompanySponsor extends StatelessWidget {
             SponsorsWidget(
                 link: patrocinadorCengageLogoUrl,
                 color: Colors.white,
-                size: 0.5),
+                size: 0.6),
           ],
         ),
       ),
