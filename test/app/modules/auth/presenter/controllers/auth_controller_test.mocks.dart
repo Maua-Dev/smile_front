@@ -165,6 +165,15 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i4.Future<void>.value(),
       ) as _i4.Future<void>);
   @override
+  _i4.Future<void> saveEmail(String? email) => (super.noSuchMethod(
+        Invocation.method(
+          #saveEmail,
+          [email],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+  @override
   _i4.Future<String?> getRole() => (super.noSuchMethod(
         Invocation.method(
           #getRole,
@@ -212,6 +221,23 @@ class MockSecureStorageInterface extends _i1.Mock
         ),
         returnValue: _i4.Future<String?>.value(),
       ) as _i4.Future<String?>);
+  @override
+  _i4.Future<String?> getEmail() => (super.noSuchMethod(
+        Invocation.method(
+          #getEmail,
+          [],
+        ),
+        returnValue: _i4.Future<String?>.value(),
+      ) as _i4.Future<String?>);
+  @override
+  _i4.Future<void> deleteAll() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteAll,
+          [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
   @override
   _i4.Future<bool?> getAcceptSMSNotifications() => (super.noSuchMethod(
         Invocation.method(

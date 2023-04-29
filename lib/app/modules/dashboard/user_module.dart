@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/certificate_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_user.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/generate_confirmation_code.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_activities_with_enrollments.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_all_activities.dart';
@@ -92,6 +94,8 @@ class UserModule extends Module {
         (i) => UserRepositoryImpl(datasource: i())),
     Bind.lazySingleton<ChangeDataInterface>(
         (i) => ChangeData(userRepository: i())),
+    Bind.lazySingleton<DeleteUserInterface>(
+        (i) => DeleteUser(activitiesRepository: i())),
     Bind.lazySingleton<FaqDatasourceInterface>((i) => FaqDatasourceImpl()),
     Bind.lazySingleton<FaqRepositoryInterface>(
         (i) => FaqRepositoryImpl(datasource: i())),
@@ -99,6 +103,7 @@ class UserModule extends Module {
         (i) => GetAllInformation(repository: i())),
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
+        deleteUser: i(),
         secureStorage: i(),
         changeData: i(),
         enrollmentController: i(),
@@ -134,16 +139,14 @@ class UserModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(
-      Modular.initialRoute,
-      child: (_, args) => const UserDashboardPage(),
-      transition: TransitionType.rightToLeft,
-    ),
-    ChildRoute(
-      '/all-activities',
-      child: (_, args) => const AllActivitiesUserDashboardPage(),
-      transition: TransitionType.rightToLeft,
-    ),
+    ChildRoute(Modular.initialRoute,
+        child: (_, args) => const UserDashboardPage(),
+        transition:
+            kIsWeb ? TransitionType.fadeIn : TransitionType.rightToLeft),
+    ChildRoute('/all-activities',
+        child: (_, args) => const AllActivitiesUserDashboardPage(),
+        transition:
+            kIsWeb ? TransitionType.fadeIn : TransitionType.rightToLeft),
     ChildRoute(
       '/more-info',
       child: (_, args) => const MoreInfoPage(),
@@ -151,12 +154,12 @@ class UserModule extends Module {
     ChildRoute(
       '/help',
       child: (_, args) => const HelpPage(),
-      transition: TransitionType.rightToLeft,
+      transition: kIsWeb ? TransitionType.fadeIn : TransitionType.rightToLeft,
     ),
     ChildRoute(
       '/certificate',
       child: (_, args) => const CertificatePage(),
-      transition: TransitionType.rightToLeft,
+      transition: kIsWeb ? TransitionType.fadeIn : TransitionType.rightToLeft,
     ),
     ModuleRoute('/professor',
         module: ProfessorModule(), guards: [AuthGuardProfessor()])
