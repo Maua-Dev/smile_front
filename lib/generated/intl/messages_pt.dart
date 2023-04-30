@@ -390,6 +390,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "footerContact": m6,
         "footerDev": m7,
         "footerDoubtContact": m8,
+        "footerHelp": MessageLookupByLibrary.simpleMessage(" Ajuda"),
         "footerHowToGet": MessageLookupByLibrary.simpleMessage("Como chegar"),
         "footerLocalizationDescription": MessageLookupByLibrary.simpleMessage(
             "Praça Mauá 1 São Caetano do Sul - SP"),
