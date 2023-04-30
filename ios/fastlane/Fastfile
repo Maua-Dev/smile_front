@@ -15,7 +15,7 @@ platform :ios do
       api_key: api_key,
       changelog: 'Testar todas as funcionalidades do app',
       distribute_external: true,
-      groups: ['Devs Ios'],
+      groups: ['devers'],
       notify_external_testers: true,
       ipa: ENV['APP_PATH'],
       skip_waiting_for_build_processing: true,

@@ -21,4 +21,5 @@ abstract class ActivitiesRepositoryInterface {
       String activityCode, String userId, EnrollmentStateEnum state);
   Future confirmAttendance(String confirmAttendanceCode, String activityCode);
   Future deleteAtendanceCode(String activityCode);
+  Future deleteUser();
 }

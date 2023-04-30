@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:smile_front/app/modules/dashboard/ui/user/widgets/user_data/user_delete_dialog.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
@@ -160,13 +161,15 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                           padding: const EdgeInsets.only(right: 12.0),
                           child: SizedBox(
                             width: 30,
-                            child: CupertinoSwitch(
-                              value: widget.wantSocialName,
-                              onChanged: widget.onChangedWantSocialName,
-                              trackColor: AppColors.gray,
-                              thumbColor: AppColors.brandingBlue,
-                              activeColor: AppColors.lightPurple,
-                            ),
+                            child: Observer(builder: (_) {
+                              return CupertinoSwitch(
+                                value: widget.wantSocialName,
+                                onChanged: widget.onChangedWantSocialName,
+                                trackColor: AppColors.gray,
+                                thumbColor: AppColors.brandingBlue,
+                                activeColor: AppColors.lightPurple,
+                              );
+                            }),
                           ),
                         ),
                       ],
@@ -364,20 +367,54 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                   const SizedBox(
                     height: 8,
                   ),
-                  CustomElevatedButtonWidget(
-                    isLoading: widget.isLoading,
-                    title: 'Alterar dados',
-                    widthSize: MediaQuery.of(context).size.width < 650
-                        ? MediaQuery.of(context).size.width * 0.85
-                        : 600,
-                    heightSize: 50,
-                    backgroundColor: AppColors.brandingOrange,
-                    onPressed: () async {
-                      if (formKey.currentState!.validate()) {
-                        await widget.changeData!();
-                      }
-                    },
+                  Observer(builder: (_) {
+                    return CustomElevatedButtonWidget(
+                      isLoading: widget.isLoading,
+                      title: 'Alterar dados',
+                      widthSize: MediaQuery.of(context).size.width < 650
+                          ? MediaQuery.of(context).size.width * 0.85
+                          : 600,
+                      heightSize: 50,
+                      backgroundColor: AppColors.brandingOrange,
+                      onPressed: (controller
+                                  .wasAcceptEmailNotificationUpdated ||
+                              controller.wasNameUpdated ||
+                              controller.wasSocialNameUpdated ||
+                              controller.wasWantSocialNameUpdated ||
+                              controller.wasCertificateWithSocialNameUpdated)
+                          ? () async {
+                              if (formKey.currentState!.validate()) {
+                                await widget.changeData!();
+                              }
+                            }
+                          : null,
+                    );
+                  }),
+                  const SizedBox(
+                    height: 12,
                   ),
+                  TextButton(
+                      onPressed: () {
+                        controller.setIsEmailTypedCorrectly(false);
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Observer(builder: (context) {
+                              return UserDeleteDialog(
+                                deleteUser: controller.deleteUserAccount,
+                                email: controller.email,
+                                isEmailTypedCorrectly:
+                                    controller.isEmailTypedCorrectly,
+                                isLoading: controller.isLoading,
+                                onChangedEmail: controller.validateEmailTyped,
+                              );
+                            });
+                          },
+                        );
+                      },
+                      child: Text(S.of(context).deleteAccount,
+                          style: AppTextStyles.body.copyWith(
+                              color: AppColors.redButton, fontSize: 16)))
                 ],
               ),
             ),

@@ -37,7 +37,7 @@ class NextHomePage extends StatelessWidget {
                       style: AppTextStyles.titleH1.copyWith(
                           color: Colors.white,
                           fontSize: MediaQuery.of(context).size.width < 900
-                              ? 38
+                              ? 32
                               : MediaQuery.of(context).size.width < 1400
                                   ? 48
                                   : 55)),

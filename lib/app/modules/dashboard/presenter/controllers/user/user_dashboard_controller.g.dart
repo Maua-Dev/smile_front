@@ -123,6 +123,40 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
+  late final _$emailTypedAtom =
+      Atom(name: 'UserDashboardControllerBase.emailTyped', context: context);
+
+  @override
+  String get emailTyped {
+    _$emailTypedAtom.reportRead();
+    return super.emailTyped;
+  }
+
+  @override
+  set emailTyped(String value) {
+    _$emailTypedAtom.reportWrite(value, super.emailTyped, () {
+      super.emailTyped = value;
+    });
+  }
+
+  late final _$isEmailTypedCorrectlyAtom = Atom(
+      name: 'UserDashboardControllerBase.isEmailTypedCorrectly',
+      context: context);
+
+  @override
+  bool get isEmailTypedCorrectly {
+    _$isEmailTypedCorrectlyAtom.reportRead();
+    return super.isEmailTypedCorrectly;
+  }
+
+  @override
+  set isEmailTypedCorrectly(bool value) {
+    _$isEmailTypedCorrectlyAtom.reportWrite(value, super.isEmailTypedCorrectly,
+        () {
+      super.isEmailTypedCorrectly = value;
+    });
+  }
+
   late final _$subscribedActivitiesOnScreenAtom = Atom(
       name: 'UserDashboardControllerBase.subscribedActivitiesOnScreen',
       context: context);
@@ -204,6 +238,212 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     _$acceptEmailNotificationsAtom
         .reportWrite(value, super.acceptEmailNotifications, () {
       super.acceptEmailNotifications = value;
+    });
+  }
+
+  late final _$initialWantSocialNameAtom = Atom(
+      name: 'UserDashboardControllerBase.initialWantSocialName',
+      context: context);
+
+  @override
+  bool get initialWantSocialName {
+    _$initialWantSocialNameAtom.reportRead();
+    return super.initialWantSocialName;
+  }
+
+  @override
+  set initialWantSocialName(bool value) {
+    _$initialWantSocialNameAtom.reportWrite(value, super.initialWantSocialName,
+        () {
+      super.initialWantSocialName = value;
+    });
+  }
+
+  late final _$initialNameAtom =
+      Atom(name: 'UserDashboardControllerBase.initialName', context: context);
+
+  @override
+  String get initialName {
+    _$initialNameAtom.reportRead();
+    return super.initialName;
+  }
+
+  @override
+  set initialName(String value) {
+    _$initialNameAtom.reportWrite(value, super.initialName, () {
+      super.initialName = value;
+    });
+  }
+
+  late final _$initialAcceptEmailNotificationsAtom = Atom(
+      name: 'UserDashboardControllerBase.initialAcceptEmailNotifications',
+      context: context);
+
+  @override
+  bool get initialAcceptEmailNotifications {
+    _$initialAcceptEmailNotificationsAtom.reportRead();
+    return super.initialAcceptEmailNotifications;
+  }
+
+  @override
+  set initialAcceptEmailNotifications(bool value) {
+    _$initialAcceptEmailNotificationsAtom
+        .reportWrite(value, super.initialAcceptEmailNotifications, () {
+      super.initialAcceptEmailNotifications = value;
+    });
+  }
+
+  late final _$inititalCertificateWithSocialNameAtom = Atom(
+      name: 'UserDashboardControllerBase.inititalCertificateWithSocialName',
+      context: context);
+
+  @override
+  bool get inititalCertificateWithSocialName {
+    _$inititalCertificateWithSocialNameAtom.reportRead();
+    return super.inititalCertificateWithSocialName;
+  }
+
+  @override
+  set inititalCertificateWithSocialName(bool value) {
+    _$inititalCertificateWithSocialNameAtom
+        .reportWrite(value, super.inititalCertificateWithSocialName, () {
+      super.inititalCertificateWithSocialName = value;
+    });
+  }
+
+  late final _$initialSocialNameAtom = Atom(
+      name: 'UserDashboardControllerBase.initialSocialName', context: context);
+
+  @override
+  String get initialSocialName {
+    _$initialSocialNameAtom.reportRead();
+    return super.initialSocialName;
+  }
+
+  @override
+  set initialSocialName(String value) {
+    _$initialSocialNameAtom.reportWrite(value, super.initialSocialName, () {
+      super.initialSocialName = value;
+    });
+  }
+
+  late final _$wasWantSocialNameUpdatedAtom = Atom(
+      name: 'UserDashboardControllerBase.wasWantSocialNameUpdated',
+      context: context);
+
+  @override
+  bool get wasWantSocialNameUpdated {
+    _$wasWantSocialNameUpdatedAtom.reportRead();
+    return super.wasWantSocialNameUpdated;
+  }
+
+  @override
+  set wasWantSocialNameUpdated(bool value) {
+    _$wasWantSocialNameUpdatedAtom
+        .reportWrite(value, super.wasWantSocialNameUpdated, () {
+      super.wasWantSocialNameUpdated = value;
+    });
+  }
+
+  late final _$wasNameUpdatedAtom = Atom(
+      name: 'UserDashboardControllerBase.wasNameUpdated', context: context);
+
+  @override
+  bool get wasNameUpdated {
+    _$wasNameUpdatedAtom.reportRead();
+    return super.wasNameUpdated;
+  }
+
+  @override
+  set wasNameUpdated(bool value) {
+    _$wasNameUpdatedAtom.reportWrite(value, super.wasNameUpdated, () {
+      super.wasNameUpdated = value;
+    });
+  }
+
+  late final _$wasAcceptEmailNotificationUpdatedAtom = Atom(
+      name: 'UserDashboardControllerBase.wasAcceptEmailNotificationUpdated',
+      context: context);
+
+  @override
+  bool get wasAcceptEmailNotificationUpdated {
+    _$wasAcceptEmailNotificationUpdatedAtom.reportRead();
+    return super.wasAcceptEmailNotificationUpdated;
+  }
+
+  @override
+  set wasAcceptEmailNotificationUpdated(bool value) {
+    _$wasAcceptEmailNotificationUpdatedAtom
+        .reportWrite(value, super.wasAcceptEmailNotificationUpdated, () {
+      super.wasAcceptEmailNotificationUpdated = value;
+    });
+  }
+
+  late final _$wasCertificateWithSocialNameUpdatedAtom = Atom(
+      name: 'UserDashboardControllerBase.wasCertificateWithSocialNameUpdated',
+      context: context);
+
+  @override
+  bool get wasCertificateWithSocialNameUpdated {
+    _$wasCertificateWithSocialNameUpdatedAtom.reportRead();
+    return super.wasCertificateWithSocialNameUpdated;
+  }
+
+  @override
+  set wasCertificateWithSocialNameUpdated(bool value) {
+    _$wasCertificateWithSocialNameUpdatedAtom
+        .reportWrite(value, super.wasCertificateWithSocialNameUpdated, () {
+      super.wasCertificateWithSocialNameUpdated = value;
+    });
+  }
+
+  late final _$wasSocialNameUpdatedAtom = Atom(
+      name: 'UserDashboardControllerBase.wasSocialNameUpdated',
+      context: context);
+
+  @override
+  bool get wasSocialNameUpdated {
+    _$wasSocialNameUpdatedAtom.reportRead();
+    return super.wasSocialNameUpdated;
+  }
+
+  @override
+  set wasSocialNameUpdated(bool value) {
+    _$wasSocialNameUpdatedAtom.reportWrite(value, super.wasSocialNameUpdated,
+        () {
+      super.wasSocialNameUpdated = value;
+    });
+  }
+
+  late final _$emailAtom =
+      Atom(name: 'UserDashboardControllerBase.email', context: context);
+
+  @override
+  String? get email {
+    _$emailAtom.reportRead();
+    return super.email;
+  }
+
+  @override
+  set email(String? value) {
+    _$emailAtom.reportWrite(value, super.email, () {
+      super.email = value;
+    });
+  }
+
+  late final _$idTokenAtom =
+      Atom(name: 'UserDashboardControllerBase.idToken', context: context);
+
+  @override
+  String? get idToken {
+    _$idTokenAtom.reportRead();
+    return super.idToken;
+  }
+
+  @override
+  set idToken(String? value) {
+    _$idTokenAtom.reportWrite(value, super.idToken, () {
+      super.idToken = value;
     });
   }
 
@@ -339,16 +579,6 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
     });
   }
 
-  late final _$setEmailNotificationsAsyncAction = AsyncAction(
-      'UserDashboardControllerBase.setEmailNotifications',
-      context: context);
-
-  @override
-  Future<void> setEmailNotifications(bool? value) {
-    return _$setEmailNotificationsAsyncAction
-        .run(() => super.setEmailNotifications(value));
-  }
-
   late final _$getCertificateWithSocialNameAsyncAction = AsyncAction(
       'UserDashboardControllerBase.getCertificateWithSocialName',
       context: context);
@@ -377,6 +607,22 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
         .run(() => super.getAcceptEmailNotifications());
   }
 
+  late final _$getEmailAsyncAction =
+      AsyncAction('UserDashboardControllerBase.getEmail', context: context);
+
+  @override
+  Future<void> getEmail() {
+    return _$getEmailAsyncAction.run(() => super.getEmail());
+  }
+
+  late final _$getIdTokenAsyncAction =
+      AsyncAction('UserDashboardControllerBase.getIdToken', context: context);
+
+  @override
+  Future<void> getIdToken() {
+    return _$getIdTokenAsyncAction.run(() => super.getIdToken());
+  }
+
   late final _$getUserSocialNameAsyncAction = AsyncAction(
       'UserDashboardControllerBase.getUserSocialName',
       context: context);
@@ -394,6 +640,16 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   Future<void> setWantSocialName(bool? value) {
     return _$setWantSocialNameAsyncAction
         .run(() => super.setWantSocialName(value));
+  }
+
+  late final _$setEmailNotificationsAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.setEmailNotifications',
+      context: context);
+
+  @override
+  Future<void> setEmailNotifications(bool? value) {
+    return _$setEmailNotificationsAsyncAction
+        .run(() => super.setEmailNotifications(value));
   }
 
   late final _$setIsLoadingAsyncAction =
@@ -421,6 +677,15 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   @override
   Future<void> changeUserData() {
     return _$changeUserDataAsyncAction.run(() => super.changeUserData());
+  }
+
+  late final _$deleteUserAccountAsyncAction = AsyncAction(
+      'UserDashboardControllerBase.deleteUserAccount',
+      context: context);
+
+  @override
+  Future<void> deleteUserAccount() {
+    return _$deleteUserAccountAsyncAction.run(() => super.deleteUserAccount());
   }
 
   late final _$UserDashboardControllerBaseActionController =
@@ -613,6 +878,29 @@ mixin _$UserDashboardController on UserDashboardControllerBase, Store {
   }
 
   @override
+  void setIsEmailTypedCorrectly(bool value) {
+    final _$actionInfo =
+        _$UserDashboardControllerBaseActionController.startAction(
+            name: 'UserDashboardControllerBase.setIsEmailTypedCorrectly');
+    try {
+      return super.setIsEmailTypedCorrectly(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void validateEmailTyped(String value) {
+    final _$actionInfo = _$UserDashboardControllerBaseActionController
+        .startAction(name: 'UserDashboardControllerBase.validateEmailTyped');
+    try {
+      return super.validateEmailTyped(value);
+    } finally {
+      _$UserDashboardControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 error: ${error},
@@ -622,11 +910,25 @@ certificateWithSocialName: ${certificateWithSocialName},
 socialNameToChange: ${socialNameToChange},
 nameToChange: ${nameToChange},
 wantSocialName: ${wantSocialName},
+emailTyped: ${emailTyped},
+isEmailTypedCorrectly: ${isEmailTypedCorrectly},
 subscribedActivitiesOnScreen: ${subscribedActivitiesOnScreen},
 activityType: ${activityType},
 typeFilter: ${typeFilter},
 typeOnScreen: ${typeOnScreen},
 acceptEmailNotifications: ${acceptEmailNotifications},
+initialWantSocialName: ${initialWantSocialName},
+initialName: ${initialName},
+initialAcceptEmailNotifications: ${initialAcceptEmailNotifications},
+inititalCertificateWithSocialName: ${inititalCertificateWithSocialName},
+initialSocialName: ${initialSocialName},
+wasWantSocialNameUpdated: ${wasWantSocialNameUpdated},
+wasNameUpdated: ${wasNameUpdated},
+wasAcceptEmailNotificationUpdated: ${wasAcceptEmailNotificationUpdated},
+wasCertificateWithSocialNameUpdated: ${wasCertificateWithSocialNameUpdated},
+wasSocialNameUpdated: ${wasSocialNameUpdated},
+email: ${email},
+idToken: ${idToken},
 enrollmentFilter: ${enrollmentFilter},
 dateFilter: ${dateFilter},
 hourFilter: ${hourFilter},

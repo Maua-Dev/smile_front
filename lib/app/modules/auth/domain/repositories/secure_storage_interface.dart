@@ -12,12 +12,15 @@ abstract class SecureStorageInterface {
   Future<void> saveCertificateWithSocialName(bool certificateWithSocialName);
   Future<void> saveAcceptSMSNotifications(bool acceptSMSNotifications);
   Future<void> saveAcceptEmailNotifications(bool acceptEmailNotifications);
+  Future<void> saveEmail(String email);
   Future<String?> getRole();
   Future<String?> getId();
   Future<String?> getIdToken();
   Future<String?> getName();
   Future<String?> getSocialName();
   Future<String?> getPhone();
+  Future<String?> getEmail();
+  Future<void> deleteAll();
   Future<bool?> getAcceptSMSNotifications();
   Future<bool?> getAcceptEmailNotifications();
   Future<bool?> getCertificateWithSocialName();

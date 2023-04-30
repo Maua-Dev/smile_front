@@ -55,15 +55,16 @@ class _LandingUserPageState extends State<LandingUserPage> {
                     child: RouterOutlet()),
               )
             : SafeArea(
-                child: Row(
+                child: Stack(
                   children: [
-                    VerticalNavBarWidget(
-                      accessLevel: authController.role,
-                    ),
-                    Flexible(
+                    Padding(
+                      padding: const EdgeInsets.only(left: 120.0),
                       child: Center(
                         child: RouterOutlet(),
                       ),
+                    ),
+                    VerticalNavBarWidget(
+                      accessLevel: authController.role,
                     ),
                   ],
                 ),

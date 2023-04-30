@@ -12,6 +12,8 @@ import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repos
     as _i6;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart'
     as _i9;
+import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_user.dart'
+    as _i12;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_user_subscribed_activities.dart'
     as _i2;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/subscribe_activities.dart'
@@ -186,6 +188,15 @@ class MockSecureStorageInterface extends _i1.Mock
         returnValueForMissingStub: _i3.Future<void>.value(),
       ) as _i3.Future<void>);
   @override
+  _i3.Future<void> saveEmail(String? email) => (super.noSuchMethod(
+        Invocation.method(
+          #saveEmail,
+          [email],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
+  @override
   _i3.Future<String?> getRole() => (super.noSuchMethod(
         Invocation.method(
           #getRole,
@@ -233,6 +244,23 @@ class MockSecureStorageInterface extends _i1.Mock
         ),
         returnValue: _i3.Future<String?>.value(),
       ) as _i3.Future<String?>);
+  @override
+  _i3.Future<String?> getEmail() => (super.noSuchMethod(
+        Invocation.method(
+          #getEmail,
+          [],
+        ),
+        returnValue: _i3.Future<String?>.value(),
+      ) as _i3.Future<String?>);
+  @override
+  _i3.Future<void> deleteAll() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteAll,
+          [],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
   @override
   _i3.Future<bool?> getAcceptSMSNotifications() => (super.noSuchMethod(
         Invocation.method(
@@ -401,4 +429,24 @@ class MockUnsubscribeActivityInterface extends _i1.Mock
         ),
         returnValue: _i3.Future<bool>.value(false),
       ) as _i3.Future<bool>);
+}
+
+/// A class which mocks [DeleteUserInterface].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockDeleteUserInterface extends _i1.Mock
+    implements _i12.DeleteUserInterface {
+  MockDeleteUserInterface() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<void> call() => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 }
