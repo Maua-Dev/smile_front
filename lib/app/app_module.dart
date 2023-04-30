@@ -3,6 +3,7 @@ import 'package:smile_front/app/app_guard.dart';
 import 'package:smile_front/app/modules/auth/infra/auth_guards/auth_guard_adm.dart';
 import 'package:smile_front/app/modules/auth/infra/auth_guards/auth_guard_user.dart';
 import 'package:smile_front/app/modules/dashboard/adm_module.dart';
+import 'package:smile_front/app/modules/dashboard/faq_module.dart';
 import 'package:smile_front/app/modules/dashboard/landing_module.dart';
 import 'package:smile_front/app/modules/login/login_module.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
@@ -41,6 +42,10 @@ class AppModule extends Module {
       module: LandingModule(),
       guards: [AuthGuardUser()],
       guardedRoute: '/login',
+    ),
+    ModuleRoute(
+      '/help',
+      module: FaqModule(),
     ),
     WildcardRoute(child: (context, args) => const ErrorPage()),
   ];

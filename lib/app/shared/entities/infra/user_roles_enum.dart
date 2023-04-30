@@ -10,7 +10,8 @@ enum UserRolesEnum {
   EMPLOYEE,
   INTERNAL_STUDENT,
   PROFESSOR,
-  ADMIN
+  ADMIN,
+  NOT_FOUND
 }
 
 extension UserRolesEnumExtension on UserRolesEnum {

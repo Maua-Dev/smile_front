@@ -22,6 +22,7 @@ class InputBoxWidget extends StatelessWidget {
   final Color? backgroundColor;
   final Color? letterColor;
   final String? initialValue;
+  final TextInputAction? textInputAction;
 
   const InputBoxWidget({
     Key? key,
@@ -41,6 +42,7 @@ class InputBoxWidget extends StatelessWidget {
     this.backgroundColor,
     this.letterColor,
     this.initialValue,
+    this.textInputAction,
   }) : super(key: key);
 
   @override
@@ -59,6 +61,7 @@ class InputBoxWidget extends StatelessWidget {
             validator: validation,
             onChanged: setValue,
             initialValue: initialValue,
+            textInputAction: textInputAction ?? TextInputAction.next,
             onFieldSubmitted: onFieldSubmitted,
             enableSuggestions: true,
             obscureText: showPwd != null ? !showPwd! : false,

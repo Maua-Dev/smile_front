@@ -112,7 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
           })}";
 
   static String m8(bold) => "${Intl.select(bold, {
-            'normalPart1': 'If in doubt, send an email to ',
+            'normalPart1':
+                'If you have any questions feel free to reach us at via ',
             'boldPart1': 'smile.patrocinio@maua.br',
             'normalPart2': ' or ',
             'boldPart2': 'smile@maua.br',
@@ -221,6 +222,16 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Associate Professor I at the Institute of Aeronautical Technology (ITA) and PhD in physics from the University of Manchester (UK). Sonia is the first black woman to have a doctorate in physics in Brazil, graduating in 1989, a title that led her to become a professor at ITA when the institute still did not accept women among its students, in 1993. At the time, she also became the first woman black teacher at the institution, which is one of the most traditional in Brazil. Born in São Paulo (SP), he currently lives in São José dos Campos, where he continues to teach at ITA.',
             'flavia':
                 'Computer Engineer and Master in Computer Science with more than 6 years of experience in technology. Throughout his career, he has worked on the design and implementation of IBM\'s internal scope web applications. His Master\'s line of research was quantum computing and the performance improvement that can exist for machine learning applications in relation to conventional computing. Currently, she is a Senior Software Engineer in the research area at IBM, developing applications for geolocation inference foundation models. She also teaches at the Mauá Institute of Technology, the institution where she graduated, and as an Assistant Professor, she works in undergraduate IT courses. Participates in initiatives to engage women in technical careers and in technology community events.',
+            'renato':
+                'Entrepreneur and businessman for more than 25 years, passionate about Innovation, Technology, People and Futurism, subject in which he is certified by Aerolito in the 3 Waves methodology; Startup mentor; Lecturer and Author of articles and contents that seek to collaborate with the improvement of our world; Founder and CEO of Innovision, CDO of 24x7 Support and other Companies; Creator and Moderator of the PodCast Trends News and Author of the Newsletter Carta do Specialist; Founding partner, former President and Advisor of ITESCS (Institute of Technology of São Caetano do Sul); Creator of the Local Productive Arrangement of ICT Companies in São Caetano do Sul and Region; Ambassador and Counselor of the Brazil Digital for All Movement.',
+            'ana':
+                'Graduated in Psychology from the Institute of Psychology at USP, in 1995. Specialization in Psychodrama from the Sedes Sapientiae Institute, in 2006. Personal and Executive Coach from ICI, in 2011. Level 2 and 3 Psychodrama from SOPSP, in 2020. Socio-emotional education in environments of teaching-learning, by Instituto Sedes Sapientiae in 2018. Guidance and inclusive education: theory and practice by PUC-Cogeae in 2010.',
+            'helga':
+                'Innovative, performance-driven, and highly creative professional offering years of experience in engineering research, complemented with a solid academic foundation in mechanical engineering. Well-versed in planning and conducting engineering research requiring judgment in the independent evaluation, selection, and substantial adaptation and modification of standard engineering and scientific techniques. Excel in developing solutions to complex problems that require regular application of scientific and engineering principles. Demonstrates and applies through engineering methods, research protocols, assessment instruments, and data interpretation.',
+            'gustavo':
+                'Responsible for the reform project of the Nuclear Fusion Reactor at IF-USP. PhD from Ecole Polytechnique Fédérale de Lausanne, Switzerland, in Plasma Physics and Thermonuclear Fusion. He did postdoctoral work at the American technology company General Atomics - Fusion Division. He worked at the Princeton Plasma Physics Laboratory. After 8 years working in nuclear fusion abroad, he decided to return to Brazil to contribute to the development of nuclear fusion here. Today he is an Associate Professor at the Physics Institute of the University of São Paulo and, currently, he coordinates the TCABR tokamak modernization project. He was the first author of the National Nuclear Fusion Program, which was submitted to the Ministry of Science, Technology and Innovation. It has also collaborated with the National Nuclear Energy Commission in the development of nuclear fusion at the national level.',
+            'joseph':
+                'Founding Member of the Poli-Wind Wind Energy Group and member of the Research Group on Renewable Energy, Sustainability and the Environment at IMT. Coordinator of the Grand Challenges Scholars Program at IMT. Teaching experience in Energy and Fluids (theory and laboratories) since 1997. Practical experience in aircraft maintenance, engines (gas turbines), aeronautical components and systems, conceptual design of aircraft, CFD simulation and analysis simulation systems dynamics. Active researcher in wind energy, aerodynamics, renewable energies and their impact on the environment. Active entrepreneur with experience in managing companies, teams and projects.',
             'other': '',
           })}";
 
@@ -233,6 +244,11 @@ class MessageLookup extends MessageLookupByLibrary {
             'daniela': 'Daniela Klaiman',
             'jonathan': 'Jonathan Y. Ando Nelson',
             'sonia': 'Sonia Guimarães',
+            'renato': 'Renato Grau',
+            'ana': 'Ana Cristina Caldeira',
+            'helga': 'Helga Braren Zepf',
+            'gustavo': 'Gustavo Paganini Canal',
+            'joseph': 'Joseph Youssif Saab Junior',
             'other': '',
           })}";
 
@@ -340,6 +356,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Completed activity!"),
         "dateTitle": MessageLookupByLibrary.simpleMessage("Date"),
         "dayTitle": MessageLookupByLibrary.simpleMessage("Data"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete account"),
+        "deleteAccountPermanent":
+            MessageLookupByLibrary.simpleMessage("Delete Account Permanently"),
+        "deleteCompleteAction":
+            MessageLookupByLibrary.simpleMessage("to complete the action:"),
+        "deleteEmailType":
+            MessageLookupByLibrary.simpleMessage("Enter your e-mail"),
+        "deleteMessage": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete your account? All your registrations, certificates and data will be permanently erased."),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "drawerActivitiesButton":
             MessageLookupByLibrary.simpleMessage("Activities"),
@@ -390,6 +415,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "footerContact": m6,
         "footerDev": m7,
         "footerDoubtContact": m8,
+        "footerHelp": MessageLookupByLibrary.simpleMessage(" Help"),
         "footerHowToGet": MessageLookupByLibrary.simpleMessage("How to get"),
         "footerLocalizationDescription": MessageLookupByLibrary.simpleMessage(
             "Praça Mauá 1 São Caetano do Sul - SP"),
@@ -508,10 +534,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "In this panel, we will explore how leadership is being shaped to act in an ever-changing environment, whether in business, technology, culture or even society, and how leaders can prepare for the future."),
         "speakersPanelDescription2": MessageLookupByLibrary.simpleMessage(
             "Participants will have the opportunity to learn more about how technology is transforming the way we live, work, relate and interact, as well as the ethical, social and economic implications of these changes."),
+        "speakersPanelDescription3": MessageLookupByLibrary.simpleMessage(
+            "In this panel, we will discuss topics of great relevance, such as sustainability, safety, health and the joy of living."),
         "speakersPanelTitle1": MessageLookupByLibrary.simpleMessage(
             "Developing leaders of the future: skills, challenges and opportunities"),
         "speakersPanelTitle2": MessageLookupByLibrary.simpleMessage(
             "Technology in transformation: impacts on society, education and the labor market"),
+        "speakersPanelTitle3": MessageLookupByLibrary.simpleMessage(
+            "Humanity\'s Great Challenges"),
         "speakersSchemaDescription": m17,
         "speakersSchemaName": m18,
         "speakersTitle": MessageLookupByLibrary.simpleMessage("Speakers"),

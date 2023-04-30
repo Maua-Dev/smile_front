@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/social_media_icons_widget.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/generated/l10n.dart';
@@ -155,6 +156,28 @@ class Footer extends StatelessWidget {
                           ),
                         ]),
                   ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  GestureDetector(
+                    onTap: () => Modular.to.navigate('/help'),
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(children: [
+                        WidgetSpan(
+                          child: Icon(
+                            Icons.help_outline_outlined,
+                            color: AppColors.brandingOrange,
+                            size: 16,
+                          ),
+                        ),
+                        TextSpan(
+                            text: S.of(context).footerHelp,
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 14)),
+                      ]),
+                    ),
+                  )
                 ],
               ),
             )
@@ -324,6 +347,28 @@ class Footer extends StatelessWidget {
                                 ),
                               ]),
                         ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        GestureDetector(
+                          onTap: () => Modular.to.navigate('/help'),
+                          child: RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(children: [
+                              WidgetSpan(
+                                child: Icon(
+                                  Icons.help_outline_outlined,
+                                  color: AppColors.brandingOrange,
+                                  size: 16,
+                                ),
+                              ),
+                              TextSpan(
+                                  text: S.of(context).footerHelp,
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 14)),
+                            ]),
+                          ),
+                        )
                       ],
                     ),
                   ),

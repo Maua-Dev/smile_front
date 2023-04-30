@@ -257,4 +257,9 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
     }
     throw Exception();
   }
+
+  @override
+  Future deleteUser() async {
+    await middleware(url: '/delete-user', http: 'post');
+  }
 }

@@ -86,12 +86,18 @@ class UserFilterCardWidget extends StatelessWidget {
                                         },
                                         child: Align(
                                           alignment: Alignment.center,
-                                          child: Text(
-                                            ActivityEnum.values[index].name
-                                                .toString(),
-                                            style: AppTextStyles.bold.copyWith(
-                                                color: AppColors.white,
-                                                fontSize: 16),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 8, horizontal: 4),
+                                            child: Text(
+                                              ActivityEnum.values[index].name
+                                                  .toString(),
+                                              textAlign: TextAlign.center,
+                                              style: AppTextStyles.bold
+                                                  .copyWith(
+                                                      color: AppColors.white,
+                                                      fontSize: 16),
+                                            ),
                                           ),
                                         ),
                                       ),
