@@ -14,19 +14,18 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/send_confirm_a
 import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_activities.dart';
 import 'package:smile_front/app/modules/dashboard/external/activities_datasource_impl.dart';
 import 'package:smile_front/app/modules/dashboard/external/certificate_datasource_impl.dart';
+import 'package:smile_front/app/modules/dashboard/faq_module.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/certificate_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/repository/certificates_repository_impl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/certificate_controller.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/modules/dashboard/professor_module.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart';
-import 'package:smile_front/app/modules/dashboard/ui/user/help_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
@@ -34,17 +33,12 @@ import '../auth/infra/auth_guards/auth_guard_professor.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/domain/usecases/login_with_email.dart';
 import '../auth/domain/usecases/refresh_token.dart';
-import 'domain/repositories/faq_repository_interface.dart';
 import 'domain/repositories/user_repository_interface.dart';
-import 'domain/usecases/get_faq_information.dart';
 import 'domain/usecases/get_user_subscribed_activities.dart';
 import 'domain/usecases/subscribe_activities.dart';
-import 'external/faq_datasource_impl.dart';
 import 'external/user_datasource_impl.dart';
-import 'infra/datasources/faq_datasource_interface.dart';
 import 'infra/datasources/user_datasource_interface.dart';
 import 'infra/repository/activities_repository_impl.dart';
-import 'infra/repository/faq_repository_impl.dart';
 import 'infra/repository/user_repository_impl.dart';
 
 class UserModule extends Module {
@@ -77,9 +71,6 @@ class UserModule extends Module {
     Bind.lazySingleton<UserDatasourceInterface>((i) => UserDatasourceImpl(
           storage: i<SecureStorageInterface>(),
         )),
-    Bind.lazySingleton<HelpController>((i) => HelpController(
-          getAllFaqInformation: i(),
-        )),
     Bind.lazySingleton<ActivitiesRepositoryInterface>(
         (i) => ActivitiesRepositoryImpl(datasource: i())),
     Bind.lazySingleton<GetUserSubscribedActivitiesInterface>(
@@ -96,11 +87,6 @@ class UserModule extends Module {
         (i) => ChangeData(userRepository: i())),
     Bind.lazySingleton<DeleteUserInterface>(
         (i) => DeleteUser(activitiesRepository: i())),
-    Bind.lazySingleton<FaqDatasourceInterface>((i) => FaqDatasourceImpl()),
-    Bind.lazySingleton<FaqRepositoryInterface>(
-        (i) => FaqRepositoryImpl(datasource: i())),
-    Bind.lazySingleton<GetAllFaqInformationInterface>(
-        (i) => GetAllInformation(repository: i())),
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
         deleteUser: i(),
@@ -152,14 +138,14 @@ class UserModule extends Module {
       child: (_, args) => const MoreInfoPage(),
     ),
     ChildRoute(
-      '/help',
-      child: (_, args) => const HelpPage(),
-      transition: kIsWeb ? TransitionType.fadeIn : TransitionType.rightToLeft,
-    ),
-    ChildRoute(
       '/certificate',
       child: (_, args) => const CertificatePage(),
       transition: kIsWeb ? TransitionType.fadeIn : TransitionType.rightToLeft,
+    ),
+    ModuleRoute(
+      '/help',
+      module: FaqModule(),
+      transition: TransitionType.rightToLeft,
     ),
     ModuleRoute('/professor',
         module: ProfessorModule(), guards: [AuthGuardProfessor()])

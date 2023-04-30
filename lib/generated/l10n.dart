@@ -700,6 +700,16 @@ class S {
     );
   }
 
+  /// ` Help`
+  String get footerHelp {
+    return Intl.message(
+      ' Help',
+      name: 'footerHelp',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `About Smile`
   String get aboutSmileTitle {
     return Intl.message(
