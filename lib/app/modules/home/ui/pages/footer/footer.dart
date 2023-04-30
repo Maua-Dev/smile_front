@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/social_media_icons_widget.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/generated/l10n.dart';

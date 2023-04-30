@@ -10,7 +10,6 @@ import 'package:smile_front/app/modules/register/register_module.dart';
 import 'package:smile_front/app/shared/error/error_page.dart';
 
 import 'modules/auth/auth_module.dart';
-import 'modules/dashboard/ui/user/help_page.dart';
 import 'modules/home/home_module.dart';
 
 class AppModule extends Module {
