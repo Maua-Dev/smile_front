@@ -86,6 +86,7 @@ class UserModule extends Module {
     Bind.lazySingleton<ChangeDataInterface>(
         (i) => ChangeData(userRepository: i())),
     Bind.lazySingleton<DeleteUserInterface>(
+        (i) => DeleteUser(activitiesRepository: i())),
     Bind.lazySingleton<UserDashboardController>(
       (i) => UserDashboardController(
         deleteUser: i(),
