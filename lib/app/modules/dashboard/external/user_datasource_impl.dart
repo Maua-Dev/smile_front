@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/user_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart';
-import 'package:smile_front/app/shared/error/dio_exceptions.dart';
 import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
 import '../../../shared/error/error_snackbar.dart';
 import '../../../shared/services/environment/environment_config.dart';
@@ -58,25 +57,6 @@ class UserDatasourceImpl extends UserDatasourceInterface {
       rethrow;
     }
   }
-
-  // @override
-  // Future<List<ResponsibleProfessorModel>> getResponsibleProfessors() async {
-  //   try {
-  //     final res = await dio.get('/list-professors');
-  //     if (res.statusCode == 200) {
-  //       return ResponsibleProfessorModel.fromMaps(res.data['professors']);
-  //     }
-  //     throw Exception();
-  //   } on DioError catch (e) {
-  //     if (e.response.toString().contains('Authentication Error')) {
-  //       await authController.refreshToken();
-  //       await getResponsibleProfessors();
-  //     }
-  //     final errorMessage = DioExceptions.fromDioError(e).toString();
-  //     showErrorSnackBar(errorMessage: errorMessage);
-  //     rethrow;
-  //   }
-  // }
 
   @override
   Future<List<ResponsibleProfessorModel>> getResponsibleProfessors() async {
