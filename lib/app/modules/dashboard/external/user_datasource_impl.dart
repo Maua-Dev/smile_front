@@ -59,23 +59,32 @@ class UserDatasourceImpl extends UserDatasourceInterface {
     }
   }
 
+  // @override
+  // Future<List<ResponsibleProfessorModel>> getResponsibleProfessors() async {
+  //   try {
+  //     final res = await dio.get('/list-professors');
+  //     if (res.statusCode == 200) {
+  //       return ResponsibleProfessorModel.fromMaps(res.data['professors']);
+  //     }
+  //     throw Exception();
+  //   } on DioError catch (e) {
+  //     if (e.response.toString().contains('Authentication Error')) {
+  //       await authController.refreshToken();
+  //       await getResponsibleProfessors();
+  //     }
+  //     final errorMessage = DioExceptions.fromDioError(e).toString();
+  //     showErrorSnackBar(errorMessage: errorMessage);
+  //     rethrow;
+  //   }
+  // }
+
   @override
   Future<List<ResponsibleProfessorModel>> getResponsibleProfessors() async {
-    try {
-      final res = await dio.get('/list-professors');
-      if (res.statusCode == 200) {
-        return ResponsibleProfessorModel.fromMaps(res.data['professors']);
-      }
-      throw Exception();
-    } on DioError catch (e) {
-      if (e.response.toString().contains('Authentication Error')) {
-        await authController.refreshToken();
-        await getResponsibleProfessors();
-      }
-      final errorMessage = DioExceptions.fromDioError(e).toString();
-      showErrorSnackBar(errorMessage: errorMessage);
-      rethrow;
+    var res = await middleware(url: '/list-professors', http: 'get');
+    if (res.statusCode == 200) {
+      return ResponsibleProfessorModel.fromMaps(res.data['professors']);
     }
+    throw Exception();
   }
 
   @override
