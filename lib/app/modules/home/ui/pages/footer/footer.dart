@@ -104,8 +104,54 @@ class Footer extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  const Center(
-                    child: SocialMediaWidget(),
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () => launchUrl(
+                                  Uri.parse(
+                                      'https://play.google.com/store/apps/details?id=com.br.smile.app'),
+                                  mode: LaunchMode.externalApplication),
+                              child: Container(
+                                width: Screen.width(context) < 500 ? 150 : 210,
+                                height: Screen.width(context) < 500 ? 39 : 60,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: CachedNetworkImageProvider(
+                                        downloadPlayStore),
+                                    fit: BoxFit.fitWidth,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () => launchUrl(
+                                  Uri.parse(
+                                      'https://apps.apple.com/br/app/smile-mau%C3%A1/id6448066992'),
+                                  mode: LaunchMode.externalApplication),
+                              child: Container(
+                                width: Screen.width(context) < 500 ? 140 : 200,
+                                height: Screen.width(context) < 500 ? 49 : 70,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: CachedNetworkImageProvider(
+                                        downloadAppStore),
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SocialMediaWidget(),
+                    ],
                   ),
                   const SizedBox(
                     height: 8,
@@ -188,17 +234,63 @@ class Footer extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 6,
-                    height: MediaQuery.of(context).size.width / 7,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: CachedNetworkImageProvider(smile2023LogoUrl),
-                          fit: BoxFit.contain,
+                  Column(
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 6,
+                        height: MediaQuery.of(context).size.width / 7,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image:
+                                  CachedNetworkImageProvider(smile2023LogoUrl),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () => launchUrl(
+                              Uri.parse(
+                                  'https://apps.apple.com/br/app/smile-mau%C3%A1/id6448066992'),
+                              mode: LaunchMode.externalApplication),
+                          child: Container(
+                            width: 200,
+                            height: 70,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: CachedNetworkImageProvider(
+                                    downloadAppStore),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () => launchUrl(
+                              Uri.parse(
+                                  'https://play.google.com/store/apps/details?id=com.br.smile.app'),
+                              mode: LaunchMode.externalApplication),
+                          child: Container(
+                            width: 210,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: CachedNetworkImageProvider(
+                                    downloadPlayStore),
+                                fit: BoxFit.fitWidth,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                   SizedBox(
                     width: Screen.width(context) < tabletSize
