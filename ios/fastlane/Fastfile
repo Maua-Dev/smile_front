@@ -18,7 +18,7 @@ platform :ios do
       groups: ['devers'],
       notify_external_testers: true,
       ipa: ENV['APP_PATH'],
-      skip_waiting_for_build_processing: true,
+      skip_waiting_for_build_processing: false,
       submit_beta_review: true,
       reject_build_waiting_for_review: true
     )
