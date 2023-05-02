@@ -29,9 +29,8 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
             imageUrl: value.linkPhoto))
         .toList();
     imgList.add(NextHomePage(
-        title: 'Programação',
-        description:
-            '<a href="url">Clique aqui para baixar o pdf com a programação do evento</a>',
+        title: S.of(context).allActivities,
+        description: '<a href="url">${S.of(context).clickTodownload}</a>',
         imageUrl: '${previousEditionsBaseUrl}cursos.png'));
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;

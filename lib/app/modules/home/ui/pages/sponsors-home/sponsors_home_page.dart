@@ -351,23 +351,11 @@ class CompanySponsor extends StatelessWidget {
               runSpacing: 25,
               children: [
                 SponsorsWidget(
-                    link: patrocinadorGCPLogoUrl,
-                    color: Colors.white,
-                    size: 0.6),
-                SponsorsWidget(
-                    link: patrocinadorCSNLogoUrl,
+                    link: patrocinadorAlstomLogoUrl,
                     color: Colors.white,
                     size: 0.6),
                 SponsorsWidget(
                     link: patrocinadorApplusLogoUrl,
-                    color: Colors.white,
-                    size: 0.6),
-                SponsorsWidget(
-                    link: patrocinadorOsborneLogoUrl,
-                    color: Colors.white,
-                    size: 0.6),
-                SponsorsWidget(
-                    link: patrocinadorAlstomLogoUrl,
                     color: Colors.white,
                     size: 0.6),
                 SponsorsWidget(
@@ -382,9 +370,24 @@ class CompanySponsor extends StatelessWidget {
               runSpacing: 25,
               children: [
                 SponsorsWidget(
-                    link: patrocinadorNubeLogoUrl,
+                    link: patrocinadorCSNLogoUrl,
                     color: Colors.white,
-                    size: 0.4),
+                    size: 0.6),
+                SponsorsWidget(
+                    link: patrocinadorGCPLogoUrl,
+                    color: Colors.white,
+                    size: 0.6),
+                SponsorsWidget(
+                    link: patrocinadorOsborneLogoUrl,
+                    color: Colors.white,
+                    size: 0.6),
+              ],
+            ),
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 48,
+              runSpacing: 25,
+              children: [
                 SponsorsWidget(
                     link: patrocinadorVendraminiLogoUrl,
                     color: Colors.white,
@@ -397,16 +400,27 @@ class CompanySponsor extends StatelessWidget {
                     link: patrocinadorBritivicLogoUrl,
                     color: Colors.white,
                     size: 0.4),
+              ],
+            ),
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 48,
+              runSpacing: 25,
+              children: [
+                SponsorsWidget(
+                    link: patrocinadorNubeLogoUrl,
+                    color: Colors.white,
+                    size: 0.4),
                 SponsorsWidget(
                     link: patrocinadorGmLogoUrl,
                     color: Colors.white,
                     size: 0.4),
+                SponsorsWidget(
+                    link: patrocinadorCengageLogoUrl,
+                    color: Colors.white,
+                    size: 0.5),
               ],
             ),
-            SponsorsWidget(
-                link: patrocinadorCengageLogoUrl,
-                color: Colors.white,
-                size: 0.6),
           ],
         ),
       ),

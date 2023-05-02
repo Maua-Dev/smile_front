@@ -306,6 +306,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Página do Administrador"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Relatórios"),
+        "allActivities": MessageLookupByLibrary.simpleMessage(
+            "Acesse a programação completa"),
         "allActivitiesTitle":
             MessageLookupByLibrary.simpleMessage("Todas as Atividades"),
         "alreadySubscribedOnThisPeriodWarning":
@@ -329,6 +331,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Limpar Filtros"),
         "clickToGoBack":
             MessageLookupByLibrary.simpleMessage("Clique aqui para voltar"),
+        "clickTodownload": MessageLookupByLibrary.simpleMessage(
+            "Clique aqui para baixar o pdf com a programação do evento."),
         "closeTitle": MessageLookupByLibrary.simpleMessage("Fechar"),
         "codeInEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "Você receberá um e-mail (contato@devmaua.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional."),

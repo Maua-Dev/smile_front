@@ -409,6 +409,26 @@ class S {
     );
   }
 
+  /// `Access the full schedule`
+  String get allActivities {
+    return Intl.message(
+      'Access the full schedule',
+      name: 'allActivities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Click here to download the pdf with the event schedule.`
+  String get clickTodownload {
+    return Intl.message(
+      'Click here to download the pdf with the event schedule.',
+      name: 'clickTodownload',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sponsors`
   String get sponsorsTitle {
     return Intl.message(
