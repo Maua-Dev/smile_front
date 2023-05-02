@@ -35,14 +35,6 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
           const SizedBox(
             height: 32,
           ),
-          H1HeaderTextWidget(
-            title: S.of(context).sponsorsTitle,
-          ),
-          const CompanySponsor(),
-          // const BeSponsor()
-          const SizedBox(
-            height: 32,
-          ),
         ],
       ),
     );

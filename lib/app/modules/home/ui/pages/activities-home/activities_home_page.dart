@@ -5,6 +5,7 @@ import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_t
 import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
+import '../../../../../shared/utils/s3_assets_url.dart';
 import '../../../../dashboard/domain/infra/activity_enum.dart';
 
 class ActivitiesHomePage extends StatefulWidget {
@@ -18,16 +19,20 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
 
-  var imgList = ActivityEnum.values
-      .take(10)
-      .map((ActivityEnum value) => NextHomePage(
-          title: value.name,
-          description: value.description,
-          imageUrl: value.linkPhoto))
-      .toList();
-
   @override
   Widget build(BuildContext context) {
+    var imgList = ActivityEnum.values
+        .take(10)
+        .map((ActivityEnum value) => NextHomePage(
+            title: value.name,
+            description: value.description,
+            imageUrl: value.linkPhoto))
+        .toList();
+    imgList.add(NextHomePage(
+        title: 'Programação',
+        description:
+            '<a href="url">Clique aqui para baixar o pdf com a programação do evento</a>',
+        imageUrl: '${previousEditionsBaseUrl}cursos.png'));
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Column(
