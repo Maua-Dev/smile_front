@@ -29,7 +29,7 @@ class FaqCardWidget extends StatelessWidget {
             Text(
               titulo,
               style: AppTextStyles.titleH1.copyWith(
-                  fontSize: MediaQuery.of(context).size.width < 1000 ? 24 : 30,
+                  fontSize: MediaQuery.of(context).size.width < 1000 ? 20 : 30,
                   color: AppColors.brandingBlue),
             ),
             const SizedBox(
