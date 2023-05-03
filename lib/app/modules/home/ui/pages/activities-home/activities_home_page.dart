@@ -32,7 +32,7 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
         title: S.of(context).allActivities,
         description:
             '<a href="${s3AssetsBaseUrl}smile_pdf.pdf">${S.of(context).clickTodownload}</a>',
-        imageUrl: '${previousEditionsBaseUrl}cursos.png'));
+        imageUrl: '${s3AssetsBaseUrl}smile_home_clean.png'));
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Column(

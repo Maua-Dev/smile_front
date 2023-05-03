@@ -40,9 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'TECHNICAL_VISITS':
                 'Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.',
             'ACADEMIC_COMPETITIONS':
-                'Durante a SMILE, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).',
-            'HACKATHON':
-                'Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa é uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.',
+                'Durante a SMILE, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de Valorant, Jogos de Liderança e RoboChallenge BR by Mauá.',
             'INTERNSHIP_FAIR':
                 'Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes.',
             'ALUMNI_CAFE':
