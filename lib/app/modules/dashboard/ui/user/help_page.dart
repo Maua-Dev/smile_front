@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -39,7 +37,10 @@ class _HelpPageState extends ModularState<HelpPage, HelpController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      if (!window.location.href.contains('user'))
+                      if (!ModalRoute.of(context)!
+                          .settings
+                          .name!
+                          .contains('user'))
                         IconButton(
                             padding: EdgeInsets.zero,
                             onPressed: () {
@@ -53,7 +54,10 @@ class _HelpPageState extends ModularState<HelpPage, HelpController> {
                                   ? 24
                                   : 40,
                             )),
-                      if (!window.location.href.contains('user'))
+                      if (!ModalRoute.of(context)!
+                          .settings
+                          .name!
+                          .contains('user'))
                         const SizedBox(
                           width: 16,
                         ),

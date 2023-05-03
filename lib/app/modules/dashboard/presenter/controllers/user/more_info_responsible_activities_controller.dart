@@ -36,7 +36,6 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
     required this.storage,
   }) {
     getProfessorActivitiesWithEnrollments();
-    print(activityCode);
   }
 
   @computed
