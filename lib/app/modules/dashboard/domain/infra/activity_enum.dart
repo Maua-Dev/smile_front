@@ -27,7 +27,7 @@ extension ActivityEnumExtension on ActivityEnum {
   }
 
   String get description {
-    return S.current.activitiesOfferedDescription(toString());
+    return '<p>${S.current.activitiesOfferedDescription(toString())}</p>';
   }
 
   String get linkPhoto {

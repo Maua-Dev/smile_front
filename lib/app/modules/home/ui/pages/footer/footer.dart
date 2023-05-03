@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/social_media_icons_widget.dart';
@@ -104,8 +105,62 @@ class Footer extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  const Center(
-                    child: SocialMediaWidget(),
+                  Row(
+                    children: [
+                      kIsWeb
+                          ? Column(
+                              children: [
+                                MouseRegion(
+                                  cursor: SystemMouseCursors.click,
+                                  child: GestureDetector(
+                                    onTap: () => launchUrl(
+                                        Uri.parse(
+                                            'https://play.google.com/store/apps/details?id=com.br.smile.app'),
+                                        mode: LaunchMode.externalApplication),
+                                    child: Container(
+                                      width: Screen.width(context) < 500
+                                          ? 150
+                                          : 210,
+                                      height:
+                                          Screen.width(context) < 500 ? 39 : 60,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: CachedNetworkImageProvider(
+                                              downloadPlayStore),
+                                          fit: BoxFit.fitWidth,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                MouseRegion(
+                                  cursor: SystemMouseCursors.click,
+                                  child: GestureDetector(
+                                    onTap: () => launchUrl(
+                                        Uri.parse(
+                                            'https://apps.apple.com/br/app/smile-mau%C3%A1/id6448066992'),
+                                        mode: LaunchMode.externalApplication),
+                                    child: Container(
+                                      width: Screen.width(context) < 500
+                                          ? 140
+                                          : 200,
+                                      height:
+                                          Screen.width(context) < 500 ? 49 : 70,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: CachedNetworkImageProvider(
+                                              downloadAppStore),
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          : const SizedBox.shrink(),
+                      const SocialMediaWidget(),
+                    ],
                   ),
                   const SizedBox(
                     height: 8,
@@ -188,17 +243,67 @@ class Footer extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 6,
-                    height: MediaQuery.of(context).size.width / 7,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: CachedNetworkImageProvider(smile2023LogoUrl),
-                          fit: BoxFit.contain,
+                  Column(
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 6,
+                        height: MediaQuery.of(context).size.width / 7,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image:
+                                  CachedNetworkImageProvider(smile2023LogoUrl),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      kIsWeb
+                          ? MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: () => launchUrl(
+                                    Uri.parse(
+                                        'https://apps.apple.com/br/app/smile-mau%C3%A1/id6448066992'),
+                                    mode: LaunchMode.externalApplication),
+                                child: Container(
+                                  width: 200,
+                                  height: 70,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: CachedNetworkImageProvider(
+                                          downloadAppStore),
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                      const SizedBox(height: 10),
+                      kIsWeb
+                          ? MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: () => launchUrl(
+                                    Uri.parse(
+                                        'https://play.google.com/store/apps/details?id=com.br.smile.app'),
+                                    mode: LaunchMode.externalApplication),
+                                child: Container(
+                                  width: 210,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: CachedNetworkImageProvider(
+                                          downloadPlayStore),
+                                      fit: BoxFit.fitWidth,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          : const SizedBox.shrink()
+                    ],
                   ),
                   SizedBox(
                     width: Screen.width(context) < tabletSize

@@ -86,15 +86,27 @@ abstract class MoreInfoResponsibleActivitiesControllerBase with Store {
 
   @action
   Future<void> generateNewAtendanceCode() async {
+    var currentActivityCode = activityCode;
+    if (currentActivityCode == "") {
+      currentActivityCode = await storage.getActivityCode() ?? '';
+    } else {
+      await storage.saveActivityCode(currentActivityCode);
+    }
     setIsLoadingAtendanceCode(true);
-    token = await generateConfirmationCode(activityCode);
+    token = await generateConfirmationCode(currentActivityCode);
     setIsLoadingAtendanceCode(false);
   }
 
   @action
   Future<void> deleteOldAttendanceCode() async {
+    var currentActivityCode = activityCode;
+    if (currentActivityCode == "") {
+      currentActivityCode = await storage.getActivityCode() ?? '';
+    } else {
+      await storage.saveActivityCode(currentActivityCode);
+    }
     setIsLoadingAtendanceCode(true);
-    var token = await deleteConfirmationCode(activityCode);
+    var token = await deleteConfirmationCode(currentActivityCode);
     professorActivityWithEnrollments.copyWith(confirmationCode: token);
     setIsLoadingAtendanceCode(false);
   }

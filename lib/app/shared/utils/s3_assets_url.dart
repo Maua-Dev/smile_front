@@ -8,6 +8,10 @@ var rectorsBaseUrl = '${s3AssetsBaseUrl}activities/reitor-e-pro-reitor/';
 
 var smile2023LogoUrl = '${s3AssetsBaseUrl}logo-footer-smile-2023.png';
 
+var downloadPlayStore = '${s3AssetsBaseUrl}play_store_download.png';
+
+var downloadAppStore = '${s3AssetsBaseUrl}app_store_download.png';
+
 var smileLogoUrl = '${s3AssetsBaseUrl}logo_smile.png';
 
 var mauaCampusUrl = '${s3AssetsBaseUrl}maua_campus.png';

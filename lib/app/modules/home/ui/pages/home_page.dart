@@ -6,6 +6,7 @@ import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_hom
 import 'package:smile_front/app/modules/home/ui/pages/widgets/smile_loading_logo_widget.dart';
 import 'package:smile_front/app/shared/widgets/app_bar/home_app_bar_widget.dart';
 import 'package:smile_front/app/shared/widgets/drawer/end_drawer_widget.dart';
+import 'package:smile_front/generated/l10n.dart';
 import '../../../../app_module.dart';
 import '../../../../shared/entities/screen_variables.dart';
 import '../../../../shared/themes/app_colors.dart';
@@ -14,6 +15,7 @@ import '../../../../shared/utils/screen_helper.dart';
 import '../../../auth/presenter/controllers/auth_controller.dart';
 import 'activities-home/activities_home_page.dart';
 import 'main-home/main_home_page.dart';
+import 'widgets/header/h1_header_text_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -113,9 +115,17 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(
                                 key: activityKey,
                                 child: const ActivitiesHomePage()),
+                            const SponsorsHomePage(),
                             SizedBox(
-                                key: sponsorsKey,
-                                child: const SponsorsHomePage()),
+                              key: sponsorsKey,
+                              child: H1HeaderTextWidget(
+                                title: S.of(context).sponsorsTitle,
+                              ),
+                            ),
+                            const CompanySponsor(),
+                            const SizedBox(
+                              height: 32,
+                            ),
                             const Footer(),
                           ],
                         ),
