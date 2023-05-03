@@ -7,6 +7,10 @@ import 'package:smile_front/app/modules/home/ui/pages/widgets/smile_loading_logo
 import 'package:smile_front/app/shared/widgets/app_bar/home_app_bar_widget.dart';
 import 'package:smile_front/app/shared/widgets/drawer/end_drawer_widget.dart';
 import '../../../../app_module.dart';
+import '../../../../shared/entities/screen_variables.dart';
+import '../../../../shared/themes/app_colors.dart';
+import '../../../../shared/themes/app_text_styles.dart';
+import '../../../../shared/utils/screen_helper.dart';
 import '../../../auth/presenter/controllers/auth_controller.dart';
 import 'activities-home/activities_home_page.dart';
 import 'main-home/main_home_page.dart';
@@ -88,6 +92,22 @@ class _HomePageState extends State<HomePage> {
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            Text(
+                              'Abertura das Incrições: 08/05',
+                              style: AppTextStyles.titleH1.copyWith(
+                                  fontSize:
+                                      (Screen.width(context) < cellphoneSize
+                                          ? 24
+                                          : MediaQuery.of(context).size.width <
+                                                  tabletSize
+                                              ? 32
+                                              : 46),
+                                  color: AppColors.brandingOrange),
+                              textAlign: TextAlign.center,
+                            ),
                             SizedBox(key: homeKey, child: const MainHomePage()),
                             const SpeakersHomePage(),
                             SizedBox(

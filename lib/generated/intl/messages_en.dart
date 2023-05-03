@@ -69,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'CULTURAL_ACTIVITY': 'Cultural Activity',
             'MAUA_PLUS': 'Mauá+',
             'SPORTS_ACTIVITY': 'Sport Activity',
+            'INTERNATIONAL_WORKSHOP': 'International Workshop',
             'other': 'Activities',
           })}";
 
