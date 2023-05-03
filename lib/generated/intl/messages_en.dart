@@ -40,7 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'TECHNICAL_VISITS':
                 'In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.',
             'ACADEMIC_COMPETITIONS':
-                'During a SMILE, participants will be able to have fun with Academic Competition activities: Valorant Championship, Leadership Games and RoboChallenge BR by Mauá.',
+                'During SMILE, participants will be able to have fun with Academic Competition activities: League Of Legend Championship (online) and GameDev Mauá - Game Jam (in person).',
             'HACKATHON':
                 'Hackathons are events that bring together students, software developers, designers and other professionals, with the aim of creating innovative solutions for a specific problem in a short period of time. This is an excellent opportunity to develop your professional side, in addition to discovering new talent. The events promote a great interaction between the participants and offer prizes for the winners at the end.',
             'INTERNSHIP_FAIR':
