@@ -40,9 +40,9 @@ class MessageLookup extends MessageLookupByLibrary {
             'TECHNICAL_VISITS':
                 'Em busca pela conexão entre o mundo acadêmico e o mercado de trabalho, durante a SMILE serão oferecidas visitas técnicas nas empresas.',
             'ACADEMIC_COMPETITIONS':
-                'Durante a SMILE, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de League Of Legend (on-line) e GameDev Mauá - Game Jam (presencial).',
+                'Durante a SMILE, os participantes poderão se divertir com as atividades de Competição Acadêmica: Campeonato de Valorant, Jogos de Liderança e RoboChallenge BR by Mauá.',
             'HACKATHON':
-                'Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o intuito de num período curto de tempo criarem soluções inovadoras para algum problema específico. Essa é uma excelente oportunidade de desenvolver o lado profissional, além de possibilitar a descoberta de novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem no final premiações para os vencedores.',
+                'Hackathons são eventos que reúnem estudantes, desenvolvedores de software, designers e outros profissionais, com o objetivo de criar soluções inovadoras para um problema específico em um curto período de tempo. Esta é uma excelente oportunidade para desenvolver seu lado profissional, além de descobrir novos talentos. Os eventos promovem uma grande interação entre os participantes e oferecem prêmios para os vencedores ao final.',
             'INTERNSHIP_FAIR':
                 'Representantes de renomadas empresas irão apresentar Programas de Estágios e Trainee, além de trazer dicas de processos seletivos, entrevistas, dicas de carreira e responder às dúvidas dos participantes.',
             'ALUMNI_CAFE':
@@ -69,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'CULTURAL_ACTIVITY': 'Atividade Cultural',
             'MAUA_PLUS': 'Mauá+',
             'SPORTS_ACTIVITY': 'Atividade Esportiva',
+            'INTERNATIONAL_WORKSHOP': 'Workshop Internacional',
             'other': 'Atividades',
           })}";
 
@@ -306,6 +307,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "admDashboardAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Página do Administrador"),
         "admReportsTitle": MessageLookupByLibrary.simpleMessage("Relatórios"),
+        "allActivities": MessageLookupByLibrary.simpleMessage(
+            "Acesse a programação completa"),
         "allActivitiesTitle":
             MessageLookupByLibrary.simpleMessage("Todas as Atividades"),
         "alreadySubscribedOnThisPeriodWarning":
@@ -329,6 +332,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Limpar Filtros"),
         "clickToGoBack":
             MessageLookupByLibrary.simpleMessage("Clique aqui para voltar"),
+        "clickTodownload": MessageLookupByLibrary.simpleMessage(
+            "Clique aqui para baixar o pdf com a programação do evento."),
         "closeTitle": MessageLookupByLibrary.simpleMessage("Fechar"),
         "codeInEmailInstructionsTitle": MessageLookupByLibrary.simpleMessage(
             "Você receberá um e-mail (contato@devmaua.com) com um link para alterar sua senha! Verifique a caixa de entrada, spam ou promocional."),
