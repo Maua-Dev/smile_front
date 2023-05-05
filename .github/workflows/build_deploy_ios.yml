@@ -84,7 +84,6 @@ jobs:
       - name: Exec fastlane
         run: bundle exec fastlane ${{ github.ref_name }}
         env:
-          METADATA_PATH: /Users/runner/work/smile_front/smile_front/ios/metadata
           APP_PATH: /Users/runner/work/smile_front/smile_front/output.ipa
           ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
           API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
