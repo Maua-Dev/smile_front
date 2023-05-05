@@ -19,6 +19,7 @@ enum ActivityEnum {
   PANELS,
   MAUA_PLUS,
   INTERNATIONAL_WORKSHOP,
+  ENGINEERING,
 }
 
 extension ActivityEnumExtension on ActivityEnum {
@@ -58,6 +59,8 @@ extension ActivityEnumExtension on ActivityEnum {
         return '${previousEditionsBaseUrl}atividade_esportiva.png';
       case ActivityEnum.INTERNATIONAL_WORKSHOP:
         return '${previousEditionsBaseUrl}international_workshop.png';
+      case ActivityEnum.ENGINEERING:
+        return '${previousEditionsBaseUrl}engineering.png';
     }
   }
 
