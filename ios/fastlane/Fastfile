@@ -40,7 +40,7 @@ platform :ios do
       precheck_include_in_app_purchases: false,
       submit_for_review: true,
       force: true, # Skip HTMl report verification
-      skip_metadata: true,
+      metadata_path: ENV['METADATA_PATH'],
       skip_screenshots: true,
       submission_information: { add_id_info_uses_idfa: false }
     )

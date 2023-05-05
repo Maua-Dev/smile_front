@@ -57,10 +57,26 @@ jobs:
           p12-base64: ${{ secrets.P12_KEY }}
           certificate-password: ${{ secrets.PW_CERT }}
           code-signing-identity: ${{ vars.CODE_SIGNING_IDENTITY }}
+      
+      - name: Create Metadata
+        if: github.ref_name == 'prod'
+        env: 
+          repository: ${{ github.repository  }}
+          run_id: ${{ github.run_id }}
+        run: |
+          mkdir -p metadata/default
+          release_notes=$(gh api "/repos/$repository/actions/runs/$run_id/approvals" --jq '.[0] | .comment' | xargs)
+          if [[ -n '$release_notes' ]]; then
+            echo "$release_notes" > metadata/default/release_notes.txt
+          else
+            echo "Ajustes nos erros e performance" > metadata/default/release_notes.txt
+          fi
+        working-directory: ios
 
       - name: Exec fastlane
         run: bundle exec fastlane ${{ github.ref_name }}
         env:
+          METADATA_PATH: /Users/runner/work/smile_front/smile_front/ios/metadata
           APP_PATH: /Users/runner/work/smile_front/smile_front/output.ipa
           ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
           API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
