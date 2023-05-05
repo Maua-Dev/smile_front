@@ -65,12 +65,19 @@ jobs:
           repository: ${{ github.repository  }}
           run_id: ${{ github.run_id }}
         run: |
-          mkdir -p metadata/default
+          mkdir -p fastlane/metadata/default
+          mkdir -p fastlane/metadata/pt-BR
+          mkdir -p fastlane/metadata/en-US
           release_notes=$(gh api "/repos/$repository/actions/runs/$run_id/approvals" --jq '.[0] | .comment' | xargs)
+          echo '$release_notes'
           if [[ -n '$release_notes' ]]; then
-            echo "$release_notes" > metadata/default/release_notes.txt
+            echo "$release_notes" > fastlane/metadata/default/release_notes.txt
+            echo "$release_notes" > fastlane/metadata/pt-BR/release_notes.txt
+            echo "$release_notes" > fastlane/metadata/en-US/release_notes.txt
           else
-            echo "Ajustes nos erros e performance" > metadata/default/release_notes.txt
+            echo "$release_notes" > fastlane/metadata/default/release_notes.txt
+            echo "$release_notes" > fastlane/metadata/pt-BR/release_notes.txt
+            echo "$release_notes" > fastlane/metadata/en-US/release_notes.txt
           fi
         working-directory: ios
 
