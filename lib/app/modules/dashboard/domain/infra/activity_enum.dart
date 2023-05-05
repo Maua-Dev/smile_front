@@ -18,6 +18,7 @@ enum ActivityEnum {
   SPORTS_ACTIVITY,
   PANELS,
   MAUA_PLUS,
+  INTERNATIONAL_WORKSHOP,
 }
 
 extension ActivityEnumExtension on ActivityEnum {
@@ -26,7 +27,7 @@ extension ActivityEnumExtension on ActivityEnum {
   }
 
   String get description {
-    return S.current.activitiesOfferedDescription(toString());
+    return '<p>${S.current.activitiesOfferedDescription(toString())}</p>';
   }
 
   String get linkPhoto {
@@ -55,6 +56,8 @@ extension ActivityEnumExtension on ActivityEnum {
         return '${previousEditionsBaseUrl}gcsp.png';
       case ActivityEnum.SPORTS_ACTIVITY:
         return '${previousEditionsBaseUrl}atividade_esportiva.png';
+      case ActivityEnum.INTERNATIONAL_WORKSHOP:
+        return '${previousEditionsBaseUrl}international_workshop.png';
     }
   }
 

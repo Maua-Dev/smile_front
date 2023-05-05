@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
@@ -49,13 +51,31 @@ class NextHomePage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width < 1400
                           ? 1000
                           : 1200,
-                      child: Text(
-                        description,
-                        style: AppTextStyles.body.copyWith(
-                            color: Colors.white,
-                            fontSize:
-                                Screen.width(context) < tabletSize ? 18 : 25),
-                        textAlign: TextAlign.justify,
+                      child: SelectableHtml(
+                        data: description,
+                        onLinkTap: (url, context, attributes, element) =>
+                            url != null
+                                ? launchUrl(Uri.parse(url),
+                                    mode: LaunchMode.externalApplication)
+                                : null,
+                        style: {
+                          'p': Style(
+                              textDecorationColor: Colors.white,
+                              textAlign: TextAlign.justify,
+                              color: Colors.white,
+                              fontSize: FontSize(
+                                  Screen.width(context) < tabletSize
+                                      ? 18
+                                      : 25)),
+                          'a': Style(
+                              textDecorationColor: Colors.white,
+                              textAlign: TextAlign.justify,
+                              color: Colors.white,
+                              fontSize: FontSize(
+                                  Screen.width(context) < tabletSize
+                                      ? 18
+                                      : 25)),
+                        },
                       ),
                     ),
                 ]),
