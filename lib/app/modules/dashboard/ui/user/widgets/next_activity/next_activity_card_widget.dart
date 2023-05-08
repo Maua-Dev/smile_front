@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -88,15 +89,25 @@ class NextActivityCardWidget extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                Text(
-                  description,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.button.copyWith(
-                    fontSize: MediaQuery.of(context).size.width < tabletSize
-                        ? 14
-                        : 16,
-                    color: Colors.white,
-                  ),
+                Html(
+                  data: description,
+                  style: {
+                    "body": Style(
+                      margin: EdgeInsets.zero,
+                      padding: EdgeInsets.zero,
+                      fontSize: FontSize(
+                          MediaQuery.of(context).size.width < tabletSize
+                              ? 14
+                              : 16),
+                      color: Colors.white,
+                      textAlign: TextAlign.justify,
+                      textOverflow: TextOverflow.ellipsis,
+                    ),
+                  },
+                  onLinkTap: (url, context, attributes, element) => url != null
+                      ? launchUrl(Uri.parse(url),
+                          mode: LaunchMode.externalApplication)
+                      : null,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
