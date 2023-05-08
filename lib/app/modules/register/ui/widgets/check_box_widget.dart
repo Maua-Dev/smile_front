@@ -20,9 +20,9 @@ class CheckBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       width: MediaQuery.of(context).size.width < 650
-          ? MediaQuery.of(context).size.width * 0.85
+          ? MediaQuery.of(context).size.width
           : 600,
       height: 60,
       decoration: BoxDecoration(

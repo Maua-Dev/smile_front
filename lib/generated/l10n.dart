@@ -339,7 +339,7 @@ class S {
     );
   }
 
-  /// `{activity, select, COURSE{Courses} LECTURES{Speeches} PANELS{Panels} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} MAUA_PLUS{Mauá+} SPORTS_ACTIVITY{Sport Activity} INTERNATIONAL_WORKSHOP{International Workshop} other{Activities}}`
+  /// `{activity, select, COURSE{Courses} LECTURES{Speeches} PANELS{Panels} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} MAUA_PLUS{Mauá+} SPORTS_ACTIVITY{Sport Activity} INTERNATIONAL_WORKSHOP{International Workshop} ENGINEERING{Engineering} other{Activities}}`
   String activitiesOfferedName(Object activity) {
     return Intl.select(
       activity,
@@ -357,6 +357,7 @@ class S {
         'MAUA_PLUS': 'Mauá+',
         'SPORTS_ACTIVITY': 'Sport Activity',
         'INTERNATIONAL_WORKSHOP': 'International Workshop',
+        'ENGINEERING': 'Engineering',
         'other': 'Activities',
       },
       name: 'activitiesOfferedName',
