@@ -236,7 +236,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m18(speakers) => "${Intl.select(speakers, {
             'bruno': 'Bruno Keizo – Mauá Jr.',
             'wellington': 'Wellington Vitorino',
-            'vanessa': 'Vanessa Pirateli Occhipinti',
+            'vanessa': 'Vanessa Piratelo Occhipinti',
             'andressa': 'Andressa Martins',
             'flavia': 'Flávia Janine Rosante Beo',
             'daniela': 'Daniela Klaiman',

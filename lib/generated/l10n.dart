@@ -194,14 +194,14 @@ class S {
     );
   }
 
-  /// `{speakers, select, bruno{Bruno Keizo – Mauá Jr.} wellington{Wellington Vitorino} vanessa{Vanessa Pirateli Occhipinti} andressa{Andressa Martins} flavia{Flávia Janine Rosante Beo} daniela{Daniela Klaiman} jonathan{Jonathan Y. Ando Nelson} sonia{Sonia Guimarães} renato{Renato Grau} ana{Ana Cristina Caldeira} helga{Helga Braren Zepf} gustavo{Gustavo Paganini Canal} joseph{Joseph Youssif Saab Junior} other{}}`
+  /// `{speakers, select, bruno{Bruno Keizo – Mauá Jr.} wellington{Wellington Vitorino} vanessa{Vanessa Piratelo Occhipinti} andressa{Andressa Martins} flavia{Flávia Janine Rosante Beo} daniela{Daniela Klaiman} jonathan{Jonathan Y. Ando Nelson} sonia{Sonia Guimarães} renato{Renato Grau} ana{Ana Cristina Caldeira} helga{Helga Braren Zepf} gustavo{Gustavo Paganini Canal} joseph{Joseph Youssif Saab Junior} other{}}`
   String speakersSchemaName(Object speakers) {
     return Intl.select(
       speakers,
       {
         'bruno': 'Bruno Keizo – Mauá Jr.',
         'wellington': 'Wellington Vitorino',
-        'vanessa': 'Vanessa Pirateli Occhipinti',
+        'vanessa': 'Vanessa Piratelo Occhipinti',
         'andressa': 'Andressa Martins',
         'flavia': 'Flávia Janine Rosante Beo',
         'daniela': 'Daniela Klaiman',
