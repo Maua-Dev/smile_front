@@ -18,9 +18,9 @@ class SwitchToggleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       width: MediaQuery.of(context).size.width < 650
-          ? MediaQuery.of(context).size.width * 0.85
+          ? MediaQuery.of(context).size.width
           : 600,
       decoration: BoxDecoration(
         color: AppColors.white,

@@ -142,10 +142,10 @@ class _RegisterPageState
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
+                              padding: const EdgeInsets.only(bottom: 16),
                               child: Container(
                                 width: MediaQuery.of(context).size.width < 650
-                                    ? MediaQuery.of(context).size.width * 0.35
+                                    ? MediaQuery.of(context).size.width * 0.36
                                     : 190,
                                 height: 60,
                                 decoration: BoxDecoration(
@@ -183,7 +183,7 @@ class _RegisterPageState
                                 setValue: controller.setSocialName,
                                 widthSize: MediaQuery.of(context).size.width <
                                         650
-                                    ? MediaQuery.of(context).size.width * 0.48
+                                    ? MediaQuery.of(context).size.width * 0.52
                                     : 400,
                                 validation: controller.validateSocialName,
                               );
@@ -288,7 +288,7 @@ class _RegisterPageState
                             isLoading: controller.isLoading,
                             title: S.of(context).registerTitle,
                             widthSize: MediaQuery.of(context).size.width < 650
-                                ? MediaQuery.of(context).size.width * 0.85
+                                ? MediaQuery.of(context).size.width
                                 : 600,
                             heightSize: 50,
                             backgroundColor: AppColors.brandingOrange,
