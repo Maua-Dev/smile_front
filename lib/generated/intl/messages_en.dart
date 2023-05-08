@@ -70,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'MAUA_PLUS': 'Mauá+',
             'SPORTS_ACTIVITY': 'Sport Activity',
             'INTERNATIONAL_WORKSHOP': 'International Workshop',
+            'ENGINEERING': 'Engineering',
             'other': 'Activities',
           })}";
 
@@ -131,7 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m10(title) => "${Intl.select(title, {
             'normalPart':
                 'In case of error when logging in, send an email to: ',
-            'boldPart': 'atendimento.smile@maua.com',
+            'boldPart': 'atendimento.smile@maua.br',
             'other': '',
           })}";
 
@@ -239,7 +240,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m18(speakers) => "${Intl.select(speakers, {
             'bruno': 'Bruno Keizo – Mauá Jr.',
             'wellington': 'Wellington Vitorino',
-            'vanessa': 'Vanessa Pirateli Occhipinti',
+            'vanessa': 'Vanessa Piratelo Occhipinti',
             'andressa': 'Andressa Martins',
             'flavia': 'Flávia Janine Rosante Beo',
             'daniela': 'Daniela Klaiman',

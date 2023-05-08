@@ -194,14 +194,14 @@ class S {
     );
   }
 
-  /// `{speakers, select, bruno{Bruno Keizo – Mauá Jr.} wellington{Wellington Vitorino} vanessa{Vanessa Pirateli Occhipinti} andressa{Andressa Martins} flavia{Flávia Janine Rosante Beo} daniela{Daniela Klaiman} jonathan{Jonathan Y. Ando Nelson} sonia{Sonia Guimarães} renato{Renato Grau} ana{Ana Cristina Caldeira} helga{Helga Braren Zepf} gustavo{Gustavo Paganini Canal} joseph{Joseph Youssif Saab Junior} other{}}`
+  /// `{speakers, select, bruno{Bruno Keizo – Mauá Jr.} wellington{Wellington Vitorino} vanessa{Vanessa Piratelo Occhipinti} andressa{Andressa Martins} flavia{Flávia Janine Rosante Beo} daniela{Daniela Klaiman} jonathan{Jonathan Y. Ando Nelson} sonia{Sonia Guimarães} renato{Renato Grau} ana{Ana Cristina Caldeira} helga{Helga Braren Zepf} gustavo{Gustavo Paganini Canal} joseph{Joseph Youssif Saab Junior} other{}}`
   String speakersSchemaName(Object speakers) {
     return Intl.select(
       speakers,
       {
         'bruno': 'Bruno Keizo – Mauá Jr.',
         'wellington': 'Wellington Vitorino',
-        'vanessa': 'Vanessa Pirateli Occhipinti',
+        'vanessa': 'Vanessa Piratelo Occhipinti',
         'andressa': 'Andressa Martins',
         'flavia': 'Flávia Janine Rosante Beo',
         'daniela': 'Daniela Klaiman',
@@ -339,7 +339,7 @@ class S {
     );
   }
 
-  /// `{activity, select, COURSE{Courses} LECTURES{Speeches} PANELS{Panels} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} MAUA_PLUS{Mauá+} SPORTS_ACTIVITY{Sport Activity} INTERNATIONAL_WORKSHOP{International Workshop} other{Activities}}`
+  /// `{activity, select, COURSE{Courses} LECTURES{Speeches} PANELS{Panels} TECHNICAL_VISITS{Technical Visits} ACADEMIC_COMPETITIONS{Academic Competitions} HACKATHON{Hackathon} INTERNSHIP_FAIR{Internship Fairs} ALUMNI_CAFE{Coffeee with alumni} PROFESSORS_ACADEMY{Teachers Academy} CULTURAL_ACTIVITY{Cultural Activity} MAUA_PLUS{Mauá+} SPORTS_ACTIVITY{Sport Activity} INTERNATIONAL_WORKSHOP{International Workshop} ENGINEERING{Engineering} other{Activities}}`
   String activitiesOfferedName(Object activity) {
     return Intl.select(
       activity,
@@ -357,6 +357,7 @@ class S {
         'MAUA_PLUS': 'Mauá+',
         'SPORTS_ACTIVITY': 'Sport Activity',
         'INTERNATIONAL_WORKSHOP': 'International Workshop',
+        'ENGINEERING': 'Engineering',
         'other': 'Activities',
       },
       name: 'activitiesOfferedName',
@@ -1120,13 +1121,13 @@ class S {
     );
   }
 
-  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{atendimento.smile@maua.com} other{}}`
+  /// `{title, select, normalPart{In case of error when logging in, send an email to: } boldPart{atendimento.smile@maua.br} other{}}`
   String loginWarningTitle(Object title) {
     return Intl.select(
       title,
       {
         'normalPart': 'In case of error when logging in, send an email to: ',
-        'boldPart': 'atendimento.smile@maua.com',
+        'boldPart': 'atendimento.smile@maua.br',
         'other': '',
       },
       name: 'loginWarningTitle',
