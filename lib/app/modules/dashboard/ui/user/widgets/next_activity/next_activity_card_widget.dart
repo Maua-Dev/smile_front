@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/shared/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -45,120 +46,85 @@ class NextActivityCardWidget extends StatelessWidget {
       padding: MediaQuery.of(context).size.width < breakpointLMobile
           ? const EdgeInsets.symmetric(horizontal: 8, vertical: 16)
           : const EdgeInsets.symmetric(horizontal: 0, vertical: 16),
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          width: MediaQuery.of(context).size.width < breakpointTablet
-              ? MediaQuery.of(context).size.width
-              : 1165,
-          height: MediaQuery.of(context).size.width < tabletSize ? 164 : 204,
-          decoration: BoxDecoration(
-            color: AppColors.brandingOrange,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.4),
-                spreadRadius: 0.5,
-                blurRadius: 3,
-                offset: const Offset(5, 5), // changes position of shadow
-              ),
-            ],
-          ),
-          child: Padding(
-            padding:
-                const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const SizedBox(
-                  height: 8,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: onTap,
+          child: Container(
+            width: MediaQuery.of(context).size.width < breakpointTablet
+                ? MediaQuery.of(context).size.width
+                : 1165,
+            height: MediaQuery.of(context).size.width < tabletSize ? 164 : 204,
+            decoration: BoxDecoration(
+              color: AppColors.brandingOrange,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.4),
+                  spreadRadius: 0.5,
+                  blurRadius: 3,
+                  offset: const Offset(5, 5), // changes position of shadow
                 ),
-                Text(
-                  name,
-                  maxLines:
-                      MediaQuery.of(context).size.width < tabletSize ? 2 : 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.buttonBold.copyWith(
-                      fontSize: MediaQuery.of(context).size.width < tabletSize
-                          ? 20
-                          : 30,
-                      color: Colors.white),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  description,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.button.copyWith(
-                    fontSize: MediaQuery.of(context).size.width < tabletSize
-                        ? 14
-                        : 16,
-                    color: Colors.white,
+              ],
+            ),
+            child: Padding(
+              padding:
+                  const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const SizedBox(
+                    height: 8,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8,
+                  Text(
+                    name,
+                    maxLines:
+                        MediaQuery.of(context).size.width < tabletSize ? 2 : 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.buttonBold.copyWith(
+                        fontSize: MediaQuery.of(context).size.width < tabletSize
+                            ? 20
+                            : 30,
+                        color: Colors.white),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 4),
-                            child: Icon(
-                              Icons.date_range,
-                              color: Colors.white,
-                              size:
-                                  MediaQuery.of(context).size.width < tabletSize
-                                      ? 18
-                                      : 26,
-                            ),
-                          ),
-                          isUser
-                              ? Text(weekday,
-                                  style: AppTextStyles.button.copyWith(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width <
-                                                  tabletSize
-                                              ? 12
-                                              : 18,
-                                      color: Colors.white))
-                              : const SizedBox.shrink(),
-                        ],
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Html(
+                    data: description,
+                    style: {
+                      "body": Style(
+                        margin: EdgeInsets.zero,
+                        padding: EdgeInsets.zero,
+                        fontSize: FontSize(
+                            MediaQuery.of(context).size.width < tabletSize
+                                ? 14
+                                : 16),
+                        color: Colors.white,
+                        textAlign: TextAlign.justify,
+                        textOverflow: TextOverflow.ellipsis,
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 4),
-                            child: Icon(
-                              Icons.access_time_outlined,
-                              color: Colors.white,
-                              size:
-                                  MediaQuery.of(context).size.width < tabletSize
-                                      ? 18
-                                      : 26,
-                            ),
-                          ),
-                          Text('$timeString - $finalTime',
-                              style: AppTextStyles.button.copyWith(
-                                  fontSize: MediaQuery.of(context).size.width <
-                                          tabletSize
-                                      ? 12
-                                      : 18,
-                                  color: Colors.white))
-                        ],
-                      ),
-                      if (!isUser)
+                    },
+                    onLinkTap: (url, context, attributes, element) =>
+                        url != null
+                            ? launchUrl(Uri.parse(url),
+                                mode: LaunchMode.externalApplication)
+                            : null,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
                         Row(
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 4),
                               child: Icon(
-                                isUser ? Icons.location_on : Icons.person,
+                                Icons.date_range,
                                 color: Colors.white,
                                 size: MediaQuery.of(context).size.width <
                                         tabletSize
@@ -166,32 +132,24 @@ class NextActivityCardWidget extends StatelessWidget {
                                     : 26,
                               ),
                             ),
-                            RichText(
-                                text: TextSpan(children: [
-                              TextSpan(
-                                  text: '0/',
-                                  style: AppTextStyles.button.copyWith(
-                                      fontSize: 18, color: Colors.white)),
-                              TextSpan(
-                                  text: '$totalParticipants',
-                                  style: AppTextStyles.button.copyWith(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width <
-                                                  tabletSize
-                                              ? 12
-                                              : 18,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold)),
-                            ])),
+                            isUser
+                                ? Text(weekday,
+                                    style: AppTextStyles.button.copyWith(
+                                        fontSize:
+                                            MediaQuery.of(context).size.width <
+                                                    tabletSize
+                                                ? 12
+                                                : 18,
+                                        color: Colors.white))
+                                : const SizedBox.shrink(),
                           ],
                         ),
-                      if (isUser && location != null)
                         Row(
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 4),
                               child: Icon(
-                                Icons.location_on,
+                                Icons.access_time_outlined,
                                 color: Colors.white,
                                 size: MediaQuery.of(context).size.width <
                                         tabletSize
@@ -199,7 +157,7 @@ class NextActivityCardWidget extends StatelessWidget {
                                     : 26,
                               ),
                             ),
-                            Text(location!,
+                            Text('$timeString - $finalTime',
                                 style: AppTextStyles.button.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width <
@@ -209,15 +167,13 @@ class NextActivityCardWidget extends StatelessWidget {
                                     color: Colors.white))
                           ],
                         ),
-                      if (isUser && link != null)
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 4),
-                              child: Transform.rotate(
-                                angle: 135 * math.pi / 180,
+                        if (!isUser)
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 4),
                                 child: Icon(
-                                  Icons.link,
+                                  isUser ? Icons.location_on : Icons.person,
                                   color: Colors.white,
                                   size: MediaQuery.of(context).size.width <
                                           tabletSize
@@ -225,29 +181,89 @@ class NextActivityCardWidget extends StatelessWidget {
                                       : 26,
                                 ),
                               ),
-                            ),
-                            GestureDetector(
-                              onTap: () => launchUrl(
-                                Uri.parse(link!),
-                                mode: LaunchMode.externalApplication,
+                              RichText(
+                                  text: TextSpan(children: [
+                                TextSpan(
+                                    text: '0/',
+                                    style: AppTextStyles.button.copyWith(
+                                        fontSize: 18, color: Colors.white)),
+                                TextSpan(
+                                    text: '$totalParticipants',
+                                    style: AppTextStyles.button.copyWith(
+                                        fontSize:
+                                            MediaQuery.of(context).size.width <
+                                                    tabletSize
+                                                ? 12
+                                                : 18,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold)),
+                              ])),
+                            ],
+                          ),
+                        if (isUser && location != null)
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 4),
+                                child: Icon(
+                                  Icons.location_on,
+                                  color: Colors.white,
+                                  size: MediaQuery.of(context).size.width <
+                                          tabletSize
+                                      ? 18
+                                      : 26,
+                                ),
                               ),
-                              child: Text('Link',
+                              Text(location!,
                                   style: AppTextStyles.button.copyWith(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width <
-                                                tabletSize
-                                            ? 12
-                                            : 18,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  tabletSize
+                                              ? 12
+                                              : 18,
+                                      color: Colors.white))
+                            ],
+                          ),
+                        if (isUser && link != null)
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 4),
+                                child: Transform.rotate(
+                                  angle: 135 * math.pi / 180,
+                                  child: Icon(
+                                    Icons.link,
                                     color: Colors.white,
-                                    decoration: TextDecoration.underline,
-                                  )),
-                            )
-                          ],
-                        ),
-                    ],
-                  ),
-                )
-              ],
+                                    size: MediaQuery.of(context).size.width <
+                                            tabletSize
+                                        ? 18
+                                        : 26,
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () => launchUrl(
+                                  Uri.parse(link!),
+                                  mode: LaunchMode.externalApplication,
+                                ),
+                                child: Text('Link',
+                                    style: AppTextStyles.button.copyWith(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <
+                                                  tabletSize
+                                              ? 12
+                                              : 18,
+                                      color: Colors.white,
+                                      decoration: TextDecoration.underline,
+                                    )),
+                              )
+                            ],
+                          ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 'The panels will be carried out by highly qualified professionals in their respective areas of expertise and highlighted in the current media. Sign up as soon as possible and secure your spot!',
             'TECHNICAL_VISITS':
                 'In search of a connection between the academic world and the job market, during SMILE technical visits will be offered to companies.',
+            'INTERNATIONAL_WORKSHOP':
+                'Workshops in English promoted by professionals from international institutions. Come check! Entrepreneurial Mindset as a Lens for Transforming the Educational Experience with Dr. Katie Evans of Houston Christian University and the Workshop of Entrepreneurship for Eureka participants (2023) with Dr. Maribel Guerrero of Arizona State University.',
             'ACADEMIC_COMPETITIONS':
                 'During a SMILE, participants will be able to have fun with Academic Competition activities: Valorant Championship, Leadership Games and RoboChallenge BR by Mauá.',
             'HACKATHON':
@@ -52,7 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'CULTURAL_ACTIVITY':
                 'Are you part of a band? Sing? Do you play any instrument? Do you like poetry, literature? Do you do theater? Dance? Come share your talent with us! It will be an afternoon of presentations, integration and lots of fun on campus.',
             'SPORTS_ACTIVITY':
-                'Participants will discover two interesting activities: spikeball and flag football. In addition, various activities will also be offered, such as functional gymnastics, energizing meditation and pilates! All participants will be able to interact with the speaker and teachers! Follow and participate!',
+                'Participants will learn about activities such as: Iaido, Kendo, Jodo and Judo and other activities that are offered in the activities grid at CEAF (Centre for Sports and Physical Activities of the Mauá Institute - SCS Campus): Beach Tennis, Functional Gymnastics. Meditation, Pilates and Rugby.',
             'other': 'Activity',
           })}";
 
@@ -474,6 +476,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mauaEntitiesSchemaSocialMidia": m12,
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage("MAUÁ+"),
         "namesTitle": MessageLookupByLibrary.simpleMessage("Names"),
+        "nextActivityTitle":
+            MessageLookupByLibrary.simpleMessage("Your next activity"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Looks like you haven\'t signed up for any activities yet :("),
         "noCertificatesFoundTitle": MessageLookupByLibrary.simpleMessage(

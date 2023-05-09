@@ -1,11 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:smile_front/app/modules/home/ui/pages/activities-home/pages/next_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/utils/s3_assets_url.dart';
+import '../../../../../shared/utils/screen_helper.dart';
 import '../../../../dashboard/domain/infra/activity_enum.dart';
 
 class ActivitiesHomePage extends StatefulWidget {
@@ -22,7 +25,7 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
   @override
   Widget build(BuildContext context) {
     var imgList = ActivityEnum.values
-        .take(10)
+        .take(11)
         .map((ActivityEnum value) => NextHomePage(
             title: value.name,
             description: value.description,
@@ -84,15 +87,30 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
         ),
         if (MediaQuery.of(context).size.width <= 1024)
           Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal:
-                    MediaQuery.of(context).size.width < 800 ? 16.0 : 32),
-            child: Text(
-              ActivityEnum.values[_current].description,
-              style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width < 800 ? 14 : 18),
-            ),
-          )
+              padding: EdgeInsets.symmetric(
+                  horizontal:
+                      MediaQuery.of(context).size.width < 800 ? 16.0 : 32),
+              child: SelectableHtml(
+                data: ActivityEnum.values[_current].description,
+                onLinkTap: (url, context, attributes, element) => url != null
+                    ? launchUrl(Uri.parse(url),
+                        mode: LaunchMode.externalApplication)
+                    : null,
+                style: {
+                  'p': Style(
+                      textDecorationColor: Colors.white,
+                      textAlign: TextAlign.justify,
+                      color: AppColors.brandingBlue,
+                      fontSize:
+                          FontSize(Screen.width(context) < 800 ? 14 : 18)),
+                  'a': Style(
+                      textDecorationColor: Colors.white,
+                      textAlign: TextAlign.justify,
+                      color: AppColors.brandingBlue,
+                      fontSize:
+                          FontSize(Screen.width(context) < 800 ? 14 : 18)),
+                },
+              ))
       ],
     );
   }
