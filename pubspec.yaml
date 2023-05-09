@@ -3,7 +3,7 @@ description: Smile 2023.
 
 publish_to: "none"
 
-version: 1.5.57+92
+version: 1.5.58+93
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
