@@ -35,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Os cursos oferecem conteúdo de alta qualidade, ministrados por profissionais renomados e atuantes no mercado. Os cursos oferecem capacitação e atualização dos participantes por meio de conhecimentos teóricos/práticos nas diversas áreas da Administração, Ciência da Computação, Design, Engenharia e Sistemas de Informação.',
             'LECTURES':
                 'As palestras são gratuitas e contarão com a participação de profissionais de empresas líderes no mercado, falando sobre os Desafios da Humanidade.',
+            'INTERNATIONAL_WORKSHOP':
+                'Workshops em inglês promovidos por profissionais de instituições internacionais. Venha conferir! Entrepreneurial Mindset as a Lens for Transforming the Educational Experience com a Dra.a Katie Evans da Houston Christian University e o Workshop of Entrepreneurship for Eureka participantes (2023) com a Dra.a Maribel Guerrero da Arizona State University.',
             'PANELS':
                 'Os painéis serão realizadas por profissionais altamente qualificados em suas respectivas áreas de atuação e com destaque na mídia atual. Inscreva-se o quanto antes e garanta a sua vaga!',
             'TECHNICAL_VISITS':
@@ -52,7 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'CULTURAL_ACTIVITY':
                 'Você faz parte de uma banda? Canta? Toca algum instrumento? Gosta de poesia, literatura? Faz teatro? Dança? Venha compatilhar seu talento com a gente! Será uma tarde de apresentações, integração e muita alegria no campus.',
             'SPORTS_ACTIVITY':
-                'Os participantes conhecerão duas atividades interessantes: spikeball e flag football. Além disso, também serão oferecidas diversas atividades, tais como, ginástica funcional, meditação energizante e pilates! Todos os participantes poderão interagir com o(a) palestrante e professores(as)! Acompanhe e participe!',
+                'Os participantes conhecerão atividades tais como: Iaido, Kendô, Jodo e Judô e outras atividades que são oferecidas na grade de atividades no CEAF ( Centro de Esportes e Atividades Físicas do Instituto Mauá - Campus SCS ):  Beach Tênis, Ginástica Funcional. Meditação, Pilates e Rugby.',
             'other': 'Atividades',
           })}";
 
@@ -472,6 +474,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mauaEntitiesSchemaSocialMidia": m12,
         "mauaEntititesTitle": MessageLookupByLibrary.simpleMessage("MAUÁ+"),
         "namesTitle": MessageLookupByLibrary.simpleMessage("Nomes"),
+        "nextActivityTitle":
+            MessageLookupByLibrary.simpleMessage("Sua próxima atividade"),
         "noActivitiesEnrolledText": MessageLookupByLibrary.simpleMessage(
             "Parece que você ainda não se inscreveu em nenhuma atividade :("),
         "noCertificatesFoundTitle": MessageLookupByLibrary.simpleMessage(
