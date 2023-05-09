@@ -16,7 +16,7 @@ extension DeliveryEnumExtension on DeliveryEnum {
       case DeliveryEnum.online:
         return 'Online';
       case DeliveryEnum.hybrid:
-        return 'Hibrida';
+        return 'Híbrida';
     }
   }
 
