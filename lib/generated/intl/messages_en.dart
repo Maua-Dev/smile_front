@@ -334,6 +334,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change password"),
         "cleanFiltersTitle":
             MessageLookupByLibrary.simpleMessage("Clean Filters"),
+        "clickToAccessPDF": MessageLookupByLibrary.simpleMessage(
+            "Access PDF with the schedule"),
         "clickToGoBack":
             MessageLookupByLibrary.simpleMessage("Click here to return"),
         "clickTodownload": MessageLookupByLibrary.simpleMessage(

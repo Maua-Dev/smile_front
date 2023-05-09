@@ -84,7 +84,7 @@ class MoreInfoHomePage extends StatelessWidget {
               ),
               Center(
                 child: CustomElevatedButtonWidget(
-                  title: "Baixar PDF com a programação",
+                  title: S.of(context).clickToAccessPDF,
                   textStyle: AppTextStyles.buttonBold.copyWith(
                       color: Colors.white,
                       fontSize:
