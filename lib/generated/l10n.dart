@@ -443,6 +443,16 @@ class S {
     );
   }
 
+  /// `Access PDF with the schedule`
+  String get clickToAccessPDF {
+    return Intl.message(
+      'Access PDF with the schedule',
+      name: 'clickToAccessPDF',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sponsors`
   String get sponsorsTitle {
     return Intl.message(

@@ -7,8 +7,10 @@ import 'package:smile_front/app/shared/widgets/custom_elevated_button_widget.dar
 import 'package:smile_front/app/modules/home/ui/pages/widgets/paragraph_text_widget.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../app_module.dart';
 import '../../../../shared/themes/app_colors.dart';
+import '../../../../shared/utils/s3_assets_url.dart';
 import '../../../../shared/utils/screen_helper.dart';
 import 'footer/footer.dart';
 
@@ -79,6 +81,26 @@ class MoreInfoHomePage extends StatelessWidget {
               ),
               const SizedBox(
                 height: 24,
+              ),
+              Center(
+                child: CustomElevatedButtonWidget(
+                  title: S.of(context).clickToAccessPDF,
+                  textStyle: AppTextStyles.buttonBold.copyWith(
+                      color: Colors.white,
+                      fontSize:
+                          Screen.width(context) < cellphoneSize ? 16 : 24),
+                  widthSize: Screen.width(context) < cellphoneSize ? 200 : 400,
+                  heightSize: Screen.width(context) < cellphoneSize ? 40 : 50,
+                  backgroundColor: AppColors.brandingOrange,
+                  onPressed: () {
+                    launchUrl(
+                        Uri.parse("${s3AssetsBaseUrl}smile_schedule_pdf.pdf"),
+                        mode: LaunchMode.externalApplication);
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 32,
               ),
               Center(
                 child: CustomElevatedButtonWidget(
