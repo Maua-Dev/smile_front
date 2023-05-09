@@ -7,6 +7,7 @@ import '../../../../shared/utils/s3_assets_url.dart';
 
 enum ActivityEnum {
   COURSES,
+  INTERNATIONAL_WORKSHOP,
   LECTURES,
   TECHNICAL_VISITS,
   ACADEMIC_COMPETITIONS,
@@ -18,7 +19,6 @@ enum ActivityEnum {
   SPORTS_ACTIVITY,
   PANELS,
   MAUA_PLUS,
-  INTERNATIONAL_WORKSHOP,
   ENGINEERING,
 }
 
@@ -58,7 +58,7 @@ extension ActivityEnumExtension on ActivityEnum {
       case ActivityEnum.SPORTS_ACTIVITY:
         return '${previousEditionsBaseUrl}atividade_esportiva.png';
       case ActivityEnum.INTERNATIONAL_WORKSHOP:
-        return '${previousEditionsBaseUrl}international_workshop.png';
+        return '${previousEditionsBaseUrl}workshop_internacional.png';
       case ActivityEnum.ENGINEERING:
         return '${previousEditionsBaseUrl}engenharias.png';
     }

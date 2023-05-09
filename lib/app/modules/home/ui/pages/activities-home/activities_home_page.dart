@@ -25,7 +25,7 @@ class ActivityHomeState extends State<ActivitiesHomePage> {
   @override
   Widget build(BuildContext context) {
     var imgList = ActivityEnum.values
-        .take(10)
+        .take(11)
         .map((ActivityEnum value) => NextHomePage(
             title: value.name,
             description: value.description,

@@ -101,7 +101,7 @@ class _UserDashboardPageState
                           ),
                           if (controller.nextActivity.type != null)
                             TextHeader(
-                              title: 'Sua próxima atividade',
+                              title: S.of(context).nextActivityTitle,
                               fontSize: MediaQuery.of(context).size.width < 500
                                   ? 24
                                   : MediaQuery.of(context).size.width > 1000
