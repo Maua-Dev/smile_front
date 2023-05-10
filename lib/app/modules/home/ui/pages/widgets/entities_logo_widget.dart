@@ -49,7 +49,7 @@ class EntitiesWidget extends StatelessWidget {
         children: [
           InkWell(
             onTap: () => launchUrl(
-              Uri.parse(entity.instagramUrl),
+              Uri.parse(entity.logoUrl),
               mode: LaunchMode.externalApplication,
             ),
             child: Container(
@@ -87,7 +87,7 @@ class EntitiesWidget extends StatelessWidget {
           ),
           InkWell(
             onTap: () => launchUrl(
-              Uri.parse(entity.instagramUrl),
+              Uri.parse(entity.logoUrl),
               mode: LaunchMode.externalApplication,
             ),
             child: Container(

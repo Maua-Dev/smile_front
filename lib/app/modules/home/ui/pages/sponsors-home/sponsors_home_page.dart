@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:smile_front/app/modules/home/domain/infra/maua_entities_enum.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
@@ -13,6 +14,7 @@ import 'package:smile_front/generated/l10n.dart';
 import '../../../../../shared/entities/screen_variables.dart';
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/utils/screen_helper.dart';
+import '../activities-home/pages/next_home_page.dart';
 
 class SponsorsHomePage extends StatefulWidget {
   const SponsorsHomePage({Key? key}) : super(key: key);
@@ -22,16 +24,15 @@ class SponsorsHomePage extends StatefulWidget {
 }
 
 class _SponsorsHomePageState extends State<SponsorsHomePage> {
+  final entitiesKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 24),
       child: Column(
         children: [
-          H1HeaderTextWidget(
-            title: S.of(context).mauaEntititesTitle,
-          ),
-          const EntitiesStack(),
+          SizedBox(key: entitiesKey, child: const EntitiesCarousel()),
           const SizedBox(
             height: 32,
           ),
@@ -428,38 +429,82 @@ class CompanySponsor extends StatelessWidget {
   }
 }
 
-class EntitiesStack extends StatelessWidget {
-  const EntitiesStack({super.key});
+class EntitiesCarousel extends StatefulWidget {
+  const EntitiesCarousel({Key? key}) : super(key: key);
 
   @override
+  EntitiesCarouselState createState() => EntitiesCarouselState();
+}
+
+class EntitiesCarouselState extends State<EntitiesCarousel> {
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width > breakpointMobile
-          ? MediaQuery.of(context).size.width / 1.3
-          : MediaQuery.of(context).size.width,
-      child: MediaQuery.of(context).size.width > breakpointMobile
-          ? Wrap(
-              spacing: 20,
-              runSpacing: 25,
-              alignment: WrapAlignment.center,
-              children: MauaEntitiesEnum.values
-                  .map((e) => EntitiesWidget(
-                        entity: e,
-                      ))
-                  .toList())
-          : CarouselSlider.builder(
-              itemCount: MauaEntitiesEnum.values.length,
-              itemBuilder: (context, index, realIndex) {
-                return Container(
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: AppColors.brandingBlue, width: 4),
-                        borderRadius: BorderRadius.circular(15)),
-                    child:
-                        EntitiesWidget(entity: MauaEntitiesEnum.values[index]));
+    int _current = 0;
+    final CarouselController _controller = CarouselController();
+    var imgList = MauaEntitiesEnum.values
+        .take(4)
+        .map((MauaEntitiesEnum value) => Container(
+                decoration: BoxDecoration(
+              image: DecorationImage(
+                image: CachedNetworkImageProvider(value.logoUrl),
+                fit: BoxFit.contain,
+              ),
+            )))
+        .toList();
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        H1HeaderTextWidget(title: S.of(context).mauaEntititesTitle),
+        SizedBox(
+          height: width > breakpointMobile ? height * 0.75 : height * 0.4,
+          width: width * 0.9,
+          child: CarouselSlider(
+            items: imgList,
+            carouselController: _controller,
+            options: CarouselOptions(
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 10),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                height: height,
+                viewportFraction: 1.0,
+                enlargeCenterPage: false,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                }),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: imgList.asMap().entries.map((entry) {
+            return GestureDetector(
+              onTap: () => {
+                _controller.animateToPage(entry.key),
+                print("current: " + _current.toString()),
+                print("entry key: " + entry.key.toString()),
               },
-              options: CarouselOptions(autoPlay: false, viewportFraction: 0.5),
-            ),
+              child: Container(
+                width: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
+                height: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
+                margin: EdgeInsets.symmetric(
+                    vertical: 16.0,
+                    horizontal:
+                        MediaQuery.of(context).size.width < 1024 ? 6 : 8),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: (Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.lightPurple
+                            : AppColors.brandingBlue)
+                        .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 }
