@@ -48,9 +48,11 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String formattedDate = DateFormat('dd/MM').format(date);
-    String formattedLocation = location == null || location == ''
-        ? '${S.of(context).local}: Online'
-        : '${S.of(context).local}: $location';
+    String formattedLocation = deliveryEnum == DeliveryEnum.hybrid
+        ? '${S.of(context).local}: $location ou Online'
+        : location == null || location == ''
+            ? '${S.of(context).local}: Online'
+            : '${S.of(context).local}: $location';
     return Padding(
       padding: MediaQuery.of(context).size.width < breakpointLMobile
           ? const EdgeInsets.symmetric(horizontal: 8)
