@@ -1,118 +1,90 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_controller.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:smile_front/app/modules/home/domain/infra/maua_entities_enum.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import 'package:smile_front/app/shared/themes/app_text_styles.dart';
+import 'package:smile_front/app/shared/themes/breakpoint.dart';
+import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../shared/utils/screen_helper.dart';
-import '../../../domain/infra/maua_entities_enum.dart';
 
-class EntitiesWidget extends StatelessWidget {
-  final MauaEntitiesEnum entity;
+class EntitiesCarousel extends StatefulWidget {
+  const EntitiesCarousel({Key? key}) : super(key: key);
 
-  const EntitiesWidget({
-    super.key,
-    required this.entity,
-  });
+  @override
+  EntitiesCarouselState createState() => EntitiesCarouselState();
+}
+
+class EntitiesCarouselState extends State<EntitiesCarousel> {
+  int _current = 0;
+  final CarouselController _controller = CarouselController();
 
   @override
   Widget build(BuildContext context) {
-    double height = Screen.width(context) > 900
-        ? 320
-        : Screen.width(context) > 500
-            ? 278 * (Screen.width(context) / 900)
-            : 170;
-    double widht = Screen.width(context) > 900
-        ? 320
-        : Screen.width(context) > 500
-            ? 268 * (Screen.width(context) / 900)
-            : 160;
-
-    return Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-      Container(
-        height: height * 0.615,
-        width: widht * 0.615,
-        decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: const BorderRadius.all(Radius.circular(15))),
-        child: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: CachedNetworkImageProvider(
-            entity.logoUrl,
-          ))),
-        ),
-      ),
-      Stack(
-        alignment: Alignment.centerLeft,
-        children: [
-          InkWell(
-            onTap: () => launchUrl(
-              Uri.parse(entity.logoUrl),
-              mode: LaunchMode.externalApplication,
-            ),
-            child: Container(
-              alignment: Alignment.center,
-              width: MediaQuery.of(context).size.width < 500
-                  ? 130
-                  : MediaQuery.of(context).size.width < 1200
-                      ? 180
-                      : 220,
-              height: MediaQuery.of(context).size.width < 500
-                  ? 24
-                  : MediaQuery.of(context).size.width < 1200
-                      ? 28
-                      : 34,
-              decoration: BoxDecoration(
-                  color: AppColors.brandingBlue,
-                  borderRadius: const BorderRadius.all(Radius.circular(15))),
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(
-                    MediaQuery.of(context).size.width < 1200 ? 16 : 26,
-                    0,
-                    0,
-                    2),
-                child: Text(entity.name,
-                    style: AppTextStyles.buttonBold.copyWith(
-                      fontSize: MediaQuery.of(context).size.width < 500
-                          ? 9.5
-                          : MediaQuery.of(context).size.width < 1200
-                              ? 13
-                              : 16,
-                      fontWeight: FontWeight.w700,
-                    )),
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () => launchUrl(
-              Uri.parse(entity.logoUrl),
-              mode: LaunchMode.externalApplication,
-            ),
-            child: Container(
-                width: MediaQuery.of(context).size.width < 500
-                    ? 30
-                    : MediaQuery.of(context).size.width < 1200
-                        ? 34
-                        : 40,
-                height: MediaQuery.of(context).size.width < 500
-                    ? 30
-                    : MediaQuery.of(context).size.width < 1200
-                        ? 34
-                        : 40,
+    var imgList = MauaEntitiesEnum.values
+        .take(4)
+        .map((MauaEntitiesEnum value) => Container(
                 decoration: BoxDecoration(
-                    color: AppColors.brandingBlue, shape: BoxShape.circle),
-                child: Icon(FontAwesome5.instagram,
-                    size: MediaQuery.of(context).size.width < 500
-                        ? 18
-                        : MediaQuery.of(context).size.width < 1200
-                            ? 20
-                            : 26,
-                    color: Colors.white)),
-          )
-        ],
-      )
-    ]);
+              image: DecorationImage(
+                image: CachedNetworkImageProvider(value.logoUrl),
+                fit: BoxFit.contain,
+              ),
+            )))
+        .toList();
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        H1HeaderTextWidget(title: S.of(context).mauaEntititesTitle),
+        SizedBox(
+          height: width > breakpointMobile ? height * 0.75 : height * 0.4,
+          width: width * 0.9,
+          child: CarouselSlider(
+            items: imgList,
+            carouselController: _controller,
+            options: CarouselOptions(
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 10),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                height: height,
+                viewportFraction: 1.0,
+                enlargeCenterPage: false,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                }),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: imgList.asMap().entries.map((entry) {
+            return GestureDetector(
+              onTap: () => _controller.animateToPage(entry.key),
+              child: Container(
+                width: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
+                height: MediaQuery.of(context).size.width < 1024 ? 12 : 15,
+                margin: EdgeInsets.symmetric(
+                    vertical: 16.0,
+                    horizontal:
+                        MediaQuery.of(context).size.width < 1024 ? 6 : 8),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: (Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.lightPurple
+                            : AppColors.brandingBlue)
+                        .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
+    );
   }
 }
