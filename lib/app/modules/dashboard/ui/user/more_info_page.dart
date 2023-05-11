@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/extensionist_widget.dart';
+import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
@@ -106,8 +107,10 @@ class _MoreInfoPageState
                           MediaQuery.of(context).size.width < breakpointMobile
                               ? 88
                               : 150,
-                      height:
-                          MediaQuery.of(context).size.width < breakpointMobile
+                      height: controller.activity.deliveryEnum ==
+                              DeliveryEnum.hybrid
+                          ? 90
+                          : MediaQuery.of(context).size.width < breakpointMobile
                               ? 49
                               : 60,
                       decoration: BoxDecoration(
@@ -134,8 +137,10 @@ class _MoreInfoPageState
                           MediaQuery.of(context).size.width < breakpointMobile
                               ? 138
                               : 150,
-                      height:
-                          MediaQuery.of(context).size.width < breakpointMobile
+                      height: controller.activity.deliveryEnum ==
+                              DeliveryEnum.hybrid
+                          ? 90
+                          : MediaQuery.of(context).size.width < breakpointMobile
                               ? 49
                               : 60,
                       decoration: BoxDecoration(
@@ -160,8 +165,10 @@ class _MoreInfoPageState
                           MediaQuery.of(context).size.width < breakpointMobile
                               ? 88
                               : 150,
-                      height:
-                          MediaQuery.of(context).size.width < breakpointMobile
+                      height: controller.activity.deliveryEnum ==
+                              DeliveryEnum.hybrid
+                          ? 90
+                          : MediaQuery.of(context).size.width < breakpointMobile
                               ? 49
                               : 60,
                       decoration: BoxDecoration(
@@ -179,7 +186,8 @@ class _MoreInfoPageState
                                       ? 12
                                       : 18),
                             ),
-                            controller.activity.place != null
+                            controller.activity.deliveryEnum ==
+                                    DeliveryEnum.hybrid
                                 ? Tooltip(
                                     triggerMode: TooltipTriggerMode.tap,
                                     message: controller.activity.place!,
@@ -188,32 +196,79 @@ class _MoreInfoPageState
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 4.0),
-                                      child: Text(
-                                        controller.activity.place!,
-                                        style: AppTextStyles.bold.copyWith(
-                                            color: AppColors.white,
-                                            fontSize: 20),
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 1,
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            controller.activity.place!,
+                                            style: AppTextStyles.bold.copyWith(
+                                                color: AppColors.white,
+                                                fontSize: 20),
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
+                                          ),
+                                          Text(
+                                            "ou",
+                                            style: AppTextStyles.bold.copyWith(
+                                                color: AppColors.white,
+                                                fontSize: 10),
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
+                                          ),
+                                          TextButton(
+                                              onPressed: () {
+                                                launchUrl(Uri.parse(
+                                                    controller.activity.link!));
+                                              },
+                                              child: Text(
+                                                'Online',
+                                                style:
+                                                    AppTextStyles.bold.copyWith(
+                                                  color: AppColors.white,
+                                                  fontSize: 20,
+                                                  decoration:
+                                                      TextDecoration.underline,
+                                                ),
+                                              ))
+                                        ],
                                       ),
                                     ),
                                   )
-                                : controller.activity.link != null
-                                    ? TextButton(
-                                        onPressed: () {
-                                          launchUrl(Uri.parse(
-                                              controller.activity.link!));
-                                        },
-                                        child: Text(
-                                          'Online',
-                                          style: AppTextStyles.bold.copyWith(
-                                            color: AppColors.white,
-                                            fontSize: 20,
-                                            decoration:
-                                                TextDecoration.underline,
+                                : controller.activity.place != null
+                                    ? Tooltip(
+                                        triggerMode: TooltipTriggerMode.tap,
+                                        message: controller.activity.place!,
+                                        textStyle: const TextStyle(
+                                            fontSize: 18, color: Colors.white),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 4.0),
+                                          child: Text(
+                                            controller.activity.place!,
+                                            style: AppTextStyles.bold.copyWith(
+                                                color: AppColors.white,
+                                                fontSize: 20),
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
                                           ),
-                                        ))
-                                    : const SizedBox.shrink()
+                                        ),
+                                      )
+                                    : controller.activity.link != null
+                                        ? TextButton(
+                                            onPressed: () {
+                                              launchUrl(Uri.parse(
+                                                  controller.activity.link!));
+                                            },
+                                            child: Text(
+                                              'Online',
+                                              style:
+                                                  AppTextStyles.bold.copyWith(
+                                                color: AppColors.white,
+                                                fontSize: 20,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                              ),
+                                            ))
+                                        : const SizedBox.shrink()
                           ]),
                     ),
                     if (MediaQuery.of(context).size.width >= 600)
