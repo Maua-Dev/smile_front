@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form_dialog.dart';
-import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_logo_widget.dart';
+import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_carousel_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
 import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
@@ -27,7 +27,7 @@ class _SponsorsHomePageState extends State<SponsorsHomePage> {
       padding: const EdgeInsets.only(top: 24),
       child: Column(
         children: [
-          SizedBox(key: entitiesKey, child: const EntitiesCarousel()),
+          SizedBox(key: entitiesKey, child: const EntitiesCarouselWidget()),
           const SizedBox(
             height: 32,
           ),
