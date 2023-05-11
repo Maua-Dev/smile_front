@@ -4,12 +4,12 @@ import '../../../../shared/utils/s3_assets_url.dart';
 
 enum MauaEntitiesEnum {
   dev,
-  //mauajr_finace,
+  mauajr_finace,
   bateria_atletica,
   enactus_inova,
   eco_aero_space,
   nae_ca,
-  //social_diversidade,
+  social_diversidade,
 }
 
 extension MauaEntitiesEnumExtension on MauaEntitiesEnum {
@@ -23,12 +23,12 @@ extension MauaEntitiesEnumExtension on MauaEntitiesEnum {
         return '${s3AssetsBaseUrl}entidades/eco_aero_space.png';
       case MauaEntitiesEnum.enactus_inova:
         return '${s3AssetsBaseUrl}entidades/enactus_inova.png';
-      //case MauaEntitiesEnum.mauajr_finace:
-      // return '${s3AssetsBaseUrl}entidades/mauajr_finance.png';
+      case MauaEntitiesEnum.mauajr_finace:
+        return '${s3AssetsBaseUrl}entidades/mauajr_finace.png';
       case MauaEntitiesEnum.nae_ca:
         return '${s3AssetsBaseUrl}entidades/nae_ca.png';
-      //case MauaEntitiesEnum.social_diversidade:
-      //  return '${s3AssetsBaseUrl}entidades/social_diversidade.png';
+      case MauaEntitiesEnum.social_diversidade:
+        return '${s3AssetsBaseUrl}entidades/social_diversidade.png';
     }
   }
 }

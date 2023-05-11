@@ -7,21 +7,21 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-class EntitiesCarousel extends StatefulWidget {
-  const EntitiesCarousel({Key? key}) : super(key: key);
+class EntitiesCarouselWidget extends StatefulWidget {
+  const EntitiesCarouselWidget({Key? key}) : super(key: key);
 
   @override
-  EntitiesCarouselState createState() => EntitiesCarouselState();
+  EntitiesCarouselWidgetState createState() => EntitiesCarouselWidgetState();
 }
 
-class EntitiesCarouselState extends State<EntitiesCarousel> {
+class EntitiesCarouselWidgetState extends State<EntitiesCarouselWidget> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
 
   @override
   Widget build(BuildContext context) {
     var imgList = MauaEntitiesEnum.values
-        .take(4)
+        .take(MauaEntitiesEnum.values.length)
         .map((MauaEntitiesEnum value) => Container(
                 decoration: BoxDecoration(
               image: DecorationImage(
