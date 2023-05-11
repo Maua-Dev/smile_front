@@ -46,8 +46,10 @@ abstract class ResponsibleActivitiesControllerBase with Store {
       var allActivities = await getUserSubscribedActivities();
       var userId = await storage.getId();
       for (var activity in allActivities) {
-        if (activity.responsibleProfessors[0].id == userId) {
-          allResponsibleActivities.add(activity);
+        for (var professor in activity.responsibleProfessors) {
+          if (professor.id == userId) {
+            allResponsibleActivities.add(activity);
+          }
         }
       }
       activitiesToShow = allResponsibleActivities;
