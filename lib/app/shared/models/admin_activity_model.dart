@@ -140,7 +140,8 @@ class AdminActivityModel extends Activity {
             stopAcceptingNewEnrollmentsBefore == null
                 ? null
                 : stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
-        'responsible_professors': [responsibleProfessors[0].id],
+        'responsible_professors':
+            responsibleProfessors.map((e) => e.id).toList(),
         'speakers': speakers.map((e) => e.toJson()).toList(),
       };
 
@@ -161,7 +162,8 @@ class AdminActivityModel extends Activity {
         'new_accepting_new_enrollments': acceptingNewEnrollments,
         'new_stop_accepting_new_enrollments_before':
             stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
-        'new_responsible_professors': [responsibleProfessors[0].id],
+        'new_responsible_professors':
+            responsibleProfessors.map((e) => e.id).toList(),
         'new_speakers': speakers.map((e) => e.toJson()).toList(),
       };
 }
