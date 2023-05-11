@@ -1,74 +1,34 @@
-import '../../../../../generated/l10n.dart';
+// ignore_for_file: constant_identifier_names
+
 import '../../../../shared/utils/s3_assets_url.dart';
 
 enum MauaEntitiesEnum {
   dev,
-  atletica,
-  ca,
-  diversidade,
-  enactus,
-  //esports,
-  inova,
-  mauajr,
-  mauasocial,
-  //mbc,
-  nae,
-  //nine,
-  finance,
-  //baja,
-  ecomaua,
-  bateria,
-  // mauaracing2,
-  // mauaracing
+  //mauajr_finace,
+  bateria_atletica,
+  enactus_inova,
+  eco_aero_space,
+  nae_ca,
+  //social_diversidade,
 }
 
 extension MauaEntitiesEnumExtension on MauaEntitiesEnum {
-  String get name {
-    return S.current.mauaEntitiesSchemaSocialMidia(toString());
-  }
-
-  String get instagramUrl {
-    return S.current.mauaEntitiesSchemaInstagramUrl(toString());
-  }
-
   String get logoUrl {
     switch (this) {
-      case MauaEntitiesEnum.atletica:
-        return '${s3AssetsBaseUrl}logo_entidades_atletica.png';
-      case MauaEntitiesEnum.ca:
-        return '${s3AssetsBaseUrl}logo_entidades_ca.png';
-      case MauaEntitiesEnum.diversidade:
-        return '${s3AssetsBaseUrl}logo_entidades_diversidade.png';
-      case MauaEntitiesEnum.enactus:
-        return '${s3AssetsBaseUrl}logo_entidades_enactus.png';
-      case MauaEntitiesEnum.bateria:
-        return '${s3AssetsBaseUrl}logo_entidades_bateria.png';
-      // case MauaEntitiesEnum.esports:
-      //   return '${s3AssetsBaseUrl}logo_entidades_esports.png';
-      case MauaEntitiesEnum.inova:
-        return '${s3AssetsBaseUrl}logo_entidades_inova.png';
-      case MauaEntitiesEnum.mauajr:
-        return '${s3AssetsBaseUrl}logo_entidades_mauajr.png';
-      case MauaEntitiesEnum.mauasocial:
-        return '${s3AssetsBaseUrl}logo_entidades_social.png';
-      // case MauaEntitiesEnum.mbc:
-      //   return '${s3AssetsBaseUrl}logo_entidades_business.png';
-      case MauaEntitiesEnum.nae:
-        return '${s3AssetsBaseUrl}logo_entidades_nae.png';
+      case MauaEntitiesEnum.bateria_atletica:
+        return '${s3AssetsBaseUrl}entidades/bateria_atletica.png';
       case MauaEntitiesEnum.dev:
-        return '${s3AssetsBaseUrl}logo_entidades_dev.png';
-      // case MauaEntitiesEnum.nine:
-      //   return '${s3AssetsBaseUrl}logo_entidades_nine.png';
-      case MauaEntitiesEnum.finance:
-        return '${s3AssetsBaseUrl}logo_entidades_finance.png';
-      // case MauaEntitiesEnum.baja:
-      //return '${s3AssetsBaseUrl}logo_entidades_baja.png';
-      case MauaEntitiesEnum.ecomaua:
-        return '${s3AssetsBaseUrl}logo_entidades_eco.png';
-      // case MauaEntitiesEnum.mauaracing2:
-      //return '${s3AssetsBaseUrl}logo_entidades_mauah2.png';
-      // case MauaEntitiesEnum.mauaracing:
-      //   return '${s3AssetsBaseUrl}logo_entidades_racing.png';
+        return '${s3AssetsBaseUrl}entidades/dev.png';
+      case MauaEntitiesEnum.eco_aero_space:
+        return '${s3AssetsBaseUrl}entidades/eco_aero_space.png';
+      case MauaEntitiesEnum.enactus_inova:
+        return '${s3AssetsBaseUrl}entidades/enactus_inova.png';
+      //case MauaEntitiesEnum.mauajr_finace:
+      // return '${s3AssetsBaseUrl}entidades/mauajr_finance.png';
+      case MauaEntitiesEnum.nae_ca:
+        return '${s3AssetsBaseUrl}entidades/nae_ca.png';
+      //case MauaEntitiesEnum.social_diversidade:
+      //  return '${s3AssetsBaseUrl}entidades/social_diversidade.png';
     }
   }
 }
