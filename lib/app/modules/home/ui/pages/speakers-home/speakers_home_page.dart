@@ -24,8 +24,8 @@ class _SpeakersHomePageState
     if (Screen.width(context) > cellphoneSize) {
       return Column(
         children: [
-          const H1HeaderTextWidget(
-            title: 'Painéis',
+          H1HeaderTextWidget(
+            title: S.of(context).panelsTitle,
           ),
           const SizedBox(
             height: 16,

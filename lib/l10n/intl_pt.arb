@@ -11,6 +11,7 @@
     
     "knowMore": "SAIBA MAIS >>>",
     "speakersTitle": "Palestrantes",
+    "panelsTitle": "Painéis",
     "speakersMainTitle": "Principais Palestrantes - 2022",
     "speakersAddTitle": "Adicionar Palestrante",
     "speakersSwipe": "DESLIZE PARA VER MAIS >>>",
@@ -223,6 +224,12 @@
 
     "hourTitle": "Hora",
     "dayTitle": "Data",
+    "dateWithPlaceholder": "Data: {firstName}",
+    "@dateWithPlaceholder" : {
+        "placeholders": {
+            "firstName": {}
+        }
+    },
     "scheduleTitle": "Horário",
     "scheduleAddTitle": "Adicionar Horário",
 
@@ -251,6 +258,7 @@
 
 
     "noCertificatesFoundTitle": "Parece que você não tem nenhum certificado.",
+    "certificatesSubscriptionInfo": "{info, select, title{Data limite para alterações no seu certificado: }  date{13/06/2023.} other{}}",
 
 
     "locationTitle": "Local",
@@ -285,5 +293,28 @@
     "speakerNameTitle": "Nome do Palestrante",
 
     "sendEmailToAllEnrolls": "Enviar email para todos os inscritos",
-    "sendEmailToSomeone": "Enviar email para:"
+    "sendEmailToSomeone": "Enviar email para:",
+
+    "faqTitle": "Perguntas Frequentes",
+    "faq1": "{faq, select, title{Fiz o meu login e esqueci a senha. O que devo fazer?} description{Existe uma opção na tela de \"Login\" chamada \"Esqueci minha senha\", onde você poderá alterá-la seguindo um passo-a-passo.} other{}}",
+    "faq2": "{faq, select, title{Como validar a presença nas minhas atividades?} description{Clicando na atividade, você será direcionado para a tela de mais informações, onde encontrará um botão para validação de presença. Ao seleciona-lo, você deve preencher um token com 6 dígitos, que será fornecido pelo professor responsável durante a atividade. Lembrando que o botão de validação só estará disponível caso você esteja inscrito na atividade. Qualquer problema com o token informe o professor responsável imediatamente.} other{}}",
+    "faq3": "{faq, select, title{Em que local do site eu vejo as atividades da SMILE?} description{Clicando no ícone das atividades na barra de navegação você poderá visualizar todas as atividades do evento. Se você for estudante do IMT poderá também acessar pelo Open LMS da SMILE:} other{}}",
+    "faq4": "{faq, select, title{Na atividade presencial, onde vejo a sala?} description{Ao clicar na atividade em que você se inscreveu, você poderá ver todas as informações disponíveis sobre aquela atividade, inclusive a sala.} other{}}",
+    "faq5": "{faq, select, title{Nas visitas técnicas posso estar de bermuda?} description{As Visitas Técnicas tem algumas orientações importantes! Assim ANTES de você fazer a sua inscrição LEIA com ATENÇÃO as informações necessárias que estão no site da SMILE. A recomendação padrão para você participar de uma visita é estar vestido de calça comprida e sapato de couro. Bermudas não serão permitidas.} other{}}",
+    "faq6": "{faq, select, title{Terão gravações das atividades online esse ano?} description{Na SMILE 2023, não haverão gravações das atividades realizadas online.}}",
+    "faq7": "{faq, select, title{Como cancelar minha inscrição em uma atividade?} description{Ao clicar na atividade que você quer cancelar haverá um botão vermelho \"Desinscrever-se\", basta clicar nele e confirmar.} other{}}",
+    "faq8": "{faq, select, title{Como assistir minhas atividades online?} description{Clicando na atividade em questão, você terá acesso a mais informações sobre ela. Dentre as informações, estará o link para a atividade.} other{}}",
+    "faq9": "{faq, select, title{Como emitir o meu Certificado?} description{Os certificados serão disponibilizados automáticamente no seu perfil 10 dias após o evento. Caso ocorra algum erro, entre em contato com nosso suporte: atendimento.smile@maua.br.} other{}}",
+    "faq10": "{faq, select, title{Como alterar meu nome/nome social para a certificação?} description{Ao entrar na aba de perfil, você poderá alterar alguns de seus dados clicando no lápis no canto superior direito. A data limite para troca de nomes antes da emissão do certificado é de 5 dias após o término do evento (06/02/2023).} other{}}",
+    "faq11": "{faq, select, title{Digitei meu nome com uma letra errada no meu Certificado. Até que data posso alterar?} description{A data limite para solicitações de correções nos certificados é até dia (13/06/2023), sendo a data limite para a entrega das correções até dia (19/06/2023).} other{}}",
+    "faq12": "{faq, select, title{Em caso de dúvidas, como faço para entrar em contato?} description{Para mais informações sobre o evento entre em contato com nosso suporte: atendimento.smile@maua.br} other{}}",
+
+    "helloTitle": "Olá, {firstName}!",
+    "@helloTitle" : {
+        "placeholders": {
+            "firstName": {}
+        }
+    },
+
+    "updateUserInfo": "{info, select, title{* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia } date{25/05/2023} other{}}"
 }

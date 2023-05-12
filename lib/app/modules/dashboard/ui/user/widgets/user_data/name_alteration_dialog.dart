@@ -329,8 +329,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                   RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                        text:
-                            '* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia ',
+                        text: S.of(context).updateUserInfo('title'),
                         style: AppTextStyles.body.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 500
@@ -340,7 +339,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                                     : 16),
                         children: [
                           TextSpan(
-                            text: '25/05/2023',
+                            text: S.of(context).updateUserInfo('date'),
                             style: AppTextStyles.titleH1.copyWith(
                                 color: Colors.black,
                                 fontSize: MediaQuery.of(context).size.width <

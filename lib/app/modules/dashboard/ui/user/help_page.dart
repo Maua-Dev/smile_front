@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/help_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/faq/faq_card_widget.dart';
+import 'package:smile_front/generated/l10n.dart';
 
 import '../../../../shared/entities/screen_variables.dart';
 import '../../../../shared/themes/app_colors.dart';
@@ -62,10 +63,10 @@ class _HelpPageState extends ModularState<HelpPage, HelpController> {
                           width: 16,
                         ),
                       TextHeader(
-                        title: 'Perguntas Frequentes',
+                        title: S.of(context).faqTitle,
                         fontSize:
                             MediaQuery.of(context).size.width < cellphoneSize
-                                ? 20
+                                ? 24
                                 : 30,
                       ),
                     ],

@@ -11,6 +11,7 @@
     
     "knowMore": "KNOW MORE >>>",
     "speakersTitle": "Speakers",
+    "panelsTitle": "Panels",
     "speakersMainTitle": "Main Speakers - 2022",
     "speakersAddTitle": "Add Speaker",
     "speakersSchemaName": "{speakers, select, bruno{Bruno Keizo – Mauá Jr.} wellington{Wellington Vitorino} vanessa{Vanessa Piratelo Occhipinti} andressa{Andressa Martins} flavia{Flávia Janine Rosante Beo} daniela{Daniela Klaiman} jonathan{Jonathan Y. Ando Nelson} sonia{Sonia Guimarães} renato{Renato Grau} ana{Ana Cristina Caldeira} helga{Helga Braren Zepf} gustavo{Gustavo Paganini Canal} joseph{Joseph Youssif Saab Junior} other{}}",
@@ -219,6 +220,12 @@
 
     "hourTitle": "Hora",
     "dayTitle": "Data",
+    "dateWithPlaceholder": "Date: {firstName}",
+    "@dateWithPlaceholder" : {
+        "placeholders": {
+            "firstName": {}
+        }
+    },
     "scheduleTitle": "Schedule",
     "scheduleAddTitle": "Add Schedule",
 
@@ -250,6 +257,7 @@
 
 
     "noCertificatesFoundTitle": "It looks like you don't have any certificates.",
+    "certificatesSubscriptionInfo": "{info, select, title{Deadline for changes to your certificate: }  date{06/13/2023.} other{}}",
 
 
     "noActivitiesEnrolledText": "Looks like you haven't signed up for any activities yet :(",
@@ -281,5 +289,28 @@
     "speakerNameTitle": "Speaker Name",
 
     "sendEmailToAllEnrolls": "Send email to all",
-    "sendEmailToSomeone": "Send email to:"
+    "sendEmailToSomeone": "Send email to:",
+
+    "faqTitle": "Common questions",
+    "faq1": "{faq, select, title{I logged in and forgot my password. What should I do?} description{There is an option on the \"Login\" screen called \"I forgot my password\", where you can change it following a step-by-step.} other{}}",
+    "faq2": "{faq, select, title{How to validate the presence in my activities?} description{By clicking on the activity, you will be directed to the more information screen, where you will find a button to validate presence. When selecting it, you must fill in a 6-digit token, which will be provided by the responsible teacher during the activity. Remembering that the validation button will only be available if you are enrolled in the activity. Any problems with the token inform the teacher in charge immediately.} other{}}",
+    "faq3": "{faq, select, title{Where on the site can I see SMILE's activities?} description{By clicking on the activities icon in the navigation bar you will be able to visualize all the activities of the event. If you are an IMT student, you can also access the SMILE Open LMS:} link{https://imt.myopenlms.net/course/view.php?id=1353} other{}}",
+    "faq4": "{faq, select, title{In face-to-face activity, where can I see the room?} description{By clicking on the activity you signed up for, you will be able to see all available information about that activity, including the room.} other{}}",
+    "faq5": "{faq, select, title{Can I wear shorts during technical visits?} description{The Technical Visits have some important guidelines! So BEFORE you register, READ CAREFULLY the necessary information on the SMILE website. The standard recommendation for you to participate in a visit is to be dressed in long pants and leather shoes. Bermuda shorts will not be permitted.} other{}}",
+    "faq6": "{faq, select, title{Will there be recordings of online activities this year?} description{At SMILE 2023, there will be no recordings of activities carried out online.} other{}}",
+    "faq7": "{faq, select, title{How do I unsubscribe from an activity?} description{When you click on the activity you want to cancel there will be a red \"Unsubscribe\" button, just click on it and confirm.} other{}}",
+    "faq8": "{faq, select, title{How to watch my activities online?} description{By clicking on the activity in question, you will have access to more information about it. Among the information will be the link to the activity.} other{}}",
+    "faq9": "{faq, select, title{How to issue my certificate?} description{Certificates will be automatically available in your profile 10 days after the event. If an error occurs, please contact our support: atendimento.smile@maua.br.} other{}}",
+    "faq10": "{faq, select, title{How can I change my name/social name for certification?} description{When you enter the profile tab, you can change some of your data by clicking on the pencil in the upper right corner. The deadline for changing names before issuing the certificate is 5 days after the end of the event (06/02/2023).} other{}}",
+    "faq11": "{faq, select, title{I typed my name with a wrong letter on my Certificate. Until what date can I change?} description{The deadline for requests for corrections in certificates is until (06/13/2023), with the deadline for submitting corrections until (06/19/2023).} other{}}",
+    "faq12": "{faq, select, title{If in doubt, how can I get in touch?} description{For more information about the event, please contact our support: atendimento.smile@maua.br} other{}}",
+
+    "helloTitle": "Hello, {firstName}!",
+    "@helloTitle" : {
+        "placeholders": {
+            "firstName": {}
+        }
+    },
+
+    "updateUserInfo": "{info, select, title{* The name that appears here will be the one we will use for the purposes of issuing a certificate. Any changes to your registration can be made up to the day } date{05/25/2023} other{}}"
 }

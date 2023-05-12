@@ -174,6 +174,16 @@ class S {
     );
   }
 
+  /// `Panels`
+  String get panelsTitle {
+    return Intl.message(
+      'Panels',
+      name: 'panelsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Main Speakers - 2022`
   String get speakersMainTitle {
     return Intl.message(
@@ -1919,6 +1929,16 @@ class S {
     );
   }
 
+  /// `Date: {firstName}`
+  String dateWithPlaceholder(Object firstName) {
+    return Intl.message(
+      'Date: $firstName',
+      name: 'dateWithPlaceholder',
+      desc: '',
+      args: [firstName],
+    );
+  }
+
   /// `Schedule`
   String get scheduleTitle {
     return Intl.message(
@@ -2096,6 +2116,21 @@ class S {
       name: 'noCertificatesFoundTitle',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `{info, select, title{Deadline for changes to your certificate: }  date{06/13/2023.} other{}}`
+  String certificatesSubscriptionInfo(Object info) {
+    return Intl.select(
+      info,
+      {
+        'title': 'Deadline for changes to your certificate: ',
+        'date': '06/13/2023.',
+        'other': '',
+      },
+      name: 'certificatesSubscriptionInfo',
+      desc: '',
+      args: [info],
     );
   }
 
@@ -2318,6 +2353,236 @@ class S {
       name: 'sendEmailToSomeone',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Common questions`
+  String get faqTitle {
+    return Intl.message(
+      'Common questions',
+      name: 'faqTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{faq, select, title{I logged in and forgot my password. What should I do?} description{There is an option on the "Login" screen called "I forgot my password", where you can change it following a step-by-step.} other{}}`
+  String faq1(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title': 'I logged in and forgot my password. What should I do?',
+        'description':
+            'There is an option on the "Login" screen called "I forgot my password", where you can change it following a step-by-step.',
+        'other': '',
+      },
+      name: 'faq1',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `{faq, select, title{How to validate the presence in my activities?} description{By clicking on the activity, you will be directed to the more information screen, where you will find a button to validate presence. When selecting it, you must fill in a 6-digit token, which will be provided by the responsible teacher during the activity. Remembering that the validation button will only be available if you are enrolled in the activity. Any problems with the token inform the teacher in charge immediately.} other{}}`
+  String faq2(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title': 'How to validate the presence in my activities?',
+        'description':
+            'By clicking on the activity, you will be directed to the more information screen, where you will find a button to validate presence. When selecting it, you must fill in a 6-digit token, which will be provided by the responsible teacher during the activity. Remembering that the validation button will only be available if you are enrolled in the activity. Any problems with the token inform the teacher in charge immediately.',
+        'other': '',
+      },
+      name: 'faq2',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `{faq, select, title{Where on the site can I see SMILE's activities?} description{By clicking on the activities icon in the navigation bar you will be able to visualize all the activities of the event. If you are an IMT student, you can also access the SMILE Open LMS:} link{https://imt.myopenlms.net/course/view.php?id=1353} other{}}`
+  String faq3(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title': 'Where on the site can I see SMILE\'s activities?',
+        'description':
+            'By clicking on the activities icon in the navigation bar you will be able to visualize all the activities of the event. If you are an IMT student, you can also access the SMILE Open LMS:',
+        'link': 'https://imt.myopenlms.net/course/view.php?id=1353',
+        'other': '',
+      },
+      name: 'faq3',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `{faq, select, title{In face-to-face activity, where can I see the room?} description{By clicking on the activity you signed up for, you will be able to see all available information about that activity, including the room.} other{}}`
+  String faq4(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title': 'In face-to-face activity, where can I see the room?',
+        'description':
+            'By clicking on the activity you signed up for, you will be able to see all available information about that activity, including the room.',
+        'other': '',
+      },
+      name: 'faq4',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `{faq, select, title{Can I wear shorts during technical visits?} description{The Technical Visits have some important guidelines! So BEFORE you register, READ CAREFULLY the necessary information on the SMILE website. The standard recommendation for you to participate in a visit is to be dressed in long pants and leather shoes. Bermuda shorts will not be permitted.} other{}}`
+  String faq5(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title': 'Can I wear shorts during technical visits?',
+        'description':
+            'The Technical Visits have some important guidelines! So BEFORE you register, READ CAREFULLY the necessary information on the SMILE website. The standard recommendation for you to participate in a visit is to be dressed in long pants and leather shoes. Bermuda shorts will not be permitted.',
+        'other': '',
+      },
+      name: 'faq5',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `{faq, select, title{Will there be recordings of online activities this year?} description{At SMILE 2023, there will be no recordings of activities carried out online.} other{}}`
+  String faq6(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title': 'Will there be recordings of online activities this year?',
+        'description':
+            'At SMILE 2023, there will be no recordings of activities carried out online.',
+        'other': '',
+      },
+      name: 'faq6',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `{faq, select, title{How do I unsubscribe from an activity?} description{When you click on the activity you want to cancel there will be a red "Unsubscribe" button, just click on it and confirm.} other{}}`
+  String faq7(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title': 'How do I unsubscribe from an activity?',
+        'description':
+            'When you click on the activity you want to cancel there will be a red "Unsubscribe" button, just click on it and confirm.',
+        'other': '',
+      },
+      name: 'faq7',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `{faq, select, title{How to watch my activities online?} description{By clicking on the activity in question, you will have access to more information about it. Among the information will be the link to the activity.} other{}}`
+  String faq8(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title': 'How to watch my activities online?',
+        'description':
+            'By clicking on the activity in question, you will have access to more information about it. Among the information will be the link to the activity.',
+        'other': '',
+      },
+      name: 'faq8',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `{faq, select, title{How to issue my certificate?} description{Certificates will be automatically available in your profile 10 days after the event. If an error occurs, please contact our support: atendimento.smile@maua.br.} other{}}`
+  String faq9(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title': 'How to issue my certificate?',
+        'description':
+            'Certificates will be automatically available in your profile 10 days after the event. If an error occurs, please contact our support: atendimento.smile@maua.br.',
+        'other': '',
+      },
+      name: 'faq9',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `{faq, select, title{How can I change my name/social name for certification?} description{When you enter the profile tab, you can change some of your data by clicking on the pencil in the upper right corner. The deadline for changing names before issuing the certificate is 5 days after the end of the event (06/02/2023).} other{}}`
+  String faq10(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title': 'How can I change my name/social name for certification?',
+        'description':
+            'When you enter the profile tab, you can change some of your data by clicking on the pencil in the upper right corner. The deadline for changing names before issuing the certificate is 5 days after the end of the event (06/02/2023).',
+        'other': '',
+      },
+      name: 'faq10',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `{faq, select, title{I typed my name with a wrong letter on my Certificate. Until what date can I change?} description{The deadline for requests for corrections in certificates is until (06/13/2023), with the deadline for submitting corrections until (06/19/2023).} other{}}`
+  String faq11(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title':
+            'I typed my name with a wrong letter on my Certificate. Until what date can I change?',
+        'description':
+            'The deadline for requests for corrections in certificates is until (06/13/2023), with the deadline for submitting corrections until (06/19/2023).',
+        'other': '',
+      },
+      name: 'faq11',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `{faq, select, title{If in doubt, how can I get in touch?} description{For more information about the event, please contact our support: atendimento.smile@maua.br} other{}}`
+  String faq12(Object faq) {
+    return Intl.select(
+      faq,
+      {
+        'title': 'If in doubt, how can I get in touch?',
+        'description':
+            'For more information about the event, please contact our support: atendimento.smile@maua.br',
+        'other': '',
+      },
+      name: 'faq12',
+      desc: '',
+      args: [faq],
+    );
+  }
+
+  /// `Hello, {firstName}!`
+  String helloTitle(Object firstName) {
+    return Intl.message(
+      'Hello, $firstName!',
+      name: 'helloTitle',
+      desc: '',
+      args: [firstName],
+    );
+  }
+
+  /// `{info, select, title{* The name that appears here will be the one we will use for the purposes of issuing a certificate. Any changes to your registration can be made up to the day } date{05/25/2023} other{}}`
+  String updateUserInfo(Object info) {
+    return Intl.select(
+      info,
+      {
+        'title':
+            '* The name that appears here will be the one we will use for the purposes of issuing a certificate. Any changes to your registration can be made up to the day ',
+        'date': '05/25/2023',
+        'other': '',
+      },
+      name: 'updateUserInfo',
+      desc: '',
+      args: [info],
     );
   }
 }
