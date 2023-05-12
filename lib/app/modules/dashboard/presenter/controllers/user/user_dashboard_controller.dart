@@ -7,6 +7,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.da
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_user.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
+import '../../../../../../generated/l10n.dart';
 import '../../../../../shared/entities/infra/enroll_button_enum.dart';
 import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
 import '../../../../../shared/models/enrollments_model.dart';
@@ -516,7 +517,7 @@ abstract class UserDashboardControllerBase with Store {
     } on DioError catch (e) {
       requisitionError = e.response!.data;
     } catch (e) {
-      requisitionError = 'Ocorreu algum erro ao carregar atividades :(';
+      requisitionError = S.current.errorGenericGetActivities;
     }
 
     setIsLoading(false);

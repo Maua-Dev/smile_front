@@ -168,7 +168,9 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Data: $formattedDate',
+                                      S
+                                          .of(context)
+                                          .dateWithPlaceholder(formattedDate),
                                       style: AppTextStyles.bold.copyWith(
                                           fontSize: MediaQuery.of(context)
                                                       .size

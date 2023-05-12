@@ -47,7 +47,13 @@ class FaqCardWidget extends StatelessWidget {
                         ? 14
                         : Screen.width(context) < tabletSize
                             ? 18
-                            : 25))
+                            : 25)),
+                'a': Style(
+                    fontSize: FontSize(Screen.width(context) < cellphoneSize
+                        ? 14
+                        : Screen.width(context) < tabletSize
+                            ? 18
+                            : 25)),
               },
             ),
             // SelectableText(descricao,

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../shared/entities/infra/enroll_button_enum.dart';
 import '../../../../../../shared/models/enrollments_model.dart';
 import '../../../../../../shared/models/enrolls_activity_model.dart';
@@ -56,7 +57,7 @@ abstract class ResponsibleActivitiesControllerBase with Store {
     } on DioError catch (e) {
       requisitionError = e.response!.data;
     } catch (e) {
-      requisitionError = 'Ocorreu algum erro ao carregar as atividades :(';
+      requisitionError = S.current.errorGenericGetActivities;
     }
     setIsLoading(false);
   }

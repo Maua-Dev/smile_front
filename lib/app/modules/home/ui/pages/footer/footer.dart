@@ -105,10 +105,10 @@ class Footer extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Row(
-                    children: [
-                      kIsWeb
-                          ? Column(
+                  kIsWeb
+                      ? Row(
+                          children: [
+                            Column(
                               children: [
                                 MouseRegion(
                                   cursor: SystemMouseCursors.click,
@@ -157,11 +157,11 @@ class Footer extends StatelessWidget {
                                   ),
                                 ),
                               ],
-                            )
-                          : const SizedBox.shrink(),
-                      const SocialMediaWidget(),
-                    ],
-                  ),
+                            ),
+                            const SocialMediaWidget(),
+                          ],
+                        )
+                      : const SocialMediaWidget(),
                   const SizedBox(
                     height: 8,
                   ),
