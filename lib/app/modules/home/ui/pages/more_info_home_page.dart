@@ -91,7 +91,7 @@ class MoreInfoHomePage extends StatelessWidget {
                           Screen.width(context) < cellphoneSize ? 16 : 24),
                   widthSize: Screen.width(context) < cellphoneSize ? 200 : 400,
                   heightSize: Screen.width(context) < cellphoneSize ? 40 : 50,
-                  backgroundColor: AppColors.brandingOrange,
+                  backgroundColor: AppColors.brandingBlue,
                   onPressed: () {
                     launchUrl(
                         Uri.parse("${s3AssetsBaseUrl}smile_schedule_pdf.pdf"),
@@ -100,7 +100,7 @@ class MoreInfoHomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 32,
+                height: 24,
               ),
               Center(
                 child: CustomElevatedButtonWidget(

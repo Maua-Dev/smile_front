@@ -560,6 +560,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "homePageTitle": MessageLookupByLibrary.simpleMessage(
             "Semana Mauá de Inovação, Liderança e Empreendedorismo"),
         "homePageTitleSelection": m24,
+        "homeSubscription":
+            MessageLookupByLibrary.simpleMessage("Inscrições Abertas"),
         "hourTitle": MessageLookupByLibrary.simpleMessage("Hora"),
         "inQueueTitle": MessageLookupByLibrary.simpleMessage("Na fila"),
         "initTitle": MessageLookupByLibrary.simpleMessage("Início"),

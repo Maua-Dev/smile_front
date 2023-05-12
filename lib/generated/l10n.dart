@@ -2632,6 +2632,16 @@ class S {
       args: [info],
     );
   }
+
+  /// `Open for subscriptions`
+  String get homeSubscription {
+    return Intl.message(
+      'Open for subscriptions',
+      name: 'homeSubscription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
