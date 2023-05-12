@@ -1305,10 +1305,10 @@ class S {
     );
   }
 
-  /// `I want to receive notifications by `
+  /// `I want to receive notifications`
   String get notificationsSchemaTitle {
     return Intl.message(
-      'I want to receive notifications by ',
+      'I want to receive notifications',
       name: 'notificationsSchemaTitle',
       desc: '',
       args: [],
@@ -2570,7 +2570,52 @@ class S {
     );
   }
 
-  /// `{info, select, title{* The name that appears here will be the one we will use for the purposes of issuing a certificate. Any changes to your registration can be made up to the day } date{05/25/2023} other{}}`
+  /// `Data Update`
+  String get updateUserTitle {
+    return Intl.message(
+      'Data Update',
+      name: 'updateUserTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want social name?`
+  String get socialNameAsk {
+    return Intl.message(
+      'Do you want social name?',
+      name: 'socialNameAsk',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change data`
+  String get alterData {
+    return Intl.message(
+      'Change data',
+      name: 'alterData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{social, select, title{Do you want social name on } certificate{your certificate?} other{}}`
+  String socialNameCertificateAsk(Object social) {
+    return Intl.select(
+      social,
+      {
+        'title': 'Do you want social name on ',
+        'certificate': 'your certificate?',
+        'other': '',
+      },
+      name: 'socialNameCertificateAsk',
+      desc: '',
+      args: [social],
+    );
+  }
+
+  /// `{info, select, title{* The name that appears here will be the one we will use for the purposes of issuing a certificate. Any changes to your registration can be made up to the day } date{05/25/2023} description2{, under penalty of the certificate being issued with the data provided here.} other{}}`
   String updateUserInfo(Object info) {
     return Intl.select(
       info,
@@ -2578,6 +2623,8 @@ class S {
         'title':
             '* The name that appears here will be the one we will use for the purposes of issuing a certificate. Any changes to your registration can be made up to the day ',
         'date': '05/25/2023',
+        'description2':
+            ', under penalty of the certificate being issued with the data provided here.',
         'other': '',
       },
       name: 'updateUserInfo',

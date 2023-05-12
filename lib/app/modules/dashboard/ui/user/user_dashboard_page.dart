@@ -49,10 +49,13 @@ class _UserDashboardPageState
                     const SizedBox(
                       height: 16,
                     ),
-                    UserDataWidget(
-                      logout: () {
-                        navBarController.logout();
-                      },
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      child: UserDataWidget(
+                        logout: () {
+                          navBarController.logout();
+                        },
+                      ),
                     ),
                     const SizedBox(
                       height: 200,
@@ -273,10 +276,13 @@ class _UserDashboardPageState
                         const SizedBox(
                           height: 16,
                         ),
-                        UserDataWidget(
-                          logout: () {
-                            navBarController.logout();
-                          },
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 6),
+                          child: UserDataWidget(
+                            logout: () {
+                              navBarController.logout();
+                            },
+                          ),
                         ),
                         const SizedBox(
                           height: 200,

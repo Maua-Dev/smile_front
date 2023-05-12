@@ -299,7 +299,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 'Autorizo o envio de notificação por email, para fins de divulgação da Smile.',
           })}";
 
-  static String m32(speakers) => "${Intl.select(speakers, {
+  static String m33(speakers) => "${Intl.select(speakers, {
             'bruno':
                 'Atual Vice-Presidente da empresa de consultoria júnior, Mauá Jr. Estudante do terceiro ano de Engenharia de Produção no Instituto Mauá de Tecnologia e Técnico em Eletrônica formado pelo Instituto Federal de São Paulo (IFSP). Uma pessoa muito curiosa que gosta de explorar novos desafios e conhecer novos ambientes. Interessado em idiomas e novas culturas, está sempre disposto a adquirir novos conhecimentos.',
             'wellington':
@@ -329,7 +329,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m33(speakers) => "${Intl.select(speakers, {
+  static String m34(speakers) => "${Intl.select(speakers, {
             'bruno': 'Bruno Keizo – Mauá Jr.',
             'wellington': 'Wellington Vitorino',
             'vanessa': 'Vanessa Piratelo Occhipinti',
@@ -346,14 +346,16 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m34(info) => "${Intl.select(info, {
+  static String m35(info) => "${Intl.select(info, {
             'title':
                 '* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia ',
             'date': '25/05/2023',
+            'description2':
+                ', sob pena do certificado ser emitido com os dados aqui fornecidos.',
             'other': '',
           })}";
 
-  static String m35(schema) => "${Intl.select(schema, {
+  static String m36(schema) => "${Intl.select(schema, {
             'STUDENT': 'Estudante Mauá',
             'EXTERNAL': 'Visitante',
             'EMPLOYEE': 'Funcionário',
@@ -418,6 +420,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadySubscribedOnThisPeriodWarning":
             MessageLookupByLibrary.simpleMessage(
                 "Parece que você já se inscreveu em uma atividade no mesmo horário."),
+        "alterData": MessageLookupByLibrary.simpleMessage("Alterar dados"),
         "availabeSpotUnsuficient": MessageLookupByLibrary.simpleMessage(
             "Parece que o número de vagas da atividade se esgotou :("),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
@@ -656,6 +659,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDate": MessageLookupByLibrary.simpleMessage("22 a 27 de Maio"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("22 a 27 de Maio de 2023"),
+        "socialNameAsk":
+            MessageLookupByLibrary.simpleMessage("Deseja nome social?"),
         "speakerNameTitle":
             MessageLookupByLibrary.simpleMessage("Nome do Palestrante"),
         "speakersAddTitle":
@@ -674,8 +679,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Tecnologia em transformação: impactos na sociedade, educação e mercado de trabalho"),
         "speakersPanelTitle3": MessageLookupByLibrary.simpleMessage(
             "Grandes desafios da humanidade"),
-        "speakersSchemaDescription": m32,
-        "speakersSchemaName": m33,
+        "speakersSchemaDescription": m33,
+        "speakersSchemaName": m34,
         "speakersTitle": MessageLookupByLibrary.simpleMessage("Palestrantes"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Patrocinadores"),
         "subcribeTitle": MessageLookupByLibrary.simpleMessage("Inscrever-se"),
@@ -722,8 +727,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "unsubscribeVerificationClosedRegistration":
             MessageLookupByLibrary.simpleMessage(
                 "Cuidado: inscrições desta atividade encerradas, você não conseguirá se inscrever novamente!"),
-        "updateUserInfo": m34,
-        "userRolesNameSchema": m35,
+        "updateUserInfo": m35,
+        "updateUserTitle":
+            MessageLookupByLibrary.simpleMessage("Alteração de dados"),
+        "userRolesNameSchema": m36,
         "validationCodeTitle":
             MessageLookupByLibrary.simpleMessage("Código de validação"),
         "whatIsSmile":

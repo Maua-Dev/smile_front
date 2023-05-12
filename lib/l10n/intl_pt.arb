@@ -316,5 +316,10 @@
         }
     },
 
-    "updateUserInfo": "{info, select, title{* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia } date{25/05/2023} other{}}"
+
+    "updateUserTitle": "Alteração de dados",
+    "socialNameAsk": "Deseja nome social?",
+    "alterData": "Alterar dados",
+    "socialNameCertificate": "{social, select, title{Usar nome social no } certificate{certificado?} other{}}",
+    "updateUserInfo": "{info, select, title{* O nome que aqui constar, será o que utilizaremos para fins de emissão de certificado. Qualquer alteração no seu cadastro poderá ser feita até o dia } date{25/05/2023} description2{, sob pena do certificado ser emitido com os dados aqui fornecidos.} other{}}"
 }

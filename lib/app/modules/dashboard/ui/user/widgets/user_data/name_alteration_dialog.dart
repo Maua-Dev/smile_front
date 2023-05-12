@@ -62,7 +62,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Alteração de dados',
+                        S.of(context).updateUserTitle,
                         style: AppTextStyles.titleH1.copyWith(
                             fontSize: MediaQuery.of(context).size.width < 500
                                 ? 18
@@ -92,7 +92,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Nome:',
+                        S.of(context).registerFullNamePlaceholder,
                         style: AppTextStyles.body.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 500
@@ -148,7 +148,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Deseja nome social?',
+                          S.of(context).socialNameAsk,
                           style: AppTextStyles.body.copyWith(
                               color: Colors.black,
                               fontSize: MediaQuery.of(context).size.width < 500
@@ -183,7 +183,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Nome social:',
+                        S.of(context).registerSocialNamePlaceholder,
                         style: AppTextStyles.body.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 500
@@ -247,8 +247,8 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                         children: [
                           Text(
                             MediaQuery.of(context).size.width < 410
-                                ? 'Usar nome social no\ncertificado?'
-                                : 'Usar nome social no certificado?',
+                                ? "${S.of(context).socialNameCertificateAsk('title')}\n${S.of(context).socialNameCertificateAsk('certificate')}"
+                                : "${S.of(context).socialNameCertificateAsk('title')}${S.of(context).socialNameCertificateAsk('certificate')}",
                             style: AppTextStyles.body.copyWith(
                                 color: Colors.black,
                                 fontSize: MediaQuery.of(context).size.width <
@@ -350,8 +350,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                                         : 16),
                           ),
                           TextSpan(
-                            text:
-                                ', sob pena do certificado ser emitido com os dados aqui fornecidos.',
+                            text: S.of(context).updateUserInfo('description2'),
                             style: AppTextStyles.body.copyWith(
                                 color: Colors.black,
                                 fontSize: MediaQuery.of(context).size.width <
@@ -369,7 +368,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                   Observer(builder: (_) {
                     return CustomElevatedButtonWidget(
                       isLoading: widget.isLoading,
-                      title: 'Alterar dados',
+                      title: S.of(context).alterData,
                       widthSize: MediaQuery.of(context).size.width < 650
                           ? MediaQuery.of(context).size.width * 0.85
                           : 600,

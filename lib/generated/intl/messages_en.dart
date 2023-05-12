@@ -305,7 +305,13 @@ class MessageLookup extends MessageLookupByLibrary {
                 'I authorize the sending of notification by email, for the purposes of promoting Smile.',
           })}";
 
-  static String m32(speakers) => "${Intl.select(speakers, {
+  static String m32(social) => "${Intl.select(social, {
+            'title': 'Do you want social name on ',
+            'certificate': 'your certificate?',
+            'other': '',
+          })}";
+
+  static String m33(speakers) => "${Intl.select(speakers, {
             'bruno':
                 'Current Vice President of the junior consulting firm, Mauá Jr. Student of the third year of Production Engineering at the Mauá Institute of Technology and Electronics Technician graduated from the Federal Institute of São Paulo (IFSP). A very curious person who likes to explore new challenges and get to know new environments. Interested in languages ​​and new cultures, he is always willing to acquire new knowledge.',
             'wellington':
@@ -335,7 +341,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m33(speakers) => "${Intl.select(speakers, {
+  static String m34(speakers) => "${Intl.select(speakers, {
             'bruno': 'Bruno Keizo – Mauá Jr.',
             'wellington': 'Wellington Vitorino',
             'vanessa': 'Vanessa Piratelo Occhipinti',
@@ -352,14 +358,16 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': '',
           })}";
 
-  static String m34(info) => "${Intl.select(info, {
+  static String m35(info) => "${Intl.select(info, {
             'title':
                 '* The name that appears here will be the one we will use for the purposes of issuing a certificate. Any changes to your registration can be made up to the day ',
             'date': '05/25/2023',
+            'description2':
+                ', under penalty of the certificate being issued with the data provided here.',
             'other': '',
           })}";
 
-  static String m35(schema) => "${Intl.select(schema, {
+  static String m36(schema) => "${Intl.select(schema, {
             'STUDENT': 'Mauá Student',
             'EXTERNAL': 'External',
             'EMPLOYEE': 'Employee',
@@ -423,6 +431,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadySubscribedOnThisPeriodWarning":
             MessageLookupByLibrary.simpleMessage(
                 "It seems you are already subscribed on another activity at this period."),
+        "alterData": MessageLookupByLibrary.simpleMessage("Change data"),
         "availabeSpotUnsuficient": MessageLookupByLibrary.simpleMessage(
             "It seems that the number of vacancies for this activity has run out :("),
         "beSponsorDescription": MessageLookupByLibrary.simpleMessage(
@@ -606,7 +615,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noTitle": MessageLookupByLibrary.simpleMessage("No"),
         "notificationsSchema": m28,
         "notificationsSchemaTitle": MessageLookupByLibrary.simpleMessage(
-            "I want to receive notifications by "),
+            "I want to receive notifications"),
         "notificationsTitle":
             MessageLookupByLibrary.simpleMessage("Means of notification:"),
         "panelsTitle": MessageLookupByLibrary.simpleMessage("Panels"),
@@ -657,6 +666,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "smileDate": MessageLookupByLibrary.simpleMessage("May 22 to 27"),
         "smileDateWithYear":
             MessageLookupByLibrary.simpleMessage("May 22 to 27, 2023"),
+        "socialNameAsk":
+            MessageLookupByLibrary.simpleMessage("Do you want social name?"),
+        "socialNameCertificateAsk": m32,
         "speakerNameTitle":
             MessageLookupByLibrary.simpleMessage("Speaker Name"),
         "speakersAddTitle": MessageLookupByLibrary.simpleMessage("Add Speaker"),
@@ -674,8 +686,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Technology in transformation: impacts on society, education and the labor market"),
         "speakersPanelTitle3": MessageLookupByLibrary.simpleMessage(
             "Humanity\'s Great Challenges"),
-        "speakersSchemaDescription": m32,
-        "speakersSchemaName": m33,
+        "speakersSchemaDescription": m33,
+        "speakersSchemaName": m34,
         "speakersTitle": MessageLookupByLibrary.simpleMessage("Speakers"),
         "sponsorsTitle": MessageLookupByLibrary.simpleMessage("Sponsors"),
         "subcribeTitle": MessageLookupByLibrary.simpleMessage("Subscribe"),
@@ -722,8 +734,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "unsubscribeVerificationClosedRegistration":
             MessageLookupByLibrary.simpleMessage(
                 "Carefull! The subscriptions for this activity havealready been closed, yo will not be able to subscribe on this activity again!"),
-        "updateUserInfo": m34,
-        "userRolesNameSchema": m35,
+        "updateUserInfo": m35,
+        "updateUserTitle": MessageLookupByLibrary.simpleMessage("Data Update"),
+        "userRolesNameSchema": m36,
         "validationCodeTitle":
             MessageLookupByLibrary.simpleMessage("Validation Code"),
         "whatIsSmile":

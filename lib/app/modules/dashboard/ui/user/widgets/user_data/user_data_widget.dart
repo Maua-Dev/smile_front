@@ -39,7 +39,7 @@ class UserDataWidget extends StatelessWidget {
           )
         else
           Text(
-            'Olá, ${controller.socialName!.split(' ').first}',
+            S.of(context).helloTitle(controller.socialName!.split(' ').first),
             style: AppTextStyles.titleH1.copyWith(
                 fontSize: MediaQuery.of(context).size.width < 500
                     ? 35

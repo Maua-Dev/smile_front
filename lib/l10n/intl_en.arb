@@ -124,7 +124,7 @@
     "registerConfirmPasswordPlaceholder": "Confirm password",
     "registerTerms": "{terms, select, one{I am aware that the entire event will be recorded and photographed, with the purpose of promoting Smile.} two{I have read and accept the Terms of Use.} three{I authorize the sending of notification by email, for the purposes of promoting Smile.}}",
     "notificationsTitle": "Means of notification:",
-    "notificationsSchemaTitle": "I want to receive notifications by ",
+    "notificationsSchemaTitle": "I want to receive notifications",
     "notificationsSchema": "{notification, select, email{EMAIL} other{}}",
     "registerTitle": "Register",
     "emailNotificationTitle": "We sent an email (contato@devmaua.com) to you, please check your inbox, spam or promotional and click on the confirmation link to validate your registration.",
@@ -312,5 +312,10 @@
         }
     },
 
-    "updateUserInfo": "{info, select, title{* The name that appears here will be the one we will use for the purposes of issuing a certificate. Any changes to your registration can be made up to the day } date{05/25/2023} other{}}"
+
+    "updateUserTitle": "Data Update",
+    "socialNameAsk": "Do you want social name?",
+    "alterData": "Change data",
+    "socialNameCertificateAsk": "{social, select, title{Do you want social name on } certificate{your certificate?} other{}}",
+    "updateUserInfo": "{info, select, title{* The name that appears here will be the one we will use for the purposes of issuing a certificate. Any changes to your registration can be made up to the day } date{05/25/2023} description2{, under penalty of the certificate being issued with the data provided here.} other{}}"
 }
