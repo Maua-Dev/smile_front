@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                               height: 40,
                             ),
                             Text(
-                              'Abertura das Incrições: 08/05',
+                              S.of(context).homeSubscription,
                               style: AppTextStyles.titleH1.copyWith(
                                   fontSize:
                                       (Screen.width(context) < cellphoneSize

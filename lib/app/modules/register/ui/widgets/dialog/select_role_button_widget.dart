@@ -30,6 +30,7 @@ class SelectRoleButtonWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10))),
           child: Text(
             title,
+            textAlign: TextAlign.center,
             style: AppTextStyles.body.copyWith(
                 color: AppColors.backgroundLogin,
                 fontSize: Screen.width(context) < 400 ? 18 : 22),

@@ -16,7 +16,6 @@ import '../../auth/presenter/controllers/auth_controller.dart';
 class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   final SecureStorageInterface storage;
   var authController = Modular.get<AuthController>();
-  static int requestCounter = 0;
   BaseOptions options = BaseOptions(
     baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
     responseType: ResponseType.json,
@@ -36,38 +35,50 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
       bool needAutorization = true,
       dynamic data}) async {
     var token = await storage.getIdToken();
-    try {
-      needAutorization ? dio.options.headers["authorization"] = "$token" : null;
-      Response res;
-      switch (http) {
-        case 'post':
-          res = await dio.post(url, data: data);
-          break;
-        case 'put':
-          res = await dio.put(url, data: data);
-          break;
-        default:
-          res = await dio.get(url);
-      }
-      requestCounter = 0;
-      return res;
-    } on DioError catch (e) {
-      if (e.response == null || e.response!.statusCode == 401) {
-        await authController.refreshUserToken();
-        requestCounter++;
-        if (requestCounter < 2) {
-          var res = await middleware(
-              http: http,
-              url: url,
-              needAutorization: needAutorization,
-              data: data);
-          requestCounter = 0;
-          return res.data;
-        }
-      }
-      showErrorSnackBar(errorMessage: e.response!.data);
-      return e.response!;
+    needAutorization ? dio.options.headers["authorization"] = "$token" : null;
+    Response? res;
+    switch (http) {
+      case 'post':
+        res = await post(url, data);
+        break;
+      case 'put':
+        res = await put(url, data);
+        break;
+      default:
+        res = await get(url, data);
     }
+    return res;
+  }
+
+  Future<Response> get(String url, dynamic data) async {
+    return await _handleRequest(() => dio.get(url));
+  }
+
+  Future<Response> post(String url, dynamic data) async {
+    return await _handleRequest(() => dio.post(url, data: data));
+  }
+
+  Future<Response> put(String url, dynamic data) async {
+    return await _handleRequest(() => dio.put(url, data: data));
+  }
+
+  Future<Response> _handleRequest(Future<Response> Function() request) async {
+    try {
+      return await request();
+    } on DioError catch (e) {
+      return _handleError(e, request);
+    }
+  }
+
+  Future<Response> _handleError(
+      DioError e, Future<Response> Function() request) async {
+    if (e.response == null || e.response!.statusCode == 401) {
+      await authController.refreshUserToken();
+      dio.options.headers["authorization"] = await storage.getIdToken();
+      return await request();
+    }
+    showErrorSnackBar(errorMessage: e.response!.data);
+    return Future.value(e.response);
   }
 
   @override
