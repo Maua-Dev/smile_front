@@ -95,8 +95,9 @@ class _CertificatePageState
                             child: RichText(
                                 textAlign: TextAlign.center,
                                 text: TextSpan(
-                                    text:
-                                        'Data limite para alterações no seu certificado: ',
+                                    text: S
+                                        .of(context)
+                                        .certificatesSubscriptionInfo('title'),
                                     style: AppTextStyles.body.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <
@@ -106,7 +107,10 @@ class _CertificatePageState
                                         color: Colors.black),
                                     children: [
                                       TextSpan(
-                                        text: '13/06/2023.',
+                                        text: S
+                                            .of(context)
+                                            .certificatesSubscriptionInfo(
+                                                'date'),
                                         style: AppTextStyles.titleH1.copyWith(
                                             fontSize: MediaQuery.of(context)
                                                         .size

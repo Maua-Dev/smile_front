@@ -105,7 +105,7 @@ class _MainHomePageState extends State<MainHomePage> {
             child: Image(
               image: CachedNetworkImageProvider(
                   '${s3AssetsBaseUrl}smile-home.jpg'),
-              fit: BoxFit.cover,
+              fit: BoxFit.fitWidth,
             ),
           ),
           const SizedBox(
