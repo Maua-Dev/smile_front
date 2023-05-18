@@ -66,7 +66,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future showDialogWeb() async {
-    kIsWeb
+    (kIsWeb && MediaQuery.of(context).size.width < 1024 ||
+            MediaQuery.of(context).size.height < 768)
         ? showDialog(
             context: context,
             builder: (context) {
@@ -77,7 +78,9 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.all(Radius.circular(15.0))),
                 title: Text(
                   S.of(context).webDialogTitle,
+                  textAlign: TextAlign.center,
                 ),
+                actionsOverflowAlignment: OverflowBarAlignment.center,
                 actions: [
                   MouseRegion(
                     cursor: SystemMouseCursors.click,
