@@ -286,7 +286,9 @@ class _MoreInfoPageState
                         controller.enrollmentState !=
                             EnrollmentStateEnum.ENROLLED &&
                         controller.enrollmentState !=
-                            EnrollmentStateEnum.COMPLETED
+                            EnrollmentStateEnum.COMPLETED &&
+                        controller.enrollmentState !=
+                            EnrollmentStateEnum.IN_QUEUE
                     ? Text(
                         S.of(context).unavailabeSubscribe,
                         textAlign: TextAlign.center,
