@@ -8,6 +8,7 @@
     "smileDateWithYear": "22 a 27 de Maio de 2023",
     "userRolesNameSchema": "{schema, select, STUDENT{Estudante Mauá} EXTERNAL{Visitante} EMPLOYEE{Funcionário} INTERNAL_STUDENT{Estudante Internacional} PROFESSOR{Professor/Colaborador IMT} ADMIN{Admin} other{}}",
     "whatIsSmile": "O que é a semana SMILE?",
+    "webDialogTitle": "Para uma melhor experiência, faça download do nosso app:",
     
     "knowMore": "SAIBA MAIS >>>",
     "speakersTitle": "Palestrantes",

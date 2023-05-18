@@ -154,6 +154,16 @@ class S {
     );
   }
 
+  /// `For a better experience, download our app:`
+  String get webDialogTitle {
+    return Intl.message(
+      'For a better experience, download our app:',
+      name: 'webDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `KNOW MORE >>>`
   String get knowMore {
     return Intl.message(
