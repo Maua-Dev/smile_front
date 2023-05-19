@@ -536,7 +536,8 @@ abstract class UserDashboardControllerBase with Store {
             activity.startDate!.hour + hour.toInt(),
             activity.startDate!.minute + minutes.toInt());
         if (activity.startDate!.isAfter(DateTime.now()) &&
-            finalTime.isAfter(DateTime.now())) {
+            finalTime.isAfter(DateTime.now()) &&
+            activity.enrollments!.state != EnrollmentStateEnum.IN_QUEUE) {
           nextActivity = activity;
           break;
         }

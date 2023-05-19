@@ -133,8 +133,6 @@ void main() {
         ));
     when(datasource.createActivity(AdminActivityModel.newInstance()))
         .thenAnswer((_) async => null);
-    // when(datasource.getAllActivitiesLogged())
-    //     .thenAnswer((_) async => mockActivities);
     when(datasource.getAllActivities()).thenAnswer((_) async => mockActivities);
     repository = ActivitiesRepositoryImpl(datasource: datasource);
   });
