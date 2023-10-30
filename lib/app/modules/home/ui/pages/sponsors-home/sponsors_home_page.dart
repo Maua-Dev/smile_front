@@ -92,6 +92,7 @@ class BeSponsor extends StatelessWidget {
         builder: (context) => const SponsorFormDialog(),
       );
       if (res != null && res) {
+        // ignore: use_build_context_synchronously
         showDialog(
             context: context,
             builder: (context) => AlertDialog(

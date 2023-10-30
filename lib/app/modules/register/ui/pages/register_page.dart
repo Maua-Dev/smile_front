@@ -33,6 +33,7 @@ class _RegisterPageState
 
   _showSelectRoleDialog() async {
     await Future.delayed(const Duration(milliseconds: 50));
+    // ignore: use_build_context_synchronously
     showDialog(
         barrierDismissible: false,
         context: context,

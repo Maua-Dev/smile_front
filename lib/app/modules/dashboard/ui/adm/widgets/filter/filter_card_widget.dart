@@ -104,7 +104,8 @@ class FilterCardWidget extends StatelessWidget {
                 builder: ((context, child) {
                   return Theme(
                     data: Theme.of(context).copyWith(
-                        textTheme: TextTheme(headline5: AppTextStyles.body)),
+                        textTheme:
+                            TextTheme(headlineSmall: AppTextStyles.body)),
                     child: child!,
                   );
                 })).then((date) {

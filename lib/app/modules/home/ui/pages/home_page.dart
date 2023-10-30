@@ -133,11 +133,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 } else {
-                  return Center(
+                  return const Center(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
+                    children: [
                       SmileLoadingLogoWidget(),
                       CircularProgressIndicator(),
                     ],
