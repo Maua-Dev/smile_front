@@ -5,6 +5,9 @@ class ResponsibleProfessor {
   final String name;
   final UserRolesEnum role;
 
-  ResponsibleProfessor(
-      {required this.id, required this.name, required this.role});
+  ResponsibleProfessor({
+    required this.id,
+    required this.name,
+    required this.role,
+  });
 }
