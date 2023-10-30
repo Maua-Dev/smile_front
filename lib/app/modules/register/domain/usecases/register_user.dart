@@ -1,4 +1,4 @@
-import 'package:smile_front/app/shared/entities/user_registration.dart';
+import 'package:smile_front/app/shared/domain/entities/user_registration.dart';
 
 import '../repositories/register_informations_repository_interface.dart';
 

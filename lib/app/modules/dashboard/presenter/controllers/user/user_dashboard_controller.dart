@@ -8,8 +8,8 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_user.da
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/infra/models/enrolls_activity_model.dart';
 import '../../../../../../generated/l10n.dart';
-import '../../../../../shared/entities/infra/enroll_button_enum.dart';
-import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
+import '../../../../../shared/domain/enum/enroll_button_enum.dart';
+import '../../../../../shared/domain/enum/enrollment_state_enum.dart';
 import '../../../../../shared/infra/models/enrollments_model.dart';
 
 part 'user_dashboard_controller.g.dart';

@@ -7,7 +7,7 @@ import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.da
 import 'package:smile_front/app/shared/helpers/services/s3/assets_s3.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../../shared/entities/screen_variables.dart';
+import '../../../../../shared/domain/entities/screen_variables.dart';
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/helpers/utils/screen_helper.dart';
 

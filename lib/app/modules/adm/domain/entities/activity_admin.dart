@@ -1,7 +1,7 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
-import 'package:smile_front/app/shared/entities/responsible_professor.dart';
-import 'package:smile_front/app/shared/entities/speaker.dart';
+import 'package:smile_front/app/shared/domain/enum/delivery_enum.dart';
+import 'package:smile_front/app/shared/domain/entities/responsible_professor.dart';
+import 'package:smile_front/app/shared/domain/entities/speaker.dart';
 
 class ActivityAdmin {
   final String activityCode;

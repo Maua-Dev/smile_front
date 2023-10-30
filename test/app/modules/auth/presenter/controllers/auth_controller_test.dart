@@ -7,8 +7,8 @@ import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_
 import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
 import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
-import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
-import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/access_level_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/user_roles_enum.dart';
 import 'package:smile_front/app/shared/infra/models/user_model.dart';
 
 import 'package:smile_front/generated/l10n.dart';

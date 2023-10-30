@@ -5,7 +5,7 @@ import 'package:smile_front/app/modules/register/ui/widgets/check_box_widget.dar
 import 'package:smile_front/app/modules/register/ui/widgets/dialog/select_role_dialog.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/enable_text_field_check_box_widget.dart';
 import 'package:smile_front/app/modules/register/ui/widgets/switch_toggle_widget.dart';
-import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/user_roles_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../shared/themes/app_text_styles.dart';

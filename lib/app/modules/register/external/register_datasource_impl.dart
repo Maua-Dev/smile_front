@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:smile_front/app/shared/entities/user_registration.dart';
+import 'package:smile_front/app/shared/domain/entities/user_registration.dart';
 import '../../../shared/helpers/environment/environment_config.dart';
 import '../infra/datasources/register_datasource_interface.dart';
 import 'errors/errors.dart';

@@ -1,4 +1,4 @@
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/infra/models/activity_model.dart';
 import 'package:smile_front/app/shared/infra/models/professor_activity_model.dart';
 import '../../../../shared/infra/models/admin_activity_model.dart';

@@ -6,7 +6,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-import '../../../../../shared/entities/infra/user_roles_enum.dart';
+import '../../../../../shared/domain/enum/user_roles_enum.dart';
 import '../../../presenter/controllers/register_controller.dart';
 
 class SelectRoleDialog extends StatelessWidget {

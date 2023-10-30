@@ -8,7 +8,7 @@ import 'package:smile_front/app/shared/widgets/app_bar/home_app_bar_widget.dart'
 import 'package:smile_front/app/shared/widgets/drawer/end_drawer_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../app_module.dart';
-import '../../../../shared/entities/screen_variables.dart';
+import '../../../../shared/domain/entities/screen_variables.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/helpers/utils/screen_helper.dart';

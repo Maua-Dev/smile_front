@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/status_button/status_button.dart';
-import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/delivery_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/infra/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';

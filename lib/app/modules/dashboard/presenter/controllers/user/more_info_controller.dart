@@ -4,7 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/send_confirm_attendance.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
 import 'package:smile_front/app/shared/infra/models/enrolls_activity_model.dart';
-import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
+import '../../../../../shared/domain/enum/enrollment_state_enum.dart';
 import '../../../../../shared/helpers/utils/utils.dart';
 import '../../../../auth/domain/repositories/secure_storage_interface.dart';
 

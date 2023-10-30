@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/tooltip/tooltip_widget.dart';
+import 'package:smile_front/app/shared/domain/enum/delivery_enum.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../../../shared/entities/infra/delivery_enum.dart';
-import '../../../../../../shared/entities/screen_variables.dart';
+import '../../../../../../shared/domain/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/helpers/utils/screen_helper.dart';

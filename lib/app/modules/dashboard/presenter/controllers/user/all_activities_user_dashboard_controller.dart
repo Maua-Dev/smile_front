@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
+import 'package:smile_front/app/shared/domain/enum/enroll_button_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/enrollment_state_enum.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../../shared/entities/infra/enroll_button_enum.dart';
-import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
 import '../../../../../shared/infra/models/enrollments_model.dart';
 import '../../../../../shared/infra/models/enrolls_activity_model.dart';
 

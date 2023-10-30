@@ -5,7 +5,7 @@ import 'package:smile_front/app/shared/helpers/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:math' as math;
 
-import '../../../../../../shared/entities/screen_variables.dart';
+import '../../../../../../shared/domain/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/themes/breakpoint.dart';

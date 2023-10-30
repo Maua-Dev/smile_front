@@ -2,7 +2,7 @@
 
 import 'package:enum_to_string/enum_to_string.dart';
 
-import '../../../../generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 
 enum UserRolesEnum {
   STUDENT,

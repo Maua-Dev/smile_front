@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/enrollment_state_enum.dart';
 
 import 'package:smile_front/app/shared/infra/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';

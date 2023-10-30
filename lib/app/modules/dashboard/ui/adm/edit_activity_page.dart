@@ -10,7 +10,7 @@ import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_b
 import 'package:smile_front/app/shared/widgets/custom_elevated_button_widget.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../shared/entities/screen_variables.dart';
+import '../../../../shared/domain/entities/screen_variables.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
 import '../../../../shared/helpers/utils/screen_helper.dart';

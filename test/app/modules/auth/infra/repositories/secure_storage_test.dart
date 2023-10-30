@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/auth/infra/repositories/secure_storage.dart';
-import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/user_roles_enum.dart';
 
 import 'secure_storage_test.mocks.dart';
 

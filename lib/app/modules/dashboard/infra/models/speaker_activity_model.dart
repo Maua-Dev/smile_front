@@ -1,4 +1,4 @@
-import 'package:smile_front/app/shared/entities/speaker.dart';
+import 'package:smile_front/app/shared/domain/entities/speaker.dart';
 
 class SpeakerActivityModel extends Speaker {
   SpeakerActivityModel({

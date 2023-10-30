@@ -1,5 +1,6 @@
-import 'infra/access_level_enum.dart';
-import 'infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/access_level_enum.dart';
+
+import '../enum/user_roles_enum.dart';
 
 class User {
   final String email;

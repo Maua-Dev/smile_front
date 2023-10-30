@@ -14,7 +14,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
-import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/user_roles_enum.dart';
 import 'package:smile_front/app/shared/infra/models/admin_activity_model.dart';
 import 'package:smile_front/app/shared/infra/models/responsible_professor_model.dart';
 import 'package:smile_front/generated/l10n.dart';

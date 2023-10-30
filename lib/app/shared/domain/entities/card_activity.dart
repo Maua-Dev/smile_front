@@ -1,5 +1,5 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
+import '../../../modules/dashboard/infra/models/speaker_activity_model.dart';
 
 class CardActivity {
   final String id;

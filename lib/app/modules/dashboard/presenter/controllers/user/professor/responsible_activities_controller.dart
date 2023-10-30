@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:mobx/mobx.dart';
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/enrollment_state_enum.dart';
 import '../../../../../../../generated/l10n.dart';
-import '../../../../../../shared/entities/infra/enroll_button_enum.dart';
+import '../../../../../../shared/domain/enum/enroll_button_enum.dart';
 import '../../../../../../shared/infra/models/enrollments_model.dart';
 import '../../../../../../shared/infra/models/enrolls_activity_model.dart';
 import '../../../../../auth/domain/repositories/secure_storage_interface.dart';

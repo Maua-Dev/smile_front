@@ -1,6 +1,6 @@
-import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
-import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
-import 'package:smile_front/app/shared/entities/user.dart';
+import 'package:smile_front/app/shared/domain/enum/access_level_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/user_roles_enum.dart';
+import 'package:smile_front/app/shared/domain/entities/user.dart';
 
 class UserModel extends User {
   final String userId;

@@ -6,7 +6,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/generate_confi
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_activities_with_enrollments.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/post_manual_change_attendance.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_activities_widgets/list_name_and_state_with_is_switched.dart';
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/infra/models/professor_activity_model.dart';
 import 'package:smile_front/app/shared/helpers/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';

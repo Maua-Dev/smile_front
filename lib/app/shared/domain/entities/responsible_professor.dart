@@ -1,4 +1,4 @@
-import 'infra/user_roles_enum.dart';
+import '../enum/user_roles_enum.dart';
 
 class ResponsibleProfessor {
   late final String id;

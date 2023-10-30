@@ -1,6 +1,6 @@
-import 'package:smile_front/app/shared/entities/responsible_professor.dart';
+import 'package:smile_front/app/shared/domain/entities/responsible_professor.dart';
 
-import '../../entities/infra/user_roles_enum.dart';
+import '../../domain/enum/user_roles_enum.dart';
 
 class ResponsibleProfessorModel extends ResponsibleProfessor {
   ResponsibleProfessorModel(

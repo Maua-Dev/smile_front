@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
-import 'package:smile_front/app/shared/entities/screen_variables.dart';
+import 'package:smile_front/app/shared/domain/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/widgets/custom_elevated_button_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/paragraph_text_widget.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';

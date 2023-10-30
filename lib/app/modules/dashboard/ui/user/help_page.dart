@@ -5,7 +5,7 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/hel
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/faq/faq_card_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-import '../../../../shared/entities/screen_variables.dart';
+import '../../../../shared/domain/entities/screen_variables.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/breakpoint.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';

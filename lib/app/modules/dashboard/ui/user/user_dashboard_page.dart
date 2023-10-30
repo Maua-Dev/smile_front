@@ -10,7 +10,7 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../shared/entities/infra/enrollment_state_enum.dart';
+import '../../../../shared/domain/enum/enrollment_state_enum.dart';
 import '../../../../shared/infra/models/enrollments_model.dart';
 import '../../../../shared/helpers/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';

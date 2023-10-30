@@ -1,4 +1,4 @@
-import 'package:smile_front/app/shared/entities/user.dart';
+import 'package:smile_front/app/shared/domain/entities/user.dart';
 
 class RegisterUserInformationsModel extends User {
   final String password;

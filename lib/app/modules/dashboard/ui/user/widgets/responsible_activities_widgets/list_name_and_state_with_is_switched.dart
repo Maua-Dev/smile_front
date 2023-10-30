@@ -1,4 +1,4 @@
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/enrollment_state_enum.dart';
 
 class ListNameAndStateWithIsSwitched {
   String name;

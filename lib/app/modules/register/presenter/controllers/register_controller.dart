@@ -1,12 +1,12 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
-import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
-import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/access_level_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/user_roles_enum.dart';
 import 'package:smile_front/generated/l10n.dart';
 import 'package:string_validator/string_validator.dart';
 import '../../../../app_widget.dart';
-import '../../../../shared/entities/user_registration.dart';
+import '../../../../shared/domain/entities/user_registration.dart';
 import '../../../../shared/helpers/errors/error_snackbar.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../external/errors/errors.dart';
