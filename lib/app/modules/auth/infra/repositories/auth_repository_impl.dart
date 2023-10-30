@@ -1,4 +1,4 @@
-import 'package:smile_front/app/shared/models/user_model.dart';
+import 'package:smile_front/app/shared/infra/models/user_model.dart';
 
 import '../../domain/repositories/auth_repository_interface.dart';
 import '../datasource/auth_datasource_interface.dart';

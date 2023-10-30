@@ -5,8 +5,8 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/use
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../shared/entities/infra/enroll_button_enum.dart';
 import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
-import '../../../../../shared/models/enrollments_model.dart';
-import '../../../../../shared/models/enrolls_activity_model.dart';
+import '../../../../../shared/infra/models/enrollments_model.dart';
+import '../../../../../shared/infra/models/enrolls_activity_model.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/infra/activity_enum.dart';

@@ -4,7 +4,7 @@ import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/vertical-nav-bar/vertical_nav_bar_widget.dart';
 import 'package:smile_front/app/shared/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
-import '../../../../shared/utils/screen_helper.dart';
+import '../../../../shared/helpers/utils/screen_helper.dart';
 import '../../../auth/presenter/controllers/auth_controller.dart';
 
 class LandingUserPage extends StatefulWidget {

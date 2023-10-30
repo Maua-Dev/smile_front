@@ -69,7 +69,7 @@ class _SideBarWidgetState
               padding: const EdgeInsets.only(top: 80),
               child: Text(
                 S.of(context).activityCreateTitle,
-                style: AppTextStyles.body
+                style: AppTextStyles.headline1
                     .copyWith(color: AppColors.white, fontSize: 15),
               ),
             )

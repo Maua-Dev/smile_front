@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import '../../../../../shared/models/enrolls_activity_model.dart';
+import '../../../../../shared/infra/models/enrolls_activity_model.dart';
 import '../../../domain/usecases/get_user_subscribed_activities.dart';
 import '../../../domain/usecases/subscribe_activities.dart';
 import '../../../domain/usecases/unsubscribe_activities.dart';

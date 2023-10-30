@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../shared/models/responsible_professor_model.dart';
+import '../../../../../../shared/infra/models/responsible_professor_model.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 
@@ -58,7 +58,7 @@ class AutocompleteTextField extends StatelessWidget {
                   controller: controller,
                   focusNode: focusNode,
                   onEditingComplete: onEditingComplete,
-                  style: AppTextStyles.body.copyWith(
+                  style: AppTextStyles.headline1.copyWith(
                       color: AppColors.brandingBlue,
                       fontSize:
                           MediaQuery.of(context).size.width < 1200 ? 16 : 20),
@@ -87,9 +87,9 @@ class AutocompleteTextField extends StatelessWidget {
                         borderSide: BorderSide(
                             color: AppColors.brandingBlue, width: 0.0),
                       ),
-                      labelStyle: AppTextStyles.titleH1.copyWith(
+                      labelStyle: AppTextStyles.headline1.copyWith(
                           color: AppColors.brandingBlue, fontSize: 22),
-                      hintStyle: AppTextStyles.body.copyWith(
+                      hintStyle: AppTextStyles.headline1.copyWith(
                           color: AppColors.brandingBlue, fontSize: 20),
                       contentPadding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 16),

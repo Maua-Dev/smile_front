@@ -49,7 +49,7 @@ class CheckBoxWidget extends StatelessWidget {
                   },
                   child: Text(
                     title,
-                    style: AppTextStyles.titleH1.copyWith(
+                    style: AppTextStyles.headline1.copyWith(
                         color: AppColors.gray,
                         fontSize: 14,
                         decoration: TextDecoration.underline),

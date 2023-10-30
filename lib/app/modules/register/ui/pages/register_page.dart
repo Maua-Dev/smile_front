@@ -100,7 +100,7 @@ class _RegisterPageState
                                   ),
                                   child: Text(
                                     controller.errors,
-                                    style: AppTextStyles.body.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                       fontSize: 18,
                                       color: Colors.white,
                                     ),

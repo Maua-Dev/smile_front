@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-import '../../../shared/services/environment/environment_config.dart';
+import '../../../shared/helpers/environment/environment_config.dart';
 import '../infra/datasources/forgot_password_datasource.dart';
 import 'errors.dart';
 

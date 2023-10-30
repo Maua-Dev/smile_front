@@ -25,7 +25,7 @@ class TextHeaderScratched extends StatelessWidget {
             padding: const EdgeInsets.only(right: 16),
             child: Text(
               title,
-              style: AppTextStyles.titleH1.copyWith(
+              style: AppTextStyles.headline1.copyWith(
                   fontSize: MediaQuery.of(context).size.width < 1300 ? 38 : 45,
                   color: color ?? AppColors.brandingBlue),
             ),

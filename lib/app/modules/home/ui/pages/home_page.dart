@@ -11,7 +11,7 @@ import '../../../../app_module.dart';
 import '../../../../shared/entities/screen_variables.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
-import '../../../../shared/utils/screen_helper.dart';
+import '../../../../shared/helpers/utils/screen_helper.dart';
 import '../../../auth/presenter/controllers/auth_controller.dart';
 import 'activities-home/activities_home_page.dart';
 import 'main-home/main_home_page.dart';
@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Text(
                               S.of(context).homeSubscription,
-                              style: AppTextStyles.titleH1.copyWith(
+                              style: AppTextStyles.headline1.copyWith(
                                   fontSize:
                                       (Screen.width(context) < cellphoneSize
                                           ? 24

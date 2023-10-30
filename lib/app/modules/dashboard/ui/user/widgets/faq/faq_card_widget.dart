@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../../shared/utils/screen_helper.dart';
+import '../../../../../../shared/helpers/utils/screen_helper.dart';
 
 class FaqCardWidget extends StatelessWidget {
   final String titulo;
@@ -28,7 +28,7 @@ class FaqCardWidget extends StatelessWidget {
           children: [
             Text(
               titulo,
-              style: AppTextStyles.titleH1.copyWith(
+              style: AppTextStyles.headline1.copyWith(
                   fontSize: MediaQuery.of(context).size.width < 1000 ? 20 : 30,
                   color: AppColors.brandingBlue),
             ),
@@ -57,7 +57,7 @@ class FaqCardWidget extends StatelessWidget {
               },
             ),
             // SelectableText(descricao,
-            //     style: AppTextStyles.body.copyWith(
+            //     style: AppTextStyles.headline1.copyWith(
             //         fontSize: Screen.width(context) < cellphoneSize
             //             ? 14
             //             : Screen.width(context) < tabletSize

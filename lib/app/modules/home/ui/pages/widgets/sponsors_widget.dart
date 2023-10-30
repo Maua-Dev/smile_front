@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../../../../../shared/utils/screen_helper.dart';
+import '../../../../../shared/helpers/utils/screen_helper.dart';
 
 class SponsorsWidget extends StatelessWidget {
   const SponsorsWidget(

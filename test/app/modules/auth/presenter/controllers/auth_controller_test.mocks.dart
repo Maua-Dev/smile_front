@@ -12,7 +12,7 @@ import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.da
     as _i6;
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart'
     as _i5;
-import 'package:smile_front/app/shared/models/user_model.dart' as _i2;
+import 'package:smile_front/app/shared/infra/models/user_model.dart' as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

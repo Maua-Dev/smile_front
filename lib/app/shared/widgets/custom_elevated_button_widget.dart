@@ -63,7 +63,7 @@ class CustomElevatedButtonWidget extends StatelessWidget {
               : Text(title ?? '',
                   textAlign: TextAlign.center,
                   style: textStyle ??
-                      AppTextStyles.body.copyWith(
+                      AppTextStyles.headline1.copyWith(
                           color: fontColor ?? AppColors.white,
                           fontSize: MediaQuery.of(context).size.width < 1300
                               ? 20

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-import '../../app_widget.dart';
+import '../../../app_widget.dart';
 
 void showErrorSnackBar({required String errorMessage, Color? color}) {
   scaffold.showSnackBar(SnackBar(
@@ -14,7 +14,7 @@ void showErrorSnackBar({required String errorMessage, Color? color}) {
       backgroundColor: color ?? Colors.black.withOpacity(0.7),
       content: Text(
         errorMessage,
-        style: AppTextStyles.body.copyWith(
+        style: AppTextStyles.headline1.copyWith(
           fontSize: 18,
           color: Colors.white,
         ),

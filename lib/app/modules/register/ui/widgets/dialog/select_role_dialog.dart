@@ -18,7 +18,7 @@ class SelectRoleDialog extends StatelessWidget {
     return AlertDialog(
       title: Text(
         S.of(context).selectOptionTitle,
-        style: AppTextStyles.buttonBold.copyWith(color: AppColors.white),
+        style: AppTextStyles.headline3.copyWith(color: AppColors.white),
       ),
       backgroundColor: AppColors.backgroundLogin,
       content: Column(

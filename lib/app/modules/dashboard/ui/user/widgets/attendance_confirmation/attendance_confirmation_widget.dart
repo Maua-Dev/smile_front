@@ -50,7 +50,7 @@ class AttendanceConfirmationWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(S.of(context).confirmedAttendance,
-                  style: AppTextStyles.bold
+                  style: AppTextStyles.headline1
                       .copyWith(fontSize: 24, color: AppColors.brandingOrange)),
             ),
           ],
@@ -70,7 +70,7 @@ class AttendanceConfirmationWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(S.of(context).presenceValidateTitle,
-                  style: AppTextStyles.bold.copyWith(
+                  style: AppTextStyles.headline1.copyWith(
                       fontSize: MediaQuery.of(context).size.width < tabletSize
                           ? 20
                           : 24,
@@ -81,7 +81,7 @@ class AttendanceConfirmationWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
                   'Insira o código para realizar a validação de presença',
-                  style: AppTextStyles.bold.copyWith(
+                  style: AppTextStyles.headline1.copyWith(
                     fontSize: MediaQuery.of(context).size.width < tabletSize
                         ? 14
                         : 16,
@@ -158,7 +158,7 @@ class AttendanceConfirmationWidget extends StatelessWidget {
                     backgroundColor: MaterialStateProperty.all(AppColors.white),
                   ),
                   child: Text('Confirmar',
-                      style: AppTextStyles.bold.copyWith(
+                      style: AppTextStyles.headline1.copyWith(
                           fontSize: 15, color: AppColors.brandingOrange))),
             ),
             const SizedBox(height: 40),
@@ -183,7 +183,7 @@ class AttendanceConfirmationWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Text(S.of(context).presenceValidateTitle,
-                style: AppTextStyles.bold
+                style: AppTextStyles.headline1
                     .copyWith(fontSize: 24, color: AppColors.brandingOrange)),
           ),
           SizedBox(
@@ -192,7 +192,7 @@ class AttendanceConfirmationWidget extends StatelessWidget {
                 : MediaQuery.of(context).size.width * 0.6,
             child: Text(
               'Aguarde o início da atividade e seu professor responsável gerar o código de validação.',
-              style: AppTextStyles.bold.copyWith(
+              style: AppTextStyles.headline1.copyWith(
                 fontSize: 15,
                 color: AppColors.gray,
               ),

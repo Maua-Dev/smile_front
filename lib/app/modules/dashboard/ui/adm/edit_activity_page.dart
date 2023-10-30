@@ -13,7 +13,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../shared/entities/screen_variables.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../../../shared/themes/app_text_styles.dart';
-import '../../../../shared/utils/screen_helper.dart';
+import '../../../../shared/helpers/utils/screen_helper.dart';
 import '../../../../shared/widgets/buttons/forms_button_widget.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
@@ -59,7 +59,7 @@ class _EditActivityPageState
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.25,
                               child: DropDownFieldCustom<ActivityEnum>(
-                                textStyles: AppTextStyles.body.copyWith(
+                                textStyles: AppTextStyles.headline1.copyWith(
                                     color: AppColors.brandingBlue,
                                     fontSize:
                                         MediaQuery.of(context).size.width < 1200

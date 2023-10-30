@@ -1,4 +1,4 @@
-import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
+import 'package:smile_front/app/shared/infra/models/responsible_professor_model.dart';
 
 import '../../infra/models/user_change_data_model.dart';
 

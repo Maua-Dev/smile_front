@@ -6,11 +6,11 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/usecases/change_data.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_user.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
-import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
+import 'package:smile_front/app/shared/infra/models/enrolls_activity_model.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../shared/entities/infra/enroll_button_enum.dart';
 import '../../../../../shared/entities/infra/enrollment_state_enum.dart';
-import '../../../../../shared/models/enrollments_model.dart';
+import '../../../../../shared/infra/models/enrollments_model.dart';
 
 part 'user_dashboard_controller.g.dart';
 

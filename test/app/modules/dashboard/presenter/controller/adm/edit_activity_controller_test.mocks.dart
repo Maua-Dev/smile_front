@@ -14,13 +14,14 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsibl
     as _i10;
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart'
     as _i8;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i5;
-import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i7;
-import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
+import 'package:smile_front/app/shared/infra/models/activity_model.dart' as _i5;
+import 'package:smile_front/app/shared/infra/models/admin_activity_model.dart'
+    as _i7;
+import 'package:smile_front/app/shared/infra/models/enrolls_activity_model.dart'
     as _i6;
-import 'package:smile_front/app/shared/models/professor_activity_model.dart'
+import 'package:smile_front/app/shared/infra/models/professor_activity_model.dart'
     as _i2;
-import 'package:smile_front/app/shared/models/responsible_professor_model.dart'
+import 'package:smile_front/app/shared/infra/models/responsible_professor_model.dart'
     as _i11;
 
 // ignore_for_file: type=lint

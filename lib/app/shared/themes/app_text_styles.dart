@@ -1,37 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 class AppTextStyles {
-  static final TextStyle titleH1 = GoogleFonts.roboto(
-    color: AppColors.brandingBlue,
-    fontSize: 60,
-    fontWeight: FontWeight.w900,
+  static TextStyle headline1 = GoogleFonts.roboto(
+    color: Colors.black,
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
   );
-
-  static final TextStyle body = GoogleFonts.roboto(
-    color: AppColors.brandingBlue,
-    fontSize: 25,
-    fontWeight: FontWeight.w400,
+  static TextStyle headline2 = GoogleFonts.roboto(
+    color: Colors.black,
+    fontSize: 20.0,
+    fontWeight: FontWeight.bold,
   );
-
-  static final TextStyle thinButton = GoogleFonts.roboto(
-    color: Colors.white,
-    fontSize: 25,
-    fontWeight: FontWeight.w100,
+  static TextStyle headline3 = GoogleFonts.roboto(
+    color: Colors.black,
+    fontSize: 16.0,
+    fontWeight: FontWeight.bold,
   );
-
-  static final TextStyle buttonBold = GoogleFonts.roboto(
-    color: Colors.white,
-    fontSize: 25,
-    fontWeight: FontWeight.w900,
+  static TextStyle bodyText1 = GoogleFonts.roboto(
+    color: Colors.black,
+    fontSize: 16.0,
   );
-
-  static final TextStyle button = GoogleFonts.roboto(
-    color: Colors.white,
-    fontSize: 25,
+  static TextStyle bodyText2 = GoogleFonts.roboto(
+    color: Colors.black,
+    fontSize: 14.0,
   );
-
-  static final TextStyle bold = GoogleFonts.roboto(
-      color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700);
+  static TextStyle subtitle1 = GoogleFonts.roboto(
+    color: Colors.black,
+    fontSize: 12.0,
+  );
+  static TextStyle subtitle2 = GoogleFonts.roboto(
+    color: Colors.black,
+    fontSize: 10.0,
+  );
 }

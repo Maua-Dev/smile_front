@@ -29,7 +29,7 @@ class UserDataWidget extends StatelessWidget {
         if (controller.socialName == '' || controller.socialName == null)
           Text(
             S.of(context).helloTitle(controller.name!.split(' ').first),
-            style: AppTextStyles.titleH1.copyWith(
+            style: AppTextStyles.headline1.copyWith(
                 fontSize: MediaQuery.of(context).size.width < 500
                     ? 35
                     : MediaQuery.of(context).size.width < 1000
@@ -40,7 +40,7 @@ class UserDataWidget extends StatelessWidget {
         else
           Text(
             S.of(context).helloTitle(controller.socialName!.split(' ').first),
-            style: AppTextStyles.titleH1.copyWith(
+            style: AppTextStyles.headline1.copyWith(
                 fontSize: MediaQuery.of(context).size.width < 500
                     ? 35
                     : MediaQuery.of(context).size.width < 1000

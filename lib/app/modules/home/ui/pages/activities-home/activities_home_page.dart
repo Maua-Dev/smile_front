@@ -7,8 +7,8 @@ import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
-import '../../../../../shared/utils/s3_assets_url.dart';
-import '../../../../../shared/utils/screen_helper.dart';
+import 'package:smile_front/app/shared/helpers/services/s3/assets_s3.dart';
+import '../../../../../shared/helpers/utils/screen_helper.dart';
 import '../../../../dashboard/domain/infra/activity_enum.dart';
 
 class ActivitiesHomePage extends StatefulWidget {

@@ -48,13 +48,13 @@ class DropDownFieldCustom<T> extends StatelessWidget {
                   iconEnabledColor: AppColors.brandingBlue,
                   iconSize: 32,
                   style: textStyles ??
-                      AppTextStyles.button.copyWith(
+                      AppTextStyles.headline1.copyWith(
                           fontSize: 24, color: AppColors.brandingBlue),
                   decoration: InputDecoration(
-                    labelStyle: AppTextStyles.titleH1
+                    labelStyle: AppTextStyles.headline1
                         .copyWith(color: AppColors.brandingBlue, fontSize: 24),
                     hintStyle: textStyles ??
-                        AppTextStyles.button.copyWith(
+                        AppTextStyles.headline1.copyWith(
                             fontSize: 20, color: AppColors.brandingBlue),
                     fillColor: filledColor ?? AppColors.lightPurple,
                     filled: true,

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../../shared/utils/s3_assets_url.dart';
+import 'package:smile_front/app/shared/helpers/services/s3/assets_s3.dart';
 
 class AdmAppBarWidget extends StatelessWidget {
   final String appBarText;
@@ -26,7 +26,7 @@ class AdmAppBarWidget extends StatelessWidget {
         title: Align(
             alignment: Alignment.center,
             child: Text(appBarText,
-                style: AppTextStyles.body
+                style: AppTextStyles.headline1
                     .copyWith(color: AppColors.white, fontSize: 50))));
   }
 }

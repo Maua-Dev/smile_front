@@ -1,4 +1,4 @@
-import '../entities/infra/user_roles_enum.dart';
+import '../../entities/infra/user_roles_enum.dart';
 
 class UserEnrollModel {
   final String name;

@@ -8,7 +8,7 @@ import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/filter/filter_c
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../shared/utils/utils.dart';
+import '../../../../shared/helpers/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../auth/infra/repositories/secure_storage.dart';
 import '../../presenter/controllers/adm/adm_dashboard_controller.dart';
@@ -161,7 +161,7 @@ class _AdmDashboardPageState
                       );
                     } else {
                       return Text(S.of(context).activitiesNotFound,
-                          style: AppTextStyles.body);
+                          style: AppTextStyles.headline1);
                     }
                   }
                 }),

@@ -6,7 +6,7 @@ import '../../../../../../shared/entities/infra/delivery_enum.dart';
 import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../../shared/utils/screen_helper.dart';
+import '../../../../../../shared/helpers/utils/screen_helper.dart';
 import '../../../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import 'text_field_dialog_widget.dart';
 
@@ -145,7 +145,7 @@ class ScheduleWidget extends StatelessWidget {
                     children: [
                       Text(
                         S.of(context).activityAcceptSbscriptions,
-                        style: AppTextStyles.titleH1.copyWith(
+                        style: AppTextStyles.headline1.copyWith(
                             color: AppColors.brandingBlue,
                             fontSize: MediaQuery.of(context).size.width < 1200
                                 ? 17
@@ -241,7 +241,7 @@ class ScheduleWidget extends StatelessWidget {
                       child: SizedBox(
                         width: Screen.width(context) * 0.18,
                         child: DropDownFieldCustom<DeliveryEnum>(
-                          textStyles: AppTextStyles.body.copyWith(
+                          textStyles: AppTextStyles.headline1.copyWith(
                               color: AppColors.brandingBlue,
                               fontSize:
                                   Screen.width(context) < tabletSize ? 16 : 20),

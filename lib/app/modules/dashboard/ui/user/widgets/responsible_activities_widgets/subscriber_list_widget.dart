@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_activities_widgets/list_name_and_state_with_is_switched.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
-import 'package:smile_front/app/shared/models/professor_activity_model.dart';
+import 'package:smile_front/app/shared/infra/models/professor_activity_model.dart';
 
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../../../generated/l10n.dart';
-import '../../../../../../shared/models/enrollments_model.dart';
+import '../../../../../../shared/infra/models/enrollments_model.dart';
 import '../../../../../../shared/themes/breakpoint.dart';
 
 class SubscriberListWidget extends StatelessWidget {
@@ -77,7 +77,7 @@ class SubscriberListWidget extends StatelessWidget {
                               : 5,
                     ),
                     Text(S.of(context).absenceTitle,
-                        style: AppTextStyles.bold.copyWith(
+                        style: AppTextStyles.headline1.copyWith(
                             fontSize: MediaQuery.of(context).size.width <
                                     breakpointLMobile
                                 ? 15
@@ -92,7 +92,7 @@ class SubscriberListWidget extends StatelessWidget {
                               : 10,
                     ),
                     Text(S.of(context).presenceTitle,
-                        style: AppTextStyles.bold.copyWith(
+                        style: AppTextStyles.headline1.copyWith(
                             fontSize: MediaQuery.of(context).size.width <
                                     breakpointLMobile
                                 ? 15
@@ -102,7 +102,7 @@ class SubscriberListWidget extends StatelessWidget {
                 ),
               ),
               Text(S.of(context).namesTitle,
-                  style: AppTextStyles.bold.copyWith(
+                  style: AppTextStyles.headline1.copyWith(
                       fontSize:
                           MediaQuery.of(context).size.width < breakpointLMobile
                               ? 15
@@ -194,7 +194,7 @@ class SubscriberListWidget extends StatelessWidget {
                                                     ? 2
                                                     : 26),
                                             child: Text("Na fila",
-                                                style: AppTextStyles.bold
+                                                style: AppTextStyles.headline1
                                                     .copyWith(
                                                         color: AppColors
                                                             .brandingOrange,
@@ -215,7 +215,7 @@ class SubscriberListWidget extends StatelessWidget {
                               child: Text(
                                 textAlign: TextAlign.center,
                                 enrollmentsList.enrollments![index].user!.name,
-                                style: AppTextStyles.bold.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width <
                                                 breakpointLMobile

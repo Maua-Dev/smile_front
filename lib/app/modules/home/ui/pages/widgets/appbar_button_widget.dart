@@ -48,7 +48,7 @@ class AppbarButtonWidget extends StatelessWidget {
               : Text(title ?? '',
                   textAlign: TextAlign.center,
                   style: textStyle ??
-                      AppTextStyles.body.copyWith(
+                      AppTextStyles.headline1.copyWith(
                           color: Colors.white,
                           fontSize: MediaQuery.of(context).size.width < 1300
                               ? 20

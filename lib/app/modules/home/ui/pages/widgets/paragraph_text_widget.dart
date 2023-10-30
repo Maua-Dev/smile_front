@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../shared/entities/screen_variables.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../shared/utils/screen_helper.dart';
+import '../../../../../shared/helpers/utils/screen_helper.dart';
 
 class ParagraphTextWidget extends StatelessWidget {
   final String paragraph;
@@ -18,7 +18,7 @@ class ParagraphTextWidget extends StatelessWidget {
           horizontal: MediaQuery.of(context).size.width < 800 ? 16 : 108),
       child: Text(
         paragraph,
-        style: AppTextStyles.body.copyWith(
+        style: AppTextStyles.headline1.copyWith(
             fontSize: Screen.width(context) < cellphoneSize
                 ? 14
                 : Screen.width(context) < tabletSize

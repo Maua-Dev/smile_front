@@ -38,8 +38,8 @@ class AppWidget extends StatelessWidget {
             secondary: AppColors.brandingOrange,
           ),
           textTheme: TextTheme(
-            bodyLarge: AppTextStyles.titleH1,
-            bodyMedium: AppTextStyles.body,
+            bodyLarge: AppTextStyles.headline1,
+            bodyMedium: AppTextStyles.headline2,
           ),
           appBarTheme: AppBarTheme(
             color: AppColors.brandingBlue,

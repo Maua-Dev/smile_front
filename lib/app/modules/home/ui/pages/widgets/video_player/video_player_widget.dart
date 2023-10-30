@@ -4,7 +4,7 @@ import 'package:smile_front/app/modules/home/presenter/controllers/video_control
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:video_player/video_player.dart';
 
-import '../../../../../../shared/services/environment/environment_config.dart';
+import '../../../../../../shared/helpers/environment/environment_config.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
   const VideoPlayerWidget({Key? key}) : super(key: key);
@@ -20,6 +20,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   @override
   void initState() {
     super.initState();
+    // ignore: deprecated_member_use
     _videoPlayerController = VideoPlayerController.network(
       '${EnvironmentConfig.S3_BASE_URL}video_smile1280x720.mp4',
     )..initialize().then((_) {

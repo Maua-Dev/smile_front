@@ -1,4 +1,4 @@
-import '../../../../shared/models/enrolls_activity_model.dart';
+import '../../../../shared/infra/models/enrolls_activity_model.dart';
 import '../repositories/activities_repository_interface.dart';
 
 abstract class GetUserSubscribedActivitiesInterface {

@@ -4,7 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
 
-import 'package:smile_front/app/shared/models/enrollments_model.dart';
+import 'package:smile_front/app/shared/infra/models/enrollments_model.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
@@ -140,7 +140,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                       ),
                       Text(description,
                           maxLines: 3,
-                          style: AppTextStyles.body.copyWith(
+                          style: AppTextStyles.headline1.copyWith(
                               fontSize: 20, overflow: TextOverflow.ellipsis)),
                     ]),
               ),
@@ -167,7 +167,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                 color: AppColors.white,
                               ),
                               Text(date,
-                                  style: AppTextStyles.body.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                       fontSize: 18, color: AppColors.white))
                             ],
                           ),
@@ -179,7 +179,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                 color: AppColors.white,
                               ),
                               Text('$time - $finalTime',
-                                  style: AppTextStyles.body.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                       fontSize: 18, color: AppColors.white))
                             ],
                           ),
@@ -229,15 +229,16 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                         SizedBox(
                                                           width: 390,
                                                           child: Text(
-                                                              '$activityCode - $title',
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              style: AppTextStyles
-                                                                  .bold
-                                                                  .copyWith(
-                                                                      fontSize:
-                                                                          20)),
+                                                            '$activityCode - $title',
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            style: AppTextStyles
+                                                                .headline1
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        20),
+                                                          ),
                                                         ),
                                                         if (isExtensive)
                                                           Icon(
@@ -282,7 +283,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                         Text(
                                                             '$enrolledUsersLength/$totalParticipants',
                                                             style: AppTextStyles
-                                                                .bold
+                                                                .headline1
                                                                 .copyWith(
                                                                     fontSize:
                                                                         22)),
@@ -312,7 +313,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                             .of(context)
                                                             .namesTitle,
                                                         style: AppTextStyles
-                                                            .bold
+                                                            .headline1
                                                             .copyWith(
                                                                 color: Colors
                                                                     .black,
@@ -321,7 +322,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                       Padding(
                                                         padding:
                                                             const EdgeInsets
-                                                                    .only(
+                                                                .only(
                                                                 left: 30.0),
                                                         child: Tooltip(
                                                           message: S
@@ -395,7 +396,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                                             child: Text(filteredEnrollments[index].user!.name,
                                                                                 overflow: TextOverflow.ellipsis,
                                                                                 maxLines: 1,
-                                                                                style: AppTextStyles.bold.copyWith(color: Colors.black, fontSize: 30)),
+                                                                                style: AppTextStyles.headline1.copyWith(color: Colors.black, fontSize: 30)),
                                                                           );
                                                                         }),
                                                                         Row(
@@ -432,7 +433,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                                                       : filteredEnrollments[index].state == EnrollmentStateEnum.COMPLETED
                                                                                           ? 'Completo'
                                                                                           : 'Inscrito',
-                                                                                  style: AppTextStyles.bold,
+                                                                                  style: AppTextStyles.headline1,
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -481,7 +482,7 @@ class ActivitiesCardWidget extends StatelessWidget {
                                                     onPressed: Modular.to.pop,
                                                     child: Text('Fechar',
                                                         style: AppTextStyles
-                                                            .bold
+                                                            .headline1
                                                             .copyWith(
                                                                 fontSize: 26))),
                                               )
@@ -521,9 +522,10 @@ class ActivitiesCardWidget extends StatelessWidget {
                                       Observer(builder: (_) {
                                         return Text(
                                             '$enrolledUsersLength/$totalParticipants',
-                                            style: AppTextStyles.body.copyWith(
-                                                fontSize: 18,
-                                                color: AppColors.white));
+                                            style: AppTextStyles.headline1
+                                                .copyWith(
+                                                    fontSize: 18,
+                                                    color: AppColors.white));
                                       }),
                                       Icon(
                                         Icons.keyboard_arrow_right,

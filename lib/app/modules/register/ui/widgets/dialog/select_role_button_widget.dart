@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 
-import '../../../../../shared/utils/screen_helper.dart';
+import '../../../../../shared/helpers/utils/screen_helper.dart';
 
 class SelectRoleButtonWidget extends StatelessWidget {
   final Function()? onPressed;
@@ -31,7 +31,7 @@ class SelectRoleButtonWidget extends StatelessWidget {
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style: AppTextStyles.body.copyWith(
+            style: AppTextStyles.headline1.copyWith(
                 color: AppColors.backgroundLogin,
                 fontSize: Screen.width(context) < 400 ? 18 : 22),
           ),

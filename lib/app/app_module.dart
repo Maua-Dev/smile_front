@@ -7,7 +7,7 @@ import 'package:smile_front/app/modules/dashboard/faq_module.dart';
 import 'package:smile_front/app/modules/dashboard/landing_module.dart';
 import 'package:smile_front/app/modules/login/login_module.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
-import 'package:smile_front/app/shared/error/error_page.dart';
+import 'package:smile_front/app/shared/helpers/errors/error_page.dart';
 
 import 'modules/auth/auth_module.dart';
 import 'modules/home/home_module.dart';

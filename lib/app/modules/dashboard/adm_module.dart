@@ -15,10 +15,10 @@ import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit
 import 'package:smile_front/app/modules/dashboard/ui/adm/adm_dashboard_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/edit_activity_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/create_activity_page.dart';
-import 'package:smile_front/app/shared/models/admin_activity_model.dart';
+import 'package:smile_front/app/shared/infra/models/admin_activity_model.dart';
 
-import '../../shared/error/error_page.dart';
-import '../../shared/services/dio/smile_activities_options.dart';
+import '../../shared/helpers/errors/error_page.dart';
+import '../../shared/helpers/services/dio/options/smile_activities_options.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/domain/usecases/login_with_email.dart';

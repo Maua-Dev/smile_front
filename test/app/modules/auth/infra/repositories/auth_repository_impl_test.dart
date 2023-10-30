@@ -5,7 +5,7 @@ import 'package:smile_front/app/modules/auth/infra/datasource/auth_datasource_in
 import 'package:smile_front/app/modules/auth/infra/repositories/auth_repository_impl.dart';
 import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
-import 'package:smile_front/app/shared/models/user_model.dart';
+import 'package:smile_front/app/shared/infra/models/user_model.dart';
 
 import 'auth_repository_impl_test.mocks.dart';
 

@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../../shared/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../../shared/utils/screen_helper.dart';
+import '../../../../../../shared/helpers/utils/screen_helper.dart';
 
 class NextHomePage extends StatelessWidget {
   final String title;
@@ -36,7 +36,7 @@ class NextHomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title,
-                      style: AppTextStyles.titleH1.copyWith(
+                      style: AppTextStyles.headline1.copyWith(
                           color: Colors.white,
                           fontSize: MediaQuery.of(context).size.width < 900
                               ? 32

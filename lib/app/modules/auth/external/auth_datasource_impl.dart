@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/shared/services/environment/environment_config.dart';
-import '../../../shared/error/error_snackbar.dart';
-import '../../../shared/models/user_model.dart';
+import 'package:smile_front/app/shared/helpers/environment/environment_config.dart';
+import '../../../shared/helpers/errors/error_snackbar.dart';
+import '../../../shared/infra/models/user_model.dart';
 import '../domain/repositories/secure_storage_interface.dart';
 import '../errors/errors.dart';
 import '../infra/datasource/auth_datasource_interface.dart';

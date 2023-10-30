@@ -35,14 +35,14 @@ import 'package:smile_front/app/shared/entities/infra/enroll_button_enum.dart'
     as _i17;
 import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart'
     as _i14;
-import 'package:smile_front/app/shared/models/activity_model.dart' as _i12;
-import 'package:smile_front/app/shared/models/admin_activity_model.dart'
+import 'package:smile_front/app/shared/infra/models/activity_model.dart' as _i12;
+import 'package:smile_front/app/shared/infra/models/admin_activity_model.dart'
     as _i13;
-import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
+import 'package:smile_front/app/shared/infra/models/enrolls_activity_model.dart'
     as _i7;
-import 'package:smile_front/app/shared/models/professor_activity_model.dart'
+import 'package:smile_front/app/shared/infra/models/professor_activity_model.dart'
     as _i2;
-import 'package:smile_front/app/shared/models/user_model.dart' as _i9;
+import 'package:smile_front/app/shared/infra/models/user_model.dart' as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

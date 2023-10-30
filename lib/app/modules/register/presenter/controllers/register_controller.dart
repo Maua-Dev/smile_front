@@ -7,7 +7,7 @@ import 'package:smile_front/generated/l10n.dart';
 import 'package:string_validator/string_validator.dart';
 import '../../../../app_widget.dart';
 import '../../../../shared/entities/user_registration.dart';
-import '../../../../shared/error/error_snackbar.dart';
+import '../../../../shared/helpers/errors/error_snackbar.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../external/errors/errors.dart';
 part 'register_controller.g.dart';

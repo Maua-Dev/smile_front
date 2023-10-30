@@ -1,14 +1,14 @@
-import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
-import '../../modules/dashboard/domain/infra/activity_enum.dart';
-import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
-import '../entities/activity.dart';
-import '../entities/infra/delivery_enum.dart';
+import 'package:smile_front/app/shared/entities/activity.dart';
+import 'package:smile_front/app/shared/infra/models/responsible_professor_model.dart';
+import '../../../modules/dashboard/domain/infra/activity_enum.dart';
+import '../../../modules/dashboard/infra/models/speaker_activity_model.dart';
+import '../../entities/infra/delivery_enum.dart';
 import 'enrollments_model.dart';
 
-class EnrollsActivityModel extends Activity {
-  final EnrollmentsModel? enrollments;
-  EnrollsActivityModel({
-    this.enrollments,
+class AdminActivityModel extends Activity {
+  final List<EnrollmentsModel> enrollments;
+  AdminActivityModel({
+    required this.enrollments,
     required super.isExtensive,
     super.deliveryEnum,
     super.startDate,
@@ -27,8 +27,8 @@ class EnrollsActivityModel extends Activity {
     required super.totalSlots,
   });
 
-  factory EnrollsActivityModel.fromMap(Map<String, dynamic> map) {
-    return EnrollsActivityModel(
+  factory AdminActivityModel.fromMap(Map<String, dynamic> map) {
+    return AdminActivityModel(
         activityCode: map['activity']['code'],
         type: ActivityEnumExtension.stringToEnumMap(
             map['activity']['activity_type']),
@@ -54,34 +54,32 @@ class EnrollsActivityModel extends Activity {
                 ? DateTime.fromMillisecondsSinceEpoch(
                     map['activity']['stop_accepting_new_enrollments_before'])
                 : DateTime.now(),
-        enrollments: map.containsKey('enrollment')
-            ? EnrollmentsModel.fromMap(map['enrollment'])
-            : null);
+        enrollments: EnrollmentsModel.fromMaps(map['enrollments']));
   }
 
-  static List<EnrollsActivityModel> fromMaps(List array) {
-    return array.map((e) => EnrollsActivityModel.fromMap(e)).toList();
+  static List<AdminActivityModel> fromMaps(List array) {
+    return array.map((e) => AdminActivityModel.fromMap(e)).toList();
   }
 
-  factory EnrollsActivityModel.newInstance() {
-    return EnrollsActivityModel(
-      description: '',
-      activityCode: '',
-      title: '',
-      type: null,
-      speakers: [SpeakerActivityModel.newInstance()],
-      duration: 0,
-      isExtensive: false,
-      startDate: DateTime.now(),
-      deliveryEnum: null,
-      acceptingNewEnrollments: false,
-      responsibleProfessors: [],
-      takenSlots: 0,
-      totalSlots: 0,
-    );
+  factory AdminActivityModel.newInstance() {
+    return AdminActivityModel(
+        description: '',
+        activityCode: '',
+        title: '',
+        type: null,
+        speakers: [SpeakerActivityModel.newInstance()],
+        duration: 0,
+        isExtensive: false,
+        startDate: DateTime.now(),
+        deliveryEnum: null,
+        acceptingNewEnrollments: false,
+        responsibleProfessors: [ResponsibleProfessorModel.newInstance()],
+        takenSlots: 0,
+        totalSlots: 0,
+        enrollments: []);
   }
 
-  EnrollsActivityModel copyWith(
+  AdminActivityModel copyWith(
       {String? id,
       String? activityCode,
       ActivityEnum? type,
@@ -99,8 +97,8 @@ class EnrollsActivityModel extends Activity {
       int? totalSlots,
       DateTime? stopAcceptingNewEnrollmentsBefore,
       List<ResponsibleProfessorModel>? responsibleProfessors,
-      EnrollmentsModel? enrollments}) {
-    return EnrollsActivityModel(
+      List<EnrollmentsModel>? enrollments}) {
+    return AdminActivityModel(
       activityCode: activityCode ?? this.activityCode,
       type: type ?? this.type,
       title: title ?? this.title,
@@ -123,4 +121,49 @@ class EnrollsActivityModel extends Activity {
       enrollments: enrollments ?? this.enrollments,
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        'activity_type': ActivityEnumExtension.enumToStringMap(type!),
+        'code': activityCode,
+        'title': title,
+        'description': description,
+        'is_extensive': isExtensive,
+        'delivery_model': DeliveryEnumExtension.enumToStringMap(deliveryEnum!),
+        'start_date': startDate!.millisecondsSinceEpoch,
+        'duration': duration,
+        'place': place,
+        'link': link,
+        'total_slots': totalSlots,
+        'taken_slots': takenSlots,
+        'accepting_new_enrollments': acceptingNewEnrollments,
+        'stop_accepting_new_enrollments_before':
+            stopAcceptingNewEnrollmentsBefore == null
+                ? null
+                : stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
+        'responsible_professors':
+            responsibleProfessors.map((e) => e.id).toList(),
+        'speakers': speakers.map((e) => e.toJson()).toList(),
+      };
+
+  Map<String, dynamic> editToJson() => {
+        'code': activityCode,
+        'new_title': title,
+        'new_description': description,
+        'new_activity_type': ActivityEnumExtension.enumToStringMap(type!),
+        'new_is_extensive': isExtensive,
+        'new_delivery_model':
+            DeliveryEnumExtension.enumToStringMap(deliveryEnum!),
+        'new_start_date': startDate!.millisecondsSinceEpoch,
+        'new_duration': duration,
+        'new_place': place,
+        'new_link': link,
+        'new_total_slots': totalSlots,
+        'new_taken_slots': takenSlots,
+        'new_accepting_new_enrollments': acceptingNewEnrollments,
+        'new_stop_accepting_new_enrollments_before':
+            stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
+        'new_responsible_professors':
+            responsibleProfessors.map((e) => e.id).toList(),
+        'new_speakers': speakers.map((e) => e.toJson()).toList(),
+      };
 }

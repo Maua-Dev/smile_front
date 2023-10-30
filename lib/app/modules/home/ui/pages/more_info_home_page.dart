@@ -10,8 +10,8 @@ import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../app_module.dart';
 import '../../../../shared/themes/app_colors.dart';
-import '../../../../shared/utils/s3_assets_url.dart';
-import '../../../../shared/utils/screen_helper.dart';
+import 'package:smile_front/app/shared/helpers/services/s3/assets_s3.dart';
+import '../../../../shared/helpers/utils/screen_helper.dart';
 import 'footer/footer.dart';
 
 class MoreInfoHomePage extends StatelessWidget {
@@ -85,7 +85,7 @@ class MoreInfoHomePage extends StatelessWidget {
               Center(
                 child: CustomElevatedButtonWidget(
                   title: S.of(context).clickToAccessPDF,
-                  textStyle: AppTextStyles.buttonBold.copyWith(
+                  textStyle: AppTextStyles.headline3.copyWith(
                       color: Colors.white,
                       fontSize:
                           Screen.width(context) < cellphoneSize ? 16 : 24),
@@ -105,7 +105,7 @@ class MoreInfoHomePage extends StatelessWidget {
               Center(
                 child: CustomElevatedButtonWidget(
                   title: S.of(context).signUp,
-                  textStyle: AppTextStyles.buttonBold.copyWith(
+                  textStyle: AppTextStyles.headline3.copyWith(
                       color: Colors.white,
                       fontSize:
                           Screen.width(context) < cellphoneSize ? 16 : 24),

@@ -14,7 +14,8 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_l
     as _i2;
 import 'package:smile_front/app/modules/dashboard/domain/usecases/manual_drop_activity.dart'
     as _i7;
-import 'package:smile_front/app/shared/models/admin_activity_model.dart' as _i6;
+import 'package:smile_front/app/shared/infra/models/admin_activity_model.dart'
+    as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

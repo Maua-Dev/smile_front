@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/appbar_button_widget.dart';
+import 'package:smile_front/app/shared/helpers/services/s3/assets_s3.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
-import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../themes/app_colors.dart';
 
@@ -84,7 +84,7 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
             ? [
                 AppbarButtonWidget(
                   title: 'VOLTAR',
-                  textStyle: AppTextStyles.buttonBold.copyWith(
+                  textStyle: AppTextStyles.headline3.copyWith(
                       color: Colors.white,
                       fontSize:
                           MediaQuery.of(context).size.width < 1300 ? 20 : 24),
@@ -134,7 +134,7 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                     padding: const EdgeInsets.only(right: 24),
                     child: AppbarButtonWidget(
                       title: S.of(context).loginTitle.toUpperCase(),
-                      textStyle: AppTextStyles.buttonBold.copyWith(
+                      textStyle: AppTextStyles.headline3.copyWith(
                           color: Colors.white,
                           fontSize: MediaQuery.of(context).size.width < 1300
                               ? 20

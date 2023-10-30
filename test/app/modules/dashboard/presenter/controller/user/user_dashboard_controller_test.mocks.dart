@@ -22,9 +22,9 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/unsubscribe_ac
     as _i11;
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart'
     as _i7;
-import 'package:smile_front/app/shared/models/enrolls_activity_model.dart'
+import 'package:smile_front/app/shared/infra/models/enrolls_activity_model.dart'
     as _i4;
-import 'package:smile_front/app/shared/models/responsible_professor_model.dart'
+import 'package:smile_front/app/shared/infra/models/responsible_professor_model.dart'
     as _i8;
 
 // ignore_for_file: type=lint

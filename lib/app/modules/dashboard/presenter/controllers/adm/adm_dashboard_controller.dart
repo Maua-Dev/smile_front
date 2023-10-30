@@ -4,9 +4,9 @@ import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dar
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_admin_activities_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/manual_drop_activity.dart';
-import 'package:smile_front/app/shared/models/admin_activity_model.dart';
+import 'package:smile_front/app/shared/infra/models/admin_activity_model.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../../shared/models/enrollments_model.dart';
+import '../../../../../shared/infra/models/enrollments_model.dart';
 import '../../../../auth/presenter/controllers/auth_controller.dart';
 import '../../../domain/usecases/delete_activity.dart';
 part 'adm_dashboard_controller.g.dart';

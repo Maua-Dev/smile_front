@@ -1,8 +1,8 @@
-import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
-import '../../modules/dashboard/domain/infra/activity_enum.dart';
-import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
-import '../entities/activity.dart';
-import '../entities/infra/delivery_enum.dart';
+import 'package:smile_front/app/shared/infra/models/responsible_professor_model.dart';
+import '../../../modules/dashboard/domain/infra/activity_enum.dart';
+import '../../../modules/dashboard/infra/models/speaker_activity_model.dart';
+import '../../entities/activity.dart';
+import '../../entities/infra/delivery_enum.dart';
 import 'enrollments_model.dart';
 
 class ProfessorActivityModel extends Activity {

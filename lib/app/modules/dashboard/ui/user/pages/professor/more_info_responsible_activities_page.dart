@@ -43,7 +43,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                   child: Text(
                       '${controller.professorActivityWithEnrollments.activityCode} - ${controller.professorActivityWithEnrollments.title}',
                       textAlign: TextAlign.center,
-                      style: AppTextStyles.bold.copyWith(
+                      style: AppTextStyles.headline1.copyWith(
                           color: AppColors.brandingOrange,
                           fontSize: MediaQuery.of(context).size.width <
                                   breakpointTablet
@@ -71,7 +71,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(S.of(context).dateTitle,
-                            style: AppTextStyles.bold.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                                 color: AppColors.white,
                                 fontSize: MediaQuery.of(context).size.width <
                                         breakpointTablet
@@ -88,7 +88,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                   DateFormat('dd/MM').format(controller
                                       .professorActivityWithEnrollments
                                       .startDate!),
-                                  style: AppTextStyles.bold.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                       color: AppColors.white,
                                       fontSize:
                                           MediaQuery.of(context).size.width <
@@ -114,7 +114,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(S.of(context).scheduleTitle,
-                            style: AppTextStyles.bold.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                                 color: AppColors.white,
                                 fontSize: MediaQuery.of(context).size.width <
                                         breakpointTablet
@@ -127,7 +127,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                           } else {
                             return Text(
                                 '${controller.initialTime} - ${controller.finalTime}',
-                                style: AppTextStyles.bold.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     color: AppColors.white,
                                     fontSize:
                                         MediaQuery.of(context).size.width <
@@ -159,7 +159,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(S.of(context).localTitle,
-                              style: AppTextStyles.bold.copyWith(
+                              style: AppTextStyles.headline1.copyWith(
                                   color: AppColors.white,
                                   fontSize: MediaQuery.of(context).size.width <
                                           breakpointTablet
@@ -184,16 +184,18 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                           mode: LaunchMode.externalApplication,
                                         ),
                                         child: Text('Link',
-                                            style: AppTextStyles.bold.copyWith(
-                                                color: AppColors.white,
-                                                decoration:
-                                                    TextDecoration.underline,
-                                                fontSize: MediaQuery.of(context)
-                                                            .size
-                                                            .width <
-                                                        breakpointTablet
-                                                    ? 20
-                                                    : 40)),
+                                            style: AppTextStyles.headline1
+                                                .copyWith(
+                                                    color: AppColors.white,
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                    .size
+                                                                    .width <
+                                                                breakpointTablet
+                                                            ? 20
+                                                            : 40)),
                                       ),
                                     )
                                   : controller.professorActivityWithEnrollments.deliveryEnum ==
@@ -211,7 +213,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                                       .externalApplication,
                                                 ),
                                                 child: Text('Link',
-                                                    style: AppTextStyles.bold.copyWith(
+                                                    style: AppTextStyles.headline1.copyWith(
                                                         color: AppColors.white,
                                                         decoration:
                                                             TextDecoration
@@ -229,7 +231,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                                 controller
                                                     .professorActivityWithEnrollments
                                                     .place!,
-                                                style: AppTextStyles.bold
+                                                style: AppTextStyles.headline1
                                                     .copyWith(
                                                         color: AppColors.white,
                                                         fontSize: MediaQuery.of(
@@ -244,14 +246,14 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                       : controller.professorActivityWithEnrollments.place !=
                                               null
                                           ? Text(controller.professorActivityWithEnrollments.place!,
-                                              style: AppTextStyles.bold.copyWith(
+                                              style: AppTextStyles.headline1.copyWith(
                                                   color: AppColors.white,
                                                   fontSize: MediaQuery.of(context).size.width <
                                                           breakpointTablet
                                                       ? 20
                                                       : 40))
                                           : Text("Indefinido",
-                                              style: AppTextStyles.bold.copyWith(
+                                              style: AppTextStyles.headline1.copyWith(
                                                   color: AppColors.white,
                                                   fontSize: MediaQuery.of(context).size.width <
                                                           breakpointTablet
@@ -307,7 +309,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                           : 50,
                                     ),
                                     Text(S.of(context).subscriberListTitle,
-                                        style: AppTextStyles.bold.copyWith(
+                                        style: AppTextStyles.headline1.copyWith(
                                             color: controller
                                                     .isSubscribedListVisible
                                                 ? AppColors.brandingOrange
@@ -423,7 +425,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                         controller.isTokenVisible
                                             ? 'Apagar Token'
                                             : 'Gerar Token',
-                                        style: AppTextStyles.bold.copyWith(
+                                        style: AppTextStyles.headline1.copyWith(
                                             color: controller.isTokenVisible
                                                 ? AppColors.brandingOrange
                                                 : AppColors.white,

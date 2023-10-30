@@ -1,6 +1,6 @@
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import '../../modules/dashboard/infra/models/speaker_activity_model.dart';
-import '../models/responsible_professor_model.dart';
+import '../infra/models/responsible_professor_model.dart';
 import 'infra/delivery_enum.dart';
 
 class Activity {

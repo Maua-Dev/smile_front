@@ -43,7 +43,7 @@ class RegisterButtonWidget extends StatelessWidget {
                   color: Colors.white,
                 ))
               : Text(getText(isRegistered, context),
-                  style: AppTextStyles.buttonBold.copyWith(
+                  style: AppTextStyles.headline3.copyWith(
                       fontSize: isRegistered == EnrollmentStateEnum.IN_QUEUE
                           ? 14
                           : MediaQuery.of(context).size.width < 500

@@ -1,6 +1,6 @@
-import 'package:smile_front/app/shared/models/user_enroll_model.dart';
+import 'package:smile_front/app/shared/infra/models/user_enroll_model.dart';
 
-import '../entities/infra/enrollment_state_enum.dart';
+import '../../entities/infra/enrollment_state_enum.dart';
 
 class EnrollmentsModel {
   late final EnrollmentStateEnum state;

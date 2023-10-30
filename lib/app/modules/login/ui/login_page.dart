@@ -74,7 +74,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                       vertical: 16.0, horizontal: 4),
                                   child: Text(
                                     controller.errors,
-                                    style: AppTextStyles.body.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                       fontSize: 18,
                                       color: Colors.white,
                                     ),

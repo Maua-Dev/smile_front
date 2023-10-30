@@ -43,7 +43,7 @@ class UserDeleteDialog extends StatelessWidget {
                           children: [
                             Text(
                               'Exclusão da conta',
-                              style: AppTextStyles.titleH1.copyWith(
+                              style: AppTextStyles.headline1.copyWith(
                                   fontSize: MediaQuery.of(context).size.width <
                                           500
                                       ? 18
@@ -69,7 +69,7 @@ class UserDeleteDialog extends StatelessWidget {
                           height: 32,
                         ),
                         Text(S.of(context).deleteMessage,
-                            style: AppTextStyles.bold.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                                 color: Colors.black,
                                 fontSize: MediaQuery.of(context).size.width <
                                         500
@@ -81,7 +81,7 @@ class UserDeleteDialog extends StatelessWidget {
                         RichText(
                           text: TextSpan(
                               text: S.of(context).deleteEmailType,
-                              style: AppTextStyles.body.copyWith(
+                              style: AppTextStyles.headline1.copyWith(
                                   color: Colors.black,
                                   fontSize: MediaQuery.of(context).size.width <
                                           500
@@ -92,7 +92,7 @@ class UserDeleteDialog extends StatelessWidget {
                               children: [
                                 TextSpan(
                                     text: " ($email) ",
-                                    style: AppTextStyles.body.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                       color: AppColors.brandingOrange,
                                       fontWeight: FontWeight.bold,
                                       fontSize: MediaQuery.of(context)
@@ -107,7 +107,7 @@ class UserDeleteDialog extends StatelessWidget {
                                     )),
                                 TextSpan(
                                     text: S.of(context).deleteCompleteAction,
-                                    style: AppTextStyles.body.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                         color: Colors.black,
                                         fontSize:
                                             MediaQuery.of(context).size.width <
@@ -126,7 +126,7 @@ class UserDeleteDialog extends StatelessWidget {
                           return TextFormField(
                             textAlignVertical: TextAlignVertical.center,
                             onChanged: onChangedEmail,
-                            style: AppTextStyles.body.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                                 color: Colors.white,
                                 fontSize: MediaQuery.of(context).size.width <
                                         500

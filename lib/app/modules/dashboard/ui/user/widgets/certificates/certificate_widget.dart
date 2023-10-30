@@ -36,7 +36,7 @@ class CertificateWidget extends StatelessWidget {
                 certificateName,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: AppTextStyles.body.copyWith(
+                style: AppTextStyles.headline1.copyWith(
                     fontSize:
                         MediaQuery.of(context).size.width < 1000 ? 18 : 22,
                     color: AppColors.brandingBlue),

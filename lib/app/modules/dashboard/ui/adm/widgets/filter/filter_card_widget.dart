@@ -75,7 +75,7 @@ class FilterCardWidget extends StatelessWidget {
                                   alignment: Alignment.center,
                                   child: Text(
                                     ActivityEnum.values[index].name.toString(),
-                                    style: AppTextStyles.bold.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                         color: AppColors.white, fontSize: 16),
                                   ),
                                 ),
@@ -105,7 +105,7 @@ class FilterCardWidget extends StatelessWidget {
                   return Theme(
                     data: Theme.of(context).copyWith(
                         textTheme:
-                            TextTheme(headlineSmall: AppTextStyles.body)),
+                            TextTheme(headlineSmall: AppTextStyles.headline1)),
                     child: child!,
                   );
                 })).then((date) {

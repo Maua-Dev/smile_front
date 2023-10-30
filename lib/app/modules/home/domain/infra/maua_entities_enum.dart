@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-import '../../../../shared/utils/s3_assets_url.dart';
+import 'package:smile_front/app/shared/helpers/services/s3/assets_s3.dart';
 
 enum MauaEntitiesEnum {
   dev,

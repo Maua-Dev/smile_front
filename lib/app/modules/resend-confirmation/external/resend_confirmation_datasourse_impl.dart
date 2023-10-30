@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../shared/services/environment/environment_config.dart';
+import '../../../shared/helpers/environment/environment_config.dart';
 import '../infra/datasources/resend_confirmation_datasource.dart';
 import 'errors.dart';
 

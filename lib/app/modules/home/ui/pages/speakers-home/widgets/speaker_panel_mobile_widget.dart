@@ -27,7 +27,7 @@ class SpeakerPanelMobileWidget extends StatelessWidget {
         ),
         Text(
           description,
-          style: AppTextStyles.body.copyWith(fontSize: 14),
+          style: AppTextStyles.headline1.copyWith(fontSize: 14),
           textAlign: TextAlign.center,
         ),
         const SizedBox(
@@ -58,13 +58,13 @@ class SpeakerPanelMobileWidget extends StatelessWidget {
             children: [
               Text(SpeakersEnum.values[indexToShow].name,
                   textAlign: TextAlign.center,
-                  style: AppTextStyles.titleH1.copyWith(fontSize: 24)),
+                  style: AppTextStyles.headline1.copyWith(fontSize: 24)),
               const SizedBox(
                 height: 8,
               ),
               Text(
                 SpeakersEnum.values[indexToShow].description,
-                style: AppTextStyles.body.copyWith(fontSize: 14),
+                style: AppTextStyles.headline1.copyWith(fontSize: 14),
                 textAlign: TextAlign.justify,
               )
             ],

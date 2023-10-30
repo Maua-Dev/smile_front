@@ -23,7 +23,7 @@ class TextHeader extends StatelessWidget {
           padding: const EdgeInsets.only(right: 16),
           child: Text(
             title,
-            style: AppTextStyles.titleH1.copyWith(
+            style: AppTextStyles.headline1.copyWith(
                 fontSize: fontSize ?? 45,
                 color: color ?? AppColors.brandingBlue),
           ),

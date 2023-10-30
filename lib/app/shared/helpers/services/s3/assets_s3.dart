@@ -1,4 +1,4 @@
-import 'package:smile_front/app/shared/services/environment/environment_config.dart';
+import 'package:smile_front/app/shared/helpers/environment/environment_config.dart';
 
 var s3AssetsBaseUrl = EnvironmentConfig.S3_BASE_URL;
 

@@ -25,7 +25,7 @@ class ExtensionistWidget extends StatelessWidget {
                 size: 28,
               ),
               Text('Extensionista',
-                  style: AppTextStyles.bold
+                  style: AppTextStyles.headline1
                       .copyWith(fontSize: 7, color: AppColors.brandingOrange))
             ]),
           )

@@ -6,7 +6,7 @@ import '../../../../../../../generated/l10n.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/themes/breakpoint.dart';
-import '../../../../../../shared/utils/utils.dart';
+import '../../../../../../shared/helpers/utils/utils.dart';
 import '../../../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 import '../../../../../../shared/widgets/text-header/text_header.dart';
 import '../../../../presenter/controllers/user/professor/responsible_activities_controller.dart';
@@ -66,7 +66,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
                     child: Text(
                       controller.requisitionError!,
                       textAlign: TextAlign.center,
-                      style: AppTextStyles.titleH1.copyWith(
+                      style: AppTextStyles.headline1.copyWith(
                           color: AppColors.brandingOrange, fontSize: 32),
                     ),
                   ),
@@ -181,7 +181,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
                           return Padding(
                             padding: const EdgeInsets.only(top: 24),
                             child: Text(S.of(context).activitiesNotFound,
-                                style: AppTextStyles.body.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width <
                                                 breakpointTablet
@@ -218,7 +218,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
                 child: Text(
                   S.of(context).noResponsibleActivitiesText,
                   textAlign: TextAlign.center,
-                  style: AppTextStyles.titleH1
+                  style: AppTextStyles.headline1
                       .copyWith(color: AppColors.brandingOrange, fontSize: 32),
                 ),
               ),

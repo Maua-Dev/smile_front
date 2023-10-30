@@ -9,7 +9,7 @@ import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.da
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
 import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
 import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
-import 'package:smile_front/app/shared/models/user_model.dart';
+import 'package:smile_front/app/shared/infra/models/user_model.dart';
 
 import 'package:smile_front/generated/l10n.dart';
 

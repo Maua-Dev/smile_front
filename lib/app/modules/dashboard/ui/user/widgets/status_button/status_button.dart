@@ -82,7 +82,7 @@ class StatusButtonWidget extends StatelessWidget {
               }
             },
             child: Text(buttonTitle,
-                style: AppTextStyles.bold.copyWith(
+                style: AppTextStyles.headline1.copyWith(
                     fontSize:
                         MediaQuery.of(context).size.width < breakpointTablet
                             ? 12
@@ -108,7 +108,7 @@ class StatusButtonWidget extends StatelessWidget {
               alignment: Alignment.center,
               child: Text(
                 S.of(context).unavailabeTitle,
-                style: AppTextStyles.bold.copyWith(
+                style: AppTextStyles.headline1.copyWith(
                     fontSize:
                         MediaQuery.of(context).size.width < breakpointTablet
                             ? 12

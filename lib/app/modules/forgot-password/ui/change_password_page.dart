@@ -97,7 +97,7 @@ class _ChangePasswordPageState
                 }),
                 Text(
                   S.of(context).insertPasswordCodeInstructions,
-                  style: AppTextStyles.body.copyWith(
+                  style: AppTextStyles.headline1.copyWith(
                       color: AppColors.white,
                       fontSize:
                           MediaQuery.of(context).size.width < 1300 ? 20 : 24),
