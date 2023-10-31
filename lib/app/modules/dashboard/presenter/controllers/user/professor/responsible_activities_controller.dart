@@ -54,7 +54,7 @@ abstract class ResponsibleActivitiesControllerBase with Store {
         }
       }
       activitiesToShow = allResponsibleActivities;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       requisitionError = e.response!.data;
     } catch (e) {
       requisitionError = S.current.errorGenericGetActivities;

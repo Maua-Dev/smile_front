@@ -514,7 +514,7 @@ abstract class UserDashboardControllerBase with Store {
         subscribedActivitiesOnScreen = allSubscribedActivitiesList;
         getNextActivity();
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       requisitionError = e.response!.data;
     } catch (e) {
       requisitionError = S.current.errorGenericGetActivities;

@@ -108,7 +108,7 @@ class _MoreInfoPageState
                               ? 88
                               : 150,
                       height: controller.activity.deliveryEnum ==
-                              DeliveryEnum.hybrid
+                              DeliveryEnum.HYBRID
                           ? 90
                           : MediaQuery.of(context).size.width < breakpointMobile
                               ? 49
@@ -138,7 +138,7 @@ class _MoreInfoPageState
                               ? 138
                               : 150,
                       height: controller.activity.deliveryEnum ==
-                              DeliveryEnum.hybrid
+                              DeliveryEnum.HYBRID
                           ? 90
                           : MediaQuery.of(context).size.width < breakpointMobile
                               ? 49
@@ -166,7 +166,7 @@ class _MoreInfoPageState
                               ? 88
                               : 150,
                       height: controller.activity.deliveryEnum ==
-                              DeliveryEnum.hybrid
+                              DeliveryEnum.HYBRID
                           ? 90
                           : MediaQuery.of(context).size.width < breakpointMobile
                               ? 49
@@ -187,7 +187,7 @@ class _MoreInfoPageState
                                       : 18),
                             ),
                             controller.activity.deliveryEnum ==
-                                    DeliveryEnum.hybrid
+                                    DeliveryEnum.HYBRID
                                 ? Tooltip(
                                     triggerMode: TooltipTriggerMode.tap,
                                     message: controller.activity.place!,

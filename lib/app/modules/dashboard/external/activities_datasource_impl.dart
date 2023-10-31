@@ -19,8 +19,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   BaseOptions options = BaseOptions(
     baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
     responseType: ResponseType.json,
-    connectTimeout: 30000,
-    receiveTimeout: 30000,
   );
   Dio dio = Dio();
   ActivitiesDatasourceImpl({
@@ -65,13 +63,13 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   Future<Response> _handleRequest(Future<Response> Function() request) async {
     try {
       return await request();
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return _handleError(e, request);
     }
   }
 
   Future<Response> _handleError(
-      DioError e, Future<Response> Function() request) async {
+      DioException e, Future<Response> Function() request) async {
     if (e.response == null || e.response!.statusCode == 401) {
       await authController.refreshUserToken();
       dio.options.headers["authorization"] = await storage.getIdToken();
@@ -193,12 +191,12 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         return res.data;
       }
       throw Exception();
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken();
         await getAllActivitiesLogged();
       }
-      final errorMessage = DioExceptions.fromDioError(e).toString();
+      final errorMessage = DioExceptions.fromDioException(e).toString();
       showErrorSnackBar(errorMessage: errorMessage);
       rethrow;
     }

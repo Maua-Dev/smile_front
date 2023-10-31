@@ -12,8 +12,6 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
   BaseOptions options = BaseOptions(
     baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
     responseType: ResponseType.json,
-    connectTimeout: 30000,
-    receiveTimeout: 30000,
   );
   Dio dio = Dio();
 
@@ -33,7 +31,7 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
         return UserModel.fromMap(response['user']);
       }
       throw Exception();
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       throw LoginInvalid(e.response!.data);
     }
   }
@@ -49,7 +47,7 @@ class AuthDatasourceImpl implements AuthDatasourceInterface {
         return tokens;
       }
       throw Exception();
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (e.response == null || e.response!.statusCode == 401) {
         storage.cleanSecureStorage();
         Modular.to.navigate('/login');

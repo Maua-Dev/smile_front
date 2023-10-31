@@ -48,7 +48,7 @@ class ActivitiesCardAllActivitiesDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String formattedDate = DateFormat('dd/MM').format(date);
-    String formattedLocation = deliveryEnum == DeliveryEnum.hybrid
+    String formattedLocation = deliveryEnum == DeliveryEnum.HYBRID
         ? '${S.of(context).local}: $location ou Online'
         : location == null || location == ''
             ? '${S.of(context).local}: Online'

@@ -11,7 +11,7 @@ import 'package:smile_front/app/modules/dashboard/domain/usecases/get_admin_acti
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/manual_drop_activity.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
-import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/adm_dashboard_controller.dart';
+import 'package:smile_front/app/modules/adm/presenter/controllers/adm_dashboard_controller.dart';
 import 'package:smile_front/app/shared/infra/models/admin_activity_model.dart';
 
 import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';

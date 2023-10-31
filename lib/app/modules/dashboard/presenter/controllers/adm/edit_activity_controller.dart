@@ -74,10 +74,10 @@ abstract class EditActivityControllerBase with Store {
   @action
   Future editUserActivity() async {
     setIsLoading(true);
-    if (activityToEdit.deliveryEnum == DeliveryEnum.in_person) {
+    if (activityToEdit.deliveryEnum == DeliveryEnum.IN_PERSON) {
       activityToEdit.link = null;
     }
-    if (activityToEdit.deliveryEnum == DeliveryEnum.online) {
+    if (activityToEdit.deliveryEnum == DeliveryEnum.ONLINE) {
       activityToEdit.place = null;
     }
     var res = await editActivity(activityToEdit);

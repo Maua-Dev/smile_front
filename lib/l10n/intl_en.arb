@@ -60,7 +60,7 @@
 
 
     "aboutSmileTitle": "About Smile",
-    "aboutSmileDescription": "{description, select, firstParagraph{SMILE is an integrating event between the areas of Administration, Engineering, Computer Science, Design and Information Systems, which aims to present new trends, technologies and contents in order to encourage the exchange and updating of knowledge between professionals and students.} secondParagraph{The event represents an opportunity for renewal and continuous learning, as well as an excellent experience for improving the network of contacts, with professionals from different fields at national and international levels. This makes them start to share experiences and interact with the job market.} thirdParagraph{Organized by the Mauá Institute of Technology - IMT and open to the public, online/in person (Hybrid).} other{}}",
+    "aboutSmileDescription": "{description, select, firstParagraph{SMILE is an integrating event between the areas of Administration, Engineering, Computer Science, Design and Information Systems, which aims to present new trends, technologies and contents in order to encourage the exchange and updating of knowledge between professionals and students.} secondParagraph{The event represents an opportunity for renewal and continuous learning, as well as an excellent experience for improving the network of contacts, with professionals from different fields at national and international levels. This makes them start to share experiences and interact with the job market.} thirdParagraph{Organized by the Mauá Institute of Technology - IMT and open to the public, online/in person (HYBRID).} other{}}",
     "aboutSmileDate": "Date: May 22 to 27, 2023.",
     "signUp": "Sign Up",
     "unsubscribe": "Unsubscribe",
@@ -319,5 +319,34 @@
     "socialNameCertificateAsk": "{social, select, title{Do you want social name on } certificate{your certificate?} other{}}",
     "updateUserInfo": "{info, select, title{* The name that appears here will be the one we will use for the purposes of issuing a certificate. Any changes to your registration can be made up to the day } date{05/25/2023} description2{, under penalty of the certificate being issued with the data provided here.} other{}}",
 
-    "homeSubscription": "Open for subscriptions"
+    "homeSubscription": "Open for subscriptions",
+
+    "entityErrorMessage": "Field {entityErrorMessage} is not valid",
+    "@entityErrorMessage" : {
+        "placeholders": {
+            "placeholders": {
+                "entityErrorMessage": {}
+            }
+        }
+    },
+
+    "requestErrorMessage": "{message}",
+    "@requestErrorMessage" : {
+        "placeholders": {
+            "placeholders": {
+                "requestErrorMessage": {}
+            }
+        }
+    },
+
+    "emptyListErrorMessage": "List is empty, no items found for this request",
+
+    "noItemsFoundErrorMessage": "No items found for {message}",
+    "@noItemsFoundErrorMessage" : {
+        "placeholders": {
+            "placeholders": {
+                "noItemsFoundErrorMessage": {}
+            }
+        }
+    }
 }

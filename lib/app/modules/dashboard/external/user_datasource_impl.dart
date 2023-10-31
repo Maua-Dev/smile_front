@@ -15,8 +15,6 @@ class UserDatasourceImpl extends UserDatasourceInterface {
   BaseOptions options = BaseOptions(
     baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
     responseType: ResponseType.json,
-    connectTimeout: 30000,
-    receiveTimeout: 30000,
   );
   Dio dio = Dio();
 
@@ -46,7 +44,7 @@ class UserDatasourceImpl extends UserDatasourceInterface {
           res = await dio.get(url);
       }
       return res;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (e.response == null || e.response?.statusCode == 401) {
         await authController.refreshUserToken();
         var res = await middleware(

@@ -2,7 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/app_guard.dart';
 import 'package:smile_front/app/modules/auth/infra/auth_guards/auth_guard_adm.dart';
 import 'package:smile_front/app/modules/auth/infra/auth_guards/auth_guard_user.dart';
-import 'package:smile_front/app/modules/dashboard/adm_module.dart';
+import 'package:smile_front/app/modules/adm/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/faq_module.dart';
 import 'package:smile_front/app/modules/dashboard/landing_module.dart';
 import 'package:smile_front/app/modules/login/login_module.dart';

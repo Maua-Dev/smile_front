@@ -3,19 +3,19 @@
 import 'package:enum_to_string/enum_to_string.dart';
 
 enum DeliveryEnum {
-  in_person,
-  online,
-  hybrid,
+  IN_PERSON,
+  ONLINE,
+  HYBRID,
 }
 
 extension DeliveryEnumExtension on DeliveryEnum {
   String get name {
     switch (this) {
-      case DeliveryEnum.in_person:
+      case DeliveryEnum.IN_PERSON:
         return 'Presencial';
-      case DeliveryEnum.online:
+      case DeliveryEnum.ONLINE:
         return 'Online';
-      case DeliveryEnum.hybrid:
+      case DeliveryEnum.HYBRID:
         return 'Híbrida';
     }
   }

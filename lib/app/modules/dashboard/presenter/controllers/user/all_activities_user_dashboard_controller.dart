@@ -321,7 +321,7 @@ abstract class AllActivitiesUserDashboardControllerBase with Store {
       await enrollmentController.getUserAllActivitiesWithEnrollment();
       allActivitiesFromGet = enrollmentController.allActivitiesWithEnrollments;
       activitiesOnScreen = enrollmentController.allActivitiesWithEnrollments;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       requisitionError = e.response!.data;
     } catch (e) {
       requisitionError = S.current.errorGenericGetActivities;

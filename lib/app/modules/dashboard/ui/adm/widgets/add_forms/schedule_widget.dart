@@ -164,7 +164,7 @@ class ScheduleWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  delivery == null || delivery != DeliveryEnum.in_person
+                  delivery == null || delivery != DeliveryEnum.IN_PERSON
                       ? Flexible(
                           child: TextFieldDialogWidget(
                             validator: validateRequiredField,
@@ -175,12 +175,12 @@ class ScheduleWidget extends StatelessWidget {
                           ),
                         )
                       : const SizedBox.shrink(),
-                  delivery != DeliveryEnum.in_person
+                  delivery != DeliveryEnum.IN_PERSON
                       ? const SizedBox(
                           width: 16,
                         )
                       : const SizedBox.shrink(),
-                  delivery == null || delivery != DeliveryEnum.online
+                  delivery == null || delivery != DeliveryEnum.ONLINE
                       ? Flexible(
                           child: TextFieldDialogWidget(
                             validator: validateRequiredField,

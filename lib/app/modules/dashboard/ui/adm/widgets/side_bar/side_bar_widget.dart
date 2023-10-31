@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
-import '../../../../presenter/controllers/adm/adm_dashboard_controller.dart';
+import '../../../../../adm/presenter/controllers/adm_dashboard_controller.dart';
 import '../../../shared/widgets/logout_button_widget.dart';
 import '../../../shared/widgets/sidebar_button_widget.dart';
 

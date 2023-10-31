@@ -145,7 +145,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                         : 175,
                     height: controller.professorActivityWithEnrollments
                                 .deliveryEnum ==
-                            DeliveryEnum.hybrid
+                            DeliveryEnum.HYBRID
                         ? MediaQuery.of(context).size.width < breakpointTablet
                             ? 98
                             : 148
@@ -173,7 +173,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                             } else {
                               return controller.professorActivityWithEnrollments
                                           .deliveryEnum ==
-                                      DeliveryEnum.online
+                                      DeliveryEnum.ONLINE
                                   ? MouseRegion(
                                       cursor: SystemMouseCursors.click,
                                       child: GestureDetector(
@@ -199,7 +199,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                       ),
                                     )
                                   : controller.professorActivityWithEnrollments.deliveryEnum ==
-                                          DeliveryEnum.hybrid
+                                          DeliveryEnum.HYBRID
                                       ? Column(
                                           children: [
                                             MouseRegion(

@@ -34,8 +34,6 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
       var dio = Dio(BaseOptions(
         baseUrl: EnvironmentConfig.SPONSOR_FORM_REQUEST_URL,
         responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
       ));
 
       setLoading();

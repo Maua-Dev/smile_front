@@ -774,7 +774,7 @@ class S {
     );
   }
 
-  /// `{description, select, firstParagraph{SMILE is an integrating event between the areas of Administration, Engineering, Computer Science, Design and Information Systems, which aims to present new trends, technologies and contents in order to encourage the exchange and updating of knowledge between professionals and students.} secondParagraph{The event represents an opportunity for renewal and continuous learning, as well as an excellent experience for improving the network of contacts, with professionals from different fields at national and international levels. This makes them start to share experiences and interact with the job market.} thirdParagraph{Organized by the Mauá Institute of Technology - IMT and open to the public, online/in person (Hybrid).} other{}}`
+  /// `{description, select, firstParagraph{SMILE is an integrating event between the areas of Administration, Engineering, Computer Science, Design and Information Systems, which aims to present new trends, technologies and contents in order to encourage the exchange and updating of knowledge between professionals and students.} secondParagraph{The event represents an opportunity for renewal and continuous learning, as well as an excellent experience for improving the network of contacts, with professionals from different fields at national and international levels. This makes them start to share experiences and interact with the job market.} thirdParagraph{Organized by the Mauá Institute of Technology - IMT and open to the public, online/in person (HYBRID).} other{}}`
   String aboutSmileDescription(Object description) {
     return Intl.select(
       description,
@@ -784,7 +784,7 @@ class S {
         'secondParagraph':
             'The event represents an opportunity for renewal and continuous learning, as well as an excellent experience for improving the network of contacts, with professionals from different fields at national and international levels. This makes them start to share experiences and interact with the job market.',
         'thirdParagraph':
-            'Organized by the Mauá Institute of Technology - IMT and open to the public, online/in person (Hybrid).',
+            'Organized by the Mauá Institute of Technology - IMT and open to the public, online/in person (HYBRID).',
         'other': '',
       },
       name: 'aboutSmileDescription',
@@ -2640,6 +2640,46 @@ class S {
       name: 'homeSubscription',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Field {entityErrorMessage} is not valid`
+  String entityErrorMessage(Object placeholders, Object entityErrorMessage) {
+    return Intl.message(
+      'Field $entityErrorMessage is not valid',
+      name: 'entityErrorMessage',
+      desc: '',
+      args: [placeholders, entityErrorMessage],
+    );
+  }
+
+  /// `{message}`
+  String requestErrorMessage(Object placeholders, Object message) {
+    return Intl.message(
+      '$message',
+      name: 'requestErrorMessage',
+      desc: '',
+      args: [placeholders, message],
+    );
+  }
+
+  /// `List is empty, no items found for this request`
+  String get emptyListErrorMessage {
+    return Intl.message(
+      'List is empty, no items found for this request',
+      name: 'emptyListErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No items found for {message}`
+  String noItemsFoundErrorMessage(Object placeholders, Object message) {
+    return Intl.message(
+      'No items found for $message',
+      name: 'noItemsFoundErrorMessage',
+      desc: '',
+      args: [placeholders, message],
     );
   }
 }

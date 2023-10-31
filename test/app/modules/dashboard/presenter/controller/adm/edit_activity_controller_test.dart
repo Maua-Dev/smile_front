@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/app_module.dart';
-import 'package:smile_front/app/modules/dashboard/adm_module.dart';
+import 'package:smile_front/app/modules/adm/adm_module.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/edit_activity.dart';

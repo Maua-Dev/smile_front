@@ -14,8 +14,6 @@ class CertificateDatasourceImpl implements CertificateDatasourceInterface {
   BaseOptions options = BaseOptions(
     baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
     responseType: ResponseType.json,
-    connectTimeout: 30000,
-    receiveTimeout: 30000,
   );
   Dio dio = Dio();
 
@@ -33,7 +31,7 @@ class CertificateDatasourceImpl implements CertificateDatasourceInterface {
         return CertificateModel.fromMaps(res.data['certificates']);
       }
       throw Exception();
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (e.response == null || e.response!.statusCode == 401) {
         await authController.refreshUserToken();
         requestCounter++;

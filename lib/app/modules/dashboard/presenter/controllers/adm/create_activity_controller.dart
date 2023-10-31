@@ -97,10 +97,10 @@ abstract class CreateActivityControllerBase with Store {
   @action
   Future createUserActivity() async {
     setIsLoading(true);
-    if (activityToCreate.deliveryEnum == DeliveryEnum.in_person) {
+    if (activityToCreate.deliveryEnum == DeliveryEnum.IN_PERSON) {
       activityToCreate.link = null;
     }
-    if (activityToCreate.deliveryEnum == DeliveryEnum.online) {
+    if (activityToCreate.deliveryEnum == DeliveryEnum.ONLINE) {
       activityToCreate.place = null;
     }
     var res = await createActivity(activityToCreate);
