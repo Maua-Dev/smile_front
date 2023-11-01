@@ -1,47 +1,28 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:smile_front/app/modules/auth/domain/repositories/secure_storage_interface.dart';
-import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controller.dart';
-import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
-import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
+import 'package:smile_front/app/modules/adm/domain/entities/activity_admin.dart';
+import 'package:smile_front/app/modules/adm/domain/usecases/get_admin_activities_usecase.dart';
+import 'package:smile_front/app/modules/adm/presenter/states/adm_dashboard_state.dart';
 import 'package:smile_front/app/modules/dashboard/domain/infra/activity_enum.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/delete_activity.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/get_admin_activities_interface.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/get_download_link_csv.dart';
-import 'package:smile_front/app/modules/dashboard/domain/usecases/manual_drop_activity.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_model.dart';
 import 'package:smile_front/app/modules/adm/presenter/controllers/adm_dashboard_controller.dart';
-import 'package:smile_front/app/shared/infra/models/admin_activity_model.dart';
-
-import '../../../../auth/presenter/controllers/auth_controller_test.mocks.dart';
+import 'package:smile_front/app/shared/domain/enum/delivery_enum.dart';
+import 'package:smile_front/app/shared/helpers/errors/errors.dart';
 import 'adm_dashboard_controller_test.mocks.dart';
 
 @GenerateMocks([
-  GetDownloadLinkCsvInterface,
-  DeleteActivityInterface,
-  GetAdminActivitiesInterface,
-  ManualDropActivityInterface
+  GetAdminActivitiesUsecaseInterface,
 ])
 void main() {
-  GetDownloadLinkCsvInterface getDownloadLinkCsv =
-      MockGetDownloadLinkCsvInterface();
-  GetAdminActivitiesInterface getAdminActivities =
-      MockGetAdminActivitiesInterface();
-  ManualDropActivityInterface manualDropActivity =
-      MockManualDropActivityInterface();
-  LoginWithEmailInterface loginWithEmail = MockLoginWithEmailInterface();
-  RefreshTokenInterface refreshToken = MockRefreshTokenInterface();
-  DeleteActivityInterface deleteActivity = MockDeleteActivityInterface();
+  GetAdminActivitiesUsecaseInterface getAdminActivitiesUsecase =
+      MockGetAdminActivitiesUsecaseInterface();
 
   late AdmDashboardController controller;
 
-  SecureStorageInterface secureStorage = MockSecureStorageInterface();
-
-  late AuthController authController;
-
-  final mockActivities = <AdminActivityModel>[
-    AdminActivityModel(
+  final mockActivities = <ActivityAdmin>[
+    ActivityAdmin(
       activityCode: 'C01',
       type: ActivityEnum.COURSES,
       title:
@@ -74,9 +55,10 @@ void main() {
       isExtensive: false,
       takenSlots: 0,
       responsibleProfessors: [],
-      enrollments: [],
+      deliveryEnum: DeliveryEnum.ONLINE,
+      stopAcceptingNewEnrollmentsBefore: DateTime.parse('2022-05-16 13:00'),
     ),
-    AdminActivityModel(
+    ActivityAdmin(
       activityCode: 'C01',
       type: ActivityEnum.COURSES,
       title:
@@ -109,9 +91,10 @@ void main() {
       isExtensive: false,
       takenSlots: 0,
       responsibleProfessors: [],
-      enrollments: [],
+      deliveryEnum: DeliveryEnum.ONLINE,
+      stopAcceptingNewEnrollmentsBefore: DateTime.parse('2022-05-16 13:00'),
     ),
-    AdminActivityModel(
+    ActivityAdmin(
       activityCode: 'C01',
       type: ActivityEnum.COURSES,
       title:
@@ -144,9 +127,10 @@ void main() {
       isExtensive: false,
       takenSlots: 0,
       responsibleProfessors: [],
-      enrollments: [],
+      deliveryEnum: DeliveryEnum.ONLINE,
+      stopAcceptingNewEnrollmentsBefore: DateTime.parse('2022-05-16 13:00'),
     ),
-    AdminActivityModel(
+    ActivityAdmin(
       activityCode: 'C01',
       type: ActivityEnum.COURSES,
       title:
@@ -179,102 +163,38 @@ void main() {
       isExtensive: false,
       takenSlots: 0,
       responsibleProfessors: [],
-      enrollments: [],
+      deliveryEnum: DeliveryEnum.ONLINE,
+      stopAcceptingNewEnrollmentsBefore: DateTime.parse('2022-05-16 13:00'),
     ),
   ];
 
-  setUpAll(() {
-    when(getAdminActivities()).thenAnswer((_) async => mockActivities);
-    when(getDownloadLinkCsv()).thenAnswer((_) async => '');
-    authController = AuthController(
-      refreshToken: refreshToken,
-      loginWithEmail: loginWithEmail,
-      storage: secureStorage,
-    );
-    controller = AdmDashboardController(
-      manualDropActivity: manualDropActivity,
-      getAdminActivities: getAdminActivities,
-      getDownloadLinkCsv: getDownloadLinkCsv,
-      authController: authController,
-      deleteActivity: deleteActivity,
-    );
+  group('[TEST] - setter', () {
+    when(getAdminActivitiesUsecase())
+        .thenAnswer((realInvocation) async => right(mockActivities));
+    controller = AdmDashboardController(getAdminActivitiesUsecase);
+    test('setState', () async {
+      controller.setState(SuccessAdmDashboardState(listActivities: []));
+      expect(controller.state, isA<SuccessAdmDashboardState>());
+    });
   });
 
-  test('setIsLoadingCsv', () {
-    controller.setIsLoadingCsv(true);
-    expect(controller.isLoadingCsv, true);
-  });
+  group('[TEST] - getAdminActivities', () {
+    test('Success', () async {
+      when(getAdminActivitiesUsecase())
+          .thenAnswer((realInvocation) async => right(mockActivities));
+      controller = AdmDashboardController(getAdminActivitiesUsecase);
+      await controller.getAdminActivities();
+      expect(controller.state, isA<SuccessAdmDashboardState>());
+      expect(controller.activitiesAdminList.isNotEmpty, true);
+    });
 
-  test('setDateFilter', () {
-    var value = DateTime.utc(2022, 03, 18, 13);
-    controller.setDateFilter(value);
-    expect(controller.dateFilter, value);
-  });
-
-  test('setHourFilter', () {
-    var value = DateTime.utc(2022, 03, 18, 13);
-    controller.setHourFilter(value);
-    expect(controller.hourFilter, value);
-  });
-
-  test('setAllFilters', () {
-    if (controller.typeFilter == null &&
-        controller.hourFilter == null &&
-        controller.dateFilter == null) {
-      expect(controller.activitiesList, mockActivities);
-    }
-  });
-
-  test('resetFilters', () {
-    controller.resetFilters();
-    expect(controller.activitiesList, controller.allActivitiesList);
-    expect(controller.typeFilter, null);
-    expect(controller.dateFilter, null);
-    expect(controller.hourFilter, null);
-  });
-
-  test('filterActivitiesByType', () {
-    var type = ActivityEnum.COURSES;
-    var list = mockActivities.where((element) => element.type == type).toList();
-    expect(list, controller.filterActivitiesByType(type, mockActivities));
-  });
-
-  test('filterActivitiesByDate', () {
-    var date = DateTime.utc(2022, 03, 18, 13);
-    var list = mockActivities
-        .where(
-            (element) => controller.isValidDateFilter(element.startDate!, date))
-        .toList();
-    expect(list, controller.filterActivitiesByDate(date, mockActivities));
-  });
-
-  test('filterActivitiesByHour', () {
-    var hour = DateTime.utc(2022, 03, 18, 13);
-    var list = mockActivities
-        .where(
-            (element) => controller.isValidHourFilter(element.startDate!, hour))
-        .toList();
-    expect(list, controller.filterActivitiesByHour(hour, mockActivities));
-  });
-
-  test('setIsLoading', () {
-    controller.setIsLoading(true);
-    expect(controller.isLoading, true);
-  });
-
-  test('toggleFloatActionButton', () {
-    controller.toggleFloatActionButton();
-    expect(controller.isFloatActionButtonOpen, true);
-  });
-
-  test('getAllActivities', () {
-    controller.getAllActivities();
-    expect(controller.activitiesList.isNotEmpty, true);
-    // expect(controller.nextActivitiesList.isNotEmpty, true);
-  });
-
-  test('logout', () {
-    controller.logout();
-    expect(authController.isLogged, false);
+    test('Error', () async {
+      when(getAdminActivitiesUsecase()).thenAnswer(
+          (realInvocation) async => left(Failure(message: 'error')));
+      controller = AdmDashboardController(getAdminActivitiesUsecase);
+      await controller.getAdminActivities();
+      expect(controller.state, isA<ErrorAdmDashboardState>());
+      expect(controller.activitiesAdminList.isEmpty, true);
+    });
   });
 }

@@ -12,7 +12,7 @@ import 'package:smile_front/app/shared/helpers/functions/get_http_status_functio
 class ActivityAdminRepositoryHttp implements ActivityAdminRepositoryInterface {
   final ActivityDatasourceInterface datasource;
 
-  ActivityAdminRepositoryHttp({required this.datasource});
+  ActivityAdminRepositoryHttp(this.datasource);
 
   List<ActivityAdminModel> listAllAdminActivity = [];
 
@@ -20,7 +20,7 @@ class ActivityAdminRepositoryHttp implements ActivityAdminRepositoryInterface {
   Future<Either<Failure, List<ActivityAdminModel>>>
       getAllAdminActivities() async {
     try {
-      if (listAllAdminActivity.isNotEmpty) {
+      if (listAllAdminActivity.isEmpty) {
         var result = await datasource.getAdminActivities();
         listAllAdminActivity =
             result.map((e) => ActivityAdminModel.fromJson(e)).toList();

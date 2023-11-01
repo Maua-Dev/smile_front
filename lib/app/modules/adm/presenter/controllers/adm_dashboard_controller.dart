@@ -26,6 +26,7 @@ abstract class AdmDashboardControllerBase with Store {
 
   @action
   Future<void> getAdminActivities() async {
+    setState(LoadingAdmDashboardState());
     var result = await _getAdminActivitiesUsecase();
 
     result.fold(
@@ -36,6 +37,7 @@ abstract class AdmDashboardControllerBase with Store {
       (listActivities) {
         // meu estado mostra a lista retornada
         activitiesAdminList = listActivities;
+        setState(SuccessAdmDashboardState(listActivities: listActivities));
       },
     );
   }
