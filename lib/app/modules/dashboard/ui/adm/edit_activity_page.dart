@@ -4,9 +4,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/adm/edit_activity_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/add_forms/professor_add_widget.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/app_bar/adm_app_bar_widget.dart';
+import 'package:smile_front/app/modules/adm/presenter/ui/widgets/adm_app_bar_widget.dart';
 import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/extensive_activity_button/extensive_activity_button.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/side_bar/side_bar_widget.dart';
+import 'package:smile_front/app/modules/adm/presenter/ui/widgets/adm_side_bar_widget.dart';
 import 'package:smile_front/app/shared/widgets/custom_elevated_button_widget.dart';
 import 'package:smile_front/app/shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import '../../../../../generated/l10n.dart';
@@ -40,7 +40,7 @@ class _EditActivityPageState
           child: AdmAppBarWidget(appBarText: S.of(context).activityEditTitle)),
       body: Row(
         children: [
-          const SideBarWidget(),
+          const AdmSideBarWidget(),
           SizedBox(
             width: Screen.width(context) - 115,
             child: SingleChildScrollView(

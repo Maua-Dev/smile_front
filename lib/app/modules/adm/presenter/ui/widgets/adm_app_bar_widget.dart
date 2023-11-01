@@ -2,8 +2,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../shared/themes/app_colors.dart';
-import '../../../../../../shared/themes/app_text_styles.dart';
+import '../../../../../shared/themes/app_colors.dart';
+import '../../../../../shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/helpers/services/s3/assets_s3.dart';
 
 class AdmAppBarWidget extends StatelessWidget {

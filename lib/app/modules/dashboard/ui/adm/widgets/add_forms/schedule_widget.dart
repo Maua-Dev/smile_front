@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/tooltip/tooltip_widget.dart';
+import 'package:smile_front/app/shared/widgets/tooltip/tooltip_widget.dart';
 import 'package:smile_front/app/shared/domain/enum/delivery_enum.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../../shared/domain/entities/screen_variables.dart';
