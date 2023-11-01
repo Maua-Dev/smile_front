@@ -7,7 +7,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:string_validator/string_validator.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import '../../../../../shared/services/environment/environment_config.dart';
+import '../../../../../shared/helpers/environment/environment_config.dart';
 
 class SponsorFormDialog extends StatefulWidget {
   const SponsorFormDialog({super.key});
@@ -34,8 +34,6 @@ class _SponsorFormDialogState extends State<SponsorFormDialog> {
       var dio = Dio(BaseOptions(
         baseUrl: EnvironmentConfig.SPONSOR_FORM_REQUEST_URL,
         responseType: ResponseType.json,
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
       ));
 
       setLoading();

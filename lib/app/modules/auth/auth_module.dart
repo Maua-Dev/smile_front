@@ -4,7 +4,7 @@ import 'package:smile_front/app/modules/auth/presenter/controllers/auth_controll
 import 'package:smile_front/app/modules/auth/domain/usecases/refresh_token.dart';
 import 'package:smile_front/app/modules/auth/domain/usecases/login_with_email.dart';
 
-import '../../shared/services/dio/smile_login_options.dart';
+import '../../shared/helpers/services/dio/options/smile_login_options.dart';
 import 'external/auth_datasource_impl.dart';
 import 'domain/repositories/auth_repository_interface.dart';
 import 'infra/datasource/auth_datasource_interface.dart';

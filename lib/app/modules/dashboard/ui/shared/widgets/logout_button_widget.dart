@@ -26,7 +26,7 @@ class LogoutButtonWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Text(
           buttonTittle,
-          style: AppTextStyles.button.copyWith(fontSize: 20),
+          style: AppTextStyles.headline1.copyWith(fontSize: 20),
         ),
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:smile_front/app/modules/auth/domain/repositories/auth_repository_interface.dart';
 
-import '../../../../shared/models/user_model.dart';
+import '../../../../shared/infra/models/user_model.dart';
 
 abstract class LoginWithEmailInterface {
   Future<UserModel> call(String user, String password);

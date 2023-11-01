@@ -63,7 +63,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                     children: [
                       Text(
                         S.of(context).updateUserTitle,
-                        style: AppTextStyles.titleH1.copyWith(
+                        style: AppTextStyles.headline1.copyWith(
                             fontSize: MediaQuery.of(context).size.width < 500
                                 ? 18
                                 : MediaQuery.of(context).size.width < 1000
@@ -93,7 +93,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         S.of(context).registerFullNamePlaceholder,
-                        style: AppTextStyles.body.copyWith(
+                        style: AppTextStyles.headline1.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 500
                                 ? 14
@@ -115,7 +115,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                       initialValue: widget.name,
                       textAlignVertical: TextAlignVertical.center,
                       onChanged: controller.setName,
-                      style: AppTextStyles.body.copyWith(
+                      style: AppTextStyles.headline1.copyWith(
                           color: Colors.white,
                           fontSize: MediaQuery.of(context).size.width < 500
                               ? 14
@@ -149,7 +149,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                       children: [
                         Text(
                           S.of(context).socialNameAsk,
-                          style: AppTextStyles.body.copyWith(
+                          style: AppTextStyles.headline1.copyWith(
                               color: Colors.black,
                               fontSize: MediaQuery.of(context).size.width < 500
                                   ? 14
@@ -184,7 +184,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         S.of(context).registerSocialNamePlaceholder,
-                        style: AppTextStyles.body.copyWith(
+                        style: AppTextStyles.headline1.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 500
                                 ? 14
@@ -206,7 +206,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                     enabled: widget.wantSocialName ? true : false,
                     textAlignVertical: TextAlignVertical.center,
                     onChanged: widget.onChangedSocialName,
-                    style: AppTextStyles.body.copyWith(
+                    style: AppTextStyles.headline1.copyWith(
                         color: Colors.white,
                         fontSize: MediaQuery.of(context).size.width < 500
                             ? 14
@@ -249,7 +249,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                             MediaQuery.of(context).size.width < 410
                                 ? "${S.of(context).socialNameCertificateAsk('title')}\n${S.of(context).socialNameCertificateAsk('certificate')}"
                                 : "${S.of(context).socialNameCertificateAsk('title')}${S.of(context).socialNameCertificateAsk('certificate')}",
-                            style: AppTextStyles.body.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                                 color: Colors.black,
                                 fontSize: MediaQuery.of(context).size.width <
                                         500
@@ -281,7 +281,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                             text: TextSpan(
                                 text:
                                     '${S.of(context).notificationsSchemaTitle}\n',
-                                style: AppTextStyles.body.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                   color: Colors.black,
                                   fontSize: MediaQuery.of(context).size.width <
                                           500
@@ -295,7 +295,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                                   text: S
                                       .of(context)
                                       .notificationsSchema('email'),
-                                  style: AppTextStyles.body.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                     color: AppColors.brandingOrange,
                                     fontWeight: FontWeight.bold,
                                     fontSize:
@@ -330,7 +330,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         text: S.of(context).updateUserInfo('title'),
-                        style: AppTextStyles.body.copyWith(
+                        style: AppTextStyles.headline1.copyWith(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width < 500
                                 ? 12
@@ -340,7 +340,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                         children: [
                           TextSpan(
                             text: S.of(context).updateUserInfo('date'),
-                            style: AppTextStyles.titleH1.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                                 color: Colors.black,
                                 fontSize: MediaQuery.of(context).size.width <
                                         500
@@ -351,7 +351,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                           ),
                           TextSpan(
                             text: S.of(context).updateUserInfo('description2'),
-                            style: AppTextStyles.body.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                                 color: Colors.black,
                                 fontSize: MediaQuery.of(context).size.width <
                                         500
@@ -411,7 +411,7 @@ class _NameAlterationDialogState extends State<NameAlterationDialog> {
                         );
                       },
                       child: Text(S.of(context).deleteAccount,
-                          style: AppTextStyles.body.copyWith(
+                          style: AppTextStyles.headline1.copyWith(
                               color: AppColors.redButton, fontSize: 16)))
                 ],
               ),

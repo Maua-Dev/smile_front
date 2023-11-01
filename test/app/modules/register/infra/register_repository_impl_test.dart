@@ -3,9 +3,9 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:smile_front/app/modules/register/infra/datasources/register_datasource_interface.dart';
 import 'package:smile_front/app/modules/register/infra/repository/register_repository_impl.dart';
-import 'package:smile_front/app/shared/entities/infra/access_level_enum.dart';
-import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
-import 'package:smile_front/app/shared/entities/user_registration.dart';
+import 'package:smile_front/app/shared/domain/enum/access_level_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/user_roles_enum.dart';
+import 'package:smile_front/app/shared/domain/entities/user_registration.dart';
 import 'register_repository_impl_test.mocks.dart';
 
 @GenerateMocks([RegisterDatasourceInterface])

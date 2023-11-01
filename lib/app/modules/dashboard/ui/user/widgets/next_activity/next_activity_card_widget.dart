@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/shared/utils/utils.dart';
+import 'package:smile_front/app/shared/helpers/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:math' as math;
 
-import '../../../../../../shared/entities/screen_variables.dart';
+import '../../../../../../shared/domain/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 import '../../../../../../shared/themes/breakpoint.dart';
@@ -82,7 +82,7 @@ class NextActivityCardWidget extends StatelessWidget {
                     maxLines:
                         MediaQuery.of(context).size.width < tabletSize ? 2 : 3,
                     overflow: TextOverflow.ellipsis,
-                    style: AppTextStyles.buttonBold.copyWith(
+                    style: AppTextStyles.headline3.copyWith(
                         fontSize: MediaQuery.of(context).size.width < tabletSize
                             ? 20
                             : 30,
@@ -134,7 +134,7 @@ class NextActivityCardWidget extends StatelessWidget {
                             ),
                             isUser
                                 ? Text(weekday,
-                                    style: AppTextStyles.button.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <
                                                     tabletSize
@@ -158,7 +158,7 @@ class NextActivityCardWidget extends StatelessWidget {
                               ),
                             ),
                             Text('$timeString - $finalTime',
-                                style: AppTextStyles.button.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width <
                                                 tabletSize
@@ -185,11 +185,11 @@ class NextActivityCardWidget extends StatelessWidget {
                                   text: TextSpan(children: [
                                 TextSpan(
                                     text: '0/',
-                                    style: AppTextStyles.button.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                         fontSize: 18, color: Colors.white)),
                                 TextSpan(
                                     text: '$totalParticipants',
-                                    style: AppTextStyles.button.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <
                                                     tabletSize
@@ -215,7 +215,7 @@ class NextActivityCardWidget extends StatelessWidget {
                                 ),
                               ),
                               Text(location!,
-                                  style: AppTextStyles.button.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                       fontSize:
                                           MediaQuery.of(context).size.width <
                                                   tabletSize
@@ -247,7 +247,7 @@ class NextActivityCardWidget extends StatelessWidget {
                                   mode: LaunchMode.externalApplication,
                                 ),
                                 child: Text('Link',
-                                    style: AppTextStyles.button.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                       fontSize:
                                           MediaQuery.of(context).size.width <
                                                   tabletSize

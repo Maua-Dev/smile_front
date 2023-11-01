@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
-import 'package:smile_front/app/shared/utils/screen_helper.dart';
+import 'package:smile_front/app/shared/helpers/utils/screen_helper.dart';
 
 class InputBoxWidget extends StatelessWidget {
   final IconData icon;

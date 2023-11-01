@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:smile_front/app/shared/entities/screen_variables.dart';
+import 'package:smile_front/app/shared/domain/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../shared/utils/s3_assets_url.dart';
-import '../../../../../shared/utils/screen_helper.dart';
+import 'package:smile_front/app/shared/helpers/services/s3/assets_s3.dart';
+import '../../../../../shared/helpers/utils/screen_helper.dart';
 import '../../../../../shared/widgets/custom_elevated_button_widget.dart';
 import '../widgets/header/h1_header_text_widget.dart';
 
@@ -40,7 +40,7 @@ class _MainHomePageState extends State<MainHomePage> {
                     ),
                     Text(
                       S.of(context).homePageSubtitle,
-                      style: AppTextStyles.body.copyWith(
+                      style: AppTextStyles.headline1.copyWith(
                           fontSize: Screen.height(context) < 750 ? 20 : 25),
                       textAlign: TextAlign.justify,
                     ),
@@ -49,7 +49,7 @@ class _MainHomePageState extends State<MainHomePage> {
                     ),
                     CustomElevatedButtonWidget(
                       title: S.of(context).knowMore,
-                      textStyle: AppTextStyles.buttonBold
+                      textStyle: AppTextStyles.headline3
                           .copyWith(color: Colors.white, fontSize: 24),
                       widthSize: 400,
                       heightSize: 50,
@@ -128,7 +128,7 @@ class _MainHomePageState extends State<MainHomePage> {
                 child: Text(
                   S.of(context).knowMore,
                   textAlign: TextAlign.center,
-                  style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+                  style: AppTextStyles.headline3.copyWith(fontSize: 16),
                 ),
               ),
             ),

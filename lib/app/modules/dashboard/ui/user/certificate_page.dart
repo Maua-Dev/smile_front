@@ -62,7 +62,7 @@ class _CertificatePageState
                           child: Text(
                             S.of(context).noCertificatesFoundTitle,
                             textAlign: TextAlign.center,
-                            style: AppTextStyles.titleH1.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                                 color: AppColors.brandingOrange, fontSize: 32),
                           ),
                         )
@@ -98,7 +98,7 @@ class _CertificatePageState
                                     text: S
                                         .of(context)
                                         .certificatesSubscriptionInfo('title'),
-                                    style: AppTextStyles.body.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <
                                                     1000
@@ -111,7 +111,7 @@ class _CertificatePageState
                                             .of(context)
                                             .certificatesSubscriptionInfo(
                                                 'date'),
-                                        style: AppTextStyles.titleH1.copyWith(
+                                        style: AppTextStyles.headline1.copyWith(
                                             fontSize: MediaQuery.of(context)
                                                         .size
                                                         .width <

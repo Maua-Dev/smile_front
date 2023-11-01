@@ -3,14 +3,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/social_media_icons_widget.dart';
-import 'package:smile_front/app/shared/entities/screen_variables.dart';
+import 'package:smile_front/app/shared/domain/entities/screen_variables.dart';
 import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../shared/themes/app_colors.dart';
 import '../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../shared/utils/s3_assets_url.dart';
-import '../../../../../shared/utils/screen_helper.dart';
+import 'package:smile_front/app/shared/helpers/services/s3/assets_s3.dart';
+import '../../../../../shared/helpers/utils/screen_helper.dart';
 
 class Footer extends StatelessWidget {
   const Footer({Key? key}) : super(key: key);
@@ -51,14 +51,14 @@ class Footer extends StatelessWidget {
                           Center(
                             child: Text(
                               S.of(context).footerLocalizationTitle,
-                              style: AppTextStyles.titleH1
+                              style: AppTextStyles.headline1
                                   .copyWith(color: Colors.white, fontSize: 12),
                             ),
                           ),
                           Center(
                             child: Text(
                               S.of(context).footerLocalizationDescription,
-                              style: AppTextStyles.body
+                              style: AppTextStyles.headline1
                                   .copyWith(color: Colors.white, fontSize: 12),
                             ),
                           ),
@@ -89,7 +89,7 @@ class Footer extends StatelessWidget {
                               ),
                               label: Text(
                                 S.of(context).footerHowToGet.toUpperCase(),
-                                style: AppTextStyles.body.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     color: Colors.white,
                                     fontSize:
                                         Screen.width(context) < cellphoneSize
@@ -178,33 +178,33 @@ class Footer extends StatelessWidget {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         text: S.of(context).footerDoubtContact('normalPart1'),
-                        style: AppTextStyles.body.copyWith(
+                        style: AppTextStyles.headline1.copyWith(
                           color: Colors.white,
                           fontSize: 12,
                         ),
                         children: [
                           TextSpan(
                             text: S.of(context).footerDoubtContact('boldPart1'),
-                            style: AppTextStyles.body
+                            style: AppTextStyles.headline1
                                 .copyWith(color: Colors.white, fontSize: 12),
                           ),
                           TextSpan(
                             text:
                                 S.of(context).footerDoubtContact('normalPart2'),
-                            style: AppTextStyles.body.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                               color: Colors.white,
                               fontSize: 12,
                             ),
                           ),
                           TextSpan(
                             text: S.of(context).footerDoubtContact('boldPart2'),
-                            style: AppTextStyles.body
+                            style: AppTextStyles.headline1
                                 .copyWith(color: Colors.white, fontSize: 12),
                           ),
                           TextSpan(
                             text:
                                 S.of(context).footerDoubtContact('normalPart3'),
-                            style: AppTextStyles.body.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                               color: Colors.white,
                               fontSize: 12,
                             ),
@@ -319,7 +319,7 @@ class Footer extends StatelessWidget {
                         Text(
                           S.of(context).footerSocialMedia,
                           textAlign: TextAlign.center,
-                          style: AppTextStyles.body.copyWith(
+                          style: AppTextStyles.headline1.copyWith(
                               color: Colors.white,
                               fontSize:
                                   Screen.width(context) < tabletSize ? 16 : 20),
@@ -344,14 +344,14 @@ class Footer extends StatelessWidget {
                       children: [
                         Text(
                           S.of(context).footerLocalizationTitle,
-                          style: AppTextStyles.titleH1.copyWith(
+                          style: AppTextStyles.headline1.copyWith(
                               color: Colors.white,
                               fontSize:
                                   Screen.width(context) < tabletSize ? 16 : 20),
                         ),
                         Text(
                           S.of(context).footerLocalizationDescription,
-                          style: AppTextStyles.body.copyWith(
+                          style: AppTextStyles.headline1.copyWith(
                               color: Colors.white,
                               fontSize:
                                   Screen.width(context) < tabletSize ? 16 : 20),
@@ -385,7 +385,7 @@ class Footer extends StatelessWidget {
                             ),
                             label: Text(
                               S.of(context).footerHowToGet.toUpperCase(),
-                              style: AppTextStyles.body.copyWith(
+                              style: AppTextStyles.headline1.copyWith(
                                   color: Colors.white,
                                   fontSize: Screen.width(context) < tabletSize
                                       ? 16
@@ -401,7 +401,7 @@ class Footer extends StatelessWidget {
                               text: S
                                   .of(context)
                                   .footerDoubtContact('normalPart1'),
-                              style: AppTextStyles.body.copyWith(
+                              style: AppTextStyles.headline1.copyWith(
                                 color: Colors.white,
                                 fontSize: 14,
                               ),
@@ -410,7 +410,7 @@ class Footer extends StatelessWidget {
                                   text: S
                                       .of(context)
                                       .footerDoubtContact('boldPart1'),
-                                  style: AppTextStyles.body.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                       color: Colors.white,
                                       fontSize:
                                           Screen.width(context) < tabletSize
@@ -421,7 +421,7 @@ class Footer extends StatelessWidget {
                                   text: S
                                       .of(context)
                                       .footerDoubtContact('normalPart2'),
-                                  style: AppTextStyles.body.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                     color: Colors.white,
                                     fontSize: Screen.width(context) < tabletSize
                                         ? 12
@@ -432,7 +432,7 @@ class Footer extends StatelessWidget {
                                   text: S
                                       .of(context)
                                       .footerDoubtContact('boldPart2'),
-                                  style: AppTextStyles.body.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                       color: Colors.white,
                                       fontSize:
                                           Screen.width(context) < tabletSize
@@ -443,7 +443,7 @@ class Footer extends StatelessWidget {
                                   text: S
                                       .of(context)
                                       .footerDoubtContact('normalPart3'),
-                                  style: AppTextStyles.body.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                     color: Colors.white,
                                     fontSize: Screen.width(context) < tabletSize
                                         ? 12
@@ -487,7 +487,7 @@ class Footer extends StatelessWidget {
             textAlign: TextAlign.center,
             text: TextSpan(
                 text: S.of(context).footerDev('normalPart'),
-                style: AppTextStyles.body.copyWith(
+                style: AppTextStyles.headline1.copyWith(
                     color: Colors.white,
                     fontSize: Screen.width(context) < cellphoneSize
                         ? 16
@@ -497,7 +497,7 @@ class Footer extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: S.of(context).footerDev('boldPart'),
-                    style: AppTextStyles.titleH1.copyWith(
+                    style: AppTextStyles.headline1.copyWith(
                         color: Colors.white,
                         fontSize: Screen.width(context) < cellphoneSize
                             ? 16

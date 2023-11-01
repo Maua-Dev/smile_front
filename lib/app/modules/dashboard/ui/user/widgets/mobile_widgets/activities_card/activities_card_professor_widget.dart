@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/delivery_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
@@ -76,7 +76,7 @@ class ActivitiesCardProfessorWidget extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.center,
                       child: Text(hour,
-                          style: AppTextStyles.bold.copyWith(
+                          style: AppTextStyles.headline1.copyWith(
                               fontSize: MediaQuery.of(context).size.width <
                                       breakpointTablet
                                   ? 20
@@ -109,7 +109,7 @@ class ActivitiesCardProfessorWidget extends StatelessWidget {
                                 child: Text(title,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: AppTextStyles.bold.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <
                                                     breakpointMobile
@@ -143,7 +143,7 @@ class ActivitiesCardProfessorWidget extends StatelessWidget {
                             children: [
                               Text(
                                 'Data: $formattedDate',
-                                style: AppTextStyles.bold.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     fontSize: MediaQuery.of(context)
                                                 .size
                                                 .width <
@@ -159,7 +159,7 @@ class ActivitiesCardProfessorWidget extends StatelessWidget {
                                 children: [
                                   Text(
                                     formattedLocation,
-                                    style: AppTextStyles.bold.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                         fontSize:
                                             MediaQuery.of(context).size.width <
                                                     breakpointMobile
@@ -186,19 +186,21 @@ class ActivitiesCardProfessorWidget extends StatelessWidget {
                                       ? const SizedBox.shrink()
                                       : Text(
                                           '${S.of(context).termination}: $finalTime',
-                                          style: AppTextStyles.bold.copyWith(
-                                              fontSize: MediaQuery.of(context)
-                                                          .size
-                                                          .width <
-                                                      breakpointMobile
-                                                  ? 12
-                                                  : MediaQuery.of(context)
+                                          style: AppTextStyles.headline1
+                                              .copyWith(
+                                                  fontSize: MediaQuery.of(
+                                                                  context)
                                                               .size
                                                               .width <
-                                                          breakpointTablet
-                                                      ? 16
-                                                      : 24,
-                                              color: Colors.black)),
+                                                          breakpointMobile
+                                                      ? 12
+                                                      : MediaQuery.of(context)
+                                                                  .size
+                                                                  .width <
+                                                              breakpointTablet
+                                                          ? 16
+                                                          : 24,
+                                                  color: Colors.black)),
                                 ],
                               ),
                             ],

@@ -10,9 +10,9 @@ import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/app/shared/widgets/text-header/text_header.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../shared/entities/infra/enrollment_state_enum.dart';
-import '../../../../shared/models/enrollments_model.dart';
-import '../../../../shared/utils/utils.dart';
+import '../../../../shared/domain/enum/enrollment_state_enum.dart';
+import '../../../../shared/infra/models/enrollments_model.dart';
+import '../../../../shared/helpers/utils/utils.dart';
 import '../../../../shared/widgets/bottom_navigation_bar/bottom_navigation_bar_controller.dart';
 import '../../presenter/controllers/user/user_dashboard_controller.dart';
 import 'widgets/next_activity/next_activity_card_widget.dart';
@@ -65,7 +65,7 @@ class _UserDashboardPageState
                       child: Text(
                         controller.requisitionError!,
                         textAlign: TextAlign.center,
-                        style: AppTextStyles.titleH1.copyWith(
+                        style: AppTextStyles.headline1.copyWith(
                             color: AppColors.brandingOrange, fontSize: 32),
                       ),
                     ),
@@ -243,7 +243,7 @@ class _UserDashboardPageState
                               );
                             } else {
                               return Text(S.of(context).activitiesNotFound,
-                                  style: AppTextStyles.body.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                       fontSize:
                                           MediaQuery.of(context).size.width <
                                                   breakpointTablet
@@ -292,7 +292,7 @@ class _UserDashboardPageState
                           child: Text(
                             S.of(context).noActivitiesEnrolledText,
                             textAlign: TextAlign.center,
-                            style: AppTextStyles.titleH1.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                                 color: AppColors.brandingOrange, fontSize: 32),
                           ),
                         ),
@@ -332,7 +332,7 @@ class _UserDashboardPageState
                                   ),
                                   Text(
                                     S.of(context).signUp.toUpperCase(),
-                                    style: AppTextStyles.button.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                       fontWeight: FontWeight.bold,
                                       fontSize:
                                           MediaQuery.of(context).size.width <

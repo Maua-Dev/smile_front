@@ -32,14 +32,14 @@ class SwitchToggleUserDialogWidget extends StatelessWidget {
             child: RichText(
                 text: TextSpan(
                     text: S.of(context).notificationsSchemaTitle,
-                    style: AppTextStyles.body.copyWith(
+                    style: AppTextStyles.headline1.copyWith(
                       color: AppColors.gray,
                       fontSize: 16,
                     ),
                     children: [
                   TextSpan(
                       text: type.toUpperCase(),
-                      style: AppTextStyles.body.copyWith(
+                      style: AppTextStyles.headline1.copyWith(
                         color: AppColors.brandingOrange,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,

@@ -3,7 +3,7 @@ import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/app_widget.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../shared/error/error_snackbar.dart';
+import '../../../../shared/helpers/errors/error_snackbar.dart';
 import '../../../../shared/themes/app_colors.dart';
 import '../../domain/usecases/change_password.dart';
 import '../../domain/usecases/forgot_password.dart';

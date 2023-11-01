@@ -29,7 +29,7 @@ class EndDrawerWidget extends StatelessWidget {
             ListTile(
               title: Text(
                 S.of(context).initTitle.toUpperCase(),
-                style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+                style: AppTextStyles.headline3.copyWith(fontSize: 16),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -39,7 +39,7 @@ class EndDrawerWidget extends StatelessWidget {
             ListTile(
               title: Text(
                 S.of(context).activitiesTitle.toUpperCase(),
-                style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+                style: AppTextStyles.headline3.copyWith(fontSize: 16),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -49,7 +49,7 @@ class EndDrawerWidget extends StatelessWidget {
             ListTile(
               title: Text(
                 S.of(context).sponsorsTitle.toUpperCase(),
-                style: AppTextStyles.buttonBold.copyWith(fontSize: 16),
+                style: AppTextStyles.headline3.copyWith(fontSize: 16),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -59,7 +59,7 @@ class EndDrawerWidget extends StatelessWidget {
             ListTile(
               title: AppbarButtonWidget(
                 title: S.of(context).loginTitle.toUpperCase(),
-                textStyle: AppTextStyles.buttonBold
+                textStyle: AppTextStyles.headline3
                     .copyWith(color: Colors.white, fontSize: 16),
                 paddingHorizontal: 8,
                 paddingVertical: 8,

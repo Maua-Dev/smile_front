@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsors_home_page.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
-import 'package:smile_front/app/shared/entities/screen_variables.dart';
+import 'package:smile_front/app/shared/domain/entities/screen_variables.dart';
 import 'package:smile_front/app/shared/widgets/custom_elevated_button_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/paragraph_text_widget.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -10,8 +10,8 @@ import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../app_module.dart';
 import '../../../../shared/themes/app_colors.dart';
-import '../../../../shared/utils/s3_assets_url.dart';
-import '../../../../shared/utils/screen_helper.dart';
+import 'package:smile_front/app/shared/helpers/services/s3/assets_s3.dart';
+import '../../../../shared/helpers/utils/screen_helper.dart';
 import 'footer/footer.dart';
 
 class MoreInfoHomePage extends StatelessWidget {
@@ -85,7 +85,7 @@ class MoreInfoHomePage extends StatelessWidget {
               Center(
                 child: CustomElevatedButtonWidget(
                   title: S.of(context).clickToAccessPDF,
-                  textStyle: AppTextStyles.buttonBold.copyWith(
+                  textStyle: AppTextStyles.headline3.copyWith(
                       color: Colors.white,
                       fontSize:
                           Screen.width(context) < cellphoneSize ? 16 : 24),
@@ -105,7 +105,7 @@ class MoreInfoHomePage extends StatelessWidget {
               Center(
                 child: CustomElevatedButtonWidget(
                   title: S.of(context).signUp,
-                  textStyle: AppTextStyles.buttonBold.copyWith(
+                  textStyle: AppTextStyles.headline3.copyWith(
                       color: Colors.white,
                       fontSize:
                           Screen.width(context) < cellphoneSize ? 16 : 24),

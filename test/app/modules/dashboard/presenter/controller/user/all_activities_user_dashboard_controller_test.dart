@@ -17,7 +17,7 @@ import 'package:smile_front/app/modules/dashboard/infra/models/speaker_activity_
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/user_subscription_controller.dart';
-import 'package:smile_front/app/shared/models/enrolls_activity_model.dart';
+import 'package:smile_front/app/shared/infra/models/enrolls_activity_model.dart';
 
 import 'all_activities_user_dashboard_controller_test.mocks.dart';
 

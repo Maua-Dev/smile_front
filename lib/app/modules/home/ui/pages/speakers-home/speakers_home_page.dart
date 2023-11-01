@@ -5,8 +5,8 @@ import 'package:smile_front/app/modules/home/presenter/controllers/speakers_home
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/widgets/speaker_panel_mobile_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/speakers-home/widgets/speaker_panel_web_wigdet.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../../shared/entities/screen_variables.dart';
-import '../../../../../shared/utils/screen_helper.dart';
+import '../../../../../shared/domain/entities/screen_variables.dart';
+import '../../../../../shared/helpers/utils/screen_helper.dart';
 import '../../../domain/infra/speakers_enum.dart';
 import '../widgets/header/h1_header_text_widget.dart';
 

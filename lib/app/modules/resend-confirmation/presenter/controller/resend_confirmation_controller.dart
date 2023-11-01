@@ -4,7 +4,7 @@ import 'package:smile_front/app/shared/themes/app_colors.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../app_widget.dart';
-import '../../../../shared/error/error_snackbar.dart';
+import '../../../../shared/helpers/errors/error_snackbar.dart';
 import '../../external/errors.dart';
 import '../../domain/usecases/resend_confirmation.dart';
 

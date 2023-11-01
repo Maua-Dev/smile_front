@@ -5,7 +5,7 @@ import 'package:smile_front/app/modules/register/ui/pages/register_page.dart';
 import 'package:smile_front/app/modules/register/ui/pages/success_register_page.dart';
 import 'package:smile_front/app/modules/register/ui/pages/verify_email_page.dart';
 import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
-import '../../shared/services/dio/smile_login_options.dart';
+import '../../shared/helpers/services/dio/options/smile_login_options.dart';
 import 'domain/repositories/register_informations_repository_interface.dart';
 import 'external/register_datasource_impl.dart';
 import 'infra/datasources/register_datasource_interface.dart';

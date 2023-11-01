@@ -3,9 +3,9 @@ import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/create_activity.dart';
 import 'package:smile_front/app/modules/dashboard/domain/usecases/get_responsible_professors.dart';
-import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
-import 'package:smile_front/app/shared/models/admin_activity_model.dart';
-import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
+import 'package:smile_front/app/shared/domain/enum/delivery_enum.dart';
+import 'package:smile_front/app/shared/infra/models/admin_activity_model.dart';
+import 'package:smile_front/app/shared/infra/models/responsible_professor_model.dart';
 import 'package:smile_front/generated/l10n.dart';
 import '../../../domain/infra/activity_enum.dart';
 import '../../../infra/models/speaker_activity_model.dart';
@@ -97,10 +97,10 @@ abstract class CreateActivityControllerBase with Store {
   @action
   Future createUserActivity() async {
     setIsLoading(true);
-    if (activityToCreate.deliveryEnum == DeliveryEnum.in_person) {
+    if (activityToCreate.deliveryEnum == DeliveryEnum.IN_PERSON) {
       activityToCreate.link = null;
     }
-    if (activityToCreate.deliveryEnum == DeliveryEnum.online) {
+    if (activityToCreate.deliveryEnum == DeliveryEnum.ONLINE) {
       activityToCreate.place = null;
     }
     var res = await createActivity(activityToCreate);

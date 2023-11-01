@@ -19,7 +19,7 @@ class TokenGenerateWidget extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
           Text(S.of(context).validationCodeTitle,
-              style: AppTextStyles.bold.copyWith(
+              style: AppTextStyles.headline1.copyWith(
                 fontSize: 30,
                 color: Colors.black,
               )),
@@ -36,7 +36,7 @@ class TokenGenerateWidget extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   confirmationCode,
-                  style: AppTextStyles.bold.copyWith(
+                  style: AppTextStyles.headline1.copyWith(
                       color: Colors.black, fontSize: 40, letterSpacing: 10),
                 ),
               ),

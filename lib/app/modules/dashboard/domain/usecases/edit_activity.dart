@@ -1,5 +1,5 @@
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
-import 'package:smile_front/app/shared/models/admin_activity_model.dart';
+import 'package:smile_front/app/shared/infra/models/admin_activity_model.dart';
 
 abstract class EditActivityInterface {
   Future call(AdminActivityModel activityToEdit);

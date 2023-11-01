@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import '../../../../../../shared/entities/screen_variables.dart';
+import '../../../../../../shared/domain/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../../shared/utils/screen_helper.dart';
+import '../../../../../../shared/helpers/utils/screen_helper.dart';
 import '../../../../domain/infra/speakers_enum.dart';
 import '../../widgets/header/h1_header_text_widget.dart';
 
@@ -43,7 +43,7 @@ class SpeakerPanelWebWidget extends StatelessWidget {
                         ),
                         Text(
                           description,
-                          style: AppTextStyles.body.copyWith(
+                          style: AppTextStyles.headline1.copyWith(
                               fontSize:
                                   Screen.width(context) < tabletSize ? 14 : 20),
                           textAlign: TextAlign.center,
@@ -103,7 +103,7 @@ class SpeakerPanelWebWidget extends StatelessWidget {
                             children: [
                               Text(SpeakersEnum.values[indexToShow].name,
                                   textAlign: TextAlign.center,
-                                  style: AppTextStyles.titleH1.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                       fontSize:
                                           MediaQuery.of(context).size.width <
                                                   tabletSize
@@ -116,7 +116,7 @@ class SpeakerPanelWebWidget extends StatelessWidget {
                               ),
                               Text(
                                 SpeakersEnum.values[indexToShow].description,
-                                style: AppTextStyles.body.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     fontSize: Screen.width(context) < tabletSize
                                         ? 14
                                         : 20),

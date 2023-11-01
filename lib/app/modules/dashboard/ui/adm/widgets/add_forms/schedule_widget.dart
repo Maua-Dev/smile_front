@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/tooltip/tooltip_widget.dart';
+import 'package:smile_front/app/shared/widgets/tooltip/tooltip_widget.dart';
+import 'package:smile_front/app/shared/domain/enum/delivery_enum.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../../../shared/entities/infra/delivery_enum.dart';
-import '../../../../../../shared/entities/screen_variables.dart';
+import '../../../../../../shared/domain/entities/screen_variables.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
-import '../../../../../../shared/utils/screen_helper.dart';
+import '../../../../../../shared/helpers/utils/screen_helper.dart';
 import '../../../../../../shared/widgets/text-fields/drop_down_field_custom.dart';
 import 'text_field_dialog_widget.dart';
 
@@ -145,7 +145,7 @@ class ScheduleWidget extends StatelessWidget {
                     children: [
                       Text(
                         S.of(context).activityAcceptSbscriptions,
-                        style: AppTextStyles.titleH1.copyWith(
+                        style: AppTextStyles.headline1.copyWith(
                             color: AppColors.brandingBlue,
                             fontSize: MediaQuery.of(context).size.width < 1200
                                 ? 17
@@ -164,7 +164,7 @@ class ScheduleWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  delivery == null || delivery != DeliveryEnum.in_person
+                  delivery == null || delivery != DeliveryEnum.IN_PERSON
                       ? Flexible(
                           child: TextFieldDialogWidget(
                             validator: validateRequiredField,
@@ -175,12 +175,12 @@ class ScheduleWidget extends StatelessWidget {
                           ),
                         )
                       : const SizedBox.shrink(),
-                  delivery != DeliveryEnum.in_person
+                  delivery != DeliveryEnum.IN_PERSON
                       ? const SizedBox(
                           width: 16,
                         )
                       : const SizedBox.shrink(),
-                  delivery == null || delivery != DeliveryEnum.online
+                  delivery == null || delivery != DeliveryEnum.ONLINE
                       ? Flexible(
                           child: TextFieldDialogWidget(
                             validator: validateRequiredField,
@@ -241,7 +241,7 @@ class ScheduleWidget extends StatelessWidget {
                       child: SizedBox(
                         width: Screen.width(context) * 0.18,
                         child: DropDownFieldCustom<DeliveryEnum>(
-                          textStyles: AppTextStyles.body.copyWith(
+                          textStyles: AppTextStyles.headline1.copyWith(
                               color: AppColors.brandingBlue,
                               fontSize:
                                   Screen.width(context) < tabletSize ? 16 : 20),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smile_front/app/modules/dashboard/ui/adm/widgets/tooltip/tooltip_widget.dart';
+import 'package:smile_front/app/shared/widgets/tooltip/tooltip_widget.dart';
 import '../../../../../../shared/themes/app_colors.dart';
 import '../../../../../../shared/themes/app_text_styles.dart';
 
@@ -66,7 +66,7 @@ class TextFieldDialogWidget extends StatelessWidget {
                 maxLines: null,
                 textAlignVertical: TextAlignVertical.center,
                 inputFormatters: inputFormatters,
-                style: AppTextStyles.body.copyWith(
+                style: AppTextStyles.headline1.copyWith(
                     color: readonly ?? false
                         ? AppColors.gray
                         : AppColors.brandingBlue,
@@ -106,9 +106,9 @@ class TextFieldDialogWidget extends StatelessWidget {
                       borderSide:
                           BorderSide(color: AppColors.brandingBlue, width: 0.0),
                     ),
-                    labelStyle: AppTextStyles.titleH1
+                    labelStyle: AppTextStyles.headline1
                         .copyWith(color: AppColors.brandingBlue, fontSize: 22),
-                    hintStyle: AppTextStyles.body
+                    hintStyle: AppTextStyles.headline1
                         .copyWith(color: AppColors.brandingBlue, fontSize: 20),
                     contentPadding: suffixIcon != null
                         ? const EdgeInsets.only(left: 16, top: 16, bottom: 16)

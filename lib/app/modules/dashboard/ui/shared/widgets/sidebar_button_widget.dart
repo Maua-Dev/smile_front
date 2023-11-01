@@ -48,7 +48,7 @@ class SideBarButtonWidget extends StatelessWidget {
           buttonIcon,
           Text(
             buttonText,
-            style: AppTextStyles.body
+            style: AppTextStyles.headline1
                 .copyWith(color: AppColors.white, fontSize: 12),
           )
         ]),

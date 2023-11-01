@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
-import 'package:smile_front/app/shared/models/professor_activity_model.dart';
-import '../../../shared/error/dio_exceptions.dart';
-import '../../../shared/error/error_snackbar.dart';
-import '../../../shared/models/admin_activity_model.dart';
-import '../../../shared/models/enrollments_model.dart';
-import '../../../shared/models/enrolls_activity_model.dart';
-import '../../../shared/services/environment/environment_config.dart';
+import 'package:smile_front/app/shared/domain/enum/enrollment_state_enum.dart';
+import 'package:smile_front/app/shared/infra/models/activity_model.dart';
+import 'package:smile_front/app/shared/infra/models/professor_activity_model.dart';
+import '../../../shared/helpers/errors/dio_exceptions.dart';
+import '../../../shared/helpers/errors/error_snackbar.dart';
+import '../../../shared/infra/models/admin_activity_model.dart';
+import '../../../shared/infra/models/enrollments_model.dart';
+import '../../../shared/infra/models/enrolls_activity_model.dart';
+import '../../../shared/helpers/environment/environment_config.dart';
 import '../../auth/domain/repositories/secure_storage_interface.dart';
 import '../../auth/presenter/controllers/auth_controller.dart';
 
@@ -19,8 +19,6 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   BaseOptions options = BaseOptions(
     baseUrl: EnvironmentConfig.MSS_ACTIVITIES_BASE_URL,
     responseType: ResponseType.json,
-    connectTimeout: 30000,
-    receiveTimeout: 30000,
   );
   Dio dio = Dio();
   ActivitiesDatasourceImpl({
@@ -65,13 +63,13 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
   Future<Response> _handleRequest(Future<Response> Function() request) async {
     try {
       return await request();
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return _handleError(e, request);
     }
   }
 
   Future<Response> _handleError(
-      DioError e, Future<Response> Function() request) async {
+      DioException e, Future<Response> Function() request) async {
     if (e.response == null || e.response!.statusCode == 401) {
       await authController.refreshUserToken();
       dio.options.headers["authorization"] = await storage.getIdToken();
@@ -193,12 +191,12 @@ class ActivitiesDatasourceImpl extends ActivitiesDatasourceInterface {
         return res.data;
       }
       throw Exception();
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (e.response.toString().contains('Authentication Error')) {
         await authController.refreshToken();
         await getAllActivitiesLogged();
       }
-      final errorMessage = DioExceptions.fromDioError(e).toString();
+      final errorMessage = DioExceptions.fromDioException(e).toString();
       showErrorSnackBar(errorMessage: errorMessage);
       rethrow;
     }

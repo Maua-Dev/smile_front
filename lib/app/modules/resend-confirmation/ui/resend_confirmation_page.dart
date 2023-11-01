@@ -75,7 +75,7 @@ class _ResendConfirmationPageState
                                   padding: const EdgeInsets.all(16.0),
                                   child: Text(
                                     controller.errors,
-                                    style: AppTextStyles.body.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                       fontSize: 18,
                                       color: Colors.white,
                                     ),
@@ -100,7 +100,7 @@ class _ResendConfirmationPageState
                                   child: Text(
                                     S.of(context).codeInEmailInstructionsTitle,
                                     textAlign: TextAlign.justify,
-                                    style: AppTextStyles.body.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                         color: AppColors.white,
                                         fontSize:
                                             MediaQuery.of(context).size.width <
@@ -128,7 +128,7 @@ class _ResendConfirmationPageState
                                 width: 600,
                                 child: Text(
                                   S.of(context).errorEmailInstructionsTitle,
-                                  style: AppTextStyles.body.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                       color: AppColors.white,
                                       fontSize:
                                           MediaQuery.of(context).size.width <

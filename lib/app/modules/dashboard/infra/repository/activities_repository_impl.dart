@@ -1,13 +1,13 @@
 import 'package:smile_front/app/modules/dashboard/domain/repositories/activities_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/activities_datasource_interface.dart';
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
-import 'package:smile_front/app/shared/models/activity_model.dart';
-import 'package:smile_front/app/shared/models/professor_activity_model.dart';
+import 'package:smile_front/app/shared/domain/enum/enrollment_state_enum.dart';
+import 'package:smile_front/app/shared/infra/models/activity_model.dart';
+import 'package:smile_front/app/shared/infra/models/professor_activity_model.dart';
 
-import '../../../../shared/models/enrollments_model.dart';
-import '../../../../shared/models/enrolls_activity_model.dart';
+import '../../../../shared/infra/models/enrollments_model.dart';
+import '../../../../shared/infra/models/enrolls_activity_model.dart';
 
-import 'package:smile_front/app/shared/models/admin_activity_model.dart';
+import 'package:smile_front/app/shared/infra/models/admin_activity_model.dart';
 
 class ActivitiesRepositoryImpl extends ActivitiesRepositoryInterface {
   final ActivitiesDatasourceInterface datasource;

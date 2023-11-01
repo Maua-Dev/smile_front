@@ -4,7 +4,7 @@ import 'package:smile_front/app/modules/forgot-password/domain/usecases/change_p
 import 'package:smile_front/app/modules/forgot-password/presenter/controller/forgot_password_controller.dart';
 import 'package:smile_front/app/modules/forgot-password/ui/change_password_page.dart';
 import 'package:smile_front/app/modules/forgot-password/ui/forgot_password_page.dart';
-import '../../shared/services/dio/smile_login_options.dart';
+import '../../shared/helpers/services/dio/options/smile_login_options.dart';
 import 'domain/repository/forgot_password_datasource_interface.dart';
 import 'domain/usecases/forgot_password.dart';
 import 'external/forgot_password_datasourse_impl.dart';

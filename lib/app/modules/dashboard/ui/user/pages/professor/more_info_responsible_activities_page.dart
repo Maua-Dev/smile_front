@@ -4,7 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_responsible_activities_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/responsible_activities_widgets/subscriber_list_widget.dart';
-import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/delivery_enum.dart';
 
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
@@ -43,7 +43,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                   child: Text(
                       '${controller.professorActivityWithEnrollments.activityCode} - ${controller.professorActivityWithEnrollments.title}',
                       textAlign: TextAlign.center,
-                      style: AppTextStyles.bold.copyWith(
+                      style: AppTextStyles.headline1.copyWith(
                           color: AppColors.brandingOrange,
                           fontSize: MediaQuery.of(context).size.width <
                                   breakpointTablet
@@ -71,7 +71,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(S.of(context).dateTitle,
-                            style: AppTextStyles.bold.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                                 color: AppColors.white,
                                 fontSize: MediaQuery.of(context).size.width <
                                         breakpointTablet
@@ -88,7 +88,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                   DateFormat('dd/MM').format(controller
                                       .professorActivityWithEnrollments
                                       .startDate!),
-                                  style: AppTextStyles.bold.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                       color: AppColors.white,
                                       fontSize:
                                           MediaQuery.of(context).size.width <
@@ -114,7 +114,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(S.of(context).scheduleTitle,
-                            style: AppTextStyles.bold.copyWith(
+                            style: AppTextStyles.headline1.copyWith(
                                 color: AppColors.white,
                                 fontSize: MediaQuery.of(context).size.width <
                                         breakpointTablet
@@ -127,7 +127,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                           } else {
                             return Text(
                                 '${controller.initialTime} - ${controller.finalTime}',
-                                style: AppTextStyles.bold.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     color: AppColors.white,
                                     fontSize:
                                         MediaQuery.of(context).size.width <
@@ -145,7 +145,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                         : 175,
                     height: controller.professorActivityWithEnrollments
                                 .deliveryEnum ==
-                            DeliveryEnum.hybrid
+                            DeliveryEnum.HYBRID
                         ? MediaQuery.of(context).size.width < breakpointTablet
                             ? 98
                             : 148
@@ -159,7 +159,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(S.of(context).localTitle,
-                              style: AppTextStyles.bold.copyWith(
+                              style: AppTextStyles.headline1.copyWith(
                                   color: AppColors.white,
                                   fontSize: MediaQuery.of(context).size.width <
                                           breakpointTablet
@@ -173,7 +173,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                             } else {
                               return controller.professorActivityWithEnrollments
                                           .deliveryEnum ==
-                                      DeliveryEnum.online
+                                      DeliveryEnum.ONLINE
                                   ? MouseRegion(
                                       cursor: SystemMouseCursors.click,
                                       child: GestureDetector(
@@ -184,20 +184,22 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                           mode: LaunchMode.externalApplication,
                                         ),
                                         child: Text('Link',
-                                            style: AppTextStyles.bold.copyWith(
-                                                color: AppColors.white,
-                                                decoration:
-                                                    TextDecoration.underline,
-                                                fontSize: MediaQuery.of(context)
-                                                            .size
-                                                            .width <
-                                                        breakpointTablet
-                                                    ? 20
-                                                    : 40)),
+                                            style: AppTextStyles.headline1
+                                                .copyWith(
+                                                    color: AppColors.white,
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                    .size
+                                                                    .width <
+                                                                breakpointTablet
+                                                            ? 20
+                                                            : 40)),
                                       ),
                                     )
                                   : controller.professorActivityWithEnrollments.deliveryEnum ==
-                                          DeliveryEnum.hybrid
+                                          DeliveryEnum.HYBRID
                                       ? Column(
                                           children: [
                                             MouseRegion(
@@ -211,7 +213,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                                       .externalApplication,
                                                 ),
                                                 child: Text('Link',
-                                                    style: AppTextStyles.bold.copyWith(
+                                                    style: AppTextStyles.headline1.copyWith(
                                                         color: AppColors.white,
                                                         decoration:
                                                             TextDecoration
@@ -229,7 +231,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                                 controller
                                                     .professorActivityWithEnrollments
                                                     .place!,
-                                                style: AppTextStyles.bold
+                                                style: AppTextStyles.headline1
                                                     .copyWith(
                                                         color: AppColors.white,
                                                         fontSize: MediaQuery.of(
@@ -244,14 +246,14 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                       : controller.professorActivityWithEnrollments.place !=
                                               null
                                           ? Text(controller.professorActivityWithEnrollments.place!,
-                                              style: AppTextStyles.bold.copyWith(
+                                              style: AppTextStyles.headline1.copyWith(
                                                   color: AppColors.white,
                                                   fontSize: MediaQuery.of(context).size.width <
                                                           breakpointTablet
                                                       ? 20
                                                       : 40))
                                           : Text("Indefinido",
-                                              style: AppTextStyles.bold.copyWith(
+                                              style: AppTextStyles.headline1.copyWith(
                                                   color: AppColors.white,
                                                   fontSize: MediaQuery.of(context).size.width <
                                                           breakpointTablet
@@ -307,7 +309,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                           : 50,
                                     ),
                                     Text(S.of(context).subscriberListTitle,
-                                        style: AppTextStyles.bold.copyWith(
+                                        style: AppTextStyles.headline1.copyWith(
                                             color: controller
                                                     .isSubscribedListVisible
                                                 ? AppColors.brandingOrange
@@ -423,7 +425,7 @@ class _MoreInfoResponsibleActivitiesPageState extends ModularState<
                                         controller.isTokenVisible
                                             ? 'Apagar Token'
                                             : 'Gerar Token',
-                                        style: AppTextStyles.bold.copyWith(
+                                        style: AppTextStyles.headline1.copyWith(
                                             color: controller.isTokenVisible
                                                 ? AppColors.brandingOrange
                                                 : AppColors.white,

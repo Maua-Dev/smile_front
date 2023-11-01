@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../../shared/entities/screen_variables.dart';
-import '../../../../../shared/utils/screen_helper.dart';
+import '../../../../../shared/domain/entities/screen_variables.dart';
+import '../../../../../shared/helpers/utils/screen_helper.dart';
 import '../../../domain/infra/social_medias_enum.dart';
 
 class SocialMediaWidget extends StatelessWidget {

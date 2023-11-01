@@ -7,7 +7,7 @@ import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../../../../shared/entities/infra/enroll_button_enum.dart';
+import '../../../../../../../shared/domain/enum/enroll_button_enum.dart';
 import '../../../../../../../shared/themes/breakpoint.dart';
 
 class UserFilterCardWidget extends StatelessWidget {
@@ -93,7 +93,7 @@ class UserFilterCardWidget extends StatelessWidget {
                                               ActivityEnum.values[index].name
                                                   .toString(),
                                               textAlign: TextAlign.center,
-                                              style: AppTextStyles.bold
+                                              style: AppTextStyles.headline1
                                                   .copyWith(
                                                       color: AppColors.white,
                                                       fontSize: 16),
@@ -152,9 +152,10 @@ class UserFilterCardWidget extends StatelessWidget {
                                           child: Text(
                                             EnrollButtonEnum.values[index].name
                                                 .toString(),
-                                            style: AppTextStyles.bold.copyWith(
-                                                color: AppColors.white,
-                                                fontSize: 16),
+                                            style: AppTextStyles.headline1
+                                                .copyWith(
+                                                    color: AppColors.white,
+                                                    fontSize: 16),
                                           ),
                                         ),
                                       ),
@@ -188,7 +189,8 @@ class UserFilterCardWidget extends StatelessWidget {
                                 return Theme(
                                   data: Theme.of(context).copyWith(
                                       textTheme: TextTheme(
-                                          headline5: AppTextStyles.body)),
+                                          headlineSmall:
+                                              AppTextStyles.headline1)),
                                   child: child!,
                                 );
                               })).then((date) {
@@ -300,7 +302,8 @@ class UserFilterCardWidget extends StatelessWidget {
                                                     ActivityEnum
                                                         .values[index].name
                                                         .toString(),
-                                                    style: AppTextStyles.bold
+                                                    style: AppTextStyles
+                                                        .headline1
                                                         .copyWith(
                                                             color:
                                                                 AppColors.white,
@@ -365,7 +368,8 @@ class UserFilterCardWidget extends StatelessWidget {
                                                     EnrollButtonEnum
                                                         .values[index].name
                                                         .toString(),
-                                                    style: AppTextStyles.bold
+                                                    style: AppTextStyles
+                                                        .headline1
                                                         .copyWith(
                                                             color:
                                                                 AppColors.white,
@@ -403,7 +407,8 @@ class UserFilterCardWidget extends StatelessWidget {
                                   return Theme(
                                     data: Theme.of(context).copyWith(
                                         textTheme: TextTheme(
-                                            headline5: AppTextStyles.body)),
+                                            headlineSmall:
+                                                AppTextStyles.headline1)),
                                     child: child!,
                                   );
                                 })).then((date) {
@@ -503,9 +508,10 @@ class UserFilterCardWidget extends StatelessWidget {
                                           child: Text(
                                             ActivityEnum.values[index].name
                                                 .toString(),
-                                            style: AppTextStyles.bold.copyWith(
-                                                color: AppColors.white,
-                                                fontSize: 16),
+                                            style: AppTextStyles.headline1
+                                                .copyWith(
+                                                    color: AppColors.white,
+                                                    fontSize: 16),
                                           ),
                                         ),
                                       ),
@@ -557,9 +563,10 @@ class UserFilterCardWidget extends StatelessWidget {
                                           child: Text(
                                             EnrollButtonEnum.values[index].name
                                                 .toString(),
-                                            style: AppTextStyles.bold.copyWith(
-                                                color: AppColors.white,
-                                                fontSize: 16),
+                                            style: AppTextStyles.headline1
+                                                .copyWith(
+                                                    color: AppColors.white,
+                                                    fontSize: 16),
                                           ),
                                         ),
                                       ),
@@ -585,8 +592,8 @@ class UserFilterCardWidget extends StatelessWidget {
                         builder: ((context, child) {
                           return Theme(
                             data: Theme.of(context).copyWith(
-                                textTheme:
-                                    TextTheme(headline5: AppTextStyles.body)),
+                                textTheme: TextTheme(
+                                    headlineSmall: AppTextStyles.headline1)),
                             child: child!,
                           );
                         })).then((date) {

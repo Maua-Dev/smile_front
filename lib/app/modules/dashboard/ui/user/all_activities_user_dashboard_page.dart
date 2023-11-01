@@ -4,13 +4,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/all_activities_user_dashboard_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/filter/user_filter_card_widget.dart';
+import 'package:smile_front/app/shared/domain/enum/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/app_text_styles.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../shared/entities/infra/enrollment_state_enum.dart';
-import '../../../../shared/models/enrollments_model.dart';
+import '../../../../shared/infra/models/enrollments_model.dart';
 import '../../../../shared/themes/breakpoint.dart';
-import '../../../../shared/utils/utils.dart';
+import '../../../../shared/helpers/utils/utils.dart';
 import '../../../../shared/widgets/text-header/text_header.dart';
 import 'widgets/mobile_widgets/activities_card/activities_card_all_activities_dashboard.dart';
 
@@ -103,7 +103,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                               child: Text(
                                 controller.requisitionError!,
                                 textAlign: TextAlign.center,
-                                style: AppTextStyles.titleH1.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     color: AppColors.brandingOrange,
                                     fontSize: 32),
                               ),
@@ -182,7 +182,7 @@ class _AllActivitiesUserDashboardPageState extends ModularState<
                         } else {
                           return Observer(builder: (_) {
                             return Text(S.of(context).activitiesNotFound,
-                                style: AppTextStyles.body.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     fontSize:
                                         MediaQuery.of(context).size.width <
                                                 breakpointTablet

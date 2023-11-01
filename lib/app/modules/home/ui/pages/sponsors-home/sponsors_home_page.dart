@@ -4,12 +4,12 @@ import 'package:smile_front/app/modules/home/ui/pages/sponsors-home/sponsor_form
 import 'package:smile_front/app/modules/home/ui/pages/widgets/entities_carousel_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/header/h1_header_text_widget.dart';
 import 'package:smile_front/app/modules/home/ui/pages/widgets/sponsors_widget.dart';
-import 'package:smile_front/app/shared/utils/s3_assets_url.dart';
+import 'package:smile_front/app/shared/helpers/services/s3/assets_s3.dart';
 import 'package:smile_front/app/shared/widgets/buttons/forms_button_widget.dart';
 import 'package:smile_front/generated/l10n.dart';
-import '../../../../../shared/entities/screen_variables.dart';
+import '../../../../../shared/domain/entities/screen_variables.dart';
 import '../../../../../shared/themes/app_colors.dart';
-import '../../../../../shared/utils/screen_helper.dart';
+import '../../../../../shared/helpers/utils/screen_helper.dart';
 
 class SponsorsHomePage extends StatefulWidget {
   const SponsorsHomePage({Key? key}) : super(key: key);
@@ -92,6 +92,7 @@ class BeSponsor extends StatelessWidget {
         builder: (context) => const SponsorFormDialog(),
       );
       if (res != null && res) {
+        // ignore: use_build_context_synchronously
         showDialog(
             context: context,
             builder: (context) => AlertDialog(

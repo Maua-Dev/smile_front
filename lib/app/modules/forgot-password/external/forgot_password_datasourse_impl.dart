@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:smile_front/generated/l10n.dart';
 
-import '../../../shared/services/environment/environment_config.dart';
+import '../../../shared/helpers/environment/environment_config.dart';
 import '../infra/datasources/forgot_password_datasource.dart';
 import 'errors.dart';
 
@@ -10,8 +10,6 @@ class ForgotPasswordDatasourceImpl
   BaseOptions options = BaseOptions(
     baseUrl: EnvironmentConfig.MSS_USER_BASE_URL,
     responseType: ResponseType.json,
-    connectTimeout: 30000,
-    receiveTimeout: 30000,
   );
   Dio dio = Dio();
 
@@ -29,7 +27,7 @@ class ForgotPasswordDatasourceImpl
         return S.current.successSendingCode;
       }
       throw Exception();
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       throw ForgotPasswordInvalid(e.response!.data);
     }
   }
@@ -47,7 +45,7 @@ class ForgotPasswordDatasourceImpl
         return S.current.successChangePassword;
       }
       throw Exception();
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       throw ForgotPasswordInvalid(e.response!.data);
     }
   }

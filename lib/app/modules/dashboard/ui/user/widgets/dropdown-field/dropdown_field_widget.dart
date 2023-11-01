@@ -28,12 +28,12 @@ class DropDownFieldWidget<T> extends StatelessWidget {
         isExpanded: true,
         onChanged: onChanged,
         items: items,
-        style: AppTextStyles.buttonBold.copyWith(
+        style: AppTextStyles.headline3.copyWith(
             fontSize: MediaQuery.of(context).size.width < 1000 ? 20 : 24,
             color: Colors.black),
         decoration: InputDecoration(
           labelText: titulo,
-          labelStyle: AppTextStyles.buttonBold.copyWith(
+          labelStyle: AppTextStyles.headline3.copyWith(
               fontSize: MediaQuery.of(context).size.width < 1000 ? 24 : 30,
               color: AppColors.brandingBlue),
           contentPadding: EdgeInsets.symmetric(

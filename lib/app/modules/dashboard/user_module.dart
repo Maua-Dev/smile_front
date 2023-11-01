@@ -28,8 +28,8 @@ import 'package:smile_front/app/modules/dashboard/ui/user/all_activities_user_da
 import 'package:smile_front/app/modules/dashboard/ui/user/certificate_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/more_info_page.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/user_dashboard_page.dart';
+import 'package:smile_front/app/shared/guards/auth_guard_professor.dart';
 import '../auth/domain/repositories/secure_storage_interface.dart';
-import '../auth/infra/auth_guards/auth_guard_professor.dart';
 import '../auth/presenter/controllers/auth_controller.dart';
 import '../auth/domain/usecases/login_with_email.dart';
 import '../auth/domain/usecases/refresh_token.dart';

@@ -1,7 +1,7 @@
 import 'package:smile_front/app/modules/dashboard/domain/repositories/user_repository_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/datasources/user_datasource_interface.dart';
 import 'package:smile_front/app/modules/dashboard/infra/models/user_change_data_model.dart';
-import 'package:smile_front/app/shared/models/responsible_professor_model.dart';
+import 'package:smile_front/app/shared/infra/models/responsible_professor_model.dart';
 
 class UserRepositoryImpl extends UserRepositoryInterface {
   final UserDatasourceInterface datasource;

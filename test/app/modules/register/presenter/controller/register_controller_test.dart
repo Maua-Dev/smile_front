@@ -8,7 +8,7 @@ import 'package:smile_front/app/modules/register/domain/repositories/register_in
 import 'package:smile_front/app/modules/register/presenter/controllers/register_controller.dart';
 import 'package:smile_front/app/modules/register/register_module.dart';
 import 'package:smile_front/app/modules/register/domain/usecases/register_user.dart';
-import 'package:smile_front/app/shared/entities/infra/user_roles_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/user_roles_enum.dart';
 
 import 'package:smile_front/generated/l10n.dart';
 

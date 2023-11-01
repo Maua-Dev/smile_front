@@ -5,15 +5,15 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:smile_front/app/modules/dashboard/presenter/controllers/user/more_info_controller.dart';
 import 'package:smile_front/app/modules/dashboard/ui/user/widgets/mobile_widgets/extensionist_widget.dart';
-import 'package:smile_front/app/shared/entities/infra/delivery_enum.dart';
-import 'package:smile_front/app/shared/entities/infra/enrollment_state_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/delivery_enum.dart';
+import 'package:smile_front/app/shared/domain/enum/enrollment_state_enum.dart';
 import 'package:smile_front/app/shared/themes/app_colors.dart';
 import 'package:smile_front/app/shared/themes/breakpoint.dart';
 import 'package:smile_front/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../shared/entities/screen_variables.dart';
+import '../../../../shared/domain/entities/screen_variables.dart';
 import '../../../../shared/themes/app_text_styles.dart';
-import '../../../../shared/utils/utils.dart';
+import '../../../../shared/helpers/utils/utils.dart';
 import '../../../../shared/widgets/dialogs/action_confirmation_dialog_widget.dart';
 import '../../../../shared/widgets/dialogs/custom_alert_dialog_widget.dart';
 import 'widgets/attendance_confirmation/attendance_confirmation_widget.dart';
@@ -108,7 +108,7 @@ class _MoreInfoPageState
                               ? 88
                               : 150,
                       height: controller.activity.deliveryEnum ==
-                              DeliveryEnum.hybrid
+                              DeliveryEnum.HYBRID
                           ? 90
                           : MediaQuery.of(context).size.width < breakpointMobile
                               ? 49
@@ -120,12 +120,12 @@ class _MoreInfoPageState
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(S.of(context).dayTitle,
-                                style: AppTextStyles.bold.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     color: AppColors.white, fontSize: 12)),
                             Text(
                                 DateFormat('dd/MM')
                                     .format(controller.activity.startDate!),
-                                style: AppTextStyles.bold.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     color: AppColors.white, fontSize: 20))
                           ]),
                     ),
@@ -138,7 +138,7 @@ class _MoreInfoPageState
                               ? 138
                               : 150,
                       height: controller.activity.deliveryEnum ==
-                              DeliveryEnum.hybrid
+                              DeliveryEnum.HYBRID
                           ? 90
                           : MediaQuery.of(context).size.width < breakpointMobile
                               ? 49
@@ -150,10 +150,10 @@ class _MoreInfoPageState
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(S.of(context).scheduleTitle,
-                                style: AppTextStyles.bold.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     color: AppColors.white, fontSize: 12)),
                             Text('$timeString - $finalTime',
-                                style: AppTextStyles.bold.copyWith(
+                                style: AppTextStyles.headline1.copyWith(
                                     color: AppColors.white, fontSize: 20))
                           ]),
                     ),
@@ -166,7 +166,7 @@ class _MoreInfoPageState
                               ? 88
                               : 150,
                       height: controller.activity.deliveryEnum ==
-                              DeliveryEnum.hybrid
+                              DeliveryEnum.HYBRID
                           ? 90
                           : MediaQuery.of(context).size.width < breakpointMobile
                               ? 49
@@ -179,7 +179,7 @@ class _MoreInfoPageState
                           children: [
                             Text(
                               S.of(context).localTitle,
-                              style: AppTextStyles.bold.copyWith(
+                              style: AppTextStyles.headline1.copyWith(
                                   color: AppColors.white,
                                   fontSize: MediaQuery.of(context).size.width <
                                           breakpointMobile
@@ -187,7 +187,7 @@ class _MoreInfoPageState
                                       : 18),
                             ),
                             controller.activity.deliveryEnum ==
-                                    DeliveryEnum.hybrid
+                                    DeliveryEnum.HYBRID
                                 ? Tooltip(
                                     triggerMode: TooltipTriggerMode.tap,
                                     message: controller.activity.place!,
@@ -200,17 +200,19 @@ class _MoreInfoPageState
                                         children: [
                                           Text(
                                             controller.activity.place!,
-                                            style: AppTextStyles.bold.copyWith(
-                                                color: AppColors.white,
-                                                fontSize: 20),
+                                            style: AppTextStyles.headline1
+                                                .copyWith(
+                                                    color: AppColors.white,
+                                                    fontSize: 20),
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 1,
                                           ),
                                           Text(
                                             "ou",
-                                            style: AppTextStyles.bold.copyWith(
-                                                color: AppColors.white,
-                                                fontSize: 10),
+                                            style: AppTextStyles.headline1
+                                                .copyWith(
+                                                    color: AppColors.white,
+                                                    fontSize: 10),
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 1,
                                           ),
@@ -221,8 +223,8 @@ class _MoreInfoPageState
                                               },
                                               child: Text(
                                                 'Online',
-                                                style:
-                                                    AppTextStyles.bold.copyWith(
+                                                style: AppTextStyles.headline1
+                                                    .copyWith(
                                                   color: AppColors.white,
                                                   fontSize: 20,
                                                   decoration:
@@ -244,9 +246,10 @@ class _MoreInfoPageState
                                               horizontal: 4.0),
                                           child: Text(
                                             controller.activity.place!,
-                                            style: AppTextStyles.bold.copyWith(
-                                                color: AppColors.white,
-                                                fontSize: 20),
+                                            style: AppTextStyles.headline1
+                                                .copyWith(
+                                                    color: AppColors.white,
+                                                    fontSize: 20),
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 1,
                                           ),
@@ -260,8 +263,8 @@ class _MoreInfoPageState
                                             },
                                             child: Text(
                                               'Online',
-                                              style:
-                                                  AppTextStyles.bold.copyWith(
+                                              style: AppTextStyles.headline1
+                                                  .copyWith(
                                                 color: AppColors.white,
                                                 fontSize: 20,
                                                 decoration:
@@ -292,7 +295,7 @@ class _MoreInfoPageState
                     ? Text(
                         S.of(context).unavailabeSubscribe,
                         textAlign: TextAlign.center,
-                        style: AppTextStyles.titleH1.copyWith(
+                        style: AppTextStyles.headline1.copyWith(
                             color: AppColors.brandingBlue,
                             fontSize: MediaQuery.of(context).size.width < 800
                                 ? 22
@@ -487,7 +490,7 @@ class _MoreInfoPageState
                   alignment: Alignment.centerLeft,
                   child: Text(
                     S.of(context).descriptionTitle,
-                    style: AppTextStyles.bold
+                    style: AppTextStyles.headline1
                         .copyWith(color: AppColors.brandingBlue),
                   ),
                 ),
@@ -518,7 +521,7 @@ class _MoreInfoPageState
                   alignment: Alignment.centerLeft,
                   child: Text(
                     S.of(context).speakersTitle,
-                    style: AppTextStyles.bold
+                    style: AppTextStyles.headline1
                         .copyWith(color: AppColors.brandingBlue),
                   ),
                 ),
@@ -543,7 +546,7 @@ class _MoreInfoPageState
                                 Text(
                                   controller.activity.speakers[index].name!,
                                   textAlign: TextAlign.justify,
-                                  style: AppTextStyles.bold.copyWith(
+                                  style: AppTextStyles.headline1.copyWith(
                                       fontSize: 24, color: Colors.black),
                                 ),
                               if (controller.activity.speakers[index].company !=
@@ -553,7 +556,7 @@ class _MoreInfoPageState
                                 Text(
                                     "${S.of(context).companyTitle} ${controller.activity.speakers[index].company}",
                                     textAlign: TextAlign.justify,
-                                    style: AppTextStyles.bold.copyWith(
+                                    style: AppTextStyles.headline1.copyWith(
                                         fontSize: 16,
                                         color: AppColors.brandingBlue)),
                             ],
@@ -586,7 +589,7 @@ class _MoreInfoPageState
                             ),
                           },
                           // textAlign: TextAlign.justify,
-                          // style: AppTextStyles.body
+                          // style: AppTextStyles.headline1
                           //     .copyWith(fontSize: 16, color: Colors.black)
                         ),
                       ),

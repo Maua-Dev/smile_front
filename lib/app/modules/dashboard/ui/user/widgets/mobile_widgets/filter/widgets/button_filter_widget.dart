@@ -30,7 +30,7 @@ class ButtonFilterWidget extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: AppTextStyles.body.copyWith(
+                style: AppTextStyles.headline1.copyWith(
                   fontSize:
                       (MediaQuery.of(context).size.width > breakpointTablet)
                           ? 25
