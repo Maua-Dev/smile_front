@@ -365,6 +365,7 @@ class S {
       activity,
       {
         'COURSE': 'Courses',
+        'COURSES': 'Courses',
         'LECTURES': 'Speeches',
         'PANELS': 'Panels',
         'TECHNICAL_VISITS': 'Technical Visits',

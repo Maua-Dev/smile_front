@@ -20,7 +20,7 @@ abstract class ResponsibleActivitiesControllerBase with Store {
 
   ResponsibleActivitiesControllerBase(
       {required this.storage, required this.getUserSubscribedActivities}) {
-    getFiltredActivities();
+    getFilteredActivities();
   }
 
   @observable
@@ -41,15 +41,18 @@ abstract class ResponsibleActivitiesControllerBase with Store {
   String? requisitionError;
 
   @action
-  Future<void> getFiltredActivities() async {
+  Future<void> getFilteredActivities() async {
     setIsLoading(true);
     try {
       var allActivities = await getUserSubscribedActivities();
       var userId = await storage.getId();
       for (var activity in allActivities) {
-        for (var professor in activity.responsibleProfessors) {
-          if (professor.id == userId) {
-            allResponsibleActivities.add(activity);
+        var professors = activity.responsibleProfessors;
+        if (professors != null) {
+          for (var professor in professors) {
+            if (professor.id == userId) {
+              allResponsibleActivities.add(activity);
+            }
           }
         }
       }

@@ -109,7 +109,8 @@ class _AdmDashboardPageState
                                       .activitiesList[index].activityCode,
                                   date: date,
                                   description: controller
-                                      .activitiesList[index].description,
+                                          .activitiesList[index].description ??
+                                      '',
                                   totalParticipants: controller
                                       .activitiesList[index].totalSlots,
                                   title: controller.activitiesList[index].title,

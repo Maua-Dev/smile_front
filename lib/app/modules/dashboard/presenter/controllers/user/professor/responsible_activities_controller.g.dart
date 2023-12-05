@@ -186,14 +186,14 @@ mixin _$ResponsibleActivitiesController
     return _$setIsLoadingAsyncAction.run(() => super.setIsLoading(value));
   }
 
-  late final _$getFiltredActivitiesAsyncAction = AsyncAction(
-      'ResponsibleActivitiesControllerBase.getFiltredActivities',
+  late final _$getFilteredActivitiesAsyncAction = AsyncAction(
+      'ResponsibleActivitiesControllerBase.getFilteredActivities',
       context: context);
 
   @override
-  Future<void> getFiltredActivities() {
-    return _$getFiltredActivitiesAsyncAction
-        .run(() => super.getFiltredActivities());
+  Future<void> getFilteredActivities() {
+    return _$getFilteredActivitiesAsyncAction
+        .run(() => super.getFilteredActivities());
   }
 
   late final _$ResponsibleActivitiesControllerBaseActionController =

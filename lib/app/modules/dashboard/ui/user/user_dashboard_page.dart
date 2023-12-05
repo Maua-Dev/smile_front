@@ -129,7 +129,7 @@ class _UserDashboardPageState
                                 },
                                 name: controller.nextActivity.title,
                                 description:
-                                    controller.nextActivity.description,
+                                    controller.nextActivity.description ?? '',
                                 date: controller.nextActivity.startDate,
                               );
                             }),

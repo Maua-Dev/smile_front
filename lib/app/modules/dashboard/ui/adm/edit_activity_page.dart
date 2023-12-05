@@ -208,12 +208,16 @@ class _EditActivityPageState
                       Observer(builder: (_) {
                         return ListView.builder(
                           shrinkWrap: true,
-                          itemCount: controller
-                              .activityToEdit.responsibleProfessors.length,
+                          itemCount:
+                              controller.activityToEdit.responsibleProfessors !=
+                                      null
+                                  ? controller.activityToEdit
+                                      .responsibleProfessors!.length
+                                  : 0,
                           itemBuilder: (context, index) {
                             return ProfessorAddWidget(
                               professor: controller
-                                  .activityToEdit.responsibleProfessors[index],
+                                  .activityToEdit.responsibleProfessors![index],
                               removeProfessor: () {
                                 controller.removeProfessor(index);
                                 setState(() {});
@@ -227,7 +231,7 @@ class _EditActivityPageState
                               validateRequiredField:
                                   controller.validateRequiredField,
                               length: controller
-                                  .activityToEdit.responsibleProfessors.length,
+                                  .activityToEdit.responsibleProfessors!.length,
                             );
                           },
                         );
@@ -248,18 +252,21 @@ class _EditActivityPageState
                       Observer(builder: (_) {
                         return ListView.builder(
                           shrinkWrap: true,
-                          itemCount: controller.activityToEdit.speakers.length,
+                          itemCount: controller.activityToEdit.speakers != null
+                              ? controller.activityToEdit.speakers!.length
+                              : 0,
                           itemBuilder: (context, index) {
                             return SpeakerAddWidget(
                               validateRequiredField:
                                   controller.validateRequiredField,
-                              length: controller.activityToEdit.speakers.length,
+                              length:
+                                  controller.activityToEdit.speakers!.length,
                               name: controller
-                                  .activityToEdit.speakers[index].name,
-                              bio:
-                                  controller.activityToEdit.speakers[index].bio,
+                                  .activityToEdit.speakers![index].name,
+                              bio: controller
+                                  .activityToEdit.speakers![index].bio,
                               company: controller
-                                  .activityToEdit.speakers[index].company,
+                                  .activityToEdit.speakers![index].company,
                               onChangedName: (value) {
                                 controller.setSpeakerName(value, index);
                               },

@@ -92,7 +92,7 @@ abstract class EditActivityControllerBase with Store {
   @action
   void removeProfessor(int index) {
     var list = activityToEdit.responsibleProfessors;
-    list.removeAt(index);
+    list != null ? list.removeAt(index) : '';
     activityToEdit = activityToEdit.copyWith(responsibleProfessors: list);
   }
 
@@ -142,14 +142,14 @@ abstract class EditActivityControllerBase with Store {
     var list = activityToEdit.responsibleProfessors;
     ResponsibleProfessorModel professor = allResponsibleProfessorsList!
         .firstWhere((professor) => professor.id == id);
-    list[index] = professor;
+    list != null ? list[index] = professor : '';
     activityToEdit = activityToEdit.copyWith(responsibleProfessors: list);
   }
 
   @action
   void addResponsibleProfessor() {
     var list = activityToEdit.responsibleProfessors;
-    list.add(ResponsibleProfessorModel.newInstance());
+    list != null ? list.add(ResponsibleProfessorModel.newInstance()) : '';
     activityToEdit = activityToEdit.copyWith(responsibleProfessors: list);
   }
 
@@ -220,17 +220,23 @@ abstract class EditActivityControllerBase with Store {
 
   @action
   void setSpeakerName(String value, int index) {
-    activityToEdit.speakers[index].name = value;
+    activityToEdit.speakers != null
+        ? activityToEdit.speakers![index].name = value
+        : '';
   }
 
   @action
   void setSpeakerBio(String value, int index) {
-    activityToEdit.speakers[index].bio = value;
+    activityToEdit.speakers != null
+        ? activityToEdit.speakers![index].bio = value
+        : '';
   }
 
   @action
   void setSpeakerCompany(String value, int index) {
-    activityToEdit.speakers[index].company = value;
+    activityToEdit.speakers != null
+        ? activityToEdit.speakers![index].company = value
+        : '';
   }
 
   @action
@@ -241,14 +247,14 @@ abstract class EditActivityControllerBase with Store {
   @action
   void addSpeaker() {
     var list = activityToEdit.speakers;
-    list.add(SpeakerActivityModel.newInstance());
+    list != null ? list.add(SpeakerActivityModel.newInstance()) : '';
     activityToEdit = activityToEdit.copyWith(speakers: list);
   }
 
   @action
   void removeSpeaker(int index) {
     var list = activityToEdit.speakers;
-    list.removeAt(index);
+    list != null ? list.removeAt(index) : '';
     activityToEdit = activityToEdit.copyWith(speakers: list);
   }
 }

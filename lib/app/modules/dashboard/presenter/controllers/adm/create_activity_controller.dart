@@ -160,44 +160,50 @@ abstract class CreateActivityControllerBase with Store {
     var list = activityToCreate.responsibleProfessors;
     ResponsibleProfessorModel professor = allResponsibleProfessorsList!
         .firstWhere((professor) => professor.id == id);
-    list[index] = professor;
+    list != null ? list[index] = professor : '';
     activityToCreate = activityToCreate.copyWith(responsibleProfessors: list);
   }
 
   @action
   void removeProfessor(int index) {
     var list = activityToCreate.responsibleProfessors;
-    list.removeAt(index);
+    list != null ? list.removeAt(index) : '';
     activityToCreate = activityToCreate.copyWith(responsibleProfessors: list);
   }
 
   @action
   void addResponsibleProfessor() {
     var list = activityToCreate.responsibleProfessors;
-    list.add(ResponsibleProfessorModel.newInstance());
+    list != null ? list.add(ResponsibleProfessorModel.newInstance()) : '';
     activityToCreate = activityToCreate.copyWith(responsibleProfessors: list);
   }
 
   @action
   void addSpeaker() {
     var list = activityToCreate.speakers;
-    list.add(SpeakerActivityModel.newInstance());
+    list != null ? list.add(SpeakerActivityModel.newInstance()) : '';
     activityToCreate = activityToCreate.copyWith(speakers: list);
   }
 
   @action
   void setSpeakerName(String value, int index) {
-    activityToCreate.speakers[index].name = value;
+    activityToCreate.speakers != null
+        ? activityToCreate.speakers![index].name = value
+        : '';
   }
 
   @action
   void setSpeakerBio(String value, int index) {
-    activityToCreate.speakers[index].bio = value;
+    activityToCreate.speakers != null
+        ? activityToCreate.speakers![index].bio = value
+        : '';
   }
 
   @action
   void setSpeakerCompany(String value, int index) {
-    activityToCreate.speakers[index].company = value;
+    activityToCreate.speakers != null
+        ? activityToCreate.speakers![index].company = value
+        : '';
   }
 
   @action
@@ -289,7 +295,7 @@ abstract class CreateActivityControllerBase with Store {
   @action
   void removeSpeaker(int index) {
     var list = activityToCreate.speakers;
-    list.removeAt(index);
+    list != null ? list.removeAt(index) : '';
     activityToCreate = activityToCreate.copyWith(speakers: list);
   }
 }

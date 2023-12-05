@@ -210,7 +210,11 @@ class _CreateActivityPageState
                         return ListView.builder(
                           shrinkWrap: true,
                           itemCount: controller
-                              .activityToCreate.responsibleProfessors.length,
+                                      .activityToCreate.responsibleProfessors !=
+                                  null
+                              ? controller.activityToCreate
+                                  .responsibleProfessors!.length
+                              : 0,
                           itemBuilder: (context, index) {
                             return ProfessorAddWidget(
                               removeProfessor: () {
@@ -226,7 +230,11 @@ class _CreateActivityPageState
                               validateRequiredField:
                                   controller.validateRequiredField,
                               length: controller.activityToCreate
-                                  .responsibleProfessors.length,
+                                          .responsibleProfessors !=
+                                      null
+                                  ? controller.activityToCreate
+                                      .responsibleProfessors!.length
+                                  : 0,
                             );
                           },
                         );
@@ -248,19 +256,21 @@ class _CreateActivityPageState
                         return ListView.builder(
                           shrinkWrap: true,
                           itemCount:
-                              controller.activityToCreate.speakers.length,
+                              controller.activityToCreate.speakers != null
+                                  ? controller.activityToCreate.speakers!.length
+                                  : 0,
                           itemBuilder: (context, index) {
                             return SpeakerAddWidget(
                               validateRequiredField:
                                   controller.validateRequiredField,
                               length:
-                                  controller.activityToCreate.speakers.length,
+                                  controller.activityToCreate.speakers!.length,
                               name: controller
-                                  .activityToCreate.speakers[index].name,
+                                  .activityToCreate.speakers![index].name,
                               bio: controller
-                                  .activityToCreate.speakers[index].bio,
+                                  .activityToCreate.speakers![index].bio,
                               company: controller
-                                  .activityToCreate.speakers[index].company,
+                                  .activityToCreate.speakers![index].company,
                               onChangedName: (value) {
                                 controller.setSpeakerName(value, index);
                               },

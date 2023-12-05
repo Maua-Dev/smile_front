@@ -33,7 +33,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
       } else if (controller.requisitionError != null) {
         return RefreshIndicator(
           onRefresh: () {
-            return controller.getFiltredActivities();
+            return controller.getFilteredActivities();
           },
           child: Center(
             child: SizedBox(
@@ -79,7 +79,7 @@ class _ResponsibleActivitiesPageState extends ModularState<
         if (controller.allResponsibleActivities.isNotEmpty) {
           return RefreshIndicator(
             onRefresh: () {
-              return controller.getFiltredActivities();
+              return controller.getFilteredActivities();
             },
             child: SingleChildScrollView(
               child: Center(

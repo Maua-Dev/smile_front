@@ -7,7 +7,7 @@ class Activity {
   final String activityCode;
   final ActivityEnum? type;
   final String title;
-  final String description;
+  final String? description;
   final bool isExtensive;
   final DeliveryEnum? deliveryEnum;
   final DateTime? startDate;
@@ -18,15 +18,15 @@ class Activity {
   final int takenSlots;
   final bool acceptingNewEnrollments;
   final DateTime? stopAcceptingNewEnrollmentsBefore;
-  final List<ResponsibleProfessorModel> responsibleProfessors;
-  final List<SpeakerActivityModel> speakers;
+  final List<ResponsibleProfessorModel>? responsibleProfessors;
+  final List<SpeakerActivityModel>? speakers;
 
   Activity({
     required this.totalSlots,
     required this.takenSlots,
     required this.acceptingNewEnrollments,
     this.stopAcceptingNewEnrollmentsBefore,
-    required this.responsibleProfessors,
+    this.responsibleProfessors,
     this.place,
     this.link,
     required this.isExtensive,
@@ -36,8 +36,8 @@ class Activity {
     required this.activityCode,
     required this.type,
     required this.title,
-    required this.description,
-    required this.speakers,
+    this.description,
+    this.speakers,
   });
 
   factory Activity.newInstance() {

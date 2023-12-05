@@ -526,7 +526,9 @@ class _MoreInfoPageState
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: controller.activity.speakers.length,
+                itemCount: controller.activity.speakers != null
+                    ? controller.activity.speakers!.length
+                    : 0,
                 itemBuilder: (context, index) => Column(
                   children: [
                     Row(
@@ -536,22 +538,24 @@ class _MoreInfoPageState
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              if (controller.activity.speakers[index].name !=
+                              if (controller.activity.speakers![index].name !=
                                       null &&
-                                  controller.activity.speakers[index].name !=
+                                  controller.activity.speakers![index].name !=
                                       '')
                                 Text(
-                                  controller.activity.speakers[index].name!,
+                                  controller.activity.speakers![index].name!,
                                   textAlign: TextAlign.justify,
                                   style: AppTextStyles.bold.copyWith(
                                       fontSize: 24, color: Colors.black),
                                 ),
-                              if (controller.activity.speakers[index].company !=
+                              if (controller
+                                          .activity.speakers![index].company !=
                                       null &&
-                                  controller.activity.speakers[index].company !=
+                                  controller
+                                          .activity.speakers![index].company !=
                                       '')
                                 Text(
-                                    "${S.of(context).companyTitle} ${controller.activity.speakers[index].company}",
+                                    "${S.of(context).companyTitle} ${controller.activity.speakers![index].company}",
                                     textAlign: TextAlign.justify,
                                     style: AppTextStyles.bold.copyWith(
                                         fontSize: 16,
@@ -564,13 +568,13 @@ class _MoreInfoPageState
                     const SizedBox(
                       height: 8,
                     ),
-                    if (controller.activity.speakers[index].bio != null &&
-                        controller.activity.speakers[index].bio != '')
+                    if (controller.activity.speakers![index].bio != null &&
+                        controller.activity.speakers![index].bio != '')
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Html(
                           shrinkWrap: true,
-                          data: controller.activity.speakers[index].bio!,
+                          data: controller.activity.speakers![index].bio!,
                           onLinkTap: (url, context, attributes, element) =>
                               url != null
                                   ? launchUrl(Uri.parse(url),

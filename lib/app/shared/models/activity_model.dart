@@ -14,7 +14,7 @@ class ActivityModel extends Activity {
     required super.activityCode,
     required super.type,
     required super.title,
-    required super.description,
+    super.description,
     required super.speakers,
     super.link,
     super.place,
@@ -71,8 +71,11 @@ class ActivityModel extends Activity {
         'accepting_new_enrollments': acceptingNewEnrollments,
         'stop_accepting_new_enrollments_before':
             stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
-        'responsible_professors': responsibleProfessors.map((e) => e).toList(),
-        'speakers': speakers.map((e) => e.toJson()).toList(),
+        'responsible_professors': responsibleProfessors != null
+            ? responsibleProfessors!.map((e) => e).toList()
+            : [],
+        'speakers':
+            speakers != null ? speakers!.map((e) => e.toJson()).toList() : [],
       };
 
   Map<String, dynamic> editToJson() => {
@@ -92,9 +95,11 @@ class ActivityModel extends Activity {
         'new_accepting_new_enrollments': acceptingNewEnrollments,
         'new_stop_accepting_new_enrollments_before':
             stopAcceptingNewEnrollmentsBefore!.millisecondsSinceEpoch,
-        'new_responsible_professors':
-            responsibleProfessors.map((e) => e).toList(),
-        'new_speakers': speakers.map((e) => e.toJson()).toList(),
+        'new_responsible_professors': responsibleProfessors != null
+            ? responsibleProfessors!.map((e) => e).toList()
+            : [],
+        'new_speakers':
+            speakers != null ? speakers!.map((e) => e.toJson()).toList() : [],
       };
 
   factory ActivityModel.newInstance() {
